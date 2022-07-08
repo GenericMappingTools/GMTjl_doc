@@ -122,13 +122,12 @@
 </ul></li>
 <li><input class="collapse-toggle" id="menuitem-2-12" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-2-12"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/examples/subplot">Subplots</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/examples/subplot/01_subplots">Subplots</a></div></li>
 </ul></li>
-<li><input class="collapse-toggle" id="menuitem-2-13" type="checkbox" checked><div class="tocitem-container"><label class="tocexpander" for="menuitem-2-13"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/examples/ternary">Ternary</a></div><ul><li><div class="tocitem-container"><a class = active href="/GMTjl_doc/examples/ternary/ternary_examples">Ternary plots</a></div><ul class="page-content">
+<li><input class="collapse-toggle" id="menuitem-2-13" type="checkbox" checked><div class="tocitem-container"><label class="tocexpander" for="menuitem-2-13"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/examples/ternary">Ternary plots</a></div><ul><li><div class="tocitem-container"><a class = active href="/GMTjl_doc/examples/ternary/ternary_examples">Ternary plots</a></div><ul class="page-content">
 <li><a href="#ternary_plots">Ternary plots</a></li>
 <li><ul>
-<li><a href="#examples">Examples</a></li>
-<li><ul>
+<li><a href="#a_scatter_plot_example">A scatter plot example</a></li>
+<li><a href="#ternary_with_image">Ternary with image</a></li>
 <li><a href="#diagram_with_lines_and_text">Diagram with lines and text</a></li>
-</ul>
 </ul>
 </ul>
 </li>
@@ -207,9 +206,10 @@
 
 
 <!-- Content appended here -->
-<div class="franklin-content"><h1 id="ternary_plots"><a href="#ternary_plots" class="header-anchor">Ternary plots</a></h1>
-<h2 id="examples"><a href="#examples" class="header-anchor">Examples</a></h2>
-<p>o plot points on a ternary diagram at the positions listed in the file ternary.txt &#40;that GMT knows where to find it&#41;, with default annotations and gridline spacings, using the specified labeling, do</p>
+<div class="franklin-content"><h2 id="ternary_plots"><a href="#ternary_plots" class="header-anchor">Ternary plots</a></h2>
+<p>See manual at <a href="/GMTjl_doc/documentation/modules/ternary/index.html#ternary">ternary</a></p>
+<h3 id="a_scatter_plot_example"><a href="#a_scatter_plot_example" class="header-anchor">A scatter plot example</a></h3>
+<p>To plot points on a ternary diagram at the positions listed in the file ternary.txt &#40;that GMT knows where to find it&#41;, with default annotations and gridline spacings, using the specified labeling, do:</p>
 <pre><code class="language-julia">using GMT
 ternary&#40;&quot;@ternary.txt&quot;, labels&#61;&#40;&quot;Clay&quot;,&quot;Silt&quot;,&quot;Sand&quot;&#41;, marker&#61;:p, show&#61;true&#41;</code></pre></p>
 <p>
@@ -230,6 +230,7 @@ ternary&#40;&quot;@ternary.txt&quot;,  marker&#61;:p, cmap&#61;C, clockwise&#61;
  <img src="/GMTjl_doc/assets/examples/ternary/ternary_examples/code/output/example_14287936606286211667.png" alt=""> 
 </a>
 
+<h3 id="ternary_with_image"><a href="#ternary_with_image" class="header-anchor">Ternary with image</a></h3>
 <p>Ah, much better, but now I would like to display the above data as an image.</p>
 <p>Solution: use the image&#61;true option. Note that we may skip the cmap option and an automatic cmap is compute for us &#40;but one can use whatever cmap we want, just create a colormap with the wished colors&#41;</p>
 <pre><code class="language-julia">using GMT

@@ -122,7 +122,7 @@
 </ul></li>
 <li><input class="collapse-toggle" id="menuitem-2-12" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-2-12"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/examples/subplot">Subplots</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/examples/subplot/01_subplots">Subplots</a></div></li>
 </ul></li>
-<li><input class="collapse-toggle" id="menuitem-2-13" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-2-13"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/examples/ternary">Ternary</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/examples/ternary/ternary_examples">Ternary plots</a></div></li>
+<li><input class="collapse-toggle" id="menuitem-2-13" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-2-13"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/examples/ternary">Ternary plots</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/examples/ternary/ternary_examples">Ternary plots</a></div></li>
 </ul></li>
 <li><input class="collapse-toggle" id="menuitem-2-14" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-2-14"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/examples/themes">Themes</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/examples/themes/01_themes">Theming</a></div></li>
 </ul></li>
@@ -208,11 +208,8 @@
 <p>Reads &#40;<em>a</em>, <em>b</em>, <em>c</em> &#91;, <em>z</em>&#93;&#41; records from <em>table</em> and plots symbols at those locations on a ternary diagram. If a symbol is selected and no symbol size given, then we will interpret the fourth column of the input data as symbol size. Symbols whose <em>size</em> is &lt;&#61; 0 are skipped. If no symbols are specified then the symbol code &#40;see <strong>marker</strong> below&#41; must be present as last column in the input. If <strong>marker</strong> is not specified then we instead plot lines or polygons.</p>
 <h2>Parameters</h2>
 <ul>
-<li><p><strong>B</strong> or <strong>axes</strong> or <strong>frame</strong><br /> Set map boundary frame and axes attributes. Default is to draw and annotate left, bottom and vertical  axes and just draw left and top axes. More at <a href="/GMTjl_doc/documentation/common_opts/common_opts/index.html#frame">frame</a></p>
+<li><p><strong>B</strong> or <strong>axes</strong> or <strong>frame</strong> : <em>frame&#61;??</em><br />  For ternary diagrams the three sides are referred to as a, b, and c. Thus, to give specific   settings for one of these axis you must include the axis letter before the arguments. If all   axes have the same arguments then only give one option without the axis letter. For more details,   see the example at the bottom of this page and the general <a href="/GMTjl_doc/documentation/common_opts/common_opts/index.html#frame">frame</a> docs.</p>
 </li>
-</ul>
-
-<ul>
 <li><p><strong>C</strong> or <strong>color</strong> or <strong>cmap</strong> : <em>color&#61;cpt</em><br />  Give a CPT or specify <strong>color&#61;&quot;color1,color2 &#91;,color3 ,...&#93;&quot;</strong> or <strong>color&#61;&#40;&#40;r1,g1,b1&#41;,&#40;r2,g2,b2&#41;,...&#41;</strong>   to build a linear continuous CPT from those colors automatically, where <em>z</em> starts at 0 and is incremented   by one for each color. In this case <em>color_n</em> can be a &#91;r g b&#93; triplet, a color name, or an HTML   hexadecimal color &#40;e.g. #aabbcc &#41;. If <strong>symbol</strong> is set, let symbol fill color be determined by   the z-value in the fourth column. Additional fields are shifted over by one column &#40;optional size   would be 5th rather than 4th field, etc.&#41;.</p>
 </li>
 </ul>
@@ -240,13 +237,15 @@
 <li><p><strong>S</strong> or <strong>marker</strong> or <strong>symbol</strong> : – <em>symbol&#61;&#40;symb&#61;name, size&#61;val, unit&#61;unity&#41;</em> or <em>marker|Marker|shape&#61;name</em>, <em>markersize|MarkerSize|ms|size&#61;val</em><br />  Plot individual symbols in a ternary diagram. If <strong>marker</strong> is not given then we will instead   plot lines &#40;requires <strong>markerline</strong>&#41; or polygons &#40;requires <strong>cmap</strong> or <strong>fill</strong>&#41;. For details on symbols   see the <strong>symbol</strong> option in <a href="/GMTjl_doc/documentation/modules/plot/index.html#plot">plot</a></p>
 </li>
 </ul>
-<p>Other than the above options, the <code>kwargs</code> input accepts still the following options:<br />- <strong>image</strong> : - Fills the ternary plot with an image computed automatically with <a href="/GMTjl_doc/documentation/modules/grdimage/index.html#grdimage">grdimage</a> from a grid interpolated with <code>surface</code></p>
+<p>Other than the above options, the <code>kwargs</code> input accepts still the following options:</p>
 <ul>
-<li><p><strong>contour</strong> : - This option works in two different ways. If used together with <code>image</code> it overlays a contour              by doing a call to <a href="/GMTjl_doc/documentation/modules/grdcontour/index.html#grdcontour">grdcontour</a>. However, if used alone it will call <code>contour</code> to do the contours.              The difference is important because this option can be used in <em>default mode</em> with <code>contour&#61;true</code>              where the number and annotated contours is picked automatically, or the use can exert full control              by passing as argument a NamedTuple with all options appropriated to that module. <em>e.g.</em> <code>contour&#61;&#40;cont&#61;10, annot&#61;20, pen&#61;0.5&#41;</code></p>
+<li><p><strong>image</strong> : <em>image&#61;true</em><br />  Fills the ternary plot with an image computed automatically with <a href="/GMTjl_doc/documentation/modules/grdimage/index.html#grdimage">grdimage</a> from a grid   interpolated with <code>surface</code></p>
 </li>
-<li><p><strong>contourf</strong> : - Works a bit like the <em>standalone</em> <code>contour</code>. If used with <code>contourf&#61;true</code> call make a filled contour               using automatic parameters. The form <code>contourf&#61;&#40;...&#41;</code> let us selects options of the <a href="/GMTjl_doc/documentation/modules/contourf/index.html#contourf">contourf</a> module.</p>
+<li><p><strong>contour</strong> : <em>contour&#61;??</em><br />  This option works in two different ways. If used together with <code>image</code> it overlays a contour   by doing a call to <a href="/GMTjl_doc/documentation/modules/grdcontour/index.html#grdcontour">grdcontour</a>. However, if used alone it will call <code>contour</code> to do the contours.   The difference is important because this option can be used in <em>default mode</em> with <code>contour&#61;true</code>   where the number and annotated contours is picked automatically, or the use can exert full control   by passing as argument a NamedTuple with all options appropriated to that module. <em>e.g.</em> <code>contour&#61;&#40;cont&#61;10, annot&#61;20, pen&#61;0.5&#41;</code></p>
 </li>
-<li><p><strong>clockwise</strong> : - Set it to <code>true</code> to indicate that positive axes directions be clock-wise                &#91;Default lets the a, b, c axes be positive in a counter-clockwise direction&#93;.</p>
+<li><p><strong>contourf</strong> : <em>contourf&#61;??</em><br />  Works a bit like the <em>standalone</em> <code>contour</code>. If used with <code>contourf&#61;true</code> call make a filled contour   using automatic parameters. The form <code>contourf&#61;&#40;...&#41;</code> let us selects options of the <a href="/GMTjl_doc/documentation/modules/contourf/index.html#contourf">contourf</a> module.</p>
+</li>
+<li><p><strong>clockwise</strong> : <em>clockwise&#61;true</em>&#96;   Set it to <code>true</code> to indicate that positive axes directions be clock-wise   &#91;Default lets the a, b, c axes be positive in a counter-clockwise direction&#93;.</p>
 </li>
 </ul>
 <ul>
