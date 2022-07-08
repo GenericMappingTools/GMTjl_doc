@@ -126,6 +126,9 @@
 <li><a href="#ternary_plots">Ternary plots</a></li>
 <li><ul>
 <li><a href="#examples">Examples</a></li>
+<li><ul>
+<li><a href="#diagram_with_lines_and_text">Diagram with lines and text</a></li>
+</ul>
 </ul>
 </ul>
 </li>
@@ -258,6 +261,28 @@ ternary&#40;&quot;@ternary.txt&quot;, marker&#61;:p, clockwise&#61;true,
 <p>
 <a id="example_17424713944501600615">
  <img src="/GMTjl_doc/assets/examples/ternary/ternary_examples/code/output/example_17424713944501600615.png" alt=""> 
+</a>
+
+<h3 id="diagram_with_lines_and_text"><a href="#diagram_with_lines_and_text" class="header-anchor">Diagram with lines and text</a></h3>
+<p>This example makes use of the <a href="#">tern2cart</a> function that converts from ternary to cartesian coordinates. It is based on <a href="https://discourse.julialang.org/t/ternary-plots-in-gmt-jl/63181/4">this discussion</a> of the Julia forum.</p>
+<pre><code class="language-julia">using GMT
+
+b &#61; 0:0.01:0.3
+c1 &#61; &#40;1 .- b&#41;.^3 .- 0.7^3
+c2 &#61; &#40;1 .- 2*b&#41;.^2 .- 0.4^2
+
+# Generate the coordinates of two lines.
+t1 &#61; tern2cart&#40;&#91;&#40;1 .- b .- c1&#41; b c1&#93;&#41;    # Note that GMT.jl function expects a Mx3 matrix
+t2 &#61; tern2cart&#40;&#91;&#40;1 .- b .- c2&#41; b c2&#93;&#41;
+
+ternary&#40;labels&#61;&#40;&quot;A&quot;, &quot;B&quot;, &quot;C&quot;&#41;&#41;
+
+plot&#33;&#40;t1, lw&#61;2, lc&#61;:red, ls&#61;&quot;line&amp; &#40;a&#41; &amp;&quot;&#41;	# line style -&gt; fancy stuff
+plot&#33;&#40;t2, lw&#61;2, lc&#61;:blue&#41;
+text&#33;&#40;tern2cart&#40;&#91;0.3 0.4 0.3&#93;&#41;, text&#61;&quot;Umbilicus&quot;, font&#61;18, show&#61;true&#41;</code></pre></p>
+<p>
+<a id="example_4844438575782619428">
+ <p><span style="color:red;">// Image matching '/assets/examples/ternary/ternary_examples/code/example_4844438575782619428.png' not found. //</span></p> 
 </a>
 
 <div class="page-foot">
