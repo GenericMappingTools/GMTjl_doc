@@ -174,12 +174,14 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/filter1d">filter1d</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/fitcircle">fitcircle</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/gmtbinstats">gmtbinstats</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/gmtconvert">gmtconvert</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/gmtset">gmtset</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdcontour">grdcontour</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdgradient">grdgradient</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdhisteq">grdhisteq</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdimage">grdimage</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdsample">grdsample</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdtrack">grdtrack</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdview">grdview</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/histogram">histogram</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/legend">legend</a></div></li>
@@ -384,18 +386,47 @@ showfig&#40;&#41;</code></pre></p>
 <p>For map distance unit, append unit d for arc degree, m for arc minute, and s for arc second, or e for meter &#91;Default unless stated otherwise&#93;, f for foot, k for km, M for statute mile, n for nautical mile, and u for US survey foot. By default we compute such distances using a spherical approximation with great circles &#40;-jg&#41; using the authalic radius &#40;see <code>PROJ_MEAN_RADIUS</code>&#41;. You can use -jf to perform “Flat Earth” calculations &#40;quicker but less accurate&#41; or -je to perform exact geodesic calculations &#40;slower but more accurate; see <code>PROJ_GEODESIC</code> for method used&#41;.
 <h2>Examples</h2>
 <p>To project the remote data sets ship_03.txt &#40;lon,lat,depth&#41; onto a great circle specified by the two points &#40;330,-18&#41; and &#40;53,21&#41; and sort the records on the projected distances along that circle and only output the distance and the depths, try</p>
-<pre><code class="language-julia">D &#61; project&#40;&quot;@ship_03.txt&quot;, origin&#61;&#40;330,-18&#41;, pole&#61;&#40;53,21&#41;, sort&#61;true, outvars&#61;:pz, km&#61;true&#41;</code></pre>
+<pre><code class="language-julia">using GMT
+D &#61; project&#40;&quot;@ship_03.txt&quot;, origin&#61;&#40;330,-18&#41;, pole&#61;&#40;53,21&#41;, sort&#61;true, outvars&#61;:pz, km&#61;true&#41;
+imshow&#40;D&#41;</code></pre></p>
+<p>
+<a id="example_917860055927329881">
+ <img src="/GMTjl_doc/assets/documentation/modules/project/code/output/example_917860055927329881.png" alt=""> 
+</a>
+
 <p>To generate points every 10 km along a great circle from 10N,50W to 30N,10W:</p>
-<pre><code class="language-julia">Dgc &#61; project&#40;origin&#61;&#40;-50,10&#41;, endpoint&#61;&#40;-10,30&#41;, step&#61;10, km&#61;true&#41;</code></pre>
-<p>&#40;Note that <code>Dgc</code> could now be used as input for <a href="#">grdtrack</a>, etc. &#41;.</p>
+<pre><code class="language-julia">using GMT
+Dgc &#61; project&#40;origin&#61;&#40;-50,10&#41;, endpoint&#61;&#40;-10,30&#41;, step&#61;10, km&#61;true&#41;
+imshow&#40;Dgc, marker&#61;:point, lw&#61;0.5, coast&#61;true&#41;</code></pre></p>
+<p>
+<a id="example_7569475027179865255">
+ <img src="/GMTjl_doc/assets/documentation/modules/project/code/output/example_7569475027179865255.png" alt=""> 
+</a>
+
+<p>&#40;Note that <code>Dgc</code> could now be used as input for <a href="/GMTjl_doc/documentation/modules/grdtrack/index.html#grdtrack">grdtrack</a>, etc. &#41;.</p>
 <p>To generate points every 1 degree along a great circle from 30N,10W with azimuth 30 and covering a full 360, try:</p>
-<pre><code class="language-julia">D &#61; project&#40;origin&#61;&#40;&quot;10W&quot;,&quot;30N&quot;&#41;, azim&#61;30, step&#61;1, length&#61;&#40;-180,180&#41;&#41;</code></pre>
+<pre><code class="language-julia">D &#61; project&#40;origin&#61;&#40;&quot;10W&quot;,&quot;30N&quot;&#41;, azim&#61;30, step&#61;1, length&#61;&#40;-180,180&#41;&#41;
+imshow&#40;D, coast&#61;true&#41;</code></pre>
 <p>To generate points every 10 km along a small circle of colatitude 60 from 10N,50W to 30N,10W:</p>
-<pre><code class="language-julia">Dsc &#61; project&#40;center&#61;&#40;-50,10&#41;, endpoint&#61;&#40;-10,30&#41;, step&#61;&#40;10,60&#41;, km&#61;true&#41;</code></pre>
+<pre><code class="language-julia">using GMT
+Dsc &#61; project&#40;center&#61;&#40;-50,10&#41;, endpoint&#61;&#40;-10,30&#41;, step&#61;&#40;10,60&#41;, km&#61;true&#41;
+imshow&#40;Dsc, marker&#61;:point, lw&#61;0.5, coast&#61;true&#41;</code></pre></p>
+<p>
+<a id="example_11839462179037313379">
+ <img src="/GMTjl_doc/assets/documentation/modules/project/code/output/example_11839462179037313379.png" alt=""> 
+</a>
+
 <p>To create a partial small circle of colatitude 80 about a pole at 40E,85N, with extent of 45 degrees to either side of the meridian defined by the great circle from the pole to a point 15E,15N, try</p>
 <pre><code class="language-julia">D &#61; project&#40;origin&#61;&#40;15,15&#41;, pole&#61;&#40;40,85&#41;, step&#61;&#40;1,80&#41;, length&#40;-45,45&#41;&#41;</code></pre>
 <p>To generate points approximately every 10 km along an ellipse centered on &#40;30W,70N&#41; with major axis of 1500 km with azimuth of 30 degree and a minor axis of 600 km, try</p>
-<pre><code class="language-julia">Dellip &#61; project&#40;origin&#61;&#40;-30,70&#41;, step&#61;10, ellipse&#61;&quot;1500/600/30&#43;e&quot;&#41;</code></pre>
+<pre><code class="language-julia">using GMT
+Dellip &#61; project&#40;origin&#61;&#40;-30,70&#41;, step&#61;10, ellipse&#61;&quot;1500/600/30&#43;e&quot;&#41;
+imshow&#40;Dellip, coast&#61;true&#41;</code></pre></p>
+<p>
+<a id="example_11185430790584984190">
+ <img src="/GMTjl_doc/assets/documentation/modules/project/code/output/example_11185430790584984190.png" alt=""> 
+</a>
+
 <p>To project the shiptrack gravity, magnetics, and bathymetry in c2610.xygmb along a great circle through an origin at 30S, 30W, the great circle having an azimuth of N20W at the origin, keeping only the data from NE of the profile and within ± 500 km of the origin, run:</p>
 <pre><code class="language-julia">Dprj &#61; project&#40;&quot;c2610.xygmb&quot;, origin&#61;&#40;-30,-30&#41;, azim&#61;-20, width&#61;&#40;-10000,0&#41;,
                 length&#61;&#40;-500,500&#41;, outvars&#61;:pz, km&#61;true&#41;</code></pre>
@@ -411,10 +442,10 @@ showfig&#40;&#41;</code></pre></p>
 <p>then <code>Gflow</code> is a grid in the same area as pacific_topo.nc, but flow contains the latitudes about the pole of the projection. You now can use <a href="/GMTjl_doc/documentation/modules/grdcontour/index.html#grdcontour">grdcontour</a> on <code>Gflow</code> to draw lines of constant oblique latitude, which are flow lines in the hotspot frame.</p>
 <p>If you have an arbitrarily rotation pole <em>px,py</em> and you would like to draw an oblique small circle on a map, you will first need to make a file with the oblique coordinates for the small circle &#40;i.e., lon &#61; 0-360, lat is constant&#41;, then create a file with two records: the north pole &#40;0/90&#41; and the origin &#40;0/0&#41;, and find what their oblique coordinates are using your rotation pole. Now, use the projected North pole and origin coordinates as the rotation pole and center, respectively, and project your file as in the pacific example above. This gives coordinates for an oblique small circle.</p>
 <h2>See Also</h2>
-<p><a href="/GMTjl_doc/documentation/modules/fitcircle/index.html#fitcircle">fitcircle</a>, <a href="#">gmtvector</a>, <a href="#">grdtrack</a>, <a href="#">mapproject</a>, <a href="#">grdproject</a>, <a href="#">grdtrack</a></p>
+<p><a href="/GMTjl_doc/documentation/modules/fitcircle/index.html#fitcircle">fitcircle</a>, <a href="#">gmtvector</a>, <a href="/GMTjl_doc/documentation/modules/grdtrack/index.html#grdtrack">grdtrack</a>, <a href="#">mapproject</a>, <a href="#">grdproject</a>, <a href="/GMTjl_doc/documentation/modules/grdtrack/index.html#grdtrack">grdtrack</a></p>
 <div class="page-foot">
   <div class="copyright">
-    &copy; GMT.jl. Last modified: July 12, 2022. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+    &copy; GMT.jl. Last modified: July 13, 2022. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
       <p>These docs were autogenerated using GMT: v0.42.4</p>
   </div>
 </div>

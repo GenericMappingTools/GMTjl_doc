@@ -174,12 +174,14 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/filter1d">filter1d</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/fitcircle">fitcircle</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/gmtbinstats">gmtbinstats</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/gmtconvert">gmtconvert</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/gmtset">gmtset</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdcontour">grdcontour</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdgradient">grdgradient</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdhisteq">grdhisteq</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdimage">grdimage</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdsample">grdsample</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdtrack">grdtrack</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdview">grdview</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/histogram">histogram</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/legend">legend</a></div></li>
@@ -322,15 +324,18 @@ gmtend&#40;:show&#41;</code></pre></p>
 </ul>
 
 <ul>
-<li><p><strong>j</strong> or <strong>spherical_dist</strong> or <strong>spherical</strong> : – <em>spherical&#61;greatcirc</em> or <em>spherical&#61;:flat</em> or <em>spherical&#61;:ellipsoidal</em><br /></p>
+<li><p><strong>j</strong> or <strong>spherical_dist</strong> or <strong>spherical</strong> : – <em>spherical&#61;greatcirc</em> or <em>spherical&#61;:flat</em> or <em>spherical&#61;:ellipsoidal</em><br />  Determine how spherical distances are calculated in modules that support this &#91;Default is <code>spherical&#61;:greatcirc</code>&#93;.   GMT has different ways to compute distances on planetary bodies:</p>
+<ul>
+<li><p>spherical&#61;:greatcirc to perform great circle distance calculations, with parameters such as distance  increments or radii compared against calculated great circle distances &#91;Default is <code>spherical&#61;:greatcirc</code>&#93;.</p>
+</li>
+<li><p>spherical&#61;:flat to select Flat Earth mode, which gives a more approximate but faster result.</p>
+</li>
+<li><p>spherical&#61;:ellipsoidal to select ellipsoidal &#40;or geodesic&#41; mode for the highest precision  and slowest calculation time.</p>
 </li>
 </ul>
-<p>Determine how spherical distances are calculated in modules that support this &#91;Default is <code>spherical&#61;:greatcirc</code>&#93;. GMT has different ways to compute distances on planetary bodies:     - spherical&#61;:greatcirc to perform great circle distance calculations, with parameters such as distance        increments or radii compared against calculated great circle distances &#91;Default is spherical&#61;:greatcirc&#93;.</p>
-<p>- spherical&#61;:flat to select Flat Earth mode, which gives a more approximate but faster result.
-
-- spherical&#61;:ellipsoidal to select ellipsoidal &#40;or geodesic&#41; mode for the highest precision 
-  and slowest calculation time.</p>
-<p>Note: All spherical distance calculations depend on the current ellipsoid &#40;<code>PROJ_ELLIPSOID</code>&#41;, the definition of the mean radius &#40;<code>PROJ_MEAN_RADIUS</code>&#41;, and the specification of latitude type &#40;<code>PROJ_AUX_LATITUDE</code>&#41;. Geodesic distance calculations is also controlled by method &#40;<code>PROJ_GEODESIC</code>&#41;.</p>
+<p>Note: All spherical distance calculations depend on the current ellipsoid &#40;<code>PROJ_ELLIPSOID</code>&#41;,   the definition of the mean radius &#40;<code>PROJ_MEAN_RADIUS</code>&#41;, and the specification of latitude type   &#40;<code>PROJ_AUX_LATITUDE</code>&#41;. Geodesic distance calculations is also controlled by method &#40;<code>PROJ_GEODESIC</code>&#41;.</p>
+</li>
+</ul>
 
 <ul>
 <li><p><strong>o</strong> or <strong>outcol</strong> : – <em>outcol&#61;??</em><br /> Select specific data columns for primary output, in arbitrary order.  <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#ocols-full">More at</a></p>
@@ -383,7 +388,7 @@ gmtend&#40;:show&#41;</code></pre></p>
 <p><code>gmt.conf</code>, <a href="#">greenspline</a>, <a href="/GMTjl_doc/documentation/modules/filter1d/index.html#filter1d">filter1d</a></p>
 <div class="page-foot">
   <div class="copyright">
-    &copy; GMT.jl. Last modified: July 12, 2022. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+    &copy; GMT.jl. Last modified: July 13, 2022. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
       <p>These docs were autogenerated using GMT: v0.42.4</p>
   </div>
 </div>
