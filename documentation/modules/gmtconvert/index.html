@@ -234,7 +234,39 @@
 </li>
 <li><p><strong>E</strong> or <strong>first_last</strong> : – <em>first_last&#61;&#91;<strong>f|l|m|M</strong> *stride</em>&#93;<em><br />  Only extract the first and last record for each segment of interest   &#91;Default extracts all records&#93;. Optionally, append <strong>f</strong> or <strong>l</strong> to   only extract the first or last record of each segment, respectively.   Alternatively, append <strong>m</strong>&#92;</em>stride* to extract every <em>stride</em> records;   use <strong>M</strong> to also include the last record.</p>
 </li>
-<li><p><strong>F</strong> or <strong>conn_method</strong> : – <em>conn_method&#61;&#91;<strong>c|n|p|v</strong>&#93;&#91;**a|t|s|r| *refpoint</em>&#93;<em><br />  Alter the way points are connected &#40;by specifying a *scheme</em>&#41; and data are grouped &#40;by specifying a <em>method</em>&#41;.   Append one of four line connection schemes:   <strong>c</strong>&#92; : Form continuous line segments for each group &#91;Default&#93;.   <strong>p</strong>&#92; : Form line segments from a reference point reset for each group.   <strong>n</strong>&#92; : Form networks of line segments between all points in each group.   <strong>v</strong>&#92; : Form vector line segments suitable for :doc:<code>plot</code><strong>-Sv&#43;s</strong>.   Optionally, append the one of four segmentation methods to define the group:   <strong>a</strong>&#92; : Ignore all segment headers, i.e., let all points belong to a single group,   and set group reference point to the very first point of the first file.   <strong>t</strong>&#92; : Consider all data in each table to be a single separate group and   reset the group reference point to the first point of each group.   <strong>s</strong>&#92; : Segment headers are honored so each segment is a group; the group   reference point is reset to the first point of each incoming segment &#91;Default&#93;.   <strong>r</strong>&#92; : Same as <strong>s</strong>, but the group reference point is reset after   each record to the previous point &#40;this method is only available with the <strong>-Fp</strong> scheme&#41;.   Instead of the codes <strong>a</strong>\|&#92;<strong>f</strong>\|&#92;<strong>s</strong>\|&#92;<strong>r</strong> you may append   the coordinates of a <em>refpoint</em> which will serve as a fixed external   reference point for all groups.</p>
+<li><p><strong>F</strong> or <strong>conn_method</strong> : – <em>conn_method&#61;&#91;<strong>c|n|p|v</strong>&#93;&#91;**a|t|s|r| *refpoint</em>&#93;<em><br />  Alter the way points are connected &#40;by specifying a *scheme</em>&#41; and data are grouped &#40;by specifying a <em>method</em>&#41;.   Append one of four line connection schemes:</p>
+<ul>
+<li><p><strong>c</strong>&#92; : Form continuous line segments for each group &#91;Default&#93;.</p>
+</li>
+<li><p><strong>p</strong>&#92; : Form line segments from a reference point reset for each group.</p>
+</li>
+<li><p><strong>n</strong>&#92; : Form networks of line segments between all points in each group.</p>
+</li>
+<li><p><strong>v</strong>&#92; : Form vector line segments suitable for :doc:<code>plot</code><strong>-Sv&#43;s</strong>.</p>
+</li>
+</ul>
+<p>Optionally, append the one of four segmentation methods to define the group:</p>
+<ul>
+<li><p><strong>a</strong>&#92; : Ignore all segment headers, i.e., let all points belong to a single group,</p>
+</li>
+</ul>
+<p>and set group reference point to the very first point of the first file.</p>
+<ul>
+<li><p><strong>t</strong>&#92; : Consider all data in each table to be a single separate group and</p>
+</li>
+</ul>
+<p>reset the group reference point to the first point of each group.</p>
+<ul>
+<li><p><strong>s</strong>&#92; : Segment headers are honored so each segment is a group; the group</p>
+</li>
+</ul>
+<p>reference point is reset to the first point of each incoming segment &#91;Default&#93;.</p>
+<ul>
+<li><p><strong>r</strong>&#92; : Same as <strong>s</strong>, but the group reference point is reset after</p>
+</li>
+</ul>
+<p>each record to the previous point &#40;this method is only available with the <strong>-Fp</strong> scheme&#41;.</p>
+<p>Instead of the codes <strong>a</strong>\|\ <strong>f</strong>\|\ <strong>s</strong>\|\ <strong>r</strong> you may append   the coordinates of a <em>refpoint</em> which will serve as a fixed external   reference point for all groups.</p>
 </li>
 <li><p><strong>I</strong> or <strong>invert</strong> or <strong>reverse</strong> : – <em>invert&#61;true</em> <strong>|</strong> <em>invert&#61;:tsr</em><br />  Invert the order of items, i.e., output the items in reverse order,   starting with the last and ending up with the first item &#91;Default   keeps original order&#93;. Append up to three items that should be   reversed: <strong>t</strong> will reverse the order of tables, <strong>s</strong> will reverse   the order of segments within each table, and <strong>r</strong> will reverse the   order of records within each segment &#91;Default&#93;.</p>
 </li>
@@ -244,9 +276,9 @@
 </li>
 <li><p><strong>Q</strong> or <strong>select_num</strong> : – <em>select_num&#61;&#91;<strong>~</strong>&#93;&#92;</em>selection* <em><br />  Only write segments whose number is included in *selection</em> and skip   all others. Cannot be used with |-S|. The <em>selection</em> syntax is   <em>range</em>&#92; &#91;,&#92;<em>range</em>,...&#93; where each <em>range</em> of items is either a single   segment <em>number</em> or a range with stepped increments given via <em>start</em>&#92; &#91;:<em>step</em>:&#93;&#92; :<em>stop</em>   &#40;<em>step</em> is optional and defaults to 1&#41;. A leading <strong>~</strong> will   invert the selection and write all segments but the ones listed.  Instead   of a list of ranges, use <strong>&#43;f</strong>&#92;<em>file</em> to supply a file list with one <em>range</em> per line.</p>
 </li>
-<li><p><strong>S</strong> or <strong>select_hdr</strong> : – <em>select_hdr&#61;&#91;<strong>~</strong>&#93;&#92;</em>&quot;search string&quot;<em>\|&#92;<strong>&#43;f</strong>\|&#92;</em>file<em>&#92; &#91;<strong>&#43;e</strong>&#93; \| |-S|&#92; &#91;<strong>~</strong>&#93;/&#92;</em>regexp<em>/&#91;<strong>i</strong>&#93;&#91;<strong>&#43;e</strong>&#93;</em><br />  Only output those segments whose header record contains the   specified text string. To reverse the search, i.e., to output   segments whose headers do <em>not</em> contain the specified pattern, use   <strong>-S~</strong>. Should your pattern happen to start with ~ you need to   escape this character with a backslash &#91;Default output all   segments&#93;. Cannot be used with |-Q|. For matching segments based   on aspatial values &#40;via OGR/GMT format&#41;, give the search string as   <em>varname</em>&#92; &#61;&#92;<em>value</em> and we will compare <em>value</em> against the value   of <em>varname</em> for each segment. <strong>Note</strong>: If the features are polygons   then a match of a particular polygon perimeter also means that any   associated polygon holes will also be matched. For matching segment   headers against extended regular expressions enclose the expression   in slashes. Append <strong>i</strong> for case-insensitive matching.   For a list of such patterns, give <strong>&#43;f</strong>&#92;<em>file</em> with one pattern per line.   To give a single pattern starting with &quot;&#43;f&quot;, escape it with a backslash.   Finally, append <strong>&#43;e</strong> as last modifier to request an exact match &#91;Default will   match any sub-string in the target&#93;.</p>
+<li><p><strong>S</strong> or <strong>select_hdr</strong> : – <em>select_hdr&#61;&#91;<strong>~</strong>&#93;&#92;</em>&quot;search string&quot;<em>\|&#92;<strong>&#43;f</strong>\|&#92;</em>file<em>&#92; &#91;<strong>&#43;e</strong>&#93; \| |-S|&#92; &#91;<strong>~</strong>&#93;/&#92;</em>regexp<em>/&#91;<strong>i</strong>&#93;&#91;<strong>&#43;e</strong>&#93;</em><br />  Only output those segments whose header record contains the   specified text string. To reverse the search, i.e., to output   segments whose headers do <em>not</em> contain the specified pattern, use   <strong>select_hdr&#61;:~</strong>. Should your pattern happen to start with ~ you need to   escape this character with a backslash &#91;Default output all   segments&#93;. Cannot be used with |-Q|. For matching segments based   on aspatial values &#40;via OGR/GMT format&#41;, give the search string as   <em>varname</em>&#92; &#61;&#92;<em>value</em> and we will compare <em>value</em> against the value   of <em>varname</em> for each segment. <strong>Note</strong>: If the features are polygons   then a match of a particular polygon perimeter also means that any   associated polygon holes will also be matched. For matching segment   headers against extended regular expressions enclose the expression   in slashes. Append <strong>i</strong> for case-insensitive matching.   For a list of such patterns, give <strong>&#43;f</strong>&#92;<em>file</em> with one pattern per line.   To give a single pattern starting with &quot;&#43;f&quot;, escape it with a backslash.   Finally, append <strong>&#43;e</strong> as last modifier to request an exact match &#91;Default will   match any sub-string in the target&#93;.</p>
 </li>
-<li><p><strong>T</strong> or <strong>skip</strong> : – <em>skip&#61;&#91;<strong>h</strong>&#93;&#91;<strong>d</strong>&#92; &#91;&#91;<strong>~</strong>&#93;&#92;</em>selection<em>&#93;&#93;</em><br />  Suppress the writing of certain records on output.  Append <strong>h</strong> to   suppress segment headers &#91;Default&#93;, and/or <strong>d</strong> to suppress duplicate   data records. Use <strong>-Thd</strong> to suppress both types of records.  By default,   all columns must be identical across the two records to skip the record.   Alternatively, append a column <em>selection</em> to only use those columns   in the comparisons instead.  The <em>selection</em> syntax is   <em>range</em>&#92; &#91;,&#92;<em>range</em>,...&#93; where each <em>range</em> of items is either a single   column <em>number</em> or a range with stepped increments given via <em>start</em>&#92; &#91;:<em>step</em>:&#93;&#92; :<em>stop</em>   &#40;<em>step</em> is optional and defaults to 1&#41;. A leading <strong>~</strong> will   invert the selection and select all columns but the ones listed. To add the   trailing text to the comparison as well, add the column <em>t</em> to the list.   If no numerical columns are specified, just <em>t</em>, then we only consider trailing text.</p>
+<li><p><strong>T</strong> or <strong>skip</strong> : – <em>skip&#61;&#91;<strong>h</strong>&#93;&#91;<strong>d</strong>&#92; &#91;&#91;<strong>~</strong>&#93;&#92;</em>selection<em>&#93;&#93;</em><br />  Suppress the writing of certain records on output.  Append <strong>h</strong> to   suppress segment headers &#91;Default&#93;, and/or <strong>d</strong> to suppress duplicate   data records. Use <strong>skip&#61;:hd</strong> to suppress both types of records.  By default,   all columns must be identical across the two records to skip the record.   Alternatively, append a column <em>selection</em> to only use those columns   in the comparisons instead. The <em>selection</em> syntax is   <em>range</em>&#92; &#91;,&#92;<em>range</em>,...&#93; where each <em>range</em> of items is either a single   column <em>number</em> or a range with stepped increments given via <em>start</em>&#92; &#91;:<em>step</em>:&#93;&#92; :<em>stop</em>   &#40;<em>step</em> is optional and defaults to 1&#41;. A leading <strong>~</strong> will   invert the selection and select all columns but the ones listed. To add the   trailing text to the comparison as well, add the column <em>t</em> to the list.   If no numerical columns are specified, just <em>t</em>, then we only consider trailing text.</p>
 </li>
 </ul>
 <ul>
@@ -342,21 +374,19 @@
 <pre><code class="language-julia">convert&#40;&quot;test.b&quot;, bi&#61;&quot;4f&quot;, save&#61;&quot;test.dat&quot;&#41;</code></pre>
 <p>To convert the multiple segment ASCII table test.txt to a double precision binary file:</p>
 <pre><code class="language-julia">convert&#40;&quot;test.txt&quot;, b&#61;:o, save&#61;&quot;test.b&quot;&#41;</code></pre>
-<p>If the file instead is the binary file results.b which has 9 single-precision values per record, we extract the last column and columns 4-6 and write ASCII with the command::</p>
-<pre><code class="language-julia">convert results.b -o8,4-6 -bi9s | gmt plot ...</code></pre>
-<p>You want to plot the 2nd column of a 2-column file left.txt versus the first column of a file right.txt::</p>
-<pre><code class="language-julia">convert left.txt right.txt -A -o1,2 | gmt plot ...</code></pre>
-<p>To extract all segments in the file big_file.txt whose headers contain the string &quot;RIDGE AXIS&quot;, try::</p>
-<pre><code class="language-julia">convert big_file.txt -S&quot;RIDGE AXIS&quot; &gt; subset.txt</code></pre>
-<p>To only get the segments in the file big_file.txt whose headers exactly matches the string &quot;Spitsbergen&quot;, try::</p>
-<pre><code class="language-julia">convert big_file.txt -SSpitsbergen&#43;e &gt; subset.txt</code></pre>
-<p>To invert the selection of segments whose headers begin with &quot;profile &quot; followed by an integer number and any letter between &quot;g&quot; and &quot;l&quot;, try::</p>
-<pre><code class="language-julia">convert -S~&quot;/^profile &#91;0-9&#93;&#43;&#91;g-l&#93;&#36;/&quot;</code></pre>
-<p>To reverse the order of segments in a file without reversing the order of records within each segment, try::</p>
-<pre><code class="language-julia">convert lots_of_segments.txt -Is &gt; last_segment_first.txt</code></pre>
-<p>To extract segments 20 to 40 in steps of 2, plus segment 0 in a file, try::</p>
-<pre><code class="language-julia">convert lots_of_segments.txt -Q0,20:2:40 &gt; my_segments.txt</code></pre>
-<p>To extract the attribute ELEVATION from an ogr gmt file like this::</p>
+<p>If the file instead is the binary file results.b which has 9 single-precision values per record, we extract the last column and columns 4-6 with the command:</p>
+<pre><code class="language-julia">D &#61; convert&#40;&quot;results.b&quot;, outcol&#61;&quot;8,4-6&quot;, binary_in&#61;&quot;9s&quot;&#41;</code></pre>
+<p>To extract all segments in the file big_file.txt whose headers contain the string &quot;RIDGE AXIS&quot;, try:</p>
+<pre><code class="language-julia">D &#61; convert&#40;&quot;big_file.txt&quot;, select_hdr&#61;&quot;RIDGE AXIS&quot;&#41;</code></pre>
+<p>To only get the segments in the file big_file.txt whose headers exactly matches the string &quot;Spitsbergen&quot;, try:</p>
+<pre><code class="language-julia">D &#61; convert&#40;&quot;big_file.txt&quot;, select_hdr&#61;&quot;Spitsbergen&#43;e&quot;&#41;</code></pre>
+<p>To invert the selection of segments whose headers begin with &quot;profile &quot; followed by an integer number and any letter between &quot;g&quot; and &quot;l&quot;, try:</p>
+<pre><code class="language-julia">D &#61; convert&#40;select_hdr&#61;&quot;~\&quot;/^profile &#91;0-9&#93;&#43;&#91;g-l&#93;&#36;/\&quot;&quot;&#41;</code></pre>
+<p>To reverse the order of segments in a file without reversing the order of records within each segment, try:</p>
+<pre><code class="language-julia">convert&#40;&quot;lots_of_segments.txt&quot;, invert&#61;:s&#41;</code></pre>
+<p>To extract segments 20 to 40 in steps of 2, plus segment 0 in a file, try:</p>
+<pre><code class="language-julia">convert&#40;&quot;lots_of_segments.txt&quot;, select_num&#61;&quot;0,20:2:40&quot;&#41;</code></pre>
+<p>To extract the attribute ELEVATION from an ogr gmt file like this:</p>
 <pre><code class="language-julia"># @VGMT1.0 @GPOINT
     ...
     # @NELEVATION|DISPX|DISPY
@@ -365,12 +395,10 @@
     # @D4.945000|-106500.00000000|-32700.00000000
     -9.36890245902635 39.367156766570389</code></pre>
 <p>do</p>
-<pre><code class="language-julia">convert file.gmt -a2&#61;ELEVATION &gt; xyz.dat</code></pre>
-<p>or just</p>
-<pre><code class="language-julia">convert file.gmt -aELEVATION &gt; xyz.dat</code></pre>
-<p>To connect all points in the file sensors.txt with the specified origin at 23.5/19, try::</p>
-<pre><code class="language-julia">convert sensors.txt -F23.5/19 &gt; lines.txt</code></pre>
-<p>To write all segments in the two files A.txt and B.txt to individual files named profile<em>005000.txt, profile</em>005001.txt, etc., where we reset the origin of the sequential numbering from 0 to 5000, try::</p>
+<pre><code class="language-julia">D &#61; convert&#40;&quot;file.gmt&quot;, aspatial&#61;&quot;ELEVATION&quot;&#41;</code></pre>
+<p>To connect all points in the file sensors.txt with the specified origin at 23.5/19, try:</p>
+<pre><code class="language-julia">Dlines &#61; convert&#40;&quot;sensors.txt&quot;, conn_method&#61;&#40;23.5,19&#41;&#41;</code></pre>
+<p>To write all segments in the two files A.txt and B.txt to individual files named profile<em>005000.txt, profile</em>005001.txt, etc., where we reset the origin of the sequential numbering from 0 to 5000, try:</p>
 <pre><code class="language-julia">convert&#40;&quot;A.txt&quot;, &quot;B.txt&quot;, D&#61;&quot;profile_&#37;6.6d.txt&#43;o5000&quot;&#41;</code></pre>
 <p>To only read rows 100-200 and 500-600 from file junk.txt, try:</p>
 <pre><code class="language-julia">D &#61; convert&#40;&quot;junk.txt&quot;, q&#61;&quot;100-200,500-600&quot;&#41;</code></pre>

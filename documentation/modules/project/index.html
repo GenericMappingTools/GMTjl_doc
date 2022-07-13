@@ -420,11 +420,11 @@ imshow&#40;Dsc, marker&#61;:point, lw&#61;0.5, coast&#61;true&#41;</code></pre><
 <pre><code class="language-julia">D &#61; project&#40;origin&#61;&#40;15,15&#41;, pole&#61;&#40;40,85&#41;, step&#61;&#40;1,80&#41;, length&#40;-45,45&#41;&#41;</code></pre>
 <p>To generate points approximately every 10 km along an ellipse centered on &#40;30W,70N&#41; with major axis of 1500 km with azimuth of 30 degree and a minor axis of 600 km, try</p>
 <pre><code class="language-julia">using GMT
-Dellip &#61; project&#40;origin&#61;&#40;-30,70&#41;, step&#61;10, ellipse&#61;&quot;1500/600/30&#43;e&quot;&#41;
+Dellip &#61; project&#40;origin&#61;&#40;-30,70&#41;, step&#61;10, ellipse&#61;&quot;1500/600/30&#43;e&quot;, km&#61;true&#41;
 imshow&#40;Dellip, coast&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_11185430790584984190">
- <img src="/GMTjl_doc/assets/documentation/modules/project/code/output/example_11185430790584984190.png" alt=""> 
+<a id="example_13886887373886161454">
+ <img src="/GMTjl_doc/assets/documentation/modules/project/code/output/example_13886887373886161454.png" alt=""> 
 </a>
 
 <p>To project the shiptrack gravity, magnetics, and bathymetry in c2610.xygmb along a great circle through an origin at 30S, 30W, the great circle having an azimuth of N20W at the origin, keeping only the data from NE of the profile and within ± 500 km of the origin, run:</p>
