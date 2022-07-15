@@ -1,6 +1,6 @@
 - **G** or **save** or **outgrid** or **outfile** : -- *outgrid=[=ID][+ddivisor][+ninvalid][+ooffset|a][+sscale|a][:driver[dataType][+coptions]]*\
    Give the name of the output grid file. Optionally, append `=ID` for writing a specific file format
-   (See [full description](file:///C:/progs_cygw/GMTdev/gmt5/compileds/gmt6/VC14_64/share/doc/html/gmt.html#grd-inout-full)).
+   (See [full description](https://docs.generic-mapping-tools.org/dev/gmt.html#grd-inout-full)).
    The following modifiers are supported:
 
    - +d - Divide data values by given divisor [Default is 1].
@@ -13,7 +13,7 @@
 
    **Note1:** Any offset is added before any scaling. +sa also sets +oa (unless overridden). To write specific
    formats via GDAL, use =gd and supply driver (and optionally dataType) and/or one or more concatenated
-   GDAL -co options using +c. See the [“Writing grids and images”](file:///C:/progs_cygw/GMTdev/gmt5/compileds/gmt6/VC14_64/share/doc/html/cookbook/features.html#write-grids-images) cookbook section for more details.
+   GDAL -co options using +c. See the [“Writing grids and images”](https://docs.generic-mapping-tools.org/dev/cookbook/features.html#write-grids-images) cookbook section for more details.
 
    **Note2:** This is optional and to be used only when saving the result directly on disk. Otherwise,
    just use the `G = modulename(...)` form.

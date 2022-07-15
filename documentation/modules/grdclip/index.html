@@ -200,10 +200,14 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/scatter">scatter</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/scatter3">scatter3</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/solar">solar</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/sphinterpolate">sphinterpolate</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/sphtriangulate">sphtriangulate</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/subplot">subplot</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/surface">surface</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/ternary">ternary</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/text">text</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/triangulate">triangulate</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/wiggle">wiggle</a></div></li>
 </ul></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/gdalfuns">GDAL related functions</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/supplements">Supplements modules</a></div></li>
@@ -223,7 +227,7 @@
 <p>Sets values &lt; <em>low</em> to <em>below</em> and/or values &gt; <em>high</em> to <em>above</em>. You can also specify one or more intervals where all values should be set to <em>between</em>, or replace individual values. Such operations are useful when you want all of a continent or an ocean to fall into one color or gray shade in image processing, when clipping of the range of data values is required, or for reclassification of data values. <em>above</em>, <em>below</em>, <em>between</em>, <em>old</em> and <em>new</em> can be any number or even NaN &#40;Not a Number&#41;. You must choose at least one of the |-S| options. Use <strong>region</strong> to only extract a subset of the <em>ingrid</em> file.</p>
 <h2>Optional Arguments</h2>
 <ul>
-<li><p><strong>G</strong> or <strong>save</strong> or <strong>outgrid</strong> or <strong>outfile</strong> : – <em>outgrid&#61;&#91;&#61;ID&#93;&#91;&#43;ddivisor&#93;&#91;&#43;ninvalid&#93;&#91;&#43;ooffset|a&#93;&#91;&#43;sscale|a&#93;&#91;:driver&#91;dataType&#93;&#91;&#43;coptions&#93;&#93;</em><br /> Give the name of the output grid file. Optionally, append <code>&#61;ID</code> for writing a specific file format  &#40;See <a href="file:///C:/progs_cygw/GMTdev/gmt5/compileds/gmt6/VC14_64/share/doc/html/gmt.html#grd-inout-full">full description</a>&#41;.  The following modifiers are supported:</p>
+<li><p><strong>G</strong> or <strong>save</strong> or <strong>outgrid</strong> or <strong>outfile</strong> : – <em>outgrid&#61;&#91;&#61;ID&#93;&#91;&#43;ddivisor&#93;&#91;&#43;ninvalid&#93;&#91;&#43;ooffset|a&#93;&#91;&#43;sscale|a&#93;&#91;:driver&#91;dataType&#93;&#91;&#43;coptions&#93;&#93;</em><br /> Give the name of the output grid file. Optionally, append <code>&#61;ID</code> for writing a specific file format  &#40;See <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#grd-inout-full">full description</a>&#41;.  The following modifiers are supported:</p>
 <ul>
 <li><p>&#43;d - Divide data values by given divisor &#91;Default is 1&#93;.</p>
 </li>
@@ -234,7 +238,7 @@
 <li><p>&#43;s - Scale data values by the given scale, or append a for automatic scaling to preserve precision for integer grids &#91;Default is 1&#93;.</p>
 </li>
 </ul>
-<p><strong>Note1:</strong> Any offset is added before any scaling. &#43;sa also sets &#43;oa &#40;unless overridden&#41;. To write specific  formats via GDAL, use &#61;gd and supply driver &#40;and optionally dataType&#41; and/or one or more concatenated  GDAL -co options using &#43;c. See the <a href="file:///C:/progs_cygw/GMTdev/gmt5/compileds/gmt6/VC14_64/share/doc/html/cookbook/features.html#write-grids-images">“Writing grids and images”</a> cookbook section for more details.</p>
+<p><strong>Note1:</strong> Any offset is added before any scaling. &#43;sa also sets &#43;oa &#40;unless overridden&#41;. To write specific  formats via GDAL, use &#61;gd and supply driver &#40;and optionally dataType&#41; and/or one or more concatenated  GDAL -co options using &#43;c. See the <a href="https://docs.generic-mapping-tools.org/dev/cookbook/features.html#write-grids-images">“Writing grids and images”</a> cookbook section for more details.</p>
 <p><strong>Note2:</strong> This is optional and to be used only when saving the result directly on disk. Otherwise,  just use the <code>G &#61; modulename&#40;...&#41;</code> form.</p>
 </li>
 </ul>
