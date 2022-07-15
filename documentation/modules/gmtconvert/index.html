@@ -196,6 +196,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/lines">lines</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/makecpt">makecpt</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/movie">movie</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/nearneighbor">nearneighbor</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/plot">plot</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/project">project</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/sample1d">sample1d</a></div></li>
@@ -203,6 +204,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/scatter3">scatter3</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/solar">solar</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/subplot">subplot</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/surface">surface</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/ternary">ternary</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/text">text</a></div></li>
 </ul></li>
@@ -239,45 +241,41 @@
 </li>
 <li><p><strong>F</strong> or <strong>conn_method</strong> : – <em>conn_method&#61;&#91;<strong>c|n|p|v</strong>&#93;&#91;**a|t|s|r| *refpoint</em>&#93;<em><br />  Alter the way points are connected &#40;by specifying a *scheme</em>&#41; and data are grouped &#40;by specifying a <em>method</em>&#41;.   Append one of four line connection schemes:</p>
 <ul>
-<li><p><strong>c</strong>&#92; : Form continuous line segments for each group &#91;Default&#93;.</p>
+<li><p><strong>c</strong> : Form continuous line segments for each group &#91;Default&#93;.</p>
 </li>
-<li><p><strong>p</strong>&#92; : Form line segments from a reference point reset for each group.</p>
+<li><p><strong>p</strong> : Form line segments from a reference point reset for each group.</p>
 </li>
-<li><p><strong>n</strong>&#92; : Form networks of line segments between all points in each group.</p>
+<li><p><strong>n</strong> : Form networks of line segments between all points in each group.</p>
 </li>
-<li><p><strong>v</strong>&#92; : Form vector line segments suitable for :doc:<code>plot</code><strong>-Sv&#43;s</strong>.</p>
+<li><p><strong>v</strong> : Form vector line segments suitable for :doc:<code>plot</code><strong>-Sv&#43;s</strong>.</p>
 </li>
 </ul>
 <p>Optionally, append the one of four segmentation methods to define the group:</p>
 <ul>
-<li><p><strong>a</strong>&#92; : Ignore all segment headers, i.e., let all points belong to a single group,</p>
+<li><p><strong>a</strong> : Ignore all segment headers, i.e., let all points belong to a single group,</p>
 </li>
 </ul>
 <p>and set group reference point to the very first point of the first file.</p>
 <ul>
-<li><p><strong>t</strong>&#92; : Consider all data in each table to be a single separate group and</p>
+<li><p><strong>t</strong> : Consider all data in each table to be a single separate group and reset the group reference point to the first point of each group.</p>
 </li>
-</ul>
-<p>reset the group reference point to the first point of each group.</p>
-<ul>
-<li><p><strong>s</strong>&#92; : Segment headers are honored so each segment is a group; the group</p>
+<li><p><strong>s</strong> : Segment headers are honored so each segment is a group; the group</p>
 </li>
 </ul>
 <p>reference point is reset to the first point of each incoming segment &#91;Default&#93;.</p>
 <ul>
-<li><p><strong>r</strong>&#92; : Same as <strong>s</strong>, but the group reference point is reset after</p>
+<li><p><strong>r</strong> : Same as <strong>s</strong>, but the group reference point is reset after each record to the previous point &#40;this method is only available with the <strong>Fp</strong> scheme&#41;.</p>
 </li>
 </ul>
-<p>each record to the previous point &#40;this method is only available with the <strong>-Fp</strong> scheme&#41;.</p>
-<p>Instead of the codes <strong>a</strong>\|\ <strong>f</strong>\|\ <strong>s</strong>\|\ <strong>r</strong> you may append   the coordinates of a <em>refpoint</em> which will serve as a fixed external   reference point for all groups.</p>
+<p>Instead of the codes <strong>a|f|s|r</strong> you may append the coordinates of a <em>refpoint</em> which will serve   as a fixed external reference point for all groups.</p>
 </li>
 <li><p><strong>I</strong> or <strong>invert</strong> or <strong>reverse</strong> : – <em>invert&#61;true</em> <strong>|</strong> <em>invert&#61;:tsr</em><br />  Invert the order of items, i.e., output the items in reverse order,   starting with the last and ending up with the first item &#91;Default   keeps original order&#93;. Append up to three items that should be   reversed: <strong>t</strong> will reverse the order of tables, <strong>s</strong> will reverse   the order of segments within each table, and <strong>r</strong> will reverse the   order of records within each segment &#91;Default&#93;.</p>
 </li>
 <li><p><strong>L</strong> or <strong>list_only</strong> : – <em>list_only&#61;true</em><br />  Only output a listing of all segment header records and no data   records &#40;requires ASCII data&#41;.</p>
 </li>
-<li><p><strong>N</strong> or <strong>sort</strong> : – <em>sort&#61;</em>col<em>&#92; &#91;<strong>&#43;a|d</strong>&#93;</em><br />  Numerically sort each segment based on values in column <em>col</em>.   The data records will be sorted such that the chosen column will   fall into ascending order &#91;<strong>&#43;a</strong>&#92; , which is Default&#93;. Append <strong>&#43;d</strong>   to sort into descending order instead. The <strong>sort</strong> option can be   combined with any other ordering scheme except <strong>conn_method</strong> &#40;segmentation&#41;   and is applied at the end.</p>
+<li><p><strong>N</strong> or <strong>sort</strong> : – <em>sort&#61;</em>col* &#91;<strong>&#43;a|d</strong>&#93;<em><br />  Numerically sort each segment based on values in column *col</em>.   The data records will be sorted such that the chosen column will   fall into ascending order &#91;<strong>&#43;a</strong>, which is Default&#93;. Append <strong>&#43;d</strong>   to sort into descending order instead. The <strong>sort</strong> option can be   combined with any other ordering scheme except <strong>conn_method</strong> &#40;segmentation&#41;   and is applied at the end.</p>
 </li>
-<li><p><strong>Q</strong> or <strong>select_num</strong> : – <em>select_num&#61;&#91;<strong>~</strong>&#93;&#92;</em>selection* <em><br />  Only write segments whose number is included in *selection</em> and skip   all others. Cannot be used with |-S|. The <em>selection</em> syntax is   <em>range</em>&#92; &#91;,&#92;<em>range</em>,...&#93; where each <em>range</em> of items is either a single   segment <em>number</em> or a range with stepped increments given via <em>start</em>&#92; &#91;:<em>step</em>:&#93;&#92; :<em>stop</em>   &#40;<em>step</em> is optional and defaults to 1&#41;. A leading <strong>~</strong> will   invert the selection and write all segments but the ones listed.  Instead   of a list of ranges, use <strong>&#43;f</strong>&#92;<em>file</em> to supply a file list with one <em>range</em> per line.</p>
+<li><p><strong>Q</strong> or <strong>select_num</strong> : – <em>select_num&#61;&#91;<strong>~</strong>&#93;&#92;</em>selection* <em><br />  Only write segments whose number is included in *selection</em> and skip   all others. Cannot be used with |-S|. The <em>selection</em> syntax is   <em>range</em>&#91;,<em>range</em>,...&#93; where each <em>range</em> of items is either a single   segment <em>number</em> or a range with stepped increments given via <em>start</em>&#92; &#91;:<em>step</em>:&#93;&#92; :<em>stop</em>   &#40;<em>step</em> is optional and defaults to 1&#41;. A leading <strong>~</strong> will   invert the selection and write all segments but the ones listed.  Instead   of a list of ranges, use <strong>&#43;f</strong> <em>file</em> to supply a file list with one <em>range</em> per line.</p>
 </li>
 <li><p><strong>S</strong> or <strong>select_hdr</strong> : – <em>select_hdr&#61;&#91;<strong>~</strong>&#93;&#92;</em>&quot;search string&quot;<em>\|&#92;<strong>&#43;f</strong>\|&#92;</em>file<em>&#92; &#91;<strong>&#43;e</strong>&#93; \| |-S|&#92; &#91;<strong>~</strong>&#93;/&#92;</em>regexp<em>/&#91;<strong>i</strong>&#93;&#91;<strong>&#43;e</strong>&#93;</em><br />  Only output those segments whose header record contains the   specified text string. To reverse the search, i.e., to output   segments whose headers do <em>not</em> contain the specified pattern, use   <strong>select_hdr&#61;:~</strong>. Should your pattern happen to start with ~ you need to   escape this character with a backslash &#91;Default output all   segments&#93;. Cannot be used with |-Q|. For matching segments based   on aspatial values &#40;via OGR/GMT format&#41;, give the search string as   <em>varname</em>&#92; &#61;&#92;<em>value</em> and we will compare <em>value</em> against the value   of <em>varname</em> for each segment. <strong>Note</strong>: If the features are polygons   then a match of a particular polygon perimeter also means that any   associated polygon holes will also be matched. For matching segment   headers against extended regular expressions enclose the expression   in slashes. Append <strong>i</strong> for case-insensitive matching.   For a list of such patterns, give <strong>&#43;f</strong>&#92;<em>file</em> with one pattern per line.   To give a single pattern starting with &quot;&#43;f&quot;, escape it with a backslash.   Finally, append <strong>&#43;e</strong> as last modifier to request an exact match &#91;Default will   match any sub-string in the target&#93;.</p>
 </li>
@@ -411,7 +409,7 @@
 <p><a href="#">gmtinfo</a>, <a href="#">gmtselect</a></p>
 <div class="page-foot">
   <div class="copyright">
-    &copy; GMT.jl. Last modified: July 14, 2022. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+    &copy; GMT.jl. Last modified: July 15, 2022. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
       <p>These docs were autogenerated using GMT: v0.42.4</p>
   </div>
 </div>
