@@ -1,0 +1,13 @@
+# This file was generated, do not modify it. # hide
+begin # hide
+	using GMT   # hide
+	GMT.isFranklin[1] = true    # hide
+	getpath4docs(file::String) = joinpath("..", "..", "..", "..", "..", file) # hide
+	using GMT
+G = grdlandmask(region=:global360, res=:low, inc=1, maskvalues=(0,1,2,3,4))
+end # hide
+mv(joinpath(tempdir(), "GMTjl_tmp.png"), joinpath(@OUTPUT, "example_9867636046910884205.png"), force=true);    # hide
+GMT.isFranklin[1] = false    # hide
+GMT.IamModern[1]  = false    # hide
+ 
+nothing # hide

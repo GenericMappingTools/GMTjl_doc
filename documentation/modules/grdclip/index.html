@@ -185,6 +185,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdgradient">grdgradient</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdhisteq">grdhisteq</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdimage">grdimage</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdlandmask">grdlandmask</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdmask">grdmask</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdsample">grdsample</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdtrack">grdtrack</a></div></li>
@@ -272,7 +273,7 @@
 <p>To reclassify all values in the 25-30 range to 99, those in 35-39 to 55, exchange 17 for 11 and all values &lt; 10 to 0 in file classes.nc, try</p>
 <pre><code class="language-julia">Gnew_classes &#61; grdclip&#40;&quot;classes.nc&quot;, S&#61;&quot;i25/30/99, -Si35/39/55&quot;, old&#61;&#40;17,11&#41;, between&#61;&#40;10,0&#41;&#41;</code></pre>
 <h2>See Also</h2>
-<p><a href="#">grdfill</a>, <a href="#">grdlandmask</a>, <a href="/GMTjl_doc/documentation/modules/grdmask/index.html#grdmask">grdmask</a>, <a href="#">grdmath</a>, <a href="#">grd2xyz</a>, <a href="#">xyz2grd</a></p>
+<p><a href="#">grdfill</a>, <a href="/GMTjl_doc/documentation/modules/grdlandmask/index.html#grdlandmask">grdlandmask</a>, <a href="/GMTjl_doc/documentation/modules/grdmask/index.html#grdmask">grdmask</a>, <a href="#">grdmath</a>, <a href="#">grd2xyz</a>, <a href="#">xyz2grd</a></p>
 <div class="page-foot">
   <div class="copyright">
     &copy; GMT.jl. Last modified: July 16, 2022. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.

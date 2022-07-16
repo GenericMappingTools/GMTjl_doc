@@ -182,6 +182,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdgradient">grdgradient</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdhisteq">grdhisteq</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdimage">grdimage</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdlandmask">grdlandmask</a></div></li>
 <li><div class="tocitem-container"><a class = active href="/GMTjl_doc/documentation/modules/grdmask">grdmask</a></div><ul class="page-content">
 <li><a href="#grdmask">grdmask</a></li>
 </ul>
@@ -363,7 +364,7 @@
 <p>To determine if a point is inside, outside, or exactly on the boundary of a polygon we need to balance the complexity &#40;and execution time&#41; of the algorithm with the type of data and shape of the polygons. For any Cartesian data we use a non-zero winding algorithm, which is quite fast. For geographic data we will also use this algorithm as long as &#40;1&#41; the polygons do not include a geographic pole, and &#40;2&#41; the longitude extent of the polygons is less than 360.  If this is the situation we also carefully adjust the test point longitude for any 360 degree offsets, if appropriate. Otherwise, we employ a full spherical ray-shooting method to determine a points status.</p>
 
 <h2>Notes</h2>
-<p>A grid produced by grdmask is a <em>categorical</em> dataset. As such, one has to be careful not to interpolate it with standard methods, such as splines. However, if you make a map of this grid using a map projection the grid will be reprojected to yield a rectangular matrix in the projected coordinates. This interpolation is done using splines by default and thus may yield artifacts in your map. We recommend you use <a href="/GMTjl_doc/documentation/modules/grdimage/index.html#grdimage">grdimage</a><strong>nn</strong> to instead use a nearest neighbor interpolation for such cases.</p>
+<p>A grid produced by grdmask is a <em>categorical</em> dataset. As such, one has to be careful not to interpolate it with standard methods, such as splines. However, if you make a map of this grid using a map projection the grid will be reprojected to yield a rectangular matrix in the projected coordinates. This interpolation is done using splines by default and thus may yield artifacts in your map. We recommend you use <a href="/GMTjl_doc/documentation/modules/grdimage/index.html#grdimage">grdimage</a><strong>interp&#61;:n</strong> to instead use a nearest neighbor interpolation for such cases.</p>
 <h2>Save storage space</h2>
 <p>Since most uses of grdmask revolves around creating mask grids that hold just a few integer values &#40;and perhaps NaN&#41;, we choose to write them to disk as byte grids by appending the suffix <strong>&#61;nb</strong> to the desired grid filename. Some situations may store integers that exceed the range available in a byte and for those we specify a short integer grid with <strong>&#61;ns</strong>. For larger integers you may consider <strong>&#61;ni</strong>, otherwise use the default float grid format.</p>
 <h2>Examples</h2>
@@ -376,7 +377,7 @@
 <p>Same exercise, but instead compute running polygon IDs starting at 100, do</p>
 <pre><code class="language-julia">G &#61; grdmask&#40;&quot;plates.gmt&quot;, region&#61;&#40;-40,-40,-40,-40&#41;, inc&#61;&quot;2m&quot;, out_edge_in&#61;&quot;p100&quot;&#41;</code></pre>
 <h2>See Also</h2>
-<p><a href="#">grdlandmask</a>, <a href="/GMTjl_doc/documentation/modules/grdclip/index.html#grdclip">grdclip</a>, <a href="#">mask</a>, <a href="/GMTjl_doc/documentation/modules/clip/index.html#clip">clip</a></p>
+<p><a href="/GMTjl_doc/documentation/modules/grdlandmask/index.html#grdlandmask">grdlandmask</a>, <a href="/GMTjl_doc/documentation/modules/grdclip/index.html#grdclip">grdclip</a>, <a href="#">mask</a>, <a href="/GMTjl_doc/documentation/modules/clip/index.html#clip">clip</a></p>
 <div class="page-foot">
   <div class="copyright">
     &copy; GMT.jl. Last modified: July 16, 2022. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
