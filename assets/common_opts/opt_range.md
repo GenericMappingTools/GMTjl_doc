@@ -1,4 +1,4 @@
-- **T** or **range** : -- *range=(min,max,inc[,:number,:log2,:log10])* **|** *range=[list]* **|** *range=file*\
+- **T** or **range** : -- *range=(min,max,inc[,:number,:log2,:log10])* **||** *range=[list]* **|** *range=file*\
     Defines the range of the new CPT by giving the lowest and highest z-value (and optionally an interval). If **range**
     is not given, the existing range in the master CPT will be used intact. The values produces defines the color
     slice boundaries. If *:number* is added as a fourth element then *inc* is meant to indicate the number of
