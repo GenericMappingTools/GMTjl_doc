@@ -301,10 +301,11 @@
 <pre><code class="language-julia">G &#61; grdlandmask&#40;region&#61;&#40;-60,-40,-40,-30&#41;, res&#61;:high, inc&#61;&quot;5m&quot;, maskvalues&#40;1,NaN&#41;&#41;</code></pre>
 <p>To make a 1x1 degree global grid with the hierarchical levels of the nodes based on the low resolution data:</p>
 <pre><code class="language-julia">using GMT
-G &#61; grdlandmask&#40;region&#61;:global360, res&#61;:low, inc&#61;1, maskvalues&#61;&#40;0,1,2,3,4&#41;&#41;</code></pre></p>
+G &#61; grdlandmask&#40;region&#61;:global360, res&#61;:low, inc&#61;1, maskvalues&#61;&#40;0,1,2,3,4&#41;&#41;
+imshow&#40;G&#41;</code></pre></p>
 <p>
-<a id="example_9867636046910884205">
- <p><span style="color:red;">// Image matching '/assets/documentation/modules/grdlandmask/code/example_9867636046910884205.png' not found. //</span></p> 
+<a id="example_8937540706555925298">
+ <img src="/GMTjl_doc/assets/documentation/modules/grdlandmask/code/output/example_8937540706555925298.png" alt=""> 
 </a>
 
 <h2>See Also</h2>
