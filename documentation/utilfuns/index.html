@@ -340,9 +340,12 @@ crop&#40;G, region&#61;&#40;-2,2,-2,2&#41;&#41;</code></pre>
 <ul>
 <li><p><code>slice</code>: If it is an Int it will return a GMTgrid corresponding to that layer. However, if <code>slice</code> is a float this is interpreted to mean: search that dimension &#40;see the <code>axis</code> below&#41; coordinates and find the closest layer that has coordinate &#61; <code>slice</code>. If the <code>slice</code> value is not within 10&#37; of the coordinate of closest layer, the returned layer is obtained by linear interpolation of the neighboring layers. For example, <code>slice&#61;2.5</code> on a cube were layers are one unit apart will interpolate between layers 2 and 3 where each layer weights 50&#37; in the end result. NOTE: the return type is still a cube but with one layer only &#40;and the corresponding axis coordinate&#41;.</p>
 </li>
-<li><p><code>axis</code>: denotes the dimension being sliced. The default, &quot;z&quot;, means the slices are taken from the vertical axis. <code>axis&#61;&quot;x&quot;</code> means slice along one column, and <code>axis&#61;&quot;y&quot;</code> slice along a row.</p>
+<li><p><code>axis</code>: denotes the dimension being sliced. The default, &quot;z&quot;, means the slices are taken from the vertical axis. <code>axis&#61;&quot;x&quot;</code> means slice along a column, and <code>axis&#61;&quot;y&quot;</code> slice along a row.</p>
 </li>
 </ul>
+<pre><code>slicecube&#40;GI::GItype; slice::Int&#61;0, angle&#61;0.0, axis&#61;&quot;x&quot;, cmap&#61;GMTcpt&#40;&#41;&#41;</code></pre>
+<p>Take a slice of a GMTgrid or GMTimage in an oblique direction. Take the cube&#39;s layer <code>slice</code> and rotate it by <code>angle</code> degrees about the <code>axis</code>. This one can only be <code>axis&#61;:x</code> or <code>axis&#61;:y</code>. Depending on the data type of input a different output is produces. If <code>GI</code> is a GMTgrid, the output is 2 GMTgrids: one with <code>z</code> levels and the other with cube&#39;s z levels along that plane. On the other hand, if GI isa GMTimage the first output is similar to previus case but the second will be a GMTimage. In this case the <code>cmap</code> option may be used to assign a colortable to the image type.</p>
+<p>The value at the slice point, P&#40;x&#91;i,j&#93;, y&#91;i,j&#93;, z&#91;i, j&#41;&#41;, is the interpolated value of the two nearest voxels on the same vertical.</p>
 <h3>Example</h3>
 <p>Get the fourth layer of the multi-layered &#39;I&#39; GMTimage object </p>
 <pre><code>I &#61; slicecube&#40;I, 4&#41;</code></pre>
@@ -571,7 +574,7 @@ Example2: change to the first 6 colors in cmap by assigning them random values
 <div class="doc-content"><pre><code>image_cpt&#33;&#40;img::GMTimage, cpt::GMTcpt, clear&#61;false&#41;</code></pre>
 <p>or</p>
 <pre><code>image_cpt&#33;&#40;img::GMTimage, cpt::String, clear&#61;false&#41;</code></pre>
-<p>Add &#40;or replace&#41; a colormap to a GMTimage object from the colors in the cpt. This should have effect only if IMG is indexed. Use <code>image_cpt&#33;&#40;img, clear&#61;true&#41;</code> to remove a previously existent <code>colormap</code> field in IMG</p>
+<p>Add &#40;or replace&#41; a colormap to a GMTimage object from the colors in the cpt. This should have effect only if IMG is indexed. Use <code>image_cpt&#33;&#40;img, clear&#61;true&#41;</code> to remove a previously existant <code>colormap</code> field in IMG</p>
 
 
 </div>
@@ -605,8 +608,8 @@ julia&gt; imshow&#40;&quot;http://larryfire.files.wordpress.com/2009/07/untooned
 <div class="doc-header" id="ind2rgb">
 <a href="#ind2rgb">ind2rgb</a>
 </div>
-<div class="doc-content"><pre><code>I &#61; ind2rgb&#40;I&#41;</code></pre>
-<p>Convert an indexed image I to RGB. It uses the internal colormap to do the conversion.</p>
+<div class="doc-content"><pre><code>I &#61; ind2rgb&#40;I::GMTimage, cmap::GMTcpt&#61;GMTcpt&#40;&#41;&#41;</code></pre>
+<p>Convert an indexed image I to RGB. If <code>cmap</code> is not provided, it uses the internal colormap to do the conversion. If neither them exists, the layer is replicated 3 times thus resulting in a gray scale image.</p>
 
 
 </div>
@@ -648,8 +651,8 @@ plot&#33;&#40;points, marker&#61;:star, ms&#61;&quot;12p&quot;, fill&#61;:blue, 
 <div class="doc-content"><p>No documentation found.</p>
 <p><code>GMT.isnodata</code> is a <code>Function</code>.</p>
 <pre><code># 2 methods for generic function &quot;isnodata&quot;:
-&#91;1&#93; isnodata&#40;array::AbstractArray&#41; in GMT at /Users/runner/.julia/packages/GMT/ZhOVz/src/common_options.jl:4262
-&#91;2&#93; isnodata&#40;array::AbstractArray, val&#41; in GMT at /Users/runner/.julia/packages/GMT/ZhOVz/src/common_options.jl:4262</code></pre>
+&#91;1&#93; isnodata&#40;array::AbstractArray&#41; in GMT at /Users/runner/.julia/packages/GMT/P4c45/src/common_options.jl:4262
+&#91;2&#93; isnodata&#40;array::AbstractArray, val&#41; in GMT at /Users/runner/.julia/packages/GMT/P4c45/src/common_options.jl:4262</code></pre>
 </div>
 </div>
 <div class="docstring">
@@ -747,7 +750,7 @@ plot&#33;&#40;points, marker&#61;:star, ms&#61;&quot;12p&quot;, fill&#61;:blue, 
 <div class="doc-content"><p>No documentation found.</p>
 <p><code>GMT.magic</code> is a <code>Function</code>.</p>
 <pre><code># 1 method for generic function &quot;magic&quot;:
-&#91;1&#93; magic&#40;n::Int64&#41; in GMT at /Users/runner/.julia/packages/GMT/ZhOVz/src/common_options.jl:4341</code></pre>
+&#91;1&#93; magic&#40;n::Int64&#41; in GMT at /Users/runner/.julia/packages/GMT/P4c45/src/common_options.jl:4341</code></pre>
 </div>
 </div>
 <div class="docstring">
@@ -801,7 +804,7 @@ plot&#33;&#40;points, marker&#61;:star, ms&#61;&quot;12p&quot;, fill&#61;:blue, 
 <div class="doc-content"><pre><code>G &#61; mat2grid&#40;mat; reg&#61;nothing, x&#61;&#91;&#93;, y&#61;&#91;&#93;, v&#61;&#91;&#93;, hdr&#61;nothing, proj4::String&#61;&quot;&quot;,
              wkt::String&#61;&quot;&quot;, tit::String&#61;&quot;&quot;, rem::String&#61;&quot;&quot;, cmd::String&#61;&quot;&quot;,
 			 names::Vector&#123;String&#125;&#61;String&#91;&#93;, scale::Float32&#61;1f0, offset::Float32&#61;0f0&#41;</code></pre>
-<p>Take a 2/3D <code>mat</code> array and a HDR 1x9 &#91;xmin xmax ymin ymax zmin zmax reg xinc yinc&#93; header descriptor and  return a grid GMTgrid type. Alternatively to HDR, provide a pair of vectors, <code>x</code> &amp; <code>y</code>, with the X and Y coordinates. Optionaly add a <code>v</code> vector with vertical coordinates if <code>mat</code> is a 3D array and one wants to create a &#36;cube&#36;. Optionaly, the HDR arg may be ommited and it will computed from <code>mat</code> alone, but then x&#61;1:ncol, y&#61;1:nrow When HDR is not used, REG &#61;&#61; nothing &#91;default&#93; means create a gridline registration grid and REG &#61;&#61; 1, or REG&#61;&quot;pixel&quot; a pixel registered grid.</p>
+<p>ITake a 2/3D <code>mat</code> array and a HDR 1x9 &#91;xmin xmax ymin ymax zmin zmax reg xinc yinc&#93; header descriptor and  return a grid GMTgrid type. Alternatively to HDR, provide a pair of vectors, <code>x</code> &amp; <code>y</code>, with the X and Y coordinates. Optionaly add a <code>v</code> vector with vertical coordinates if <code>mat</code> is a 3D array and one wants to create a &#36;cube&#36;. Optionaly, the HDR arg may be ommited and it will computed from <code>mat</code> alone, but then x&#61;1:ncol, y&#61;1:nrow When HDR is not used, REG &#61;&#61; nothing &#91;default&#93; means create a gridline registration grid and REG &#61;&#61; 1, or REG&#61;&quot;pixel&quot; a pixel registered grid.</p>
 <p>For 3D arrays the <code>names</code> option is used to give a description for each layer &#40;also saved to file when using a GDAL function&#41;.</p>
 <p>The <code>scale</code> and <code>offset</code> options are used when <code>mat</code> is an Integer type and we want to save the grid with an scale/offset.  </p>
 <p>Other methods of this function do:</p>
@@ -1008,9 +1011,12 @@ rasterzones&#33;&#40;G, D, mean&#41;</code></pre>
 <ul>
 <li><p><code>slice</code>: If it is an Int it will return a GMTgrid corresponding to that layer. However, if <code>slice</code> is a float this is interpreted to mean: search that dimension &#40;see the <code>axis</code> below&#41; coordinates and find the closest layer that has coordinate &#61; <code>slice</code>. If the <code>slice</code> value is not within 10&#37; of the coordinate of closest layer, the returned layer is obtained by linear interpolation of the neighboring layers. For example, <code>slice&#61;2.5</code> on a cube were layers are one unit apart will interpolate between layers 2 and 3 where each layer weights 50&#37; in the end result. NOTE: the return type is still a cube but with one layer only &#40;and the corresponding axis coordinate&#41;.</p>
 </li>
-<li><p><code>axis</code>: denotes the dimension being sliced. The default, &quot;z&quot;, means the slices are taken from the vertical axis. <code>axis&#61;&quot;x&quot;</code> means slice along one column, and <code>axis&#61;&quot;y&quot;</code> slice along a row.</p>
+<li><p><code>axis</code>: denotes the dimension being sliced. The default, &quot;z&quot;, means the slices are taken from the vertical axis. <code>axis&#61;&quot;x&quot;</code> means slice along a column, and <code>axis&#61;&quot;y&quot;</code> slice along a row.</p>
 </li>
 </ul>
+<pre><code>slicecube&#40;GI::GItype; slice::Int&#61;0, angle&#61;0.0, axis&#61;&quot;x&quot;, cmap&#61;GMTcpt&#40;&#41;&#41;</code></pre>
+<p>Take a slice of a GMTgrid or GMTimage in an oblique direction. Take the cube&#39;s layer <code>slice</code> and rotate it by <code>angle</code> degrees about the <code>axis</code>. This one can only be <code>axis&#61;:x</code> or <code>axis&#61;:y</code>. Depending on the data type of input a different output is produces. If <code>GI</code> is a GMTgrid, the output is 2 GMTgrids: one with <code>z</code> levels and the other with cube&#39;s z levels along that plane. On the other hand, if GI isa GMTimage the first output is similar to previus case but the second will be a GMTimage. In this case the <code>cmap</code> option may be used to assign a colortable to the image type.</p>
+<p>The value at the slice point, P&#40;x&#91;i,j&#93;, y&#91;i,j&#93;, z&#91;i, j&#41;&#41;, is the interpolated value of the two nearest voxels on the same vertical.</p>
 <h3>Example</h3>
 <p>Get the fourth layer of the multi-layered &#39;I&#39; GMTimage object </p>
 <pre><code>I &#61; slicecube&#40;I, 4&#41;</code></pre>
@@ -1034,17 +1040,20 @@ rasterzones&#33;&#40;G, D, mean&#41;</code></pre>
 <ul>
 <li><p><code>decimalyear</code> or <code>yeardecimal</code> converts the DateTime to decimal years &#40;Floa64&#41;</p>
 </li>
-</ul>
+<li><p><code>milliseconds</code> &#40;or just <code>mil</code>&#41; will store the DateTime as milliseconds since 0000-01-01T00:00:00 &#40;Float64&#41;</p>
+</li>
+<li><p><code>seconds</code> stores the DateTime as seconds since 0000-01-01T00:00:00 &#40;Float64&#41;</p>
+</li>
+<li><p><code>unix</code> stores the DateTime as seconds since 1970-01-01T00:00:00 &#40;Float64&#41;</p>
+</li>
+<li><p><code>rata</code> stores the DateTime as days since 0000-12-31T00:00:00 &#40;Float64&#41;</p>
+</li>
+<li><p><code>Date</code> or <code>DateTime</code> stores as a string representation of a DateTime.</p>
 </li>
 </ul>
 </li>
 </ul>
-<pre><code>- &#96;milliseconds&#96; &#40;or just &#96;mil&#96;&#41; will store the DateTime as milliseconds since 0000-01-01T00:00:00 &#40;Float64&#41;
-- &#96;seconds&#96; stores the DateTime as seconds since 0000-01-01T00:00:00 &#40;Float64&#41;
-- &#96;unix&#96; stores the DateTime as seconds since 1970-01-01T00:00:00 &#40;Float64&#41;
-- &#96;rata&#96; stores the DateTime as days since 0000-12-31T00:00:00 &#40;Float64&#41;
-- &#96;Date&#96; or &#96;DateTime&#96; stores as a string representation of a DateTime.</code></pre>
-<ul>
+</li>
 <li><p><code>zdim_name</code>: The name of the vertical axes &#40;default is &quot;time&quot;&#41;</p>
 </li>
 <li><p><code>zcoord</code>: Keyword same as <code>v</code> &#40;may use one or the other&#41;.</p>
@@ -1328,7 +1337,7 @@ imshow&#40;img, proj&#61;:guess&#41;</code></pre>
 
 <div class="page-foot">
   <div class="copyright">
-    &copy; GMT.jl. Last modified: July 21, 2022. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+    &copy; GMT.jl. Last modified: July 23, 2022. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
       <p>These docs were autogenerated using GMT: v0.42.4</p>
   </div>
 </div>
