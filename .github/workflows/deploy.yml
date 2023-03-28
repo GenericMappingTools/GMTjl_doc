@@ -6,9 +6,10 @@ on:
       - master
 jobs:
   build-and-deploy:
-    runs-on: ubuntu-latest
+    #runs-on: ubuntu-latest
     #runs-on: ubuntu-20.04
     #runs-on: windows-latest
+    runs-on: macos-latest
     permissions:
       contents: write
     steps:
@@ -23,9 +24,9 @@ jobs:
         #version: 'nightly'
 
     # GMT + ghostscript deps
-    #- run: brew install ghostscript gmt
+    - run: brew install ghostscript
     #- run: echo $(gmt --version)
-    - run: sudo apt-get install ghostscript
+    #- run: sudo apt-get install ghostscript
 
     #- name: Install Ghostscript (Windows)
       #run: >
