@@ -5,51 +5,69 @@ on:
       - main
       - master
 jobs:
-  build-and-deploy:
-    #runs-on: ubuntu-latest
-    #runs-on: ubuntu-20.04
-    #runs-on: windows-latest
-    runs-on: macos-latest
+  build:
+    #runs-on: ubuntu-latest   # could be anything now
+    runs-on: windows-latest
     permissions:
       contents: write
     steps:
     - name: Checkout
-      uses: actions/checkout@v2
-      with:
-        persist-credentials: false
+      uses: actions/checkout@v3
     - name: Install Julia
       uses: julia-actions/setup-julia@v1
       with:
-        version: '~1.9.0-0'
-        #version: 'nightly'
+        version: '1' # Latest stable Julia release.
 
-    # GMT + ghostscript deps
-    - run: brew install ghostscript
-    #- run: echo $(gmt --version)
-    #- run: sudo apt-get install ghostscript
+    #- name: Install ghostscript
+      #run: sudo apt-get install ghostscript
 
-    #- name: Install Ghostscript (Windows)
-      #run: >
-        #choco install ghostscript wget
+    - name: Install Ghostscript (Windows)
+      run: >
+        choco install ghostscript wget
     #- run: wget http://fct-gmt.ualg.pt/gmt/data/wininstallers/gmt-win64.exe
     #- run: cmd /k gmt-win64.exe /S
 
     - run: julia -e '
             using Pkg;
-            Pkg.activate(".");
+            Pkg.activate(\".\");
             Pkg.instantiate();
-            Pkg.add(PackageSpec(name="GMT", rev="GMT_jll"));
-            using NodeJS;
-            run(`$(npm_cmd()) install highlight.js`);
-            run(`$(npm_cmd()) install cheerio`);
-            run(`$(npm_cmd()) install lunr`);
+            Pkg.add(PackageSpec(name=\"GMT\", rev=\"master\"));
             using Franklin;
-            serve(single=true, cleanup=false);
-            lunr();
-            optimize(minify=false, prerender=false);'
-    - name: Build and Deploy
-      uses: JamesIves/github-pages-deploy-action@releases/v4
+            include(\"makedocs.jl\")'
+            #optimize(minify=false,prerender=false)'
+    - name: Upload artifact
+      uses: actions/upload-artifact@v3
       with:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        BRANCH: gh-pages
-        FOLDER: __site
+        name: franklin-site
+        path: __site
+
+  deploy:
+    concurrency: ci-${{ github.ref }}
+    needs: [build]
+    runs-on: ubuntu-latest # or mac
+    permissions:
+      contents: write
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: Git setup
+      run: |
+        git config user.name "GABot"
+        git config user.email "<>"
+    - name: Checkout preview
+      run: |
+        git checkout -B gh-lixo
+    - name: Download artifact
+      uses: actions/download-artifact@v3
+      with:
+        name: franklin-site
+        path: __tmp__site
+    - name: Copy content
+      run: |
+        cp -a __tmp__site/. .
+    - name: Remove tmp dir
+      run: |
+        rm -rf __tmp__site
+    - name: Push
+      run: |
+        git add -A && git commit -am "update" && git push -u origin gh-lixo
