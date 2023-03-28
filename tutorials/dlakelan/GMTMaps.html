@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<HTML lang = "en">
+<HEAD>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  
+  
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+      TeX: { equationNumbers: { autoNumber: "AMS" } }
+    });
+  </script>
+
+  <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script>
+
+  
+<style>
+pre.hljl {
+    border: 1px solid #ccc;
+    margin: 5px;
+    padding: 5px;
+    overflow-x: auto;
+    color: rgb(68,68,68); background-color: rgb(251,251,251); }
+pre.hljl > span.hljl-t { }
+pre.hljl > span.hljl-w { }
+pre.hljl > span.hljl-e { }
+pre.hljl > span.hljl-eB { }
+pre.hljl > span.hljl-o { }
+pre.hljl > span.hljl-k { color: rgb(148,91,176); font-weight: bold; }
+pre.hljl > span.hljl-kc { color: rgb(59,151,46); font-style: italic; }
+pre.hljl > span.hljl-kd { color: rgb(214,102,97); font-style: italic; }
+pre.hljl > span.hljl-kn { color: rgb(148,91,176); font-weight: bold; }
+pre.hljl > span.hljl-kp { color: rgb(148,91,176); font-weight: bold; }
+pre.hljl > span.hljl-kr { color: rgb(148,91,176); font-weight: bold; }
+pre.hljl > span.hljl-kt { color: rgb(148,91,176); font-weight: bold; }
+pre.hljl > span.hljl-n { }
+pre.hljl > span.hljl-na { }
+pre.hljl > span.hljl-nb { }
+pre.hljl > span.hljl-nbp { }
+pre.hljl > span.hljl-nc { }
+pre.hljl > span.hljl-ncB { }
+pre.hljl > span.hljl-nd { color: rgb(214,102,97); }
+pre.hljl > span.hljl-ne { }
+pre.hljl > span.hljl-neB { }
+pre.hljl > span.hljl-nf { color: rgb(66,102,213); }
+pre.hljl > span.hljl-nfm { color: rgb(66,102,213); }
+pre.hljl > span.hljl-np { }
+pre.hljl > span.hljl-nl { }
+pre.hljl > span.hljl-nn { }
+pre.hljl > span.hljl-no { }
+pre.hljl > span.hljl-nt { }
+pre.hljl > span.hljl-nv { }
+pre.hljl > span.hljl-nvc { }
+pre.hljl > span.hljl-nvg { }
+pre.hljl > span.hljl-nvi { }
+pre.hljl > span.hljl-nvm { }
+pre.hljl > span.hljl-l { }
+pre.hljl > span.hljl-ld { color: rgb(148,91,176); font-style: italic; }
+pre.hljl > span.hljl-s { color: rgb(201,61,57); }
+pre.hljl > span.hljl-sa { color: rgb(201,61,57); }
+pre.hljl > span.hljl-sb { color: rgb(201,61,57); }
+pre.hljl > span.hljl-sc { color: rgb(201,61,57); }
+pre.hljl > span.hljl-sd { color: rgb(201,61,57); }
+pre.hljl > span.hljl-sdB { color: rgb(201,61,57); }
+pre.hljl > span.hljl-sdC { color: rgb(201,61,57); }
+pre.hljl > span.hljl-se { color: rgb(59,151,46); }
+pre.hljl > span.hljl-sh { color: rgb(201,61,57); }
+pre.hljl > span.hljl-si { }
+pre.hljl > span.hljl-so { color: rgb(201,61,57); }
+pre.hljl > span.hljl-sr { color: rgb(201,61,57); }
+pre.hljl > span.hljl-ss { color: rgb(201,61,57); }
+pre.hljl > span.hljl-ssB { color: rgb(201,61,57); }
+pre.hljl > span.hljl-nB { color: rgb(59,151,46); }
+pre.hljl > span.hljl-nbB { color: rgb(59,151,46); }
+pre.hljl > span.hljl-nfB { color: rgb(59,151,46); }
+pre.hljl > span.hljl-nh { color: rgb(59,151,46); }
+pre.hljl > span.hljl-ni { color: rgb(59,151,46); }
+pre.hljl > span.hljl-nil { color: rgb(59,151,46); }
+pre.hljl > span.hljl-noB { color: rgb(59,151,46); }
+pre.hljl > span.hljl-oB { color: rgb(102,102,102); font-weight: bold; }
+pre.hljl > span.hljl-ow { color: rgb(102,102,102); font-weight: bold; }
+pre.hljl > span.hljl-p { }
+pre.hljl > span.hljl-c { color: rgb(153,153,119); font-style: italic; }
+pre.hljl > span.hljl-ch { color: rgb(153,153,119); font-style: italic; }
+pre.hljl > span.hljl-cm { color: rgb(153,153,119); font-style: italic; }
+pre.hljl > span.hljl-cp { color: rgb(153,153,119); font-style: italic; }
+pre.hljl > span.hljl-cpB { color: rgb(153,153,119); font-style: italic; }
+pre.hljl > span.hljl-cs { color: rgb(153,153,119); font-style: italic; }
+pre.hljl > span.hljl-csB { color: rgb(153,153,119); font-style: italic; }
+pre.hljl > span.hljl-g { }
+pre.hljl > span.hljl-gd { }
+pre.hljl > span.hljl-ge { }
+pre.hljl > span.hljl-geB { }
+pre.hljl > span.hljl-gh { }
+pre.hljl > span.hljl-gi { }
+pre.hljl > span.hljl-go { }
+pre.hljl > span.hljl-gp { }
+pre.hljl > span.hljl-gs { }
+pre.hljl > span.hljl-gsB { }
+pre.hljl > span.hljl-gt { }
+</style>
+
+
+
+  <style type="text/css">
+  @font-face {
+  font-style: normal;
+  font-weight: 300;
+}
+@font-face {
+  font-style: normal;
+  font-weight: 400;
+}
+@font-face {
+  font-style: normal;
+  font-weight: 600;
+}
+html {
+  font-family: sans-serif; /* 1 */
+  -ms-text-size-adjust: 100%; /* 2 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+}
+body {
+  margin: 0;
+}
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section,
+summary {
+  display: block;
+}
+audio,
+canvas,
+progress,
+video {
+  display: inline-block; /* 1 */
+  vertical-align: baseline; /* 2 */
+}
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+[hidden],
+template {
+  display: none;
+}
+a:active,
+a:hover {
+  outline: 0;
+}
+abbr[title] {
+  border-bottom: 1px dotted;
+}
+b,
+strong {
+  font-weight: bold;
+}
+dfn {
+  font-style: italic;
+}
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+mark {
+  background: #ff0;
+  color: #000;
+}
+small {
+  font-size: 80%;
+}
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+sup {
+  top: -0.5em;
+}
+sub {
+  bottom: -0.25em;
+}
+img {
+  border: 0;
+}
+svg:not(:root) {
+  overflow: hidden;
+}
+figure {
+  margin: 1em 40px;
+}
+hr {
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 0;
+}
+pre {
+  overflow: auto;
+}
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+button,
+input,
+optgroup,
+select,
+textarea {
+  color: inherit; /* 1 */
+  font: inherit; /* 2 */
+  margin: 0; /* 3 */
+}
+button {
+  overflow: visible;
+}
+button,
+select {
+  text-transform: none;
+}
+button,
+html input[type="button"], /* 1 */
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: button; /* 2 */
+  cursor: pointer; /* 3 */
+}
+button[disabled],
+html input[disabled] {
+  cursor: default;
+}
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+input {
+  line-height: normal;
+}
+input[type="checkbox"],
+input[type="radio"] {
+  box-sizing: border-box; /* 1 */
+  padding: 0; /* 2 */
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+input[type="search"] {
+  -webkit-appearance: textfield; /* 1 */
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box; /* 2 */
+  box-sizing: content-box;
+}
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em;
+}
+legend {
+  border: 0; /* 1 */
+  padding: 0; /* 2 */
+}
+textarea {
+  overflow: auto;
+}
+optgroup {
+  font-weight: bold;
+}
+table {
+  font-family: monospace, monospace;
+  font-size : 0.8em;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+td,
+th {
+  padding: 0;
+}
+thead th {
+    border-bottom: 1px solid black;
+    background-color: white;
+}
+tr:nth-child(odd){
+  background-color: rgb(248,248,248);
+}
+
+
+/*
+* Skeleton V2.0.4
+* Copyright 2014, Dave Gamache
+* www.getskeleton.com
+* Free to use under the MIT license.
+* http://www.opensource.org/licenses/mit-license.php
+* 12/29/2014
+*/
+.container {
+  position: relative;
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box; }
+.column,
+.columns {
+  width: 100%;
+  float: left;
+  box-sizing: border-box; }
+@media (min-width: 400px) {
+  .container {
+    width: 85%;
+    padding: 0; }
+}
+@media (min-width: 550px) {
+  .container {
+    width: 80%; }
+  .column,
+  .columns {
+    margin-left: 4%; }
+  .column:first-child,
+  .columns:first-child {
+    margin-left: 0; }
+
+  .one.column,
+  .one.columns                    { width: 4.66666666667%; }
+  .two.columns                    { width: 13.3333333333%; }
+  .three.columns                  { width: 22%;            }
+  .four.columns                   { width: 30.6666666667%; }
+  .five.columns                   { width: 39.3333333333%; }
+  .six.columns                    { width: 48%;            }
+  .seven.columns                  { width: 56.6666666667%; }
+  .eight.columns                  { width: 65.3333333333%; }
+  .nine.columns                   { width: 74.0%;          }
+  .ten.columns                    { width: 82.6666666667%; }
+  .eleven.columns                 { width: 91.3333333333%; }
+  .twelve.columns                 { width: 100%; margin-left: 0; }
+
+  .one-third.column               { width: 30.6666666667%; }
+  .two-thirds.column              { width: 65.3333333333%; }
+
+  .one-half.column                { width: 48%; }
+
+  /* Offsets */
+  .offset-by-one.column,
+  .offset-by-one.columns          { margin-left: 8.66666666667%; }
+  .offset-by-two.column,
+  .offset-by-two.columns          { margin-left: 17.3333333333%; }
+  .offset-by-three.column,
+  .offset-by-three.columns        { margin-left: 26%;            }
+  .offset-by-four.column,
+  .offset-by-four.columns         { margin-left: 34.6666666667%; }
+  .offset-by-five.column,
+  .offset-by-five.columns         { margin-left: 43.3333333333%; }
+  .offset-by-six.column,
+  .offset-by-six.columns          { margin-left: 52%;            }
+  .offset-by-seven.column,
+  .offset-by-seven.columns        { margin-left: 60.6666666667%; }
+  .offset-by-eight.column,
+  .offset-by-eight.columns        { margin-left: 69.3333333333%; }
+  .offset-by-nine.column,
+  .offset-by-nine.columns         { margin-left: 78.0%;          }
+  .offset-by-ten.column,
+  .offset-by-ten.columns          { margin-left: 86.6666666667%; }
+  .offset-by-eleven.column,
+  .offset-by-eleven.columns       { margin-left: 95.3333333333%; }
+
+  .offset-by-one-third.column,
+  .offset-by-one-third.columns    { margin-left: 34.6666666667%; }
+  .offset-by-two-thirds.column,
+  .offset-by-two-thirds.columns   { margin-left: 69.3333333333%; }
+
+  .offset-by-one-half.column,
+  .offset-by-one-half.columns     { margin-left: 52%; }
+
+}
+html {
+  font-size: 62.5%; }
+body {
+  font-size: 1.5em; /* currently ems cause chrome bug misinterpreting rems on body element */
+  line-height: 1.6;
+  font-weight: 400;
+  font-family: "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #222; }
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  margin-bottom: 2rem;
+  font-weight: 300; }
+h1 { font-size: 3.6rem; line-height: 1.2;  letter-spacing: -.1rem;}
+h2 { font-size: 3.4rem; line-height: 1.25; letter-spacing: -.1rem; }
+h3 { font-size: 3.2rem; line-height: 1.3;  letter-spacing: -.1rem; }
+h4 { font-size: 2.8rem; line-height: 1.35; letter-spacing: -.08rem; }
+h5 { font-size: 2.4rem; line-height: 1.5;  letter-spacing: -.05rem; }
+h6 { font-size: 1.5rem; line-height: 1.6;  letter-spacing: 0; }
+
+p {
+  margin-top: 0; }
+a {
+  color: #1EAEDB; }
+a:hover {
+  color: #0FA0CE; }
+.button,
+button,
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+  display: inline-block;
+  height: 38px;
+  padding: 0 30px;
+  color: #555;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 38px;
+  letter-spacing: .1rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+  background-color: transparent;
+  border-radius: 4px;
+  border: 1px solid #bbb;
+  cursor: pointer;
+  box-sizing: border-box; }
+.button:hover,
+button:hover,
+input[type="submit"]:hover,
+input[type="reset"]:hover,
+input[type="button"]:hover,
+.button:focus,
+button:focus,
+input[type="submit"]:focus,
+input[type="reset"]:focus,
+input[type="button"]:focus {
+  color: #333;
+  border-color: #888;
+  outline: 0; }
+.button.button-primary,
+button.button-primary,
+input[type="submit"].button-primary,
+input[type="reset"].button-primary,
+input[type="button"].button-primary {
+  color: #FFF;
+  background-color: #33C3F0;
+  border-color: #33C3F0; }
+.button.button-primary:hover,
+button.button-primary:hover,
+input[type="submit"].button-primary:hover,
+input[type="reset"].button-primary:hover,
+input[type="button"].button-primary:hover,
+.button.button-primary:focus,
+button.button-primary:focus,
+input[type="submit"].button-primary:focus,
+input[type="reset"].button-primary:focus,
+input[type="button"].button-primary:focus {
+  color: #FFF;
+  background-color: #1EAEDB;
+  border-color: #1EAEDB; }
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="text"],
+input[type="tel"],
+input[type="url"],
+input[type="password"],
+textarea,
+select {
+  height: 38px;
+  padding: 6px 10px; /* The 6px vertically centers text on FF, ignored by Webkit */
+  background-color: #fff;
+  border: 1px solid #D1D1D1;
+  border-radius: 4px;
+  box-shadow: none;
+  box-sizing: border-box; }
+/* Removes awkward default styles on some inputs for iOS */
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="text"],
+input[type="tel"],
+input[type="url"],
+input[type="password"],
+textarea {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none; }
+textarea {
+  min-height: 65px;
+  padding-top: 6px;
+  padding-bottom: 6px; }
+input[type="email"]:focus,
+input[type="number"]:focus,
+input[type="search"]:focus,
+input[type="text"]:focus,
+input[type="tel"]:focus,
+input[type="url"]:focus,
+input[type="password"]:focus,
+textarea:focus,
+select:focus {
+  border: 1px solid #33C3F0;
+  outline: 0; }
+label,
+legend {
+  display: block;
+  margin-bottom: .5rem;
+  font-weight: 600; }
+fieldset {
+  padding: 0;
+  border-width: 0; }
+input[type="checkbox"],
+input[type="radio"] {
+  display: inline; }
+label > .label-body {
+  display: inline-block;
+  margin-left: .5rem;
+  font-weight: normal; }
+ul {
+  list-style: circle; }
+ol {
+  list-style: decimal; }
+ul ul,
+ul ol,
+ol ol,
+ol ul {
+  margin: 1.5rem 0 1.5rem 3rem;
+  font-size: 90%; }
+li > p {margin : 0;}
+th,
+td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #E1E1E1; }
+th:first-child,
+td:first-child {
+  padding-left: 0; }
+th:last-child,
+td:last-child {
+  padding-right: 0; }
+button,
+.button {
+  margin-bottom: 1rem; }
+input,
+textarea,
+select,
+fieldset {
+  margin-bottom: 1.5rem; }
+pre,
+blockquote,
+dl,
+figure,
+table,
+p,
+ul,
+ol,
+form {
+  margin-bottom: 1.0rem; }
+.u-full-width {
+  width: 100%;
+  box-sizing: border-box; }
+.u-max-full-width {
+  max-width: 100%;
+  box-sizing: border-box; }
+.u-pull-right {
+  float: right; }
+.u-pull-left {
+  float: left; }
+hr {
+  margin-top: 3rem;
+  margin-bottom: 3.5rem;
+  border-width: 0;
+  border-top: 1px solid #E1E1E1; }
+.container:after,
+.row:after,
+.u-cf {
+  content: "";
+  display: table;
+  clear: both; }
+
+pre {
+  display: block;
+  padding: 9.5px;
+  margin: 0 0 10px;
+  font-size: 13px;
+  line-height: 1.42857143;
+  word-break: break-all;
+  word-wrap: break-word;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+pre.hljl {
+  margin: 0 0 10px;
+  display: block;
+  background: #f5f5f5;
+  border-radius: 4px;
+  padding : 5px;
+}
+
+pre.output {
+  background: #ffffff;
+}
+
+pre.code {
+  background: #ffffff;
+}
+
+pre.julia-error {
+  color : red
+}
+
+code,
+kbd,
+pre,
+samp {
+  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+  font-size: 0.9em;
+}
+
+
+@media (min-width: 400px) {}
+@media (min-width: 550px) {}
+@media (min-width: 750px) {}
+@media (min-width: 1000px) {}
+@media (min-width: 1200px) {}
+
+h1.title {margin-top : 20px}
+img {max-width : 100%}
+div.title {text-align: center;}
+
+  </style>
+</HEAD>
+
+<BODY>
+  <div class ="container">
+    <div class = "row">
+      <div class = "col-md-12 twelve columns">
+        <div class="title">
+          
+          
+          
+        </div>
+
+<h2>Disclaimer: This tutorial was created by Daniel Lakeland</h2>
+<p>It is part of his series on <a href="https://github.com/dlakelan/JuliaDataTutorials">Julia Data Tutorials</a></p><p>.</p>
+
+        <h1>Visualizing Spatial Data with GMT</h1>
+<p>GMT is the &quot;Generic Mapping Tools&quot; a powerful toolset for geospatial visualizations. With great power comes great learning curves. The goal here is to make it possible for someone who has a data analysis background but not much specific knowledge of geospatial software to make maps that show their data in 2D maps, and simultaneously to learn something about the framework and what it is capable of, and how to use it.</p>
+<h1>Problem 1: a Choropleth map of US Census Data</h1>
+<p>One of the most common tasks in basic geospatial data analysis is to create a map in which regions of the world are colored based on the value of some statistic pertaining to the region. We will start with a very simple map of population for each county in the US.  The data for this can be found from the Census bureau at https://www2.census.gov/programs-surveys/popest/datasets/2010-2020/counties/totals/co-est2020-alldata.csv</p>
+
+
+<pre class='hljl'>
+<span class='hljl-k'>using</span><span class='hljl-t'> </span><span class='hljl-n'>CSV</span><span class='hljl-p'>,</span><span class='hljl-n'>DataFrames</span><span class='hljl-p'>,</span><span class='hljl-n'>GMT</span><span class='hljl-p'>,</span><span class='hljl-n'>Printf</span><span class='hljl-p'>,</span><span class='hljl-n'>DataFramesMeta</span><span class='hljl-t'>
+
+</span><span class='hljl-n'>countypopurl</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-s'>&quot;https://www2.census.gov/programs-surveys/popest/datasets/2010-2020/counties/totals/co-est2020-alldata.csv&quot;</span><span class='hljl-t'>
+
+</span><span class='hljl-nf'>download</span><span class='hljl-p'>(</span><span class='hljl-n'>countypopurl</span><span class='hljl-p'>,</span><span class='hljl-s'>&quot;data/countypops.csv&quot;</span><span class='hljl-p'>)</span><span class='hljl-t'>
+
+</span><span class='hljl-n'>cpopall</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-n'>CSV</span><span class='hljl-oB'>.</span><span class='hljl-nf'>read</span><span class='hljl-p'>(</span><span class='hljl-s'>&quot;data/countypops.csv&quot;</span><span class='hljl-p'>,</span><span class='hljl-n'>DataFrame</span><span class='hljl-p'>)</span><span class='hljl-t'>
+
+</span><span class='hljl-n'>cpop</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-n'>cpopall</span><span class='hljl-p'>[</span><span class='hljl-oB'>:</span><span class='hljl-p'>,[</span><span class='hljl-sc'>:STATE</span><span class='hljl-p'>,</span><span class='hljl-oB'>:</span><span class='hljl-n'>COUNTY</span><span class='hljl-p'>,</span><span class='hljl-oB'>:</span><span class='hljl-n'>STNAME</span><span class='hljl-p'>,</span><span class='hljl-oB'>:</span><span class='hljl-n'>CTYNAME</span><span class='hljl-p'>,</span><span class='hljl-oB'>:</span><span class='hljl-n'>POPESTIMATE2020</span><span class='hljl-p'>]]</span>
+</pre>
+
+
+
+<div class="data-frame"><p>3,194 rows × 5 columns</p><table class="data-frame"><thead><tr><th></th><th>STATE</th><th>COUNTY</th><th>STNAME</th><th>CTYNAME</th><th>POPESTIMATE2020</th></tr><tr><th></th><th title="Int64">Int64</th><th title="Int64">Int64</th><th title="String31">String31</th><th title="String">String</th><th title="Int64">Int64</th></tr></thead><tbody><tr><th>1</th><td>1</td><td>0</td><td>Alabama</td><td>Alabama</td><td>4921532</td></tr><tr><th>2</th><td>1</td><td>1</td><td>Alabama</td><td>Autauga County</td><td>56145</td></tr><tr><th>3</th><td>1</td><td>3</td><td>Alabama</td><td>Baldwin County</td><td>229287</td></tr><tr><th>4</th><td>1</td><td>5</td><td>Alabama</td><td>Barbour County</td><td>24589</td></tr><tr><th>5</th><td>1</td><td>7</td><td>Alabama</td><td>Bibb County</td><td>22136</td></tr><tr><th>6</th><td>1</td><td>9</td><td>Alabama</td><td>Blount County</td><td>57879</td></tr><tr><th>7</th><td>1</td><td>11</td><td>Alabama</td><td>Bullock County</td><td>9976</td></tr><tr><th>8</th><td>1</td><td>13</td><td>Alabama</td><td>Butler County</td><td>19504</td></tr><tr><th>9</th><td>1</td><td>15</td><td>Alabama</td><td>Calhoun County</td><td>113469</td></tr><tr><th>10</th><td>1</td><td>17</td><td>Alabama</td><td>Chambers County</td><td>32865</td></tr><tr><th>11</th><td>1</td><td>19</td><td>Alabama</td><td>Cherokee County</td><td>26294</td></tr><tr><th>12</th><td>1</td><td>21</td><td>Alabama</td><td>Chilton County</td><td>44397</td></tr><tr><th>13</th><td>1</td><td>23</td><td>Alabama</td><td>Choctaw County</td><td>12418</td></tr><tr><th>14</th><td>1</td><td>25</td><td>Alabama</td><td>Clarke County</td><td>23291</td></tr><tr><th>15</th><td>1</td><td>27</td><td>Alabama</td><td>Clay County</td><td>13112</td></tr><tr><th>16</th><td>1</td><td>29</td><td>Alabama</td><td>Cleburne County</td><td>14967</td></tr><tr><th>17</th><td>1</td><td>31</td><td>Alabama</td><td>Coffee County</td><td>53230</td></tr><tr><th>18</th><td>1</td><td>33</td><td>Alabama</td><td>Colbert County</td><td>55411</td></tr><tr><th>19</th><td>1</td><td>35</td><td>Alabama</td><td>Conecuh County</td><td>11851</td></tr><tr><th>20</th><td>1</td><td>37</td><td>Alabama</td><td>Coosa County</td><td>10650</td></tr><tr><th>21</th><td>1</td><td>39</td><td>Alabama</td><td>Covington County</td><td>36930</td></tr><tr><th>22</th><td>1</td><td>41</td><td>Alabama</td><td>Crenshaw County</td><td>13681</td></tr><tr><th>23</th><td>1</td><td>43</td><td>Alabama</td><td>Cullman County</td><td>84515</td></tr><tr><th>24</th><td>1</td><td>45</td><td>Alabama</td><td>Dale County</td><td>48959</td></tr><tr><th>&vellip;</th><td>&vellip;</td><td>&vellip;</td><td>&vellip;</td><td>&vellip;</td><td>&vellip;</td></tr></tbody></table></div>
+
+<p>Now we have a large number of different estimates for each county in the US. For simplicity let&#39;s use the POPESTIMATE2020 variable. The COUNTY  variable is the FIPS county code for the county.</p>
+<p>In order to build a Choropleth map, we will need to have a file that defines the spatial boundaries of each county&#33; GMT is a generic mapping tool It will read various geospatial data formats which can be used to define the regions to be plotted. The Census bureau has a file which defines the boundaries of the counties at 3 different resolutions. These are in &quot;shapefile&quot; format. The files and other related shapefiles are available <a href="https://www.census.gov/geographies/mapping-files/time-series/geo/carto-boundary-file.html">at the Census website</a>. We will use the medium resolution version of the county shapefiles &#40;5 million meter resolution&#41;.</p>
+
+
+<pre class='hljl'>
+<span class='hljl-n'>countyshapeurl</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-s'>&quot;https://www2.census.gov/geo/tiger/GENZ2018/shp/cb_2018_us_county_5m.zip&quot;</span><span class='hljl-t'>
+
+</span><span class='hljl-nf'>download</span><span class='hljl-p'>(</span><span class='hljl-n'>countyshapeurl</span><span class='hljl-p'>,</span><span class='hljl-s'>&quot;data/cb_2018_us_county_5m.zip&quot;</span><span class='hljl-p'>)</span><span class='hljl-t'>
+</span><span class='hljl-nf'>cd</span><span class='hljl-p'>(</span><span class='hljl-s'>&quot;data&quot;</span><span class='hljl-p'>)</span><span class='hljl-t'>
+</span><span class='hljl-nf'>run</span><span class='hljl-p'>(</span><span class='hljl-sb'>`unzip cb_2018_us_county_5m.zip`</span><span class='hljl-p'>)</span><span class='hljl-t'>
+</span><span class='hljl-nf'>cd</span><span class='hljl-p'>(</span><span class='hljl-s'>&quot;..&quot;</span><span class='hljl-p'>)</span>
+</pre>
+
+
+<p>Inside the zip file are a number of files, the one ending in &quot;.shp&quot; is in the shape file format. We can read this using GMT&#39;s function gmtread</p>
+
+
+<pre class='hljl'>
+<span class='hljl-n'>counties</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nf'>gmtread</span><span class='hljl-p'>(</span><span class='hljl-s'>&quot;data/cb_2018_us_county_5m.shp&quot;</span><span class='hljl-p'>)</span>
+</pre>
+
+
+<pre class="output">
+This file has islands &#40;holes in polygons&#41;.
+	Use &#96;gmtread&#40;..., no_islands&#61;true&#41;&#96; to ignore them.
+Vector&#123;GMTdataset&#125; with 3571 segments
+PROJ: &#43;proj&#61;longlat &#43;datum&#61;NAD83 &#43;no_defs
+WKT: GEOGCS&#91;&quot;NAD83&quot;,
+    DATUM&#91;&quot;North_American_Datum_1983&quot;,
+        SPHEROID&#91;&quot;GRS 1980&quot;,6378137,298.257222101&#93;&#93;,
+    PRIMEM&#91;&quot;Greenwich&quot;,0&#93;,
+    UNIT&#91;&quot;degree&quot;,0.0174532925199433&#93;&#93;
+Header1:	39,071,01074048,0500000US39071,39071,Highland,06,1432479992,121949
+83
+Header2:	06,003,01675840,0500000US06003,06003,Alpine,06,1912292630,12557304
+Header3:	12,033,00295737,0500000US12033,12033,Escambia,06,1701544502,563927
+612
+Header4:	17,101,00424252,0500000US17101,17101,Lawrence,06,963936864,5077783
+Header5:	28,153,00695797,0500000US28153,28153,Wayne,06,2099745573,7255476
+Header6:	28,141,00695791,0500000US28141,28141,Tishomingo,06,1098938845,5236
+0190
+Header7:	30,089,01719578,0500000US30089,30089,Sanders,06,7149405165,7639414
+4
+Header8:	36,001,00974099,0500000US36001,36001,Albany,06,1354120790,27124553
+Header9:	42,105,01213684,0500000US42105,42105,Potter,06,2800612694,559778
+Header10:	29,077,00758493,0500000US29077,29077,Greene,06,1749081115,6620035
+...
+Header3563:	22,007,00558414,0500000US22007,22007,Assumption,15,877029986,67
+099711
+Header3564:	39,161,01074092,0500000US39161,39161,Van Wert,06,1059702141,327
+8633
+Header3565:	54,019,01560095,0500000US54019,54019,Fayette,06,1713569368,1744
+3841
+Header3566:	08,009,00198120,0500000US08009,08009,Baca,06,6617400546,6142193
+Header3567:	42,055,01213670,0500000US42055,42055,Franklin,06,2000048804,154
+7614
+Header3568:	12,001,00308548,0500000US12001,12001,Alachua,06,2266324954,2428
+77007
+Header3569:	48,247,01383909,0500000US48247,48247,Jim Hogg,06,2942674729,925
+65
+Header3570:	29,099,00758504,0500000US29099,29099,Jefferson,06,1700345322,20
+143587
+Header3571:	13,307,00352287,0500000US13307,13307,Webster,06,542230980,23481
+62
+First segment DATA
+Attributes: Dict&#40;&quot;LSAD&quot; &#61;&gt; &quot;06&quot;, &quot;COUNTYFP&quot; &#61;&gt; &quot;071&quot;, &quot;GEOID&quot; &#61;&gt; &quot;39071&quot;, &quot;
+COUNTYNS&quot; &#61;&gt; &quot;01074048&quot;, &quot;AWATER&quot; &#61;&gt; &quot;12194983&quot;, &quot;ALAND&quot; &#61;&gt; &quot;1432479992&quot;, &quot;
+AFFGEOID&quot; &#61;&gt; &quot;0500000US39071&quot;, &quot;STATEFP&quot; &#61;&gt; &quot;39&quot;, &quot;NAME&quot; &#61;&gt; &quot;Highland&quot;&#41;
+Global BoundingBox:    &#91;-179.14733999999999, 179.77847, -14.552548999999999
+, 71.352561, 0.0, 0.0&#93;
+First seg BoundingBox: &#91;-83.872214, -83.343479, 39.01889, 39.37873599999999
+6&#93;
+25×2 Matrix&#123;Float64&#125;:
+ -83.8698  39.0555
+ -83.8657  39.2473
+ -83.8344  39.2457
+ -83.8359  39.2233
+ -83.8139  39.223
+ -83.8013  39.2316
+ -83.7848  39.2629
+ -83.5909  39.3787
+ -83.3727  39.3774
+ -83.3751  39.3478
+   ⋮       
+ -83.3435  39.2332
+ -83.3535  39.1976
+ -83.3856  39.0552
+ -83.6116  39.0189
+ -83.673   39.0204
+ -83.7053  39.0214
+ -83.8169  39.0202
+ -83.8722  39.0213
+ -83.8698  39.0555
+</pre>
+
+
+<p>Now, what kind of thing is &quot;counties?&quot; </p>
+
+
+<pre class='hljl'>
+<span class='hljl-nf'>typeof</span><span class='hljl-p'>(</span><span class='hljl-n'>counties</span><span class='hljl-p'>)</span>
+</pre>
+
+
+<pre class="output">
+Vector&#123;GMTdataset&#125; &#40;alias for Array&#123;GMTdataset, 1&#125;&#41;
+</pre>
+
+
+<p>It&#39;s a Vector&#123;GMTdataset&#125;. Basically GMT treats the shape file as a collection of shapes, each shape gets its own GMTdataset, which is a structure</p>
+<pre><code class="language-&#123;eval&#61;false&#125;">search: GMTdataset
+
+  No documentation found.
+
+  Summary
+  ≡≡≡≡≡≡≡≡≡
+
+  mutable struct GMTdataset&#123;T&lt;:Real, N&#125;
+
+  Fields
+  ≡≡≡≡≡≡≡≡
+
+  data     :: Array&#123;T&lt;:Real, N&#125;
+  ds_bbox  :: Vector&#123;Float64&#125;
+  bbox     :: Vector&#123;Float64&#125;
+  attrib   :: Dict&#123;String, String&#125;
+  colnames :: Vector&#123;String&#125;
+  text     :: Vector&#123;String&#125;cpop.CFIPS &#61; format&#40;&quot;&#37;03d&quot;,cpop.COUNTY&#41;
+
+  geom     :: Int64
+
+  Supertype Hierarchy
+  ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+
+  GMTdataset&#123;T&lt;:Real, N&#125; &lt;: AbstractArray&#123;T&lt;:Real, N&#125; &lt;: Any</code></pre>
+<p>In addition to &quot;data&quot; which is lattitude and longitude values in this case, there are a variety of metadata fields. one of which is &quot;header&quot;.</p>
+<p>Let&#39;s look at the header of the first county:</p>
+
+
+<pre class='hljl'>
+<span class='hljl-n'>counties</span><span class='hljl-p'>[</span><span class='hljl-ni'>1</span><span class='hljl-p'>]</span><span class='hljl-oB'>.</span><span class='hljl-n'>header</span><span class='hljl-t'>
+</span><span class='hljl-n'>counties</span><span class='hljl-p'>[</span><span class='hljl-ni'>1</span><span class='hljl-p'>]</span><span class='hljl-oB'>.</span><span class='hljl-n'>attrib</span>
+</pre>
+
+
+<pre class="output">
+Dict&#123;String, String&#125; with 9 entries:
+  &quot;LSAD&quot;     &#61;&gt; &quot;06&quot;
+  &quot;COUNTYFP&quot; &#61;&gt; &quot;071&quot;
+  &quot;GEOID&quot;    &#61;&gt; &quot;39071&quot;
+  &quot;COUNTYNS&quot; &#61;&gt; &quot;01074048&quot;
+  &quot;AWATER&quot;   &#61;&gt; &quot;12194983&quot;
+  &quot;ALAND&quot;    &#61;&gt; &quot;1432479992&quot;
+  &quot;AFFGEOID&quot; &#61;&gt; &quot;0500000US39071&quot;
+  &quot;STATEFP&quot;  &#61;&gt; &quot;39&quot;
+  &quot;NAME&quot;     &#61;&gt; &quot;Highland&quot;
+</pre>
+
+
+<p>This shows that the header is a comma separated values string. We want to &quot;join&quot; our data to these counties such that the county FIPS identifier  is the same. The FIPS identifier is a unique numerical code assigned to each county &#40;the names are not necessarily unique&#41;. </p>
+<p>In this case, we have the value 39 being the FIPS code for the state of Ohio, and 071 being the county FIPS code for Highland County.</p>
+<p>So we&#39;d like to join field 2 of the header to the COUNTY column of our population data.  However our population data represents the COUNTY field as a number, not a 0 padded string. Let&#39;s fix that then do the join</p>
+
+
+<pre class='hljl'>
+<span class='hljl-n'>cpop</span><span class='hljl-oB'>.</span><span class='hljl-n'>COUNTY</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-n'>Printf</span><span class='hljl-oB'>.</span><span class='hljl-n'>format</span><span class='hljl-oB'>.</span><span class='hljl-p'>(</span><span class='hljl-nf'>Ref</span><span class='hljl-p'>(</span><span class='hljl-n'>Printf</span><span class='hljl-oB'>.</span><span class='hljl-nf'>Format</span><span class='hljl-p'>(</span><span class='hljl-s'>&quot;%03d&quot;</span><span class='hljl-p'>)),</span><span class='hljl-n'>cpop</span><span class='hljl-oB'>.</span><span class='hljl-n'>COUNTY</span><span class='hljl-p'>)</span><span class='hljl-t'>
+</span><span class='hljl-n'>cpop</span><span class='hljl-oB'>.</span><span class='hljl-n'>STATE</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-n'>Printf</span><span class='hljl-oB'>.</span><span class='hljl-n'>format</span><span class='hljl-oB'>.</span><span class='hljl-p'>(</span><span class='hljl-nf'>Ref</span><span class='hljl-p'>(</span><span class='hljl-n'>Printf</span><span class='hljl-oB'>.</span><span class='hljl-nf'>Format</span><span class='hljl-p'>(</span><span class='hljl-s'>&quot;%02d&quot;</span><span class='hljl-p'>)),</span><span class='hljl-n'>cpop</span><span class='hljl-oB'>.</span><span class='hljl-n'>STATE</span><span class='hljl-p'>)</span><span class='hljl-t'>
+
+</span><span class='hljl-n'>cpop</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-n'>cpop</span><span class='hljl-p'>[</span><span class='hljl-n'>cpop</span><span class='hljl-oB'>.</span><span class='hljl-n'>COUNTY</span><span class='hljl-t'> </span><span class='hljl-oB'>.!=</span><span class='hljl-t'> </span><span class='hljl-s'>&quot;000&quot;</span><span class='hljl-p'>,</span><span class='hljl-oB'>:</span><span class='hljl-p'>]</span><span class='hljl-t'> </span><span class='hljl-cs'>## eliminate county &quot;000&quot; which is &quot;the whole state&quot; for each state</span><span class='hljl-t'>
+
+</span><span class='hljl-n'>dfc</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nf'>DataFrame</span><span class='hljl-p'>(</span><span class='hljl-n'>STATE</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nf'>map</span><span class='hljl-p'>(</span><span class='hljl-n'>x</span><span class='hljl-oB'>-&gt;</span><span class='hljl-n'>x</span><span class='hljl-oB'>.</span><span class='hljl-n'>attrib</span><span class='hljl-p'>[</span><span class='hljl-s'>&quot;STATEFP&quot;</span><span class='hljl-p'>],</span><span class='hljl-n'>counties</span><span class='hljl-p'>),</span><span class='hljl-n'>COUNTY</span><span class='hljl-oB'>=</span><span class='hljl-nf'>map</span><span class='hljl-p'>(</span><span class='hljl-n'>x</span><span class='hljl-t'> </span><span class='hljl-oB'>-&gt;</span><span class='hljl-t'> </span><span class='hljl-n'>x</span><span class='hljl-oB'>.</span><span class='hljl-n'>attrib</span><span class='hljl-p'>[</span><span class='hljl-s'>&quot;COUNTYFP&quot;</span><span class='hljl-p'>],</span><span class='hljl-n'>counties</span><span class='hljl-p'>),</span><span class='hljl-n'>ORDER</span><span class='hljl-oB'>=</span><span class='hljl-ni'>1</span><span class='hljl-oB'>:</span><span class='hljl-nf'>length</span><span class='hljl-p'>(</span><span class='hljl-n'>counties</span><span class='hljl-p'>))</span><span class='hljl-t'>
+
+
+</span><span class='hljl-n'>joineddata</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nd'>@chain</span><span class='hljl-t'> </span><span class='hljl-nf'>leftjoin</span><span class='hljl-p'>(</span><span class='hljl-n'>dfc</span><span class='hljl-p'>,</span><span class='hljl-n'>cpop</span><span class='hljl-p'>,</span><span class='hljl-n'>on</span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-p'>[</span><span class='hljl-sc'>:STATE</span><span class='hljl-p'>,</span><span class='hljl-oB'>:</span><span class='hljl-n'>COUNTY</span><span class='hljl-p'>],</span><span class='hljl-n'>makeunique</span><span class='hljl-oB'>=</span><span class='hljl-kc'>true</span><span class='hljl-p'>)</span><span class='hljl-t'> </span><span class='hljl-k'>begin</span><span class='hljl-t'>
+</span><span class='hljl-nd'>@orderby</span><span class='hljl-p'>(</span><span class='hljl-sc'>:ORDER</span><span class='hljl-p'>)</span><span class='hljl-t'>
+</span><span class='hljl-k'>end</span><span class='hljl-t'>
+
+</span><span class='hljl-n'>cptvallog</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nf'>makecpt</span><span class='hljl-p'>(</span><span class='hljl-n'>range</span><span class='hljl-oB'>=</span><span class='hljl-p'>(</span><span class='hljl-nf'>log</span><span class='hljl-p'>(</span><span class='hljl-ni'>1000</span><span class='hljl-p'>),</span><span class='hljl-nf'>log</span><span class='hljl-p'>(</span><span class='hljl-nfB'>11e6</span><span class='hljl-p'>)),</span><span class='hljl-n'>C</span><span class='hljl-oB'>=:</span><span class='hljl-n'>plasma</span><span class='hljl-p'>)</span><span class='hljl-t'>
+
+</span><span class='hljl-cs'>#imshow(counties,level=joineddata.POPESTIMATE2020,cmap=cptval,close=true,fill=&quot;+z&quot;,pen=0.25,region=(-125,-65,24,50),proj=:guess,colorbar=true)</span>
+</pre>
+
+
+<pre class="output">
+GMT.GMTcpt&#40;&#91;0.050980392156862744 0.03137254901960784 0.5294117647058824; 0.
+06274509803921569 0.027450980392156862 0.5333333333333333; … ; 0.9411764705
+882353 0.9686274509803922 0.1411764705882353; 0.9411764705882353 0.94117647
+05882353 0.9411764705882353&#93;, &#91;0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+ 0.0  …  0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0&#93;, &#91;6.907755278982
+137 6.944233429145116; 6.944233429145116 6.980711579308096; … ; 16.14044953
+0436687 16.17692768059967; 16.17692768059967 16.213405830762646&#93;, &#91;6.907755
+278982137, 16.213405830762646&#93;, &#91;0.0 0.0 0.0; 1.0 1.0 1.0; 0.50196078431372
+55 0.5019607843137255 0.5019607843137255&#93;, 24, NaN, &#91;0.050980392156862744 0
+.03137254901960784 … 0.027450980392156862 0.5333333333333333; 0.06274509803
+921569 0.027450980392156862 … 0.027450980392156862 0.5372549019607843; … ; 
+0.9450980392156862 0.9607843137254902 … 0.9686274509803922 0.14117647058823
+53; 0.9411764705882353 0.9686274509803922 … 0.9764705882352941 0.1294117647
+0588237&#93;, &#91;&quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;  …  &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;
+&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;&#93;, &#91;&quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;  …  &quot;&quot;, &quot;&quot;, &quot;&quot;,
+ &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;&#93;, &quot;rgb&quot;, String&#91;&#93;&#41;
+</pre>
+
+
+<p>There are missing values of POPESTIMATE2020 so let&#39;s replace them with NaN so we at least still get the polygon drawn. GMT will draw NaN  as a special color.</p>
+
+
+<pre class='hljl'>
+<span class='hljl-n'>joineddata</span><span class='hljl-oB'>.</span><span class='hljl-n'>POPESTIMATE2020</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nf'>replace</span><span class='hljl-p'>(</span><span class='hljl-n'>joineddata</span><span class='hljl-oB'>.</span><span class='hljl-n'>POPESTIMATE2020</span><span class='hljl-p'>,</span><span class='hljl-n'>missing</span><span class='hljl-t'> </span><span class='hljl-oB'>=&gt;</span><span class='hljl-t'> </span><span class='hljl-n'>NaN</span><span class='hljl-p'>)</span><span class='hljl-t'>
+
+
+
+</span><span class='hljl-n'>GMT</span><span class='hljl-oB'>.</span><span class='hljl-nf'>plot</span><span class='hljl-p'>(</span><span class='hljl-n'>counties</span><span class='hljl-p'>,</span><span class='hljl-n'>level</span><span class='hljl-oB'>=</span><span class='hljl-n'>log</span><span class='hljl-oB'>.</span><span class='hljl-p'>(</span><span class='hljl-nfB'>1.0</span><span class='hljl-t'> </span><span class='hljl-oB'>.+</span><span class='hljl-t'> </span><span class='hljl-n'>joineddata</span><span class='hljl-oB'>.</span><span class='hljl-n'>POPESTIMATE2020</span><span class='hljl-p'>),</span><span class='hljl-n'>cmap</span><span class='hljl-oB'>=</span><span class='hljl-n'>cptvallog</span><span class='hljl-p'>,</span><span class='hljl-n'>close</span><span class='hljl-oB'>=</span><span class='hljl-kc'>true</span><span class='hljl-p'>,</span><span class='hljl-n'>fill</span><span class='hljl-oB'>=</span><span class='hljl-s'>&quot;+z&quot;</span><span class='hljl-p'>,</span><span class='hljl-n'>pen</span><span class='hljl-oB'>=</span><span class='hljl-nfB'>0.25</span><span class='hljl-p'>,</span><span class='hljl-n'>region</span><span class='hljl-oB'>=</span><span class='hljl-p'>(</span><span class='hljl-oB'>-</span><span class='hljl-ni'>125</span><span class='hljl-p'>,</span><span class='hljl-oB'>-</span><span class='hljl-ni'>65</span><span class='hljl-p'>,</span><span class='hljl-ni'>24</span><span class='hljl-p'>,</span><span class='hljl-ni'>50</span><span class='hljl-p'>),</span><span class='hljl-t'>
+    </span><span class='hljl-n'>proj</span><span class='hljl-oB'>=:</span><span class='hljl-n'>guess</span><span class='hljl-p'>,</span><span class='hljl-n'>colorbar</span><span class='hljl-oB'>=</span><span class='hljl-kc'>true</span><span class='hljl-p'>,</span><span class='hljl-n'>figname</span><span class='hljl-oB'>=</span><span class='hljl-s'>&quot;choroplethlog.png&quot;</span><span class='hljl-p'>,</span><span class='hljl-n'>title</span><span class='hljl-oB'>=</span><span class='hljl-s'>&quot;Continental US County log(Population)&quot;</span><span class='hljl-p'>)</span>
+</pre>
+
+
+
+<p><img src="choroplethlog.png" alt="Choropleth of log&#40;population&#41; at county level" /></p>
+<p>Let&#39;s see what it looks like if we don&#39;t take the logarithm...</p>
+
+
+<pre class='hljl'>
+<span class='hljl-n'>cptval</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nf'>makecpt</span><span class='hljl-p'>(</span><span class='hljl-n'>range</span><span class='hljl-oB'>=</span><span class='hljl-p'>(</span><span class='hljl-ni'>0</span><span class='hljl-p'>,</span><span class='hljl-ni'>11_000_000</span><span class='hljl-p'>),</span><span class='hljl-n'>C</span><span class='hljl-oB'>=:</span><span class='hljl-n'>plasma</span><span class='hljl-p'>)</span><span class='hljl-t'>
+
+</span><span class='hljl-n'>GMT</span><span class='hljl-oB'>.</span><span class='hljl-nf'>plot</span><span class='hljl-p'>(</span><span class='hljl-n'>counties</span><span class='hljl-p'>,</span><span class='hljl-n'>level</span><span class='hljl-oB'>=</span><span class='hljl-n'>joineddata</span><span class='hljl-oB'>.</span><span class='hljl-n'>POPESTIMATE2020</span><span class='hljl-p'>,</span><span class='hljl-n'>cmap</span><span class='hljl-oB'>=</span><span class='hljl-n'>cptval</span><span class='hljl-p'>,</span><span class='hljl-n'>close</span><span class='hljl-oB'>=</span><span class='hljl-kc'>true</span><span class='hljl-p'>,</span><span class='hljl-n'>fill</span><span class='hljl-oB'>=</span><span class='hljl-s'>&quot;+z&quot;</span><span class='hljl-p'>,</span><span class='hljl-n'>pen</span><span class='hljl-oB'>=</span><span class='hljl-nfB'>0.25</span><span class='hljl-p'>,</span><span class='hljl-n'>region</span><span class='hljl-oB'>=</span><span class='hljl-p'>(</span><span class='hljl-oB'>-</span><span class='hljl-ni'>125</span><span class='hljl-p'>,</span><span class='hljl-oB'>-</span><span class='hljl-ni'>65</span><span class='hljl-p'>,</span><span class='hljl-ni'>24</span><span class='hljl-p'>,</span><span class='hljl-ni'>50</span><span class='hljl-p'>),</span><span class='hljl-t'>
+    </span><span class='hljl-n'>proj</span><span class='hljl-oB'>=:</span><span class='hljl-n'>guess</span><span class='hljl-p'>,</span><span class='hljl-n'>colorbar</span><span class='hljl-oB'>=</span><span class='hljl-kc'>true</span><span class='hljl-p'>,</span><span class='hljl-n'>figname</span><span class='hljl-oB'>=</span><span class='hljl-s'>&quot;choroplethnolog.png&quot;</span><span class='hljl-p'>,</span><span class='hljl-n'>title</span><span class='hljl-oB'>=</span><span class='hljl-s'>&quot;Continental US County Population&quot;</span><span class='hljl-p'>)</span>
+</pre>
+
+
+
+<p><img src="choroplethnolog.png" alt="Continental Population" /></p>
+<p>It may be interesting to work further with the polygons that represent the counties in some additional ways. For example we could calculate the population Density by dividing the population by the area of the polygon. We can calculate the area using the function gmtspatial.</p>
+
+
+<pre class='hljl'>
+<span class='hljl-n'>measures</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nf'>gmtspatial</span><span class='hljl-p'>(</span><span class='hljl-n'>counties</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>area</span><span class='hljl-oB'>=</span><span class='hljl-s'>&quot;k&quot;</span><span class='hljl-p'>)[</span><span class='hljl-ni'>1</span><span class='hljl-p'>]</span><span class='hljl-t'> </span><span class='hljl-cs'># to get area in km^2</span><span class='hljl-t'>
+</span><span class='hljl-nf'>print</span><span class='hljl-p'>(</span><span class='hljl-nf'>typeof</span><span class='hljl-p'>(</span><span class='hljl-n'>measures</span><span class='hljl-p'>))</span><span class='hljl-t'>
+</span><span class='hljl-nf'>length</span><span class='hljl-p'>(</span><span class='hljl-n'>measures</span><span class='hljl-p'>)</span><span class='hljl-t'>
+</span><span class='hljl-nf'>print</span><span class='hljl-p'>(</span><span class='hljl-n'>measures</span><span class='hljl-p'>)</span>
+</pre>
+
+
+<pre class="output">
+GMTdataset&#123;Float64, 2&#125;BoundingBox:  &#91;-179.10882508557128, 179.6234549210534
+2, -14.542124124603314, 69.40079782409146, 0.0001071433475167924, 384291.37
+54448318&#93;
+3571×3 Matrix&#123;Float64&#125;:
+  -83.6009  39.1847  1446.7
+ -119.821   38.5971  1925.5
+  -87.362   30.6678  1939.81
+  -87.7269  38.7203   968.306
+  -88.6959  31.6407  2107.22
+  -88.2392  34.74    1151.02
+ -115.13    47.6745  7235.18
+  -73.9735  42.6001  1385.33
+  -77.8956  41.7446  2803.22
+  -93.3419  37.258   1756.51
+    ⋮                
+  -91.0626  29.9009   944.669
+  -84.5861  40.8556  1063.1
+  -81.0811  38.0287  1732.05
+ -102.56    37.3194  6624.41
+  -77.7217  39.9272  2000.25
+  -82.3582  29.6747  2509.54
+  -98.6973  27.0433  2937.68
+  -90.538   38.2606  1722.83
+  -84.5497  32.0458   544.366
+</pre>
+
+
+<p>But some counties will consiste of several polygons, like some along the coast may include some islands, etc, to get the total area, we  need to group by county identifier, and sum all the areas.</p>
+
+
+<pre class='hljl'>
+<span class='hljl-n'>countyareas</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nd'>@chain</span><span class='hljl-t'> </span><span class='hljl-n'>dfc</span><span class='hljl-t'> </span><span class='hljl-k'>begin</span><span class='hljl-t'>
+  </span><span class='hljl-nd'>@transform</span><span class='hljl-p'>(</span><span class='hljl-sc'>:area</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-n'>measures</span><span class='hljl-p'>[</span><span class='hljl-oB'>:</span><span class='hljl-p'>,</span><span class='hljl-ni'>3</span><span class='hljl-p'>])</span><span class='hljl-t'>
+  </span><span class='hljl-nf'>groupby</span><span class='hljl-p'>([</span><span class='hljl-sc'>:STATE</span><span class='hljl-p'>,</span><span class='hljl-oB'>:</span><span class='hljl-n'>COUNTY</span><span class='hljl-p'>])</span><span class='hljl-t'>
+  </span><span class='hljl-nd'>@combine</span><span class='hljl-p'>(</span><span class='hljl-sc'>:totarea</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nf'>sum</span><span class='hljl-p'>(</span><span class='hljl-sc'>:area</span><span class='hljl-p'>))</span><span class='hljl-t'>
+  </span><span class='hljl-nd'>@select</span><span class='hljl-p'>(</span><span class='hljl-sc'>:STATE</span><span class='hljl-p'>,</span><span class='hljl-oB'>:</span><span class='hljl-n'>COUNTY</span><span class='hljl-p'>,</span><span class='hljl-oB'>:</span><span class='hljl-n'>totarea</span><span class='hljl-p'>)</span><span class='hljl-t'>
+</span><span class='hljl-k'>end</span><span class='hljl-t'>
+
+
+</span><span class='hljl-n'>cpop</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nd'>@chain</span><span class='hljl-t'> </span><span class='hljl-nf'>leftjoin</span><span class='hljl-p'>(</span><span class='hljl-n'>cpop</span><span class='hljl-p'>,</span><span class='hljl-n'>countyareas</span><span class='hljl-p'>,</span><span class='hljl-n'>on</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-p'>[</span><span class='hljl-sc'>:STATE</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-sc'>:COUNTY</span><span class='hljl-p'>])</span><span class='hljl-t'> </span><span class='hljl-k'>begin</span><span class='hljl-t'>
+  </span><span class='hljl-nd'>@transform</span><span class='hljl-p'>(</span><span class='hljl-sc'>:density</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-sc'>:POPESTIMATE2020</span><span class='hljl-t'> </span><span class='hljl-oB'>./</span><span class='hljl-t'> </span><span class='hljl-sc'>:totarea</span><span class='hljl-p'>)</span><span class='hljl-t'>
+  </span><span class='hljl-nd'>@orderby</span><span class='hljl-p'>(</span><span class='hljl-sc'>:STATE</span><span class='hljl-p'>,</span><span class='hljl-oB'>:</span><span class='hljl-n'>COUNTY</span><span class='hljl-p'>)</span><span class='hljl-t'>
+</span><span class='hljl-k'>end</span><span class='hljl-t'>
+
+</span><span class='hljl-nf'>print</span><span class='hljl-p'>(</span><span class='hljl-n'>cpop</span><span class='hljl-p'>[</span><span class='hljl-ni'>1</span><span class='hljl-oB'>:</span><span class='hljl-ni'>10</span><span class='hljl-p'>,</span><span class='hljl-oB'>:</span><span class='hljl-p'>])</span><span class='hljl-t'>
+
+</span><span class='hljl-n'>joineddata</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nd'>@chain</span><span class='hljl-t'> </span><span class='hljl-nf'>leftjoin</span><span class='hljl-p'>(</span><span class='hljl-n'>dfc</span><span class='hljl-p'>,</span><span class='hljl-n'>cpop</span><span class='hljl-p'>,</span><span class='hljl-n'>on</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-p'>[</span><span class='hljl-sc'>:STATE</span><span class='hljl-p'>,</span><span class='hljl-oB'>:</span><span class='hljl-n'>COUNTY</span><span class='hljl-p'>])</span><span class='hljl-t'> </span><span class='hljl-k'>begin</span><span class='hljl-t'> 
+  </span><span class='hljl-nd'>@orderby</span><span class='hljl-p'>(</span><span class='hljl-sc'>:ORDER</span><span class='hljl-p'>)</span><span class='hljl-t'>
+</span><span class='hljl-k'>end</span>
+</pre>
+
+
+<pre class="output">
+10×7 DataFrame
+ Row │ STATE   COUNTY  STNAME    CTYNAME          POPESTIMATE2020  totarea 
+  density
+     │ String  String  String31  String           Int64            Float64?
+  Float64?
+─────┼─────────────────────────────────────────────────────────────────────
+───────────
+   1 │ 01      001     Alabama   Autauga County             56145   1560.78
+  35.9725
+   2 │ 01      003     Alabama   Baldwin County            229287   4352.7 
+  52.677
+   3 │ 01      005     Alabama   Barbour County             24589   2346.53
+  10.4789
+   4 │ 01      007     Alabama   Bibb County                22136   1622.71
+  13.6414
+   5 │ 01      009     Alabama   Blount County              57879   1686.26
+  34.3238
+   6 │ 01      011     Alabama   Bullock County              9976   1617.2 
+   6.16867
+   7 │ 01      013     Alabama   Butler County              19504   2014.3 
+   9.68279
+   8 │ 01      015     Alabama   Calhoun County            113469   1582.32
+  71.7105
+   9 │ 01      017     Alabama   Chambers County            32865   1563.07
+  21.0259
+  10 │ 01      019     Alabama   Cherokee County            26294   1554.12
+  16.9189
+</pre>
+
+
+<div class="data-frame"><p>3,571 rows × 8 columns (omitted printing of 1 columns)</p><table class="data-frame"><thead><tr><th></th><th>STATE</th><th>COUNTY</th><th>ORDER</th><th>STNAME</th><th>CTYNAME</th><th>POPESTIMATE2020</th><th>totarea</th></tr><tr><th></th><th title="String">String</th><th title="String">String</th><th title="Int64">Int64</th><th title="Union{Missing, String31}">String31?</th><th title="Union{Missing, String}">String?</th><th title="Union{Missing, Int64}">Int64?</th><th title="Union{Missing, Float64}">Float64?</th></tr></thead><tbody><tr><th>1</th><td>39</td><td>071</td><td>1</td><td>Ohio</td><td>Highland County</td><td>43304</td><td>1446.7</td></tr><tr><th>2</th><td>06</td><td>003</td><td>2</td><td>California</td><td>Alpine County</td><td>1119</td><td>1925.5</td></tr><tr><th>3</th><td>12</td><td>033</td><td>3</td><td>Florida</td><td>Escambia County</td><td>322364</td><td>1939.81</td></tr><tr><th>4</th><td>17</td><td>101</td><td>4</td><td>Illinois</td><td>Lawrence County</td><td>15467</td><td>968.306</td></tr><tr><th>5</th><td>28</td><td>153</td><td>5</td><td>Mississippi</td><td>Wayne County</td><td>20317</td><td>2107.22</td></tr><tr><th>6</th><td>28</td><td>141</td><td>6</td><td>Mississippi</td><td>Tishomingo County</td><td>19275</td><td>1151.02</td></tr><tr><th>7</th><td>30</td><td>089</td><td>7</td><td>Montana</td><td>Sanders County</td><td>12157</td><td>7235.18</td></tr><tr><th>8</th><td>36</td><td>001</td><td>8</td><td>New York</td><td>Albany County</td><td>303654</td><td>1385.33</td></tr><tr><th>9</th><td>42</td><td>105</td><td>9</td><td>Pennsylvania</td><td>Potter County</td><td>16453</td><td>2803.22</td></tr><tr><th>10</th><td>29</td><td>077</td><td>10</td><td>Missouri</td><td>Greene County</td><td>294997</td><td>1756.51</td></tr><tr><th>11</th><td>29</td><td>205</td><td>11</td><td>Missouri</td><td>Shelby County</td><td>5919</td><td>1298.11</td></tr><tr><th>12</th><td>02</td><td>100</td><td>12</td><td>Alaska</td><td>Haines Borough</td><td>2614</td><td>6272.01</td></tr><tr><th>13</th><td>02</td><td>100</td><td>13</td><td>Alaska</td><td>Haines Borough</td><td>2614</td><td>6272.01</td></tr><tr><th>14</th><td>02</td><td>100</td><td>14</td><td>Alaska</td><td>Haines Borough</td><td>2614</td><td>6272.01</td></tr><tr><th>15</th><td>04</td><td>015</td><td>15</td><td>Arizona</td><td>Mohave County</td><td>217206</td><td>34881.9</td></tr><tr><th>16</th><td>13</td><td>143</td><td>16</td><td>Georgia</td><td>Haralson County</td><td>30383</td><td>734.927</td></tr><tr><th>17</th><td>21</td><td>145</td><td>17</td><td>Kentucky</td><td>McCracken County</td><td>65644</td><td>693.749</td></tr><tr><th>18</th><td>27</td><td>133</td><td>18</td><td>Minnesota</td><td>Rock County</td><td>9301</td><td>1253.7</td></tr><tr><th>19</th><td>41</td><td>047</td><td>19</td><td>Oregon</td><td>Marion County</td><td>349204</td><td>3089.11</td></tr><tr><th>20</th><td>47</td><td>125</td><td>20</td><td>Tennessee</td><td>Montgomery County</td><td>214251</td><td>1406.65</td></tr><tr><th>21</th><td>48</td><td>243</td><td>21</td><td>Texas</td><td>Jeff Davis County</td><td>2220</td><td>5858.32</td></tr><tr><th>22</th><td>55</td><td>061</td><td>22</td><td>Wisconsin</td><td>Kewaunee County</td><td>20386</td><td>891.309</td></tr><tr><th>23</th><td>05</td><td>051</td><td>23</td><td>Arkansas</td><td>Garland County</td><td>99789</td><td>1902.12</td></tr><tr><th>24</th><td>06</td><td>109</td><td>24</td><td>California</td><td>Tuolumne County</td><td>54515</td><td>5891.94</td></tr><tr><th>&vellip;</th><td>&vellip;</td><td>&vellip;</td><td>&vellip;</td><td>&vellip;</td><td>&vellip;</td><td>&vellip;</td><td>&vellip;</td></tr></tbody></table></div>
+
+
+<pre class='hljl'>
+<span class='hljl-n'>denscpt</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nf'>makecpt</span><span class='hljl-p'>(</span><span class='hljl-n'>range</span><span class='hljl-oB'>=</span><span class='hljl-p'>(</span><span class='hljl-ni'>0</span><span class='hljl-p'>,</span><span class='hljl-nfB'>11e6</span><span class='hljl-oB'>/</span><span class='hljl-p'>(</span><span class='hljl-ni'>100</span><span class='hljl-oB'>*</span><span class='hljl-ni'>100</span><span class='hljl-p'>)),</span><span class='hljl-n'>C</span><span class='hljl-oB'>=:</span><span class='hljl-n'>plasma</span><span class='hljl-p'>)</span><span class='hljl-t'>
+
+
+</span><span class='hljl-n'>GMT</span><span class='hljl-oB'>.</span><span class='hljl-nf'>plot</span><span class='hljl-p'>(</span><span class='hljl-n'>counties</span><span class='hljl-p'>,</span><span class='hljl-n'>level</span><span class='hljl-oB'>=</span><span class='hljl-nf'>Vector</span><span class='hljl-p'>{</span><span class='hljl-n'>Float64</span><span class='hljl-p'>}(</span><span class='hljl-nf'>replace</span><span class='hljl-p'>(</span><span class='hljl-n'>joineddata</span><span class='hljl-oB'>.</span><span class='hljl-n'>density</span><span class='hljl-p'>,</span><span class='hljl-n'>missing</span><span class='hljl-oB'>=&gt;</span><span class='hljl-n'>NaN</span><span class='hljl-p'>)),</span><span class='hljl-n'>cmap</span><span class='hljl-oB'>=</span><span class='hljl-n'>denscpt</span><span class='hljl-p'>,</span><span class='hljl-n'>close</span><span class='hljl-oB'>=</span><span class='hljl-kc'>true</span><span class='hljl-p'>,</span><span class='hljl-n'>fill</span><span class='hljl-oB'>=</span><span class='hljl-s'>&quot;+z&quot;</span><span class='hljl-p'>,</span><span class='hljl-n'>pen</span><span class='hljl-oB'>=</span><span class='hljl-nfB'>0.25</span><span class='hljl-p'>,</span><span class='hljl-n'>region</span><span class='hljl-oB'>=</span><span class='hljl-p'>(</span><span class='hljl-oB'>-</span><span class='hljl-ni'>125</span><span class='hljl-p'>,</span><span class='hljl-oB'>-</span><span class='hljl-ni'>65</span><span class='hljl-p'>,</span><span class='hljl-ni'>24</span><span class='hljl-p'>,</span><span class='hljl-ni'>50</span><span class='hljl-p'>),</span><span class='hljl-t'>
+    </span><span class='hljl-n'>proj</span><span class='hljl-oB'>=:</span><span class='hljl-n'>guess</span><span class='hljl-p'>,</span><span class='hljl-n'>colorbar</span><span class='hljl-oB'>=</span><span class='hljl-kc'>true</span><span class='hljl-p'>,</span><span class='hljl-n'>figname</span><span class='hljl-oB'>=</span><span class='hljl-s'>&quot;choroplethdens.png&quot;</span><span class='hljl-p'>,</span><span class='hljl-n'>title</span><span class='hljl-oB'>=</span><span class='hljl-s'>&quot;Continental US County Pop Density (1/km^2)&quot;</span><span class='hljl-p'>)</span>
+</pre>
+
+
+
+<p><img src="choroplethdens.png" alt="Continental US Density" /></p>
+<h2>Smallest Area Containing ~50&#37; of the population</h2>
+<p>Our approach to this question will be to sort the counties by density in decreasing order, cumsum the populations... and then create an indicator  variable for whether the cumsum is less than 50&#37; of the total, then plot this indicator variable.</p>
+
+
+<pre class='hljl'>
+<span class='hljl-n'>totpop</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nf'>sum</span><span class='hljl-p'>(</span><span class='hljl-n'>cpop</span><span class='hljl-p'>[</span><span class='hljl-n'>cpop</span><span class='hljl-oB'>.</span><span class='hljl-n'>COUNTY</span><span class='hljl-t'> </span><span class='hljl-oB'>.!=</span><span class='hljl-t'> </span><span class='hljl-s'>&quot;000&quot;</span><span class='hljl-p'>,</span><span class='hljl-oB'>:</span><span class='hljl-n'>POPESTIMATE2020</span><span class='hljl-p'>])</span><span class='hljl-t'> </span><span class='hljl-cs'>## ignore county 0, that&#39;s the &quot;whole state&quot;</span><span class='hljl-t'>
+</span><span class='hljl-nf'>print</span><span class='hljl-p'>(</span><span class='hljl-n'>totpop</span><span class='hljl-p'>)</span><span class='hljl-t'>
+
+</span><span class='hljl-n'>areads</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nd'>@chain</span><span class='hljl-t'> </span><span class='hljl-n'>cpop</span><span class='hljl-t'> </span><span class='hljl-k'>begin</span><span class='hljl-t'>
+</span><span class='hljl-nd'>@subset</span><span class='hljl-p'>(</span><span class='hljl-sc'>:COUNTY</span><span class='hljl-t'> </span><span class='hljl-oB'>.!=</span><span class='hljl-t'> </span><span class='hljl-s'>&quot;000&quot;</span><span class='hljl-p'>)</span><span class='hljl-t'>
+</span><span class='hljl-nd'>@orderby</span><span class='hljl-p'>(</span><span class='hljl-oB'>-:</span><span class='hljl-n'>density</span><span class='hljl-p'>)</span><span class='hljl-t'>
+</span><span class='hljl-nd'>@transform</span><span class='hljl-p'>(</span><span class='hljl-t'> </span><span class='hljl-sc'>:csum</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nf'>cumsum</span><span class='hljl-p'>(</span><span class='hljl-sc'>:POPESTIMATE2020</span><span class='hljl-p'>))</span><span class='hljl-t'>
+</span><span class='hljl-nd'>@transform</span><span class='hljl-p'>(</span><span class='hljl-t'> </span><span class='hljl-sc'>:inset</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-sc'>:csum</span><span class='hljl-t'> </span><span class='hljl-oB'>.&lt;</span><span class='hljl-t'> </span><span class='hljl-n'>totpop</span><span class='hljl-oB'>/</span><span class='hljl-nfB'>2.0</span><span class='hljl-p'>,</span><span class='hljl-oB'>:</span><span class='hljl-n'>in80set</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-sc'>:csum</span><span class='hljl-t'> </span><span class='hljl-oB'>.&lt;</span><span class='hljl-t'> </span><span class='hljl-nfB'>0.8</span><span class='hljl-t'> </span><span class='hljl-oB'>*</span><span class='hljl-t'> </span><span class='hljl-n'>totpop</span><span class='hljl-p'>)</span><span class='hljl-t'>
+</span><span class='hljl-k'>end</span><span class='hljl-t'>
+
+</span><span class='hljl-n'>joineddata</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nd'>@chain</span><span class='hljl-t'> </span><span class='hljl-nf'>leftjoin</span><span class='hljl-p'>(</span><span class='hljl-n'>dfc</span><span class='hljl-p'>,</span><span class='hljl-n'>areads</span><span class='hljl-p'>,</span><span class='hljl-n'>on</span><span class='hljl-oB'>=</span><span class='hljl-p'>[</span><span class='hljl-sc'>:STATE</span><span class='hljl-p'>,</span><span class='hljl-oB'>:</span><span class='hljl-n'>COUNTY</span><span class='hljl-p'>])</span><span class='hljl-t'> </span><span class='hljl-k'>begin</span><span class='hljl-t'>
+  </span><span class='hljl-nd'>@orderby</span><span class='hljl-p'>(</span><span class='hljl-sc'>:ORDER</span><span class='hljl-p'>)</span><span class='hljl-t'>
+</span><span class='hljl-k'>end</span><span class='hljl-t'>
+
+</span><span class='hljl-n'>insetcmap</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nf'>makecpt</span><span class='hljl-p'>(</span><span class='hljl-nf'>range</span><span class='hljl-p'>(</span><span class='hljl-ni'>0</span><span class='hljl-p'>,</span><span class='hljl-ni'>1</span><span class='hljl-p'>),</span><span class='hljl-n'>C</span><span class='hljl-oB'>=:</span><span class='hljl-n'>plasma</span><span class='hljl-p'>)</span><span class='hljl-t'>
+
+</span><span class='hljl-n'>GMT</span><span class='hljl-oB'>.</span><span class='hljl-nf'>plot</span><span class='hljl-p'>(</span><span class='hljl-n'>counties</span><span class='hljl-p'>,</span><span class='hljl-n'>level</span><span class='hljl-oB'>=</span><span class='hljl-n'>Float64</span><span class='hljl-oB'>.</span><span class='hljl-p'>(</span><span class='hljl-nf'>replace</span><span class='hljl-p'>(</span><span class='hljl-n'>joineddata</span><span class='hljl-oB'>.</span><span class='hljl-n'>inset</span><span class='hljl-p'>,</span><span class='hljl-n'>missing</span><span class='hljl-t'> </span><span class='hljl-oB'>=&gt;</span><span class='hljl-t'> </span><span class='hljl-n'>NaN</span><span class='hljl-p'>)),</span><span class='hljl-n'>cmap</span><span class='hljl-oB'>=</span><span class='hljl-n'>insetcmap</span><span class='hljl-p'>,</span><span class='hljl-n'>close</span><span class='hljl-oB'>=</span><span class='hljl-kc'>true</span><span class='hljl-p'>,</span><span class='hljl-n'>fill</span><span class='hljl-oB'>=</span><span class='hljl-s'>&quot;+z&quot;</span><span class='hljl-p'>,</span><span class='hljl-n'>pen</span><span class='hljl-oB'>=</span><span class='hljl-nfB'>0.25</span><span class='hljl-p'>,</span><span class='hljl-n'>region</span><span class='hljl-oB'>=</span><span class='hljl-p'>(</span><span class='hljl-oB'>-</span><span class='hljl-ni'>125</span><span class='hljl-p'>,</span><span class='hljl-oB'>-</span><span class='hljl-ni'>65</span><span class='hljl-p'>,</span><span class='hljl-ni'>24</span><span class='hljl-p'>,</span><span class='hljl-ni'>50</span><span class='hljl-p'>),</span><span class='hljl-t'>
+    </span><span class='hljl-n'>proj</span><span class='hljl-oB'>=:</span><span class='hljl-n'>guess</span><span class='hljl-p'>,</span><span class='hljl-n'>colorbar</span><span class='hljl-oB'>=</span><span class='hljl-kc'>true</span><span class='hljl-p'>,</span><span class='hljl-n'>figname</span><span class='hljl-oB'>=</span><span class='hljl-s'>&quot;choroplethhpdset.png&quot;</span><span class='hljl-p'>,</span><span class='hljl-n'>title</span><span class='hljl-oB'>=</span><span class='hljl-s'>&quot;Continental US smallest 50% set &quot;</span><span class='hljl-p'>)</span>
+</pre>
+
+
+<pre class="output">
+329484123
+</pre>
+
+
+<p><img src="choroplethhpdset.png" alt="high probability density set 50&#37;" /></p>
+<h2>80&#37;tile smallest area</h2>
+
+
+<pre class='hljl'>
+<span class='hljl-n'>GMT</span><span class='hljl-oB'>.</span><span class='hljl-nf'>plot</span><span class='hljl-p'>(</span><span class='hljl-n'>counties</span><span class='hljl-p'>,</span><span class='hljl-n'>level</span><span class='hljl-oB'>=</span><span class='hljl-n'>Float64</span><span class='hljl-oB'>.</span><span class='hljl-p'>(</span><span class='hljl-nf'>replace</span><span class='hljl-p'>(</span><span class='hljl-n'>joineddata</span><span class='hljl-oB'>.</span><span class='hljl-n'>in80set</span><span class='hljl-p'>,</span><span class='hljl-n'>missing</span><span class='hljl-t'> </span><span class='hljl-oB'>=&gt;</span><span class='hljl-t'> </span><span class='hljl-n'>NaN</span><span class='hljl-p'>)),</span><span class='hljl-n'>cmap</span><span class='hljl-oB'>=</span><span class='hljl-n'>insetcmap</span><span class='hljl-p'>,</span><span class='hljl-n'>close</span><span class='hljl-oB'>=</span><span class='hljl-kc'>true</span><span class='hljl-p'>,</span><span class='hljl-n'>fill</span><span class='hljl-oB'>=</span><span class='hljl-s'>&quot;+z&quot;</span><span class='hljl-p'>,</span><span class='hljl-n'>pen</span><span class='hljl-oB'>=</span><span class='hljl-nfB'>0.25</span><span class='hljl-p'>,</span><span class='hljl-n'>region</span><span class='hljl-oB'>=</span><span class='hljl-p'>(</span><span class='hljl-oB'>-</span><span class='hljl-ni'>125</span><span class='hljl-p'>,</span><span class='hljl-oB'>-</span><span class='hljl-ni'>65</span><span class='hljl-p'>,</span><span class='hljl-ni'>24</span><span class='hljl-p'>,</span><span class='hljl-ni'>50</span><span class='hljl-p'>),</span><span class='hljl-t'>
+    </span><span class='hljl-n'>proj</span><span class='hljl-oB'>=:</span><span class='hljl-n'>guess</span><span class='hljl-p'>,</span><span class='hljl-n'>colorbar</span><span class='hljl-oB'>=</span><span class='hljl-kc'>true</span><span class='hljl-p'>,</span><span class='hljl-n'>figname</span><span class='hljl-oB'>=</span><span class='hljl-s'>&quot;choroplethhpd80set.png&quot;</span><span class='hljl-p'>,</span><span class='hljl-n'>title</span><span class='hljl-oB'>=</span><span class='hljl-s'>&quot;Continental US smallest 80% set &quot;</span><span class='hljl-p'>)</span>
+</pre>
+
+
+
+<p><img src="choroplethhpd80set.png" alt="high probability density set 50&#37;" /></p>
+
+
+        <HR/>
+        <div class="footer">
+          <p>
+            Published from <a href="GMTMaps.jmd">GMTMaps.jmd</a>
+            using <a href="http://github.com/JunoLab/Weave.jl">Weave.jl</a> v0.10.10 on 2022-02-08.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</BODY>
+
+</HTML>

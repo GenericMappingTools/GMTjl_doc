@@ -1,0 +1,459 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.16.4 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+   <link rel="stylesheet" href="/GMTjl_doc/libs/highlight/github.min.css">
+   
+  <link rel="stylesheet" href="/GMTjl_doc/css/franklin.css">
+<link rel="stylesheet" href="/GMTjl_doc/css/minimal-mistakes.css">
+<link rel="stylesheet" href="/GMTjl_doc/css/gmt.css">
+<link rel="icon" href="/GMTjl_doc/assets/GMTjl_logo.png">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/fontawesome.min.css" rel="stylesheet" type="text/css"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/solid.min.css" rel="stylesheet" type="text/css"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/brands.min.css" rel="stylesheet" type="text/css"/>
+<!--[if IE ]>
+<style>
+  /* old IE unsupported flexbox fixes */
+  .greedy-nav .site-title {
+    padding-right: 3em;
+  }
+  .greedy-nav button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+  }
+</style>
+<![endif]-->
+
+   <title>contourf</title>  
+  <!-- end custom head snippets -->
+</head>
+<body class="layout--single">
+  <div class="site-container">
+    <div class="masthead">
+    <div class="masthead__inner-wrap">
+        <div class="masthead__menu">
+            <nav id="site-nav" class="greedy-nav">
+                <a class="title-icon" href="/GMTjl_doc/"><img src="/GMTjl_doc/assets/GMTjl_logo.png"/></a>
+                <!-- github link -->
+                
+
+                <ul class="visible-links">
+                    <li class="masthead__menu-item">
+                        <a href="https://github.com/GenericMappingTools/GMTjl_doc"><img src="/GMTjl_doc/assets/GitHub-Mark-64px.png" class="masthead-icon" /></a>
+                    </li>
+                    <li class="masthead__menu-item"><a href="/GMTjl_doc/examples/">Examples</a></li>
+                    <li class="masthead__menu-item"><a href="/GMTjl_doc/tutorials/">Tutorials</a></li>
+                    <li class="masthead__menu-item"><a href="/GMTjl_doc/geophysics/">Geophysics</a></li>
+                    <li class="masthead__menu-item"><a href="/GMTjl_doc/documentation/">Documentation</a></li>
+                </ul>
+                <button class="greedy-nav__toggle" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+                <ul class="hidden-links hidden"></ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+    
+      <div id="main" role="main">
+        <div id="overlay"></div>
+        <div id="navbar-container">
+          <div id="navbar">
+            <form id="lunrSearchForm" name="lunrSearchForm" action="/GMTjl_doc/search/index.html">
+              <input class="search-input" name="q" placeholder="Search docs" type="text">
+            </form>
+            <h1>Navigation</h1>
+            <ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/">Home</a></div></li>
+<li><input class="collapse-toggle" id="menuitem-2" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-2"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/examples">Examples</a></div><ul><li><input class="collapse-toggle" id="menuitem-2-1" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-2-1"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/examples\CPTs">Color maps</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/examples\CPTs\01_cpt_hinge">Color maps</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-2-2" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-2-2"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/examples\arrows">Arrows</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/examples\arrows\10_arrows">Arrows</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/examples\arrows\11_feathers">Feathers</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-2-3" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-2-3"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/examples\art">Art</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/examples\art\art_examples">Art</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-2-4" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-2-4"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/examples\choropleths">Choropleths</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/examples\choropleths\choro_examples">Choropleths</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-2-5" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-2-5"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/examples\contours">Contours</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/examples\contours\01_contour_examples">Contours</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/examples\contours\02_polar_contours">Polar Contours</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-2-6" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-2-6"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/examples\embellish">Embellishments</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/examples\embellish\01_mapscale">Map scales</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/examples\embellish\02_roses">Magnetic compass</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/examples\embellish\03_insets">Map insets</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-2-7" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-2-7"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/examples\frames">Frames</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/examples\frames\frames">Draw Frames</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-2-8" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-2-8"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/examples\images">Images</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/examples\images\01_grdimage">Color images</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/examples\images\01b_grdview">Perspective view</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/examples\images\01c_funs3d">Plot surfaces</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/examples\images\02_pcolor">Pcolor</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/examples\images\03_hexbin">Hexagonal binning</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/examples\images\04_triplot">Triplot</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/examples\images\05_wms">Web Map Service</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-2-9" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-2-9"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/examples\legends">Legends</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/examples\legends\01_legends">Legends</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-2-10" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-2-10"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/examples\misc">Misc</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/examples\misc\buffer">Geodesic buffers</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/examples\misc\gadm">GADM</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/examples\misc\mix_paper_geog">Annotations in geog maps</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-2-11" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-2-11"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/examples\plotting_functions">Plotting functions</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/examples\plotting_functions\01_lines">Line plots</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/examples\plotting_functions\02_1filledlines">Filled curves</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/examples\plotting_functions\02_2stairs">Stairs</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/examples\plotting_functions\02_2stems">Stems</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/examples\plotting_functions\02_plotyy">Plotyy</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/examples\plotting_functions\035_radars">Radar plots</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/examples\plotting_functions\03_bars">Bar plots</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/examples\plotting_functions\040_scatter">Scatters</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/examples\plotting_functions\05_1_stats">Stat plots</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/examples\plotting_functions\05_error_bars">Error bars</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/examples\plotting_functions\06_spirals">Spirals</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/examples\plotting_functions\07_symbols">Symbols &amp; Linestyes</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/examples\plotting_functions\08_rectangles">Patterns &amp; trasparency</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/examples\plotting_functions\10_histograms">Histograms</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/examples\plotting_functions\50_plot3">Plot3d</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-2-12" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-2-12"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/examples\projections">Projections</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/examples\projections\01_hello">The true Hello World</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/examples\projections\02_proj_examples">GMT Map Projections</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/examples\projections\ex28">Mixing UTM and geographic axes annotations</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-2-13" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-2-13"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/examples\subplot">Subplots</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/examples\subplot\01_subplots">Subplots</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-2-14" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-2-14"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/examples\ternary">Ternary plots</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/examples\ternary\ternary_examples">Ternary plots</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-2-15" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-2-15"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/examples\themes">Themes</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/examples\themes\01_themes">Theming</a></div></li>
+</ul></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-3" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-3"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/geophysics">Geophysics</a></div><ul><li><input class="collapse-toggle" id="menuitem-3-1" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-3-1"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/geophysics\earthtides">Earth tides</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/geophysics\earthtides\01_earthtides">Earth tides</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-3-2" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-3-2"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/geophysics\seismicity">Seismicity</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/geophysics\seismicity\01_focalmec">Focal mechanisms</a></div></li>
+</ul></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-4" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-4"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/tutorials">Tutorials</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/tutorials\ISC">ISC</a></div></li>
+<li><input class="collapse-toggle" id="menuitem-4-2" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-4-2"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/tutorials\Landsat8">Landsat8</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/tutorials\Landsat8\histogram_stretch">Plot Landsat 8 images</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-4-3" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-4-3"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/tutorials\coast">Coastlines</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/tutorials\coast\coastlines">Coastlines and borders</a></div></li>
+</ul></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/tutorials\dlakelan">dlakelan</a></div></li>
+<li><input class="collapse-toggle" id="menuitem-4-5" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-4-5"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/tutorials\longest_sail">Longest sail</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/tutorials\longest_sail\longestsail">The longest sail</a></div></li>
+</ul></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-5" type="checkbox" checked><div class="tocitem-container"><label class="tocexpander" for="menuitem-5"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/documentation">Documentation</a></div><ul><li><input class="collapse-toggle" id="menuitem-5-1" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-5-1"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/documentation\all_docs_ref">All documentations</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\all_docs_ref\all_refs">Manuals</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-5-2" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-5-2"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/documentation\common_features">Common features</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\common_features\arrows_control">Vector Attributes</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\common_features\color">Setting color</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\common_features\decorated">Line decorations</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\common_features\fonts">Setting fonts</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\common_features\justify">Justify</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\common_features\pens">Pen attributes</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\common_features\symbols">Symbols</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\common_features\themes">theme</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\common_features\units">Units</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-5-3" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-5-3"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/documentation\common_opts">Common options</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\common_opts\common_opts">frame</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-5-4" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-5-4"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/documentation\general">General</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\general\introduction">Introduction</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\general\modules">By Modules</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\general\monolitic">Monolithic</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\general\quick_learn">Quick learn</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\general\types">The GMT.jl types &#40;important&#41;</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-5-5" type="checkbox" checked><div class="tocitem-container"><label class="tocexpander" for="menuitem-5-5"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/documentation\modules">GMT Modules</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\arrows">arrows</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\band">band</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\bar">bar</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\bar3">bar3</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\basemap">basemap</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\blockmean">blockmean</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\blockmedian">blockmedian</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\blockmode">blockmode</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\boxplot">boxplot</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\bubblechart">bubblechart</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\clip">clip</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\coast">coast</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\colorbar">colorbar</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\contour">contour</a></div></li>
+<li><div class="tocitem-container"><a class = active href="/GMTjl_doc/documentation\modules\contourf">contourf</a></div><ul class="page-content">
+<li><a href="#contourf/">contourf</a></li>
+</ul>
+</li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\cornerplot">cornerplot</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\ecdfplot">ecdfplot</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\feather">feather</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\fill_between">fill_between</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\filter1d">filter1d</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\fitcircle">fitcircle</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\gmt2kml">gmt2kml</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\gmtbinstats">gmtbinstats</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\gmtconnect">gmtconnect</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\gmtconvert">gmtconvert</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\gmtmath">gmtmath</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\gmtselect">gmtselect</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\gmtset">gmtset</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\gmtsimplify">gmtsimplify</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\gmtsplit">gmtsplit</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\grd2cpt">grd2cpt</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\grd2kml">grd2kml</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\grd2xyz">grd2xyz</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\grdclip">grdclip</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\grdcontour">grdcontour</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\grdcut">grdcut</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\grdedit">grdedit</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\grdfill">grdfill</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\grdgradient">grdgradient</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\grdhisteq">grdhisteq</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\grdimage">grdimage</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\grdinfo">grdinfo</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\grdlandmask">grdlandmask</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\grdmask">grdmask</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\grdmath">grdmath</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\grdpaste">grdpaste</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\grdsample">grdsample</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\grdtrack">grdtrack</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\grdtrend">grdtrend</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\grdvector">grdvector</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\grdview">grdview</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\hband">hband</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\histogram">histogram</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\image">image</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\inset">inset</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\legend">legend</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\lines">lines</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\makecpt">makecpt</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\marginalhist">marginalhist</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\mask">mask</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\movie">movie</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\nearneighbor">nearneighbor</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\parallelplot">parallelplot</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\plot">plot</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\project">project</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\qqplot">qqplot</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\quiver">quiver</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\radar">radar</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\rose">rose</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\sample1d">sample1d</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\scatter">scatter</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\scatter3">scatter3</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\solar">solar</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\sphinterpolate">sphinterpolate</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\sphtriangulate">sphtriangulate</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\stairs">stairs</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\stem">stem</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\subplot">subplot</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\surface">surface</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\ternary">ternary</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\text">text</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\trend1d">trend1d</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\trend2d">trend2d</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\triangulate">triangulate</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\vband">vband</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\violins">violin</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\wiggle">wiggle</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\xyz2grd">xyz2grd</a></div></li>
+</ul></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\gdalfuns">GDAL related functions</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\supplements">Supplements modules</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\utilfuns">Utility functions</a></div></li>
+</ul></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/comp_other_pkgs">Comparison with other plotting packages</a></div></li>
+</ul>
+          </div>
+        </div>
+
+
+<!-- Content appended here -->
+<div class="franklin-content"><h1 id="contourf"><a href="#contourf" class="header-anchor">contourf</a></h1>
+<pre><code class="language-julia">contourf&#40;cmd0::String&#61;&quot;&quot;, arg1&#61;nothing, arg2&#61;nothing; kwargs...&#41;</code></pre>
+<p>Create filled contour mapps.</p>
+<h2>Description</h2>
+<p>This module is a wrapper to <a href="/GMTjl_doc/documentation/modules/grdview/index.html#grdview">grdview</a>, <em>contour</em> and <a href="/GMTjl_doc/documentation/modules/grdcontour/index.html#grdcontour">grdcontour</a> and as such it works with two different kinds of input data. If input is a grid &#40;either a grid file name or a GMTgrid object&#41; it will make a filled contour with <em>grdview</em> and optionally  overlay contours by calling <a href="/GMTjl_doc/documentation/modules/grdcontour/index.html#grdcontour">grdcontour</a>. If, on the other hand, the input data is table data file or a Mx3 array &#40;or GMTdataset&#41;, it first compute a Delaunay triangulation and makes the plot from it. In this later case, the job is done by <em>contour</em> module alone.</p>
+<p>The <strong>region</strong> option can be used to select a map region larger or smaller than that implied by the extent of the grid. </p>
+<h2>Required Arguments</h2>
+<p>The input data set to be filled/contoured. It can be 2-D gridded data GMTgrid&#41; or a Mx3 table &#40;or GNTdataset&#41;. In these cases the data type detection is automatic. Alterativelly, one can provide the file name. In that case, if the data has known extensions &#40;<em>.grd</em> or <em>.nc</em> among others for grids or <em>.dat</em>, <em>.bin</em> &#40;need to use <strong>iput_type</strong>&#41; for tables&#41; the type detection is also automatic. And, for grids, passing a file name is actually the most efficient way os using thsi module. Still, if data type is not automatically detected, we can help the module by passing the <strong>grid&#61;true</strong> or <strong>data&#61;true</strong> options.</p>
+<p>Not exactly required but convinient, the second input argument can be a GMTcpt object. The advantage of this is that it releases the <strong>contour</strong> option to pass only options that control what contours to plot.</p>
+<h2>Optional Arguments</h2>
+<ul>
+<li><p><strong>A</strong> or <strong>annot</strong> : – <em>annot&#61;annot&#95;int</em> <strong>|</strong> <em>annot&#61;&#40;int&#61;annot&#95;int, disable&#61;true, single&#61;true, labels&#61;labelinfo&#41;</em><br /> <em>annot&#95;int</em> is annotation interval in data units; it is ignored if contour levels are given in a file.  &#91;Default is no annotations&#93;. Use <em>annot&#61;&#40;disable&#61;true,&#41;</em> to disable all annotations implied by <strong>cont</strong>.  Alternatively do <em>annot&#61;&#40;single&#61;true, int&#61;val&#41;</em> to plot <em>val</em> as a single contour. The optional <em>labelinfo</em> controls the specifics of the label formatting and consists of a named tuple with the following control arguments <a href="/GMTjl_doc/documentation/common_features/decorated/index.html#label_formatting">Label formatting</a></p>
+</li>
+</ul>
+<ul>
+<li><p><strong>B</strong> or <strong>axes</strong> or <strong>frame</strong><br /> Set map boundary frame and axes attributes. Default is to draw and annotate left, bottom and vertical  axes and just draw left and top axes. More at <a href="/GMTjl_doc/documentation/common_opts/common_opts/index.html#frame">frame</a></p>
+</li>
+</ul>
+
+<ul>
+<li><p><strong>C</strong> or <strong>cont</strong> or <strong>contour</strong> or <strong>contours</strong> or <strong>levels</strong> : – <em>cont&#61;cont&#95;int</em><br /> The contours to be drawn may be specified in one of two possible ways:</p>
+<ol>
+<li><p>If <code>cont_int</code> is a <em>GMTcpt</em> object &#40;or a string and has the suffix &quot;.cpt&quot; and can be opened as a file&#41;. The color boundaries are then used as contour levels. If the CPT has annotation flags in the last column then those contours will be annotated. By default all contours are labeled; use <em>annot&#61;&#40;disable&#61;true,&#41;&#41;</em> &#40;or <em>annot&#61;:none</em>&#41; to disable all annotations.</p>
+</li>
+<li><p>If <code>cont_int</code> is a constant or an array it means plot those contour intervals. This works also to draw single contours. <em>E.g.</em> <strong>contour&#61;&#91;0&#93;</strong> will draw only the zero contour. The <strong>annot</strong> option offers the same</p>
+</li>
+</ol>
+</li>
+</ul>
+<p>   possibility so they may be used together to plot a single annotated contour and another single non-annotated contour,
+   as in **anot&#61;&#91;10&#93;, cont&#61;&#91;5&#93;** that plots an annotated 10 contour and an non-annotated 5 contour. If **annot** is set
+   and **cont** is not, then the contour interval is set equal to the specified annotation interval.
+
+If no **contour** option and no *GMTcpt* are passed then for grid a default color map is computed and all of
+those automatically contours are drwan. Also, no *GMTcpt* and **contour&#61;&#91;array&#93;** computes a cmap with only the
+contour values specified in *array*. When passing a *Mx3* array or a *GMTdataset* the default behavior is
+basically the same.</p>
+<ul>
+<li><p><strong>E</strong> or <strong>index</strong> : – <em>index&#61;tri_network</em><br /> Give a Mx3 array or name of file with network information. Each record must contain triplets of node numbers for  a triangle &#91;Default computes these using Delaunay triangulation &#40;see triangulate&#41;&#93;.</p>
+</li>
+<li><p><strong>G</strong> or <strong>labels</strong> : – <em>labels&#61;&#40;&#41;</em><br /> The required argument controls the placement of labels along the quoted lines. Choose among five  controlling algorithms as explained in <a href="/GMTjl_doc/documentation/common_features/decorated/index.html#label_formatting">Label formatting</a></p>
+</li>
+</ul>
+<ul>
+<li><p><strong>J</strong> or <strong>proj</strong> or <strong>projection</strong> : – <em>proj&#61;&lt;parameters&gt;</em><br /> Select map projection. More at <a href="/GMTjl_doc/documentation/common_opts/common_opts/index.html#proj">proj</a></p>
+</li>
+</ul>
+
+<ul>
+<li><p><strong>Q</strong> or <strong>cut</strong> : – <em>cut&#61;np</em> <strong>|</strong> <em>cut&#61;length&amp;unit&#91;&#43;z&#93;</em><br /> Do not draw contours with less than <em>np</em> number of points &#91;Draw all contours&#93;. Alternatively, give  instead a minimum contour length in distance units, including <strong>c</strong> &#40;Cartesian distances using user  coordinates&#41; or <strong>C</strong> for plot length units in current plot units after projecting the coordinates.  Optionally, append <strong>&#43;z</strong> to exclude the zero contour.</p>
+</li>
+</ul>
+<ul>
+<li><p><strong>R</strong> or <strong>region</strong> or <strong>limits</strong> : – <em>limits&#61;&#40;xmin, xmax, ymin, ymax&#41;</em> <strong>|</strong> <em>limits&#61;&#40;BB&#61;&#40;xmin, xmax, ymin, ymax&#41;,&#41;</em>  <strong>|</strong> <em>limits&#61;&#40;LLUR&#61;&#40;xmin, xmax, ymin, ymax&#41;,units&#61;&quot;unit&quot;&#41;</em> <strong>|</strong> ...more<br /> Specify the region of interest. More at <a href="/GMTjl_doc/documentation/common_opts/common_opts/index.html#limits">limits</a>. For perspective view <strong>view</strong>, optionally add  <em>zmin,zmax</em>. This option may be used to indicate the range used for the 3-D axes. You may ask for a  larger w/e/s/n region to have more room between the image and the axes.</p>
+</li>
+</ul>
+
+<ul>
+<li><p><strong>S</strong> or <strong>smooth</strong> : – <em>smooth&#61;smoothfactor</em><br /> Resample the contour lines at roughly every &#40;<em>gridbox&#95;size/smoothfactor</em>&#41; interval.  <em>This option should be used only when input data is a table</em>.</p>
+</li>
+<li><p><strong>S</strong> or <strong>skip</strong> : – <em>skip&#61;true|&quot;t&quot;</em><br /> Skip all input xyz points that fall outside the region &#91;Default uses all the data in the triangulation&#93;.  Alternatively, use **skip&#61;&quot;t&quot;* to skip triangles whose three vertices are all outside the region.  <em>This option should be used only when input data is a grid</em>.</p>
+</li>
+<li><p><strong>T</strong> or <strong>ticks</strong> : – <em>ticks&#61;&#40;local&#95;high&#61;true, local&#95;low&#61;true, gap&#61;gap, closed&#61;true, labels&#61;labels&#41;</em><br /> Will draw tick marks pointing in the downward direction every <em>gap</em> along the innermost closed contours only;  set <em>closed&#61;true</em> to tick all closed contours. Use <em>gap&#61;&#40;gap,length&#41;</em> and optionally tick mark <em>length</em>  &#40;append units as <strong>c</strong>, <strong>i</strong>, or <strong>p</strong>&#41; or use defaults &#91;<em>&quot;15p/3p&quot;</em>&#93;. User may choose to tick only local  highs or local lows by specifying <em>local&#95;high&#61;true</em>, <em>local&#95;low&#61;true</em>, respectively. Set <em>labels</em> to  annotate the centers of closed innermost contours &#40;i.e., the local lows and highs&#41;. If no <em>labels</em> &#40;<em>i.e</em>,  set <em>labels&#61;&quot;&quot;</em>&#41; is set, we use - and &#43; as the labels. Appending exactly two characters, <em>e.g.</em>, <em>labels&#61;:LH</em>,  will plot the two characters &#40;here, <em>L</em> and <em>H</em>&#41; as labels. For more elaborate labels, separate the low and hight  label strings with a comma &#40;<em>e.g.</em>, <em>labels&#61;&quot;lo,hi&quot;</em>&#41;. If a file is given by <strong>cont</strong>, and <strong>ticks</strong> is set,  then only contours marked with upper case C or A will have tick marks &#91;and annotations&#93;.</p>
+</li>
+</ul>
+<ul>
+<li><p><strong>U</strong> or <strong>time_stamp</strong> : – <em>time_stamp&#61;true</em> <strong>|</strong> <em>time_stamp&#61;&#40;just&#61;&quot;code&quot;, pos&#61;&#40;dx,dy&#41;, label&#61;&quot;label&quot;, com&#61;true&#41;</em><br /> Draw GMT time stamp logo on plot. More at <a href="/GMTjl_doc/documentation/common_opts/common_opts/index.html#timestamp">timestamp</a></p>
+</li>
+</ul>
+
+<ul>
+<li><p><strong>V</strong> or <em>verbose</em> : – <em>verbose&#61;true</em> <strong>|</strong> <em>verbose&#61;level</em><br /> Select verbosity level. More at <a href="/GMTjl_doc/documentation/common_opts/common_opts/index.html#verbose">verbose</a></p>
+</li>
+</ul>
+
+<ul>
+<li><p><strong>W</strong> or <strong>pen</strong> : – <em>pen&#61;&#40;annot&#61;true, contour&#61;true, pen&#61;pen, colored&#61;true, cline&#61;true, ctext&#61;true&#41;</em><br /> <code>annot&#61;true</code> if present, means to annotate contours or <code>contour&#61;true</code> for regular contours &#91;Default&#93;.  The <em>pen</em> sets the attributes for the particular line. Default pen for annotated contours: <code>pen&#61;&#40;0.75,:black&#41;</code>.  Regular contours use <code>pen&#61;&#40;0.25,:black&#41;</code>. Normally, all contours are drawn with a fixed color determined by  the pen setting. This option may be repeated, for example to separate contour and annotated contours settings.  For that the syntax changes to use a Tuple of NamedTuples, <em>e.g.</em> <code>pen&#61;&#40;&#40;annot&#61;true, contour&#61;true, pen&#61;pen&#41;, &#40;annot&#61;true, contour&#61;true, pen&#61;pen&#41;&#41;</code>. If the modifier <code>pen&#61;&#40;cline&#61;true,&#41;</code> is used then the color of the contour lines are taken from the CPT &#40;see <strong>cont</strong>&#41;. If instead <code>pen&#61;&#40;ctext&#61;true,&#41;</code> is appended then the color from the cpt file is applied to the contour annotations. Select <code>pen&#61;&#40;colored&#61;true,&#41;</code> for both effects.</p>
+</li>
+</ul>
+<ul>
+<li><p><strong>X</strong> or <strong>xshift</strong> or <strong>x_offset</strong> : <em>xshift&#61;true</em> <strong>|</strong> <em>xshift&#61;x-shift</em> <strong>|</strong> <em>xshift&#61;&#40;shift&#61;x-shift, mov&#61;&quot;a|c|f|r&quot;&#41;</em><br /> Shift plot origin. More at <a href="/GMTjl_doc/documentation/common_opts/common_opts/index.html#xshift">xshift</a></p>
+</li>
+</ul>
+
+<ul>
+<li><p><strong>Y</strong> or <strong>yshift</strong> or <strong>y_offset</strong> : <em>yshift&#61;true</em> <strong>|</strong> <em>yshift&#61;y-shift</em> <strong>|</strong> <em>yshift&#61;&#40;shift&#61;y-shift, mov&#61;&quot;a|c|f|r&quot;&#41;</em><br /> Shift plot origin. More at <a href="/GMTjl_doc/documentation/common_opts/common_opts/index.html#yshift">yshift</a></p>
+</li>
+</ul>
+
+<ul>
+<li><p><strong>p</strong> or <strong>view</strong> or <strong>perspective</strong> : – <em>view&#61;&#40;azim, elev&#41;</em><br /> Default is viewpoint from an azimuth of 200 and elevation of 30 degrees.<br /> Specify the viewpoint in terms of azimuth and elevation. The azimuth is the horizontal rotation about the z-axis as  measured in degrees from the positive y-axis. That is, from North. This option is not yet fully  expanded. Current alternatives are:</p>
+<ul>
+<li><p><em>view&#61;??</em><br /> A full GMT compact string with the full set of options.</p>
+</li>
+<li><p><em>view&#61;&#40;azim,elev&#41;</em><br /> A two elements tuple with azimuth and elevation</p>
+</li>
+<li><p><em>view&#61;true</em><br /> To propagate the viewpoint used in a previous module &#40;makes sense only in <code>bar3&#33;</code>&#41;</p>
+</li>
+</ul>
+<p>More at <a href="/GMTjl_doc/documentation/common_opts/common_opts/index.html#perspective">perspective</a></p>
+</li>
+</ul>
+
+<ul>
+<li><p><strong>t</strong> or <strong>transparency</strong> or <strong>alpha</strong>: – <em>alpha&#61;50</em><br /> Set PDF transparency level for an overlay, in &#40;0-100&#93; percent range. &#91;Default is 0, <em>i.e.</em>, opaque&#93;.  Works only for the PDF and PNG formats.</p>
+</li>
+</ul>
+
+<ul>
+<li><p><strong>figname</strong> or <strong>savefig</strong> or <strong>name</strong> : – <em>figname&#61;<code>name.png</code></em><br /> Save the figure with the <code>figname&#61;name.ext</code> where <code>ext</code> chooses the figure image format.</p>
+</li>
+</ul>
+
+<h2>Examples</h2>
+<p>Using a grid</p>
+<pre><code class="language-julia">using GMT
+
+	G &#61; GMT.peaks&#40;&#41;;
+	C &#61; makecpt&#40;T&#61;&#40;-7,9,2&#41;&#41;;
+
+	contourf&#40;G, show&#61;1&#41;
+	contourf&#40;G, C&#61;&#91;-2, 0, 2, 5&#93;, show&#61;1&#41;
+	contourf&#40;G, C, contour&#61;&#91;-2, 0, 2, 5&#93;, show&#61;1&#41;
+	contourf&#40;G, C, annot&#61;&#91;-2, 0, 2, 5&#93;, show&#61;1&#41;
+	contourf&#40;G, C, annot&#61;2, show&#61;1&#41;
+	contourf&#40;G, C, contour&#61;1, annot&#61;&#91;-2, 0, 2, 5&#93;, show&#61;1&#41;
+	contourf&#40;G, C, annot&#61;:none, show&#61;1&#41;</code></pre></p>
+<p>
+<a id="example_14879039722923736332">
+ <img src="/GMTjl_doc/assets/documentation/modules/contourf/code/output/example_14879039722923736332.png" alt=""> 
+</a>
+
+<p>Using a table data.</p>
+<pre><code class="language-julia">using GMT
+
+	d &#61; &#91;0 2 5; 1 4 5; 2 0.5 5; 3 3 9; 4 4.5 5; 4.2 1.2 5; 6 3 1; 8 1 5; 9 4.5 5&#93;;
+	contourf&#40;d, limits&#61;&#40;-0.5,9.5,0,5&#41;, pen&#61;0.25, labels&#61;&#40;line&#61;&#40;:min,:max&#41;,&#41;, show&#61;1&#41;</code></pre></p>
+<p>
+<a id="example_7859536397131974778">
+ <img src="/GMTjl_doc/assets/documentation/modules/contourf/code/output/example_7859536397131974778.png" alt=""> 
+</a>
+
+<div class="page-foot">
+  <div class="copyright">
+    &copy; GMT.jl. Last modified: March 28, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+      <p>These docs were autogenerated using GMT: v0.44.6</p>
+  </div>
+</div>
+</div><!-- CONTENT ENDS HERE -->
+
+      </div> <!-- closure of main -->
+
+      <div class="page__footer">
+        <footer>
+          <!-- start custom footer snippets -->
+          <!-- end custom footer snippets -->
+          <div class="page__footer-follow">
+            <ul class="social-icons">
+              <li><a href="https://twitter.com/gmt_dev" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+              <li><a href="https://github.com/GenericMappingTools/GMT.jl" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+            </ul>
+          </div>
+          <div class="page__footer-copyright">&copy; GMT.jl. Powered by <a href="https://github.com/tlienart/Franklin.jl">Franklin</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+        </footer>
+      </div>
+
+    </div>   <!-- closure of class site-container -->
+
+    
+
+    <script src="/GMTjl_doc/libs/navbar.js"></script>
+    <script src="/GMTjl_doc/libs/lunr/lunr.min.js"></script>
+    <script src="/GMTjl_doc/libs/lunr/lunr_index.js"></script>
+    <script src="/GMTjl_doc/libs/lunr/lunrclient.min.js"></script>
+    <!-- <script src="/GMTjl_doc/libs/minimal-mistakes/main.min.js"></script> -->
+    <script defer src="https://use.fontawesome.com/releases/v5.8.2/js/all.js" integrity="sha384-DJ25uNYET2XCl5ZF++U8eNxPWqcKohUUBUpKGlNLMchM7q4Wjg2CUpjHLaL8yYPH" crossorigin="anonymous"></script>
+
+    
+    
+        <script src="/GMTjl_doc/libs/highlight/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();hljs.configure({tabReplace: '    '});</script>
+
+    
+  </body>
+</html>
