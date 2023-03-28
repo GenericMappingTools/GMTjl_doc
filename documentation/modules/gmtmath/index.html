@@ -1,0 +1,127 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.16.4 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  <link rel="stylesheet" href="/css/franklin.css">
+<link rel="stylesheet" href="/css/minimal-mistakes.css">
+<link rel="stylesheet" href="/css/gmt.css">
+<link rel="icon" href="/assets/GMTjl_logo.png">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/fontawesome.min.css" rel="stylesheet" type="text/css"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/solid.min.css" rel="stylesheet" type="text/css"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/brands.min.css" rel="stylesheet" type="text/css"/>
+<!--[if IE ]>
+<style>
+  /* old IE unsupported flexbox fixes */
+  .greedy-nav .site-title {
+    padding-right: 3em;
+  }
+  .greedy-nav button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+  }
+</style>
+<![endif]-->
+
+   <title>gmtmath</title>  
+  <!-- end custom head snippets -->
+</head>
+<body class="layout--single">
+  <div class="site-container">
+    <div class="masthead">
+    <div class="masthead__inner-wrap">
+        <div class="masthead__menu">
+            <nav id="site-nav" class="greedy-nav">
+                <a class="title-icon" href="/"><img src="/assets/GMTjl_logo.png"/></a>
+                <!-- github link -->
+                
+
+                <ul class="visible-links">
+                    <li class="masthead__menu-item">
+                        <a href="https://github.com/GenericMappingTools/GMTjl_doc"><img src="/assets/GitHub-Mark-64px.png" class="masthead-icon" /></a>
+                    </li>
+                    <li class="masthead__menu-item"><a href="/examples/">Examples</a></li>
+                    <li class="masthead__menu-item"><a href="/tutorials/">Tutorials</a></li>
+                    <li class="masthead__menu-item"><a href="/geophysics/">Geophysics</a></li>
+                    <li class="masthead__menu-item"><a href="/documentation/">Documentation</a></li>
+                </ul>
+                <button class="greedy-nav__toggle" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+                <ul class="hidden-links hidden"></ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+    
+      <div id="main" role="main">
+        <div id="overlay"></div>
+        <div id="navbar-container">
+          <div id="navbar">
+            <form id="lunrSearchForm" name="lunrSearchForm" action="/search/index.html">
+              <input class="search-input" name="q" placeholder="Search docs" type="text">
+            </form>
+            <h1>Navigation</h1>
+            
+          </div>
+        </div>
+
+
+<!-- Content appended here -->
+<div class="franklin-content"><h1 id="gmtmath"><a href="#gmtmath" class="header-anchor">gmtmath</a></h1>
+<p>Reverse Polish Notation &#40;RPN&#41; calculator for data tables</p>
+<h2>Description</h2>
+<p><strong>gmtmath</strong> will perform operations like add, subtract, multiply, and numerous other operands on one or more table data files or constants using <a href="https://en.wikipedia.org/wiki/Reverse_Polish_notation">Reverse Polish Notation &#40;RPN&#41;</a> syntax.  Arbitrarily complicated expressions may therefore be evaluated; the final result is written to an output file &#91;or standard output&#93;. Data operations are element-by-element, not matrix manipulations &#40;except where noted&#41;. Some operators only require one operand &#40;see below&#41;. If no data tables are used in the expression then options |-T|, |-N| can be set &#40;and optionally <strong>-bo</strong> to indicate the data type for binary tables&#41;. If STDIN is given, the standard input will be read and placed on the stack as if a file with that content had been given on the command line. By default, all columns except the &quot;time&quot; column are operated on, but this can be changed &#40;see |-C|&#41;. Complicated or frequently occurring expressions may be coded as a macro for future use or stored and recalled via named memory locations.</p>
+<p>OK, but RPN is quite painfull to master for other than simple expressions and for it the normal Julia operators are much easier to use. However, there are many operators that are handy and already programmed or even kind of unique like for example <strong>XYZ2LAB</strong> that converts x,y,z triplets to l,a,b triplets to coastlines. So, there is still interest in <strong>gmtmath</strong> but due to its nature it was nor wrapped into a vebose version and for using it one must use the <a href="/documentation/general/monolitic/index.html#monolithic">Monolithic</a> mode.</p>
+<p>For the full manual, consult the main GMT <a href="https://docs.generic-mapping-tools.org/dev/gmtmath.html">gmtmath manual</a></p>
+<div class="page-foot">
+  <div class="copyright">
+    &copy; GMT.jl. Last modified: March 28, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+      
+  </div>
+</div>
+</div><!-- CONTENT ENDS HERE -->
+
+      </div> <!-- closure of main -->
+
+      <div class="page__footer">
+        <footer>
+          <!-- start custom footer snippets -->
+          <!-- end custom footer snippets -->
+          <div class="page__footer-follow">
+            <ul class="social-icons">
+              <li><a href="https://twitter.com/gmt_dev" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+              <li><a href="https://github.com/GenericMappingTools/GMT.jl" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+            </ul>
+          </div>
+          <div class="page__footer-copyright">&copy; GMT.jl. Powered by <a href="https://github.com/tlienart/Franklin.jl">Franklin</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+        </footer>
+      </div>
+
+    </div>   <!-- closure of class site-container -->
+
+    
+
+    <script src="/libs/navbar.js"></script>
+    <script src="/libs/lunr/lunr.min.js"></script>
+    <script src="/libs/lunr/lunr_index.js"></script>
+    <script src="/libs/lunr/lunrclient.min.js"></script>
+    <!-- <script src="/libs/minimal-mistakes/main.min.js"></script> -->
+    <script defer src="https://use.fontawesome.com/releases/v5.8.2/js/all.js" integrity="sha384-DJ25uNYET2XCl5ZF++U8eNxPWqcKohUUBUpKGlNLMchM7q4Wjg2CUpjHLaL8yYPH" crossorigin="anonymous"></script>
+
+    
+    
+  </body>
+</html>

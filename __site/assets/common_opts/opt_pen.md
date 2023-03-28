@@ -1,3 +1,0 @@
-- **W** or **pen**=`pen`\
-   Set pen attributes for the arrow stem [Defaults: width = default, color = black,
-   style = solid]. See \myreflink{Pen attributes}

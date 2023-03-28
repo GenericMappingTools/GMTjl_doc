@@ -1,0 +1,207 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.16.4 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+   <link rel="stylesheet" href="/libs/highlight/github.min.css">
+   
+  <link rel="stylesheet" href="/css/franklin.css">
+<link rel="stylesheet" href="/css/minimal-mistakes.css">
+<link rel="stylesheet" href="/css/gmt.css">
+<link rel="icon" href="/assets/GMTjl_logo.png">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/fontawesome.min.css" rel="stylesheet" type="text/css"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/solid.min.css" rel="stylesheet" type="text/css"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/brands.min.css" rel="stylesheet" type="text/css"/>
+<!--[if IE ]>
+<style>
+  /* old IE unsupported flexbox fixes */
+  .greedy-nav .site-title {
+    padding-right: 3em;
+  }
+  .greedy-nav button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+  }
+</style>
+<![endif]-->
+
+   <title>vband</title>  
+  <!-- end custom head snippets -->
+</head>
+<body class="layout--single">
+  <div class="site-container">
+    <div class="masthead">
+    <div class="masthead__inner-wrap">
+        <div class="masthead__menu">
+            <nav id="site-nav" class="greedy-nav">
+                <a class="title-icon" href="/"><img src="/assets/GMTjl_logo.png"/></a>
+                <!-- github link -->
+                
+
+                <ul class="visible-links">
+                    <li class="masthead__menu-item">
+                        <a href="https://github.com/GenericMappingTools/GMTjl_doc"><img src="/assets/GitHub-Mark-64px.png" class="masthead-icon" /></a>
+                    </li>
+                    <li class="masthead__menu-item"><a href="/examples/">Examples</a></li>
+                    <li class="masthead__menu-item"><a href="/tutorials/">Tutorials</a></li>
+                    <li class="masthead__menu-item"><a href="/geophysics/">Geophysics</a></li>
+                    <li class="masthead__menu-item"><a href="/documentation/">Documentation</a></li>
+                </ul>
+                <button class="greedy-nav__toggle" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+                <ul class="hidden-links hidden"></ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+    
+      <div id="main" role="main">
+        <div id="overlay"></div>
+        <div id="navbar-container">
+          <div id="navbar">
+            <form id="lunrSearchForm" name="lunrSearchForm" action="/search/index.html">
+              <input class="search-input" name="q" placeholder="Search docs" type="text">
+            </form>
+            <h1>Navigation</h1>
+            
+          </div>
+        </div>
+
+
+<!-- Content appended here -->
+<div class="franklin-content"><h1 id="vband"><a href="#vband" class="header-anchor">vband</a></h1>
+<pre><code class="language-julia">vband&#40;mat::Matrix; region&#61;&#40;...&#41;, width&#61;false,  percent&#61;false, fill&#61;nothing, fillalpha&#61;nothing&#41;
+
+hband&#40;mat::Matrix; region&#61;&#40;...&#41;, height&#61;false, percent&#61;false, fill&#61;nothing, fillalpha&#61;nothing&#41;</code></pre>
+<p>Reads a MxN array where 2 &lt;&#61; N &lt;&#61; 4 and plot a vertical &#40;<code>vband</code> or <code>vspan</code>&#41; or horizontal &#40;<code>hband</code> or <code>hspan</code>&#41; bands across the <em>xy</em> plot. If N &#61;&#61; 2 the bands are plotted from <em>ymin</em> to <em>ymax</em> &#40;<code>vband</code>&#41; and from <em>xmin</em> to <em>xmax</em> &#40;<code>hband</code>&#41;. The optional 1 or 2 extra columns control the begin/end of each band &#40;see examples&#41;. The third &#40;optional&#41; column specifies the base of a vertical band or the left of the horizontal one. Use a NaN to indicate that base|left &#61; <em>y|x_min</em>. The 4rth column controls the top of vertical bands or the right of the horizontals. Also here a NaN means top|right &#61; <em>y|x_max</em>.</p>
+<p>The bands <em>width</em> &#40;or <em>height</em> in <code>hband</code>&#41; are controlled by two alternative mechanisms. By default the input <strong>mat</strong> array has rows with <em>x1 x2</em> &#40;data&#41; coordinates for the start and end of each <code>vband</code> and <em>y1 y2</em> for each <code>hband</code>. But alternatively we may specify <code>width&#61;true</code> &#40;for <code>vbands</code>&#41; or <code>percent&#61;true</code> in which case the second column is interpreted as the band <em>width</em> &#40;or <em>height</em> in <code>hband</code>&#41; or the percentage of the plot&#39;s width &#40;height&#41; in data units.</p>
+<p>A small annoyance in using these functions in a first call is that we <strong>must</strong> specify the plot limits. To minimize this constrain, we can call them from with a <code>plot</code> call as a nested call &#40;see example at the bottom&#41;. But even here we have a lower order annoyance. When called nested in <code>plot</code> the bands will be plotted <em>over</em> the lines/symbols and not <em>under</em> as it would be desirable. Mechanics of GMT make this difficult to achieve.</p>
+<p>For syntax compatibility with other Julia plotting packages <code>vband</code> and <code>hband</code> have aliases <code>vspan</code> and <code>hspan</code>.</p>
+<h2>Parameters</h2>
+<ul>
+<li><p><strong>B</strong> or <strong>axes</strong> or <strong>frame</strong><br /> Set map boundary frame and axes attributes. Default is to draw and annotate left, bottom and vertical  axes and just draw left and top axes. More at <a href="/documentation/common_opts/common_opts/index.html#frame">frame</a></p>
+</li>
+</ul>
+
+<ul>
+<li><p><strong>J</strong> or <strong>proj</strong> or <strong>projection</strong> : – <em>proj&#61;&lt;parameters&gt;</em><br /> Select map projection. More at <a href="/documentation/common_opts/common_opts/index.html#proj">proj</a></p>
+</li>
+</ul>
+
+<ul>
+<li><p><strong>R</strong> or <strong>region</strong> or <strong>limits</strong> : – <em>limits&#61;&#40;xmin, xmax, ymin, ymax&#41;</em> <strong>|</strong> <em>limits&#61;&#40;BB&#61;&#40;xmin, xmax, ymin, ymax&#41;,&#41;</em>  <strong>|</strong> <em>limits&#61;&#40;LLUR&#61;&#40;xmin, xmax, ymin, ymax&#41;,units&#61;&quot;unit&quot;&#41;</em> <strong>|</strong> ...more<br /> Specify the region of interest. More at <a href="/documentation/common_opts/common_opts/index.html#limits">limits</a>. For perspective view <strong>view</strong>, optionally add  <em>zmin,zmax</em>. This option may be used to indicate the range used for the 3-D axes. You may ask for a  larger w/e/s/n region to have more room between the image and the axes.</p>
+</li>
+</ul>
+
+<ul>
+<li><p><strong>fill</strong> or <strong>color</strong><br /> Select color or pattern for filling of symbols &#91;Default is <em>lightblue</em>&#93;. It can take the form of a string,  a vector or a tuple of colors. See <a href="/documentation/common_features/color/index.html#setting_color">Setting color</a> for extend color selection &#40;including color  map generation&#41;. When more than one band is requested the bands colors are assigned  by cycling through the colors given in this option. This means that a 3 bands and a <code>fill&#61;&#91;:red, :blue&#93;</code> will plot  first and third band in red and second in blue.</p>
+<p>Optionally the <code>fill</code> can be done with patterns &#40;which includes the possibility of using images&#41;.</p>
+</li>
+<li><p><strong>fillalpha</strong> or <strong>alpha</strong> or <strong>transparency</strong> : – <em>alpha&#61;0.5</em> <strong>|</strong> <em>alpha&#61;&#40;50, 75&#41;</em><br /> Control the transparency level. Numbers can be floats &lt;&#61; 1.0 or integers in 0-100 range. Default is 75.  It can take the form of a number, a vector or a tuple of numbers.  When more than one band is requested the bands transparencies are assigned by cycling through the values  given in this option. This means that the number of bands and of transparencies may be different.</p>
+</li>
+</ul>
+<ul>
+<li><p><strong>figname</strong> or <strong>savefig</strong> or <strong>name</strong> : – <em>figname&#61;<code>name.png</code></em><br /> Save the figure with the <code>figname&#61;name.ext</code> where <code>ext</code> chooses the figure image format.</p>
+</li>
+</ul>
+
+<h2>Examples</h2>
+<p>A vertical bands with 2 colors and 3 transparencies</p>
+<pre><code class="language-julia">using GMT
+vband&#40;&#91;1 2; 2.5 3; 4 5&#93;, fill&#61;&#40;:red, :blue&#41;, alpha&#61;&#40;0.75, 0.5, 0.3&#41;, region&#61;&#40;0,5,-1,5&#41;, show&#61;true&#41;</code></pre></p>
+<p>
+<a id="example_4415203958627803263">
+ <p><span style="color:red;">// Image matching '/assets/documentation/modules/vband/code/example_4415203958627803263.png' not found. //</span></p> 
+</a>
+
+<p>Now with variable heights.</p>
+<pre><code class="language-julia">using GMT
+vband&#40;&#91;1 2 0 NaN; 2.5 3 NaN 4; 4 5 1 3&#93;, fill&#61;&#91;:red, :blue&#93;, alpha&#61;&#40;0.75, 0.5, 0.3&#41;,
+      region&#61;&#40;0,5,-1,5&#41;, show&#61;true&#41;</code></pre></p>
+<p>
+<a id="example_14567158307646145650">
+ <p><span style="color:red;">// Image matching '/assets/documentation/modules/vband/code/example_14567158307646145650.png' not found. //</span></p> 
+</a>
+
+<p>A horizontal band plot with variable lengths and colors and constant transparency.</p>
+<pre><code class="language-julia">using GMT
+hband&#40;&#91;-0.5 0.5 0 3; 1 2 1 NaN; 3 4 NaN NaN&#93;, fill&#61;&#40;:red, :blue, :green&#41;, region&#61;&#40;0,5,-1,5&#41;, show&#61;1&#41;</code></pre></p>
+<p>
+<a id="example_14694435587711321078">
+ <p><span style="color:red;">// Image matching '/assets/documentation/modules/vband/code/example_14694435587711321078.png' not found. //</span></p> 
+</a>
+
+<p>We can fill with patterns as well. And use an image as one of the patterns.</p>
+<pre><code class="language-julia">using GMT
+vband&#40;&#91;1 2; 2.5 4&#93;, fill&#61;&#40;&#40;pattern&#61;getpath4docs&#40;&quot;tiling2.jpg&quot;&#41;, dpi&#61;200&#41;, &#40;pattern&#61;27, dpi&#61;200&#41;&#41;,
+      region&#61;&#40;0,5,-1,5&#41;, show&#61;true&#41;</code></pre></p>
+<p>
+<a id="example_13025850177123122668">
+ <p><span style="color:red;">// Image matching '/assets/documentation/modules/vband/code/example_13025850177123122668.png' not found. //</span></p> 
+</a>
+
+<p>Do a nested call in which one is not forced to specify the plot limits but let it be computed from input data</p>
+<pre><code class="language-julia">using GMT
+plot&#40;0:0.5:5, rand&#40;11&#41;, vband&#61;&#40;data&#61;&#91;1 2; 2.5 3; 4 4.2&#93;, fill&#61;&#91;:red, :blue, :green&#93;&#41;, show&#61;true&#41;</code></pre></p>
+<p>
+<a id="example_14419820484170032884">
+ <p><span style="color:red;">// Image matching '/assets/documentation/modules/vband/code/example_14419820484170032884.png' not found. //</span></p> 
+</a>
+
+<h2>See also</h2>
+<p><a href="#">vlines</a>, <a href="#">hlines</a></p>
+<div class="page-foot">
+  <div class="copyright">
+    &copy; GMT.jl. Last modified: March 28, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+      
+  </div>
+</div>
+</div><!-- CONTENT ENDS HERE -->
+
+      </div> <!-- closure of main -->
+
+      <div class="page__footer">
+        <footer>
+          <!-- start custom footer snippets -->
+          <!-- end custom footer snippets -->
+          <div class="page__footer-follow">
+            <ul class="social-icons">
+              <li><a href="https://twitter.com/gmt_dev" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+              <li><a href="https://github.com/GenericMappingTools/GMT.jl" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+            </ul>
+          </div>
+          <div class="page__footer-copyright">&copy; GMT.jl. Powered by <a href="https://github.com/tlienart/Franklin.jl">Franklin</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+        </footer>
+      </div>
+
+    </div>   <!-- closure of class site-container -->
+
+    
+
+    <script src="/libs/navbar.js"></script>
+    <script src="/libs/lunr/lunr.min.js"></script>
+    <script src="/libs/lunr/lunr_index.js"></script>
+    <script src="/libs/lunr/lunrclient.min.js"></script>
+    <!-- <script src="/libs/minimal-mistakes/main.min.js"></script> -->
+    <script defer src="https://use.fontawesome.com/releases/v5.8.2/js/all.js" integrity="sha384-DJ25uNYET2XCl5ZF++U8eNxPWqcKohUUBUpKGlNLMchM7q4Wjg2CUpjHLaL8yYPH" crossorigin="anonymous"></script>
+
+    
+    
+        <script src="/libs/highlight/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();hljs.configure({tabReplace: '    '});</script>
+
+    
+  </body>
+</html>

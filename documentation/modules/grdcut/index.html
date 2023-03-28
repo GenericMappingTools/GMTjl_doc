@@ -1,0 +1,407 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.16.4 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+   <link rel="stylesheet" href="/libs/highlight/github.min.css">
+   
+  <link rel="stylesheet" href="/css/franklin.css">
+<link rel="stylesheet" href="/css/minimal-mistakes.css">
+<link rel="stylesheet" href="/css/gmt.css">
+<link rel="icon" href="/assets/GMTjl_logo.png">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/fontawesome.min.css" rel="stylesheet" type="text/css"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/solid.min.css" rel="stylesheet" type="text/css"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/brands.min.css" rel="stylesheet" type="text/css"/>
+<!--[if IE ]>
+<style>
+  /* old IE unsupported flexbox fixes */
+  .greedy-nav .site-title {
+    padding-right: 3em;
+  }
+  .greedy-nav button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+  }
+</style>
+<![endif]-->
+
+   <title>grdcut</title>  
+  <!-- end custom head snippets -->
+</head>
+<body class="layout--single">
+  <div class="site-container">
+    <div class="masthead">
+    <div class="masthead__inner-wrap">
+        <div class="masthead__menu">
+            <nav id="site-nav" class="greedy-nav">
+                <a class="title-icon" href="/"><img src="/assets/GMTjl_logo.png"/></a>
+                <!-- github link -->
+                
+
+                <ul class="visible-links">
+                    <li class="masthead__menu-item">
+                        <a href="https://github.com/GenericMappingTools/GMTjl_doc"><img src="/assets/GitHub-Mark-64px.png" class="masthead-icon" /></a>
+                    </li>
+                    <li class="masthead__menu-item"><a href="/examples/">Examples</a></li>
+                    <li class="masthead__menu-item"><a href="/tutorials/">Tutorials</a></li>
+                    <li class="masthead__menu-item"><a href="/geophysics/">Geophysics</a></li>
+                    <li class="masthead__menu-item"><a href="/documentation/">Documentation</a></li>
+                </ul>
+                <button class="greedy-nav__toggle" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+                <ul class="hidden-links hidden"></ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+    
+      <div id="main" role="main">
+        <div id="overlay"></div>
+        <div id="navbar-container">
+          <div id="navbar">
+            <form id="lunrSearchForm" name="lunrSearchForm" action="/search/index.html">
+              <input class="search-input" name="q" placeholder="Search docs" type="text">
+            </form>
+            <h1>Navigation</h1>
+            <ul><li><div class="tocitem-container"><a  href="/">Home</a></div></li>
+<li><input class="collapse-toggle" id="menuitem-2" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-2"><i class="docs-chevron"></i></label><a  href="/examples">Examples</a></div><ul><li><input class="collapse-toggle" id="menuitem-2-1" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-2-1"><i class="docs-chevron"></i></label><a  href="/examples\CPTs">Color maps</a></div><ul><li><div class="tocitem-container"><a  href="/examples\CPTs\01_cpt_hinge">Color maps</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-2-2" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-2-2"><i class="docs-chevron"></i></label><a  href="/examples\arrows">Arrows</a></div><ul><li><div class="tocitem-container"><a  href="/examples\arrows\10_arrows">Arrows</a></div></li>
+<li><div class="tocitem-container"><a  href="/examples\arrows\11_feathers">Feathers</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-2-3" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-2-3"><i class="docs-chevron"></i></label><a  href="/examples\art">Art</a></div><ul><li><div class="tocitem-container"><a  href="/examples\art\art_examples">Art</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-2-4" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-2-4"><i class="docs-chevron"></i></label><a  href="/examples\choropleths">Choropleths</a></div><ul><li><div class="tocitem-container"><a  href="/examples\choropleths\choro_examples">Choropleths</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-2-5" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-2-5"><i class="docs-chevron"></i></label><a  href="/examples\contours">Contours</a></div><ul><li><div class="tocitem-container"><a  href="/examples\contours\01_contour_examples">Contours</a></div></li>
+<li><div class="tocitem-container"><a  href="/examples\contours\02_polar_contours">Polar Contours</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-2-6" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-2-6"><i class="docs-chevron"></i></label><a  href="/examples\embellish">Embellishments</a></div><ul><li><div class="tocitem-container"><a  href="/examples\embellish\01_mapscale">Map scales</a></div></li>
+<li><div class="tocitem-container"><a  href="/examples\embellish\02_roses">Magnetic compass</a></div></li>
+<li><div class="tocitem-container"><a  href="/examples\embellish\03_insets">Map insets</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-2-7" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-2-7"><i class="docs-chevron"></i></label><a  href="/examples\frames">Frames</a></div><ul><li><div class="tocitem-container"><a  href="/examples\frames\frames">Draw Frames</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-2-8" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-2-8"><i class="docs-chevron"></i></label><a  href="/examples\images">Images</a></div><ul><li><div class="tocitem-container"><a  href="/examples\images\01_grdimage">Color images</a></div></li>
+<li><div class="tocitem-container"><a  href="/examples\images\01b_grdview">Perspective view</a></div></li>
+<li><div class="tocitem-container"><a  href="/examples\images\01c_funs3d">Plot surfaces</a></div></li>
+<li><div class="tocitem-container"><a  href="/examples\images\02_pcolor">Pcolor</a></div></li>
+<li><div class="tocitem-container"><a  href="/examples\images\03_hexbin">Hexagonal binning</a></div></li>
+<li><div class="tocitem-container"><a  href="/examples\images\04_triplot">Triplot</a></div></li>
+<li><div class="tocitem-container"><a  href="/examples\images\05_wms">Web Map Service</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-2-9" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-2-9"><i class="docs-chevron"></i></label><a  href="/examples\legends">Legends</a></div><ul><li><div class="tocitem-container"><a  href="/examples\legends\01_legends">Legends</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-2-10" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-2-10"><i class="docs-chevron"></i></label><a  href="/examples\misc">Misc</a></div><ul><li><div class="tocitem-container"><a  href="/examples\misc\buffer">Geodesic buffers</a></div></li>
+<li><div class="tocitem-container"><a  href="/examples\misc\gadm">GADM</a></div></li>
+<li><div class="tocitem-container"><a  href="/examples\misc\mix_paper_geog">Annotations in geog maps</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-2-11" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-2-11"><i class="docs-chevron"></i></label><a  href="/examples\plotting_functions">Plotting functions</a></div><ul><li><div class="tocitem-container"><a  href="/examples\plotting_functions\01_lines">Line plots</a></div></li>
+<li><div class="tocitem-container"><a  href="/examples\plotting_functions\02_1filledlines">Filled curves</a></div></li>
+<li><div class="tocitem-container"><a  href="/examples\plotting_functions\02_2stairs">Stairs</a></div></li>
+<li><div class="tocitem-container"><a  href="/examples\plotting_functions\02_2stems">Stems</a></div></li>
+<li><div class="tocitem-container"><a  href="/examples\plotting_functions\02_plotyy">Plotyy</a></div></li>
+<li><div class="tocitem-container"><a  href="/examples\plotting_functions\035_radars">Radar plots</a></div></li>
+<li><div class="tocitem-container"><a  href="/examples\plotting_functions\03_bars">Bar plots</a></div></li>
+<li><div class="tocitem-container"><a  href="/examples\plotting_functions\040_scatter">Scatters</a></div></li>
+<li><div class="tocitem-container"><a  href="/examples\plotting_functions\05_1_stats">Stat plots</a></div></li>
+<li><div class="tocitem-container"><a  href="/examples\plotting_functions\05_error_bars">Error bars</a></div></li>
+<li><div class="tocitem-container"><a  href="/examples\plotting_functions\06_spirals">Spirals</a></div></li>
+<li><div class="tocitem-container"><a  href="/examples\plotting_functions\07_symbols">Symbols &amp; Linestyes</a></div></li>
+<li><div class="tocitem-container"><a  href="/examples\plotting_functions\08_rectangles">Patterns &amp; trasparency</a></div></li>
+<li><div class="tocitem-container"><a  href="/examples\plotting_functions\10_histograms">Histograms</a></div></li>
+<li><div class="tocitem-container"><a  href="/examples\plotting_functions\50_plot3">Plot3d</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-2-12" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-2-12"><i class="docs-chevron"></i></label><a  href="/examples\projections">Projections</a></div><ul><li><div class="tocitem-container"><a  href="/examples\projections\01_hello">The true Hello World</a></div></li>
+<li><div class="tocitem-container"><a  href="/examples\projections\02_proj_examples">GMT Map Projections</a></div></li>
+<li><div class="tocitem-container"><a  href="/examples\projections\ex28">Mixing UTM and geographic axes annotations</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-2-13" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-2-13"><i class="docs-chevron"></i></label><a  href="/examples\subplot">Subplots</a></div><ul><li><div class="tocitem-container"><a  href="/examples\subplot\01_subplots">Subplots</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-2-14" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-2-14"><i class="docs-chevron"></i></label><a  href="/examples\ternary">Ternary plots</a></div><ul><li><div class="tocitem-container"><a  href="/examples\ternary\ternary_examples">Ternary plots</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-2-15" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-2-15"><i class="docs-chevron"></i></label><a  href="/examples\themes">Themes</a></div><ul><li><div class="tocitem-container"><a  href="/examples\themes\01_themes">Theming</a></div></li>
+</ul></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-3" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-3"><i class="docs-chevron"></i></label><a  href="/geophysics">Geophysics</a></div><ul><li><input class="collapse-toggle" id="menuitem-3-1" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-3-1"><i class="docs-chevron"></i></label><a  href="/geophysics\earthtides">Earth tides</a></div><ul><li><div class="tocitem-container"><a  href="/geophysics\earthtides\01_earthtides">Earth tides</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-3-2" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-3-2"><i class="docs-chevron"></i></label><a  href="/geophysics\seismicity">Seismicity</a></div><ul><li><div class="tocitem-container"><a  href="/geophysics\seismicity\01_focalmec">Focal mechanisms</a></div></li>
+</ul></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-4" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-4"><i class="docs-chevron"></i></label><a  href="/tutorials">Tutorials</a></div><ul><li><div class="tocitem-container"><a  href="/tutorials\ISC">ISC</a></div></li>
+<li><input class="collapse-toggle" id="menuitem-4-2" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-4-2"><i class="docs-chevron"></i></label><a  href="/tutorials\Landsat8">Landsat8</a></div><ul><li><div class="tocitem-container"><a  href="/tutorials\Landsat8\histogram_stretch">Plot Landsat 8 images</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-4-3" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-4-3"><i class="docs-chevron"></i></label><a  href="/tutorials\coast">Coastlines</a></div><ul><li><div class="tocitem-container"><a  href="/tutorials\coast\coastlines">Coastlines and borders</a></div></li>
+</ul></li>
+<li><div class="tocitem-container"><a  href="/tutorials\dlakelan">dlakelan</a></div></li>
+<li><input class="collapse-toggle" id="menuitem-4-5" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-4-5"><i class="docs-chevron"></i></label><a  href="/tutorials\longest_sail">Longest sail</a></div><ul><li><div class="tocitem-container"><a  href="/tutorials\longest_sail\longestsail">The longest sail</a></div></li>
+</ul></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-5" type="checkbox" checked><div class="tocitem-container"><label class="tocexpander" for="menuitem-5"><i class="docs-chevron"></i></label><a  href="/documentation">Documentation</a></div><ul><li><input class="collapse-toggle" id="menuitem-5-1" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-5-1"><i class="docs-chevron"></i></label><a  href="/documentation\all_docs_ref">All documentations</a></div><ul><li><div class="tocitem-container"><a  href="/documentation\all_docs_ref\all_refs">Manuals</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-5-2" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-5-2"><i class="docs-chevron"></i></label><a  href="/documentation\common_features">Common features</a></div><ul><li><div class="tocitem-container"><a  href="/documentation\common_features\arrows_control">Vector Attributes</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\common_features\color">Setting color</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\common_features\decorated">Line decorations</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\common_features\fonts">Setting fonts</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\common_features\justify">Justify</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\common_features\pens">Pen attributes</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\common_features\symbols">Symbols</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\common_features\themes">theme</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\common_features\units">Units</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-5-3" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-5-3"><i class="docs-chevron"></i></label><a  href="/documentation\common_opts">Common options</a></div><ul><li><div class="tocitem-container"><a  href="/documentation\common_opts\common_opts">frame</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-5-4" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-5-4"><i class="docs-chevron"></i></label><a  href="/documentation\general">General</a></div><ul><li><div class="tocitem-container"><a  href="/documentation\general\introduction">Introduction</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\general\modules">By Modules</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\general\monolitic">Monolithic</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\general\quick_learn">Quick learn</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\general\types">The GMT.jl types &#40;important&#41;</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-5-5" type="checkbox" checked><div class="tocitem-container"><label class="tocexpander" for="menuitem-5-5"><i class="docs-chevron"></i></label><a  href="/documentation\modules">GMT Modules</a></div><ul><li><div class="tocitem-container"><a  href="/documentation\modules\arrows">arrows</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\modules\band">band</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\modules\bar">bar</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\modules\bar3">bar3</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\modules\basemap">basemap</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\modules\blockmean">blockmean</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\modules\blockmedian">blockmedian</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\modules\blockmode">blockmode</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\modules\boxplot">boxplot</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\modules\bubblechart">bubblechart</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\modules\clip">clip</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\modules\coast">coast</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\modules\colorbar">colorbar</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\modules\contour">contour</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\modules\contourf">contourf</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\modules\cornerplot">cornerplot</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\modules\ecdfplot">ecdfplot</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\modules\feather">feather</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\modules\fill_between">fill_between</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\modules\filter1d">filter1d</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\modules\fitcircle">fitcircle</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\modules\gmt2kml">gmt2kml</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\modules\gmtbinstats">gmtbinstats</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\modules\gmtconnect">gmtconnect</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\modules\gmtconvert">gmtconvert</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\modules\gmtmath">gmtmath</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\modules\gmtselect">gmtselect</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\modules\gmtset">gmtset</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\modules\gmtsimplify">gmtsimplify</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\modules\gmtsplit">gmtsplit</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\modules\grd2cpt">grd2cpt</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\modules\grd2kml">grd2kml</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\modules\grd2xyz">grd2xyz</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\modules\grdclip">grdclip</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\modules\grdcontour">grdcontour</a></div></li>
+<li><div class="tocitem-container"><a class = active href="/documentation\modules\grdcut">grdcut</a></div><ul class="page-content">
+<li><a href="#grdcut/">grdcut</a></li>
+</ul>
+</li>
+<li><div class="tocitem-container"><a  href="/documentation\modules\grdedit">grdedit</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\modules\grdfill">grdfill</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\modules\grdgradient">grdgradient</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\modules\grdhisteq">grdhisteq</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\modules\grdimage">grdimage</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\modules\grdinfo">grdinfo</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\modules\grdlandmask">grdlandmask</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\modules\grdmask">grdmask</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\modules\grdmath">grdmath</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\modules\grdpaste">grdpaste</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\modules\grdsample">grdsample</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\modules\grdtrack">grdtrack</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\modules\grdtrend">grdtrend</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\modules\grdvector">grdvector</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\modules\grdview">grdview</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\modules\hband">hband</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\modules\histogram">histogram</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\modules\image">image</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\modules\inset">inset</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\modules\legend">legend</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\modules\lines">lines</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\modules\makecpt">makecpt</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\modules\marginalhist">marginalhist</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\modules\mask">mask</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\modules\movie">movie</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\modules\nearneighbor">nearneighbor</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\modules\parallelplot">parallelplot</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\modules\plot">plot</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\modules\project">project</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\modules\qqplot">qqplot</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\modules\quiver">quiver</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\modules\radar">radar</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\modules\rose">rose</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\modules\sample1d">sample1d</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\modules\scatter">scatter</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\modules\scatter3">scatter3</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\modules\solar">solar</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\modules\sphinterpolate">sphinterpolate</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\modules\sphtriangulate">sphtriangulate</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\modules\stairs">stairs</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\modules\stem">stem</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\modules\subplot">subplot</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\modules\surface">surface</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\modules\ternary">ternary</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\modules\text">text</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\modules\trend1d">trend1d</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\modules\trend2d">trend2d</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\modules\triangulate">triangulate</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\modules\vband">vband</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\modules\violins">violin</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\modules\wiggle">wiggle</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\modules\xyz2grd">xyz2grd</a></div></li>
+</ul></li>
+<li><div class="tocitem-container"><a  href="/documentation\gdalfuns">GDAL related functions</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\supplements">Supplements modules</a></div></li>
+<li><div class="tocitem-container"><a  href="/documentation\utilfuns">Utility functions</a></div></li>
+</ul></li>
+<li><div class="tocitem-container"><a  href="/comp_other_pkgs">Comparison with other plotting packages</a></div></li>
+</ul>
+          </div>
+        </div>
+
+
+<!-- Content appended here -->
+<div class="franklin-content"><h1 id="grdcut"><a href="#grdcut" class="header-anchor">grdcut</a></h1>
+<pre><code class="language-julia">grdcut&#40;cmd0::String&#61;&quot;&quot;, arg1&#61;&#91;&#93;, kwargs...&#41;</code></pre>
+<p>Extract subregion from a grid or image</p>
+<h2>Description</h2>
+<p><strong>grdcut</strong> will produce a new <em>outgrid</em> which is a subregion of <em>ingrid</em>. The subregion may be specified with <strong>region</strong> as in other programs; the specified range must not exceed the range of <em>ingrid</em> &#40;but see <strong>extend</strong>&#41;. If in doubt, run <a href="/documentation/modules/grdinfo/index.html#grdinfo">grdinfo</a> to check range. Alternatively, define the subregion indirectly via a range check on the node values or via distances from a fixed point. Finally, you can use <strong>proj</strong> for oblique projections to determine the corresponding rectangular <strong>region</strong> setting that will give a subregion that fully covers the oblique domain.  <strong>Note</strong>: If the input grid is actually an image &#40;gray-scale, RGB, or RGBA&#41;, then options <strong>extend</strong> and <strong>z_subregion</strong> are unavailable, while for multi-layer Geotiff files only options <strong>region</strong>, <strong>circ_subregion</strong> are supported, i.e., you can cut out a sub-region only &#40;which we do via <em>gdal_translate</em> if you have multiple bands&#41;.  Complementary to <strong>grdcut</strong> there is <a href="/documentation/modules/grdpaste/index.html#grdpaste">grdpaste</a>, which will join together two grid files &#40;not images&#41; along a common edge.</p>
+<h2>Required Arguments</h2>
+<p><em>ingrid</em> : – A grid file name or a <a href="/documentation/general/types/index.html#grid_type">Grid type</a></p>
+<ul>
+<li><p><strong>G</strong> or <strong>save</strong> or <strong>outgrid</strong> or <strong>outfile</strong> : – <em>outgrid&#61;&#91;&#61;ID&#93;&#91;&#43;ddivisor&#93;&#91;&#43;ninvalid&#93;&#91;&#43;ooffset|a&#93;&#91;&#43;sscale|a&#93;&#91;:driver&#91;dataType&#93;&#91;&#43;coptions&#93;&#93;</em><br /> Give the name of the output grid file. Optionally, append <code>&#61;ID</code> for writing a specific file format  &#40;See <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#grd-inout-full">full description</a>&#41;.  The following modifiers are supported:</p>
+<ul>
+<li><p>&#43;d - Divide data values by given divisor &#91;Default is 1&#93;.</p>
+</li>
+<li><p>&#43;n - Replace data values matching invalid with a NaN.</p>
+</li>
+<li><p>&#43;o - Offset data values by the given offset, or append a for automatic range offset to preserve precision for integer grids &#91;Default is 0&#93;.</p>
+</li>
+<li><p>&#43;s - Scale data values by the given scale, or append a for automatic scaling to preserve precision for integer grids &#91;Default is 1&#93;.</p>
+</li>
+</ul>
+<p><strong>Note1:</strong> Any offset is added before any scaling. &#43;sa also sets &#43;oa &#40;unless overridden&#41;. To write specific  formats via GDAL, use &#61;gd and supply driver &#40;and optionally dataType&#41; and/or one or more concatenated  GDAL -co options using &#43;c. See the <a href="https://docs.generic-mapping-tools.org/dev/cookbook/features.html#write-grids-images">“Writing grids and images”</a> cookbook section for more details.</p>
+<p><strong>Note2:</strong> This is optional and to be used only when saving the result directly on disk. Otherwise,  just use the <code>G &#61; modulename&#40;...&#41;</code> form.</p>
+</li>
+</ul>
+
+<ul>
+<li><p><strong>R</strong> or <strong>region</strong> or <strong>limits</strong> : – <em>limits&#61;&#40;xmin, xmax, ymin, ymax&#41;</em> <strong>|</strong> <em>limits&#61;&#40;BB&#61;&#40;xmin, xmax, ymin, ymax&#41;,&#41;</em>  <strong>|</strong> <em>limits&#61;&#40;LLUR&#61;&#40;xmin, xmax, ymin, ymax&#41;,units&#61;&quot;unit&quot;&#41;</em> <strong>|</strong> ...more<br /> Specify the region of interest. More at <a href="/documentation/common_opts/common_opts/index.html#limits">limits</a>. For perspective view <strong>view</strong>, optionally add  <em>zmin,zmax</em>. This option may be used to indicate the range used for the 3-D axes. You may ask for a  larger w/e/s/n region to have more room between the image and the axes.</p>
+</li>
+</ul>
+
+<h2>Optional Arguments</h2>
+<ul>
+<li><p><strong>D</strong> or <strong>dryrun</strong> : – <em>dryrun&#61;true</em> <strong>|</strong> <em>dryrun&#61;&quot;&#43;t&quot;</em><br />  A &quot;dry run&quot;: Simply report the region and increment of what would be the   extracted grid given the selected options. No grid is created &#40;|-G| is disallowed&#41;   and instead we write a single data record with <em>west east south north xinc yinc</em>   to standard output. The increments will reflect the input grid unless it is a   remote gridded data set without implied resolution. Append <strong>&#43;t</strong> to instead receive   the information as the trailing string &quot;-Rwest/east/south/north -Ixinc/yinc&quot;.</p>
+</li>
+<li><p><strong>F</strong> or <strong>clip</strong> or <strong>cutline</strong> : – <em>cutline&#61;polyg</em> <strong>|</strong> <em>cutline&#61;&#40;polygon&#61;polyg, crop2cutline&#61;true, invert&#61;true&#41;</em><br />  Specify a multisegment closed polygon file. All grid nodes outside the polygon will be set to NaN.   Use the NamedTuple way to say <code>invert&#61;true</code> to invert that and set all nodes inside the polygon to NaN   instead. Optionally, add <code>crop2cutline&#61;true</code> to crop the grid region to reflect the bounding box of the polygon.</p>
+</li>
+</ul>
+<ul>
+<li><p><strong>J</strong> or <strong>proj</strong> or <strong>projection</strong> : – <em>proj&#61;&lt;parameters&gt;</em><br /> Select map projection. More at <a href="/documentation/common_opts/common_opts/index.html#proj">proj</a></p>
+</li>
+</ul>
+
+<ul>
+<li><p><strong>N</strong> or <strong>extend</strong> : – <em>extend&#61;true</em> <strong>|</strong> <em>extend&#61;nodata</em><br />  Allow grid to be extended if new <strong>region</strong> exceeds existing boundaries.   Append <em>nodata</em> value to initialize nodes outside current region &#91;Default is NaN&#93;.</p>
+</li>
+<li><p><strong>S</strong> or <strong>circ_subregion</strong> : – <em>circ_subregion&#61;&#40;lon,lat,radius&#41;</em> <strong>|</strong> <em>circ_subregion&#61;&quot;lon/lat/radius&#43;n&quot;</em><br />  Specify an origin and radius; append a distance unit and we determine the corresponding rectangular   region so that all grid nodes on or inside the circle are contained in the subset. If <strong>&#43;n</strong> is appended   &#40;and hence all arg must be a string&#41; we set all nodes outside the circle to NaN.</p>
+</li>
+</ul>
+<ul>
+<li><p><strong>V</strong> or <em>verbose</em> : – <em>verbose&#61;true</em> <strong>|</strong> <em>verbose&#61;level</em><br /> Select verbosity level. More at <a href="/documentation/common_opts/common_opts/index.html#verbose">verbose</a></p>
+</li>
+</ul>
+
+<ul>
+<li><p><strong>Z</strong> or <strong>z_subregion</strong> : – <em>z_subregion&#61;true</em> <strong>|</strong> <em>z_subregion&#61;&#40;min,max&#41;</em> <strong>|</strong> <em>z_subregion&#61;&quot;min/max|&#43;n|N|r&quot;</em><br />  Determine a new rectangular region so that all nodes <em>outside</em> this region are also outside the given   <em>z</em>-range &#91;-inf/&#43;inf&#93;. To indicate no limit on min or max only, specify a hyphen &#40;-&#41; &#40;and hence all   arg must be a string&#41;. Normally, any NaNs encountered are simply skipped and not considered in the   range-decision. Append <strong>&#43;n</strong> &#40;arg must be a string too&#41; to consider a NaN to be outside the given   <em>z</em>-range. This means the new subset will be NaN-free. Alternatively, append <strong>&#43;r</strong> to consider NaNs   to be within the data range. In this case we stop shrinking the boundaries once a NaN is found   &#91;Default simply skips NaNs when making the range decision&#93;. Finally, if your core subset grid is   surrounded by rows and/or columns that are all NaNs, append <strong>&#43;N</strong> to strip off such columns before   &#40;optionally&#41; considering the range of the core subset for further reduction of the area.</p>
+</li>
+</ul>
+<ul>
+<li><p><strong>f</strong> or <strong>colinfo</strong> : – <em>colinfo&#61;??</em><br /> Specify the data types of input and/or output columns &#40;time or geographical data&#41;.  <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#f-full">More at</a></p>
+</li>
+</ul>
+
+<strong>Units</strong></p>
+<p>For map distance unit, append unit d for arc degree, m for arc minute, and s for arc second, or e for meter &#91;Default unless stated otherwise&#93;, f for foot, k for km, M for statute mile, n for nautical mile, and u for US survey foot. By default we compute such distances using a spherical approximation with great circles &#40;-jg&#41; using the authalic radius &#40;see <code>PROJ_MEAN_RADIUS</code>&#41;. You can use -jf to perform “Flat Earth” calculations &#40;quicker but less accurate&#41; or -je to perform exact geodesic calculations &#40;slower but more accurate; see <code>PROJ_GEODESIC</code> for method used&#41;.
+<h2>Examples</h2>
+<p>To obtain data for an oblique Mercator projection map we need to extract more data that is actually used. This is necessary because the output of <strong>grdcut</strong> has edges defined by parallels and meridians, while the oblique map in general does not. Hence, to get all the data from the ETOPO2 data needed to make a contour map for the region defined by its lower left and upper right corners and the desired projection, use:</p>
+<pre><code class="language-julia">G &#61; grdcut&#40;&quot;@earth_relief_02m&quot;, region_diag&#61;&#40;160,20,220,30&#41;, proj&#61;&quot;oc190/25.5/292/69/1&quot;&#41;;</code></pre>
+<p>Suppose you have used <a href="/documentation/modules/surface/index.html#surface">surface</a> to grid ship gravity in the region between 148E - 162E and 8N - 32N, and you do not trust the gridding near the edges, so you want to keep only the area between 150E - 160E and 10N - 30N, then:</p>
+<pre><code class="language-julia">G &#61; grdcut&#40;&quot;grav_148_162_8_32.nc&quot;, region&#61;&#40;150,160,10,30&#41;&#41;;</code></pre>
+<p>To return the subregion of a grid such that any boundary strips where all values are entirely above 0 are excluded, try::</p>
+<pre><code class="language-julia">G &#61; grdcut&#40;&quot;bathy.nc&quot;, z_subregion&#61;&quot;-/0&quot;&#41;;</code></pre>
+<p>To return the subregion of a grid such that any boundary rows or columns that are all NaNs, try:</p>
+<pre><code class="language-julia">G &#61; grdcut&#40;&quot;bathy.nc&quot;, z_subregion&#61;&quot;&#43;N&quot;&#41;;</code></pre>
+<p>To return the subregion of a grid that contains all nodes within a distance of 500 km from the point 45,30 try:</p>
+<pre><code class="language-julia">G &#61; grdcutgrdcut&#40;&quot;bathy.nc&quot;, circ_subregion&#61;&quot;45/30/500k&quot;&#41;;</code></pre>
+<p>To create a topography grid with data only inside France and set it to NaN outside France, based on the 10x10 minute DEM, try:</p>
+<pre><code class="language-julia">using GMT
+D &#61; coast&#40;DCW&#61;:FR, dump&#61;true&#41;;
+G &#61; grdcut&#40;&quot;@earth_relief_10m&quot;, cutline&#61;&#40;polygon&#61;D, crop2cutline&#61;true&#41;&#41;;
+imshow&#40;G&#41;</code></pre></p>
+<p>
+<a id="example_9527102068059098549">
+ <img src="/assets/documentation/modules/grdcut/code/output/example_9527102068059098549.png" alt=""> 
+</a>
+
+<p>To determine what grid region and resolution &#40;in text format&#41; most suitable for a 24 cm wide map that is using an oblique projection to display the remote Earth Relief data grid, try:</p>
+<pre><code class="language-julia">grdcut&#40;&quot;@earth_relief&quot;, region_diag&#61;&#40;270,20,305,25&#41;, proj&#61;&quot;Oc280/25.5/22/69/24c&quot;, dryrun&#61;&quot;&#43;t&quot;&#41;</code></pre>
+<h2>Notes</h2>
+<p>If the input file is a geotiff with multiple data bands then the output format will depend on your selection &#40;if any&#41; of the bands to keep: If you do not specify any bands &#40;which means we consider all the available bands&#41; or you select more than one band, then the output file can either be another geotiff &#40;if you give a .tif&#91;f&#93; extension&#41; or it can be a multiband netCDF file &#40;if you give a .nc or .grd extension&#41;. If you select a single band from the input geotiff then GMT will normally read that in as a single grid layer and thus write a netCDF grid &#40;unless you append another grid format specifier&#41;. However, if your output filename has a .tif&#91;f&#93; extension then we will instead write it as a one-band geotiff. All geotiff output operations are done via GDAL&#39;s <em>gdal_translate</em>.</p>
+<h2>See Also</h2>
+<p><a href="/documentation/modules/grdclip/index.html#grdclip">grdclip</a>, <a href="/documentation/modules/grdfill/index.html#grdfill">grdfill</a>, <a href="/documentation/modules/grdinfo/index.html#grdinfo">grdinfo</a>, <a href="/documentation/modules/grdpaste/index.html#grdpaste">grdpaste</a>, <a href="/documentation/modules/surface/index.html#surface">surface</a></p>
+<div class="page-foot">
+  <div class="copyright">
+    &copy; GMT.jl. Last modified: March 28, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+      <p>These docs were autogenerated using GMT: v0.44.6</p>
+  </div>
+</div>
+</div><!-- CONTENT ENDS HERE -->
+
+      </div> <!-- closure of main -->
+
+      <div class="page__footer">
+        <footer>
+          <!-- start custom footer snippets -->
+          <!-- end custom footer snippets -->
+          <div class="page__footer-follow">
+            <ul class="social-icons">
+              <li><a href="https://twitter.com/gmt_dev" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+              <li><a href="https://github.com/GenericMappingTools/GMT.jl" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+            </ul>
+          </div>
+          <div class="page__footer-copyright">&copy; GMT.jl. Powered by <a href="https://github.com/tlienart/Franklin.jl">Franklin</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+        </footer>
+      </div>
+
+    </div>   <!-- closure of class site-container -->
+
+    
+
+    <script src="/libs/navbar.js"></script>
+    <script src="/libs/lunr/lunr.min.js"></script>
+    <script src="/libs/lunr/lunr_index.js"></script>
+    <script src="/libs/lunr/lunrclient.min.js"></script>
+    <!-- <script src="/libs/minimal-mistakes/main.min.js"></script> -->
+    <script defer src="https://use.fontawesome.com/releases/v5.8.2/js/all.js" integrity="sha384-DJ25uNYET2XCl5ZF++U8eNxPWqcKohUUBUpKGlNLMchM7q4Wjg2CUpjHLaL8yYPH" crossorigin="anonymous"></script>
+
+    
+    
+        <script src="/libs/highlight/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();hljs.configure({tabReplace: '    '});</script>
+
+    
+  </body>
+</html>
