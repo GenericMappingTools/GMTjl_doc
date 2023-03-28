@@ -1,0 +1,8 @@
+Auto-legend entries
+-------------------
+
+This module allows you to use the **l** option to specify an automatic legend entry.
+This option is available for lines or symbols only. If the symbol size is variable
+and computed from other information (which may be true for some symbols deriving their
+size from other input columns), then you need to supply a representative legend size
+via the **+S** modifier.
