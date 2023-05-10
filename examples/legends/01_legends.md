@@ -43,7 +43,7 @@ gmtbegin()
 	plot("@Table_5_11.txt", marker=:circle, markersize=0.35, markercolor="lightgreen",
 	     markerline="faint", legend="Apples")
 	plot("@Table_5_11.txt", marker=:triangle, ms=0.35, fill="orange", legend="Oranges")
-	legend(position=(inside=:TR, width=3, offset=0.25), box=(pen=1, fill="gray95", shaded=true))
+	legend(position=(anchor=:TR, width=3, offset=0.25), box=(pen=1, fill="gray95", shaded=true))
 gmtend(:show)
 ```
 \end{examplefig}

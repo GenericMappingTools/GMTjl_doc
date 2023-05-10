@@ -103,3 +103,19 @@ Mercator map produced by a previous call, ensuring a 2 cm offset from the map fr
 ```julia
     colorbar!(region=(0,10,0,10), pos=(justify=:CT, width=10, offset=(0,2), horizontal=true), cmap="colors.cpt", show=1)
 ```
+
+Show automatic placement of color bars when selecting a side mid-point.
+
+```julia
+    C = makecpt(cmap=:jet, range=(0,100));
+    basemap(region=(0,30,0,45), frame=(axes=:wsne, annot=:auto, ticks=:auto))
+    colorbar!(position=(inside=true, anchor=:BC), xaxis=(annot=:auto, ticks=:auto),
+              box=(pen=(0.25,:red),), ylabel="@.C", cmap=C)
+    colorbar!(position=(outside=true, anchor=:BC), box=(pen=(0.25,:red),), ylabel="@.C", cmap=C)
+    colorbar!(position=(inside=true, anchor=:TC), box=(pen=(0.25,:red),), ylabel="@.C", cmap=C)
+    colorbar!(position=(outside=true, anchor=:TC), box=(pen=(0.25,:red),), ylabel="@.C", cmap=C)
+    colorbar!(position=(inside=true, anchor=:ML), box=(pen=(0.25,:red),), ylabel="@.C", cmap=C)
+    colorbar!(position=(outside=true, anchor=:ML), box=(pen=(0.25,:red),), ylabel="@.C", cmap=C)
+    colorbar!(position=(inside=true, anchor=:MR), box=(pen=(0.25,:red),), ylabel="@.C", cmap=C)
+    colorbar!(position=(anchor=:MR,), box=(pen=(0.25,:red),), ylabel="@.C", cmap=C, show=true)
+```

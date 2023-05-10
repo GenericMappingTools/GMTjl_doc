@@ -184,8 +184,10 @@ Parameters
    Add a legend to the plot. In its simple form just provide `legend="thelabel"`, which plots the legend at the
    default *UpperRight* position. To control the legend position and other parameters one must use the tuple form
    where `label="thelabel"` is the same as above; `pos=position` where *position* is a 2 char code (or its expanded form)
-   like in the \myreflink{text}. The `box` option may take two forms (refer to \myreflink{legend} for more details):
-   (1) use `box=:none` to not plot the legend box or, (2) `box=(clearance=?, fill=?, inner=?, pen=?, rounded=?, shade=?)`.
+   like in the \myreflink{text}. For a full featured positioning option in `legend=(label="thelabel", pos=(...))` see the
+   `pos` option in \myreflink{legend} that allows also to plot the legend outside of the figure space. The `box` option
+   may take two forms (refer to \myreflink{legend} for more details): (1) use `box=:none` to not plot the legend box or,
+   (2) `box=(clearance=?, fill=?, inner=?, pen=?, rounded=?, shade=?)`.
    For example, `box=(pen=1, fill="gray95", shade=true)` to plot a light gray box with a shade.  When using the
    **groupvar** option we can just set `legend=true` to create a legend containing an entry for each of the groups.
    Controling the position of that legend is done by omitting the *label* keyword in the `legend=(...)` form.
