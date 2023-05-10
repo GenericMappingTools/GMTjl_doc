@@ -277,7 +277,7 @@
 <a href="#append2fig">append2fig</a>
 </div>
 <div class="doc-content"><pre><code>append2fig&#40;fname::String&#41;</code></pre>
-<p>Move the file <code>fname</code> to the default name and location &#40;GMTjl_tmp.ps in tmp&#41;. The <code>fname</code> should be a PS file that has NOT been closed. Posterior calls to plotting methods will append to this file. Useful when creating figures that use a common base map that may be heavy &#40;slow&#41; to compute.</p>
+<p>Move the file <code>fname</code> to the default name and location &#40;GMT_user.ps in tmp&#41;. The <code>fname</code> should be a PS file that has NOT been closed. Posterior calls to plotting methods will append to this file. Useful when creating figures that use a common base map that may be heavy &#40;slow&#41; to compute.</p>
 
 
 </div>
@@ -321,6 +321,30 @@
 </div>
 <div class="doc-content"><pre><code>az, elev, rho &#61; cart2sph&#40;x, y, z; deg&#61;false&#41;</code></pre>
 <p>Transform Cartesian coordinates to spherical. Angles are returned in radians by default. Use <code>deg&#61;true</code> to return the angles in degrees. Input can be scalar, vectors or matrices.</p>
+
+
+</div>
+</div>
+<div class="docstring">
+<div class="doc-header" id="coastlinesproj">
+<a href="#coastlinesproj">coastlinesproj</a>
+</div>
+<div class="doc-content"><pre><code>cl &#61; coastlinesproj&#40;proj&#61;&quot;?&quot;, res&#61;&quot;crude&quot;, coastlines&#61;nothing&#41;</code></pre>
+<p>Extract the coastlines from GMT&#39;s GSHHG database and project them using PROJ &#40;NOT the GMT projection machinery&#41;. This allows the use of many of the PROJ proijections that are not available from pure GMT.</p>
+<ul>
+<li><p><code>proj</code>: A proj4 string describing the projection &#40;Mandatory&#41;.</p>
+</li>
+<li><p><code>res</code>: The GSHHG coastline resolution. Available options are: <code>crude</code>, <code>low</code>, <code>intermediate</code>, <code>high</code> and <code>full</code></p>
+</li>
+<li><p><code>coastlines</code>: In alternative to the <code>res</code> option, one may pass a GMTdataset with coastlines  previously loaded &#40;with <code>gmtread</code>&#41; from another source.</p>
+</li>
+<li><p><code>limits</code>: If not empty it must be a 2 elements array with lon<em>min, lon</em>max that is used to ask for  coastlines that expand more than 360 degrees &#40;<code>worldrectangular</code> uses this&#41;.</p>
+</li>
+</ul>
+<h3>Returns</h3>
+<p>A Vector of GMTdataset containing the projected &#40;or not&#41; world GSHHG coastlines at resolution <code>res</code>.</p>
+<h3>Example</h3>
+<pre><code>cl &#61; coastlinesproj&#40;proj&#61;&quot;&#43;proj&#61;ob_tran &#43;o_proj&#61;moll &#43;o_lon_p&#61;40 &#43;o_lat_p&#61;50 &#43;lon_0&#61;60&quot;&#41;;</code></pre>
 
 
 </div>
@@ -491,7 +515,8 @@ gadm&#40;&quot;IND&quot;, names&#61;true&#41;</code></pre>
 <div class="doc-header" id="geodetic2enu">
 <a href="#geodetic2enu">geodetic2enu</a>
 </div>
-<div class="doc-content"><p>Convert from geodetic coordinates to local East, North, Up &#40;ENU&#41; coordinates.</p>
+<div class="doc-content"><pre><code>xEast, yNorth, zUp &#61; geodetic2enu&#40;lon, lat, h, lon0, lat0, h0&#41;</code></pre>
+<p>Convert from geodetic coordinates to local East, North, Up &#40;ENU&#41; coordinates.</p>
 
 
 </div>
@@ -573,22 +598,52 @@ gadm&#40;&quot;IND&quot;, names&#61;true&#41;</code></pre>
 <p>If file is an image <code>layer</code> can be a 1 or a 1x3 array &#40;to read a RGB image&#41;. Not that in this later case bands do not need to be contiguous. A <code>band&#61;&#91;1,5,2&#93;</code>&#96; composes an RGB out of those bands. See more at http://docs.generic-mapping-tools.org/latest//GMT_Docs.html#modifiers-for-coards-compliant-netcdf-files&#41; but note that we use <strong>1 based</strong> indexing here.</p>
 <ul>
 <li><p><strong>R</strong> | <strong>region</strong> | <strong>limits</strong> :: &#91;Type &#61;&gt; Str or list or GMTgrid|image&#93;	&#36;Arg &#61; &#40;xmin,xmax,ymin,ymax&#41;&#36;</p>
-<p>Specify the region of interest. Set to data minimum BoundinBox if not provided.   &#40;http://docs.generic-mapping-tools.org/latest/gmt.html#r-full&#41;</p>
+<p>Specify the region of interest. Set to data minimum BoundinBox if not provided.</p>
 </li>
 <li><p><strong>V</strong> | <strong>verbose</strong> :: &#91;Type &#61;&gt; Bool or Str&#93;		&#36;Arg &#61; &#91;level&#93;&#36;</p>
-<p>Select verbosity level, which will send progress reports to stderr.   &#40;http://docs.generic-mapping-tools.org/latest/gmt.html#v-full&#41;</p>
+<p>Select verbosity level, which will send progress reports to stderr.</p>
 </li>
 <li><p><strong>bi</strong> | <strong>binary_in</strong> :: &#91;Type &#61;&gt; Str&#93;			&#36;Arg &#61; &#91;ncols&#93;&#91;type&#93;&#91;w&#93;&#91;&#43;L|&#43;B&#93;&#36;</p>
-<p>Select native binary format for primary input &#40;secondary inputs are always ASCII&#41;.   &#40;http://docs.generic-mapping-tools.org/latest/gmt.html#bi-full&#41;</p>
+<p>Select native binary format for primary input &#40;secondary inputs are always ASCII&#41;.</p>
 </li>
 <li><p><strong>f</strong> | <strong>colinfo</strong> | <strong>coltypes</strong> | <strong>coltype</strong> :: &#91;Type &#61;&gt; Str&#93;        &#36;Arg &#61; &#91;i|o&#93;colinfo&#36;</p>
-<p>Specify the data types of input and/or output columns &#40;time or geographical data&#41;.   &#40;http://docs.generic-mapping-tools.org/latest/gmt.html#f-full&#41;</p>
+<p>Specify the data types of input and/or output columns &#40;time or geographical data&#41;.</p>
 </li>
 </ul>
 <p>Example: to read a nc called &#39;lixo.grd&#39;</p>
 <pre><code>G &#61; gmtread&#40;&quot;lixo.grd&quot;&#41;;</code></pre>
 <p>to read a jpg image with the bands reversed</p>
 <pre><code>I &#61; gmtread&#40;&quot;image.jpg&quot;, band&#61;&#91;2,1,0&#93;&#41;;</code></pre>
+
+
+</div>
+</div>
+<div class="docstring">
+<div class="doc-header" id="graticules">
+<a href="#graticules">graticules</a>
+</div>
+<div class="doc-content"><pre><code>grat &#61; graticules&#40;D, width&#61;&#40;30,20&#41;, grid&#61;nothing, annot_x&#61;nothing&#41;</code></pre>
+<p>or</p>
+<pre><code>grat &#61; graticules&#40;; proj&#61;&quot;projection&quot;, width&#61;&#40;30,20&#41;, pm&#61;0, grid&#61;nothing, annot_x&#61;nothing&#41;</code></pre>
+<p>Create a projected graticule GMTdataset with meridians and parallels at <code>width</code> intervals.</p>
+<ul>
+<li><p><code>D</code>: A GMTdataset &#40;or vector of them&#41; holding the projection info. Instead of GMTdataset type, this argument may also be a referenced grid or image type.</p>
+</li>
+<li><p><code>proj</code>: Alternatively pass a proj4 string or Symbol describing the projection</p>
+</li>
+<li><p><code>pm</code>: The projection prime meridian &#40;Default is 0 or whatever is in D.proj4&#41;.</p>
+</li>
+<li><p><code>width</code>: A scalar or two elements array/tuple with increments in longitude and latitude. If scalar, width<em>x &#61; width</em>y.</p>
+</li>
+<li><p><code>grid</code>: Instead of using the <code>width</code> argument, that generates an automatic set of graticules, one may pass a two elements Vector&#123;Vector&#123;Real&#125;&#125; with the meridians &#40;grid&#91;1&#93;&#41; and parallels &#40;grid&#91;2&#93;&#41; to create.</p>
+</li>
+<li><p><code>annot_x</code>: By default, all meridians are annotated when <code>grat</code> is used in the <code>plotgrid&#33;</code> function, but depending on the projection and the <code>latlim</code> argument used in <code>worldrectangular</code> we may have the longitude labels overlap close to the prime meridian. To minimize that pass a vector of longitudes to be annotated. <em>e.g.</em> <code>annot_x&#61;&#91;-180,-150,0,150,180&#93;</code> will annotate only those longitudes.</p>
+</li>
+</ul>
+<h3>Returns</h3>
+<p>A Vector of GMTdataset containing the projected meridians and parallels. <code>grat&#91;i&#93;</code> attributes store information about that element lon,lat. </p>
+<h3>Example</h3>
+<pre><code>grat &#61; graticules&#40;proj&#61;&quot;&#43;proj&#61;ob_tran &#43;o_proj&#61;moll &#43;o_lon_p&#61;40 &#43;o_lat_p&#61;50 &#43;lon_0&#61;60&quot;&#41;;</code></pre>
 
 
 </div>
@@ -615,16 +670,16 @@ gadm&#40;&quot;IND&quot;, names&#61;true&#41;</code></pre>
 <li><p><code>percent</code>: If true the <code>xmin</code> &amp; <code>xmax</code> are interpreted as fractions of the figure height.</p>
 </li>
 <li><p><strong>B</strong> | <strong>frame</strong> | <strong>axis</strong> | <strong>xaxis yaxis</strong>:: &#91;Type &#61;&gt; Str&#93; </p>
-<p>Set map boundary frame and axes attributes.   &#40;http://docs.generic-mapping-tools.org/latest/gmt.html#b-full&#41;</p>
+<p>Set map boundary frame and axes attributes.</p>
 </li>
 <li><p><strong>J</strong> | <strong>proj</strong> | <strong>projection</strong> :: &#91;Type &#61;&gt; String&#93;</p>
-<p>Select map projection. Defaults to 14x9.5 cm with linear &#40;non-projected&#41; maps.   &#40;http://docs.generic-mapping-tools.org/latest/gmt.html#j-full&#41;</p>
+<p>Select map projection. Defaults to 14x9.5 cm with linear &#40;non-projected&#41; maps.</p>
 </li>
 <li><p><strong>R</strong> | <strong>region</strong> | <strong>limits</strong> :: &#91;Type &#61;&gt; Str or list or GMTgrid|image&#93;	&#36;Arg &#61; &#40;xmin,xmax,ymin,ymax&#41;&#36;</p>
-<p>Specify the region of interest. Set to data minimum BoundinBox if not provided.   &#40;http://docs.generic-mapping-tools.org/latest/gmt.html#r-full&#41;</p>
+<p>Specify the region of interest. Set to data minimum BoundinBox if not provided.</p>
 </li>
 <li><p><strong>W</strong> | <strong>pen</strong> | <strong>line_attrib</strong> :: &#91;Type &#61;&gt; Str&#93;</p>
-<p>Set pen attributes for the horizontal lines   &#40;http://docs.generic-mapping-tools.org/latest/plot.html#w&#41;</p>
+<p>Set pen attributes for the horizontal lines</p>
 </li>
 </ul>
 <p>Example:</p>
@@ -698,7 +753,7 @@ julia&gt; imshow&#40;G, shade&#61;&quot;&#43;a45&quot;, contour&#61;true&#41;
 julia&gt; imshow&#40;rand&#40;128,128&#41;&#41;
 
 # Display a web downloaded jpeg image wrapped into a sinusoidal projection
-julia&gt; imshow&#40;&quot;http://larryfire.files.wordpress.com/2009/07/untooned_jessicarabbit.jpg&quot;, region&#61;&quot;d&quot;, frame&#61;&quot;g&quot;, proj&#61;&quot;I15&quot;, img_in&#61;&quot;r&quot;, fmt&#61;:jpg&#41;</code></pre>
+julia&gt; imshow&#40;gmtread&#40;&#41;&quot;http://larryfire.files.wordpress.com/2009/07/untooned_jessicarabbit.jpg&quot;&#41;, region&#61;:global, frame&#61;&quot;g&quot;, proj&#61;:sinu&#41;</code></pre>
 <p>See also: <a href="@ref"><code>grdimage</code></a></p>
 
 
@@ -752,9 +807,9 @@ plot&#33;&#40;points, marker&#61;:star, ms&#61;&quot;12p&quot;, fill&#61;:blue, 
 <p><code>GMT.isnodata</code> is a <code>Function</code>.</p>
 <pre><code># 2 methods for generic function &quot;isnodata&quot; from GMT:
  &#91;1&#93; isnodata&#40;array::AbstractArray&#41;
-     @ C:\Users\joaqu\.julia\dev\GMT\src\utils.jl:328
+     @ C:\Users\j\.julia\dev\GMT\src\utils.jl:328
  &#91;2&#93; isnodata&#40;array::AbstractArray, val&#41;
-     @ C:\Users\joaqu\.julia\dev\GMT\src\utils.jl:328</code></pre>
+     @ C:\Users\j\.julia\dev\GMT\src\utils.jl:328</code></pre>
 </div>
 </div>
 <div class="docstring">
@@ -763,28 +818,29 @@ plot&#33;&#40;points, marker&#61;:star, ms&#61;&quot;12p&quot;, fill&#61;:blue, 
 </div>
 <div class="doc-content"><pre><code>kml2gmt&#40;cmd0::String&#61;&quot;&quot;, arg1&#61;nothing, kwargs...&#41;</code></pre>
 <p>kml2gmt - Extract GMT table data from Google Earth KML files</p>
-<p>Full option list at <a href="http://docs.generic-mapping-tools.org/latest/kml2gmt.html"><code>kml2gmt</code></a></p>
+<p>See full GMT &#40;not the <code>GMT.jl</code> one&#41; docs at <a href="http://docs.generic-mapping-tools.org/latest/kml2gmt.html"><code>kml2gmt</code></a></p>
 <h2>Parameters</h2>
 <ul>
 <li><p><strong>F</strong> | <strong>select</strong> :: &#91;Type &#61;&gt; Str&#93;        &#36;Arg &#61; s|l|p&#36;</p>
-<p>Specify a particular feature type to output. Choose from points &#40;s&#41;, line &#40;l&#41;, or polygon &#40;p&#41;.   By default we output all geometries.   &#40;http://docs.generic-mapping-tools.org/latest/kml2gmt.html#f&#41;</p>
+<p>Specify a particular feature type to output. Choose from points &#40;s&#41;, line &#40;l&#41;, or polygon &#40;p&#41;.   By default we output all geometries.</p>
 </li>
 <li><p><strong>Z</strong> | <strong>altitudes</strong> :: &#91;Type &#61;&gt; Bool&#93;</p>
 <p>Output the altitude coordinates as GMT z coordinates &#91;Default will output just longitude and latitude&#93;.   &#40;http://docs.generic-mapping-tools.org/latest/kml2gmt.html#z&#41;</p>
 </li>
 <li><p><strong>V</strong> | <strong>verbose</strong> :: &#91;Type &#61;&gt; Bool or Str&#93;		&#36;Arg &#61; &#91;level&#93;&#36;</p>
-<p>Select verbosity level, which will send progress reports to stderr.   &#40;http://docs.generic-mapping-tools.org/latest/gmt.html#v-full&#41;</p>
+<p>Select verbosity level, which will send progress reports to stderr.</p>
 </li>
 <li><p><strong>bo</strong> | <strong>binary_out</strong> :: &#91;Type &#61;&gt; Str&#93;			&#36;Arg &#61; &#91;ncols&#93;&#91;type&#93;&#91;w&#93;&#91;&#43;L|&#43;B&#93;&#36;</p>
-<p>Select native binary output.   &#40;http://docs.generic-mapping-tools.org/latest/gmt.html#bo-full&#41;</p>
+<p>Select native binary output.</p>
 </li>
 <li><p><strong>do</strong> | <strong>nodata_out</strong> :: &#91;Type &#61;&gt; Str or Number&#93;     &#36;Arg &#61; nodata&#36;</p>
-<p>Examine all output columns and if any item equals NAN substitute it with   the chosen missing data value.   &#40;http://docs.generic-mapping-tools.org/latest/gmt.html#do-full&#41;</p>
+<p>Examine all output columns and if any item equals NAN substitute it with   the chosen missing data value.</p>
 </li>
 <li><p><strong>yx</strong> :: &#91;Type &#61;&gt; Str or Bool or &#91;&#93;&#93;     &#36;Arg &#61; &#91;i|o&#93;&#36;</p>
-<p>Swap 1st and 2nd column on input and/or output.   &#40;http://docs.generic-mapping-tools.org/latest/gmt.html#colon-full&#41;</p>
+<p>Swap 1st and 2nd column on input and/or output.</p>
 </li>
 </ul>
+<p>To see the full documentation type: &#36;@? kml2gmt&#36;</p>
 
 
 </div>
@@ -848,14 +904,14 @@ D &#61; linearfitxy&#40;&#91;0.037 0.0080; 0.035 0.0084; 0.032 0.0100; 0.040 0.0
 </div>
 <div class="doc-content"><pre><code>logo&#40;cmd0::String&#61;&quot;&quot;; kwargs...&#41;</code></pre>
 <p>Plots the GMT logo on a map. By default, the GMT logo is 5 cm wide and 2.5 cm high and will be positioned relative to the current plot origin. Use various options to change this and to place a transparent or opaque rectangular map panel behind the GMT logo.</p>
-<p>Full option list at <a href="http://docs.generic-mapping-tools.org/latest/gmtlogo.html"><code>gmtlogo</code></a></p>
+<p>See full GMT &#40;not the <code>GMT.jl</code> one&#41; docs at <a href="http://docs.generic-mapping-tools.org/latest/gmtlogo.html"><code>gmtlogo</code></a></p>
 <h2>Parameters</h2>
 <ul>
 <li><p><strong>D</strong> | <strong>pos</strong> | <strong>position</strong> :: &#91;Type &#61;&gt; Str&#93;</p>
-<p>Sets reference point on the map for the image using one of four coordinate systems.   &#40;http://docs.generic-mapping-tools.org/latest/gmtlogo.html#d&#41;</p>
+<p>Sets reference point on the map for the image using one of four coordinate systems.</p>
 </li>
 <li><p><strong>F</strong> | <strong>box</strong> :: &#91;Type &#61;&gt; Str&#93;</p>
-<p>Without further options, draws a rectangular border around the GMT logo using <code>MAP_FRAME_PEN</code>.   or map rose &#40;T&#41;   &#40;http://docs.generic-mapping-tools.org/latest/gmtlogo.html#f&#41;</p>
+<p>Without further options, draws a rectangular border around the GMT logo using <code>MAP_FRAME_PEN</code>.   or map rose &#40;T&#41;</p>
 </li>
 <li><p><strong>julia</strong> :: &#91;Type &#61;&gt; Number&#93;</p>
 <p>Create the Julia instead of the GMT logo. Provide circle diameter in centimeters</p>
@@ -864,7 +920,7 @@ D &#61; linearfitxy&#40;&#91;0.037 0.0080; 0.035 0.0084; 0.032 0.0100; 0.040 0.0
 <p>Create the GMT Julia GMT logo. Provide circle diameter in centimeters</p>
 </li>
 <li><p><strong>J</strong> | <strong>proj</strong> | <strong>projection</strong> :: &#91;Type &#61;&gt; String&#93;</p>
-<p>Select map projection. Defaults to 14x9.5 cm with linear &#40;non-projected&#41; maps.   &#40;http://docs.generic-mapping-tools.org/latest/gmt.html#j-full&#41;</p>
+<p>Select map projection. Defaults to 14x9.5 cm with linear &#40;non-projected&#41; maps.</p>
 </li>
 <li><p><strong>Jz</strong> | <strong>zscale</strong> | <strong>zsize</strong> :: &#91;Type &#61;&gt; String&#93;</p>
 </li>
@@ -872,21 +928,21 @@ D &#61; linearfitxy&#40;&#91;0.037 0.0080; 0.035 0.0084; 0.032 0.0100; 0.040 0.0
 <p>Tell GMT to <strong>NOT</strong> draw in portrait mode &#40;that is, make a Landscape plot&#41;</p>
 </li>
 <li><p><strong>R</strong> | <strong>region</strong> | <strong>limits</strong> :: &#91;Type &#61;&gt; Str or list or GMTgrid|image&#93;	&#36;Arg &#61; &#40;xmin,xmax,ymin,ymax&#41;&#36;</p>
-<p>Specify the region of interest. Set to data minimum BoundinBox if not provided.   &#40;http://docs.generic-mapping-tools.org/latest/gmt.html#r-full&#41;</p>
+<p>Specify the region of interest. Set to data minimum BoundinBox if not provided.</p>
 </li>
 <li><p><strong>U</strong> | <strong>time_stamp</strong> | <strong>timestamp</strong> :: &#91;Type &#61;&gt; Str or Bool or &#91;&#93;&#93;	&#36;Arg &#61; &#91;&#91;just&#93;/dx/dy/&#93;&#91;c|label&#93;&#36;</p>
-<p>Draw GMT time stamp logo on plot.   &#40;http://docs.generic-mapping-tools.org/latest/gmt.html#u-full&#41;</p>
+<p>Draw GMT time stamp logo on plot.</p>
 </li>
 <li><p><strong>V</strong> | <strong>verbose</strong> :: &#91;Type &#61;&gt; Bool or Str&#93;		&#36;Arg &#61; &#91;level&#93;&#36;</p>
-<p>Select verbosity level, which will send progress reports to stderr.   &#40;http://docs.generic-mapping-tools.org/latest/gmt.html#v-full&#41;</p>
+<p>Select verbosity level, which will send progress reports to stderr.</p>
 </li>
 <li><p><strong>X</strong> | <strong>x_offset</strong> | <strong>xshift</strong> :: &#91;Type &#61;&gt; Str&#93;     &#36;Arg &#61; &#91;a|c|f|r&#93;&#91;x-shift&#91;u&#93;&#93;&#36;</p>
 </li>
 <li><p><strong>Y</strong> | <strong>y_offset</strong> | <strong>yshift</strong> :: &#91;Type &#61;&gt; Str&#93;     &#36;Arg &#61; &#91;a|c|f|r&#93;&#91;y-shift&#91;u&#93;&#93;&#36;</p>
-<p>Shift plot origin relative to the current origin by &#40;x-shift,y-shift&#41; and optionally   append the length unit &#40;c, i, or p&#41;.    &#40;http://docs.generic-mapping-tools.org/latest/gmt.html#xy-full&#41;</p>
+<p>Shift plot origin relative to the current origin by &#40;x-shift,y-shift&#41; and optionally   append the length unit &#40;c, i, or p&#41;.</p>
 </li>
 <li><p><strong>t</strong> | <strong>alpha</strong> | <strong>transparency</strong> :: &#91;Type &#61;&gt; Str&#93;   &#36;Arg &#61; transp&#36;</p>
-<p>Set PDF transparency level for an overlay, in &#40;0-100&#93; percent range. &#91;Default is 0, i.e., opaque&#93;.   &#40;http://docs.generic-mapping-tools.org/latest/gmt.html#t-full&#41;</p>
+<p>Set PDF transparency level for an overlay, in &#40;0-100&#93; percent range. &#91;Default is 0, i.e., opaque&#93;.</p>
 </li>
 <li><p><strong>savefig</strong> | <strong>figname</strong> | <strong>name</strong> :: &#91;Type &#61;&gt; Str&#93;</p>
 <p>Save the figure with the <code>figname&#61;name.ext</code> where <code>ext</code> chooses the figure format &#40;e.g. figname&#61;&quot;name.png&quot;&#41;</p>
@@ -906,7 +962,7 @@ D &#61; linearfitxy&#40;&#91;0.037 0.0080; 0.035 0.0084; 0.032 0.0100; 0.040 0.0
 <p><code>GMT.magic</code> is a <code>Function</code>.</p>
 <pre><code># 1 method for generic function &quot;magic&quot; from GMT:
  &#91;1&#93; magic&#40;n::Int64&#41;
-     @ C:\Users\joaqu\.julia\dev\GMT\src\utils.jl:435</code></pre>
+     @ C:\Users\j\.julia\dev\GMT\src\utils.jl:435</code></pre>
 </div>
 </div>
 <div class="docstring">
@@ -977,7 +1033,7 @@ D &#61; linearfitxy&#40;&#91;0.037 0.0080; 0.035 0.0084; 0.032 0.0100; 0.040 0.0
 <div class="doc-content"><pre><code>G &#61; mat2grid&#40;mat; reg&#61;nothing, x&#61;&#91;&#93;, y&#61;&#91;&#93;, v&#61;&#91;&#93;, hdr&#61;nothing, proj4::String&#61;&quot;&quot;,
              wkt::String&#61;&quot;&quot;, tit::String&#61;&quot;&quot;, rem::String&#61;&quot;&quot;, cmd::String&#61;&quot;&quot;,
 			 names::Vector&#123;String&#125;&#61;String&#91;&#93;, scale::Float32&#61;1f0, offset::Float32&#61;0f0&#41;</code></pre>
-<p>ITake a 2/3D <code>mat</code> array and a HDR 1x9 &#91;xmin xmax ymin ymax zmin zmax reg xinc yinc&#93; header descriptor and  return a grid GMTgrid type. Alternatively to HDR, provide a pair of vectors, <code>x</code> &amp; <code>y</code>, with the X and Y coordinates. Optionaly add a <code>v</code> vector with vertical coordinates if <code>mat</code> is a 3D array and one wants to create a &#36;cube&#36;. Optionaly, the HDR arg may be ommited and it will computed from <code>mat</code> alone, but then x&#61;1:ncol, y&#61;1:nrow When HDR is not used, REG &#61;&#61; nothing &#91;default&#93; means create a gridline registration grid and REG &#61;&#61; 1, or REG&#61;&quot;pixel&quot; a pixel registered grid.</p>
+<p>Take a 2/3D <code>mat</code> array and a HDR 1x9 &#91;xmin xmax ymin ymax zmin zmax reg xinc yinc&#93; header descriptor and  return a grid GMTgrid type. Alternatively to HDR, provide a pair of vectors, <code>x</code> &amp; <code>y</code>, with the X and Y coordinates. Optionaly add a <code>v</code> vector with vertical coordinates if <code>mat</code> is a 3D array and one wants to create a &#36;cube&#36;. Optionaly, the HDR arg may be ommited and it will computed from <code>mat</code> alone, but then x&#61;1:ncol, y&#61;1:nrow When HDR is not used, REG &#61;&#61; nothing &#91;default&#93; means create a gridline registration grid and REG &#61;&#61; 1, or REG&#61;&quot;pixel&quot; a pixel registered grid.</p>
 <p>For 3D arrays the <code>names</code> option is used to give a description for each layer &#40;also saved to file when using a GDAL function&#41;.</p>
 <p>The <code>scale</code> and <code>offset</code> options are used when <code>mat</code> is an Integer type and we want to save the grid with an scale/offset.  </p>
 <p>Other methods of this function do:</p>
@@ -1069,6 +1125,32 @@ pcolor&#40;G.x, G.y, G.z, labels&#61;2, font&#61;&#40;angle&#61;45, font&#61;&#4
 X,Y &#61; GMT.meshgrid&#40;-3:6/17:3&#41;;
 XX &#61; 2*X .* Y;	YY &#61; X.^2 .- Y.^2;
 pcolor&#40;XX,YY, reshape&#40;repeat&#40;&#91;1:18; 18:-1:1&#93;, 9,1&#41;, size&#40;XX&#41;&#41;, lc&#61;:black, show&#61;true&#41;</code></pre>
+
+
+</div>
+</div>
+<div class="docstring">
+<div class="doc-header" id="plotgrid!">
+<a href="#plotgrid!">plotgrid!</a>
+</div>
+<div class="doc-content"><pre><code>plotgrid&#33;&#40;GI, grid; annot&#61;true, sides&#61;&quot;WESN&quot;, fmt&#61;&quot;&quot;, figname&#61;&quot;&quot;, show&#61;false&#41;</code></pre>
+<p>Plot grid lines on top of an image created with the <code>worldrectangular</code> function.</p>
+<ul>
+<li><p><code>GI</code>: A GMTgrid or GMTimage data type.</p>
+</li>
+<li><p><code>grid</code>: A vector of GMTdatset with meridians and parallels to be plotted. This is normaly produced   by the <code>graticules&#40;&#41;</code> or <code>worldrectgrid&#40;&#41;</code> functions.</p>
+</li>
+<li><p><code>annot</code>: Wether to plot coordinate annotations or not &#40;<code>annot&#61;false</code>&#41;.</p>
+</li>
+<li><p><code>sides</code>: Which sides of plot to annotate. <code>W</code> or <code>L</code> means annotate the left side and so on for any   combination of &quot;WESNLRBT&quot;. To not annotate a particular side just omit that character. <em>e.g.</em>  <code>sides&#61;&quot;WS&quot;</code> will annotate only the left and bottom axes.</p>
+</li>
+<li><p><code>figname</code>: To create a figure in local directory and with a name <code>figname</code>. If <code>figname</code> has an extension  that is used to select the fig format. <em>e.g.</em> <code>figname&#61;fig.pdf</code> creates a PDF file localy called &#39;fig.pdf&#39; </p>
+</li>
+<li><p><code>fmt</code>: Create the raster figure in format <code>format</code>. Default is <code>fmt&#61;:png</code>. To get it in PDF do <code>fmt&#61;:pdf</code></p>
+</li>
+<li><p><code>show</code>: If <code>true</code>, finish and display the figure.</p>
+</li>
+</ul>
 
 
 </div>
@@ -1411,6 +1493,31 @@ plot&#40;r, decorated&#61;&#40;locations&#61;a, symbol&#61;&#40;custom&#61;&quot
 </div>
 </div>
 <div class="docstring">
+<div class="doc-header" id="viz">
+<a href="#viz">viz</a>
+</div>
+<div class="doc-content"><pre><code>imshow&#40;arg1; kw...&#41;</code></pre>
+<p>Is a simple front end to the <a href="modules/grdimage"><code>grdimage</code></a>  <a href="modules/grdview"><code>grdview</code></a> programs that accepts GMTgrid, GMTimage, 2D array of floats or strings with file names of grids or images. The normal options of the <em>grdimage</em> and <em>grdview</em> programs also apply here but some clever guessing of suitable necessary parameters is done if they are not provided. Contrary to other image producing modules the &quot;show&#39; keyword is not necessary to display the image. Here it is set by default. If user wants to use <em>imshow</em> to create layers of a more complex fig he can use <em>show&#61;false</em> for the intermediate layers.</p>
+<p>This module uses some internal logic to decide whether use <code>grdimge</code>, <code>grdview</code> or <code>plot</code>. Namely, when the <code>view</code> option is used <code>grdview</code> is choosed and a default vertical scale is assigned. However, sometimes we want a rotated plot, optionally tilted, but not 3D view. In that case use the option <code>flat&#61;true</code>, which forces the use of <code>grdimage</code>.</p>
+<h1>Examples</h1>
+<pre><code class="language-julia-repl"># Plot vertical shaded illuminated view of the Mexican hat
+julia&gt; G &#61; gmt&#40;&quot;grdmath -R-15/15/-15/15 -I0.3 X Y HYPOT DUP 2 MUL PI MUL 8 DIV COS EXCH NEG 10 DIV EXP MUL &#61;&quot;&#41;;
+julia&gt; imshow&#40;G, shade&#61;&quot;&#43;a45&quot;&#41;
+
+# Same as above but add automatic contours
+julia&gt; imshow&#40;G, shade&#61;&quot;&#43;a45&quot;, contour&#61;true&#41;
+
+# Plot a random heat map
+julia&gt; imshow&#40;rand&#40;128,128&#41;&#41;
+
+# Display a web downloaded jpeg image wrapped into a sinusoidal projection
+julia&gt; imshow&#40;gmtread&#40;&#41;&quot;http://larryfire.files.wordpress.com/2009/07/untooned_jessicarabbit.jpg&quot;&#41;, region&#61;:global, frame&#61;&quot;g&quot;, proj&#61;:sinu&#41;</code></pre>
+<p>See also: <a href="@ref"><code>grdimage</code></a></p>
+
+
+</div>
+</div>
+<div class="docstring">
 <div class="doc-header" id="vlines">
 <a href="#vlines">vlines</a>
 </div>
@@ -1422,16 +1529,16 @@ plot&#40;r, decorated&#61;&#40;locations&#61;a, symbol&#61;&#40;custom&#61;&quot
 <li><p><code>percent</code>: If true the <code>xmin</code> &amp; <code>xmax</code> are interpreted as fractions of the figure width.</p>
 </li>
 <li><p><strong>B</strong> | <strong>frame</strong> | <strong>axis</strong> | <strong>xaxis yaxis</strong>:: &#91;Type &#61;&gt; Str&#93; </p>
-<p>Set map boundary frame and axes attributes.   &#40;http://docs.generic-mapping-tools.org/latest/gmt.html#b-full&#41;</p>
+<p>Set map boundary frame and axes attributes.</p>
 </li>
 <li><p><strong>J</strong> | <strong>proj</strong> | <strong>projection</strong> :: &#91;Type &#61;&gt; String&#93;</p>
-<p>Select map projection. Defaults to 14x9.5 cm with linear &#40;non-projected&#41; maps.   &#40;http://docs.generic-mapping-tools.org/latest/gmt.html#j-full&#41;</p>
+<p>Select map projection. Defaults to 14x9.5 cm with linear &#40;non-projected&#41; maps.</p>
 </li>
 <li><p><strong>R</strong> | <strong>region</strong> | <strong>limits</strong> :: &#91;Type &#61;&gt; Str or list or GMTgrid|image&#93;	&#36;Arg &#61; &#40;xmin,xmax,ymin,ymax&#41;&#36;</p>
-<p>Specify the region of interest. Set to data minimum BoundinBox if not provided.   &#40;http://docs.generic-mapping-tools.org/latest/gmt.html#r-full&#41;</p>
+<p>Specify the region of interest. Set to data minimum BoundinBox if not provided.</p>
 </li>
 <li><p><strong>W</strong> | <strong>pen</strong> | <strong>line_attrib</strong> :: &#91;Type &#61;&gt; Str&#93;</p>
-<p>Set pen attributes for the horizontal lines   &#40;http://docs.generic-mapping-tools.org/latest/plot.html#w&#41;</p>
+<p>Set pen attributes for the horizontal lines</p>
 </li>
 </ul>
 <p>Example:</p>
@@ -1531,6 +1638,45 @@ imshow&#40;img, proj&#61;:guess&#41;</code></pre>
 </div>
 </div>
 <div class="docstring">
+<div class="doc-header" id="worldrectangular">
+<a href="#worldrectangular">worldrectangular</a>
+</div>
+<div class="doc-content"><p>No documentation found.</p>
+<p><code>GMT.worldrectangular</code> is a <code>Function</code>.</p>
+<pre><code># 2 methods for generic function &quot;worldrectangular&quot; from GMT:
+ &#91;1&#93; worldrectangular&#40;GI::Union&#123;GMTgrid, GMTimage&#125;; proj, pm, latlim, latlims, pad, coast&#41;
+     @ C:\Users\j\.julia\dev\GMT\src\utils_project.jl:51
+ &#91;2&#93; worldrectangular&#40;fname::String; proj, pm, latlim, latlims, pad, coast&#41;
+     @ C:\Users\j\.julia\dev\GMT\src\utils_project.jl:49</code></pre>
+</div>
+</div>
+<div class="docstring">
+<div class="doc-header" id="worldrectgrid">
+<a href="#worldrectgrid">worldrectgrid</a>
+</div>
+<div class="doc-content"><pre><code>grat &#61; worldrectgrid&#40;GI; width&#61;&#40;30,20&#41;, grid&#61;nothing, annot_x&#61;nothing&#41;</code></pre>
+<p>or</p>
+<pre><code>grat &#61; worldrectgrid&#40;; proj&#61;&quot;projection&quot;, width&#61;&#40;30,20&#41;, grid&#61;nothing, annot_x&#61;nothing&#41;</code></pre>
+<p>Create a grid of lines &#40;graticules&#41; in projected coordinates. The projection system is extracted from the <code>GI</code> metadata.</p>
+<ul>
+<li><p><code>GI</code>: A GMTgrid or GMTimage data type created with the <code>worldrectangular</code> function.</p>
+</li>
+<li><p><code>D</code>: Alternatively pass a &quot;projection&quot; &#40;as a proj4 string&#41; holding the projection info.</p>
+</li>
+<li><p><code>width</code>: A scalar or two elements array/tuple with increments in longitude and latitude. If scalar, width<em>x &#61; width</em>y.</p>
+</li>
+<li><p><code>grid</code>: Instead of using the <code>width</code> argument, that generates an automatic set of graticules, one may pass a two elements Vector&#123;Vector&#123;Real&#125;&#125; with the meridians &#40;grid&#91;1&#93;&#41; and parallels &#40;grid&#91;2&#93;&#41; to create.</p>
+</li>
+<li><p><code>annot_x</code>: By default, all meridians are annotated when <code>grat</code> is used in the <code>plotgrid&#33;</code> function, but depending on the projection and the <code>latlim</code> argument used in <code>worldrectangular</code> we may have the longitude labels overlap close to the prime meridian. To minimize that pass a vector of longitudes to be annotated. <em>e.g.</em> <code>annot_x&#61;&#91;-180,-150,0,150,180&#93;</code> will annotate only those longitudes.</p>
+</li>
+</ul>
+<h3>Returns</h3>
+<p>A Vector of GMTdataset containing the projected meridians and parallels. <code>grat&#91;i&#93;</code> attributes store information about that element lon,lat. </p>
+
+
+</div>
+</div>
+<div class="docstring">
 <div class="doc-header" id="xyzw2cube">
 <a href="#xyzw2cube">xyzw2cube</a>
 </div>
@@ -1576,7 +1722,7 @@ imshow&#40;img, proj&#61;:guess&#41;</code></pre>
 <div class="page-foot">
   <div class="copyright">
     &copy; GMT.jl. Last modified: March 28, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
-      <p>These docs were autogenerated using GMT: v0.44.6</p>
+      <p>These docs were autogenerated using GMT: v0.44.8</p>
   </div>
 </div>
 </div><!-- CONTENT ENDS HERE -->

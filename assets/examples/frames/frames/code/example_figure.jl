@@ -15,7 +15,7 @@ basemap!(frame=(axes=(:left_full, :bot_full),),
                         type=["ig Devonian", "ig Silurian", "ig Ordovician", "ig Cambrian"]),),
         par=(MAP_ANNOT_OFFSET_SECONDARY="10p", MAP_GRID_PEN_SECONDARY="2p"), show=true)
 end # hide
-mv(joinpath(tempdir(), "GMTjl_tmp.png"), joinpath(@OUTPUT, "example_18053118697193351659.png"), force=true);    # hide
+mv(joinpath(tempdir(), "GMTjl_" * GMT.tmpdir_usr[2] * ".png"), joinpath(@OUTPUT, "example_18053118697193351659.png"), force=true);    # hide
 GMT.isFranklin[1] = false    # hide
 GMT.IamModern[1]  = false    # hide
  

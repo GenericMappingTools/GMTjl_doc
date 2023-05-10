@@ -16,7 +16,7 @@ basemap!(rose=(map=true, anchor=(0,0), justify=:CM, width=2.5, fancy=true, label
 basemap!(rose=(map=true, anchor=(0,0), justify=:CM, width=2.5, fancy=3, labels=true),
          region=(-7,7,-5,5), xshift=3.5, show=true)
 end # hide
-mv(joinpath(tempdir(), "GMTjl_tmp.png"), joinpath(@OUTPUT, "example_12110050085784558971.png"), force=true);    # hide
+mv(joinpath(tempdir(), "GMTjl_" * GMT.tmpdir_usr[2] * ".png"), joinpath(@OUTPUT, "example_12110050085784558971.png"), force=true);    # hide
 GMT.isFranklin[1] = false    # hide
 GMT.IamModern[1]  = false    # hide
  

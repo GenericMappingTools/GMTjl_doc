@@ -7,7 +7,7 @@ begin # hide
 coast(proj=:Mercator, DCW=((country="GB,IT,FR", fill=:blue, pen=(0.25,:red)),
                            (country="ES,PT,GR", fill=:yellow)), show=true)
 end # hide
-mv(joinpath(tempdir(), "GMTjl_tmp.png"), joinpath(@OUTPUT, "example_14350847695311464608.png"), force=true);    # hide
+mv(joinpath(tempdir(), "GMTjl_" * GMT.tmpdir_usr[2] * ".png"), joinpath(@OUTPUT, "example_14350847695311464608.png"), force=true);    # hide
 GMT.isFranklin[1] = false    # hide
 GMT.IamModern[1]  = false    # hide
  

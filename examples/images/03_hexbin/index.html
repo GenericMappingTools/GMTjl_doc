@@ -282,76 +282,77 @@
 </div>
 <div class="doc-content"><pre><code>binstats&#40;cmd0::String&#61;&quot;&quot;, arg1&#61;nothing; kwargs...&#41;</code></pre>
 <p>Reads arbitrarily located &#40;x,y&#91;,z&#93;&#91;,w&#93;&#41; points &#40;2-4 columns&#41; and for each node in the specified grid layout determines which points are within the given radius. These point are then used in the calculation of the specified statistic. The results may be presented as is or may be normalized by the circle area to perhaps give density estimates. Alternatively, select hexagonal tiling instead or a rectangular grid layout.</p>
-<p>Full option list at <a href="http://docs.generic-mapping-tools.org/latest/gmtbinstats.html"><code>gmtbinstats</code></a></p>
+<p>See full GMT &#40;not the <code>GMT.jl</code> one&#41; docs at <a href="http://docs.generic-mapping-tools.org/latest/gmtbinstats.html"><code>gmtbinstats</code></a></p>
 <h2>Parameters</h2>
 <ul>
 <li><p><strong>C</strong> | <strong>stats</strong> | <strong>statistic</strong> :: &#91;Type &#61;&gt; String | NamedTuple&#93;</p>
-<p>Choose the statistic that will be computed per node based on the points that are within radius distance of the node.   &#40;http://docs.generic-mapping-tools.org/latest/gmtbinstats.html#c&#41;</p>
+<p>Choose the statistic that will be computed per node based on the points that are within radius distance of the node.</p>
 </li>
 <li><p><strong>I</strong> | <strong>inc</strong> | <strong>increment</strong> | <strong>spacing</strong> :: &#91;Type &#61;&gt; Str&#93;	&#36;Arg &#61; xinc&#91;unit&#93;&#91;&#43;e|n&#93;&#91;/yinc&#91;unit&#93;&#91;&#43;e|n&#93;&#93;&#93;&#36;</p>
-<p><em>x_inc</em> &#91;and optionally <em>y_inc</em>&#93; is the grid spacing. Optionally, append an increment unit.   &#40;http://docs.generic-mapping-tools.org/latest/gmtbinstats.html#i&#41;</p>
+<p><em>x_inc</em> &#91;and optionally <em>y_inc</em>&#93; is the grid spacing. Optionally, append an increment unit.</p>
 </li>
 <li><p><strong>E</strong> | <strong>empty</strong> :: &#91;Type &#61;&gt; Number&#93;</p>
-<p>Set the value assigned to empty nodes &#91;NaN&#93;.   &#40;http://docs.generic-mapping-tools.org/latest/gmtbinstats.html#e&#41;</p>
+<p>Set the value assigned to empty nodes &#91;NaN&#93;.</p>
 </li>
 <li><p><strong>G</strong> | <strong>save</strong> | <strong>outgrid</strong> | <strong>outfile</strong> :: &#91;Type &#61;&gt; Str&#93;</p>
-<p>Output grid file name. Note that this is optional and to be used only when saving   the result directly on disk. Otherwise, just use the G &#61; gmtbinstats&#40;....&#41; form.   &#40;http://docs.generic-mapping-tools.org/latest/gmtbinstats.html#g&#41;</p>
+<p>Output grid file name. Note that this is optional and to be used only when saving   the result directly on disk. Otherwise, just use the G &#61; gmtbinstats&#40;....&#41; form.</p>
 </li>
 <li><p><strong>N</strong> | <strong>normalize</strong> :: &#91;Type &#61;&gt; Bool&#93;</p>
-<p>Normalize the resulting grid values by the area represented by the <code>search_radius</code>.   &#40;http://docs.generic-mapping-tools.org/latest/gmtbinstats.html#n&#41;</p>
+<p>Normalize the resulting grid values by the area represented by the <code>search_radius</code>.</p>
 </li>
 <li><p><strong>S</strong> | <strong>search_radius</strong> :: &#91;Type &#61;&gt; Number&#93;</p>
-<p>Sets the search_radius that determines which data points are considered close to a node. Not compatible with <code>tiling</code>   &#40;http://docs.generic-mapping-tools.org/latest/gmtbinstats.html#s&#41;</p>
+<p>Sets the search_radius that determines which data points are considered close to a node. Not compatible with <code>tiling</code></p>
 </li>
 <li><p><strong>R</strong> | <strong>region</strong> | <strong>limits</strong> :: &#91;Type &#61;&gt; Str or list or GMTgrid|image&#93;	&#36;Arg &#61; &#40;xmin,xmax,ymin,ymax&#41;&#36;</p>
-<p>Specify the region of interest. Set to data minimum BoundinBox if not provided.   &#40;http://docs.generic-mapping-tools.org/latest/gmt.html#r-full&#41;</p>
+<p>Specify the region of interest. Set to data minimum BoundinBox if not provided.</p>
 </li>
 <li><p><strong>T</strong> | <strong>tiling</strong> | <strong>bins</strong> :: &#91;Type &#61;&gt; String | NamedTuple&#93;</p>
-<p>Instead of circular, possibly overlapping areas, select non-overlapping tiling. Choose between   rectangular hexagonal binning.   &#40;http://docs.generic-mapping-tools.org/latest/gmtbinstats.html#t&#41;</p>
+<p>Instead of circular, possibly overlapping areas, select non-overlapping tiling. Choose between   rectangular hexagonal binning.</p>
 </li>
 <li><p><strong>V</strong> | <strong>verbose</strong> :: &#91;Type &#61;&gt; Bool or Str&#93;		&#36;Arg &#61; &#91;level&#93;&#36;</p>
-<p>Select verbosity level, which will send progress reports to stderr.   &#40;http://docs.generic-mapping-tools.org/latest/gmt.html#v-full&#41;</p>
+<p>Select verbosity level, which will send progress reports to stderr.</p>
 </li>
 <li><p><strong>W</strong> | <strong>weights</strong> :: &#91;Type &#61;&gt; Bool | String&#93;</p>
-<p>Input data have a 4th column containing observation point weights.   &#40;http://docs.generic-mapping-tools.org/latest/gmtbinstats.html#w&#41;</p>
+<p>Input data have a 4th column containing observation point weights.</p>
 </li>
 <li><p><strong>a</strong> | <strong>aspatial</strong> :: &#91;Type &#61;&gt; Str&#93;			&#36;Arg &#61; &#91;col&#61;&#93;name&#91;…&#93;&#36;</p>
-<p>Control how aspatial data are handled in GMT during input and output.   &#40;http://docs.generic-mapping-tools.org/latest/gmt.html#aspatial-full&#41;</p>
+<p>Control how aspatial data are handled in GMT during input and output.</p>
 </li>
 <li><p><strong>bi</strong> | <strong>binary_in</strong> :: &#91;Type &#61;&gt; Str&#93;			&#36;Arg &#61; &#91;ncols&#93;&#91;type&#93;&#91;w&#93;&#91;&#43;L|&#43;B&#93;&#36;</p>
-<p>Select native binary format for primary input &#40;secondary inputs are always ASCII&#41;.   &#40;http://docs.generic-mapping-tools.org/latest/gmt.html#bi-full&#41;</p>
+<p>Select native binary format for primary input &#40;secondary inputs are always ASCII&#41;.</p>
 </li>
 <li><p><strong>di</strong> | <strong>nodata_in</strong> :: &#91;Type &#61;&gt; Str or Number&#93;      &#36;Arg &#61; nodata&#36;</p>
-<p>Examine all input columns and if any item equals nodata we interpret this value as a   missing data item and substitute the value NaN.   &#40;http://docs.generic-mapping-tools.org/latest/gmt.html#di-full&#41;</p>
+<p>Examine all input columns and if any item equals nodata we interpret this value as a   missing data item and substitute the value NaN.</p>
 </li>
 <li><p><strong>e</strong> | <strong>pattern</strong> | <strong>find</strong> :: &#91;Type &#61;&gt; Str&#93;        &#36;Arg &#61; &#91;~&#93;”pattern” | -e&#91;~&#93;/regexp/&#91;i&#93;&#36;</p>
-<p>Only accept ASCII data records that contains the specified pattern.   &#40;http://docs.generic-mapping-tools.org/latest/gmt.html#e-full&#41;</p>
+<p>Only accept ASCII data records that contains the specified pattern.</p>
 </li>
 <li><p><strong>f</strong> | <strong>colinfo</strong> | <strong>coltypes</strong> | <strong>coltype</strong> :: &#91;Type &#61;&gt; Str&#93;        &#36;Arg &#61; &#91;i|o&#93;colinfo&#36;</p>
-<p>Specify the data types of input and/or output columns &#40;time or geographical data&#41;.   &#40;http://docs.generic-mapping-tools.org/latest/gmt.html#f-full&#41;</p>
+<p>Specify the data types of input and/or output columns &#40;time or geographical data&#41;.</p>
 </li>
 <li><p><strong>g</strong> | <strong>gap</strong> :: &#91;Type &#61;&gt; Str&#93;           &#36;Arg &#61; &#91;a&#93;x|y|d|X|Y|D|&#91;col&#93;z&#91;&#43;|-&#93;gap&#91;u&#93;&#36;</p>
-<p>Examine the spacing between consecutive data points in order to impose breaks in the line.   &#40;http://docs.generic-mapping-tools.org/latest/gmt.html#g-full&#41;</p>
+<p>Examine the spacing between consecutive data points in order to impose breaks in the line.</p>
 </li>
 <li><p><strong>h</strong> | <strong>header</strong> :: &#91;Type &#61;&gt; Str&#93;        &#36;Arg &#61; &#91;i|o&#93;&#91;n&#93;&#91;&#43;c&#93;&#91;&#43;d&#93;&#91;&#43;rremark&#93;&#91;&#43;ttitle&#93;&#36;</p>
-<p>Primary input file&#40;s&#41; has header record&#40;s&#41;.   &#40;http://docs.generic-mapping-tools.org/latest/gmt.html#h-full&#41;</p>
+<p>Primary input file&#40;s&#41; has header record&#40;s&#41;.</p>
 </li>
 <li><p><strong>i</strong> | <strong>incols</strong> | <strong>incol</strong> :: &#91;Type &#61;&gt; Str&#93;      &#36;Arg &#61; cols&#91;&#43;l&#93;&#91;&#43;sscale&#93;&#91;&#43;ooffset&#93;&#91;,…&#93;&#36;</p>
-<p>Select specific data columns for primary input, in arbitrary order.   &#40;http://docs.generic-mapping-tools.org/latest/gmt.html#icols-full&#41;</p>
+<p>Select specific data columns for primary input, in arbitrary order.</p>
 </li>
 <li><p><strong>q</strong> | <strong>inrow</strong> | <strong>inrows</strong> :: &#91;Type &#61;&gt; Str&#93;       &#36;Arg &#61; &#91;i|o&#93;&#91;~&#93;rows&#91;&#43;ccol&#93;&#91;&#43;a|f|s&#93;&#36;</p>
-<p>Select specific data rows to be read &#40;-qi &#91;Default&#93;&#41; or written &#40;-qo&#41; &#91;all&#93;.    &#40;http://docs.generic-mapping-tools.org/latest/gmt.html#q-full&#41;</p>
+<p>Select specific data rows to be read &#40;-qi &#91;Default&#93;&#41; or written &#40;-qo&#41; &#91;all&#93;.</p>
 </li>
 <li><p><strong>r</strong> | <strong>reg</strong> | <strong>registration</strong> :: &#91;Type &#61;&gt; Bool or &#91;&#93;&#93;</p>
-<p>Force pixel node registration &#91;Default is gridline registration&#93;.   &#40;http://docs.generic-mapping-tools.org/latest//gmt.html#r-full&#41;</p>
+<p>Force pixel node registration &#91;Default is gridline registration&#93;.</p>
 </li>
 <li><p><strong>w</strong> | <strong>wrap</strong> | <strong>cyclic</strong> :: &#91;Type &#61;&gt; Str or Number&#93;  &#36;Arg &#61; &#91;&#91;-&#93;n&#93;&#36;</p>
-<p>Convert input records to a cyclical coordinate.   &#40;http://docs.generic-mapping-tools.org/latest/gmt.html#w-full&#41;</p>
+<p>Convert input records to a cyclical coordinate.</p>
 </li>
 <li><p><strong>yx</strong> :: &#91;Type &#61;&gt; Str or Bool or &#91;&#93;&#93;     &#36;Arg &#61; &#91;i|o&#93;&#36;</p>
-<p>Swap 1st and 2nd column on input and/or output.   &#40;http://docs.generic-mapping-tools.org/latest/gmt.html#colon-full&#41;</p>
+<p>Swap 1st and 2nd column on input and/or output.</p>
 </li>
 </ul>
+<p>To see the full documentation type: &#36;@? gmtbinstats&#36;</p>
 
 
 </div>
@@ -371,7 +372,7 @@ imshow&#40;D, hexbin&#61;true, ml&#61;0.5, colorbar&#61;true&#41;</code></pre></
 <div class="page-foot">
   <div class="copyright">
     &copy; GMT.jl. Last modified: March 28, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
-      <p>These docs were autogenerated using GMT: v0.44.6</p>
+      <p>These docs were autogenerated using GMT: v0.44.8</p>
   </div>
 </div>
 </div><!-- CONTENT ENDS HERE -->

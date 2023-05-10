@@ -13,7 +13,7 @@ r,a = streamlines(U, V);
 plot(r, decorated=(locations=a, symbol=(custom="arrow", size=0.3), fill=:black,
           dec2=true), title="Someone wanted flowlines?", show=true)
 end # hide
-mv(joinpath(tempdir(), "GMTjl_tmp.png"), joinpath(@OUTPUT, "example_4933267947612795175.png"), force=true);    # hide
+mv(joinpath(tempdir(), "GMTjl_" * GMT.tmpdir_usr[2] * ".png"), joinpath(@OUTPUT, "example_4933267947612795175.png"), force=true);    # hide
 GMT.isFranklin[1] = false    # hide
 GMT.IamModern[1]  = false    # hide
  

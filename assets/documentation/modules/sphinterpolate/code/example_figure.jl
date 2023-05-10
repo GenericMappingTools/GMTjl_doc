@@ -7,7 +7,7 @@ begin # hide
 G = sphinterpolate("@mars370d.txt", region=:global, inc=1, tension=:p)
 imshow(G, proj=:guess, shade=true)
 end # hide
-mv(joinpath(tempdir(), "GMTjl_tmp.png"), joinpath(@OUTPUT, "example_3384761502342614384.png"), force=true);    # hide
+mv(joinpath(tempdir(), "GMTjl_" * GMT.tmpdir_usr[2] * ".png"), joinpath(@OUTPUT, "example_3384761502342614384.png"), force=true);    # hide
 GMT.isFranklin[1] = false    # hide
 GMT.IamModern[1]  = false    # hide
  

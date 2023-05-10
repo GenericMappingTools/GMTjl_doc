@@ -16,7 +16,7 @@ text!(txt="Mar Caribe", x=-68, y=13.5, font=(15, "Helvetica-Bold", :white), just
 # Focal mechanisms
 meca!(getpath4docs("mff_bb.txt"), CMT=(scale=0.4, font=6), offset=true, fill=:black, show=true)
 end # hide
-mv(joinpath(tempdir(), "GMTjl_tmp.png"), joinpath(@OUTPUT, "example_16845681969333213266.png"), force=true);    # hide
+mv(joinpath(tempdir(), "GMTjl_" * GMT.tmpdir_usr[2] * ".png"), joinpath(@OUTPUT, "example_16845681969333213266.png"), force=true);    # hide
 GMT.isFranklin[1] = false    # hide
 GMT.IamModern[1]  = false    # hide
  

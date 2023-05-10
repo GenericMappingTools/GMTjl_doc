@@ -13,7 +13,7 @@ gmtbegin()
 	text(text="MAP", font=18, region_justify=:BL, offset=(away=true, shift=0.5))
 gmtend(:show)
 end # hide
-mv(joinpath(tempdir(), "GMTjl_tmp.png"), joinpath(@OUTPUT, "example_10334344294638361924.png"), force=true);    # hide
+mv(joinpath(tempdir(), "GMTjl_" * GMT.tmpdir_usr[2] * ".png"), joinpath(@OUTPUT, "example_10334344294638361924.png"), force=true);    # hide
 GMT.isFranklin[1] = false    # hide
 GMT.IamModern[1]  = false    # hide
  
