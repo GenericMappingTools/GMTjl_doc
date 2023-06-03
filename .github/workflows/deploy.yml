@@ -38,7 +38,7 @@ jobs:
             using Pkg;
             Pkg.activate(".");
             Pkg.instantiate();
-            Pkg.add(PackageSpec(name="GMT", rev="GMT_jll"));
+            Pkg.add(PackageSpec(name="GMT", rev="master"));
             using NodeJS;
             run(`$(npm_cmd()) install highlight.js`);
             run(`$(npm_cmd()) install cheerio`);
