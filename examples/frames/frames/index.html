@@ -196,6 +196,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\contour">contour</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\contourf">contourf</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\cornerplot">cornerplot</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\earthregions">earthregions</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\ecdfplot">ecdfplot</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\feather">feather</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\fill_between">fill_between</a></div></li>
@@ -296,8 +297,8 @@ arrows&#33;&#40;t, arrow&#61;&#40;length&#61;&quot;2p&quot;,start&#61;true,stop&
 T &#61; text_record&#40;&#91;-0.5 0.05; 0.375 0.05; 1.29166666 0.05&#93;, &#91;&quot;annotation&quot;, &quot;frame&quot;, &quot;grid&quot;&#93;&#41;;
 text&#33;&#40;T, font&#61;9, justify&#61;:CB, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_6776109062613715371">
- <img src="/GMTjl_doc/assets/examples/frames/frames/code/output/example_6776109062613715371.png" alt=""> 
+<a id="example_5925066202636749631">
+ <img src="/GMTjl_doc/assets/examples/frames/frames/code/output/example_5925066202636749631.png" alt=""> 
 </a>
 
 <p>The machinery for primary and secondary annotations axes can be utilized for geographic base maps. This may be used to separate degree annotations from minutes- and seconds-annotations. For a more complicated base map example using several sets of intervals, including different intervals and pen attributes for grid lines and grid crosses.</p>
@@ -326,8 +327,8 @@ T &#61; text_record&#40;&#91;-2.1 0.025; -1.5  0.05; -0.25 0.05; 0.625 0.05&#93;
                 &#91;&quot;10p RM S:&quot;, &quot;9p CB annotation&quot;, &quot;9p CB frame&quot;, &quot;9p CB grid&quot;&#93;&#41;
 text&#33;&#40;T, font&#61;&quot;&quot;, justify&#61;&quot;&quot;, no_clip&#61;true, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_2276413617720354947">
- <img src="/GMTjl_doc/assets/examples/frames/frames/code/output/example_2276413617720354947.png" alt=""> 
+<a id="example_16077677091746227469">
+ <img src="/GMTjl_doc/assets/examples/frames/frames/code/output/example_16077677091746227469.png" alt=""> 
 </a>
 
 <h2 id="cartesian_linear_axes"><a href="#cartesian_linear_axes" class="header-anchor">Cartesian linear axes</a></h2>
@@ -342,16 +343,16 @@ arrows&#33;&#40;t, arrow&#61;&#40;length&#61;&quot;2p&quot;,start&#61;true,stop&
 T &#61; text_record&#40;&#91;2 0.2; 7 0.2; 9.5 0.2&#93;, &#91;&quot;annotation&quot;, &quot;frame&quot;, &quot;grid&quot;&#93;&#41;;
 text&#33;&#40;T, font&#61;9, justify&#61;:CB, clearance&#61;&#40;0.025,0.025&#41;, fill&#61;:white, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_4548388375944674806">
- <img src="/GMTjl_doc/assets/examples/frames/frames/code/output/example_4548388375944674806.png" alt=""> 
+<a id="example_10488983736751029396">
+ <img src="/GMTjl_doc/assets/examples/frames/frames/code/output/example_10488983736751029396.png" alt=""> 
 </a>
 
 <p>There are occasions when the length of the annotations are such that placing them horizontally &#40;which is the default&#41; may lead to overprinting or too few annotations. One solution is to request slanted annotations for the x-axis via the slanted keyword in frame.</p>
 <pre><code class="language-julia">using GMT
 basemap&#40;region&#61;&#40;2000,2020,35,45&#41;, frame&#61;&#40;axes&#61;:S, annot&#61;2, ticks&#61;:auto, slanted&#61;-30&#41;, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_7651353872794006182">
- <img src="/GMTjl_doc/assets/examples/frames/frames/code/output/example_7651353872794006182.png" alt=""> 
+<a id="example_7359470257651100351">
+ <img src="/GMTjl_doc/assets/examples/frames/frames/code/output/example_7359470257651100351.png" alt=""> 
 </a>
 
 <h2 id="cartesian_log10_axes"><a href="#cartesian_log10_axes" class="header-anchor">Cartesian log10 axes</a></h2>
@@ -373,8 +374,8 @@ basemap&#33;&#40;frame&#61;&#40;axes&#61;:S, annot&#61;1, ticks&#61;2, grid&#61;
 basemap&#33;&#40;frame&#61;&#40;axes&#61;:S, annot&#61;1, ticks&#61;2, grid&#61;3,
                 xlabel&#61;&quot;Axis Label&quot;&#41;, y_offset&#61;2.2, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_13524563368644329602">
- <img src="/GMTjl_doc/assets/examples/frames/frames/code/output/example_13524563368644329602.png" alt=""> 
+<a id="example_1367250866463632382">
+ <img src="/GMTjl_doc/assets/examples/frames/frames/code/output/example_1367250866463632382.png" alt=""> 
 </a>
 
 <h2 id="cartesian_exponential_axes"><a href="#cartesian_exponential_axes" class="header-anchor">Cartesian exponential axes</a></h2>
@@ -386,8 +387,8 @@ basemap&#40;region&#61;&#40;0,100,0,0.9&#41;, proj&#61;&quot;powx,0.5&quot;, fig
 basemap&#33;&#40;frame&#61;&#40;axes&#61;:S, annot&#61;20, ticks&#61;10, grid&#61;5, xlabel&#61;&quot;Axis Label&quot;&#41;,
          y_offset&#61;2.2, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_10512437383545298939">
- <img src="/GMTjl_doc/assets/examples/frames/frames/code/output/example_10512437383545298939.png" alt=""> 
+<a id="example_14549532792963544703">
+ <img src="/GMTjl_doc/assets/examples/frames/frames/code/output/example_14549532792963544703.png" alt=""> 
 </a>
 
 <h2 id="cartesian_time_axes"><a href="#cartesian_time_axes" class="header-anchor">Cartesian time axes</a></h2>
@@ -399,8 +400,8 @@ basemap&#40;region&#61;&quot;2000-4-1T/2000-5-25T/0/1&quot;, figsize&#61;&#40;12
         axis2&#61;&#40;annot&#61;1, annot_unit&#61;:month&#41;,
         conf&#61;&#40;FORMAT_DATE_MAP&#61;&quot;-o&quot;, FONT_ANNOT_PRIMARY&#61;&quot;&#43;9p&quot;&#41;, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_13998155793544181401">
- <img src="/GMTjl_doc/assets/examples/frames/frames/code/output/example_13998155793544181401.png" alt=""> 
+<a id="example_14782331585422492859">
+ <img src="/GMTjl_doc/assets/examples/frames/frames/code/output/example_14782331585422492859.png" alt=""> 
 </a>
 
 <p>The next example shows two different ways to annotate an axis portraying 2 days in July 1969:</p>
@@ -412,8 +413,8 @@ basemap&#40;region&#61;&quot;1969-7-21T/1969-7-23T/0/1&quot;, figsize&#61;&#40;1
 basemap&#33;&#40;frame&#61;&#40;axes&#61;:S, annot&#61;6, annot_unit&#61;:H, ticks&#61;1, ticks_unit&#61;:hour2&#41;,
          axis2&#61;&#40;annot&#61;1, annot_unit&#61;:date&#41;, y_offset&#61;1.7, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_12637237702724426077">
- <img src="/GMTjl_doc/assets/examples/frames/frames/code/output/example_12637237702724426077.png" alt=""> 
+<a id="example_13085422508604605029">
+ <img src="/GMTjl_doc/assets/examples/frames/frames/code/output/example_13085422508604605029.png" alt=""> 
 </a>
 
 <p>The lower example chooses to annotate the weekdays &#40;by specifying a1K&#41; while the upper example choses dates &#40;by specifying a1D&#41;. Note how the clock format only selects hours and minutes &#40;no seconds&#41; and the date format selects a month name, followed by one space and a two-digit day-of-month number.</p>
@@ -425,8 +426,8 @@ basemap&#40;region&#61;&#40;&quot;1997T&quot;,&quot;1999T&quot;,0,1&#41;, figsiz
         xaxis2&#61;&#40;annot&#61;1, annot_unit&#61;:Y&#41;,
         conf&#61;&#40;FORMAT_DATE_MAP&#61;&quot;o&quot;, FORMAT_TIME_PRIMARY_MAP&#61;&quot;Character&quot;, FONT_ANNOT_PRIMARY&#61;&quot;&#43;9p&quot;&#41;, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_16961892911382451247">
- <img src="/GMTjl_doc/assets/examples/frames/frames/code/output/example_16961892911382451247.png" alt=""> 
+<a id="example_12936247689707961991">
+ <img src="/GMTjl_doc/assets/examples/frames/frames/code/output/example_12936247689707961991.png" alt=""> 
 </a>
 
 <p>Note that while the year annotation is centered on the 1-year interval, the month annotations must be centered on the corresponding month and not the 3-month interval. The FORMAT&#95;DATE&#95;MAP selects month name only and FORMAT&#95;TIME&#95;PRIMARY&#95;MAP selects the 1-character, upper case abbreviation of month names using the current language &#40;selected by GMT&#95;LANGUAGE&#41;.</p>
@@ -436,8 +437,8 @@ basemap&#40;region&#61;&#40;&quot;0.2t&quot;,&quot;0.35t&quot;,0,1&#41;, figsize
         frame&#61;&#40;axes&#61;:S, annot&#61;&quot;15m&quot;, ticks&#61;&quot;5m&quot;&#41;, axis2&#61;&#40;annot&#61;1, annot_unit&#61;:hour&#41;,
         conf&#61;&#40;FORMAT_CLOCK_MAP&#61;&quot;-hham&quot;, FONT_ANNOT_PRIMARY&#61;&quot;&#43;9p&quot;, TIME_UNIT&#61;&quot;d&quot;&#41;, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_17669505661579696644">
- <img src="/GMTjl_doc/assets/examples/frames/frames/code/output/example_17669505661579696644.png" alt=""> 
+<a id="example_11643294639162472231">
+ <img src="/GMTjl_doc/assets/examples/frames/frames/code/output/example_11643294639162472231.png" alt=""> 
 </a>
 
 <p>The fifth example shows a few weeks of time &#40;Figure Cartesian time axis, example 5&#41;. The lower axis shows ISO weeks with week numbers and abbreviated names of the weekdays. The upper uses Gregorian weeks &#40;which start at the day chosen by TIME&#95;WEEK&#95;START&#41;; they do not have numbers.</p>
@@ -451,8 +452,8 @@ basemap&#33;&#40;frame&#61;&#40;axes&#61;:S, annot&#61;3, annot_unit&#61;:ISOwee
          conf&#61;&#40;FORMAT_DATE_MAP&#61;:o, TIME_WEEK_START&#61;:Sunday, FORMAT_TIME_SECONDARY_MAP&#61;:Character&#41;,
          y_offset&#61;1.7, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_10901594172160832210">
- <img src="/GMTjl_doc/assets/examples/frames/frames/code/output/example_10901594172160832210.png" alt=""> 
+<a id="example_7427822520610654920">
+ <img src="/GMTjl_doc/assets/examples/frames/frames/code/output/example_7427822520610654920.png" alt=""> 
 </a>
 
 <p>Our sixth example shows the first five months of 1996, and we have annotated each month with an abbreviated, upper case name and 2-digit year. Only the primary axes information is specified.</p>
@@ -461,8 +462,8 @@ basemap&#40;region&#61;&#40;&quot;1996T&quot;,&quot;1996-6T&quot;,0,1&#41;, figs
         frame&#61;&#40;axes&#61;:S, annot&#61;1, annot_unit&#61;:month, ticks&#61;1, ticks_unit&#61;:day_date&#41;,
         conf&#61;&#40;FORMAT_DATE_MAP&#61;&quot;\&quot;o yy\&quot;&quot;, FORMAT_TIME_PRIMARY_MAP&#61;&quot;Abbreviated&quot;&#41;, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_14421827119665972704">
- <img src="/GMTjl_doc/assets/examples/frames/frames/code/output/example_14421827119665972704.png" alt=""> 
+<a id="example_6053407380842668539">
+ <img src="/GMTjl_doc/assets/examples/frames/frames/code/output/example_6053407380842668539.png" alt=""> 
 </a>
 
 <p>Our seventh and final example illustrates annotation of year-days. Unless we specify the formatting with a leading hyphen in FORMAT&#95;DATE&#95;MAP we get 3-digit integer days. Note that in order to have the two years annotated we need to allow for the annotation of small fractional intervals; normally such truncated interval must be at least half of a full interval.</p>
@@ -472,8 +473,8 @@ basemap&#40;region&#61;&#40;&quot;2000-12-15T&quot;,&quot;2001-1-15T&quot;,0,1&#
         axis2&#61;&#40;annot&#61;1, annot_unit&#61;:year&#41;,
         conf&#61;&#40;FORMAT_DATE_MAP&#61;&quot;jjj&quot;, TIME_INTERVAL_FRACTION&#61;0.05, FONT_ANNOT_PRIMARY&#61;&quot;&#43;9p&quot;&#41;, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_5051054451163416057">
- <img src="/GMTjl_doc/assets/examples/frames/frames/code/output/example_5051054451163416057.png" alt=""> 
+<a id="example_11018091094822356717">
+ <img src="/GMTjl_doc/assets/examples/frames/frames/code/output/example_11018091094822356717.png" alt=""> 
 </a>
 
 <h2 id="custom_axes"><a href="#custom_axes" class="header-anchor">Custom axes</a></h2>
@@ -489,13 +490,13 @@ basemap&#33;&#40;frame&#61;&#40;axes&#61;&#40;:left_full, :bot_full&#41;,&#41;,
                         type&#61;&#91;&quot;ig Devonian&quot;, &quot;ig Silurian&quot;, &quot;ig Ordovician&quot;, &quot;ig Cambrian&quot;&#93;&#41;,&#41;,
         par&#61;&#40;MAP_ANNOT_OFFSET_SECONDARY&#61;&quot;10p&quot;, MAP_GRID_PEN_SECONDARY&#61;&quot;2p&quot;&#41;, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_18053118697193351659">
- <img src="/GMTjl_doc/assets/examples/frames/frames/code/output/example_18053118697193351659.png" alt=""> 
+<a id="example_4534238237934790031">
+ <img src="/GMTjl_doc/assets/examples/frames/frames/code/output/example_4534238237934790031.png" alt=""> 
 </a>
 
 <div class="page-foot">
   <div class="copyright">
-    &copy; GMT.jl. Last modified: March 28, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+    &copy; GMT.jl. Last modified: May 10, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
       <p>These docs were autogenerated using GMT: v0.44.8</p>
   </div>
 </div>

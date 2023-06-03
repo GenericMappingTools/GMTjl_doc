@@ -185,6 +185,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\contour">contour</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\contourf">contourf</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\cornerplot">cornerplot</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\earthregions">earthregions</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\ecdfplot">ecdfplot</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\feather">feather</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\fill_between">fill_between</a></div></li>
@@ -286,16 +287,28 @@
 <ul>
 <li><p><strong>A</strong> or <strong>area</strong> : – <em>area&#61;true</em><br />  Compute the area of the spherical triangles &#40;<strong>voronoi&#61;:d</strong>&#41; or polygons &#40;<strong>voronoi&#61;:v</strong>&#41; and   write the areas &#40;in chosen units; see <strong>unit</strong>&#41; in the output segment headers &#91;no areas calculated&#93;.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>C</strong> or <strong>save_mem</strong> : – <em>save_mem&#61;true</em><br />  For large data set you can save some memory &#40;at the expense of more processing&#41; by only   storing one form of location coordinates &#40;geographic or Cartesian 3-D vectors&#41; at any given   time, translating from one form to the other when necessary &#91;Default keeps both arrays in memory&#93;.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>D</strong> or <strong>skipdup</strong> : <em>skipdup&#61;true</em><br />  Used to skip the last &#40;repeated&#41; input vertex at the end of a closed segment if it   equals the first point in the segment. &#91;Default uses all points&#93;.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>L</strong> or <strong>unit</strong> : – <em>unit&#61;??</em><br />  Specify the unit used for distance and area calculations. Choose among <strong>unit&#61;:e</strong> &#40;m&#41;,   <strong>f</strong> &#40;foot&#41;, <strong>k</strong> &#40;km&#41;, <strong>M</strong> &#40;mile&#41;, <strong>n</strong> &#40;nautical mile&#41;, <strong>u</strong> &#40;survey foot&#41;, or   <strong>d</strong> &#40;spherical degree&#41;. A spherical approximation is used unless <strong>spherical_dist&#61;:ellipsoidal</strong> is set,   in which case we convert latitudes to authalic latitudes before calculating areas.   When degree is selected the areas are given in steradians.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>N</strong> or <strong>nodes</strong> : – <em>nodes&#61;&quot;file&quot;</em><br />  Write the information pertaining to each polygon. For Delaunay: the three node number and   the triangle area &#40;if <strong>area</strong> was set&#41;; for Voronoi the unique node lon, lat and polygon   area &#40;if <strong>area</strong> was set&#41;&#41; to a separate file. This information is also encoded in the   segment headers of ASCII output files &#40;or dataset types&#41;. Required if binary output is needed.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>Q</strong> or <strong>voronoi</strong> : – <em>voronoi&#61;:d|v</em><br />  Use <strong>voronoi&#61;:d</strong> for Delaunay triangles or <strong>voronoi&#61;:v</strong> for Voronoi polygons &#91;Delaunay&#93;.   If <strong>binary_out</strong> is used then <strong>nodes</strong> may be used to specify a separate file where the   polygon information normally is written.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>T</strong> or <strong>arcs</strong> : – <em>arcs&#61;true</em><br />  Write the unique arcs of the construction &#91;Default writes fillable triangles or polygons&#93;.   When used with <strong>area</strong> we store arc length in the segment header in chosen unit &#40;see <strong>unit</strong>&#41;.</p>
 </li>
 </ul>
@@ -331,17 +344,19 @@
 
 <ul>
 <li><p><strong>j</strong> or <strong>spherical_dist</strong> or <strong>spherical</strong> : – <em>spherical&#61;greatcirc</em> or <em>spherical&#61;:flat</em> or <em>spherical&#61;:ellipsoidal</em><br />  Determine how spherical distances are calculated in modules that support this &#91;Default is <code>spherical&#61;:greatcirc</code>&#93;.   GMT has different ways to compute distances on planetary bodies:</p>
-<ul>
-<li><p>spherical&#61;:greatcirc to perform great circle distance calculations, with parameters such as distance  increments or radii compared against calculated great circle distances &#91;Default is <code>spherical&#61;:greatcirc</code>&#93;.</p>
-</li>
-<li><p>spherical&#61;:flat to select Flat Earth mode, which gives a more approximate but faster result.</p>
-</li>
-<li><p>spherical&#61;:ellipsoidal to select ellipsoidal &#40;or geodesic&#41; mode for the highest precision  and slowest calculation time.</p>
 </li>
 </ul>
-<p>Note: All spherical distance calculations depend on the current ellipsoid &#40;<code>PROJ_ELLIPSOID</code>&#41;,   the definition of the mean radius &#40;<code>PROJ_MEAN_RADIUS</code>&#41;, and the specification of latitude type   &#40;<code>PROJ_AUX_LATITUDE</code>&#41;. Geodesic distance calculations is also controlled by method &#40;<code>PROJ_GEODESIC</code>&#41;.</p>
-</li>
-</ul>
+<p>- spherical&#61;:greatcirc to perform great circle distance calculations, with parameters such as distance 
+  increments or radii compared against calculated great circle distances &#91;Default is <code>spherical&#61;:greatcirc</code>&#93;.
+
+- spherical&#61;:flat to select Flat Earth mode, which gives a more approximate but faster result.
+
+- spherical&#61;:ellipsoidal to select ellipsoidal &#40;or geodesic&#41; mode for the highest precision 
+  and slowest calculation time.
+
+Note: All spherical distance calculations depend on the current ellipsoid &#40;<code>PROJ_ELLIPSOID</code>&#41;,
+the definition of the mean radius &#40;<code>PROJ_MEAN_RADIUS</code>&#41;, and the specification of latitude type
+&#40;<code>PROJ_AUX_LATITUDE</code>&#41;. Geodesic distance calculations is also controlled by method &#40;<code>PROJ_GEODESIC</code>&#41;.</p>
 
 <ul>
 <li><p><strong>q</strong> or <strong>inrows</strong> : – <em>inrows&#61;??</em><br /> Select specific data rows to be read and/or written.  <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#the-q-option">More at</a></p>
@@ -369,8 +384,8 @@
     D &#61; sphtriangulate&#40;&quot;@hotspots.txt&quot;, voronoi&#61;:d, arcs&#61;true&#41;
     imshow&#40;D, region&#61;:global, proj&#61;:guess, frame&#61;:afg, pen&#61;3&#41;</code></pre></p>
 <p>
-<a id="example_3348685269313147801">
- <img src="/GMTjl_doc/assets/documentation/modules/sphtriangulate/code/output/example_3348685269313147801.png" alt=""> 
+<a id="example_6228665354429754599">
+ <img src="/GMTjl_doc/assets/documentation/modules/sphtriangulate/code/output/example_6228665354429754599.png" alt=""> 
 </a>
 
 <p>To triangulate the points in the file testdata.txt, and make a Voronoi diagram via <code>plot</code>, use</p>
@@ -386,7 +401,7 @@
 <p>Renka, R, J., 1997, Algorithm 772: STRIPACK: Delaunay Triangulation and Voronoi Diagram on the Surface of a Sphere, <em>AMC Trans. Math. Software</em>, <strong>23</strong>&#92; &#40;3&#41;, 416-434.</p>
 <div class="page-foot">
   <div class="copyright">
-    &copy; GMT.jl. Last modified: March 28, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+    &copy; GMT.jl. Last modified: May 10, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
       <p>These docs were autogenerated using GMT: v0.44.8</p>
   </div>
 </div>

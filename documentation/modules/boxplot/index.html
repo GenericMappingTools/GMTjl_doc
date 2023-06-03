@@ -188,6 +188,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\contour">contour</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\contourf">contourf</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\cornerplot">cornerplot</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\earthregions">earthregions</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\ecdfplot">ecdfplot</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\feather">feather</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\fill_between">fill_between</a></div></li>
@@ -275,7 +276,8 @@
 <div class="franklin-content"><h1 id="boxplot"><a href="#boxplot" class="header-anchor">boxplot</a></h1>
 <pre><code class="language-julia">boxplot&#40;data, grp&#61;&#91;&#93;; pos&#61;nothing, kwargs...&#41;</code></pre>
 <p>Draw a box-and-whisker style plot. The input data can take several different forms.</p>
-<p><hr /> boxplot&#40;data::AbstractVector&#123;&lt;:Real&#125;; kwargs...&#41;</p>
+<hr />
+<p>boxplot&#40;data::AbstractVector&#123;&lt;:Real&#125;; kwargs...&#41;</p>
 <p>Draws a single boxplot. Options in <em>kwargs</em> provide fine settings for the boxplot</p>
 <ul>
 <li><p><code>boxwidth</code> or <code>cap</code>: Sets the the boxplot width and, optionally, the cap width. Provide info as <code>boxwidth&#61;&quot;10p/3p&quot;</code> to set the boxwidth different from the cap&#39;s. Note, however, that this          requires GMT6.5. Previous versions do not destinguish box and cap widths.</p>
@@ -295,11 +297,16 @@
 <li><p><code>ticks</code> or <code>xticks</code> or <code>yticks</code>: A tuple with annotation location and label. E.g. xticks&#61;&#40;&#91;2&#93;, &#91;&quot;Ab&quot;&#93;&#41;          where first element is an AbstractArray and second an array or tuple of strings or symbols.</p>
 </li>
 </ul>
-<p><hr /> boxplot&#40;data::AbstractVector&#123;&lt;:Real&#125;, grp::AbstractVector, ...&#41; Use the categorical vector &#40;made of integers or text strings&#41; <code>grp</code> break down a the <code>data</code> column vector in cathegories &#40;groups&#41;.</p>
-<p><hr /> boxplot&#40;data::AbstractMatrix&#123;&lt;:Real&#125;; pos&#61;Vector&#123;&lt;:Real&#125;, ...&#41; where <code>pos</code> is a coordinate vector &#40;or a single location when <code>data</code> is a vector&#41; where to plot the boxes. Default plots them at 1:n<em>boxes or 1:n</em>groups.</p>
-<p><hr /> boxplot&#40;data::GMTdatset&#123;&lt;:Real&#125;; pos&#61;Vector&#123;Real&#125;&#40;&#41;, ...&#41; Like the above case but the input data is stored in a <a href="#">GMTdataset</a></p>
-<p><hr /> boxplot&#40;data::Vector&#123;Vector&#123;&lt;:Real}}; pos&#61;Vector&#123;Real&#125;&#40;&#41;, ...&#41; Similar to the Matrix case but here each data vector used to compute the statistics can have a different number of points. There will be as many boxplots as <code>length&#40;data&#41;</code></p>
-<p><hr /> boxplot&#40;data::Array&#123;T&lt;:Real,3&#125;; pos&#61;Vector&#123;Real&#125;&#40;&#41;, groupwidth&#61;0.75, ccolor&#61;false, ...&#41; Draws <em>G</em> groups of boxplots of <em>N</em> columns boxes.</p>
+<hr />
+<p>boxplot&#40;data::AbstractVector&#123;&lt;:Real&#125;, grp::AbstractVector, ...&#41; Use the categorical vector &#40;made of integers or text strings&#41; <code>grp</code> break down a the <code>data</code> column vector in cathegories &#40;groups&#41;.</p>
+<hr />
+<p>boxplot&#40;data::AbstractMatrix&#123;&lt;:Real&#125;; pos&#61;Vector&#123;&lt;:Real&#125;, ...&#41; where <code>pos</code> is a coordinate vector &#40;or a single location when <code>data</code> is a vector&#41; where to plot the boxes. Default plots them at 1:n<em>boxes or 1:n</em>groups.</p>
+<hr />
+<p>boxplot&#40;data::GMTdatset&#123;&lt;:Real&#125;; pos&#61;Vector&#123;Real&#125;&#40;&#41;, ...&#41; Like the above case but the input data is stored in a <a href="#">GMTdataset</a></p>
+<hr />
+<p>boxplot&#40;data::Vector&#123;Vector&#123;&lt;:Real}}; pos&#61;Vector&#123;Real&#125;&#40;&#41;, ...&#41; Similar to the Matrix case but here each data vector used to compute the statistics can have a different number of points. There will be as many boxplots as <code>length&#40;data&#41;</code></p>
+<hr />
+<p>boxplot&#40;data::Array&#123;T&lt;:Real,3&#125;; pos&#61;Vector&#123;Real&#125;&#40;&#41;, groupwidth&#61;0.75, ccolor&#61;false, ...&#41; Draws <em>G</em> groups of boxplots of <em>N</em> columns boxes.</p>
 <ul>
 <li><p><code>groupWidth</code>: Specify the proportion of the x-axis interval across which each x-group of boxes should      be spread. The default is 0.75.</p>
 </li>
@@ -317,8 +324,10 @@
 <li><p><code>ticks</code> or <code>xticks</code> or <code>yticks</code>: A tuple with annotations interval and labels. E.g. xticks&#61;&#40;1:5, &#91;&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;&#93;&#41;      where first element is an AbstractArray and second an array or tuple of strings or symbols.</p>
 </li>
 </ul>
-<p><hr /> boxplot&#40;data::Vector&#123;Vector&#123;Vector&#123;&lt;:Real}}&#125;, ...&#41; Like the above but here the groups &#40;<code>length&#40;data&#41;</code>&#41; can have a variable number of elements and each have its own size.</p>
-<p><hr /> This module is a subset of <code>plot</code>. So not all &#40;fine&#41; controlling parameters are not listed here. For the finest control, user should consult the <a href="/GMTjl_doc/documentation/modules/plot/index.html#plot">plot</a> module.</p>
+<hr />
+<p>boxplot&#40;data::Vector&#123;Vector&#123;Vector&#123;&lt;:Real}}&#125;, ...&#41; Like the above but here the groups &#40;<code>length&#40;data&#41;</code>&#41; can have a variable number of elements and each have its own size.</p>
+<hr />
+<p>This module is a subset of <code>plot</code>. So not all &#40;fine&#41; controlling parameters are not listed here. For the finest control, user should consult the <a href="/GMTjl_doc/documentation/modules/plot/index.html#plot">plot</a> module.</p>
 <h2>Parameters</h2>
 <ul>
 <li><p><strong>B</strong> or <strong>axes</strong> or <strong>frame</strong><br /> Set map boundary frame and axes attributes. Default is to draw and annotate left, bottom and vertical  axes and just draw left and top axes. More at <a href="/GMTjl_doc/documentation/common_opts/common_opts/index.html#frame">frame</a></p>
@@ -360,21 +369,21 @@
 <pre><code class="language-julia">using GMT
 boxplot&#40;randn&#40;100,5&#41;, outliers&#61;&#40;size&#61;&quot;5p&quot;,&#41;, ticks&#61;&#91;&quot;A&quot;,&quot;B&quot;,&quot;C&quot;,&quot;D&quot;,&quot;E&quot;&#93;, fill&#61;true, notch&#61;true, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_16606565346771656153">
- <img src="/GMTjl_doc/assets/documentation/modules/boxplot/code/output/example_16606565346771656153.png" alt=""> 
+<a id="example_8245524136628321777">
+ <img src="/GMTjl_doc/assets/documentation/modules/boxplot/code/output/example_8245524136628321777.png" alt=""> 
 </a>
 
 <p>An horizontal boxplot with default colors, displaying outliers as 6p black stars. Noches are also shown but this requires GMT6.5.</p>
 <pre><code class="language-julia">using GMT
 boxplot&#40;randn&#40;50,6&#41;, notch&#61;true, fill&#61;true, outliers&#61;&#40;size&#61;&quot;6p&quot;,&#41;, hbar&#61;true, show&#61;1&#41;</code></pre></p>
 <p>
-<a id="example_6536054886029562094">
- <img src="/GMTjl_doc/assets/documentation/modules/boxplot/code/output/example_6536054886029562094.png" alt=""> 
+<a id="example_14541685021311051309">
+ <img src="/GMTjl_doc/assets/documentation/modules/boxplot/code/output/example_14541685021311051309.png" alt=""> 
 </a>
 
 <div class="page-foot">
   <div class="copyright">
-    &copy; GMT.jl. Last modified: March 28, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+    &copy; GMT.jl. Last modified: May 10, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
       <p>These docs were autogenerated using GMT: v0.44.8</p>
   </div>
 </div>

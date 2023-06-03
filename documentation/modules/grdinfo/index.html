@@ -185,6 +185,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\contour">contour</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\contourf">contourf</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\cornerplot">cornerplot</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\earthregions">earthregions</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\ecdfplot">ecdfplot</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\feather">feather</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\fill_between">fill_between</a></div></li>
@@ -273,7 +274,7 @@
 
 <!-- Content appended here -->
 <div class="franklin-content"><h1 id="grdinfo"><a href="#grdinfo" class="header-anchor">grdinfo</a></h1>
-<p>    grdinfo&#40;cmd0::String&#61;&quot;&quot;, arg1&#61;nothing; kwargs...&#41;</p>
+<pre><code class="language-julia">grdinfo&#40;cmd0::String&#61;&quot;&quot;, arg1&#61;nothing; kwargs...&#41;</code></pre>
 <p>Reads a 2-D grid file and reports metadata and various statistics for the &#40;x,y,z&#41; data in the grid file</p>
 <h2>Description</h2>
 <p>Reads a 2-D grid file and reports metadata and various statistics for the data &#40;<em>v</em>&#41; and coordinates &#40;<em>x,y</em>&#41; in a grid &#40;or <em>x,y,z</em> for a 3-D cube&#41;. The output information may report the minimum/maximum values for <em>v</em> and the coordinates, where the min/max of <em>v</em> occur, the spatial increments, and the number of nodes in each dimension, and &#91;optionally&#93; the mean, standard deviation, and/or the median, median absolute deviation &#40;MAD&#41; of <em>v</em>, and/or the mode &#40;Least Median of Squares; LMS&#41;, LMS scale of <em>v</em>, and number of nodes set to NaN. We also report if the grid is pixel- or gridline-registered and if it is a Cartesian or Geographic data set &#40;based on metadata in the file&#41;. We can also report information for 3-D netCDF data cubes, but note that data cubes are not compatible with options <strong>tiles</strong>, <strong>extrema</strong>, <strong>report_ingeog</strong>, and <strong>nearest&#61;:b</strong>.</p>
@@ -282,22 +283,39 @@
 <h2>Optional Arguments</h2>
 <ul>
 <li><p><strong>C</strong> or <strong>oneliner</strong> or <strong>numeric</strong>: – <em>oneliner&#61;true</em> <strong>|</strong> <strong>|</strong> <em>numeric&#61;true</em> <strong>|</strong> <em>oneliner&#61;:n|:t</em><br />  Formats the report using tab-separated fields on a single line. The output is:</p>
-<ul>
-<li><p><em>name w e s n &#123;b t&#125; v0 v1 dx dy &#123;dz&#125; nx ny &#123;nz&#125;</em> &#91;<em>x0 y0 &#123;z0&#125; x1 y1 &#123;z1&#125;</em>&#93; &#91;<em>med scale</em>&#93; &#91;<em>mean std rms</em>&#93; &#91;<em>n_nan</em>&#93; <em>registration gtype</em></p>
 </li>
 </ul>
-<p>The data in brackets are output only if the corresponding options <strong>minmax_pos</strong> &#40;with no directive&#41;,   <strong>force_scan&#61;1</strong>, and <strong>force_scan&#61;2</strong> are used, respectively, while the data in braces only apply   if used with 3-D data cubes. Use <strong>oneliner&#61;:t</strong> to place file <em>name</em> at the end of the output record   or <strong>oneliner&#61;:n</strong>, but preferably <strong>numeric&#61;true</strong>, to only output numerical columns. The <em>registration</em>   is either 0 &#40;gridline&#41; or 1 &#40;pixel&#41;, while <em>gtype</em> is either 0 &#40;Cartesian&#41; or 1 &#40;geographic&#41;. If the   <strong>nearest</strong> option is used, the output format is instead <em>NF w e s n &#123;b t&#125; v0 v1</em>, where <em>NF</em> is the   total number of files read and <em>w e s n &#123;b t&#125;</em> are rounded off &#40;see <strong>nearest</strong>&#41;.</p>
-</li>
+<p>- *name w e s n &#123;b t&#125; v0 v1 dx dy &#123;dz&#125; nx ny &#123;nz&#125;* &#91;*x0 y0 &#123;z0&#125; x1 y1 &#123;z1&#125;*&#93; &#91;*med scale*&#93;
+  &#91;*mean std rms*&#93; &#91;*n&#95;nan*&#93; *registration gtype*
+
+The data in brackets are output only if the corresponding options **minmax_pos** &#40;with no directive&#41;,
+**force_scan&#61;1**, and **force_scan&#61;2** are used, respectively, while the data in braces only apply
+if used with 3-D data cubes. Use **oneliner&#61;:t** to place file *name* at the end of the output record
+or **oneliner&#61;:n**, but preferably **numeric&#61;true**, to only output numerical columns. The *registration*
+is either 0 &#40;gridline&#41; or 1 &#40;pixel&#41;, while *gtype* is either 0 &#40;Cartesian&#41; or 1 &#40;geographic&#41;. If the
+**nearest** option is used, the output format is instead *NF w e s n &#123;b t&#125; v0 v1*, where *NF* is the
+total number of files read and *w e s n &#123;b t&#125;* are rounded off &#40;see **nearest**&#41;.</p>
+<ul>
 <li><p><strong>D</strong> or <strong>tiles</strong> : – <em>tiles&#61;xoff</em> <strong>|</strong> <em>tiles&#61;&#40;xoff,yoff&#41;</em> <strong>|</strong> <em>tiles&#61;&quot;&#43;i&quot;</em><br />  Divide a single grid&#39;s domain &#40;or the <strong>region</strong> domain, if no grid given&#41;   into tiles of size <em>dx</em> times <em>dy</em> &#40;set via <strong>nearest</strong>&#41;. You can specify   overlap between tiles by appending <em>xoff&#91;/yoff&#93;</em>. You may use the modifier <strong>&#43;i</strong> to ignore tiles that   have no data within each tile subregion. Default output is text   region strings. Use <strong>oneliner</strong> to instead report four columns with   <em>xmin xmax ymin ymax</em> per tile, or use <strong>-Ct</strong> to also have the   region string appended as trailing text.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>E</strong> or <strong>extrema</strong> or <strong>extreme</strong> : – <em>extrema&#61;&#91;:x|:y&#93;&#91;&quot;&#43;l|&#43;L|&#43;u|&#43;U&quot;&#93;</em><br />  Report the extreme values found on a per column &#40;<strong>extrema&#61;:x</strong>&#41; or per row &#40;<strong>extrema&#61;:y</strong>&#41;   basis. By default, we look for the global maxima &#40;<strong>&#43;u|&#43;U</strong>&#41; for each column. Use <strong>extrema&#61;&quot;&#43;l&quot;</strong>   or <strong>extrema&#61;&quot;&#43;L&quot;</strong> &#40;or <strong>extrema&#61;&quot;x&#43;l&quot;</strong>, etc...&#41; to look for minima instead. Upper case <strong>&#43;L</strong>   means we find the minimum of the positive values only, while upper case <strong>&#43;U</strong> means we find the   maximum of the negative values only &#91;use all values&#93;. We only allow one input grid when <strong>extrema</strong>   is selected.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>F</strong> or <strong>report_ingeog</strong> : – <em>report_ingeog&#61;true</em><br />  Report grid domain and x/y-increments in world mapping format   &#91;Default is generic&#93;. Does not apply to the <strong>oneliner</strong> option.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>G</strong> or <strong>force</strong> : – <em>force&#61;true</em><br />  Force &#40;possible&#41; download of all tiles of tiled global remote grids in order   to report the requested information &#91;refuse to give the information for tiled grids&#93;.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>I</strong> or <strong>nearest</strong> : – <em>nearest&#61;dx</em> <strong>|</strong> <em>nearest&#61;&#40;dx,dy&#41;</em> <strong>|</strong> <em>nearest&#61;:b|:i|:r</em><br />  Report the min/max of the region to the nearest multiple of <em>dx</em> and <em>dy</em>, and output this in   the form <strong>-Rw/e/s/n</strong> &#40;unless <strong>oneliner</strong> is set&#41;. To report the actual grid region, select   <strong>nearest&#61;:r</strong>. For a grid produced by the img supplement &#40;a Cartesian Mercator grid&#41;,   the exact geographic region is given with <strong>nearest&#61;:i</strong> &#40;if not found then we return the   actual grid region instead&#41;.  If no argument is given then we report the grid increment in   the form <strong>-Ixinc/yinc</strong>. If <strong>nearest&#61;:b</strong> is given we write each grid&#39;s bounding box   polygon instead. Finally, if tiles is in effect then <em>dx</em> and <em>dy</em> are the dimensions of the desired tiles.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>L</strong> or <strong>force_scan</strong> : – <em>force_scan&#61;0|1|2</em> <strong>|</strong> <em>force_scan&#61;:p|:a</em><br />  - <strong>force_scan&#61;0</strong>       Report range of <em>v</em> after actually scanning the data, not just reporting what the header says.</p>
 <ul>
 <li><p><strong>force_scan&#61;1</strong>   Report median and L1 scale of <em>v</em> &#40;L1 scale &#61; 1.4826 * Median Absolute Deviation &#40;MAD&#41;&#41;.</p>
@@ -309,8 +327,12 @@
 <li><p><strong>force_scan&#61;:a</strong>   All of the above.</p>
 </li>
 </ul>
-<p><strong>Note</strong>: If the grid is geographic then each node represents a physical   area that decreases with increasing latitude. We therefore report   spherically weighted statistical estimates for such grids.</p>
 </li>
+</ul>
+<p>**Note**: If the grid is geographic then each node represents a physical
+area that decreases with increasing latitude. We therefore report
+spherically weighted statistical estimates for such grids.</p>
+<ul>
 <li><p><strong>M</strong> or <strong>minmax_pos</strong> : – <em>minmax_pos&#61;true</em> <strong>|</strong> <em>minmax_pos&#61;:c|:f</em><br />  Find and report the location of min/max <em>v</em>-values, and count and report the number of nodes   set to NaN, if any &#91;Default&#93;. Use <strong>minmax_pos&#61;:f</strong> to instead force an update of the <em>v</em>-value   min/max by reading the matrix, or use <strong>:c</strong> for conditionally doing so if the header   information does not contain a valid <em>v</em> range.</p>
 </li>
 </ul>
@@ -354,7 +376,7 @@
 <p><a href="/GMTjl_doc/documentation/modules/grd2cpt/index.html#grd2cpt">grd2cpt</a>, <a href="/GMTjl_doc/documentation/modules/grd2xyz/index.html#grd2xyz">grd2xyz</a>, <a href="/GMTjl_doc/documentation/modules/grdedit/index.html#grdedit">grdedit</a></p>
 <div class="page-foot">
   <div class="copyright">
-    &copy; GMT.jl. Last modified: March 28, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+    &copy; GMT.jl. Last modified: May 10, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
       <p>These docs were autogenerated using GMT: v0.44.8</p>
   </div>
 </div>

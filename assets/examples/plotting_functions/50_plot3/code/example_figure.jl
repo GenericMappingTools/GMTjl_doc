@@ -7,7 +7,7 @@ begin # hide
 D = gmtread(getpath4docs("track_sample_data.txt"), incols="7,6,3");
 plot3d(D, lc=:gradient, lt=[1,5], par=(PS_LINE_CAP="round",), show=true)
 end # hide
-mv(joinpath(tempdir(), "GMTjl_" * GMT.tmpdir_usr[2] * ".png"), joinpath(@OUTPUT, "example_3219841358462090063.png"), force=true);    # hide
+mv(joinpath(tempdir(), "GMTjl_" * GMT.tmpdir_usr[2] * ".png"), joinpath(@OUTPUT, "example_7669411630601792454.png"), force=true);    # hide
 GMT.isFranklin[1] = false    # hide
 GMT.IamModern[1]  = false    # hide
  

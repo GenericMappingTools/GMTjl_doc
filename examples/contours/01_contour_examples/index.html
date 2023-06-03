@@ -199,6 +199,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\contour">contour</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\contourf">contourf</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\cornerplot">cornerplot</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\earthregions">earthregions</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\ecdfplot">ecdfplot</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\feather">feather</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\fill_between">fill_between</a></div></li>
@@ -292,8 +293,8 @@
 G &#61; GMT.peaks&#40;&#41;;
 grdcontour&#40;G, cont&#61;1, annot&#61;2, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_15292688772320955574">
- <img src="/GMTjl_doc/assets/examples/contours/01_contour_examples/code/output/example_15292688772320955574.png" alt=""> 
+<a id="example_5837322081605771583">
+ <img src="/GMTjl_doc/assets/examples/contours/01_contour_examples/code/output/example_5837322081605771583.png" alt=""> 
 </a>
 
 <h3 id="colored_contours"><a href="#colored_contours" class="header-anchor">Colored contours</a></h3>
@@ -303,8 +304,8 @@ G &#61; GMT.peaks&#40;&#41;;
 cpt &#61; makecpt&#40;range&#61;&#40;-6,8,1&#41;&#41;;      # Create the color map
 grdcontour&#40;G, pen&#61;&#40;colored&#61;true,&#41;, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_10837095277014325989">
- <img src="/GMTjl_doc/assets/examples/contours/01_contour_examples/code/output/example_10837095277014325989.png" alt=""> 
+<a id="example_9525104238948583546">
+ <img src="/GMTjl_doc/assets/examples/contours/01_contour_examples/code/output/example_9525104238948583546.png" alt=""> 
 </a>
 
 <h3 id="contourf_examples"><a href="#contourf_examples" class="header-anchor">Contourf examples</a></h3>
@@ -314,8 +315,8 @@ G &#61; GMT.peaks&#40;&#41;;
 C &#61; makecpt&#40;T&#61;&#40;-7,9,2&#41;&#41;;
 contourf&#40;G, C, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_9598923676866977119">
- <img src="/GMTjl_doc/assets/examples/contours/01_contour_examples/code/output/example_9598923676866977119.png" alt=""> 
+<a id="example_7796422868258523402">
+ <img src="/GMTjl_doc/assets/examples/contours/01_contour_examples/code/output/example_7796422868258523402.png" alt=""> 
 </a>
 
 <p>If we want to just draw some contours and not annotate them, we pass an array with the contours to be drawn.</p>
@@ -324,8 +325,8 @@ G &#61; GMT.peaks&#40;&#41;;
 C &#61; makecpt&#40;T&#61;&#40;-7,9,2&#41;&#41;;
 contourf&#40;G, C, contour&#61;&#91;-2, 0, 2, 5&#93;, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_13647355997255407046">
- <img src="/GMTjl_doc/assets/examples/contours/01_contour_examples/code/output/example_13647355997255407046.png" alt=""> 
+<a id="example_5353404600048423533">
+ <img src="/GMTjl_doc/assets/examples/contours/01_contour_examples/code/output/example_5353404600048423533.png" alt=""> 
 </a>
 
 <h3 id="contours_from_xyz"><a href="#contours_from_xyz" class="header-anchor">Contours from x,y,z</a></h3>
@@ -334,8 +335,8 @@ contourf&#40;G, C, contour&#61;&#91;-2, 0, 2, 5&#93;, show&#61;true&#41;</code><
 d &#61; &#91;0 2 5; 1 4 5; 2 0.5 5; 3 3 9; 4 4.5 5; 4.2 1.2 5; 6 3 1; 8 1 5; 9 4.5 5&#93;;
 contourf&#40;d, limits&#61;&#40;-0.5,9.5,0,5&#41;, pen&#61;0.25, labels&#61;&#40;line&#61;&#40;:min,:max&#41;,&#41;, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_14946609538388677802">
- <img src="/GMTjl_doc/assets/examples/contours/01_contour_examples/code/output/example_14946609538388677802.png" alt=""> 
+<a id="example_14219497637457276898">
+ <img src="/GMTjl_doc/assets/examples/contours/01_contour_examples/code/output/example_14219497637457276898.png" alt=""> 
 </a>
 
 <p>In the above since we did not specify a CPT the program picked the GMT&#39;s default one. But if we want use another one it&#39;s only a question of creating and passed it in.</p>
@@ -344,8 +345,8 @@ d &#61; &#91;0 2 5; 1 4 5; 2 0.5 5; 3 3 9; 4 4.5 5; 4.2 1.2 5; 6 3 1; 8 1 5; 9 4
 cpt &#61; makecpt&#40;range&#61;&#40;0,10,1&#41;, cmap&#61;:batlow&#41;;
 contourf&#40;d, contours&#61;cpt, limits&#61;&#40;-0.5,9.5,0,5&#41;, pen&#61;0.25, labels&#61;&#40;line&#61;&#40;:min,:max&#41;,&#41;, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_1192055388678784833">
- <img src="/GMTjl_doc/assets/examples/contours/01_contour_examples/code/output/example_1192055388678784833.png" alt=""> 
+<a id="example_13811340801161617137">
+ <img src="/GMTjl_doc/assets/examples/contours/01_contour_examples/code/output/example_13811340801161617137.png" alt=""> 
 </a>
 
 <h3 id="earth_is_round_and_gmt_knows_it"><a href="#earth_is_round_and_gmt_knows_it" class="header-anchor">Earth is round and GMT knows it</a></h3>
@@ -355,8 +356,8 @@ G &#61; grdmath&#40;&quot;-Rg -I5 35 21 SDIST&quot;&#41;;    # Example grid
 grdcontour&#40;G, region&#61;:global360, proj&#61;&#40;name&#61;:Mollweide, center&#61;35&#41;,
            cont&#61;2000, pen&#61;:thin, frame&#61;:bare, coast&#61;true, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_9323287121764060729">
- <img src="/GMTjl_doc/assets/examples/contours/01_contour_examples/code/output/example_9323287121764060729.png" alt=""> 
+<a id="example_340860616729707472">
+ <img src="/GMTjl_doc/assets/examples/contours/01_contour_examples/code/output/example_340860616729707472.png" alt=""> 
 </a>
 
 <h3 id="streamlines"><a href="#streamlines" class="header-anchor">Streamlines</a></h3>
@@ -370,13 +371,13 @@ r,a &#61; streamlines&#40;U, V&#41;;
 plot&#40;r, decorated&#61;&#40;locations&#61;a, symbol&#61;&#40;custom&#61;&quot;arrow&quot;, size&#61;0.3&#41;, fill&#61;:black,
           dec2&#61;true&#41;, title&#61;&quot;Someone wanted flowlines?&quot;, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_4933267947612795175">
- <img src="/GMTjl_doc/assets/examples/contours/01_contour_examples/code/output/example_4933267947612795175.png" alt=""> 
+<a id="example_13220045208272120545">
+ <img src="/GMTjl_doc/assets/examples/contours/01_contour_examples/code/output/example_13220045208272120545.png" alt=""> 
 </a>
 
 <div class="page-foot">
   <div class="copyright">
-    &copy; GMT.jl. Last modified: March 28, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+    &copy; GMT.jl. Last modified: May 10, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
       <p>These docs were autogenerated using GMT: v0.44.8</p>
   </div>
 </div>

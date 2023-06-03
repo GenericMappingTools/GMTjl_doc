@@ -185,6 +185,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\contour">contour</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\contourf">contourf</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\cornerplot">cornerplot</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\earthregions">earthregions</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\ecdfplot">ecdfplot</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\feather">feather</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\fill_between">fill_between</a></div></li>
@@ -298,8 +299,10 @@ hband&#40;mat::Matrix; region&#61;&#40;...&#41;, height&#61;false, percent&#61;f
 
 <ul>
 <li><p><strong>fill</strong> or <strong>color</strong><br /> Select color or pattern for filling of symbols &#91;Default is <em>lightblue</em>&#93;. It can take the form of a string,  a vector or a tuple of colors. See <a href="/GMTjl_doc/documentation/common_features/color/index.html#setting_color">Setting color</a> for extend color selection &#40;including color  map generation&#41;. When more than one band is requested the bands colors are assigned  by cycling through the colors given in this option. This means that a 3 bands and a <code>fill&#61;&#91;:red, :blue&#93;</code> will plot  first and third band in red and second in blue.</p>
-<p>Optionally the <code>fill</code> can be done with patterns &#40;which includes the possibility of using images&#41;.</p>
 </li>
+</ul>
+<p>Optionally the <code>fill</code> can be done with patterns &#40;which includes the possibility of using images&#41;.</p>
+<ul>
 <li><p><strong>fillalpha</strong> or <strong>alpha</strong> or <strong>transparency</strong> : – <em>alpha&#61;0.5</em> <strong>|</strong> <em>alpha&#61;&#40;50, 75&#41;</em><br /> Control the transparency level. Numbers can be floats &lt;&#61; 1.0 or integers in 0-100 range. Default is 75.  It can take the form of a number, a vector or a tuple of numbers.  When more than one band is requested the bands transparencies are assigned by cycling through the values  given in this option. This means that the number of bands and of transparencies may be different.</p>
 </li>
 </ul>
@@ -313,8 +316,8 @@ hband&#40;mat::Matrix; region&#61;&#40;...&#41;, height&#61;false, percent&#61;f
 <pre><code class="language-julia">using GMT
 vband&#40;&#91;1 2; 2.5 3; 4 5&#93;, fill&#61;&#40;:red, :blue&#41;, alpha&#61;&#40;0.75, 0.5, 0.3&#41;, region&#61;&#40;0,5,-1,5&#41;, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_4415203958627803263">
- <img src="/GMTjl_doc/assets/documentation/modules/vband/code/output/example_4415203958627803263.png" alt=""> 
+<a id="example_14265276033578674100">
+ <img src="/GMTjl_doc/assets/documentation/modules/vband/code/output/example_14265276033578674100.png" alt=""> 
 </a>
 
 <p>Now with variable heights.</p>
@@ -322,16 +325,16 @@ vband&#40;&#91;1 2; 2.5 3; 4 5&#93;, fill&#61;&#40;:red, :blue&#41;, alpha&#61;&
 vband&#40;&#91;1 2 0 NaN; 2.5 3 NaN 4; 4 5 1 3&#93;, fill&#61;&#91;:red, :blue&#93;, alpha&#61;&#40;0.75, 0.5, 0.3&#41;,
       region&#61;&#40;0,5,-1,5&#41;, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_14567158307646145650">
- <img src="/GMTjl_doc/assets/documentation/modules/vband/code/output/example_14567158307646145650.png" alt=""> 
+<a id="example_2504157197848305491">
+ <img src="/GMTjl_doc/assets/documentation/modules/vband/code/output/example_2504157197848305491.png" alt=""> 
 </a>
 
 <p>A horizontal band plot with variable lengths and colors and constant transparency.</p>
 <pre><code class="language-julia">using GMT
 hband&#40;&#91;-0.5 0.5 0 3; 1 2 1 NaN; 3 4 NaN NaN&#93;, fill&#61;&#40;:red, :blue, :green&#41;, region&#61;&#40;0,5,-1,5&#41;, show&#61;1&#41;</code></pre></p>
 <p>
-<a id="example_14694435587711321078">
- <img src="/GMTjl_doc/assets/documentation/modules/vband/code/output/example_14694435587711321078.png" alt=""> 
+<a id="example_14300863689871115420">
+ <img src="/GMTjl_doc/assets/documentation/modules/vband/code/output/example_14300863689871115420.png" alt=""> 
 </a>
 
 <p>We can fill with patterns as well. And use an image as one of the patterns.</p>
@@ -339,23 +342,23 @@ hband&#40;&#91;-0.5 0.5 0 3; 1 2 1 NaN; 3 4 NaN NaN&#93;, fill&#61;&#40;:red, :b
 vband&#40;&#91;1 2; 2.5 4&#93;, fill&#61;&#40;&#40;pattern&#61;getpath4docs&#40;&quot;tiling2.jpg&quot;&#41;, dpi&#61;200&#41;, &#40;pattern&#61;27, dpi&#61;200&#41;&#41;,
       region&#61;&#40;0,5,-1,5&#41;, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_13025850177123122668">
- <img src="/GMTjl_doc/assets/documentation/modules/vband/code/output/example_13025850177123122668.png" alt=""> 
+<a id="example_8752794947045300183">
+ <img src="/GMTjl_doc/assets/documentation/modules/vband/code/output/example_8752794947045300183.png" alt=""> 
 </a>
 
 <p>Do a nested call in which one is not forced to specify the plot limits but let it be computed from input data</p>
 <pre><code class="language-julia">using GMT
 plot&#40;0:0.5:5, rand&#40;11&#41;, vband&#61;&#40;data&#61;&#91;1 2; 2.5 3; 4 4.2&#93;, fill&#61;&#91;:red, :blue, :green&#93;&#41;, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_14419820484170032884">
- <img src="/GMTjl_doc/assets/documentation/modules/vband/code/output/example_14419820484170032884.png" alt=""> 
+<a id="example_14243284861163367618">
+ <img src="/GMTjl_doc/assets/documentation/modules/vband/code/output/example_14243284861163367618.png" alt=""> 
 </a>
 
 <h2>See also</h2>
 <p><a href="#">vlines</a>, <a href="#">hlines</a></p>
 <div class="page-foot">
   <div class="copyright">
-    &copy; GMT.jl. Last modified: March 28, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+    &copy; GMT.jl. Last modified: May 10, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
       <p>These docs were autogenerated using GMT: v0.44.8</p>
   </div>
 </div>

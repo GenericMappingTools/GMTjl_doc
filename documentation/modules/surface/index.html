@@ -186,6 +186,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\contour">contour</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\contourf">contourf</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\cornerplot">cornerplot</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\earthregions">earthregions</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\ecdfplot">ecdfplot</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\feather">feather</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\fill_between">fill_between</a></div></li>
@@ -277,7 +278,7 @@
 <pre><code class="language-julia">surface&#40;cmd0::String&#61;&quot;&quot;, arg1&#61;nothing; kwargs...&#41;</code></pre>
 <h2>Description</h2>
 <p>Reads randomly-spaced &#40;x,y,z&#41; triples from file or table and produces a binary file of gridded values z&#40;x,y&#41; by solving the differential equation &#40;away from data points&#41;</p>
-<p>&#36;&#36; &#40;1 - t&#41; \nabla ^2&#40;z&#41; &#43; t \nabla &#40;z&#41; &#61; 0 &#36;&#36;</p>
+\[ (1 - t) \nabla ^2(z) + t \nabla (z) = 0 \]
 <p>where <em>t</em> is a tension factor between 0 and 1, and \(\nabla\) indicates the Laplacian operator. Here, <em>t</em> &#61; 0 gives the &quot;minimum curvature&quot; solution. Minimum curvature can cause undesired oscillations and false local maxima or minima &#40;See Smith and Wessel, 1990&#41;, and you may wish to use <em>t</em> &gt; 0 to suppress these effects. Experience suggests <em>t</em> ~ 0.25 usually looks good for potential field data and <em>t</em> should be larger &#40;<em>t</em> ~ 0.35&#41; for steep topography data. <em>t</em> &#61; 1 gives a harmonic surface &#40;no maxima or minima are possible except at control data points&#41;. It is recommended that the user preprocess the data with <a href="/GMTjl_doc/documentation/modules/blockmean/index.html#blockmean">blockmean</a>, <a href="/GMTjl_doc/documentation/modules/blockmedian/index.html#blockmedian">blockmedian</a>, or <a href="/GMTjl_doc/documentation/modules/blockmode/index.html#blockmode">blockmode</a> to avoid spatial aliasing and eliminate redundant data. You may impose lower and/or upper bounds on the solution. These may be entered in the form of a fixed value, a grid with values, or simply be the minimum/maximum input data values. Natural boundary conditions are applied at the edges, except for geographic data with 360-degree range where we apply periodic boundary conditions in the longitude direction.</p>
 <h2>Required Arguments</h2>
 <ul>
@@ -298,6 +299,8 @@
 <ul>
 <li><p><strong>A</strong> or <strong>aspect_ratio</strong> : – <em>aspect_ratio&#61;ar</em> <strong>|</strong> <em>aspect_ratio&#61;:m</em><br />  Aspect ratio. If desired, grid anisotropy can be added to the equations. Enter <em>ar</em>,   where <em>dy &#61; dx / ar</em> relates the grid dimensions. For geographic data, you may use   <strong>aspect_ratio&#61;:m</strong> to set the aspect ratio to the cosine of the mean latitude   &#91;Default &#61; 1 assumes isotropic grid.&#93;</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>C</strong> or <strong>convergence</strong> : – <em>convergence&#61;clim</em> <strong>|</strong> <em>convergence&#61;&quot;clim&#37;&quot;</em><br />  Convergence limit. Iteration is assumed to have converged when the maximum absolute change   in any grid value is less than <em>clim</em>. &#40;Units same as data z units&#41;. Alternatively, give   limit in percentage of rms deviation by appending &#37;. &#91;Default is scaled to \(10^{-4}\) of   the root-mean-square deviation of the data from a best-fit &#40;least-squares&#41; plane.&#93;.   This is the final convergence limit at the desired grid spacing; for intermediate   &#40;coarser&#41; grids the effective convergence limit is divided by the grid spacing multiplier.</p>
 </li>
 </ul>
@@ -312,33 +315,49 @@
 </ul>
 <ul>
 <li><p><strong>G</strong> or <strong>save</strong> or <strong>outgrid</strong> or <strong>outfile</strong> : – <em>outgrid&#61;&#91;&#61;ID&#93;&#91;&#43;ddivisor&#93;&#91;&#43;ninvalid&#93;&#91;&#43;ooffset|a&#93;&#91;&#43;sscale|a&#93;&#91;:driver&#91;dataType&#93;&#91;&#43;coptions&#93;&#93;</em><br /> Give the name of the output grid file. Optionally, append <code>&#61;ID</code> for writing a specific file format  &#40;See <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#grd-inout-full">full description</a>&#41;.  The following modifiers are supported:</p>
+</li>
+</ul>
 <ul>
 <li><p>&#43;d - Divide data values by given divisor &#91;Default is 1&#93;.</p>
 </li>
+</ul>
+<ul>
 <li><p>&#43;n - Replace data values matching invalid with a NaN.</p>
 </li>
+</ul>
+<ul>
 <li><p>&#43;o - Offset data values by the given offset, or append a for automatic range offset to preserve precision for integer grids &#91;Default is 0&#93;.</p>
 </li>
+</ul>
+<ul>
 <li><p>&#43;s - Scale data values by the given scale, or append a for automatic scaling to preserve precision for integer grids &#91;Default is 1&#93;.</p>
 </li>
 </ul>
-<p><strong>Note1:</strong> Any offset is added before any scaling. &#43;sa also sets &#43;oa &#40;unless overridden&#41;. To write specific  formats via GDAL, use &#61;gd and supply driver &#40;and optionally dataType&#41; and/or one or more concatenated  GDAL -co options using &#43;c. See the <a href="https://docs.generic-mapping-tools.org/dev/cookbook/features.html#write-grids-images">“Writing grids and images”</a> cookbook section for more details.</p>
-<p><strong>Note2:</strong> This is optional and to be used only when saving the result directly on disk. Otherwise,  just use the <code>G &#61; modulename&#40;...&#41;</code> form.</p>
-</li>
-</ul>
+<p><strong>Note1:</strong> Any offset is added before any scaling. &#43;sa also sets &#43;oa &#40;unless overridden&#41;. To write specific    formats via GDAL, use &#61;gd and supply driver &#40;and optionally dataType&#41; and/or one or more concatenated    GDAL -co options using &#43;c. See the <a href="https://docs.generic-mapping-tools.org/dev/cookbook/features.html#write-grids-images">“Writing grids and images”</a> cookbook section for more details.</p>
+<p><strong>Note2:</strong> This is optional and to be used only when saving the result directly on disk. Otherwise,    just use the <code>G &#61; modulename&#40;...&#41;</code> form.</p>
 
 <ul>
 <li><p><strong>Ll</strong> or <strong>lower</strong> and <strong>Lu</strong> or <strong>upper</strong> : – <em>lower&#61;??</em> <strong>|</strong> <em>upper&#61;??</em><br />  Impose limits on the output solution. <strong>??</strong> in <strong>lower&#61;??</strong> sets the lower bound. It can   be the name of a grid file with lower bound values, a fixed value, <strong>d</strong> to set to minimum   input value, or <strong>u</strong> for unconstrained &#91;Default&#93;. <em>upper</em> sets the upper bound and can be   the name of a grid file with upper bound values, a fixed value, <strong>d</strong> to set to maximum   input value, or <strong>u</strong> for unconstrained &#91;Default&#93;. Grid files used to set the limits may   contain NaNs. In the presence of NaNs, the limit of a node masked with NaN is unconstrained.   <strong>Note</strong>: Grids given via <strong>L</strong> must be compatible with the desired output domain and increments.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>M</strong> or <strong>mask</strong> : – <em>mask&#61;max_radius</em><br />  After solving for the surface, apply a mask so that nodes farther than <em>max_radius</em> away from   a data constraint are set to NaN. Append a distance unit &#40;see <a href="/GMTjl_doc/documentation/common_features/units/index.html#units">Units</a>&#41; if needed.   One can also select the nodes to mask by using the <strong>mask&#61;&quot;&lt;n_cells&gt;c&quot;</strong> form. Here <em>n_cells</em>   means the number of cells around the node controlled by a data point. As an example <strong>mask&#61;&quot;0c&quot;</strong>   means that only the cell where the point lies is filled, <strong>mask&#61;&quot;1c&quot;</strong> keeps one cell beyond that   &#40;i.e. makes a 3x3 square neighborhood&#41;, and so on.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>N</strong> or <strong>iterations</strong> or <strong>max_iterations</strong> : – <em>iterations&#61;n_iter</em><br />  Number of iterations. Iteration will cease when <strong>convergence</strong> is reached or when number of   iterations reaches <em>n_iter</em>.  This is the final iteration limit at the desired grid spacing;   for intermediate &#40;coarser&#41; grids the effective iteration limit is scaled by the grid spacing   multiplier &#91;Default is 500&#93;.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>Q</strong> or <strong>suggest</strong> : – <em>suggest&#61;true</em> <strong>|</strong> <em>suggest&#61;:r</em><br />  Suggest grid dimensions which have a highly composite greatest common factor. This allows   surface to use several intermediate steps in the solution, yielding faster run times and   better results. The sizes suggested by <strong>suggest</strong> can be achieved by altering <strong>region</strong>   and/or <strong>inc</strong>. You can recover the <strong>region</strong> and <strong>inc</strong> you want later by using <a href="/GMTjl_doc/documentation/modules/grdsample/index.html#grdsample">grdsample</a> or <a href="/GMTjl_doc/documentation/modules/grdcut/index.html#grdcut">grdcut</a> on the output of <strong>surface</strong>. Alternatively,   append <strong>r</strong> to have <strong>surface</strong> use the specified <strong>region</strong> setting exactly as given   in the calculations &#91;Default automatically seeks a slightly larger region if that allows   for more intermediate steps to ensure the best possible convergence; the region is then   trimmed back to what was requested in <strong>region</strong> upon output&#93;.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>S</strong> or <strong>search_radius</strong> : – <em>search_radius&#61;??</em> <strong>|</strong> <em>search_radius&#61;&quot;??m|s&quot;</em><br />  Search radius. Enter <em>search&#95;radius</em> in same units as x,y data; append <strong>m</strong> to indicate   arc minutes or <strong>s</strong> for arc seconds. This is used to initialize the grid before the first   iteration; it is not worth the time unless the grid lattice is prime and cannot have   regional stages. &#91;Default &#61; 0.0 and no search is made.&#93;</p>
 </li>
-<li><p><strong>T</strong> or <strong>tension</strong> :– <em>tension&#61;factor</em> <strong>|</strong> <em>search<em>radius&#61;&quot;i|b</em>factor&quot;</em><br />  Tension factor&#91;s&#93;. These must be between 0 and 1. Tension may be used in the interior solution   &#40;above equation, where it suppresses spurious oscillations&#41; and in the boundary conditions   &#40;where it tends to flatten the solution approaching the edges&#41;. Using zero for both values   results in a minimum curvature surface with free edges, i.e., a natural bicubic spline.   Use <strong>tension&#61;i...</strong>, where <em>...</em> is the <em>tension_factor</em> to set interior tension, and   <strong>tension&#61;b...</strong> to set boundary tension. If you do not prepend <strong>i</strong> or <strong>b</strong>, both will   be set to the same value. &#91;Default &#61; 0 for both gives minimum curvature solution.&#93;</p>
+</ul>
+<ul>
+<li><p><strong>T</strong> or <strong>tension</strong> : – <em>tension&#61;factor</em> <strong>|</strong> <em>search<em>radius&#61;&quot;i|b</em>factor&quot;</em><br />  Tension factor&#91;s&#93;. These must be between 0 and 1. Tension may be used in the interior solution   &#40;above equation, where it suppresses spurious oscillations&#41; and in the boundary conditions   &#40;where it tends to flatten the solution approaching the edges&#41;. Using zero for both values   results in a minimum curvature surface with free edges, i.e., a natural bicubic spline.   Use <strong>tension&#61;i...</strong>, where <em>...</em> is the <em>tension_factor</em> to set interior tension, and   <strong>tension&#61;b...</strong> to set boundary tension. If you do not prepend <strong>i</strong> or <strong>b</strong>, both will   be set to the same value. &#91;Default &#61; 0 for both gives minimum curvature solution.&#93;</p>
 </li>
 </ul>
 <ul>
@@ -349,9 +368,18 @@
 <ul>
 <li><p><strong>W</strong> or <strong>log</strong> : – <em>log&#61;true</em> <strong>|</strong> <em>log&#61;logfile</em><br />  Write convergence information to <em>logfile</em> &#91;Default is <em>surface_log.txt</em>&#93;.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>Z</strong> or <strong>over_relaxation</strong> : – <em>over_relaxation&#61;factor</em><br />  Over-relaxation factor. This parameter is used to accelerate the convergence; it is a number   between 1 and 2. A value of 1 iterates the equations exactly, and will always assure stable   convergence. Larger values overestimate the incremental changes during convergence, and will   reach a solution more rapidly but may become unstable. If you use a large value for this factor,   it is a good idea to monitor each iteration with the <strong>verbose&#61;:i</strong> option. &#91;Default &#61; 1.4   converges quickly and is almost always stable.&#93;</p>
 </li>
 </ul>
+<ul>
+<li><p><strong>preproc</strong> : – <em>preproc&#61;true</em> <strong>|</strong> <em>preproc&#61;&quot;blockmedian|blockmode&quot;</em><br /></p>
+</li>
+</ul>
+<p>This option means that the data is previously passed through one of <code>block*</code> modules to decimate the data
+in each cell as strongly advised. <code>preproc&#61;true</code> will use <code>blockmean</code>. To use any of the other two,
+pass its name as value. *e.g.* <code>preproc&#61;&quot;blockmedian&quot;</code>.</p>
 <ul>
 <li><p><strong>a</strong> or <strong>aspatial</strong> : – <em>aspatial&#61;??</em><br /> Control how aspatial data are handled in GMT during input and output.  <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#aspatial-full">More at</a></p>
 </li>
@@ -431,7 +459,7 @@
 <p>Smith, W. H. F, and P. Wessel, 1990, Gridding with continuous curvature splines in tension, <em>Geophysics</em>, 55, 293-305, https://doi.org/10.1190/1.1442837.</p>
 <div class="page-foot">
   <div class="copyright">
-    &copy; GMT.jl. Last modified: March 28, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+    &copy; GMT.jl. Last modified: May 26, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
       <p>These docs were autogenerated using GMT: v0.44.8</p>
   </div>
 </div>

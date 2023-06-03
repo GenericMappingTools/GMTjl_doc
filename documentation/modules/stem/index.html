@@ -185,6 +185,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\contour">contour</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\contourf">contourf</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\cornerplot">cornerplot</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\earthregions">earthregions</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\ecdfplot">ecdfplot</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\feather">feather</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\fill_between">fill_between</a></div></li>
@@ -275,14 +276,20 @@
 <div class="franklin-content"><h1 id="stem"><a href="#stem" class="header-anchor">stem</a></h1>
 <pre><code class="language-julia">stem&#40;cmd0::String&#61;&quot;&quot;, arg1&#61;nothing; kwargs...&#41;</code></pre>
 <p>Reads &#40;x,y&#41; pairs and plot the data sequence, <em>y</em>, as stems that extend from a baseline along the x-axis. The data values are indicated by circles terminating each stem. The input can either be a file name of a file with at least two columns &#40;x,y&#41;, but optionally more, a GMTdatset object with also two or more columns, or direct <em>x,y</em> inputs</p>
-<p><hr /> stem&#40;x,y, ...&#41; plots the elements in <em>y</em> at the locations specified by <em>x</em>. The inputs <em>x,y</em> can be vectors or a vector and a matrix, both with the same number of rows.</p>
-<p><hr /> stem&#40;D::GMTdatset, yvar, ...&#41; plots the specified variable from the GMTdatset against the row indices of the table. To plot one set of y-values, specify one variable for <code>yvar</code>. This can take the form of column names or column numbers. To plot multiple sets of y-values, specify multiple variables for <code>yvar</code>. Example <code>yvar&#61;:Y</code> or <code>yvar&#61;&#40;2,3&#41;</code>, or <code>yvar&#61;&#91;:Y, :Z1, :Z2&#93;</code>.</p>
-<p><hr /> stem&#40;D::GMTdatset,xvar,yvar&#41; plots the variables <code>xvar</code> and <code>yvar</code> from the table <code>D</code>. You can specify one or multiple variables for <code>yvar</code> and one only for <code>xvar</code>.</p>
-<p><hr /> This module is a subset of <code>plot</code> to make it simpler to draw stem plots. So not all &#40;fine&#41; controlling parameters are not listed here. For the finest control, user should consult the <a href="/GMTjl_doc/documentation/modules/plot/index.html#plot">plot</a> module.</p>
+<hr />
+<p>stem&#40;x,y, ...&#41; plots the elements in <em>y</em> at the locations specified by <em>x</em>. The inputs <em>x,y</em> can be vectors or a vector and a matrix, both with the same number of rows.</p>
+<hr />
+<p>stem&#40;D::GMTdatset, yvar, ...&#41; plots the specified variable from the GMTdatset against the row indices of the table. To plot one set of y-values, specify one variable for <code>yvar</code>. This can take the form of column names or column numbers. To plot multiple sets of y-values, specify multiple variables for <code>yvar</code>. Example <code>yvar&#61;:Y</code> or <code>yvar&#61;&#40;2,3&#41;</code>, or <code>yvar&#61;&#91;:Y, :Z1, :Z2&#93;</code>.</p>
+<hr />
+<p>stem&#40;D::GMTdatset,xvar,yvar&#41; plots the variables <code>xvar</code> and <code>yvar</code> from the table <code>D</code>. You can specify one or multiple variables for <code>yvar</code> and one only for <code>xvar</code>.</p>
+<hr />
+<p>This module is a subset of <code>plot</code> to make it simpler to draw stem plots. So not all &#40;fine&#41; controlling parameters are not listed here. For the finest control, user should consult the <a href="/GMTjl_doc/documentation/modules/plot/index.html#plot">plot</a> module.</p>
 <h2>Parameters</h2>
 <ul>
 <li><p><strong>multicol</strong> : – <em>multicol&#61;true</em><br />  Use this option when passing a multicolumn input and and plot a stemplot for each column.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>nobaseline</strong> : – <em>nobaseline&#61;true</em><br />  If <code>nobaseline&#61;true</code> do not paint the horizontal baseline from which the stems start.</p>
 </li>
 </ul>
@@ -342,8 +349,8 @@
 Y &#61; linspace&#40;-2*pi,2*pi,50&#41;;
 stem&#40;Y, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_12070473903040908679">
- <img src="/GMTjl_doc/assets/documentation/modules/stem/code/output/example_12070473903040908679.png" alt=""> 
+<a id="example_7786500881095282451">
+ <img src="/GMTjl_doc/assets/documentation/modules/stem/code/output/example_7786500881095282451.png" alt=""> 
 </a>
 
 <p>The same but now specify the set of x values for the stem plot. </p>
@@ -351,8 +358,8 @@ stem&#40;Y, show&#61;true&#41;</code></pre></p>
 Y &#61; linspace&#40;-2*pi,2*pi,50&#41;;
 stem&#40;&#91;Y Y&#93;, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_2572986808771873602">
- <img src="/GMTjl_doc/assets/documentation/modules/stem/code/output/example_2572986808771873602.png" alt=""> 
+<a id="example_14433085536187809348">
+ <img src="/GMTjl_doc/assets/documentation/modules/stem/code/output/example_14433085536187809348.png" alt=""> 
 </a>
 
 <p>Two of them and with some variations.</p>
@@ -360,13 +367,13 @@ stem&#40;&#91;Y Y&#93;, show&#61;true&#41;</code></pre></p>
 Y &#61; linspace&#40;-2*pi,2*pi,50&#41;;
 stem&#40;Y,&#91;Y -Y&#93;, multicol&#61;true, fill&#61;true, ms&#61;&quot;10p&quot;, nobaseline&#61;true, ls&#61;:DashDot, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_5776730411745982463">
- <img src="/GMTjl_doc/assets/documentation/modules/stem/code/output/example_5776730411745982463.png" alt=""> 
+<a id="example_2435525112190254070">
+ <img src="/GMTjl_doc/assets/documentation/modules/stem/code/output/example_2435525112190254070.png" alt=""> 
 </a>
 
 <div class="page-foot">
   <div class="copyright">
-    &copy; GMT.jl. Last modified: March 28, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+    &copy; GMT.jl. Last modified: May 10, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
       <p>These docs were autogenerated using GMT: v0.44.8</p>
   </div>
 </div>

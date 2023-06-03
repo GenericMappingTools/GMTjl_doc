@@ -185,6 +185,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\contour">contour</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\contourf">contourf</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\cornerplot">cornerplot</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\earthregions">earthregions</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\ecdfplot">ecdfplot</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\feather">feather</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\fill_between">fill_between</a></div></li>
@@ -296,16 +297,28 @@
 <ul>
 <li><p><strong>E</strong> or <strong>url</strong> : – <em>url&#61;URL</em><br />  Instead of hosting all files on your computer, you may prepend a remote site URL. Then,   the top-level <em>prefix</em>.kml file will use this URL to find all other files it references.   After building completes you must place the entire <em>prefix</em> directory at the remote   location pointed to by the <em>URL</em> &#91;local files only&#93;. With this arrangement you can   share the <em>prefix</em>.kml with others &#40;say, via email or for download&#41; and users can   open the file in their Google Earth and access the remote files from your server as needed.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>F</strong> or <strong>filter</strong> : – <em>filter&#61;type</em><br />  Specifies the filter to use for the downsampling of the grid for more distant viewing.   Choose among <strong>b</strong>oxcar, <strong>c</strong>osine arch, <strong>g</strong>aussian, or <strong>m</strong>edian &#91;Gaussian&#93;.   The filter width is set automatically depending on the level.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>H</strong> or <strong>subpixel</strong> : – <em>subpixel&#61;scale</em><br />  Improve the quality of rasterization by passing the sub-pixel smoothing scale   to psconvert &#40;same as <strong>H</strong> option in <a href="#">psconvert</a>&#41; &#91;no sub-pixel smoothing&#93;.   Ignored when |-W| is not used.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>I</strong> or <strong>shade</strong> or <strong>shading</strong> or <strong>intensity</strong> : – <em>shade&#61;grid</em> <strong>|</strong> <em>shade&#61;azim</em> <strong>|</strong> <em>shade&#61;&#40;azimuth&#61;az, norm&#61;params, auto&#61;true&#41;</em><br /> Gives the name of a grid with intensities in the &#40;-1,&#43;1&#41; range, or a constant intensity to apply everywhere  &#40;affects the ambient light&#41;. Alternatively, derive an intensity grid from the input data grid <em>grd&#95;z</em> via a  call to <a href="/GMTjl_doc/documentation/modules/grdgradient/index.html#grdgradient">grdgradient</a>; use <code>shade&#61;az</code> or <code>shade&#61;&#40;azimuth&#61;az, norm&#61;params&#41;</code> to specify azimuth  and intensity arguments for that module or just give <code>shade&#61;true</code> to select the default arguments  <em>&#40;azim&#61;-45,nom&#61;:t1&#41;</em>. If you want a more specific intensity scenario then run grdgradient separately first.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>L</strong> or <strong>tilesize</strong> : – <em>tilesize&#61;size</em><br />  Sets the fixed size of the image building blocks. Must be an integer that is radix 2.   Typical values are 256 or 512 &#91;256&#93;. <strong>Note</strong>: For global grids &#40;here meaning 360-degree   longitude range&#41;, we will select a <em>tilesize</em> of 360 if <strong>tilesize</strong> is not specified.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>S</strong> or <strong>extralayers</strong> : – <em>extralayers&#61;true</em> <strong>|</strong> <em>extralayers&#61;extra</em><br />  Add extra layers beyond that necessary to capture the full resolution of the data &#91;none&#93;.   This will let GMT interpolate your grid and make more tiles, versus letting Google Earth   interpolate the last resolution raster images.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>T</strong> or <strong>title</strong> : –<em>title&#61;XXX</em><br />  Sets the title of the top-level document &#40;i.e., its description&#41;.</p>
 </li>
 </ul>
@@ -343,7 +356,7 @@
 <p><a href="/GMTjl_doc/documentation/modules/gmt2kml/index.html#gmt2kml">gmt2kml</a>, <a href="/GMTjl_doc/documentation/modules/grdgradient/index.html#grdgradient">grdgradient</a>, <a href="/GMTjl_doc/documentation/modules/grdhisteq/index.html#grdhisteq">grdhisteq</a>, <a href="/GMTjl_doc/documentation/modules/grdimage/index.html#grdimage">grdimage</a>, <a href="/GMTjl_doc/documentation/modules/grdmath/index.html#grdmath">grdmath</a>, <a href="#">kml2gmt</a>, <a href="#">psconvert</a></p>
 <div class="page-foot">
   <div class="copyright">
-    &copy; GMT.jl. Last modified: March 28, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+    &copy; GMT.jl. Last modified: May 10, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
       <p>These docs were autogenerated using GMT: v0.44.8</p>
   </div>
 </div>

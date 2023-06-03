@@ -185,6 +185,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\contour">contour</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\contourf">contourf</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\cornerplot">cornerplot</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\earthregions">earthregions</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\ecdfplot">ecdfplot</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\feather">feather</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\fill_between">fill_between</a></div></li>
@@ -273,7 +274,7 @@
 
 <!-- Content appended here -->
 <div class="franklin-content"><h1 id="rose"><a href="#rose" class="header-anchor">rose</a></h1>
-<p>	rose&#40;cmd0::String&#61;&quot;&quot;, arg1&#61;nothing; kwargs...&#41;</p>
+<pre><code class="language-julia">rose&#40;cmd0::String&#61;&quot;&quot;, arg1&#61;nothing; kwargs...&#41;</code></pre>
 <p>Plot a polar histogram &#40;rose, sector, windrose diagrams&#41;</p>
 <h2>Description</h2>
 <p>Reads &#40;length, azimuth&#41; pairs from matrix or <em>file</em> and plot a windrose diagram. Add <strong>incols&#61;0</strong> if your data only has azimuth values. Optionally &#40;with <strong>sector</strong>&#41;, polar histograms may be drawn &#40;sector diagram or rose diagram&#41;. Options include full circle and half circle plots. The outline of the windrose is drawn with the same color as <code>MAP_DEFAULT_PEN</code>.</p>
@@ -295,37 +296,57 @@
 <ul>
 <li><p><strong>C</strong> or <strong>color</strong> or <strong>cmap</strong> : – <em>color&#61;cpt</em><br />  Give a CPT or specify <strong>color&#61;&quot;color1,color2 &#91;,color3 ,...&#93;&quot;</strong> or <strong>color&#61;&#40;&#40;r1,g1,b1&#41;,&#40;r2,g2,b2&#41;,...&#41;</strong> to build a   linear continuous CPT from those colors automatically. The <em>r</em>-value for each sector is used to look-up the sector   color. Cannot be used with a rose diagram.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>D</strong> or <strong>shift</strong> : – <em>shift&#61;true</em><br />  Shift sectors so that they are centered on the bin interval &#40;e.g., first sector is centered on 0 degrees&#41;.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>E</strong> or <strong>vectors</strong> : – <em>vectors&#61;:m</em> <strong>|</strong> <em>vectors&#61;mode_file</em> <strong>|</strong> <em>vectors&#61;&quot;&#43;wmode_file&quot;</em><br />  Plot vectors showing the principal directions given in the <em>mode_file</em> file &#40;a file name or else a matrix&#41;.   Alternatively, specify <strong>vectors&#61;:m</strong> to compute and plot mean direction. See <strong>vector_params</strong> to control   the vector attributes. Finally, to instead save the computed mean direction and other statistics,   use <strong>vectors&#61;&quot;&#91;m&#93;&#43;wmode_file&quot;</strong>. The eight items saved to a single record are: <em>mean<em>az, mean</em>r,   mean<em>resultant, max</em>r, scaled<em>mean</em>r, length_sum, n, sign@alpha</em>, where the last term is 0 or 1   depending on whether the mean resultant is significant at the level of confidence set via <strong>alpha</strong>.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>F</strong> or <strong>no_scale</strong> : – <em>no_scale&#61;true</em><br />  Do <em>not</em> draw the scale length bar &#91;Default plots scale bar in lower right corner provided <strong>frame</strong>   is used. We use <code>MAP_TICK_PEN_PRIMARY</code> to draw the scale and label it with <code>FONT_ANNOT_PRIMARY</code>.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>G</strong> or <strong>fill</strong><br />  Selects shade, color or pattern for filling the sectors &#91;Default is no fill&#93;.  Note that plot will search for <em>fill</em>   and <em>pen</em> settings in all the segment headers &#40;when passing a GMTdaset or file of a multi-segment dataset&#41;   and let any values thus found over-ride the command line settings &#40;but those must be provided in the terse GMT   syntax&#41;. See <a href="/GMTjl_doc/documentation/common_features/color/index.html#setting_color">Setting color</a> for extend color selection &#40;including color map generation&#41;.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>I</strong> or <strong>inquire</strong> : – <em>inquire&#61;true</em><br />  Computes statistics needed to specify a useful <strong>region</strong>. No plot is generated. The following   statistics are computed:   <em>n</em>, <em>mean az</em>, <em>mean r</em>, <em>mean resultant length</em>, <em>max bin sum</em>, <em>scaled mean</em>, and <em>linear length sum</em>.   <strong>Note</strong>: You may use <strong>outcol</strong> to select a subset from this record.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>L</strong> or <strong>labels</strong> : – <em>labels&#61;true</em> <strong>|</strong> <em>labels&#61;&#40;wlabel,elabel,slabel,nlabel&#41;</em><br />  Specify labels for the 0, 90, 180, and 270 degree marks. For full-circle plot the default is   WEST,EAST,SOUTH,NORTH and for half-circle the default is <em>90W,90E,-,0</em>. A <code>-</code> in any entry disables that label.   Use <strong>labels&#61;true</strong> to disable all four labels. Note that the <code>GMT_LANGUAGE</code> setting will affect the words used.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>M</strong> or <strong>vector_params</strong> : – <em>vector_params&#61;parameters</em><br />  Used with <strong>vectors</strong> to modify vector parameters. For vector heads, append vector head <em>size</em>   &#91;Default is 0, i.e., a line&#93;. See VECTOR ATTRIBUTES for specifying additional attributes. If <strong>vectors</strong>   is not given and the current plot mode is to draw a windrose diagram then using this option will   add vector heads to all individual directions using the supplied attributes.</p>
 </li>
-<li><p><strong>N</strong> or <strong>vonmises</strong> : – <em>vonmises&#61;mode</em> <strong>|</strong> <em>vonmises&#61;&quot;mode&#43;ppen&quot;</em><br />  Draw the equivalent circular normal distribution, i.e., the <em>von Mises</em> distribution; append desired pen   &#91;Default is &quot;0.25p,black&quot;&#93;.  The <em>mode</em> selects which central location and scale to use:</p>
+</ul>
 <ul>
-<li><p>0 &#61; mean and standard deviation;</p>
-</li>
-<li><p>1 &#61; median and L1 scale &#40;1.4826 * median absolute deviation; MAD&#41;;</p>
-</li>
-<li><p>2 &#61; LMS &#40;least median of squares&#41; mode and scale.</p>
+<li><p><strong>N</strong> or <strong>vonmises</strong> : – <em>vonmises&#61;mode</em> <strong>|</strong> <em>vonmises&#61;&quot;mode&#43;ppen&quot;</em><br />  Draw the equivalent circular normal distribution, i.e., the <em>von Mises</em> distribution; append desired pen   &#91;Default is &quot;0.25p,black&quot;&#93;.  The <em>mode</em> selects which central location and scale to use:</p>
 </li>
 </ul>
-<p><strong>Note</strong>: At the present time, only <em>mode &#61; 0</em> is supported.</p>
-</li>
+<p>- 0 &#61; mean and standard deviation;
+- 1 &#61; median and L1 scale &#40;1.4826 * median absolute deviation; MAD&#41;;
+- 2 &#61; LMS &#40;least median of squares&#41; mode and scale.
+
+**Note**: At the present time, only *mode &#61; 0* is supported.</p>
+<ul>
 <li><p><strong>Q</strong> or <strong>alpha</strong> : – <em>alpha&#61;true</em> <strong>|</strong> <em>alpha&#61;alpha</em><br />  Sets the confidence level used to determine if the mean resultant is significant &#40;i.e., Lord Rayleigh   test for uniformity&#41; &#91;0.05&#93;.  <strong>Note</strong>: The critical values are approximated &#91;Berens, 2009&#93; and   requires at least 10 points; the critical resultants are accurate to at least 3 significant digits.    For smaller data sets you should consult exact statistical tables.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>R</strong> or <strong>region</strong> or <strong>limits</strong> : – <em>region&#61;&#40;r0,r1,az0,az1&#41;</em> <br />  Specifies the <code>region</code> of interest in &#40;<em>r, azimuth</em>&#41; space. Here, <em>r0</em> is 0, <em>r1</em>   is max length in units. For azimuth, specify either -90/90 or 0/180   for half circle plot or 0/360 for full circle.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>S</strong> or <strong>norm</strong> or <strong>normalize</strong> : – <em>norm&#61;true</em> <strong>|</strong> <em>norm&#61;&quot;&#43;a&quot;</em><br />  Normalize input radii &#40;or bin counts if |-A| is used&#41; by the largest   value so all radii &#40;or bin counts&#41; range from 0 to 1. Optionally,   further normalize rose plots for area &#40;i.e., take <code>sqrt&#40;r&#41;</code> before   plotting &#91;Default is no normalizations&#93;.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>T</strong> or <strong>orientation</strong> : – <em>orientation&#61;true</em><br />  Specifies that the input data are orientation data &#40;i.e., have a 180 degree ambiguity&#41; instead of true 0-360   degree directions &#91;Default&#93;. We compensate by counting each record twice: First as <em>azimuth</em> and second   as <em>azimuth &#43; 180</em>.  Ignored if range is given as -90/90 or 0/180.</p>
 </li>
 </ul>
@@ -356,6 +377,8 @@
 <ul>
 <li><p><strong>Z</strong> or <strong>scale</strong> : – <em>scale&#61;:u</em> <strong>|</strong> <em>scale&#61;scale</em><br />  Multiply the data radii by <em>scale</em>. E.g., use <strong>scale&#61;0.001</strong> to convert your data from m to km. To exclude   the radii from consideration, set them all to unity with <strong>scale&#61;:u</strong> &#91;Default is no scaling&#93;.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>yx</strong> : – <em>yx&#61;true</em><br />  Input file has &#40;<em>azimuth,radius</em>&#41; pairs rather than the expected &#40;<em>radius,azimuth</em>&#41;.</p>
 </li>
 </ul>
@@ -430,8 +453,8 @@
          fill&#61;:lightblue, region&#61;&#40;0,1,0,180&#41;, xaxis&#61;&#40;annot&#61;true, ticks&#61;true, label&#61;&quot;Fault length&quot;&#41;,
          yaxis&#61;&#40;grid&#61;30,&#41;, norm&#61;true, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_12662338116092347759">
- <img src="/GMTjl_doc/assets/documentation/modules/rose/code/output/example_12662338116092347759.png" alt=""> 
+<a id="example_4268994489315970182">
+ <img src="/GMTjl_doc/assets/documentation/modules/rose/code/output/example_4268994489315970182.png" alt=""> 
 </a>
 
 <p>To plot a full circle wind rose diagram of the data in the file <em>lines.r_az</em>, on a circle of diameter &#61; 10 cm, grid going out to radius &#61; 500 units in steps of 100 with a 45 degree sector interval, using a solid pen &#40;width &#61; 0.5 point, and shown in landscape &#91;Default&#93; orientation, use:</p>
@@ -448,7 +471,7 @@
 <a href="/GMTjl_doc/documentation/modules/histogram/index.html#histogram">histogram</a>
 <div class="page-foot">
   <div class="copyright">
-    &copy; GMT.jl. Last modified: March 28, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+    &copy; GMT.jl. Last modified: May 10, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
       <p>These docs were autogenerated using GMT: v0.44.8</p>
   </div>
 </div>

@@ -186,6 +186,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\contour">contour</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\contourf">contourf</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\cornerplot">cornerplot</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\earthregions">earthregions</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\ecdfplot">ecdfplot</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\feather">feather</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\fill_between">fill_between</a></div></li>
@@ -287,26 +288,29 @@
 <ul>
 <li><p><strong>A</strong> or <strong>resample</strong> : – <em>resample&#61;&quot;f|p|m|r|R&quot;</em> <strong>|</strong> <em>resample&#61;&quot;f|p|m|r|R&#91;&#43;d&#93;&#91;&#43;l&#93;&quot;</em><br />  For track resampling &#40;if <strong>inc</strong>...<em>unit</em> is set&#41; we can select how this is to be performed.   Use <strong>resample&#61;:f</strong> to keep original points, but add intermediate points if needed; note this   selection does not necessarily yield equidistant points &#91;Default&#93;. <strong>resample&#61;:m</strong> as <strong>f</strong>   but first follow meridian &#40;along y&#41; then parallel &#40;along x&#41;. <strong>p</strong> as <strong>f</strong> but first follow   parallel &#40;along y&#41; then meridian &#40;along x&#41;. <strong>r</strong> to resample at equidistant locations;   input points are not necessarily included in the output. <strong>R</strong> as <strong>r</strong> but adjust given   spacing to fit the track length exactly. Finally, append <strong>&#43;d</strong> to delete duplicate input records   &#40;identified by having no change in the time column, and <strong>&#43;l</strong> if distances should be measured   along rhumb lines &#40;loxodromes&#41;. <strong>Note</strong>: Calculation made for loxodromes is spherical,   hence <strong>spherical&#61;:ellipsoidal</strong> cannot be used in combination with <strong>&#43;l</strong>.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>E</strong> or <strong>keeptxt</strong> : – <em>keeptxt&#61;true</em><br />  If the input dataset contains records with trailing text then we will attempt to add these   to output records that exactly match the input times. Output records that have no matching   input record times will have no trailing text appended &#91;Default ignores trailing text&#93;.   Needs GMT6.4 or higher.</p>
 </li>
-<li><p><strong>F</strong> or <strong>interp</strong> : – <em>interp&#61;type</em> <strong>|</strong> <em>interp&#61;&#40;type, &#91;,par&#93;, &quot;derivative&quot;&#41;</em><br />  The default is <code>Akima</code>. You may change the default interpolant; see <code>GMT_INTERPOLANT</code> in your <code>gmt.conf</code> file.</p>
-<p>Choose type from &#40;the <em>interp_type&#61;type</em> form&#41;:</p>
+</ul>
 <ul>
-<li><p><strong>l</strong>inear</p>
-</li>
-<li><p><strong>a</strong>kima spline</p>
-</li>
-<li><p><strong>c</strong>ubic &#40;natural cubic spline&#41;</p>
-</li>
-<li><p><strong>n</strong>ointerp &#40;no interpolation: nearest point&#41;</p>
-</li>
-<li><p><strong>s</strong>moothing cubic spline; append fit parameter <em>p</em>. Note, in this case one must pass only the first char, the <strong>s</strong> and the fitting parameter. Example: <strong>interp&#61;&quot;s0.01&quot;</strong></p>
+<li><p><strong>F</strong> or <strong>interp</strong> : – <em>interp&#61;type</em> <strong>|</strong> <em>interp&#61;&#40;type, &#91;,par&#93;, &quot;derivative&quot;&#41;</em><br />  The default is <code>Akima</code>. You may change the default interpolant; see <code>GMT_INTERPOLANT</code> in your <code>gmt.conf</code> file.</p>
 </li>
 </ul>
-<p>You may optionally evaluate the first or second derivative of the spline by appending <strong>&#43;d1</strong> or <strong>&#43;d2</strong>,   respectively.</p>
-<p>When using the second form &#40;the <em>interp_type&#61;&#40;...&#41;</em>&#41;, the first member is the same as above, except the <code>smooth</code> and the derivatives. To select first or second derivative use the <code>:first</code> or <code>:second</code> keywords.   Examples of this syntax: <strong>interp&#61;&#40;:akima, :first&#41;</strong>, or <strong>interp&#61;&#40;:smoothing, 0.1&#41;</strong>,   or <strong>interp&#61;&#40;:smoothing, 0.1, :second&#41;</strong>.</p>
-</li>
-</ul>
+<p>Choose type from &#40;the *interp_type&#61;type* form&#41;:
+- **l**inear
+- **a**kima spline
+- **c**ubic &#40;natural cubic spline&#41;
+- **n**ointerp &#40;no interpolation: nearest point&#41;
+- **s**moothing cubic spline; append fit parameter *p*. Note, in this case one must pass only
+  the first char, the **s** and the fitting parameter. Example: **interp&#61;&quot;s0.01&quot;**
+
+You may optionally evaluate the first or second derivative of the spline by appending **&#43;d1** or **&#43;d2**,
+respectively.
+
+When using the second form &#40;the *interp_type&#61;&#40;...&#41;*&#41;, the first member is the same as above, except the <code>smooth</code> and the derivatives. To select first or second derivative use the <code>:first</code> or <code>:second</code> keywords.
+Examples of this syntax: **interp&#61;&#40;:akima, :first&#41;**, or **interp&#61;&#40;:smoothing, 0.1&#41;**,
+or **interp&#61;&#40;:smoothing, 0.1, :second&#41;**.</p>
 <pre><code class="language-julia">using GMT
 mat &#61; &#91;0 0; 1 1; 2 1.5; 3 1.25; 4 1.5; 4.5 3; 5 2; 6 2.5&#93;;
 gmtbegin&#40;&#41;
@@ -324,14 +328,16 @@ gmtbegin&#40;&#41;
     legend&#40;position&#61;&#40;inside&#61;:TL, width&#61;4.9, offset&#61;0.2&#41;, box&#61;&#40;pen&#61;1, fill&#61;:white, shaded&#61;true&#41;&#41;
 gmtend&#40;:show&#41;</code></pre></p>
 <p>
-<a id="example_8324852696282520006">
- <img src="/GMTjl_doc/assets/documentation/modules/sample1d/code/output/example_8324852696282520006.png" alt=""> 
+<a id="example_1834428742608438310">
+ <img src="/GMTjl_doc/assets/documentation/modules/sample1d/code/output/example_1834428742608438310.png" alt=""> 
 </a>
 
 <p>The <strong>interp</strong> option lets you choose among several interpolators, including    one that is approximate &#40;the smoothing spline&#41;. You can also specify    that you actually need a derivative of the solution instead of the value.</p>
 <ul>
 <li><p><strong>N</strong> or <strong>time_col</strong> or <strong>timecol</strong> : – <em>timecol&#61;t_col</em><br />  Sets the column number of the independent <em>time</em> variable &#91;Default is 0 &#40;first&#41;&#93;.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>T</strong> or <strong>range</strong> or <strong>inc</strong> : – <em>range&#61;&#40;min,max,inc&#91;,:number,:log2,:log10&#93;&#41;</em> <strong>|</strong> <em>range&#61;&#91;list&#93;</em> <strong>|</strong> <em>range&#61;file</em><br />  Make evenly spaced time-steps from <em>min</em> to <em>max</em> by <em>inc</em> &#91;Default uses input times&#93;.   The form <strong>range&#61;</strong><em>list</em> means a online list of <em>time</em> coordinates like for example: <code>range&#61;&#91;13,15,16,22.5&#93;</code>   whilst <code>range&#61;file</code> means: read the <em>time</em> coordinates from <em>file</em>, one coordinate per row in <em>file</em>.   <strong>Note</strong>: For resampling of spatial &#40;<em>x,y</em> or <em>lon,lat</em>&#41; series you must give an increment with   a valid distance unit; see <a href="/GMTjl_doc/documentation/common_features/units/index.html#units">Units</a> for map units or use <strong>c</strong> if plain Cartesian coordinates.   The first two columns must contain the spatial coordinates. From these we calculate distances in the   chosen units and interpolate using this parametric series.</p>
 </li>
 </ul>
@@ -386,17 +392,19 @@ gmtend&#40;:show&#41;</code></pre></p>
 
 <ul>
 <li><p><strong>j</strong> or <strong>spherical_dist</strong> or <strong>spherical</strong> : – <em>spherical&#61;greatcirc</em> or <em>spherical&#61;:flat</em> or <em>spherical&#61;:ellipsoidal</em><br />  Determine how spherical distances are calculated in modules that support this &#91;Default is <code>spherical&#61;:greatcirc</code>&#93;.   GMT has different ways to compute distances on planetary bodies:</p>
-<ul>
-<li><p>spherical&#61;:greatcirc to perform great circle distance calculations, with parameters such as distance  increments or radii compared against calculated great circle distances &#91;Default is <code>spherical&#61;:greatcirc</code>&#93;.</p>
-</li>
-<li><p>spherical&#61;:flat to select Flat Earth mode, which gives a more approximate but faster result.</p>
-</li>
-<li><p>spherical&#61;:ellipsoidal to select ellipsoidal &#40;or geodesic&#41; mode for the highest precision  and slowest calculation time.</p>
 </li>
 </ul>
-<p>Note: All spherical distance calculations depend on the current ellipsoid &#40;<code>PROJ_ELLIPSOID</code>&#41;,   the definition of the mean radius &#40;<code>PROJ_MEAN_RADIUS</code>&#41;, and the specification of latitude type   &#40;<code>PROJ_AUX_LATITUDE</code>&#41;. Geodesic distance calculations is also controlled by method &#40;<code>PROJ_GEODESIC</code>&#41;.</p>
-</li>
-</ul>
+<p>- spherical&#61;:greatcirc to perform great circle distance calculations, with parameters such as distance 
+  increments or radii compared against calculated great circle distances &#91;Default is <code>spherical&#61;:greatcirc</code>&#93;.
+
+- spherical&#61;:flat to select Flat Earth mode, which gives a more approximate but faster result.
+
+- spherical&#61;:ellipsoidal to select ellipsoidal &#40;or geodesic&#41; mode for the highest precision 
+  and slowest calculation time.
+
+Note: All spherical distance calculations depend on the current ellipsoid &#40;<code>PROJ_ELLIPSOID</code>&#41;,
+the definition of the mean radius &#40;<code>PROJ_MEAN_RADIUS</code>&#41;, and the specification of latitude type
+&#40;<code>PROJ_AUX_LATITUDE</code>&#41;. Geodesic distance calculations is also controlled by method &#40;<code>PROJ_GEODESIC</code>&#41;.</p>
 
 <ul>
 <li><p><strong>o</strong> or <strong>outcol</strong> : – <em>outcol&#61;??</em><br /> Select specific data columns for primary output, in arbitrary order.  <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#ocols-full">More at</a></p>
@@ -424,9 +432,9 @@ gmtend&#40;:show&#41;</code></pre></p>
 <p>The smoothing spline <em>s&#40;t&#41;</em> requires a fit parameter <em>p</em> that allows for the trade-off between an exact interpolation &#40;fitting the data exactly; large <em>p</em>&#41; to minimizing curvature &#40;<em>p</em> approaching 0&#41;. Specifically, we seek to minimize</p>
 \[ F_p (s)= K (s) + p E (s), \quad p > 0 \]
 <p>where the misfit is evaluated as</p>
-<p>&#36;&#36; E &#40;s&#41;&#61; \sum^n_&#123;i&#61;1&#125; \left &#91; \frac&#123;s&#40;t_i&#41; - y_i&#125;&#123;\sigma_i&#125; \right &#93;^2 &#36;&#36;</p>
+\[ E (s)= \sum^n_{i=1} \left [ \frac{s(t_i) - y_i}{\sigma_i} \right ]^2 \]
 <p>and the curvature is given by the integral over the domain of the second derivative of the spline</p>
-<p>&#36;&#36; K &#40;s&#41; &#61; \int ^b _a &#91;s&#39;&#39;&#40;t&#41; &#93;^2 dt. &#36;&#36;</p>
+\[ K (s) = \int ^b _a [s''(t) ]^2 dt. \]
 <p>Trial and error may be needed to select a suitable <em>p</em>.</p>
 <h2>Examples</h2>
 <p>To resample the file profiles.tdgmb, which contains &#40;time,distance,gravity,magnetics,bathymetry&#41; records, at 1 km equidistant intervals using Akima&#39;s spline, use:</p>
@@ -449,7 +457,7 @@ gmtend&#40;:show&#41;</code></pre></p>
 <p><code>gmt.conf</code>, <a href="#">greenspline</a>, <a href="/GMTjl_doc/documentation/modules/filter1d/index.html#filter1d">filter1d</a></p>
 <div class="page-foot">
   <div class="copyright">
-    &copy; GMT.jl. Last modified: March 28, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+    &copy; GMT.jl. Last modified: May 10, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
       <p>These docs were autogenerated using GMT: v0.44.8</p>
   </div>
 </div>

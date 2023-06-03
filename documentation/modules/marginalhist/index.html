@@ -185,6 +185,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\contour">contour</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\contourf">contourf</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\cornerplot">cornerplot</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\earthregions">earthregions</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\ecdfplot">ecdfplot</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\feather">feather</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\fill_between">fill_between</a></div></li>
@@ -276,16 +277,26 @@
 <pre><code class="language-julia">marginalhist&#40;data; kwargs...&#41;</code></pre>
 <p>Takes a Mx2 array, and make a scatter plot of first vs second column. The default is to do a scatter3 plot if number of points &lt;&#61; 200 and bihex plot otherwise, but this is configurable.  Input <code>data</code> can be a MxN matrix, a <code>GMTdataset</code> or a file name that upon reading with <code>gmtread</code> returns a <code>GMTdataset</code>.</p>
 <p>The plot consists of histograms of each column along the diagonal and scatter or hexagonal bining plots for the inter-variable relations, depending on if the the number of samples is &lt;&#61; 2000. But this can be changed with options in <code>kwargs</code>.</p>
-<p><hr /> <code>marginalhist&#40;data&#41;</code> Plots a <em>x,y</em> scatterplot with marginal histograms for <em>x</em> and <em>y</em>. </p>
-<p><hr /> <code>marginalhist&#40;..., frac|fraction&#61;xx&#41;</code> Set fractional size of the marginal plots with respect to the figure size. Default is 0.15 &#40;15&#37;&#41;.</p>
-<p><hr /> <code>marginalhist&#40;..., gap&#61;xx&#41;</code> Set the gap in centimeters between the fig and the marginal plots.</p>
-<p><hr /> <code>marginalhist&#40;..., hexbin&#61;true&#41;</code> Force hexbin plots even when number of points &lt;&#61; 2000. Default hexagon sizes are set via an heuristic rule but can be explicitly set via <a href="#">binstats</a> options, Namely <code>inc</code> or <code>nbins</code> options. WARNING, this option requires that the scatter figure has dmensions with an aspect ratio of 1, which is not the case with the default figure size. To set fig dimensions with aspectratio &#61; 1 use <code>figsize&#61;&quot;width/0&quot;</code> or set <code>aspect&#61;:equal</code>.</p>
-<p><hr /> <code>marginalhist&#40;..., nocbar&#61;true&#41;</code> By default a colorbar is plot when doing hexbins. Use this option to not plot it.</p>
-<p><hr /> <code>marginalhist&#40;..., scatter&#61;true&#41;</code> Force scatter plots even when number of points &gt; 2000. Symbol type &#40;black little circles by default&#41; parameters, fill color and size, are controllabe via normal <a href="/GMTjl_doc/documentation/modules/plot/index.html#plot">plot</a> options.</p>
-<p><hr /> <code>marginalhist&#40;..., density&#61;true&#41;</code> Side plots contain data kernel density instead of histograms. Fill color and outline are controlable via the <code>histkw</code> &#40;or <code>hist_kw</code> or <code>histkwargs</code> or <code>hist_kwargs</code>&#41; options.</p>
-<p><hr /> <code>marginalhist&#40;..., histcolor|histfill&#61;color&#41;</code> To paint the side histograms/density with a selected color &#40;use <code>histcolor&#61;:none</code> to no paint&#41;.</p>
-<p><hr /> <code>marginalhist&#40;...,xvar,yvar&#41;</code> plots the variables <code>xvar</code> and <code>yvar</code> from the table <code>D</code>. You can specify one or multiple variables for <code>yvar</code> and one only for <code>xvar</code>.</p>
-<p><hr /> <code>marginalhist&#40;..., histkw&#61;args&#41;</code>: Where <code>args</code> is a NamedTuple with parameters controlling the histogram plot &#40;same options as those that would be passed to the <code>histogram</code> module, except <code>region</code> and <code>figsize</code>&#41;.</p>
+<hr />
+<p><code>marginalhist&#40;data&#41;</code> Plots a <em>x,y</em> scatterplot with marginal histograms for <em>x</em> and <em>y</em>. </p>
+<hr />
+<p><code>marginalhist&#40;..., frac|fraction&#61;xx&#41;</code> Set fractional size of the marginal plots with respect to the figure size. Default is 0.15 &#40;15&#37;&#41;.</p>
+<hr />
+<p><code>marginalhist&#40;..., gap&#61;xx&#41;</code> Set the gap in centimeters between the fig and the marginal plots.</p>
+<hr />
+<p><code>marginalhist&#40;..., hexbin&#61;true&#41;</code> Force hexbin plots even when number of points &lt;&#61; 2000. Default hexagon sizes are set via an heuristic rule but can be explicitly set via <a href="#">binstats</a> options, Namely <code>inc</code> or <code>nbins</code> options. WARNING, this option requires that the scatter figure has dmensions with an aspect ratio of 1, which is not the case with the default figure size. To set fig dimensions with aspectratio &#61; 1 use <code>figsize&#61;&quot;width/0&quot;</code> or set <code>aspect&#61;:equal</code>.</p>
+<hr />
+<p><code>marginalhist&#40;..., nocbar&#61;true&#41;</code> By default a colorbar is plot when doing hexbins. Use this option to not plot it.</p>
+<hr />
+<p><code>marginalhist&#40;..., scatter&#61;true&#41;</code> Force scatter plots even when number of points &gt; 2000. Symbol type &#40;black little circles by default&#41; parameters, fill color and size, are controllabe via normal <a href="/GMTjl_doc/documentation/modules/plot/index.html#plot">plot</a> options.</p>
+<hr />
+<p><code>marginalhist&#40;..., density&#61;true&#41;</code> Side plots contain data kernel density instead of histograms. Fill color and outline are controlable via the <code>histkw</code> &#40;or <code>hist_kw</code> or <code>histkwargs</code> or <code>hist_kwargs</code>&#41; options.</p>
+<hr />
+<p><code>marginalhist&#40;..., histcolor|histfill&#61;color&#41;</code> To paint the side histograms/density with a selected color &#40;use <code>histcolor&#61;:none</code> to no paint&#41;.</p>
+<hr />
+<p><code>marginalhist&#40;...,xvar,yvar&#41;</code> plots the variables <code>xvar</code> and <code>yvar</code> from the table <code>D</code>. You can specify one or multiple variables for <code>yvar</code> and one only for <code>xvar</code>.</p>
+<hr />
+<p><code>marginalhist&#40;..., histkw&#61;args&#41;</code>: Where <code>args</code> is a NamedTuple with parameters controlling the histogram plot &#40;same options as those that would be passed to the <code>histogram</code> module, except <code>region</code> and <code>figsize</code>&#41;.</p>
 <p>Several other options can be used through <code>kwargs</code> to control plot details. Namelly options to fine control the marginal plot colors and that are passed to <a href="/GMTjl_doc/documentation/modules/subplot/index.html#subplot">subplot</a>. Options to control the number of bins, and thresholds on countings, passed to <a href="#">binstats</a>. Or options to change markers, marker size and or color, colormap, etc, passed to <a href="/GMTjl_doc/documentation/modules/plot/index.html#plot">plot</a>.</p>
 <h2>Common options</h2>
 <ul>
@@ -318,8 +329,8 @@
 <pre><code class="language-julia">using GMT
 marginalhist&#40;randn&#40;2500,2&#41;, scatter&#61;true, histkw&#61;&#40;annot&#61;true,&#41;, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_3680262157952014862">
- <img src="/GMTjl_doc/assets/documentation/modules/marginalhist/code/output/example_3680262157952014862.png" alt=""> 
+<a id="example_13103198541296017311">
+ <img src="/GMTjl_doc/assets/documentation/modules/marginalhist/code/output/example_13103198541296017311.png" alt=""> 
 </a>
 
 <p>Change mrker type and histogram&#39;s default color.</p>
@@ -327,8 +338,8 @@ marginalhist&#40;randn&#40;2500,2&#41;, scatter&#61;true, histkw&#61;&#40;annot&
 marginalhist&#40;randn&#40;2000,2&#41;, histkw&#61;&#40;frame&#61;&quot;none&quot;, fill&#61;:tomato, W&#61;&quot;0@100&quot;&#41;,
              marker&#61;:cross, ms&#61;&quot;4p&quot;, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_8902618029044016357">
- <img src="/GMTjl_doc/assets/documentation/modules/marginalhist/code/output/example_8902618029044016357.png" alt=""> 
+<a id="example_13152368855797663858">
+ <img src="/GMTjl_doc/assets/documentation/modules/marginalhist/code/output/example_13152368855797663858.png" alt=""> 
 </a>
 
 <p>An hexbin scater plot with marginal density plots. Note that we must set <code>aspect&#61;:equal</code> to have that hexbin plot.</p>
@@ -336,15 +347,15 @@ marginalhist&#40;randn&#40;2000,2&#41;, histkw&#61;&#40;frame&#61;&quot;none&quo
 marginalhist&#40;randn&#40;2500,2&#41;, cmap&#61;:lisbon, density&#61;true, histkw&#61;&#40;fill&#61;&quot;darkgreen@60&quot;,&#41;,
              aspect&#61;:equal, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_1292409211164016221">
- <img src="/GMTjl_doc/assets/documentation/modules/marginalhist/code/output/example_1292409211164016221.png" alt=""> 
+<a id="example_16302237616148334249">
+ <img src="/GMTjl_doc/assets/documentation/modules/marginalhist/code/output/example_16302237616148334249.png" alt=""> 
 </a>
 
 <h2>See Also</h2>
 <p><a href="/GMTjl_doc/documentation/modules/cornerplot/index.html#cornerplot">cornerplot</a>, <a href="/GMTjl_doc/documentation/modules/plot/index.html#plot">plot</a>, <a href="#">binstats</a>, <a href="/GMTjl_doc/documentation/modules/histogram/index.html#histogram">histogram</a></p>
 <div class="page-foot">
   <div class="copyright">
-    &copy; GMT.jl. Last modified: March 28, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+    &copy; GMT.jl. Last modified: May 10, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
       <p>These docs were autogenerated using GMT: v0.44.8</p>
   </div>
 </div>

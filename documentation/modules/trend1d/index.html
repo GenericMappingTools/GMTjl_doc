@@ -185,6 +185,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\contour">contour</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\contourf">contourf</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\cornerplot">cornerplot</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\earthregions">earthregions</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\ecdfplot">ecdfplot</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\feather">feather</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\fill_between">fill_between</a></div></li>
@@ -281,8 +282,12 @@
 <ul>
 <li><p><em>table</em><br />  Data table&#40;s&#41; containing x,y &#91;w&#93; values in the first 2 &#91;3&#93; columns.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>F</strong> or <strong>out</strong> or <strong>output</strong> : – <em>out&#61;:xymrw</em> <strong>|</strong> <em>out&#61;:p|:P|:c</em><br />  Specify up to six letters from the set &#123;<strong>x y m r w</strong>&#125; in any order to create columns of output.   <strong>x</strong> &#61; x, <strong>y</strong> &#61; y, <strong>m</strong> &#61; model f&#40;x&#41;, <strong>r</strong> &#61; residual y - <strong>m</strong>, <strong>w</strong> &#61; weight used in fitting.   Alternatively, choose just the single selection <strong>out&#61;:p</strong> to output a record with the polynomial   model coefficients, <strong>P</strong> for the normalized polynomial model coefficients, or <strong>c</strong> for the   normalized Chebyshev model coefficients.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>N</strong> or <strong>model</strong> : – <em>model&#61;n</em> <strong>|</strong> <em>model&#61;&quot;&#91;p|P|f|F|c|C|s|S|x&#93;n&#91;,...&#93;&#91;&#43;llength&#93;&#91;&#43;oorigin&#93;&#91;&#43;r&#93;&quot;</em><br />  Specify the components of the &#40;possibly mixed&#41; model. Add one or more comma-separated model   components. Each component is of the form <strong>Tn</strong>, where <strong>T</strong> indicates the basis function   and <em>n</em> indicates the polynomial degree or how many terms in the Fourier series we want to include.   Choose <strong>T</strong> from <strong>p</strong> &#40;polynomial with intercept and powers of x up to degree <em>n</em>&#41;, <strong>P</strong>   &#40;just the single term <em>x^n</em>&#41;, <strong>f</strong> &#40;Fourier series with <em>n</em> terms&#41;, <strong>c</strong> &#40;Cosine series with <em>n</em> terms&#41;,   <strong>s</strong> &#40;sine series with <em>n</em> terms&#41;, <strong>F</strong> &#40;single Fourier component of order <em>n</em>&#41;, <strong>C</strong> &#40;single   cosine component of order <em>n</em>&#41;, and <strong>S</strong> &#40;single sine component of order <em>n</em>&#41;. By default the   <em>x</em>-origin and fundamental period is set to the mid-point and data range, respectively. Change   this using the <strong>&#43;o</strong>origin and <strong>&#43;l</strong>length modifiers. We normalize <em>x</em> before evaluating the   basis functions. Basically, the trigonometric bases all use the normalized x&#39; &#61; &#40;2<em>pi</em>&#40;<em>x-origin</em>&#41;/<em>length</em>&#41;   while the polynomials use x&#39; &#61; 2*&#40;x-x_mid&#41;/&#40;xmax - xmin&#41; for stability. Finally, add <strong>&#43;r</strong> for a   robust solution &#91;Default gives a least squares fit&#93;. Use <strong>verbose</strong> to see a plain-text   representation of the y&#40;x&#41; model specified in <strong>model</strong>.</p>
 </li>
 </ul>
@@ -290,6 +295,8 @@
 <ul>
 <li><p><strong>C</strong> or <strong>condition_number</strong> : – <em>condition&#95;number&#61;number</em><br />  Set the maximum allowed condition number for the matrix solution. <strong>trend2d</strong> fits a   damped least squares model, retaining only that part of the eigenvalue spectrum such   that the ratio of the largest eigenvalue to the smallest eigenvalue is <em>condition&#95;#</em>.   &#91;Default: <em>condition&#95;#</em> &#61; 1.0e06&#93;.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>I</strong> or <strong>conf_level</strong> : – <em>conf&#95;level&#61;true</em> <strong>|</strong> <em>conf&#95;level&#61;level</em><br />  Iteratively increase the number of model parameters, starting at one, until <em>n&#95;model</em> is   reached or the reduction in variance of the model is not significant at the <em>confidence&#95;level</em>   level. You may set <strong>conf_level&#61;true</strong> only, without an attached number; in this case the   fit will be iterative with a default confidence level of 0.51. Or choose your own level   between 0 and 1. See remarks section. Note that the model terms are added in the order they   were given in <strong>model</strong> so you should place the most important terms first.</p>
 </li>
 </ul>
@@ -382,7 +389,7 @@
 <p>Menke, W., 1989, Geophysical Data Analysis: Discrete Inverse Theory, Revised Edition, Academic Press, San Diego.</p>
 <div class="page-foot">
   <div class="copyright">
-    &copy; GMT.jl. Last modified: March 28, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+    &copy; GMT.jl. Last modified: May 10, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
       <p>These docs were autogenerated using GMT: v0.44.8</p>
   </div>
 </div>

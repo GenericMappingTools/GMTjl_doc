@@ -11,7 +11,7 @@ solar!(terminators=(term=:c, date="2016-02-09T16:00:00"), fill="navy@85")
 solar!(terminators=(term=:n, date="2016-02-09T16:00:00"), fill="navy@80")
 solar!(terminators=(term=:a, date="2016-02-09T16:00:00"), fill="navy@80", show=true)
 end # hide
-mv(joinpath(tempdir(), "GMTjl_" * GMT.tmpdir_usr[2] * ".png"), joinpath(@OUTPUT, "example_14084592095356389010.png"), force=true);    # hide
+mv(joinpath(tempdir(), "GMTjl_" * GMT.tmpdir_usr[2] * ".png"), joinpath(@OUTPUT, "example_9200692272292117851.png"), force=true);    # hide
 GMT.isFranklin[1] = false    # hide
 GMT.IamModern[1]  = false    # hide
  

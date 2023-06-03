@@ -184,6 +184,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\contour">contour</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\contourf">contourf</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\cornerplot">cornerplot</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\earthregions">earthregions</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\ecdfplot">ecdfplot</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\feather">feather</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\fill_between">fill_between</a></div></li>
@@ -476,6 +477,45 @@ crop&#40;G, region&#61;&#40;-2,2,-2,2&#41;&#41;</code></pre>
 </div>
 </div>
 <div class="docstring">
+<div class="doc-header" id="earthregions">
+<a href="#earthregions">earthregions</a>
+</div>
+<div class="doc-content"><pre><code>&#91;GI &#61; &#93; earthregions&#40;name&#61;&quot;&quot;; proj&#61;&quot;guess&quot;, country&#61;false, dataset&#61;&quot;&quot;, grid&#61;false,
+                     res, registration&#61;&quot;&quot;, exact&#61;false&#41;</code></pre>
+<p><code>earthregions</code> plots or automatically extracts grid/image over a named geographic region. A large number of predefined regions is provided via <em>collections</em>, which are lists of names, their rectangular geographic boundaries and a code to access them. Users pick a region by its code&#40;s&#41; and choose between making a map of that region or download topo/bathymetric data &#40;a grid or image&#41; of that area.</p>
+<h3>Parameters</h3>
+<ul>
+<li><p><code>name</code>: It can be either the name of one collection or the code of one geographic region. If it is the   a collection name &#40;one of: &#36;&quot;DCW&quot;, &quot;NatEarth&quot;, &quot;UN&quot;, &quot;Mainlands&quot;, &quot;IHO&quot;, &quot;Wiki&quot;, &quot;Lakes&quot;&#36;&#41; the regions   of that collection are printed displaying the region&#39;s boundaries, code and name. If, instead, a code   is passed &#40;codes are unique&#41; then depending on the values of <code>grid</code> or <code>dataset</code> we either produce a   map of that region &#40;the default&#41; or extract grid/image over it.</p>
+</li>
+<li><p><code>proj</code>: In case a map is requested, pass the desired projection in form of a proj4 string or use the GMT   projection syntax for that map. By default, we guess a good projection based on the map limits.</p>
+</li>
+<li><p><code>country</code>: The particular case of the &#36;DCW&#36; collection let us also plot the country&#40;ies&#41; border lines.   Set <code>country&#61;true</code> to do that. Note that the &#36;DCW&#36; regions can be specified by a comma separated list   of country codes, <em>e.g.</em> <code>earthregions&#40;&quot;PT,ES&quot;, country&#61;true&#41;</code>.</p>
+</li>
+<li><p><code>dataset</code>: This option is used to select data download instead of map plotting. The available datasets are   those explained in https://www.generic-mapping-tools.org/remote-datasets/, which shortly are: &#36;&quot;earth_relief&quot;,   &quot;earth_synbath&quot;, &quot;earth_gebco&quot;, &quot;earth_mask&quot;, &quot;earth_day&quot;, &quot;earth_night&quot;, &quot;earth_geoid&quot;, &quot;earth_faa&quot;,   &quot;earth_vgg&quot;, &quot;earth_wdmam&quot;, &quot;earth_age&quot;&#36;.</p>
+<p>Note that &#36;&quot;earth_day&quot;, &quot;earth_night&quot;&#36; are images that are not stored as tilles in the server, so the   entire file is downloaded &#40;only once and stored in your local ~.gmt/server directory&#41;. So, this may take   a while for the first-time usage.</p>
+</li>
+<li><p><code>grid</code>: A shorthand boolean option equivalent to <code>dataset&#61;&quot;earth_relief&quot;</code> </p>
+</li>
+<li><p><code>res</code>: The dataset resolution. Possible resolutions are: &#36;&quot;01d&quot;, &quot;30m&quot;, &quot;20m&quot;, &quot;15m&quot;, &quot;10m&quot;, &quot;06m&quot;, &quot;05m&quot;,   &quot;04m&quot;, &quot;03m&quot;, &quot;02m&quot;, &quot;01m&quot;, &quot;30s&quot;, &quot;15s&quot;, &quot;03s&quot;, &quot;01s&quot;&#36;. However, they are not all available to all   datasets. For example, only &#36;&quot;earth_relief&quot;, &quot;earth_synbath&quot;, &quot;earth_gebco&quot;&#36; exist for all those   resolutions. In case a <code>dataset</code> is specified but no resolution, we make estimate of that resolution   based on map extents and what would be good to create a map with 15 cm width.</p>
+</li>
+<li><p><code>registration</code>: The dataset registration. Either <code>grid</code> or <code>pixel</code>. If not provided we choose one.</p>
+</li>
+<li><p><code>exact</code>: The region boundaries in the collections were rounded to more friendly numbers &#40;few decimals&#41;.   This means that they differ slightly from the pure &#36;GMT&#36; &#40;<code>coast</code>&#41; numbers. Setting <code>exact&#61;true</code> will   force using the strict &#36;GMT&#36; limits.</p>
+</li>
+</ul>
+<p>See also: <code>coast</code></p>
+<h3>Returns</h3>
+<p>A &#36;GMTgrid&#36; or a &#36;GMTimage&#36; if <code>dataset</code> is used or &#36;nothing&#36; otherwise.</p>
+<h2>Examples</h2>
+<p>earthregions&#40;&quot;IHO&quot;&#41;		# List the ocean regions as named by the IHO</p>
+<p>earthregions&#40;&quot;PT,ES,FR&quot;, country&#61;true&#41;	# Make a map of Portugal, Spain and France regions.</p>
+<p>G &#61; earthregions&#40;&quot;IHO31&quot;, grid&#61;true&#41;;	# Get a grid of the &quot;Sea of Azov&quot;</p>
+<p>viz&#40;G, shade&#61;true, coast&#61;true&#41;			# and make a nice map.</p>
+
+
+</div>
+</div>
+<div class="docstring">
 <div class="doc-header" id="gadm">
 <a href="#gadm">gadm</a>
 </div>
@@ -649,6 +689,54 @@ gadm&#40;&quot;IND&quot;, names&#61;true&#41;</code></pre>
 </div>
 </div>
 <div class="docstring">
+<div class="doc-header" id="gridit">
+<a href="#gridit">gridit</a>
+</div>
+<div class="doc-content"><pre><code>G &#61; gridit&#40;fname&#61;&quot;&quot;, indata&#61;nothing; method&#61;&quot;surface&quot;, gdopts&#61;&quot;&quot;, proj&#61;&quot;&quot;, epsg&#61;0, kw...&#41;</code></pre>
+<p>Wrapper function to interpolate scattered data into a grid. Interpolation methods may be those of GMT and GDAL &#40;gdal_grid&#41;.</p>
+<h3>Parameters</h3>
+<ul>
+<li><p><code>fname</code>: A file name containing the source dataset to be interpolated. It must contain at least 3 columns &#40;x y z&#41;.</p>
+</li>
+<li><p><code>indata</code>: Alternative source dataset in the form of a GMTdataset, a Mx3 matrix or a GDAL dataset.</p>
+</li>
+<li><p><code>method</code>: The interpolation method name. One of &#40;GMT&#41;: &quot;surface&quot; or &quot;minimum curvature&quot;, &quot;triangulate&quot;,    &quot;nearneighbor&quot;, &quot;sphtriangulate&quot;, &quot;greenspline&quot;. The arguments: &quot;mean&quot;, &quot;median&quot;, &quot;mode&quot;, &quot;std&quot;, &quot;highest&quot;,    &quot;lowest&quot; will compute those amounts inside each <em>rectangular</em> cell.</p>
+<ul>
+<li><p>Or &#40;GDAL&#41;: &quot;invdist&quot;, &quot;invdistnn&quot;, &quot;average&quot;, &quot;nearest&quot;, &quot;linear&quot;, &quot;minimum&quot;, &quot;maximum&quot;, &quot;range&quot;,</p>
+</li>
+</ul>
+<p>&quot;count&quot;, &quot;average<em>distance&quot;, &quot;average</em>distance<em>pts&quot;. See https://gdal.org/programs/gdal</em>grid.html#gdal-grid</p>
+<ul>
+<li><p>Note that there is some overlap between the diverse methods. For example, the GMT&#39;s &#36;nearneighbor&#36;</p>
+</li>
+</ul>
+<p>and GDAL&#39;s &#36;invdist&#36; apply the same algorithm &#40;the Inverse Distance Weight&#41; but they difer on how    to select the points to do the weighted average.</p>
+</li>
+<li><p><code>gdopts</code>: List of options, in the form of a single string, accepted by the gdal_grid utility. This option    only applies to the GDAL methods.</p>
+</li>
+<li><p><code>proj</code>: An optional proj4 string describing the data&#39;s coordinate system. Note that this not imply any    data projection. The input data may itself already carry this information, case in which this option    is not necessary.</p>
+</li>
+<li><p><code>wkt</code>: An optional wkt string describing the data&#39;s coordinate system. Same comments as <code>proj</code></p>
+</li>
+<li><p><code>epsg</code>: An optional epsg code describing the data&#39;s coordinate system. Same comments as <code>proj</code></p>
+</li>
+</ul>
+<h1>Kwargs</h1>
+<ul>
+<li><p><code>kw...</code> keyword&#61;value arguments. These are used to pass options that are specific to a particular GMT    interpolation methods. The user must consult individual manual pages to learn about the available    possibilities. Two very important &#40;actually, mandatory&#41; <em>options</em> are the <code>region&#61;...</code> and the    <code>inc&#61;...</code> that select the grid limits and the grid resolution. However, if they are not provided    &#40;or only one of them is&#41; we make a very crude estimate based on data limits and point density.    But this should only be used for a very exploratory calculation.</p>
+</li>
+<li><p><code>preproc</code>: This option only applies to the <code>method&#61;:surface</code> and means that the data is previously passed    through one of &#36;block*&#36; modules to decimate the data in each cell as strongly advised by the &#36;surface&#36;    program. <code>preproc&#61;true</code> will use &#36;blockmean&#36;. To use any of the other two, pass its name as value.    <em>e.g.</em> <code>preproc&#61;&quot;blockmedian&quot;</code>.</p>
+</li>
+</ul>
+<h3>Returns</h3>
+<p>A GMTgrid or nothing if file was writen on disk.</p>
+<h3>Example</h3>
+<pre><code>G &#61; gridit&#40;&quot;@ship_15.txt&quot;, method&#61;:surface, mask&#61;0.3, preproc&#61;true&#41;;</code></pre>
+
+
+</div>
+</div>
+<div class="docstring">
 <div class="doc-header" id="gunique">
 <a href="#gunique">gunique</a>
 </div>
@@ -806,9 +894,9 @@ plot&#33;&#40;points, marker&#61;:star, ms&#61;&quot;12p&quot;, fill&#61;:blue, 
 <div class="doc-content"><p>No documentation found.</p>
 <p><code>GMT.isnodata</code> is a <code>Function</code>.</p>
 <pre><code># 2 methods for generic function &quot;isnodata&quot; from GMT:
- &#91;1&#93; isnodata&#40;array::AbstractArray&#41;
+ &#91;1&#93; isnodata&#40;array::AbstractArray, val&#41;
      @ C:\Users\j\.julia\dev\GMT\src\utils.jl:328
- &#91;2&#93; isnodata&#40;array::AbstractArray, val&#41;
+ &#91;2&#93; isnodata&#40;array::AbstractArray&#41;
      @ C:\Users\j\.julia\dev\GMT\src\utils.jl:328</code></pre>
 </div>
 </div>
@@ -978,21 +1066,14 @@ D &#61; linearfitxy&#40;&#91;0.037 0.0080; 0.035 0.0084; 0.032 0.0100; 0.040 0.0
 </li>
 <li><p><code>hdr</code>: optional String vector with either one or n_rows multisegment headers.</p>
 </li>
-<li><p><code>lc</code> or <code>linecolor</code> or <code>color</code>: optional array of strings/symbols with color names/values. Its length can be  smaller than n_cols, case in which colors will be cycled. If <code>color</code> is not an array of strings, e.g.</p>
+<li><p><code>lc</code> or <code>linecolor</code> or <code>color</code>: optional array of strings/symbols with color names/values. Its length can be  smaller than n_cols, case in which colors will be cycled. If <code>color</code> is not an array of strings, e.g.  <code>color&#61;&quot;yes&quot;</code>, the colors cycle trough a pre-defined set of colors &#40;same colors as in Matlab&#41;. If you  want the same color repeated for many lines pass color as a vector. <em>e.g,</em> <code>color&#61;&#91;color&#93;</code></p>
 </li>
-</ul>
-<pre><code> &#96;color&#61;&quot;yes&quot;&#96;, the colors cycle trough a pre-defined set of colors &#40;same colors as in Matlab&#41;. If you
- want the same color repeated for many lines pass color as a vector. *e.g,* &#96;color&#61;&#91;color&#93;&#96;</code></pre>
-<ul>
 <li><p><code>linethick</code> or <code>lt</code>: for selecting different line thicknesses. Works like <code>color</code>, but should be   a vector of numbers, or just a single number that is then applied to all lines.</p>
 </li>
 <li><p><code>fill</code>:  Optional string array &#40;or a String of comma separated color names, or a Tuple of color names&#41;          with color names or array of &quot;patterns&quot;.</p>
 </li>
-<li><p><code>fillalpha</code> : When <code>fill</code> option is used, we can set the transparency of filled polygons with this  option that takes in an array &#40;vec or 1-row matrix&#41; with numeric values between &#91;0-1&#93; or &#93;1-100&#93;,</p>
+<li><p><code>fillalpha</code> : When <code>fill</code> option is used, we can set the transparency of filled polygons with this  option that takes in an array &#40;vec or 1-row matrix&#41; with numeric values between &#91;0-1&#93; or &#93;1-100&#93;,  where 100 &#40;or 1&#41; means full transparency.</p>
 </li>
-</ul>
-<pre><code> where 100 &#40;or 1&#41; means full transparency.</code></pre>
-<ul>
 <li><p><code>is3D</code>:  If input &#39;mat&#39; contains at least x,y,z &#40;?&#41;.</p>
 </li>
 <li><p><code>ls</code> or <code>linestyle</code>:  Line style. A string or an array of strings with <code>length &#61; size&#40;mat,2&#41;</code> with line styles.</p>
@@ -1017,11 +1098,33 @@ D &#61; linearfitxy&#40;&#91;0.037 0.0080; 0.035 0.0084; 0.032 0.0100; 0.040 0.0
 </li>
 <li><p><code>attrib</code>: Optional dictionary&#123;String, String&#125; with attributes of this dataset.</p>
 </li>
-<li><p><code>ref:</code> Pass in a reference GMTdataset from which we&#39;&#39; take the georeference info as well as <code>attrib</code> and <code>colnames</code></p>
+<li><p><code>ref:</code> Pass in a reference GMTdataset from which we&#39;ll take the georeference info as well as <code>attrib</code> and <code>colnames</code></p>
 </li>
 <li><p><code>txtcol</code> or <code>textcol</code>: Vector&#123;String&#125; with text to add into the .text field. Warning: no testing is done  to check if &#36;length&#40;txtcol&#41; &#61;&#61; size&#40;mat,1&#41;&#36; as it must.</p>
 </li>
 </ul>
+<h3>D &#61; mat2ds&#40;mat::Vector&#123;&lt;:AbstractMatrix&#125;; hdr&#61;String&#91;&#93;, kwargs...&#41;::Vector&#123;GMTdataset&#125;</h3>
+<p>Create a multi-segment GMTdataset &#40;a vector of GMTdataset&#41; from matrices passed in a vector-of-matrices <code>mat</code>. The matrices elements of <code>mat</code> do not need to have the same number of rows. Think on this as specifying groups of lines/points each sharing the same settings. KWarg options of this form are more limitted in number than in the general case, but can take the form of a Vector&#123;Vector&#125;, Vector or scalars. In the former case &#40;Vector&#123;Vector&#125;&#41; the length of each Vector&#91;i&#93; must equal to the number of rows of each mat&#91;i&#93;.</p>
+<ul>
+<li><p><code>hdr</code>: optional String vector with either one or <code>length&#40;mat&#41;</code> multisegment headers.</p>
+</li>
+<li><p><code>pen</code>:  A full pen setting. A string or an array of strings with <code>length &#61; length&#40;mat&#41;</code> with pen settings.</p>
+</li>
+<li><p><code>lc</code> or <code>linecolor</code> or <code>color</code>: optional color or array of strings/symbols with color names/values.</p>
+</li>
+<li><p><code>linethick</code> or <code>lt</code>: for selecting different line thicknesses. Works like <code>color</code>, but should be   a vector of numbers, or just a single number that is then applied to all lines.</p>
+</li>
+<li><p><code>ls</code> or <code>linestyle</code>:  Line style. A string or an array of strings with <code>length &#61; length&#40;mat&#41;</code> with line styles.</p>
+</li>
+<li><p><code>front</code>:  Front Line style. A string or an array of strings with <code>length &#61; length&#40;mat&#41;</code> with front line styles.</p>
+</li>
+<li><p><code>fill</code>:  Optional string array &#40;or a String of comma separated color names, or a Tuple of color names&#41;          with color names or array of &quot;patterns&quot;.</p>
+</li>
+<li><p><code>fillalpha</code>: When <code>fill</code> option is used, we can set the transparency of filled polygons or symbols with this  option that takes in an array &#40;vec or 1-row matrix&#41; with numeric values between &#91;0-1&#93; or &#93;1-100&#93;,  where 100 &#40;or 1&#41; means full transparency.</p>
+</li>
+</ul>
+<h3>Example:</h3>
+<p>D &#61; mat2ds&#40;&#91;rand&#40;6,3&#41;, rand&#40;4,3&#41;, rand&#40;3,3&#41;&#93;, fill&#61;&#91;&#91;:red&#93;, &#91;:green&#93;, &#91;:blue&#93;&#93;, fillalpha&#61;&#91;0.5,0.7,0.8&#93;&#41;</p>
 
 
 </div>
@@ -1641,13 +1744,26 @@ imshow&#40;img, proj&#61;:guess&#41;</code></pre>
 <div class="doc-header" id="worldrectangular">
 <a href="#worldrectangular">worldrectangular</a>
 </div>
-<div class="doc-content"><p>No documentation found.</p>
-<p><code>GMT.worldrectangular</code> is a <code>Function</code>.</p>
-<pre><code># 2 methods for generic function &quot;worldrectangular&quot; from GMT:
- &#91;1&#93; worldrectangular&#40;GI::Union&#123;GMTgrid, GMTimage&#125;; proj, pm, latlim, latlims, pad, coast&#41;
-     @ C:\Users\j\.julia\dev\GMT\src\utils_project.jl:51
- &#91;2&#93; worldrectangular&#40;fname::String; proj, pm, latlim, latlims, pad, coast&#41;
-     @ C:\Users\j\.julia\dev\GMT\src\utils_project.jl:49</code></pre>
+<div class="doc-content"><pre><code>GI&#91;,coast&#93; &#61; worldrectangular&#40;GI; proj::String&#61;&quot;&#43;proj&#61;vandg&quot;, pm&#61;0, latlim&#61;:auto, coast&#61;false&#41;</code></pre>
+<p>Try to createa rectangular map out miscellaneous and not cylindrical projections.</p>
+<ul>
+<li><p><code>GI</code>: A GMTgrid or GMTimage data type. <code>GI</code> can also be a string with a file name of a grid or image.</p>
+</li>
+<li><p><code>proj</code>: A PROJ4 string describing the projection.</p>
+</li>
+<li><p><code>pm</code>: The projection prime meridian &#40;Default is 0&#41;.</p>
+</li>
+<li><p><code>latlim or latlims</code>: Latitude&#40;s&#41; at which the rectangular map is trimmed. The default &#40;:auto&#41; means  that we will try to trim such that we get a fully filled grid/image. Use <code>latlim&#61;&#40;lat_s,lat_n&#41;</code> or  <code>latlim&#61;lat</code> to make it equivalent to <code>latlim&#61;&#40;-lat,lat&#41;</code>.</p>
+</li>
+<li><p><code>coast</code>: Return also the coastlines projected with <code>proj</code>. Pass <code>coast&#61;res</code>, where <code>res</code> is one of  GMT coastline resolutions &#40;<em>e.g.</em> :crude, :low, :intermediate&#41;. <code>coast&#61;true</code> is &lt;&#61;&#61;&gt; <code>coast&#61;:crude</code>  Pass <code>coast&#61;D</code>, where <code>D</code> is vector of GMTdataset containing coastline polygons with a provenience  other than the GSHHG GMT database.</p>
+</li>
+</ul>
+<h3>Returns</h3>
+<p>A grid or an image and optionally the coastlines ... or errors. Not many projections support the procedure implemented in this function. The working or not is controlled by PROJ&#39;s <code>&#43;over</code> option https://proj.org/usage/projections.html#longitude-wrapping</p>
+<h3>Example:</h3>
+<p>G &#61; worldrectangular&#40;&quot;@earth<em>relief</em>10m_g&quot;&#41;    imshow&#40;G&#41;</p>
+
+
 </div>
 </div>
 <div class="docstring">
@@ -1721,7 +1837,7 @@ imshow&#40;img, proj&#61;:guess&#41;</code></pre>
 
 <div class="page-foot">
   <div class="copyright">
-    &copy; GMT.jl. Last modified: March 28, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+    &copy; GMT.jl. Last modified: May 10, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
       <p>These docs were autogenerated using GMT: v0.44.8</p>
   </div>
 </div>

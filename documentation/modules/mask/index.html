@@ -185,6 +185,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\contour">contour</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\contourf">contourf</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\cornerplot">cornerplot</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\earthregions">earthregions</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\ecdfplot">ecdfplot</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\feather">feather</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\fill_between">fill_between</a></div></li>
@@ -311,22 +312,40 @@
 <ul>
 <li><p><strong>C</strong> or <strong>endclip</strong> or <strong>end<em>clip</em>path</strong> : – <em>endclip&#61;true</em><br />  Mark end of existing clip path. No input file is needed. Also supply <strong>xshift</strong> and <strong>yshift</strong>   settings if you have moved since the clip started.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>D</strong> or <strong>dump</strong> : – <em>dump&#61;fname</em><br />  Dump the &#40;x,y&#41; coordinates of each clipping polygon to one or more output files &#40;or in-memory array&#41;.   No plotting will take place. If <em>template</em> contains the C-format specifier &#37;d &#40;including modifications   like &#37;05d&#41; then polygons will be written to different files; otherwise all polygons are written to the   specified file &#40;<em>template</em>&#41;. The files are ASCII unless <strong>binary_out</strong> is used. See <strong>cut_number</strong>   to exclude small polygons from consideration.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>F</strong> or <strong>oriented</strong> : – <em>oriented&#61;:left</em> <strong>|</strong> <em>oriented&#61;true</em> <strong>|</strong> <em>oriented&#61;:right</em><br />  Force clip contours &#40;polygons&#41; to be oriented so that data points are to the   left &#40;&#91;Default&#93;&#41; or right &#40;<strong>oriented&#61;:right</strong>&#41; as we move along the perimeter   &#91;Default is arbitrary orientation&#93;. Requires <strong>dump</strong>.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>G</strong> or <strong>fill</strong> : – <em>fill&#61;color</em><br />  Paint the clip polygons &#40;or tiles&#41; with a selected fill &#91;Default is no fill&#93;.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>Jz</strong> or <strong>JZ</strong> or <em>zscale</em> or <em>zsize</em> : <em>zscale&#61;scale</em> <strong>|</strong> <em>zsize&#61;size</em><br /> Set z-axis scaling or or z-axis size. <code>zsize&#61;size</code> sets the size to the fixed value <em>size</em>  &#40;for example <em>zsize&#61;10</em> or <em>zsize&#61;4i</em>&#41;. <code>zscale&#61;scale</code> sets the vertical scale to UNIT/z-unit.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>L</strong> or <strong>nodegrid</strong> : – <em>nodegrid&#61;&quot;gridname&quot;</em> <strong>|</strong> <em>nodegrid&#61;&quot;gridname&#43;i&quot;</em> <strong>|</strong> <em>nodegrid&#61;&quot;gridname&#43;o&quot;<br />  Save the internal grid with ones &#40;data constraint&#41; and zeros &#40;no data&#41; to the named *gridname</em>. Append <strong>&#43;o</strong>   to convert the outside &#40;no data&#41; nodes to NaNs before writing the grid, while appending <strong>&#43;i</strong> will instead   convert the inside &#40;data&#41; flags to NaNs. Omitting the <em>gridname</em>, as in <strong>nodegrid&#61;true</strong> or <strong>nodegrid&#61;&quot;&#43;i&quot;</strong>   returns a grid as a GMTgrid object.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>N</strong> or <strong>invert</strong> : – <em>invert&#61;true</em><br />  Invert the sense of the test, i.e., clip regions where there is data coverage.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>Q</strong> or <strong>cut</strong> or <strong>cut_number</strong> : – <em>cut&#61;n</em>   Do not dump polygons with less than <em>cut</em> number of points &#91;Dumps all polygons&#93;. Only applicable if   <strong>dump</strong> has been specified.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>S</strong> or <strong>search_radius</strong> : – <em>search_radius&#61;rad</em><br />  Sets radius of influence. Grid nodes within <em>radius</em> of a data point are considered reliable. &#91;Default is 0,   which means that only grid cells with data in them are reliable&#93;. Append the distance unit &#40;see <a href="/GMTjl_doc/documentation/common_features/units/index.html#units">Units</a>&#41;.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>T</strong> or <strong>tiles</strong> : – <em>tiles&#61;true</em><br />  Plot tiles instead of clip polygons. Use <strong>fill</strong> to set tile color or pattern. Cannot be used with <strong>dump</strong>.</p>
 </li>
 </ul>
@@ -429,8 +448,8 @@ mask&#40;t, fill&#61;:yellow, inc&#61;&quot;30m&quot;, region&#61;&#40;-75,75,-9
      title&#61;&quot;Mask for points with r &#61; 5 degrees&quot;, xaxis&#61;&#40;annot&#61;:auto, ticks&#61;:auto, grid&#61;180&#41;,
      yaxis&#61;&#40;annot&#61;:auto, ticks&#61;:auto, grid&#61;10&#41;, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_5780328525763588960">
- <img src="/GMTjl_doc/assets/documentation/modules/mask/code/output/example_5780328525763588960.png" alt=""> 
+<a id="example_704349406023539834">
+ <img src="/GMTjl_doc/assets/documentation/modules/mask/code/output/example_704349406023539834.png" alt=""> 
 </a>
 
 <p>To make an overlay that will mask out the regions of a contour map where there is no control data using clip polygons, use:</p>
@@ -443,7 +462,7 @@ mask&#40;t, fill&#61;:yellow, inc&#61;&quot;30m&quot;, region&#61;&#40;-75,75,-9
 <p><a href="/GMTjl_doc/documentation/modules/grdmask/index.html#grdmask">grdmask</a>, <a href="/GMTjl_doc/documentation/modules/surface/index.html#surface">surface</a>, <a href="/GMTjl_doc/documentation/modules/basemap/index.html#basemap">basemap</a>, <a href="/GMTjl_doc/documentation/modules/clip/index.html#clip">clip</a></p>
 <div class="page-foot">
   <div class="copyright">
-    &copy; GMT.jl. Last modified: March 28, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+    &copy; GMT.jl. Last modified: May 10, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
       <p>These docs were autogenerated using GMT: v0.44.8</p>
   </div>
 </div>

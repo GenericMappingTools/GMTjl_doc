@@ -8,7 +8,7 @@ D = filter1d("@MaunaLoa_CO2.txt", filter=(type=:gauss, width=5));
 plot("@MaunaLoa_CO2.txt", legend="Raw data")
 plot!(D, lc=:blue, legend="Filtered", show=1)
 end # hide
-mv(joinpath(tempdir(), "GMTjl_" * GMT.tmpdir_usr[2] * ".png"), joinpath(@OUTPUT, "example_12045775356594072726.png"), force=true);    # hide
+mv(joinpath(tempdir(), "GMTjl_" * GMT.tmpdir_usr[2] * ".png"), joinpath(@OUTPUT, "example_2020691343859715339.png"), force=true);    # hide
 GMT.isFranklin[1] = false    # hide
 GMT.IamModern[1]  = false    # hide
  

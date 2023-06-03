@@ -185,6 +185,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\contour">contour</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\contourf">contourf</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\cornerplot">cornerplot</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\earthregions">earthregions</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\ecdfplot">ecdfplot</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\feather">feather</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\fill_between">fill_between</a></div></li>
@@ -273,13 +274,15 @@
 
 <!-- Content appended here -->
 <div class="franklin-content"><h1 id="subplot"><a href="#subplot" class="header-anchor">subplot</a></h1>
-<p>subplot&#40;fim&#61;nothing; stop&#61;false, kwargs...&#41;</p>
+<pre><code class="language-julia">subplot&#40;fim&#61;nothing; stop&#61;false, kwargs...&#41;</code></pre>
 <p><strong>subplot</strong> module is used to split the current figure into a rectangular layout of subplots that each may contain a single self-contained figure. A subplot setup is started with the <strong>subplot</strong> directive that defines the layout of the subplots, while positioning to a particular subplot for plotting is done via the <strong>subplot&#40;:set, ...&#41;</strong> directive. The subplot process is completed via the <strong>subplot&#40;:end&#41;</strong> or <strong>subplot&#40;:show&#41;</strong> directives.</p>
 <p><strong>subplot</strong> : – <em>subplot&#61;&#40;:set, :end, show; grid&#61;..., dims&#61;..., panels_size&#61;..., autolabel&#61;..., clearance&#61;..., axes&#61;..., proj&#61;..., margins&#61;..., region&#61;..., layout, title&#61;..., figname&#61;..., name&#61;..., savefig&#61;..., fmt&#61;...&#41;</em></p>
 <h2>Required Arguments</h2>
 <ul>
 <li><p><strong>grid</strong> : <em>grid&#61;&quot;nrows x ncols&quot;</em> <strong>|</strong> <em>grid&#61;&#40;nrows, ncols&#41;</em><br />  Specifies the number of rows and columns of subplots.  Each row will have the same number of subplots.   <strong>Note1</strong>: Use NO spaces with the first form. <em>i.e.</em> <strong>grid&#61;&quot;2x2&quot;</strong> and <strong>NOT</strong> <em>grid&#61;&quot; 2 x 2&quot;</em><br />  <strong>Note2</strong>: You are not required to place a plot in each subplot.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>F</strong> or <strong>dims</strong> or <strong>dimensions</strong> or <strong>size</strong> or <strong>sizes</strong> : – <em>dims&#61;&#40;panels&#61;&#40;w,h&#41;, figsize&#61;&#40;w,h&#41;, frac&#61;&#40;&#41;, clearance&#61;&#40;dx,dy&#41;, outline&#61;pen, fill&#61;color, divlines&#61;pen&#41;</em><br />  Specify the dimensions of the figure. There are two different ways to do this:</p>
 <ol>
 <li><p>With the keyword <strong>figsize</strong> Specify overall figure dimensions<br /></p>
@@ -288,20 +291,21 @@
 </li>
 </ol>
 <p>For grids up to 3x3 and 2x1 and 3x1, if neither <strong>figsize</strong> or <strong>panels</strong> are specified, an estimation   of the <em>panels</em> size plus <strong>margins</strong> will be provided. This may suite many use cases but with a probable need   to specify better margins.</p>
-<p><strong>figsize</strong> <br />  Specify the final figure dimensions. The subplot dimensions are then calculated from the figure dimensions after accounting for the space that optional tick marks, annotations, labels, and margins occupy between subplots. As for other figures, annotations, ticks, and labels along the outside perimeter are not counted as part of the figure dimensions. To specify different subplot dimensions for each row &#40;or column&#41;, append <strong>frac</strong> with value given as a tuple of <em>width</em> and <em>height</em> fractions. For example <strong>dims&#61;&#40;size&#61;&#40;10,10&#41;, frac&#61;&#40;&#40;3,1&#41;,&#40;1,2&#41;&#41;&#41;</strong> will make a 10x10 cm fig with the first column three times as wide as the second, while the second row will be twice as tall as the first row. A single number means constant widths &#40;or heights&#41; &#91;Default&#93;. If prefered, instead of <em>size</em> and/or <em>frac</em> as tuples, the <strong>width&#61;x, height&#61;y, fwidth&#61;&#40;...&#41;, fheight&#61;&#40;...&#41;</strong> form is also allowed. </p>
-<p><strong>panels</strong> <br />  Specify the dimensions of each subplot directly. Then, the figure dimensions are computed from the subplot dimensions after adding the space that optional tick marks, annotations, labels, and margins occupy between subplots. As for other figures, annotations, ticks, and labels along the outside perimeter are not counted as part of the figure dimensions. To specify different subplot dimensions for each row &#40;or column&#41;, append a comma-separated list of widths, a slash, and then the comma-separated list of heights. A single number means constant widths &#40;or heights&#41; &#91;Default&#93;. For example <strong>dims&#61;&#40;panels&#61;&#40;&#40;5,8&#41;,8&#41;,&#41;</strong> will make the first column 5 cm wide and the second column 8 cm wide, with all having a constant height of 8 cm. The number of values must either be one &#40;constant across the rows or columns&#41; or exactly match the number of rows &#40;or columns&#41;. For geographic maps, the height of each subplot depends on your map region and projection. There are two options:</p>
-<ol>
-<li><p>Specify both <strong>limits</strong> and <strong>projection</strong> and we use these to compute the height of each subplot. All subplots must share the same region and projection and you specify a zero <em>height</em>, or </p>
-</li>
-</ol>
-<ol start="2">
-<li><p>you can select <em>height</em> based on trial and error to suit your plot layout.</p>
-</li>
-</ol>
-<p>Optionally, you may draw the outline &#40;<strong>outline&#61;pen</strong>&#41; or paint &#40;<strong>fill&#61;color</strong>&#41; the figure rectangle behind the subplots, add dividing lines between panels &#40;<strong>divlines&#61;pen</strong>&#41;, and even expand it via <strong>clearance&#61;&#40;dx.dy&#41;</strong>. These are most useful if you supply <strong>axes&#61;:none</strong>, meaning no ticks or annotations will take place in the subplots. See \myreflink&#123;Setting color&#125; and \myreflink&#123;Pen attributes&#125; for extend color and pen selections.</p>
-<p>But when we only want to set panels with a constant size one can use the simpler form <strong>subplot&#40;grid&#61;..., panels_size&#61;8, ...&#41;</strong>, <em>i.e.</em> without using the <strong>dims&#61;&#40;panels&#61;&#40;&#41;&#41;</strong> form. <em>panels_size</em>, <em>panel_size</em> and <em>panel_sizes</em> are all aliases.</p>
 </li>
 </ul>
+<p>**figsize** \
+Specify the final figure dimensions. The subplot dimensions are then calculated from the figure dimensions after accounting for the space that optional tick marks, annotations, labels, and margins occupy between subplots. As for other figures, annotations, ticks, and labels along the outside perimeter are not counted as part of the figure dimensions. To specify different subplot dimensions for each row &#40;or column&#41;, append **frac** with value given as a tuple of *width* and *height* fractions. For example **dims&#61;&#40;size&#61;&#40;10,10&#41;, frac&#61;&#40;&#40;3,1&#41;,&#40;1,2&#41;&#41;&#41;** will make a 10x10 cm fig with the first column three times as wide as the second, while the second row will be twice as tall as the first row. A single number means constant widths &#40;or heights&#41; &#91;Default&#93;. If prefered, instead of *size* and/or *frac* as tuples, the **width&#61;x, height&#61;y, fwidth&#61;&#40;...&#41;, fheight&#61;&#40;...&#41;** form is also allowed. 
+
+**panels** \
+Specify the dimensions of each subplot directly. Then, the figure dimensions are computed from the subplot dimensions after adding the space that optional tick marks, annotations, labels, and margins occupy between subplots. As for other figures, annotations, ticks, and labels along the outside perimeter are not counted as part of the figure dimensions. To specify different subplot dimensions for each row &#40;or column&#41;, append a comma-separated list of widths, a slash, and then the comma-separated list of heights. A single number means constant widths &#40;or heights&#41; &#91;Default&#93;. For example **dims&#61;&#40;panels&#61;&#40;&#40;5,8&#41;,8&#41;,&#41;** will make the first column 5 cm wide and the second column 8 cm wide, with all having a constant height of 8 cm. The number of values must either be one &#40;constant across the rows or columns&#41; or exactly match the number of rows &#40;or columns&#41;. For geographic maps, the height of each subplot depends on your map region and projection. There are two options:
+
+1. Specify both **limits** and **projection** and we use these to compute the height of each subplot. All subplots must share the same region and projection and you specify a zero *height*, or 
+
+2. you can select *height* based on trial and error to suit your plot layout.
+
+Optionally, you may draw the outline &#40;**outline&#61;pen**&#41; or paint &#40;**fill&#61;color**&#41; the figure rectangle behind the subplots, add dividing lines between panels &#40;**divlines&#61;pen**&#41;, and even expand it via **clearance&#61;&#40;dx.dy&#41;**. These are most useful if you supply **axes&#61;:none**, meaning no ticks or annotations will take place in the subplots. See <a href="/GMTjl_doc/documentation/common_features/color/index.html#setting_color">Setting color</a> and <a href="/GMTjl_doc/documentation/common_features/pens/index.html#pen_attributes">Pen attributes</a> for extend color and pen selections.
+
+But when we only want to set panels with a constant size one can use the simpler form **subplot&#40;grid&#61;..., panels_size&#61;8, ...&#41;**, *i.e.* without using the **dims&#61;&#40;panels&#61;&#40;&#41;&#41;** form. *panels_size*, *panel_size* and *panel_sizes* are all aliases.</p>
 <h2>Optional Arguments</h2>
 <ul>
 <li><p><strong>A</strong> or <strong>autolabel</strong> : – autolabel&#61;<em>&#40;Anchor&#61;tag, anchor&#61;tag, label&#61;&quot;&quot;, clearance&#61;&#40;dx,dy&#41;, fill&#61;color, pen&#61;pen, offset&#61;, roman&#61;Bool, Roman&#61;Bool, vertical&#61;Bool&#41;</em><br />  Specify automatic tagging of each subplot. Use <strong>label&#61;</strong> either a number or letter &#40;as a string&#41; &#91;Default &quot;a&quot;&#93;.   This sets the tag of the first, top-left subplot and others follow sequentially. Surround the number or letter by parentheses on any side if these should be typeset as part of the tag.   Use <strong>anchor</strong> or <strong>Anchor</strong> <strong>&#61;refpoint</strong> to specify where the tag should be placed in the subplot &#91;TL, meaning TopLeft&#93;.   <strong>Note</strong>: <strong>anchor</strong> sets the justification of the tag to <em>refpoint</em> &#40;suitable for interior tags&#41;   while <strong>Anchor</strong> instead selects the mirror opposite &#40;suitable for exterior tags&#41;.</p>
@@ -366,6 +370,8 @@
 </li>
 </ul>
 </li>
+</ul>
+<ul>
 <li><p><strong>T</strong> or <strong>title</strong> : – <em>title&#61;&quot;Heading&quot;</em><br />  While individual subplots can have titles &#40;see <strong>S</strong> or <strong>axes</strong>&#41;, the entire figure may also have a   overarching <em>heading</em> &#91;no heading&#93;. Font is determined by setting <code>FONT_HEADING</code>.</p>
 </li>
 </ul>
@@ -379,8 +385,12 @@
 <ul>
 <li><p><strong>panel&#61;&#40;row,col&#41;</strong><br />  Sets the current subplot until further notice. <strong>Note</strong>: First <em>row</em> or <em>col</em> is 1 not 0 like in plain GMT. If not given we go to the next subplot by order specified via <strong>autolabel&#61;&#40;vertical&#61;true,&#41;</strong>. As an alternative, you may bypass the <strong>set</strong> mode and instead supply the common option <strong>panel&#61;&#40;row,col&#41;</strong> to the first plot command you issue in that subplot. GMT maintains information about the current figure and subplot. Also, you may give the one-dimensional <em>index</em> instead which starts at 1 and follows the row or column order set via <strong>autolabel&#61;&#40;vertical&#61;true,&#41;</strong>. <strong>panel&#61;&quot;next&quot;</strong> or <strong>panel&#61;&quot;&quot;</strong> are alternative <em>index</em> syntaxes</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>A</strong> or <strong>fixedlabel</strong> : – <em>fixedlabel&#61;&quot;Label&quot;</em><br />  Overrides the automatic labeling with the given string. No modifiers are allowed. Placement, justification, etc. are all inherited from how <strong>autolablel</strong> was specified.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>C</strong> or <strong>clearance</strong> : – <em>clearance&#61;&#40;left&#61;val, right&#61;val, bott&#61;val, bottom&#61;val, top&#61;val&#41;&#41;</em><br />  Reserve a space of dimension <em>clearance</em> between the margin and the subplot on the specified side. This setting has the same syntax and overrides the common clearances set by <strong>clearance</strong> outside the <strong>subplot&#40;:set, ...&#41;</strong> command.</p>
 </li>
 </ul>
@@ -427,8 +437,8 @@ subplot&#40;grid&#61;&quot;3x3&quot;, panels_size&#61;&#40;5,7&#41;, region&#61;
     basemap&#40;panel&#61;&quot;next&quot;, proj&#61;:geog, figsize&#61;&quot;auto&quot;&#41;
 subplot&#40;:show&#41;</code></pre></p>
 <p>
-<a id="example_9343587096728115315">
- <img src="/GMTjl_doc/assets/documentation/modules/subplot/code/output/example_9343587096728115315.png" alt=""> 
+<a id="example_8579059301905671956">
+ <img src="/GMTjl_doc/assets/documentation/modules/subplot/code/output/example_8579059301905671956.png" alt=""> 
 </a>
 
 <p>and a 2x2 with some symbols and showing more ways of setting the panel sizes and selection</p>
@@ -453,8 +463,8 @@ subplot&#40;grid&#61;&#40;3,2&#41;, dims&#61;&#40;panels&#61;true, sizes&#61;&#4
 	basemap&#40;region&#61;&#40;10,15,10,15&#41;, frame&#61;&#40;fill&#61;:orange,&#41;, panel&#61;:next&#41;
 subplot&#40;:show&#41;</code></pre></p>
 <p>
-<a id="example_18072810986697530659">
- <img src="/GMTjl_doc/assets/documentation/modules/subplot/code/output/example_18072810986697530659.png" alt=""> 
+<a id="example_7604050904223616902">
+ <img src="/GMTjl_doc/assets/documentation/modules/subplot/code/output/example_7604050904223616902.png" alt=""> 
 </a>
 
 <p>A very similar to the above figure can be created with:</p>
@@ -471,7 +481,7 @@ subplot&#40;:show&#41;</code></pre>
 <p>Currently, nesting of subplots is not implemented. With the <code>geog</code> projection one cannot set the fist axes to <code>geog</code> and the other to <em>whatever</em> because only last dimension is assigned that label. The solution to fine control here is to use the GMT syntax given as a string</p>
 <div class="page-foot">
   <div class="copyright">
-    &copy; GMT.jl. Last modified: March 28, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+    &copy; GMT.jl. Last modified: May 10, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
       <p>These docs were autogenerated using GMT: v0.44.8</p>
   </div>
 </div>

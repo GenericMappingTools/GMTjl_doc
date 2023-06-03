@@ -185,6 +185,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\contour">contour</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\contourf">contourf</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\cornerplot">cornerplot</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\earthregions">earthregions</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\ecdfplot">ecdfplot</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\feather">feather</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\fill_between">fill_between</a></div></li>
@@ -273,7 +274,7 @@
 
 <!-- Content appended here -->
 <div class="franklin-content"><h1 id="histogram"><a href="#histogram" class="header-anchor">histogram</a></h1>
-<p>histogram&#40;cmd0::String&#61;&quot;&quot;, arg1&#61;nothing; kwargs...&#41;</p>
+<pre><code class="language-julia">histogram&#40;cmd0::String&#61;&quot;&quot;, arg1&#61;nothing; kwargs...&#41;</code></pre>
 <p>Calculate and plot histograms</p>
 <h2>Description</h2>
 <p>Reads <em>file</em>, MxN matrix, GMTdataset or GMTimage and examines the first data column &#40;or one set by <strong>incol</strong>&#41; to calculate histogram parameters based on the bin-width provided. Using these parameters, scaling, and optional range parameters it will plot the histogram. A cumulative histogram may also be specified.</p>
@@ -281,6 +282,8 @@
 <ul>
 <li><p><strong>A</strong> or <strong>horizontal</strong> : – <em>horizontal&#61;true</em><br /> Plot the histogram horizontally from x &#61; 0 &#91;Default is vertically from y &#61; 0&#93;. The plot  dimensions remain the same, but the two axes are flipped.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>auto</strong> : – <em>auto&#61;true</em><br /> When input is a GMTimage of UInt16 type this option will compute the histogram as well as good  bounds to use in contrast enhancement, which will be plotted as two vertical lines.</p>
 </li>
 </ul>
@@ -292,21 +295,37 @@
 <ul>
 <li><p><strong>bg</strong> or <strong>background</strong> : – <em>bg&#61;imagename</em> <strong>|</strong> <em>bg&#61;funname|img|grd</em> <strong>|</strong> <em>bg&#61;&#40;..., colormap&#41;</em><br /> Fills the plotting canvas with a backround image. That image may come from a file &#40;<em>e.g.</em> <strong>bg&#61;&quot;cute.png&quot;</strong>&#41; or  from a predefined function name. Possible names are: <em>akley, eggs, circle, parabola, rosenbrok, sombrero, x, y, xy, x&#43;y</em>.  For further details consult the same option in the plot manual.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>C</strong> or <strong>color</strong> or <strong>cmap</strong> : – <em>color&#61;cpt</em><br /> Give a CPT or specify <strong>color&#61;&quot;color1,color2 &#91;,color3 ,...&#93;&quot;</strong> or <strong>color&#61;&#40;&#40;r1,g1,b1&#41;,&#40;r2,g2,b2&#41;,...&#41;</strong> to build a linear continuous CPT from those colors automatically. The mid x-value for each bar is used to look-up the bar color. If no argument is given then we select the current CPT.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>D</strong> or <strong>annot</strong> or <strong>annotate</strong> or <strong>count</strong> : – <em>annot&#61;true</em> <strong>|</strong> <em>annot&#61;&#40;beneath&#61;|font&#61;|offset&#61;|vertical&#61;,&#41;</em><br /> Annotate each bar with the count it represents. Add any of the following options: Use <strong>annot&#61;&#40;beneath&#61;true,&#41;</strong> to place the labels beneath the bars instead of above; use <strong>annot&#61;&#40;font&#61;&quot;font&quot;,&#41;</strong> to change to another font than the default annotation font; use <strong>annot&#61;&#40;offset&#61;val,&#41;</strong> to change the offset between bar and label &#91;6p&#93;; use <strong>annot&#61;&#40;vertical&#61;true,&#41;</strong> to rotate the labels from horizontal to vertical.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>E</strong> or <strong>width</strong> : – <em>width&#61;val</em> <strong>|</strong> <em>width&#61;&#40;width&#61;val, offset&#61;val&#41;</em>&#92;   Use an alternative histogram bar width than the default set via <strong>bin</strong>, and optionally shift all bars by an offset. Here width is either an alternative width in data units, or the user may append a valid plot dimension unit &#40;&quot;c|i|p&quot;&#41; for a fixed dimension instead. Optionally, all bins may be shifted along the axis by offset. As for width, it may be given in data units of plot dimension units by appending the relevant unit.</p>
 </li>
-<li><p><strong>binmethod</strong> or <strong>BinMethod</strong> : – <em>binmethod&#61;mthod</em><br /> Use a binning algorithm. For decimal data: &quot;<strong>scott</strong>&quot;, optimal for data is close to being normally distributed. Also  appropriate for most other distributions. Uses a bin width of &#36;3.5*std&#40;X&#40;:&#41;&#41;*numel&#40;X&#41;^&#40;-1/3&#41;&#36;; &quot;<strong>fd</strong>&quot;, uses a bin  width of <code>2*IQR&#40;X&#40;:&#41;&#41;*numel&#40;X&#41;^&#40;-1/3&#41;</code>, where IQR is the interquartile range of X; &quot;<strong>sturges</strong>&quot;, chooses the number  of bins to be <code>ceil&#40;1 &#43; log2&#40;numel&#40;X&#41;&#41;&#41;</code>. &quot;<strong>sqrt</strong>&quot;, chooses the number of bins to be <code>ceil&#40;sqrt&#40;numel&#40;X&#41;&#41;&#41;</code>.</p>
-<p>For DateTime data: &quot;<strong>second</strong>&quot;, &quot;<strong>minute</strong>&quot;, &quot;<strong>hour</strong>&quot;, &quot;<strong>day</strong>&quot;, &quot;<strong>week</strong>&quot;, &quot;<strong>month</strong>&quot; or &quot;<strong>year</strong>&quot; </p>
+</ul>
+<ul>
+<li><p><strong>binmethod</strong> or <strong>BinMethod</strong> : – <em>binmethod&#61;mthod</em><br /> Use a binning algorithm. For decimal data: &quot;<strong>scott</strong>&quot;, optimal for data is close to being normally distributed. Also  appropriate for most other distributions. Uses a bin width of <code>3.5*std&#40;X&#40;:&#41;&#41;*numel&#40;X&#41;^&#40;-1/3&#41;</code>; &quot;<strong>fd</strong>&quot;, uses a bin  width of <code>2*IQR&#40;X&#40;:&#41;&#41;*numel&#40;X&#41;^&#40;-1/3&#41;</code>, where IQR is the interquartile range of X; &quot;<strong>sturges</strong>&quot;, chooses the number  of bins to be <code>ceil&#40;1 &#43; log2&#40;numel&#40;X&#41;&#41;&#41;</code>. &quot;<strong>sqrt</strong>&quot;, chooses the number of bins to be <code>ceil&#40;sqrt&#40;numel&#40;X&#41;&#41;&#41;</code>.</p>
 </li>
+</ul>
+<p>For DateTime data: &quot;<strong>second</strong>&quot;, &quot;<strong>minute</strong>&quot;, &quot;<strong>hour</strong>&quot;, &quot;<strong>day</strong>&quot;, &quot;<strong>week</strong>&quot;, &quot;<strong>month</strong>&quot; or &quot;<strong>year</strong>&quot; </p>
+<ul>
 <li><p><strong>F</strong> or <strong>center</strong> : – <em>center&#61;true</em>&#92;   Center bin on each value. &#91;Default is left edge&#93;.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>full_histo</strong> : – <em>full_histo&#61;true</em><br /> When input is a GMTimage of UInt16 type histograms are often &#40;<em>e.g.</em> Landsat images&#41; characterized  by a very high number of countings at x&#61;0 followed by may bins with zero countings. By default we  check for that case and if found we set the zero bin countings to zero. This is crucial for the  <strong>auto</strong> or <strong>thresholds</strong> to work. If, however, that is not wished use <strong>full_histo&#61;true</strong></p>
 </li>
+</ul>
+<ul>
 <li><p><strong>G</strong> or <strong>fill</strong> : <em>fill&#61;color</em><br /> Select filling of bars &#91;Default is a type of blue&#93;.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>I</strong> or <strong>inquire</strong> or <strong>bins</strong> : – <em>inquire&#61;:all</em> <strong>|</strong> <em>inquire&#61;:no_zero</em> <strong>|</strong> <em>inquire&#61;:bins</em><br /> Inquire about min/max x and y after binning. The <em>xmin xmax ymin ymax</em> is output; no plotting is done. Use <strong>inquire&#61;:no_zero</strong> to output a table of the resulting x,y data instead. <strong>inquire&#61;:all</strong> will output all x,y bin data even when y &#61;&#61; 0. <strong>inquire&#61;:bins</strong> outputs the binned array &#40;the histogram&#41;.</p>
 </li>
 </ul>
@@ -318,9 +337,17 @@
 <ul>
 <li><p><strong>L</strong> or <strong>out_range</strong> : –  <em>out_range&#61;:first</em> <strong>|</strong> <em>out_range&#61;:last</em> <strong>|</strong> <em>out_range&#61;:both</em><br /> The modifiers specify the handling of extreme values that fall outside the range set by <strong>bin</strong>. By default these values are ignored. Use <strong>out_range&#61;:both</strong> to let these values be included in the first or last bins. To only include extreme values below first bin into the first bin, use <strong>out_range&#61;:first</strong>, and to only include extreme values above the last bin into that last bin, use <strong>out_range&#61;:last</strong>.</p>
 </li>
-<li><p><strong>N</strong> or <strong>distribution</strong> : – <em>distribution&#61;mode</em> <strong>|</strong> <em>distribution&#61;&#40;mode&#61;mode, pen&#61;&#40;pen&#41;&#41;</em><br />  Draw the equivalent normal distribution; append desired pen &#91;0.5p,black&#93;.   The <em>mode</em> selects which central location and scale to use:<br />      0 &#61; mean and standard deviation &#91;Default&#93;;      1 &#61; median and L1 scale &#40;1.4826 * median absolute deviation; MAD&#41;;      2 &#61; LMS &#40;least median of squares&#41; mode and scale.</p>
-<p>This option may be repeated to draw several of these curves. To do that use a tuple of tuples. Example: <strong>N&#61;&#40;&#40;mode&#61;1,pen&#61;&#40;1,:red&#41;&#41;, &#40;mode&#61;0,pen&#61;&#40;1,:blue&#41;&#41;&#41;</strong></p>
+</ul>
+<ul>
+<li><p><strong>N</strong> or <strong>distribution</strong> : – <em>distribution&#61;mode</em> <strong>|</strong> <em>distribution&#61;&#40;mode&#61;mode, pen&#61;&#40;pen&#41;&#41;</em><br />  Draw the equivalent normal distribution; append desired pen &#91;0.5p,black&#93;.   The <em>mode</em> selects which central location and scale to use:<br /></p>
 </li>
+</ul>
+<p>   0 &#61; mean and standard deviation &#91;Default&#93;;
+   1 &#61; median and L1 scale &#40;1.4826 * median absolute deviation; MAD&#41;;
+   2 &#61; LMS &#40;least median of squares&#41; mode and scale.
+
+This option may be repeated to draw several of these curves. To do that use a tuple of tuples. Example: **N&#61;&#40;&#40;mode&#61;1,pen&#61;&#40;1,:red&#41;&#41;, &#40;mode&#61;0,pen&#61;&#40;1,:blue&#41;&#41;&#41;**</p>
+<ul>
 <li><p><strong>Q</strong> or <strong>cumulative</strong> : – <em>cumulative&#61;true <strong>|</strong> cumulative&#61;&quot;r&quot;</em><br /> Draw a cumulative histogram. Append <strong>r</strong> to instead compute the reverse cumulative histogram.</p>
 </li>
 </ul>
@@ -332,8 +359,12 @@
 <ul>
 <li><p><strong>S</strong> or <strong>stairs</strong> : – <em>stairs&#61;true</em><br /> Draws a stairs-step diagram which does not include the internal bars of the default histogram. Uses <em>pen</em>.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>T</strong> or <strong>range</strong> or <strong>bin</strong> : – <em>range&#61;&#40;min,max,inc&#91;,:number,:log2,:log10&#93;&#41;</em> <strong>|</strong> <em>range&#61;&#91;list&#93;</em> <strong>|</strong> <em>range&#61;file</em><br /> Defines the range of the new CPT by giving the lowest and highest z-value &#40;and optionally an interval&#41;. If <strong>range</strong>  is not given, the existing range in the master CPT will be used intact. The values produces defines the color  slice boundaries. If <em>:number</em> is added as a fourth element then <em>inc</em> is meant to indicate the number of  equidistant coordinates instead. Use <em>:log2</em> if we should take log2 of min and max, get their nearest integers,  build an equidistant log2-array using inc integer increments in log2, then undo the log2 conversion. Same for <em>:log10</em>.  For details on array creation, see <code>Generate 1D Array</code>.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>thresholds</strong> : – <em>thresholds&#61;&#40;low,high&#41;</em><br /> When input is a GMTimage of UInt16 type this option will compute the histogram as well as good  bounds to use in contrast enhancement. The alghoritm used checks from right and left when the  countings are &gt;&#61; <em>low</em> &amp; &lt;&#61; <em>high</em> percentage of the maximum histogram countings. The defaul values  &#40;which are used by <strong>auto</strong> and <strong>zoom</strong>&#41; are <strong>thresholds&#61;&#40;0,0.5&#41;</strong></p>
 </li>
 </ul>
@@ -364,14 +395,18 @@
 
 <ul>
 <li><p><strong>Z</strong> or <strong>kind</strong> : – <em>kind&#61;type</em> <strong>|</strong> <em>kind&#61;&#40;counts&#61;, | freq&#61;, | frequency&#61;, | log<em>count&#61;, | log</em>freq&#61;, | log10<em>count&#61;, | log10</em>freq&#61;, weights&#61;&#41;</em><br /> Choose between 6 types of histograms:</p>
-<pre><code>0 &#61; counts &#91;Default&#93;
-1 &#61; frequency_percent
-2 &#61; log &#40;1.0 &#43; count&#41;
-3 &#61; log &#40;1.0 &#43; frequency_percent&#41;
-4 &#61; log10 &#40;1.0 &#43; count&#41;
-5 &#61; log10 &#40;1.0 &#43; frequency_percent&#41;.</code></pre>
-<p>To use weights provided as a second data column instead of pure counts, use a tuple. <em>e.g.</em> <strong>kind&#61;&#40;counts&#61;true, weights&#61;true&#41;</strong>. If no <em>weights</em> are used then we may use the simpler form <strong>kind&#61;??</strong> where <em>??</em> is the name   of any of the 6 types. <em>e.g.</em> <strong>kind&#61;frequency</strong></p>
 </li>
+</ul>
+<p>  0 &#61; counts &#91;Default&#93;
+  1 &#61; frequency_percent
+  2 &#61; log &#40;1.0 &#43; count&#41;
+  3 &#61; log &#40;1.0 &#43; frequency_percent&#41;
+  4 &#61; log10 &#40;1.0 &#43; count&#41;
+  5 &#61; log10 &#40;1.0 &#43; frequency_percent&#41;.
+
+To use weights provided as a second data column instead of pure counts, use a tuple. *e.g.* **kind&#61;&#40;counts&#61;true, weights&#61;true&#41;**. If no *weights* are used then we may use the simpler form **kind&#61;??** where *??* is the name
+of any of the 6 types. *e.g.* **kind&#61;frequency**</p>
+<ul>
 <li><p><strong>zoom</strong> : – <em>zoom&#61;true</em><br /> When input is a GMTimage of UInt16 type this option will set <strong>auto&#61;true</strong> and show histogram only  on the region of interest. </p>
 </li>
 </ul>
@@ -439,8 +474,8 @@
 <pre><code class="language-julia">using GMT
 histogram&#40;&quot;@v3206_06.txt&quot;, bin&#61;250, center&#61;true, pen&#61;&quot;0.5p&quot;, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_9882309136842291859">
- <img src="/GMTjl_doc/assets/documentation/modules/histogram/code/output/example_9882309136842291859.png" alt=""> 
+<a id="example_10076216846990377898">
+ <img src="/GMTjl_doc/assets/documentation/modules/histogram/code/output/example_10076216846990377898.png" alt=""> 
 </a>
 
 <p>If you know the distribution of your data, you may explicitly specify range and scales. E.g., to plot a histogram of the y-values &#40;2nd column&#41; in the file errors.xy using a 1 meter bin width, plot from -10 to &#43;10 meters @ 0.75 cm/m, annotate every 2 m and 100 counts, and use black bars, run:</p>
@@ -454,7 +489,7 @@ histogram&#40;I, zoom&#61;true, show&#61;true&#41;;</code></pre>
 <p>The <a href="http://docs.generic-mapping-tools.org/latest/histogram.html"><code>GMT man page</code></a></p>
 <div class="page-foot">
   <div class="copyright">
-    &copy; GMT.jl. Last modified: March 28, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+    &copy; GMT.jl. Last modified: May 10, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
       <p>These docs were autogenerated using GMT: v0.44.8</p>
   </div>
 </div>

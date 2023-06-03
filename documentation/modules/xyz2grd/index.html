@@ -185,6 +185,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\contour">contour</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\contourf">contourf</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\cornerplot">cornerplot</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\earthregions">earthregions</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\ecdfplot">ecdfplot</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\feather">feather</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\fill_between">fill_between</a></div></li>
@@ -273,7 +274,7 @@
 
 <!-- Content appended here -->
 <div class="franklin-content"><h1 id="xyz2grd"><a href="#xyz2grd" class="header-anchor">xyz2grd</a></h1>
-<p>	xyz2grd&#40;cmd0::String&#61;&quot;&quot;, arg1&#61;nothing, kwargs...&#41;</p>
+<pre><code class="language-julia">xyz2grd&#40;cmd0::String&#61;&quot;&quot;, arg1&#61;nothing, kwargs...&#41;</code></pre>
 <p>Convert data table to a GMTgrid type. </p>
 <h2>Description</h2>
 <p>Reads one or more <em>x, y, z</em> or <em>z</em> tables and creates a grid. It will report if some of the nodes are not filled in with data. Such unconstrained nodes are set to a value specified by the user &#91;Default is NaN&#93;. Nodes with more than one value will be set to the mean value. As an option &#40;using <strong>flags</strong>&#41;, a 1-column <em>z</em> table may be read assuming all nodes are present &#40;<em>z</em> tables can be organized in a number of formats, see <strong>flags</strong> below.&#41; <strong>Note</strong>: <strong>xyz2grd</strong> does not grid the data, it simply reformats existing data to a grid structure. For gridding, see <a href="/GMTjl_doc/documentation/modules/surface/index.html#surface">surface</a>, <a href="#">greenspline</a>, <a href="/GMTjl_doc/documentation/modules/nearneighbor/index.html#nearneighbor">nearneighbor</a>, or <a href="/GMTjl_doc/documentation/modules/triangulate/index.html#triangulate">triangulate</a>.</p>
@@ -296,25 +297,33 @@
 <ul>
 <li><p><strong>A</strong> or <strong>multiple_nodes</strong> : – <em>multiple_nodes&#61;true</em> <strong>|</strong> <em>multiple_nodes&#61;&quot;d|f|l|m|n|r|S|s|u|z&quot;</em><br />  By default we will calculate mean values if multiple entries fall on the same node. Use this option to   change this behavior, except it is ignored if <strong>flags</strong> is given. Append <strong>f</strong> or <strong>s</strong> to simply keep   the first or last data point that was assigned to each node. Append <strong>l</strong> or <strong>u</strong> or <strong>d</strong> to find the   lowest &#40;minimum&#41; or upper &#40;maximum&#41; value or the difference between the maximum and miminum value at each   node, respectively. Append <strong>m</strong> or <strong>r</strong> or <strong>S</strong> to compute mean or RMS value or standard deviation at   each node, respectively. Append <strong>n</strong> to simply count the number of data points that were assigned to each   node &#40;this only requires two input columns <em>x</em> and <em>y</em> as <em>z</em> is not consulted&#41;. Append <strong>z</strong> to sum   multiple values that belong to the same node.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>J</strong> or <strong>proj</strong> or <strong>projection</strong> : – <em>proj&#61;&lt;parameters&gt;</em><br />  Use the <strong>proj</strong> syntax to save the georeferencing info as CF-1 compliant metadata in   netCDF grids. Remember also that PROJ syntax can be used directly in <strong>proj</strong>. This referencing will be   recognized by GDAL and increasingly also by GMT.</p>
 </li>
 </ul>
 <ul>
 <li><p><strong>G</strong> or <strong>save</strong> or <strong>outgrid</strong> or <strong>outfile</strong> : – <em>outgrid&#61;&#91;&#61;ID&#93;&#91;&#43;ddivisor&#93;&#91;&#43;ninvalid&#93;&#91;&#43;ooffset|a&#93;&#91;&#43;sscale|a&#93;&#91;:driver&#91;dataType&#93;&#91;&#43;coptions&#93;&#93;</em><br /> Give the name of the output grid file. Optionally, append <code>&#61;ID</code> for writing a specific file format  &#40;See <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#grd-inout-full">full description</a>&#41;.  The following modifiers are supported:</p>
+</li>
+</ul>
 <ul>
 <li><p>&#43;d - Divide data values by given divisor &#91;Default is 1&#93;.</p>
 </li>
+</ul>
+<ul>
 <li><p>&#43;n - Replace data values matching invalid with a NaN.</p>
 </li>
+</ul>
+<ul>
 <li><p>&#43;o - Offset data values by the given offset, or append a for automatic range offset to preserve precision for integer grids &#91;Default is 0&#93;.</p>
 </li>
+</ul>
+<ul>
 <li><p>&#43;s - Scale data values by the given scale, or append a for automatic scaling to preserve precision for integer grids &#91;Default is 1&#93;.</p>
 </li>
 </ul>
-<p><strong>Note1:</strong> Any offset is added before any scaling. &#43;sa also sets &#43;oa &#40;unless overridden&#41;. To write specific  formats via GDAL, use &#61;gd and supply driver &#40;and optionally dataType&#41; and/or one or more concatenated  GDAL -co options using &#43;c. See the <a href="https://docs.generic-mapping-tools.org/dev/cookbook/features.html#write-grids-images">“Writing grids and images”</a> cookbook section for more details.</p>
-<p><strong>Note2:</strong> This is optional and to be used only when saving the result directly on disk. Otherwise,  just use the <code>G &#61; modulename&#40;...&#41;</code> form.</p>
-</li>
-</ul>
+<p><strong>Note1:</strong> Any offset is added before any scaling. &#43;sa also sets &#43;oa &#40;unless overridden&#41;. To write specific    formats via GDAL, use &#61;gd and supply driver &#40;and optionally dataType&#41; and/or one or more concatenated    GDAL -co options using &#43;c. See the <a href="https://docs.generic-mapping-tools.org/dev/cookbook/features.html#write-grids-images">“Writing grids and images”</a> cookbook section for more details.</p>
+<p><strong>Note2:</strong> This is optional and to be used only when saving the result directly on disk. Otherwise,    just use the <code>G &#61; modulename&#40;...&#41;</code> form.</p>
 
 <ul>
 <li><p><strong>S</strong> or <strong>swap</strong> : – <em>swap&#61;true</em> <strong>|</strong> <em>swap&#61;zfile</em><br />  Swap the byte-order of the <em>z</em> table input only. No grid is produced. You   must also supply the <strong>flags</strong> option. The output is return to Julia or written to <em>zfile</em></p>
@@ -327,35 +336,25 @@
 
 <ul>
 <li><p><strong>Z</strong> or <strong>flags</strong> : – <em>flags&#61;flags</em><br />  Read a 1-column table. This assumes that all the nodes are present and sorted according to specified ordering   convention contained in <em>flags</em> &#40;a string&#41;. If incoming data represents rows, make <em>flags</em> start with <strong>T</strong>&#40;op&#41;   if first row is <em>y &#61; ymax</em> or <strong>B</strong>&#40;ottom&#41; if first row is <em>y &#61; ymin</em>. Then, append <strong>L</strong> or <strong>R</strong> to indicate   that first element is at left or right end of row. Likewise for column formats: start with <strong>L</strong> or <strong>R</strong> to   position first column, and then append <strong>T</strong> or <strong>B</strong> to position first element in a row. <strong>Note</strong>: These two   row/column indicators are only required for grids; for other tables they do not apply. For gridline registered grids:   If data are periodic in <em>x</em> but the incoming data do not contain the &#40;redundant&#41; column at <em>x &#61; xmax</em>, append <strong>x</strong>.   For data periodic in <em>y</em> without redundant row at <em>y &#61; ymax</em>, append <strong>y</strong>. Append <strong>s</strong> <em>n</em> to skip the first <em>n</em>   number of bytes &#40;probably a header&#41;. If the byte-order or the words needs to be swapped, append <strong>w</strong>. Select one   of several data types &#40;all binary except <strong>a</strong>&#41;:</p>
-<ul>
-<li><p><strong>A</strong> ASCII representation of one or more floating point values per record</p>
-</li>
-<li><p><strong>a</strong> ASCII representation of a single item per record</p>
-</li>
-<li><p><strong>c</strong> int8_t, signed 1-byte character</p>
-</li>
-<li><p><strong>u</strong> uint8_t, unsigned 1-byte character</p>
-</li>
-<li><p><strong>h</strong> int16_t, signed 2-byte integer</p>
-</li>
-<li><p><strong>H</strong> uint16_t, unsigned 2-byte integer</p>
-</li>
-<li><p><strong>i</strong> int32_t, signed 4-byte integer</p>
-</li>
-<li><p><strong>I</strong> uint32_t, unsigned 4-byte integer</p>
-</li>
-<li><p><strong>l</strong> int64_t, long &#40;8-byte&#41; integer</p>
-</li>
-<li><p><strong>L</strong> uint64_t, unsigned long &#40;8-byte&#41; integer</p>
-</li>
-<li><p><strong>f</strong> 4-byte floating point single precision</p>
-</li>
-<li><p><strong>d</strong> 8-byte floating point double precision</p>
 </li>
 </ul>
-<p>Default format is scanline orientation of numbers: <strong>flags&#61;&quot;TLa&quot;</strong>.  The difference between <strong>A</strong> and <strong>a</strong>   is that the latter can decode both date<strong>T</strong>clock and <em>ddd:mm:ss&#91;.xx&#93;</em> formats but expects each input record   to have a single value, while the former can handle multiple values per record but can only parse regular   floating point values. Translate incoming <em>z</em>-values via the <strong>-i</strong>0 option and needed modifiers.</p>
-</li>
-</ul>
+<p>- **A** ASCII representation of one or more floating point values per record
+- **a** ASCII representation of a single item per record
+- **c** int8_t, signed 1-byte character
+- **u** uint8_t, unsigned 1-byte character
+- **h** int16_t, signed 2-byte integer
+- **H** uint16_t, unsigned 2-byte integer
+- **i** int32_t, signed 4-byte integer
+- **I** uint32_t, unsigned 4-byte integer
+- **l** int64_t, long &#40;8-byte&#41; integer
+- **L** uint64_t, unsigned long &#40;8-byte&#41; integer
+- **f** 4-byte floating point single precision
+- **d** 8-byte floating point double precision
+
+Default format is scanline orientation of numbers: **flags&#61;&quot;TLa&quot;**.  The difference between **A** and **a**
+is that the latter can decode both date**T**clock and *ddd:mm:ss&#91;.xx&#93;* formats but expects each input record
+to have a single value, while the former can handle multiple values per record but can only parse regular
+floating point values. Translate incoming *z*-values via the **-i**0 option and needed modifiers.</p>
 <p><ul>
 <li><p><strong>bi</strong> or <strong>binary_in</strong> : – <em>binary_in&#61;??</em><br /> Select native binary format for primary table input.  <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#bi-full">More at</a></p>
 </li>
@@ -418,7 +417,7 @@
 <p><a href="/GMTjl_doc/documentation/modules/grd2xyz/index.html#grd2xyz">grd2xyz</a>, <a href="#">greenspline</a>, <a href="/GMTjl_doc/documentation/modules/nearneighbor/index.html#nearneighbor">nearneighbor</a>, <a href="/GMTjl_doc/documentation/modules/surface/index.html#surface">surface</a>, <a href="/GMTjl_doc/documentation/modules/triangulate/index.html#triangulate">triangulate</a></p>
 <div class="page-foot">
   <div class="copyright">
-    &copy; GMT.jl. Last modified: March 28, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+    &copy; GMT.jl. Last modified: May 10, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
       <p>These docs were autogenerated using GMT: v0.44.8</p>
   </div>
 </div>

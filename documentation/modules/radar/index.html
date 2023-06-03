@@ -185,6 +185,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\contour">contour</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\contourf">contourf</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\cornerplot">cornerplot</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\earthregions">earthregions</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\ecdfplot">ecdfplot</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\feather">feather</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\fill_between">fill_between</a></div></li>
@@ -275,14 +276,20 @@
 <div class="franklin-content"><h1 id="radar"><a href="#radar" class="header-anchor">radar</a></h1>
 <pre><code class="language-julia">radar&#40;cmd0&#61;&quot;&quot;, arg1&#61;nothing; axeslimts&#61;Float64&#91;&#93;, annotall&#61;false, axeslabels&#61;String&#91;&#93;, kwargs...&#41;</code></pre>
 <p>Radar plots are a useful way for seeing which variables have similar values or if there are outliers amongst each variable. By default we expect a matrix, or a GMTdatset &#40;or a vector of them&#41; with normalized values. This is so because a radar plot has multiple axis that each have different limits. So the options are to pass normalized variables or set each axis limits via the <code>axeslimts</code> option.</p>
-<p><hr /> radar&#40;A, ...&#41; plots the elements in the rows of <code>A</code> if it is a mtrix creating a polygon per row, or just one polygon if <code>A</code> is a vector.</p>
-<p><hr /> This module is a subset of <code>plot</code> to make it simpler to draw stair plots. So not all &#40;fine&#41; controlling parameters are not listed here. For the finest control, user should consult the <a href="/GMTjl_doc/documentation/modules/plot/index.html#plot">plot</a> module.</p>
+<hr />
+<p>radar&#40;A, ...&#41; plots the elements in the rows of <code>A</code> if it is a mtrix creating a polygon per row, or just one polygon if <code>A</code> is a vector.</p>
+<hr />
+<p>This module is a subset of <code>plot</code> to make it simpler to draw stair plots. So not all &#40;fine&#41; controlling parameters are not listed here. For the finest control, user should consult the <a href="/GMTjl_doc/documentation/modules/plot/index.html#plot">plot</a> module.</p>
 <h2>Parameters</h2>
 <ul>
 <li><p><strong>axeslabels</strong> or <strong>labels</strong> : – <em>axeslabels&#61;&#91;&quot;??&quot;,&quot;??&quot;,...&#93;</em> <strong>|</strong> <em>labels&#61;&#91;&quot;??&quot;,&quot;??&quot;,...&#93;</em><br /> String vector with the names of each variable axis. Plot a default &quot;Label?&quot; if not provided..</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>axeslimts</strong> : – <em>axeslimts&#61;&#91;...&#93;</em><br /> A vector with the same size as columns in the input matrix with the max extent of each variable.  NOTE that if you don&#39;t provide this option we assume input data is normalized.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>annotall</strong> : – <em>annotall&#61;true</em><br />  By default only the first axis is annotated, which is all it needs when variables are normalized.   However, when using non-normalized variables it may be useful to show the limits of each axis.</p>
 </li>
 </ul>
@@ -290,8 +297,12 @@
 <ul>
 <li><p><strong>fill</strong> or <strong>fillcolor</strong> : – <em>fill&#61;true</em> <strong>|</strong> fill&#61;&#91;&quot;color1&quot;, &quot;color2&quot;, ...&#93;*&#92;    A string vector with polygon colors. If number of colors is less then number of polygons we cycle through   the number of provided colors.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>fillalpha</strong> : – <em>fillalpha&#61;&#91;0.5, 0.7, ...&#93;</em><br />  The default is to paint polygons with a transparency of 70&#37;. For other transparency values pass in a   vector of transparencies &#40;between &#91;0-1&#93; or &#93;1-100&#93;&#41; via this option.</p>
 </li>
+</ul>
+<ul>
 <li><p>For fine the lines settings use the same options as in the <a href="/GMTjl_doc/documentation/modules/plot/index.html#plot">plot</a> module. Nemely <code>lw</code> or <code>lt</code> for   controling the line thickness, <code>lc</code> for line color, <code>ls</code> for line styles, etc...</p>
 </li>
 </ul>
@@ -350,8 +361,8 @@
 <pre><code class="language-julia">using GMT
 radar&#40;&#91;0.5 0.5 0.6 0.9 0.77; 0.6 0.5 0.8 0.2 0.9&#93;, show&#61;true, marker&#61;:circ, fill&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_15416850318019043099">
- <img src="/GMTjl_doc/assets/documentation/modules/radar/code/output/example_15416850318019043099.png" alt=""> 
+<a id="example_8547894110860281848">
+ <img src="/GMTjl_doc/assets/documentation/modules/radar/code/output/example_8547894110860281848.png" alt=""> 
 </a>
 
 <p>Plot </p>
@@ -359,13 +370,13 @@ radar&#40;&#91;0.5 0.5 0.6 0.9 0.77; 0.6 0.5 0.8 0.2 0.9&#93;, show&#61;true, ma
 radar&#40;&#91;10.5 20.5 30.6 40.9 46&#93;, axeslimts&#61;&#91;15, 25, 50, 90, 50&#93;, annotall&#61;true, marker&#61;:circ, fill&#61;true, 
       labels&#61;&#91;&quot;Spoons&quot;,&quot;Forks&quot;,&quot;Knifes&quot;,&quot;Dishes&quot;,&quot;Oranges&quot;&#93;, show&#61;1&#41;</code></pre></p>
 <p>
-<a id="example_13231836954622367422">
- <img src="/GMTjl_doc/assets/documentation/modules/radar/code/output/example_13231836954622367422.png" alt=""> 
+<a id="example_658406020269223948">
+ <img src="/GMTjl_doc/assets/documentation/modules/radar/code/output/example_658406020269223948.png" alt=""> 
 </a>
 
 <div class="page-foot">
   <div class="copyright">
-    &copy; GMT.jl. Last modified: March 28, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+    &copy; GMT.jl. Last modified: May 10, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
       <p>These docs were autogenerated using GMT: v0.44.8</p>
   </div>
 </div>

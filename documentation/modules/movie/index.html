@@ -185,6 +185,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\contour">contour</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\contourf">contourf</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\cornerplot">cornerplot</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\earthregions">earthregions</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\ecdfplot">ecdfplot</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\feather">feather</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\fill_between">fill_between</a></div></li>
@@ -280,6 +281,8 @@
 <ul>
 <li><p><strong>mainscript</strong>   This argument can be one of: &#40;1&#41; The name of a Julia function containg GMT.jl commands that makes the frame-dependent plot. &#40;2&#41; Name of a stand-alone GMT.jl script that makes the frame-dependent plot. The function or script may access frame variables, such as frame number and others. Parameters that can be accessed are discussed below.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>C</strong> or <strong>canvas</strong> : – <em>canvas&#61;...</em><br />  Specify the canvas size used when composing the movie frames. You can choose from a set of preset formats or   specify a custom layout. The named 16:9 ratio formats have a canvas dimension of 24 x 13.5 cm <em>or</em> 9.6 x 5.4   inch and are &#40;with pixel dimensions given in parenthesis&#41;:</p>
 <ul>
 <li><p><strong>4320p</strong> &#40;7680 x 4320&#41;, <strong>2160p</strong> &#40;3840 x 2160&#41;, <strong>1080p</strong> &#40;1920 x 1080&#41;, <strong>720p</strong> &#40;1280 x 720&#41;,</p>
@@ -296,8 +299,12 @@
 </ul>
 <p><strong>Note</strong>: Your <code>PROJ_LENGTH_UNIT</code> setting determines if <strong>movie</strong> sets you up to work with the SI or US canvas   dimensions. Instead of a named format you can request a custom format directly by giving   <em>width</em> <strong>x</strong> <em>height</em> <strong>x</strong> <em>dpu</em> &#40;no spaces arround the <strong>x</strong>&#41;, where <em>dpu</em> is the dots-per-unit pixel density   &#40;pixel density is set automatically for the named formats&#41;.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>N</strong> or <strong>name</strong> : – <em>name&#61;...</em><br />  Determines the name of the final movie file and a sub-directory with frame images &#40;but see <strong>work_dir</strong>&#41;.   <strong>Note</strong>: If the subdirectory exist then we exit immediately. You are therefore required to remove any   old directory by that name first. This is done to prevent the accidental loss of valuable data.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>T</strong> or <strong>frames</strong> : – <em>frames&#61;&#40;range&#61;..., n<em>frames&#61;..., first&#61;..., tag</em>width&#61;..., split_words&#61;...&#41;</em><br />  Either specify how many image frames to make &#40;ex <strong>frames&#61;30</strong>&#41;, create a one-column data set width values from   <em>min</em> to <em>max</em> every <em>inc</em> &#40;ex <strong>frames&#61;range&#40;min,max,inc&#41;</strong>, append <strong>n_frames&#61;&quot;&quot;</strong> if <strong>inc</strong> is number of frames   instead&#41;, or supply a file with a set of parameters, one record &#40;i.e., row&#41; per frame &#40;ex <strong>frame&#61;</strong> <em>timefile</em>&#41;.   The values in the columns will be available to the <em>mainscript</em> as named variables <strong>MOVIE_COL0</strong>, <strong>MOVIE_COL1</strong>,   etc., while any trailing text can be accessed via the variable <strong>MOVIE_TEXT</strong>. Append <strong>split_words&#61;&quot;&quot;</strong> to split   the trailing string into individual words that can be accessed via variables <strong>MOVIE_WORD0</strong>, <strong>MOVIE_WORD1</strong>, etc.   By default we use any white-space to separate words. Use <strong>split_words&#61;str</strong> to select another character&#40;s&#41; as the   valid separator&#40;s&#41;. The number of records equals the number of frames. Note that the <em>background</em> script is allowed   to create <em>timefile</em>, hence we check for its existence both before <em>and</em> after the background script has completed.   Normally, the frame numbering starts at 0; you can change this by appending a different starting frame number via   <strong>first&#61;...</strong>. <strong>Note</strong>: All frames are still included; this modifier only affects the numbering of the given frames.   Finally, <strong>tag_width&#61;...</strong> can be used to set the tag <em>width</em> of the format used in naming frames. For instance,   name_000010.png has a tag width of 6. By default, this is automatically set but if you are splitting large jobs   across several computers then you must use the same tag width for all names.</p>
 </li>
 </ul>
@@ -305,30 +312,66 @@
 <ul>
 <li><p><strong>A</strong> or <strong>gif</strong> : – <em>gif&#61;&#40;loop&#61;..., stride&#61;...&#41;</em><br />  Build an animated GIF file. You may specify if the movie should play more than once &#40;i.e., <strong>loop&#61;N</strong>&#41;   and if so append how many times to repeat &#91;default is infinite&#93;. If a video product is also   selected &#40;<strong>format</strong>&#41; then you can limit the frames being used to make the GIF file. Append <strong>stride&#61;stride</strong>   to only use every <em>stride</em> frame, with <em>stride</em> being one of a fixed set of strides: 2, 5, 10,   20, 50, 100, 200, and 500.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>D</strong> or <strong>frame_rate</strong> : – <em>frame_rate&#61;...</em><br />  Set the display frame rate in frames per seconds for the final animation &#91;24&#93;.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>-E</strong> or <strong>titlepage</strong> : – <em>titlepage&#61;&#40;script&#61;..., duration&#61;N, fade&#61;..., fill&#61;...&#41;</em><br />  Give a <em>titlepage</em> script that creates a static title page for the movie &#40;<em>i.e.</em> <strong>titlepage&#61;&#40;script&#61;Fun|sc.jl,&#41;</strong>&#41;   &#91;no title&#93;. Alternatively, <em>titlepage</em> can be a <em>PostScript</em> plot &#40;<strong>titlepage&#61;&#40;script&#61;&quot;psfile.ps&quot;, &#41;</strong>&#41; of   dimensions exactly matching the canvas size set in <strong>canvas</strong>. You control the duration of the title sequence with   <strong>duration</strong> and specify the number of frames &#40;or append <strong>s</strong> for a duration in seconds instead, <em>e.g.</em>   <strong>duration&#61;&quot;10s&quot;</strong>&#41; &#91;4s&#93;. Optionally, supply the fade length via <strong>fade&#61;N</strong> &#40;in frames or seconds &#91;1s&#93;&#41; as well   &#91;no fading&#93;; Use <strong>fade&#61;&quot;iN&quot;</strong> and/or <strong>fade&#61;&quot;oN&quot;</strong> to specify one-sided fading or to give unequal fade intervals   &#91;Default is same duration for both&#93;. The fading affects the beginning and end of the title page <em>duration</em>. We fade   from and to black by default; append <strong>fill&#61;color</strong> to use another terminal fade color.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>F</strong> or <strong>format</strong> : – <em>format&#61;&#40;format&#61;..., transparent&#61;&quot;&quot;, options&#61;...&#41;</em><br />  Set the format of the final video product. Choose either <strong>mp4</strong> &#40;MPEG-4 movie&#41; or <strong>webm</strong> &#40;WebM movie&#41;.   You may optionally add additional FFmpeg encoding settings for this format via the <strong>options&#61;...</strong> modifier   &#40;in quotes if more than one word&#41;. If <strong>&quot;none&quot;</strong> is chosen then no PNGs will be created at all; this requires   <strong>cover_page</strong>. Choose <strong>transparent&#61;true</strong> to generate transparent PNG images &#91;opaque&#93;.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>G</strong> or <strong>fill</strong> : – <em>fill&#61;color</em> | <em>fill&#61;&#40;fill&#61;color, pen&#61;pen&#41;</em><br />  Set the canvas color or fill before plotting commences &#91;none&#93;. Optionally, append <strong>pen&#61;pen</strong> to draw the canvas   outline with <em>pen</em> &#91;no outline&#93;. See <a href="/GMTjl_doc/documentation/common_features/color/index.html#setting_color">Setting color</a> and <a href="/GMTjl_doc/documentation/common_features/pens/index.html#pen_attributes">Pen attributes</a> for extend color and pen selections.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>H</strong> or <strong>scale</strong> : – <em>scale&#61;factor</em><br />  Given the finite dots-per-unit used to rasterize <em>PostScript</em> frames to PNGs, the quantizing of features   to discrete pixel will lead to rounding.  Some of this is mitigated by the anti-aliasing settings. However,   changes from frame to frame is outside the control of the individual frame rasterization and we   find that, in particular, moving text may appear jittery when seen in the final animation. You can mitigate   this effect by selecting a scale <em>factor</em> that, in effect, temporarily increases the effective dots-per-unit   by <em>factor</em>, rasterizes the frame, then downsamples the image by the same factor at the end. The larger   the <em>factor</em>, the smoother the transitions. Because processing time increases with <em>factor</em> we suggest you   try values in the 2-5 range. Note that images can also suffer from quantizing when the original data have   much higher resolution than your final frame pixel dimensions. The <strong>scale</strong> option may then be used to smooth the   result to avoid aliasing &#91;no downsampling&#93;. This effect is called <a href="https://en.wikipedia.org/wiki/Subpixel_rendering">subpixel</a> rendering.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>I</strong> or <strong>includefile</strong> : – <em>includefile&#61;file</em><br />  Insert the contents of <em>includefile</em> into the movie_init.sh|bat script that is accessed by all movie scripts.   This mechanism is used to add information &#40;typically constant variable assignments&#41; that the <em>mainscript</em>   and any optional <strong>S</strong> scripts rely on. Warning, the contents of this file are pure GMT commands.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>K</strong> or <strong>fading</strong> : – <em>fading&#61;&#40;fade&#61;N, fill&#61;color, preserve&#61;true&#41;&#41;</em><br />  Add fading in and out for the main animation sequence &#91;no fading&#93;. Append the length of the fading in number of   frames &#40;<em>e.g.</em> <strong>fading&#61;10</strong> or <strong>fading&#61;5s</strong> for fading in seconds&#41; &#91;1s&#93;. Use <strong>fading&#61;&quot;iN&#40;s&#41;</strong> and/or   <strong>fading&#61;&quot;oN&quot;</strong> to specify one-sided fading or to give unequal fade intervals &#91;Default is same duration for both&#93;.   Normally, fading will be overlaid on the first and last <em>fade</em> frames of the main animation. Append   <strong>preserve&#61;true</strong> to <em>preserve</em> these frames by fading over only the first and last &#40;repeated&#41; animation frames   instead. We fade from and to black by default; append <strong>fill&#61;color</strong> to use another terminal fade color.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>L</strong> or <strong>label</strong> : – <em>label&#61;str</em> &#40;not yet translated to keywords&#41;<br />  Automatic labeling of individual frames. Places the chosen label at the frame perimeter:   <strong>e</strong> selects the elapsed time in seconds as the label; append <strong>&#43;sscale</strong> to set the length   in seconds of each frame &#91;Default is 1/<em>framerate</em>&#93;,   <strong>sstring</strong> uses the fixed text <em>string</em> as the label,   <strong>f</strong> selects the running frame number as the label, <strong>p</strong> selects the percentage of progress so far,   <strong>ccol</strong> uses the value in column   number <em>col</em> of <em>timefile</em> as label &#40;first column is 0&#41;, while <strong>tcol</strong> uses word number   <em>col</em> from the trailing text in <em>timefile</em> &#40;first word is 0&#41;. <strong>Note</strong>: If you use <strong>-Lc</strong>   with an absolute time column, then the format of the timestamp will depend on the two default settings <code>FORMAT_DATE_MAP</code> and <code>FORMAT_CLOCK_MAP</code>. By default,   both <em>date</em> and <em>time</em> are displayed &#40;with a space between&#41;; set one of the settings to &quot;-&quot; to skip that component.   Append <strong>&#43;cdx</strong> &#91;/<em>dy</em>&#93; for the clearance between label and bounding box; only   used if <strong>&#43;g</strong> or <strong>&#43;p</strong> are set. Append units <strong>c</strong> | <strong>i</strong> | <strong>p</strong> or &#37; of the font size &#91;15&#37;&#93;.   Append <strong>&#43;f</strong> to use a specific <em>font</em> &#91;<code>FONT_TAG</code>&#93;.   Append <strong>&#43;g</strong> to fill the label bounding box with <em>fill</em> color &#91;no fill&#93;.   Use <strong>&#43;jrefpoint</strong> to specify where the label should be plotted &#91;TL&#93;.   Append <strong>&#43;odx</strong> &#91;/<em>dy</em>&#93; to offset label in direction implied by <em>justify</em>. Append units   <strong>c</strong> | <strong>i</strong> | <strong>p</strong> or &#37; of the font size &#91;20&#37; of font size&#93;.   Append <strong>&#43;p</strong> to draw the outline of the bounding box using selected <em>pen</em> &#91;no outline&#93;.   Append <strong>&#43;t</strong> to provide a <em>format</em> statement to be used with the label item selected &#91;no special formatting&#93;.   If <strong>-Lt</strong> is used then the format statement must contain a &#37;s-like format, else it may have an integer &#40;&#37;d&#41;   or floating point &#40;&#37;e, &#37;f, &#37;g&#41; format specification.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>M</strong> or <strong>cover_page</strong> : – <em>cover_page&#61;frame</em> | <em>cover_page&#61;&quot;frame,format&quot;</em><br />  In addition to making the animation sequence, select a single master frame &#91;0&#93; for a cover page. The master   frame will be written to the current directory with name <em>prefix.format</em>, where <em>format</em> can one of the   graphics extensions from the allowable graphics <a href="https://docs.generic-mapping-tools.org/latest/begin.html#tbl-formats">formats</a> &#91;pdf&#93;.</p>
 </li>
-<li><p><strong>P</strong> or <strong>progress</strong> : – <em>progress&#61;&#40;indicator&#61;char, annot&#61;&quot;...&quot;, font&#61;font, justify&#61;tag, offset&#61;&#40;dx,dy&#41;, width&#61;..., fill&#61;color, Fill&#61;color, pen&#61;pen, Pen&#61;pen&#41;</em><br />   Automatic placement of progress indicator&#40;s&#41;. Places the chosen indicator at the frame perimeter.   Select from six indicators called a-f &#91;a&#93;. Indicators a-c are different types of circular indicators while d-f are   linear &#40;axis-like&#41; indicators. Specify dimension of the indicator with <strong>wdth&#61;...</strong> &#91;5&#37; of max canvas dimension for   circular indicators and 60&#37; of relevant canvas dimension for the linear indicators&#93; and placement via <strong>justify&#61;tag</strong>   &#91;TR for circular and BC for axes&#93;. Indicators b-f can optionally add annotations if modifier <strong>annot</strong> is used,   append one of <strong>e</strong> or <strong>f</strong> or <strong>p</strong> or <strong>s</strong> or <strong>c</strong>\ <em>col</em> or <strong>t</strong>\ <em>col</em> to indicate what should be annotated   &#40;see <strong>label</strong> for more information on what these are&#41;; append <strong>font&#61;font</strong> to use a specific <em>font</em>   &#91;<code>FONT_ANNOT_SECONDARY</code> scaled as needed&#93;. Append <strong>offset&#61;dx</strong> or <strong>offset&#61;&#40;dx,dy&#41;</strong> to offset indicator in direction   implied by <em>justify</em>. Append <strong>fill&#61;color</strong> to set moving item fill <em>color</em> &#91;see below for defaults&#93;. Use <strong>pen&#61;pen</strong>   to set moving item <em>pen</em>. For corresponding static fill and pen, use <strong>Fill</strong> and <strong>Pen</strong> instead.</p>
+</ul>
+<ul>
+<li><p><strong>P</strong> or <strong>progress</strong> : – <em>progress&#61;&#40;indicator&#61;char, annot&#61;&quot;...&quot;, font&#61;font, justify&#61;tag, offset&#61;&#40;dx,dy&#41;, width&#61;..., fill&#61;color, Fill&#61;color, pen&#61;pen, Pen&#61;pen&#41;</em><br /></p>
 </li>
+</ul>
+<p>Automatic placement of progress indicator&#40;s&#41;. Places the chosen indicator at the frame perimeter.
+Select from six indicators called a-f &#91;a&#93;. Indicators a-c are different types of circular indicators while d-f are
+linear &#40;axis-like&#41; indicators. Specify dimension of the indicator with **wdth&#61;...** &#91;5&#37; of max canvas dimension for
+circular indicators and 60&#37; of relevant canvas dimension for the linear indicators&#93; and placement via **justify&#61;tag**
+&#91;TR for circular and BC for axes&#93;. Indicators b-f can optionally add annotations if modifier **annot** is used,
+append one of **e** or **f** or **p** or **s** or **c**&#92;*col* or **t**&#92;*col* to indicate what should be annotated
+&#40;see **label** for more information on what these are&#41;; append **font&#61;font** to use a specific *font*
+&#91;<code>FONT_ANNOT_SECONDARY</code> scaled as needed&#93;. Append **offset&#61;dx** or **offset&#61;&#40;dx,dy&#41;** to offset indicator in direction
+implied by *justify*. Append **fill&#61;color** to set moving item fill *color* &#91;see below for defaults&#93;. Use **pen&#61;pen**
+to set moving item *pen*. For corresponding static fill and pen, use **Fill** and **Pen** instead.</p>
+<ul>
 <li><p><strong>Q</strong> or <strong>debug</strong> : – <em>debug&#61;true</em> | <em>debug&#61;&quot;s&quot;</em><br />  Debugging: Leave all files and directories we create behind for inspection. Alternatively, append <strong>s</strong> to   only build the movie scripts but not perform any execution. One exception involves the optional   background script derived from <strong>-Sb</strong> which is always executed since it may produce data needed when   building the movie scripts.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>Sb</strong> or <strong>background</strong> : – <em>background&#61;&quot;script.jl&quot;</em> or <em>background&#61;Fun</em><br />  The optional <em>background</em> Julia script or function can be used for one or two purposes: &#40;1&#41; It may create files   &#40;such as <em>timefile</em>&#41; that will be needed by <em>mainscript</em> to make the movie, and &#40;2&#41; It may make a static background   plot that should form the background for all frames. If a plot is generated the script must make sure it uses the   same positioning &#40;i.e., <strong>X Y</strong>&#41; as the main script so that the layered plot will stack correctly &#40;unless you   actually want a different offset&#41;. Alternatively, <em>background</em> can be a <em>PostScript</em> plot layer of dimensions   exactly matching the canvas size.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>Sf</strong> or <strong>foreground</strong> : – <em>foreground&#61;&quot;script.jl&quot;</em> or <em>foreground&#61;Fun</em>&#92;    The optional <em>foreground</em> can be used to make a static foreground plot that should be overlain on all frames.   Make sure the script uses the same positioning &#40;i.e., <strong>X Y</strong>&#41; as the main script so that the layers will stack   correctly. Alternatively, <em>foreground</em> can be a <em>PostScript</em> plot layer of dimensions exactly matching the canvas size.</p>
 </li>
 </ul>
@@ -340,6 +383,8 @@
 <ul>
 <li><p><strong>W</strong> or <strong>workdir</strong> : – <em>name&#61;&quot;prefix&quot;</em><br />  By default, all temporary files and frame PNG file are created in the subdirectory <em>prefix</em> set via <strong>name</strong>.   You can override that selection by giving another <em>workdir</em> as a relative or full directory path. If no   path is given then we create a working directory in the system temp folder named <em>prefix</em>. The main benefit   of a working directory is to avoid endless syncing by agents like DropBox or TimeMachine, or to avoid   problems related to low space in the main directory.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>Z</strong> or <strong>clean</strong> : – <em>clean&#61;true</em> or <em>clean&#61;&quot;s&quot;</em><br />  Erase the entire <em>prefix</em> directory after assembling the final movie &#91;Default leaves directory with all images;   the temporary script files, parameter files, and layer <em>PostScript</em> files are all removed &#40;but see <strong>debug</strong>&#41;&#93;.   If your <em>mainscript</em> and all input scripts via <strong>titlepage</strong>, <strong>includefile</strong>, and <strong>fore|background</strong> should   be deleted as well then append <strong>s</strong>.</p>
 </li>
 </ul>
@@ -456,7 +501,7 @@ ffmpeg -i top.mp4 -i bottom.mp4 -filter_complex vstack&#61;inputs&#61;2 four_mov
 <p>For more information on such manipulations, see the FFmpeg documentation.</p>
 <div class="page-foot">
   <div class="copyright">
-    &copy; GMT.jl. Last modified: March 28, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+    &copy; GMT.jl. Last modified: May 10, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
       <p>These docs were autogenerated using GMT: v0.44.8</p>
   </div>
 </div>

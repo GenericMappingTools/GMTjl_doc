@@ -191,6 +191,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\contour">contour</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\contourf">contourf</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\cornerplot">cornerplot</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\earthregions">earthregions</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\ecdfplot">ecdfplot</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\feather">feather</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\fill_between">fill_between</a></div></li>
@@ -280,12 +281,20 @@
 <ul>
 <li><p><strong>Grids</strong>: Many tools consider equidistant grids a particular data type and numerous file formats exist for saving such data. Because GMT relies on GDAL we are able to read and write almost all such formats in addition to a native netCDF4 format that complies with both the COARDS and CF netCDF conventions. We have designed a native Julia grid structure <a href="/GMTjl_doc/documentation/general/types/index.html#grid_type">Grid type</a> that holds header information from the GMT grid as well as the data matrix representing the gridded values. These structures may be passed to GMT modules that expect grids and are returned from GMT modules that produce such grids. In addition, we supply the function <a href="/GMTjl_doc/api/#mat2grid"><code>mat2grid</code></a> to convert a matrix and some metadata into a grid structure.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>Images</strong>: The raster image shares many characteristics with the grid structure except the bytes representing each node reflect gray shade, color bands &#40;1, 3, or 4 for indexed, RGB and RGBA, respectively&#41;, and possibly transparency values. We therefore represent images in another native structure <a href="/GMTjl_doc/documentation/general/types/index.html#image_type">Image type</a> that among other items contains three components: The image matrix, a color map &#40;present for indexed images only&#41;, and an alpha matrix &#40;for images specifying transparency on a per-pixel level&#41;. As for grids, the wrapper function <a href="/GMTjl_doc/api/#mat2img"><code>mat2img</code></a> for creating the correct structure is available.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>Segments</strong>: GMT considers point, line, and polygon data to be organized in one or more segments in a data table. Modules that return segments uses a native Julia segment structure <a href="/GMTjl_doc/documentation/general/types/index.html#dataset_type">Dataset type</a> that holds the segment data, which may be either numerical, text, or both; it also holds a segment header string which GMT uses to pass metadata. Thus, GMT modules returning segments will typically produce arrays of segments and you may pass these to any other module expecting points, lines, or polygons or use them directly in Julia. Since a matrix is one fundamental data type you can also pass a matrix directly to GMT modules as well. Consequently, it is very easy to pass data from Julia into GMT modules that process data tables as well as to receive data segments from GMT modules that process and produce data tables as output.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>Color palettes</strong>: GMT uses its flexible Color Palette Table &#40;CPT&#41; format to describe how the color &#40;or pattern&#41; of symbols, lines, polygons or grids should vary as a function of a state variable. In Julia, this information is provided in another structure <a href="/GMTjl_doc/documentation/general/types/index.html#cpt_type">CPT type</a> that holds the color map as well as an optional alpha array for transparency values. Like grids, these structures may be passed to GMT modules that expect CPTs and will be returned from GMT modules that normally would produce CPT files.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>PostScript</strong>: While most users of the GMT.jl wrapper are unlikely to manipulate PostScript directly, it allows for the passing of PostScript via another data structure <a href="/GMTjl_doc/documentation/general/types/index.html#postscript_type">Postscript type</a>.</p>
 </li>
 </ul>
@@ -300,7 +309,7 @@
 <h3 id="a_hrefdocumentationgeneralmonoliticindexhtmlmonolithicmonolithic"><a href="#a_hrefdocumentationgeneralmonoliticindexhtmlmonolithicmonolithic" class="header-anchor"><a href="/GMTjl_doc/documentation/general/monolitic/index.html#monolithic">Monolithic</a></a></h3>
 <div class="page-foot">
   <div class="copyright">
-    &copy; GMT.jl. Last modified: March 28, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+    &copy; GMT.jl. Last modified: May 10, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
       <p>These docs were autogenerated using GMT: v0.44.8</p>
   </div>
 </div>

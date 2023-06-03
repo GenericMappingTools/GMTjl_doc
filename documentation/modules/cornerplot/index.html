@@ -188,6 +188,7 @@
 <li><a href="#cornerplot/">cornerplot</a></li>
 </ul>
 </li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\earthregions">earthregions</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\ecdfplot">ecdfplot</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\feather">feather</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\fill_between">fill_between</a></div></li>
@@ -276,14 +277,22 @@
 <pre><code class="language-julia">cornerplot&#40;data; kwargs...&#41;</code></pre>
 <p>Takes a nSamples-by-nDimensions array, and makes density plots of every combination of the dimensions. Plots as a triangular matrix of subplots showing the correlation among input variables. Input <code>data</code> can be a MxN matrix, a <code>GMTdataset</code> or a file name that upon reading with <code>gmtread</code> returns a <code>GMTdataset</code>.</p>
 <p>The plot consists of histograms of each column along the diagonal and scatter or hexagonal bining plots for the inter-variable relations, depending on if the the number of samples is &lt;&#61; 1000. But this can be changed with options in <code>kwargs</code>.</p>
-<p><hr /> <code>cornerplot&#40;data&#41;</code> plots every 2D projection of a multidimensional data set. </p>
-<p><hr /> <code>cornerplot&#40;..., varnames&#41;</code> prints the names of each dimension. <code>varnames</code> is a vector of strings of length nDimensions. If not provided, column names in the <code>GMTdaset</code> are used.</p>
-<p><hr /> <code>cornerplot&#40;..., truths&#41;</code> indicates reference values on the plots. Note that <code>truths</code><strong>must</strong> be a vector of length <em>n dimensions</em>, that is, number of columns in input data.</p>
-<p><hr /> <code>cornerplot&#40;..., quantile&#41;</code> list of fractional quantiles to show on the 1-D histograms as vertical dashed lines.</p>
-<p><hr /> <code>marginalhist&#40;..., hexbin&#61;true&#41;</code> Force hexbin plots even when number of points &lt;&#61; 1000. Default hexagon sizes are set via an heuristic rule but can be explicitly set via <a href="#">binstats</a> options, Namely <code>inc</code> or <code>nbins</code> options.</p>
-<p><hr /> <code>cornerplot&#40;..., scatter&#61;true&#41;</code> Force scatter plots even when number of points &gt; 1000.</p>
-<p><hr /> <code>cornerplot&#40;..., histcolor|histfill&#61;color&#41;</code> To paint diagonal histograms with a selected color &#40;histcolor&#61;:none to no paint&#41;.</p>
-<p><hr /> <code>cornerplot&#40;...,xvar,yvar&#41;</code> plots the variables <code>xvar</code> and <code>yvar</code> from the table <code>D</code>. You can specify one or multiple variables for <code>yvar</code> and one only for <code>xvar</code>.</p>
+<hr />
+<p><code>cornerplot&#40;data&#41;</code> plots every 2D projection of a multidimensional data set. </p>
+<hr />
+<p><code>cornerplot&#40;..., varnames&#41;</code> prints the names of each dimension. <code>varnames</code> is a vector of strings of length nDimensions. If not provided, column names in the <code>GMTdaset</code> are used.</p>
+<hr />
+<p><code>cornerplot&#40;..., truths&#41;</code> indicates reference values on the plots. Note that <code>truths</code><strong>must</strong> be a vector of length <em>n dimensions</em>, that is, number of columns in input data.</p>
+<hr />
+<p><code>cornerplot&#40;..., quantile&#41;</code> list of fractional quantiles to show on the 1-D histograms as vertical dashed lines.</p>
+<hr />
+<p><code>marginalhist&#40;..., hexbin&#61;true&#41;</code> Force hexbin plots even when number of points &lt;&#61; 1000. Default hexagon sizes are set via an heuristic rule but can be explicitly set via <a href="#">binstats</a> options, Namely <code>inc</code> or <code>nbins</code> options.</p>
+<hr />
+<p><code>cornerplot&#40;..., scatter&#61;true&#41;</code> Force scatter plots even when number of points &gt; 1000.</p>
+<hr />
+<p><code>cornerplot&#40;..., histcolor|histfill&#61;color&#41;</code> To paint diagonal histograms with a selected color &#40;histcolor&#61;:none to no paint&#41;.</p>
+<hr />
+<p><code>cornerplot&#40;...,xvar,yvar&#41;</code> plots the variables <code>xvar</code> and <code>yvar</code> from the table <code>D</code>. You can specify one or multiple variables for <code>yvar</code> and one only for <code>xvar</code>.</p>
 <p>Several other options can be used through <code>kwargs</code> to control plot details. Namelly options to fine control the subplots sizes and that are passed to <a href="/GMTjl_doc/documentation/modules/subplot/index.html#subplot">subplot</a>. Options to control the number of bins, and thresholds on countings, passed to <a href="#">binstats</a>. Or options to change markers, marker size and or color, colormap, etc, passed to <a href="/GMTjl_doc/documentation/modules/plot/index.html#plot">plot</a>. See examples bellow.</p>
 <h2>Common options</h2>
 <ul>
@@ -317,23 +326,23 @@
 cornerplot&#40;randn&#40;4000,3&#41;, cmap&#61;:viridis, truths&#61;&#91;0.25, 0.5, 0.75&#93;,
            varnames&#61;&#91;&quot;Ai&quot;, &quot;Oi&quot;, &quot;Ui&quot;&#93;, title&#61;&quot;Corner plot&quot;, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_14504964345709335973">
- <img src="/GMTjl_doc/assets/documentation/modules/cornerplot/code/output/example_14504964345709335973.png" alt=""> 
+<a id="example_16073916197590705270">
+ <img src="/GMTjl_doc/assets/documentation/modules/cornerplot/code/output/example_16073916197590705270.png" alt=""> 
 </a>
 
 <p>Example on how to control the symbol types, size and color.</p>
 <pre><code class="language-julia">using GMT
 cornerplot&#40;randn&#40;1500,3&#41;, scatter&#61;true, marker&#61;:cross, mec&#61;:red, ms&#61;&quot;3p&quot;, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_6265284708922005600">
- <img src="/GMTjl_doc/assets/documentation/modules/cornerplot/code/output/example_6265284708922005600.png" alt=""> 
+<a id="example_15661267084744318203">
+ <img src="/GMTjl_doc/assets/documentation/modules/cornerplot/code/output/example_15661267084744318203.png" alt=""> 
 </a>
 
 <h2>See Also</h2>
 <p><a href="#">binstats</a>, <a href="/GMTjl_doc/documentation/modules/histogram/index.html#histogram">histogram</a>, <a href="/GMTjl_doc/documentation/modules/marginalhist/index.html#marginalhist">marginalhist</a>, <a href="/GMTjl_doc/documentation/modules/plot/index.html#plot">plot</a></p>
 <div class="page-foot">
   <div class="copyright">
-    &copy; GMT.jl. Last modified: March 28, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+    &copy; GMT.jl. Last modified: May 10, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
       <p>These docs were autogenerated using GMT: v0.44.8</p>
   </div>
 </div>

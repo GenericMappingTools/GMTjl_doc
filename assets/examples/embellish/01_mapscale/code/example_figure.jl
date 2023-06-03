@@ -12,7 +12,7 @@ basemap(region=(0,40,50,56), proj=:Mercator, figsize=13,
 basemap!(map_scale=(anchor=:BR, scale_at_lat=53, length="1000k", label=true, fancy=true),
         box=(fill=:white, clearance=0.25, pen=1, inner=true), show=true)
 end # hide
-mv(joinpath(tempdir(), "GMTjl_" * GMT.tmpdir_usr[2] * ".png"), joinpath(@OUTPUT, "example_4105949228969357618.png"), force=true);    # hide
+mv(joinpath(tempdir(), "GMTjl_" * GMT.tmpdir_usr[2] * ".png"), joinpath(@OUTPUT, "example_15568354827904356565.png"), force=true);    # hide
 GMT.isFranklin[1] = false    # hide
 GMT.IamModern[1]  = false    # hide
  

@@ -185,6 +185,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\contour">contour</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\contourf">contourf</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\cornerplot">cornerplot</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\earthregions">earthregions</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\ecdfplot">ecdfplot</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\feather">feather</a></div></li>
 <li><div class="tocitem-container"><a class = active href="/GMTjl_doc/documentation\modules\fill_between">fill_between</a></div><ul class="page-content">
@@ -276,22 +277,32 @@
 <pre><code class="language-julia">fill_between&#40;D1 &#91;,D2&#93;; kwargs...&#41;</code></pre>
 <p>Fill the area between two horizontal curves.</p>
 <p>The curves are defined by the points &#40;x, y1, y2&#41; in matrix or GMTdataset <code>D1</code>. This creates one or multiple polygons describing the filled area. Alternatively, give a second matrix, <code>D2</code> &#40;or a scalar y&#61;cte&#41; and the polygons are constructed from the intersections of curves <code>D1</code> and <code>D2</code>. The <code>D1</code> arg can also be a file name of a file that can be read with <a href="#">gmtread</a> and return a <a href="#">GMTdataset</a> Note: <code>D1</code> and <code>D2</code> do <strong>not</strong> need to have the same number of points but they should have the same <em>xx</em> limits &#40;or close&#41;, otherwise results my look weird.</p>
-<p><hr /> <code>fill_between&#40;D1&#41;</code> Plots two curves <em>x,y1,y2</em> and fills the areas bwtween the two curves. </p>
-<p><hr /> <code>fill_between&#40;..., fill&#61;colors&#41;</code> Give a list with two colors to paint the &#39;up&#39; and &#39;down&#39; polygons. Example, <code>fill&#61;&#40;:yellow, :brown&#41;</code></p>
-<p><hr /> <code>fill_between&#40;..., fillalpha&#61;&#91;alpha1,alpha2&#93;&#41;</code>: Sets the transparency of the two sets of polygons &#40;default 60&#37;&#41;. <code>alpha1</code> and <code>alpha2</code> are numbers between &#91;0-1&#93; or &#91;0-100&#93;, where 1 or 100 mean full transparency.</p>
-<p><hr /> <code>fill_between&#40;..., pen&#61;...&#41;</code>: Sets pen specifications for the two curves. Easiest is to use the shortcuts <code>lt</code>, <code>lc</code> and <code>ls</code> for the line thickness, color and style like it is used in the <a href="/GMTjl_doc/documentation/modules/plot/index.html#plot">plot</a> module.</p>
-<p><hr /> <code>fill_between&#40;..., markers&#61;true&#41;</code> Add marker points at the data locations. These markers will have the same color as the line they sit on.</p>
-<p><hr /> <code>fill_between&#40;..., stairs&#61;true&#41;</code> Plot stairs curves instead.</p>
-<p><hr /> <code>fill_between&#40;..., white&#61;true&#41;</code>: Draw a thin white border between the curves and the fills.</p>
-<p><hr /> <code>fill_between&#40;..., labels&#61;...&#41;</code> Pass labels to use in a legend.</p>
+<hr />
+<p><code>fill_between&#40;D1&#41;</code> Plots two curves <em>x,y1,y2</em> and fills the areas bwtween the two curves. </p>
+<hr />
+<p><code>fill_between&#40;..., fill&#61;colors&#41;</code> Give a list with two colors to paint the &#39;up&#39; and &#39;down&#39; polygons. Example, <code>fill&#61;&#40;:yellow, :brown&#41;</code></p>
+<hr />
+<p><code>fill_between&#40;..., fillalpha&#61;&#91;alpha1,alpha2&#93;&#41;</code>: Sets the transparency of the two sets of polygons &#40;default 60&#37;&#41;. <code>alpha1</code> and <code>alpha2</code> are numbers between &#91;0-1&#93; or &#91;0-100&#93;, where 1 or 100 mean full transparency.</p>
+<hr />
+<p><code>fill_between&#40;..., pen&#61;...&#41;</code>: Sets pen specifications for the two curves. Easiest is to use the shortcuts <code>lt</code>, <code>lc</code> and <code>ls</code> for the line thickness, color and style like it is used in the <a href="/GMTjl_doc/documentation/modules/plot/index.html#plot">plot</a> module.</p>
+<hr />
+<p><code>fill_between&#40;..., markers&#61;true&#41;</code> Add marker points at the data locations. These markers will have the same color as the line they sit on.</p>
+<hr />
+<p><code>fill_between&#40;..., stairs&#61;true&#41;</code> Plot stairs curves instead.</p>
+<hr />
+<p><code>fill_between&#40;..., white&#61;true&#41;</code>: Draw a thin white border between the curves and the fills.</p>
+<hr />
+<p><code>fill_between&#40;..., labels&#61;...&#41;</code> Pass labels to use in a legend.</p>
 <ul>
 <li><p><code>labels&#61;true</code> wil use the column names in <code>D1</code> and <code>D2</code>. </p>
 </li>
 <li><p><code>labels&#61;&quot;Lab1,Lab2&quot;</code> or <code>labels&#61;&#91;&quot;Lab1&quot;,&quot;Lab2&quot;&#93;</code> &#40;this one can be a Tuple too&#41; use the text in <code>Lab1</code>, <code>Lab2</code>.</p>
 </li>
 </ul>
-<p><hr /> <code>fill_between&#40;..., legend&#61;...&#41;</code>: If used as the above <code>labels</code> it behaves like wise, but its argument can also be a named tuple with <code>legend&#61;&#40;labels&#61;&quot;Lab1,Lab2&quot;, position&#61;poscode, box&#61;&#40;...&#41;&#41;</code>, where <code>pscode</code> is the same as used in myreflink&#123;text&#125;, <em>e.g.</em> <code>TL</code> means <em>TopLeft</em> and <code>box</code> controls the legend box details. See <a href="https://www.generic-mapping-tools.org/GMTjl_doc/examples/legends/01_legends">examples at</a></p>
-<p><hr /> <code>fill_between&#40;...,xvar,yvar&#41;</code> plots the variables <code>xvar</code> and <code>yvar</code> from the table <code>D1</code>. You can specify one or multiple variables for <code>yvar</code> and one only for <code>xvar</code>.</p>
+<hr />
+<p><code>fill_between&#40;..., legend&#61;...&#41;</code>: If used as the above <code>labels</code> it behaves like wise, but its argument can also be a named tuple with <code>legend&#61;&#40;labels&#61;&quot;Lab1,Lab2&quot;, position&#61;poscode, box&#61;&#40;...&#41;&#41;</code>, where <code>pscode</code> is the same as used in myreflink&#123;text&#125;, <em>e.g.</em> <code>TL</code> means <em>TopLeft</em> and <code>box</code> controls the legend box details. See <a href="https://www.generic-mapping-tools.org/GMTjl_doc/examples/legends/01_legends">examples at</a></p>
+<hr />
+<p><code>fill_between&#40;...,xvar,yvar&#41;</code> plots the variables <code>xvar</code> and <code>yvar</code> from the table <code>D1</code>. You can specify one or multiple variables for <code>yvar</code> and one only for <code>xvar</code>.</p>
 <h2>Common options</h2>
 <ul>
 <li><p><strong>R</strong> or <strong>region</strong> or <strong>limits</strong> : – <em>limits&#61;&#40;xmin, xmax, ymin, ymax&#41;</em> <strong>|</strong> <em>limits&#61;&#40;BB&#61;&#40;xmin, xmax, ymin, ymax&#41;,&#41;</em>  <strong>|</strong> <em>limits&#61;&#40;LLUR&#61;&#40;xmin, xmax, ymin, ymax&#41;,units&#61;&quot;unit&quot;&#41;</em> <strong>|</strong> ...more<br /> Specify the region of interest. More at <a href="/GMTjl_doc/documentation/common_opts/common_opts/index.html#limits">limits</a>. For perspective view <strong>view</strong>, optionally add  <em>zmin,zmax</em>. This option may be used to indicate the range used for the 3-D axes. You may ask for a  larger w/e/s/n region to have more room between the image and the axes.</p>
@@ -331,8 +342,8 @@ y1 &#61; sin.&#40;theta&#41; ./ theta;
 y2 &#61; sin.&#40;2*theta&#41; ./ theta;
 fill_between&#40;&#91;theta y1 y2&#93;, legend&#61;&quot;Sinc1,Sinc2&quot;, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_10215135367976318879">
- <img src="/GMTjl_doc/assets/documentation/modules/fill_between/code/output/example_10215135367976318879.png" alt=""> 
+<a id="example_8702216883811318837">
+ <img src="/GMTjl_doc/assets/documentation/modules/fill_between/code/output/example_8702216883811318837.png" alt=""> 
 </a>
 
 <p>Control the legend position.</p>
@@ -343,8 +354,8 @@ y2 &#61; sin.&#40;2*theta&#41; ./ theta;
 fill_between&#40;&#91;theta y1&#93;, &#91;theta y2&#93;, fill&#61;&#40;&quot;lightblue&quot;,:orange&#41;, white&#61;true,
              legend&#61;&#40;labels&#61;&quot;Sinc1,Sinc2&quot;, pos&#61;:TL, box&#61;:none&#41;, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_12073516202444070519">
- <img src="/GMTjl_doc/assets/documentation/modules/fill_between/code/output/example_12073516202444070519.png" alt=""> 
+<a id="example_18433204469218950849">
+ <img src="/GMTjl_doc/assets/documentation/modules/fill_between/code/output/example_18433204469218950849.png" alt=""> 
 </a>
 
 <p>Use a constant <em>y</em> for the second curve.</p>
@@ -353,15 +364,15 @@ theta &#61; linspace&#40;-2π, 2π, 150&#41;;
 y2 &#61; sin.&#40;2*theta&#41; ./ theta;
 fill_between&#40;&#91;theta y2&#93;, 0.0, white&#61;true, lt&#61;1, ls&#61;:dash, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_9552980885926693920">
- <img src="/GMTjl_doc/assets/documentation/modules/fill_between/code/output/example_9552980885926693920.png" alt=""> 
+<a id="example_6690480564983735358">
+ <img src="/GMTjl_doc/assets/documentation/modules/fill_between/code/output/example_6690480564983735358.png" alt=""> 
 </a>
 
 <h2>See Also</h2>
 <a href="/GMTjl_doc/documentation/modules/plot/index.html#plot">plot</a>
 <div class="page-foot">
   <div class="copyright">
-    &copy; GMT.jl. Last modified: March 28, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+    &copy; GMT.jl. Last modified: May 10, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
       <p>These docs were autogenerated using GMT: v0.44.8</p>
   </div>
 </div>

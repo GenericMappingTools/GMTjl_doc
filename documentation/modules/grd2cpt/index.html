@@ -185,6 +185,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\contour">contour</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\contourf">contourf</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\cornerplot">cornerplot</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\earthregions">earthregions</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\ecdfplot">ecdfplot</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\feather">feather</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\fill_between">fill_between</a></div></li>
@@ -295,20 +296,36 @@
 <ul>
 <li><p><strong>D</strong> or <strong>bg</strong> or <strong>background</strong> : – <em>bg&#61;true</em> <strong>|</strong> <em>bg&#61;:i</em><br />  Select the back- and foreground colors to match the colors for lowest and highest <em>z</em>-values in the   output CPT &#91;Default uses the colors specified in the master file, or those defined by the parameters <code>COLOR_BACKGROUND</code>, <code>COLOR_FOREGROUND</code>, and <code>COLOR_NAN</code>&#93;. Append <strong>i</strong> to match the colors for the lowest   and highest values in the input &#40;instead of the output&#41; CPT.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>E</strong> or <strong>nlevels</strong> : – <em>nlevels&#61;true</em> <strong>|</strong> <em>nlevels&#61;nlevels|&quot;&#43;c&#91;&#43;f&lt;file&gt;&#93;&quot;</em><br />  Create a linear color table by using the grid z-range as the new limits in the CPT, so the   number of levels in the CPT remain unchanged. Alternatively, append <em>nlevels</em> and we will   instead resample the color table into <em>nlevels</em> equidistant slices. As an option, append   <strong>&#43;c</strong> to estimate the cumulative density function of the data and assign color levels   accordingly. If <strong>&#43;c</strong> is used then you may optionally append <strong>&#43;f</strong>&lt;file&gt; to save the CDF   to <em>file</em>, or just use <strong>&#43;c&#43;f</strong> to return also a table with the CDF.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>F</strong> or <strong>color_model</strong> : – <em>color_model&#61;true|:r|:h|:c&#91;&quot;&#43;c&quot;&#91;label&#93;&#93;</em><br />  Force output CPT to be written with r/g/b codes, gray-scale values or color name &#40;the default&#41;   or r/g/b codes only &#40;<strong>r</strong>&#41;, or h-s-v codes &#40;<strong>h</strong>&#41;, or c/m/y/k codes &#40;<strong>c</strong>&#41;. Optionally or   alternatively, append <strong>&#43;c</strong> to write discrete palettes in categorical format.  If <em>label</em> is   appended then we create labels for each category to be used when the CPT is plotted. The <em>label</em>   may be a comma-separated list of category names &#40;you can skip a category by not giving a name&#41;,   or give <em>start</em>&#91;-&#93;, where we automatically build monotonically increasing labels from <em>start</em>   &#40;a single letter or an integer&#41;. Append - to build ranges <em>start</em>-<em>start&#43;1</em> instead. <strong>Note</strong>:   If <strong>&#43;cM</strong> is given and the number of categories is 12, then we automatically create a list of   month names. Likewise, if <strong>&#43;cD</strong> is given and the number of categories is 7 then we make a   list of weekday names. The format of these labels will depend on the <code>FORMAT_TIME_PRIMARY_MAP</code>, <code>GMT_LANGUAGE</code> and possibly <code>TIME_WEEK_START</code> settings.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>G</strong> or <strong>truncate</strong> : – <em>truncate&#61;&#40;zlo,zhi&#41;</em><br />  Truncate the incoming CPT so that the lowest and highest z-levels are to <em>zlo</em> and <em>zhi</em>. If one of these   equal NaN then we leave that end of the CPT alone. The truncation takes place before any resampling.   See also <a href="https://docs.generic-mapping-tools.org/dev/cookbook/features.html#manipulating-cpts">Manipulating CPTs</a></p>
 </li>
+</ul>
+<ul>
 <li><p><strong>I</strong> or <strong>inverse</strong> or <strong>reverse</strong> : – <em>inverse&#61;true</em> <strong>|</strong> <em>inverse&#61;:z</em><br />  Reverse the sense of color progression in the master CPT. Also exchanges the foreground and background colors,   including those specified by the parameters <code>COLOR_BACKGROUND</code> and <code>COLOR_FOREGROUND</code>. Use <strong>inverse&#61;:z</strong> to   reverse the sign of z-values in the color table. Note that this change of <em>z</em>-direction happens before <strong>truncate</strong>   and <strong>range</strong> values are used so the latter much be compatible with the changed <em>z</em>-range. See also   <a href="https://docs.generic-mapping-tools.org/dev/cookbook/features.html#manipulating-cpts">Manipulating CPTs</a></p>
 </li>
+</ul>
+<ul>
 <li><p><strong>L</strong> or <strong>datarange</strong> or <strong>clim</strong> : – <em>datarange&#61;&#40;minlimit, maxlimit&#41;</em><br />  Limit range of CPT to <em>&#40;minlimit, maxlimit&#41;</em>, and don&#39;t count data outside this range when   estimating CDF&#40;Z&#41;. To set only one limit, specify the other limit as &quot;-&quot;   &#91;Default uses min and max of data.&#93;</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>M</strong> or <strong>overrule_bg</strong> : – <em>overrule_bg&#61;true</em><br />  Overrule background, foreground, and NaN colors specified in the master CPT with the values of the parameters <code>COLOR_BACKGROUND</code>, <code>COLOR_FOREGROUND</code>, and <code>COLOR_NAN</code> specified in the <code>gmt.conf</code> file or on the command line.   When combined with <strong>bg</strong>, only <code>COLOR_NAN</code> is considered.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>N</strong> or <strong>no_bg</strong> or <strong>nobg</strong> : – <em>no_bg&#61;true</em><br />  Make all the background, foreground, and NaN-color fields be white &#40;since we can&#39;t remove them like in plain GMT&#41;.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>Q</strong> or <strong>log</strong> : – <em>log&#61;true</em> <strong>|</strong> <em>log&#61;:i|:o</em><br />  Selects a logarithmic interpolation scheme &#91;Default is linear&#93;.  <strong>log&#61;:i</strong> expects input   z-values to be log10&#40;z&#41;, assigns colors, and writes out z &#91;Default&#93;. <strong>log&#61;:o</strong> takes   log10&#40;z&#41; first, assigns colors, and writes out z.</p>
 </li>
 </ul>
@@ -320,14 +337,24 @@
 <ul>
 <li><p><strong>S</strong> or <strong>symetric</strong> : – <em>symetric&#61;:h|l|m|u</em><br />  Force the color table to be symmetric about zero &#40;from -<em>R</em> to &#43;<em>R</em>&#41;.   Append flag to set the range <em>R</em>: <strong>l</strong> for <em>R</em> &#61;|zmin|, <strong>u</strong> for <em>R</em> &#61;   |zmax|, <strong>m</strong> for <em>R</em> &#61; min&#40;|zmin|, |zmax|&#41;, or <strong>h</strong> for <em>R</em> &#61; max&#40;|zmin|, |zmax|&#41;.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>T</strong> or <strong>range</strong> : – <em>range&#61;&#40;min,max,inc&#41;</em> <strong>|</strong> <em>range&#61;n</em><br />  Set steps in CPT. Calculate entries in CPT from <em>start</em> to <em>stop</em> in steps of &#40;<em>inc</em>&#41;.   Default chooses arbitrary values by a crazy scheme based on equidistant values for a   Gaussian CDF. Use <strong>range&#61;n</strong> to select <em>n</em> points from such a cumulative normal distribution &#91;11&#93;.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>V</strong>   Verbose operation. This will write CDF&#40;Z&#41; estimates to stderr. &#91;Default is silent.&#93;</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>W</strong> or <strong>wrap</strong> or <strong>categorical</strong> : – <em>wrap&#61;true</em> <strong>|</strong> <em>wrap&#61;:w</em><br />  Do not interpolate the input color table but pick the output colors starting at the beginning of the color table,   until colors for all intervals are assigned. This is particularly useful in combination with a categorical color   table, like &quot;categorical&quot;. Alternatively, use <strong>wrap&#61;:w</strong> to produce a wrapped &#40;cyclic&#41; color table that endlessly   repeats its range.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>Z</strong> or <strong>continuous</strong> : – <em>continuous&#61;true</em><br />  Force a continuous CPT &#91;Default is discontinuous&#93;.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>name</strong> or <strong>save</strong> : – <em>save&#61;&quot;name.cpt&quot;</em><br /> Save the color map with the <strong>save&#61;&quot;name.cpt&quot;</strong>. When in modern mode this also automatically sets a  required GMT option &#40;-H&#41;.</p>
 </li>
 </ul>
@@ -359,8 +386,8 @@
 grd2cpt&#40;&quot;@earth_relief_06m&quot;, region&#61;&#40;0,60,0,60&#41;, cmap&#61;:geo, symetric&#61;:u&#41;
 imshow&#40;&quot;@earth_relief_06m&quot;, region&#61;&#40;0,60,0,60&#41;, coast&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_2897898914826282568">
- <img src="/GMTjl_doc/assets/documentation/modules/grd2cpt/code/output/example_2897898914826282568.png" alt=""> 
+<a id="example_3865715985800397679">
+ <img src="/GMTjl_doc/assets/documentation/modules/grd2cpt/code/output/example_3865715985800397679.png" alt=""> 
 </a>
 
 <p>Sometimes you don&#39;t want to make a CPT &#40;yet&#41; but would find it helpful to know that 90&#37; of your data lie between z1 and z2, something you cannot learn from <a href="/GMTjl_doc/documentation/modules/grdinfo/index.html#grdinfo">grdinfo</a>. So you can do this to see some points on the CDF&#40;Z&#41; curve &#40;use <strong>verbose&#61;true</strong> option to see more&#41;:</p>
@@ -372,8 +399,8 @@ imshow&#40;&quot;@earth_relief_06m&quot;, region&#61;&#40;0,60,0,60&#41;, coast&
 C, cdf &#61; grd2cpt&#40;&quot;@earth_relief_10m&quot;, nlevels&#61;&quot;11&#43;c&#43;f&quot;&#41;;
 imshow&#40;&quot;@earth_relief_10m&quot;, cmap&#61;C&#41;</code></pre></p>
 <p>
-<a id="example_81150556436434046">
- <img src="/GMTjl_doc/assets/documentation/modules/grd2cpt/code/output/example_81150556436434046.png" alt=""> 
+<a id="example_9613669919153603410">
+ <img src="/GMTjl_doc/assets/documentation/modules/grd2cpt/code/output/example_9613669919153603410.png" alt=""> 
 </a>
 
 <p>Here, cdf would be the cumulative hypsometric curve for the Earth.</p>
@@ -384,7 +411,7 @@ imshow&#40;&quot;@earth_relief_10m&quot;, cmap&#61;C&#41;</code></pre></p>
 <p>Crameri, F. &#40;2018&#41;, Geodynamic diagnostics, scientific visualisation and StagLab 3.0, <em>Geosci. Model Dev.</em>, 11, 2541-2562, doi:10.5194/gmd-11-2541-2018.</p>
 <div class="page-foot">
   <div class="copyright">
-    &copy; GMT.jl. Last modified: March 28, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+    &copy; GMT.jl. Last modified: May 10, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
       <p>These docs were autogenerated using GMT: v0.44.8</p>
   </div>
 </div>

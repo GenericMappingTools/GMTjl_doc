@@ -185,6 +185,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\contour">contour</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\contourf">contourf</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\cornerplot">cornerplot</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\earthregions">earthregions</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\ecdfplot">ecdfplot</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\feather">feather</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\fill_between">fill_between</a></div></li>
@@ -289,12 +290,20 @@
 <ul>
 <li><p><strong>A</strong> or <strong>hcat</strong> : – <em>hcat&#61;true</em><br />  The records from the input files should be pasted horizontally, not   appended vertically &#91;Default&#93;. All files must have the same number   of segments and number of rows per segment. Note for binary input,   all the files you want to paste must have the same number of columns   &#40;as set with <strong>-bi</strong>&#41;; ASCII tables can have different number of columns.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>C</strong> or <strong>n_records</strong> : – <em>n_records&#61;&#91;<strong>&#43;l</strong>&#92;</em>min<em>&#93;&#91;<strong>&#43;u</strong>&#92;</em>max<em>&#93;&#91;<strong>&#43;i</strong>&#93;</em><br />  Only output segments whose number of records matches your given criteria:   Append <strong>&#43;l</strong>&#92;<em>min</em> to ensure all segment must have at least <em>min</em> records   to be written to output &#91;0&#93;, and append <strong>&#43;u</strong>&#92;<em>max</em>  to ensure all segments   must have at most <em>max</em> records to be written &#91;inf&#93;.  You may append <strong>&#43;i</strong>   to invert the selection, i.e., only segments with record counts outside the   given range will be output.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>D</strong> or <strong>dump</strong> : – <em>dump&#61;&#91;</em>template<em>&#92; &#91;<strong>&#43;o</strong>&#92;</em>orig<em>&#93;&#93;</em><br />  For multiple segment data, dump each segment to a separate output   file &#91;Default writes a multiple segment file to standard output&#93;. Append a   format template for the individual file names; this template   <strong>must</strong> contain a C format specifier that can format an integer   argument &#40;the running segment number across all tables&#41;; this is   usually &#37;d but could be &#37;08d which gives leading zeros, etc.   &#91;Default is gmtconvert_segment&#95;&#37;d.&#123;txt\|bin&#125;, depending on   <strong>-bo</strong>&#93;. Append <strong>&#43;o</strong>&#92;<em>orig</em> to start the numbering from <em>orig</em>   instead of zero.  Alternatively, give a template with   two C format specifiers and we will supply the table number and the   segment number within the table to build the file name.   Append <strong>&#43;o</strong>&#92;<em>torig</em>&#92; /<em>sorig</em> to start the numbering of tables   from <em>torig</em> and numbering of segments within a table from <em>sorig</em>   instead of zero.  The <strong>&#43;o</strong> modifier will be stripped off before   the <em>template</em> is used.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>E</strong> or <strong>first_last</strong> : – <em>first_last&#61;&#91;<strong>f|l|m|M</strong> *stride</em>&#93;<em><br />  Only extract the first and last record for each segment of interest   &#91;Default extracts all records&#93;. Optionally, append <strong>f</strong> or <strong>l</strong> to   only extract the first or last record of each segment, respectively.   Alternatively, append <strong>m</strong>&#92;</em>stride* to extract every <em>stride</em> records;   use <strong>M</strong> to also include the last record.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>F</strong> or <strong>conn_method</strong> : – <em>conn_method&#61;&#91;<strong>c|n|p|v</strong>&#93;&#91;**a|t|s|r| *refpoint</em>&#93;<em><br />  Alter the way points are connected &#40;by specifying a *scheme</em>&#41; and data are grouped &#40;by specifying a <em>method</em>&#41;.   Append one of four line connection schemes:</p>
 <ul>
 <li><p><strong>c</strong> : Form continuous line segments for each group &#91;Default&#93;.</p>
@@ -323,18 +332,31 @@
 <li><p><strong>r</strong> : Same as <strong>s</strong>, but the group reference point is reset after each record to the previous point &#40;this method is only available with the <strong>Fp</strong> scheme&#41;.</p>
 </li>
 </ul>
-<p>Instead of the codes <strong>a|f|s|r</strong> you may append the coordinates of a <em>refpoint</em> which will serve   as a fixed external reference point for all groups.</p>
 </li>
+</ul>
+<p>Instead of the codes **a|f|s|r** you may append the coordinates of a *refpoint* which will serve
+as a fixed external reference point for all groups.</p>
+<ul>
 <li><p><strong>I</strong> or <strong>invert</strong> or <strong>reverse</strong> : – <em>invert&#61;true</em> <strong>|</strong> <em>invert&#61;:tsr</em><br />  Invert the order of items, i.e., output the items in reverse order,   starting with the last and ending up with the first item &#91;Default   keeps original order&#93;. Append up to three items that should be   reversed: <strong>t</strong> will reverse the order of tables, <strong>s</strong> will reverse   the order of segments within each table, and <strong>r</strong> will reverse the   order of records within each segment &#91;Default&#93;.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>L</strong> or <strong>list_only</strong> : – <em>list_only&#61;true</em><br />  Only output a listing of all segment header records and no data   records &#40;requires ASCII data&#41;.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>N</strong> or <strong>sort</strong> : – <em>sort&#61;</em>col* &#91;<strong>&#43;a|d</strong>&#93;<em><br />  Numerically sort each segment based on values in column *col</em>.   The data records will be sorted such that the chosen column will   fall into ascending order &#91;<strong>&#43;a</strong>, which is Default&#93;. Append <strong>&#43;d</strong>   to sort into descending order instead. The <strong>sort</strong> option can be   combined with any other ordering scheme except <strong>conn_method</strong> &#40;segmentation&#41;   and is applied at the end.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>Q</strong> or <strong>select_num</strong> : – <em>select_num&#61;&#91;<strong>~</strong>&#93;&#92;</em>selection* <em><br />  Only write segments whose number is included in *selection</em> and skip   all others. Cannot be used with |-S|. The <em>selection</em> syntax is   <em>range</em>&#91;,<em>range</em>,...&#93; where each <em>range</em> of items is either a single   segment <em>number</em> or a range with stepped increments given via <em>start</em>&#92; &#91;:<em>step</em>:&#93;&#92; :<em>stop</em>   &#40;<em>step</em> is optional and defaults to 1&#41;. A leading <strong>~</strong> will   invert the selection and write all segments but the ones listed.  Instead   of a list of ranges, use <strong>&#43;f</strong> <em>file</em> to supply a file list with one <em>range</em> per line.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>S</strong> or <strong>select_hdr</strong> : – <em>select_hdr&#61;&#91;<strong>~</strong>&#93;&#92;</em>&quot;search string&quot;<em>\|&#92;<strong>&#43;f</strong>\|&#92;</em>file<em>&#92; &#91;<strong>&#43;e</strong>&#93; \| |-S|&#92; &#91;<strong>~</strong>&#93;/&#92;</em>regexp<em>/&#91;<strong>i</strong>&#93;&#91;<strong>&#43;e</strong>&#93;</em><br />  Only output those segments whose header record contains the   specified text string. To reverse the search, i.e., to output   segments whose headers do <em>not</em> contain the specified pattern, use   <strong>select_hdr&#61;:~</strong>. Should your pattern happen to start with ~ you need to   escape this character with a backslash &#91;Default output all   segments&#93;. Cannot be used with |-Q|. For matching segments based   on aspatial values &#40;via OGR/GMT format&#41;, give the search string as   <em>varname</em>&#92; &#61;&#92;<em>value</em> and we will compare <em>value</em> against the value   of <em>varname</em> for each segment. <strong>Note</strong>: If the features are polygons   then a match of a particular polygon perimeter also means that any   associated polygon holes will also be matched. For matching segment   headers against extended regular expressions enclose the expression   in slashes. Append <strong>i</strong> for case-insensitive matching.   For a list of such patterns, give <strong>&#43;f</strong>&#92;<em>file</em> with one pattern per line.   To give a single pattern starting with &quot;&#43;f&quot;, escape it with a backslash.   Finally, append <strong>&#43;e</strong> as last modifier to request an exact match &#91;Default will   match any sub-string in the target&#93;.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>T</strong> or <strong>skip</strong> : – <em>skip&#61;&#91;<strong>h</strong>&#93;&#91;<strong>d</strong>&#92; &#91;&#91;<strong>~</strong>&#93;&#92;</em>selection<em>&#93;&#93;</em><br />  Suppress the writing of certain records on output.  Append <strong>h</strong> to   suppress segment headers &#91;Default&#93;, and/or <strong>d</strong> to suppress duplicate   data records. Use <strong>skip&#61;:hd</strong> to suppress both types of records.  By default,   all columns must be identical across the two records to skip the record.   Alternatively, append a column <em>selection</em> to only use those columns   in the comparisons instead. The <em>selection</em> syntax is   <em>range</em>&#92; &#91;,&#92;<em>range</em>,...&#93; where each <em>range</em> of items is either a single   column <em>number</em> or a range with stepped increments given via <em>start</em>&#92; &#91;:<em>step</em>:&#93;&#92; :<em>stop</em>   &#40;<em>step</em> is optional and defaults to 1&#41;. A leading <strong>~</strong> will   invert the selection and select all columns but the ones listed. To add the   trailing text to the comparison as well, add the column <em>t</em> to the list.   If no numerical columns are specified, just <em>t</em>, then we only consider trailing text.</p>
 </li>
 </ul>
@@ -394,17 +416,19 @@
 
 <ul>
 <li><p><strong>j</strong> or <strong>spherical_dist</strong> or <strong>spherical</strong> : – <em>spherical&#61;greatcirc</em> or <em>spherical&#61;:flat</em> or <em>spherical&#61;:ellipsoidal</em><br />  Determine how spherical distances are calculated in modules that support this &#91;Default is <code>spherical&#61;:greatcirc</code>&#93;.   GMT has different ways to compute distances on planetary bodies:</p>
-<ul>
-<li><p>spherical&#61;:greatcirc to perform great circle distance calculations, with parameters such as distance  increments or radii compared against calculated great circle distances &#91;Default is <code>spherical&#61;:greatcirc</code>&#93;.</p>
-</li>
-<li><p>spherical&#61;:flat to select Flat Earth mode, which gives a more approximate but faster result.</p>
-</li>
-<li><p>spherical&#61;:ellipsoidal to select ellipsoidal &#40;or geodesic&#41; mode for the highest precision  and slowest calculation time.</p>
 </li>
 </ul>
-<p>Note: All spherical distance calculations depend on the current ellipsoid &#40;<code>PROJ_ELLIPSOID</code>&#41;,   the definition of the mean radius &#40;<code>PROJ_MEAN_RADIUS</code>&#41;, and the specification of latitude type   &#40;<code>PROJ_AUX_LATITUDE</code>&#41;. Geodesic distance calculations is also controlled by method &#40;<code>PROJ_GEODESIC</code>&#41;.</p>
-</li>
-</ul>
+<p>- spherical&#61;:greatcirc to perform great circle distance calculations, with parameters such as distance 
+  increments or radii compared against calculated great circle distances &#91;Default is <code>spherical&#61;:greatcirc</code>&#93;.
+
+- spherical&#61;:flat to select Flat Earth mode, which gives a more approximate but faster result.
+
+- spherical&#61;:ellipsoidal to select ellipsoidal &#40;or geodesic&#41; mode for the highest precision 
+  and slowest calculation time.
+
+Note: All spherical distance calculations depend on the current ellipsoid &#40;<code>PROJ_ELLIPSOID</code>&#41;,
+the definition of the mean radius &#40;<code>PROJ_MEAN_RADIUS</code>&#41;, and the specification of latitude type
+&#40;<code>PROJ_AUX_LATITUDE</code>&#41;. Geodesic distance calculations is also controlled by method &#40;<code>PROJ_GEODESIC</code>&#41;.</p>
 
 <ul>
 <li><p><strong>q</strong> or <strong>inrows</strong> : – <em>inrows&#61;??</em><br /> Select specific data rows to be read and/or written.  <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#the-q-option">More at</a></p>
@@ -465,7 +489,7 @@
 <p><a href="#">gmtinfo</a>, <a href="/GMTjl_doc/documentation/modules/gmtselect/index.html#gmtselect">gmtselect</a></p>
 <div class="page-foot">
   <div class="copyright">
-    &copy; GMT.jl. Last modified: March 28, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+    &copy; GMT.jl. Last modified: May 10, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
       <p>These docs were autogenerated using GMT: v0.44.8</p>
   </div>
 </div>

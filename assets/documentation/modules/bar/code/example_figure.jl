@@ -7,7 +7,7 @@ begin # hide
 bar([1 2 3 0 -1 -2 0], stacked=:water, connector=true, bargap=25,
     xticks=(:A, :B, :C, :Partial, :D, :E, :Total), show=true)
 end # hide
-mv(joinpath(tempdir(), "GMTjl_" * GMT.tmpdir_usr[2] * ".png"), joinpath(@OUTPUT, "example_3072171201843427746.png"), force=true);    # hide
+mv(joinpath(tempdir(), "GMTjl_" * GMT.tmpdir_usr[2] * ".png"), joinpath(@OUTPUT, "example_16450391718427149650.png"), force=true);    # hide
 GMT.isFranklin[1] = false    # hide
 GMT.IamModern[1]  = false    # hide
  

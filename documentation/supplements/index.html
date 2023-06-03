@@ -184,6 +184,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\contour">contour</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\contourf">contourf</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\cornerplot">cornerplot</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\earthregions">earthregions</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\ecdfplot">ecdfplot</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\feather">feather</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\fill_between">fill_between</a></div></li>
@@ -289,7 +290,7 @@
 </div>
 <div class="doc-content"><pre><code>earthtide&#40;cmd0::String&#61;&quot;&quot;; kwargs...&#41;</code></pre>
 <p>Compute grids or time-series of solid Earth tides.</p>
-<p>See full GMT &#40;not the <code>GMT.jl</code> one&#41; docs at <a href="http://docs.generic-mapping-tools.org/latest/earthtide.html"><code>earthtide</code></a></p>
+<p>See full GMT &#40;not the <code>GMT.jl</code> one&#41; docs at <a href="http://docs.generic-mapping-tools.org/latest/supplements/geodesy/earthtide.html"><code>earthtide</code></a></p>
 <pre><code class="language-julia">	G &#61; earthtide&#40;&#41;;
 	imshow&#40;G&#41;</code></pre>
 
@@ -302,45 +303,45 @@
 </div>
 <div class="doc-content"><pre><code>gmtgravmag3d&#40;cmd0::String&#61;&quot;&quot;; kwargs...&#41;</code></pre>
 <p>Compute the gravity/magnetic anomaly of a 3-D body by the method of Okabe.</p>
-<p>See full GMT &#40;not the <code>GMT.jl</code> one&#41; docs at <a href="http://docs.generic-mapping-tools.org/latest/gmtgravmag3d.html"><code>gmtgravmag3d</code></a></p>
+<p>See full GMT &#40;not the <code>GMT.jl</code> one&#41; docs at <a href="http://docs.generic-mapping-tools.org/latest/supplements/potential/gmtgravmag3d.html"><code>gmtgravmag3d</code></a></p>
 <h2>Parameters</h2>
 <ul>
 <li><p><strong>C</strong> | <strong>density</strong> :: &#91;Type &#61;&gt; Str | GMTgrid&#93;</p>
-<p>Sets body density in SI. Provide either a constant density or a grid with a variable one.   &#40;http://docs.generic-mapping-tools.org/latest/gmtgravmag3d.html#c&#41;</p>
+<p>Sets body density in SI. Provide either a constant density or a grid with a variable one.</p>
 </li>
 <li><p><strong>F</strong> | <strong>track</strong> :: &#91;Type &#61;&gt; Str | Matrix | GMTdataset&#93;</p>
-<p>Provide locations where the anomaly will be computed. Note this option is mutually exclusive with <code>outgrid</code>.   &#40;http://docs.generic-mapping-tools.org/latest/gmtgravmag3d.html#f&#41;</p>
+<p>Provide locations where the anomaly will be computed. Note this option is mutually exclusive with <code>outgrid</code>.</p>
 </li>
 <li><p><strong>G</strong> | <strong>save</strong> | <strong>outgrid</strong> | <strong>outfile</strong> :: &#91;Type &#61;&gt; Str&#93;</p>
-<p>Output grid file name. Note that this is optional and to be used only when saving   the result directly on disk. Otherwise, just use the G &#61; gmtgravmag3d&#40;....&#41; form.   &#40;http://docs.generic-mapping-tools.org/latest/gmtgravmag3d.html#g&#41;</p>
+<p>Output grid file name. Note that this is optional and to be used only when saving   the result directly on disk. Otherwise, just use the G &#61; gmtgravmag3d&#40;....&#41; form.</p>
 </li>
 <li><p><strong>H</strong> | <strong>mag_params</strong> :: &#91;Type &#61;&gt; Number&#93;</p>
-<p>Sets parameters for computation of magnetic anomaly. Alternatively, provide a magnetic intensity grid.    &#40;http://docs.generic-mapping-tools.org/latest/gmtgravmag3d.html#h&#41;</p>
+<p>Sets parameters for computation of magnetic anomaly. Alternatively, provide a magnetic intensity grid. </p>
 </li>
 <li><p><strong>I</strong> | <strong>inc</strong> | <strong>increment</strong> | <strong>spacing</strong> :: &#91;Type &#61;&gt; Str&#93;	&#36;Arg &#61; xinc&#91;unit&#93;&#91;&#43;e|n&#93;&#91;/yinc&#91;unit&#93;&#91;&#43;e|n&#93;&#93;&#93;&#36;</p>
-<p><em>x_inc</em> &#91;and optionally <em>y_inc</em>&#93; is the grid spacing. Optionally, append an increment unit.   &#40;http://docs.generic-mapping-tools.org/latest/gmtgravmag3d.html#i&#41;</p>
+<p><em>x_inc</em> &#91;and optionally <em>y_inc</em>&#93; is the grid spacing. Optionally, append an increment unit.</p>
 </li>
 <li><p><strong>L</strong> | <strong>z_obs</strong> | <strong>observation_level</strong> :: &#91;Type &#61;&gt; Number&#93;</p>
-<p>Sets level of observation &#91;Default &#61; 0&#93;. That is the height &#40;z&#41; at which anomalies are computed.   &#40;http://docs.generic-mapping-tools.org/latest/gmtgravmag3d.html#l&#41;</p>
+<p>Sets level of observation &#91;Default &#61; 0&#93;. That is the height &#40;z&#41; at which anomalies are computed.</p>
 </li>
 <li><p><strong>M</strong> | <strong>body</strong> :: &#91;Type &#61;&gt; Str | Tuple&#93;</p>
-<p>Create geometric bodies and compute their grav/mag effect.   &#40;http://docs.generic-mapping-tools.org/latest/gmtgravmag3d.html#m&#41;</p>
+<p>Create geometric bodies and compute their grav/mag effect.</p>
 </li>
 <li><p><strong>R</strong> | <strong>region</strong> | <strong>limits</strong> :: &#91;Type &#61;&gt; Str or list or GMTgrid|image&#93;	&#36;Arg &#61; &#40;xmin,xmax,ymin,ymax&#41;&#36;</p>
 <p>Specify the region of interest. Set to data minimum BoundinBox if not provided.</p>
 </li>
 <li><p><strong>S</strong> | <strong>radius</strong> :: &#91;Type &#61;&gt; Number&#93;</p>
-<p>Set search radius in km &#40;valid only in the two grids mode OR when <code>thickness</code>&#41; &#91;Default &#61; 30 km&#93;.   &#40;http://docs.generic-mapping-tools.org/latest/gmtgravmag3d.html#s&#41;</p>
+<p>Set search radius in km &#40;valid only in the two grids mode OR when <code>thickness</code>&#41; &#91;Default &#61; 30 km&#93;.</p>
 </li>
 <li><p><strong>Tv</strong> | <strong>index</strong> :: &#91;Type &#61;&gt; Str&#93;</p>
 </li>
 <li><p><strong>Tr</strong> | <strong>raw_triang</strong> :: &#91;Type &#61;&gt; Str&#93;</p>
 </li>
 <li><p><strong>Ts</strong> | <strong>stl</strong> :: &#91;Type &#61;&gt; Str&#93;</p>
-<p>Gives names of a xyz and vertex &#40;ndex&#61;&quot;vert_file&quot;&#41; files defining a close surface.   &#40;http://docs.generic-mapping-tools.org/latest/gmtgravmag3d.html#t&#41;</p>
+<p>Gives names of a xyz and vertex &#40;ndex&#61;&quot;vert_file&quot;&#41; files defining a close surface.</p>
 </li>
 <li><p><strong>Z</strong> | <strong>z_level</strong> | <strong>reference_level</strong> :: &#91;Type &#61;&gt; Number&#93;</p>
-<p>Level of reference plane &#91;Default &#61; 0&#93;.   &#40;http://docs.generic-mapping-tools.org/latest/gmtgravmag3d.html#z&#41;</p>
+<p>Level of reference plane &#91;Default &#61; 0&#93;.</p>
 </li>
 </ul>
 <h3>Example</h3>
@@ -356,38 +357,38 @@
 </div>
 <div class="doc-content"><pre><code>gravfft&#40;cmd0::String&#61;&quot;&quot;, arg1&#61;nothing, arg2&#61;nothing; kwargs...&#41;</code></pre>
 <p>Spectral calculations of gravity, isostasy, admittance, and coherence for grids.</p>
-<p>See full GMT &#40;not the <code>GMT.jl</code> one&#41; docs at <a href="http://docs.generic-mapping-tools.org/latest/gravfft.html"><code>gravfft</code></a></p>
+<p>See full GMT &#40;not the <code>GMT.jl</code> one&#41; docs at <a href="http://docs.generic-mapping-tools.org/latest/supplements/potential/gravfft.html"><code>gravfft</code></a></p>
 <h2>Parameters</h2>
 <ul>
 <li><p><strong>D</strong> | <strong>density</strong> :: &#91;Type &#61;&gt; Str | GMTgrid&#93;</p>
-<p>Sets body density in SI. Provide either a constant density or a grid with a variable one.   &#40;http://docs.generic-mapping-tools.org/latest/gravfft.html#c&#41;</p>
+<p>Sets body density in SI. Provide either a constant density or a grid with a variable one.</p>
 </li>
 <li><p><strong>E</strong> | <strong>n_terms</strong> :: &#91;Type &#61;&gt; Number&#93;</p>
-<p>Number of terms used in Parker expansion &#91;Default &#61; 3&#93;.   &#40;http://docs.generic-mapping-tools.org/latest/gravfft.html#e&#41;</p>
+<p>Number of terms used in Parker expansion &#91;Default &#61; 3&#93;.</p>
 </li>
 <li><p><strong>F</strong> | <strong>geopotential</strong> :: &#91;Type &#61;&gt; Str | Tuple&#93;</p>
-<p>Specify desired geopotential field: compute geoid rather than gravity    &#40;http://docs.generic-mapping-tools.org/latest/gravfft.html#h&#41;</p>
+<p>Specify desired geopotential field: compute geoid rather than gravity </p>
 </li>
 <li><p><strong>I</strong> | <strong>admittance</strong> :: &#91;Type &#61;&gt; Number&#93;</p>
-<p>Use ingrid2 and ingrid1 &#40;a grid with topography/bathymetry&#41; to estimate admittance|coherence and return a GMTdataset.   &#40;http://docs.generic-mapping-tools.org/latest/gravfft.html#l&#41;</p>
+<p>Use ingrid2 and ingrid1 &#40;a grid with topography/bathymetry&#41; to estimate admittance|coherence and return a GMTdataset.</p>
 </li>
 <li><p><strong>N</strong> | <strong>inquire</strong> :: &#91;Type &#61;&gt; Str&#93;         &#36;Arg &#61; &#91;a|f|m|r|s|nx/ny&#93;&#91;&#43;a|&#91;&#43;d|h|l&#93;&#91;&#43;e|n|m&#93;&#91;&#43;twidth&#93;&#91;&#43;v&#93;&#91;&#43;w&#91;suffix&#93;&#93;&#91;&#43;z&#91;p&#93;&#93;&#36;</p>
-<p>Choose or inquire about suitable grid dimensions for FFT and set optional parameters. Control the FFT dimension:   &#40;http://docs.generic-mapping-tools.org/latest/gravfft.html#n&#41;</p>
+<p>Choose or inquire about suitable grid dimensions for FFT and set optional parameters. Control the FFT dimension:</p>
 </li>
 <li><p><strong>Q</strong> | <strong>flex_topo</strong> | <strong>flexural_topography</strong> :: &#91;Type &#61;&gt; Bool&#93;</p>
-<p>Computes grid with the flexural topography.   &#40;http://docs.generic-mapping-tools.org/latest/gravfft.html#q&#41;</p>
+<p>Computes grid with the flexural topography.</p>
 </li>
 <li><p><strong>S</strong> | <strong>subplate</strong> | <strong>subplate_load</strong> :: &#91;Type &#61;&gt; Bool&#93;</p>
-<p>Computes predicted gravity or geoid grid due to a subplate load produced by the current bathymetry and the theoretical model.   &#40;http://docs.generic-mapping-tools.org/latest/gravfft.html#s&#41;</p>
+<p>Computes predicted gravity or geoid grid due to a subplate load produced by the current bathymetry and the theoretical model.</p>
 </li>
 <li><p><strong>T</strong> | <strong>topo_load</strong> :: &#91;Type &#61;&gt; Str&#93;</p>
-<p>Compute the isostatic compensation from the topography load &#40;input grid file&#41; on an elastic plate of thickness <code>te</code>.   &#40;http://docs.generic-mapping-tools.org/latest/gravfft.html#t&#41;</p>
+<p>Compute the isostatic compensation from the topography load &#40;input grid file&#41; on an elastic plate of thickness <code>te</code>.</p>
 </li>
 <li><p><strong>W</strong> | <strong>z_obs</strong> | <strong>observation_level</strong> :: &#91;Type &#61;&gt; Number&#93;</p>
-<p>Set water depth &#40;or observation height&#41; relative to topography in meters &#91;0&#93;. Append k to indicate km.   &#40;http://docs.generic-mapping-tools.org/latest/gravfft.html#w&#41;</p>
+<p>Set water depth &#40;or observation height&#41; relative to topography in meters &#91;0&#93;. Append k to indicate km.</p>
 </li>
 <li><p><strong>Z</strong> | <strong>moho_depth</strong> :: &#91;Type &#61;&gt; Number&#93;</p>
-<p>Moho &#91;and swell&#93; average compensation depths &#40;in meters positive down&#41;.   &#40;http://docs.generic-mapping-tools.org/latest/gravfft.html#z&#41;</p>
+<p>Moho &#91;and swell&#93; average compensation depths &#40;in meters positive down&#41;.</p>
 </li>
 <li><p><strong>V</strong> | <strong>verbose</strong> :: &#91;Type &#61;&gt; Bool or Str&#93;		&#36;Arg &#61; &#91;level&#93;&#36;</p>
 <p>Select verbosity level, which will send progress reports to stderr.</p>
@@ -410,41 +411,41 @@
 </div>
 <div class="doc-content"><pre><code>grdgravmag3d&#40;cmd0::String&#61;&quot;&quot;, arg1&#61;nothing, arg2&#61;nothing; kwargs...&#41;</code></pre>
 <p>Compute the gravity/magnetic anomaly of the volume contained between a surface provided by one grid and a plane, or between a top and a bottom surface provided by two grids.</p>
-<p>See full GMT &#40;not the <code>GMT.jl</code> one&#41; docs at <a href="http://docs.generic-mapping-tools.org/latest/grdgravmag3d.html"><code>grdgravmag3d</code></a></p>
+<p>See full GMT &#40;not the <code>GMT.jl</code> one&#41; docs at <a href="http://docs.generic-mapping-tools.org/latest/supplements/potential/grdgravmag3d.html"><code>grdgravmag3d</code></a></p>
 <h2>Parameters</h2>
 <ul>
 <li><p><strong>C</strong> | <strong>density</strong> :: &#91;Type &#61;&gt; Str | GMTgrid&#93;</p>
-<p>Sets body density in SI. Provide either a constant density or a grid with a variable one.   &#40;http://docs.generic-mapping-tools.org/latest/grdgravmag3d.html#c&#41;</p>
+<p>Sets body density in SI. Provide either a constant density or a grid with a variable one.</p>
 </li>
 <li><p><strong>F</strong> | <strong>track</strong> :: &#91;Type &#61;&gt; Str | Matrix | GMTdataset&#93;</p>
-<p>Provide locations where the anomaly will be computed. Note this option is mutually exclusive with <code>outgrid</code>.   &#40;http://docs.generic-mapping-tools.org/latest/grdgravmag3d.html#f&#41;</p>
+<p>Provide locations where the anomaly will be computed. Note this option is mutually exclusive with <code>outgrid</code>.</p>
 </li>
 <li><p><strong>G</strong> | <strong>save</strong> | <strong>outgrid</strong> | <strong>outfile</strong> :: &#91;Type &#61;&gt; Str&#93;</p>
-<p>Output grid file name. Note that this is optional and to be used only when saving   the result directly on disk. Otherwise, just use the G &#61; grdgravmag3d&#40;....&#41; form.   &#40;http://docs.generic-mapping-tools.org/latest/grdgravmag3d.html#g&#41;</p>
+<p>Output grid file name. Note that this is optional and to be used only when saving   the result directly on disk. Otherwise, just use the G &#61; grdgravmag3d&#40;....&#41; form.</p>
 </li>
 <li><p><strong>E</strong> | <strong>thickness</strong> :: &#91;Type &#61;&gt; Number&#93;</p>
-<p>Provide the layer thickness in m &#91;Default &#61; 500 m&#93;.   &#40;http://docs.generic-mapping-tools.org/latest/grdgravmag3d.html#e&#41;</p>
+<p>Provide the layer thickness in m &#91;Default &#61; 500 m&#93;.</p>
 </li>
 <li><p><strong>H</strong> | <strong>mag_params</strong> :: &#91;Type &#61;&gt; Number&#93;</p>
-<p>Sets parameters for computation of magnetic anomaly. Alternatively, provide a magnetic intensity grid.    &#40;http://docs.generic-mapping-tools.org/latest/grdgravmag3d.html#h&#41;</p>
+<p>Sets parameters for computation of magnetic anomaly. Alternatively, provide a magnetic intensity grid. </p>
 </li>
 <li><p><strong>I</strong> | <strong>inc</strong> | <strong>increment</strong> | <strong>spacing</strong> :: &#91;Type &#61;&gt; Str&#93;	&#36;Arg &#61; xinc&#91;unit&#93;&#91;&#43;e|n&#93;&#91;/yinc&#91;unit&#93;&#91;&#43;e|n&#93;&#93;&#93;&#36;</p>
-<p><em>x_inc</em> &#91;and optionally <em>y_inc</em>&#93; is the grid spacing. Optionally, append an increment unit.   &#40;http://docs.generic-mapping-tools.org/latest/grdgravmag3d.html#i&#41;</p>
+<p><em>x_inc</em> &#91;and optionally <em>y_inc</em>&#93; is the grid spacing. Optionally, append an increment unit.</p>
 </li>
 <li><p><strong>L</strong> | <strong>z_obs</strong> | <strong>observation_level</strong> :: &#91;Type &#61;&gt; Number&#93;</p>
-<p>Sets level of observation &#91;Default &#61; 0&#93;. That is the height &#40;z&#41; at which anomalies are computed.   &#40;http://docs.generic-mapping-tools.org/latest/grdgravmag3d.html#l&#41;</p>
+<p>Sets level of observation &#91;Default &#61; 0&#93;. That is the height &#40;z&#41; at which anomalies are computed.</p>
 </li>
 <li><p><strong>Q</strong> | <strong>pad</strong> :: &#91;Type &#61;&gt; Number&#93;</p>
-<p>Extend the domain of computation with respect to output <code>region</code>.   &#40;http://docs.generic-mapping-tools.org/latest/grdgravmag3d.html#q&#41;</p>
+<p>Extend the domain of computation with respect to output <code>region</code>.</p>
 </li>
 <li><p><strong>R</strong> | <strong>region</strong> | <strong>limits</strong> :: &#91;Type &#61;&gt; Str or list or GMTgrid|image&#93;	&#36;Arg &#61; &#40;xmin,xmax,ymin,ymax&#41;&#36;</p>
 <p>Specify the region of interest. Set to data minimum BoundinBox if not provided.</p>
 </li>
 <li><p><strong>S</strong> | <strong>radius</strong> :: &#91;Type &#61;&gt; Number&#93;</p>
-<p>Set search radius in km &#40;valid only in the two grids mode OR when <code>thickness</code>&#41; &#91;Default &#61; 30 km&#93;.   &#40;http://docs.generic-mapping-tools.org/latest/grdgravmag3d.html#s&#41;</p>
+<p>Set search radius in km &#40;valid only in the two grids mode OR when <code>thickness</code>&#41; &#91;Default &#61; 30 km&#93;.</p>
 </li>
 <li><p><strong>Z</strong> | <strong>z_level</strong> | <strong>reference_level</strong> :: &#91;Type &#61;&gt; Number&#93;</p>
-<p>Level of reference plane &#91;Default &#61; 0&#93;.   &#40;http://docs.generic-mapping-tools.org/latest/grdgravmag3d.html#z&#41;</p>
+<p>Level of reference plane &#91;Default &#61; 0&#93;.</p>
 </li>
 <li><p><strong>V</strong> | <strong>verbose</strong> :: &#91;Type &#61;&gt; Bool or Str&#93;		&#36;Arg &#61; &#91;level&#93;&#36;</p>
 <p>Select verbosity level, which will send progress reports to stderr.</p>
@@ -469,20 +470,20 @@
 </div>
 <div class="doc-content"><pre><code>grdrotater&#40;cmd0::String&#61;&quot;&quot;, arg1&#61;nothing; kwargs...&#41;</code></pre>
 <p>Takes a geographical grid and reconstructs it given total reconstruction rotations.</p>
-<p>See full GMT &#40;not the <code>GMT.jl</code> one&#41; docs at <a href="http://docs.generic-mapping-tools.org/latest/grdrotater.html"><code>grdrotater</code></a></p>
+<p>See full GMT &#40;not the <code>GMT.jl</code> one&#41; docs at <a href="http://docs.generic-mapping-tools.org/latest/supplements/spotter/grdrotater.html"><code>grdrotater</code></a></p>
 <h2>Parameters</h2>
 <ul>
 <li><p><strong>A</strong> | <strong>rot_region</strong> :: &#91;Type &#61;&gt; Str | Tuple | Vec&#93;</p>
-<p>Specify directly the region of the rotated grid.   &#40;http://docs.generic-mapping-tools.org/latest/grdrotater.html#a&#41;</p>
+<p>Specify directly the region of the rotated grid.</p>
 </li>
 <li><p><strong>D</strong> | <strong>rot_outline</strong> :: &#91;Type &#61;&gt; Bool or Str&#93;	&#36;Arg &#61; true | filename&#36;</p>
-<p>Name of the grid polygon outline file. This represents the outline of the grid reconstructed to the specified time.   &#40;http://docs.generic-mapping-tools.org/latest/grdrotater.html#d&#41;</p>
+<p>Name of the grid polygon outline file. This represents the outline of the grid reconstructed to the specified time.</p>
 </li>
 <li><p><strong>F</strong> | <strong>rot_polyg</strong> | <strong>rot_polygon</strong> :: &#91;Type &#61;&gt; Str | GMTdaset | Mx2 array&#93;	&#36;Arg &#61; filename | dataset&#41;&#36;</p>
-<p>Specify a multisegment closed polygon file that describes the inside area of the grid that should be rotated.   &#40;http://docs.generic-mapping-tools.org/latest/grdrotater.html#f&#41;</p>
+<p>Specify a multisegment closed polygon file that describes the inside area of the grid that should be rotated.</p>
 </li>
 <li><p><strong>G</strong> | <strong>save</strong> | <strong>outgrid</strong> | <strong>outfile</strong> :: &#91;Type &#61;&gt; Str&#93;</p>
-<p>Output grid file name. Note that this is optional and to be used only when saving   the result directly on disk. Otherwise, just use the G &#61; grdrotater&#40;....&#41; form.   &#40;http://docs.generic-mapping-tools.org/latest/grdrotater.html#g&#41;</p>
+<p>Output grid file name. Note that this is optional and to be used only when saving   the result directly on disk. Otherwise, just use the G &#61; grdrotater&#40;....&#41; form.</p>
 </li>
 <li><p><strong>R</strong> | <strong>region</strong> | <strong>limits</strong> :: &#91;Type &#61;&gt; Str or list or GMTgrid|image&#93;	&#36;Arg &#61; &#40;xmin,xmax,ymin,ymax&#41;&#36;</p>
 <p>Specify the region of interest. Set to data minimum BoundinBox if not provided.</p>
@@ -529,7 +530,7 @@ imshow&#40;Gr, plot&#61;&#40;data&#61;tri_rot,&#41;&#41;</code></pre>
 </div>
 <div class="doc-content"><pre><code>meca&#40;cmd0::String&#61;&quot;&quot;, arg1&#61;nothing; kwargs...&#41;</code></pre>
 <p>Plot focal mechanisms.</p>
-<p>See full GMT &#40;not the <code>GMT.jl</code> one&#41; docs at <a href="http://docs.generic-mapping-tools.org/latest/meca.html"><code>meca</code></a></p>
+<p>See full GMT &#40;not the <code>GMT.jl</code> one&#41; docs at <a href="http://docs.generic-mapping-tools.org/latest/supplements/seis/meca.html"><code>meca</code></a></p>
 <h2>Parameters</h2>
 <ul>
 <li><p><strong>J</strong> | <strong>proj</strong> | <strong>projection</strong> :: &#91;Type &#61;&gt; String&#93;</p>
@@ -542,43 +543,46 @@ imshow&#40;Gr, plot&#61;&#40;data&#61;tri_rot,&#41;&#41;</code></pre>
 <p>Set map boundary frame and axes attributes.</p>
 </li>
 <li><p><strong>A</strong> | <strong>offset</strong> :: &#91;Type &#61;&gt; Bool | Str | GMTcpt&#93;</p>
-<p>Offsets focal mechanisms to the longitude, latitude specified in the last two columns of the input   &#40;http://docs.generic-mapping-tools.org/latest/meca.html#a&#41;</p>
+<p>Offsets focal mechanisms to the longitude, latitude specified in the last two columns of the input</p>
 </li>
 <li><p><strong>C</strong> | <strong>color</strong> | <strong>cmap</strong> :: &#91;Type &#61;&gt; Number | Str | GMTcpt&#93;</p>
-<p>Give a CPT and let compressive part color be determined by the z-value in the third column.    &#40;http://docs.generic-mapping-tools.org/latest/meca.html#c&#41;</p>
+<p>Give a CPT and let compressive part color be determined by the z-value in the third column. </p>
 </li>
 <li><p><strong>D</strong> | <strong>depth_limits</strong> :: &#91;Type &#61;&gt; Str | Tuple&#93;</p>
-<p>Plots events between depmin and depmax.   &#40;http://docs.generic-mapping-tools.org/latest/meca.html#d&#41;</p>
+<p>Plots events between depmin and depmax.</p>
 </li>
-<li><p><strong>E</strong> | <strong>fill_extensive</strong> :: &#91;Type &#61;&gt; Str | Number&#93;</p>
-<p>Selects filling of extensive quadrants. &#91;Default is white&#93;.   &#40;http://docs.generic-mapping-tools.org/latest/meca.html#e&#41;</p>
+<li><p><strong>E</strong> | <strong>fill_extensive</strong> | <strong>extensionfill</strong> :: &#91;Type &#61;&gt; Str | Number&#93;</p>
+<p>Selects filling of extensive quadrants. &#91;Default is white&#93;.</p>
 </li>
 <li><p><strong>Fa</strong> | <strong>Fe</strong> | <strong>Fg</strong> | <strong>Fo</strong> | <strong>Fp</strong> | <strong>Fr</strong> | <strong>Ft</strong> | <strong>Fz</strong> :: &#91;Type &#61;&gt; &#93;</p>
-<p>Sets one or more attributes.   &#40;http://docs.generic-mapping-tools.org/latest/meca.html#f&#41;</p>
+<p>Sets one or more attributes.</p>
 </li>
-<li><p><strong>G</strong> | <strong>fill</strong> :: &#91;Type &#61;&gt; Str | Number&#93;</p>
-<p>Selects shade, color or pattern for filling the sectors &#91;Default is no fill&#93;.   &#40;http://docs.generic-mapping-tools.org/latest/meca.html#g&#41;</p>
+<li><p><strong>G</strong> | <strong>fill</strong> | <strong>compressionfill</strong> :: &#91;Type &#61;&gt; Str | Number&#93;</p>
+<p>Selects shade, color or pattern for filling the sectors &#91;Default is no fill&#93;.</p>
 </li>
 <li><p><strong>P</strong> | <strong>portrait</strong> :: &#91;Type &#61;&gt; Bool or &#91;&#93;&#93;</p>
 <p>Tell GMT to <strong>NOT</strong> draw in portrait mode &#40;that is, make a Landscape plot&#41;</p>
 </li>
 <li><p><strong>L</strong> | <strong>outline_pen</strong> | <strong>pen_outline</strong> :: &#91;Type &#61;&gt; Str | Number | Tuple&#93;</p>
-<p>Draws the “beach ball” outline with pen attributes instead of with the default pen set by <strong>pen</strong>   &#40;http://docs.generic-mapping-tools.org/latest/meca.html#l&#41;</p>
+<p>Draws the “beach ball” outline with pen attributes instead of with the default pen set by <strong>pen</strong></p>
 </li>
 <li><p><strong>M</strong> | <strong>same_size</strong> | <strong>samesize</strong> :: &#91;Type &#61;&gt; Bool&#93;</p>
-<p>Use the same size for any magnitude. Size is given with <strong>S</strong>   &#40;http://docs.generic-mapping-tools.org/latest/meca.html#m&#41;</p>
+<p>Use the same size for any magnitude. Size is given with <strong>S</strong></p>
 </li>
 <li><p><strong>N</strong> | <strong>no_clip</strong> | <strong>noclip</strong> :: &#91;Type &#61;&gt; Str | &#91;&#93;&#93;</p>
-<p>Do NOT skip symbols that fall outside frame boundary.   &#40;http://docs.generic-mapping-tools.org/latest/meca.html#n&#41;</p>
+<p>Do NOT skip symbols that fall outside frame boundary.</p>
 </li>
 <li><p><strong>Sc|aki</strong> | <strong>Sc|CMT|gcmt</strong> | <strong>Sm|mt|moment_tensor</strong> | ... :: &#91;Type &#61;&gt; Str&#93;</p>
-<p>Selects the meaning of the columns in the input data.   &#40;http://docs.generic-mapping-tools.org/latest/meca.html#s&#41;</p>
+<p>Selects the meaning of the columns in the input data.</p>
+</li>
+<li><p>**convention&#61;:Sa|:aki|:Sc|:CMT|:gcmt|:Sm|:mt|:moment<em>tensor|:Sd|:mt</em>closest|:moment<em>closest|:Sz|:mt</em>deviatoric :moment<em>deviatoric|:Sp :partial|:Sx|:principal|:principal</em>axis|:Sy|:principal<em>closest|:St|:principal</em>deviatoric</p>
+<p>Alternative way of selecting the meaning of the columns in the input data.</p>
 </li>
 <li><p><strong>T</strong> | <strong>nodal</strong> :: &#91;Type &#61;&gt; Number | Str&#93;</p>
-<p>Plots the nodal planes and outlines the bubble which is transparent.   &#40;http://docs.generic-mapping-tools.org/latest/meca.html#t&#41;</p>
+<p>Plots the nodal planes and outlines the bubble which is transparent.</p>
 </li>
 <li><p><strong>W</strong> | <strong>pen</strong> :: &#91;Type &#61;&gt; Str | Tuple&#93;</p>
-<p>Set pen attributes for all lines and the outline of symbols.   &#40;http://docs.generic-mapping-tools.org/latest/meca.html#w&#41;</p>
+<p>Set pen attributes for all lines and the outline of symbols.</p>
 </li>
 <li><p><strong>U</strong> | <strong>time_stamp</strong> | <strong>timestamp</strong> :: &#91;Type &#61;&gt; Str or Bool or &#91;&#93;&#93;	&#36;Arg &#61; &#91;&#91;just&#93;/dx/dy/&#93;&#91;c|label&#93;&#36;</p>
 <p>Draw GMT time stamp logo on plot.</p>
@@ -627,7 +631,7 @@ imshow&#40;Gr, plot&#61;&#40;data&#61;tri_rot,&#41;&#41;</code></pre>
 </div>
 <div class="doc-content"><pre><code>velo&#40;cmd0::String&#61;&quot;&quot;, arg1&#61;nothing; kwargs...&#41;</code></pre>
 <p>Plot velocity vectors, crosses, and wedges.</p>
-<p>See full GMT &#40;not the <code>GMT.jl</code> one&#41; docs at <a href="http://docs.generic-mapping-tools.org/latest/velo.html"><code>velo</code></a></p>
+<p>See full GMT &#40;not the <code>GMT.jl</code> one&#41; docs at <a href="http://docs.generic-mapping-tools.org/latest/supplements/seis/velo.html"><code>velo</code></a></p>
 <pre><code class="language-julia">    velo&#40;mat2ds&#40;&#91;0. -8 0 0 4 6 0.5; -8 5 3 3 0 0 0.5&#93;, &#91;&quot;4x6&quot;, &quot;3x3&quot;&#93;&#41;, pen&#61;&#40;0.6,:red&#41;, fill_wedges&#61;:green, outlines&#61;true, Se&#61;&quot;0.2/0.39/18&quot;, arrow&#61;&quot;0.3c&#43;p1p&#43;e&#43;gred&quot;, region&#61;&#40;-15,10,-10,10&#41;, show&#61;1&#41;</code></pre>
 
 
@@ -636,7 +640,7 @@ imshow&#40;Gr, plot&#61;&#40;data&#61;tri_rot,&#41;&#41;</code></pre>
 
 <div class="page-foot">
   <div class="copyright">
-    &copy; GMT.jl. Last modified: March 28, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+    &copy; GMT.jl. Last modified: May 10, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
       <p>These docs were autogenerated using GMT: v0.44.8</p>
   </div>
 </div>

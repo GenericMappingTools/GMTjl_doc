@@ -185,6 +185,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\contour">contour</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\contourf">contourf</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\cornerplot">cornerplot</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\earthregions">earthregions</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\ecdfplot">ecdfplot</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\feather">feather</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\fill_between">fill_between</a></div></li>
@@ -286,17 +287,23 @@
 </li>
 </ul>
 <ul>
-<li><p><strong>G</strong> or <strong>save</strong> or <strong>outgrid</strong> or <strong>outfile</strong> : – <em>save&#61;file_name.grd</em><br />  Write one or more fields directly to grids on disk; no data is returned to the Julia REPL.   If more than one fields are specified via <strong>fields</strong> then <em>file_name</em> must contain the format flag   &#37;s so that we can embed the field code in the file names.</p>
+<li><p><strong>G</strong> or <strong>save</strong> or <strong>outgrid</strong> or <strong>outfile</strong> : – <em>save&#61;file_name.grd</em><br />  Write one or more fields directly to grids on disk or return them to the Julia REPL as grid objects.   If more than one field is specified via <strong>fields</strong> then <em>file_name</em> must contain the format flag   &#37;s so that we can embed the field code in the file names.</p>
 </li>
 </ul>
 
 <ul>
 <li><p><strong>D</strong> or <strong>find&#95;dir</strong> : – <em>find&#95;dir&#61;true</em> <strong>|</strong> <em>find&#95;dir&#61;:a</em> <strong>|</strong> <em>find&#95;dir&#61;:c</em> <strong>|</strong> <em>find&#95;dir&#61;:o</em> <strong>|</strong> <em>find&#95;dir&#61;:n</em> <strong>|</strong> <em>find&#95;dir&#61;acon</em><br />  Find the direction of the positive &#40;up-slope&#41; gradient of the data. To instead find the aspect &#40;the down-slope direction&#41;, use <strong>find&#95;dir&#61;:a</strong>. By default, directions are measured clockwise from north, as <em>azim</em> in <strong>azim</strong> above. Use <strong>find&#95;dir&#61;:c</strong> to use conventional Cartesian angles measured counterclockwise from the positive x &#40;east&#41; direction. Use <strong>find&#95;dir&#61;:o</strong> to report orientations &#40;0-180&#41; rather than directions &#40;0-360&#41;. Use <strong>find&#95;dir&#61;:n</strong> to add 90 degrees to all angles &#40;e.g., to give local strikes of the surface&#41;. Note, you can combine two or more options by cating the single flgas in a word, &#40;<em>e.g.</em> <strong>find&#95;dir&#61;:on</strong>&#41;</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>E</strong> or <strong>lambert</strong> : – <em>lambert&#61;&#40;&#91;simple&#61;true, peucker&#61;true, manip&#61;true,&#93; view&#61;&#40;azim,elev&#41; &#91;,ambient&#61;val, difuse&#61;val, specular&#61;val, shine&#61;val&#93;&#41;</em><br />  Compute Lambertian radiance appropriate to use with <a href="/GMTjl_doc/documentation/modules/grdimage/index.html#grdimage">grdimage</a> and <a href="/GMTjl_doc/documentation/modules/grdview/index.html#grdview">grdview</a>. The Lambertian Reflection assumes an ideal surface that reflects all the light that strikes it and the surface appears equally bright from all viewing directions. Here, <em>azim</em> and <em>elev</em> are the azimuth and elevation of the light vector. Optionally, supply <em>ambient</em> &#91;0.55&#93;, <em>diffuse</em> &#91;0.6&#93;, <em>specular</em> &#91;0.4&#93;, or <em>shine</em> &#91;10&#93;, which are parameters that control the reflectance properties of the surface. Default values are given in the brackets. Use <strong>lambert&#61;&#40;simple&#61;true, view&#61;&#40;azim,elev&#41;&#41;</strong> for a simpler Lambertian algorithm. Note that with this form you only have to provide azimuth and elevation. Alternatively, use <strong>lambert&#61;&#40;peucker&#61;true,&#41;</strong> for the Peucker piecewise linear approximation &#40;simpler but faster algorithm; in this case the <em>azim</em> and <em>elev</em> are hardwired to 315 and 45 degrees. This means that even if you provide other values they will be ignored. The <strong>lambert&#61;&#40;manip&#61;true,&#41;</strong> uses another algorithm that gives results close to ESRI&#39;s hillshade but faster. In this case the azimuth and elevation are hardwired to 315 and 45 degrees.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>N</strong> or <strong>norm</strong> or <strong>normalize</strong> : – <em>norm&#61;&#40;&#91;laplace&#61;true, cauchy&#61;true,&#93; &#91;amp&#61;val,&#93; &#91;sigma&#61;val, offset&#61;val&#93;&#41;</em><br />  Normalization. &#91;Default is no normalization.&#93; The actual gradients <em>g</em> are offset and scaled to produce normalized gradients <em>gn</em> with a maximum output magnitude of <em>amp</em>. If <em>amp</em> is not given, default <em>amp</em> &#61; 1. If <em>offset</em> is not given, it is set to the average of <em>g</em>. <strong>norm&#61;true</strong> yields <em>gn &#61; amp &#93;</em> &#40;g - offset&#41;/max&#40;abs&#40;g - offset&#41;&#41;<em>. <strong>norm&#61;&#40;laplace&#61;true,&#41;</strong> normalizes using a cumulative Laplace distribution yielding *gn</em> &#61; <em>amp</em> &#42; &#40;1.0 - exp&#40;sqrt&#40;2&#41; &#42; &#40;<em>g</em> - <em>offset</em>&#41;/ <em>sigma</em>&#41;&#41;, where <em>sigma</em> is estimated using the L1 norm of &#40;<em>g</em> - <em>offset</em>&#41; if it is not given. <strong>norm&#61;&#40;cauchy&#61;true,&#41;</strong> normalizes using a cumulative Cauchy distribution yielding <em>gn</em> &#61; &#40;2 &#42;<em>amp</em> / PI&#41; &#42; atan&#40; &#40;<em>g</em> - <em>offset</em>&#41;/ <em>sigma</em>&#41; where <em>sigma</em> is estimated using the L2 norm of &#40;<em>g</em> - <em>offset</em>&#41; if it is not given. To use <em>offset</em> and/or <em>sigma</em> from a previous calculation, leave out the argument to the modifier&#40;s&#41; &#40;<em>e.g.</em> set them to &quot;&quot;&#41; and see <strong>save&#95;stats</strong> for usage.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>Q</strong> or <strong>save&#95;stats</strong> : – <em>save&#95;stats&#61;:save</em> <strong>|</strong> <em>save&#95;stats&#61;:read</em> <strong>|</strong> <em>save&#95;stats&#61;:Read</em><br />  Controls how normalization via <strong>norm</strong> is carried out.  When multiple grids should be normalized the same way &#40;i.e., with the same <em>offset</em> and/or <em>sigma</em>&#41;, we must pass these values via <strong>norm</strong>.  However, this is inconvenient if we compute these values from a grid. Use <strong>save&#95;stats&#61;:save</strong> to save the results of <em>offset</em> and <em>sigma</em> to a statistics file; if grid output is not needed for this run then specify <strong>outgrid&#61;:none</strong>. For subsequent runs, just use <strong>save&#95;stats&#61;:read</strong> to read these values. Using <strong>save&#95;stats&#61;:Read</strong> will read then delete the statistics file. See TILES for more information. &#40;Warning: this option is available on GMT6 only&#41;</p>
 </li>
 </ul>
@@ -336,7 +343,7 @@
 <p>Horn, B.K.P., Hill-Shading and the Reflectance Map, Proceedings of the IEEE, Vol. 69, No. 1, January 1981, pp. 14-47. &#40;http://people.csail.mit.edu/bkph/papers/Hill-Shading.pdf&#41;</p>
 <div class="page-foot">
   <div class="copyright">
-    &copy; GMT.jl. Last modified: March 28, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+    &copy; GMT.jl. Last modified: May 10, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
       <p>These docs were autogenerated using GMT: v0.44.8</p>
   </div>
 </div>

@@ -185,6 +185,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\contour">contour</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\contourf">contourf</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\cornerplot">cornerplot</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\earthregions">earthregions</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\ecdfplot">ecdfplot</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\feather">feather</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\fill_between">fill_between</a></div></li>
@@ -273,7 +274,7 @@
 
 <!-- Content appended here -->
 <div class="franklin-content"><h1 id="grd2xyz"><a href="#grd2xyz" class="header-anchor">grd2xyz</a></h1>
-<p>	grd2xyz&#40;cmd0::String&#61;&quot;&quot;, arg1&#61;nothing, kwargs...&#41;</p>
+<pre><code class="language-julia">grd2xyz&#40;cmd0::String&#61;&quot;&quot;, arg1&#61;nothing, kwargs...&#41;</code></pre>
 <p>Convert grid to data table</p>
 <h2>Description</h2>
 <p>Reads a grid &#40;from file or a Grid type object&#41; and writes out xyz-triplets in ASCII &#91;or binary&#93; format to file or return them as a Julia variable. Modify the precision of the ASCII output format by editing the <code>FORMAT_FLOAT_OUT</code> parameter in your <code>gmt.conf</code> file or use <strong>par&#61;&#40;FORMAT<em>FLOAT</em>OUT&#61;format,&#41;</strong> or choose binary output using single or double precision storage. As an option you may output z-values without the &#40;x,y&#41; coordinates &#40;see <strong>onecol</strong> below&#41; or you can save the grid in the STL format for 3-D printers.</p>
@@ -283,6 +284,8 @@
 <ul>
 <li><p><strong>C</strong> or <strong>rcnumbers</strong> : – <em>rcnumbers&#61;true</em> <strong>|</strong> <em>rcnumbers&#61;:f|:i</em><br />  Replace the x- and y-coordinates on output with the corresponding column and row numbers.   These start at 0 &#40;C-style counting&#41;; use <strong>rcnumbers&#61;:f</strong> to start at 1 &#40;Fortran-style counting&#41;.   Alternatively, use <strong>rcnumbers&#61;:i</strong> to write just the two columns <em>index</em> and <em>z</em>, where   <em>index</em> is the 1-D indexing that GMT uses when referring to grid nodes.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>L</strong> or <strong>hvline</strong> : – <em>hvline&#61;:c|:r|:x|:yvalue</em><br />  Limit the output of records to a single row or column. Identify the desired vector either by   <em>row</em> or <em>column</em> number &#40;via directives <strong>:c</strong> or <strong>:r</strong>&#41;, or by the constant <em>x</em> or <em>y</em>   value &#40;via directives <strong>:x</strong> or <strong>:y</strong>&#41;. If your selection is outside the valid range then   no output will result and a warning is issued. <strong>Note</strong>: For directives <strong>:x</strong> and <strong>:y</strong>   we find the nearest column or row, respectively.</p>
 </li>
 </ul>
@@ -291,7 +294,10 @@
 </li>
 </ul>
 
-<p><strong>T</strong> or <strong>stl</strong> or <strong>STL</strong> : – <em>STL&#61;true</em> <strong>|</strong> <em>STL&#61;&#91;:b&#93;&#91;base&#93;</em><br />    Write STL triangulation for 3-D printing to standard output. By default we write an STL ASCII file.     Append <strong>b</strong> to instead write the STL binary &#40;little-endian&#41; format. For more information on STL, see the     <a href="https://en.wikipedia.org/wiki/STL_&#40;file_format&#41;">STL overview on Wikipedia</a>. <strong>Note</strong>: All coordinates are     adjusted so that <em>xmin &#61; ymin &#61; zmin &#61; 0</em>. For other adjustments, see <a href="/GMTjl_doc/documentation/modules/grdedit/index.html#grdedit">grdedit</a> and <a href="#">grdproject</a>     Optionally, append a lower <em>base</em> other than the grid&#39;s minimum value &#91;Default&#93;. <strong>Note</strong>: The grid must be free     of NaN values. If your grid contains NaNs then we automatically replace these with the minimum value in the grid.</p>
+<ul>
+<li><p><strong>T</strong> or <strong>stl</strong> or <strong>STL</strong> : – <em>STL&#61;true</em> <strong>|</strong> <em>STL&#61;&#91;:b&#93;&#91;base&#93;</em><br />  Write STL triangulation for 3-D printing to standard output. By default we write an STL ASCII file.   Append <strong>b</strong> to instead write the STL binary &#40;little-endian&#41; format. For more information on STL, see the   <a href="https://en.wikipedia.org/wiki/STL_&#40;file_format&#41;">STL overview on Wikipedia</a>. <strong>Note</strong>: All coordinates are   adjusted so that <em>xmin &#61; ymin &#61; zmin &#61; 0</em>. For other adjustments, see <a href="/GMTjl_doc/documentation/modules/grdedit/index.html#grdedit">grdedit</a> and <a href="#">grdproject</a>   Optionally, append a lower <em>base</em> other than the grid&#39;s minimum value &#91;Default&#93;. <strong>Note</strong>: The grid must be free   of NaN values. If your grid contains NaNs then we automatically replace these with the minimum value in the grid.</p>
+</li>
+</ul>
 <ul>
 <li><p><strong>V</strong> or <em>verbose</em> : – <em>verbose&#61;true</em> <strong>|</strong> <em>verbose&#61;level</em><br /> Select verbosity level. More at <a href="/GMTjl_doc/documentation/common_opts/common_opts/index.html#verbose">verbose</a></p>
 </li>
@@ -300,34 +306,28 @@
 <ul>
 <li><p><strong>W</strong> or <strong>weight</strong> : – <em>weight&#61;true</em> <strong>|</strong> <em>weight&#61;:a&#91;&#43;uunit&#93;</em> <strong>|</strong> <em>weight&#61;weight</em><br />  Write out <em>x,y,z,w</em>, where <em>w</em> is the supplied <em>weight</em> &#40;or 1 if not supplied&#41; &#91;Default writes   <em>x,y,z</em> only&#93;. Choose <strong>weight&#61;:a</strong> to compute weights equal to the area each node represents.   For Cartesian grids this is simply the product of the <em>x</em> and <em>y</em> increments &#40;except for   gridline-registered grids at all sides &#91;half&#93; and corners &#91;quarter&#93;&#41;. For geographic grids we   default to a length unit of <strong>k</strong> &#40;hence area is in km^2&#41;. Change this by appending <strong>&#43;u</strong>unit   &#40;see <a href="/GMTjl_doc/documentation/common_features/units/index.html#units">Units</a>&#41;. For such grids, the area varies with latitude and also sees special cases   for gridline-registered layouts at sides, corners, and poles.</p>
 </li>
-<li><p><strong>Z</strong> or <strong>onecol</strong> : – <em>onecol&#61;&quot;flags&quot;</em><br />  Write &#40;or return&#41; a 1-column table. Output will be organized according to the specified ordering   convention contained in <em>flags</em>. If data should be written by rows, make <em>flags</em> start with   <strong>T</strong> &#40;op&#41; if first row is y &#61; ymax or <strong>B</strong> &#40;ottom&#41; if first row is y &#61; ymin. Then, append <strong>L</strong>   or <strong>R</strong> to indicate that first element should start at left or right end of row. Likewise for   column formats: start with <strong>L</strong> or <strong>R</strong> to position first column, and then append <strong>T</strong> or <strong>B</strong>   to position first element in a row. For gridline registered grids: If grid is periodic in x but the   written data should not contain the &#40;redundant&#41; column at x &#61; xmax, append <strong>x</strong>. For grid periodic   in y, skip writing the redundant row at y &#61; ymax by appending <strong>y</strong>. If the byte-order needs to be   swapped, append <strong>w</strong>. Select one of several data types &#40;all binary except <strong>a</strong>&#41;:</p>
+</ul>
 <ul>
-<li><p><strong>a</strong> ASCII representation of a single item per record</p>
-</li>
-<li><p><strong>c</strong> int8_t, signed 1-byte character</p>
-</li>
-<li><p><strong>u</strong> uint8_t, unsigned 1-byte character</p>
-</li>
-<li><p><strong>h</strong> int16_t, short 2-byte integer</p>
-</li>
-<li><p><strong>H</strong> uint16_t, unsigned short 2-byte integer</p>
-</li>
-<li><p><strong>i</strong> int32_t, 4-byte integer</p>
-</li>
-<li><p><strong>I</strong> uint32_t, unsigned 4-byte integer</p>
-</li>
-<li><p><strong>l</strong> int64_t, long &#40;8-byte&#41; integer</p>
-</li>
-<li><p><strong>L</strong> uint64_t, unsigned long &#40;8-byte&#41; integer</p>
-</li>
-<li><p><strong>f</strong> 4-byte floating point single precision</p>
-</li>
-<li><p><strong>d</strong> 8-byte floating point double precision</p>
+<li><p><strong>Z</strong> or <strong>onecol</strong> : – <em>onecol&#61;&quot;flags&quot;</em><br />  Write &#40;or return&#41; a 1-column table. Output will be organized according to the specified ordering   convention contained in <em>flags</em>. If data should be written by rows, make <em>flags</em> start with   <strong>T</strong> &#40;op&#41; if first row is y &#61; ymax or <strong>B</strong> &#40;ottom&#41; if first row is y &#61; ymin. Then, append <strong>L</strong>   or <strong>R</strong> to indicate that first element should start at left or right end of row. Likewise for   column formats: start with <strong>L</strong> or <strong>R</strong> to position first column, and then append <strong>T</strong> or <strong>B</strong>   to position first element in a row. For gridline registered grids: If grid is periodic in x but the   written data should not contain the &#40;redundant&#41; column at x &#61; xmax, append <strong>x</strong>. For grid periodic   in y, skip writing the redundant row at y &#61; ymax by appending <strong>y</strong>. If the byte-order needs to be   swapped, append <strong>w</strong>. Select one of several data types &#40;all binary except <strong>a</strong>&#41;:</p>
 </li>
 </ul>
-<p>Default format is scanline orientation of ASCII numbers: <strong>onecol&#61;:TLa</strong>.</p>
-<p><strong>NOTE</strong>, to write on a disk file one must use the <strong>save&#61;&quot;file&quot;</strong> option, otherwise data is return to   Julia and the type options above are ignored. In that case, data is always Float64. </p>
-</li>
+<p>* **a** ASCII representation of a single item per record
+* **c** int8_t, signed 1-byte character
+* **u** uint8_t, unsigned 1-byte character
+* **h** int16_t, short 2-byte integer
+* **H** uint16_t, unsigned short 2-byte integer
+* **i** int32_t, 4-byte integer
+* **I** uint32_t, unsigned 4-byte integer
+* **l** int64_t, long &#40;8-byte&#41; integer
+* **L** uint64_t, unsigned long &#40;8-byte&#41; integer
+* **f** 4-byte floating point single precision
+* **d** 8-byte floating point double precision
+
+Default format is scanline orientation of ASCII numbers: **onecol&#61;:TLa**.
+
+**NOTE**, to write on a disk file one must use the **save&#61;&quot;file&quot;** option, otherwise data is return to
+Julia and the type options above are ignored. In that case, data is always Float64.</p>
+<ul>
 <li><p><strong>name</strong> or <strong>save</strong> : – <em>save&#61;&quot;file&quot;</em><br /> Save data to disk <em>file</em> with <strong>save&#61;&quot;file&quot;</strong>.</p>
 </li>
 </ul>
@@ -385,7 +385,7 @@
 <p><a href="/GMTjl_doc/documentation/modules/grdedit/index.html#grdedit">grdedit</a>, <a href="#">grdconvert</a>, <a href="/GMTjl_doc/documentation/modules/xyz2grd/index.html#xyz2grd">xyz2grd</a></p>
 <div class="page-foot">
   <div class="copyright">
-    &copy; GMT.jl. Last modified: March 28, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+    &copy; GMT.jl. Last modified: May 24, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
       <p>These docs were autogenerated using GMT: v0.44.8</p>
   </div>
 </div>

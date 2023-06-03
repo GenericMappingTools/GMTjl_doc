@@ -188,6 +188,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\contour">contour</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\contourf">contourf</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\cornerplot">cornerplot</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\earthregions">earthregions</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\ecdfplot">ecdfplot</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\feather">feather</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\fill_between">fill_between</a></div></li>
@@ -273,7 +274,7 @@
 
 <!-- Content appended here -->
 <div class="franklin-content"><h1 id="blockmode"><a href="#blockmode" class="header-anchor">blockmode</a></h1>
-<p>blockmode&#40;cmd0::String&#61;&quot;&quot;, arg1&#61;nothing; kwargs...&#41;</p>
+<pre><code class="language-julia">blockmode&#40;cmd0::String&#61;&quot;&quot;, arg1&#61;nothing; kwargs...&#41;</code></pre>
 <h2>Description</h2>
 <p>Block average &#40;x,y,z&#41; data tables by mode estimation.</p>
 <p>Reads arbitrarily located &#40;x,y,z&#41; triples &#91;or optionally weighted quadruples &#40;x,y,z,w&#41;&#93; and computes a mode position and value for every non-empty block in a grid region defined by the <strong>region</strong> and <strong>increment</strong> parameters.</p>
@@ -292,25 +293,39 @@
 
 <h2>Optional Arguments</h2>
 <ul>
-<li><p><strong>A</strong> or <strong>field</strong> or <strong>fields</strong>: – <em>field&#61;mode|scale|highest|lowest|weights</em><br />  Output is a grid with one of the select fields. <code>field&#61;mode</code> writes the modal data <em>z</em>. Other options are:   <em>scale</em> &#40;the L1 scale of the mode&#41;, <em>lowest</em> &#40;lowest value&#41;, <em>highest</em> &#40;highest value&#41; and <em>weights</em> &#40;the output weight;   requires the <strong>weights</strong> option&#41;. The deafault is <code>field&#61;mode</code>. Alternatively, one can use a condensed   form which uses the first character &#40;except the mean&#41; of the above options, separated by commas, to compute more than one grid.   For example: <code>fields&#61;&quot;z,h&quot;</code> computes two grids; one with the modes and the other with the highest values in blocks.</p>
-</li>
-<li><p><strong>C</strong> or <strong>center</strong> : – <em>center&#61;true</em><br />  Use the center of the block as the output location &#91;Default uses the modal xy location &#40;but see <strong>quick</strong>&#41;&#93;.   <strong>center</strong> overrides <strong>quick</strong>.</p>
-</li>
-<li><p><strong>D</strong> or <strong>histogram_binning</strong> : – <em>histogram_binning&#61;true</em> <strong>|</strong> <em>histogram_binning&#61;&#91;width&#93;&#91;&#43;c&#93;&#91;&#43;a|&#43;l|&#43;h&#93;</em><br />  Perform unweighted mode calculation via histogram binning, using the specified histogram <code>width</code>. Append <strong>&#43;c</strong>   to center bins so that their mid point is a multiple of width &#91;uncentered&#93;. If multiple modes are found for a block   we return the average mode &#91;<strong>&#43;a</strong>&#93;. Append <strong>&#43;l</strong> or <strong>&#43;h</strong> to return the low of high mode instead, respectively. If width   is not given it will default to 1 provided your data set only contains integers. Also, for integer data and integer   bin width we enforce bin centering &#40;<strong>&#43;c</strong>&#41; and select the lowest mode &#40;<strong>&#43;l</strong>&#41; if there are multiples.   Default mode is normally the Least Median of Squares &#40;LMS&#41; statistic.</p>
-</li>
-<li><p><strong>E</strong> or <strong>extend</strong> : –- <em>extend&#61;true</em> <strong>|</strong> <em>extend&#61;&quot;r|s&#91;&#43;l|&#43;h&#93;&quot;</em><br />  Provide Extended report which includes <strong>s</strong> &#40;the L1 scale of the mode&#41;,   <strong>l</strong>, the lowest value, and <strong>h</strong>, the high value for each block. Output order becomes <em>x,y,z,s,l,h</em>&#91;,<em>w</em>&#93;. Default outputs   <em>x,y,z</em>&#91; ,<em>w</em>&#93;. See <strong>weights</strong> for enabling <em>w</em> output.</p>
-<p>If <code>extend&#61;&quot;r|s&#91;&#43;l|&#43;h&#93;&quot;</code> is used then provide source id <strong>s</strong> or record number <strong>r</strong> output, i.e., append the   source id or record number associated with the median value. If tied then report the record number of the higher   of the two values &#40;i.e., <strong>&#43;h</strong> is the default&#41;; append <strong>&#43;l</strong> to instead report the record number of the lower value.</p>
-<p>Note that <strong>extend</strong> may be repeated so that both <code>extend&#61;true</code> and <code>extend&#61;&quot;r&#91;&#43;l|&#43;h&#93;&quot;</code> can be specified.   But in this case &#40;repeated <strong>extend</strong> option&#41; one must encapsulate the intire option in a Tuple because   option names can not be repeated &#40;not yet imlemented&#41;.   For <code>extend&#61;:s</code> we expect input records of the form <em>x,y,z&#91;,w&#93;,sid</em>, where <em>sid</em> is an unsigned integer source id.</p>
+<li><p><strong>A</strong> or <strong>field</strong> or <strong>fields</strong>: – <em>field&#61;mode|scale|highest|lowest|weights</em><br />  Output is a grid with one of the select fields. <code>field&#61;mode</code> writes the modal data <em>z</em>. Other options are:   <em>scale</em> &#40;the L1 scale of the mode&#41;, <em>lowest</em> &#40;lowest value&#41;, <em>highest</em> &#40;highest value&#41; and <em>weights</em> &#40;the output weight;   requires the <strong>weights</strong> option&#41;. The default is <code>field&#61;mode</code>. Alternatively, one can use a condensed   form which uses the first character &#40;except the mean&#41; of the above options, separated by commas, to compute more than one grid.   For example: <code>fields&#61;&quot;z,h&quot;</code> computes two grids; one with the modes and the other with the highest values in blocks.</p>
 </li>
 </ul>
 <ul>
-<li><p><strong>G</strong> or <strong>save</strong> or <strong>outgrid</strong> or <strong>outfile</strong> : – <em>save&#61;file_name.grd</em><br />  Write one or more fields directly to grids on disk; no data is returned to the Julia REPL.   If more than one fields are specified via <strong>fields</strong> then <em>file_name</em> must contain the format flag   &#37;s so that we can embed the field code in the file names.</p>
+<li><p><strong>C</strong> or <strong>center</strong> : – <em>center&#61;true</em><br />  Use the center of the block as the output location &#91;Default uses the modal xy location &#40;but see <strong>quick</strong>&#41;&#93;.   <strong>center</strong> overrides <strong>quick</strong>.</p>
+</li>
+</ul>
+<ul>
+<li><p><strong>D</strong> or <strong>histogram_binning</strong> : – <em>histogram_binning&#61;true</em> <strong>|</strong> <em>histogram_binning&#61;&#91;width&#93;&#91;&#43;c&#93;&#91;&#43;a|&#43;l|&#43;h&#93;</em><br />  Perform unweighted mode calculation via histogram binning, using the specified histogram <code>width</code>. Append <strong>&#43;c</strong>   to center bins so that their mid point is a multiple of width &#91;uncentered&#93;. If multiple modes are found for a block   we return the average mode &#91;<strong>&#43;a</strong>&#93;. Append <strong>&#43;l</strong> or <strong>&#43;h</strong> to return the low of high mode instead, respectively. If width   is not given it will default to 1 provided your data set only contains integers. Also, for integer data and integer   bin width we enforce bin centering &#40;<strong>&#43;c</strong>&#41; and select the lowest mode &#40;<strong>&#43;l</strong>&#41; if there are multiples.   Default mode is normally the Least Median of Squares &#40;LMS&#41; statistic.</p>
+</li>
+</ul>
+<ul>
+<li><p><strong>E</strong> or <strong>extend</strong> : –- <em>extend&#61;true</em> <strong>|</strong> <em>extend&#61;&quot;r|s&#91;&#43;l|&#43;h&#93;&quot;</em><br />  Provide Extended report which includes <strong>s</strong> &#40;the L1 scale of the mode&#41;,   <strong>l</strong>, the lowest value, and <strong>h</strong>, the high value for each block. Output order becomes <em>x,y,z,s,l,h</em>&#91;,<em>w</em>&#93;. Default outputs   <em>x,y,z</em>&#91; ,<em>w</em>&#93;. See <strong>weights</strong> for enabling <em>w</em> output.</p>
+</li>
+</ul>
+<p>If <code>extend&#61;&quot;r|s&#91;&#43;l|&#43;h&#93;&quot;</code> is used then provide source id **s** or record number **r** output, i.e., append the
+source id or record number associated with the median value. If tied then report the record number of the higher
+of the two values &#40;i.e., **&#43;h** is the default&#41;; append **&#43;l** to instead report the record number of the lower value.
+
+Note that **extend** may be repeated so that both <code>extend&#61;true</code> and <code>extend&#61;&quot;r&#91;&#43;l|&#43;h&#93;&quot;</code> can be specified.
+But in this case &#40;repeated **extend** option&#41; one must encapsulate the intire option in a Tuple because
+option names can not be repeated &#40;not yet imlemented&#41;.
+For <code>extend&#61;:s</code> we expect input records of the form *x,y,z&#91;,w&#93;,sid*, where *sid* is an unsigned integer source id.</p>
+<ul>
+<li><p><strong>G</strong> or <strong>save</strong> or <strong>outgrid</strong> or <strong>outfile</strong> : – <em>save&#61;file_name.grd</em><br />  Write one or more fields directly to grids on disk or return them to the Julia REPL as grid objects.   If more than one field is specified via <strong>fields</strong> then <em>file_name</em> must contain the format flag   &#37;s so that we can embed the field code in the file names.</p>
 </li>
 </ul>
 
 <ul>
 <li><p><strong>Q</strong> or <strong>quick</strong> : – <em>quick&#61;true</em><br />  &#40;Quicker&#41; Finds median z and &#40;x,y&#41; at that the median z &#91;Default finds median x, median y independent of z&#93;.   Also see <strong>center</strong>.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>T</strong> or <strong>quantile</strong> : – <em>quantile&#61;val</em><br />  Sets the quantile of the distribution to be returned &#91;Default is 0.5 which returns the median z&#93;. Here, 0 &lt; val &lt; 1.</p>
 </li>
 </ul>
@@ -394,7 +409,7 @@
 <p>The <a href="http://docs.generic-mapping-tools.org/latest/blockmean.html"><code>GMT man page</code></a> <a href="/GMTjl_doc/documentation/modules/blockmean/index.html#blockmean">blockmean</a> <a href="/GMTjl_doc/documentation/modules/blockmedian/index.html#blockmedian">blockmedian</a></p>
 <div class="page-foot">
   <div class="copyright">
-    &copy; GMT.jl. Last modified: March 28, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+    &copy; GMT.jl. Last modified: May 21, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
       <p>These docs were autogenerated using GMT: v0.44.8</p>
   </div>
 </div>

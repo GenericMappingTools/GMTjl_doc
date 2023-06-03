@@ -186,6 +186,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\contour">contour</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\contourf">contourf</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\cornerplot">cornerplot</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\earthregions">earthregions</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\ecdfplot">ecdfplot</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\feather">feather</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation\modules\fill_between">fill_between</a></div></li>
@@ -325,8 +326,8 @@ plot&#33;&#40;&#91;0 0; x y&#93;, pen&#61;&#40;0.25, :red, :dash&#41;&#41;
 plot&#33;&#40;&#91;0.0 -1&#93;, marker&#61;&#40;:matangle, &#91;2.54 a 90&#93;, &#40;length&#61;&quot;9p&quot;, start&#61;true&#41;&#41;, ml&#61;0.5, fill&#61;:black&#41;
 showfig&#40;&#41;</code></pre></p>
 <p>
-<a id="example_17187028227054896996">
- <img src="/GMTjl_doc/assets/documentation/modules/project/code/output/example_17187028227054896996.png" alt=""> 
+<a id="example_11124882968550977150">
+ <img src="/GMTjl_doc/assets/documentation/modules/project/code/output/example_11124882968550977150.png" alt=""> 
 </a>
 
 <p>Explanation of the coordinate system utilized by project. The input point &#40;red circle&#41;    is given in the original <em>x-y</em> &#40;or <em>lon-lat</em>&#41; coordinate system and is projected to    the <em>p-q</em> coordinate system, defined by the center &#40;<strong>center</strong>&#41; and either the end-point    &#40;<strong>outvars</strong>&#41; or azimuth &#40;\(\alpha\)&#41;, or for geographic data a rotation pole <strong>pole</strong> &#40;not shown&#41;.    The blue point has projected coordinates &#40;p,0&#41; and is reported as &#40;r,s&#41; in the original    coordinate system.  Options <strong>length</strong> &#40;limit range of <em>p</em>&#41; and <strong>width</strong> &#40;limit range of <em>q</em>&#41;    can be used to exclude data outside the specified limits &#40;light gray area&#41;.</p>
@@ -334,6 +335,8 @@ showfig&#40;&#41;</code></pre></p>
 <ul>
 <li><p><em>table</em><br />  One or more data tables holding a number of data columns.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>C</strong> or <strong>origin</strong> or <strong>center</strong> : – <em>origin&#61;&#40;cx, cy&#41;</em><br />  Set the origin <em>cx,cy</em> of the projection when used with <strong>azim</strong> or <strong>endpoint</strong> or set the coordinates <em>cx,cy</em> of a point   through which the oblique zero meridian &#40;\(p = 0\)&#41; should pass when used with <strong>pole</strong>. <em>cx,cy</em> is not required   to be 90 degrees from the pole set by <strong>pole</strong>.</p>
 </li>
 </ul>
@@ -341,30 +344,43 @@ showfig&#40;&#41;</code></pre></p>
 <ul>
 <li><p><strong>A</strong> or <strong>azim</strong>  or <strong>azimuth</strong> : – <em>azim&#61;az</em><br />  Set the <em>azimuth</em> of the projection. The <em>azimuth</em> is clockwise from North &#40;the \(y\) axis&#41; regardless of   whether spherical or Cartesian coordinate transformation is applied.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>E</strong> or <strong>endpoint</strong> or <strong>end_pt</strong> : – <em>endpoint&#61;&#40;bx,by&#41;</em><br /> Set the end point <em>bx,by</em> of the projection path.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>F</strong> or <strong>outvars</strong> : – <em>outvars&#61;flags</em><br />  Specify the desired output using any combination of <em>xyzpqrs</em> in any order, where &#40;\(p, q\)&#41; are the   coordinates in the projection, &#40;\(r, s\)&#41; is the position in the &#40;\(x, y\)&#41; coordinate system of the point   on the profile &#40;\(q = 0\) path&#41; closest to &#40;\(x, y\)&#41;, and <em>z</em> is all remaining columns in the input   &#40;beyond the required \(x\) and \(y\) columns&#41;. &#91;Default is <em>xyzpqrs</em>&#93;. If output format is ASCII then   <em>z</em> also includes any trailing text &#40;which is placed at the end of the record regardless of the order of <em>z</em>   in <em>flags</em>&#41;. Use lower case and do not add spaces between the letters. <strong>Note</strong>: If <strong>step</strong> is selected, then the   output order is set to be <em>rsp</em> and <strong>outvars</strong> is not allowed.</p>
 </li>
-<li><p><strong>G</strong> or <strong>step</strong> or <strong>generate</strong> : – <em>step&#61;&quot;dist&#91;</em>unit<em>&#93;&#91;/</em>colat<em>&#93;&#91;<strong>&#43;c</strong>&#93;&#91;<strong>&#43;h</strong>&#93;&#91;<strong>&#43;n</strong>&#93;&quot;</em><br />  Create &#40;<em>r</em>, <em>s</em>, <em>p</em>&#41; output points every <em>dist</em> units of <em>p</em>, assuming all units are the same unless \(x, y, r, s\) are set to degrees using <strong>km</strong>. No input is read when <strong>step</strong> is used. See <code>Units</code> for   selecting geographic distance units &#91;km&#93;. The following directives and modifiers are supported:</p>
+</ul>
 <ul>
-<li><p>Optionally, append /<em>colat</em> for a small circle instead &#91;Default is a colatitude of 90, i.e., a great circle&#93;. Note, when using <strong>origin</strong> and <strong>endpoint</strong> to generate a circle that goes through the center and end point, the center and end point cannot be farther apart than &#36;2|colat|&#36;.</p>
-</li>
-<li><p>Optionally, append <strong>&#43;c</strong> when using <strong>pole</strong> to calculate the colatitude that will lead to the small circle going through the center <em>cx</em>/<em>cy</em>.</p>
-</li>
-<li><p>Optionally, append <strong>&#43;h</strong> to report the position of the pole as part of the segment header when using <strong>pole</strong> &#91;Default is no header&#93;.</p>
-</li>
-<li><p>Optionally, append <strong>&#43;n</strong> to indicate a desired number of points rather than an increment. Requires <strong>origin</strong> and <strong>endpoint</strong> or |-Z| so that a length can be computed.</p>
+<li><p><strong>G</strong> or <strong>step</strong> or <strong>generate</strong> : – <em>step&#61;&quot;dist&#91;</em>unit<em>&#93;&#91;/</em>colat<em>&#93;&#91;<strong>&#43;c</strong>&#93;&#91;<strong>&#43;h</strong>&#93;&#91;<strong>&#43;n</strong>&#93;&quot;</em><br />  Create &#40;<em>r</em>, <em>s</em>, <em>p</em>&#41; output points every <em>dist</em> units of <em>p</em>, assuming all units are the same unless \(x, y, r, s\) are set to degrees using <strong>km</strong>. No input is read when <strong>step</strong> is used. See <code>Units</code> for   selecting geographic distance units &#91;km&#93;. The following directives and modifiers are supported:</p>
 </li>
 </ul>
-</li>
+<p>- Optionally, append /*colat* for a small circle instead &#91;Default is a colatitude of 90, i.e., a great circle&#93;. Note,
+  when using **origin** and **endpoint** to generate a circle that goes through the center and end point, the center and end point cannot be farther apart than \(2|colat|\).
+- Optionally, append **&#43;c** when using **pole** to calculate the colatitude that will lead to the small circle
+  going through the center *cx*/*cy*.
+- Optionally, append **&#43;h** to report the position of the pole as part of the segment header when using **pole**
+  &#91;Default is no header&#93;.
+- Optionally, append **&#43;n** to indicate a desired number of points rather than an increment. Requires **origin** and **endpoint** or |-Z| so that a length can be computed.</p>
+<ul>
 <li><p><strong>L</strong> or <strong>length</strong> : – <em>length&#61;&#40;lmin,lmax&#41;</em> <strong>|</strong> <em>length&#61;:w</em><br />  Specify length controls for the projected points. Project only those points whose <em>p</em> coordinate is   within \(l_{min} < p < l_{max}\). If <strong>endpoint</strong> has been set, then you may alternatively use   <strong>length&#61;:w</strong> to stay within the distance from <em>cx,cy</em> to <em>bx,by</em>.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>N</strong> or <strong>flat_earth</strong> : – <em>flat_earth&#61;true</em><br />  Specify the Flat Earth case &#40;i.e., Cartesian coordinate transformation in the plane&#41;.   &#91;Default uses spherical trigonometry.&#93;</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>Q</strong> or <strong>km</strong> : – <em>km&#61;true</em><br />  Specify that  <em>x</em>, <em>y</em>, <em>r</em>, <em>s</em> are in degrees while <em>p</em>, <em>q</em>, <em>dist</em>, <em>lmin</em>, <em>lmax</em>, <em>wmin</em>,   <em>wmax</em> are in km. If <strong>km</strong> is not set, then all these are assumed to be in the same units.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>S</strong> or <strong>sort</strong> : – <em>sort&#61;true</em><br />  Sort the output into increasing <em>p</em> order. Useful when projecting random data into a sequential profile.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>T</strong> or <strong>pole</strong> : – <em>pole&#61;&#40;px,py&#41;</em><br />  Set the position of the rotation pole of the projection as <em>px,py</em>.</p>
 </li>
 </ul>
@@ -376,13 +392,13 @@ showfig&#40;&#41;</code></pre></p>
 <ul>
 <li><p><strong>W</strong> or <strong>width</strong> : – <em>width&#61;&#40;wmin,wmax&#41;</em><br />  Specify width controls for the projected points. Project only those points whose <em>q</em> coordinate is   within \(w_{min} < q < w_{max}\).</p>
 </li>
-<li><p><strong>Z</strong> or <strong>ellipse</strong> : – <em>ellipse&#61;&quot;major&#91;</em>unit<em>&#93;&#91;/</em>minor<em>/</em>azimuth<em>&#93;&#91;<strong>&#43;e</strong>&#93;&quot;</em><br />  Create the coordinates of an ellipse with <em>major</em> and <em>minor</em> axes given in km &#40;unless <strong>flat_earth</strong> is given for a   Cartesian ellipse&#41; and the <em>azimuth</em> of the major axis in degrees; used in conjunction with <strong>origin</strong> &#40;sets its center&#41;   and <strong>step</strong> &#40;sets the distance increment&#41;. <strong>Note</strong>: For the Cartesian ellipse &#40;which requires <strong>flat_earth</strong>&#41;, we expect   <em>direction</em> counter-clockwise from the horizontal instead of an <em>azimuth</em>. A geographic <em>major</em> may be specified   in any desired unit &#91;Default is km&#93; by appending the unit &#40;e.g., 3d for degrees&#41;; if so we assume the <em>minor</em> axis   and the increment are also given in the same unit &#40;see <code>Units</code>&#41;. For degenerate ellipses you can just supply a   single <em>diameter</em> instead. The following modifiers are supported:</p>
+</ul>
 <ul>
-<li><p>Append <strong>&#43;e</strong> to adjust the increment set via <strong>step</strong> so that the ellipse has equal distance increments &#91;Default uses the given increment and closes the ellipse&#93;.</p>
+<li><p><strong>Z</strong> or <strong>ellipse</strong> : – <em>ellipse&#61;&quot;major&#91;</em>unit<em>&#93;&#91;/</em>minor<em>/</em>azimuth<em>&#93;&#91;<strong>&#43;e</strong>&#93;&quot;</em><br />  Create the coordinates of an ellipse with <em>major</em> and <em>minor</em> axes given in km &#40;unless <strong>flat_earth</strong> is given for a   Cartesian ellipse&#41; and the <em>azimuth</em> of the major axis in degrees; used in conjunction with <strong>origin</strong> &#40;sets its center&#41;   and <strong>step</strong> &#40;sets the distance increment&#41;. <strong>Note</strong>: For the Cartesian ellipse &#40;which requires <strong>flat_earth</strong>&#41;, we expect   <em>direction</em> counter-clockwise from the horizontal instead of an <em>azimuth</em>. A geographic <em>major</em> may be specified   in any desired unit &#91;Default is km&#93; by appending the unit &#40;e.g., 3d for degrees&#41;; if so we assume the <em>minor</em> axis   and the increment are also given in the same unit &#40;see <code>Units</code>&#41;. For degenerate ellipses you can just supply a   single <em>diameter</em> instead. The following modifiers are supported:</p>
 </li>
 </ul>
-</li>
-</ul>
+<p>- Append **&#43;e** to adjust the increment set via **step** so that the ellipse has equal distance increments &#91;Default
+  uses the given increment and closes the ellipse&#93;.</p>
 <ul>
 <li><p><strong>bi</strong> or <strong>binary_in</strong> : – <em>binary_in&#61;??</em><br /> Select native binary format for primary table input.  <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#bi-full">More at</a></p>
 </li>
@@ -451,8 +467,8 @@ showfig&#40;&#41;</code></pre></p>
 D &#61; project&#40;&quot;@ship_03.txt&quot;, origin&#61;&#40;330,-18&#41;, pole&#61;&#40;53,21&#41;, sort&#61;true, outvars&#61;:pz, km&#61;true&#41;
 imshow&#40;D&#41;</code></pre></p>
 <p>
-<a id="example_917860055927329881">
- <img src="/GMTjl_doc/assets/documentation/modules/project/code/output/example_917860055927329881.png" alt=""> 
+<a id="example_9622551574120396764">
+ <img src="/GMTjl_doc/assets/documentation/modules/project/code/output/example_9622551574120396764.png" alt=""> 
 </a>
 
 <p>To generate points every 10 km along a great circle from 10N,50W to 30N,10W:</p>
@@ -460,8 +476,8 @@ imshow&#40;D&#41;</code></pre></p>
 Dgc &#61; project&#40;origin&#61;&#40;-50,10&#41;, endpoint&#61;&#40;-10,30&#41;, step&#61;10, km&#61;true&#41;
 imshow&#40;Dgc, marker&#61;:point, lw&#61;0.5, coast&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_7569475027179865255">
- <img src="/GMTjl_doc/assets/documentation/modules/project/code/output/example_7569475027179865255.png" alt=""> 
+<a id="example_13031632177068989142">
+ <img src="/GMTjl_doc/assets/documentation/modules/project/code/output/example_13031632177068989142.png" alt=""> 
 </a>
 
 <p>&#40;Note that <code>Dgc</code> could now be used as input for <a href="/GMTjl_doc/documentation/modules/grdtrack/index.html#grdtrack">grdtrack</a>, etc. &#41;.</p>
@@ -473,8 +489,8 @@ imshow&#40;D, coast&#61;true&#41;</code></pre>
 Dsc &#61; project&#40;center&#61;&#40;-50,10&#41;, endpoint&#61;&#40;-10,30&#41;, step&#61;&#40;10,60&#41;, km&#61;true&#41;
 imshow&#40;Dsc, marker&#61;:point, lw&#61;0.5, coast&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_11839462179037313379">
- <img src="/GMTjl_doc/assets/documentation/modules/project/code/output/example_11839462179037313379.png" alt=""> 
+<a id="example_11791587677472578270">
+ <img src="/GMTjl_doc/assets/documentation/modules/project/code/output/example_11791587677472578270.png" alt=""> 
 </a>
 
 <p>To create a partial small circle of colatitude 80 about a pole at 40E,85N, with extent of 45 degrees to either side of the meridian defined by the great circle from the pole to a point 15E,15N, try</p>
@@ -484,8 +500,8 @@ imshow&#40;Dsc, marker&#61;:point, lw&#61;0.5, coast&#61;true&#41;</code></pre><
 Dellip &#61; project&#40;origin&#61;&#40;-30,70&#41;, step&#61;10, ellipse&#61;&quot;1500/600/30&#43;e&quot;, km&#61;true&#41;
 imshow&#40;Dellip, coast&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_13886887373886161454">
- <img src="/GMTjl_doc/assets/documentation/modules/project/code/output/example_13886887373886161454.png" alt=""> 
+<a id="example_5948387547541914419">
+ <img src="/GMTjl_doc/assets/documentation/modules/project/code/output/example_5948387547541914419.png" alt=""> 
 </a>
 
 <p>To project the shiptrack gravity, magnetics, and bathymetry in c2610.xygmb along a great circle through an origin at 30S, 30W, the great circle having an azimuth of N20W at the origin, keeping only the data from NE of the profile and within ± 500 km of the origin, run:</p>
@@ -506,7 +522,7 @@ imshow&#40;Dellip, coast&#61;true&#41;</code></pre></p>
 <p><a href="/GMTjl_doc/documentation/modules/fitcircle/index.html#fitcircle">fitcircle</a>, <a href="#">gmtvector</a>, <a href="/GMTjl_doc/documentation/modules/grdtrack/index.html#grdtrack">grdtrack</a>, <a href="#">mapproject</a>, <a href="#">grdproject</a>, <a href="/GMTjl_doc/documentation/modules/grdtrack/index.html#grdtrack">grdtrack</a></p>
 <div class="page-foot">
   <div class="copyright">
-    &copy; GMT.jl. Last modified: March 28, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+    &copy; GMT.jl. Last modified: May 10, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
       <p>These docs were autogenerated using GMT: v0.44.8</p>
   </div>
 </div>

@@ -15,7 +15,7 @@ rainbow_chars = map(enumerate(str)) do (i, c)
 end
 text!(join(rainbow_chars), x=1, y=0.99, font="Helvetica-Bold", show=1)
 end # hide
-mv(joinpath(tempdir(), "GMTjl_" * GMT.tmpdir_usr[2] * ".png"), joinpath(@OUTPUT, "example_968092454105173695.png"), force=true);    # hide
+mv(joinpath(tempdir(), "GMTjl_" * GMT.tmpdir_usr[2] * ".png"), joinpath(@OUTPUT, "example_4892260619406058503.png"), force=true);    # hide
 GMT.isFranklin[1] = false    # hide
 GMT.IamModern[1]  = false    # hide
  
