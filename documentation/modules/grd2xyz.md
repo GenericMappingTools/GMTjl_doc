@@ -41,7 +41,7 @@ Optional Arguments
 
 \textinput{common_opts/opt_R}
 
-**T** or **stl** or **STL** : -- *STL=true* **|** *STL=[:b][base]*\
+- **T** or **stl** or **STL** : -- *STL=true* **|** *STL=[:b][base]*\
     Write STL triangulation for 3-D printing to standard output. By default we write an STL ASCII file.
     Append **b** to instead write the STL binary (little-endian) format. For more information on STL, see the
     [STL overview on Wikipedia](https://en.wikipedia.org/wiki/STL_(file_format)). **Note**: All coordinates are

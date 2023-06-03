@@ -32,7 +32,7 @@ Optional Arguments
 - **A** or **field** or **fields**: -- *field=mode|scale|highest|lowest|weights*\
     Output is a grid with one of the select fields. `field=mode` writes the modal data *z*. Other options are:
     *scale* (the L1 scale of the mode), *lowest* (lowest value), *highest* (highest value) and *weights* (the output weight;
-    requires the **weights** option). The deafault is `field=mode`. Alternatively, one can use a condensed
+    requires the **weights** option). The default is `field=mode`. Alternatively, one can use a condensed
     form which uses the first character (except the mean) of the above options, separated by commas, to compute more than one grid.
     For example: `fields="z,h"` computes two grids; one with the modes and the other with the highest values in blocks.
 

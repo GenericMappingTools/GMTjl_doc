@@ -109,7 +109,7 @@ Optional Arguments
     iteration; it is not worth the time unless the grid lattice is prime and cannot have
     regional stages. [Default = 0.0 and no search is made.]
 
-- **T** or **tension** :-- *tension=factor* **|** *search_radius="i|b_factor"*\
+- **T** or **tension** : -- *tension=factor* **|** *search_radius="i|b_factor"*\
     Tension factor[s]. These must be between 0 and 1. Tension may be used in the interior solution
     (above equation, where it suppresses spurious oscillations) and in the boundary conditions
     (where it tends to flatten the solution approaching the edges). Using zero for both values
@@ -130,6 +130,12 @@ Optional Arguments
     reach a solution more rapidly but may become unstable. If you use a large value for this factor,
     it is a good idea to monitor each iteration with the **verbose=:i** option. [Default = 1.4
     converges quickly and is almost always stable.]
+
+- **preproc** : -- *preproc=true* **|** *preproc="blockmedian|blockmode"*\
+
+    This option means that the data is previously passed through one of `block*` modules to decimate the data
+    in each cell as strongly advised. `preproc=true` will use ``blockmean``. To use any of the other two,
+    pass its name as value. *e.g.* `preproc="blockmedian"`.
 
 \textinput{common_opts/opt_a}
 

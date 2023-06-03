@@ -4,7 +4,7 @@ When we want to make annotations or draw additional symbols outside of a map in 
 coordinates, we have a problem. Because the geographical coordinates are active one cannot
 plot outside of Earth. The solution is to define a larger cartesian frame and do the
 annotations using this new reference. To make this process simpler we use the option **paper**
-option that is available in the ``plot`` and ``text`` modules. This option sets and unsets
+option that is available in the ``plot``, ``text`` and ``colorbar`` modules. This option sets and unsets
 the temporary cartesian frame under the hood and we only have to care to use cm (or inch) as
 units.
 

@@ -10,6 +10,7 @@ type GMTgrid{T<:Real,N} <: AbstractArray{T,N}      # The type holding a local he
     proj4::String                      # Projection string in PROJ4 syntax (Optional)
     wkt::String                        # Projection string in WKT syntax (Optional)
     epsg::Int                          # EPSG code
+    geog::Int                          # Is geographic coords? 0 -> No; 1 -> [-180 180]; 2 -> [0 360]
     range::Array{Float64,1}            # 1x6[8] vector with [x_min, x_max, y_min, y_max, z_min, z_max [, v_min, v_max]]
     inc::Array{Float64,1}              # 1x2[3] vector with [x_inc, y_inc [,v_inc]]
     registration::Int                  # Registration type: 0 -> Grid registration; 1 -> Pixel registration
@@ -42,6 +43,7 @@ type GMTimage{T<:Unsigned, N} <: AbstractArray{T,N}   # The type holding a local
     proj4::String              # Projection string in PROJ4 syntax (Optional)
     wkt::String                # Projection string in WKT syntax (Optional)
     epsg::Int                  # EPSG code
+    geog::Int                  # Is geographic coords? 0 -> No; 1 -> [-180 180]; 2 -> [0 360]
     range::Array{Float64,1}    # 1x6 vector with [x_min x_max y_min y_max z_min z_max]
     inc::Array{Float64,1}      # 1x2 vector with [x_inc y_inc]
     registration::Int          # Registration type: 0 -> Grid registration; 1 -> Pixel registration
