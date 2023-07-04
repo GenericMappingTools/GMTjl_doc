@@ -19,7 +19,7 @@ plot!(t1, lw=2, lc=:red, ls="line& (a) &")	# line style -> fancy stuff
 plot!(t2, lw=2, lc=:blue)
 text!(tern2cart([0.3 0.4 0.3]), text="Umbilicus", font=18, show=true)
 end # hide
-mv(joinpath(tempdir(), "GMTjl_" * GMT.tmpdir_usr[2] * ".png"), joinpath(@OUTPUT, "example_11266880737500866102.png"), force=true);    # hide
+mv(joinpath(tempdir(), "GMTjl_" * GMT.tmpdir_usr[2] * ".png"), joinpath(@OUTPUT, "example_4844438575782619428.png"), force=true);    # hide
 GMT.isFranklin[1] = false    # hide
 GMT.IamModern[1]  = false    # hide
  

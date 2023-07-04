@@ -13,7 +13,7 @@ subplot(grid="2x2", dims=(size=(15,15), frac=((10,5),(5,10))),
     histogram(y, limits=(-4,4,0,40), horizontal=true, binmethod="sqrt", panel=(2,2));
 subplot(:show)
 end # hide
-mv(joinpath(tempdir(), "GMTjl_" * GMT.tmpdir_usr[2] * ".png"), joinpath(@OUTPUT, "example_12115937234110900768.png"), force=true);    # hide
+mv(joinpath(tempdir(), "GMTjl_" * GMT.tmpdir_usr[2] * ".png"), joinpath(@OUTPUT, "example_10160621470858091473.png"), force=true);    # hide
 GMT.isFranklin[1] = false    # hide
 GMT.IamModern[1]  = false    # hide
  

@@ -12,7 +12,7 @@ wiggle([x y z], region=(-10,10,-3,3), proj=:Merc, ampscale=100,
        scale_bar=(refpoint=:RM, width=100, label=:nT),
        track=:faint, fill=["red+p", "blue+n"], pen=1, show=1)
 end # hide
-mv(joinpath(tempdir(), "GMTjl_" * GMT.tmpdir_usr[2] * ".png"), joinpath(@OUTPUT, "example_9621340624856154558.png"), force=true);    # hide
+mv(joinpath(tempdir(), "GMTjl_" * GMT.tmpdir_usr[2] * ".png"), joinpath(@OUTPUT, "example_17140836888534770604.png"), force=true);    # hide
 GMT.isFranklin[1] = false    # hide
 GMT.IamModern[1]  = false    # hide
  

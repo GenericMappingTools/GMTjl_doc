@@ -8,7 +8,7 @@ coast(region=:g, proj=:VanderGrinten, xaxis=(grid=30,), yaxis=(grid=15,),
       land=:lightgray, water=:cornsilk, area=10000, shore=:thinnest,
       title="Van der Grinten", show=true)
 end # hide
-mv(joinpath(tempdir(), "GMTjl_" * GMT.tmpdir_usr[2] * ".png"), joinpath(@OUTPUT, "example_5305602752740822780.png"), force=true);    # hide
+mv(joinpath(tempdir(), "GMTjl_" * GMT.tmpdir_usr[2] * ".png"), joinpath(@OUTPUT, "example_16338428794812618180.png"), force=true);    # hide
 GMT.isFranklin[1] = false    # hide
 GMT.IamModern[1]  = false    # hide
  

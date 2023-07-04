@@ -9,7 +9,7 @@ mask(t, fill=:yellow, inc="30m", region=(-75,75,-90,90), proj=:eqc, search_radiu
      title="Mask for points with r = 5 degrees", xaxis=(annot=:auto, ticks=:auto, grid=180),
      yaxis=(annot=:auto, ticks=:auto, grid=10), show=true)
 end # hide
-mv(joinpath(tempdir(), "GMTjl_" * GMT.tmpdir_usr[2] * ".png"), joinpath(@OUTPUT, "example_704349406023539834.png"), force=true);    # hide
+mv(joinpath(tempdir(), "GMTjl_" * GMT.tmpdir_usr[2] * ".png"), joinpath(@OUTPUT, "example_5780328525763588960.png"), force=true);    # hide
 GMT.isFranklin[1] = false    # hide
 GMT.IamModern[1]  = false    # hide
  

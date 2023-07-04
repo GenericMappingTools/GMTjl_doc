@@ -7,7 +7,7 @@ begin # hide
 D = gmtsimplify("@GSHHS_h_Australia.txt", tolerance="100k")
 plot("@GSHHS_h_Australia.txt", plot=(data=D, lc=:red), show=true)
 end # hide
-mv(joinpath(tempdir(), "GMTjl_" * GMT.tmpdir_usr[2] * ".png"), joinpath(@OUTPUT, "example_6964351920698162838.png"), force=true);    # hide
+mv(joinpath(tempdir(), "GMTjl_" * GMT.tmpdir_usr[2] * ".png"), joinpath(@OUTPUT, "example_10072869785418726206.png"), force=true);    # hide
 GMT.isFranklin[1] = false    # hide
 GMT.IamModern[1]  = false    # hide
  
