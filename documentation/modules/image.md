@@ -35,7 +35,12 @@ Optional Arguments
 
 - **D** or **pos** or **position** : -- *pos=(map=true, inside=true, outside=true, norm=true, paper=true, anchor=XX, dpi=XX, width=XX, justify=code, repeat=n, offset=XX)*\
     Sets reference point on the map for the image using one of four coordinate systems:
-    (1) Use **map=true** for map (user) coordinates, (2) use **inside=true** or **outside=true** (the default) for setting **anchor** via a 2-char justification code that refers to the (invisible) map domain rectangle, (3) use **norm=true** for normalized (0-1) coordinates, or (4) use **paper=true** for plot coordinates (inches, cm, etc.). All but **paper=true** requires both **region** and **proj** to be specified.
+    - (1) Use **map=true** for map (user) coordinates,
+    - (2) use **inside=true** or **outside=true** (the default) for setting **anchor** via a 2-char 
+      justification code that refers to the (invisible) map domain rectangle,
+    - (3) use **norm=true** for normalized (0-1) coordinates, or
+    - (4) use **paper=true** for plot coordinates (inches, cm, etc.). All but **paper=true**
+      requires both **region** and **proj** to be specified.
 
     By default, the anchor point on the scale is assumed to be the bottom left corner (BL), but
     this can be changed by adding **justify=:code** where *:code* is a 2-char justification code

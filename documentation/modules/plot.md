@@ -41,7 +41,7 @@ Parameters
    In this case *color_n* can be a [r g b] triplet, a color name, or an HTML hexadecimal color (e.g. #aabbcc ). If
    **symbol** is set, let symbol fill color be determined by the z-value in the third column. Additional fields are
    shifted over by one column (optional size would be 4th rather than 3rd field, etc.). If **symbol** is not set,
-   then it expects the user to supply a multisegment file where each segment header contains a **-Z**\ *val* string.
+   then it expects the user to supply a multisegment file where each segment header contains a **-Z***val* string.
    The *val* will control the color of the line or polygon (if **close** is set) via the CPT.
 
 - **D** or **shift** or **offset** : -- *offset=(dx,dy)* **|** *offset=dx*\

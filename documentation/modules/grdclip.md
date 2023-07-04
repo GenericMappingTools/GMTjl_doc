@@ -16,7 +16,7 @@ when you want all of a continent or an ocean to fall
 into one color or gray shade in image processing, when clipping of the
 range of data values is required, or for reclassification of data values.
 *above*, *below*, *between*, *old* and *new* can be any number or even NaN
-(Not a Number). You must choose at least one of the |-S| options. Use
+(Not a Number). You must choose at least one of the **S?** options. Use
 **region** to only extract a subset of the *ingrid* file.
 
 Optional Arguments

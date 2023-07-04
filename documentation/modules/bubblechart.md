@@ -32,7 +32,7 @@ bubblechart(D::GMTdatset,xvar,yvar,szvar=?,cvar=?, kwargs...) plots the specifie
 the colors specified in the variable `cvar` (or `colorvar`) and colors are be drawn from the active colormap.
 
 -----------
-This module is a subset of `plot` to make it simpler to draw stair plots. So not all (fine)
+This module is a subset of `plot` to make it simpler to draw bubble plots. So not all (fine)
 controlling parameters are not listed here. For the finest control, user should consult the \myreflink{plot} module.
 
 
@@ -70,6 +70,6 @@ A plot where bubbles's size grows exponentialy between 2 and 40 points.
 \begin{examplefig}{}
 ```julia
 using GMT
-bubblechart(1:50,rand(50), size=(exp10, [2,40]), fill=:blue, alpha=50, aspect="1:1", show=1)
+bubblechart(1:50, rand(50), size=(exp10, [2,40]), fill=:blue, alpha=50, aspect="1:1", show=1)
 ```
 \end{examplefig}

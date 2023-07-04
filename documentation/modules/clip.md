@@ -24,7 +24,7 @@ Required Arguments
 - *table*\
     One or more data tables holding a number of data columns.
 
-- **C** or **endclip** or **end_clip_path** : -- *endclip=true* or *endclip=n*\
+- **C** or **endclip** : -- *endclip=true* or *endclip=n*\
     Mark end of existing clip path(s). No input file will be processed. No projection information
     is needed unless \myreflink{frame} has been selected as well. With no arguments we terminate
     all active clipping paths. Experts may restrict the termination to just *n* of the active
@@ -45,7 +45,7 @@ Required Arguments
     using a single path, this means that only points outside that path
     will be shown. Cannot be used together with \myreflink{frame}.
 
-- **T** or **clip_limits** : -- *clip_limits=*\
+- **T** or **clipregion** : -- *clipregion=*\
     Rather than depending on input data, simply turn on clipping for the
     current map region. Cannot be used together with \myreflink{frame}.
 
