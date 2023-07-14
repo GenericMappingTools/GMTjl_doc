@@ -34,7 +34,7 @@
 |:-----|:----|:----|:----|:----|:----|:----|:----|:----|:----|
 | \myreflink{arrows} | \myreflink{band} | \myreflink{bar} | \myreflink{bar3} | \myreflink{boxplot} | \myreflink{bubblechart} | \myreflink{contourf} | \myreflink{cornerplot} | \myreflink{decorated} | \myreflink{earthregions} |
 | \myreflink{ecdfplot} | \myreflink{feather} | \myreflink{fill_between} | \myreflink{hband} | \myreflink{lines} | \myreflink{marginalhist} | \myreflink{parallelplot} | \myreflink{plotlinefit} | \myreflink{qqplot} | \myreflink{quiver} |
-| \myreflink{radar} | \myreflink{scatter} | \myreflink{scatter3} | \myreflink{stairs} | \myreflink{stem} | \myreflink{vband} | \myreflink{violin} |  |  |  |
+| \myreflink{radar} | \myreflink{scatter} | \myreflink{scatter3} | \myreflink{stairs} | \myreflink{stem} | \myreflink{trisurf} | \myreflink{vband} | \myreflink{violin} |  |  |
 
 
 ## Supplemental Modules

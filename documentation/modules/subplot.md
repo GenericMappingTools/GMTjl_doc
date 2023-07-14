@@ -40,7 +40,7 @@ Required Arguments
     
     2. you can select *height* based on trial and error to suit your plot layout.
 
-    Optionally, you may draw the outline (**outline=pen**) or paint (**fill=color**) the figure rectangle behind the subplots, add dividing lines between panels (**divlines=pen**), and even expand it via **clearance=(dx.dy)**. These are most useful if you supply **axes=:none**, meaning no ticks or annotations will take place in the subplots. See \myreflink{Setting color} and \myreflink{Pen attributes} for extend color and pen selections.
+    Optionally, you may draw the outline (**outline=pen**) or paint (**fill=color**) the figure rectangle behind the subplots, add dividing lines between panels (**divlines=pen**), and even expand it via **clearance=(dx,dy)**. These are most useful if you supply **axes=:none**, meaning no ticks or annotations will take place in the subplots. See \myreflink{Setting color} and \myreflink{Pen attributes} for extend color and pen selections.
 
     But when we only want to set panels with a constant size one can use the simpler form **subplot(grid=..., panels_size=8, ...)**, *i.e.* without using the **dims=(panels=())** form. *panels_size*, *panel_size* and *panel_sizes* are all aliases.
 
