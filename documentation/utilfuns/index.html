@@ -253,6 +253,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/trend1d">trend1d</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/trend2d">trend2d</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/triangulate">triangulate</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/trisurf">trisurf</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/vband">vband</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/violins">violin</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/wiggle">wiggle</a></div></li>
@@ -265,6 +266,7 @@
 </ul>
 </li>
 </ul></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/Interoperability">Interoperability with &#40;some&#41; other packages</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/comp_other_pkgs">Comparison with other plotting packages</a></div></li>
 </ul>
           </div>
@@ -426,13 +428,16 @@ crop&#40;G, region&#61;&#40;-2,2,-2,2&#41;&#41;</code></pre>
 <div class="doc-header" id="cubeslice">
 <a href="#cubeslice">cubeslice</a>
 </div>
-<div class="doc-content"><pre><code>slicecube&#40;I::GMTimage, layer::Int&#41;</code></pre>
+<div class="doc-content"><pre><code>slicecube&#40;I::GMTimage, layer::Union&#123;Int, AbstractVector&#123;&lt;:Int&#125;&#125;&#41;</code></pre>
 <p>Take a slice of a multylayer GMTimage. Return the result still as a GMTimage. <code>layer</code> is the z slice number.</p>
-<pre><code>slicecube&#40;G::GMTgrid, slice; axis&#61;&quot;z&quot;&#41;</code></pre>
+<pre><code>slicecube&#40;G::GMTgrid, slice::Union&#123;Int, AbstractVector&#123;&lt;:Int&#125;&#125;; axis&#61;&quot;z&quot;&#41;</code></pre>
 <p>Extract a slice from a GMTgrid cube.</p>
 <ul>
 <li><p><code>slice</code>: If it is an Int it will return a GMTgrid corresponding to that layer. However, if <code>slice</code> is a float this is interpreted to mean: search that dimension &#40;see the <code>axis</code> below&#41; coordinates and find the closest layer that has coordinate &#61; <code>slice</code>. If the <code>slice</code> value is not within 10&#37; of the coordinate of closest layer, the returned layer is obtained by linear interpolation of the neighboring layers. For example, <code>slice&#61;2.5</code> on a cube were layers are one unit apart will interpolate between layers 2 and 3 where each layer weights 50&#37; in the end result. NOTE: the return type is still a cube but with one layer only &#40;and the corresponding axis coordinate&#41;.</p>
 </li>
+</ul>
+<pre><code>&#96;slice&#96; Can also be a vector of integers representing the slices we want to extract. The output is another cube.</code></pre>
+<ul>
 <li><p><code>axis</code>: denotes the dimension being sliced. The default, &quot;z&quot;, means the slices are taken from the vertical axis. <code>axis&#61;&quot;x&quot;</code> means slice along a column, and <code>axis&#61;&quot;y&quot;</code> slice along a row.</p>
 </li>
 </ul>
@@ -859,9 +864,9 @@ plot&#33;&#40;points, marker&#61;:star, ms&#61;&quot;12p&quot;, fill&#61;:blue, 
 <p><code>GMT.isnodata</code> is a <code>Function</code>.</p>
 <pre><code># 2 methods for generic function &quot;isnodata&quot; from GMT:
  &#91;1&#93; isnodata&#40;array::AbstractArray&#41;
-     @ ~/.julia/packages/GMT/nRed6/src/utils.jl:329
+     @ ~/.julia/packages/GMT/V49R0/src/utils.jl:329
  &#91;2&#93; isnodata&#40;array::AbstractArray, val&#41;
-     @ ~/.julia/packages/GMT/nRed6/src/utils.jl:329</code></pre>
+     @ ~/.julia/packages/GMT/V49R0/src/utils.jl:329</code></pre>
 </div>
 </div>
 <div class="docstring">
@@ -1014,7 +1019,7 @@ D &#61; linearfitxy&#40;&#91;0.037 0.0080; 0.035 0.0084; 0.032 0.0100; 0.040 0.0
 <p><code>GMT.magic</code> is a <code>Function</code>.</p>
 <pre><code># 1 method for generic function &quot;magic&quot; from GMT:
  &#91;1&#93; magic&#40;n::Int64&#41;
-     @ ~/.julia/packages/GMT/nRed6/src/utils.jl:436</code></pre>
+     @ ~/.julia/packages/GMT/V49R0/src/utils.jl:436</code></pre>
 </div>
 </div>
 <div class="docstring">
@@ -1098,17 +1103,17 @@ D &#61; linearfitxy&#40;&#91;0.037 0.0080; 0.035 0.0084; 0.032 0.0100; 0.040 0.0
 <a href="#mat2grid">mat2grid</a>
 </div>
 <div class="doc-content"><pre><code>G &#61; mat2grid&#40;mat; reg&#61;nothing, x&#61;&#91;&#93;, y&#61;&#91;&#93;, v&#61;&#91;&#93;, hdr&#61;nothing, proj4::String&#61;&quot;&quot;,
-             wkt::String&#61;&quot;&quot;, tit::String&#61;&quot;&quot;, rem::String&#61;&quot;&quot;, cmd::String&#61;&quot;&quot;,
+             wkt::String&#61;&quot;&quot;, title::String&#61;&quot;&quot;, rem::String&#61;&quot;&quot;, cmd::String&#61;&quot;&quot;,
 			 names::Vector&#123;String&#125;&#61;String&#91;&#93;, scale::Float32&#61;1f0, offset::Float32&#61;0f0&#41;</code></pre>
 <p>Take a 2/3D <code>mat</code> array and a HDR 1x9 &#91;xmin xmax ymin ymax zmin zmax reg xinc yinc&#93; header descriptor and  return a grid GMTgrid type. Alternatively to HDR, provide a pair of vectors, <code>x</code> &amp; <code>y</code>, with the X and Y coordinates. Optionaly add a <code>v</code> vector with vertical coordinates if <code>mat</code> is a 3D array and one wants to create a &#36;cube&#36;. Optionaly, the HDR arg may be ommited and it will computed from <code>mat</code> alone, but then x&#61;1:ncol, y&#61;1:nrow When HDR is not used, REG &#61;&#61; nothing &#91;default&#93; means create a gridline registration grid and REG &#61;&#61; 1, or REG&#61;&quot;pixel&quot; a pixel registered grid.</p>
 <p>For 3D arrays the <code>names</code> option is used to give a description for each layer &#40;also saved to file when using a GDAL function&#41;.</p>
 <p>The <code>scale</code> and <code>offset</code> options are used when <code>mat</code> is an Integer type and we want to save the grid with an scale/offset.  </p>
 <p>Other methods of this function do:</p>
-<pre><code>G &#61; mat2grid&#40;&#91;val&#93;; hdr&#61;hdr_vec, reg&#61;nothing, proj4::String&#61;&quot;&quot;, wkt::String&#61;&quot;&quot;, tit::String&#61;&quot;&quot;, rem::String&#61;&quot;&quot;&#41;</code></pre>
+<pre><code>G &#61; mat2grid&#40;&#91;val&#93;; hdr&#61;hdr_vec, reg&#61;nothing, proj4::String&#61;&quot;&quot;, wkt::String&#61;&quot;&quot;, title::String&#61;&quot;&quot;, rem::String&#61;&quot;&quot;&#41;</code></pre>
 <p>Create Float GMTgrid with size, coordinates and increment determined by the contents of the HDR var. This array, which is now MANDATORY, has either the same meaning as above OR, alternatively, containng only &#91;xmin xmax ymin ymax xinc yinc&#93; VAL is the value that will be fill the matrix &#40;default VAL &#61; Float32&#40;0&#41;&#41;. To get a Float64 array use, for example, VAL &#61; 1.0 Ay other non Float64 will be converted to Float32</p>
 <pre><code>Example: mat2grid&#40;1, hdr&#61;&#91;0. 5 0 5 1 1&#93;&#41;
 
-G &#61; mat2grid&#40;f::Function, x, y; reg&#61;nothing, proj4::String&#61;&quot;&quot;, wkt::String&#61;&quot;&quot;, epsg::Int&#61;0, tit::String&#61;&quot;&quot;, rem::String&#61;&quot;&quot;&#41;</code></pre>
+G &#61; mat2grid&#40;f::Function, x, y; reg&#61;nothing, proj4::String&#61;&quot;&quot;, wkt::String&#61;&quot;&quot;, epsg::Int&#61;0, title::String&#61;&quot;&quot;, rem::String&#61;&quot;&quot;&#41;</code></pre>
 <p>Where F is a function and X,Y the vectors coordinates defining it&#39;s domain. Creates a Float32 GMTgrid with size determined by the sizes of the X &amp; Y vectors.</p>
 <pre><code>Example: f&#40;x,y&#41; &#61; x^2 &#43; y^2;  G &#61; mat2grid&#40;f, x &#61; -2:0.05:2, y &#61; -2:0.05:2&#41;
 
@@ -1336,13 +1341,16 @@ rasterzones&#33;&#40;G, D, mean&#41;</code></pre>
 <div class="doc-header" id="slicecube">
 <a href="#slicecube">slicecube</a>
 </div>
-<div class="doc-content"><pre><code>slicecube&#40;I::GMTimage, layer::Int&#41;</code></pre>
+<div class="doc-content"><pre><code>slicecube&#40;I::GMTimage, layer::Union&#123;Int, AbstractVector&#123;&lt;:Int&#125;&#125;&#41;</code></pre>
 <p>Take a slice of a multylayer GMTimage. Return the result still as a GMTimage. <code>layer</code> is the z slice number.</p>
-<pre><code>slicecube&#40;G::GMTgrid, slice; axis&#61;&quot;z&quot;&#41;</code></pre>
+<pre><code>slicecube&#40;G::GMTgrid, slice::Union&#123;Int, AbstractVector&#123;&lt;:Int&#125;&#125;; axis&#61;&quot;z&quot;&#41;</code></pre>
 <p>Extract a slice from a GMTgrid cube.</p>
 <ul>
 <li><p><code>slice</code>: If it is an Int it will return a GMTgrid corresponding to that layer. However, if <code>slice</code> is a float this is interpreted to mean: search that dimension &#40;see the <code>axis</code> below&#41; coordinates and find the closest layer that has coordinate &#61; <code>slice</code>. If the <code>slice</code> value is not within 10&#37; of the coordinate of closest layer, the returned layer is obtained by linear interpolation of the neighboring layers. For example, <code>slice&#61;2.5</code> on a cube were layers are one unit apart will interpolate between layers 2 and 3 where each layer weights 50&#37; in the end result. NOTE: the return type is still a cube but with one layer only &#40;and the corresponding axis coordinate&#41;.</p>
 </li>
+</ul>
+<pre><code>&#96;slice&#96; Can also be a vector of integers representing the slices we want to extract. The output is another cube.</code></pre>
+<ul>
 <li><p><code>axis</code>: denotes the dimension being sliced. The default, &quot;z&quot;, means the slices are taken from the vertical axis. <code>axis&#61;&quot;x&quot;</code> means slice along a column, and <code>axis&#61;&quot;y&quot;</code> slice along a row.</p>
 </li>
 </ul>
@@ -1423,6 +1431,8 @@ rasterzones&#33;&#40;G, D, mean&#41;</code></pre>
 <p>Here we auto-generate the starting positions along one of the 4 sides of the grid. Select the wished side with the <code>side</code> keyword. Returns a Vector&#123;GMTdataset&#125; with the streamlines.</p>
 <pre><code>S &#61; streamlines&#40;x, y, U::Matrix, V::Matrix, sx, sy; step&#61;0.1, max_vert::Int&#61;10000&#41;</code></pre>
 <p>This last 2D method let users pass the <code>x</code> and <code>y</code> vector data coordinates, U and V are matrices with the velocity data and the remaining arguments have the same meaning as in the other methods. Returns a Vector&#123;GMTdataset&#125; with the streamlines.</p>
+<pre><code>S &#61; streamlines&#40;x::Matrix, y::Matrix, U::Matrix, V::Matrix; step&#61;0.1, max_vert::Int&#61;10000&#41;</code></pre>
+<p><code>x</code> and <code>y</code> are assumed to be meshgrids with the <em>x</em> and <em>y</em> starting coordinates.</p>
 <pre><code>S &#61; streamlines&#40;U::GMTgrid, V::GMTgrid, W::GMTgrid, startX, startY, startZ; step&#61;0.1, max_vert::Int&#61;10000&#41;</code></pre>
 <p>Conpute 3D volume of vector fields with streamline. Here <code>U</code>,<code>V</code> and <code>W</code> are 3D cubes with <code>x,y,z</code> velocity components. <code>startX</code>, <code>startY</code> and <code>startZ</code> can be scalar or vector coordinate arrays. Returns a Vector&#123;GMTdataset&#125; with the streamlines.</p>
 <h3>Example</h3>
@@ -1804,8 +1814,8 @@ imshow&#40;img, proj&#61;:guess&#41;</code></pre>
 
 <div class="page-foot">
   <div class="copyright">
-    &copy; GMT.jl. Last modified: July 04, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
-      <p>These docs were autogenerated using GMT: v1.2.0</p>
+    &copy; GMT.jl. Last modified: July 23, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+      <p>These docs were autogenerated using GMT: v1.3.0</p>
   </div>
 </div>
 </div><!-- CONTENT ENDS HERE -->
