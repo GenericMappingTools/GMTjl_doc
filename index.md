@@ -10,14 +10,16 @@ complex static vector graphics as well as conversion to the most common raster f
 Although it is package more tailored for Earth Sciences, it can also be used for a general purpose plotting
 of 2 and 3D (perspective, not volumetric) graphics.
 
-### \myreflink{Comparison with other plotting packages}
+## \myreflink{Comparison with other plotting packages}
+
+## \myreflink{Interoperability with (some) other packages}
 
 ## Installation and use
 
 Using Julia's inbuilt package manager.
 
 ```julia
-]add GMT
+] add GMT
 using GMT
 ```
 
