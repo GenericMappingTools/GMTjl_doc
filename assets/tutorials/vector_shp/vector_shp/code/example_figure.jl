@@ -8,6 +8,7 @@ munic = gmtread(GMT.TESTSDIR * "COL_adm2.shp.zip");		# Hide
 mun_antioquia = filter(munic, NAME_1=:Antioquia);		# Hide
 antioquia_points = centroid(mun_antioquia);				# Hide
 t = info(mun_antioquia, att="ID_2");					# Hide
+antioquia_points.text = t;					            # Hide
 # Convert t to numeric. Needed for creating a color map and make the choropleth style plot.
 tn = parse.(Int,t);
 
@@ -17,7 +18,7 @@ C = makecpt(range=(minimum(tn),maximum(tn)), C=:bamako);
 # Vizualize 
 viz(mun_antioquia, proj=:guess, levels=tn, cmap=C, lw=0, title="Another Map of Antioquia", text=(data=antioquia_points, font=5), colorbar=true)
 end # hide
-mv(joinpath(tempdir(), "GMTjl_" * GMT.tmpdir_usr[2] * ".png"), joinpath(@OUTPUT, "example_14310957141422947909.png"), force=true);    # hide
+mv(joinpath(tempdir(), "GMTjl_" * GMT.tmpdir_usr[2] * ".png"), joinpath(@OUTPUT, "example_6832767284945348136.png"), force=true);    # hide
 GMT.isFranklin[1] = false    # hide
 GMT.IamModern[1]  = false    # hide
  
