@@ -85,7 +85,7 @@
 </ul></li>
 <li><input class="collapse-toggle" id="menuitem-2-4" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-2-4"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/examples/choropleths">Choropleths</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/examples/choropleths/choro_examples">Choropleths</a></div></li>
 </ul></li>
-<li><input class="collapse-toggle" id="menuitem-2-5" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-2-5"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/examples/contours">Contours</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/examples/contours/01_contour_examples">Contours</a></div></li>
+<li><input class="collapse-toggle" id="menuitem-2-5" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-2-5"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/examples/contours">Contour plots</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/examples/contours/01_contour_examples">Contours</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/examples/contours/02_polar_contours">Polar Contours</a></div></li>
 </ul></li>
 <li><input class="collapse-toggle" id="menuitem-2-6" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-2-6"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/examples/embellish">Embellishments</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/examples/embellish/01_mapscale">Map scales</a></div></li>
@@ -147,6 +147,8 @@
 </ul></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/tutorials/dlakelan">dlakelan</a></div></li>
 <li><input class="collapse-toggle" id="menuitem-4-5" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-4-5"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/tutorials/longest_sail">Longest sail</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/tutorials/longest_sail/longestsail">The longest sail</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-4-6" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-4-6"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/tutorials/vector_shp">Reading, filtering and visualizing geospatial vector data</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/tutorials/vector_shp/vector_shp">Reading, filtering and visualizing geospatial vector data</a></div></li>
 </ul></li>
 </ul></li>
 <li><input class="collapse-toggle" id="menuitem-5" type="checkbox" checked><div class="tocitem-container"><label class="tocexpander" for="menuitem-5"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/documentation">Documentation</a></div><ul><li><input class="collapse-toggle" id="menuitem-5-1" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-5-1"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/documentation/all_docs_ref">All documentations</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/all_docs_ref/all_refs">Manuals</a></div></li>
@@ -277,8 +279,8 @@
 <!-- Content appended here -->
 <div class="franklin-content"><h1 id="grdcontour"><a href="#grdcontour" class="header-anchor">grdcontour</a></h1>
 <pre><code class="language-julia">grdcontour&#40;cmd0::String&#61;&quot;&quot;, arg1&#61;nothing; kwargs...&#41;</code></pre>
-<p>Make contour map using a grid.</p>
-<p>Read a 2-D grid and produces a contour map by tracing each contour through the grid. Various options that affect the plotting are available. Alternatively, the <em>x, y, z</em> positions of the contour lines may be saved to one or more output files &#40;or memory&#41; and no plot is produced.</p>
+<p>Make contour plot or map &#40;using a projection&#41; from a grid.</p>
+<p>Read a 2-D grid and produces a contour plot by tracing each contour through the grid. Various options that affect the plotting are available. Alternatively, the <em>x, y, z</em> positions of the contour lines may be saved to one or more output files &#40;or memory&#41; and no plot is produced.</p>
 <h2>Required Arguments</h2>
 <p>The 2-D gridded data set to be contoured.</p>
 <h2>Optional Arguments</h2>
@@ -385,13 +387,13 @@ grdcontour&#40;G, cont&#61;1, annot&#61;2, show&#61;true&#41;</code></pre></p>
  <img src="/GMTjl_doc/assets/documentation/modules/grdcontour/code/output/example_15292688772320955574.png" alt=""> 
 </a>
 
-<p>For a more elaborated example see <a href="/GMTjl_doc/examples/contours/index.html#contours">Contours</a></p>
+<p>For a more elaborated example see <a href="/GMTjl_doc/examples/contours/01_contour_examples/index.html#contours">Contours</a></p>
 <h2>See also</h2>
 <p>The <a href="https://www.generic-mapping-tools.org/gmt/dev/grdcontour_classic.html"><code>GMT man page</code></a></p>
 <div class="page-foot">
   <div class="copyright">
-    &copy; GMT.jl. Last modified: July 23, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
-      <p>These docs were autogenerated using GMT: v1.3.0</p>
+    &copy; GMT.jl. Last modified: September 02, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+      <p>These docs were autogenerated using GMT: v1.4.0</p>
   </div>
 </div>
 </div><!-- CONTENT ENDS HERE -->

@@ -85,7 +85,7 @@
 </ul></li>
 <li><input class="collapse-toggle" id="menuitem-2-4" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-2-4"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/examples/choropleths">Choropleths</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/examples/choropleths/choro_examples">Choropleths</a></div></li>
 </ul></li>
-<li><input class="collapse-toggle" id="menuitem-2-5" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-2-5"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/examples/contours">Contours</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/examples/contours/01_contour_examples">Contours</a></div></li>
+<li><input class="collapse-toggle" id="menuitem-2-5" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-2-5"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/examples/contours">Contour plots</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/examples/contours/01_contour_examples">Contours</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/examples/contours/02_polar_contours">Polar Contours</a></div></li>
 </ul></li>
 <li><input class="collapse-toggle" id="menuitem-2-6" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-2-6"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/examples/embellish">Embellishments</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/examples/embellish/01_mapscale">Map scales</a></div></li>
@@ -147,6 +147,8 @@
 </ul></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/tutorials/dlakelan">dlakelan</a></div></li>
 <li><input class="collapse-toggle" id="menuitem-4-5" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-4-5"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/tutorials/longest_sail">Longest sail</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/tutorials/longest_sail/longestsail">The longest sail</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-4-6" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-4-6"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/tutorials/vector_shp">Reading, filtering and visualizing geospatial vector data</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/tutorials/vector_shp/vector_shp">Reading, filtering and visualizing geospatial vector data</a></div></li>
 </ul></li>
 </ul></li>
 <li><input class="collapse-toggle" id="menuitem-5" type="checkbox" checked><div class="tocitem-container"><label class="tocexpander" for="menuitem-5"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/documentation">Documentation</a></div><ul><li><input class="collapse-toggle" id="menuitem-5-1" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-5-1"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/documentation/all_docs_ref">All documentations</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/all_docs_ref/all_refs">Manuals</a></div></li>
@@ -307,7 +309,7 @@
 <p>Show the contents of the <code>Mainlands</code> collection. We use this as example because it is a small one &#40;contains only the continental parts of some countries that otherwise contain also distant islands&#41; and therefore, good to show what information is displayed to the user.</p>
 <pre><code class="language-julia">using GMT
 earthregions&#40;&quot;Mainlands&quot;&#41;</code></pre>
-4×4 GMT.GMTdataset&#123;Float64, 2&#125;  Row │    W&#40;lon&#41;     E&#40;lon&#41;    S&#40;lat&#41;    N&#40;lat&#41;    Code          Region        ⋯      │   Float64    Float64   Float64   Float64  String          String        ⋯ ─────┼──────────────────────────────────────────────────────────────────────────    1 │ -85.9506   -82.5561    8.0329   11.2167      CRC  Continental Costa Ric ⋯    2 │ -81.0788   -75.1848   -4.99882   1.43894     ECC   Continental Ecuador    3 │  -9.56      -6.18     36.955    42.16        PTC   Continental Portugal    4 │  -9.29092    4.31502  35.1852   43.7915      ESC    Continental Spain                                                                2 columns omitted<table>
+4×4 GMT.GMTdataset&#123;Float64, 2&#125;  Row │    W&#40;lon&#41;     E&#40;lon&#41;    S&#40;lat&#41;    N&#40;lat&#41;  Code          Region          ⋯ ─────┼──────────────────────────────────────────────────────────────────────────    1 │ -85.9506   -82.5561    8.0329   11.2167    CRC  Continental Costa Rica  ⋯    2 │ -81.0788   -75.1848   -4.99882   1.43894   ECC   Continental Ecuador    3 │  -9.56      -6.18     36.955    42.16      PTC   Continental Portugal    4 │  -9.29092    4.31502  35.1852   43.7915    ESC    Continental Spain                                                                 1 column omitted<table>
   <thead>
     <tr class = "header headerLastRow">
       <th style = "text-align: right;">W(lon)</th>
@@ -386,8 +388,8 @@ viz&#40;G, shade&#61;true, coast&#61;true, cmap&#61;:earth&#41;</code></pre></p>
 
 <div class="page-foot">
   <div class="copyright">
-    &copy; GMT.jl. Last modified: July 23, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
-      <p>These docs were autogenerated using GMT: v1.3.0</p>
+    &copy; GMT.jl. Last modified: September 02, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+      <p>These docs were autogenerated using GMT: v1.4.0</p>
   </div>
 </div>
 </div><!-- CONTENT ENDS HERE -->

@@ -84,7 +84,7 @@
 </ul></li>
 <li><input class="collapse-toggle" id="menuitem-2-4" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-2-4"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/examples/choropleths">Choropleths</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/examples/choropleths/choro_examples">Choropleths</a></div></li>
 </ul></li>
-<li><input class="collapse-toggle" id="menuitem-2-5" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-2-5"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/examples/contours">Contours</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/examples/contours/01_contour_examples">Contours</a></div></li>
+<li><input class="collapse-toggle" id="menuitem-2-5" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-2-5"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/examples/contours">Contour plots</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/examples/contours/01_contour_examples">Contours</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/examples/contours/02_polar_contours">Polar Contours</a></div></li>
 </ul></li>
 <li><input class="collapse-toggle" id="menuitem-2-6" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-2-6"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/examples/embellish">Embellishments</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/examples/embellish/01_mapscale">Map scales</a></div></li>
@@ -146,6 +146,8 @@
 </ul></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/tutorials/dlakelan">dlakelan</a></div></li>
 <li><input class="collapse-toggle" id="menuitem-4-5" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-4-5"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/tutorials/longest_sail">Longest sail</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/tutorials/longest_sail/longestsail">The longest sail</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-4-6" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-4-6"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/tutorials/vector_shp">Reading, filtering and visualizing geospatial vector data</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/tutorials/vector_shp/vector_shp">Reading, filtering and visualizing geospatial vector data</a></div></li>
 </ul></li>
 </ul></li>
 <li><input class="collapse-toggle" id="menuitem-5" type="checkbox" checked><div class="tocitem-container"><label class="tocexpander" for="menuitem-5"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/documentation">Documentation</a></div><ul><li><input class="collapse-toggle" id="menuitem-5-1" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-5-1"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/documentation/all_docs_ref">All documentations</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/all_docs_ref/all_refs">Manuals</a></div></li>
@@ -275,7 +277,7 @@
 
 <!-- Content appended here -->
 <div class="franklin-content"><h1 id="setting_color"><a href="#setting_color" class="header-anchor">Setting color</a></h1>
-<p>Color can be selected in several different ways. One of the is to create color maps with the <em>makecpt</em> and <em>grd2cpt</em> modules &#40;see their own man pages&#41;. This is the method we use to colorize images, sets of points, etc. The other option sets the color via keyword/value pairs and is appropriate to color fill polygons, individual symbols, etc and the one documented here.</p>
+<p>Color can be selected in several different ways. One of the is to create color maps with the <a href="/GMTjl_doc/documentation/modules/makecpt/index.html#makecpt">makecpt</a> and <a href="/GMTjl_doc/documentation/modules/grd2cpt/index.html#grd2cpt">grd2cpt</a> modules. This is the method we use to colorize images, sets of points, etc. The other option sets the color via keyword/value pairs and is appropriate to color fill polygons, individual symbols, etc and the one documented here.</p>
 <p>We may use this in modules that expect the <em>color</em> or <em>fill</em> keywords, then the value can be a string or a symbol with the color&#39;s name &#40;or names separated by commas&#41;; a number in the &#91;0 255&#93; range to indicate a gray shade tone; or a 3-elements tuple &#40;more tricky&#41; or array &#40;simpler&#41; where each element contains the R,G,B component in either &#91;0 255&#93; or &#91;0 1&#93; range.</p>
 <p>Examples:</p>
 <ul>
@@ -305,8 +307,8 @@
 <p>But there are other options that expect color in one of its elements. For example, to set a text font we may want to choose a color &#40;i.e. not use the default which is black&#41;. Then we would do drop the <em>color&#61;</em> and use the value in that other option value. For example <em>font&#61;&#40;12, &quot;Helvetica&quot;, &#40;30,20,180&#41;&#41;</em>, where the color is the third element in the <em>font</em> keyword option. </p>
 <div class="page-foot">
   <div class="copyright">
-    &copy; GMT.jl. Last modified: July 23, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
-      <p>These docs were autogenerated using GMT: v1.3.0</p>
+    &copy; GMT.jl. Last modified: September 02, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+      <p>These docs were autogenerated using GMT: v1.4.0</p>
   </div>
 </div>
 </div><!-- CONTENT ENDS HERE -->

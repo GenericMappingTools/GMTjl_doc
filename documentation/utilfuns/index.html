@@ -84,7 +84,7 @@
 </ul></li>
 <li><input class="collapse-toggle" id="menuitem-2-4" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-2-4"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/examples/choropleths">Choropleths</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/examples/choropleths/choro_examples">Choropleths</a></div></li>
 </ul></li>
-<li><input class="collapse-toggle" id="menuitem-2-5" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-2-5"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/examples/contours">Contours</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/examples/contours/01_contour_examples">Contours</a></div></li>
+<li><input class="collapse-toggle" id="menuitem-2-5" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-2-5"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/examples/contours">Contour plots</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/examples/contours/01_contour_examples">Contours</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/examples/contours/02_polar_contours">Polar Contours</a></div></li>
 </ul></li>
 <li><input class="collapse-toggle" id="menuitem-2-6" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-2-6"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/examples/embellish">Embellishments</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/examples/embellish/01_mapscale">Map scales</a></div></li>
@@ -146,6 +146,8 @@
 </ul></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/tutorials/dlakelan">dlakelan</a></div></li>
 <li><input class="collapse-toggle" id="menuitem-4-5" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-4-5"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/tutorials/longest_sail">Longest sail</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/tutorials/longest_sail/longestsail">The longest sail</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-4-6" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-4-6"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/tutorials/vector_shp">Reading, filtering and visualizing geospatial vector data</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/tutorials/vector_shp/vector_shp">Reading, filtering and visualizing geospatial vector data</a></div></li>
 </ul></li>
 </ul></li>
 <li><input class="collapse-toggle" id="menuitem-5" type="checkbox" checked><div class="tocitem-container"><label class="tocexpander" for="menuitem-5"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/documentation">Documentation</a></div><ul><li><input class="collapse-toggle" id="menuitem-5-1" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-5-1"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/documentation/all_docs_ref">All documentations</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/all_docs_ref/all_refs">Manuals</a></div></li>
@@ -541,13 +543,18 @@ gadm&#40;&quot;IND&quot;, names&#61;true&#41;</code></pre>
 <div class="doc-header" id="getbyattrib">
 <a href="#getbyattrib">getbyattrib</a>
 </div>
-<div class="doc-content"><pre><code>getbyattrib&#40;D::Vector&#123;&lt;:GMTdataset&#125;&#91;, index::Bool&#93;; kw...&#41;</code></pre>
-<p>Take a GMTdataset vector and return only its elememts that match the condition&#40;s&#41; set by the <code>attrib</code> keywords. Note, this assumes that <code>D</code> has its <code>attrib</code> fields set with usable information.</p>
+<div class="doc-content"><pre><code>getbyattrib&#40;D::Vector&#123;&lt;:GMTdataset&#125;&#91;, index::Bool&#61;false&#93;; kw...&#41;</code></pre>
+<p>or</p>
+<pre><code>filter&#40;D::Vector&#123;&lt;:GMTdataset&#125;; kw...&#41;</code></pre>
+<p>or</p>
+<pre><code>findall&#40;D::Vector&#123;&lt;:GMTdataset&#125;; kw...&#41;</code></pre>
+<p>Take a GMTdataset vector and return only its elements that match the condition&#40;s&#41; set by the <code>kw</code> keywords. Note, this assumes that <code>D</code> has its <code>attrib</code> fields set with usable information.</p>
+<p>NOTE: Instead of &#36;getbyattrib&#36; one case use instead &#36;filter&#36; &#40;&#61;&#61;&gt; <code>index&#61;false</code>&#41; or &#36;findall&#36; &#40;&#61;&#61;&gt; <code>index&#61;true</code>&#41;</p>
 <h3>Parameters</h3>
 <ul>
-<li><p><code>attrib</code> or <code>att</code>: keyword with the attribute <code>name</code> used in selection. It can be a single name as in <code>att&#61;&quot;NAME_2&quot;</code>       or a NamedTuple with the attribname, attribvalue as in <code>att&#61;&#40;NAME_2&#61;&quot;value&quot;&#41;</code>. Use more elements if       wishing to do a composite match. E.g. <code>att&#61;&#40;NAME_1&#61;&quot;val1&quot;, NAME_2&#61;&quot;val2&quot;&#41;</code> in which case oly segments       matching the two conditions are returned.</p>
+<li><p><code>attrib name&#40;s&#41;&#61;value&#40;s&#41;</code>: Easier to explain by examples: <code>NAME&#61;&quot;Antioquia&quot;</code>, select all elements that have that attribute/value combination. <code>NAME&#61;&#40;&quot;Antioquia&quot;, &quot;Caldas&quot;&#41;, pick elements that have those</code>NAME<code>attributes. Add as many as wished. If using two</code>kwargs<code>the second works as a condition.</code><code>&#40;..., NAME&#61;&#40;&quot;Antioquia&quot;, &quot;Caldas&quot;&#41;, feature_id&#61;0&#41;</code><code>means select all elements from</code><code>Antioquia</code><code>and</code><code>Caldas</code><code>that have the attribute</code>feature_id&#96; &#61; 0.</p>
 </li>
-<li><p><code>val</code> or <code>value</code>: keyword with the attribute &#36;value&#36; used in selection. Use this only when <code>att</code> is not a NamedTuple.</p>
+<li><p><code>attrib</code> or <code>att</code>: &#40;OLD SYNTAX&#41; A NamedTuple with the attribname, attribvalue as in <code>att&#61;&#40;NAME_2&#61;&quot;value&quot;,&#41;</code>. Use more elements if wishing to do a composite match. E.g. <code>att&#61;&#40;NAME_1&#61;&quot;val1&quot;, NAME_2&#61;&quot;val2&quot;&#41;</code> in which case only segments matching the two conditions are returned.</p>
 </li>
 <li><p><code>index</code>: Use this <code>positional</code> argument &#61; <code>true</code> to return only the segment indices that match the <code>att</code> condition&#40;s&#41;.</p>
 </li>
@@ -555,7 +562,7 @@ gadm&#40;&quot;IND&quot;, names&#61;true&#41;</code></pre>
 <h3>Returns</h3>
 <p>Either a vector of GMTdataset, or a vector of Int with the indices of the segments that match the query condition. Or <code>nothing</code> if the query results in an empty GMTdataset </p>
 <h2>Example:</h2>
-<pre><code>D &#61; getbyattrib&#40;D, attrib&#61;&quot;NAME_2&quot;, val&#61;&quot;Porto&quot;&#41;;</code></pre>
+<pre><code>D &#61; filter&#40;D, NAME_2&#61;&quot;Porto&quot;&#41;;</code></pre>
 
 
 </div>
@@ -837,6 +844,34 @@ julia&gt; viz&#40;G, zsize&#61;6, facades&#61;&#40;&quot;cenora_base.jpg&quot;, 
 </div>
 </div>
 <div class="docstring">
+<div class="doc-header" id="info">
+<a href="#info">info</a>
+</div>
+<div class="doc-content"><h3><code>info&#40;GI, showdata::Bool&#61;true; crs::Bool&#61;false&#41;</code></h3>
+<p>Shows information about the <code>GI</code> grid or image that includes dimensional and, if exists, referencing data.</p>
+<ul>
+<li><p><code>showdata</code>: Boolean that controls if a small array subset is printed or not.</p>
+</li>
+<li><p><code>crs</code>: Boolean that if <code>true</code> only prints the referencing information.</p>
+</li>
+</ul>
+<h3><code>info&#40;D::GDtype; crs::Bool&#61;false, attribs&#61;false, att&#61;&quot;&quot;&#41;</code></h3>
+<p>Shows information about the <code>D</code> GMTdataset &#40;or vector of them&#41;.</p>
+<ul>
+<li><p><code>crs</code>: Boolean that if <code>true</code> only prints the referencing information.</p>
+</li>
+<li><p><code>attribs</code>: In case the dataset has attributes, like they do when resulting from reading a shape file, use this parameter to print only the attribute table. A setting of <code>attribs&#61;true</code> will print the entire attributes table. Give a positive number, <em>e.g.</em> <code>attribs&#61;5</code> to show only the first 5 attributes. A negative number prints the last n attribs. A vector range, <code>attribs&#61;5:9</code> is also accepted.</p>
+</li>
+<li><p><code>att</code>: Name of one attribute. Returns a string vector with the values of the attribute passed into this option. Example, &#36;attn &#61; info&#40;D, att&#61;&quot;NAME&quot;&#41;&#36; returns all values of the attribute &#36;NAME&#36;.</p>
+</li>
+</ul>
+<h3><code>info&#40;any&#41;</code></h3>
+<p>Runs &#36;show&#40;stdout, &quot;text/plain&quot;, any&#41;&#36; which prints all elements of <code>any</code>. Good for printing the entire vector or matrix.</p>
+
+
+</div>
+</div>
+<div class="docstring">
 <div class="doc-header" id="inwhichpolygon">
 <a href="#inwhichpolygon">inwhichpolygon</a>
 </div>
@@ -874,9 +909,9 @@ plot&#33;&#40;points, marker&#61;:star, ms&#61;&quot;12p&quot;, fill&#61;:blue, 
 <p><code>GMT.isnodata</code> is a <code>Function</code>.</p>
 <pre><code># 2 methods for generic function &quot;isnodata&quot; from GMT:
  &#91;1&#93; isnodata&#40;array::AbstractArray&#41;
-     @ ~/.julia/packages/GMT/V49R0/src/utils.jl:329
+     @ ~/.julia/packages/GMT/n2q0n/src/utils.jl:329
  &#91;2&#93; isnodata&#40;array::AbstractArray, val&#41;
-     @ ~/.julia/packages/GMT/V49R0/src/utils.jl:329</code></pre>
+     @ ~/.julia/packages/GMT/n2q0n/src/utils.jl:329</code></pre>
 </div>
 </div>
 <div class="docstring">
@@ -1029,7 +1064,7 @@ D &#61; linearfitxy&#40;&#91;0.037 0.0080; 0.035 0.0084; 0.032 0.0100; 0.040 0.0
 <p><code>GMT.magic</code> is a <code>Function</code>.</p>
 <pre><code># 1 method for generic function &quot;magic&quot; from GMT:
  &#91;1&#93; magic&#40;n::Int64&#41;
-     @ ~/.julia/packages/GMT/V49R0/src/utils.jl:436</code></pre>
+     @ ~/.julia/packages/GMT/n2q0n/src/utils.jl:436</code></pre>
 </div>
 </div>
 <div class="docstring">
@@ -1156,6 +1191,50 @@ G &#61; mat2grid&#40;f::String&#41;</code></pre>
 </li>
 </ul>
 <p>The <code>kw...</code> kwargs search for &#91;:layout :mem_layout&#93;, &#91;:names&#93; and &#91;:metadata&#93;</p>
+
+
+</div>
+</div>
+<div class="docstring">
+<div class="doc-header" id="ODE2ds">
+<a href="#ODE2ds">ODE2ds</a>
+</div>
+<div class="doc-content"><pre><code>D &#61; ODE2ds&#40;sol; interp&#61;0&#41;</code></pre>
+<p>Extract data from a DifferentialEquations solution type and return it into a GMTdataset.</p>
+<ul>
+<li><p><code>interp</code>: &#61;&#61; 0 means we return the original points &#40;no interpolation&#41;. &#61;&#61; 2 &#61;&gt; do data interpolation to   the double of original number of points. &#61;&#61; 3 &#61;&gt; three times, &#61;&#61; n &#61;&gt; n times. </p>
+</li>
+</ul>
+
+
+</div>
+</div>
+<div class="docstring">
+<div class="doc-header" id="orbits">
+<a href="#orbits">orbits</a>
+</div>
+<div class="doc-content"><pre><code>orbits&#40;xyz::Matrix&#123;&lt;:Real&#125;; first&#61;true, radius&#61;6371.007, height&#61;0, lon0&#61;0, lat0&#61;0, show&#61;false, kw...&#41;</code></pre>
+<p>Plots the orbit, or whatever the input data in <code>xyz</code> represents, about the Earth or other planetary bodies.</p>
+<ul>
+<li><p><code>xyz</code>: The orbit coordinates. By default, we expect the coordinates in the Earth Centered Earth Fixed &#40;ECEF&#41; system but they can be in spherical coordinates &#40;lon, lat&#41; as well. In this case <code>xyz</code> must be a Mx2 matrix and <code>height</code> &#40;the orbit height&#41; must be &gt; 0. If this argument is omitted, we plot a demo spiral &quot;orbit&quot;.</p>
+</li>
+<li><p><code>radius</code>: The planetary body &#40;spherical&#41; radius. This value may be passed in meters or km and is only used when input is passed in spherical coordinates.</p>
+</li>
+<li><p><code>first</code>: Boolean that indicates if &#36;orbits&#36; creates the first layer of the image plot. If the default value of <code>true</code> is used, we also make a call to &#36;coast&#36; to plot the Earth using an Orthographic projection. The default option for this is plot the coastlines only, bur other options, <em>e.g.</em> colorizing the continents, are also available via the <code>kw...</code> arguments. Setting <code>first&#61;false</code>, or better, use the &#36;orbits&#33;&#36; form, skips the &#36;coast&#36; call, which lets this plot be appended to a previous plot as for example the one produced by &#36;grdimage&#36; on a Eart&#39;s DEM. Note, however, that in this case the previous plot must have used the same <code>lon0</code> and <code>lat0</code> otherwise the visible orbit will be wrong. </p>
+</li>
+<li><p><code>lon0</code>: Central longitude of the Orthographic projection.</p>
+</li>
+<li><p><code>lat0</code>:  Central latitude of the Orthographic projection.</p>
+</li>
+<li><p><code>height</code>: Used when input <code>xyz</code> is a Mx2 &#40;lon, lat&#41; matrix and represents the height in <em>meters</em> above the sphere of radius <code>radius</code>. &#40;MUST be &gt; 0 and not &#39;too small&#39; or this function&#39;s algorithm fails.&#41; </p>
+</li>
+<li><p><code>show</code>: Set this to <code>true</code> if want to see the produced image. Leaving it as <code>false</code> permits adding more elements by posterior plotting calls.</p>
+</li>
+<li><p><code>kw</code>: keyword arguments to be consumed in the &#36;coast&#36; and &#36;plot3&#36; calls. For example, <code>land&#61;:tomato, lw&#61;1, lc&#61;:blue</code> paints the continent with the <code>tomato</code> color and plots the orbits with blue, 1pt thick lines.</p>
+</li>
+</ul>
+<h3>Example:</h3>
+<pre><code>orbits&#40;show&#61;true&#41;</code></pre>
 
 
 </div>
@@ -1824,8 +1903,8 @@ imshow&#40;img, proj&#61;:guess&#41;</code></pre>
 
 <div class="page-foot">
   <div class="copyright">
-    &copy; GMT.jl. Last modified: July 23, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
-      <p>These docs were autogenerated using GMT: v1.3.0</p>
+    &copy; GMT.jl. Last modified: September 02, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+      <p>These docs were autogenerated using GMT: v1.4.0</p>
   </div>
 </div>
 </div><!-- CONTENT ENDS HERE -->
