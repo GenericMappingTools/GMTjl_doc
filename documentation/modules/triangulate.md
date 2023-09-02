@@ -18,11 +18,11 @@ starting at 0 for the first line) in the input file. As an option, you may choos
 multiple segment file that can be send to \myreflink{plot} to draw the triangulation network.
 If **region** and **inc** are set a grid will be calculated based on the surface defined by the
 planar triangles. The actual algorithm used in the triangulations is either that of Watson [1982]
-or Shewchuk [1996] [Default] (type **gmt("gmtget GMT_TRIANGULATE")** to see which method is
+or Shewchuk [1996] (Default. Type **gmt("gmtget GMT_TRIANGULATE")** to see which method is
 selected). This choice is made during the GMT (**not** `GMT.jl`) build step. Furthermore, if
 the Shewchuk algorithm is installed then you can also perform the calculation of Voronoi
 polygons and optionally grid your data via the natural nearest neighbor algorithm. **Note**:
-For geographic data with global or very large extent you should consider :doc:`sphtriangulate`
+For geographic data with global or very large extent you should consider \myreflink{sphtriangulate}
 instead since **triangulate** is a Cartesian or small-geographic area operator and is unaware
 of periodic or polar boundary conditions.
 

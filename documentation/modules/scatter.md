@@ -27,6 +27,10 @@ Optional Arguments
 
 \textinput{common_opts/opt_mfc}
 
+- **zcolor** or **markerz** or **mz** : -- *zcolor=xx* **|** *zcolor=true*\
+   Take the vector `xx` (same size as number os points in data) and interpolate the current color scale to paint the
+   symbols based on that colr scale. The form `zcolor=true` is equivant to *zcolor=1:npoints*
+
 - **S** or *symbol* or *marker* or *Marker* or *shape* : -- Default is `circle` with a diameter of 7 points
    - *symbol=symbol* string\
       A full GMT compact string.

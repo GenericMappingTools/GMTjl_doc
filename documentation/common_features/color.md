@@ -1,7 +1,7 @@
 # Setting color
 
-Color can be selected in several different ways. One of the is to create color maps with the *makecpt* and
-*grd2cpt* modules (see their own man pages). This is the method we use to colorize images, sets of points, etc.
+Color can be selected in several different ways. One of the is to create color maps with the \myreflink{makecpt} and
+\myreflink{grd2cpt} modules. This is the method we use to colorize images, sets of points, etc.
 The other option sets the color via keyword/value pairs and is appropriate to color fill polygons, individual
 symbols, etc and the one documented here.
 

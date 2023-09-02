@@ -67,4 +67,15 @@
     ~~~</a>~~~
   @@
 
+  @@box
+    ~~~<a class="boxlink" href="vector_shp/vector_shp/">~~~
+    @@title Geospatial vector@@
+    @@box-content
+      ~~~
+      <img src="/tutorials/vector_shp/tilelogo.png">
+      ~~~
+    @@
+    ~~~</a>~~~
+  @@
+
 @@

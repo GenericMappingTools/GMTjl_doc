@@ -4,7 +4,7 @@
 	contour(cmd0::String="", arg1=nothing; kwargs...)
 ```
 
-Contour table data by direct triangulation
+Contour plot from table data by direct triangulation
 
 
 Description
