@@ -336,12 +336,12 @@ WKT: GEOGCS&#91;&quot;WGS 84&quot;,
 </a>
 
 <p>We can repeat the previous steps to load the Colombian municipalities and filter the Antioquian ones.</p>
-<pre><code class="language-julia">munic &#61; gmtread&#40;GMT.TESTSDIR * &quot;COL_ADM2.shp.zip&quot;&#41;;
+<pre><code class="language-julia">munic &#61; gmtread&#40;GMT.TESTSDIR * &quot;COL_adm2.shp.zip&quot;&#41;;
 mun_antioquia &#61; filter&#40;munic, NAME_1&#61;:Antioquia&#41;;	# Symbols are as good as strings for attribute values
 viz&#40;mun_antioquia, proj&#61;:guess&#41;</code></pre></p>
 <p>
-<a id="example_7811673290317831294">
- <p><span style="color:red;">// Image matching '/assets/tutorials/vector_shp/vector_shp/code/example_7811673290317831294.png' not found. //</span></p> 
+<a id="example_12704604564422242170">
+ <img src="/GMTjl_doc/assets/tutorials/vector_shp/vector_shp/code/output/example_12704604564422242170.png" alt=""> 
 </a>
 
 <p>Now we are going to compute the centroids of the Antioquia municipes and use them as placers to contents of the <em>ID_2</em> attribute &#40;that are numbers, though confess that I don&#39;t know what they represent&#41;.</p>
@@ -350,8 +350,8 @@ t &#61; info&#40;mun_antioquia, att&#61;&quot;ID_2&quot;&#41;;		# Get the values
 antioquia_points.text &#61; t;					# Add the tex column to the centroids object
 viz&#40;mun_antioquia, proj&#61;:guess, fill&#61;:beige, lw&#61;0, text&#61;&#40;data&#61;antioquia_points, font&#61;4&#41;&#41;</code></pre></p>
 <p>
-<a id="example_2582956093276612783">
- <p><span style="color:red;">// Image matching '/assets/tutorials/vector_shp/vector_shp/code/example_2582956093276612783.png' not found. //</span></p> 
+<a id="example_11720728504519288710">
+ <img src="/GMTjl_doc/assets/tutorials/vector_shp/vector_shp/code/output/example_11720728504519288710.png" alt=""> 
 </a>
 
 <p>And as an example, we can use the numeric information contained in the <em>ID_2</em> attribute &#40;which comes out as string but we can easily convert it to numbers&#41; and paint the municipe polygons according to those numbers. That is, make a choropleth map.</p>
@@ -364,8 +364,8 @@ C &#61; makecpt&#40;range&#61;&#40;minimum&#40;tn&#41;,maximum&#40;tn&#41;&#41;,
 # Vizualize 
 viz&#40;mun_antioquia, proj&#61;:guess, levels&#61;tn, cmap&#61;C, lw&#61;0, title&#61;&quot;Another Map of Antioquia&quot;, text&#61;&#40;data&#61;antioquia_points, font&#61;5&#41;, colorbar&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_6760807706937932694">
- <p><span style="color:red;">// Image matching '/assets/tutorials/vector_shp/vector_shp/code/example_6760807706937932694.png' not found. //</span></p> 
+<a id="example_14310957141422947909">
+ <img src="/GMTjl_doc/assets/tutorials/vector_shp/vector_shp/code/output/example_14310957141422947909.png" alt=""> 
 </a>
 
 <p>The examples shown here use vector data in the shapefile format, but the same could have been obtained using for example the geopackage format. In fact, as indicated in the SAGA-GIS site from where the shapefiles were downloaded, the original data originates from the <a href="https://gadm.org">GADM</a> project where data was in <em>gpkg</em> format. We can access the data from that site using the <em>gadm</em> function &#40;see examples in <a href="/GMTjl_doc/examples/misc/gadm/index.html#gadm">GADM</a>&#41;. For example, the Antioquia municipes can be downloaded with:</p>
