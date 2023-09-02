@@ -5,20 +5,23 @@ we can do this in Julia with GMT.jl. Vector data are composed of discrete geomet
 as vertices that define the “shape” of the spatial object. There are three types of vector data: *Points, Lines* and
 *Polygons* (see more at, for example,
 [GIS in Python](https://www.earthdatascience.org/workshops/gis-open-source-python/intro-vector-data-python/)).
-Geospatial vector data is often stored in the shapefile format and that is the data format that we will use is this
-tutorial, but other formats could save been used without fundamental changes to the procedures shown below.
+Geospatial vector data is often stored in the shapefile format and that is the format that we will use is this
+tutorial, but other formats could have been used without fundamental changes to the procedures shown below.
 
 ## Reading vector data
 
-Read a shapefile representing Colombian departments which has been previously downloaded from DIVA-GIS,
-but not forgetting to load the package first.
+Read a shapefile representing Colombian departments which has been previously downloaded from
+[DIVA-GIS](https://www.diva-gis.org/datadown), and not forgetting to load the package first.
 
 ```julia
 using GMT
 deptos = gmtread(GMT.TESTSDIR * "COL_adm1.shp.zip");
 ```
 
-We can see what the contents of the _deptos_ object are, but because there are many polygons we will restrict to show only the first 7 from the attribute table. For that we use the _info_ function that plots several types of information depending on the input data type. For GMTdatasets the _attribs_ keyword lets limit the number of table rows that are printed.
+We can see what the contents of the _deptos_ object are, but because there are many polygons we will restrict to
+show only the first 7 from the attribute table. For that we use the _info_ function that plots several types of
+information depending on the input data type. For \myreflink{GMTdataset}s the _attribs_ keyword lets us limit the
+number of table rows that are printed.
 
 
 ```julia
@@ -38,7 +41,7 @@ Attribute table (Dict{String, String})
 └─────┴───────────┴──────┴─────────────┴───────────┴─────┴──────┴──────────────┴──────────┴───────────┘
 ```
 
-It is useful to know the coordinate reference system of the vector data stored in the _deptos_ object. For that we will use again the _info_ function, but this time with the _crs_ keyword.
+It is always useful to know the coordinate reference system of the data object. For that we will use again the _info_ function, but this time with the _crs_ keyword.
 
 ```julia
 info(deptos, crs=true)
@@ -64,7 +67,7 @@ viz(deptos)
 The somewhat large blank part on the upper part of the figure is due to small islands that are barely visible
 at this scale but also due to the automatic determination of the region boundaries. Also, since Colombia is
 close to equator the deformation implied by plotting geographical coordinates is not easily visible, but we
-can do better. We can tell GMT to guess a good projection for this and automatically apply it.
+can do better. We can tell GMT to guess a good projection for this region and automatically apply it.
 
 \begin{examplefig}{}
 ```julia
@@ -76,14 +79,14 @@ viz(deptos, proj=:guess)
 
 ## Filtering geospatial data based on attributes
 
-As we are interested only in one departament, we can filter the data. Review the following code and change
-it to match your department.
+In this demonstration we are interested only in one departament, so we will filter the data to fulfill a
+department name condition. Review the following code and change it to match your department.
 
 ```julia
 antioquia = filter(deptos, NAME_1 = "Antioquia");
 ```
 
-Let’s plot the new object.
+Nex, plot the new object.
 
 \begin{examplefig}{}
 ```julia
@@ -100,7 +103,7 @@ We can repeat the previous steps to load the Colombian municipalities and filter
 ```julia
 using GMT   # Hide
 munic = gmtread(GMT.TESTSDIR * "COL_adm2.shp.zip");
-mun_antioquia = filter(munic, NAME_1=:Antioquia);	# Symbols are as good as strings for attribute values
+mun_antioquia = filter(munic, NAME_1=:Antioquia);    # Symbols are as good as strings for attribute values
 viz(mun_antioquia, proj=:guess)
 ```
 \end{examplefig}
@@ -114,8 +117,8 @@ using GMT   # Hide
 munic = gmtread(GMT.TESTSDIR * "COL_adm2.shp.zip");		# Hide
 mun_antioquia = filter(munic, NAME_1=:Antioquia);		# Hide
 antioquia_points = centroid(mun_antioquia);
-t = info(mun_antioquia, att="ID_2");		# Get the values of the ID_2 attribute
-antioquia_points.text = t;					# Add the tex column to the centroids object
+t = info(mun_antioquia, att="ID_2");        # Get the values of the ID_2 attribute
+antioquia_points.text = t;                  # Add the tex column to the centroids object
 viz(mun_antioquia, proj=:guess, fill=:beige, lw=0, text=(data=antioquia_points, font=4))
 ```
 \end{examplefig}
@@ -154,4 +157,4 @@ For example, the Antioquia municipes can be downloaded with:
 antioquia = gadm("COL", "Antioquia", children=true);
 ```
 
-But that object does not contain the *ID_2* attribute so we couldn't in fact make the same choropleth map.
+But that object does not contain the *ID_2* attribute so in fact we couldn't have made the same choropleth map.
