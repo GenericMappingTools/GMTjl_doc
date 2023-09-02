@@ -178,7 +178,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/general/quick_learn">Quick learn</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/general/types">The GMT.jl types &#40;important&#41;</a></div></li>
 </ul></li>
-<li><input class="collapse-toggle" id="menuitem-5-5" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-5-5"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/documentation/modules">GMT Modules</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/arrows">arrows</a></div></li>
+<li><input class="collapse-toggle" id="menuitem-5-5" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-5-5"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/documentation/modules">GMT Modules</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/arrows">Arrows</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/band">band</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/bar">bar</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/bar3">bar3</a></div></li>
@@ -251,6 +251,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/sample1d">sample1d</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/scatter">scatter</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/scatter3">scatter3</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/seismicity">Seismicity</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/solar">solar</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/sphinterpolate">sphinterpolate</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/sphtriangulate">sphtriangulate</a></div></li>
@@ -282,12 +283,12 @@
 
 <!-- Content appended here -->
 <div class="franklin-content"><h1 id="reading_filtering_and_visualizing_geospatial_vector_data"><a href="#reading_filtering_and_visualizing_geospatial_vector_data" class="header-anchor">Reading, filtering and visualizing geospatial vector data</a></h1>
-<p>This tutorial is based on a <a href="https://rpubs.com/geo2/vectordata">similar one for R</a> and shows how simpler and cleanly we can do this in Julia with GMT.jl. Vector data are composed of discrete geometric locations &#40;<em>x, y</em> values&#41; known as vertices that define the “shape” of the spatial object. There are three types of vector data: <em>Points, Lines</em> and <em>Polygons</em> &#40;see more at, for example, <a href="https://www.earthdatascience.org/workshops/gis-open-source-python/intro-vector-data-python/">GIS in Python</a>&#41;. Geospatial vector data is often stored in the shapefile format and that is the data format that we will use is this tutorial, but other formats could save been used without fundamental changes to the procedures shown below.</p>
+<p>This tutorial is based on a <a href="https://rpubs.com/geo2/vectordata">similar one for R</a> and shows how simpler and cleanly we can do this in Julia with GMT.jl. Vector data are composed of discrete geometric locations &#40;<em>x, y</em> values&#41; known as vertices that define the “shape” of the spatial object. There are three types of vector data: <em>Points, Lines</em> and <em>Polygons</em> &#40;see more at, for example, <a href="https://www.earthdatascience.org/workshops/gis-open-source-python/intro-vector-data-python/">GIS in Python</a>&#41;. Geospatial vector data is often stored in the shapefile format and that is the format that we will use is this tutorial, but other formats could have been used without fundamental changes to the procedures shown below.</p>
 <h2 id="reading_vector_data"><a href="#reading_vector_data" class="header-anchor">Reading vector data</a></h2>
-<p>Read a shapefile representing Colombian departments which has been previously downloaded from DIVA-GIS, but not forgetting to load the package first.</p>
+<p>Read a shapefile representing Colombian departments which has been previously downloaded from <a href="https://www.diva-gis.org/datadown">DIVA-GIS</a>, and not forgetting to load the package first.</p>
 <pre><code class="language-julia">using GMT
 deptos &#61; gmtread&#40;GMT.TESTSDIR * &quot;COL_adm1.shp.zip&quot;&#41;;</code></pre>
-<p>We can see what the contents of the <em>deptos</em> object are, but because there are many polygons we will restrict to show only the first 7 from the attribute table. For that we use the <em>info</em> function that plots several types of information depending on the input data type. For GMTdatasets the <em>attribs</em> keyword lets limit the number of table rows that are printed.</p>
+<p>We can see what the contents of the <em>deptos</em> object are, but because there are many polygons we will restrict to show only the first 7 from the attribute table. For that we use the <em>info</em> function that plots several types of information depending on the input data type. For <a href="#">GMTdataset</a>s the <em>attribs</em> keyword lets us limit the number of table rows that are printed.</p>
 <pre><code class="language-julia">info&#40;deptos, attribs&#61;7&#41;
 
 Attribute table &#40;Dict&#123;String, String&#125;&#41;
@@ -302,7 +303,7 @@ Attribute table &#40;Dict&#123;String, String&#125;&#41;
 │   6 │ Arauca    │ 3    │ Intendancy  │           │ COL │ 53   │ Intendencia  │ Colombia │           │
 │   7 │ Atlántico │ 4    │ Department  │           │ COL │ 53   │ Departamento │ Colombia │           │
 └─────┴───────────┴──────┴─────────────┴───────────┴─────┴──────┴──────────────┴──────────┴───────────┘</code></pre>
-<p>It is useful to know the coordinate reference system of the vector data stored in the <em>deptos</em> object. For that we will use again the <em>info</em> function, but this time with the <em>crs</em> keyword.</p>
+<p>It is always useful to know the coordinate reference system of the data object. For that we will use again the <em>info</em> function, but this time with the <em>crs</em> keyword.</p>
 <pre><code class="language-julia">info&#40;deptos, crs&#61;true&#41;
 
 PROJ: &#43;proj&#61;longlat &#43;datum&#61;WGS84 &#43;no_defs
@@ -318,7 +319,7 @@ WKT: GEOGCS&#91;&quot;WGS 84&quot;,
  <img src="/GMTjl_doc/assets/tutorials/vector_shp/vector_shp/code/output/example_16202825213880730057.png" alt=""> 
 </a>
 
-<p>The somewhat large blank part on the upper part of the figure is due to small islands that are barely visible at this scale but also due to the automatic determination of the region boundaries. Also, since Colombia is close to equator the deformation implied by plotting geographical coordinates is not easily visible, but we can do better. We can tell GMT to guess a good projection for this and automatically apply it.</p>
+<p>The somewhat large blank part on the upper part of the figure is due to small islands that are barely visible at this scale but also due to the automatic determination of the region boundaries. Also, since Colombia is close to equator the deformation implied by plotting geographical coordinates is not easily visible, but we can do better. We can tell GMT to guess a good projection for this region and automatically apply it.</p>
 <pre><code class="language-julia">viz&#40;deptos, proj&#61;:guess&#41;</code></pre></p>
 <p>
 <a id="example_11759776448808257274">
@@ -326,9 +327,9 @@ WKT: GEOGCS&#91;&quot;WGS 84&quot;,
 </a>
 
 <h2 id="filtering_geospatial_data_based_on_attributes"><a href="#filtering_geospatial_data_based_on_attributes" class="header-anchor">Filtering geospatial data based on attributes</a></h2>
-<p>As we are interested only in one departament, we can filter the data. Review the following code and change it to match your department.</p>
+<p>In this demonstration we are interested only in one departament, so we will filter the data to fulfill a department name condition. Review the following code and change it to match your department.</p>
 <pre><code class="language-julia">antioquia &#61; filter&#40;deptos, NAME_1 &#61; &quot;Antioquia&quot;&#41;;</code></pre>
-<p>Let’s plot the new object.</p>
+<p>Nex, plot the new object.</p>
 <pre><code class="language-julia">viz&#40;antioquia, proj&#61;:guess&#41;</code></pre></p>
 <p>
 <a id="example_11822140665902836021">
@@ -337,21 +338,21 @@ WKT: GEOGCS&#91;&quot;WGS 84&quot;,
 
 <p>We can repeat the previous steps to load the Colombian municipalities and filter the Antioquian ones.</p>
 <pre><code class="language-julia">munic &#61; gmtread&#40;GMT.TESTSDIR * &quot;COL_adm2.shp.zip&quot;&#41;;
-mun_antioquia &#61; filter&#40;munic, NAME_1&#61;:Antioquia&#41;;	# Symbols are as good as strings for attribute values
+mun_antioquia &#61; filter&#40;munic, NAME_1&#61;:Antioquia&#41;;    # Symbols are as good as strings for attribute values
 viz&#40;mun_antioquia, proj&#61;:guess&#41;</code></pre></p>
 <p>
-<a id="example_12704604564422242170">
- <img src="/GMTjl_doc/assets/tutorials/vector_shp/vector_shp/code/output/example_12704604564422242170.png" alt=""> 
+<a id="example_9841375670635784215">
+ <img src="/GMTjl_doc/assets/tutorials/vector_shp/vector_shp/code/output/example_9841375670635784215.png" alt=""> 
 </a>
 
 <p>Now we are going to compute the centroids of the Antioquia municipes and use them as placers to contents of the <em>ID_2</em> attribute &#40;that are numbers, though confess that I don&#39;t know what they represent&#41;.</p>
 <pre><code class="language-julia">antioquia_points &#61; centroid&#40;mun_antioquia&#41;;
-t &#61; info&#40;mun_antioquia, att&#61;&quot;ID_2&quot;&#41;;		# Get the values of the ID_2 attribute
-antioquia_points.text &#61; t;					# Add the tex column to the centroids object
+t &#61; info&#40;mun_antioquia, att&#61;&quot;ID_2&quot;&#41;;        # Get the values of the ID_2 attribute
+antioquia_points.text &#61; t;                  # Add the tex column to the centroids object
 viz&#40;mun_antioquia, proj&#61;:guess, fill&#61;:beige, lw&#61;0, text&#61;&#40;data&#61;antioquia_points, font&#61;4&#41;&#41;</code></pre></p>
 <p>
-<a id="example_11720728504519288710">
- <img src="/GMTjl_doc/assets/tutorials/vector_shp/vector_shp/code/output/example_11720728504519288710.png" alt=""> 
+<a id="example_11591273172018779456">
+ <img src="/GMTjl_doc/assets/tutorials/vector_shp/vector_shp/code/output/example_11591273172018779456.png" alt=""> 
 </a>
 
 <p>And as an example, we can use the numeric information contained in the <em>ID_2</em> attribute &#40;which comes out as string but we can easily convert it to numbers&#41; and paint the municipe polygons according to those numbers. That is, make a choropleth map.</p>
@@ -370,7 +371,7 @@ viz&#40;mun_antioquia, proj&#61;:guess, levels&#61;tn, cmap&#61;C, lw&#61;0, tit
 
 <p>The examples shown here use vector data in the shapefile format, but the same could have been obtained using for example the geopackage format. In fact, as indicated in the SAGA-GIS site from where the shapefiles were downloaded, the original data originates from the <a href="https://gadm.org">GADM</a> project where data was in <em>gpkg</em> format. We can access the data from that site using the <em>gadm</em> function &#40;see examples in <a href="/GMTjl_doc/examples/misc/gadm/index.html#gadm">GADM</a>&#41;. For example, the Antioquia municipes can be downloaded with:</p>
 <pre><code class="language-julia">antioquia &#61; gadm&#40;&quot;COL&quot;, &quot;Antioquia&quot;, children&#61;true&#41;;</code></pre>
-<p>But that object does not contain the <em>ID_2</em> attribute so we couldn&#39;t in fact make the same choropleth map.</p>
+<p>But that object does not contain the <em>ID_2</em> attribute so in fact we couldn&#39;t have made the same choropleth map.</p>
 <div class="page-foot">
   <div class="copyright">
     &copy; GMT.jl. Last modified: September 02, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
