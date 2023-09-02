@@ -40,7 +40,7 @@ Parameters
 - `data`: The default is to make a seismicity map but if the `data` option is used (containing whatever) we return
     we return the data in a ``GMTdataset`` 
 
-- `figname`: $(GMT.opt_savefig)
+- `figname`: Save the figure with the figname=name.ext where ext chooses the figure format (e.g. ``figname="name.png"``)
 
 - `land`: By default we paint the continents with the "burlywood" color. Like in the ``coast`` module, use
    `land=`"othercolor" to replace it.
