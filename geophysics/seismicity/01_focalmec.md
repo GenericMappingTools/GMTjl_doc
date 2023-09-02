@@ -1,5 +1,7 @@
 # Focal mechanisms
 
+Plotting _beach balls_ (seismic focal mechanisms) in Julia using GMT.
+
 ## Plotting beach balls
 
 In this synthetic example we will use the Aki-Richards convention and pass the
@@ -45,9 +47,10 @@ in the CMT convention format.
 
 ```julia:./code/ex1
 using GMT, PrettyTables   # hide
-getpath4docs(file::String) = joinpath("..", "..", "..", "..", "..", file) # hide
+#getpath4docs(file::String) = joinpath("..", "..", "..", "..", "..", file) # hide
 io = IOBuffer() # hide
-D = gmtread(getpath4docs("mff_bb.txt"))
+#D = gmtread(getpath4docs("mff_bb.txt"))
+D = gmtread(GMT.TESTSDIR * "mff_bb.txt")
 pretty_table(io, D.data; header=D.colnames, backend=Val(:html))	# hide
 println("~~~" * String(take!(io)) * "~~~") # hide
 ```
@@ -64,10 +67,10 @@ grdimage("@earth_relief", region=[-74,-59,5,15], proj=:guess, figsize=10, shade=
 coast!(shorelines=true, borders=((type=1, pen=0.8),(type=2, pen=0.1)), map_scale="-68.5/7.0/7.0/200")
 
 # Epicenters
-plot!(getpath4docs("mff_bb.txt"), marker=:circ, ms=0.1, fill=:yellow, markerline=:black)
+plot!(GMT.TESTSDIR * "mff_bb.txt", marker=:circ, ms=0.1, fill=:yellow, markerline=:black)
 text!(txt="Mar Caribe", x=-68, y=13.5, font=(15, "Helvetica-Bold", :white), justify=:LM)
 
 # Focal mechanisms
-meca!(getpath4docs("mff_bb.txt"), CMT=(scale=0.4, font=6), offset=true, fill=:black, show=true)
+meca!(GMT.TESTSDIR * "mff_bb.txt", CMT=(scale=0.4, font=6), offset=true, fill=:black, show=true)
 ```
 \end{examplefig}

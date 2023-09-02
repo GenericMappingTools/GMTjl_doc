@@ -1,4 +1,4 @@
-# Seismicity
+# seismicity
 
 ```julia
 seismicity(starttime="", endtime="", minmagnitude=3, mindepth=0, maxdepth=0, last=0, printurl=false, show=true, kw...)
@@ -33,11 +33,14 @@ Parameters
 
 - `maxdepth`: Limit to events with depth less than the specified maximum (km positive down).
 
+- `last`: If value is an integer (*e.g.* `last=90`), select the events in the last _n_ days. If it is a string
+   than we expect that it ends with a 'w'(eek), 'm'(onth) or 'y'(ear). Example: `last="2Y"` (period code is caseless)
+
 - `printurl`: Print the url of the requested data.
 
 - `circle`: A 3 elements Tuple or Array with ``lon,lat,radius``, where ``radius`` is in km, to perform a circle search.
 
-- `data`: The default is to make a seismicity map but if the `data` option is used (containing whatever) we return
+- `data`: The default is to make a seismicity map but if the `data` option is used (containing whatever)
     we return the data in a ``GMTdataset`` 
 
 - `figname`: Save the figure with the figname=name.ext where ext chooses the figure format (e.g. ``figname="name.png"``)

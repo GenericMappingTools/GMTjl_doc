@@ -1,4 +1,4 @@
-# Arrows
+# arrows
 
 ```julia
 arrows(cmd0::String="", arg1=nothing; kwargs...)
