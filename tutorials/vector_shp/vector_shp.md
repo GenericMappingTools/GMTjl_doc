@@ -99,7 +99,7 @@ We can repeat the previous steps to load the Colombian municipalities and filter
 \begin{examplefig}{}
 ```julia
 using GMT   # Hide
-munic = gmtread(GMT.TESTSDIR * "COL_ADM2.shp.zip");
+munic = gmtread(GMT.TESTSDIR * "COL_adm2.shp.zip");
 mun_antioquia = filter(munic, NAME_1=:Antioquia);	# Symbols are as good as strings for attribute values
 viz(mun_antioquia, proj=:guess)
 ```
@@ -111,7 +111,7 @@ to contents of the *ID_2* attribute (that are numbers, though confess that I don
 \begin{examplefig}{}
 ```julia
 using GMT   # Hide
-munic = gmtread(GMT.TESTSDIR * "COL_ADM2.shp.zip");		# Hide
+munic = gmtread(GMT.TESTSDIR * "COL_adm2.shp.zip");		# Hide
 mun_antioquia = filter(munic, NAME_1=:Antioquia);		# Hide
 antioquia_points = centroid(mun_antioquia);
 t = info(mun_antioquia, att="ID_2");		# Get the values of the ID_2 attribute
@@ -127,7 +127,7 @@ make a choropleth map.
 \begin{examplefig}{}
 ```julia
 using GMT   # Hide
-munic = gmtread(GMT.TESTSDIR * "COL_ADM2.shp.zip");		# Hide
+munic = gmtread(GMT.TESTSDIR * "COL_adm2.shp.zip");		# Hide
 mun_antioquia = filter(munic, NAME_1=:Antioquia);		# Hide
 antioquia_points = centroid(mun_antioquia);				# Hide
 t = info(mun_antioquia, att="ID_2");					# Hide
