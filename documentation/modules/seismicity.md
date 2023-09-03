@@ -4,8 +4,8 @@
 seismicity(starttime="", endtime="", minmagnitude=3, mindepth=0, maxdepth=0, last=0, printurl=false, show=true, kw...)
 ```
 
-Make automatic maps of of world-wide seismicity obtained from the USGS Earthquake Hazards Program page at
-[USGS](https://earthquake.usgs.gov)
+Make automatic maps of the world-wide seismicity obtained from [USGS Earthquake Hazards Program](https://earthquake.usgs.gov)
+in Julia using GMT.
 
 This module is a mix of \myreflink{plot}, \myreflink{coast} and \myreflink{legend} functionalities. So not all (fine)
 controlling plotting parameters are listed here. For the finest control, user should consult the manuals of those modules.
@@ -41,7 +41,7 @@ Parameters
 - `circle`: A 3 elements Tuple or Array with ``lon,lat,radius``, where ``radius`` is in km, to perform a circle search.
 
 - `data`: The default is to make a seismicity map but if the `data` option is used (containing whatever)
-    we return the data in a ``GMTdataset`` 
+    we return the data in a \myreflink{GMTdataset}
 
 - `figname`: Save the figure with the figname=name.ext where ext chooses the figure format (e.g. ``figname="name.png"``)
 
@@ -65,7 +65,7 @@ Parameters
 - `size`: Can be a scalar to plot all events with same size. This size is expected to be in cm but > 1 it is interpreted
     to be in points.
     - `size=[min_sz max_sz]` will scale linearly min/max magnitude to have sizes `min_sz/max_sz`
-    - `size=([min_sz max_sz], [min_mag max_mag])` will scale linearly min_mag/max_mag magnitude to have sizes `min_sz/max_sz`
+    - `size=([min_sz max_sz], [min_mag max_mag])` will scale linearly `min_mag/max_mag` magnitude to have sizes `min_sz/max_sz`
     - `size=(fun, [min_sz max_sz] [, [min_mag max_mag]])` does the same as above but the transformation is determined
        by the function ``fun``. Possibles functions are ``exp10``, ``exp``, ``pow`` and ``sqrt``. In the ``pow`` case
        we must pass in also the exponent and the syntax is: `size=((pow,2), [min_sz max_sz])` to have a square scaling.
