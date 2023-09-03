@@ -2,7 +2,7 @@
 
 julia_version = "1.9.3"
 manifest_format = "2.0"
-project_hash = "7ca927ab2d04f04ab4c6180c72c3ebeb25470762"
+project_hash = "4ba987fc0871a9934141fe8640abdd7a8a871225"
 
 [[deps.ADTypes]]
 git-tree-sha1 = "a4c8e0f8c09d4aa708289c1a5fc23e2d1970017a"
@@ -145,10 +145,10 @@ uuid = "62783981-4cbd-42fc-bca8-16325de8dc4b"
 version = "0.1.5"
 
 [[deps.BoundaryValueDiffEq]]
-deps = ["BandedMatrices", "DiffEqBase", "FiniteDiff", "ForwardDiff", "LinearAlgebra", "NonlinearSolve", "Reexport", "SciMLBase", "Setfield", "SparseArrays", "TruncatedStacktraces"]
-git-tree-sha1 = "039775034259dfc1f106b195f69af7741f90ef10"
+deps = ["ArrayInterface", "BandedMatrices", "DiffEqBase", "FiniteDiff", "ForwardDiff", "LinearAlgebra", "NonlinearSolve", "Reexport", "SciMLBase", "Setfield", "SparseArrays", "TruncatedStacktraces", "UnPack"]
+git-tree-sha1 = "f7392ce20e6dafa8fee406142b1764de7d7cd911"
 uuid = "764a87c0-6b3e-53db-9096-fe964310641d"
-version = "3.0.0"
+version = "4.0.1"
 
 [[deps.Bzip2_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
@@ -403,9 +403,9 @@ version = "1.15.1"
 
 [[deps.DifferentialEquations]]
 deps = ["BoundaryValueDiffEq", "DelayDiffEq", "DiffEqBase", "DiffEqCallbacks", "DiffEqNoiseProcess", "JumpProcesses", "LinearAlgebra", "LinearSolve", "NonlinearSolve", "OrdinaryDiffEq", "Random", "RecursiveArrayTools", "Reexport", "SciMLBase", "SteadyStateDiffEq", "StochasticDiffEq", "Sundials"]
-git-tree-sha1 = "9b2fef0d520066196dbd6761bbc15da5e6282d9e"
+git-tree-sha1 = "c3d11164d1b08c379bc3c6abae45fcd7250e8e35"
 uuid = "0c46a032-eb83-5123-abaf-570d42b7fbaa"
-version = "7.9.0"
+version = "7.9.1"
 
 [[deps.DimensionalData]]
 deps = ["Adapt", "ArrayInterface", "ConstructionBase", "Dates", "Extents", "IntervalSets", "IteratorInterfaceExtensions", "LinearAlgebra", "PrecompileTools", "Random", "RecipesBase", "SparseArrays", "Statistics", "TableTraits", "Tables"]
@@ -660,7 +660,7 @@ version = "3.11.2+0"
 
 [[deps.GMT]]
 deps = ["Dates", "Downloads", "GDAL_jll", "GMT_jll", "Ghostscript_jll", "PROJ_jll", "PrecompileTools", "PrettyTables", "Printf", "Statistics", "Tables"]
-git-tree-sha1 = "96bd11f595829a4c454a2615af1022dbd3998fd2"
+git-tree-sha1 = "d0c9f7ac8e9f3f851ad9251bcef1d6a89a3f4b67"
 repo-rev = "master"
 repo-url = "https://github.com/GenericMappingTools/GMT.jl.git"
 uuid = "5752ebe1-31b9-557e-87aa-f909b540aa54"
@@ -1593,9 +1593,9 @@ version = "0.5.7"
 
 [[deps.Rasters]]
 deps = ["Adapt", "ColorTypes", "ConstructionBase", "Dates", "DimensionalData", "DiskArrays", "Extents", "FillArrays", "Flatten", "GeoFormatTypes", "GeoInterface", "MakieCore", "Missings", "Mmap", "OffsetArrays", "ProgressMeter", "RecipesBase", "Reexport", "Requires", "Setfield"]
-git-tree-sha1 = "e8a8141fd5c2736d6b310bde6282f16f454a9271"
+git-tree-sha1 = "7b590116dd2da4285d3ace1500360c8eec0ef89c"
 uuid = "a3a2b9e3-a471-40c9-b274-f788e487c689"
-version = "0.8.3"
+version = "0.8.4"
 
     [deps.Rasters.extensions]
     RastersArchGDALExt = "ArchGDAL"
@@ -1662,11 +1662,23 @@ git-tree-sha1 = "45e428421666073eab6f2da5c9d310d99bb12f9b"
 uuid = "189a3867-3050-52da-a836-e630ba90ab69"
 version = "1.2.2"
 
+[[deps.ReferenceFrameRotations]]
+deps = ["Crayons", "LinearAlgebra", "Printf", "Random", "StaticArrays"]
+git-tree-sha1 = "ec9bde2e30bc221e05e20fcec9a36a9c315e04a6"
+uuid = "74f56ac7-18b3-5285-802d-d4bd4f104033"
+version = "3.0.0"
+
 [[deps.RelocatableFolders]]
 deps = ["SHA", "Scratch"]
 git-tree-sha1 = "90bc7a7c96410424509e4263e277e43250c05691"
 uuid = "05181044-ff0b-4ac5-8273-598c1e38db00"
 version = "1.0.0"
+
+[[deps.RemoteS]]
+deps = ["Dates", "GMT", "PrecompileTools", "Printf", "SatelliteToolboxPropagators", "SatelliteToolboxTle", "SatelliteToolboxTransformations", "Statistics"]
+git-tree-sha1 = "b5f606cab4601326abe4a969d15d936c0142cb33"
+uuid = "26020ff4-e92a-488e-a723-09c28e89e04a"
+version = "1.1.0"
 
 [[deps.Requires]]
 deps = ["UUIDs"]
@@ -1724,6 +1736,36 @@ deps = ["Artifacts", "JLLWrappers", "Libdl", "Zlib_jll"]
 git-tree-sha1 = "81f7d934b52b2441f7b44520bd982fdb3607b0da"
 uuid = "76ed43ae-9a5d-5a62-8c75-30186b810ce8"
 version = "3.43.0+0"
+
+[[deps.SatelliteToolboxBase]]
+deps = ["Crayons", "Dates", "LinearAlgebra", "PrecompileTools", "Printf", "ReferenceFrameRotations", "StaticArrays"]
+git-tree-sha1 = "3f05208953c53b2c13c418cd43cbba589ef57c37"
+uuid = "9e17983a-0463-41a7-9a16-1682db6d8b66"
+version = "0.3.0"
+
+[[deps.SatelliteToolboxPropagators]]
+deps = ["Crayons", "Dates", "LinearAlgebra", "PrecompileTools", "Printf", "Reexport", "SatelliteToolboxBase", "SatelliteToolboxSgp4", "SatelliteToolboxTle", "StaticArrays"]
+git-tree-sha1 = "c45953b08d316432ddc168bc15df0a3a2f76518e"
+uuid = "c2b69894-ea78-4e2b-9ba6-cedbbc3d14d7"
+version = "0.3.0"
+
+[[deps.SatelliteToolboxSgp4]]
+deps = ["Crayons", "Dates", "LinearAlgebra", "PrecompileTools", "Printf", "Reexport", "SatelliteToolboxBase", "SatelliteToolboxTle", "StaticArrays"]
+git-tree-sha1 = "66b246e63b6e00a60861a55110361c263994fa17"
+uuid = "ba14ac17-bfc9-4710-a76f-b32930ef2339"
+version = "2.1.2"
+
+[[deps.SatelliteToolboxTle]]
+deps = ["Crayons", "Dates", "Downloads", "PrecompileTools", "Printf", "URIs"]
+git-tree-sha1 = "0bf1d32269942154d6289ac664e0e1b528eaf664"
+uuid = "7ff27aeb-5fff-4337-a9ee-a9fe6b7ed35e"
+version = "1.0.4"
+
+[[deps.SatelliteToolboxTransformations]]
+deps = ["Crayons", "Dates", "DelimitedFiles", "Downloads", "Interpolations", "LinearAlgebra", "Reexport", "ReferenceFrameRotations", "SatelliteToolboxBase", "Scratch", "StaticArrays"]
+git-tree-sha1 = "9d65e7bef5aa177a227ebacdc4a51363c56df2c3"
+uuid = "6b019ec1-7a1e-4f04-96c7-a9db1ca5514d"
+version = "0.1.4"
 
 [[deps.SciMLBase]]
 deps = ["ADTypes", "ArrayInterface", "ChainRulesCore", "CommonSolve", "ConstructionBase", "Distributed", "DocStringExtensions", "EnumX", "FunctionWrappersWrappers", "IteratorInterfaceExtensions", "LinearAlgebra", "Logging", "Markdown", "PrecompileTools", "Preferences", "RecipesBase", "RecursiveArrayTools", "Reexport", "RuntimeGeneratedFunctions", "SciMLOperators", "StaticArraysCore", "Statistics", "SymbolicIndexingInterface", "Tables", "TruncatedStacktraces", "ZygoteRules"]
