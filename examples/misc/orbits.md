@@ -19,6 +19,7 @@ orbit descriptor.
 
 \begin{examplefig}{}
 ```julia
+import Pkg; Pkg.add("RemoteS")   # Hide
 using GMT, RemoteS
 
 # Compute some Aqua orbits for ... 

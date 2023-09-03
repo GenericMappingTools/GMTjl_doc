@@ -8,8 +8,8 @@ and use the left available space to plot another *thing*, as in:
 using GMT
 
 viz(GMT.peaks(N=100), zsize=8, facades=(GMT.TESTSDIR * "cenora_base.jpg",
-                                        GMT.TESTSDIR * "bunny_cenora.webp",
-                                        GMT.TESTSDIR * "burro_cenora.webp"))
+                                        GMT.TESTSDIR * "bunny_cenora.jpg",
+                                        GMT.TESTSDIR * "burro_cenora.jpg"))
 ```
 \end{examplefig}
 
