@@ -1,3 +1,5 @@
+#ENV["JULIA_GMT_IMGFORMAT"] = "jpg";	# Many examples still fail to produce jpg. Why???
+
 using Chain
 using Markdown
 using GMT
@@ -125,7 +127,8 @@ function env_examplefig(com, _)
 
 	kwargs = eval(Meta.parse("Dict(pairs((;" * Franklin.content(com.braces[1]) * ")))"))
 	name = pop!(kwargs, :name, "example_" * string(hash(content)))
-	pngfile = "$name.png"
+	ext = haskey(ENV, "JULIA_GMT_IMGFORMAT") ? ENV["JULIA_GMT_IMGFORMAT"] : "png"
+	pngfile = "$name.$ext"
 
 	# add the generated png name to the list of examples for this page, which
 	# can later be used to assemble an overview page
@@ -141,7 +144,7 @@ function env_examplefig(com, _)
 		getpath4docs(file::String) = joinpath("..", "..", "..", "..", "..", file) # hide
 		$code
 	end # hide
-	mv(joinpath(tempdir(), "GMTjl_" * GMT.tmpdir_usr[2] * ".png"), joinpath(@OUTPUT, "$pngfile"), force=true);    # hide
+	mv(joinpath(tempdir(), "GMTjl_" * GMT.tmpdir_usr[2] * "." * "$ext"), joinpath(@OUTPUT, "$pngfile"), force=true);    # hide
 	GMT.isFranklin[1] = false    # hide
 	GMT.IamModern[1]  = false    # hide
  
@@ -150,7 +153,7 @@ function env_examplefig(com, _)
 	~~~
 	<a id="$name">
 	~~~
-	\\fig{$name.$("png")}
+	\\fig{$name.$ext}
 	~~~
 	</a>
 	~~~

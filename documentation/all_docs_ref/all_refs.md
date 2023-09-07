@@ -44,9 +44,19 @@
 Note: module names ending with a **\*** mean that they have not yet been ported to GMT.jl and
 its use requires resorting to the \myreflink{Monolithic} mode.
 
+## Utility functions*
+
+|  |  |  |  |  |  |  |  |  |  |
+|:-----|:----|:----|:----|:----|:----|:----|:----|:----|:----|
+| \myreflink{blendimg!} | \myreflink{cubeplot} | \myreflink{lelandshade} | \myreflink{coastlinesproj} | \myreflink{cubeslice} | \myreflink{graticules} | \myreflink{orbits} | \myreflink{plotgrid!} | \myreflink{slicecube} | \myreflink{worldrectgrid} |
+| \myreflink{worldrectcoast} | \myreflink{worldrectangular} | \myreflink{xyzw2cube} |  |  |  |  |  |  |  |
+
 ## Utility functions
 
 {{ generate_tablerefs utilfuns}}
+
+Note: This table contains links to the manuals that were automatically generated from the docstrings.
+Idealy, they should all be converted to individual man pages and moved to table above.
 
 ## GDAL utility functions
 

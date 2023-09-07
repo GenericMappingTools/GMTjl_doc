@@ -135,8 +135,6 @@ Optional Arguments
 
 \textinput{common_opts/opt_h}
 
-\textinput{common_opts/opt_o}
-
 \textinput{common_opts/explain_transparency}
 
 Color Hinges

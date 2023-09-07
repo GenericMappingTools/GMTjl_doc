@@ -43,7 +43,7 @@ box(200, 173, 205, 26, fill=:purple, pen=1);
 circle(305,185,56, fill=:black);
 circle(305,185,36, fill=:gray50);
 circle(400,185,56, fill=:black);
-circle(400,185,36, fill=:gray50, fmt=:png, show=true);
+circle(400,185,36, fill=:gray50, show=true);
 ```
 \end{examplefig}
 

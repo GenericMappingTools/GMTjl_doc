@@ -29,3 +29,24 @@
     [MB-system](https://www.mbari.org/products/research-software/mb-system/) software from swath-bathymetry
     data processing.
 
+## Comparison with other packages
+
+- Q - Does GMT.jl offer the same functionality of other packages in Julia?
+- A - Yes.
+
+The list is long, non exaustive, but we are not going to do a comparison here and, besides, for many cases
+the overlap is only partial.  And why is there such a overlap with other packages? Well, GMT (the C lib)
+already existed before most of them.
+
+- [ArchGDAL](https://github.com/yeesian/ArchGDAL.jl)
+- [FITSIO](https://github.com/JuliaAstro/FITSIO.jl)
+- [GADM](https://github.com/JuliaGeo/GADM.jl)
+- [GeoJSON](https://github.com/JuliaGeo/GeoJSON.jl)
+- [Geodesy](https://github.com/JuliaGeo/Geodesy.jl)
+- [HDF5](https://github.com/JuliaIO/HDF5.jl)
+- [Interpolations](https://github.com/JuliaMath/Interpolations.jl)
+- [LibGEOS](https://github.com/JuliaGeo/LibGEOS.jl)
+- [NetCDF](https://github.com/JuliaGeo/NetCDF.jl)
+- [Proj](https://github.com/JuliaGeo/Proj.jl)
+- [Rasters](https://github.com/rafaqz/Rasters.jl)
+- [Shapefile](https://github.com/JuliaGeo/Shapefile.jl)

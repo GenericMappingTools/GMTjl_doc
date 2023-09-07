@@ -10,7 +10,7 @@ or
 makecpt(name::Symbol; kwargs...)
 ```
 
-Make static color palette tables (CPTs).
+Make static color palette tables (CPTs) from master CPTs.
 
 Description
 -----------
@@ -32,7 +32,7 @@ the master CPT. When there is no `COLOR_MODEL` entry in the master CPT, the `COL
 file or on the command line will be used.
 
 The second form is a quick way of generating CPT objects for use in the ``imshow`` function. Here `name` (as a symbol)
-is the name of any of the GM default paletts. It can also be the name of CPT file lieving in current directory. With it,
+is the name of any of the GM default palettes. It can also be the name of CPT file living in current directory. With it,
 you don't specify the `color=cptname` as it is already implied by the fact that first argin is a symbol. As mentioned,
 its primary usage is to quickly show a CPT with the ``imshow`` command. *e.g* ``imshow(:gray)``
 
@@ -246,6 +246,11 @@ Since **makecpt** will also interpolate from any existing CPT you may have in yo
 of the listed cpt names as an output filename; hence the my_gebco.cpt in the example. If you do create a CPT of such
 a name, e.g., rainbow.cpt, then **makecpt** will read that file first and not look for the master CPT in the shared
 GMT directory.
+
+See Also
+--------
+
+\myreflink{grd2cpt}
 
 References
 ----------
