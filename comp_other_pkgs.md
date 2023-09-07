@@ -50,3 +50,4 @@ already existed before most of them.
 - [Proj](https://github.com/JuliaGeo/Proj.jl)
 - [Rasters](https://github.com/rafaqz/Rasters.jl)
 - [Shapefile](https://github.com/JuliaGeo/Shapefile.jl)
+- [TriangleMesh](https://github.com/konsim83/TriangleMesh.jl), [Triangulate.jl](https://github.com/JuliaGeometry/Triangulate.jl), [Triangle.jl](https://github.com/cvdlab/Triangle.jl)
