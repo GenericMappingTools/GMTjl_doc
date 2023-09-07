@@ -20,7 +20,7 @@ gmtbegin()
     legend(position=(inside=:TL, width=4.9, offset=0.2), box=(pen=1, fill=:white, shaded=true))
 gmtend(:show)
 end # hide
-mv(joinpath(tempdir(), "GMTjl_" * GMT.tmpdir_usr[2] * ".png"), joinpath(@OUTPUT, "example_8324852696282520006.png"), force=true);    # hide
+mv(joinpath(tempdir(), "GMTjl_" * GMT.tmpdir_usr[2] * "." * "png"), joinpath(@OUTPUT, "example_8324852696282520006.png"), force=true);    # hide
 GMT.isFranklin[1] = false    # hide
 GMT.IamModern[1]  = false    # hide
  

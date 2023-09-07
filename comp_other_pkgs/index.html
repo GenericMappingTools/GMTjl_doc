@@ -269,6 +269,19 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/gdalfuns">GDAL related functions</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/supplements">Supplements modules</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilfuns">Utility functions</a></div></li>
+<li><input class="collapse-toggle" id="menuitem-5-9" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-5-9"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/documentation/utilities">Utilities</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/blendimg">blendimg&#33;</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/coastlinesproj">coastlinesproj</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/cubeplot">cubeplot</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/graticules">graticules</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/lelandshade">lelandshade</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/orbits">orbits</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/plotgrid">plotgrid&#33;</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/slicecube">slicecube</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/worldrectangular">worldrectangular</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/worldrectcoast">worldrectcoast</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/worldrectgrid">worldrectgrid</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/xyzw2cube">xyzw2cube</a></div></li>
+</ul></li>
 </ul></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/Interoperability">Interoperability with &#40;some&#41; other packages</a></div></li>
 <li><div class="tocitem-container"><a class = active href="/GMTjl_doc/comp_other_pkgs">Comparison with other plotting packages</a></div><ul class="page-content">
@@ -276,7 +289,8 @@
 <li><ul>
 <li><a href="#no/">No</a></li>
 <li><a href="#yes/">Yes</a></li>
-</ul>
+</ul></li>
+<li><a href="#comparison_with_other_packages/">Comparison with other packages</a></li>
 </ul>
 </li>
 </ul>
@@ -312,9 +326,45 @@
 <li><p>Thanks to Julia&#39;s FFI &#40;Foreign Function Interface&#41; GMT.jl can interface with the  <a href="https://www.mbari.org/products/research-software/mb-system/">MB-system</a> software from swath-bathymetry data processing.</p>
 </li>
 </ul>
+<h2 id="comparison_with_other_packages"><a href="#comparison_with_other_packages" class="header-anchor">Comparison with other packages</a></h2>
+<ul>
+<li><p>Q - Does GMT.jl offer the same functionality of other packages in Julia?</p>
+</li>
+<li><p>A - Yes.</p>
+</li>
+</ul>
+<p>The list is long, non exaustive, but we are not going to do a comparison here and, besides, for many cases the overlap is only partial.  And why is there such a overlap with other packages? Well, GMT &#40;the C lib&#41; already existed before most of them.</p>
+<ul>
+<li><p><a href="https://github.com/yeesian/ArchGDAL.jl">ArchGDAL</a></p>
+</li>
+<li><p><a href="https://github.com/JuliaAstro/FITSIO.jl">FITSIO</a></p>
+</li>
+<li><p><a href="https://github.com/JuliaGeo/GADM.jl">GADM</a></p>
+</li>
+<li><p><a href="https://github.com/JuliaGeo/GeoJSON.jl">GeoJSON</a></p>
+</li>
+<li><p><a href="https://github.com/JuliaGeo/Geodesy.jl">Geodesy</a></p>
+</li>
+<li><p><a href="https://github.com/JuliaIO/HDF5.jl">HDF5</a></p>
+</li>
+<li><p><a href="https://github.com/JuliaMath/Interpolations.jl">Interpolations</a></p>
+</li>
+<li><p><a href="https://github.com/JuliaGeo/LibGEOS.jl">LibGEOS</a></p>
+</li>
+<li><p><a href="https://github.com/JuliaGeo/NetCDF.jl">NetCDF</a></p>
+</li>
+<li><p><a href="https://github.com/JuliaGeo/Proj.jl">Proj</a></p>
+</li>
+<li><p><a href="https://github.com/rafaqz/Rasters.jl">Rasters</a></p>
+</li>
+<li><p><a href="https://github.com/JuliaGeo/Shapefile.jl">Shapefile</a></p>
+</li>
+<li><p><a href="https://github.com/konsim83/TriangleMesh.jl">TriangleMesh</a>, <a href="https://github.com/JuliaGeometry/Triangulate.jl">Triangulate.jl</a>, <a href="https://github.com/cvdlab/Triangle.jl">Triangle.jl</a></p>
+</li>
+</ul>
 <div class="page-foot">
   <div class="copyright">
-    &copy; GMT.jl. Last modified: September 03, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+    &copy; GMT.jl. Last modified: September 07, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
       <p>These docs were autogenerated using GMT: v1.4.1</p>
   </div>
 </div>

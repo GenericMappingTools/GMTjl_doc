@@ -9,7 +9,7 @@ arrows!([1 1 6.5 6.5; -1 10 5 10; 10 19 10 15; 21 10 15 10; 19 1 13.5 6.5],
         lw=2, fill=:darkgreen, ms="20p", endpoint=true, paper=true, noclip=true)
 text!(text="Cupidos Invasion", x=14, y=15, justify=:BL, font=18, paper=true, show=1)
 end # hide
-mv(joinpath(tempdir(), "GMTjl_" * GMT.tmpdir_usr[2] * ".png"), joinpath(@OUTPUT, "example_4516638696959167105.png"), force=true);    # hide
+mv(joinpath(tempdir(), "GMTjl_" * GMT.tmpdir_usr[2] * "." * "png"), joinpath(@OUTPUT, "example_4516638696959167105.png"), force=true);    # hide
 GMT.isFranklin[1] = false    # hide
 GMT.IamModern[1]  = false    # hide
  

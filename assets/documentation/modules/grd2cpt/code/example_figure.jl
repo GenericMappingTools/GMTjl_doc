@@ -7,7 +7,7 @@ begin # hide
 C, cdf = grd2cpt("@earth_relief_10m", nlevels="11+c+f");
 imshow("@earth_relief_10m", cmap=C)
 end # hide
-mv(joinpath(tempdir(), "GMTjl_" * GMT.tmpdir_usr[2] * ".png"), joinpath(@OUTPUT, "example_81150556436434046.png"), force=true);    # hide
+mv(joinpath(tempdir(), "GMTjl_" * GMT.tmpdir_usr[2] * "." * "png"), joinpath(@OUTPUT, "example_81150556436434046.png"), force=true);    # hide
 GMT.isFranklin[1] = false    # hide
 GMT.IamModern[1]  = false    # hide
  

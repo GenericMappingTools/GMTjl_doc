@@ -272,6 +272,19 @@
 <li><a href="#utility_functions/">Utility functions</a></li>
 </ul>
 </li>
+<li><input class="collapse-toggle" id="menuitem-5-9" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-5-9"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/documentation/utilities">Utilities</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/blendimg">blendimg&#33;</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/coastlinesproj">coastlinesproj</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/cubeplot">cubeplot</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/graticules">graticules</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/lelandshade">lelandshade</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/orbits">orbits</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/plotgrid">plotgrid&#33;</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/slicecube">slicecube</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/worldrectangular">worldrectangular</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/worldrectcoast">worldrectcoast</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/worldrectgrid">worldrectgrid</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/xyzw2cube">xyzw2cube</a></div></li>
+</ul></li>
 </ul></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/Interoperability">Interoperability with &#40;some&#41; other packages</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/comp_other_pkgs">Comparison with other plotting packages</a></div></li>
@@ -293,29 +306,6 @@
 </div>
 </div>
 <div class="docstring">
-<div class="doc-header" id="blendimg!">
-<a href="#blendimg!">blendimg!</a>
-</div>
-<div class="doc-content"><pre><code>blendimg&#33;&#40;color::GMTimage, shade::GMTimage; new&#61;false&#41;</code></pre>
-<p>Blend the RGB <code>color</code> GMTimage with the <code>shade</code> intensity image &#40;normally obtained with gdaldem&#41; The <code>new</code> argument determines if we return a new RGB image or update the <code>color</code> argument.</p>
-<p>The blending method is the one explained in https://gis.stackexchange.com/questions/255537/merging-hillshade-dem-data-into-color-relief-single-geotiff-with-qgis-and-gdal/255574#255574</p>
-<h3>Returns</h3>
-<p>A GMT RGB Image</p>
-<pre><code>blendimg&#33;&#40;img1::GMTimage, img2::GMTimage; new&#61;false, transparency&#61;0.5&#41;</code></pre>
-<p>Blend two 2D UInt8 or 2 RGB images using transparency. </p>
-<ul>
-<li><p><code>transparency</code> The default value, 0.5, gives equal weight to both images. 0.75 will make <code>img</code> weight 3/4 of the total sum, and so forth.</p>
-</li>
-<li><p><code>new</code> If true returns a new GMTimage object, otherwise it cahnges the <code>img</code> content.</p>
-</li>
-</ul>
-<h3>Returns</h3>
-<p>A GMT intensity Image</p>
-
-
-</div>
-</div>
-<div class="docstring">
 <div class="doc-header" id="cart2pol">
 <a href="#cart2pol">cart2pol</a>
 </div>
@@ -331,30 +321,6 @@
 </div>
 <div class="doc-content"><pre><code>az, elev, rho &#61; cart2sph&#40;x, y, z; deg&#61;false&#41;</code></pre>
 <p>Transform Cartesian coordinates to spherical. Angles are returned in radians by default. Use <code>deg&#61;true</code> to return the angles in degrees. Input can be scalar, vectors or matrices.</p>
-
-
-</div>
-</div>
-<div class="docstring">
-<div class="doc-header" id="coastlinesproj">
-<a href="#coastlinesproj">coastlinesproj</a>
-</div>
-<div class="doc-content"><pre><code>cl &#61; coastlinesproj&#40;proj&#61;&quot;?&quot;, res&#61;&quot;crude&quot;, coastlines&#61;nothing&#41;</code></pre>
-<p>Extract the coastlines from GMT&#39;s GSHHG database and project them using PROJ &#40;NOT the GMT projection machinery&#41;. This allows the use of many of the PROJ proijections that are not available from pure GMT.</p>
-<ul>
-<li><p><code>proj</code>: A proj4 string describing the projection &#40;Mandatory&#41;.</p>
-</li>
-<li><p><code>res</code>: The GSHHG coastline resolution. Available options are: <code>crude</code>, <code>low</code>, <code>intermediate</code>, <code>high</code> and <code>full</code></p>
-</li>
-<li><p><code>coastlines</code>: In alternative to the <code>res</code> option, one may pass a GMTdataset with coastlines  previously loaded &#40;with <code>gmtread</code>&#41; from another source.</p>
-</li>
-<li><p><code>limits</code>: If not empty it must be a 2 elements array with lon<em>min, lon</em>max that is used to ask for  coastlines that expand more than 360 degrees &#40;<code>worldrectangular</code> uses this&#41;.</p>
-</li>
-</ul>
-<h3>Returns</h3>
-<p>A Vector of GMTdataset containing the projected &#40;or not&#41; world GSHHG coastlines at resolution <code>res</code>.</p>
-<h3>Example</h3>
-<pre><code>cl &#61; coastlinesproj&#40;proj&#61;&quot;&#43;proj&#61;ob_tran &#43;o_proj&#61;moll &#43;o_lon_p&#61;40 &#43;o_lat_p&#61;50 &#43;lon_0&#61;60&quot;&#41;;</code></pre>
 
 
 </div>
@@ -427,67 +393,6 @@ imshow&#40;Pt, proj&#61;:guess&#41;</code></pre>
 <h2>Example</h2>
 <pre><code>G &#61; GMT.peaks&#40;&#41;;
 crop&#40;G, region&#61;&#40;-2,2,-2,2&#41;&#41;</code></pre>
-
-
-</div>
-</div>
-<div class="docstring">
-<div class="doc-header" id="cubeslice">
-<a href="#cubeslice">cubeslice</a>
-</div>
-<div class="doc-content"><pre><code>slicecube&#40;I::GMTimage, layer::Union&#123;Int, AbstractVector&#123;&lt;:Int&#125;&#125;&#41;</code></pre>
-<p>Take a slice of a multylayer GMTimage. Return the result still as a GMTimage. <code>layer</code> is the z slice number.</p>
-<pre><code>slicecube&#40;G::GMTgrid, slice::Union&#123;Int, AbstractVector&#123;&lt;:Int&#125;&#125;; axis&#61;&quot;z&quot;&#41;</code></pre>
-<p>Extract a slice from a GMTgrid cube.</p>
-<ul>
-<li><p><code>slice</code>: If it is an Int it will return a GMTgrid corresponding to that layer. However, if <code>slice</code> is a float this is interpreted to mean: search that dimension &#40;see the <code>axis</code> below&#41; coordinates and find the closest layer that has coordinate &#61; <code>slice</code>. If the <code>slice</code> value is not within 10&#37; of the coordinate of closest layer, the returned layer is obtained by linear interpolation of the neighboring layers. For example, <code>slice&#61;2.5</code> on a cube were layers are one unit apart will interpolate between layers 2 and 3 where each layer weights 50&#37; in the end result. NOTE: the return type is still a cube but with one layer only &#40;and the corresponding axis coordinate&#41;.</p>
-</li>
-</ul>
-<pre><code>&#96;slice&#96; Can also be a vector of integers representing the slices we want to extract. The output is another cube.</code></pre>
-<ul>
-<li><p><code>axis</code>: denotes the dimension being sliced. The default, &quot;z&quot;, means the slices are taken from the vertical axis. <code>axis&#61;&quot;x&quot;</code> means slice along a column, and <code>axis&#61;&quot;y&quot;</code> slice along a row.</p>
-</li>
-</ul>
-<pre><code>slicecube&#40;GI::GItype; slice::Int&#61;0, angle&#61;0.0, axis&#61;&quot;x&quot;, cmap&#61;GMTcpt&#40;&#41;&#41;</code></pre>
-<p>Take a slice of a GMTgrid or GMTimage in an oblique direction. Take the cube&#39;s layer <code>slice</code> and rotate it by <code>angle</code> degrees about the <code>axis</code>. This one can only be <code>axis&#61;:x</code> or <code>axis&#61;:y</code>. Depending on the data type of input a different output is produces. If <code>GI</code> is a GMTgrid, the output is 2 GMTgrids: one with <code>z</code> levels and the other with cube&#39;s z levels along that plane. On the other hand, if GI isa GMTimage the first output is similar to previus case but the second will be a GMTimage. In this case the <code>cmap</code> option may be used to assign a colortable to the image type.</p>
-<p>The value at the slice point, P&#40;x&#91;i,j&#93;, y&#91;i,j&#93;, z&#91;i, j&#41;&#41;, is the interpolated value of the two nearest voxels on the same vertical.</p>
-<h3>Example</h3>
-<p>Get the fourth layer of the multi-layered &#39;I&#39; GMTimage object </p>
-<pre><code>I &#61; slicecube&#40;I, 4&#41;</code></pre>
-
-
-</div>
-</div>
-<div class="docstring">
-<div class="doc-header" id="cubeplot">
-<a href="#cubeplot">cubeplot</a>
-</div>
-<div class="doc-content"><pre><code>cubeplot&#40;img1::Union&#123;GMTimage, String&#125;, img12::Union&#123;GMTimage, String&#125;&#61;&quot;&quot;, img1e3::Union&#123;GMTimage, String&#125;&#61;&quot;&quot;;
-         back::Bool&#61;false, show&#61;false, notop::Bool&#61;false, kw...&#41;</code></pre>
-<p>Plot images on the sides of a cube. Those images can be provided as file names, or GMTimage objects.</p>
-<ul>
-<li><p><code>img1,2,3</code>: File names or GMTimages of the images to be plotted on the three cube sides. Of those three, only <code>img1</code> is mandatory, case in which it will be repeated in the thre visible sides of the cube. If <code>img1</code> and <code>img2</code>, this second image is plotted on the two vertical sides. When the three images are provided, the first goes to top &#40;or bottom if <code>back&#61;true</code>&#41; the second to the <em>xz</em> and third to <em>yz</em> planes. </p>
-</li>
-<li><p><code>back</code>: Boolean that defaults to false, meaning that images are printed on the front sides of the cube. If <code>false</code>, the images are printed in the back sides. Use this option when wanting to plot on the walls of a 3D lines/scatter or grid views. The default is to print on the front facades.</p>
-</li>
-<li><p><code>notop</code>: If true, do not plot the top side &#40;implies <code>back&#61;false</code>&#41;</p>
-</li>
-<li><p><code>show</code>: If <code>true</code>, finish and display the figure.</p>
-</li>
-</ul>
-<p>The <code>kw...</code> keyword/value options may be used to pass:</p>
-<ul>
-<li><p><code>region</code>: The limits extents that will be used to annotate the <em>x,y,z</em> axes. It uses the same syntax as all other modules that accept this option &#40;<em>e.g.</em> &#36;coast&#36;&#41;. It defaults to &quot;0/9/0/9/0/9&quot;</p>
-</li>
-<li><p><code>figsize</code>: Select the horizontal size&#40;s&#41;. Defaults to 15x15 cm.</p>
-</li>
-<li><p><code>zsize</code>: Sets the size of <em>z</em> axis in cm. The default is 15.</p>
-</li>
-<li><p><code>view</code>: The view point. Default is <code>&#40;135,30&#41;</code>. WARNING: only azimute views from the 4rth quadrant are implemented.</p>
-</li>
-<li><p><code>transparency</code>: Sets the image&#39;s transparency level in the &#91;0,1&#93; or &#91;0 100&#93; intervals. Default is opaque.</p>
-</li>
-</ul>
 
 
 </div>
@@ -676,36 +581,6 @@ gadm&#40;&quot;IND&quot;, names&#61;true&#41;</code></pre>
 <pre><code>G &#61; gmtread&#40;&quot;lixo.grd&quot;&#41;;</code></pre>
 <p>to read a jpg image with the bands reversed</p>
 <pre><code>I &#61; gmtread&#40;&quot;image.jpg&quot;, band&#61;&#91;2,1,0&#93;&#41;;</code></pre>
-
-
-</div>
-</div>
-<div class="docstring">
-<div class="doc-header" id="graticules">
-<a href="#graticules">graticules</a>
-</div>
-<div class="doc-content"><pre><code>grat &#61; graticules&#40;D, width&#61;&#40;30,20&#41;, grid&#61;nothing, annot_x&#61;nothing&#41;</code></pre>
-<p>or</p>
-<pre><code>grat &#61; graticules&#40;; proj&#61;&quot;projection&quot;, width&#61;&#40;30,20&#41;, pm&#61;0, grid&#61;nothing, annot_x&#61;nothing&#41;</code></pre>
-<p>Create a projected graticule GMTdataset with meridians and parallels at <code>width</code> intervals.</p>
-<ul>
-<li><p><code>D</code>: A GMTdataset &#40;or vector of them&#41; holding the projection info. Instead of GMTdataset type, this argument may also be a referenced grid or image type.</p>
-</li>
-<li><p><code>proj</code>: Alternatively pass a proj4 string or Symbol describing the projection</p>
-</li>
-<li><p><code>pm</code>: The projection prime meridian &#40;Default is 0 or whatever is in D.proj4&#41;.</p>
-</li>
-<li><p><code>width</code>: A scalar or two elements array/tuple with increments in longitude and latitude. If scalar, width<em>x &#61; width</em>y.</p>
-</li>
-<li><p><code>grid</code>: Instead of using the <code>width</code> argument, that generates an automatic set of graticules, one may pass a two elements Vector&#123;Vector&#123;Real&#125;&#125; with the meridians &#40;grid&#91;1&#93;&#41; and parallels &#40;grid&#91;2&#93;&#41; to create.</p>
-</li>
-<li><p><code>annot_x</code>: By default, all meridians are annotated when <code>grat</code> is used in the <code>plotgrid&#33;</code> function, but depending on the projection and the <code>latlim</code> argument used in <code>worldrectangular</code> we may have the longitude labels overlap close to the prime meridian. To minimize that pass a vector of longitudes to be annotated. <em>e.g.</em> <code>annot_x&#61;&#91;-180,-150,0,150,180&#93;</code> will annotate only those longitudes.</p>
-</li>
-</ul>
-<h3>Returns</h3>
-<p>A Vector of GMTdataset containing the projected meridians and parallels. <code>grat&#91;i&#93;</code> attributes store information about that element lon,lat. </p>
-<h3>Example</h3>
-<pre><code>grat &#61; graticules&#40;proj&#61;&quot;&#43;proj&#61;ob_tran &#43;o_proj&#61;moll &#43;o_lon_p&#61;40 &#43;o_lat_p&#61;50 &#43;lon_0&#61;60&quot;&#41;;</code></pre>
 
 
 </div>
@@ -948,9 +823,9 @@ plot&#33;&#40;points, marker&#61;:star, ms&#61;&quot;12p&quot;, fill&#61;:blue, 
 <p><code>GMT.isnodata</code> is a <code>Function</code>.</p>
 <pre><code># 2 methods for generic function &quot;isnodata&quot; from GMT:
  &#91;1&#93; isnodata&#40;array::AbstractArray&#41;
-     @ ~/.julia/packages/GMT/MJ4yR/src/utils.jl:329
+     @ ~/.julia/packages/GMT/ybzWE/src/utils.jl:329
  &#91;2&#93; isnodata&#40;array::AbstractArray, val&#41;
-     @ ~/.julia/packages/GMT/MJ4yR/src/utils.jl:329</code></pre>
+     @ ~/.julia/packages/GMT/ybzWE/src/utils.jl:329</code></pre>
 </div>
 </div>
 <div class="docstring">
@@ -1103,7 +978,7 @@ D &#61; linearfitxy&#40;&#91;0.037 0.0080; 0.035 0.0084; 0.032 0.0100; 0.040 0.0
 <p><code>GMT.magic</code> is a <code>Function</code>.</p>
 <pre><code># 1 method for generic function &quot;magic&quot; from GMT:
  &#91;1&#93; magic&#40;n::Int64&#41;
-     @ ~/.julia/packages/GMT/MJ4yR/src/utils.jl:436</code></pre>
+     @ ~/.julia/packages/GMT/ybzWE/src/utils.jl:436</code></pre>
 </div>
 </div>
 <div class="docstring">
@@ -1249,36 +1124,6 @@ G &#61; mat2grid&#40;f::String&#41;</code></pre>
 </div>
 </div>
 <div class="docstring">
-<div class="doc-header" id="orbits">
-<a href="#orbits">orbits</a>
-</div>
-<div class="doc-content"><pre><code>orbits&#40;xyz::Matrix&#123;&lt;:Real&#125;; first&#61;true, radius&#61;6371.007, height&#61;0, lon0&#61;0, lat0&#61;0, show&#61;false, kw...&#41;</code></pre>
-<p>Plots the orbit, or whatever the input data in <code>xyz</code> represents, about the Earth or other planetary bodies.</p>
-<ul>
-<li><p><code>xyz</code>: The orbit coordinates. By default, we expect the coordinates in the Earth Centered Earth Fixed &#40;ECEF&#41; system but they can be in spherical coordinates &#40;lon, lat&#41; as well. In this case <code>xyz</code> must be a Mx2 matrix and <code>height</code> &#40;the orbit height&#41; must be &gt; 0. If this argument is omitted, we plot a demo spiral &quot;orbit&quot;.</p>
-</li>
-<li><p><code>radius</code>: The planetary body &#40;spherical&#41; radius. This value may be passed in meters or km and is only used when input is passed in spherical coordinates.</p>
-</li>
-<li><p><code>first</code>: Boolean that indicates if &#36;orbits&#36; creates the first layer of the image plot. If the default value of <code>true</code> is used, we also make a call to &#36;coast&#36; to plot the Earth using an Orthographic projection. The default option for this is plot the coastlines only, bur other options, <em>e.g.</em> colorizing the continents, are also available via the <code>kw...</code> arguments. Setting <code>first&#61;false</code>, or better, use the &#36;orbits&#33;&#36; form, skips the &#36;coast&#36; call, which lets this plot be appended to a previous plot as for example the one produced by &#36;grdimage&#36; on a Eart&#39;s DEM. Note, however, that in this case the previous plot must have used the same <code>lon0</code> and <code>lat0</code> otherwise the visible orbit will be wrong. </p>
-</li>
-<li><p><code>lon0</code>: Central longitude of the Orthographic projection.</p>
-</li>
-<li><p><code>lat0</code>:  Central latitude of the Orthographic projection.</p>
-</li>
-<li><p><code>height</code>: Used when input <code>xyz</code> is a Mx2 &#40;lon, lat&#41; matrix and represents the height in <em>meters</em> above the sphere of radius <code>radius</code>. &#40;MUST be &gt; 0 and not &#39;too small&#39; or this function&#39;s algorithm fails.&#41; </p>
-</li>
-<li><p><code>show</code>: Set this to <code>true</code> if want to see the produced image. Leaving it as <code>false</code> permits adding more elements by posterior plotting calls.</p>
-</li>
-<li><p><code>kw</code>: keyword arguments to be consumed in the &#36;coast&#36; and &#36;plot3&#36; calls. For example, <code>land&#61;:tomato, lw&#61;1, lc&#61;:blue</code> paints the continent with the <code>tomato</code> color and plots the orbits with blue, 1pt thick lines.</p>
-</li>
-</ul>
-<h3>Example:</h3>
-<pre><code>orbits&#40;show&#61;true&#41;</code></pre>
-
-
-</div>
-</div>
-<div class="docstring">
 <div class="doc-header" id="pcolor">
 <a href="#pcolor">pcolor</a>
 </div>
@@ -1325,32 +1170,6 @@ pcolor&#40;G.x, G.y, G.z, labels&#61;2, font&#61;&#40;angle&#61;45, font&#61;&#4
 X,Y &#61; GMT.meshgrid&#40;-3:6/17:3&#41;;
 XX &#61; 2*X .* Y;	YY &#61; X.^2 .- Y.^2;
 pcolor&#40;XX,YY, reshape&#40;repeat&#40;&#91;1:18; 18:-1:1&#93;, 9,1&#41;, size&#40;XX&#41;&#41;, lc&#61;:black, show&#61;true&#41;</code></pre>
-
-
-</div>
-</div>
-<div class="docstring">
-<div class="doc-header" id="plotgrid!">
-<a href="#plotgrid!">plotgrid!</a>
-</div>
-<div class="doc-content"><pre><code>plotgrid&#33;&#40;GI, grid; annot&#61;true, sides&#61;&quot;WESN&quot;, fmt&#61;&quot;&quot;, figname&#61;&quot;&quot;, show&#61;false&#41;</code></pre>
-<p>Plot grid lines on top of an image created with the <code>worldrectangular</code> function.</p>
-<ul>
-<li><p><code>GI</code>: A GMTgrid or GMTimage data type.</p>
-</li>
-<li><p><code>grid</code>: A vector of GMTdatset with meridians and parallels to be plotted. This is normaly produced   by the <code>graticules&#40;&#41;</code> or <code>worldrectgrid&#40;&#41;</code> functions.</p>
-</li>
-<li><p><code>annot</code>: Wether to plot coordinate annotations or not &#40;<code>annot&#61;false</code>&#41;.</p>
-</li>
-<li><p><code>sides</code>: Which sides of plot to annotate. <code>W</code> or <code>L</code> means annotate the left side and so on for any   combination of &quot;WESNLRBT&quot;. To not annotate a particular side just omit that character. <em>e.g.</em>  <code>sides&#61;&quot;WS&quot;</code> will annotate only the left and bottom axes.</p>
-</li>
-<li><p><code>figname</code>: To create a figure in local directory and with a name <code>figname</code>. If <code>figname</code> has an extension  that is used to select the fig format. <em>e.g.</em> <code>figname&#61;fig.pdf</code> creates a PDF file localy called &#39;fig.pdf&#39; </p>
-</li>
-<li><p><code>fmt</code>: Create the raster figure in format <code>format</code>. Default is <code>fmt&#61;:png</code>. To get it in PDF do <code>fmt&#61;:pdf</code></p>
-</li>
-<li><p><code>show</code>: If <code>true</code>, finish and display the figure.</p>
-</li>
-</ul>
 
 
 </div>
@@ -1461,33 +1280,6 @@ rasterzones&#33;&#40;G, D, mean&#41;</code></pre>
 </li>
 </ul>
 <p>Returns a GMTgrid if <code>A</code> is a GMTgrid of floats, a GMTimage if <code>A</code> is a GMTimage and <code>type</code> is used or an array of Float32|64 otherwise.</p>
-
-
-</div>
-</div>
-<div class="docstring">
-<div class="doc-header" id="slicecube">
-<a href="#slicecube">slicecube</a>
-</div>
-<div class="doc-content"><pre><code>slicecube&#40;I::GMTimage, layer::Union&#123;Int, AbstractVector&#123;&lt;:Int&#125;&#125;&#41;</code></pre>
-<p>Take a slice of a multylayer GMTimage. Return the result still as a GMTimage. <code>layer</code> is the z slice number.</p>
-<pre><code>slicecube&#40;G::GMTgrid, slice::Union&#123;Int, AbstractVector&#123;&lt;:Int&#125;&#125;; axis&#61;&quot;z&quot;&#41;</code></pre>
-<p>Extract a slice from a GMTgrid cube.</p>
-<ul>
-<li><p><code>slice</code>: If it is an Int it will return a GMTgrid corresponding to that layer. However, if <code>slice</code> is a float this is interpreted to mean: search that dimension &#40;see the <code>axis</code> below&#41; coordinates and find the closest layer that has coordinate &#61; <code>slice</code>. If the <code>slice</code> value is not within 10&#37; of the coordinate of closest layer, the returned layer is obtained by linear interpolation of the neighboring layers. For example, <code>slice&#61;2.5</code> on a cube were layers are one unit apart will interpolate between layers 2 and 3 where each layer weights 50&#37; in the end result. NOTE: the return type is still a cube but with one layer only &#40;and the corresponding axis coordinate&#41;.</p>
-</li>
-</ul>
-<pre><code>&#96;slice&#96; Can also be a vector of integers representing the slices we want to extract. The output is another cube.</code></pre>
-<ul>
-<li><p><code>axis</code>: denotes the dimension being sliced. The default, &quot;z&quot;, means the slices are taken from the vertical axis. <code>axis&#61;&quot;x&quot;</code> means slice along a column, and <code>axis&#61;&quot;y&quot;</code> slice along a row.</p>
-</li>
-</ul>
-<pre><code>slicecube&#40;GI::GItype; slice::Int&#61;0, angle&#61;0.0, axis&#61;&quot;x&quot;, cmap&#61;GMTcpt&#40;&#41;&#41;</code></pre>
-<p>Take a slice of a GMTgrid or GMTimage in an oblique direction. Take the cube&#39;s layer <code>slice</code> and rotate it by <code>angle</code> degrees about the <code>axis</code>. This one can only be <code>axis&#61;:x</code> or <code>axis&#61;:y</code>. Depending on the data type of input a different output is produces. If <code>GI</code> is a GMTgrid, the output is 2 GMTgrids: one with <code>z</code> levels and the other with cube&#39;s z levels along that plane. On the other hand, if GI isa GMTimage the first output is similar to previus case but the second will be a GMTimage. In this case the <code>cmap</code> option may be used to assign a colortable to the image type.</p>
-<p>The value at the slice point, P&#40;x&#91;i,j&#93;, y&#91;i,j&#93;, z&#91;i, j&#41;&#41;, is the interpolated value of the two nearest voxels on the same vertical.</p>
-<h3>Example</h3>
-<p>Get the fourth layer of the multi-layered &#39;I&#39; GMTimage object </p>
-<pre><code>I &#61; slicecube&#40;I, 4&#41;</code></pre>
 
 
 </div>
@@ -1846,88 +1638,6 @@ imshow&#40;img, proj&#61;:guess&#41;</code></pre>
 </div>
 </div>
 <div class="docstring">
-<div class="doc-header" id="worldrectangular">
-<a href="#worldrectangular">worldrectangular</a>
-</div>
-<div class="doc-content"><pre><code>GI&#91;,coast&#93; &#61; worldrectangular&#40;GI; proj::String&#61;&quot;&#43;proj&#61;vandg&quot;, pm&#61;0, latlim&#61;:auto, coast&#61;false&#41;</code></pre>
-<p>Try to createa rectangular map out miscellaneous and not cylindrical projections.</p>
-<ul>
-<li><p><code>GI</code>: A GMTgrid or GMTimage data type. <code>GI</code> can also be a string with a file name of a grid or image.</p>
-</li>
-<li><p><code>proj</code>: A PROJ4 string describing the projection.</p>
-</li>
-<li><p><code>pm</code>: The projection prime meridian &#40;Default is 0&#41;.</p>
-</li>
-<li><p><code>latlim or latlims</code>: Latitude&#40;s&#41; at which the rectangular map is trimmed. The default &#40;:auto&#41; means  that we will try to trim such that we get a fully filled grid/image. Use <code>latlim&#61;&#40;lat_s,lat_n&#41;</code> or  <code>latlim&#61;lat</code> to make it equivalent to <code>latlim&#61;&#40;-lat,lat&#41;</code>.</p>
-</li>
-<li><p><code>coast</code>: Return also the coastlines projected with <code>proj</code>. Pass <code>coast&#61;res</code>, where <code>res</code> is one of  GMT coastline resolutions &#40;<em>e.g.</em> :crude, :low, :intermediate&#41;. <code>coast&#61;true</code> is &lt;&#61;&#61;&gt; <code>coast&#61;:crude</code>  Pass <code>coast&#61;D</code>, where <code>D</code> is vector of GMTdataset containing coastline polygons with a provenience  other than the GSHHG GMT database.</p>
-</li>
-</ul>
-<h3>Returns</h3>
-<p>A grid or an image and optionally the coastlines ... or errors. Not many projections support the procedure implemented in this function. The working or not is controlled by PROJ&#39;s <code>&#43;over</code> option https://proj.org/usage/projections.html#longitude-wrapping</p>
-<h3>Example:</h3>
-<p>G &#61; worldrectangular&#40;&quot;@earth<em>relief</em>10m_g&quot;&#41;    imshow&#40;G&#41;</p>
-
-
-</div>
-</div>
-<div class="docstring">
-<div class="doc-header" id="worldrectgrid">
-<a href="#worldrectgrid">worldrectgrid</a>
-</div>
-<div class="doc-content"><pre><code>grat &#61; worldrectgrid&#40;GI; width&#61;&#40;30,20&#41;, grid&#61;nothing, annot_x&#61;nothing&#41;</code></pre>
-<p>or</p>
-<pre><code>grat &#61; worldrectgrid&#40;; proj&#61;&quot;projection&quot;, width&#61;&#40;30,20&#41;, grid&#61;nothing, annot_x&#61;nothing&#41;</code></pre>
-<p>Create a grid of lines &#40;graticules&#41; in projected coordinates. The projection system is extracted from the <code>GI</code> metadata.</p>
-<ul>
-<li><p><code>GI</code>: A GMTgrid or GMTimage data type created with the <code>worldrectangular</code> function.</p>
-</li>
-<li><p><code>D</code>: Alternatively pass a &quot;projection&quot; &#40;as a proj4 string&#41; holding the projection info.</p>
-</li>
-<li><p><code>width</code>: A scalar or two elements array/tuple with increments in longitude and latitude. If scalar, width<em>x &#61; width</em>y.</p>
-</li>
-<li><p><code>grid</code>: Instead of using the <code>width</code> argument, that generates an automatic set of graticules, one may pass a two elements Vector&#123;Vector&#123;Real&#125;&#125; with the meridians &#40;grid&#91;1&#93;&#41; and parallels &#40;grid&#91;2&#93;&#41; to create.</p>
-</li>
-<li><p><code>annot_x</code>: By default, all meridians are annotated when <code>grat</code> is used in the <code>plotgrid&#33;</code> function, but depending on the projection and the <code>latlim</code> argument used in <code>worldrectangular</code> we may have the longitude labels overlap close to the prime meridian. To minimize that pass a vector of longitudes to be annotated. <em>e.g.</em> <code>annot_x&#61;&#91;-180,-150,0,150,180&#93;</code> will annotate only those longitudes.</p>
-</li>
-</ul>
-<h3>Returns</h3>
-<p>A Vector of GMTdataset containing the projected meridians and parallels. <code>grat&#91;i&#93;</code> attributes store information about that element lon,lat. </p>
-
-
-</div>
-</div>
-<div class="docstring">
-<div class="doc-header" id="xyzw2cube">
-<a href="#xyzw2cube">xyzw2cube</a>
-</div>
-<div class="doc-content"><pre><code>xyzw2cube&#40;fname::AbstractString; datatype::DataType&#61;Float32, proj4::String&#61;&quot;&quot;, wkt::String&#61;&quot;&quot;,
-          epsg::Int&#61;0, tit::String&#61;&quot;&quot;, names::Vector&#123;String&#125;&#61;String&#91;&#93;&#41;</code></pre>
-<p>Convert data table containing a cube into a GMTgrid cube. The input data must contain a completelly filled 3D matrix and the data layout is guessed from file analysis &#40;if it fails ... bad chance&#41;. </p>
-<h3>Parameters</h3>
-<ul>
-<li><p><code>fname</code>: The filename of the cube in text format</p>
-</li>
-<li><p><code>datatype</code>:  The data type where the data will be stored. The default is Float32.</p>
-</li>
-<li><p><code>tit</code>:  A title string to describe this cube.</p>
-</li>
-<li><p><code>proj4</code>:  A proj4 string for dataset SRS.</p>
-</li>
-<li><p><code>wkt</code>:  Projection given as a WKT SRS.</p>
-</li>
-<li><p><code>epsg</code>: Same as <code>proj</code> but using an EPSG code</p>
-</li>
-<li><p><code>names</code>: used to give a description for each layer &#40;also saved to file when using a GDAL function&#41;.</p>
-</li>
-</ul>
-<h3>Returns</h3>
-<p>A GMTgrid cube object.</p>
-
-
-</div>
-</div>
-<div class="docstring">
 <div class="doc-header" id="yeardecimal">
 <a href="#yeardecimal">yeardecimal</a>
 </div>
@@ -1942,7 +1652,7 @@ imshow&#40;img, proj&#61;:guess&#41;</code></pre>
 
 <div class="page-foot">
   <div class="copyright">
-    &copy; GMT.jl. Last modified: September 03, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+    &copy; GMT.jl. Last modified: September 07, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
       <p>These docs were autogenerated using GMT: v1.4.1</p>
   </div>
 </div>

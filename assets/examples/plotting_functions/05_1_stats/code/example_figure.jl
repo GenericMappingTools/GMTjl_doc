@@ -8,7 +8,7 @@ D = gmtread(getpath4docs("iris.dat"));
 plot(D, xvar=1, yvar=2, hue="Species", xlabel=:auto, ylabel=:auto, linefit=true,
      band_ci=true, legend=true, show=1)
 end # hide
-mv(joinpath(tempdir(), "GMTjl_" * GMT.tmpdir_usr[2] * ".png"), joinpath(@OUTPUT, "example_1252949028278191020.png"), force=true);    # hide
+mv(joinpath(tempdir(), "GMTjl_" * GMT.tmpdir_usr[2] * "." * "png"), joinpath(@OUTPUT, "example_1252949028278191020.png"), force=true);    # hide
 GMT.isFranklin[1] = false    # hide
 GMT.IamModern[1]  = false    # hide
  
