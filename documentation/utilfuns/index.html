@@ -151,7 +151,9 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/tutorials/dlakelan">dlakelan</a></div></li>
 <li><input class="collapse-toggle" id="menuitem-4-5" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-4-5"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/tutorials/longest_sail">Longest sail</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/tutorials/longest_sail/longestsail">The longest sail</a></div></li>
 </ul></li>
-<li><input class="collapse-toggle" id="menuitem-4-6" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-4-6"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/tutorials/vector_shp">Reading, filtering and visualizing geospatial vector data</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/tutorials/vector_shp/vector_shp">Reading, filtering and visualizing geospatial vector data</a></div></li>
+<li><input class="collapse-toggle" id="menuitem-4-6" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-4-6"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/tutorials/texture_shading">Leland Brown&#39;s &quot;texture shading&quot;</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/tutorials/texture_shading/texture">Leland Brown&#39;s &quot;texture shading&quot;</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-4-7" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-4-7"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/tutorials/vector_shp">Reading, filtering and visualizing geospatial vector data</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/tutorials/vector_shp/vector_shp">Reading, filtering and visualizing geospatial vector data</a></div></li>
 </ul></li>
 </ul></li>
 <li><input class="collapse-toggle" id="menuitem-5" type="checkbox" checked><div class="tocitem-container"><label class="tocexpander" for="menuitem-5"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/documentation">Documentation</a></div><ul><li><input class="collapse-toggle" id="menuitem-5-1" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-5-1"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/documentation/all_docs_ref">All documentations</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/all_docs_ref/all_refs">Manuals</a></div></li>
@@ -260,6 +262,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/trend1d">trend1d</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/trend2d">trend2d</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/triangulate">triangulate</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/triplot">triplot</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/trisurf">trisurf</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/vband">vband</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/violins">violin</a></div></li>
@@ -275,8 +278,12 @@
 <li><input class="collapse-toggle" id="menuitem-5-9" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-5-9"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/documentation/utilities">Utilities</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/blendimg">blendimg&#33;</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/coastlinesproj">coastlinesproj</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/cubeplot">cubeplot</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/gadm">gadm</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/graticules">graticules</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/lelandshade">lelandshade</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/mat2ds">mat2ds</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/mat2grid">mat2grid</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/mat2img">mat2img</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/orbits">orbits</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/plotgrid">plotgrid&#33;</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/slicecube">slicecube</a></div></li>
@@ -433,42 +440,6 @@ crop&#40;G, region&#61;&#40;-2,2,-2,2&#41;&#41;</code></pre>
 </div>
 <div class="doc-content"><pre><code>doy2date&#40;doy&#91;, year&#93;&#41; -&gt; Date</code></pre>
 <p>Compute the date from the Day-Of-Year <code>doy</code>. If <code>year</code> is ommited we take it to mean the current year. Both <code>doy</code> and <code>year</code> can be strings or integers.</p>
-
-
-</div>
-</div>
-<div class="docstring">
-<div class="doc-header" id="gadm">
-<a href="#gadm">gadm</a>
-</div>
-<div class="doc-content"><pre><code>gadm&#40;country, subregions...; children&#61;false, names&#61;false, children_raw&#61;false, reportlevels&#61;false&#41;</code></pre>
-<p>Returns a GMTdataset for the requested country, or country subregion&#40;s&#41;</p>
-<ol>
-<li><p><code>country</code>: ISO 3166 Alpha 3 country code  .</p>
-</li>
-<li><p>subregions: Full official names in hierarchial order &#40;provinces, districts, etc...&#41;. To know the names of all administrative children of parent, use the option <code>names</code>.</p>
-</li>
-<li><p><code>children</code>: When true, function returns all subregions of parent.</p>
-</li>
-<li><p><code>children_raw</code>: When true, function returns two variables -&gt; parent, children, where children is a GDAL object E.g. when children is set to true and when querying just the country, second return parameter are the states/provinces. If <code>children</code> we return a Vector of GMTdataset with the polygons. If <code>children_raw</code> the second output is a GDAL object much like in GADM.jl &#40;less the Tables.jl&#41;</p>
-</li>
-<li><p><code>names</code>: Return a string vector with all <code>children</code> names. </p>
-</li>
-<li><p><code>reportlevels</code>: just report the number of administrative levels &#40;including the country&#41; and exit.</p>
-</li>
-</ol>
-<h2>Examples</h2>
-<pre><code class="language-julia"># data of India&#39;s borders
-data &#61; gadm&#40;&quot;IND&quot;&#41;
-
-# uttar -&gt; the limits of the Uttar Pradesh state
-uttar &#61; gadm&#40;&quot;IND&quot;, &quot;Uttar Pradesh&quot;&#41;
-
-# uttar -&gt; limits of all districts of the  Uttar Pradesh state
-uttar &#61; gadm&#40;&quot;IND&quot;, &quot;Uttar Pradesh&quot;, children&#61;true&#41;
-
-# Names of all states of India
-gadm&#40;&quot;IND&quot;, names&#61;true&#41;</code></pre>
 
 
 </div>
@@ -819,13 +790,10 @@ plot&#33;&#40;points, marker&#61;:star, ms&#61;&quot;12p&quot;, fill&#61;:blue, 
 <div class="doc-header" id="isnodata">
 <a href="#isnodata">isnodata</a>
 </div>
-<div class="doc-content"><p>No documentation found.</p>
-<p><code>GMT.isnodata</code> is a <code>Function</code>.</p>
-<pre><code># 2 methods for generic function &quot;isnodata&quot; from GMT:
- &#91;1&#93; isnodata&#40;array::AbstractArray&#41;
-     @ ~/.julia/packages/GMT/ybzWE/src/utils.jl:329
- &#91;2&#93; isnodata&#40;array::AbstractArray, val&#41;
-     @ ~/.julia/packages/GMT/ybzWE/src/utils.jl:329</code></pre>
+<div class="doc-content"><pre><code>isnodata&#40;array::AbstractArray, val&#61;0&#41;</code></pre>
+<p>Return a boolean array with the same size a <code>array</code> with 1&#39;s &#40;<code>true</code>&#41; where &#36;array&#91;i&#93; &#61;&#61; val&#36;. Test with an image have shown that this function was 5x faster than &#36;ind &#61; &#40;I.image .&#61;&#61; 0&#41;&#36;</p>
+
+
 </div>
 </div>
 <div class="docstring">
@@ -978,135 +946,7 @@ D &#61; linearfitxy&#40;&#91;0.037 0.0080; 0.035 0.0084; 0.032 0.0100; 0.040 0.0
 <p><code>GMT.magic</code> is a <code>Function</code>.</p>
 <pre><code># 1 method for generic function &quot;magic&quot; from GMT:
  &#91;1&#93; magic&#40;n::Int64&#41;
-     @ ~/.julia/packages/GMT/ybzWE/src/utils.jl:436</code></pre>
-</div>
-</div>
-<div class="docstring">
-<div class="doc-header" id="mat2ds">
-<a href="#mat2ds">mat2ds</a>
-</div>
-<div class="doc-content"><pre><code>D &#61; mat2ds&#40;mat &#91;,txt&#93;; x&#61;nothing, text&#61;nothing, multi&#61;false, geom&#61;0, kwargs...&#41;</code></pre>
-<p>Take a 2D <code>mat</code> array and convert it into a GMTdataset. <code>x</code> is an optional coordinates vector &#40;must have the same number of elements as rows in <code>mat</code>&#41;. Use <code>x&#61;:ny</code> to generate a coords array 1:n<em>rows of <code>mat</code>. Alternatively, if <code>mat</code> is a string or vector of strings we return a dataset with NaN&#39;s in the place of the coordinates. This form is useful to pass to <code>text</code> when using the &#96;region</em>justify&#96; option that does not need explicit coordinates to place the text.</p>
-<ul>
-<li><p><code>txt</code>: Return a Text record which is a Dataset with data &#61; Mx2 and text in third column. The &#36;text&#36;  can be an array with same size as <code>mat</code> rows or a string &#40;will be reapeated n_rows times.&#41; </p>
-</li>
-<li><p><code>x</code>:   An optional vector with the <em>xx</em> coordinates</p>
-</li>
-<li><p><code>hdr</code>: optional String vector with either one or n_rows multisegment headers.</p>
-</li>
-<li><p><code>lc</code> or <code>linecolor</code> or <code>color</code>: optional array of strings/symbols with color names/values. Its length can be  smaller than n_cols, case in which colors will be cycled. If <code>color</code> is not an array of strings, e.g.  <code>color&#61;&quot;yes&quot;</code>, the colors cycle trough a pre-defined set of colors &#40;same colors as in Matlab&#41;. If you  want the same color repeated for many lines pass color as a vector. <em>e.g,</em> <code>color&#61;&#91;color&#93;</code></p>
-</li>
-<li><p><code>linethick</code> or <code>lt</code>: for selecting different line thicknesses. Works like <code>color</code>, but should be   a vector of numbers, or just a single number that is then applied to all lines.</p>
-</li>
-<li><p><code>fill</code>:  Optional string array &#40;or a String of comma separated color names, or a Tuple of color names&#41;          with color names or array of &quot;patterns&quot;.</p>
-</li>
-<li><p><code>fillalpha</code> : When <code>fill</code> option is used, we can set the transparency of filled polygons with this  option that takes in an array &#40;vec or 1-row matrix&#41; with numeric values between &#91;0-1&#93; or &#93;1-100&#93;,  where 100 &#40;or 1&#41; means full transparency.</p>
-</li>
-<li><p><code>is3D</code>:  If input &#39;mat&#39; contains at least x,y,z &#40;?&#41;.</p>
-</li>
-<li><p><code>ls</code> or <code>linestyle</code>:  Line style. A string or an array of strings with <code>length &#61; size&#40;mat,2&#41;</code> with line styles.</p>
-</li>
-<li><p><code>front</code>:  Front Line style. A string or an array of strings with <code>length &#61; size&#40;mat,2&#41;</code> with front line styles.</p>
-</li>
-<li><p><code>pen</code>:  A full pen setting. A string or an array of strings with <code>length &#61; size&#40;mat,2&#41;</code> with pen settings.  This differes from <code>lt</code> in the sense that <code>lt</code> does not directly set the line thickness.</p>
-</li>
-<li><p><code>multi</code> or <code>multicol</code>: When number of columns in <code>mat</code> &gt; 2, or &#61;&#61; 2 and x &#33;&#61; nothing, make an multisegment Dataset  with first column and 2, first and 3, etc. Convenient when want to plot a matrix where each column is a line. </p>
-</li>
-<li><p><code>segnan</code> or <code>nanseg</code>: Boolean. If true make a multisegment made out of segments separated by NaNs.</p>
-</li>
-<li><p><code>datatype</code>: Keep the original data type of <code>mat</code>. Default, converts to Float64.</p>
-</li>
-<li><p><code>geom</code>: The data geometry. By default we set <code>wkbUnknown</code> but try to do some basic guess.</p>
-</li>
-<li><p><code>proj</code> or <code>proj4</code>:  A proj4 string for dataset SRS.</p>
-</li>
-<li><p><code>wkt</code>:  A WKT SRS.</p>
-</li>
-<li><p><code>colnames</code>: Optional string vector with names for each column of <code>mat</code>.</p>
-</li>
-<li><p><code>attrib</code>: Optional dictionary&#123;String, String&#125; with attributes of this dataset.</p>
-</li>
-<li><p><code>ref:</code> Pass in a reference GMTdataset from which we&#39;ll take the georeference info as well as <code>attrib</code> and <code>colnames</code></p>
-</li>
-<li><p><code>txtcol</code> or <code>textcol</code>: Vector&#123;String&#125; with text to add into the .text field. Warning: no testing is done  to check if &#36;length&#40;txtcol&#41; &#61;&#61; size&#40;mat,1&#41;&#36; as it must.</p>
-</li>
-</ul>
-<h3>D &#61; mat2ds&#40;mat::Vector&#123;&lt;:AbstractMatrix&#125;; hdr&#61;String&#91;&#93;, kwargs...&#41;::Vector&#123;GMTdataset&#125;</h3>
-<p>Create a multi-segment GMTdataset &#40;a vector of GMTdataset&#41; from matrices passed in a vector-of-matrices <code>mat</code>. The matrices elements of <code>mat</code> do not need to have the same number of rows. Think on this as specifying groups of lines/points each sharing the same settings. KWarg options of this form are more limitted in number than in the general case, but can take the form of a Vector&#123;Vector&#125;, Vector or scalars. In the former case &#40;Vector&#123;Vector&#125;&#41; the length of each Vector&#91;i&#93; must equal to the number of rows of each mat&#91;i&#93;.</p>
-<ul>
-<li><p><code>hdr</code>: optional String vector with either one or <code>length&#40;mat&#41;</code> multisegment headers.</p>
-</li>
-<li><p><code>pen</code>:  A full pen setting. A string or an array of strings with <code>length &#61; length&#40;mat&#41;</code> with pen settings.</p>
-</li>
-<li><p><code>lc</code> or <code>linecolor</code> or <code>color</code>: optional color or array of strings/symbols with color names/values.</p>
-</li>
-<li><p><code>linethick</code> or <code>lt</code>: for selecting different line thicknesses. Works like <code>color</code>, but should be   a vector of numbers, or just a single number that is then applied to all lines.</p>
-</li>
-<li><p><code>ls</code> or <code>linestyle</code>:  Line style. A string or an array of strings with <code>length &#61; length&#40;mat&#41;</code> with line styles.</p>
-</li>
-<li><p><code>front</code>:  Front Line style. A string or an array of strings with <code>length &#61; length&#40;mat&#41;</code> with front line styles.</p>
-</li>
-<li><p><code>fill</code>:  Optional string array &#40;or a String of comma separated color names, or a Tuple of color names&#41;          with color names or array of &quot;patterns&quot;.</p>
-</li>
-<li><p><code>fillalpha</code>: When <code>fill</code> option is used, we can set the transparency of filled polygons or symbols with this  option that takes in an array &#40;vec or 1-row matrix&#41; with numeric values between &#91;0-1&#93; or &#93;1-100&#93;,  where 100 &#40;or 1&#41; means full transparency.</p>
-</li>
-</ul>
-<h3>Example:</h3>
-<p>D &#61; mat2ds&#40;&#91;rand&#40;6,3&#41;, rand&#40;4,3&#41;, rand&#40;3,3&#41;&#93;, fill&#61;&#91;&#91;:red&#93;, &#91;:green&#93;, &#91;:blue&#93;&#93;, fillalpha&#61;&#91;0.5,0.7,0.8&#93;&#41;</p>
-
-
-</div>
-</div>
-<div class="docstring">
-<div class="doc-header" id="mat2grid">
-<a href="#mat2grid">mat2grid</a>
-</div>
-<div class="doc-content"><pre><code>G &#61; mat2grid&#40;mat; reg&#61;nothing, x&#61;&#91;&#93;, y&#61;&#91;&#93;, v&#61;&#91;&#93;, hdr&#61;nothing, proj4::String&#61;&quot;&quot;,
-             wkt::String&#61;&quot;&quot;, title::String&#61;&quot;&quot;, rem::String&#61;&quot;&quot;, cmd::String&#61;&quot;&quot;,
-			 names::Vector&#123;String&#125;&#61;String&#91;&#93;, scale::Float32&#61;1f0, offset::Float32&#61;0f0&#41;</code></pre>
-<p>Take a 2/3D <code>mat</code> array and a HDR 1x9 &#91;xmin xmax ymin ymax zmin zmax reg xinc yinc&#93; header descriptor and  return a grid GMTgrid type. Alternatively to HDR, provide a pair of vectors, <code>x</code> &amp; <code>y</code>, with the X and Y coordinates. Optionaly add a <code>v</code> vector with vertical coordinates if <code>mat</code> is a 3D array and one wants to create a &#36;cube&#36;. Optionaly, the HDR arg may be ommited and it will computed from <code>mat</code> alone, but then x&#61;1:ncol, y&#61;1:nrow When HDR is not used, REG &#61;&#61; nothing &#91;default&#93; means create a gridline registration grid and REG &#61;&#61; 1, or REG&#61;&quot;pixel&quot; a pixel registered grid.</p>
-<p>For 3D arrays the <code>names</code> option is used to give a description for each layer &#40;also saved to file when using a GDAL function&#41;.</p>
-<p>The <code>scale</code> and <code>offset</code> options are used when <code>mat</code> is an Integer type and we want to save the grid with an scale/offset.  </p>
-<p>Other methods of this function do:</p>
-<pre><code>G &#61; mat2grid&#40;&#91;val&#93;; hdr&#61;hdr_vec, reg&#61;nothing, proj4::String&#61;&quot;&quot;, wkt::String&#61;&quot;&quot;, title::String&#61;&quot;&quot;, rem::String&#61;&quot;&quot;&#41;</code></pre>
-<p>Create Float GMTgrid with size, coordinates and increment determined by the contents of the HDR var. This array, which is now MANDATORY, has either the same meaning as above OR, alternatively, containng only &#91;xmin xmax ymin ymax xinc yinc&#93; VAL is the value that will be fill the matrix &#40;default VAL &#61; Float32&#40;0&#41;&#41;. To get a Float64 array use, for example, VAL &#61; 1.0 Ay other non Float64 will be converted to Float32</p>
-<pre><code>Example: mat2grid&#40;1, hdr&#61;&#91;0. 5 0 5 1 1&#93;&#41;
-
-G &#61; mat2grid&#40;f::Function, x, y; reg&#61;nothing, proj4::String&#61;&quot;&quot;, wkt::String&#61;&quot;&quot;, epsg::Int&#61;0, title::String&#61;&quot;&quot;, rem::String&#61;&quot;&quot;&#41;</code></pre>
-<p>Where F is a function and X,Y the vectors coordinates defining it&#39;s domain. Creates a Float32 GMTgrid with size determined by the sizes of the X &amp; Y vectors.</p>
-<pre><code>Example: f&#40;x,y&#41; &#61; x^2 &#43; y^2;  G &#61; mat2grid&#40;f, x &#61; -2:0.05:2, y &#61; -2:0.05:2&#41;
-
-G &#61; mat2grid&#40;f::String&#41;</code></pre>
-<p>Whre f is a pre-set function name. Currently available:</p>
-<ul>
-<li><p>&quot;ackley&quot;, &quot;eggbox&quot;, &quot;sombrero&quot;, &quot;parabola&quot; and &quot;rosenbrock&quot; </p>
-</li>
-</ul>
-<p>X,Y are vectors coordinates defining the function&#39;s domain, but default values are provided for each function. creates a Float32 GMTgrid.</p>
-<pre><code>Example: G &#61; mat2grid&#40;&quot;sombrero&quot;&#41;</code></pre>
-
-
-</div>
-</div>
-<div class="docstring">
-<div class="doc-header" id="mat2img">
-<a href="#mat2img">mat2img</a>
-</div>
-<div class="doc-content"><pre><code>I &#61; mat2img&#40;mat::Array&#123;&lt;:Unsigned&#125;; x&#61;&#91;&#93;, y&#61;&#91;&#93;, hdr&#61;nothing, proj4&#61;&quot;&quot;, wkt&#61;&quot;&quot;, cmap&#61;nothing, kw...&#41;</code></pre>
-<p>Take a 2D &#39;mat&#39; array and a HDR 1x9 &#91;xmin xmax ymin ymax zmin zmax reg xinc yinc&#93; header descriptor and return a GMTimage type. Alternatively to HDR, provide a pair of vectors, x &amp; y, with the X and Y coordinates. Optionaly, the HDR arg may be ommited and it will computed from &#39;mat&#39; alone, but then x&#61;1:ncol, y&#61;1:nrow When &#39;mat&#39; is a 3D UInt16 array we automatically compute a UInt8 RGB image. In that case &#39;cmap&#39; is ignored. But if no conversion is wanted use option <code>noconv&#61;true</code></p>
-<pre><code>I &#61; mat2img&#40;mat::Array&#123;UInt16&#125;; x&#61;&#91;&#93;, y&#61;&#91;&#93;, hdr&#61;nothing, proj4::String&#61;&quot;&quot;, wkt::String&#61;&quot;&quot;, kw...&#41;</code></pre>
-<p>Take a <code>mat</code> array of UInt16 and scale it down to UInt8. Input can be 2D or 3D. If the kw variable <code>stretch</code> is used, we stretch the intervals in <code>stretch</code> to &#91;0 255&#93;. Use this option to stretch the image histogram. If <code>stretch</code> is a scalar, scale the values &gt; <code>stretch</code> to &#91;0 255&#93;</p>
-<ul>
-<li><p>stretch &#61; &#91;v1 v2&#93; scales all values &gt;&#61; v1 &amp;&amp; &lt;&#61; v2 to &#91;0 255&#93;</p>
-</li>
-<li><p>stretch &#61; &#91;v1 v2 v3 v4 v5 v6&#93; scales firts band &gt;&#61; v1 &amp;&amp; &lt;&#61; v2 to &#91;0 255&#93;, second &gt;&#61; v3 &amp;&amp; &lt;&#61; v4, same for third</p>
-</li>
-<li><p>stretch &#61; :auto | &quot;auto&quot; | true | 1 will do an automatic stretching from values obtained from histogram thresholds</p>
-</li>
-</ul>
-<p>The <code>kw...</code> kwargs search for &#91;:layout :mem_layout&#93;, &#91;:names&#93; and &#91;:metadata&#93;</p>
-
-
+     @ ~/.julia/packages/GMT/MaNML/src/utils.jl:442</code></pre>
 </div>
 </div>
 <div class="docstring">
@@ -1420,35 +1260,6 @@ plot&#40;r, decorated&#61;&#40;locations&#61;a, symbol&#61;&#40;custom&#61;&quot
 </div>
 </div>
 <div class="docstring">
-<div class="doc-header" id="triplot">
-<a href="#triplot">triplot</a>
-</div>
-<div class="doc-content"><p>triplot&#40;in::Matrix; onlyedges::Bool&#61;false, noplot::Bool&#61;false, kw...&#41;</p>
-<p>Plots the 2-D triangulation or Voronoi polygons defined by the points in a matrix</p>
-<ul>
-<li><p><code>in</code>: The input data. Can be either a Mx2 or Mx3 matrix.</p>
-</li>
-<li><p><code>noplot</code>: Return the computed Delaunay or Veronoi data instead of plotting it &#40;the default&#41;.</p>
-</li>
-<li><p><code>onlyedges</code>: By default we compute Delaunay tringles or Veronoi cells as polygons. Use this option as  <code>onlyedges&#61;true</code> to compute multiple line segments.</p>
-</li>
-<li><p><code>region</code>: Sets the data region &#40;xmin,xmax,ymin,ymax&#41; for <code>voronoi</code> &#40;required&#41;. If not provided we compute it from <code>in</code>.</p>
-</li>
-<li><p><code>voronoi</code>: Compute Voronoi cells instead of Delaunay triangles &#40;requires <code>region</code>&#41;.</p>
-</li>
-<li><p><code>kw...</code>: keyword arguments used in the &#36;plot&#36; module &#40;ignore if <code>noplot&#61;true</code>&#41;.</p>
-</li>
-</ul>
-<h3>Returns</h3>
-<p>A GMTdataset if <code>noplot&#61;true</code> or &#36;nothing&#36; otherwise.</p>
-<h2>Example:</h2>
-<p>triplot&#40;rand&#40;5,2&#41;, voronoi&#61;true, show&#61;true&#41;</p>
-<p>triplot&#40;rand&#40;5,3&#41;, lc&#61;:red, show&#61;true&#41;</p>
-
-
-</div>
-</div>
-<div class="docstring">
 <div class="doc-header" id="uniqueind">
 <a href="#uniqueind">uniqueind</a>
 </div>
@@ -1652,7 +1463,7 @@ imshow&#40;img, proj&#61;:guess&#41;</code></pre>
 
 <div class="page-foot">
   <div class="copyright">
-    &copy; GMT.jl. Last modified: September 07, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+    &copy; GMT.jl. Last modified: September 08, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
       <p>These docs were autogenerated using GMT: v1.4.1</p>
   </div>
 </div>
