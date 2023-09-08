@@ -16,11 +16,15 @@ is calculated. By default, the output is triplets of point id numbers that make 
 and is written to standard output. The id numbers refer to the points position (line number,
 starting at 0 for the first line) in the input file. As an option, you may choose to create a
 multiple segment file that can be send to \myreflink{plot} to draw the triangulation network.
+
+Using `x,y[,z]` or only `x,y` in input depends on the intended usage of this module. If only the
+triangulation is desired, then only `x,y` is used and even if the input table has a `z` column,
+that is ignored. If, however, we wish to compute a grid (see below) than `z` is mandatory and
+is interpreted as a functional value, ``z = f(x,y)``.
+
 If **region** and **inc** are set a grid will be calculated based on the surface defined by the
-planar triangles. The actual algorithm used in the triangulations is either that of Watson [1982]
-or Shewchuk [1996] (Default. Type **gmt("gmtget GMT_TRIANGULATE")** to see which method is
-selected). This choice is made during the GMT (**not** `GMT.jl`) build step. Furthermore, if
-the Shewchuk algorithm is installed then you can also perform the calculation of Voronoi
+planar triangles. The algorithm used in the triangulations is that of
+Shewchuk [1996] and you can also perform the calculation of Voronoi
 polygons and optionally grid your data via the natural nearest neighbor algorithm. **Note**:
 For geographic data with global or very large extent you should consider \myreflink{sphtriangulate}
 instead since **triangulate** is a Cartesian or small-geographic area operator and is unaware
@@ -193,9 +197,6 @@ Shewchuk, J. R., 1996, Triangle: Engineering a 2D Quality Mesh Generator
 and Delaunay Triangulator, First Workshop on Applied Computational
 Geometry (Philadelphia, PA), 124-133, ACM, May 1996.
 
-Watson, D. F., 1982, Acord: Automatic contouring of raw data, *Comp. &
-Geosci.*, **8**, 97-101.
-
 Zambo, S., Elmore, P. A., Bourgeois, B. S., and Perkins, A. L., 2016,
 Uncertainty estimation for sparse data gridding algorithms,
 Proceedings of the U.S. Hydro Conference,National Harbor, MD, 16-19 March 2015.
@@ -203,4 +204,4 @@ Proceedings of the U.S. Hydro Conference,National Harbor, MD, 16-19 March 2015.
 Zhou, Q., and Liu, X., 2004, Error analysis on grid-based slope and aspect
 algorithms, *Photogrammetric Eng. & Remote Sensing*, **70** (8), 957-962.
 
-`Shewchuk's Homepage <http://www.cs.cmu.edu/~quake/triangle.html>`_
+[Shewchuk's Homepage](http://www.cs.cmu.edu/~quake/triangle.html)

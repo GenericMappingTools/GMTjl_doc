@@ -78,4 +78,15 @@
     ~~~</a>~~~
   @@
 
+  @@box
+    ~~~<a class="boxlink" href="texture_shading/texture/">~~~
+    @@title Texture shading@@
+    @@box-content
+      ~~~
+      <img src="/tutorials/texture_shading/tilelogo.png">
+      ~~~
+    @@
+    ~~~</a>~~~
+  @@
+
 @@
