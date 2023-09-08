@@ -1,7 +1,5 @@
 # lelandshade
 
-**WARNING**, for some yet unknown reason this is working only on Windows
-
 ```julia
 [I = ] lelandshade(G::GMTgrid; detail=1.0, contrast=2.0, intensity=false, zfactor=3, transparency=0.6,
                    show=false, color=false, opts=String[], cmap="", kw...)

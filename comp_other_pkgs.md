@@ -39,6 +39,7 @@ the overlap is only partial.  And why is there such a overlap with other package
 already existed before most of them.
 
 - [ArchGDAL](https://github.com/yeesian/ArchGDAL.jl)
+- [Contour](https://github.com/JuliaGeometry/Contour.jl)
 - [FITSIO](https://github.com/JuliaAstro/FITSIO.jl)
 - [GADM](https://github.com/JuliaGeo/GADM.jl)
 - [GeoJSON](https://github.com/JuliaGeo/GeoJSON.jl)

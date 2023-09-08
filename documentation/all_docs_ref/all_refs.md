@@ -34,7 +34,7 @@
 |:-----|:----|:----|:----|:----|:----|:----|:----|:----|:----|
 | \myreflink{arrows} | \myreflink{band} | \myreflink{bar} | \myreflink{bar3} | \myreflink{boxplot} | \myreflink{bubblechart} | \myreflink{contourf} | \myreflink{cornerplot} | \myreflink{decorated} | \myreflink{earthregions} |
 | \myreflink{ecdfplot} | \myreflink{feather} | \myreflink{fill_between} | \myreflink{hband} | \myreflink{lines} | \myreflink{marginalhist} | \myreflink{parallelplot} | \myreflink{plotlinefit} | \myreflink{qqplot} | \myreflink{quiver} |
-| \myreflink{radar} | \myreflink{scatter} | \myreflink{scatter3} | \myreflink{seismicity} | \myreflink{stairs} | \myreflink{stem} | \myreflink{trisurf} | \myreflink{vband} | \myreflink{violin} |  |
+| \myreflink{radar} | \myreflink{scatter} | \myreflink{scatter3} | \myreflink{seismicity} | \myreflink{stairs} | \myreflink{stem} | \myreflink{triplot} | \myreflink{trisurf} | \myreflink{vband} | \myreflink{violin} |
 
 
 ## Supplemental Modules
@@ -48,8 +48,8 @@ its use requires resorting to the \myreflink{Monolithic} mode.
 
 |  |  |  |  |  |  |  |  |  |  |
 |:-----|:----|:----|:----|:----|:----|:----|:----|:----|:----|
-| \myreflink{blendimg!} | \myreflink{cubeplot} | \myreflink{lelandshade} | \myreflink{coastlinesproj} | \myreflink{cubeslice} | \myreflink{graticules} | \myreflink{orbits} | \myreflink{plotgrid!} | \myreflink{slicecube} | \myreflink{worldrectgrid} |
-| \myreflink{worldrectcoast} | \myreflink{worldrectangular} | \myreflink{xyzw2cube} |  |  |  |  |  |  |  |
+| \myreflink{blendimg!} | \myreflink{cubeplot} | \myreflink{lelandshade} | \myreflink{coastlinesproj} | \myreflink{cubeslice} | \myreflink{lelandshade} | \myreflink{graticules} | \myreflink{mat2ds} | \myreflink{mat2grid} | \myreflink{mat2img} |
+| \myreflink{orbits} | \myreflink{plotgrid!} | \myreflink{slicecube} | | \myreflink{worldrectgrid} | \myreflink{worldrectcoast} | \myreflink{worldrectangular} | \myreflink{xyzw2cube} |  |  |  |
 
 ## Utility functions
 
