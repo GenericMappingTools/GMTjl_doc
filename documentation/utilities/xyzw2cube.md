@@ -31,4 +31,4 @@ A \myreflink{GMTgrid} cube object.
 See Also
 --------
 
-\myreflink{cubeplot}, \myreflink{slicecube}
+\myreflink{cubeplot}, \myreflink{slicecube}, \myreflink{stackgrids}
