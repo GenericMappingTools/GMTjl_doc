@@ -59,7 +59,7 @@ Optional Arguments
 - **S** or **vscale** or **vec_scale** : -- *vscale=(inverse=len, length=len, scale=xx, scale_at_lat=??, refsize=size)*\
     Sets scale for vector plot lengths in data units per plot distance measurement unit. Append **c**, **i**,
     or **p** to indicate the desired plot distance measurement (then **xx** must be a string) unit (cm, inch,
-    or point); if no unit is given we use the default value that is controlled by `PROJ\_LENGTH\_UNIT`. Vector
+    or point); if no unit is given we use the default value that is controlled by ``PROJ_LENGTH_UNI``. Vector
     lengths converted via plot unit scaling will plot as straight Cartesian vectors and their lengths are not
     affected by map projections and coordinate locations.  For geographic data you may alternatively give *scale*
     in data units per map distance unit (see `Units`). Then, your vector magnitudes (in data units) are scaled
