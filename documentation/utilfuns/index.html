@@ -277,16 +277,25 @@
 </li>
 <li><input class="collapse-toggle" id="menuitem-5-9" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-5-9"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/documentation/utilities">Utilities</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/blendimg">blendimg&#33;</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/coastlinesproj">coastlinesproj</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/colorzones">colorzones&#33;</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/cubeplot">cubeplot</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/gadm">gadm</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/gmtread">gmtread</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/gmtwrite">gmtwrite</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/graticules">graticules</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/hlines">hlines</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/imagesc">imagesc</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/lelandshade">lelandshade</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/mat2ds">mat2ds</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/mat2grid">mat2grid</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/mat2img">mat2img</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/orbits">orbits</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/pcolor">pcolor</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/plotgrid">plotgrid&#33;</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/rasterzones">rasterzones&#33;</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/slicecube">slicecube</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/stackgrids">stackgrids</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/vlines">vlines</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/worldrectangular">worldrectangular</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/worldrectcoast">worldrectcoast</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/worldrectgrid">worldrectgrid</a></div></li>
@@ -328,46 +337,6 @@
 </div>
 <div class="doc-content"><pre><code>az, elev, rho &#61; cart2sph&#40;x, y, z; deg&#61;false&#41;</code></pre>
 <p>Transform Cartesian coordinates to spherical. Angles are returned in radians by default. Use <code>deg&#61;true</code> to return the angles in degrees. Input can be scalar, vectors or matrices.</p>
-
-
-</div>
-</div>
-<div class="docstring">
-<div class="doc-header" id="colorzones!">
-<a href="#colorzones!">colorzones!</a>
-</div>
-<div class="doc-content"><pre><code>colorzones&#33;&#40;shapes::Vector&#123;GMTdataset&#125;&#91;, fun::Function&#93;; img::GMTimage&#61;nothing,
-            url::AbstractString&#61;&quot;&quot;, layer&#61;0, pixelsize::Int&#61;0, append::Bool&#61;true&#41;</code></pre>
-<p>Paint the polygons in the <code>shapes</code> with the average color that those polygons ocupy in the <code>img</code> image. When the <code>shapes</code> are plotted the resulting image looks like a choropleth map. Alternatively, instead of transmitting the <code>img</code> image one can provide a WMS URL, <code>layer</code> number and <code>pixelsize</code> to download images from the Web Map Server service, covering each one the bounding box of each of the <code>shapes</code> polygons. This option is much slower than passing the entire image at once but consumes much less memory. Important when the total area is large &#40;think Russia size&#41; because even at a moderately resultion it can imply downloading a huge file.</p>
-<h3>Parameters</h3>
-<ul>
-<li><p><code>shapes</code>: A vector of GMTdataset containing the polygons to be painted. This container will be changed  in the sense that the <code>header</code> field of each polygon &#40;a GMTdataset&#41; will be appended with the fill  color &#40;but see also the <code>append</code> option that controls how this change takes place.&#41;</p>
-</li>
-<li><p><code>fun</code>: By default the average color is obtained by taking the square root of the average of squares of each  of the three &#40;RGB&#41; bands &#40;or just one for grayscale images&#41;. Give the name of another function to replace  this default. For example <code>median</code> will assign the color by computing the median of each component inside  the polygon area in question.</p>
-</li>
-<li><p><code>img</code>: the image from which the stats &#40;<code>fun</code>&#41; of each color for each polygon will be computed.</p>
-</li>
-<li><p><code>url</code>: In case the <code>img</code> option is not used, pass the Web Map Server URL &#40;see the <code>wmsinfo</code> and <code>wmsread</code> functions&#41;  from where the the images covering the BoundingBox of each polygon will be downloaded. Warning, this is a much slower  method but potentially usefull when the images to download risk to be very big. </p>
-</li>
-<li><p><code>layer</code>: When the <code>url</code> option is used this one becomes mandatory and represents the layer number or layer name of  interest from those provided by the WMS service. That is, both of these forms are allowed: <code>layer&#61;3</code> or  <code>layer&#61;&quot;Invented layer name&quot;</code></p>
-</li>
-<li><p><code>pixelsize</code>: Sets the requested cell size in meters &#91;default&#93;. Use a string appended with a &#39;d&#39;  &#40;e.g. <code>resolution&#61;&quot;0.001d&quot;</code>&#41; if the resolution is given in degrees. This way works only when the layer is in geogs.</p>
-</li>
-<li><p><code>append</code>: By default the color assignement to each of the polygons in the <code>shapes</code> vector is achieved by  appending the fill color to the possibly existing header field. Running the <code>colorzones</code> command more than once  keeps adding &#40;now ignored, because only the first is used&#41; colors. Setting <code>append&#61;false</code> forces rewriting  the header field at each run and hence the assigned color is always the one used &#40;but the previous header is cleared out&#41;.</p>
-</li>
-</ul>
-<p>See also: <code>rasterzones&#33;</code></p>
-<h3>Returns</h3>
-<p>It does&#39;t return anything but the input <code>shapes</code> is modified.</p>
-<h2>Example</h2>
-<pre><code>Read the 2020 Sentinel2 Earth color for Portugal at 100 m resolution. Load the administrative
-regions and compute their median colors.
-
-wms &#61; wmsinfo&#40;&quot;http://tiles.maps.eox.at/wms?&quot;&#41;;
-img &#61; wmsread&#40;wms, layer&#61;3, region&#61;&#40;-9.6,-6,36.9,42.2&#41;, pixelsize&#61;100&#41;;
-Pt &#61; gmtread&#40;&quot;C:/programs/compa_libs/covid19pt/extra/mapas/concelhos/concelhos.shp&quot;&#41;;
-colorzones&#33;&#40;Pt, median, img&#61;img&#41;;
-imshow&#40;Pt, proj&#61;:guess&#41;</code></pre>
 
 
 </div>
@@ -483,80 +452,6 @@ crop&#40;G, region&#61;&#40;-2,2,-2,2&#41;&#41;</code></pre>
 </div>
 </div>
 <div class="docstring">
-<div class="doc-header" id="gmtread">
-<a href="#gmtread">gmtread</a>
-</div>
-<div class="doc-content"><pre><code>gmtread&#40;fname::String; kwargs...&#41;</code></pre>
-<p>Read GMT object from file. The object is one of &quot;grid&quot; or &quot;grd&quot;, &quot;image&quot; or &quot;img&quot;, &quot;data&quot; or &quot;table&quot;, &quot;cmap&quot; or &quot;cpt&quot; and &quot;ps&quot; &#40;for postscript&#41;, and OGR formats &#40;shp, kml, json&#41;. Use a type specificatin to force a certain reading path &#40;e.g. <code>grd&#61;true</code> to read grids&#41; or take the chance of letting the data type be guessed via the file extension. Known extensions are:</p>
-<ul>
-<li><p>Grids:      .grd, .jp2 .nc</p>
-</li>
-<li><p>Images:     .jpg, .jp2 .png, .tif, .tiff, .bmp, .webp</p>
-</li>
-<li><p>Datasets:   .dat, .txt, .csv</p>
-</li>
-<li><p>Datasets:   .shp, .kml, .json, .geojson, .gmt, .gpkg, .gpx, .gml</p>
-</li>
-<li><p>CPT:        .cpt</p>
-</li>
-<li><p>PostScript: .ps, .eps</p>
-</li>
-</ul>
-<h2>Parameters</h2>
-<p>Specify data type &#40;with <em>type</em>&#61;true, e.g. <code>img&#61;true</code>&#41;.  Choose among:</p>
-<ul>
-<li><p><strong>grd</strong> | <strong>grid</strong> :: &#91;Type &#61;&gt; Any&#93;</p>
-<p>Load a grid.</p>
-</li>
-<li><p><strong>img</strong> | <strong>image</strong> :: &#91;Type &#61;&gt; Any&#93;</p>
-<p>Load an image.</p>
-</li>
-<li><p><strong>cpt</strong> | <strong>cmap</strong> :: &#91;Type &#61;&gt; Any&#93;</p>
-<p>Load a GMT color palette.</p>
-</li>
-<li><p><strong>data</strong> | <strong>dataset</strong> | <strong>table</strong> :: &#91;Type &#61;&gt; Any&#93;</p>
-<p>Load a dataset &#40;a table of numbers&#41;.</p>
-</li>
-<li><p><strong>ogr</strong> :: &#91;Type &#61;&gt; Any&#93;</p>
-<p>Load a dataset via GDAL OGR &#40;a table of numbers&#41;. Many things can happen here.</p>
-</li>
-<li><p><strong>ps</strong> :: &#91;Type &#61;&gt; Any&#93;</p>
-<p>Load a PostScript file</p>
-</li>
-<li><p><strong>gdal</strong> :: &#91;Type &#61;&gt; Any&#93;</p>
-<p>Force reading the file via GDAL. Should only be used to read grids.</p>
-</li>
-<li><p><strong>varname</strong> :: &#91;Type &#61;&gt; Str&#93;</p>
-<p>When netCDF files have more than one 2D &#40;or higher&#41; variables use <em>varname</em> to pick the wished variable.   e.g. varname&#61;:slp to read the variable named &#39;slp&#39;. This option defaults data type to &#39;grid&#39;</p>
-</li>
-<li><p><strong>layer</strong> | <strong>band</strong> :: &#91;Type &#61;&gt; Str, Number, Array&#93;</p>
-</li>
-</ul>
-<p>When files are multiband or nc files with 3D or 4D arrays, we access them via these keywords. <code>layer&#61;4</code> reads the fourth layer &#40;or band&#41; of the file. But the file can be a grid or an image. If it is a grid, layer can be a scalar &#40;to read 3D arrays&#41; or an array of two elements &#40;to read a 4D array&#41;.</p>
-<p>If file is an image <code>layer</code> can be a 1 or a 1x3 array &#40;to read a RGB image&#41;. Not that in this later case bands do not need to be contiguous. A <code>band&#61;&#91;1,5,2&#93;</code>&#96; composes an RGB out of those bands. See more at http://docs.generic-mapping-tools.org/latest//GMT_Docs.html#modifiers-for-coards-compliant-netcdf-files&#41; but note that we use <strong>1 based</strong> indexing here.</p>
-<ul>
-<li><p><strong>R</strong> | <strong>region</strong> | <strong>limits</strong> :: &#91;Type &#61;&gt; Str or list or GMTgrid|image&#93;	&#36;Arg &#61; &#40;xmin,xmax,ymin,ymax&#41;&#36;</p>
-<p>Specify the region of interest. Set to data minimum BoundinBox if not provided.</p>
-</li>
-<li><p><strong>V</strong> | <strong>verbose</strong> :: &#91;Type &#61;&gt; Bool or Str&#93;		&#36;Arg &#61; &#91;level&#93;&#36;</p>
-<p>Select verbosity level, which will send progress reports to stderr.</p>
-</li>
-<li><p><strong>bi</strong> | <strong>binary_in</strong> :: &#91;Type &#61;&gt; Str&#93;			&#36;Arg &#61; &#91;ncols&#93;&#91;type&#93;&#91;w&#93;&#91;&#43;L|&#43;B&#93;&#36;</p>
-<p>Select native binary format for primary input &#40;secondary inputs are always ASCII&#41;.</p>
-</li>
-<li><p><strong>f</strong> | <strong>colinfo</strong> | <strong>coltypes</strong> | <strong>coltype</strong> :: &#91;Type &#61;&gt; Str&#93;        &#36;Arg &#61; &#91;i|o&#93;colinfo&#36;</p>
-<p>Specify the data types of input and/or output columns &#40;time or geographical data&#41;.</p>
-</li>
-</ul>
-<p>Example: to read a nc called &#39;lixo.grd&#39;</p>
-<pre><code>G &#61; gmtread&#40;&quot;lixo.grd&quot;&#41;;</code></pre>
-<p>to read a jpg image with the bands reversed</p>
-<pre><code>I &#61; gmtread&#40;&quot;image.jpg&quot;, band&#61;&#91;2,1,0&#93;&#41;;</code></pre>
-
-
-</div>
-</div>
-<div class="docstring">
 <div class="doc-header" id="gridit">
 <a href="#gridit">gridit</a>
 </div>
@@ -610,55 +505,6 @@ crop&#40;G, region&#61;&#40;-2,2,-2,2&#41;&#41;</code></pre>
 </div>
 <div class="doc-content"><pre><code>u, ind &#61; gunique&#40;x::AbstractVector; sorted&#61;false&#41;</code></pre>
 <p>Return an array containing only the unique elements of <code>x</code> and the indices <code>ind</code> such that <code>u &#61; x&#91;ind&#93;</code>. If <code>sorted</code> is true the output is sorted &#40;default is not&#41;</p>
-
-
-</div>
-</div>
-<div class="docstring">
-<div class="doc-header" id="hlines">
-<a href="#hlines">hlines</a>
-</div>
-<div class="doc-content"><pre><code>hlines&#40;arg; decorated&#61;&#40;...&#41;, xmin&#61;NaN, xmax&#61;NaN, percent&#61;false, kwargs...&#41;</code></pre>
-<p>Plots one or a collection of horizontal lines with eventual decorations</p>
-<ul>
-<li><p><code>xmin</code> &amp; <code>xmax</code>: Limit the horizontal lines to start a <code>xmin</code> and/or end at <code>xmax</code></p>
-</li>
-<li><p><code>percent</code>: If true the <code>xmin</code> &amp; <code>xmax</code> are interpreted as fractions of the figure height.</p>
-</li>
-<li><p><strong>B</strong> | <strong>frame</strong> | <strong>axis</strong> | <strong>xaxis yaxis</strong>:: &#91;Type &#61;&gt; Str&#93; </p>
-<p>Set map boundary frame and axes attributes.</p>
-</li>
-<li><p><strong>J</strong> | <strong>proj</strong> | <strong>projection</strong> :: &#91;Type &#61;&gt; String&#93;</p>
-<p>Select map projection. Defaults to 15x10 cm with linear &#40;non-projected&#41; maps.</p>
-</li>
-<li><p><strong>R</strong> | <strong>region</strong> | <strong>limits</strong> :: &#91;Type &#61;&gt; Str or list or GMTgrid|image&#93;	&#36;Arg &#61; &#40;xmin,xmax,ymin,ymax&#41;&#36;</p>
-<p>Specify the region of interest. Set to data minimum BoundinBox if not provided.</p>
-</li>
-<li><p><strong>W</strong> | <strong>pen</strong> | <strong>line_attrib</strong> :: &#91;Type &#61;&gt; Str&#93;</p>
-<p>Set pen attributes for the horizontal lines</p>
-</li>
-</ul>
-<p>Example:</p>
-<pre><code>plot&#40;rand&#40;5,3&#41;&#41;
-hlines&#33;&#40;&#91;0.2, 0.6&#93;, pen&#61;&#40;1, :red&#41;, show&#61;true&#41;</code></pre>
-
-
-</div>
-</div>
-<div class="docstring">
-<div class="doc-header" id="imagesc">
-<a href="#imagesc">imagesc</a>
-</div>
-<div class="doc-content"><pre><code>imagesc&#40;mat; x&#61;, y&#61;, hdr&#61;, proj4&#61;, wkt&#61;, GI&#61;, clim&#61;, cmap&#61;, kw...&#41;</code></pre>
-<p>imagesc takes a Float matrix or a GMTgrid type and scales it &#40;by default&#41; to the &#91;0, 255&#93; interval. In the process it creates a GMTimage type. Those types can account for coordinates and projection information, hence the optional arguments. Contrary to its Matlab cousin, it doesn&#39;t display the result &#40;that we easily do with <code>imshow&#40;mat&#41;</code>&#41; but return instead a GMTimage object.</p>
-<ul>
-<li><p><code>clim</code>: Specify clims as a two-element vector of the form &#91;cmin cmax&#93;, where values of the scaled image  less than or equal to cmin are assigned that value. The same goes for cmax.</p>
-</li>
-<li><p><code>cmap</code>: If provided, <code>cmap</code> is a GMTcpt and its contents is converted to the <code>GMTimage</code> colormp.</p>
-</li>
-<li><p><code>GI</code>: This can be either a GMTgrid or a GMTimage and its contents is used to set spatial contents  &#40;x,y coordinates&#41; and projection info that one may attach to the created image result. This is  a handy alterative to the <code>x&#61;, y&#61;, proj4&#61;...</code> options.</p>
-</li>
-</ul>
 
 
 </div>
@@ -946,7 +792,7 @@ D &#61; linearfitxy&#40;&#91;0.037 0.0080; 0.035 0.0084; 0.032 0.0100; 0.040 0.0
 <p><code>GMT.magic</code> is a <code>Function</code>.</p>
 <pre><code># 1 method for generic function &quot;magic&quot; from GMT:
  &#91;1&#93; magic&#40;n::Int64&#41;
-     @ ~/.julia/packages/GMT/MaNML/src/utils.jl:442</code></pre>
+     @ ~/.julia/packages/GMT/zt1MB/src/utils.jl:442</code></pre>
 </div>
 </div>
 <div class="docstring">
@@ -959,57 +805,6 @@ D &#61; linearfitxy&#40;&#91;0.037 0.0080; 0.035 0.0084; 0.032 0.0100; 0.040 0.0
 <li><p><code>interp</code>: &#61;&#61; 0 means we return the original points &#40;no interpolation&#41;. &#61;&#61; 2 &#61;&gt; do data interpolation to   the double of original number of points. &#61;&#61; 3 &#61;&gt; three times, &#61;&#61; n &#61;&gt; n times. </p>
 </li>
 </ul>
-
-
-</div>
-</div>
-<div class="docstring">
-<div class="doc-header" id="pcolor">
-<a href="#pcolor">pcolor</a>
-</div>
-<div class="doc-content"><pre><code>pcolor&#40;X, Y, C::Matrix&#123;&lt;:Real&#125;; kwargs...&#41;</code></pre>
-<p>Creates a colored cells plot using the values in matrix <code>C</code>. The color of each cell depends on the value of each value of <code>C</code> after consulting a color table &#40;cpt&#41;. If a color table is not provided via option <code>cmap&#61;xxx</code> we compute a default one.</p>
-<ul>
-<li><p><code>X</code>, <code>Y</code>: Vectors or 1 row matrices with the x- and y-coordinates for the vertices. The number of elements of <code>X</code> must match the number of columns in <code>C</code> &#40;is using the grid registration model&#41; or exceed it by one &#40;pixel registration&#41;. The same for <code>Y</code> and the number of rows in <code>C</code>. Notice that <code>X</code> and <code>Y</code> do not need to be equispaced.</p>
-</li>
-<li><p><code>X</code>, <code>Y</code>: Matrices with the x- and y-coordinates for the vertices. In this case the if <code>X</code> and <code>Y</code> define an m-by-n grid, then <code>C</code> should be an &#40;m-1&#41;-by-&#40;n-1&#41; matrix, though we also allow it to be m-by-n but we then drop the last row and column from <code>C</code></p>
-</li>
-<li><p><code>C</code>: A matrix with the values that will be used to color the cells.</p>
-</li>
-<li><p><code>kwargs</code>: This form of <code>pcolor</code> is in fact a wrap up of &#36;plot&#36; so any option of that module can be used here.</p>
-</li>
-<li><p><code>labels</code>: If this &#36;keyword&#36; is used then plot the value of each node in the corresponding cell. Use <code>label&#61;n</code>, where &#36;n&#36; is integer and represents the number of printed decimals. Any other value like &#36;true&#36;, &#36;&quot;y&quot;&#36; or &#36;:y&#36; tells the program to guess the number of decimals.</p>
-</li>
-<li><p><code>font</code>: When <code>label</code> is used one may also control text font settings. Options are a subset of the &#36;text&#36; <code>attrib</code> option. Namelly, the angle and the &#36;font&#36;. Example: &#36;font&#61;&#40;angle&#61;45, font&#61;&#40;5,:red&#41;&#41;&#36;. If not specified, it defaults to &#36;font&#61;&#40;font&#61;&#40;6,:black&#41;,&#41;&#36;.</p>
-</li>
-</ul>
-<pre><code>pcolor&#40;G::GMTgrid; kwargs...&#41;</code></pre>
-<p>This form takes a grid &#40;or the file name of one&#41; as input an paints it&#39;s cell with a constant color.</p>
-<ul>
-<li><p><code>outline</code>: Draw the tile outlines, and specify a custom pen if the default pen is not to your liking.</p>
-</li>
-<li><p><code>kwargs</code>: This form of <code>pcolor</code> is a wrap of &#36;grdview&#36; so any option of that module can be used here. One can for example control the tilling option via &#36;grdview&#39;s&#36; &#36;tiles&#36; option.</p>
-</li>
-</ul>
-<h3>Examples</h3>
-<pre><code># Create an example grid
-G &#61; GMT.peaks&#40;N&#61;21&#41;;
-
-pcolor&#40;G, outline&#61;&#40;0.5,:dot&#41;, show&#61;true&#41;
-
-# Now use the G x,y coordinates in the non-regular form
-pcolor&#40;G.x, G.y, G.z, show&#61;true&#41;
-
-# Add labels to cells using default settings &#40;font size &#61; 6p&#41;
-pcolor&#40;G.x, G.y, G.z, labels&#61;:y, show&#61;true&#41;
-
-# Similar to above but now set the number of decimlas in labels as well as it font settings
-pcolor&#40;G.x, G.y, G.z, labels&#61;2, font&#61;&#40;angle&#61;45, font&#61;&#40;5,:red&#41;&#41;, show&#61;1&#41;
-
-# An irregular grid
-X,Y &#61; GMT.meshgrid&#40;-3:6/17:3&#41;;
-XX &#61; 2*X .* Y;	YY &#61; X.^2 .- Y.^2;
-pcolor&#40;XX,YY, reshape&#40;repeat&#40;&#91;1:18; 18:-1:1&#93;, 9,1&#41;, size&#40;XX&#41;&#41;, lc&#61;:black, show&#61;true&#41;</code></pre>
 
 
 </div>
@@ -1061,34 +856,6 @@ pcolor&#40;XX,YY, reshape&#40;repeat&#40;&#91;1:18; 18:-1:1&#93;, 9,1&#41;, size
 </div>
 </div>
 <div class="docstring">
-<div class="doc-header" id="rasterzones!">
-<a href="#rasterzones!">rasterzones!</a>
-</div>
-<div class="doc-content"><pre><code>rasterzones&#33;&#40;GI::GItype, shapes::Vector&#123;GMTdataset&#125;, fun::Function&#41;</code></pre>
-<p>Apply a unidimensional function <code>fun</code> to to the elements of the grid or image <code>GI</code> that lie inside the polygons of the GMTdataset <code>shapes</code>. The <code>GI</code> array is modified in place.</p>
-<h3>Parameters</h3>
-<ul>
-<li><p><code>GI</code>: A grid &#40;GMTgrid&#41; or image &#40;GMTimage&#41; type that will be modified by applying <code>fun</code> to the elements that  fall inside the polygons of <code>shapes</code>.</p>
-</li>
-<li><p><code>shapes</code>: A vector of GMTdataset containing the polygons inside which the elements if <code>GI</code> will be assigned  a single value obtained by applying the function <code>fun</code>.</p>
-</li>
-<li><p><code>fun</code>: A unidemensional function name used to compute the contant value for the <code>GI</code> elements that fall  inside each of the polygons of <code>shapes</code>.</p>
-</li>
-</ul>
-<p>See also: <code>colorzones&#33;</code></p>
-<h3>Returns</h3>
-<p>It does&#39;t return anything but the input <code>GI</code> is modified.</p>
-<h2>Example</h2>
-<pre><code>Take the Peaks grid and replace the elements that fall inside a triangle at the center by their average.
-
-G &#61; GMT.peaks&#40;&#41;;
-D &#61; mat2ds&#40;&#91;-1 -1; 0 1; 1 -1; -1 -1&#93;&#41;;
-rasterzones&#33;&#40;G, D, mean&#41;</code></pre>
-
-
-</div>
-</div>
-<div class="docstring">
 <div class="doc-header" id="regiongeog">
 <a href="#regiongeog">regiongeog</a>
 </div>
@@ -1130,49 +897,6 @@ rasterzones&#33;&#40;G, D, mean&#41;</code></pre>
 </div>
 <div class="doc-content"><pre><code>x, y, z &#61; sph2cart&#40;az, elev, rho; deg&#61;false&#41;</code></pre>
 <p>Transform spherical coordinates to Cartesian. Angles are in radians by default. Use <code>deg&#61;true</code> if angles are in degrees. Input can be scalar, vectors or matrices.</p>
-
-
-</div>
-</div>
-<div class="docstring">
-<div class="doc-header" id="stackgrids">
-<a href="#stackgrids">stackgrids</a>
-</div>
-<div class="doc-content"><pre><code>stackgrids&#40;names::Vector&#123;String&#125;, v&#61;nothing; zcoord&#61;nothing, zdim_name&#61;&quot;time&quot;,
-           z_unit&#61;&quot;&quot;, save&#61;&quot;&quot;, mirone&#61;false&#41;</code></pre>
-<p>Stack a bunch of single grids in a multiband cube like file.</p>
-<ul>
-<li><p><code>names</code>: A string vector with the names of the grids to stack</p>
-</li>
-<li><p><code>v</code>: A vector with the vertical coordinates. If not provided one with 1:length&#40;names&#41; will be generated.</p>
-<ul>
-<li><p>If <code>v</code> is a TimeType use the <code>z_unit</code> keyword to select what to store in file &#40;case insensitive&#41;.</p>
-<ul>
-<li><p><code>decimalyear</code> or <code>yeardecimal</code> converts the DateTime to decimal years &#40;Floa64&#41;</p>
-</li>
-<li><p><code>milliseconds</code> &#40;or just <code>mil</code>&#41; will store the DateTime as milliseconds since 0000-01-01T00:00:00 &#40;Float64&#41;</p>
-</li>
-<li><p><code>seconds</code> stores the DateTime as seconds since 0000-01-01T00:00:00 &#40;Float64&#41;</p>
-</li>
-<li><p><code>unix</code> stores the DateTime as seconds since 1970-01-01T00:00:00 &#40;Float64&#41;</p>
-</li>
-<li><p><code>rata</code> stores the DateTime as days since 0000-12-31T00:00:00 &#40;Float64&#41;</p>
-</li>
-<li><p><code>Date</code> or <code>DateTime</code> stores as a string representation of a DateTime.</p>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><code>zdim_name</code>: The name of the vertical axes &#40;default is &quot;time&quot;&#41;</p>
-</li>
-<li><p><code>zcoord</code>: Keyword same as <code>v</code> &#40;may use one or the other&#41;.</p>
-</li>
-<li><p><code>save</code>: The name of the file to be created.</p>
-</li>
-<li><p><code>mirone</code>: Does not create a cube file but instead a file named &quot;automatic_list.txt&quot; &#40;or whaterver <code>save&#61;xxx</code>&#41;  to be used in the Mirone <code>Empilhador</code> tool.</p>
-</li>
-</ul>
 
 
 </div>
@@ -1329,37 +1053,6 @@ julia&gt; viz&#40;G, zsize&#61;6, facades&#61;&#40;&quot;cenora_base.jpg&quot;, 
 </div>
 </div>
 <div class="docstring">
-<div class="doc-header" id="vlines">
-<a href="#vlines">vlines</a>
-</div>
-<div class="doc-content"><pre><code>vlines&#40;arg; decorated&#61;&#40;...&#41;, ymin&#61;NaN, ymax&#61;NaN, percent&#61;false, kwargs...&#41;</code></pre>
-<p>Plots one or a collection of vertical lines with eventual decorations</p>
-<ul>
-<li><p><code>ymin</code> &amp; <code>ymax</code>: Limit the vertical lines to start a <code>ymin</code> and/or end at <code>ymax</code></p>
-</li>
-<li><p><code>percent</code>: If true the <code>xmin</code> &amp; <code>xmax</code> are interpreted as fractions of the figure width.</p>
-</li>
-<li><p><strong>B</strong> | <strong>frame</strong> | <strong>axis</strong> | <strong>xaxis yaxis</strong>:: &#91;Type &#61;&gt; Str&#93; </p>
-<p>Set map boundary frame and axes attributes.</p>
-</li>
-<li><p><strong>J</strong> | <strong>proj</strong> | <strong>projection</strong> :: &#91;Type &#61;&gt; String&#93;</p>
-<p>Select map projection. Defaults to 15x10 cm with linear &#40;non-projected&#41; maps.</p>
-</li>
-<li><p><strong>R</strong> | <strong>region</strong> | <strong>limits</strong> :: &#91;Type &#61;&gt; Str or list or GMTgrid|image&#93;	&#36;Arg &#61; &#40;xmin,xmax,ymin,ymax&#41;&#36;</p>
-<p>Specify the region of interest. Set to data minimum BoundinBox if not provided.</p>
-</li>
-<li><p><strong>W</strong> | <strong>pen</strong> | <strong>line_attrib</strong> :: &#91;Type &#61;&gt; Str&#93;</p>
-<p>Set pen attributes for the horizontal lines</p>
-</li>
-</ul>
-<p>Example:</p>
-<pre><code>plot&#40;rand&#40;5,3&#41;, region&#61;&#91;0,1,0,1&#93;&#41;
-vlines&#33;&#40;&#91;0.2, 0.6&#93;, pen&#61;&#40;1, :red&#41;, show&#61;true&#41;</code></pre>
-
-
-</div>
-</div>
-<div class="docstring">
 <div class="doc-header" id="wmsinfo">
 <a href="#wmsinfo">wmsinfo</a>
 </div>
@@ -1463,8 +1156,8 @@ imshow&#40;img, proj&#61;:guess&#41;</code></pre>
 
 <div class="page-foot">
   <div class="copyright">
-    &copy; GMT.jl. Last modified: September 08, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
-      <p>These docs were autogenerated using GMT: v1.4.1</p>
+    &copy; GMT.jl. Last modified: September 10, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+      <p>These docs were autogenerated using GMT: v1.5.0</p>
   </div>
 </div>
 </div><!-- CONTENT ENDS HERE -->

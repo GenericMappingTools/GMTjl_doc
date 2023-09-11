@@ -278,16 +278,25 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilfuns">Utility functions</a></div></li>
 <li><input class="collapse-toggle" id="menuitem-5-9" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-5-9"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/documentation/utilities">Utilities</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/blendimg">blendimg&#33;</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/coastlinesproj">coastlinesproj</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/colorzones">colorzones&#33;</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/cubeplot">cubeplot</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/gadm">gadm</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/gmtread">gmtread</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/gmtwrite">gmtwrite</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/graticules">graticules</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/hlines">hlines</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/imagesc">imagesc</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/lelandshade">lelandshade</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/mat2ds">mat2ds</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/mat2grid">mat2grid</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/mat2img">mat2img</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/orbits">orbits</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/pcolor">pcolor</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/plotgrid">plotgrid&#33;</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/rasterzones">rasterzones&#33;</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/slicecube">slicecube</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/stackgrids">stackgrids</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/vlines">vlines</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/worldrectangular">worldrectangular</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/worldrectcoast">worldrectcoast</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/worldrectgrid">worldrectgrid</a></div></li>
@@ -354,7 +363,7 @@ or
 </ul>
 
 <ul>
-<li><p><strong>S</strong> or <strong>vscale</strong> or <strong>vec_scale</strong> : – <em>vscale&#61;&#40;inverse&#61;len, length&#61;len, scale&#61;xx, scale<em>at</em>lat&#61;??, refsize&#61;size&#41;</em><br />  Sets scale for vector plot lengths in data units per plot distance measurement unit. Append <strong>c</strong>, <strong>i</strong>,   or <strong>p</strong> to indicate the desired plot distance measurement &#40;then <strong>xx</strong> must be a string&#41; unit &#40;cm, inch,   or point&#41;; if no unit is given we use the default value that is controlled by <code>PROJ\_LENGTH\_UNIT</code>. Vector   lengths converted via plot unit scaling will plot as straight Cartesian vectors and their lengths are not   affected by map projections and coordinate locations.  For geographic data you may alternatively give <em>scale</em>   in data units per map distance unit &#40;see <code>Units</code>&#41;. Then, your vector magnitudes &#40;in data units&#41; are scaled   to map <em>distances</em> in the given distance unit, and finally projected onto the Earth to give <em>plot</em> dimensions.   These are geo-vectors that follow great circle paths and their lengths may be affected by the map projection   and their coordinates.  Finally, use <strong>vscale&#61;&#40;inverse&#61;len,...&#41;</strong> if it is simpler to give the reciprocal   scale in plot length or distance units per data unit.  Alternatively, use <strong>vscale&#61;&#40;length&#61;len,...&#41;</strong> to set   a fixed plot <code>len</code> for all vectors. To report the minimum, maximum, and mean data and plot vector lengths of   all vectors plotted, use <strong>verbose</strong> option. If an automatic legend entry is desired via <strong>label</strong>, or or two   modifiers will be required:</p>
+<li><p><strong>S</strong> or <strong>vscale</strong> or <strong>vec_scale</strong> : – <em>vscale&#61;&#40;inverse&#61;len, length&#61;len, scale&#61;xx, scale<em>at</em>lat&#61;??, refsize&#61;size&#41;</em><br />  Sets scale for vector plot lengths in data units per plot distance measurement unit. Append <strong>c</strong>, <strong>i</strong>,   or <strong>p</strong> to indicate the desired plot distance measurement &#40;then <strong>xx</strong> must be a string&#41; unit &#40;cm, inch,   or point&#41;; if no unit is given we use the default value that is controlled by <code>PROJ_LENGTH_UNI</code>. Vector   lengths converted via plot unit scaling will plot as straight Cartesian vectors and their lengths are not   affected by map projections and coordinate locations.  For geographic data you may alternatively give <em>scale</em>   in data units per map distance unit &#40;see <code>Units</code>&#41;. Then, your vector magnitudes &#40;in data units&#41; are scaled   to map <em>distances</em> in the given distance unit, and finally projected onto the Earth to give <em>plot</em> dimensions.   These are geo-vectors that follow great circle paths and their lengths may be affected by the map projection   and their coordinates.  Finally, use <strong>vscale&#61;&#40;inverse&#61;len,...&#41;</strong> if it is simpler to give the reciprocal   scale in plot length or distance units per data unit.  Alternatively, use <strong>vscale&#61;&#40;length&#61;len,...&#41;</strong> to set   a fixed plot <code>len</code> for all vectors. To report the minimum, maximum, and mean data and plot vector lengths of   all vectors plotted, use <strong>verbose</strong> option. If an automatic legend entry is desired via <strong>label</strong>, or or two   modifiers will be required:</p>
 <ul>
 <li><p><code>scale_at_lat&#61;slon</code> or <code>scale_at_lat&#61;&#40;slon,slat&#41;</code> or <code>scale_at_lat&#61;true</code> controls where on a geographic map a geovector&#39;s <em>refsize</em> length applies. The modifier is neither needed nor available when plotting Cartesian vectors. The length is calculated for latitude <em>slat</em> &#40;optionally supply longitude <em>slon</em> for oblique projections &#91;default is central meridian&#93;&#41;. If <code>scale_at_lat&#61;true</code> then we select the reference length origin to be the middle of the map.</p>
 </li>
@@ -404,7 +413,11 @@ or
 </li>
 </ul>
 
-<p><span style="color:red;">// Couldn't find a file when trying to resolve an input request with relative path: `common_opts/opt_l`. //</span></p>
+<ul>
+<li><p><strong>l</strong> or <strong>legend</strong> : – <em>legend&#61;params</em><br /> Add a map legend entry to the session legend information file for the current plot &#40;modern mode only&#41;.  While this option is not expanded, see <em>params</em> at <a href="https://docs.generic-mapping-tools.org/latest/gmt.html#l-full">The -l option</a></p>
+</li>
+</ul>
+
 <ul>
 <li><p><strong>p</strong> or <strong>view</strong> or <strong>perspective</strong> : – <em>view&#61;&#40;azim, elev&#41;</em><br /> Default is viewpoint from an azimuth of 200 and elevation of 30 degrees.<br /> Specify the viewpoint in terms of azimuth and elevation. The azimuth is the horizontal rotation about the z-axis as  measured in degrees from the positive y-axis. That is, from North. This option is not yet fully  expanded. Current alternatives are:</p>
 <ul>
@@ -467,8 +480,8 @@ grdvector&#33;&#40;dzdx, dzdy, cmap&#61;:turbo, lw&#61;1, show&#61;true&#41;</co
 <p><a href="/GMTjl_doc/documentation/modules/grdcontour/index.html#grdcontour">grdcontour</a>, <a href="/GMTjl_doc/documentation/modules/plot/index.html#plot">plot</a></p>
 <div class="page-foot">
   <div class="copyright">
-    &copy; GMT.jl. Last modified: September 08, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
-      <p>These docs were autogenerated using GMT: v1.4.1</p>
+    &copy; GMT.jl. Last modified: September 10, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+      <p>These docs were autogenerated using GMT: v1.5.0</p>
   </div>
 </div>
 </div><!-- CONTENT ENDS HERE -->
