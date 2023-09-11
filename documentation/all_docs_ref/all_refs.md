@@ -49,9 +49,9 @@ its use requires resorting to the \myreflink{Monolithic} mode.
 
 |  |  |  |  |  |  |  |  |  |  |
 |:-----|:----|:----|:----|:----|:----|:----|:----|:----|:----|
-| \myreflink{blendimg!} | \myreflink{colorzones!} | \myreflink{cubeplot} | \myreflink{imagesc} | \myreflink{lelandshade} | \myreflink{coastlinesproj} | \myreflink{cubeslice} | \myreflink{lelandshade} | \myreflink{gmtread} | \myreflink{gmtwrite} |
-| \myreflink{graticules} | \myreflink{mat2ds} | \myreflink{mat2grid} | \myreflink{mat2img} | \myreflink{orbits} | \myreflink{plotgrid!} | \myreflink{rasterzones!} | \myreflink{slicecube} | \myreflink{stackgrids} | \myreflink{worldrectgrid} |
-| \myreflink{worldrectcoast} | \myreflink{worldrectangular} | \myreflink{xyzw2cube} |  |  |  |  |  |  |  |
+| \myreflink{ablines} | \myreflink{blendimg!} | \myreflink{colorzones!} | \myreflink{cubeplot} | \myreflink{imagesc} | \myreflink{lelandshade} | \myreflink{coastlinesproj} | \myreflink{cubeslice} | \myreflink{lelandshade} | \myreflink{linearfitxy} |
+| \myreflink{gmtread} | \myreflink{gmtwrite} | \myreflink{graticules} | \myreflink{mat2ds} | \myreflink{mat2grid} | \myreflink{mat2img} | \myreflink{orbits} | \myreflink{plotgrid!} | \myreflink{rasterzones!} | \myreflink{slicecube} |
+| \myreflink{stackgrids} | \myreflink{worldrectgrid} | \myreflink{worldrectcoast} | \myreflink{worldrectangular} | \myreflink{xyzw2cube} |  |  |  |  |  |
 
 ## Utility functions
 
