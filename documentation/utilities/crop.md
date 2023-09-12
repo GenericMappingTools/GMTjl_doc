@@ -18,7 +18,6 @@ A grid or an image, depending on the input type, plus two 1x2 matrices with the 
 Examples
 --------
 
-\begin{examplefig}{}
 ```julia
 using GMT
 
