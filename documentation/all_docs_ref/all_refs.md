@@ -33,9 +33,9 @@
 |  |  |  |  |  |  |  |  |  |  |
 |:-----|:----|:----|:----|:----|:----|:----|:----|:----|:----|
 | \myreflink{arrows} | \myreflink{band} | \myreflink{bar} | \myreflink{bar3} | \myreflink{boxplot} | \myreflink{bubblechart} | \myreflink{contourf} | \myreflink{cornerplot} | \myreflink{decorated} | \myreflink{earthregions} |
-| \myreflink{ecdfplot} | \myreflink{feather} | \myreflink{fill_between} | \myreflink{hband} | \myreflink{hlines} | \myreflink{lines} | \myreflink{marginalhist} | \myreflink{parallelplot} | \myreflink{pcolor} | \myreflink{plotlinefit} |
-| \myreflink{qqplot} | \myreflink{quiver} | \myreflink{radar} | \myreflink{scatter} | \myreflink{scatter3} | \myreflink{seismicity} | \myreflink{stairs} | \myreflink{stem} | \myreflink{streamlines} | \myreflink{triplot} |
-| \myreflink{trisurf} | \myreflink{vband} | \myreflink{violin} | \myreflink{vlines} |  |  |  |  |  |  |
+| \myreflink{ecdfplot} | \myreflink{feather} | \myreflink{fill_between} | \myreflink{hband} | \myreflink{hlines} | | \myreflink{logo} | \myreflink{lines} | \myreflink{marginalhist} | \myreflink{parallelplot} | \myreflink{pcolor} |
+| \myreflink{plotlinefit} | \myreflink{qqplot} | \myreflink{quiver} | \myreflink{radar} | \myreflink{scatter} | \myreflink{scatter3} | \myreflink{seismicity} | \myreflink{stairs} | \myreflink{stem} | \myreflink{streamlines} |
+| \myreflink{triplot} | \myreflink{trisurf} | \myreflink{vband} | \myreflink{violin} | \myreflink{vlines} |  |  |  |  |  |
 
 
 ## Supplemental Modules
@@ -49,10 +49,11 @@ its use requires resorting to the \myreflink{Monolithic} mode.
 
 |  |  |  |  |  |  |  |  |  |  |
 |:-----|:----|:----|:----|:----|:----|:----|:----|:----|:----|
-| \myreflink{ablines} | \myreflink{blendimg!} | \myreflink{colorzones!} | \myreflink{cubeplot} | \myreflink{imagesc} | \myreflink{inwhichpolygon} | \myreflink{lelandshade} | \myreflink{coastlinesproj} | \myreflink{cubeslice} | \myreflink{info} |
-| \myreflink{lelandshade} | \myreflink{linearfitxy} | \myreflink{getbyattrib} | \myreflink{gmtread} | \myreflink{gmtwrite} | \myreflink{graticules} | \myreflink{gridit} | \myreflink{image_alpha!} | \myreflink{image_cpt!} | \myreflink{imshow} |
-| \myreflink{ind2rgb} | \myreflink{mat2ds} | \myreflink{mat2grid} | \myreflink{mat2img} | \myreflink{orbits} | \myreflink{plotgrid!} | \myreflink{rasterzones!} | \myreflink{rescale} | \myreflink{slicecube} | \myreflink{stackgrids} |
-| \myreflink{theme} | \myreflink{wmsinfo} | \myreflink{wmsread} | \myreflink{wmstest} | \myreflink{worldrectgrid} | \myreflink{worldrectcoast} | \myreflink{worldrectangular} | \myreflink{xyzw2cube} |  |  |
+| \myreflink{ablines} | \myreflink{append2fig} | \myreflink{blendimg!} | \myreflink{colorzones!} | \myreflink{cpt4dcw} | \myreflink{crop} | \myreflink{cubeplot} | \myreflink{imagesc} | \myreflink{inwhichpolygon} | \myreflink{lelandshade} |
+| \myreflink{coastlinesproj} | \myreflink{cubeslice} | \myreflink{geodetic2enu} | \myreflink{info} | \myreflink{lelandshade} | \myreflink{linearfitxy} | \myreflink{getbyattrib} | \myreflink{gmtread} | \myreflink{gmtwrite} | \myreflink{graticules} |
+| \myreflink{gridit} | \myreflink{image_alpha!} | \myreflink{image_cpt!} | \myreflink{imshow} | \myreflink{ind2rgb} | \myreflink{mat2ds} | \myreflink{mat2grid} | \myreflink{mat2img} | \myreflink{orbits} | \myreflink{plotgrid!} |
+| \myreflink{polygonlevels} | \myreflink{rasterzones!} | \myreflink{rescale} | \myreflink{slicecube} | \myreflink{stackgrids} | \myreflink{theme} | \myreflink{wmsinfo} | \myreflink{wmsread} | \myreflink{wmstest} | \myreflink{worldrectgrid} |
+| \myreflink{worldrectcoast} | \myreflink{worldrectangular} | \myreflink{xyzw2cube} |  |  |  |  |  |  |  |
 
 ## Utility functions
 

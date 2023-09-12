@@ -18,7 +18,7 @@ Note, this assumes that `D` has its `attrib` fields set with usable information.
 NOTE: Instead of ``getbyattrib`` one case use instead ``filter`` (==> `index=false`) or ``findall`` (==> `index=true`)
 
 - `attrib name(s)=value(s)`: Easier to explain by examples: `NAME="Antioquia"`, select all elements that have
-  that attribute/value combination. `NAME=("Antioquia", "Caldas"), pick elements that have those `NAME` attributes.
+  that attribute/value combination. `NAME=("Antioquia", "Caldas")`, picks elements that have those `NAME` attributes.
   Add as many as wished. If using two `kwargs` the second works as a condition. ``(..., NAME=("Antioquia", "Caldas"), feature_id=0)``
   means select all elements from ``Antioquia`` and ``Caldas`` that have the attribute `feature_id` = 0.
 
@@ -44,4 +44,4 @@ D = filter(D, NAME_2="Porto");
 See Also
 --------
 
-\myreflink{inwhichpolygon}
+\myreflink{inwhichpolygon}, \myreflink{polygonlevels}
