@@ -5,7 +5,7 @@ plotlinefit(D::GMTdataset, kwargs...)
 ```
 
 Plot the line fit of the points in the `D` \myreflink{GMTdataset} type incliding confidence intervals ann error ellipses.
-The `D` input is the result of having run your data through the `linearfitxy` function. See its docs for the
+The `D` input is the result of having run your data through the \myreflink{linearfitxy} function. See its docs for the
 meaning of the parameters mentioned below.
 
 - `band_ab` or `ribbon_ab`: Plot a band, `(a±σa) + (b±σb)`, around the fitted line. `band_ab=true` uses the default
@@ -14,9 +14,9 @@ meaning of the parameters mentioned below.
 - `band_ci` or `ribbon_ci`: Plot a band, `(a±σa95) + (b±σb95)`, with the 95% (or other Confidence Interval). `band_ci=true`
    uses the default `tomato` color. Use `band_ci=*color*` to paint it with a color of your choice (transparency included).
 
-- `ellipses`: optionaly plot error ellipses when the `σX, `σY` errors are known.
+- `ellipses`: optionaly plot error ellipses when the `σX, σY` errors are known.
 
-- `legend`: By default we do not plot the legend boxes with line fit info. Set `legend=rue` to plot them. For the time
+- `legend`: By default we do not plot the legend boxes with line fit info. Set `legend=true` to plot them. For the time
    being the legend locations are determine automaticaly and can't be manually controlled.
 
 Other than the above options you can use most of the \myreflink{plot} options that control line and marker symbol.
