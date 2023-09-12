@@ -17,7 +17,7 @@ meaning of the parameters mentioned below.
 - `ellipses`: optionaly plot error ellipses when the `σX, `σY` errors are known.
 
 - `legend`: By default we do not plot the legend boxes with line fit info. Set `legend=rue` to plot them. For the time
-   being the legend locations are determine automaticaly and can't be manually controlled.``
+   being the legend locations are determine automaticaly and can't be manually controlled.
 
 Other than the above options you can use most of the `plot` options that control line and marker symbol.
 
