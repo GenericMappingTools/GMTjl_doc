@@ -355,21 +355,6 @@
 </div>
 </div>
 <div class="docstring">
-<div class="doc-header" id="crop">
-<a href="#crop">crop</a>
-</div>
-<div class="doc-content"><p>crop&#40;arg::GItype; kw...&#41;</p>
-<p>Crop a subregion of a grid &#40;GMTgrid&#41; or a image &#40;GMTimage&#41;. The subregion is specified with the &#36;limits&#36; or &#36;region&#36; keyword; the specified range must not exceed the range of the input. This function differs from &#36;grdcut&#36; in the sense that it doesn&#39;t call the GMT lib and works only on in-memory array &#40;i.e., no disk files&#41;.</p>
-<h3>Returns</h3>
-<p>A grid or an image, depending on the input type, plus two 1x2 matrices with the indices of the cropped zone.</p>
-<h2>Example</h2>
-<pre><code>G &#61; GMT.peaks&#40;&#41;;
-crop&#40;G, region&#61;&#40;-2,2,-2,2&#41;&#41;</code></pre>
-
-
-</div>
-</div>
-<div class="docstring">
 <div class="doc-header" id="date2doy">
 <a href="#date2doy">date2doy</a>
 </div>
@@ -425,62 +410,6 @@ crop&#40;G, region&#61;&#40;-2,2,-2,2&#41;&#41;</code></pre>
 </div>
 <div class="doc-content"><pre><code>isnodata&#40;array::AbstractArray, val&#61;0&#41;</code></pre>
 <p>Return a boolean array with the same size a <code>array</code> with 1&#39;s &#40;<code>true</code>&#41; where &#36;array&#91;i&#93; &#61;&#61; val&#36;. Test with an image have shown that this function was 5x faster than &#36;ind &#61; &#40;I.image .&#61;&#61; 0&#41;&#36;</p>
-
-
-</div>
-</div>
-<div class="docstring">
-<div class="doc-header" id="logo">
-<a href="#logo">logo</a>
-</div>
-<div class="doc-content"><pre><code>logo&#40;cmd0::String&#61;&quot;&quot;; kwargs...&#41;</code></pre>
-<p>Plots the GMT logo on a map. By default, the GMT logo is 5 cm wide and 2.5 cm high and will be positioned relative to the current plot origin. Use various options to change this and to place a transparent or opaque rectangular map panel behind the GMT logo.</p>
-<p>See full GMT &#40;not the <code>GMT.jl</code> one&#41; docs at <a href="http://docs.generic-mapping-tools.org/latest/gmtlogo.html"><code>gmtlogo</code></a></p>
-<h2>Parameters</h2>
-<ul>
-<li><p><strong>D</strong> | <strong>pos</strong> | <strong>position</strong> :: &#91;Type &#61;&gt; Str&#93;</p>
-<p>Sets reference point on the map for the image using one of four coordinate systems.</p>
-</li>
-<li><p><strong>F</strong> | <strong>box</strong> :: &#91;Type &#61;&gt; Str&#93;</p>
-<p>Without further options, draws a rectangular border around the GMT logo using <code>MAP_FRAME_PEN</code>.   or map rose &#40;T&#41;</p>
-</li>
-<li><p><strong>julia</strong> :: &#91;Type &#61;&gt; Number&#93;</p>
-<p>Create the Julia instead of the GMT logo. Provide circle diameter in centimeters</p>
-</li>
-<li><p><strong>GMTjulia</strong> :: &#91;Type &#61;&gt; Number&#93;</p>
-<p>Create the GMT Julia GMT logo. Provide circle diameter in centimeters</p>
-</li>
-<li><p><strong>J</strong> | <strong>proj</strong> | <strong>projection</strong> :: &#91;Type &#61;&gt; String&#93;</p>
-<p>Select map projection. Defaults to 15x10 cm with linear &#40;non-projected&#41; maps.</p>
-</li>
-<li><p><strong>Jz</strong> | <strong>zscale</strong> | <strong>zsize</strong> :: &#91;Type &#61;&gt; String&#93;</p>
-</li>
-<li><p><strong>P</strong> | <strong>portrait</strong> :: &#91;Type &#61;&gt; Bool or &#91;&#93;&#93;</p>
-<p>Tell GMT to <strong>NOT</strong> draw in portrait mode &#40;that is, make a Landscape plot&#41;</p>
-</li>
-<li><p><strong>R</strong> | <strong>region</strong> | <strong>limits</strong> :: &#91;Type &#61;&gt; Str or list or GMTgrid|image&#93;	&#36;Arg &#61; &#40;xmin,xmax,ymin,ymax&#41;&#36;</p>
-<p>Specify the region of interest. Set to data minimum BoundinBox if not provided.</p>
-</li>
-<li><p><strong>U</strong> | <strong>time_stamp</strong> | <strong>timestamp</strong> :: &#91;Type &#61;&gt; Str or Bool or &#91;&#93;&#93;	&#36;Arg &#61; &#91;&#91;just&#93;/dx/dy/&#93;&#91;c|label&#93;&#36;</p>
-<p>Draw GMT time stamp logo on plot.</p>
-</li>
-<li><p><strong>V</strong> | <strong>verbose</strong> :: &#91;Type &#61;&gt; Bool or Str&#93;		&#36;Arg &#61; &#91;level&#93;&#36;</p>
-<p>Select verbosity level, which will send progress reports to stderr.</p>
-</li>
-<li><p><strong>X</strong> | <strong>x_offset</strong> | <strong>xshift</strong> :: &#91;Type &#61;&gt; Str&#93;     &#36;Arg &#61; &#91;a|c|f|r&#93;&#91;x-shift&#91;u&#93;&#93;&#36;</p>
-</li>
-<li><p><strong>Y</strong> | <strong>y_offset</strong> | <strong>yshift</strong> :: &#91;Type &#61;&gt; Str&#93;     &#36;Arg &#61; &#91;a|c|f|r&#93;&#91;y-shift&#91;u&#93;&#93;&#36;</p>
-<p>Shift plot origin relative to the current origin by &#40;x-shift,y-shift&#41; and optionally   append the length unit &#40;c, i, or p&#41;.</p>
-</li>
-<li><p><strong>t</strong> | <strong>alpha</strong> | <strong>transparency</strong> :: &#91;Type &#61;&gt; Str&#93;   &#36;Arg &#61; transp&#36;</p>
-<p>Set PDF transparency level for an overlay, in &#40;0-100&#93; percent range. &#91;Default is 0, i.e., opaque&#93;.</p>
-</li>
-<li><p><strong>savefig</strong> | <strong>figname</strong> | <strong>name</strong> :: &#91;Type &#61;&gt; Str&#93;</p>
-<p>Save the figure with the <code>figname&#61;name.ext</code> where <code>ext</code> chooses the figure format &#40;e.g. figname&#61;&quot;name.png&quot;&#41;</p>
-</li>
-<li><p>Example, make a GMT Julia logo with circles of 1 cm: logo&#40;GMTjulia&#61;1, show&#61;true&#41;</p>
-</li>
-</ul>
 
 
 </div>
