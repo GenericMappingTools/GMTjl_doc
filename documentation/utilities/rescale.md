@@ -29,3 +29,9 @@ Returns
 
 A \myreflink{GMTgrid} if `A` is a GMTgrid of floats, a \myreflink{GMTimage} if `A` is a GMTimage and
 `type` is used or an array of Float32|64 otherwise.
+
+
+See Also
+--------
+
+\myreflink{imagesc}

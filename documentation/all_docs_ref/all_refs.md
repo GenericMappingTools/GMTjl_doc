@@ -46,10 +46,10 @@ its use requires resorting to the \myreflink{Monolithic} mode.
 |  |  |  |  |  |  |  |  |  |  |
 |:-----|:----|:----|:----|:----|:----|:----|:----|:----|:----|
 | \myreflink{ablines} | \myreflink{append2fig} | \myreflink{blendimg!} | \myreflink{colorzones!} | \myreflink{cpt4dcw} | \myreflink{crop} | \myreflink{cubeplot} | \myreflink{imagesc} | \myreflink{inwhichpolygon} | \myreflink{lelandshade} |
-| \myreflink{coastlinesproj} | \myreflink{cubeslice} | \myreflink{geodetic2enu} | \myreflink{info} | \myreflink{lelandshade} | \myreflink{linearfitxy} | \myreflink{getbyattrib} | \myreflink{gmtread} | \myreflink{gmtwrite} | \myreflink{graticules} |
-| \myreflink{gridit} | \myreflink{image_alpha!} | \myreflink{image_cpt!} | \myreflink{imshow} | \myreflink{ind2rgb} | \myreflink{mat2ds} | \myreflink{mat2grid} | \myreflink{mat2img} | \myreflink{orbits} | \myreflink{plotgrid!} |
-| \myreflink{polygonlevels} | \myreflink{rasterzones!} | \myreflink{rescale} | \myreflink{slicecube} | \myreflink{stackgrids} | \myreflink{theme} | \myreflink{wmsinfo} | \myreflink{wmsread} | \myreflink{wmstest} | \myreflink{worldrectgrid} |
-| \myreflink{worldrectcoast} | \myreflink{worldrectangular} | \myreflink{xyzw2cube} |  |  |  |  |  |  |  |
+| \myreflink{coastlinesproj} | \myreflink{cubeslice} | \myreflink{gadm} | \myreflink{geodetic2enu} | \myreflink{info} | \myreflink{lelandshade} | \myreflink{linearfitxy} | \myreflink{getbyattrib} | \myreflink{gmtread} | \myreflink{gmtwrite} |
+| \myreflink{graticules} | \myreflink{gridit} | \myreflink{image_alpha!} | \myreflink{image_cpt!} | \myreflink{imshow} | \myreflink{ind2rgb} | \myreflink{mat2ds} | \myreflink{mat2grid} | \myreflink{mat2img} | \myreflink{orbits} |
+| \myreflink{pca} | \myreflink{plotgrid!} | \myreflink{polygonlevels} | \myreflink{rasterzones!} | \myreflink{rescale} | \myreflink{slicecube} | \myreflink{stackgrids} | \myreflink{theme} | \myreflink{wmsinfo} | \myreflink{wmsread} |
+| \myreflink{wmstest} | \myreflink{worldrectgrid} | \myreflink{worldrectcoast} | \myreflink{worldrectangular} | \myreflink{xyzw2cube} |  |  |  |  |  |
 
 ## Utility functions
 

@@ -1,7 +1,7 @@
 # imagesc
 
 ```julia
-imagesc(mat; x=, y=, hdr=, proj4=, wkt=, GI=, clim=, cmap=, kw...)
+I = imagesc(mat; x=, y=, hdr=, proj4=, wkt=, GI=, clim=, cmap=, kw...) --> \myreflink{grdimage}
 ```
 
 imagesc takes a Float matrix or a \myreflink{GMTgrid} type and scales it (by default) to the [0, 255] interval.
@@ -32,4 +32,4 @@ viz(imagesc(GMT.peaks()))
 See Also
 --------
 
-\myreflink{grdimage}, \myreflink{grdview}
+\myreflink{grdimage}, \myreflink{grdview}, \myreflink{rescale}
