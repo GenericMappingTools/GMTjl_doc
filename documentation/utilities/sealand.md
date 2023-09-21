@@ -1,4 +1,4 @@
-# orbits
+# sealand
 
 ```julia
 sealand(f1::Function, arg1, t1::NamedTuple, f2::Function, arg2, t2::NamedTuple; kw...)
