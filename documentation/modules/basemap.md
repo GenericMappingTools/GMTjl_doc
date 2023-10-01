@@ -9,7 +9,7 @@ Plot base maps and frames
 Description
 -----------
 
-Creates a basic or fancy basemap with axes, fill, and titles. Several map projections are available,
+Creates basic or fancy basemap with axes, fill, and titles. Several map projections are available,
 and the user may specify separate tick-mark intervals for boundary annotation, ticking, and (optionally)
 gridlines. A simple map scale (**map_scale**) or directional rose (**rose**) may also be plotted.
 At least one of the options \myreflink{frame}, **map_scale**, or **rose** must be specified.
