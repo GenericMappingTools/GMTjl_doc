@@ -5,6 +5,8 @@ colorzones!(shapes::Vector{GMTdataset}[, fun::Function]; img::GMTimage=nothing,
 	          url::AbstractString="", layer=0, pixelsize::Int=0, append::Bool=true)
 ```
 
+*keywords: GMT, Julia, images, zonal colors*
+
 Paint the polygons in the `shapes` with the average color that those polygons ocupy in the `img` image.
 When the `shapes` are plotted the resulting image looks like a choropleth map. Alternatively, instead of
 transmitting the `img` image one can provide a WMS URL, `layer` number and `pixelsize` to download images from

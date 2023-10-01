@@ -4,6 +4,8 @@
 boxplot(data, grp=[]; pos=nothing, kwargs...)
 ```
 
+*keywords: GMT, Julia, statistical plots*
+
 Draw a box-and-whisker style plot. The input data can take several different forms.
 
 ---

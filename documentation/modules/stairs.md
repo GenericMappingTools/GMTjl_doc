@@ -4,6 +4,8 @@
 stairs(cmd0::String="", arg1=nothing; step=:post, kwargs...)
 ```
 
+*keywords: GMT, Julia, stair plots*
+
 Reads (x,y) pairs and plot stairstep graph. The input can either be a file name of a file with at least two columns
 (x,y), but optionally more, a GMTdatset object with also two or more columns, or direct *x,y* inputs
 

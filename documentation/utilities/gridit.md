@@ -4,6 +4,8 @@
 G = gridit(fname="", indata=nothing; method="surface", gdopts="", proj="", epsg=0, kw...)
 ```
 
+*keywords: GMT, Julia, gris interpolations, GDAL interpolate*
+
 Wrapper function to interpolate scattered data into a grid.
 Interpolation methods may be those of GMT and GDAL (gdal_grid).
 

@@ -6,6 +6,8 @@ mask(cmd0::String="", arg1=[]; kwargs...)
 
 Clip or mask map areas with no data table coverage
 
+*keywords: GMT, Julia, grid clip*
+
 Description
 -----------
 

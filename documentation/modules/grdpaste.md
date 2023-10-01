@@ -6,6 +6,8 @@
 
 Join two grids along their common edge
 
+*keywords: GMT, Julia, grid join*
+
 
 Description
 -----------

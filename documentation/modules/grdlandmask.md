@@ -6,6 +6,9 @@
 
 Create a "wet-dry" mask grid from shoreline data base
 
+*keywords: GMT, Julia, land masks, mapping*
+
+
 Description
 -----------
 

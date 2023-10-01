@@ -6,6 +6,8 @@
 
 Spherical gridding in tension of data on a sphere.
 
+*keywords: GMT, Julia, spherical grid interpolation*
+
 Description
 -----------
 

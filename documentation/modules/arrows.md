@@ -4,6 +4,8 @@
 arrows(cmd0::String="", arg1=nothing; kwargs...)
 ```
 
+*keywords: GMT, Julia, arrow plots*
+
 Reads (x,y,a,b) data and make arrow plots. The input can either be a file name of a file with at least
 four columns, but optionally more, or an MxN array or GMTdatset object with the same characteristics in
 terms of number of columns.

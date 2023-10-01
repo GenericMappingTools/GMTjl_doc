@@ -6,6 +6,8 @@
 
 Fit [weighted] [robust] polynomial for z = f(x,y) to xyz[w] data.
 
+*keywords: GMT, Julia, polynomial fit*
+
 Description
 -----------
 

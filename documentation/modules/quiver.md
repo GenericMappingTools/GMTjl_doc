@@ -8,6 +8,8 @@ or
 
 Plot vector field from two component grids
 
+*keywords: GMT, Julia, arrows, vector plots, mapping*
+
 Description
 -----------
 

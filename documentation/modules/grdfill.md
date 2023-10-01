@@ -6,6 +6,8 @@
 
 Interpolate across holes in a grid.
 
+*keywords: GMT, Julia, grid filling*
+
 Description
 -----------
 

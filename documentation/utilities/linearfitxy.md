@@ -4,6 +4,8 @@
 linearfitxy(X, Y; σX=0, σY=0, r=0, ci=95)
 ```
 
+*keywords: GMT, Julia, liner fit, statistical plots*
+
 Performs 1D linear fitting of experimental data with uncertainties in  X and Y:
 - Linear fit:             `Y = a + b*X`                               [1]
 - Errors:                 ``X ± σX;  Y ± σY``                         [2]

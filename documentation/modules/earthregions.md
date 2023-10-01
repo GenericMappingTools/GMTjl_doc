@@ -7,6 +7,8 @@
 
 Plots or automatically extracts grid/image over a named geographic region.
 
+*keywords: GMT, Julia, geography*
+
 ---
 Many predefined regions are provided via *collections*. These collections contain names, rectangular
 geographic boundaries, and access codes for various geographic areas. There are two types of collections:
@@ -26,11 +28,14 @@ Options
     of that collection are printed displaying the region's boundaries, code and name. If, instead, a code
     is passed (codes are unique) then depending on the values of `grid` or `dataset` we either produce a
     map of that region (the default) or extract grid/image over it.
+
 - `proj`: In case a map is requested, pass the desired projection in form of a proj4 string or use the GMT
     projection syntax for that map. By default, we guess a good projection based on the map limits.
+
 - `country`: The particular case of the ``DCW`` collection let us also plot the country(ies) border lines.
     Set `country=true` to do that. Note that the ``DCW`` regions can be specified by a comma separated list
     of country codes, *e.g.* `earthregions("PT,ES", country=true)`.
+
 - `dataset`: This option is used to select data download instead of map plotting. The available datasets are
     those explained in [GMT Remote Datasets](https://www.generic-mapping-tools.org/remote-datasets), which
     shortly are: ``"earth_relief", "earth_synbath", "earth_gebco", "earth_mask", "earth_day", "earth_night",
@@ -40,12 +45,14 @@ Options
     entire file is downloaded (only once and stored in your local ~.gmt/server directory). So, this may take
     a while for the first-time usage.
 - `grid`: A shorthand boolean option equivalent to `dataset="earth_relief"` 
+
 - `res`: The dataset resolution. Possible resolutions are: "``01d", "30m", "20m", "15m", "10m", "06m", "05m",
     "04m", "03m", "02m", "01m", "30s", "15s", "03s", "01s"``. However, they are not all available to all
     datasets. For example, only ``"earth_relief", "earth_synbath", "earth_gebco"`` exist for all those
     resolutions. In case a `dataset` is specified but no resolution, we make estimate of that resolution
     based on map extents and what would be good to create a map with 15 cm width.
 - `registration`: The dataset registration. Either `grid` or `pixel`. If not provided we choose one.
+
 - `exact`: The region boundaries in the collections were rounded to more friendly numbers (few decimals).
     This means that they differ slightly from the pure ``GMT`` (\myreflink{plot}) numbers. Setting `exact=true` will
     force using the strict ``GMT`` limits.

@@ -6,6 +6,8 @@
 
 Project grids or images and plot them on maps
 
+*keywords: GMT, Julia, grid visualization, Geotiff, mapping*
+
 Description
 -----------
 

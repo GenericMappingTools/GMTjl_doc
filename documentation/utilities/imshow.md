@@ -8,6 +8,8 @@ or
 viz(arg1; kw...)
 ```
 
+keywords: GMT, Julia, automatic visualization
+
 The second form shown above means that `viz` is an alias of `imshow`.
 
 `imshow`, or `viz`, is a front end to the \myreflink{grdimage}, \myreflink{grdview}, \myreflink{plot} and \myreflink{plot3}

@@ -4,6 +4,8 @@
 radar(cmd0="", arg1=nothing; axeslimts=Float64[], annotall=false, axeslabels=String[], kwargs...)
 ```
 
+*keywords: GMT, Julia, radar plots*
+
 Radar plots are a useful way for seeing which variables have similar values or if there are outliers
 amongst each variable. By default we expect a matrix, or a GMTdatset (or a vector of them) with normalized
 values. This is so because a radar plot has multiple axis that each have different limits. So the options are

@@ -6,6 +6,8 @@
 
 Modify header or content of a grid
 
+*keywords: GMT, Julia, grid edit*
+
 Description
 -----------
 

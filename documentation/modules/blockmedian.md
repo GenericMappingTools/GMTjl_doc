@@ -4,6 +4,8 @@
 blockmedian(cmd0::String="", arg1=nothing; kwargs...)
 ```
 
+*keywords: GMT, Julia, block average, griding*
+
 Description
 -----------
 

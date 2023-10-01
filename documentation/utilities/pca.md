@@ -4,6 +4,8 @@
 score, coeff, latent, explained, mu, ems = pca(X; DT::DataType=Float32, npc=0)
 ```
 
+*keywords: GMT, Julia, image, PCA*
+
 - `X`: A n-by-p data matrix X. Rows of X correspond to observations and columns correspond to variables.
   Must be a Float type (either 32 or 64).
   

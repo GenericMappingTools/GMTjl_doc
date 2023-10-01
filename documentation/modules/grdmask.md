@@ -6,6 +6,8 @@
 
 Create mask grid from polygons or point coverage.
 
+*keywords: GMT, Julia, masks, grid*
+
 Description
 -----------
 

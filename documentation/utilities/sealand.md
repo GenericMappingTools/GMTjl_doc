@@ -8,10 +8,12 @@ and
 terramar(f1::Function, arg1, t1::NamedTuple, f2::Function, arg2, t2::NamedTuple; kw...)
 ```
 
-The ``sealand/terramar`` pair of functions intended to simplify the task of mapping one field (grid or image)
+*keywords: GMT, Julia, images, geographical clip*
+
+The ``sealand/terramar`` pair of functions is intended to simplify the task of mapping one field (grid or image)
 at the ocean side and another different field (also a grid or image) over land. To achieve this result, we
 resort to the \myreflink{coast} module and its ability to clip the dry and wet parts of the Earth. In the first
-function, ``sealand`` we pass first the module name and the data that is going to be plotted over the oceanic
+function, ``sealand``, we pass first the module name and the data that is going to be plotted over the oceanic
 areas, and second the module and data over land. The second function, ``terramar`` does the opposit.
 
 - `f1`: The name of the module that will be used to plot the data. Normally, this should be either \myreflink{grdimage}

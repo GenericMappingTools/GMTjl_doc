@@ -6,6 +6,8 @@
 
 Delaunay or Voronoi construction of spherical data.
 
+*keywords: GMT, Julia, Delaunay spherical triangulation, Voronoi*
+
 Description
 -----------
 

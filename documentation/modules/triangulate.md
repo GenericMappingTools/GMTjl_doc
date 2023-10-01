@@ -6,6 +6,8 @@
 
 Delaunay triangulation or Voronoi partitioning and gridding of Cartesian data
 
+*keywords: GMT, Julia, grid interpolation, Delaunay triangulation, Voronoi*
+
 Description
 -----------
 

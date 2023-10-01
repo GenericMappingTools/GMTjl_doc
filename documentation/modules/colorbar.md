@@ -1,7 +1,7 @@
 # colorbar
 
 ```julia
-	colorbar(cmd0::String="", arg1=nothing; kwargs...)
+	colorbar(arg1=nothing; kwargs...)
 ```
 
 Plot a gray or color scale-bar on maps

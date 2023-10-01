@@ -4,6 +4,8 @@
     bar3(cmd0::String="", arg1=nothing; kwargs...)
 ```
 
+*keywords: GMT, Julia, 3D bar plots*
+
 Plots a 3D bar graph. The input can either be a file name of a file with at least three columns (x,y,z),
 but optionally more, a GMTdatset object with also three or more columns. However, the simplest usage is
 to provide a grid object (a GMTgrid) or a MxN matrix (with M,N > 3) and accept the defaults set for these

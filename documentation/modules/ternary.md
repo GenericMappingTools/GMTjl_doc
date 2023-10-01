@@ -6,6 +6,8 @@ ternary(cmd0::String="", arg1=[]; kwargs...)
 
 Plot data on ternary diagrams
 
+*keywords: GMT, Julia, ternary plots*
+
 Description
 -----------
 

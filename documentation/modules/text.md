@@ -6,6 +6,8 @@ text(cmd0::String="", arg1=nothing; kwargs...)
 
 Plot or typeset text on maps
 
+*keywords: GMT, Julia, plot text maps*
+
 Description
 -----------
 
@@ -28,8 +30,8 @@ Required Arguments
 
 - **textfile**\
     A file containing 1 or more records with (*x*, *y*[, *font*, *angle*, *justify*], *text*).
-    The attributes in brackets can alternatively be set directly via **attrib**. If no files are given,
-    **text** will read standard input. *font* is a font specification with format [*size*,][*font*,][*color*]
+    The attributes in brackets can alternatively be set directly via **attrib**. *font* is a font
+    specification with format [*size*,][*font*,][*color*]
     where *size* is text size in points, *font* is the font to use, and *color* sets the font color. To draw
     outline fonts you append =*pen* to the font specification. The *angle* is measured in degrees counter-clockwise
     from horizontal, and *justify* sets the alignment. If *font* is not an integer, then it is taken to be a text
@@ -38,11 +40,11 @@ Required Arguments
     (for left, center, or right) and T, M, B for top, middle, or bottom. e.g., BL for lower left.
 
 - **textrecord**\
-    A GMTdataset type that can be optained with the `mat2ds(mat, txt)` function, where `mat` is a *MxN* with the
+    A GMTdataset type that can be obtained with the `mat2ds(mat, txt)` function, where `mat` is a *MxN* with the
     *x,y(,z)* coordinates and `txt` a string vector with the desired text.
 
 - **rich()**\
-    The `rich()` function is a convinient function to plot text whose parts have different colors, fonts, font sizes,
+    The `rich()` function is a convenient function to plot text whose parts have different colors, fonts, font sizes,
     subscripts, superscripts, greek letters, underline, small caps and LaTeX equations. Text generated with this
     functions can also be used in titles, labels, legends, etc... Se example at the end of this page.
 

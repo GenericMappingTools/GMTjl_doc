@@ -6,6 +6,8 @@
 
 Convert grid to data table
 
+*keywords: GMT, Julia, grid*
+
 Description
 -----------
 

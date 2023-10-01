@@ -4,6 +4,8 @@
 I = imagesc(mat; x=, y=, hdr=, proj4=, wkt=, GI=, clim=, cmap=, kw...) --> \myreflink{grdimage}
 ```
 
+*keywords: GMT, Julia, grid, image*
+
 imagesc takes a Float matrix or a \myreflink{GMTgrid} type and scales it (by default) to the [0, 255] interval.
 In the process it creates a GMTimage type. Those types can account for coordinates and projection
 information, hence the optional arguments. Contrary to its Matlab cousin, it doesn't display the

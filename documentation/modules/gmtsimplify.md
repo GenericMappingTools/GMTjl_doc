@@ -6,6 +6,8 @@
 
 Line reduction using the Douglas-Peucker algorithm
 
+*keywords: GMT, Julia, line simplification*
+
 Description
 -----------
 

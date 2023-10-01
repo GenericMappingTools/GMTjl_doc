@@ -12,6 +12,8 @@ makecpt(name::Symbol; kwargs...)
 
 Make static color palette tables (CPTs) from master CPTs.
 
+*keywords: GMT, Julia, colormaps*
+
 Description
 -----------
 

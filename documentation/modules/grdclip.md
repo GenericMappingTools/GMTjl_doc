@@ -6,6 +6,8 @@
 
 Clip the range of grid values
 
+*keywords: GMT, Julia, grid clip*
+
 Description
 -----------
 

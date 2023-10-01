@@ -6,6 +6,8 @@
 
 Sample grids at specified (x,y) locations
 
+*keywords: GMT, Julia, grid sample*
+
 ## WARNING: ONLY HALF PORTED TO GMT.JL NEED HELP FOR FINISHING
 
 Description

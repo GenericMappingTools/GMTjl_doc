@@ -6,18 +6,18 @@
 
 Contour plot from table data by direct triangulation
 
+*keywords: GMT, Julia, contour plots, mapping*
+
 
 Description
 -----------
 
 Reads data from file or table and produces a raw contour plot by triangulation. By default,
-the optimal Delaunay triangulation is performed (using either Shewchuk's [1996] or Watson's
-[1982] method as selected during GMT installation; type **gmt("gmtget GMT_TRIANGULATE")**
-to see which method is selected, but the user may optionally provide a second file with
-network information, such as a triangular mesh used for finite element modeling. In addition
-to contours, the area between contours may be painted according to the CPT. Alternatively,
-the *x, y, z* positions of the contour lines may be saved to one or more output files
-(or standard output) and no plot is produced.
+the optimal Delaunay triangulation is performed using Shewchuk's [1996], but the user may
+optionally provide a second file with network information, such as a triangular mesh used
+for finite element modeling. In addition to contours, the area between contours may be
+painted according to the CPT. Alternatively, the *x, y, z* positions of the contour lines may
+be saved to one or more output files (or standard output) and no plot is produced.
 
 Required Arguments
 ------------------

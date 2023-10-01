@@ -4,6 +4,8 @@
 inset(kwargs...)
 ```
 
+*keywords: GMT, Julia, insets*
+
 Manage figure inset setup and completion
 
 The **inset** module is used to carve out a sub-region of the current plot canvas and

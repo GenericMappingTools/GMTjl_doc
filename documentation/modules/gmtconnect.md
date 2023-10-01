@@ -6,6 +6,8 @@
 
 Connect individual lines whose end points match within tolerance
 
+*keywords: GMT, Julia, line connect*
+
 Description
 -----------
 

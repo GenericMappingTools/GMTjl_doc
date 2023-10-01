@@ -6,6 +6,8 @@
 
 Reads a 2-D grid file and reports metadata and various statistics for the (x,y,z) data in the grid file
 
+*keywords: GMT, Julia, grid info*
+
 
 Description
 -----------

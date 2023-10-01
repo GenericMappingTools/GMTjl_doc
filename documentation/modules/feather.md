@@ -4,6 +4,8 @@
 feather(cmd0::String="", arg1=nothing; kwargs...)
 ```
 
+*keywords: GMT, Julia, arrow plots*
+
 Plot arrows originating from the x-axis. Specify the direction of arrows using the Cartesian components
 *U* and *V* or polar *theta,r*. The input can either be a file name of a file with at least two columns (u,v),
 but preferably three, a GMTdatset object with also two or more columns, or direct *u,v* inputs. In case data

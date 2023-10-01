@@ -4,6 +4,8 @@
 gmtwrite(fname::AbstractString, data; kwargs...)
 ```
 
+*keywords: GMT, Julia, write raster vector*
+
 Write a GMT object to file. The object is one of `grd` or `grid`, `image` or `img`,
 `dataset` or `table`, `cmap` or `cpt` and `ps` (for postscript).
 

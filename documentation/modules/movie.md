@@ -1,6 +1,10 @@
 # movie
 
-    movie(main; pre=nothing, post=nothing, kwargs...)
+```julia
+movie(main; pre=nothing, post=nothing, kwargs...)
+```
+
+*keywords: GMT, Julia, annimations, movies*
 
 Description
 -----------

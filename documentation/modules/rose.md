@@ -6,6 +6,8 @@
 
 Plot a polar histogram (rose, sector, windrose diagrams)
 
+*keywords: GMT, Julia, polar histogram*
+
 Description
 -----------
 

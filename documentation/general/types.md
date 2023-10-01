@@ -44,19 +44,21 @@ type GMTimage{T<:Unsigned, N} <: AbstractArray{T,N}   # The type holding a local
     wkt::String                # Projection string in WKT syntax (Optional)
     epsg::Int                  # EPSG code
     geog::Int                  # Is geographic coords? 0 -> No; 1 -> [-180 180]; 2 -> [0 360]
-    range::Array{Float64,1}    # 1x6 vector with [x_min x_max y_min y_max z_min z_max]
-    inc::Array{Float64,1}      # 1x2 vector with [x_inc y_inc]
+    range::Vector{Float64}     # 1x6 vector with [x_min x_max y_min y_max z_min z_max]
+    inc::Vector{Float64}       # 1x2 vector with [x_inc y_inc]
     registration::Int          # Registration type: 0 -> Grid registration; 1 -> Pixel registration
     nodata::Unsigned           # The value of nodata
     color_interp::String       # If equal to "Gray" an indexed image with no cmap will get a gray cmap
     metadata::Vector{String}   # To store any metadata that can eventually be passed to GDAL (Optional)
     names::Vector{String}      # To use whith multi-band and when bands have names (Optional)
-    x::Array{Float64,1}        # [1 x n_columns] vector with XX coordinates
-    y::Array{Float64,1}        # [1 x n_rows]    vector with YY coordinates
-    v::Array{Float64,1}        # [v x n_bands]   vector with vertical coords or wavelengths in hypercubes (Optional)
+    x::Vector{Float64}         # [1 x n_columns] vector with XX coordinates
+    y::Vector{Float64}         # [1 x n_rows]    vector with YY coordinates
+    v::Vector{Float64}         # [v x n_bands]   vector with vertical coords or wavelengths in hypercubes (Optional)
     image::Array{T,N}          # [n_rows x n_columns x n_bands] image array
-    colormap::Array{Int32,1}   # 
-    alpha::Array{UInt8,2}      # A [n_rows x n_columns] alpha array
+	labels::Vector{String}     # Labels of a Categorical CPT
+	n_colors::Int              # Number of colors stored in the vector 'colormap'
+    colormap::Vector{Int32}    # A vector with n_colors-by-4 saved column-wise
+    alpha::Matrix{UInt8}       # A [n_rows x n_columns] alpha array
     layout::String             # A four character string describing the image memory layout
     pad::Int                   # When != 0 means that the array is placed in a padded array of PAD rows/cols
 end
@@ -93,6 +95,7 @@ type GMTcpt
     depth::Cint                # Color depth: 24, 8, 1
     hinge::Cdouble             # Z-value at discontinuous color break, or NaN
     cpt::Array{Float64,2}      # Mx6 matrix with r1 g1 b1 r2 g2 b2 for z1 z2 of each slice
+	categorical::Int           # Is this CPT categorical? 0 = No, 1 = Yes, 2 = Yes and keys are strings.
     label::Vector{String}      # Labels of a Categorical CPT
     key::Vector{String}        # Keys of a Categorical CPT
     model::String              # String with color model rgb, hsv, or cmyk [rgb]

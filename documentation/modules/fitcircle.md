@@ -6,6 +6,8 @@
 
 Find mean position and great [or small] circle fit to points on sphere
 
+*keywords: GMT, Julia, fit circles*
+
 Description
 -----------
 

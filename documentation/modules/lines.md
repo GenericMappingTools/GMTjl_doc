@@ -4,6 +4,8 @@
 lines(cmd0::String="", arg1=[]; kwargs...)
 ```
 
+*keywords: GMT, Julia, line plots, mapping*
+
 Reads (x,y) pairs and plot lines with different levels of decoration. The input can either be a file
 name of a file with at least two columns (x,y), but optionally more, a GMTdatset object with also two
 or more columns.

@@ -4,6 +4,8 @@
 orbits(xyz::Matrix{<:Real}; first=true, radius=6371.007, height=0, lon0=0, lat0=0, show=false, kw...)
 ```
 
+*keywords: GMT, Julia, orbits plots*
+
 Plots the orbit, or whatever the input data in `xyz` represents, about the Earth or other planetary bodies.
 
 - `xyz`: The orbit coordinates. By default, we expect the coordinates in the Earth Centered Earth Fixed (ECEF)

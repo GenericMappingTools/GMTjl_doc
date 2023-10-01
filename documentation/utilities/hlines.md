@@ -4,6 +4,8 @@
 hlines(arg; decorated=(...), xmin=NaN, xmax=NaN, percent=false, kwargs...)
 ```
 
+*keywords: GMT, Julia, line plots*
+
 Plots one or a collection of horizontal lines with eventual decorations
 
 - `xmin` & `xmax`: Limit the horizontal lines to start a `xmin` and/or end at `xmax`

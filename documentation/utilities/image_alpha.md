@@ -4,6 +4,8 @@
 I = image_alpha!(img::GMTimage; alpha_ind::Integer, alpha_vec::Vector{Integer}, alpha_band::UInt8)
 ```
 
+*keywords: GMT, Julia, image transparency*
+
 Change the alpha transparency of the \myreflink{GMTimage} object `img`. If the image is indexed, one can either
 change just the color index that will be made transparent by using `alpha_ind=n` or provide a vector
 of transaparency values in the range [0 255]; This vector can be shorter than the orginal number of colors.

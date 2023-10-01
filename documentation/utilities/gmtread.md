@@ -4,6 +4,8 @@
 gmtread(fname::String; kwargs...)
 ```
 
+*keywords: GMT, Julia, read raster vector*
+
 Read GMT object from file. The object is one of "grid" or "grd", "image" or "img",
 "data" or "table", "cmap" or "cpt" and "ps" (for postscript), and OGR formats (shp, kml, json, gpkg).
 Use a type specificatin to force a certain reading path (e.g. `grd=true` to read grids) or take

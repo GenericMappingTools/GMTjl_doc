@@ -2,6 +2,8 @@
 
 Convert GMT data table to Google Earth KML file.
 
+*keywords: GMT, Julia, KML*
+
 Description
 -----------
 

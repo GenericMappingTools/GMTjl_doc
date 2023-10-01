@@ -4,7 +4,7 @@
 plotlinefit(D::GMTdataset, kwargs...)
 ```
 
-Plot the line fit of the points in the `D` \myreflink{GMTdataset} type incliding confidence intervals ann error ellipses.
+Plot the line fit of the points in the `D` \myreflink{GMTdataset} type including confidence intervals and error ellipses.
 The `D` input is the result of having run your data through the \myreflink{linearfitxy} function. See its docs for the
 meaning of the parameters mentioned below.
 

@@ -6,6 +6,8 @@
 
 Fit trend surface to grids and compute residuals
 
+*keywords: GMT, Julia, trend surfaces*
+
 Description
 -----------
 

@@ -6,6 +6,8 @@
 
 Make linear or histogram-equalized color palette table from grid
 
+*keywords: GMT, Julia, histogram equalizetiond, colormaps*
+
 Description
 -----------
 

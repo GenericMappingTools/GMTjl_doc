@@ -6,6 +6,8 @@
 
 Split xyz[dh] data tables into individual segments
 
+*keywords: GMT, Julia, break lines*
+
 Description
 -----------
 

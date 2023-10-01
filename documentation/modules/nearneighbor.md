@@ -6,6 +6,8 @@
 
 Grid table data using a "Nearest neighbor" algorithm
 
+*keywords: GMT, Julia, grid interpolation, nearest neighbor*
+
 Description
 -----------
 

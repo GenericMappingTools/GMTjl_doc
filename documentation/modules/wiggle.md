@@ -6,6 +6,8 @@
 
 Plot z = f(x,y) anomalies along tracks
 
+*keywords: GMT, Julia, wiggle plots*
+
 Description
 -----------
 

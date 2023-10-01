@@ -8,6 +8,8 @@ or
 zvals = polygonlevels(D::GDtype, ids::Matrix{String}, vals::Vector{<:Real}; kw...) -> Vector{Float64}
 ```
 
+*keywords: GMT, Julia, choropleths*
+
 Creates a vector with `zvals` to use in `plot` and where length(zvals) == length(D)
 The elements of `zvals` are made up from the `vals`.
 

@@ -6,6 +6,8 @@
 
 Resample 1-D table data using splines
 
+*keywords: GMT, Julia, resample*
+
 Description
 -----------
 

@@ -6,6 +6,8 @@
 
 Select data table subsets based on multiple spatial criteria
 
+*keywords: GMT, Julia, spatial*
+
 
 Description
 -----------

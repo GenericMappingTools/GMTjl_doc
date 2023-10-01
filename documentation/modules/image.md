@@ -6,6 +6,8 @@
 
 Plot raster or EPS images
 
+*keywords: GMT, Julia, image plots*
+
 
 Description
 -----------

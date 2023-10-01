@@ -4,6 +4,8 @@
     surface(cmd0::String="", arg1=nothing; kwargs...)
 ```
 
+*keywords: GMT, Julia, grid interpolation, minimum curvature*
+
 Description
 -----------
 

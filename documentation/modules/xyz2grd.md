@@ -6,6 +6,8 @@
 
 Convert data table to a GMTgrid type. 
 
+*keywords: GMT, Julia, grid*
+
 Description
 -----------
 

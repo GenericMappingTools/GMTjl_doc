@@ -6,6 +6,8 @@
 
 Create KML image quadtree from single grid
 
+*keywords: GMT, Julia, grid KML*
+
 Description
 -----------
 

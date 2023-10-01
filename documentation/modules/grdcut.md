@@ -6,6 +6,8 @@
 
 Extract subregion from a grid or image
 
+*keywords: GMT, Julia, grid sub-region*
+
 Description
 -----------
 
