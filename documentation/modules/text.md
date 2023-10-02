@@ -203,7 +203,6 @@ text(["Hello World"], x=2.0, y=2.0, show=true)
 
 Example using the *rich* function (reproduces the original example in Makie).
 
-\begin{examplefig}{}
 ```julia
 using GMT
 text(rich("H", subscript("2"), greek("O")," is the ", smallcaps("formula")," for ",
@@ -217,4 +216,3 @@ rainbow_chars = map(enumerate(str)) do (i, c)
 end
 text!(join(rainbow_chars), x=1, y=0.99, font="Helvetica-Bold", show=1)
 ```
-\end{examplefig}
