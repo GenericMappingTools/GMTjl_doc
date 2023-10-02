@@ -1,5 +1,6 @@
 # This file was generated, do not modify it. # hide
 using GMT, PrettyTables   # hide
+resetGMT()	# hide
 #getpath4docs(file::String) = joinpath("..", "..", "..", "..", "..", file) # hide
 io = IOBuffer() # hide
 #D = gmtread(getpath4docs("mff_bb.txt"))

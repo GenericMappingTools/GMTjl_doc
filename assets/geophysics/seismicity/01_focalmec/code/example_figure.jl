@@ -4,6 +4,7 @@ begin # hide
 	GMT.isFranklin[1] = true    # hide
 	getpath4docs(file::String) = joinpath("..", "..", "..", "..", "..", file) # hide
 	using GMT
+resetGMT()	# hide
 
 # Background map
 grdimage("@earth_relief", region=[-74,-59,5,15], proj=:guess, figsize=10, shade=true)
@@ -16,7 +17,7 @@ text!(txt="Mar Caribe", x=-68, y=13.5, font=(15, "Helvetica-Bold", :white), just
 # Focal mechanisms
 meca!(GMT.TESTSDIR * "mff_bb.txt", CMT=(scale=0.4, font=6), offset=true, fill=:black, show=true)
 end # hide
-mv(joinpath(tempdir(), "GMTjl_" * GMT.tmpdir_usr[2] * "." * "png"), joinpath(@OUTPUT, "example_3403343425813814447.png"), force=true);    # hide
+mv(joinpath(tempdir(), "GMTjl_" * GMT.tmpdir_usr[2] * "." * "png"), joinpath(@OUTPUT, "example_633232793994698976.png"), force=true);    # hide
 GMT.isFranklin[1] = false    # hide
 GMT.IamModern[1]  = false    # hide
  
