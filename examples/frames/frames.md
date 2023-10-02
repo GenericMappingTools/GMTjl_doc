@@ -174,12 +174,12 @@ The next example shows two different ways to annotate an axis portraying 2 days 
 \begin{examplefig}{}
 ```julia
 using GMT
-gmtset(FORMAT_DATE_MAP="\"o dd\"", FORMAT_CLOCK_MAP="hh:mm", FONT_ANNOT_PRIMARY=9)
+#gmtset(FORMAT_DATE_MAP="\"o dd\"", FORMAT_CLOCK_MAP="hh:mm", FONT_ANNOT_PRIMARY=9)
 basemap(region="1969-7-21T/1969-7-23T/0/1", figsize=(12,0.5),
         frame=(axes=:S, annot=6, annot_unit=:hour, ticks=1, ticks_unit=:hour2),
-        axis2=(annot=1, annot_unit=:ISOweekday))
+        axis2=(annot=1, annot_unit=:ISOweekday), par=(FORMAT_DATE_MAP="\"o dd\"", FORMAT_CLOCK_MAP="hh:mm", FONT_ANNOT_PRIMARY=9))
 basemap!(frame=(axes=:S, annot=6, annot_unit=:H, ticks=1, ticks_unit=:hour2),
-         axis2=(annot=1, annot_unit=:date), y_offset=1.7, show=true)
+         axis2=(annot=1, annot_unit=:date), y_offset=1.7, par=(FORMAT_DATE_MAP="\"o dd\"", FORMAT_CLOCK_MAP="hh:mm", FONT_ANNOT_PRIMARY=9), show=true)
 ```
 \end{examplefig}
 
