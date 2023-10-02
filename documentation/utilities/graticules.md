@@ -36,12 +36,10 @@ information about that element lon,lat.
 Example
 -------
 
-\begin{examplefig}{}
 ```julia
 using GMT
 grat = graticules(proj="+proj=ob_tran +o_proj=moll +o_lon_p=40 +o_lat_p=50 +lon_0=60");
 ```
-\end{examplefig}
 
 See Also
 --------

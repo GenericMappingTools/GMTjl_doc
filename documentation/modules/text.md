@@ -218,3 +218,4 @@ end
 text!(join(rainbow_chars), x=1, y=0.99, font="Helvetica-Bold", show=1)
 ```
 \end{examplefig}
+

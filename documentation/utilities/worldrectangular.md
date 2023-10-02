@@ -38,6 +38,7 @@ Example
 \begin{examplefig}{}
 ```julia
 using GMT
+resetGMT()  # hide
 G = worldrectangular("@earth_relief_10m");
 viz(G)
 ```

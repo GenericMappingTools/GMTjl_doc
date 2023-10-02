@@ -10,6 +10,7 @@ data via a \myreflink{GMTdataset}
 \begin{examplefig}{}
 ```julia
 using GMT
+resetGMT()	# hide
 
 # Right lateral Strike Slip
 D = mat2ds([0.0 5.0 0.0 0 90 0 5 0 0],["Right Strike Slip"]);
@@ -47,6 +48,7 @@ in the CMT convention format.
 
 ```julia:./code/ex1
 using GMT, PrettyTables   # hide
+resetGMT()	# hide
 #getpath4docs(file::String) = joinpath("..", "..", "..", "..", "..", file) # hide
 io = IOBuffer() # hide
 #D = gmtread(getpath4docs("mff_bb.txt"))
@@ -61,6 +63,7 @@ println("~~~" * String(take!(io)) * "~~~") # hide
 \begin{examplefig}{}
 ```julia
 using GMT
+resetGMT()	# hide
 
 # Background map
 grdimage("@earth_relief", region=[-74,-59,5,15], proj=:guess, figsize=10, shade=true)

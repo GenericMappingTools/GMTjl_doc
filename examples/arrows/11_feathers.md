@@ -45,6 +45,7 @@ in the plot. We select the columns from teir names in the `D` *GMTdataset*.
 \begin{examplefig}{}
 ```julia
 using GMT
+resetGMT()      # hide
 feather(getpath4docs("wind_faro.dat"), xvar=:Time, yvar=[:azimuth, :vmean],
         rtheta=true, nohead=1, lw=0.1, show=true)
 ```

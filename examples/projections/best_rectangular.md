@@ -10,6 +10,7 @@ projection.
 \begin{examplefig}{}
 ```julia
 using GMT
+resetGMT()		# hide
 G, cl = worldrectangular("@earth_relief_30m_p", proj="vandg", latlim=(-70,85), coast=true);
 grid = worldrectgrid(G);
 grdimage(G, shade=true, plot=(data=cl,), cmap=:geo, B=:none, title="Van der Grinten")

@@ -11,6 +11,8 @@ for more details about what the arguments mean.
 \begin{examplefig}{}
 ```julia
 using GMT
+resetGMT()      # hide
+
 topo = makecpt(color=:rainbow, range=(1000,5000,500), continuous=true);
 grdimage("@tut_relief.nc", shade=(azimuth=100, norm="e0.8"), proj=:Mercator, frame=:a, color=topo)
 colorbar!(pos=(outside=:TC,length=(12.5,0.6), horizontal=true, offset=(0,1.0)), region="@tut_relief.nc",
@@ -25,6 +27,7 @@ add coast lines and a color bar
 
 \begin{examplefig}{}
 ```julia
+resetGMT()      # hide
 using GMT
 grdimage("@earth_relief_20m.grd", proj=:Winkel, colorbar=true, coast=true, show=true)
 ```
