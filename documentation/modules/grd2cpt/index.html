@@ -344,7 +344,7 @@
 <p><strong>grd2cpt</strong> reads one or more grid and computes a static color palette &#40;CPT&#41;. Once computed the color palette stays as the current CPT until an image using it is finished, either with the <code>show</code> command or saved to file. The CPT is based on an existing dynamic master CPT of your choice, and the mapping from data value to colors is through the data&#39;s cumulative distribution function &#40;CDF&#41;, so that the colors are histogram equalized. Thus if the grid&#40;s&#41; and the resulting CPT are used in <a href="/GMTjl_doc/documentation/modules/grdimage/index.html#grdimage">grdimage</a> with a linear projection, the colors will be uniformly distributed in area on the plot. Let z be the data values in the grid. Define CDF&#40;Z&#41; &#61; &#40;# of z &lt; Z&#41; / &#40;# of z in grid&#41;. &#40;NaNs are ignored&#41;. These z-values are then normalized to the master CPT and colors are sampled at the desired intervals.</p>
 <p>The color palette includes three additional colors beyond the range of z-values. These are the background color &#40;B&#41; assigned to values lower than the lowest <em>z</em>-value, the foreground color &#40;F&#41; assigned to values higher than the highest <em>z</em>-value, and the NaN color &#40;N&#41; painted wherever values are undefined. For color tables beyond the current GMT offerings, visit <a href="http://soliton.vm.bytemark.co.uk/pub/cpt-city/">cpt-city</a>.</p>
 <p>If the master CPT includes B, F, and N entries, these will be copied into the new master file. If not, the parameters <code>COLOR_BACKGROUND</code>, <code>COLOR_FOREGROUND</code>, and <code>COLOR_NAN</code> from the <code>gmt.conf</code> file or the command line will be used. This default behavior can be overruled using the options <strong>bg</strong>, <strong>overrule_bg</strong> or <strong>no_bg</strong>.</p>
-<p>The color model &#40;RGB, HSV or CMYK&#41; of the palette created by <a href="/GMTjl_doc/documentation/modules/makecpt/index.html#makecpt">makecpt</a> will be the same as specified in the header of the master CPT. When there is no <code>COLOR_MODEL</code> entry in the master CPT, the <code>COLOR_MODEL</code> specified in the <code>gmt.conf</code> file or on the command line will be used.</p>
+<p>The color model &#40;RGB, HSV or CMYK&#41; of the palette created by <a href="/GMTjl_doc/documentation/modules/makecpt/index.html#makecpt">makecpt</a> will be the same as specified in the header of the master CPT. When there is no <code>COLOR_MODEL</code> entry in the master CPT, the <code>COLOR_MODEL</code> specified in the <code>gmt.conf</code> &#40;see <a href="/GMTjl_doc/documentation/modules/gmtset/index.html#gmtset">gmtset</a>&#41; file or on the command line will be used.</p>
 <h2>Required Arguments</h2>
 <p><em>ingrid</em> : – A grid file name or a <a href="/GMTjl_doc/documentation/general/types/index.html#grid_type">Grid type</a></p>
 <h2>Optional Arguments</h2>
@@ -416,11 +416,11 @@
 <h2>Examples</h2>
 <p>To get a reasonable and symmetrical color table for the data in the region 0/60/0/60 from the remote 5m relief file, using the geo color table, try:</p>
 <pre><code class="language-julia">using GMT
-grd2cpt&#40;&quot;@earth_relief_06m&quot;, region&#61;&#40;0,60,0,60&#41;, cmap&#61;:geo, symetric&#61;:u&#41;
-imshow&#40;&quot;@earth_relief_06m&quot;, region&#61;&#40;0,60,0,60&#41;, coast&#61;true&#41;</code></pre></p>
+grd2cpt&#40;&quot;@earth_relief_06m_g&quot;, region&#61;&#40;0,60,0,60&#41;, cmap&#61;:geo, symetric&#61;:u&#41;
+imshow&#40;&quot;@earth_relief_06m_g&quot;, region&#61;&#40;0,60,0,60&#41;, coast&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_2897898914826282568">
- <img src="/GMTjl_doc/assets/documentation/modules/grd2cpt/code/output/example_2897898914826282568.png" alt=""> 
+<a id="example_15629107082069455414">
+ <img src="/GMTjl_doc/assets/documentation/modules/grd2cpt/code/output/example_15629107082069455414.png" alt=""> 
 </a>
 
 <p>Sometimes you don&#39;t want to make a CPT &#40;yet&#41; but would find it helpful to know that 90&#37; of your data lie between z1 and z2, something you cannot learn from <a href="/GMTjl_doc/documentation/modules/grdinfo/index.html#grdinfo">grdinfo</a>. So you can do this to see some points on the CDF&#40;Z&#41; curve &#40;use <strong>verbose&#61;true</strong> option to see more&#41;:</p>
@@ -429,11 +429,11 @@ imshow&#40;&quot;@earth_relief_06m&quot;, region&#61;&#40;0,60,0,60&#41;, coast&
 <pre><code class="language-julia">C &#61; grd2cpt&#40;&quot;mydata.nc&quot;, cmap&#61;:relief, datarange&#61;&#40;0,10000&#41;, range&#61;&#40;0,200,20&#41;&#41;</code></pre>
 <p>To determine the empirical cumulative density function of a grid and create a CPT that would give equal area to each color in the image, and return the CDF table as well, try:</p>
 <pre><code class="language-julia">using GMT
-C, cdf &#61; grd2cpt&#40;&quot;@earth_relief_10m&quot;, nlevels&#61;&quot;11&#43;c&#43;f&quot;&#41;;
-imshow&#40;&quot;@earth_relief_10m&quot;, cmap&#61;C&#41;</code></pre></p>
+C, cdf &#61; grd2cpt&#40;&quot;@earth_relief_10m_g&quot;, nlevels&#61;&quot;11&#43;c&#43;f&quot;&#41;;
+imshow&#40;&quot;@earth_relief_10m_g&quot;, cmap&#61;C&#41;</code></pre></p>
 <p>
-<a id="example_81150556436434046">
- <img src="/GMTjl_doc/assets/documentation/modules/grd2cpt/code/output/example_81150556436434046.png" alt=""> 
+<a id="example_8678213424524409185">
+ <img src="/GMTjl_doc/assets/documentation/modules/grd2cpt/code/output/example_8678213424524409185.png" alt=""> 
 </a>
 
 <p>Here, cdf would be the cumulative hypsometric curve for the Earth.</p>

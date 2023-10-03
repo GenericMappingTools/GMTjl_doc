@@ -345,7 +345,7 @@
 <pre><code class="language-julia">using GMT
 
 # Extract a region from the SRTM1 grids stored in the GMT server
-G &#61; gmtread&#40;&quot;@earth_relief_01s&quot;, region&#61;&#40;-114.14,-111.28,35.50,37.06&#41;&#41;;
+G &#61; gmtread&#40;&quot;@earth_relief_01s_g&quot;, region&#61;&#40;-114.14,-111.28,35.50,37.06&#41;&#41;;
 
 # Compute the Leland texture
 I1 &#61; texture_img&#40;G&#41;;
@@ -357,56 +357,56 @@ Ihill &#61; gdaldem&#40;G, &quot;hillshade&quot;, zfactor&#61;3&#41;;     # The 
 I2 &#61; blendimg&#33;&#40;I1, Ihill, new&#61;true, transparency&#61;0.6&#41;;
 viz&#40;I2&#41;</code></pre></p>
 <p>
-<a id="example_10841164813092426443">
- <img src="/GMTjl_doc/assets/tutorials/texture_shading/texture/code/output/example_10841164813092426443.png" alt=""> 
+<a id="example_9307403668145453743">
+ <img src="/GMTjl_doc/assets/tutorials/texture_shading/texture/code/output/example_9307403668145453743.png" alt=""> 
 </a>
 
 <p>The <code>new&#61;true</code> option above forced the creation of the new array <code>I2</code>, but we could have just done <code>blendimg&#33;&#40;I1, Ihill, transparency&#61;0.6&#41;</code> and the final image would be stored in &#40;overritten&#41; <code>I1</code>. That is what is implemented in the wrapper function <a href="/GMTjl_doc/documentation/utilities/lelandshade/index.html#lelandshade">lelandshade</a> that aglutinates all of the above steps, plus some extra options, in a single function.</p>
 <p>Map again the same refion but using this time a linear color scale. Since the <code>G</code> grid object is originated from the SRTM1 &#40;1 arc second &#61; ~30 m&#41; stored in the GMT store, it comes with the indication of a default color map &#40;<code>geo</code>&#41; and is what we see &#40;but we can select any cmap that we want&#41;.</p>
 <pre><code class="language-julia">lelandshade&#40;G, color&#61;true, colorbar&#61;true, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_4022314547181185229">
- <img src="/GMTjl_doc/assets/tutorials/texture_shading/texture/code/output/example_4022314547181185229.png" alt=""> 
+<a id="example_13320856959436073735">
+ <img src="/GMTjl_doc/assets/tutorials/texture_shading/texture/code/output/example_13320856959436073735.png" alt=""> 
 </a>
 
 <p>A variation of the above is to make the color image with equalized color distribution where each color covers approximatelly the same area in the figure. We do that using the <code>equalize&#61;true</code> option.</p>
 <pre><code class="language-julia">lelandshade&#40;G, color&#61;true, equalize&#61;true, colorbar&#61;true, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_2561901368635588853">
- <img src="/GMTjl_doc/assets/tutorials/texture_shading/texture/code/output/example_2561901368635588853.png" alt=""> 
+<a id="example_6375560252983994228">
+ <img src="/GMTjl_doc/assets/tutorials/texture_shading/texture/code/output/example_6375560252983994228.png" alt=""> 
 </a>
 
 <h2 id="the_effect_of_the_transparency_option"><a href="#the_effect_of_the_transparency_option" class="header-anchor">The effect of the transparency option.</a></h2>
 <p>The examples shown above all used a <code>transparency&#61;0.6</code>.  Remember &#40;from the manual&#41; that the transparency represent the weight of the <code>img2</code> with respect to <code>img1</code> in the blend <code>img1 &#43; img2</code>. So, when we used <code>transparency&#61;0.6</code> explicitly in the first example, or implicitly in the 2nd and 3rth examples, we imposed that the texture image weighted 60&#37; and the hillshade 40&#37;. This parameter has a relevant importance in the final image, so let us see examples of it by varying the amount of transparency in the mixture. And for better appreciate it we will use grayscale images and over a smaller region.</p>
-<pre><code class="language-julia">G &#61; gmtread&#40;&quot;@earth_relief_01s&quot;, region&#61;&#40;-112.06, -111.60, 35.97, 36.25&#41;&#41;;
+<pre><code class="language-julia">G &#61; gmtread&#40;&quot;@earth_relief_01s_g&quot;, region&#61;&#40;-112.06, -111.60, 35.97, 36.25&#41;&#41;;
 lelandshade&#40;G, transparency&#61;0.0, title&#61;&quot;0 &#37; texture shading&quot;, par&#61;&#40;FONT_TITLE&#61;10,&#41;, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_12273896938379472050">
- <img src="/GMTjl_doc/assets/tutorials/texture_shading/texture/code/output/example_12273896938379472050.png" alt=""> 
+<a id="example_1374393951701530804">
+ <img src="/GMTjl_doc/assets/tutorials/texture_shading/texture/code/output/example_1374393951701530804.png" alt=""> 
 </a>
 
 <pre><code class="language-julia">lelandshade&#40;G, transparency&#61;0.3, title&#61;&quot;30 &#37; texture shading&quot;, par&#61;&#40;FONT_TITLE&#61;10,&#41;, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_7324989182287960960">
- <img src="/GMTjl_doc/assets/tutorials/texture_shading/texture/code/output/example_7324989182287960960.png" alt=""> 
+<a id="example_12610863805596452992">
+ <img src="/GMTjl_doc/assets/tutorials/texture_shading/texture/code/output/example_12610863805596452992.png" alt=""> 
 </a>
 
 <pre><code class="language-julia">lelandshade&#40;G, transparency&#61;0.6, title&#61;&quot;60 &#37; texture shading&quot;, par&#61;&#40;FONT_TITLE&#61;10,&#41;, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_9044584683050785868">
- <img src="/GMTjl_doc/assets/tutorials/texture_shading/texture/code/output/example_9044584683050785868.png" alt=""> 
+<a id="example_15979510306398055712">
+ <img src="/GMTjl_doc/assets/tutorials/texture_shading/texture/code/output/example_15979510306398055712.png" alt=""> 
 </a>
 
 <pre><code class="language-julia">lelandshade&#40;G, transparency&#61;0.8, title&#61;&quot;80 &#37; texture shading&quot;, par&#61;&#40;FONT_TITLE&#61;10,&#41;, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_12232905862228035331">
- <img src="/GMTjl_doc/assets/tutorials/texture_shading/texture/code/output/example_12232905862228035331.png" alt=""> 
+<a id="example_13145136627327103153">
+ <img src="/GMTjl_doc/assets/tutorials/texture_shading/texture/code/output/example_13145136627327103153.png" alt=""> 
 </a>
 
 <pre><code class="language-julia">lelandshade&#40;G, transparency&#61;1.0, title&#61;&quot;100 &#37; texture shading&quot;, par&#61;&#40;FONT_TITLE&#61;10,&#41;, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_6108172888711106299">
- <img src="/GMTjl_doc/assets/tutorials/texture_shading/texture/code/output/example_6108172888711106299.png" alt=""> 
+<a id="example_13080378090788732131">
+ <img src="/GMTjl_doc/assets/tutorials/texture_shading/texture/code/output/example_13080378090788732131.png" alt=""> 
 </a>
 
 <p>Other than the <code>transparency</code>, several other parameters influence the look of the texture shaded images. Consult the <a href="/GMTjl_doc/documentation/utilities/lelandshade/index.html#lelandshade">lelandshade</a> manual to learn about them.</p>

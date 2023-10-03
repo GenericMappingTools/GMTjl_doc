@@ -340,7 +340,7 @@
 
 <!-- Content appended here -->
 <div class="franklin-content"><h1 id="color_images"><a href="#color_images" class="header-anchor">Color images</a></h1>
-<p>Color images are made with <code>grdimage</code> which takes the usual common options and a color map. It operates over grids or images. The next example shows how to create a color appropriate for the grid&#39;s <em>z</em> range, plot the image and add a color scale. We use here the <code>data</code> keyword to tell the program to load the grid from a file. The <code>@</code> before the <em>tut_relief.nc</em> file name instructs GMT to download the file from its server on the first usage and save it in a cache dir. See the <a href="http://docs.generic-mapping-tools.org/latest/GMT_Tutorial.html#color-images"><code>GMT tuturial</code></a> for more details about what the arguments mean.</p>
+<p>Color images are made with <a href="/GMTjl_doc/documentation/modules/grdimage/index.html#grdimage">grdimage</a> which takes the usual common options and a color map. It operates over grids or images. The next example shows how to create a color appropriate for the grid&#39;s <em>z</em> range, plot the image and add a color scale. We use here the <code>data</code> keyword to tell the program to load the grid from a file. The <code>@</code> before the <em>tut_relief.nc</em> file name instructs GMT to download the file from its server on the first usage and save it in a cache dir. See the <a href="http://docs.generic-mapping-tools.org/latest/GMT_Tutorial.html#color-images"><code>GMT tuturial</code></a> for more details about what the arguments mean.</p>
 <pre><code class="language-julia">using GMT
 
 topo &#61; makecpt&#40;color&#61;:rainbow, range&#61;&#40;1000,5000,500&#41;, continuous&#61;true&#41;;
@@ -355,10 +355,10 @@ colorbar&#33;&#40;pos&#61;&#40;outside&#61;:TC,length&#61;&#40;12.5,0.6&#41;, ho
 <h2 id="a_global_bathymetry"><a href="#a_global_bathymetry" class="header-anchor">A global bathymetry</a></h2>
 <p>Make a map of the global bathymetry &#40;automatically download it if needed&#41; using the Winkel projection, add coast lines and a color bar</p>
 <pre><code class="language-julia">using GMT
-grdimage&#40;&quot;@earth_relief_20m&quot;, proj&#61;:Winkel, colorbar&#61;true, coast&#61;true, show&#61;true&#41;</code></pre></p>
+grdimage&#40;&quot;@earth_relief_20m_g&quot;, proj&#61;:Winkel, colorbar&#61;true, coast&#61;true, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_15028031823071450357">
- <img src="/GMTjl_doc/assets/examples/images/01_grdimage/code/output/example_15028031823071450357.png" alt=""> 
+<a id="example_4602532260000208278">
+ <img src="/GMTjl_doc/assets/examples/images/01_grdimage/code/output/example_4602532260000208278.png" alt=""> 
 </a>
 
 <div class="page-foot">
