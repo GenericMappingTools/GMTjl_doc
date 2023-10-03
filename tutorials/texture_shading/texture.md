@@ -15,7 +15,7 @@ of the calculation.
 using GMT
 
 # Extract a region from the SRTM1 grids stored in the GMT server
-G = gmtread("@earth_relief_01s", region=(-114.14,-111.28,35.50,37.06));
+G = gmtread("@earth_relief_01s_g", region=(-114.14,-111.28,35.50,37.06));
 
 # Compute the Leland texture
 I1 = texture_img(G);
@@ -39,7 +39,7 @@ is what we see (but we can select any cmap that we want).
 \begin{examplefig}{}
 ```julia
 using GMT   # Hide
-G = gmtread("@earth_relief_01s", region=(-114.14,-111.28,35.50,37.06));	# Hide
+G = gmtread("@earth_relief_01s_g", region=(-114.14,-111.28,35.50,37.06));	# Hide
 lelandshade(G, color=true, colorbar=true, show=true)
 ```
 \end{examplefig}
@@ -50,7 +50,7 @@ approximatelly the same area in the figure. We do that using the `equalize=true`
 \begin{examplefig}{}
 ```julia
 using GMT   # Hide
-G = gmtread("@earth_relief_01s", region=(-114.14,-111.28,35.50,37.06));	# Hide
+G = gmtread("@earth_relief_01s_g", region=(-114.14,-111.28,35.50,37.06));	# Hide
 lelandshade(G, color=true, equalize=true, colorbar=true, show=true)
 ```
 \end{examplefig}
@@ -68,7 +68,7 @@ transparency in the mixture. And for better appreciate it we will use grayscale 
 \begin{examplefig}{}
 ```julia
 using GMT   # Hide
-G = gmtread("@earth_relief_01s", region=(-112.06, -111.60, 35.97, 36.25));
+G = gmtread("@earth_relief_01s_g", region=(-112.06, -111.60, 35.97, 36.25));
 lelandshade(G, transparency=0.0, title="0 % texture shading", par=(FONT_TITLE=10,), show=true)
 ```
 \end{examplefig}
@@ -77,7 +77,7 @@ lelandshade(G, transparency=0.0, title="0 % texture shading", par=(FONT_TITLE=10
 \begin{examplefig}{}
 ```julia
 using GMT   # Hide
-G = gmtread("@earth_relief_01s", region=(-112.06, -111.60, 35.97, 36.25));	# Hide
+G = gmtread("@earth_relief_01s_g", region=(-112.06, -111.60, 35.97, 36.25));	# Hide
 lelandshade(G, transparency=0.3, title="30 % texture shading", par=(FONT_TITLE=10,), show=true)
 ```
 \end{examplefig}
@@ -86,7 +86,7 @@ lelandshade(G, transparency=0.3, title="30 % texture shading", par=(FONT_TITLE=1
 \begin{examplefig}{}
 ```julia
 using GMT   # Hide
-G = gmtread("@earth_relief_01s", region=(-112.06, -111.60, 35.97, 36.25));	# Hide
+G = gmtread("@earth_relief_01s_g", region=(-112.06, -111.60, 35.97, 36.25));	# Hide
 lelandshade(G, transparency=0.6, title="60 % texture shading", par=(FONT_TITLE=10,), show=true)
 ```
 \end{examplefig}
@@ -95,7 +95,7 @@ lelandshade(G, transparency=0.6, title="60 % texture shading", par=(FONT_TITLE=1
 \begin{examplefig}{}
 ```julia
 using GMT   # Hide
-G = gmtread("@earth_relief_01s", region=(-112.06, -111.60, 35.97, 36.25));	# Hide
+G = gmtread("@earth_relief_01s_g", region=(-112.06, -111.60, 35.97, 36.25));	# Hide
 lelandshade(G, transparency=0.8, title="80 % texture shading", par=(FONT_TITLE=10,), show=true)
 ```
 \end{examplefig}
@@ -104,7 +104,7 @@ lelandshade(G, transparency=0.8, title="80 % texture shading", par=(FONT_TITLE=1
 \begin{examplefig}{}
 ```julia
 using GMT   # Hide
-G = gmtread("@earth_relief_01s", region=(-112.06, -111.60, 35.97, 36.25));	# Hide
+G = gmtread("@earth_relief_01s_g", region=(-112.06, -111.60, 35.97, 36.25));	# Hide
 lelandshade(G, transparency=1.0, title="100 % texture shading", par=(FONT_TITLE=10,), show=true)
 ```
 \end{examplefig}

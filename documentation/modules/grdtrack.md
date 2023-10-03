@@ -236,6 +236,7 @@ and only write out (dist, topo) records, try
 \begin{examplefig}{}
 ```julia
 using GMT
+resetGMT()  # hide
 D = grdtrack("@earth_relief_05m", region=(0,20,0,20), profile="BL/TR+d", o="3,2")
 imshow(D)
 ```

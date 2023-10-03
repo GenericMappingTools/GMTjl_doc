@@ -1,6 +1,6 @@
 # Color images
 
-Color images are made with ``grdimage`` which takes the usual common options and a color map.
+Color images are made with \myreflink{grdimage} which takes the usual common options and a color map.
 It operates over grids or images. The next example shows how to create a color appropriate for
 the grid's *z* range, plot the image and add a color scale. We use here the ``data`` keyword
 to tell the program to load the grid from a file. The ``@`` before the *tut_relief.nc* file
@@ -29,6 +29,6 @@ add coast lines and a color bar
 ```julia
 resetGMT()      # hide
 using GMT
-grdimage("@earth_relief_20m", proj=:Winkel, colorbar=true, coast=true, show=true)
+grdimage("@earth_relief_20m_g", proj=:Winkel, colorbar=true, coast=true, show=true)
 ```
 \end{examplefig}

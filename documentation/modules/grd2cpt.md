@@ -32,7 +32,7 @@ using the options **bg**, **overrule_bg** or **no_bg**.
 
 The color model (RGB, HSV or CMYK) of the palette created by \myreflink{makecpt} will be the same as
 specified in the header of the master CPT. When there is no `COLOR_MODEL` entry in the master CPT,
-the `COLOR_MODEL` specified in the `gmt.conf` file or on the command line will be used.
+the `COLOR_MODEL` specified in the `gmt.conf` (see \myreflink{gmtset}) file or on the command line will be used.
 
 Required Arguments
 ------------------
@@ -170,8 +170,8 @@ from the remote 5m relief file, using the geo color table, try:
 \begin{examplefig}{}
 ```julia
 using GMT
-grd2cpt("@earth_relief_06m", region=(0,60,0,60), cmap=:geo, symetric=:u)
-imshow("@earth_relief_06m", region=(0,60,0,60), coast=true)
+grd2cpt("@earth_relief_06m_g", region=(0,60,0,60), cmap=:geo, symetric=:u)
+imshow("@earth_relief_06m_g", region=(0,60,0,60), coast=true)
 ```
 \end{examplefig}
 
@@ -199,8 +199,8 @@ and return the CDF table as well, try:
 \begin{examplefig}{}
 ```julia
 using GMT
-C, cdf = grd2cpt("@earth_relief_10m", nlevels="11+c+f");
-imshow("@earth_relief_10m", cmap=C)
+C, cdf = grd2cpt("@earth_relief_10m_g", nlevels="11+c+f");
+imshow("@earth_relief_10m_g", cmap=C)
 ```
 \end{examplefig}
 
