@@ -4,9 +4,9 @@
 	sphtriangulate(cmd0::String="", arg1=nothing, kwargs...)
 ```
 
-Delaunay or Voronoi construction of spherical data.
-
 *keywords: GMT, Julia, Delaunay spherical triangulation, Voronoi*
+
+Delaunay or Voronoi construction of spherical data.
 
 Description
 -----------

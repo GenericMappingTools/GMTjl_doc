@@ -4,9 +4,9 @@
     grdimage(cmd0::String=""; kwargs...)
 ```
 
-Project grids or images and plot them on maps
-
 *keywords: GMT, Julia, grid visualization, Geotiff, mapping*
+
+Project grids or images and plot them on maps
 
 Description
 -----------
@@ -142,7 +142,7 @@ add coast lines, a colorbar and do an histogram equalization with 64 colors, do:
 \begin{examplefig}{}
 ```julia
 using GMT
-grdimage("@earth_relief_20m.grd", proj=:Winkel, equalize=64, coast=true,
+grdimage("@earth_relief_20m", proj=:Winkel, equalize=64, coast=true,
          colorbar=true, shade=true, show=true)
 ```
 \end{examplefig}

@@ -4,9 +4,9 @@
 	contour(cmd0::String="", arg1=nothing; kwargs...)
 ```
 
-Contour plot from table data by direct triangulation
-
 *keywords: GMT, Julia, contour plots, mapping*
+
+Contour plot from table data by direct triangulation
 
 
 Description

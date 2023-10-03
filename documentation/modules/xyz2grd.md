@@ -4,9 +4,9 @@
 	xyz2grd(cmd0::String="", arg1=nothing, kwargs...)
 ```
 
-Convert data table to a GMTgrid type. 
-
 *keywords: GMT, Julia, grid*
+
+Convert data table to a GMTgrid type. 
 
 Description
 -----------

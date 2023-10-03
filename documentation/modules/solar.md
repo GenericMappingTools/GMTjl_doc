@@ -4,9 +4,9 @@
 solar(cmd0::String="", arg1=[]; kwargs...)
 ```
 
-Calculate and plot the day-night terminator and the civil, nautical and astronomical twilights.
-
 *keywords: GMT, Julia, sun, day-night, mapping*
+
+Calculate and plot the day-night terminator and the civil, nautical and astronomical twilights.
 
 Required Arguments
 ------------------

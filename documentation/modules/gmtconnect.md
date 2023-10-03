@@ -4,9 +4,9 @@
 	gmtconnect(cmd0::String="", arg1=nothing, kwargs...)
 ```
 
-Connect individual lines whose end points match within tolerance
-
 *keywords: GMT, Julia, line connect*
+
+Connect individual lines whose end points match within tolerance
 
 Description
 -----------

@@ -29,6 +29,6 @@ add coast lines and a color bar
 ```julia
 resetGMT()      # hide
 using GMT
-grdimage("@earth_relief_20m.grd", proj=:Winkel, colorbar=true, coast=true, show=true)
+grdimage("@earth_relief_20m", proj=:Winkel, colorbar=true, coast=true, show=true)
 ```
 \end{examplefig}

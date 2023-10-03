@@ -4,9 +4,9 @@
     image(cmd0::String="", arg1=nothing; kwargs...)
 ```
 
-Plot raster or EPS images
-
 *keywords: GMT, Julia, image plots*
+
+Plot raster or EPS images
 
 
 Description

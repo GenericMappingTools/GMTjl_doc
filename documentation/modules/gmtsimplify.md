@@ -4,9 +4,9 @@
 	gmtsimplify(cmd0::String="", arg1=nothing; kwargs...)
 ```
 
-Line reduction using the Douglas-Peucker algorithm
-
 *keywords: GMT, Julia, line simplification*
+
+Line reduction using the Douglas-Peucker algorithm
 
 Description
 -----------

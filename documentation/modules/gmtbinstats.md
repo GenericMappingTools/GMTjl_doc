@@ -4,9 +4,9 @@
 gmtbinstats(cmd0::String="", arg1=nothing; kwargs...)
 ```
 
-Bin spatial data and determine statistics per bin.
-
 *keywords: GMT, Julia, hexagonal statistics*
+
+Bin spatial data and determine statistics per bin.
 
 Description
 -----------

@@ -4,9 +4,9 @@
 	sample1d(cmd0::String="", arg1=nothing, kwargs...)
 ```
 
-Resample 1-D table data using splines
-
 *keywords: GMT, Julia, resample*
+
+Resample 1-D table data using splines
 
 Description
 -----------

@@ -4,9 +4,9 @@
 	project(cmd0::String="", arg1=nothing, kwargs...)
 ```
 
-Project data onto lines or great circles, or generate tracks
-
 *keywords: GMT, Julia, great circles*
+
+Project data onto lines or great circles, or generate tracks
 
 Description
 -----------

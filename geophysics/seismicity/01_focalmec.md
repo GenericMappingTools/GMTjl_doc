@@ -66,7 +66,7 @@ using GMT
 resetGMT()	# hide
 
 # Background map
-grdimage("@earth_relief", region=[-74,-59,5,15], proj=:guess, figsize=10, shade=true)
+grdimage("@earth_relief", region=(-74,-59,5,15), proj=:guess, figsize=10, shade=true)
 coast!(shorelines=true, borders=((type=1, pen=0.8),(type=2, pen=0.1)), map_scale="-68.5/7.0/7.0/200")
 
 # Epicenters

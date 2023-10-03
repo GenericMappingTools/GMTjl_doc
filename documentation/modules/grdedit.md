@@ -4,9 +4,9 @@
     grdedit(cmd0::String="", arg1=nothing, kwargs...)
 ```
 
-Modify header or content of a grid
-
 *keywords: GMT, Julia, grid edit*
+
+Modify header or content of a grid
 
 Description
 -----------

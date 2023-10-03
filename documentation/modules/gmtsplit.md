@@ -4,9 +4,9 @@
 	gmtsplit(cmd0::String="", arg1=nothing; kwargs...)
 ```
 
-Split xyz[dh] data tables into individual segments
-
 *keywords: GMT, Julia, break lines*
+
+Split xyz[dh] data tables into individual segments
 
 Description
 -----------

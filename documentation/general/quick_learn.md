@@ -13,7 +13,7 @@ coast(R="-10/0/35/45", J="M15c", B="afg", W="0.5p", show=true)
 but what if you need to make a map with some data, a grid for example. Simple, give it as a first argument as in:
 
 ```julia
-grdimage("@earth_relief_20m.grd", J="R15c", B="a", show=true)
+grdimage("@earth_relief_20m", J="R15c", B="a", show=true)
 ```
 
 This will compute a cpt under the hood and use it. But what if you want to use another cpt? Also simple,
@@ -21,18 +21,18 @@ just make one and use it in the above command. *i.e.*:
 
 ```julia
 CPT = makecpt(T="-10000/8000/1000");
-grdimage("@earth_relief_20m.grd", J="R15c", B="a", C=CPT, show=true)
+grdimage("@earth_relief_20m", J="R15c", B="a", C=CPT, show=true)
 ```
 
 The last command introduced a novelty in using the **C** option and that's where things start to be interesting.
 Instead of using a previously existing cpt file, *e.g.* a file called `color.cpt` and used it as C="color.cpt",
 we created a `GMTcpt` object that resides only in Julia memory space and passed it directly via the **C** option.
-The same could have been done if we had the `earth_relief_20m.grd` grid in memory, which, for example sake, can
+The same could have been done if we had the `earth_relief_20m` grid in memory, which, for example sake, can
 be achieved by previously reading the grid file.
 
 ```julia
 CPT = makecpt(T="-10000/8000/1000");
-G = gmtread("@earth_relief_20m.grd");
+G = gmtread("@earth_relief_20m");
 grdimage(G, J="R15c", B="a", C=CPT, show=true)
 ```
 

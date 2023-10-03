@@ -4,9 +4,9 @@
 	fitcircle(cmd0::String="", arg1=nothing, kwargs...)
 ```
 
-Find mean position and great [or small] circle fit to points on sphere
-
 *keywords: GMT, Julia, fit circles*
+
+Find mean position and great [or small] circle fit to points on sphere
 
 Description
 -----------

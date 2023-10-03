@@ -5,9 +5,9 @@
 histogram(cmd0::String="", arg1=nothing; kwargs...)
 ```
 
-Calculate and plot histograms
-
 *keywords: GMT, Julia, histogram*
+
+Calculate and plot histograms
 
 Description
 -----------

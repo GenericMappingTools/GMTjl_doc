@@ -5,9 +5,9 @@
                      res, registration="", exact=false)
 ```
 
-Plots or automatically extracts grid/image over a named geographic region.
-
 *keywords: GMT, Julia, geography*
+
+Plots or automatically extracts grid/image over a named geographic region.
 
 ---
 Many predefined regions are provided via *collections*. These collections contain names, rectangular

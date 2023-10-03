@@ -4,9 +4,9 @@
 	rose(cmd0::String="", arg1=nothing; kwargs...)
 ```
 
-Plot a polar histogram (rose, sector, windrose diagrams)
-
 *keywords: GMT, Julia, polar histogram*
+
+Plot a polar histogram (rose, sector, windrose diagrams)
 
 Description
 -----------

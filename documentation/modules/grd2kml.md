@@ -4,9 +4,9 @@
 	grd2kml(cmd0::String="", arg1=nothing, kwargs...)
 ```
 
-Create KML image quadtree from single grid
-
 *keywords: GMT, Julia, grid KML*
+
+Create KML image quadtree from single grid
 
 Description
 -----------
