@@ -1,6 +1,6 @@
 # Earth tides
 
-Dis you know that it's not only the ocens that have a tide? Yes, the solid
+Did you know that it's not only the oceans that have a tide? Yes, the solid
 Earth has tides as well, and they are not so small as one might imagine.
 
 ## A global view

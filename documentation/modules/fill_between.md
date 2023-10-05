@@ -47,8 +47,8 @@ same color as the line they sit on.
 
 -----
 `fill_between(..., legend=...)`: If used as the above `labels` it behaves like wise, but its argument can
-also be a named tuple with `legend=(labels="Lab1,Lab2", position=poscode, box=(...))`, where `pscode`
-is the same as used in myreflink{text}, *e.g.* `TL` means *TopLeft* and `box` controls the legend box details.
+also be a named tuple with `legend=(labels="Lab1,Lab2", position=poscode, box=(...))`, where `poscode`
+is the same as used in \myreflink{text}, *e.g.* `TL` means *TopLeft* and `box` controls the legend box details.
 See [examples at](https://www.generic-mapping-tools.org/GMTjl_doc/examples/legends/01_legends)
 
 -----
