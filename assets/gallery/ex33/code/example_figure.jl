@@ -9,6 +9,7 @@ resetGMT() # hide
 makecpt(cmap=:rainbow, range=(-5000,-2000))
 G = grdcut("@earth_relief_01m", region=(-118,-107,-49,-42))
 grdimage(G, shade=(angle=15, norm="e0.75"), proj=:merc)
+resetGMT()        # Need to find a fix for this. It lets the API in a geog mode
 
 # Select two points along the ridge
 ridge_pts = [-111.6 -43.0; -113.3 -47.5];
@@ -33,7 +34,7 @@ text!(mat2ds([0 -2000], "MEDIAN STACKED PROFILE"), fill=:white, font=14, justify
       offset=(away=true, shift=0.25), show=true)
 rm("stack.txt")
 end # hide
-mv(joinpath(tempdir(), "GMTjl_" * GMT.tmpdir_usr[2] * "." * "png"), joinpath(@OUTPUT, "example_9079262742806212468.png"), force=true);    # hide
+mv(joinpath(tempdir(), "GMTjl_" * GMT.tmpdir_usr[2] * "." * "png"), joinpath(@OUTPUT, "example_1408503417161316490.png"), force=true);    # hide
 GMT.isFranklin[1] = false    # hide
 GMT.IamModern[1]  = false    # hide
  

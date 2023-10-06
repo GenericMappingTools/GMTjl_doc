@@ -3,7 +3,7 @@ begin # hide
 	using GMT   # hide
 	GMT.isFranklin[1] = true    # hide
 	getpath4docs(file::String) = joinpath("..", "..", "..", "..", "..", file) # hide
-	using GMT
+	using GMT, Printf
 resetGMT() # hide
 
 Gwetdry = grdlandmask(region=:global360, inc="30m", res=:crude, area=500, N="-1/1/1/1/1", reg=true);
@@ -44,7 +44,7 @@ legend!(pos=(anchor=:BC, width=10), box=(pen=:thick,), yshift=-1.0, par=(:FONT_A
     @sprintf("S 0.3 s 0.25 blue 0.25p 0.5 Oceanic Antipodes [%d %%]", ocean.data[1])
     @sprintf("S 0.3 s 0.25 gray 0.25p 0.5 Mixed Antipodes [%d %%]", mixed.data[1])]), show=true)
 end # hide
-mv(joinpath(tempdir(), "GMTjl_" * GMT.tmpdir_usr[2] * "." * "png"), joinpath(@OUTPUT, "example_2262303985970576114.png"), force=true);    # hide
+mv(joinpath(tempdir(), "GMTjl_" * GMT.tmpdir_usr[2] * "." * "png"), joinpath(@OUTPUT, "example_16066280783786277173.png"), force=true);    # hide
 GMT.isFranklin[1] = false    # hide
 GMT.IamModern[1]  = false    # hide
  

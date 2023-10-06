@@ -13,7 +13,7 @@ Gdzdy = gmt("grdmath ? DDY", Gz);
 subplot(grid=(2,2), splot_size=15, margins=0.1, title="z(x,y) = x@~\327@~exp(-x@+2@+-y@+2@+)")
 	grdcontour(Gz, cont=0.05, annot=0.1, labels=(dist=5,), smooth=4, ticks=(gap=(0.25,0.08),))
 	subplot(:set, panel=(1,2))
-	grdcontour!(Gz, cont=0.05, labels=(dist=5,), smooth=4)
+	grdcontour(Gz, cont=0.05, labels=(dist=5,), smooth=4)
 	grdvector(Gdzdx, Gdzdy, inc=0.2, arrow=(len=0.25, shape=0.5, stop=true, norm=0.6),
               fill=:black, pen=1, vec_scale=2)
 	subplot(:set, panel=(2,1))
@@ -22,7 +22,7 @@ subplot(grid=(2,2), splot_size=15, margins=0.1, title="z(x,y) = x@~\327@~exp(-x@
 	grdcontour(Gdzdy, cont=0.05, annot=0.2, labels=(dist=5,), smooth=4, ticks=(gap=(0.25,0.08),))
 subplot("show")
 end # hide
-mv(joinpath(tempdir(), "GMTjl_" * GMT.tmpdir_usr[2] * "." * "png"), joinpath(@OUTPUT, "example_6036268318862117508.png"), force=true);    # hide
+mv(joinpath(tempdir(), "GMTjl_" * GMT.tmpdir_usr[2] * "." * "png"), joinpath(@OUTPUT, "example_16468298846023876544.png"), force=true);    # hide
 GMT.isFranklin[1] = false    # hide
 GMT.IamModern[1]  = false    # hide
  
