@@ -373,10 +373,10 @@ In case the central meridian is an optional parameter and it is being omitted, t
 range given by the *limits* option is used. The default standard parallel is the equator. 
 
 For linear (Cartesian) projections one can use *proj=:linear* but the simplest is just to omit the projection
-setting, which will default to a fig with of 14 cm. To set other fig dimensions, use the *figsize* specification
+setting, which will default to a fig with of 15 cm. To set other fig dimensions, use the *figsize* specification
 with *figsize=(width, height)* (both numeric or string) or just *figsize=width* and the *height* is computed
 automatically from the fig limits aspect ratio. We can also specify the scale separately: *e.g.* *figscale=x*,
-*figscale=1:xxxx*. As mentioned, when no size is provided a default width value of 14 cm is assumed.
+*figscale=1:xxxx*. As mentioned, when no size is provided a default width value of 15 cm is assumed.
 
 For logarithm and power axes use `logx`, `logy` or `loglog` to take log10 of values before scaling, and `powx`
 and/or `powy` to to raise values to _power_ before scaling.

@@ -27,6 +27,17 @@
   @@
 
   @@box
+    ~~~<a class="boxlink" href="ex03/">~~~
+    @@title (3) Spectral estimation @@
+    @@box-content
+      ~~~
+      <img src="/gallery/tillelogo_ex03.jpg">
+      ~~~
+    @@
+    ~~~</a>~~~
+  @@
+
+  @@box
     ~~~<a class="boxlink" href="ex04/">~~~
     @@title (4) A 3-D perspective mesh plot @@
     @@box-content
@@ -417,6 +428,17 @@
     @@box-content
       ~~~
       <img src="/gallery/tillelogo_ex46.jpg">
+      ~~~
+    @@
+    ~~~</a>~~~
+  @@
+
+  @@box
+    ~~~<a class="boxlink" href="ex48/">~~~
+    @@title (48) Line networks @@
+    @@box-content
+      ~~~
+      <img src="/gallery/tillelogo_ex48.jpg">
       ~~~
     @@
     ~~~</a>~~~
