@@ -141,6 +141,7 @@
 </ul></li>
 <li><input class="collapse-toggle" id="menuitem-3" type="checkbox" checked><div class="tocitem-container"><label class="tocexpander" for="menuitem-3"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/gallery">Gallery &#40;Classic&#41;</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/gallery/ex01">Contour maps</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/gallery/ex02">&#40;2&#41; Image presentations</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/gallery/ex03">&#40;3&#41; Spectral estimation and xy-plots</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/gallery/ex04">&#40;4&#41; A 3-D perspective mesh plot</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/gallery/ex05">&#40;5&#41; A 3-D illuminated surface &#40;in bw&#41;</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/gallery/ex06">&#40;6&#41; Plotting of histograms</a></div></li>
@@ -180,6 +181,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/gallery/ex44">&#40;44&#41; Map insets</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/gallery/ex45">&#40;45&#41; Trend modeling</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/gallery/ex46">&#40;46&#41; Day-light terminators and other sunlight parameters</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/gallery/ex48">&#40;48&#41; Line networks, map embellishments, and curved titles</a></div></li>
 </ul></li>
 <li><input class="collapse-toggle" id="menuitem-4" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-4"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/geophysics">Geophysics</a></div><ul><li><input class="collapse-toggle" id="menuitem-4-1" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-4-1"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/geophysics/earthtides">Earth tides</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/geophysics/earthtides/01_earthtides">Earth tides</a></div></li>
 </ul></li>
@@ -383,7 +385,7 @@
 makecpt&#40;cmap&#61;:rainbow, range&#61;&#40;-5000,-2000&#41;&#41;
 G &#61; grdcut&#40;&quot;@earth_relief_01m&quot;, region&#61;&#40;-118,-107,-49,-42&#41;&#41;
 grdimage&#40;G, shade&#61;&#40;angle&#61;15, norm&#61;&quot;e0.75&quot;&#41;, proj&#61;:merc&#41;
-resetGMT&#40;&#41;        # Need to find a fix for this. It lets the API in a geog mode
+#resetGMT&#40;&#41;        # Need to find a fix for this. It lets the API in a geog mode
 
 # Select two points along the ridge
 ridge_pts &#61; &#91;-111.6 -43.0; -113.3 -47.5&#93;;
@@ -393,28 +395,24 @@ plot&#33;&#40;ridge_pts, region&#61;G, symbol&#61;&#40;symb&#61;:circle, size&#6
 
 # Generate cross-profiles 400 km long, spaced 10 km, samped every 2km
 # and stack these using the median, write stacked profile
-table &#61; grdtrack&#40;G, ridge_pts, equidistant&#61;&quot;400k/2k/10k&#43;v&quot;, stack&#61;&quot;m&#43;sstack.txt&quot;&#41;
+table, stack &#61; grdtrack&#40;G, ridge_pts, equidistant&#61;&quot;400k/2k/10k&#43;v&quot;, stack&#61;&quot;m&#43;s&quot;&#41;
 plot&#33;&#40;table, pen&#61;0.5&#41;
 
 # Show upper/lower values encountered as an envelope
-env1 &#61; gmtconvert&#40;&quot;stack.txt&quot;, outcols&#61;&quot;0,5&quot;&#41;
-env2 &#61; gmtconvert&#40;&quot;stack.txt&quot;, outcols&#61;&quot;0,6&quot;, reverse&#61;true, suppress&#61;true&#41;
-env &#61; &#91;env1.data; env2.data&#93;;   # Concat the two matrices
-plot&#33;&#40;env, region&#61;&#40;-200,200,-3500,-2000&#41;, frame&#61;&#40;axes&#61;:WSne, annot&#61;:auto, ticks&#61;:auto&#41;,
-      xaxis&#61;&#40;grid&#61;1000, label&#61;&quot;Distance from ridge &#40;km&#41;&quot;&#41;, ylabel&#61;&quot;Depth &#40;m&#41;&quot;, proj&#61;:linear,
-      figsize&#61;&#40;15,7.5&#41;, fill&#61;:lightgray, yshift&#61;16&#41;
-plot&#33;&#40;&quot;stack.txt&quot;, pen&#61;3&#41;
+plot&#33;&#40;stack&#91;:,&#91;1,2,6,7&#93;&#93;, region&#61;&#40;-200,200,-3500,-2000&#41;, frame&#61;&#40;axes&#61;:WSne, annot&#61;:auto, ticks&#61;:auto&#41;,
+      xaxis&#61;&#40;grid&#61;1000, label&#61;&quot;Distance from ridge &#40;km&#41;&quot;&#41;, ylabel&#61;&quot;Depth &#40;m&#41;&quot;,
+      figsize&#61;&#40;15,7.5&#41;, fill&#61;:lightgray, close&#61;&#40;envelope&#61;true,&#41;, yshift&#61;16&#41;
+plot&#33;&#40;stack, pen&#61;3&#41;
 text&#33;&#40;mat2ds&#40;&#91;0 -2000&#93;, &quot;MEDIAN STACKED PROFILE&quot;&#41;, fill&#61;:white, font&#61;14, justify&#61;:TC,
-      offset&#61;&#40;away&#61;true, shift&#61;0.25&#41;, show&#61;true&#41;
-rm&#40;&quot;stack.txt&quot;&#41;</code></pre></p>
+      offset&#61;&#40;away&#61;true, shift&#61;0.25&#41;, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_1408503417161316490">
- <img src="/GMTjl_doc/assets/gallery/ex33/code/output/example_1408503417161316490.png" alt=""> 
+<a id="example_9103115099362066303">
+ <img src="/GMTjl_doc/assets/gallery/ex33/code/output/example_9103115099362066303.png" alt=""> 
 </a>
 
 <div class="page-foot">
   <div class="copyright">
-    &copy; GMT.jl. Last modified: October 06, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+    &copy; GMT.jl. Last modified: October 12, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
       <p>These docs were autogenerated using GMT: v1.6.0</p>
   </div>
 </div>
