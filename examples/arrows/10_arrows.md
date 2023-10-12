@@ -1,4 +1,4 @@
-# Arrows
+# Arrow examples
 
 {{doc arrows}}
 
