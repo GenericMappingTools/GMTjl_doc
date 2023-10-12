@@ -3,7 +3,7 @@ begin # hide
 	using GMT   # hide
 	GMT.isFranklin[1] = true    # hide
 	getpath4docs(file::String) = joinpath("..", "..", "..", "..", "..", file) # hide
-	using GMT
+	using GMT, Printf
 GMT.resetGMT() # hide
 
 # First, we use "fitcircle" to find the parameters of a great circle
@@ -58,7 +58,7 @@ subplot(grid=(2,1), margins="0.3c", col_axes=(bott=true, label="Wavelength (km)"
            fill=:purple, error_bars=(y=true, pen=0.5))
 subplot(:show)
 end # hide
-mv(joinpath(tempdir(), "GMTjl_" * GMT.tmpdir_usr[2] * "." * "png"), joinpath(@OUTPUT, "example_959142002972954233.png"), force=true);    # hide
+mv(joinpath(tempdir(), "GMTjl_" * GMT.tmpdir_usr[2] * "." * "png"), joinpath(@OUTPUT, "example_7314477020675131303.png"), force=true);    # hide
 GMT.isFranklin[1] = false    # hide
 GMT.IamModern[1]  = false    # hide
  
