@@ -3,7 +3,7 @@ begin # hide
 	using GMT   # hide
 	GMT.isFranklin[1] = true    # hide
 	getpath4docs(file::String) = joinpath("..", "..", "..", "..", "..", file) # hide
-	using GMT, Printf
+	using GMT
 GMT.resetGMT() # hide
 
 # First, we use "fitcircle" to find the parameters of a great circle
@@ -28,17 +28,18 @@ samp_sat_pg = sample1d(sat_pg, range=samp_x)
 # For reasons above, we use filter1d to pre-treat the ship data. We also need to sample
 # it because of the gaps > 1 km we found. So we use filter1d | sample1d. We also
 # use the "ends" on filter1d to use the data all the way out to bounds :
-D = filter1d(ship_pg, filter=:m1, range=@sprintf("%g/%g/1", bounds...), ends=true)
+D = filter1d(ship_pg, filter=:m1, range=(bounds[1], bounds[2], 1), ends=true)
 samp_ship_pg = sample1d(D, range=samp_x)
 
 # Now to do the cross-spectra, assuming that the ship is the input and the sat is the output
 # data, we do this:
-D = spectrum1d([samp_ship_pg[:,2] samp_sat_pg[:,2]], size=256, sample_dist=1, wavelength=true, outputs=(:xpower, :ypower, :coherence))
+D = spectrum1d([samp_ship_pg[:,2] samp_sat_pg[:,2]], size=256, sample_dist=1,
+               wavelength=true, outputs=(:xpower, :ypower, :coherence))
 
 # Time to plot spectra
 subplot(grid=(2,1), margins="0.3c", col_axes=(bott=true, label="Wavelength (km)"),
         autolabel=(anchor=:TR, offset="8p"), title="Ship and Satellite Gravity",
-        panel_size=10, frame=(axes="WeSn", bg="240/255/240"), Vd=1)
+        panel_size=10, frame=(axes="WeSn", bg="240/255/240"))
 	gmtset(FONT_TAG="18p,Helvetica-Bold",)
 
 	subplot(:set, panel=(1,1), autolabel="Input Power")
@@ -58,7 +59,7 @@ subplot(grid=(2,1), margins="0.3c", col_axes=(bott=true, label="Wavelength (km)"
            fill=:purple, error_bars=(y=true, pen=0.5))
 subplot(:show)
 end # hide
-mv(joinpath(tempdir(), "GMTjl_" * GMT.tmpdir_usr[2] * "." * "png"), joinpath(@OUTPUT, "example_7314477020675131303.png"), force=true);    # hide
+mv(joinpath(tempdir(), "GMTjl_" * GMT.tmpdir_usr[2] * "." * "png"), joinpath(@OUTPUT, "example_1345769521241946342.png"), force=true);    # hide
 GMT.isFranklin[1] = false    # hide
 GMT.IamModern[1]  = false    # hide
  
