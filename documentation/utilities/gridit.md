@@ -4,7 +4,7 @@
 G = gridit(fname="", indata=nothing; method="surface", gdopts="", proj="", epsg=0, kw...)
 ```
 
-*keywords: GMT, Julia, gris interpolations, GDAL interpolate*
+*keywords: GMT, Julia, 2D interpolations, grid interpolations, GDAL interpolate*
 
 Wrapper function to interpolate scattered data into a grid.
 Interpolation methods may be those of GMT and GDAL (gdal_grid).
@@ -18,12 +18,12 @@ Interpolation methods may be those of GMT and GDAL (gdal_grid).
   "nearneighbor", "sphtriangulate", "greenspline". The arguments: "mean", "median", "mode", "std", "highest",
   "lowest" will compute those amounts inside each *rectangular* cell.
 
-     - Or (GDAL): "invdist", "invdistnn", "average", "nearest", "linear", "minimum", "maximum", "range",
-     "count", "average_distance", "average_distance_pts". See https://gdal.org/programs/gdal_grid.html#gdal-grid
+    - Or (GDAL): "invdist", "invdistnn", "average", "nearest", "linear", "minimum", "maximum", "range",
+      "count", "average_distance", "average_distance_pts". See https://gdal.org/programs/gdal_grid.html#gdal-grid
 
-     - Note that there is some overlap between the diverse methods. For example, the GMT's \myreflink{nearneighbor}
-     and GDAL's ``invdist`` apply the same algorithm (the Inverse Distance Weight) but they difer on how
-     to select the points to do the weighted average.
+    - Note that there is some overlap between the diverse methods. For example, the GMT's \myreflink{nearneighbor}
+      and GDAL's `invdist` apply the same algorithm (the Inverse Distance Weight) but they difer on how
+      to select the points to do the weighted average.
 
 - `gdopts`: List of options, in the form of a single string, accepted by the gdal_grid utility. This option
   only applies to the GDAL methods.

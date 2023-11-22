@@ -93,7 +93,7 @@ Optional Arguments
     convolution. Enter *q_factor* between 0 and 1. If mean weight <
     *q_factor*, output is suppressed at this point [Default does not check Quality].
 
-- **S** or **symetry** : -- *symetry=factor*\
+- **S** or **symmetry** : -- *symmetry=factor*\
     Checks symmetry of data about window center. Enter a factor between
     0 and 1. If ( (abs(n_left - n_right)) / (n_left + n_right) ) >
     *factor*, then no output will be given at this point [Default does not check Symmetry].

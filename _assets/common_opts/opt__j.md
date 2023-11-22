@@ -1,4 +1,4 @@
-- **j** or **spherical_dist** or **spherical** : -- *spherical=greatcirc* or *spherical=:flat* or *spherical=:ellipsoidal*\
+- **j** or **metric** or **spherical_dist** or **spherical** : -- *metric=greatcirc* or *spherical=:flat* or *spherical=:ellipsoidal*\
     Determine how spherical distances are calculated in modules that support this [Default is `spherical=:greatcirc`].
     GMT has different ways to compute distances on planetary bodies:
 

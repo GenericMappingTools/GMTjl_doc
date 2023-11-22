@@ -41,7 +41,7 @@ Optional Arguments
 - **D** or **annot** or **annotate** or **count** : -- *annot=true* **|** *annot=(beneath=|font=|offset=|vertical=,)*\
    Annotate each bar with the count it represents. Add any of the following options: Use **annot=(beneath=true,)** to place the labels beneath the bars instead of above; use **annot=(font="font",)** to change to another font than the default annotation font; use **annot=(offset=val,)** to change the offset between bar and label [6p]; use **annot=(vertical=true,)** to rotate the labels from horizontal to vertical.
 
-- **E** or **width** : -- *width=val* **|** *width=(width=val, offset=val)*\ 
+- **E** or **width** : -- *width=val* **|** *width=(width=val, offset=val)*\
    Use an alternative histogram bar width than the default set via **bin**, and optionally shift all bars by an offset. Here width is either an alternative width in data units, or the user may append a valid plot dimension unit ("c|i|p") for a fixed dimension instead. Optionally, all bins may be shifted along the axis by offset. As for width, it may be given in data units of plot dimension units by appending the relevant unit.
 
 - **binmethod** or **BinMethod** : -- *binmethod=mthod*\
@@ -52,7 +52,7 @@ Optional Arguments
 
    For DateTime data: "**second**", "**minute**", "**hour**", "**day**", "**week**", "**month**" or "**year**" 
 
-- **F** or **center** : -- *center=true*\ 
+- **F** or **center** : -- *center=true*\
    Center bin on each value. [Default is left edge].
 
 - **full_histo** : -- *full_histo=true*\

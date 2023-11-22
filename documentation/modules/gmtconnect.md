@@ -46,13 +46,13 @@ Optional Arguments
     segment header will be written and the segment headers of individual pieces will be written
     out as comments to make it possible to identify where the connected pieces came from.
 
-- **L** or **linkfile** : -- *linkfile=true* **|** *linkfile="file"*\
-    Writes link information to the specified file [gmtconnect_link.txt]. For each segment we
+- **L** or **links** or **linkfile** : -- *links=true* **|** *linkfile="file"*\
+    Writes link information to the specified file [gmtconnect_link.txt] (or return its contents). For each segment we
     write the original segment id, and for the beginning and end point of the segment we report the
     id of the nearest segment, whether it is the beginning (B) or end (E) point that is closest,
     and the distance between those points in units determined by **tolerance**.
 
-- **Q** or **list_file** : -- *list_file=true* **|** *list_file="template"*\
+- **Q** or **list** or **listfile** : -- *list=true* **|** *listfile="template"*\
     Used with **dump** to write a list file with the names of the individual output files.
     Optionally, append a filename template for the individual file names; this template
     **may** contain a C format specifier that can format an character (C or O for closed

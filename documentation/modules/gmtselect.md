@@ -64,7 +64,7 @@ Optional Arguments
     Pass all locations that are inside the valid data area of the *grid*R, which can be either a
     file name or an *in-memory* grid object. Nodes that are outside are either NaN or zero.
 
-- **I** or **reverse** or **revert** : -- *reverse=:c|f|l|r|s|z*\
+- **I** or **invert** or **reverse** : -- *invert=:c|f|l|r|s|z*\
     Reverses the sense of the test for each of the criteria specified:
 
     - **c** - select records NOT inside any point's circle of influence.

@@ -106,7 +106,7 @@ Optional Arguments
     combined with any other ordering scheme except **conn_method** (segmentation)
     and is applied at the end.
 
-- **Q** or **select_num** : -- *select_num=[**~**]\ *selection* *\
+- **Q** or **segments** : -- *segments=[**~**]\ *selection* *\
     Only write segments whose number is included in *selection* and skip
     all others. Cannot be used with |-S|. The *selection* syntax is
     *range*[,*range*,...] where each *range* of items is either a single
@@ -239,7 +239,7 @@ of records within each segment, try:
 To extract segments 20 to 40 in steps of 2, plus segment 0 in a file, try:
 
 ```julia
-    convert("lots_of_segments.txt", select_num="0,20:2:40")
+    convert("lots_of_segments.txt", segments="0,20:2:40")
 ```
 
 To extract the attribute ELEVATION from an ogr gmt file like this:

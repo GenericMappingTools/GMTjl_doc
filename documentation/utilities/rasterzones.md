@@ -4,7 +4,7 @@
 rasterzones!(GI::GItype, shapes::Vector{GMTdataset}, fun::Function)
 ```
 
-*keywords: GMT, Julia, zonal statistical*
+*keywords: GMT, Julia, zonal statistics*
 
 Apply a unidimensional function `fun` to to the elements of the grid or image `GI` that lies inside the polygons
 of the \myreflink{GMTdataset} `shapes`. The `GI` array is modified in place.
