@@ -219,8 +219,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/general/quick_learn">Quick learn</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/general/types">The GMT.jl types &#40;important&#41;</a></div></li>
 </ul></li>
-<li><input class="collapse-toggle" id="menuitem-6-5" type="checkbox" checked><div class="tocitem-container"><label class="tocexpander" for="menuitem-6-5"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/documentation/modules">GMT Modules</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/arrows">arrows</a></div></li>
-<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/band">band</a></div></li>
+<li><input class="collapse-toggle" id="menuitem-6-5" type="checkbox" checked><div class="tocitem-container"><label class="tocexpander" for="menuitem-6-5"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/documentation/modules">GMT Modules</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/band">band</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/bar">bar</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/bar3">bar3</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/basemap">basemap</a></div></li>
@@ -330,6 +329,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/crop">crop</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/cubeplot">cubeplot</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/gadm">gadm</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/geocoder">geocoder</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/geodetic2enu">geodetic2enu</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/getbyattrib">getbyattrib</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/gmtread">gmtread</a></div></li>
@@ -350,6 +350,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/mat2ds">mat2ds</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/mat2grid">mat2grid</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/mat2img">mat2img</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/mosaic">mosaic</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/orbits">orbits</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/pca">pca</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/pcolor">pcolor</a></div></li>
@@ -437,7 +438,7 @@
 </li>
 <li><p><strong>N</strong> or <strong>sort</strong> : – <em>sort&#61;</em>col* &#91;<strong>&#43;a|d</strong>&#93;<em><br />  Numerically sort each segment based on values in column *col</em>.   The data records will be sorted such that the chosen column will   fall into ascending order &#91;<strong>&#43;a</strong>, which is Default&#93;. Append <strong>&#43;d</strong>   to sort into descending order instead. The <strong>sort</strong> option can be   combined with any other ordering scheme except <strong>conn_method</strong> &#40;segmentation&#41;   and is applied at the end.</p>
 </li>
-<li><p><strong>Q</strong> or <strong>select_num</strong> : – <em>select_num&#61;&#91;<strong>~</strong>&#93;&#92;</em>selection* <em><br />  Only write segments whose number is included in *selection</em> and skip   all others. Cannot be used with |-S|. The <em>selection</em> syntax is   <em>range</em>&#91;,<em>range</em>,...&#93; where each <em>range</em> of items is either a single   segment <em>number</em> or a range with stepped increments given via <em>start</em>&#92; &#91;:<em>step</em>:&#93;&#92; :<em>stop</em>   &#40;<em>step</em> is optional and defaults to 1&#41;. A leading <strong>~</strong> will   invert the selection and write all segments but the ones listed.  Instead   of a list of ranges, use <strong>&#43;f</strong> <em>file</em> to supply a file list with one <em>range</em> per line.</p>
+<li><p><strong>Q</strong> or <strong>segments</strong> : – <em>segments&#61;&#91;<strong>~</strong>&#93;&#92;</em>selection* <em><br />  Only write segments whose number is included in *selection</em> and skip   all others. Cannot be used with |-S|. The <em>selection</em> syntax is   <em>range</em>&#91;,<em>range</em>,...&#93; where each <em>range</em> of items is either a single   segment <em>number</em> or a range with stepped increments given via <em>start</em>&#92; &#91;:<em>step</em>:&#93;&#92; :<em>stop</em>   &#40;<em>step</em> is optional and defaults to 1&#41;. A leading <strong>~</strong> will   invert the selection and write all segments but the ones listed.  Instead   of a list of ranges, use <strong>&#43;f</strong> <em>file</em> to supply a file list with one <em>range</em> per line.</p>
 </li>
 <li><p><strong>S</strong> or <strong>select_hdr</strong> : – <em>select_hdr&#61;&#91;<strong>~</strong>&#93;&#92;</em>&quot;search string&quot;<em>\|&#92;<strong>&#43;f</strong>\|&#92;</em>file<em>&#92; &#91;<strong>&#43;e</strong>&#93; \| |-S|&#92; &#91;<strong>~</strong>&#93;/&#92;</em>regexp<em>/&#91;<strong>i</strong>&#93;&#91;<strong>&#43;e</strong>&#93;</em><br />  Only output those segments whose header record contains the   specified text string. To reverse the search, i.e., to output   segments whose headers do <em>not</em> contain the specified pattern, use   <strong>select_hdr&#61;:~</strong>. Should your pattern happen to start with ~ you need to   escape this character with a backslash &#91;Default output all   segments&#93;. Cannot be used with |-Q|. For matching segments based   on aspatial values &#40;via OGR/GMT format&#41;, give the search string as   <em>varname</em>&#92; &#61;&#92;<em>value</em> and we will compare <em>value</em> against the value   of <em>varname</em> for each segment. <strong>Note</strong>: If the features are polygons   then a match of a particular polygon perimeter also means that any   associated polygon holes will also be matched. For matching segment   headers against extended regular expressions enclose the expression   in slashes. Append <strong>i</strong> for case-insensitive matching.   For a list of such patterns, give <strong>&#43;f</strong>&#92;<em>file</em> with one pattern per line.   To give a single pattern starting with &quot;&#43;f&quot;, escape it with a backslash.   Finally, append <strong>&#43;e</strong> as last modifier to request an exact match &#91;Default will   match any sub-string in the target&#93;.</p>
 </li>
@@ -499,7 +500,7 @@
 </ul>
 
 <ul>
-<li><p><strong>j</strong> or <strong>spherical_dist</strong> or <strong>spherical</strong> : – <em>spherical&#61;greatcirc</em> or <em>spherical&#61;:flat</em> or <em>spherical&#61;:ellipsoidal</em><br />  Determine how spherical distances are calculated in modules that support this &#91;Default is <code>spherical&#61;:greatcirc</code>&#93;.   GMT has different ways to compute distances on planetary bodies:</p>
+<li><p><strong>j</strong> or <strong>metric</strong> or <strong>spherical_dist</strong> or <strong>spherical</strong> : – <em>metric&#61;greatcirc</em> or <em>spherical&#61;:flat</em> or <em>spherical&#61;:ellipsoidal</em><br />  Determine how spherical distances are calculated in modules that support this &#91;Default is <code>spherical&#61;:greatcirc</code>&#93;.   GMT has different ways to compute distances on planetary bodies:</p>
 <ul>
 <li><p>spherical&#61;:greatcirc to perform great circle distance calculations, with parameters such as distance  increments or radii compared against calculated great circle distances &#91;Default is <code>spherical&#61;:greatcirc</code>&#93;.</p>
 </li>
@@ -548,7 +549,7 @@
 <p>To reverse the order of segments in a file without reversing the order of records within each segment, try:</p>
 <pre><code class="language-julia">convert&#40;&quot;lots_of_segments.txt&quot;, invert&#61;:s&#41;</code></pre>
 <p>To extract segments 20 to 40 in steps of 2, plus segment 0 in a file, try:</p>
-<pre><code class="language-julia">convert&#40;&quot;lots_of_segments.txt&quot;, select_num&#61;&quot;0,20:2:40&quot;&#41;</code></pre>
+<pre><code class="language-julia">convert&#40;&quot;lots_of_segments.txt&quot;, segments&#61;&quot;0,20:2:40&quot;&#41;</code></pre>
 <p>To extract the attribute ELEVATION from an ogr gmt file like this:</p>
 <pre><code class="language-julia"># @VGMT1.0 @GPOINT
     ...
@@ -571,8 +572,8 @@
 <p><a href="#">gmtinfo</a>, <a href="/GMTjl_doc/documentation/modules/gmtselect/index.html#gmtselect">gmtselect</a></p>
 <div class="page-foot">
   <div class="copyright">
-    &copy; GMT.jl. Last modified: October 13, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
-      <p>These docs were autogenerated using GMT: v1.6.0</p>
+    &copy; GMT.jl. Last modified: November 22, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+      <p>These docs were autogenerated using GMT: v1.7.0</p>
   </div>
 </div>
 </div><!-- CONTENT ENDS HERE -->

@@ -219,8 +219,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/general/quick_learn">Quick learn</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/general/types">The GMT.jl types &#40;important&#41;</a></div></li>
 </ul></li>
-<li><input class="collapse-toggle" id="menuitem-6-5" type="checkbox" checked><div class="tocitem-container"><label class="tocexpander" for="menuitem-6-5"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/documentation/modules">GMT Modules</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/arrows">arrows</a></div></li>
-<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/band">band</a></div></li>
+<li><input class="collapse-toggle" id="menuitem-6-5" type="checkbox" checked><div class="tocitem-container"><label class="tocexpander" for="menuitem-6-5"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/documentation/modules">GMT Modules</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/band">band</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/bar">bar</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/bar3">bar3</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/basemap">basemap</a></div></li>
@@ -327,6 +326,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/crop">crop</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/cubeplot">cubeplot</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/gadm">gadm</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/geocoder">geocoder</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/geodetic2enu">geodetic2enu</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/getbyattrib">getbyattrib</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/gmtread">gmtread</a></div></li>
@@ -347,6 +347,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/mat2ds">mat2ds</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/mat2grid">mat2grid</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/mat2img">mat2img</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/mosaic">mosaic</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/orbits">orbits</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/pca">pca</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/pcolor">pcolor</a></div></li>
@@ -395,9 +396,9 @@
 </li>
 <li><p><strong>D</strong> or <strong>dump</strong> : – <em>dump&#61;true</em> <strong>|</strong> <em>dump&#61;&quot;template&quot;</em><br />  For multiple segment data, dump each segment to a separate output file &#91;Default writes a   single multiple segment file&#93;. Append a format template for the individual file names;   this template <strong>must</strong> contain a C format specifier that can format an integer argument   &#40;the segment number&#41;; this is usually &#37;d but could be &#37;08d for leading zeros, etc. Optionally,   it may also contain the format &#37;c <em>before</em> the integer; this will then be replaced by   C &#40;closed&#41; or O &#40;open&#41; to indicate segment type. &#91;Default is gmtconnect<em>segment</em>&#37;d.txt&#93;.   Note that segment headers will be written in either case. For composite segments, a generic   segment header will be written and the segment headers of individual pieces will be written   out as comments to make it possible to identify where the connected pieces came from.</p>
 </li>
-<li><p><strong>L</strong> or <strong>linkfile</strong> : – <em>linkfile&#61;true</em> <strong>|</strong> <em>linkfile&#61;&quot;file&quot;</em><br />  Writes link information to the specified file &#91;gmtconnect_link.txt&#93;. For each segment we   write the original segment id, and for the beginning and end point of the segment we report the   id of the nearest segment, whether it is the beginning &#40;B&#41; or end &#40;E&#41; point that is closest,   and the distance between those points in units determined by <strong>tolerance</strong>.</p>
+<li><p><strong>L</strong> or <strong>links</strong> or <strong>linkfile</strong> : – <em>links&#61;true</em> <strong>|</strong> <em>linkfile&#61;&quot;file&quot;</em><br />  Writes link information to the specified file <a href="or return its contents">gmtconnect_link.txt</a>. For each segment we   write the original segment id, and for the beginning and end point of the segment we report the   id of the nearest segment, whether it is the beginning &#40;B&#41; or end &#40;E&#41; point that is closest,   and the distance between those points in units determined by <strong>tolerance</strong>.</p>
 </li>
-<li><p><strong>Q</strong> or <strong>list_file</strong> : – <em>list_file&#61;true</em> <strong>|</strong> <em>list_file&#61;&quot;template&quot;</em><br />  Used with <strong>dump</strong> to write a list file with the names of the individual output files.   Optionally, append a filename template for the individual file names; this template   <strong>may</strong> contain a C format specifier that can format an character &#40;C or O for closed   or open, respectively&#41;. &#91;Default is gmtconnect_list.txt&#93;.</p>
+<li><p><strong>Q</strong> or <strong>list</strong> or <strong>listfile</strong> : – <em>list&#61;true</em> <strong>|</strong> <em>listfile&#61;&quot;template&quot;</em><br />  Used with <strong>dump</strong> to write a list file with the names of the individual output files.   Optionally, append a filename template for the individual file names; this template   <strong>may</strong> contain a C format specifier that can format an character &#40;C or O for closed   or open, respectively&#41;. &#91;Default is gmtconnect_list.txt&#93;.</p>
 </li>
 <li><p><strong>T</strong> or <strong>tolerance</strong> : – <em>tolerance&#61;true</em> <strong>|</strong> <em>tolerance&#61;cutoff</em> <strong>|</strong> <em>tolerance&#61;&quot;cutoff&#43;sdist&quot;</em><br />  Specifies the separation tolerance in the data coordinate units &#91;0&#93;; for geographic data   append distance unit &#40;see <a href="/GMTjl_doc/documentation/common_features/units/index.html#units">Units</a>&#41;. If two lines have end-points that are closer   than <em>cutoff</em> they will be joined. Optionally, append <strong>&#43;s</strong> <em>dist</em> which adds the extra   requirement that a link will only be made if the <em>second</em> closest connection exceeds the   <em>dist</em> distance. The latter distance must be given in the same units as <em>cutoff</em>. However,   if <strong>tolerance</strong> is used with no arguments then we close every line segment or polygon   <em>regardless</em> of the gap distance between the first and last point in the segment.</p>
 </li>
@@ -485,8 +486,8 @@
 <p><a href="/GMTjl_doc/documentation/modules/gmtsimplify/index.html#gmtsimplify">gmtsimplify</a>, <a href="#">gmtspatial</a>, <a href="#">mapproject</a></p>
 <div class="page-foot">
   <div class="copyright">
-    &copy; GMT.jl. Last modified: October 13, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
-      <p>These docs were autogenerated using GMT: v1.6.0</p>
+    &copy; GMT.jl. Last modified: November 22, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+      <p>These docs were autogenerated using GMT: v1.7.0</p>
   </div>
 </div>
 </div><!-- CONTENT ENDS HERE -->
