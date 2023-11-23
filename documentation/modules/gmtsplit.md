@@ -56,7 +56,7 @@ Optional Arguments
     separately. This may introduce edge effects at the ends of each segment, but prevents a
     low-pass x,y filter from rounding off the corners of track segments. [Default = no filtering].
 
-**N** or **multi** : -- *multi=true* **|** *multi="template"*\
+**N** or **multifile** or **multi** : -- *multifile=true* **|** *multifile="template"*\
     Write each segment to a separate output file. Default returns data in a GMTdataset. Optionally
     append a format template for the individual file names; this template **must** contain a C format
     specifier that can format an integer argument (the running segment number across all tables);
@@ -64,9 +64,9 @@ Optional Arguments
     depending on **binary_out**]. Alternatively, give a template with two C format specifiers and we
     will supply the table number and the segment number within the table to build the file name.
 
-- **Q** or **xyzdh** : -- *xyzdh=:flags*\
+- **Q** or **fields** : -- *fields=:flags*\
     Specify your desired output using any combination of *xyzdh*, in any order. Do not space between
-    the letters. Use lower case. Default is **xyzdh=xyzdh** (**xyzdh=xydh** if only 2 input columns)].
+    the letters. Use lower case. Default is **fields=xyzdh** (**fields=xydh** if only 2 input columns).
 
 - **S** or **dist_head** : -- *dist_head=true*\
     Both d and h are supplied. In this case, input contains x,y,z,d,h. [Default expects (x,y,z) input,
