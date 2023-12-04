@@ -38,8 +38,6 @@ Required Arguments
 
 \textinput{common_opts/opt_I}
 
-\textinput{common_opts/opt_J}
-
 Optional Arguments
 ------------------
 

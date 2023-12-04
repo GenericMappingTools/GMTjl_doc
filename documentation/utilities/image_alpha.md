@@ -18,16 +18,12 @@ Examples
 Change to the third color in cmap to represent the new transparent color
 
 ```julia
-using GMT
-
 image_alpha!(img, alpha_ind=3)
 ```
     
 Change to the first 6 colors in cmap by assigning them random values
 
 ```julia
-using GMT
-
 image_alpha!(img, alpha_vec=round.(Int32,rand(6).*255))
 ```
 

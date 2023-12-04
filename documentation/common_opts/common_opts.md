@@ -35,7 +35,7 @@ or a pattern.
 
 Use *noframe=true* to have no frame and annotations at all [Default is controlled by the codes].
 
-Optionally append *pole="plon/plat"* (or *pole=(plon,plat)* to draw oblique gridlines about
+Optionally append *pole="plon/plat"* (or *pole=(plon,plat)*) to draw oblique gridlines about
 specified pole [regular gridlines]. Ignored if gridlines are not requested (below) and disallowed for the oblique
 Mercator projection.
 

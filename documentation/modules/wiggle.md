@@ -83,8 +83,6 @@ Optional Arguments
 
 \textinput{common_opts/opt_V}
 
-\textinput{common_opts/opt_pen}
-
 \textinput{common_opts/opt_X}
 
 \textinput{common_opts/opt_Y}

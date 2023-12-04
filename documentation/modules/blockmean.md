@@ -122,6 +122,5 @@ The same as above but this time returns the two grids to the Julia REPL
 See Also
 --------
 
-The [`GMT man page`](http://docs.generic-mapping-tools.org/latest/blockmean.html)
 \myreflink{blockmedian}
 \myreflink{blockmode}

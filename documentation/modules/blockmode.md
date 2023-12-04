@@ -133,6 +133,5 @@ field_z.nc and field_s.nc, run:
 See Also
 --------
 
-The [`GMT man page`](http://docs.generic-mapping-tools.org/latest/blockmean.html)
 \myreflink{blockmean}
 \myreflink{blockmedian}

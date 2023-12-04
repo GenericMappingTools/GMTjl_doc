@@ -93,7 +93,7 @@ being partly visible or missing altogether, try:
 ```julia
 using GMT
 clip([0 0; 5 1; 5 5], region=(0,6,0,6), figscale=2.5, pen=(1,:blue))
-plot("@tut_data.txt", fill=:red, marker=:circ, ms=2)
+plot!("@tut_data.txt", fill=:red, marker=:circ, ms=2, region=:same)
 clip!(endclip=true, frame=:same, show=true)
 ```
 \end{examplefig}

@@ -90,8 +90,6 @@ Optional Arguments
 .. |Add_-g| replace:: Do not let a segment have a gap exceeding *gap*; instead, split it into two segments. [Default ignores gaps].
 \textinput{common_opts/opt_h}
 
-\textinput{common_opts/opt_h}
-
 \textinput{common_opts/opt__i}
 
 \textinput{common_opts/opt_q}

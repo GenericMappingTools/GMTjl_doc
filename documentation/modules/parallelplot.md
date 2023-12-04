@@ -97,7 +97,7 @@ identified in species, and label the horizontal axis using the variable names.
 \begin{examplefig}{}
 ```julia
 using GMT
-parallelplot(getpath4docs("iris.dat"), groupvar="text", normalize="none", legend=true, show=true)
+parallelplot(GMT.TESTSDIR * "iris.dat", groupvar="text", normalize="none", legend=true, show=true)
 ```
 \end{examplefig}
 
@@ -107,7 +107,7 @@ Label the horizontal axis using the variable names.
 \begin{examplefig}{}
 ```julia
 using GMT
-parallelplot(getpath4docs("iris.dat"), groupvar="text", quantile=0.25, legend=true, show=true)
+parallelplot(GMT.TESTSDIR * "iris.dat", groupvar="text", quantile=0.25, legend=true, show=true)
 ```
 \end{examplefig}
 
@@ -116,6 +116,6 @@ Plot bands enveloping the +- 25% percentil arround the median.
 \begin{examplefig}{}
 ```julia
 using GMT
-parallelplot(getpath4docs("iris.dat"), groupvar="text", band=true, legend=true, show=true)
+parallelplot(GMT.TESTSDIR * "iris.dat", groupvar="text", band=true, legend=true, show=true)
 ```
 \end{examplefig}

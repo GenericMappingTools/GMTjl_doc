@@ -24,7 +24,7 @@ As an option, use the form
 
 ```julia
 using GMT
-wmsinfo(wms::WMS; layer)
+wmsinfo(wms; layer=1)
 ```
 
 to get further information, in particular the number of bands and sizes, of the layer number or layer name

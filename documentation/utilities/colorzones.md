@@ -55,8 +55,6 @@ Read the 2020 Sentinel2 Earth color for Portugal at 100 m resolution. Load the a
 regions and compute their median colors.
 
 ```julia
-using GMT
-
 wms = wmsinfo("http://tiles.maps.eox.at/wms?");
 img = wmsread(wms, layer=3, region=(-9.6,-6,36.9,42.2), pixelsize=100);
 Pt = gmtread("C:/programs/compa_libs/covid19pt/extra/mapas/concelhos/concelhos.shp");

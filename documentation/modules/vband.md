@@ -91,7 +91,7 @@ We can fill with patterns as well. And use an image as one of the patterns.
 \begin{examplefig}{}
 ```julia
 using GMT
-vband([1 2; 2.5 4], fill=((pattern=getpath4docs("tiling2.jpg"), dpi=200), (pattern=27, dpi=200)),
+vband([1 2; 2.5 4], fill=((pattern=GMT.TESTSDIR * "tiling2.jpg", dpi=200), (pattern=27, dpi=200)),
       region=(0,5,-1,5), show=true)
 ```
 \end{examplefig}

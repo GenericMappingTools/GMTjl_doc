@@ -5,6 +5,8 @@ We will make a perspective, color-coded view of the US Rockies from the southeas
 \begin{examplefig}{}
 ```julia
 using GMT
+GMT.resetGMT() # hide
+
 topo = makecpt(color=:rainbow, range=(1000,5000,500), continuous=true);
 grdview("@tut_relief.nc", proj=:Mercator, zsize=1, shade=(azim=100, norm="e0.8"), view=(135,30),
         frame=:a, Q="i100", show=true)

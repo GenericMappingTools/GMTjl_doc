@@ -1,7 +1,7 @@
 # imagesc
 
 ```julia
-I = imagesc(mat; x=, y=, hdr=, proj4=, wkt=, GI=, clim=, cmap=, kw...) --> \myreflink{grdimage}
+I = imagesc(mat; x=, y=, hdr=, proj4=, wkt=, GI=, clim=, cmap=, kw...) --> GMTimage
 ```
 
 *keywords: GMT, Julia, grid, image*

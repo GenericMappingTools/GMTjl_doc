@@ -113,7 +113,7 @@ Required Arguments
 - *table*\
     One or more data tables holding a number of data columns.
 
-- **C** or **origin** or **center** : -- *origin=(cx, cy)*\
+- **C** or **origin** or **start_point** : -- *origin=(cx, cy)*\
     Set the origin *cx,cy* of the projection when used with **azim** or **endpoint** or set the coordinates *cx,cy* of a point
     through which the oblique zero meridian ($p = 0$) should pass when used with **pole**. *cx,cy* is not required
     to be 90 degrees from the pole set by **pole**.
@@ -253,7 +253,7 @@ To generate points every 10 km along a small circle of colatitude 60 from 10N,50
 \begin{examplefig}{}
 ```julia
 using GMT
-Dsc = project(center=(-50,10), endpoint=(-10,30), step=(10,60), km=true)
+Dsc = project(origin=(-50,10), endpoint=(-10,30), step=(10,60), km=true)
 imshow(Dsc, marker=:point, lw=0.5, coast=true)
 ```
 \end{examplefig}

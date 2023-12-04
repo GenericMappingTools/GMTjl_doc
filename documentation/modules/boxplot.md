@@ -9,7 +9,7 @@ boxplot(data, grp=[]; pos=nothing, kwargs...)
 Draw a box-and-whisker style plot. The input data can take several different forms.
 
 ---
-boxplot(data::AbstractVector{<:Real}; kwargs...)
+``boxplot(data::AbstractVector{<:Real}; kwargs...)``
 
 Draws a single boxplot. Options in *kwargs* provide fine settings for the boxplot
 
@@ -31,24 +31,24 @@ Draws a single boxplot. Options in *kwargs* provide fine settings for the boxplo
            where first element is an AbstractArray and second an array or tuple of strings or symbols.
 
 ---
-boxplot(data::AbstractVector{<:Real}, grp::AbstractVector, ...) Use the categorical vector (made of integers
+``boxplot(data::AbstractVector{<:Real}, grp::AbstractVector, ...)`` Use the categorical vector (made of integers
 or text strings) `grp` break down a the `data` column vector in cathegories (groups).
 
 ---
-boxplot(data::AbstractMatrix{<:Real}; pos=Vector{<:Real}, ...) where `pos` is a coordinate vector (or a single
+``boxplot(data::AbstractMatrix{<:Real}; pos=Vector{<:Real}, ...)`` where `pos` is a coordinate vector (or a single
 location when `data` is a vector) where to plot the boxes. Default plots them at 1:n_boxes or 1:n_groups.
 
 ---
-boxplot(data::GMTdatset{<:Real}; pos=Vector{Real}(), ...) Like the above case but the input data is stored
+``boxplot(data::GMTdatset{<:Real}; pos=Vector{Real}(), ...)`` Like the above case but the input data is stored
 in a \myreflink{GMTdataset}
 
 ---
-boxplot(data::Vector{Vector{<:Real}}; pos=Vector{Real}(), ...) Similar to the Matrix case but here each data
+``boxplot(data::Vector{Vector{<:Real}}; pos=Vector{Real}(), ...)`` Similar to the Matrix case but here each data
 vector used to compute the statistics can have a different number of points. There will be as many boxplots as
 `length(data)`
 
 ---
-boxplot(data::Array{T<:Real,3}; pos=Vector{Real}(), groupwidth=0.75, ccolor=false, ...) Draws *G* groups of
+``boxplot(data::Array{T<:Real,3}; pos=Vector{Real}(), groupwidth=0.75, ccolor=false, ...)`` Draws *G* groups of
 boxplots of *N* columns boxes.
 - `groupWidth`: Specify the proportion of the x-axis interval across which each x-group of boxes should
        be spread. The default is 0.75.
@@ -64,7 +64,7 @@ boxplots of *N* columns boxes.
        where first element is an AbstractArray and second an array or tuple of strings or symbols.
 
 ---
-boxplot(data::Vector{Vector{Vector{<:Real}}}, ...) Like the above but here the groups (`length(data)`)
+``boxplot(data::Vector{Vector{Vector{<:Real}}}, ...)`` Like the above but here the groups (`length(data)`)
 can have a variable number of elements and each have its own size.
 
 -----------
