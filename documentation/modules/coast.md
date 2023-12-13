@@ -85,6 +85,10 @@ painted and no land fill is set then the land-areas will be transparent. A map p
 - **M** or **dump** : -- *dump=true*\
    Dumps a single multisegment ASCII (or binary, see **-bo**) file to standard output. No plotting occurs. Specify one of **DCW**, **rivers**, **borders** or **shore**. Note: if **dump** is used with **DCW** then **region** or the **+r** modifier to **DCW** are not required as we automatically determine the region given the selected geographic entities.
 
+- **minpts** : -- *minpts=??*\
+   Minimum number of points in a DCW polygon. If the number of points in a polygon is less than this value, it will be dropped.
+   This option is only available when used together with **E** or **DCW**. Useful when the country polygons are used in \myreflink{zonal_stats} and you want to get rid of the small polygons that only consume time.
+
 - **N** or **borders** : -- *borders=type* **|** *borders=(type, pen)* **|** *borders=(type=type, pen=pen)*\
    Draw political boundaries. Specify the *type* of boundary and optionally append pen attributes [Default pen: width = default, color = black, style = solid].\
    Choose *type* from the list of boundaries below. To repeat this option, use a tuple of tuples but only the NamedTuple version is allowed (the simpler **borders=(type, pen)** doesn't allow repetitions).
