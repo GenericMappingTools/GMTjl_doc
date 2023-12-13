@@ -28,10 +28,10 @@ Required Arguments
 Optional Arguments
 ------------------
 
-- **C** or **rcnumbers** : -- *rcnumbers=true* **|** *rcnumbers=:f|:i*\
+- **C** or **rowcol** or **row_col** : -- *rowcol=true* **|** *rowcol=:f|:i*\
     Replace the x- and y-coordinates on output with the corresponding column and row numbers.
-    These start at 0 (C-style counting); use **rcnumbers=:f** to start at 1 (Fortran-style counting).
-    Alternatively, use **rcnumbers=:i** to write just the two columns *index* and *z*, where
+    These start at 0 (C-style counting); use **rowcol=:f** to start at 1 (Fortran-style counting).
+    Alternatively, use **rowcol=:i** to write just the two columns *index* and *z*, where
     *index* is the 1-D indexing that GMT uses when referring to grid nodes.
 
 - **L** or **hvline** : -- *hvline=:c|:r|:x|:yvalue*\
@@ -62,7 +62,7 @@ Optional Arguments
     (see \myreflink{Units}). For such grids, the area varies with latitude and also sees special cases
     for gridline-registered layouts at sides, corners, and poles.
 
-- **Z** or **onecol** : -- *onecol="flags"*\
+- **Z** or **onecol** or **one_col** : -- *onecol="flags"*\
     Write (or return) a 1-column table. Output will be organized according to the specified ordering
     convention contained in *flags*. If data should be written by rows, make *flags* start with
     **T** (op) if first row is y = ymax or **B** (ottom) if first row is y = ymin. Then, append **L**

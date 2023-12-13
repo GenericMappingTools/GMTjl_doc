@@ -51,7 +51,7 @@ its use requires resorting to the \myreflink{Monolithic} mode.
 | \myreflink{info} | \myreflink{isnodata} | \myreflink{lelandshade} | \myreflink{linearfitxy} | \myreflink{magic} | \myreflink{mat2ds} | \myreflink{mat2grid} | \myreflink{mat2img} | \myreflink{mosaic} | \myreflink{ODE2ds} |
 | \myreflink{orbits} | \myreflink{pca} | \myreflink{plotgrid!} | \myreflink{plotyy} \myreflink{pol2cart} | \myreflink{polygonlevels} | \myreflink{rasterzones!} | \myreflink{regiongeog} | \myreflink{rescale} | \myreflink{slicecube} | \myreflink{sph2cart} |
 | \myreflink{stackgrids} | \myreflink{ter2cart} | \myreflink{theme} | \myreflink{uniqueind} | \myreflink{vecangles} | \myreflink{wmsinfo} | \myreflink{wmsread} | \myreflink{wmstest} | \myreflink{worldrectgrid} | \myreflink{worldrectcoast} |
-| \myreflink{worldrectangular} | \myreflink{xyzw2cube} | \myreflink{yeardecimal} |  |  |  |  |  |  |  |
+| \myreflink{worldrectangular} | \myreflink{xyzw2cube} | \myreflink{yeardecimal} | \myreflink{zonal_stats} |  |  |  |  |  |  |
 
 
 ## GDAL utility functions

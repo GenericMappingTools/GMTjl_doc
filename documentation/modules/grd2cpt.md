@@ -107,7 +107,7 @@ Optional Arguments
 
 \textinput{common_opts/opt_R}
 
-- **S** or **symetric** : -- *symetric=:h|l|m|u*\
+- **S** or **symmetric** : -- *symmetric=:h|l|m|u*\
     Force the color table to be symmetric about zero (from -*R* to +*R*).
     Append flag to set the range *R*: **l** for *R* =|zmin|, **u** for *R* =
     |zmax|, **m** for *R* = min(|zmin|, |zmax|), or **h** for *R* = max(|zmin|, |zmax|).
@@ -120,10 +120,10 @@ Optional Arguments
 - **V**
     Verbose operation. This will write CDF(Z) estimates to stderr. [Default is silent.]
 
-- **W** or **wrap** or **categorical** : -- *wrap=true* **|** *wrap=:w*\
+- **W** or **categorical** : -- *categorical=true* **|** *categorical=:w*\
     Do not interpolate the input color table but pick the output colors starting at the beginning of the color table,
     until colors for all intervals are assigned. This is particularly useful in combination with a categorical color
-    table, like "categorical". Alternatively, use **wrap=:w** to produce a wrapped (cyclic) color table that endlessly
+    table, like "categorical". Alternatively, use **categorical=:w** to produce a wrapped (cyclic) color table that endlessly
     repeats its range.
 
 - **Z** or **continuous** : -- *continuous=true*\

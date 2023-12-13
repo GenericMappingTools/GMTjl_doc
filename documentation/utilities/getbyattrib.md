@@ -17,7 +17,7 @@ findall(D::Vector{<:GMTdataset}; kw...)
 Take a \myreflink{GMTdataset} vector and return only its elements that match the condition(s) set by the `kw` keywords.
 Note, this assumes that `D` has its `attrib` fields set with usable information.
 
-NOTE: Instead of ``getbyattrib`` one case use instead ``filter`` (==> `index=false`) or ``findall`` (==> `index=true`)
+NOTE: Instead of ``getbyattrib`` one can use instead ``filter`` (..., `index=false`) or ``findall`` (..., `index=true`)
 
 - `attrib name(s)=value(s)`: Easier to explain by examples: `NAME="Antioquia"`, select all elements that have
   that attribute/value combination. `NAME=("Antioquia", "Caldas")`, picks elements that have those `NAME` attributes.

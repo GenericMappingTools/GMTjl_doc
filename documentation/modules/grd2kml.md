@@ -74,7 +74,7 @@ Optional Arguments
     Typical values are 256 or 512 [256]. **Note**: For global grids (here meaning 360-degree
     longitude range), we will select a *tilesize* of 360 if **tilesize** is not specified.
 
-- **S** or **extralayers** : -- *extralayers=true* **|** *extralayers=extra*\
+- **S** or **extralayers** or **extra_layers** : -- *extralayers=true* **|** *extralayers=extra*\
     Add extra layers beyond that necessary to capture the full resolution of the data [none].
     This will let GMT interpolate your grid and make more tiles, versus letting Google Earth
     interpolate the last resolution raster images.

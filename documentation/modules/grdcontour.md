@@ -90,7 +90,7 @@ Optional Arguments
   the pen setting. This option may be repeated, for example to separate contour and annotated contours settings.
   For that the syntax changes to use a Tuple of NamedTuples, *e.g.*  ``pen=((annot=true, contour=true, pen=pen), (annot=true, contour=true, pen=pen))``. If the modifier ``pen=(cline=true,)`` is used then the color of the contour lines are taken from the CPT (see **cont**). If instead ``pen=(ctext=true,)`` is appended then the color from the cpt file is applied to the contour annotations. Select ``pen=(colored=true,)`` for both effects.
 
-- **Z** or **scale** : -- *scale=factor* **|** *scale=(factor=factor, shift=shift, periodic=true)*\
+- **Z** or **muladd** or **scale** : -- *scale=factor* **|** *muladd=(factor=factor, shift=shift, periodic=true)*\
   Use to subtract *shift* from the data and multiply the results by *factor* before contouring starts.
   (Numbers in **annot**, **cont**, **range** refer to values after this scaling has occurred.) Use ``periodic=true``
   to indicate that this grid file contains z-values that are periodic in 360 degrees (e.g., phase data, angular distributions) and that special precautions must be taken when determining 0-contours.
