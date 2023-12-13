@@ -34,7 +34,7 @@
 </style>
 <![endif]-->
 
-   <title>grdclip</title>  
+   <title>zonal_stats</title>  
   <!-- end custom head snippets -->
 </head>
 <body class="layout--single">
@@ -219,7 +219,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/general/quick_learn">Quick learn</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/general/types">The GMT.jl types &#40;important&#41;</a></div></li>
 </ul></li>
-<li><input class="collapse-toggle" id="menuitem-6-5" type="checkbox" checked><div class="tocitem-container"><label class="tocexpander" for="menuitem-6-5"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/documentation/modules">GMT Modules</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/band">band</a></div></li>
+<li><input class="collapse-toggle" id="menuitem-6-5" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-6-5"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/documentation/modules">GMT Modules</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/band">band</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/bar">bar</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/bar3">bar3</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/basemap">basemap</a></div></li>
@@ -252,10 +252,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grd2cpt">grd2cpt</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grd2kml">grd2kml</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grd2xyz">grd2xyz</a></div></li>
-<li><div class="tocitem-container"><a class = active href="/GMTjl_doc/documentation/modules/grdclip">grdclip</a></div><ul class="page-content">
-<li><a href="#grdclip/">grdclip</a></li>
-</ul>
-</li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdclip">grdclip</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdcontour">grdcontour</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdcut">grdcut</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdedit">grdedit</a></div></li>
@@ -317,7 +314,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/gdalfuns">GDAL related functions</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/supplements">Supplements modules</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilfuns">Utility functions</a></div></li>
-<li><input class="collapse-toggle" id="menuitem-6-9" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-6-9"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/documentation/utilities">Utilities</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/ODE2ds">ODE2ds</a></div></li>
+<li><input class="collapse-toggle" id="menuitem-6-9" type="checkbox" checked><div class="tocitem-container"><label class="tocexpander" for="menuitem-6-9"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/documentation/utilities">Utilities</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/ODE2ds">ODE2ds</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/ablines">ablines</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/append2fig">append2fig</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/blendimg">blendimg&#33;</a></div></li>
@@ -384,7 +381,15 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/worldrectcoast">worldrectcoast</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/worldrectgrid">worldrectgrid</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/xyzw2cube">xyzw2cube</a></div></li>
-<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/zonal_stats">zonal_stats</a></div></li>
+<li><div class="tocitem-container"><a class = active href="/GMTjl_doc/documentation/utilities/zonal_stats">zonal_stats</a></div><ul class="page-content">
+<li><a href="#zonal_stats/">zonal_stats</a></li>
+<li><ul>
+<li><a href="#arguments/">Arguments</a></li>
+<li><a href="#parameters/">Parameters</a></li>
+<li><a href="#examples/">Examples</a></li>
+</ul>
+</ul>
+</li>
 </ul></li>
 </ul></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/Interoperability">Interoperability with &#40;some&#41; other packages</a></div></li>
@@ -395,59 +400,56 @@
 
 
 <!-- Content appended here -->
-<div class="franklin-content"><h1 id="grdclip"><a href="#grdclip" class="header-anchor">grdclip</a></h1>
-<pre><code class="language-julia">grdclip&#40;cmd0::String&#61;&quot;&quot;, arg1&#61;nothing; kwargs...&#41;</code></pre>
-<p><em>keywords: GMT, Julia, grid clip</em></p>
-<p>Clip the range of grid values</p>
-<h2>Description</h2>
-<p>Sets values &lt; <em>low</em> to <em>below</em> and/or values &gt; <em>high</em> to <em>above</em>. You can also specify one or more intervals where all values should be set to <em>between</em>, or replace individual values. Such operations are useful when you want all of a continent or an ocean to fall into one color or gray shade in image processing, when clipping of the range of data values is required, or for reclassification of data values. <em>above</em>, <em>below</em>, <em>between</em>, <em>old</em> and <em>new</em> can be any number or even NaN &#40;Not a Number&#41;. You must choose at least one of the <strong>S?</strong> options. Use <strong>region</strong> to only extract a subset of the <em>ingrid</em> file.</p>
-<h2>Optional Arguments</h2>
+<div class="franklin-content"><h1 id="zonal_stats"><a href="#zonal_stats" class="header-anchor">zonal_stats</a></h1>
+<pre><code class="language-julia">zonal_statistics&#40;GI::GItype, shapes::GDtype, fun::Function; touches&#61;false, byfeatures&#61;false, groupby&#61;&quot;&quot;&#41;</code></pre>
+<p>or</p>
+<pre><code class="language-julia">zonal_statistics&#40;fun::Function, GI::GItype, shapes::GDtype; touches&#61;false, byfeatures&#61;false, groupby&#61;&quot;&quot;&#41;</code></pre>
+<p>or <code>zonal_stats&#40;...&#41;</code></p>
+<p>Compute the statistics of <code>fun</code> applied to the elements of the grid or image <code>GI</code> that lie inside the polygons of the GMTdataset <code>shapes</code>. </p>
+<h3 id="arguments"><a href="#arguments" class="header-anchor">Arguments</a></h3>
 <ul>
-<li><p><strong>G</strong> or <strong>save</strong> or <strong>outgrid</strong> or <strong>outfile</strong> : – <em>outgrid&#61;&#91;&#61;ID&#93;&#91;&#43;ddivisor&#93;&#91;&#43;ninvalid&#93;&#91;&#43;ooffset|a&#93;&#91;&#43;sscale|a&#93;&#91;:driver&#91;dataType&#93;&#91;&#43;coptions&#93;&#93;</em><br /> Give the name of the output grid file. Optionally, append <code>&#61;ID</code> for writing a specific file format  &#40;See <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#grd-inout-full">full description</a>&#41;.  The following modifiers are supported:</p>
-<ul>
-<li><p>&#43;d - Divide data values by given divisor &#91;Default is 1&#93;.</p>
+<li><p><code>GI</code>: A grid &#40;GMTgrid&#41; or image &#40;GMTimage&#41; type uppon which the statistics will be computed by applying the <code>fun</code> function to the elements that fall inside the polygons of <code>shapes</code>.</p>
 </li>
-<li><p>&#43;n - Replace data values matching invalid with a NaN.</p>
+<li><p><code>shapes</code>: A vector of GMTdataset containing the polygons inside which the elements if <code>GI</code> will be assigned a single value obtained by applying the function <code>fun</code>.</p>
 </li>
-<li><p>&#43;o - Offset data values by the given offset, or append a for automatic range offset to preserve precision for integer grids &#91;Default is 0&#93;.</p>
-</li>
-<li><p>&#43;s - Scale data values by the given scale, or append a for automatic scaling to preserve precision for integer grids &#91;Default is 1&#93;.</p>
+<li><p><code>fun</code>: A unidemensional function name used to compute the contant value for the <code>GI</code> elements that fall inside each of the polygons of <code>shapes</code>.</p>
 </li>
 </ul>
-<p><strong>Note1:</strong> Any offset is added before any scaling. &#43;sa also sets &#43;oa &#40;unless overridden&#41;. To write specific  formats via GDAL, use &#61;gd and supply driver &#40;and optionally dataType&#41; and/or one or more concatenated  GDAL -co options using &#43;c. See the <a href="https://docs.generic-mapping-tools.org/dev/cookbook/features.html#write-grids-images">“Writing grids and images”</a> cookbook section for more details.</p>
-<p><strong>Note2:</strong> This is optional and to be used only when saving the result directly on disk. Otherwise,  just use the <code>G &#61; modulename&#40;...&#41;</code> form.</p>
+<h3 id="parameters"><a href="#parameters" class="header-anchor">Parameters</a></h3>
+<ul>
+<li><p><code>touches</code>: include all cells/pixels that are touched by the polygons. The default is to include only the cells whose centers that are inside the polygons.</p>
+</li>
+<li><p><code>byfeatures</code>: Datasets read from OGR vector filres &#40;shapes, geopackages, arrow, etc&#41; are organized in features that may contain several geomeometries each. Each group of geometries in a Feature share the same <code>Feauture_ID</code> atribute. If <code>byfeatures</code> is true, the function <code>fun</code> will be applied to each feature independently. This option is actually similar to the <code>groupby</code> parameter but doesn&#39;t require an attribute name. If neither of <code>byfeatures</code> or <code>groupby</code> are provided, the <code>fun</code> function is applied to each of the polygons independently.</p>
+</li>
+<li><p><code>groupby</code>: If provided, it must be an attribute name, for example, <code>groupby&#61;&quot;NAME&quot;</code>. If not provided, we use the <code>Feature_ID</code> attribute that is a unique identifier assigned during an OGR file reading &#40;by the GMT6.5 C lib&#41;. If neither of <code>byfeatures</code> or <code>groupby</code> are provided, the <code>fun</code> function is applied to each of the polygons independently.</p>
 </li>
 </ul>
+<h3 id="examples"><a href="#examples" class="header-anchor">Examples</a></h3>
+<p>What is the mean altitude of Swisserland?</p>
+<pre><code class="language-julia">using GMT
 
-<ul>
-<li><p><strong>R</strong> or <strong>region</strong> or <strong>limits</strong> : – <em>limits&#61;&#40;xmin, xmax, ymin, ymax&#41;</em> <strong>|</strong> <em>limits&#61;&#40;BB&#61;&#40;xmin, xmax, ymin, ymax&#41;,&#41;</em>  <strong>|</strong> <em>limits&#61;&#40;LLUR&#61;&#40;xmin, xmax, ymin, ymax&#41;,units&#61;&quot;unit&quot;&#41;</em> <strong>|</strong> ...more<br /> Specify the region of interest. More at <a href="/GMTjl_doc/documentation/common_opts/common_opts/index.html#limits">limits</a>. For perspective view <strong>view</strong>, optionally add  <em>zmin,zmax</em>. This option may be used to indicate the range used for the 3-D axes. You may ask for a  larger w/e/s/n region to have more room between the image and the axes.</p>
-</li>
-</ul>
+G &#61; gmtread&#40;&quot;@earth_relief_06m&quot;&#41;;
+Swiss &#61; coast&#40;DCW&#61;:CH, dump&#61;true, minpts&#61;50&#41;;
+zonal_statistics&#40;G, Swiss, mean&#41;
 
-<ul>
-<li><p><strong>Sa</strong> or <strong>above</strong> or <strong>high</strong> : – above&#61;&quot;high/above&quot;, <strong>|</strong> <em>above&#61;&#40;high,above&#41;</em><br />  Set all data&#91;i&#93; &gt; <em>high</em> to <em>above</em>.</p>
-</li>
-<li><p><strong>Sb</strong> or <strong>below</strong> or <strong>low</strong> : – below&#61;&quot;low/below&quot;, <strong>|</strong> <em>below&#61;&#40;low,below&#41;</em><br />  Set all data&#91;i&#93; &lt; <em>low</em> to <em>below</em>.</p>
-</li>
-<li><p><strong>Si</strong> or <strong>between</strong> : – <em>between&#61;&quot;low/high/between&quot;</em> <strong>|</strong> <em>between&#61;&#40;low,high,between&#41;</em><br />  Set all data&#91;i&#93; &gt;&#61; <em>low</em> and &lt;&#61; <em>high</em> to <em>between</em>.   Repeat the option for as many intervals as are needed.</p>
-</li>
-<li><p><strong>Sr</strong> or <strong>old</strong> or <strong>new</strong> : – <em>old&#61;&quot;old/new&quot;</em> <strong>|</strong> <em>old&#61;&#40;old,new&#41;</em><br />  Set all data&#91;i&#93; &#61;&#61; <em>old</em> to <em>new</em>. This is mostly useful when your data are known to be integer values.   Repeat the option for as many replacements as are needed.</p>
-</li>
-<li><p><strong>S</strong> : – <em>S&#61;&quot;...&quot;<br />  Any of the above must use the short form <strong>S?</strong>. The current use of this is when one wants   to repeat an <strong>S?</strong> option, which we cannot do because we can&#39;t repeat the *kwargs</em> key names.   Example usage: <code>G2 &#61; grdclip&#40;G, S&#61;&quot;a5/6 -Sb2/2 -Si3/4/3.5&quot;&#41;</code></p>
-</li>
-</ul>
-<ul>
-<li><p><strong>V</strong> or <em>verbose</em> : – <em>verbose&#61;true</em> <strong>|</strong> <em>verbose&#61;level</em><br /> Select verbosity level. More at <a href="/GMTjl_doc/documentation/common_opts/common_opts/index.html#verbose">verbose</a></p>
-</li>
-</ul>
+1×1 GMTdataset&#123;Float64, 2&#125;
+ Row │       X
+─────┼─────────
+   1 │ 1313.21</code></pre>
+<p>In the example above we used the <code>minpts</code> option in order to drop the two small polygons tha are also in the DCW database but that is not always feasable as for example when we select more that one country. For those cases we want to use the <code>groupby</code> option that creates groups of polygons sharing the same attribute &#40;&quot;NAME&quot;&#41;. Next example does that for France and Italy.</p>
+<pre><code class="language-julia">using GMT
 
-<h2>Examples</h2>
-<p>To set all values &gt; 0 to NaN and all values &lt; 0 to 0 in the remote file AFR.nc:</p>
-<pre><code class="language-julia">Gnew_AFR &#61; grdclip&#40;&quot;@AFR.nc&quot;, above&#61;&#40;0,NaN&#41;, below&#61;&#40;0,0&#41;&#41;</code></pre>
-<p>To reclassify all values in the 25-30 range to 99, those in 35-39 to 55, exchange 17 for 11 and all values &lt; 10 to 0 in file classes.nc, try</p>
-<pre><code class="language-julia">Gnew_classes &#61; grdclip&#40;&quot;classes.nc&quot;, S&#61;&quot;i25/30/99, -Si35/39/55&quot;, old&#61;&#40;17,11&#41;, between&#61;&#40;10,0&#41;&#41;</code></pre>
-<h2>See Also</h2>
-<p><a href="/GMTjl_doc/documentation/modules/grdfill/index.html#grdfill">grdfill</a>, <a href="/GMTjl_doc/documentation/modules/grdlandmask/index.html#grdlandmask">grdlandmask</a>, <a href="/GMTjl_doc/documentation/modules/grdmask/index.html#grdmask">grdmask</a>, <a href="/GMTjl_doc/documentation/modules/grdmath/index.html#grdmath">grdmath</a>, <a href="/GMTjl_doc/documentation/modules/grd2xyz/index.html#grd2xyz">grd2xyz</a>, <a href="/GMTjl_doc/documentation/modules/xyz2grd/index.html#xyz2grd">xyz2grd</a></p>
+G &#61; gmtread&#40;&quot;@earth_relief_06m&quot;&#41;;
+FrIt &#61; coast&#40;DCW&#61;&quot;FR,IT&quot;, dump&#61;true, minpts&#61;50&#41;;
+zonal_statistics&#40;G, FrIt, mean, groupby&#61;&quot;NAME&quot;&#41;
+
+3×1 GMTdataset&#123;Float64, 2&#125;
+ Row │   col.1      Text
+─────┼───────────────────
+   1 │ 341.849    France
+   2 │ 569.453     Italy
+   3 │ 103.25   Ph Italy</code></pre>
+<p>The <em>Ph Italy</em> means that Italy has an island inside it. The Vatican city.</p>
 <div class="page-foot">
   <div class="copyright">
     &copy; GMT.jl. Last modified: December 13, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
