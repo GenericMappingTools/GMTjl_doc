@@ -396,13 +396,17 @@
 
 <!-- Content appended here -->
 <div class="franklin-content"><h1 id="mask"><a href="#mask" class="header-anchor">mask</a></h1>
-<pre><code class="language-julia">mask&#40;cmd0::String&#61;&quot;&quot;, arg1&#61;&#91;&#93;; kwargs...&#41;</code></pre>
-<p>Clip or mask map areas with no data table coverage</p>
+<pre><code class="language-julia">mask&#40;cmd0::String&#61;&quot;&quot;, arg1&#61;&#91;&#93;; kwargs...&#41;
+
+or
+
+mask&#40;GI:GItype, shapes::GMTdataset, touches&#61;false, inverse::Bool&#61;false, maskvalues&#61;??&#41;</code></pre>
 <p>Clip or mask map areas with no data table coverage</p>
 <p><em>keywords: GMT, Julia, grid clip</em></p>
 <h2>Description</h2>
 <p>Reads &#40;<em>x</em>, <em>y</em>, <em>z</em>&#41; tables &#40;or a file&#41; and uses this information to find out which grid cells are reliable. Only grid cells which have one or more data points are considered reliable. As an option, you may specify a  radius of influence. Then, all grid cells that are within <em>radius</em> of a data point are considered reliable. Furthermore, an option is provided to reverse the sense of the test.  Having found the reliable/not reliable points, the module will either paint tiles to mask these nodes &#40;with the <strong>tiles</strong> switch&#41;, or use contouring to create polygons that will clip out regions of no interest. When clipping is initiated, it will stay in effect until turned off by a second call to the module using the <strong>endclip</strong> option.</p>
-<h2>Required Arguments</h2>
+<p>A second method expects a <a href="#">GMTgrid</a> or an <a href="#">GMTimage</a> as first argument and a <a href="#">GMTdataset</a> in second and will clip the grid/image to the selected region&#40;s&#41; defined in polygons of the second argument. Grids are clipped to the global BoundingBox of the polygons and images are copped to that limit and set to transparent in the regions outside of the polygons. This method uses GDAL to compute the clipping mask. Used together with the <code>DCW</code> option of <a href="/GMTjl_doc/documentation/modules/coast/index.html#coast">coast</a> this is very handy to clip rasters to country or <a href="/GMTjl_doc/documentation/modules/earthregions/index.html#earthregions">earthregions</a> boundaries. Note that this method is in a way similar to one of the <a href="/GMTjl_doc/documentation/modules/grdlandmask/index.html#grdlandmask">grdlandmask</a> methods. The difference is that here use a external polygon description that may be read from any <em>OGR</em> vector file whilst <a href="/GMTjl_doc/documentation/modules/grdlandmask/index.html#grdlandmask">grdlandmask</a> uses the GSHHG dataset.</p>
+<h2>Required Arguments &#40;1st method&#41;</h2>
 <ul>
 <li><p><em>table</em><br />  One or more data tables holding a number of data columns.</p>
 </li>
@@ -427,6 +431,13 @@
 </li>
 </ul>
 
+<h2>Required Arguments &#40;2nd method&#41;</h2>
+<ul>
+<li><p><code>GI</code>: A grid &#40;GMTgrid&#41; or image &#40;GMTimage&#41; to be clipped.</p>
+</li>
+<li><p><code>shapes</code>: A GMTdataset or a vector of them containing the polygons outside which the elements of <code>GI</code> will be clipped</p>
+</li>
+</ul>
 <h2>Optional Arguments</h2>
 <ul>
 <li><p><strong>B</strong> or <strong>axes</strong> or <strong>frame</strong><br /> Set map boundary frame and axes attributes. Default is to draw and annotate left, bottom and vertical  axes and just draw left and top axes. More at <a href="/GMTjl_doc/documentation/common_opts/common_opts/index.html#frame">frame</a></p>
@@ -446,13 +457,15 @@
 </li>
 <li><p><strong>L</strong> or <strong>nodegrid</strong> : – <em>nodegrid&#61;&quot;gridname&quot;</em> <strong>|</strong> <em>nodegrid&#61;&quot;gridname&#43;i&quot;</em> <strong>|</strong> <em>nodegrid&#61;&quot;gridname&#43;o&quot;<br />  Save the internal grid with ones &#40;data constraint&#41; and zeros &#40;no data&#41; to the named *gridname</em>. Append <strong>&#43;o</strong>   to convert the outside &#40;no data&#41; nodes to NaNs before writing the grid, while appending <strong>&#43;i</strong> will instead   convert the inside &#40;data&#41; flags to NaNs. Omitting the <em>gridname</em>, as in <strong>nodegrid&#61;true</strong> or <strong>nodegrid&#61;&quot;&#43;i&quot;</strong>   returns a grid as a GMTgrid object.</p>
 </li>
-<li><p><strong>N</strong> or <strong>invert</strong> : – <em>invert&#61;true</em><br />  Invert the sense of the test, i.e., clip regions where there is data coverage.</p>
+<li><p><strong>N</strong> or <strong>inverse</strong> : – <em>inverse&#61;true</em><br />  Invert the sense of the test, i.e., clip regions where there is data coverage.</p>
 </li>
 <li><p><strong>Q</strong> or <strong>cut</strong> or <strong>cut_number</strong> : – <em>cut&#61;n</em>   Do not dump polygons with less than <em>cut</em> number of points &#91;Dumps all polygons&#93;. Only applicable if   <strong>dump</strong> has been specified.</p>
 </li>
 <li><p><strong>S</strong> or <strong>search_radius</strong> : – <em>search_radius&#61;rad</em><br />  Sets radius of influence. Grid nodes within <em>radius</em> of a data point are considered reliable. &#91;Default is 0,   which means that only grid cells with data in them are reliable&#93;. Append the distance unit &#40;see <a href="/GMTjl_doc/documentation/common_features/units/index.html#units">Units</a>&#41;.</p>
 </li>
 <li><p><strong>T</strong> or <strong>tiles</strong> : – <em>tiles&#61;true</em><br />  Plot tiles instead of clip polygons. Use <strong>fill</strong> to set tile color or pattern. Cannot be used with <strong>dump</strong>.</p>
+</li>
+<li><p><code>touches</code>: For the grid/image method, include all cells/pixels that are touched by the polygons. The default is to include only the cells whose centers that are inside the polygons.</p>
 </li>
 </ul>
 <ul>
@@ -564,12 +577,27 @@ mask&#40;t, fill&#61;:yellow, inc&#61;&quot;30m&quot;, region&#61;&#40;-75,75,-9
 <pre><code class="language-julia">gmt mask africa_grav.xyg -R20/40/20/40 -I5m -Dall_pols.txt</code></pre>
 <p>A repeat of the first example but this time we use white tiling:</p>
 <pre><code class="language-julia">gmt mask africa_grav.xyg -R20/40/20/40 -I5m -JM10i -T -Gwhite -pdf mask</code></pre>
+<pre><code class="language-julia">using GMT
+
+D &#61; coast&#40;DCW&#61;:HR, dump&#61;true&#41;;      # Extract the Croatia border from the DCW
+I &#61; gmtread&#40;&quot;@earth_day_30s&quot;, region&#61;D, V&#61;:q&#41;;  # Load Earth image containing Croatia
+Ic &#61; mask&#40;I, D&#41;;                    # Mask outside &#40;make image transparent there&#41;
+
+gmtwrite&#40;&quot;Ic.tiff&quot;, Ic&#41;             # For now we need to save and reload to see
+Ic &#61; gmtread&#40;&quot;Ic.tiff&quot;&#41;;            # the tranparency in action.
+
+viz&#40;Ic, title&#61;&quot;Croatia&quot;&#41;</code></pre></p>
+<p>
+<a id="example_9790140833689949690">
+ <img src="/GMTjl_doc/assets/documentation/modules/mask/code/output/example_9790140833689949690.png" alt=""> 
+</a>
+
 <h2>See Also</h2>
 <p><a href="/GMTjl_doc/documentation/modules/grdmask/index.html#grdmask">grdmask</a>, <a href="/GMTjl_doc/documentation/modules/surface/index.html#surface">surface</a>, <a href="/GMTjl_doc/documentation/modules/basemap/index.html#basemap">basemap</a>, <a href="/GMTjl_doc/documentation/modules/clip/index.html#clip">clip</a></p>
 <div class="page-foot">
   <div class="copyright">
-    &copy; GMT.jl. Last modified: December 13, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
-      <p>These docs were autogenerated using GMT: v1.8.0</p>
+    &copy; GMT.jl. Last modified: December 26, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+      <p>These docs were autogenerated using GMT: v1.9.1</p>
   </div>
 </div>
 </div><!-- CONTENT ENDS HERE -->

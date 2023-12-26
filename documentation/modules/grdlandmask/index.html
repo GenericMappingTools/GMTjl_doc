@@ -396,12 +396,17 @@
 
 <!-- Content appended here -->
 <div class="franklin-content"><h1 id="grdlandmask"><a href="#grdlandmask" class="header-anchor">grdlandmask</a></h1>
-<p>	grdlandmask&#40;area&#61;, resolution&#61;, border&#61;, save&#61;, maskvalues&#61;, registration&#61;, cores&#61;&#41;</p>
+<p>	grdlandmask&#40;area&#61;??, resolution&#61;??, border&#61;??, save&#61;??, maskvalues&#61;??, registration&#61;??, cores&#61;??&#41;
+
+or
+
+	grdlandmask&#40;GI:GItype, ...&#41;</p>
 <p><em>keywords: GMT, Julia, land masks, mapping</em></p>
 <p>Create a &quot;wet-dry&quot; mask grid from shoreline data base</p>
 <h2>Description</h2>
 <p>Reads the selected shoreline database and uses that information to decide which nodes in the specified grid are over land or over water. The nodes defined by the selected region and lattice spacing will be set according to one of two criteria: &#40;1&#41; land vs water, or &#40;2&#41; the more detailed &#40;hierarchical&#41; ocean vs land vs lake vs island vs pond. The resulting mask may be used in subsequent operations involving <code>grdmath</code> to mask out data from land &#91;or water&#93; areas.</p>
-<h2>Required Arguments</h2>
+<p>The second method expects a <a href="#">GMTgrid</a> or an <a href="#">GMTimage</a> as first argument and will clip this grid/image outside &#40;the default&#41; or inside the land areas. Grids are clipped according to the <code>maskvalues</code> set by that option and images are set to transparent in the regions outside &#40;or inside&#41; of the land areas. See also the <a href="/GMTjl_doc/documentation/modules/mask/index.html#mask">mask</a> module that has also a method with a similar behavior but uses polygons set via an input argument.</p>
+<h2>Required Arguments &#40;1st method&#41;</h2>
 <ul>
 <li><p><strong>I</strong> or <strong>inc</strong> or <strong>increment</strong> or <strong>spacing</strong> : – <em>inc&#61;x_inc</em> <strong>|</strong> <em>inc&#61;&#40;x<em>inc, y</em>inc&#41;</em> <strong>|</strong> <em>inc&#61;&quot;xinc&#91;&#43;e|n&#93;&#91;/yinc&#91;&#43;e|n&#93;&#93;&quot;</em><br /> Specify the grid increments or the block sizes. More at <a href="/GMTjl_doc/documentation/common_opts/common_opts/index.html#spacing">spacing</a></p>
 </li>
@@ -412,6 +417,11 @@
 </li>
 </ul>
 
+<h2>Required Arguments &#40;2nd method&#41;</h2>
+<ul>
+<li><p><code>GI</code>: A grid &#40;GMTgrid&#41; or image &#40;GMTimage&#41; to be clipped.</p>
+</li>
+</ul>
 <h2>Optional Arguments</h2>
 <ul>
 <li><p><strong>-A</strong> or <strong>area</strong> : – <em>area&#61;&#40;min&#95;area&#91;,min&#95;level,max&#95;level&#93;&#41;, river&#95;lake&#61;true, lake&#61;true, antarctica&#95;ground&#61;true, skip60S&#61;true, skipN60S&#61;true, percent&#61;pct&#41;</em><br /> Features with an area smaller than <em>min&#95;area</em> in km^2 or of hierarchical level that is lower than <em>min&#95;level</em> or higher than <em>max&#95;level</em> will not be plotted &#91;Default is 0/0/4 &#40;all features&#41;&#93;. Level 2 &#40;lakes&#41; contains regular lakes and wide river bodies which we normally include as lakes; use <strong>river&#95;lake&#61;true</strong> to just get river-lakes or <strong>lake&#61;true</strong> to just get regular lakes. By default we select the ice shelf boundary as the coastline for Antarctica; use <strong>antarctica&#95;ground&#61;true</strong> to instead select the ice grounding line as coastline. For expert users who wish to print their own Antarctica coastline and islands via <code>plot</code> you can use <strong>skip60S&#61;true</strong> to skip all GSHHG features below 60S or <strong>skipN60S&#61;true</strong> to instead skip all features north of 60S. Finally, append <strong>percent&#61;pct</strong> to exclude polygons whose percentage area of the corresponding full-resolution feature is less than <em>pct</em>.</p>
@@ -421,8 +431,9 @@
 <ul>
 <li><p><strong>D</strong> or <strong>res</strong> or <strong>resolution</strong> : – <em>res&#61;:full</em> <strong>|</strong> <em>res&#61;:high</em> <strong>|</strong> <em>res&#61;:auto</em><br /> Selects the resolution of the data set to use <em>full</em>, <em>high</em>, <em>intermediate</em>, <em>low</em>,  and <em>crude</em>. The resolution drops off by 80&#37; between data sets. Alternatively, chooses  <strong>res&#61;auto</strong>, to automatically select the best resolution given the chosen region.  Note that because the coastlines differ in details a node in a mask file using one  resolution is not guaranteed to remain inside &#91;or outside&#93; when a different resolution is selected.</p>
 </li>
+<li><p><strong>E</strong> or <strong>border</strong> or <strong>bordervalues</strong> : – <em>border&#61;true</em> <strong>|</strong> <em>border&#61;bordervalues</em><br />  Nodes that fall exactly on a polygon boundary should be   considered to be outside the polygon &#91;Default considers them to be inside&#93;.   Alternatively, append either the four values <em>cborder/lborder/iborder/pborder</em>   or just the single value <em>bordervalue</em> &#40;for the case when they should all be the same value&#41;.   This turns on the line-tracking mode. Now, after setting the mask values   specified via <strong>maskvalues</strong> we trace the lines and change the node values for all   cells traversed by a line to the corresponding border value.  Here, <em>cborder</em>   is used for cells traversed by the coastline, <em>lborder</em> for cells traversed   by a lake outline, <em>iborder</em> for islands-in-lakes outlines, and <em>pborder</em> for   ponds-in-islands-in-lakes outlines &#91;Default is no line tracing&#93;.</p>
+</li>
 </ul>
-<p><strong>-E</strong> or <strong>border</strong> : – <em>border&#61;true</em> <strong>|</strong> <em>border&#61;bordervalues</em><br />    Nodes that fall exactly on a polygon boundary should be     considered to be outside the polygon &#91;Default considers them to be inside&#93;.     Alternatively, append either the four values <em>cborder/lborder/iborder/pborder</em>     or just the single value <em>bordervalue</em> &#40;for the case when they should all be the same value&#41;.     This turns on the line-tracking mode. Now, after setting the mask values     specified via |-N| we trace the lines and change the node values for all     cells traversed by a line to the corresponding border value.  Here, <em>cborder</em>     is used for cells traversed by the coastline, <em>lborder</em> for cells traversed     by a lake outline, <em>iborder</em> for islands-in-lakes outlines, and <em>pborder</em> for     ponds-in-islands-in-lakes outlines &#91;Default is no line tracing&#93;.</p>
 <ul>
 <li><p><strong>G</strong> or <strong>save</strong> or <strong>outgrid</strong> or <strong>outfile</strong> : – <em>outgrid&#61;&#91;&#61;ID&#93;&#91;&#43;ddivisor&#93;&#91;&#43;ninvalid&#93;&#91;&#43;ooffset|a&#93;&#91;&#43;sscale|a&#93;&#91;:driver&#91;dataType&#93;&#91;&#43;coptions&#93;&#93;</em><br /> Give the name of the output grid file. Optionally, append <code>&#61;ID</code> for writing a specific file format  &#40;See <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#grd-inout-full">full description</a>&#41;.  The following modifiers are supported:</p>
 <ul>
@@ -475,6 +486,16 @@
 <pre><code class="language-julia">G &#61; grdlandmask&#40;region&#61;&#40;-60,-40,-40,-30&#41;, res&#61;:high, inc&#61;&quot;5m&quot;, maskvalues&#40;1,NaN&#41;&#41;</code></pre>
 <p>To make a 1x1 degree global grid with the hierarchical levels of the nodes based on the low resolution data:</p>
 <pre><code class="language-julia">G &#61; grdlandmask&#40;region&#61;:global360, res&#61;:low, inc&#61;1, maskvalues&#61;&#40;0,1,2,3,4&#41;&#41;</code></pre>
+<p>Mask ocean areas to NaN from a relief grid.</p>
+<pre><code class="language-julia">using GMT
+G &#61; grdcut&#40;&quot;@earth_relief_04m&quot;, region&#61;&#40;-10.5, -5, 35, 44&#41;&#41;;
+G &#61; grdlandmask&#40;G, maskvalues&#61;&#40;NaN,1&#41;&#41;
+viz&#40;G&#41;</code></pre></p>
+<p>
+<a id="example_4511469828346785928">
+ <img src="/GMTjl_doc/assets/documentation/modules/grdlandmask/code/output/example_4511469828346785928.png" alt=""> 
+</a>
+
 <h2>GSHHG Information</h2>
 <p>The coastline database is GSHHG &#40;formerly GSHHS&#41; which is compiled from three sources: World Vector Shorelines &#40;WVS, not including Antarctica&#41;, CIA World Data Bank II &#40;WDBII&#41;, and Atlas of the Cryosphere &#40;AC, for Antarctica only&#41;.  Apart from Antarctica, all level-1 polygons &#40;ocean-land boundary&#41; are derived from the more accurate WVS while all higher level polygons &#40;level 2-4, representing land/lake, lake/island-in-lake, and island-in-lake/lake-in-island-in-lake boundaries&#41; are taken from WDBII.  The Antarctica coastlines come in two flavors: ice-front or grounding line, selectable via the <strong>area</strong> option.  Much processing has taken place to convert WVS, WDBII, and AC data into usable form for GMT: assembling closed polygons from line segments, checking for duplicates, and correcting for crossings between polygons. The area of each polygon has been determined so that the user may choose not to draw features smaller than a minimum area &#40;see <strong>area</strong>&#41;; one may also limit the highest hierarchical level of polygons to be included &#40;4 is the maximum&#41;. The 4 lower-resolution databases were derived from the full resolution database using the Douglas-Peucker line-simplification algorithm. The classification of rivers and borders follow that of the WDBII. See <a href="https://github.com/GenericMappingTools/gshhg-gmt#readme">The Global Self-consistent, Hierarchical, High-resolution Geography Database &#40;GSHHG&#41;</a> for further details.</p>
 
@@ -482,8 +503,8 @@
 <p><a href="/GMTjl_doc/documentation/modules/grdclip/index.html#grdclip">grdclip</a>, <a href="/GMTjl_doc/documentation/modules/mask/index.html#mask">mask</a>, <a href="/GMTjl_doc/documentation/modules/clip/index.html#clip">clip</a>, <a href="/GMTjl_doc/documentation/modules/coast/index.html#coast">coast</a></p>
 <div class="page-foot">
   <div class="copyright">
-    &copy; GMT.jl. Last modified: December 13, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
-      <p>These docs were autogenerated using GMT: v1.8.0</p>
+    &copy; GMT.jl. Last modified: December 26, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+      <p>These docs were autogenerated using GMT: v1.9.1</p>
   </div>
 </div>
 </div><!-- CONTENT ENDS HERE -->
