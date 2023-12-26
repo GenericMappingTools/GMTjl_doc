@@ -32,7 +32,7 @@ type GMTgrid{T<:Real,N} <: AbstractArray{T,N}      # The type holding a local he
     scale::Union{Float64, Float32}=1f0 # When saving in file apply `z = z * scale + offset`
     offset::Union{Float64, Float32}=0f0
     pad::Int=0                         # When != 0 means that the array is placed in a padded array of PAD rows/cols
-    hasnans::Int=2                     # 2 -> "don't know"; 1 -> confirmed, "have NaNs"; 0 -> confirmed, "have no NaNs"
+    hasnans::Int=0                     # 0 -> "don't know"; 1 -> confirmed, "have no NaNs"; 0 -> confirmed, "have NaNs"
 end
 ```
 

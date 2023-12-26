@@ -100,6 +100,10 @@ Optional Arguments
 
 \textinput{common_opts/opt_range}
 
+- **cumdist** or **cumsum** : -- *cumdist=true*\
+    Compute the cumulative distance along the input line. Note that for this the first two columns must
+    contain the spatial coordinates and the accumulated distance is appended after last column of the table.
+
 \textinput{common_opts/opt_V}
 
 \textinput{common_opts/opt_a}

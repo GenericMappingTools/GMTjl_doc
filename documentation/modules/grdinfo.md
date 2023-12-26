@@ -65,7 +65,7 @@ Optional Arguments
     Report grid domain and x/y-increments in world mapping format
     [Default is generic]. Does not apply to the **oneliner** option.
 
-- **G** or **force** : -- *force=true*\
+- **G** or **download** : -- *download=true*\
     Force (possible) download of all tiles of tiled global remote grids in order
     to report the requested information [refuse to give the information for tiled grids].
 

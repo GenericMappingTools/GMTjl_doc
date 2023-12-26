@@ -23,8 +23,8 @@ for that specific area. The collections provide a convenient way to access and w
 Options
 -------
 
-- `name`: It can be either the name of one collection or the code of one geographic region. If it is the
-    a collection name (one of: ``"DCW", "NatEarth", "UN", "Mainlands", "IHO", "Wiki", "Lakes"``) the regions
+- `name`: It can be either the name of one collection or the code of one geographic region. If it is a
+    collection name (one of: ``"DCW", "NatEarth", "UN", "Mainlands", "IHO", "Wiki", "Lakes"``) the regions
     of that collection are printed displaying the region's boundaries, code and name. If, instead, a code
     is passed (codes are unique) then depending on the values of `grid` or `dataset` we either produce a
     map of that region (the default) or extract grid/image over it.
@@ -98,7 +98,7 @@ earthregions("UN029")
 
 But the examples above do not let us plot the country’s borders that help referencing a map.
 For the time being that is only possible when we use the `DCW` collection. Next example shows
-a case with country borders. Also note that for the regions in the `DCW` (there 248 of them)
+a case with country borders. Also note that for the regions in the `DCW` (there are 248 of them)
 we can combine as many countries as we want.
 
 \begin{examplefig}{}

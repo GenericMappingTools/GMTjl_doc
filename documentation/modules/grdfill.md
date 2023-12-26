@@ -35,7 +35,7 @@ Optional Arguments
 
 \textinput{common_opts/opt_save_grd}
 
-- **N** or **nodata** : -- *nodata=true* **|** *nodata=value*\
+- **N** or **nodata** or **hole** : -- *nodata=true* **|** *nodata=value*\
     Sets the node value used to identify a point as a member of a hole [Default is NaN].
 
 \textinput{common_opts/opt_R}

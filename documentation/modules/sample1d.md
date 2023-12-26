@@ -38,10 +38,10 @@ Optional Arguments
     input points are not necessarily included in the output. **R** as **r** but adjust given
     spacing to fit the track length exactly. Finally, append **+d** to delete duplicate input records
     (identified by having no change in the time column, and **+l** if distances should be measured
-    along rhumb lines (loxodromes). **Note**: Calculation made for loxodromes is spherical,
+    along rhumb lines (loxodromes)). **Note**: Calculation made for loxodromes is spherical,
     hence **spherical=:ellipsoidal** cannot be used in combination with **+l**.
 
-- **E** or **keeptxt** : -- *keeptxt=true*\
+- **E** or **keeptext** : -- *keeptext=true*\
     If the input dataset contains records with trailing text then we will attempt to add these
     to output records that exactly match the input times. Output records that have no matching
     input record times will have no trailing text appended [Default ignores trailing text].
@@ -102,6 +102,10 @@ gmtend(:show)
     a valid distance unit; see \myreflink{Units} for map units or use **c** if plain Cartesian coordinates.
     The first two columns must contain the spatial coordinates. From these we calculate distances in the
     chosen units and interpolate using this parametric series.
+
+- **cumdist** or **cumsum** : -- *cumdist=true*\
+    Compute the cumulative distance along the input line. Note that for this the first two columns must
+    contain the spatial coordinates and the accumulated distance is appended after last column of the table.
 
 \textinput{common_opts/opt_V}
 

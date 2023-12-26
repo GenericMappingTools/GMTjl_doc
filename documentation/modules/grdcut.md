@@ -42,6 +42,15 @@ Optional Arguments
     remote gridded data set without implied resolution. Append **+t** to instead receive
     the information as the trailing string "-Rwest/east/south/north -Ixinc/yinc".
 
+- **E** or **rowlice** or **colslice** : -- *rowlice=coord* **|** *colslice=coord*\
+    We extract a vertical slice going along the x-column coord or along the y-row coord, depending on the
+    given directive. Note:
+        1- Input file must be a 3-D netCDF cube, and this option resturns a `GMTgrid`.
+        2- `coord` must exactly match the coordinates given by the cube. We are not interpolating between
+           nodes and only do a clean slice through existing cube nodes.
+        3- If using the terse GMT syntax (**E**), then argument must be a string and prefixed with either
+           a `x` (for extracting a slice along a column) or a `y`. Example: `E="x10.5"`
+
 - **F** or **clip** or **cutline** : -- *cutline=polyg* **|** *cutline=(polygon=polyg, crop2cutline=true, invert=true)*\
     Specify a multisegment closed polygon file. All grid nodes outside the polygon will be set to NaN.
     Use the NamedTuple way to say `invert=true` to invert that and set all nodes inside the polygon to NaN
@@ -60,7 +69,7 @@ Optional Arguments
 
 \textinput{common_opts/opt_V}
 
-- **Z** or **z_subregion** : -- *z_subregion=true* **|** *z_subregion=(min,max)* **|** *z_subregion="min/max|+n|N|r"*\
+- **Z** or **range** : -- *z_subregion=true* **|** *range=(min,max)* **|** *range="min/max|+n|N|r"*\
     Determine a new rectangular region so that all nodes *outside* this region are also outside the given
     *z*-range [-inf/+inf]. To indicate no limit on min or max only, specify a hyphen (-) (and hence all
     arg must be a string). Normally, any NaNs encountered are simply skipped and not considered in the

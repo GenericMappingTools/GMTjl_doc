@@ -1,7 +1,11 @@
 # grdlandmask
 
 ```julia
-	grdlandmask(area=, resolution=, border=, save=, maskvalues=, registration=, cores=)
+	grdlandmask(area=??, resolution=??, border=??, save=??, maskvalues=??, registration=??, cores=??)
+
+or
+
+	grdlandmask(GI:GItype, ...)
 ```
 
 *keywords: GMT, Julia, land masks, mapping*
@@ -18,12 +22,23 @@ and lattice spacing will be set according to one of two criteria: (1) land vs wa
 the more detailed (hierarchical) ocean vs land vs lake vs island vs pond. The resulting mask
 may be used in subsequent operations involving `grdmath` to mask out data from land [or water] areas.
 
-Required Arguments
-------------------
+The second method expects a \myreflink{GMTgrid} or an \myreflink{GMTimage} as first argument and
+will clip this grid/image outside (the default) or inside the land areas. Grids are clipped according
+to the `maskvalues` set by that option and images are set to transparent in the regions outside
+(or inside) of the land areas. See also the \myreflink{mask} module that has also a method with a
+similar behavior but uses polygons set via an input argument.
+
+Required Arguments (1st method)
+-------------------------------
 
 \textinput{common_opts/opt_I}
 
 \textinput{common_opts/opt_R}
+
+Required Arguments (2nd method)
+-------------------------------
+
+- `GI`: A grid (GMTgrid) or image (GMTimage) to be clipped.
 
 Optional Arguments
 ------------------
@@ -37,13 +52,13 @@ Optional Arguments
    Note that because the coastlines differ in details a node in a mask file using one
    resolution is not guaranteed to remain inside [or outside] when a different resolution is selected.
 
-**-E** or **border** : -- *border=true* **|** *border=bordervalues*\
+- **E** or **border** or **bordervalues** : -- *border=true* **|** *border=bordervalues*\
     Nodes that fall exactly on a polygon boundary should be
     considered to be outside the polygon [Default considers them to be inside].
     Alternatively, append either the four values *cborder/lborder/iborder/pborder*
     or just the single value *bordervalue* (for the case when they should all be the same value).
     This turns on the line-tracking mode. Now, after setting the mask values
-    specified via |-N| we trace the lines and change the node values for all
+    specified via **maskvalues** we trace the lines and change the node values for all
     cells traversed by a line to the corresponding border value.  Here, *cborder*
     is used for cells traversed by the coastline, *lborder* for cells traversed
     by a lake outline, *iborder* for islands-in-lakes outlines, and *pborder* for
@@ -103,6 +118,17 @@ nodes based on the low resolution data:
 ```julia
 G = grdlandmask(region=:global360, res=:low, inc=1, maskvalues=(0,1,2,3,4))
 ```
+
+Mask ocean areas to NaN from a relief grid.
+
+\begin{examplefig}{}
+```julia
+using GMT
+G = grdcut("@earth_relief_04m", region=(-10.5, -5, 35, 44));
+G = grdlandmask(G, maskvalues=(NaN,1))
+viz(G)
+```
+\end{examplefig}
 
 \textinput{common_opts/explain_gshhg}
 

@@ -2,10 +2,11 @@
 
 ```julia
 mask(cmd0::String="", arg1=[]; kwargs...)
+
+or
+
+mask(GI:GItype, shapes::GMTdataset, touches=false, inverse::Bool=false, maskvalues=??)
 ```
-
-Clip or mask map areas with no data table coverage
-
 
 Clip or mask map areas with no data table coverage
 
@@ -22,8 +23,18 @@ points, the module will either paint tiles to mask these nodes (with the **tiles
 to create polygons that will clip out regions of no interest. When clipping is initiated, it will stay in effect
 until turned off by a second call to the module using the **endclip** option.
 
-Required Arguments
-------------------
+A second method expects a \myreflink{GMTgrid} or an \myreflink{GMTimage} as first argument and a
+\myreflink{GMTdataset} in second and will clip the grid/image to the selected region(s) defined
+in polygons of the second argument. Grids are clipped to the global BoundingBox of the polygons and
+images are copped to that limit and set to transparent in the regions outside of the polygons.
+This method uses GDAL to compute the clipping mask. Used together with the ``DCW`` option of
+\myreflink{coast} this is very handy to clip rasters to country or \myreflink{earthregions} boundaries.
+Note that this method is in a way similar to one of the \myreflink{grdlandmask} methods. The
+difference is that here use a external polygon description that may be read from any _OGR_ vector file
+whilst \myreflink{grdlandmask} uses the GSHHG dataset.
+
+Required Arguments (1st method)
+-------------------------------
 
 - *table*\
     One or more data tables holding a number of data columns.
@@ -35,6 +46,13 @@ Required Arguments
 \textinput{common_opts/opt_R}
 
 \textinput{common_opts/opt_R_3D}
+
+Required Arguments (2nd method)
+-------------------------------
+
+- `GI`: A grid (GMTgrid) or image (GMTimage) to be clipped.
+
+- `shapes`: A GMTdataset or a vector of them containing the polygons outside which the elements of `GI` will be clipped
 
 Optional Arguments
 ------------------
@@ -70,7 +88,7 @@ Optional Arguments
     convert the inside (data) flags to NaNs. Omitting the *gridname*, as in **nodegrid=true** or **nodegrid="+i"**
     returns a grid as a GMTgrid object.
 
-- **N** or **invert** : -- *invert=true*\
+- **N** or **inverse** : -- *inverse=true*\
     Invert the sense of the test, i.e., clip regions where there is data coverage.
 
 - **Q** or **cut** or **cut_number** : -- *cut=n*
@@ -83,6 +101,9 @@ Optional Arguments
 
 - **T** or **tiles** : -- *tiles=true*\
     Plot tiles instead of clip polygons. Use **fill** to set tile color or pattern. Cannot be used with **dump**.
+
+- `touches`: For the grid/image method, include all cells/pixels that are touched by the polygons. The default is
+  to include only the cells whose centers that are inside the polygons.
 
 \textinput{common_opts/opt_U}
 
@@ -152,6 +173,23 @@ A repeat of the first example but this time we use white tiling:
 ```julia
     gmt mask africa_grav.xyg -R20/40/20/40 -I5m -JM10i -T -Gwhite -pdf mask
 ```
+
+
+\begin{examplefig}{}
+```julia
+using GMT
+
+D = coast(DCW=:HR, dump=true);      # Extract the Croatia border from the DCW
+I = gmtread("@earth_day_30s", region=D, V=:q);  # Load Earth image containing Croatia
+Ic = mask(I, D);                    # Mask outside (make image transparent there)
+
+gmtwrite("Ic.tiff", Ic)             # For now we need to save and reload to see
+Ic = gmtread("Ic.tiff");            # the tranparency in action.
+
+viz(Ic, title="Croatia")
+```
+\end{examplefig}
+
 
 See Also
 --------
