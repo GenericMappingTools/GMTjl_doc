@@ -38,15 +38,22 @@ Specify data type (with *type*=true, e.g. `img=true`). Choose among:
 
 - `varname`: When netCDF files have more than one 2D (or higher) variables use `varname` to pick
   the wished variable. e.g. `varname=:slp` to read the variable named 'slp'. This option defaults
-  data type to 'grid'
+  data type to 'grid'.This option can be used both with and without the `gdal` option. Former case
+  uses GMT lib to read the cube and outputs and 3D array in column major order, later case
+  (the one with `gdal`) uses GDAL to read the cube and outputs and 3D array in row major order.
+  Remember that the ``layout`` member of the GMTgrid type informs about memory layout.
 
-- `layer | band`: When files are multiband or nc files with 3D or 4D arrays, we access them via these keywords.
-  `layer=4` reads the fourth layer (or band) of the file. But the file can be a grid or an image. If it is a
-  grid, layer can be a scalar (to read 3D arrays) or an array of two elements (to read a 4D array).
+- `layer`| `layers` | `band` | `bands`: When files are multiband or nc files with 3D or 4D arrays,
+  we access them via these keywords. `layer=4` reads the fourth layer (or band) of the file.
+  But the file can be a grid or an image. If it is a grid, layer can be a scalar (to read 3D arrays)
+  or an array of two elements (to read a 4D array). This option should not be used with the `gdal` option.
+
   If file is an image `layer` can be a 1 or a 1x3 array (to read a RGB image). Not that in this later case
   bands do not need to be contiguous. A `band=[1,5,2]` composes an RGB out of those bands. See more at
   [Modifiers for COARDS-compliant netCDF files](https://docs.generic-mapping-tools.org/latest/cookbook/features.html#modifiers-for-cf)
   but note that we use **1 based** indexing here.
+
+  Use ``layers=:all`` to read all levels of a 3D cube netCDF file.
 
 \textinput{common_opts/opt_R}
 

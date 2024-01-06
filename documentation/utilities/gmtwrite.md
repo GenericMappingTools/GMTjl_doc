@@ -8,6 +8,10 @@ gmtwrite(fname::AbstractString, data; kwargs...)
 
 Write a GMT object to file. The object is one of `grd` or `grid`, `image` or `img`,
 `dataset` or `table`, `cmap` or `cpt` and `ps` (for postscript).
+For the datasets case if the file name ends in .arrow, .shp, .json, .feather, .geojson,
+.gmt, .gpkg, .gpx, .gml or .parquet then it automatically selects ``gdalwrite`` and saves the
+GMT dataset in that OGR vector format. The .kml is treated as a special case because there are GMT modules
+(e.g. `gmt2kml`) that produce KML formatted data and so we write it directly as a text file.
 
 When saving grids we have a panoply of formats at our disposal.
 
@@ -48,6 +52,14 @@ write the GMTgrid 'G' object into a netCDF file called 'lixo.grd'
 ```julia
 gmtwrite("lixo.grd", G)
 ```
+
+To save the Norway country borders in shapefile format, do:
+
+```julia
+No = coast(DCW=:NO, dump=true);
+gmtwrite("Norway.shp", No)
+```
+
 
 See Also
 --------
