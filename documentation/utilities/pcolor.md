@@ -31,6 +31,12 @@ compute a default one.
   option. Namely, the angle and the ``font``. Example: ``font=(angle=45, font=(5,:red))``. If not specified, it
   defaults to ``font=(font=(6,:black),)``.
 
+```julia
+D = pcolor(X, Y; kwargs...)
+```
+
+This form, that is without a color matrix, accepts `X` and `Y` as before but returns the tiles in a vector of
+GMTdatasets. Use the `kwargs` option to pass for example a projection setting (as for example ``proj=:geo``).
 
 ```julia
 pcolor(G::GMTgrid; kwargs...)
