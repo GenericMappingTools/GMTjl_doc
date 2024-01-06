@@ -49,6 +49,7 @@ This form takes a grid (or the file name of one) as input an paints it's cell wi
 - `kwargs`: This form of `pcolor` is a wrap of \myreflink{grdview} so any option of that module can be used here.
   One can for example control the tilling option via ``grdview's`` ``tiles`` option.
 
+
 Examples
 --------
 
