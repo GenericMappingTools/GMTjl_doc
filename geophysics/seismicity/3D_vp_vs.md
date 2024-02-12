@@ -27,6 +27,11 @@ layers become too monochromatic.
 \begin{examplefig}{}
 ```julia
 using GMT	# Hide
+model = gmtread("https://github.com/ShouchengHan/USTClitho2.0/blob/main/USTClitho2.0.wrst.sea_level.txt"); # Hide
+Cvp = xyzw2cube(model); # Hide
+Cvs = xyzw2cube(model, zcol=5); # Hide
+Cvp.names = ["Depth = $(Int(i)) km" for i in Cvp.v];    # Hide
+
 viz(Cvp, colorbar=true, cmap=:same, title="Vp model")
 ```
 \end{examplefig}
