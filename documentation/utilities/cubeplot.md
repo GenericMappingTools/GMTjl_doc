@@ -101,7 +101,6 @@ accepts only images as input.
 - `zsize`: Vertical size of the plotted cube. Default is 6 cm. Use a negative value if the z-axis is positive down, but
   see also the alternative `zdown` option.
 
-
 Examples
 --------
 
