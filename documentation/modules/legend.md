@@ -62,7 +62,7 @@ Optional Arguments
 
 \textinput{common_opts/opt_J}
 
-- **M**\
+- **M** or **source** \
    Modern mode only: Read both (1) the hidden auto-generated legend information file created by plotting-modules'
    **legend** option (warning: **not** this **legend** module) and (2) additional information from input file(s)
    given on the command line [hidden file only].

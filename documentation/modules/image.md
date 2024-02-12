@@ -59,7 +59,7 @@ Optional Arguments
 
 \textinput{common_opts/opt_box}
 
-- **G** or **bit_color** or **bit_bg|fg|alpha** : -- *bit_bg=color* **|** *bit_fg=color* **|** *bit_alpha=color* **|** *bit_color=color[+b|+f|+t]* \
+- **G** or **bitcolor** or **bit_color** or **bit_bg|fg|alpha** : -- *bit_bg=color* **|** *bit_fg=color* **|** *bit_alpha=color* **|** *bitcolor=color[+b|+f|+t]* \
     Change certain pixel values to another color or make them transparent. For 1-bit images you can
     specify an alternate *color* for the background (**bit_bg=color**) or the foreground (**bit_bf=color**)
     pixels, or give no color to make those pixels transparent. Alternatively, for color images you

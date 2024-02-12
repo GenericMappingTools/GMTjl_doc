@@ -33,7 +33,7 @@ Required Arguments
 Optional Arguments
 ------------------
 
-- **A** or **annot** : -- *annot=annot\_int* **|** *annot=(int=annot\_int, disable=true, single=true, labels=labelinfo)*\
+- **A** or **annot** or **annotation** : -- *annot=annot\_int* **|** *annot=(int=annot\_int, disable=true, single=true, labels=labelinfo)*\
   *annot\_int* is annotation interval in data units; it is ignored if contour levels are given in a file.
   [Default is no annotations]. Use *annot=(disable=true,)* to disable all annotations implied by **cont**.
   Alternatively do *annot=(single=true, int=val)* to plot *val* as a single contour. The optional *labelinfo* controls the specifics of the label formatting and consists of a named tuple with the following control arguments \myreflink{Label formatting}

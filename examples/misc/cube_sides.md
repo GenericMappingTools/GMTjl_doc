@@ -13,7 +13,7 @@ viz(GMT.peaks(N=100), zsize=8, facades=(GMT.TESTSDIR * "cenora_base.jpg",
 ```
 \end{examplefig}
 
-The above example used the helper function \myreflink{imshow} (well, it's alias ``viz``) that knew what to do when
+The above example used the helper function \myreflink{imshow} (well, its alias ``viz``) that knew what to do when
 it found the keyword `facades`, but in fact the work was done by the function \myreflink{cubeplot}. Next example shows
 how to call that function directly to plot three images in the front sides of the cube.
 

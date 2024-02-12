@@ -59,7 +59,7 @@ Optional Arguments
 
 \textinput{common_opts/opt_R}
 
-- **S** or **nolines** : -- *nolines=true*\
+- **S** or **nolines** or **appearance** : -- *nolines=true*\
     Do not separate different color intervals with black grid lines.
 
 \textinput{common_opts/opt_U}
