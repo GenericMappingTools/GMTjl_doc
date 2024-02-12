@@ -183,6 +183,7 @@
 <li><input class="collapse-toggle" id="menuitem-4" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-4"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/geophysics">Geophysics</a></div><ul><li><input class="collapse-toggle" id="menuitem-4-1" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-4-1"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/geophysics/earthtides">Earth tides</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/geophysics/earthtides/01_earthtides">Earth tides</a></div></li>
 </ul></li>
 <li><input class="collapse-toggle" id="menuitem-4-2" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-4-2"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/geophysics/seismicity">Seismic¡ty</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/geophysics/seismicity/01_focalmec">Focal mechanisms</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/geophysics/seismicity/3D_vp_vs">3D models with side walls</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/geophysics/seismicity/global_seis">Global seismicity</a></div></li>
 </ul></li>
 </ul></li>
@@ -398,7 +399,7 @@
 
 <!-- Content appended here -->
 <div class="franklin-content"><h1 id="cubeplot"><a href="#cubeplot" class="header-anchor">cubeplot</a></h1>
-<pre><code class="language-julia">cubeplot&#40;img1::Union&#123;GMTimage, String&#125;, img12::Union&#123;GMTimage, String&#125;&#61;&quot;&quot;, img1e3::Union&#123;GMTimage, String&#125;&#61;&quot;&quot;;
+<pre><code class="language-julia">cubeplot&#40;img1::Union&#123;GMTimage, String&#125;, img2::Union&#123;GMTimage, String&#125;&#61;&quot;&quot;, img3::Union&#123;GMTimage, String&#125;&#61;&quot;&quot;;
          back::Bool&#61;false, show&#61;false, notop::Bool&#61;false, kw...&#41;</code></pre>
 <p><em>keywords: GMT, Julia, image cube plots</em></p>
 <p>Plot images on the sides of a cube. Those images can be provided as file names, or <a href="#">GMTimage</a> objects.</p>
@@ -424,13 +425,61 @@
 </li>
 <li><p><code>transparency</code>: Sets the image&#39;s transparency level in the &#91;0,1&#93; or &#91;0 100&#93; intervals. Default is opaque.</p>
 </li>
+<li><p><code>inset</code> or <code>hole</code>: Draws an inset hole in the cube&#39;s Southern wall. This option is a tuple with the form: <code>&#40;&#40;img1,img2&#91;,img3&#93;&#41;, width&#61;?, &#91;depth&#61;?&#93;&#41;</code> where <code>&#40;img1,img2&#91;,img3&#93;&#41;</code> are the images of the <code>north</code> &#40;that is, the plane whose normal is <code>y</code>&#41; and <code>west</code> &#40;that is, the plane whose normal is <code>x</code>&#41; and, optionally, <code>bottom</code> sides of the inset. The <code>width</code> and <code>depth</code> are the width and depth of the inset. If <code>depth</code> is not provided it defaults to <code>width</code>. These values <strong>must</strong> be given in percentage of the cube&#39;s width and can be given in the &#91;0-1&#93; or &#91;0-100&#93; interval.</p>
+</li>
+<li><p><code>xlabel, ylabel, zlabel, title</code>: Optional axes labels and title. Each one of these must be a string.</p>
+</li>
+<li><p><code>cmap, colormap, cpt, colorscale</code>: Add a colorbar at the bottom of the figure. The colormap can be passed as a single argument or as a tuple of arguments, where first must be the colormap and second &#91;and optional a third&#93; are the axes colorbar labels taking the form: <code>cmap&#61;&#40;C, &quot;xlabel&#61;Blabla1&quot;&#91;, &quot;ylabel&#61;Blabla2&quot;&#93;&#41;</code>.</p>
+</li>
 </ul>
+<hr />
+<pre><code class="language-julia">cubeplot&#40;G::GMTgrid; top&#61;nothing, topshade&#61;false, zdown::Bool&#61;false, xlabel&#61;&quot;&quot;, ylabel&#61;&quot;&quot;, zlabel&#61;&quot;&quot;, title&#61;&quot;&quot;,
+         show&#61;false, interp::Float64&#61;0.0, kw...&#41;</code></pre>
+<p>Make a 3D plot of a 3D GMTgrid &#40;a cube&#41; with a top view perspective from the 4rth quadrant &#40;only one implemented&#41;. There are several options to control the painting of the cube walls but off course not all possibilities are covered. For ultimate control, users can create the side wall images separately and feed them to the cubeplot method that accepts only images as input. </p>
+<ul>
+<li><p><code>cmap, colormap, cpt, colorscale</code>: Pass in a GMTcpt colormap to be used to paint the vertical walls and optionally, the top wall. The default is to compute this from the cube&#39;s min/max values with the <code>turbo</code> colormap.</p>
+</li>
+<li><p><code>colorbar</code>: Add a colorbar at the bottom of the figure. The plotted colormap is either the auto-generated colormap &#40;from the cube&#39;s min/max and the <code>turbo</code> colormap&#41; or the one passed via the <code>cmap</code> option. The optional syntax of this option is either: <code>colorbar&#61;true</code> or <code>colorbar&#61;&#40;C, &quot;xlabel&#61;Blabla1&quot;&#91;, &quot;ylabel&#61;Blabla2&quot;&#93;&#41;</code>. Attention that when the labels request are passed, thy MUST conform with the <code>xlabel&#61;...</code> and <code>ylabel&#61;...</code> prefix part.</p>
+</li>
+<li><p><code>inset</code>: Add an inset to the figure. This inset takes the form of a <em>hole</em> located in the lower right corner of the cube in which its inner walls are painted with partial vertical slices of the cube. The <code>inset</code> option may be passed as a two elements array or tuple where first element is the starting longitude &#40;end is cube&#39;s easternmost coordinate&#41; and second the ending latitude &#40;start is southernmost lat&#41;: an alternative syntax is to use <code>inset&#61;&#40;lon&#61;?, lat&#61;?&#41;</code>.</p>
+</li>
+<li><p><code>interp</code>: When the cube layers are not equi-distant, the vertical side walls are not regular gris. This option, that is called by default, takes care of obtaining a regular grid by linear interpolation along the columns. This automatic interpolation uses the smallest increment in the vertical direction, but that may be overridden by the <code>interp</code> increment option &#40;a float value&#41;.</p>
+</li>
+<li><p><code>region, limits</code>: A 4 elements array or Tuple &#40;<code>x_min, x_max, y_min, y_max</code>&#41; with the limits of a sub-region to display. Default uses the entire cube.</p>
+</li>
+<li><p><code>show</code>: If <code>true</code> display the figure. Default is <code>false</code>, <em>i.e.</em> it lets append further elements latter if wished.</p>
+</li>
+<li><p><code>top</code>: An optional GMTgrid or the file name of a GMTgrid to be used to create the top wall of the cube. If, instead, a GMTimage is passed we plot it directly &#40;grids are converted to images using default colormaps or one passed via <code>topcmap</code>&#41;. The default is to use the cube&#39;s first slice as the top wall.</p>
+</li>
+<li><p><code>topshade</code>: Only used when the <code>top</code> option was used to pass a GMTgrid &#40;or the name of one&#41;. When <code>true</code>, the top wall image is created with the cube&#39;s first slice and a shaded effect computed with <code>grdgradient</code> on the <code>top</code> grid &#40;normally a topography grid&#41;. This creates a nice effect that shows both the cube&#39;s first layer and the topography where it lies.  Optionally, the <code>topshade</code> option may be used with a <code>grdgradient</code> grid computed with any other grid.</p>
+</li>
+<li><p><code>topcmap</code>: An alternative colormap for the top wall. Default is the same as the <code>turbo</code> computed with cube <code>G</code> itself.</p>
+</li>
+<li><p><code>xlabel, ylabel, zlabel, title</code>: Optional axes labels and title. Each one of these must be a string.</p>
+</li>
+<li><p><code>zdown</code>: When <code>true</code>, the z-axis is positive down. Default is <code>false</code> &#40;positive up&#41;.</p>
+</li>
+<li><p><code>zsize</code>: Vertical size of the plotted cube. Default is 6 cm. Use a negative value if the z-axis is positive down, but see also the alternative <code>zdown</code> option.</p>
+</li>
+</ul>
+<h2>Example</h2>
+<pre><code class="language-julia">using GMT
+
+cubeplot&#40;GMT.TESTSDIR * &quot;seila_gray.jpg&quot;,
+         GMT.TESTSDIR * &quot;seis_section_rgb.jpg&quot;,
+         GMT.TESTSDIR * &quot;seis_section_gray.jpg&quot;,
+         zsize&#61;6, show&#61;true&#41;</code></pre></p>
+<p>
+<a id="example_4199742326267480904">
+ <img src="/GMTjl_doc/assets/documentation/utilities/cubeplot/code/output/example_4199742326267480904.png" alt=""> 
+</a>
+
 <h2>See Also</h2>
 <p><a href="/GMTjl_doc/documentation/utilities/slicecube/index.html#slicecube">slicecube</a>, <a href="/GMTjl_doc/documentation/utilities/xyzw2cube/index.html#xyzw2cube">xyzw2cube</a></p>
 <div class="page-foot">
   <div class="copyright">
-    &copy; GMT.jl. Last modified: January 17, 2024. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
-      <p>These docs were autogenerated using GMT: v1.10.1</p>
+    &copy; GMT.jl. Last modified: February 12, 2024. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+      <p>These docs were autogenerated using GMT: v1.11.0</p>
   </div>
 </div>
 </div><!-- CONTENT ENDS HERE -->
