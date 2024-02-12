@@ -399,7 +399,7 @@
 
 <!-- Content appended here -->
 <div class="franklin-content"><h1 id="3d_models_with_side_walls"><a href="#3d_models_with_side_walls" class="header-anchor">3D models with side walls</a></h1>
-<p>These examples show a GMT.jl version of a PyGMT post in the GMT forum and that can be found at the original author&#39;s, JiahongLuo, Github site &#40;https://github.com/Luojiahong/PyGMT<em>3D</em>mapview/blob/main/mapview<em>3d</em>earthquake.ipynb&#41;</p>
+<p>These examples show a GMT.jl version of a PyGMT post in the GMT forum and that can be found at the original author&#39;s, JiahongLuo, Github <a href="https://github.com/Luojiahong/PyGMT_3D_mapview/blob/main/mapview_3d_earthquake.ipynb">site</a></p>
 <p>The <a href="/GMTjl_doc/documentation/utilities/cubeplot/index.html#cubeplot">cubeplot</a> function let us easily plot images on the sides of a cube. That function can also be used to create those side figures directly from a 3D cube grid.</p>
 <pre><code class="language-julia">using GMT
 
@@ -414,27 +414,21 @@ Cvs &#61; xyzw2cube&#40;model, zcol&#61;5&#41;;
 Cvp.names &#61; &#91;&quot;Depth &#61; &#36;&#40;Int&#40;i&#41;&#41; km&quot; for i in Cvp.v&#93;;
 Cvs.names &#61; &#91;&quot;Depth &#61; &#36;&#40;Int&#40;i&#41;&#41; km&quot; for i in Cvs.v&#93;;</code></pre>
 <p>Show all 12 layers of the P-waves velocity in a figure. We use a diffent colormap for each layer to avoid that layers become too monochromatic.</p>
-<pre><code class="language-julia">viz&#40;Cvp, colorbar&#61;true, cmap&#61;:same, title&#61;&quot;Vp model&quot;&#41;</code></pre></p>
-<p>
-<a id="example_9566943970910628867">
- <p><span style="color:red;">// Image matching '/assets/geophysics/seismicity/3D_vp_vs/code/example_9566943970910628867.png' not found. //</span></p> 
-</a>
+<pre><code class="language-julia">viz&#40;Cvp, colorbar&#61;true, cmap&#61;:same, title&#61;&quot;Vp model&quot;&#41;</code></pre>
+
+<img src="/GMTjl_doc/assets/Vp_mosaic.png" width="280" class="center"/>
 
 <p>Show the P and S velocities with a slight variation of the top layer. For the P-velocity we plot the topography on top and for the S-velocity we show the superficial S velocity but apply a shading effect calculated from the topography grid.</p>
 <pre><code class="language-julia">cubeplot&#40;Cvp, top&#61;&quot;@earth_relief_05m&quot;, colorbar&#61;&#40;&quot;xlabel&#61;P-wave velocity&quot;, &quot;ylabel&#61;km/s&quot;&#41;, zdown&#61;true, title&#61;&quot;Vp model&quot;&#41;
-cubeplot&#33;&#40;Cvs, top&#61;&quot;@earth_relief_05m&quot;, topshade&#61;true, zdown&#61;true, colorbar&#61;&#40;&quot;xlabel&#61;S-wave velocity&quot;, &quot;ylabel&#61;km/s&quot;&#41;, xshift&#61;18, title&#61;&quot;Vs model&quot;, show&#61;true&#41;</code></pre></p>
-<p>
-<a id="example_16135867060912272835">
- <p><span style="color:red;">// Image matching '/assets/geophysics/seismicity/3D_vp_vs/code/example_16135867060912272835.png' not found. //</span></p> 
-</a>
+cubeplot&#33;&#40;Cvs, top&#61;&quot;@earth_relief_05m&quot;, topshade&#61;true, zdown&#61;true, colorbar&#61;&#40;&quot;xlabel&#61;S-wave velocity&quot;, &quot;ylabel&#61;km/s&quot;&#41;, xshift&#61;18, title&#61;&quot;Vs model&quot;, show&#61;true&#41;</code></pre>
+
+<img src="/GMTjl_doc/assets/Vp_Vs_cubes.png" width="1000" class="center"/>
 
 <p>To finish we show how to make an inset view in the 3D model.</p>
 <pre><code class="language-julia">cubeplot&#40;Cvp, top&#61;&quot;@earth_relief&quot;, inset&#61;&#40;lon&#61;100, lat&#61;35&#41;, topshade&#61;true, zdown&#61;true,
-         colorbar&#61;&#40;&quot;xlabel&#61;P-wave velocity&quot;, &quot;ylabel&#61;km/s&quot;&#41;, show&#61;true&#41;</code></pre></p>
-<p>
-<a id="example_12650508523131671012">
- <p><span style="color:red;">// Image matching '/assets/geophysics/seismicity/3D_vp_vs/code/example_12650508523131671012.png' not found. //</span></p> 
-</a>
+         colorbar&#61;&#40;&quot;xlabel&#61;P-wave velocity&quot;, &quot;ylabel&#61;km/s&quot;&#41;, show&#61;true&#41;</code></pre>
+
+<img src="/GMTjl_doc/assets/Vp_inset.png" width="800" class="center"/>
 
 <div class="page-foot">
   <div class="copyright">
