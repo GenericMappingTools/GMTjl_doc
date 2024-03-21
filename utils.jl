@@ -144,7 +144,7 @@ function env_examplefig(com, _)
 		getpath4docs(file::String) = joinpath("..", "..", "..", "..", "..", file) # hide
 		$code
 	end # hide
-	mv(joinpath(tempdir(), "GMTjl_" * GMT.tmpdir_usr[2] * "." * "$ext"), joinpath(@OUTPUT, "$pngfile"), force=true);    # hide
+	mv(joinpath(tempdir(), "GMTjl_" * GMT.TMPDIR_USR[2] * "." * "$ext"), joinpath(@OUTPUT, "$pngfile"), force=true);    # hide
 	GMT.isFranklin[1] = false    # hide
 	GMT.IamModern[1]  = false    # hide
  

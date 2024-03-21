@@ -5,6 +5,27 @@ I = mosaic(lon, lat; pt_radius=6371007.0, provider="", zoom::Int=0, cache::Strin
            mapwidth=15, dpi=96, verbose::Int=0, kw...)
 ```
 
+---
+
+```julia
+I = mosaic(D::GMTdataset; pt_radius=6371007.0, provider="", zoom::Int=0, cache::String="",
+           mapwidth=15, dpi=96, verbose::Int=0, kw...)
+```
+
+---
+
+```julia
+I = mosaic(G::Union{GMTgrid, GMTimage}; pt_radius=6371007.0, provider="", zoom::Int=0, cache::String="",
+           mapwidth=15, dpi=96, verbose::Int=0, kw...)
+```
+
+---
+
+```julia
+I = mosaic(region=??, ..., kw...)
+```
+
+
 *keywords: GMT, Julia, tiles image*
 
 Get image tiles from a web map tiles provider for given longitude, latitude coordinates.
@@ -14,10 +35,15 @@ Get image tiles from a web map tiles provider for given longitude, latitude coor
   - `lon, lat` two scalars with the coordinates of region of interest center. To completly define
     the image area see the `neighbors` or `mosaic` option below.
   - `lon, lat` are two elements vector or matrix with the region's ``[lon_min, lon_max], [lat_min, lat_max]``.
-  - Instead of two arguments, pass just one containing a GMTdataset obtained with the ``geocoder`` function.
+  - Instead of two arguments, pass just one containing a \myreflink{GMTdataset} obtained with the ``geocoder`` function.
     Example: ``mosaic(D, ...)`` or, if the search with ``geocoder`` was sufficiently generic (see its docs),
     ``mosaic(D, bbox=true)`` to use the BoundingBox returned by the query. `bbox` supports `bb`, `BB` or
     `BoundingBox` as aliases.
+  - Yet another alternative is to pass either a \myreflink{GMTgrid} or a \myreflink{GMTimage} with a valid
+    projection, and it doesn't need to be in geographic coordinates. Coordinates in other reference systems
+    will be converted to geogs.
+  - Finaly, all of the above options can be skipped if the keyword `region` is used. Note that this option is
+    the same as in, for example, the \myreflink{coast} module.
 
 - `pt_radius`: The planetary radius. Defaults to Earth's WGS84 authalic radius (6371007 m).
 
@@ -60,9 +86,12 @@ Get image tiles from a web map tiles provider for given longitude, latitude coor
   Other from the quadtree string this option return also the `decimal_adress, lon, lat, x, y` that are:
   the XYZ tiles coordinates, the longitude, latitude , mercator X and Y coordinates in meters of first tile.
 
+- `tilesmesh` or `meshtiles` or `mesh`: Return a \myreflink{GMTdataset} with the mesh of tiles.
+
 Returns
 -------
-- `I`: A \myreflink{GMTimage} element or the output of the `quadonly` option explained above.
+- `I`: A \myreflink{GMTimage} element or the output of the `quadonly` or `mesh` options explained above.
+
 
 Examples
 --------
@@ -87,7 +116,7 @@ we use the ``geocoder`` function to give us the map limits
 using GMT
 
 # Get the geographical limits of the Big Island in Hawaii
-D = geocoder("Hawaii, Island");
+D = geocoder("Hawaii Island, USA");
 
 # Get the image tiles of the Big Island in Hawaii using the Bing provider and automatic zoom level
 I = mosaic(D, bbox=true);
@@ -96,6 +125,16 @@ viz(I)
 ```
 \end{examplefig}
 
+- Show only the tilles limits over a selected zone/zoom level.
+
+\begin{examplefig}{}
+```julia
+using GMT
+
+D = mosaic(region=(-10, -8, 37, 39), zoom=9, mesh=true);
+viz(D, coast=true)
+```
+\end{examplefig}
 
 See Also
 --------

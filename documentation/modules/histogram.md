@@ -57,7 +57,7 @@ Optional Arguments
 
 - **full_histo** : -- *full_histo=true*\
    When input is a GMTimage of UInt16 type histograms are often (*e.g.* Landsat images) characterized
-   by a very high number of countings at x=0 followed by may bins with zero countings. By default we
+   by a very high number of countings at x=0 followed by bins with zero countings. By default we
    check for that case and if found we set the zero bin countings to zero. This is crucial for the
    **auto** or **thresholds** to work. If, however, that is not wished use **full_histo=true**
 
@@ -73,14 +73,14 @@ Optional Arguments
    The modifiers specify the handling of extreme values that fall outside the range set by **bin**. By default these values are ignored. Use **out_range=:both** to let these values be included in the first or last bins. To only include extreme values below first bin into the first bin, use **out_range=:first**, and to only include extreme values above the last bin into that last bin, use **out_range=:last**.
 
 - **N** or **distribution** : -- *distribution=mode* **|** *distribution=(mode=mode, pen=(pen))*\
-    Draw the equivalent normal distribution; append desired pen [0.5p,black].
-    The *mode* selects which central location and scale to use:\
+   Draw the equivalent normal distribution; append desired pen [0.5p,black].
+   The *mode* selects which central location and scale to use:
 
-       0 = mean and standard deviation [Default];
-       1 = median and L1 scale (1.4826 * median absolute deviation; MAD);
-       2 = LMS (least median of squares) mode and scale.
+      0 = mean and standard deviation [Default];
+      1 = median and L1 scale (1.4826 * median absolute deviation; MAD);
+      2 = LMS (least median of squares) mode and scale.
 
-    This option may be repeated to draw several of these curves. To do that use a tuple of tuples. Example: **N=((mode=1,pen=(1,:red)), (mode=0,pen=(1,:blue)))**
+   This option may be repeated to draw several of these curves. To do that use a tuple of tuples. Example: **N=((mode=1,pen=(1,:red)), (mode=0,pen=(1,:blue)))**
 
 - **Q** or **cumulative** : -- *cumulative=true **|** cumulative="r"*\
    Draw a cumulative histogram. Append **r** to instead compute the reverse cumulative histogram.
@@ -101,8 +101,11 @@ Optional Arguments
 - **thresholds** : -- *thresholds=(low,high)*\
    When input is a GMTimage of UInt16 type this option will compute the histogram as well as good
    bounds to use in contrast enhancement. The alghoritm used checks from right and left when the
-   countings are >= *low* & <= *high* percentage of the maximum histogram countings. The defaul values
-   (which are used by **auto** and **zoom**) are **thresholds=(0,0.5)**
+   countings are >= *low* && <= *high* percentage of the maximum histogram countings. The defaul values
+   (which are used by **auto** and **zoom**) are **thresholds=(0.1,0.4)**
+
+- **getauto** or **getthresholds** : -- *getthresholds=true*\
+   Get the automatically determined thresholds to use in contrast enhancement. No plotting is done.
 
 \textinput{common_opts/opt_U}
 

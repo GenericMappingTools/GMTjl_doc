@@ -218,13 +218,16 @@ Parameters
 
 \textinput{common_opts/opt_Y}
 
-- **Z** or **level** : *level=vec* **|** *level=(data=vec, outline=true, nofill=true)*\
+- **Z** or **level** : *level=vec* **|** *level=(data=vec, outline=true, nofill=true)* **|** *level="att=???"*\
    Instead of specifying a symbol or polygon fill and outline color via **markercolor** and **pen**, give both a value
    via **level** and a color lookup table via **color**. Alternatively, give a vector with one z-value for each polygon
    in the input data. To apply it to the pen color, use **level=(data=vec, outline=true)**. This results in filled
    polygons and outline color chosen from the `vec` and the active cmap. Use **level=(data=vec, nofill=true)**
-   to only paint outlines but not fill. The default is to fill and draw outlines with default color (black). This option
-   is particularly useful to make choropleth maps. Note, options **fill** and **pen** may overlap with this option.
+   to only paint outlines but not fill. Instead of a numeric `vec`, one can pass an attribute name of the attrib
+   holding the numeric data in the GMTdaset. For example, this is _legal_ too: **level=(data="att=FROMAGE", nofill=true)**.
+   Here, the contents of the FROMAGE attribute will be used to color lines or polygons. The default is to fill and draw
+   outlines with default color (black). This option is particularly useful to make choropleth maps. Note, options
+   **fill** and **pen** may overlap with this option.
 
 \textinput{common_opts/opt_save_fig}
 
