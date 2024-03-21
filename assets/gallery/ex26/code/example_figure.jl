@@ -16,7 +16,7 @@ coast!(proj=(name=:ortho, center=[lon, lat], parallels=[alt, azim, tilt, twist, 
        land=:lightbrown, water=:lightblue, shore=true, rivers=(level=:a, pen=:blue), res=:intermediate,
        borders=:a, figsize=12, xshift=2.5, yshift=-10, show=true)
 end # hide
-mv(joinpath(tempdir(), "GMTjl_" * GMT.tmpdir_usr[2] * "." * "png"), joinpath(@OUTPUT, "example_12506980843332438246.png"), force=true);    # hide
+mv(joinpath(tempdir(), "GMTjl_" * GMT.TMPDIR_USR[2] * "." * "png"), joinpath(@OUTPUT, "example_12506980843332438246.png"), force=true);    # hide
 GMT.isFranklin[1] = false    # hide
 GMT.IamModern[1]  = false    # hide
  

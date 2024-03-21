@@ -49,7 +49,7 @@ lines!(path, region=(-9.0,9.0,0,15), proj=:linear, figscale=1.0, decorated=(quot
        const_label="IMPORTANT PACIFIC AIRPORTS", font=32, curved=true),
 pen=(:faint,:white), noclip=true, yshift=8, show=true)
 end # hide
-mv(joinpath(tempdir(), "GMTjl_" * GMT.tmpdir_usr[2] * "." * "png"), joinpath(@OUTPUT, "example_11684623241254937061.png"), force=true);    # hide
+mv(joinpath(tempdir(), "GMTjl_" * GMT.TMPDIR_USR[2] * "." * "png"), joinpath(@OUTPUT, "example_11684623241254937061.png"), force=true);    # hide
 GMT.isFranklin[1] = false    # hide
 GMT.IamModern[1]  = false    # hide
  

@@ -27,7 +27,7 @@ gmtbegin()
 	colorbar(pos="JBC", color="@ex_16.cpt")
 gmtend(:show)
 end # hide
-mv(joinpath(tempdir(), "GMTjl_" * GMT.tmpdir_usr[2] * "." * "png"), joinpath(@OUTPUT, "example_14538614471935313907.png"), force=true);    # hide
+mv(joinpath(tempdir(), "GMTjl_" * GMT.TMPDIR_USR[2] * "." * "png"), joinpath(@OUTPUT, "example_14538614471935313907.png"), force=true);    # hide
 GMT.isFranklin[1] = false    # hide
 GMT.IamModern[1]  = false    # hide
  

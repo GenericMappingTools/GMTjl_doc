@@ -30,7 +30,7 @@ plot!(stack, pen=3)
 text!(mat2ds([0 -2000], "MEDIAN STACKED PROFILE"), fill=:white, font=14, justify=:TC,
       offset=(away=true, shift=0.25), show=true)
 end # hide
-mv(joinpath(tempdir(), "GMTjl_" * GMT.tmpdir_usr[2] * "." * "png"), joinpath(@OUTPUT, "example_9103115099362066303.png"), force=true);    # hide
+mv(joinpath(tempdir(), "GMTjl_" * GMT.TMPDIR_USR[2] * "." * "png"), joinpath(@OUTPUT, "example_9103115099362066303.png"), force=true);    # hide
 GMT.isFranklin[1] = false    # hide
 GMT.IamModern[1]  = false    # hide
  

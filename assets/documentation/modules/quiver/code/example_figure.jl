@@ -10,7 +10,7 @@ dzdx = gmt("grdmath ? DDX", G);
 grdcontour(G, annot=:none, pen=:gray80)
 quiver!(dzdx, dzdy, cmap=:turbo, lw=1, show=true)
 end # hide
-mv(joinpath(tempdir(), "GMTjl_" * GMT.tmpdir_usr[2] * "." * "png"), joinpath(@OUTPUT, "example_3102015549167345783.png"), force=true);    # hide
+mv(joinpath(tempdir(), "GMTjl_" * GMT.TMPDIR_USR[2] * "." * "png"), joinpath(@OUTPUT, "example_3102015549167345783.png"), force=true);    # hide
 GMT.isFranklin[1] = false    # hide
 GMT.IamModern[1]  = false    # hide
  

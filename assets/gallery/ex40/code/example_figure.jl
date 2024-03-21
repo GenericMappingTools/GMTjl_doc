@@ -35,7 +35,7 @@ text!(text_record([112 -10], "T = 100 km"), offset=(away=true, shift=(0.25,0.25)
 text!(text_record(area), font=14, region_justify=:CM)
 text!(text_record(area_T100k), font=14, region_justify=:LB, offset=(away=true, shift=0.5), show=true)
 end # hide
-mv(joinpath(tempdir(), "GMTjl_" * GMT.tmpdir_usr[2] * "." * "png"), joinpath(@OUTPUT, "example_9686346439013016404.png"), force=true);    # hide
+mv(joinpath(tempdir(), "GMTjl_" * GMT.TMPDIR_USR[2] * "." * "png"), joinpath(@OUTPUT, "example_9686346439013016404.png"), force=true);    # hide
 GMT.isFranklin[1] = false    # hide
 GMT.IamModern[1]  = false    # hide
  

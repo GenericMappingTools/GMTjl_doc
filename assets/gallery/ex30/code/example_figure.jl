@@ -56,7 +56,7 @@ text!(T, offset=(away=true, shift=0.1), font="", angle="", justify="")
 
 plot!([0 0 1.25 0 120], marker=:matang, ms="0.4+e", ml=1, fill=:black, show=true)
 end # hide
-mv(joinpath(tempdir(), "GMTjl_" * GMT.tmpdir_usr[2] * "." * "png"), joinpath(@OUTPUT, "example_2733267212985635290.png"), force=true);    # hide
+mv(joinpath(tempdir(), "GMTjl_" * GMT.TMPDIR_USR[2] * "." * "png"), joinpath(@OUTPUT, "example_2733267212985635290.png"), force=true);    # hide
 GMT.isFranklin[1] = false    # hide
 GMT.IamModern[1]  = false    # hide
  

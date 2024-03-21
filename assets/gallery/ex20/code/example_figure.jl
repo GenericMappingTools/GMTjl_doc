@@ -14,7 +14,7 @@ plot!("@hotspots.txt", symbol="kvolcano", markerline=:thinnest, fill=:red)
 cities = [-74 40.45 1.0; 31.15 30.03 1.0; 115.49 -31.58 1.0; -56.16 -34.9 1.0]
 plot!(cities, symbol="k@bullseye", show=true)
 end # hide
-mv(joinpath(tempdir(), "GMTjl_" * GMT.tmpdir_usr[2] * "." * "png"), joinpath(@OUTPUT, "example_793499969305750321.png"), force=true);    # hide
+mv(joinpath(tempdir(), "GMTjl_" * GMT.TMPDIR_USR[2] * "." * "png"), joinpath(@OUTPUT, "example_793499969305750321.png"), force=true);    # hide
 GMT.isFranklin[1] = false    # hide
 GMT.IamModern[1]  = false    # hide
  

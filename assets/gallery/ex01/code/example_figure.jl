@@ -24,7 +24,7 @@ subplot(grid=(2,1), region=:global, autolabel=true, margins=0.5,
                 range=(-1,1000), ticks=(gap=(0.25,0.05),))
 subplot("show")
 end # hide
-mv(joinpath(tempdir(), "GMTjl_" * GMT.tmpdir_usr[2] * "." * "png"), joinpath(@OUTPUT, "example_12211371695113556997.png"), force=true);    # hide
+mv(joinpath(tempdir(), "GMTjl_" * GMT.TMPDIR_USR[2] * "." * "png"), joinpath(@OUTPUT, "example_12211371695113556997.png"), force=true);    # hide
 GMT.isFranklin[1] = false    # hide
 GMT.IamModern[1]  = false    # hide
  

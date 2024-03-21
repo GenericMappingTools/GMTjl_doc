@@ -16,7 +16,7 @@ plot!(D[ids[1]], fill=:grey)
 plot!(D[ids[2]], fill=:green)
 plot!(points, marker=:star, ms="12p", fill=:blue, show=true)
 end # hide
-mv(joinpath(tempdir(), "GMTjl_" * GMT.tmpdir_usr[2] * "." * "png"), joinpath(@OUTPUT, "example_8839502421261613978.png"), force=true);    # hide
+mv(joinpath(tempdir(), "GMTjl_" * GMT.TMPDIR_USR[2] * "." * "png"), joinpath(@OUTPUT, "example_8839502421261613978.png"), force=true);    # hide
 GMT.isFranklin[1] = false    # hide
 GMT.IamModern[1]  = false    # hide
  

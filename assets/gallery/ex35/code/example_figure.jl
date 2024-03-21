@@ -22,7 +22,7 @@ plot!(pol, pen=(0.25, :green, :dotted))
 coast!(shore=1, land=:steelblue, area=(0,1,1),
        frame=(annot=30, grid=30, title="Distances from GSHHG crude coastlines"), show=true)
 end # hide
-mv(joinpath(tempdir(), "GMTjl_" * GMT.tmpdir_usr[2] * "." * "png"), joinpath(@OUTPUT, "example_6405238181549328204.png"), force=true);    # hide
+mv(joinpath(tempdir(), "GMTjl_" * GMT.TMPDIR_USR[2] * "." * "png"), joinpath(@OUTPUT, "example_6405238181549328204.png"), force=true);    # hide
 GMT.isFranklin[1] = false    # hide
 GMT.IamModern[1]  = false    # hide
  

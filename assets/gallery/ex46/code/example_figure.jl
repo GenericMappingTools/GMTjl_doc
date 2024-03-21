@@ -16,7 +16,7 @@ solar!(terminators=(term=:a, date="2016-02-09T16:00:00"), fill="navy@80")
 t = solar(sun=(date="2016-02-09T16:00:00",), format=true);
 plot!(t, symbol="k@sunglasses/1.5", fill=:yellow, show=true)
 end # hide
-mv(joinpath(tempdir(), "GMTjl_" * GMT.tmpdir_usr[2] * "." * "png"), joinpath(@OUTPUT, "example_2037549677329362456.png"), force=true);    # hide
+mv(joinpath(tempdir(), "GMTjl_" * GMT.TMPDIR_USR[2] * "." * "png"), joinpath(@OUTPUT, "example_2037549677329362456.png"), force=true);    # hide
 GMT.isFranklin[1] = false    # hide
 GMT.IamModern[1]  = false    # hide
  

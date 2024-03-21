@@ -44,7 +44,7 @@ legend!(pos=(anchor=:BC, width=10), box=(pen=:thick,), yshift=-1.0, par=(:FONT_A
     string("S 0.3 s 0.25 blue 0.25p 0.5 Oceanic Antipodes [", round(Int, ocean.data[1]), " %]", )
     string("S 0.3 s 0.25 gray 0.25p 0.5 Mixed Antipodes [", round(Int, mixed.data[1]), " %]", )]), show=true)
 end # hide
-mv(joinpath(tempdir(), "GMTjl_" * GMT.tmpdir_usr[2] * "." * "png"), joinpath(@OUTPUT, "example_14013197095133805844.png"), force=true);    # hide
+mv(joinpath(tempdir(), "GMTjl_" * GMT.TMPDIR_USR[2] * "." * "png"), joinpath(@OUTPUT, "example_14013197095133805844.png"), force=true);    # hide
 GMT.isFranklin[1] = false    # hide
 GMT.IamModern[1]  = false    # hide
  

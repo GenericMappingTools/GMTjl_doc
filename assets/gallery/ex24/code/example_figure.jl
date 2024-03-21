@@ -23,7 +23,7 @@ text!(mat2ds(point, "Hobart"), font=(14,"Helvetica-Bold",:white),
 plot!(point, MarkerLine=(:fat, :white), marker=:plus, ms=0.4)
 plot!(dateline, pen=(:thick, :white), straight_lines=true, show=1)
 end # hide
-mv(joinpath(tempdir(), "GMTjl_" * GMT.tmpdir_usr[2] * "." * "png"), joinpath(@OUTPUT, "example_2832903023374150160.png"), force=true);    # hide
+mv(joinpath(tempdir(), "GMTjl_" * GMT.TMPDIR_USR[2] * "." * "png"), joinpath(@OUTPUT, "example_2832903023374150160.png"), force=true);    # hide
 GMT.isFranklin[1] = false    # hide
 GMT.IamModern[1]  = false    # hide
  

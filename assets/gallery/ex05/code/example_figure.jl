@@ -15,7 +15,7 @@ tit = mat2ds([7.5 12], "z(r) = cos (2@~p@~r/8) @~\\327@~e@+-r/10@+");
 text!(tit, limits=(0,21,0,28), proj=:linear, view=:none,
       font=(50,"ZapfChancery-MediumItalic"), justify=:CB, scale=1, show=true)
 end # hide
-mv(joinpath(tempdir(), "GMTjl_" * GMT.tmpdir_usr[2] * "." * "png"), joinpath(@OUTPUT, "example_6890047330486406257.png"), force=true);    # hide
+mv(joinpath(tempdir(), "GMTjl_" * GMT.TMPDIR_USR[2] * "." * "png"), joinpath(@OUTPUT, "example_6890047330486406257.png"), force=true);    # hide
 GMT.isFranklin[1] = false    # hide
 GMT.IamModern[1]  = false    # hide
  

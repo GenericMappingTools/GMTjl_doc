@@ -19,7 +19,7 @@ text!("H@#awaiian@# R@#idge@#", x=7.5, y=14.0, region=(0,21,0,28),
       font=(60,"ZapfChancery-MediumItalic"), justify=:CB, proj=:linear,
       view=:none, figscale=1, show=true)
 end # hide
-mv(joinpath(tempdir(), "GMTjl_" * GMT.tmpdir_usr[2] * "." * "png"), joinpath(@OUTPUT, "example_9936001676428703525.png"), force=true);    # hide
+mv(joinpath(tempdir(), "GMTjl_" * GMT.TMPDIR_USR[2] * "." * "png"), joinpath(@OUTPUT, "example_9936001676428703525.png"), force=true);    # hide
 GMT.isFranklin[1] = false    # hide
 GMT.IamModern[1]  = false    # hide
  

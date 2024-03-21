@@ -10,7 +10,7 @@ coast(region=:global, proj=(name=:ortho, center=(300,15)), frame=:g,
 plot!(x*60, y, lw=1, lc=:red, marker=:circle, size=0.2,
       markeredgecolor=0, markerfacecolor=:cyan, show=true)
 end # hide
-mv(joinpath(tempdir(), "GMTjl_" * GMT.tmpdir_usr[2] * "." * "png"), joinpath(@OUTPUT, "example_9050909409146819876.png"), force=true);    # hide
+mv(joinpath(tempdir(), "GMTjl_" * GMT.TMPDIR_USR[2] * "." * "png"), joinpath(@OUTPUT, "example_9050909409146819876.png"), force=true);    # hide
 GMT.isFranklin[1] = false    # hide
 GMT.IamModern[1]  = false    # hide
  

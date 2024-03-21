@@ -21,7 +21,7 @@ t = ["@_@%5%Example 17.@%%@_  We first plot the color geoid image"
 text!(mat2ds(t, hdr="> 90 -10 12p 8c j"), paragraph=true, fill=:white, pen=:thinner,
       clearance=(round=true,), offset=(-0.25,0.25), font=(12,"Times-Roman"), justify=:RB, show=true)
 end # hide
-mv(joinpath(tempdir(), "GMTjl_" * GMT.tmpdir_usr[2] * "." * "png"), joinpath(@OUTPUT, "example_12641759100786255793.png"), force=true);    # hide
+mv(joinpath(tempdir(), "GMTjl_" * GMT.TMPDIR_USR[2] * "." * "png"), joinpath(@OUTPUT, "example_12641759100786255793.png"), force=true);    # hide
 GMT.isFranklin[1] = false    # hide
 GMT.IamModern[1]  = false    # hide
  

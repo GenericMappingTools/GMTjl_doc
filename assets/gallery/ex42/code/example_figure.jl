@@ -40,7 +40,7 @@ plot!(region=(0,7.5,0,10), proj=:linear, figscale=2.5, frame=:bare, lw=2,
 text!(text_record([0 5.2; 0 9.65], ["BEDMAP", "GSHHG"]), font=18, justify=:BL,
       offset=(away=true, shift=(0.25,0)), show=true)
 end # hide
-mv(joinpath(tempdir(), "GMTjl_" * GMT.tmpdir_usr[2] * "." * "png"), joinpath(@OUTPUT, "example_8088674200946755866.png"), force=true);    # hide
+mv(joinpath(tempdir(), "GMTjl_" * GMT.TMPDIR_USR[2] * "." * "png"), joinpath(@OUTPUT, "example_8088674200946755866.png"), force=true);    # hide
 GMT.isFranklin[1] = false    # hide
 GMT.IamModern[1]  = false    # hide
  

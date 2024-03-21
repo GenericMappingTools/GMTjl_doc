@@ -32,7 +32,7 @@ text!(text_record([-0.3 3.6], "Gridding with missing data"), region=(0,3,0,4),
       font=(24,"Helvetica-Bold"), justify=:CB, no_clip=true, figscale=2.5,
       proj=:linear, show=true)
 end # hide
-mv(joinpath(tempdir(), "GMTjl_" * GMT.tmpdir_usr[2] * "." * "png"), joinpath(@OUTPUT, "example_4840810856566608029.png"), force=true);    # hide
+mv(joinpath(tempdir(), "GMTjl_" * GMT.TMPDIR_USR[2] * "." * "png"), joinpath(@OUTPUT, "example_4840810856566608029.png"), force=true);    # hide
 GMT.isFranklin[1] = false    # hide
 GMT.IamModern[1]  = false    # hide
  

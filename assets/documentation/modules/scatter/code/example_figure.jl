@@ -7,7 +7,7 @@ begin # hide
 sizevec = [s for s = 1:10] ./ 10;
 scatter(1:10, 1:10, markersize = sizevec, marker=:square, fill=:green, show=1)
 end # hide
-mv(joinpath(tempdir(), "GMTjl_" * GMT.tmpdir_usr[2] * "." * "png"), joinpath(@OUTPUT, "example_7833787725779720243.png"), force=true);    # hide
+mv(joinpath(tempdir(), "GMTjl_" * GMT.TMPDIR_USR[2] * "." * "png"), joinpath(@OUTPUT, "example_7833787725779720243.png"), force=true);    # hide
 GMT.isFranklin[1] = false    # hide
 GMT.IamModern[1]  = false    # hide
  

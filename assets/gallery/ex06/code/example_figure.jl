@@ -14,7 +14,7 @@ subplot(grid=(2,1), autolabel=(Anchor=:TL, offset=0.8), margins=1, panel_size=(1
 	     norm=true, fill=:orange, axis=(grid=:auto, fill=:lightblue,), pen=1)
 subplot("show")
 end # hide
-mv(joinpath(tempdir(), "GMTjl_" * GMT.tmpdir_usr[2] * "." * "png"), joinpath(@OUTPUT, "example_4855531435452892868.png"), force=true);    # hide
+mv(joinpath(tempdir(), "GMTjl_" * GMT.TMPDIR_USR[2] * "." * "png"), joinpath(@OUTPUT, "example_4855531435452892868.png"), force=true);    # hide
 GMT.isFranklin[1] = false    # hide
 GMT.IamModern[1]  = false    # hide
  

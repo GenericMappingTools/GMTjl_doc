@@ -40,7 +40,7 @@ plot!(data, limits=t.text[1][3:end], lw=:thick, xaxis=(axes=:WSne, annot=1),
       yaxis=(annot=50,), figsize=(16.3,4), xshift=-8.3, yshift=-4.8)
 plot!(trend, pen=(:thinner, :dashed), show=true)
 end # hide
-mv(joinpath(tempdir(), "GMTjl_" * GMT.tmpdir_usr[2] * "." * "png"), joinpath(@OUTPUT, "example_8841413149337387166.png"), force=true);    # hide
+mv(joinpath(tempdir(), "GMTjl_" * GMT.TMPDIR_USR[2] * "." * "png"), joinpath(@OUTPUT, "example_8841413149337387166.png"), force=true);    # hide
 GMT.isFranklin[1] = false    # hide
 GMT.IamModern[1]  = false    # hide
  

@@ -35,7 +35,7 @@ text!(text_record([0  20], "15TH INTERNATIONAL"), font=(32,"Helvetica-Bold","red
 text!(text_record([0 -10], "GMT CONFERENCE"), font=(32,"Helvetica-Bold","red=thinner"))
 text!(text_record([0 -30], "Honolulu, Hawaii, April 1, 2018"), font=(18,"Helvetica-Bold","green=thinner"), show=true)
 end # hide
-mv(joinpath(tempdir(), "GMTjl_" * GMT.tmpdir_usr[2] * "." * "png"), joinpath(@OUTPUT, "example_3235752501285094276.png"), force=true);    # hide
+mv(joinpath(tempdir(), "GMTjl_" * GMT.TMPDIR_USR[2] * "." * "png"), joinpath(@OUTPUT, "example_3235752501285094276.png"), force=true);    # hide
 GMT.isFranklin[1] = false    # hide
 GMT.IamModern[1]  = false    # hide
  

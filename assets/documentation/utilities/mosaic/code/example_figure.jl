@@ -5,15 +5,10 @@ begin # hide
 	getpath4docs(file::String) = joinpath("..", "..", "..", "..", "..", file) # hide
 	using GMT
 
-# Get the geographical limits of the Big Island in Hawaii
-D = geocoder("Hawaii, Island");
-
-# Get the image tiles of the Big Island in Hawaii using the Bing provider and automatic zoom level
-I = mosaic(D, bbox=true);
-
-viz(I)
+D = mosaic(region=(-10, -8, 37, 39), zoom=9, mesh=true);
+viz(D, coast=true)
 end # hide
-mv(joinpath(tempdir(), "GMTjl_" * GMT.tmpdir_usr[2] * "." * "png"), joinpath(@OUTPUT, "example_10771828636817921970.png"), force=true);    # hide
+mv(joinpath(tempdir(), "GMTjl_" * GMT.TMPDIR_USR[2] * "." * "png"), joinpath(@OUTPUT, "example_5918745864485062230.png"), force=true);    # hide
 GMT.isFranklin[1] = false    # hide
 GMT.IamModern[1]  = false    # hide
  

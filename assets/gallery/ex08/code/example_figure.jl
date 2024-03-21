@@ -14,7 +14,7 @@ bar3(gmtread("@earth_relief_05m_g", region=(0,5,0,5)), region=(0,5,0,5,-5000,0),
 text!(mat2ds([0.1 4.7], "This is the surface of cube"), JZ=true, Z=0,
       font=(24,"Helvetica-Bold"), justify=:TL, show=true)
 end # hide
-mv(joinpath(tempdir(), "GMTjl_" * GMT.tmpdir_usr[2] * "." * "png"), joinpath(@OUTPUT, "example_17063809340940404125.png"), force=true);    # hide
+mv(joinpath(tempdir(), "GMTjl_" * GMT.TMPDIR_USR[2] * "." * "png"), joinpath(@OUTPUT, "example_17063809340940404125.png"), force=true);    # hide
 GMT.isFranklin[1] = false    # hide
 GMT.IamModern[1]  = false    # hide
  

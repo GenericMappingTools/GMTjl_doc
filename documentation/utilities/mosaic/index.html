@@ -405,6 +405,14 @@
 <div class="franklin-content"><h1 id="mosaic"><a href="#mosaic" class="header-anchor">mosaic</a></h1>
 <pre><code class="language-julia">I &#61; mosaic&#40;lon, lat; pt_radius&#61;6371007.0, provider&#61;&quot;&quot;, zoom::Int&#61;0, cache::String&#61;&quot;&quot;,
            mapwidth&#61;15, dpi&#61;96, verbose::Int&#61;0, kw...&#41;</code></pre>
+<hr />
+<pre><code class="language-julia">I &#61; mosaic&#40;D::GMTdataset; pt_radius&#61;6371007.0, provider&#61;&quot;&quot;, zoom::Int&#61;0, cache::String&#61;&quot;&quot;,
+           mapwidth&#61;15, dpi&#61;96, verbose::Int&#61;0, kw...&#41;</code></pre>
+<hr />
+<pre><code class="language-julia">I &#61; mosaic&#40;G::Union&#123;GMTgrid, GMTimage&#125;; pt_radius&#61;6371007.0, provider&#61;&quot;&quot;, zoom::Int&#61;0, cache::String&#61;&quot;&quot;,
+           mapwidth&#61;15, dpi&#61;96, verbose::Int&#61;0, kw...&#41;</code></pre>
+<hr />
+<pre><code class="language-julia">I &#61; mosaic&#40;region&#61;??, ..., kw...&#41;</code></pre>
 <p><em>keywords: GMT, Julia, tiles image</em></p>
 <p>Get image tiles from a web map tiles provider for given longitude, latitude coordinates.</p>
 <h3 id="arguments"><a href="#arguments" class="header-anchor">Arguments</a></h3>
@@ -415,7 +423,11 @@
 </li>
 <li><p><code>lon, lat</code> are two elements vector or matrix with the region&#39;s <code>&#91;lon_min, lon_max&#93;, &#91;lat_min, lat_max&#93;</code>.</p>
 </li>
-<li><p>Instead of two arguments, pass just one containing a GMTdataset obtained with the <code>geocoder</code> function. Example: <code>mosaic&#40;D, ...&#41;</code> or, if the search with <code>geocoder</code> was sufficiently generic &#40;see its docs&#41;, <code>mosaic&#40;D, bbox&#61;true&#41;</code> to use the BoundingBox returned by the query. <code>bbox</code> supports <code>bb</code>, <code>BB</code> or <code>BoundingBox</code> as aliases.</p>
+<li><p>Instead of two arguments, pass just one containing a <a href="#">GMTdataset</a> obtained with the <code>geocoder</code> function. Example: <code>mosaic&#40;D, ...&#41;</code> or, if the search with <code>geocoder</code> was sufficiently generic &#40;see its docs&#41;, <code>mosaic&#40;D, bbox&#61;true&#41;</code> to use the BoundingBox returned by the query. <code>bbox</code> supports <code>bb</code>, <code>BB</code> or <code>BoundingBox</code> as aliases.</p>
+</li>
+<li><p>Yet another alternative is to pass either a <a href="#">GMTgrid</a> or a <a href="#">GMTimage</a> with a valid projection, and it doesn&#39;t need to be in geographic coordinates. Coordinates in other reference systems will be converted to geogs.</p>
+</li>
+<li><p>Finaly, all of the above options can be skipped if the keyword <code>region</code> is used. Note that this option is the same as in, for example, the <a href="/GMTjl_doc/documentation/modules/coast/index.html#coast">coast</a> module.</p>
 </li>
 </ul>
 </li>
@@ -450,10 +462,12 @@
 </li>
 <li><p><code>quadonly</code>: Return only the quadtree string. A string or a matrix of strings when number of tiles &gt; 1. Other from the quadtree string this option return also the <code>decimal_adress, lon, lat, x, y</code> that are: the XYZ tiles coordinates, the longitude, latitude , mercator X and Y coordinates in meters of first tile.</p>
 </li>
+<li><p><code>tilesmesh</code> or <code>meshtiles</code> or <code>mesh</code>: Return a <a href="#">GMTdataset</a> with the mesh of tiles.</p>
+</li>
 </ul>
 <h2>Returns</h2>
 <ul>
-<li><p><code>I</code>: A <a href="#">GMTimage</a> element or the output of the <code>quadonly</code> option explained above.</p>
+<li><p><code>I</code>: A <a href="#">GMTimage</a> element or the output of the <code>quadonly</code> or <code>mesh</code> options explained above.</p>
 </li>
 </ul>
 <h2>Examples</h2>
@@ -478,23 +492,36 @@ viz&#40;I&#41;</code></pre></p>
 <pre><code class="language-julia">using GMT
 
 # Get the geographical limits of the Big Island in Hawaii
-D &#61; geocoder&#40;&quot;Hawaii, Island&quot;&#41;;
+D &#61; geocoder&#40;&quot;Hawaii Island, USA&quot;&#41;;
 
 # Get the image tiles of the Big Island in Hawaii using the Bing provider and automatic zoom level
 I &#61; mosaic&#40;D, bbox&#61;true&#41;;
 
 viz&#40;I&#41;</code></pre></p>
 <p>
-<a id="example_10771828636817921970">
- <img src="/GMTjl_doc/assets/documentation/utilities/mosaic/code/output/example_10771828636817921970.png" alt=""> 
+<a id="example_10121810162605496619">
+ <img src="/GMTjl_doc/assets/documentation/utilities/mosaic/code/output/example_10121810162605496619.png" alt=""> 
+</a>
+
+<ul>
+<li><p>Show only the tilles limits over a selected zone/zoom level.</p>
+</li>
+</ul>
+<pre><code class="language-julia">using GMT
+
+D &#61; mosaic&#40;region&#61;&#40;-10, -8, 37, 39&#41;, zoom&#61;9, mesh&#61;true&#41;;
+viz&#40;D, coast&#61;true&#41;</code></pre></p>
+<p>
+<a id="example_5918745864485062230">
+ <img src="/GMTjl_doc/assets/documentation/utilities/mosaic/code/output/example_5918745864485062230.png" alt=""> 
 </a>
 
 <h2>See Also</h2>
 <a href="/GMTjl_doc/documentation/utilities/geocoder/index.html#geocoder">geocoder</a>
 <div class="page-foot">
   <div class="copyright">
-    &copy; GMT.jl. Last modified: February 12, 2024. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
-      <p>These docs were autogenerated using GMT: v1.11.0</p>
+    &copy; GMT.jl. Last modified: March 21, 2024. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+      <p>These docs were autogenerated using GMT: v1.12.0</p>
   </div>
 </div>
 </div><!-- CONTENT ENDS HERE -->

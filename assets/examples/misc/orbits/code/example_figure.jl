@@ -13,7 +13,7 @@ orb = sat_tracks(tle=["1 27424U 02022A   23229.43455053  .00001116  00000-0  251
 
 orbits(orb, lon0=45, land=:tomato, show=true)
 end # hide
-mv(joinpath(tempdir(), "GMTjl_" * GMT.tmpdir_usr[2] * "." * "png"), joinpath(@OUTPUT, "example_8244485496579702395.png"), force=true);    # hide
+mv(joinpath(tempdir(), "GMTjl_" * GMT.TMPDIR_USR[2] * "." * "png"), joinpath(@OUTPUT, "example_8244485496579702395.png"), force=true);    # hide
 GMT.isFranklin[1] = false    # hide
 GMT.IamModern[1]  = false    # hide
  

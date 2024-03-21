@@ -24,7 +24,7 @@ T = mat2ds([-0.4 7.5; -0.4 3.0], ["a)", "b)"])
 pstext!(T, region=(0,21.6,0,29.94), font=(30,"Helvetica-Bold"), justify=:CB,
         yshift=11, proj=:linear, scale=1, show=true)
 end # hide
-mv(joinpath(tempdir(), "GMTjl_" * GMT.tmpdir_usr[2] * "." * "png"), joinpath(@OUTPUT, "example_4423643730670146179.png"), force=true);    # hide
+mv(joinpath(tempdir(), "GMTjl_" * GMT.TMPDIR_USR[2] * "." * "png"), joinpath(@OUTPUT, "example_4423643730670146179.png"), force=true);    # hide
 GMT.isFranklin[1] = false    # hide
 GMT.IamModern[1]  = false    # hide
  

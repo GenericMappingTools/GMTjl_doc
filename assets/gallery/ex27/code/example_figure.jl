@@ -27,7 +27,7 @@ coast!(region=R, proj=:merc, figscale=0.635, frame=(axes=:WSne, annot=10, ticks=
 colorbar!(region=R, pos=(inside=true, anchor=:TL, offset=1, length=(5, 0.4)),
           xaxis=(annot=50, ticks=10), ylabel="mGal", shade=true, box=(pen=1, fill=:white), show=true)
 end # hide
-mv(joinpath(tempdir(), "GMTjl_" * GMT.tmpdir_usr[2] * "." * "png"), joinpath(@OUTPUT, "example_10765948773824140670.png"), force=true);    # hide
+mv(joinpath(tempdir(), "GMTjl_" * GMT.TMPDIR_USR[2] * "." * "png"), joinpath(@OUTPUT, "example_10765948773824140670.png"), force=true);    # hide
 GMT.isFranklin[1] = false    # hide
 GMT.IamModern[1]  = false    # hide
  

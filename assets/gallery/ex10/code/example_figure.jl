@@ -20,7 +20,7 @@ legend!("@legend_10.txt", JZ=true, pos=(anchor=:LB, width=3.5, justify=:LB, offs
         par=(:FONT,"Helvetica-Bold"),
         box=(fill=:lightgrey, pen=:thinner, shaded="-4p/-6p/grey20@40"), show=true)
 end # hide
-mv(joinpath(tempdir(), "GMTjl_" * GMT.tmpdir_usr[2] * "." * "png"), joinpath(@OUTPUT, "example_17305510664398726472.png"), force=true);    # hide
+mv(joinpath(tempdir(), "GMTjl_" * GMT.TMPDIR_USR[2] * "." * "png"), joinpath(@OUTPUT, "example_17305510664398726472.png"), force=true);    # hide
 GMT.isFranklin[1] = false    # hide
 GMT.IamModern[1]  = false    # hide
  
