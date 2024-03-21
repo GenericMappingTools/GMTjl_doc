@@ -134,25 +134,7 @@ Optional Arguments
    When input is a GMTimage of UInt16 type this option will set **auto=true** and show histogram only
    on the region of interest. 
 
-\textinput{common_opts/opt_bi}
 
-\textinput{common_opts/opt_di}
-
-\textinput{common_opts/opt_e}
-
-\textinput{common_opts/opt_f}
-
-\textinput{common_opts/opt_h}
-
-\textinput{common_opts/opt__i}
-
-\textinput{common_opts/opt_p}
-
-\textinput{common_opts/opt_t}
-
-\textinput{common_opts/opt_q}
-
-\textinput{common_opts/opt_save_fig}
 
 
 Examples
