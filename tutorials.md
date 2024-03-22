@@ -89,4 +89,15 @@
     ~~~</a>~~~
   @@
 
+  @@box
+    ~~~<a class="boxlink" href="mosaics/mosaic/">~~~
+    @@title Images mosaic@@
+    @@box-content
+      ~~~
+      <img src="/tutorials/mosaics/tilelogo.jpg">
+      ~~~
+    @@
+    ~~~</a>~~~
+  @@
+
 @@

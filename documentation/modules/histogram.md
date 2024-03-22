@@ -28,6 +28,7 @@ Optional Arguments
    When input is a GMTimage of UInt16 type this option will compute the histogram as well as good
    bounds to use in contrast enhancement, which will be plotted as two vertical lines.
 
+\textinput{common_opts/opt_B}
 
 - **bg** or **background** : -- *bg=imagename* **|** *bg=funname|img|grd* **|** *bg=(..., colormap)*\
    Fills the plotting canvas with a backround image. That image may come from a file (*e.g.* **bg="cute.png"**) or
@@ -66,6 +67,7 @@ Optional Arguments
 - **I** or **inquire** or **bins** : -- *inquire=:all* **|** *inquire=:no_zero* **|** *inquire=:bins*\
    Inquire about min/max x and y after binning. The *xmin xmax ymin ymax* is output; no plotting is done. Use **inquire=:no_zero** to output a table of the resulting x,y data instead. **inquire=:all** will output all x,y bin data even when y == 0. **inquire=:bins** outputs the binned array (the histogram).
 
+\textinput{common_opts/opt_J}
 
 - **L** or **out_range** : --  *out_range=:first* **|** *out_range=:last* **|** *out_range=:both*\
    The modifiers specify the handling of extreme values that fall outside the range set by **bin**. By default these values are ignored. Use **out_range=:both** to let these values be included in the first or last bins. To only include extreme values below first bin into the first bin, use **out_range=:first**, and to only include extreme values above the last bin into that last bin, use **out_range=:last**.
@@ -83,6 +85,7 @@ Optional Arguments
 - **Q** or **cumulative** : -- *cumulative=true **|** cumulative="r"*\
    Draw a cumulative histogram. Append **r** to instead compute the reverse cumulative histogram.
 
+\textinput{common_opts/opt_R}
 
 - **S** or **stairs** : -- *stairs=true*\
    Draws a stairs-step diagram which does not include the internal bars of the default histogram. Uses *pen*.
@@ -104,7 +107,15 @@ Optional Arguments
 - **getauto** or **getthresholds** : -- *getthresholds=true*\
    Get the automatically determined thresholds to use in contrast enhancement. No plotting is done.
 
+\textinput{common_opts/opt_U}
 
+\textinput{common_opts/opt_V}
+
+\textinput{common_opts/opt_pen}
+
+\textinput{common_opts/opt_X}
+
+\textinput{common_opts/opt_Y}
 
 - **Z** or **kind** : -- *kind=type* **|** *kind=(counts=, | freq=, | frequency=, | log_count=, | log_freq=, | log10_count=, | log10_freq=, weights=)*\
    Choose between 6 types of histograms:

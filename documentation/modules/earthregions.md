@@ -122,3 +122,8 @@ viz(G, shade=true, coast=true, cmap=:earth)
 ```
 \end{examplefig}
 
+
+See Also
+--------
+
+\myreflink{coast}, \myreflink{mosaic}

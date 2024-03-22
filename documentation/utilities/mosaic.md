@@ -43,7 +43,9 @@ Get image tiles from a web map tiles provider for given longitude, latitude coor
     projection, and it doesn't need to be in geographic coordinates. Coordinates in other reference systems
     will be converted to geogs.
   - Finaly, all of the above options can be skipped if the keyword `region` is used. Note that this option is
-    the same as in, for example, the \myreflink{coast} module.
+    the same as in, for example, the \myreflink{coast} module. And that means we can use it with
+    \myreflink{earthregions} arguments. _e.g._  ``region="IT"`` is a valid option and will get the tiles
+    needed to build an image of Italy.
 
 - `pt_radius`: The planetary radius. Defaults to Earth's WGS84 authalic radius (6371007 m).
 
