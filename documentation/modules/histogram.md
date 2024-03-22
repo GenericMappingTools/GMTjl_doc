@@ -67,7 +67,6 @@ Optional Arguments
 - **I** or **inquire** or **bins** : -- *inquire=:all* **|** *inquire=:no_zero* **|** *inquire=:bins*\
    Inquire about min/max x and y after binning. The *xmin xmax ymin ymax* is output; no plotting is done. Use **inquire=:no_zero** to output a table of the resulting x,y data instead. **inquire=:all** will output all x,y bin data even when y == 0. **inquire=:bins** outputs the binned array (the histogram).
 
-\textinput{common_opts/opt_J}
 
 - **L** or **out_range** : --  *out_range=:first* **|** *out_range=:last* **|** *out_range=:both*\
    The modifiers specify the handling of extreme values that fall outside the range set by **bin**. By default these values are ignored. Use **out_range=:both** to let these values be included in the first or last bins. To only include extreme values below first bin into the first bin, use **out_range=:first**, and to only include extreme values above the last bin into that last bin, use **out_range=:last**.
@@ -85,7 +84,6 @@ Optional Arguments
 - **Q** or **cumulative** : -- *cumulative=true **|** cumulative="r"*\
    Draw a cumulative histogram. Append **r** to instead compute the reverse cumulative histogram.
 
-\textinput{common_opts/opt_R}
 
 - **S** or **stairs** : -- *stairs=true*\
    Draws a stairs-step diagram which does not include the internal bars of the default histogram. Uses *pen*.
@@ -126,25 +124,7 @@ Optional Arguments
    When input is a GMTimage of UInt16 type this option will set **auto=true** and show histogram only
    on the region of interest. 
 
-\textinput{common_opts/opt_bi}
 
-\textinput{common_opts/opt_di}
-
-\textinput{common_opts/opt_e}
-
-\textinput{common_opts/opt_f}
-
-\textinput{common_opts/opt_h}
-
-\textinput{common_opts/opt__i}
-
-\textinput{common_opts/opt_p}
-
-\textinput{common_opts/opt_t}
-
-\textinput{common_opts/opt_q}
-
-\textinput{common_opts/opt_save_fig}
 
 
 Examples
