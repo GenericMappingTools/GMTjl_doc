@@ -90,7 +90,7 @@
   @@
 
   @@box
-    ~~~<a class="boxlink" href="mosaics/mosaic/">~~~
+    ~~~<a class="boxlink" href="mosaics/mosaics/">~~~
     @@title Images mosaic@@
     @@box-content
       ~~~
