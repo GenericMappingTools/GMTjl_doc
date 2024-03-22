@@ -452,6 +452,11 @@
 </li>
 </ul>
 <ul>
+<li><p><strong>R</strong> or <strong>region</strong> or <strong>limits</strong> : – <em>limits&#61;&#40;xmin, xmax, ymin, ymax&#41;</em> <strong>|</strong> <em>limits&#61;&#40;BB&#61;&#40;xmin, xmax, ymin, ymax&#41;,&#41;</em>  <strong>|</strong> <em>limits&#61;&#40;LLUR&#61;&#40;xmin, xmax, ymin, ymax&#41;,units&#61;&quot;unit&quot;&#41;</em> <strong>|</strong> ...more<br /> Specify the region of interest. More at <a href="/GMTjl_doc/documentation/common_opts/common_opts/index.html#limits">limits</a>. For perspective view <strong>view</strong>, optionally add  <em>zmin,zmax</em>. This option may be used to indicate the range used for the 3-D axes. You may ask for a  larger w/e/s/n region to have more room between the image and the axes.</p>
+</li>
+</ul>
+
+<ul>
 <li><p><strong>S</strong> or <strong>stairs</strong> : – <em>stairs&#61;true</em><br /> Draws a stairs-step diagram which does not include the internal bars of the default histogram. Uses <em>pen</em>.</p>
 </li>
 <li><p><strong>T</strong> or <strong>range</strong> or <strong>bin</strong> : – <em>range&#61;&#40;min,max,inc&#91;,:number,:log2,:log10&#93;&#41;</em> <strong>|</strong> <em>range&#61;&#91;list&#93;</em> <strong>|</strong> <em>range&#61;file</em><br /> Defines the range of the new CPT by giving the lowest and highest z-value &#40;and optionally an interval&#41;. If <strong>range</strong>  is not given, the existing range in the master CPT will be used intact. The values produces defines the color  slice boundaries. If <em>:number</em> is added as a fourth element then <em>inc</em> is meant to indicate the number of  equidistant coordinates instead. Use <em>:log2</em> if we should take log2 of min and max, get their nearest integers,  build an equidistant log2-array using inc integer increments in log2, then undo the log2 conversion. Same for <em>:log10</em>.  For details on array creation, see <code>Generate 1D Array</code>.</p>
@@ -461,6 +466,31 @@
 <li><p><strong>getauto</strong> or <strong>getthresholds</strong> : – <em>getthresholds&#61;true</em><br /> Get the automatically determined thresholds to use in contrast enhancement. No plotting is done.</p>
 </li>
 </ul>
+<ul>
+<li><p><strong>U</strong> or <strong>time_stamp</strong> : – <em>time_stamp&#61;true</em> <strong>|</strong> <em>time_stamp&#61;&#40;just&#61;&quot;code&quot;, pos&#61;&#40;dx,dy&#41;, label&#61;&quot;label&quot;, com&#61;true&#41;</em><br /> Draw GMT time stamp logo on plot. More at <a href="/GMTjl_doc/documentation/common_opts/common_opts/index.html#timestamp">timestamp</a></p>
+</li>
+</ul>
+
+<ul>
+<li><p><strong>V</strong> or <em>verbose</em> : – <em>verbose&#61;true</em> <strong>|</strong> <em>verbose&#61;level</em><br /> Select verbosity level. More at <a href="/GMTjl_doc/documentation/common_opts/common_opts/index.html#verbose">verbose</a></p>
+</li>
+</ul>
+
+<ul>
+<li><p><strong>W</strong> or <strong>pen</strong>&#61;<code>pen</code><br /> Set pen attributes for the arrow stem &#91;Defaults: width &#61; default, color &#61; black,  style &#61; solid&#93;. See <a href="/GMTjl_doc/documentation/common_features/pens/index.html#pen_attributes">Pen attributes</a></p>
+</li>
+</ul>
+
+<ul>
+<li><p><strong>X</strong> or <strong>xshift</strong> or <strong>x_offset</strong> : <em>xshift&#61;true</em> <strong>|</strong> <em>xshift&#61;x-shift</em> <strong>|</strong> <em>xshift&#61;&#40;shift&#61;x-shift, mov&#61;&quot;a|c|f|r&quot;&#41;</em><br /> Shift plot origin. More at <a href="/GMTjl_doc/documentation/common_opts/common_opts/index.html#xshift">xshift</a></p>
+</li>
+</ul>
+
+<ul>
+<li><p><strong>Y</strong> or <strong>yshift</strong> or <strong>y_offset</strong> : <em>yshift&#61;true</em> <strong>|</strong> <em>yshift&#61;y-shift</em> <strong>|</strong> <em>yshift&#61;&#40;shift&#61;y-shift, mov&#61;&quot;a|c|f|r&quot;&#41;</em><br /> Shift plot origin. More at <a href="/GMTjl_doc/documentation/common_opts/common_opts/index.html#yshift">yshift</a></p>
+</li>
+</ul>
+
 <ul>
 <li><p><strong>Z</strong> or <strong>kind</strong> : – <em>kind&#61;type</em> <strong>|</strong> <em>kind&#61;&#40;counts&#61;, | freq&#61;, | frequency&#61;, | log<em>count&#61;, | log</em>freq&#61;, | log10<em>count&#61;, | log10</em>freq&#61;, weights&#61;&#41;</em><br /> Choose between 6 types of histograms:</p>
 <pre><code>0 &#61; counts &#91;Default&#93;
@@ -474,6 +504,65 @@
 <li><p><strong>zoom</strong> : – <em>zoom&#61;true</em><br /> When input is a GMTimage of UInt16 type this option will set <strong>auto&#61;true</strong> and show histogram only  on the region of interest. </p>
 </li>
 </ul>
+<ul>
+<li><p><strong>bi</strong> or <strong>binary_in</strong> : – <em>binary_in&#61;??</em><br /> Select native binary format for primary table input.  <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#bi-full">More at</a></p>
+</li>
+</ul>
+
+<ul>
+<li><p><strong>di</strong> or <strong>nodata_in</strong> : – <em>nodata_in&#61;??</em><br /> Substitute specific values with NaN.  <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#di-full">More at</a></p>
+</li>
+</ul>
+
+<ul>
+<li><p><strong>e</strong> or <strong>pattern</strong> : – <em>pattern&#61;??</em><br /> Only accept ASCII data records that contain the specified pattern.  <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#e-full">More at</a></p>
+</li>
+</ul>
+
+<ul>
+<li><p><strong>f</strong> or <strong>colinfo</strong> : – <em>colinfo&#61;??</em><br /> Specify the data types of input and/or output columns &#40;time or geographical data&#41;.  <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#f-full">More at</a></p>
+</li>
+</ul>
+
+<ul>
+<li><p><strong>h</strong> or <strong>header</strong> : – <em>header&#61;??</em><br /> Specify that input and/or output file&#40;s&#41; have n header records.  <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#h-full">More at</a></p>
+</li>
+</ul>
+
+<ul>
+<li><p><strong>i</strong> or <strong>incol</strong> or <strong>incols</strong> : – <em>incol&#61;col_num</em> <strong>|</strong> <em>incol&#61;&quot;opts&quot;</em><br /> Select input columns and transformations &#40;0 is first column, t is trailing text, append word  to read one word only&#41;. More at <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#icols-full">incol</a></p>
+</li>
+</ul>
+
+<ul>
+<li><p><strong>p</strong> or <strong>view</strong> or <strong>perspective</strong> : – <em>view&#61;&#40;azim, elev&#41;</em><br /> Default is viewpoint from an azimuth of 200 and elevation of 30 degrees.<br /> Specify the viewpoint in terms of azimuth and elevation. The azimuth is the horizontal rotation about the z-axis as  measured in degrees from the positive y-axis. That is, from North. This option is not yet fully  expanded. Current alternatives are:</p>
+<ul>
+<li><p><em>view&#61;??</em><br /> A full GMT compact string with the full set of options.</p>
+</li>
+<li><p><em>view&#61;&#40;azim,elev&#41;</em><br /> A two elements tuple with azimuth and elevation</p>
+</li>
+<li><p><em>view&#61;true</em><br /> To propagate the viewpoint used in a previous module &#40;makes sense only in <code>bar3&#33;</code>&#41;</p>
+</li>
+</ul>
+<p>More at <a href="/GMTjl_doc/documentation/common_opts/common_opts/index.html#perspective">perspective</a></p>
+</li>
+</ul>
+
+<ul>
+<li><p><strong>t</strong> or <strong>transparency</strong> or <strong>alpha</strong>: – <em>alpha&#61;50</em><br /> Set PDF transparency level for an overlay, in &#40;0-100&#93; percent range. &#91;Default is 0, <em>i.e.</em>, opaque&#93;.  Works only for the PDF and PNG formats.</p>
+</li>
+</ul>
+
+<ul>
+<li><p><strong>q</strong> or <strong>inrows</strong> : – <em>inrows&#61;??</em><br /> Select specific data rows to be read and/or written.  <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#the-q-option">More at</a></p>
+</li>
+</ul>
+
+<ul>
+<li><p><strong>figname</strong> or <strong>savefig</strong> or <strong>name</strong> : – <em>figname&#61;<code>name.png</code></em><br /> Save the figure with the <code>figname&#61;name.ext</code> where <code>ext</code> chooses the figure image format.</p>
+</li>
+</ul>
+
 <h2>Examples</h2>
 <p>To draw a histogram of the data <em>v3206_06.txt</em> containing seafloor depths, using a 250 meter bin width, center bars, and draw bar outline, use:</p>
 <pre><code class="language-julia">using GMT
