@@ -28,11 +28,12 @@ Optional Arguments
    When input is a GMTimage of UInt16 type this option will compute the histogram as well as good
    bounds to use in contrast enhancement, which will be plotted as two vertical lines.
 
-
 - **bg** or **background** : -- *bg=imagename* **|** *bg=funname|img|grd* **|** *bg=(..., colormap)*\
    Fills the plotting canvas with a backround image. That image may come from a file (*e.g.* **bg="cute.png"**) or
    from a predefined function name. Possible names are: *akley, eggs, circle, parabola, rosenbrok, sombrero, x, y, xy, x+y*.
    For further details consult the same option in the plot manual.
+
+\textinput{common_opts/opt_B}
 
 - **C** or **color** or **cmap** : -- *color=cpt*\
    Give a CPT or specify **color="color1,color2 [,color3 ,...]"** or **color=((r1,g1,b1),(r2,g2,b2),...)** to build a linear continuous CPT from those colors automatically. The mid x-value for each bar is used to look-up the bar color. If no argument is given then we select the current CPT.
@@ -84,7 +85,6 @@ Optional Arguments
 - **Q** or **cumulative** : -- *cumulative=true **|** cumulative="r"*\
    Draw a cumulative histogram. Append **r** to instead compute the reverse cumulative histogram.
 
-\textinput{common_opts/opt_R}
 
 - **S** or **stairs** : -- *stairs=true*\
    Draws a stairs-step diagram which does not include the internal bars of the default histogram. Uses *pen*.
@@ -106,15 +106,7 @@ Optional Arguments
 - **getauto** or **getthresholds** : -- *getthresholds=true*\
    Get the automatically determined thresholds to use in contrast enhancement. No plotting is done.
 
-\textinput{common_opts/opt_U}
 
-\textinput{common_opts/opt_V}
-
-\textinput{common_opts/opt_pen}
-
-\textinput{common_opts/opt_X}
-
-\textinput{common_opts/opt_Y}
 
 - **Z** or **kind** : -- *kind=type* **|** *kind=(counts=, | freq=, | frequency=, | log_count=, | log_freq=, | log10_count=, | log10_freq=, weights=)*\
    Choose between 6 types of histograms:
@@ -133,25 +125,7 @@ Optional Arguments
    When input is a GMTimage of UInt16 type this option will set **auto=true** and show histogram only
    on the region of interest. 
 
-\textinput{common_opts/opt_bi}
 
-\textinput{common_opts/opt_di}
-
-\textinput{common_opts/opt_e}
-
-\textinput{common_opts/opt_f}
-
-\textinput{common_opts/opt_h}
-
-\textinput{common_opts/opt__i}
-
-\textinput{common_opts/opt_p}
-
-\textinput{common_opts/opt_t}
-
-\textinput{common_opts/opt_q}
-
-\textinput{common_opts/opt_save_fig}
 
 
 Examples

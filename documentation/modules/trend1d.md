@@ -31,9 +31,9 @@ Required Arguments
 
 - **N** or **model** : -- *model=n* **|** *model="[p|P|f|F|c|C|s|S|x]n[,...][+llength][+oorigin][+r]"*\
     Specify the components of the (possibly mixed) model. Add one or more comma-separated model
-    components. Each component is of the form **Tn**, where **T** indicates the basis function
+    components. Each component is of the form **?n**, where **?** indicates the basis function
     and *n* indicates the polynomial degree or how many terms in the Fourier series we want to include.
-    Choose **T** from **p** (polynomial with intercept and powers of x up to degree *n*), **P**
+    Choose **?** from **p** (polynomial with intercept and powers of x up to degree *n*), **P**
     (just the single term *x^n*), **f** (Fourier series with *n* terms), **c** (Cosine series with *n* terms),
     **s** (sine series with *n* terms), **F** (single Fourier component of order *n*), **C** (single
     cosine component of order *n*), and **S** (single sine component of order *n*). By default the
@@ -43,6 +43,13 @@ Required Arguments
     while the polynomials use x' = 2*(x-x_mid)/(xmax - xmin) for stability. Finally, add **+r** for a
     robust solution [Default gives a least squares fit]. Use **verbose** to see a plain-text
     representation of the y(x) model specified in **model**.
+
+-   An alternative syntax is via long options: -- *model=(polynome=deg, fourier=deg, cosine=deg, sine=deg, single=true, length=xx, origin=xx, robust=true)*\
+    Where _deg_ is the polynomiala degree or how many terms in the Fourier series. The **single** option
+    forces the use that single _deg_ term (equivalent to the upper case letter in the terse syntax).
+    **length, origin, robust** have the meaning of the **+l, +o, +r** options explanied above. To choose mixed
+    models, we must enclose each model in a named tuple and only the last one may contain the **length, origin, robust**
+    options. For example ``model=((polynome=2,),(fourier=1, single=true, origin=0, length=25))``.
 
 Optional Arguments
 ------------------
@@ -146,12 +153,54 @@ To fit the model y(x) = a + bx^2 + c * cos(2*pi*3*(x/l) + d * sin(2*pi*3*(x/l), 
     D = trend2d("data.xyz", out=:xm, model="P0,P2,F3+l15")
 ```
 
-To find out how many terms (up to 20, say in a robust Fourier
+To find out how many terms (up to 20), say in a robust Fourier
 interpolant are significant in fitting data.xy, use:
 
 ```julia
     trend2d("data.xyz", model="f20+r", conf_level=true, verbose=true)
 ```
+
+\begin{examplefig}{}
+```julia
+using GMT
+
+x = -50.0:50;
+y = x / 50 .+ 3 .+ 0.25 * rand(length(x));
+D = trend1d([x y], model=(polynome=1), out=:xm);
+plot(x,y, region=(-50,50,0,6), marker=:point)
+plot!(D, lc=:blue, show=true)
+```
+\end{examplefig}
+
+Fit with a constant and the cubic term only.
+
+\begin{examplefig}{}
+```julia
+using GMT
+
+x = -50.0:50;
+y = 4 * (x / 50) .^3 .+ 3 .+ 0.25 * rand(length(x));
+D = trend1d([x y], model=((polynome=0,single=1),(polynome=3,single=true)), out=:xm);
+# Or, if the condensed form is prefered
+#D = trend1d(xy, model="P0,P3", out=:xm);
+plot(x,y, region=(-50,50,0,6), marker=:point)
+plot!(D, lc=:blue, show=true)
+```
+\end{examplefig}
+
+Fit a linear trend and a sinusoid
+
+\begin{examplefig}{}
+```julia
+using GMT
+
+x = 10.0:110;
+y = (x / 50) .^2 .+ x/60 .+ 4 .+ cos.(2pi * x/25) .+ 0.25 * rand(length(x));
+D = trend1d([x y], model=((polynome=2,),(fourier=1,single=true, origin=0, length=25)), out=:xm);
+plot(x,y, region=(0,120,0,15), marker=:point)
+plot!(D, lc=:blue, show=true)
+```
+\end{examplefig}
 
 See Also
 --------

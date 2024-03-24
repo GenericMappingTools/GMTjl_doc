@@ -31,7 +31,7 @@ viz(I)
 \end{examplefig}
 
 A question that will often arise is: _but what if I want to control the resolution, what zoom level should I choose?_.
-Well, the answer is use trial an error or help yourself a bit and make a figures with the tiles limits. For that we
+Well, the answer is using trial an error or help yourself a bit and make a figures with the tiles limits. For that we
 use the `mesh` option and plot the tiles limits only.
 
 \begin{examplefig}{}
@@ -60,8 +60,8 @@ viz(I)
 ```
 
 So, we saw how to make maps over large areas, but when it comes to smaller areas it becomes more (or much more)
-cumbersome to find the apropriate map limits. That is when the \myreflink{geocoder} function comes into our resque.
-Basically, it takes as input an adress and return a \myreflink{GMTdataset} with information on that place, and in
+cumbersome to find the appropriate map limits. That is when the \myreflink{geocoder} function comes into our rescue.
+Basically, it takes as input an address and return a \myreflink{GMTdataset} with information on that place, and in
 particular its coordinates and BoundingBox.
 
 The syntax is very simple. Just give an address that it understands. It can be a general address like:
@@ -100,10 +100,10 @@ viz(I)
 \end{examplefig}
 
 But when it comes to image real small areas the BoundingBox trick no longer works because it normally is ... too small.
-We must than use the alternative, which is to specify the number of neighbor tiles arround the obtained address. And here
+We must than use the alternative, which is to specify the number of neighbor tiles around the obtained address. And here
 we must specify the zoom level manually.
 
-Example of a high resolution map over the S. Peters Piazza, Vatican.
+Example of a high-resolution map over the S. Peters Piazza, Vatican.
 
 \begin{examplefig}{}
 ```julia
