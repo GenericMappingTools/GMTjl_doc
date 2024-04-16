@@ -14,7 +14,7 @@ file or from a GMTdatset type.  Unless otherwise noted, annotations will be made
 annotation font and size in effect (i.e., `FONT_ANNOT_PRIMARY`)
 
 ~~~
-<img src="/assets/docs/seislegend.png" alt="Simple" width="500" class="center"/>
+<img src="/assets/seislegend.png" alt="Simple" width="500" class="center"/>
 ~~~
 
 Example of a map legend, here for seismicity in the Pacific region.

@@ -33,6 +33,9 @@ Optional Arguments
    from a predefined function name. Possible names are: *akley, eggs, circle, parabola, rosenbrok, sombrero, x, y, xy, x+y*.
    For further details consult the same option in the plot manual.
 
+- **B** or **axes** or **frame**\
+   Set map boundary frame and axes attributes. Default is to draw and annotate left, bottom and vertical
+   axes and just draw left and top axes. More at \myreflink{frame}
 
 - **C** or **color** or **cmap** : -- *color=cpt*\
    Give a CPT or specify **color="color1,color2 [,color3 ,...]"** or **color=((r1,g1,b1),(r2,g2,b2),...)** to build a linear continuous CPT from those colors automatically. The mid x-value for each bar is used to look-up the bar color. If no argument is given then we select the current CPT.

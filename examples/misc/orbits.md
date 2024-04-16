@@ -19,8 +19,8 @@ orbit descriptor.
 
 \begin{examplefig}{}
 ```julia
-import Pkg; Pkg.add("RemoteS")   # Hide
-using GMT, RemoteS
+import Pkg; Pkg.add("RemoteS"); Pkg.add("SatelliteToolboxTle"); Pkg.add("SatelliteToolboxPropagators"); Pkg.add("SatelliteToolboxTransformations"); # Hide
+using GMT, RemoteS, SatelliteToolboxTle, SatelliteToolboxPropagators, SatelliteToolboxTransformations
 
 # Compute some Aqua orbits for ... 
 orb = sat_tracks(tle=["1 27424U 02022A   23229.43455053  .00001116  00000-0  25175-3 0  9994";

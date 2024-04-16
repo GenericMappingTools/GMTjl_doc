@@ -141,3 +141,44 @@ Examples
 --------
 
 See the Example 04 at the Historical Collection gallery.
+
+
+Make a low resolution image plot with texture draping. Use a dpi=50 to make it lighter to load the man page.
+The drape option is used to overlay an image texture (from a cork tree trunk) on the grid data from the
+Gulf of Guinea zone. (Note, the `viz` function calls `grdview` when it detects the `view` option)
+
+\begin{examplefig}{}
+```julia
+using GMT
+
+G = grdcut("@earth_relief_01m", region=(0,10,0,10));
+viz(G, shade="+nt0.5", proj=:merc, view=(145,35), drape="@wood_texture.jpg", zsize=5, surftype=(image=50,))
+```
+\end{examplefig}
+
+This example imagines that a OVNI (UFO) ship is pointing a spot light with a radius of 100 km over Denver.
+
+\begin{examplefig}{}
+```julia
+using GMT
+
+G = grdcut("@earth_relief_30s", region=(-108,-103,35,40));
+
+# Compute the distances to Denver (here we need to use the terse syntax)
+Gr = grdmath("-R? -104.9903 39.7392 SDIST", G);
+
+# Mask distances > 100 km
+Ginside = Gr < 100;
+
+# Compute gradients along two directions to use in shading.
+Gint1 = grdgradient(G, azim=90, norm=(cauchy=true, amp=1));
+Gint2 = grdgradient(G, azim=45, norm=(cauchy=true, amp=1));
+
+# Combine the gradients
+Gint = Gint2 * 0.5 + Gint1 + Ginside - 0.5;
+
+# View the result
+C = makecpt(range=(1000,4000));
+grdview(G, shade=Gint, proj=:merc, zsize=1, view=(155,25), colormap=C, surftype=:image, show=true)
+```
+\end{examplefig}
