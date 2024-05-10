@@ -1,9 +1,9 @@
 # This file was generated, do not modify it. # hide
 begin # hide
-	using GMT   # hide
-	GMT.isFranklin[1] = true    # hide
-	getpath4docs(file::String) = joinpath("..", "..", "..", "..", "..", file) # hide
-	using GMT
+		using GMT   # hide
+		GMT.isFranklin[1] = true    # hide
+		getpath4docs(file::String) = joinpath("..", "..", "..", "..", "..", file) # hide
+		using GMT
 
 b = 0:0.01:0.3
 c1 = (1 .- b).^3 .- 0.7^3
@@ -18,9 +18,9 @@ ternary(labels=("A", "B", "C"))
 plot!(t1, lw=2, lc=:red, ls="line& (a) &")	# line style -> fancy stuff
 plot!(t2, lw=2, lc=:blue)
 text!(tern2cart([0.3 0.4 0.3]), text="Umbilicus", font=18, show=true)
-end # hide
-mv(joinpath(tempdir(), "GMTjl_" * GMT.TMPDIR_USR[2] * "." * "png"), joinpath(@OUTPUT, "example_4844438575782619428.png"), force=true);    # hide
-GMT.isFranklin[1] = false    # hide
-GMT.IamModern[1]  = false    # hide
+	end # hide
+	mv(joinpath(tempdir(), "GMTjl_" * GMT.TMPDIR_USR[2] * "." * "png"), joinpath(@OUTPUT, "example_4844438575782619428.png"), force=true);    # hide
+	GMT.isFranklin[1] = false    # hide
+	GMT.IamModern[1]  = false    # hide
  
-nothing # hide
+	nothing # hide

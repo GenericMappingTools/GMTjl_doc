@@ -1,9 +1,9 @@
 # This file was generated, do not modify it. # hide
 begin # hide
-	using GMT   # hide
-	GMT.isFranklin[1] = true    # hide
-	getpath4docs(file::String) = joinpath("..", "..", "..", "..", "..", file) # hide
-	using GMT, Printf
+		using GMT   # hide
+		GMT.isFranklin[1] = true    # hide
+		getpath4docs(file::String) = joinpath("..", "..", "..", "..", "..", file) # hide
+		using GMT, Printf
 resetGMT() # hide
 
 Gwetdry = grdlandmask(region=:global360, inc="30m", res=:crude, area=500, N="-1/1/1/1/1", reg=true);
@@ -43,9 +43,9 @@ legend!(pos=(anchor=:BC, width=10), box=(pen=:thick,), yshift=-1.0, par=(:FONT_A
     string("S 0.3 s 0.25 red  0.25p 0.5 Terrestrial Antipodes [", round(Int, land.data[1]), " %]", )
     string("S 0.3 s 0.25 blue 0.25p 0.5 Oceanic Antipodes [", round(Int, ocean.data[1]), " %]", )
     string("S 0.3 s 0.25 gray 0.25p 0.5 Mixed Antipodes [", round(Int, mixed.data[1]), " %]", )]), show=true)
-end # hide
-mv(joinpath(tempdir(), "GMTjl_" * GMT.TMPDIR_USR[2] * "." * "png"), joinpath(@OUTPUT, "example_14013197095133805844.png"), force=true);    # hide
-GMT.isFranklin[1] = false    # hide
-GMT.IamModern[1]  = false    # hide
+	end # hide
+	mv(joinpath(tempdir(), "GMTjl_" * GMT.TMPDIR_USR[2] * "." * "png"), joinpath(@OUTPUT, "example_14013197095133805844.png"), force=true);    # hide
+	GMT.isFranklin[1] = false    # hide
+	GMT.IamModern[1]  = false    # hide
  
-nothing # hide
+	nothing # hide

@@ -394,7 +394,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/weather">weather</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/whereami">whereami</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/wmsinfo">wmsinfo</a></div></li>
-<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/wmsread">wmread</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/wmsread">wmsread</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/wmstest">wmstest</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/worldrectangular">worldrectangular</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/worldrectcoast">worldrectcoast</a></div></li>
@@ -418,10 +418,10 @@ plot&#40;1:10, rand&#40;10&#41;, lw&#61;1, lc&#61;:blue, marker&#61;:square,
      markeredgecolor&#61;0, size&#61;0.2, markerfacecolor&#61;:red, title&#61;&quot;Hello World&quot;,
      xlabel&#61;&quot;Spoons&quot;, ylabel&#61;&quot;Forks&quot;, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_14533424269246236191">
- <img src="/GMTjl_doc/assets/examples/plotting_functions/01_lines/code/output/example_14533424269246236191.png" alt=""> 
-</a>
-
+	<a id="example_14533424269246236191">
+	 <img src="/GMTjl_doc/assets/examples/plotting_functions/01_lines/code/output/example_14533424269246236191.png" alt=""> 
+	</a>
+	
 <h2 id="13633231208144796923"><a href="#13633231208144796923" class="header-anchor"></a></h2>
 <p>In this example the lines color is set using a custom CPT. Pen thickness is assigned automatically.</p>
 <p>The custom CPT is used by setting the plot command’s cmap argument to <code>true</code>. This workas because we previously computed the CPT and it will remain in memory until it&#39;s consumed when we finish the plot. The <strong>level</strong> argument sets the color to be used from the custom CPT.</p>
@@ -437,20 +437,20 @@ for amp &#61; 0:10
 end
 colorbar&#33;&#40;show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_14289182620502621627">
- <img src="/GMTjl_doc/assets/examples/plotting_functions/01_lines/code/output/example_14289182620502621627.png" alt=""> 
-</a>
-
+	<a id="example_14289182620502621627">
+	 <img src="/GMTjl_doc/assets/examples/plotting_functions/01_lines/code/output/example_14289182620502621627.png" alt=""> 
+	</a>
+	
 <h2 id="line_colors_with_the_automatic_color_scheme"><a href="#line_colors_with_the_automatic_color_scheme" class="header-anchor">Line colors with the automatic color scheme</a></h2>
 <p>Here we are showing how to plot several lines at once and color them according to a circular color scheme comprised of 7 distinct colors. We start by generating a dummy matrix 8x5, where rows represent the vertex and the columns hold the lines. To tell the program that first column contains the coordinates and the remaining are all lines to be plotted we use the option <strong>multicol</strong>&#61;<em>true</em></p>
 <pre><code class="language-julia">using GMT
 mat &#61; GMT.fakedata&#40;8, 5&#41;;
 lines&#40;mat, multicol&#61;true, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_17324840828014447279">
- <img src="/GMTjl_doc/assets/examples/plotting_functions/01_lines/code/output/example_17324840828014447279.png" alt=""> 
-</a>
-
+	<a id="example_17324840828014447279">
+	 <img src="/GMTjl_doc/assets/examples/plotting_functions/01_lines/code/output/example_17324840828014447279.png" alt=""> 
+	</a>
+	
 <h2 id="line_colors_with_user_set_color_scheme"><a href="#line_colors_with_user_set_color_scheme" class="header-anchor">Line colors with user set color scheme</a></h2>
 <p>But if we want choose the colors ourselves, it is also easy though we need to go a bit lower in the data preparation.</p>
 <p>The basic data type to transfer tabular data to GMT is the <em>GMTdataset</em> and the above command has converted the matrix into a <em>GMTdataset</em> under the hood but now we need to create one ourselves and fine control more details, like the colors and line thickness of the individual lines. Not that we have 5 lines but will provide 3 colors and 3 lines thicknesses. When we do this those properties are wrapped modulo its number.</p>
@@ -462,20 +462,20 @@ D &#61; mat2ds&#40;mat, color&#61;&#91;&quot;brown&quot;, &quot;green&quot;, &qu
 
 lines&#40;D, figsize&#61;&#40;14, 9.5&#41;, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_8682929654450411439">
- <img src="/GMTjl_doc/assets/examples/plotting_functions/01_lines/code/output/example_8682929654450411439.png" alt=""> 
-</a>
-
+	<a id="example_8682929654450411439">
+	 <img src="/GMTjl_doc/assets/examples/plotting_functions/01_lines/code/output/example_8682929654450411439.png" alt=""> 
+	</a>
+	
 <h2 id="bezier_curve"><a href="#bezier_curve" class="header-anchor">Bezier curve</a></h2>
 <pre><code class="language-julia">using GMT
 x &#61; &#91;0, 1, 2, 3, 2&#93;;  y &#61; &#91;0, 1, 1, 0.5, 0.25&#93;;
 lines&#40;x,y, limits&#61;&#40;-1,4,-0.5,2.0&#41;, scale&#61;3.0, lw&#61;1, markerfacecolor&#61;:red,
       size&#61;0.5, bezier&#61;true, title&#61;&quot;Bezier curve&quot;, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_8676044088309164603">
- <img src="/GMTjl_doc/assets/examples/plotting_functions/01_lines/code/output/example_8676044088309164603.png" alt=""> 
-</a>
-
+	<a id="example_8676044088309164603">
+	 <img src="/GMTjl_doc/assets/examples/plotting_functions/01_lines/code/output/example_8676044088309164603.png" alt=""> 
+	</a>
+	
 <h2 id="decorated_line"><a href="#decorated_line" class="header-anchor">Decorated line</a></h2>
 <pre><code class="language-julia">using GMT
 xy &#61; sind.&#40;0:180&#41; .&#43; 4.5
@@ -484,10 +484,10 @@ lines&#40;xy, limits&#61;&#40;-5,185,4,6&#41;, figsize&#61;&#40;16,8&#41;, pen&#
                  pen&#61;&#40;0.5,:green&#41;, fill&#61;:blue, dec2&#61;true&#41;,
       title&#61;:Decorated, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_1120509200921136024">
- <img src="/GMTjl_doc/assets/examples/plotting_functions/01_lines/code/output/example_1120509200921136024.png" alt=""> 
-</a>
-
+	<a id="example_1120509200921136024">
+	 <img src="/GMTjl_doc/assets/examples/plotting_functions/01_lines/code/output/example_1120509200921136024.png" alt=""> 
+	</a>
+	
 <h2 id="text_decorated_line"><a href="#text_decorated_line" class="header-anchor">Text decorated line</a></h2>
 <pre><code class="language-julia">using GMT
 # Create a log spiral
@@ -499,10 +499,10 @@ lines&#40;x,y, region&#61;&#40;-4,7,-5.5,2.5&#41;, lw&#61;2, lc&#61;:sienna,
                  curved&#61;true, pen&#61;&#40;0.5,:red&#41;&#41;,
       aspect&#61;:equal, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_14480082870919839654">
- <img src="/GMTjl_doc/assets/examples/plotting_functions/01_lines/code/output/example_14480082870919839654.png" alt=""> 
-</a>
-
+	<a id="example_14480082870919839654">
+	 <img src="/GMTjl_doc/assets/examples/plotting_functions/01_lines/code/output/example_14480082870919839654.png" alt=""> 
+	</a>
+	
 <h2 id="the_snake_skier"><a href="#the_snake_skier" class="header-anchor">The snake skier</a></h2>
 <p>Plot a skier on a sinusoid.</p>
 <pre><code class="language-julia">using GMT
@@ -518,24 +518,24 @@ plot&#33;&#40;3.49, 0.97,                    # Coordinates where to plot symbol
       custom_symbol&#61;&#40;name&#61;&quot;ski_alpine&quot;, size&#61;1.7&#41;,    # The skier symbol
       fill&#61;:black, show&#61;true&#41;        # Fill the symbol in black</code></pre></p>
 <p>
-<a id="example_4160829281128897570">
- <img src="/GMTjl_doc/assets/examples/plotting_functions/01_lines/code/output/example_4160829281128897570.png" alt=""> 
-</a>
-
+	<a id="example_4160829281128897570">
+	 <img src="/GMTjl_doc/assets/examples/plotting_functions/01_lines/code/output/example_4160829281128897570.png" alt=""> 
+	</a>
+	
 <h2 id="variable_sizedcolors_points"><a href="#variable_sizedcolors_points" class="header-anchor">Variable sized/colors points</a></h2>
 <pre><code class="language-julia">using GMT
 xs &#61; linspace&#40;0,10,30&#41;;
 ys &#61; 0.5 .* sin.&#40;xs&#41;;
 scatter&#40;xs, ys, zcolor&#61;true, ms&#61;linspace&#40;2,15,30&#41;.*2.54/72, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_14072060238197365912">
- <img src="/GMTjl_doc/assets/examples/plotting_functions/01_lines/code/output/example_14072060238197365912.png" alt=""> 
-</a>
-
+	<a id="example_14072060238197365912">
+	 <img src="/GMTjl_doc/assets/examples/plotting_functions/01_lines/code/output/example_14072060238197365912.png" alt=""> 
+	</a>
+	
 <div class="page-foot">
   <div class="copyright">
-    &copy; GMT.jl. Last modified: April 17, 2024. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
-      <p>These docs were autogenerated using GMT: v1.12.2</p>
+    &copy; GMT.jl. Last modified: May 10, 2024. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+      <p>These docs were autogenerated using GMT: v1.13.2</p>
   </div>
 </div>
 </div><!-- CONTENT ENDS HERE -->

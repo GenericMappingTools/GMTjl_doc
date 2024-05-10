@@ -1,9 +1,9 @@
 # This file was generated, do not modify it. # hide
 begin # hide
-	using GMT   # hide
-	GMT.isFranklin[1] = true    # hide
-	getpath4docs(file::String) = joinpath("..", "..", "..", "..", "..", file) # hide
-	using GMT
+		using GMT   # hide
+		GMT.isFranklin[1] = true    # hide
+		getpath4docs(file::String) = joinpath("..", "..", "..", "..", "..", file) # hide
+		using GMT
 GMT.resetGMT() # hide
 
 makecpt(cmap=(255,100), range=(-10,10,10), no_bg=true);
@@ -18,9 +18,9 @@ grdview!("@HI_topo_04.nc", p=true, region=(195,210,18,25,-6,4),
 text!("H@#awaiian@# R@#idge@#", x=7.5, y=14.0, region=(0,21,0,28),
       font=(60,"ZapfChancery-MediumItalic"), justify=:CB, proj=:linear,
       view=:none, figscale=1, show=true)
-end # hide
-mv(joinpath(tempdir(), "GMTjl_" * GMT.TMPDIR_USR[2] * "." * "png"), joinpath(@OUTPUT, "example_9936001676428703525.png"), force=true);    # hide
-GMT.isFranklin[1] = false    # hide
-GMT.IamModern[1]  = false    # hide
+	end # hide
+	mv(joinpath(tempdir(), "GMTjl_" * GMT.TMPDIR_USR[2] * "." * "png"), joinpath(@OUTPUT, "example_9936001676428703525.png"), force=true);    # hide
+	GMT.isFranklin[1] = false    # hide
+	GMT.IamModern[1]  = false    # hide
  
-nothing # hide
+	nothing # hide

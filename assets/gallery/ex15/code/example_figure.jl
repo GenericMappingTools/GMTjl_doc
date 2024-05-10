@@ -1,9 +1,9 @@
 # This file was generated, do not modify it. # hide
 begin # hide
-	using GMT   # hide
-	GMT.isFranklin[1] = true    # hide
-	getpath4docs(file::String) = joinpath("..", "..", "..", "..", "..", file) # hide
-	using GMT
+		using GMT   # hide
+		GMT.isFranklin[1] = true    # hide
+		getpath4docs(file::String) = joinpath("..", "..", "..", "..", "..", file) # hide
+		using GMT
 GMT.resetGMT() # hide
 
 ship_d = gmtread("@ship_15.txt")
@@ -31,9 +31,9 @@ plot!(info, marker=:star, ms=0.4, i="10,11", lw=:thick)
 text!(text_record([-0.3 3.6], "Gridding with missing data"), region=(0,3,0,4),
       font=(24,"Helvetica-Bold"), justify=:CB, no_clip=true, figscale=2.5,
       proj=:linear, show=true)
-end # hide
-mv(joinpath(tempdir(), "GMTjl_" * GMT.TMPDIR_USR[2] * "." * "png"), joinpath(@OUTPUT, "example_4840810856566608029.png"), force=true);    # hide
-GMT.isFranklin[1] = false    # hide
-GMT.IamModern[1]  = false    # hide
+	end # hide
+	mv(joinpath(tempdir(), "GMTjl_" * GMT.TMPDIR_USR[2] * "." * "png"), joinpath(@OUTPUT, "example_4840810856566608029.png"), force=true);    # hide
+	GMT.isFranklin[1] = false    # hide
+	GMT.IamModern[1]  = false    # hide
  
-nothing # hide
+	nothing # hide

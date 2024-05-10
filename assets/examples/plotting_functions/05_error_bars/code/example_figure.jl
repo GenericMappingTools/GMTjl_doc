@@ -1,9 +1,9 @@
 # This file was generated, do not modify it. # hide
 begin # hide
-	using GMT   # hide
-	GMT.isFranklin[1] = true    # hide
-	getpath4docs(file::String) = joinpath("..", "..", "..", "..", "..", file) # hide
-	using GMT
+		using GMT   # hide
+		GMT.isFranklin[1] = true    # hide
+		getpath4docs(file::String) = joinpath("..", "..", "..", "..", "..", file) # hide
+		using GMT
 
 C = makecpt(range=(0,6,1));
 t = [1 1 1 1
@@ -24,9 +24,9 @@ tt = t[:,1:2]
 plot!(tt, frame=:noannot, marker=:circle, ms=0.5, color=C, mz=[1 2 3 4 5],
       ml=(0.25,:red), error_bars=(x=ones(5,1), pen=1, cline=true),
       xshift=7.5, show=true)
-end # hide
-mv(joinpath(tempdir(), "GMTjl_" * GMT.TMPDIR_USR[2] * "." * "png"), joinpath(@OUTPUT, "example_578069722094597478.png"), force=true);    # hide
-GMT.isFranklin[1] = false    # hide
-GMT.IamModern[1]  = false    # hide
+	end # hide
+	mv(joinpath(tempdir(), "GMTjl_" * GMT.TMPDIR_USR[2] * "." * "png"), joinpath(@OUTPUT, "example_578069722094597478.png"), force=true);    # hide
+	GMT.isFranklin[1] = false    # hide
+	GMT.IamModern[1]  = false    # hide
  
-nothing # hide
+	nothing # hide

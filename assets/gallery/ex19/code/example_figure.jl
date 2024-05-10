@@ -1,9 +1,9 @@
 # This file was generated, do not modify it. # hide
 begin # hide
-	using GMT   # hide
-	GMT.isFranklin[1] = true    # hide
-	getpath4docs(file::String) = joinpath("..", "..", "..", "..", "..", file) # hide
-	using GMT
+		using GMT   # hide
+		GMT.isFranklin[1] = true    # hide
+		getpath4docs(file::String) = joinpath("..", "..", "..", "..", "..", file) # hide
+		using GMT
 GMT.resetGMT() # hide
 
 Glat = gmt("grdmath -Rd -I1 -r Y COSD 2 POW =")
@@ -34,9 +34,9 @@ coast!(area=5000, shore=:thinnest)
 text!(text_record([0  20], "15TH INTERNATIONAL"), font=(32,"Helvetica-Bold","red=thinner"))
 text!(text_record([0 -10], "GMT CONFERENCE"), font=(32,"Helvetica-Bold","red=thinner"))
 text!(text_record([0 -30], "Honolulu, Hawaii, April 1, 2018"), font=(18,"Helvetica-Bold","green=thinner"), show=true)
-end # hide
-mv(joinpath(tempdir(), "GMTjl_" * GMT.TMPDIR_USR[2] * "." * "png"), joinpath(@OUTPUT, "example_3235752501285094276.png"), force=true);    # hide
-GMT.isFranklin[1] = false    # hide
-GMT.IamModern[1]  = false    # hide
+	end # hide
+	mv(joinpath(tempdir(), "GMTjl_" * GMT.TMPDIR_USR[2] * "." * "png"), joinpath(@OUTPUT, "example_3235752501285094276.png"), force=true);    # hide
+	GMT.isFranklin[1] = false    # hide
+	GMT.IamModern[1]  = false    # hide
  
-nothing # hide
+	nothing # hide

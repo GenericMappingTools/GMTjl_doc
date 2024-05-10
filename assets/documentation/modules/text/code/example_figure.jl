@@ -1,9 +1,9 @@
 # This file was generated, do not modify it. # hide
 begin # hide
-	using GMT   # hide
-	GMT.isFranklin[1] = true    # hide
-	getpath4docs(file::String) = joinpath("..", "..", "..", "..", "..", file) # hide
-	using GMT
+		using GMT   # hide
+		GMT.isFranklin[1] = true    # hide
+		getpath4docs(file::String) = joinpath("..", "..", "..", "..", "..", file) # hide
+		using GMT
 text(rich("H", subscript("2"), greek("O")," is the ", smallcaps("formula")," for ",
      rich(underline("water"), color=:red, font="Helvetica", size=16)), x=1, y=1, frame=:none)
 
@@ -14,9 +14,9 @@ rainbow_chars = map(enumerate(str)) do (i, c)
 	rich("$c", color = GMT.arg2str(Tuple(round.(Int,C.colormap[i,:].*255))), size = fontsizes[i]);
 end
 text!(join(rainbow_chars), x=1, y=0.99, font="Helvetica-Bold", show=1)
-end # hide
-mv(joinpath(tempdir(), "GMTjl_" * GMT.TMPDIR_USR[2] * "." * "png"), joinpath(@OUTPUT, "example_968092454105173695.png"), force=true);    # hide
-GMT.isFranklin[1] = false    # hide
-GMT.IamModern[1]  = false    # hide
+	end # hide
+	mv(joinpath(tempdir(), "GMTjl_" * GMT.TMPDIR_USR[2] * "." * "png"), joinpath(@OUTPUT, "example_968092454105173695.png"), force=true);    # hide
+	GMT.isFranklin[1] = false    # hide
+	GMT.IamModern[1]  = false    # hide
  
-nothing # hide
+	nothing # hide

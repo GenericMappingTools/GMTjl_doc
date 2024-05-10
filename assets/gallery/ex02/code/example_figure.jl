@@ -1,9 +1,9 @@
 # This file was generated, do not modify it. # hide
 begin # hide
-	using GMT   # hide
-	GMT.isFranklin[1] = true    # hide
-	getpath4docs(file::String) = joinpath("..", "..", "..", "..", "..", file) # hide
-	using GMT
+		using GMT   # hide
+		GMT.isFranklin[1] = true    # hide
+		getpath4docs(file::String) = joinpath("..", "..", "..", "..", "..", file) # hide
+		using GMT
 GMT.resetGMT() # hide
 
 gmtset(FONT_TITLE=30, MAP_ANNOT_OBLIQUE=0)
@@ -23,9 +23,9 @@ colorbar!(pos=(anchor=:RM, offset=(1.5,0), neon=true), shade=0.3,
 T = mat2ds([-0.4 7.5; -0.4 3.0], ["a)", "b)"])
 pstext!(T, region=(0,21.6,0,29.94), font=(30,"Helvetica-Bold"), justify=:CB,
         yshift=11, proj=:linear, scale=1, show=true)
-end # hide
-mv(joinpath(tempdir(), "GMTjl_" * GMT.TMPDIR_USR[2] * "." * "png"), joinpath(@OUTPUT, "example_4423643730670146179.png"), force=true);    # hide
-GMT.isFranklin[1] = false    # hide
-GMT.IamModern[1]  = false    # hide
+	end # hide
+	mv(joinpath(tempdir(), "GMTjl_" * GMT.TMPDIR_USR[2] * "." * "png"), joinpath(@OUTPUT, "example_4423643730670146179.png"), force=true);    # hide
+	GMT.isFranklin[1] = false    # hide
+	GMT.IamModern[1]  = false    # hide
  
-nothing # hide
+	nothing # hide

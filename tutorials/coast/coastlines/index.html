@@ -389,7 +389,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/weather">weather</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/whereami">whereami</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/wmsinfo">wmsinfo</a></div></li>
-<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/wmsread">wmread</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/wmsread">wmsread</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/wmstest">wmstest</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/worldrectangular">worldrectangular</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/worldrectcoast">worldrectcoast</a></div></li>
@@ -413,10 +413,10 @@
 <pre><code class="language-julia">using GMT
 coast&#40;region&#61;:global, proj&#61;:Mollweide, shore&#61;true, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_357783246433028713">
- <img src="/GMTjl_doc/assets/tutorials/coast/coastlines/code/output/example_357783246433028713.png" alt=""> 
-</a>
-
+	<a id="example_357783246433028713">
+	 <img src="/GMTjl_doc/assets/tutorials/coast/coastlines/code/output/example_357783246433028713.png" alt=""> 
+	</a>
+	
 <p>The shorelines are divided in 4 levels:</p>
 <ul>
 <li><p>coastline</p>
@@ -432,19 +432,19 @@ coast&#40;region&#61;:global, proj&#61;:Mollweide, shore&#61;true, show&#61;true
 <pre><code class="language-julia">using GMT
 coast&#40;region&#61;:global, proj&#61;:Mollweide, shore&#61;&#40;level&#61;1, pen&#61;&#40;0.5,:black&#41;&#41;, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_16304864095334887972">
- <img src="/GMTjl_doc/assets/tutorials/coast/coastlines/code/output/example_16304864095334887972.png" alt=""> 
-</a>
-
+	<a id="example_16304864095334887972">
+	 <img src="/GMTjl_doc/assets/tutorials/coast/coastlines/code/output/example_16304864095334887972.png" alt=""> 
+	</a>
+	
 <p>We can specify multiple levels by using the <code>shore</code> option more than once by using a Tuple of NamedTuples. That is, in this case we can no longer use the simpler form we used above but must instead do:</p>
 <pre><code class="language-julia">using GMT
 coast&#40;region&#61;:global, proj&#61;:Mollweide,
       shore&#61;&#40;&#40;level&#61;1, pen&#61;&#40;0.5,:black&#41;&#41;, &#40;level&#61;2, pen&#61;&#40;0.5,:red&#41;&#41;&#41;, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_8794661614502050792">
- <img src="/GMTjl_doc/assets/tutorials/coast/coastlines/code/output/example_8794661614502050792.png" alt=""> 
-</a>
-
+	<a id="example_8794661614502050792">
+	 <img src="/GMTjl_doc/assets/tutorials/coast/coastlines/code/output/example_8794661614502050792.png" alt=""> 
+	</a>
+	
 <p>Resolutions</p>
 <p>The coastline database comes with 5 resolutions, which can be set using the <code>res</code> or <code>resolution</code> options. The resolution drops by 80&#37; between levels:</p>
 <ul>
@@ -468,19 +468,19 @@ for res in &#91;&quot;low&quot;, &quot;intermediate&quot;, &quot;high&quot;, &qu
 end
 showfig&#40;&#41;</code></pre></p>
 <p>
-<a id="example_147853474136707412">
- <img src="/GMTjl_doc/assets/tutorials/coast/coastlines/code/output/example_147853474136707412.png" alt=""> 
-</a>
-
+	<a id="example_147853474136707412">
+	 <img src="/GMTjl_doc/assets/tutorials/coast/coastlines/code/output/example_147853474136707412.png" alt=""> 
+	</a>
+	
 <h2 id="land_and_water"><a href="#land_and_water" class="header-anchor">Land and water</a></h2>
 <p>Use the <code>land</code> and <code>water</code> options to specify a fill color for land and water bodies. The colors can be given by name or hex codes:</p>
 <pre><code class="language-julia">using GMT
 coast&#40;region&#61;:global, proj&#61;:Mollweide, land&#61;&quot;#666666&quot;, water&#61;:skyblue, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_16739529219516743195">
- <img src="/GMTjl_doc/assets/tutorials/coast/coastlines/code/output/example_16739529219516743195.png" alt=""> 
-</a>
-
+	<a id="example_16739529219516743195">
+	 <img src="/GMTjl_doc/assets/tutorials/coast/coastlines/code/output/example_16739529219516743195.png" alt=""> 
+	</a>
+	
 <h2 id="political_boundaries"><a href="#political_boundaries" class="header-anchor">Political Boundaries</a></h2>
 <p>The <code>borders</code> option of <a href="/GMTjl_doc/documentation/modules/coast/index.html#coast">coast</a> specifies levels of political boundaries to plot and the pen used to draw them. Choose from the list of boundaries below:</p>
 <ul>
@@ -499,24 +499,24 @@ coast&#40;region&#61;&#91;-150, -30, -60, 60&#93;, land&#61;:gray, projection&#6
       borders&#61;&#40;&#40;type&#61;1, pen&#61;&#40;0.5, :black&#41;&#41;, &#40;type&#61;2, pen&#61;&#40;0.5, :red&#41;&#41;, &#40;type&#61;3, pen&#61;&#40;0.5, :blue&#41;&#41;&#41;,
       show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_4530462154225019163">
- <img src="/GMTjl_doc/assets/tutorials/coast/coastlines/code/output/example_4530462154225019163.png" alt=""> 
-</a>
-
+	<a id="example_4530462154225019163">
+	 <img src="/GMTjl_doc/assets/tutorials/coast/coastlines/code/output/example_4530462154225019163.png" alt=""> 
+	</a>
+	
 <h2 id="rivers"><a href="#rivers" class="header-anchor">Rivers</a></h2>
 <p>The situation with plotting rivers is a bit less good and we hope to improve it when modern data is incorporated in the databse. But we can still do pretty maps of the permanent major rivers. A rivers version of the figure above is obtained with &#40;the code <code>:r</code> means <em>All permanent rivers</em>&#41;:</p>
 <pre><code class="language-julia">using GMT
 coast&#40;region&#61;&#91;-150, -30, -60, 60&#93;, land&#61;:gray, projection&#61;&#40;name&#61;:Sinusoidal, center&#61;-90&#41;,
       rivers&#61;&#40;:r,:blue&#41;, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_13569898777689253239">
- <img src="/GMTjl_doc/assets/tutorials/coast/coastlines/code/output/example_13569898777689253239.png" alt=""> 
-</a>
-
+	<a id="example_13569898777689253239">
+	 <img src="/GMTjl_doc/assets/tutorials/coast/coastlines/code/output/example_13569898777689253239.png" alt=""> 
+	</a>
+	
 <div class="page-foot">
   <div class="copyright">
-    &copy; GMT.jl. Last modified: April 17, 2024. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
-      <p>These docs were autogenerated using GMT: v1.12.2</p>
+    &copy; GMT.jl. Last modified: May 10, 2024. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+      <p>These docs were autogenerated using GMT: v1.13.2</p>
   </div>
 </div>
 </div><!-- CONTENT ENDS HERE -->

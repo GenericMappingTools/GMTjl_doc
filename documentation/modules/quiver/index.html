@@ -383,7 +383,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/weather">weather</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/whereami">whereami</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/wmsinfo">wmsinfo</a></div></li>
-<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/wmsread">wmread</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/wmsread">wmsread</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/wmstest">wmstest</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/worldrectangular">worldrectangular</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/worldrectcoast">worldrectcoast</a></div></li>
@@ -538,10 +538,10 @@ U &#61; sin.&#40;Y&#41;;
 V &#61; cos.&#40;X&#41;;
 quiver&#40;X, Y, U, V, region&#61;&#40;-3.6,3.6,-3.6,3.6&#41;, fill&#61;:black, lc&#61;:red, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_18014022190894630975">
- <img src="/GMTjl_doc/assets/documentation/modules/quiver/code/output/example_18014022190894630975.png" alt=""> 
-</a>
-
+	<a id="example_18014022190894630975">
+	 <img src="/GMTjl_doc/assets/documentation/modules/quiver/code/output/example_18014022190894630975.png" alt=""> 
+	</a>
+	
 <p>For simplicity let&#39;s create a grid using grdmath and compute its horizontal derivatives. Then we plot them as an arrow field.</p>
 <pre><code class="language-julia">using GMT
 G &#61; gmt&#40;&quot;grdmath -R-2/2/-2/2 -I0.1 X Y R2 NEG EXP X MUL&quot;&#41;;
@@ -550,10 +550,10 @@ dzdx &#61; gmt&#40;&quot;grdmath ? DDX&quot;, G&#41;;
 grdcontour&#40;G, annot&#61;:none, pen&#61;:gray80&#41;
 quiver&#33;&#40;dzdx, dzdy, cmap&#61;:turbo, lw&#61;1, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_3102015549167345783">
- <img src="/GMTjl_doc/assets/documentation/modules/quiver/code/output/example_3102015549167345783.png" alt=""> 
-</a>
-
+	<a id="example_3102015549167345783">
+	 <img src="/GMTjl_doc/assets/documentation/modules/quiver/code/output/example_3102015549167345783.png" alt=""> 
+	</a>
+	
 <h2>Vector scaling and unit effects</h2>
 <p>The scale given via <strong>vscale</strong> may require some consideration. As explained in <strong>vscale</strong>, it is specified in data-units per plot or distance unit. The plot or distance unit chosen will affect the type of vector you select. In all cases, we first compute the magnitude <em>r</em> of the user&#39;s data vectors at each selected node from the <em>x</em> and <em>y</em> components &#40;unless you are passing <em>r</em>, <em>theta</em> grids directly with <strong>polar</strong>&#41;.  These magnitudes are given in whatever data units they come with. Let us pretend our data grids record secular changes in the Earth&#39;s magnetic horizontal vector field in units of nTesla/year, and that at a particular node the magnitude is 28 nTesla/year &#40;in some direction&#41;. If you specify the scale using plot distance units &#40;<strong>c</strong> | <strong>i</strong> | <strong>p</strong>&#41; then you are selecting <em>Cartesian</em> vectors. Let us further pretend that you selected <strong>vscale&#61;&quot;10c&quot;</strong> as your scale option. That means you want 10 nTesla/year to equate to a 1 cm plot length. Internally, we convert this scale to a plot scale of 1/10  &#61; 0.1 cm per nTesla/year. Given our vector magnitude of 28 nTesla/year, we multiply it by our plot scale and finally obtain a vector length of 2.8 cm, which is then plotted. The user&#39;s data units do not enter of course, i.e., they always cancel &#91;Likewise, if we had used <strong>vscale&#61;&quot;25i&quot;</strong> &#40;25 nTesla/year per inch&#41; the plot scale would be &#40;1/25&#41; &#61; 0.04 inch per nTesla/year and the vector plot lengths would be 28 * 0.04 inch &#61; 1.12 inch&#93;. If we now wished to plot a 10 nTesla/year reference vector in the map legend we would plot one that is 10 times 0.1 cm &#61; 1 cm long since the scale length is <em>constant</em> regardless of map projection and location. A 10 nTesla/year vector will be 1 cm anywhere.</p>
 <p>Let us contrast this behavior with what happens if we use a geographic distance unit instead, say <strong>vscale&#61;&quot;0.5k&quot;</strong> &#40;0.5 nTesla/year per km&#41;. Internally, this becomes a map scale of 2 km per nTesta/year. Given our node magnitude of 28 nTesla/year, the vector length will be 28 x 2 km &#61; 56 km. Again, the user&#39;s data unit do not enter. Now, that vector length of 56 km must be projected onto the Earth, and because of map distortions, a 56 km vector will be mapped to a length on the plot that is a function of the user&#39;s map projection, the map scale, and possibly the location on the map. E.g., a 56 km vector due east at Equator on a Mercator map would seem to equal ~0.5 degree longitude but at 60 north it would be more like ~1 degree longitude. A consequence of this effect is that a user who wants to add a 10 nTesla/year reference vector to a legend faces the same problem we do when we wish to draw a 100 km map scale on a map: the plotted length usually will depend on latitude and hence that reference scale is only useful around that latitude.</p>
@@ -564,8 +564,8 @@ quiver&#33;&#40;dzdx, dzdy, cmap&#61;:turbo, lw&#61;1, show&#61;true&#41;</code>
 <p><a href="/GMTjl_doc/documentation/modules/grdcontour/index.html#grdcontour">grdcontour</a>, <a href="/GMTjl_doc/documentation/modules/plot/index.html#plot">plot</a></p>
 <div class="page-foot">
   <div class="copyright">
-    &copy; GMT.jl. Last modified: April 17, 2024. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
-      <p>These docs were autogenerated using GMT: v1.12.2</p>
+    &copy; GMT.jl. Last modified: May 10, 2024. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+      <p>These docs were autogenerated using GMT: v1.13.2</p>
   </div>
 </div>
 </div><!-- CONTENT ENDS HERE -->

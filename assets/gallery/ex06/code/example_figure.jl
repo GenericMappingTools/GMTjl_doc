@@ -1,9 +1,9 @@
 # This file was generated, do not modify it. # hide
 begin # hide
-	using GMT   # hide
-	GMT.isFranklin[1] = true    # hide
-	getpath4docs(file::String) = joinpath("..", "..", "..", "..", "..", file) # hide
-	using GMT
+		using GMT   # hide
+		GMT.isFranklin[1] = true    # hide
+		getpath4docs(file::String) = joinpath("..", "..", "..", "..", "..", file) # hide
+		using GMT
 GMT.resetGMT() # hide
 
 subplot(grid=(2,1), autolabel=(Anchor=:TL, offset=0.8), margins=1, panel_size=(15,9))
@@ -13,9 +13,9 @@ subplot(grid=(2,1), autolabel=(Anchor=:TL, offset=0.8), margins=1, panel_size=(1
 	rose(panel=:next, "@fractures_06.txt", limits=(0,1,0,360), swap_xy=true, sector=(width=10, rose=true),
 	     norm=true, fill=:orange, axis=(grid=:auto, fill=:lightblue,), pen=1)
 subplot("show")
-end # hide
-mv(joinpath(tempdir(), "GMTjl_" * GMT.TMPDIR_USR[2] * "." * "png"), joinpath(@OUTPUT, "example_4855531435452892868.png"), force=true);    # hide
-GMT.isFranklin[1] = false    # hide
-GMT.IamModern[1]  = false    # hide
+	end # hide
+	mv(joinpath(tempdir(), "GMTjl_" * GMT.TMPDIR_USR[2] * "." * "png"), joinpath(@OUTPUT, "example_4855531435452892868.png"), force=true);    # hide
+	GMT.isFranklin[1] = false    # hide
+	GMT.IamModern[1]  = false    # hide
  
-nothing # hide
+	nothing # hide

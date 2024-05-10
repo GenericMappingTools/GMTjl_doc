@@ -1,9 +1,9 @@
 # This file was generated, do not modify it. # hide
 begin # hide
-	using GMT   # hide
-	GMT.isFranklin[1] = true    # hide
-	getpath4docs(file::String) = joinpath("..", "..", "..", "..", "..", file) # hide
-	using GMT   # Hide
+		using GMT   # hide
+		GMT.isFranklin[1] = true    # hide
+		getpath4docs(file::String) = joinpath("..", "..", "..", "..", "..", file) # hide
+		using GMT   # Hide
 munic = gmtread(GMT.TESTSDIR * "COL_adm2.shp.zip");		# Hide
 mun_antioquia = filter(munic, NAME_1=:Antioquia);		# Hide
 antioquia_points = centroid(mun_antioquia);				# Hide
@@ -17,9 +17,9 @@ C = makecpt(range=(minimum(tn),maximum(tn)), C=:bamako);
 
 # Vizualize 
 viz(mun_antioquia, proj=:guess, levels=tn, cmap=C, lw=0, title="Another Map of Antioquia", text=(data=antioquia_points, font=5), colorbar=true)
-end # hide
-mv(joinpath(tempdir(), "GMTjl_" * GMT.TMPDIR_USR[2] * "." * "png"), joinpath(@OUTPUT, "example_6832767284945348136.png"), force=true);    # hide
-GMT.isFranklin[1] = false    # hide
-GMT.IamModern[1]  = false    # hide
+	end # hide
+	mv(joinpath(tempdir(), "GMTjl_" * GMT.TMPDIR_USR[2] * "." * "png"), joinpath(@OUTPUT, "example_6832767284945348136.png"), force=true);    # hide
+	GMT.isFranklin[1] = false    # hide
+	GMT.IamModern[1]  = false    # hide
  
-nothing # hide
+	nothing # hide

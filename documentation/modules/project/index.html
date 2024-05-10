@@ -384,7 +384,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/weather">weather</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/whereami">whereami</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/wmsinfo">wmsinfo</a></div></li>
-<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/wmsread">wmread</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/wmsread">wmsread</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/wmstest">wmstest</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/worldrectangular">worldrectangular</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/worldrectcoast">worldrectcoast</a></div></li>
@@ -454,10 +454,10 @@ plot&#33;&#40;&#91;0 0; x y&#93;, pen&#61;&#40;0.25, :red, :dash&#41;&#41;
 plot&#33;&#40;&#91;0.0 -1&#93;, marker&#61;&#40;:matangle, &#91;2.54 a 90&#93;, &#40;length&#61;&quot;9p&quot;, start&#61;true&#41;&#41;, ml&#61;0.5, fill&#61;:black&#41;
 showfig&#40;&#41;</code></pre></p>
 <p>
-<a id="example_17187028227054896996">
- <img src="/GMTjl_doc/assets/documentation/modules/project/code/output/example_17187028227054896996.png" alt=""> 
-</a>
-
+	<a id="example_17187028227054896996">
+	 <img src="/GMTjl_doc/assets/documentation/modules/project/code/output/example_17187028227054896996.png" alt=""> 
+	</a>
+	
 <p>Explanation of the coordinate system utilized by project. The input point &#40;red circle&#41;    is given in the original <em>x-y</em> &#40;or <em>lon-lat</em>&#41; coordinate system and is projected to    the <em>p-q</em> coordinate system, defined by the center &#40;<strong>center</strong>&#41; and either the end-point    &#40;<strong>outvars</strong>&#41; or azimuth &#40;\(\alpha\)&#41;, or for geographic data a rotation pole <strong>pole</strong> &#40;not shown&#41;.    The blue point has projected coordinates &#40;p,0&#41; and is reported as &#40;r,s&#41; in the original    coordinate system.  Options <strong>length</strong> &#40;limit range of <em>p</em>&#41; and <strong>width</strong> &#40;limit range of <em>q</em>&#41;    can be used to exclude data outside the specified limits &#40;light gray area&#41;.</p>
 <h2>Required Arguments</h2>
 <ul>
@@ -580,19 +580,19 @@ showfig&#40;&#41;</code></pre></p>
 D &#61; project&#40;&quot;@ship_03.txt&quot;, origin&#61;&#40;330,-18&#41;, pole&#61;&#40;53,21&#41;, sort&#61;true, outvars&#61;:pz, km&#61;true&#41;
 imshow&#40;D&#41;</code></pre></p>
 <p>
-<a id="example_917860055927329881">
- <img src="/GMTjl_doc/assets/documentation/modules/project/code/output/example_917860055927329881.png" alt=""> 
-</a>
-
+	<a id="example_917860055927329881">
+	 <img src="/GMTjl_doc/assets/documentation/modules/project/code/output/example_917860055927329881.png" alt=""> 
+	</a>
+	
 <p>To generate points every 10 km along a great circle from 10N,50W to 30N,10W:</p>
 <pre><code class="language-julia">using GMT
 Dgc &#61; project&#40;origin&#61;&#40;-50,10&#41;, endpoint&#61;&#40;-10,30&#41;, step&#61;10, km&#61;true&#41;
 imshow&#40;Dgc, marker&#61;:point, lw&#61;0.5, coast&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_7569475027179865255">
- <img src="/GMTjl_doc/assets/documentation/modules/project/code/output/example_7569475027179865255.png" alt=""> 
-</a>
-
+	<a id="example_7569475027179865255">
+	 <img src="/GMTjl_doc/assets/documentation/modules/project/code/output/example_7569475027179865255.png" alt=""> 
+	</a>
+	
 <p>&#40;Note that <code>Dgc</code> could now be used as input for <a href="/GMTjl_doc/documentation/modules/grdtrack/index.html#grdtrack">grdtrack</a>, etc. &#41;.</p>
 <p>To generate points every 1 degree along a great circle from 30N,10W with azimuth 30 and covering a full 360, try:</p>
 <pre><code class="language-julia">D &#61; project&#40;origin&#61;&#40;&quot;10W&quot;,&quot;30N&quot;&#41;, azim&#61;30, step&#61;1, length&#61;&#40;-180,180&#41;&#41;
@@ -602,10 +602,10 @@ imshow&#40;D, coast&#61;true&#41;</code></pre>
 Dsc &#61; project&#40;origin&#61;&#40;-50,10&#41;, endpoint&#61;&#40;-10,30&#41;, step&#61;&#40;10,60&#41;, km&#61;true&#41;
 imshow&#40;Dsc, marker&#61;:point, lw&#61;0.5, coast&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_15733448215853366197">
- <img src="/GMTjl_doc/assets/documentation/modules/project/code/output/example_15733448215853366197.png" alt=""> 
-</a>
-
+	<a id="example_15733448215853366197">
+	 <img src="/GMTjl_doc/assets/documentation/modules/project/code/output/example_15733448215853366197.png" alt=""> 
+	</a>
+	
 <p>To create a partial small circle of colatitude 80 about a pole at 40E,85N, with extent of 45 degrees to either side of the meridian defined by the great circle from the pole to a point 15E,15N, try</p>
 <pre><code class="language-julia">D &#61; project&#40;origin&#61;&#40;15,15&#41;, pole&#61;&#40;40,85&#41;, step&#61;&#40;1,80&#41;, length&#40;-45,45&#41;&#41;</code></pre>
 <p>To generate points approximately every 10 km along an ellipse centered on &#40;30W,70N&#41; with major axis of 1500 km with azimuth of 30 degree and a minor axis of 600 km, try</p>
@@ -613,10 +613,10 @@ imshow&#40;Dsc, marker&#61;:point, lw&#61;0.5, coast&#61;true&#41;</code></pre><
 Dellip &#61; project&#40;origin&#61;&#40;-30,70&#41;, step&#61;10, ellipse&#61;&quot;1500/600/30&#43;e&quot;, km&#61;true&#41;
 imshow&#40;Dellip, coast&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_13886887373886161454">
- <img src="/GMTjl_doc/assets/documentation/modules/project/code/output/example_13886887373886161454.png" alt=""> 
-</a>
-
+	<a id="example_13886887373886161454">
+	 <img src="/GMTjl_doc/assets/documentation/modules/project/code/output/example_13886887373886161454.png" alt=""> 
+	</a>
+	
 <p>To project the shiptrack gravity, magnetics, and bathymetry in c2610.xygmb along a great circle through an origin at 30S, 30W, the great circle having an azimuth of N20W at the origin, keeping only the data from NE of the profile and within ± 500 km of the origin, run:</p>
 <pre><code class="language-julia">Dprj &#61; project&#40;&quot;c2610.xygmb&quot;, origin&#61;&#40;-30,-30&#41;, azim&#61;-20, width&#61;&#40;-10000,0&#41;,
                 length&#61;&#40;-500,500&#41;, outvars&#61;:pz, km&#61;true&#41;</code></pre>
@@ -635,8 +635,8 @@ imshow&#40;Dellip, coast&#61;true&#41;</code></pre></p>
 <p><a href="/GMTjl_doc/documentation/modules/fitcircle/index.html#fitcircle">fitcircle</a>, <a href="#">gmtvector</a>, <a href="/GMTjl_doc/documentation/modules/grdtrack/index.html#grdtrack">grdtrack</a>, <a href="#">mapproject</a>, <a href="#">grdproject</a>, <a href="/GMTjl_doc/documentation/modules/grdtrack/index.html#grdtrack">grdtrack</a></p>
 <div class="page-foot">
   <div class="copyright">
-    &copy; GMT.jl. Last modified: April 17, 2024. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
-      <p>These docs were autogenerated using GMT: v1.12.2</p>
+    &copy; GMT.jl. Last modified: May 10, 2024. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+      <p>These docs were autogenerated using GMT: v1.13.2</p>
   </div>
 </div>
 </div><!-- CONTENT ENDS HERE -->

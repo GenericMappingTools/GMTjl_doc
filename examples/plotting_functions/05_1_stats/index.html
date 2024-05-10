@@ -394,7 +394,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/weather">weather</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/whereami">whereami</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/wmsinfo">wmsinfo</a></div></li>
-<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/wmsread">wmread</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/wmsread">wmsread</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/wmstest">wmstest</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/worldrectangular">worldrectangular</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/worldrectcoast">worldrectcoast</a></div></li>
@@ -416,102 +416,102 @@
 <pre><code class="language-julia">using GMT
 density&#40;randn&#40;200&#41;, fill&#61;true, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_3474021625821098044">
- <img src="/GMTjl_doc/assets/examples/plotting_functions/05_1_stats/code/output/example_3474021625821098044.png" alt=""> 
-</a>
-
+	<a id="example_3474021625821098044">
+	 <img src="/GMTjl_doc/assets/examples/plotting_functions/05_1_stats/code/output/example_3474021625821098044.png" alt=""> 
+	</a>
+	
 <pre><code class="language-julia">using GMT
 density&#40;randn&#40;200&#41;, nbins&#61;20, horizontal&#61;true, fill&#61;true, extend&#61;2, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_3460698210049577528">
- <img src="/GMTjl_doc/assets/examples/plotting_functions/05_1_stats/code/output/example_3460698210049577528.png" alt=""> 
-</a>
-
+	<a id="example_3460698210049577528">
+	 <img src="/GMTjl_doc/assets/examples/plotting_functions/05_1_stats/code/output/example_3460698210049577528.png" alt=""> 
+	</a>
+	
 <p>Expand the density profile with 4 x the set bandwidth, such that it decays to zero. By lowering the bandwidth we forcing the line to be less smoth.</p>
 <pre><code class="language-julia">using GMT
 density&#40;randn&#40;200&#41;, fill&#61;:orange, lc&#61;:red, lw&#61;1, bandwidth&#61;0.15, extend&#61;4, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_14341682724932083146">
- <img src="/GMTjl_doc/assets/examples/plotting_functions/05_1_stats/code/output/example_14341682724932083146.png" alt=""> 
-</a>
-
+	<a id="example_14341682724932083146">
+	 <img src="/GMTjl_doc/assets/examples/plotting_functions/05_1_stats/code/output/example_14341682724932083146.png" alt=""> 
+	</a>
+	
 <h2 id="box_plots"><a href="#box_plots" class="header-anchor">Box plots</a></h2>
 <p>An horizontal boxplot with default colors, displaying outliers as 6p black stars. Noches are also shown but this requires GMT6.5.</p>
 <pre><code class="language-julia">using GMT
 boxplot&#40;randn&#40;50,6&#41;, notch&#61;true, fill&#61;true, outliers&#61;&#40;size&#61;&quot;6p&quot;,&#41;, hbar&#61;true, show&#61;1&#41;</code></pre></p>
 <p>
-<a id="example_6536054886029562094">
- <img src="/GMTjl_doc/assets/examples/plotting_functions/05_1_stats/code/output/example_6536054886029562094.png" alt=""> 
-</a>
-
+	<a id="example_6536054886029562094">
+	 <img src="/GMTjl_doc/assets/examples/plotting_functions/05_1_stats/code/output/example_6536054886029562094.png" alt=""> 
+	</a>
+	
 <p>A plot of three groups of two elements each and where we assign the same color to the elements of each group.</p>
 <pre><code class="language-julia">using GMT
 boxplot&#40;randn&#40;50,3,2&#41;, boxwidth&#61;&quot;20p&quot;, notch&#61;true, fill&#61;true, ccolor&#61;true, show&#61;1&#41;</code></pre></p>
 <p>
-<a id="example_6949205619231026720">
- <img src="/GMTjl_doc/assets/examples/plotting_functions/05_1_stats/code/output/example_6949205619231026720.png" alt=""> 
-</a>
-
+	<a id="example_6949205619231026720">
+	 <img src="/GMTjl_doc/assets/examples/plotting_functions/05_1_stats/code/output/example_6949205619231026720.png" alt=""> 
+	</a>
+	
 <h2 id="violin_plots"><a href="#violin_plots" class="header-anchor">Violin plots</a></h2>
 <p>Create a plot with 8 violins colored with the default colors.</p>
 <pre><code class="language-julia">using GMT
 violin&#40;randn&#40;100,8&#41;, fill&#61;true, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_14299581446007642096">
- <img src="/GMTjl_doc/assets/examples/plotting_functions/05_1_stats/code/output/example_14299581446007642096.png" alt=""> 
-</a>
-
+	<a id="example_14299581446007642096">
+	 <img src="/GMTjl_doc/assets/examples/plotting_functions/05_1_stats/code/output/example_14299581446007642096.png" alt=""> 
+	</a>
+	
 <p>Now add boxplot, scatter and outliers to a plot similar to above. The outliers show as black stars with a fait gray outline.</p>
 <pre><code class="language-julia">using GMT
 violin&#40;randn&#40;100,8&#41;, fill&#61;true, boxplot&#61;true, scatter&#61;true, outliers&#61;true, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_17927783038414841698">
- <img src="/GMTjl_doc/assets/examples/plotting_functions/05_1_stats/code/output/example_17927783038414841698.png" alt=""> 
-</a>
-
+	<a id="example_17927783038414841698">
+	 <img src="/GMTjl_doc/assets/examples/plotting_functions/05_1_stats/code/output/example_17927783038414841698.png" alt=""> 
+	</a>
+	
 <p>And a group example with red dashed separator lines and variable level of transparency for each element in the group. Note that this case uses input data as a Vector&#123;Vector&#123;Vector}}, which more representative of a real case as each violin is allowed to be made of a different number of observations.</p>
 <pre><code class="language-julia">using GMT
 vvv &#61; &#91;&#91;randn&#40;50&#41;, randn&#40;30&#41;&#93;, &#91;randn&#40;40&#41;, randn&#40;48&#41;, randn&#40;45&#41;&#93;, &#91;randn&#40;35&#41;, randn&#40;43&#41;&#93;&#93;;
 violin&#40;vvv, fill&#61;true, fillalpha&#61;&#91;0.5, 0.7, 0.85&#93;, boxplot&#61;true, separator&#61;&#40;:red, :dash&#41;,
        scatter&#61;true, outliers&#61;true, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_6529665846202457608">
- <img src="/GMTjl_doc/assets/examples/plotting_functions/05_1_stats/code/output/example_6529665846202457608.png" alt=""> 
-</a>
-
+	<a id="example_6529665846202457608">
+	 <img src="/GMTjl_doc/assets/examples/plotting_functions/05_1_stats/code/output/example_6529665846202457608.png" alt=""> 
+	</a>
+	
 <p>Join the left and right halves of each of the two element in the group.</p>
 <pre><code class="language-julia">using GMT
 violin&#40;randn&#40;100,3,2&#41;, fill&#61;true, scatter&#61;true, split&#61;true, xticks&#61;&#91;&quot;First&quot;,&quot;Second&quot;,&quot;Third&quot;&#93;, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_2653022517396184860">
- <img src="/GMTjl_doc/assets/examples/plotting_functions/05_1_stats/code/output/example_2653022517396184860.png" alt=""> 
-</a>
-
+	<a id="example_2653022517396184860">
+	 <img src="/GMTjl_doc/assets/examples/plotting_functions/05_1_stats/code/output/example_2653022517396184860.png" alt=""> 
+	</a>
+	
 <h2 id="q-q_plots"><a href="#q-q_plots" class="header-anchor">Q-Q plots</a></h2>
 <p>Test if <em>x</em> and <em>y</em> follow the same distribution.</p>
 <pre><code class="language-julia">using GMT
 qqplot&#40;randn&#40;100&#41;, randn&#40;100&#41;, qqline&#61;:identity, title&#61;&quot;Q-Q plot&quot;, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_14681113700347896392">
- <img src="/GMTjl_doc/assets/examples/plotting_functions/05_1_stats/code/output/example_14681113700347896392.png" alt=""> 
-</a>
-
+	<a id="example_14681113700347896392">
+	 <img src="/GMTjl_doc/assets/examples/plotting_functions/05_1_stats/code/output/example_14681113700347896392.png" alt=""> 
+	</a>
+	
 <p>Test if <em>x</em> is normally distributed. the :fitrobust default line passes through the 1st and 3rd quartiles of the distribution</p>
 <pre><code class="language-julia">using GMT
 qqnorm&#40;randn&#40;200&#41;, qqline&#61;:fitrobust, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_12309557067899117718">
- <img src="/GMTjl_doc/assets/examples/plotting_functions/05_1_stats/code/output/example_12309557067899117718.png" alt=""> 
-</a>
-
+	<a id="example_12309557067899117718">
+	 <img src="/GMTjl_doc/assets/examples/plotting_functions/05_1_stats/code/output/example_12309557067899117718.png" alt=""> 
+	</a>
+	
 <h2 id="ecdf_plot"><a href="#ecdf_plot" class="header-anchor">ECDF plot</a></h2>
 <pre><code class="language-julia">using GMT
 ecdfplot&#40;randn&#40;100&#41;, title&#61;&quot;ECDF plot&quot;, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_11313115680968660996">
- <img src="/GMTjl_doc/assets/examples/plotting_functions/05_1_stats/code/output/example_11313115680968660996.png" alt=""> 
-</a>
-
+	<a id="example_11313115680968660996">
+	 <img src="/GMTjl_doc/assets/examples/plotting_functions/05_1_stats/code/output/example_11313115680968660996.png" alt=""> 
+	</a>
+	
 <h2 id="parallel_plots"><a href="#parallel_plots" class="header-anchor">Parallel plots</a></h2>
 <p>See docs in <a href="/GMTjl_doc/documentation/modules/parallelplot/index.html#parallelplot">parallelplot</a></p>
 <p>Create a parallel plot using the measurement data in <code>iris.dat</code>. Use a different color for each group as identified in species, and label the horizontal axis using the variable names.</p>
@@ -519,70 +519,70 @@ ecdfplot&#40;randn&#40;100&#41;, title&#61;&quot;ECDF plot&quot;, show&#61;true&
 parallelplot&#40;getpath4docs&#40;&quot;iris.dat&quot;&#41;, groupvar&#61;&quot;text&quot;, normalize&#61;&quot;none&quot;, legend&#61;true,
              title&#61;&quot;Parallel plot&quot;, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_3370003831666548844">
- <img src="/GMTjl_doc/assets/examples/plotting_functions/05_1_stats/code/output/example_3370003831666548844.png" alt=""> 
-</a>
-
+	<a id="example_3370003831666548844">
+	 <img src="/GMTjl_doc/assets/examples/plotting_functions/05_1_stats/code/output/example_3370003831666548844.png" alt=""> 
+	</a>
+	
 <p>Plot only the median, 25 percent, and 75 percent quartile values for each group identified in species. Label the horizontal axis using the variable names.</p>
 <pre><code class="language-julia">using GMT
 parallelplot&#40;getpath4docs&#40;&quot;iris.dat&quot;&#41;, groupvar&#61;&quot;text&quot;, quantile&#61;0.25, legend&#61;true, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_1815827046848363147">
- <img src="/GMTjl_doc/assets/examples/plotting_functions/05_1_stats/code/output/example_1815827046848363147.png" alt=""> 
-</a>
-
+	<a id="example_1815827046848363147">
+	 <img src="/GMTjl_doc/assets/examples/plotting_functions/05_1_stats/code/output/example_1815827046848363147.png" alt=""> 
+	</a>
+	
 <p>Plot bands enveloping the &#43;- 25&#37; percentil arround the median.</p>
 <pre><code class="language-julia">using GMT
 parallelplot&#40;getpath4docs&#40;&quot;iris.dat&quot;&#41;, groupvar&#61;&quot;text&quot;, band&#61;true, legend&#61;true, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_7856639749742076663">
- <img src="/GMTjl_doc/assets/examples/plotting_functions/05_1_stats/code/output/example_7856639749742076663.png" alt=""> 
-</a>
-
+	<a id="example_7856639749742076663">
+	 <img src="/GMTjl_doc/assets/examples/plotting_functions/05_1_stats/code/output/example_7856639749742076663.png" alt=""> 
+	</a>
+	
 <h2 id="corner_plots"><a href="#corner_plots" class="header-anchor">Corner plots</a></h2>
 <p>Create a cornerplot plot with hexagonal bins, setting the color map, the vriable names, plot <em>truth</em> and title.</p>
 <pre><code class="language-julia">using GMT
 cornerplot&#40;randn&#40;4000,3&#41;, cmap&#61;:viridis, truths&#61;&#91;0.25, 0.5, 0.75&#93;,
            varnames&#61;&#91;&quot;Ai&quot;, &quot;Oi&quot;, &quot;Ui&quot;&#93;, title&#61;&quot;Corner plot&quot;, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_14504964345709335973">
- <img src="/GMTjl_doc/assets/examples/plotting_functions/05_1_stats/code/output/example_14504964345709335973.png" alt=""> 
-</a>
-
+	<a id="example_14504964345709335973">
+	 <img src="/GMTjl_doc/assets/examples/plotting_functions/05_1_stats/code/output/example_14504964345709335973.png" alt=""> 
+	</a>
+	
 <p>Example on how to control the symbol types, size and color.</p>
 <pre><code class="language-julia">using GMT
 cornerplot&#40;randn&#40;1500,3&#41;, scatter&#61;true, marker&#61;:cross, mec&#61;:red, ms&#61;&quot;3p&quot;, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_6265284708922005600">
- <img src="/GMTjl_doc/assets/examples/plotting_functions/05_1_stats/code/output/example_6265284708922005600.png" alt=""> 
-</a>
-
+	<a id="example_6265284708922005600">
+	 <img src="/GMTjl_doc/assets/examples/plotting_functions/05_1_stats/code/output/example_6265284708922005600.png" alt=""> 
+	</a>
+	
 <h2 id="marginalhist_plots"><a href="#marginalhist_plots" class="header-anchor">Marginalhist plots</a></h2>
 <p>A scatter plot with histograms on the sides</p>
 <pre><code class="language-julia">using GMT
 marginalhist&#40;randn&#40;2000,2&#41;, histkw&#61;&#40;frame&#61;&quot;none&quot;,&#41;, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_3120096419206051673">
- <img src="/GMTjl_doc/assets/examples/plotting_functions/05_1_stats/code/output/example_3120096419206051673.png" alt=""> 
-</a>
-
+	<a id="example_3120096419206051673">
+	 <img src="/GMTjl_doc/assets/examples/plotting_functions/05_1_stats/code/output/example_3120096419206051673.png" alt=""> 
+	</a>
+	
 <p>A scatter plot with density curves on the sides</p>
 <pre><code class="language-julia">using GMT
  marginalhist&#40;randn&#40;2000,2&#41;, histkw&#61;&#40;frame&#61;&quot;none&quot;, fill&#61;&quot;red@60&quot;&#41;, density&#61;true, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_8477799392225376520">
- <img src="/GMTjl_doc/assets/examples/plotting_functions/05_1_stats/code/output/example_8477799392225376520.png" alt=""> 
-</a>
-
+	<a id="example_8477799392225376520">
+	 <img src="/GMTjl_doc/assets/examples/plotting_functions/05_1_stats/code/output/example_8477799392225376520.png" alt=""> 
+	</a>
+	
 <p>An hexbin scater plot with marginal density plots. Note that we must set <code>aspect&#61;:equal</code> to have that hexbin plot.</p>
 <pre><code class="language-julia">using GMT
 marginalhist&#40;randn&#40;2500,2&#41;, cmap&#61;:lisbon, density&#61;true, histkw&#61;&#40;fill&#61;&quot;darkgreen@60&quot;,&#41;,
              aspect&#61;:equal, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_1292409211164016221">
- <img src="/GMTjl_doc/assets/examples/plotting_functions/05_1_stats/code/output/example_1292409211164016221.png" alt=""> 
-</a>
-
+	<a id="example_1292409211164016221">
+	 <img src="/GMTjl_doc/assets/examples/plotting_functions/05_1_stats/code/output/example_1292409211164016221.png" alt=""> 
+	</a>
+	
 <h2 id="line_fits"><a href="#line_fits" class="header-anchor">Line fits</a></h2>
 <p>Plot a regression fit over a scatter plot &#40;no errors in X nor in Y&#41;. Example0 in https://github.com/rafael-guerra-www/LinearFitXYerrors.jl/blob/master/examples/example0.jl</p>
 <pre><code class="language-julia">using GMT
@@ -590,10 +590,10 @@ D &#61; linearfitxy&#40;&#91;91., 104, 107, 107, 106, 100, 92, 92, 105, 108&#93;
                 &#91;9.8, 7.4, 7.9, 8.3, 8.3, 9.0, 9.7, 8.8, 7.6, 6.9&#93;&#41;;
 plot&#40;D, linefit&#61;true, band_ab&#61;true, band_ci&#61;true, legend&#61;true, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_7576001294309913709">
- <img src="/GMTjl_doc/assets/examples/plotting_functions/05_1_stats/code/output/example_7576001294309913709.png" alt=""> 
-</a>
-
+	<a id="example_7576001294309913709">
+	 <img src="/GMTjl_doc/assets/examples/plotting_functions/05_1_stats/code/output/example_7576001294309913709.png" alt=""> 
+	</a>
+	
 <p>Non-correlated errors in X and in Y Example2 in https://github.com/rafael-guerra-www/LinearFitXYerrors.jl/blob/master/examples/example2.jl</p>
 <pre><code class="language-julia">using GMT
 D &#61; linearfitxy&#40;&#91;0.0, 0.9, 1.8, 2.6, 3.3, 4.4, 5.2, 6.1, 6.5, 7.4&#93;,
@@ -602,24 +602,24 @@ D &#61; linearfitxy&#40;&#91;0.0, 0.9, 1.8, 2.6, 3.3, 4.4, 5.2, 6.1, 6.5, 7.4&#9
                 sy&#61;1 ./ sqrt.&#40;&#91;1., 1.8, 4, 8, 20, 20, 70, 70, 100, 500&#93;&#41;&#41;;
 plot&#40;D, linefit&#61;true, band_ab&#61;true, band_ci&#61;true, ellipses&#61;true, legend&#61;true, show&#61;1&#41;</code></pre></p>
 <p>
-<a id="example_16349643634669904997">
- <img src="/GMTjl_doc/assets/examples/plotting_functions/05_1_stats/code/output/example_16349643634669904997.png" alt=""> 
-</a>
-
+	<a id="example_16349643634669904997">
+	 <img src="/GMTjl_doc/assets/examples/plotting_functions/05_1_stats/code/output/example_16349643634669904997.png" alt=""> 
+	</a>
+	
 <p>Condition the regression fit on another variable and represent it using color.</p>
 <pre><code class="language-julia">using GMT
 D &#61; gmtread&#40;getpath4docs&#40;&quot;iris.dat&quot;&#41;&#41;;
 plot&#40;D, xvar&#61;1, yvar&#61;2, hue&#61;&quot;Species&quot;, xlabel&#61;:auto, ylabel&#61;:auto, linefit&#61;true,
      band_ci&#61;true, legend&#61;true, show&#61;1&#41;</code></pre></p>
 <p>
-<a id="example_1252949028278191020">
- <img src="/GMTjl_doc/assets/examples/plotting_functions/05_1_stats/code/output/example_1252949028278191020.png" alt=""> 
-</a>
-
+	<a id="example_1252949028278191020">
+	 <img src="/GMTjl_doc/assets/examples/plotting_functions/05_1_stats/code/output/example_1252949028278191020.png" alt=""> 
+	</a>
+	
 <div class="page-foot">
   <div class="copyright">
-    &copy; GMT.jl. Last modified: April 17, 2024. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
-      <p>These docs were autogenerated using GMT: v1.12.2</p>
+    &copy; GMT.jl. Last modified: May 10, 2024. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+      <p>These docs were autogenerated using GMT: v1.13.2</p>
   </div>
 </div>
 </div><!-- CONTENT ENDS HERE -->

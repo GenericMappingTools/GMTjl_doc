@@ -1,9 +1,9 @@
 # This file was generated, do not modify it. # hide
 begin # hide
-	using GMT   # hide
-	GMT.isFranklin[1] = true    # hide
-	getpath4docs(file::String) = joinpath("..", "..", "..", "..", "..", file) # hide
-	using GMT
+		using GMT   # hide
+		GMT.isFranklin[1] = true    # hide
+		getpath4docs(file::String) = joinpath("..", "..", "..", "..", "..", file) # hide
+		using GMT
 GMT.resetGMT() # hide
 
 plot("@Table_5_11.txt", limits=(0,7,0,7), frame=(axes=:WSNe, annot=2, ticks=1),
@@ -39,9 +39,9 @@ t = gmtinfo((trend, data), inc=(0.5,25));
 plot!(data, limits=t.text[1][3:end], lw=:thick, xaxis=(axes=:WSne, annot=1),
       yaxis=(annot=50,), figsize=(16.3,4), xshift=-8.3, yshift=-4.8)
 plot!(trend, pen=(:thinner, :dashed), show=true)
-end # hide
-mv(joinpath(tempdir(), "GMTjl_" * GMT.TMPDIR_USR[2] * "." * "png"), joinpath(@OUTPUT, "example_8841413149337387166.png"), force=true);    # hide
-GMT.isFranklin[1] = false    # hide
-GMT.IamModern[1]  = false    # hide
+	end # hide
+	mv(joinpath(tempdir(), "GMTjl_" * GMT.TMPDIR_USR[2] * "." * "png"), joinpath(@OUTPUT, "example_8841413149337387166.png"), force=true);    # hide
+	GMT.isFranklin[1] = false    # hide
+	GMT.IamModern[1]  = false    # hide
  
-nothing # hide
+	nothing # hide

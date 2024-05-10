@@ -392,7 +392,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/weather">weather</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/whereami">whereami</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/wmsinfo">wmsinfo</a></div></li>
-<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/wmsread">wmread</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/wmsread">wmsread</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/wmstest">wmstest</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/worldrectangular">worldrectangular</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/worldrectcoast">worldrectcoast</a></div></li>
@@ -416,36 +416,36 @@
 bar&#40;1:5, &#40;20, 35, 30, 35, 27&#41;, width&#61;0.5, color&#61;:lightblue,
     limits&#61;&#40;0.5,5.5,0,40&#41;, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_13421101909345094110">
- <img src="/GMTjl_doc/assets/examples/plotting_functions/03_bars/code/output/example_13421101909345094110.png" alt=""> 
-</a>
-
+	<a id="example_13421101909345094110">
+	 <img src="/GMTjl_doc/assets/examples/plotting_functions/03_bars/code/output/example_13421101909345094110.png" alt=""> 
+	</a>
+	
 <p>A colored bar plot with colors proportional to bar heights. In this case we let the plot limits be determined from data. We also plot a colorbar by using the <strong>colorbar</strong>&#61;<em>true</em> option.</p>
 <pre><code class="language-julia">using GMT
 bar&#40;rand&#40;15&#41;, color&#61;:turbo, figsize&#61;&#40;14,8&#41;, title&#61;&quot;Colored bars&quot;,
     colorbar&#61;true, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_5892383907912211539">
- <img src="/GMTjl_doc/assets/examples/plotting_functions/03_bars/code/output/example_5892383907912211539.png" alt=""> 
-</a>
-
+	<a id="example_5892383907912211539">
+	 <img src="/GMTjl_doc/assets/examples/plotting_functions/03_bars/code/output/example_5892383907912211539.png" alt=""> 
+	</a>
+	
 <p>Example showing how to plot bar groups and at same time assign variable transparency to each of the group&#39;s <em>band</em> usinf the <strong>fillalpha</strong> option. Here, each row on the input data represents a bar group that has as many <em>bands</em> as n_columns - 1. -1 because first column must hold the <em>xx</em> coordinates of each group. The colors come from the automatic cyclic scheme.</p>
 <pre><code class="language-julia">using GMT
 bar&#40;&#91;0. 1 2 3; 1 2 3 4&#93;, fillalpha&#61;&#91;0.3 0.5 0.7&#93;, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_13075626188285987574">
- <img src="/GMTjl_doc/assets/examples/plotting_functions/03_bars/code/output/example_13075626188285987574.png" alt=""> 
-</a>
-
+	<a id="example_13075626188285987574">
+	 <img src="/GMTjl_doc/assets/examples/plotting_functions/03_bars/code/output/example_13075626188285987574.png" alt=""> 
+	</a>
+	
 <p>And we can also make plots with bar groups where each group has a variable number of bars. For that, pass NaN&#39;s in place of the missing bars for a particular group. For example:</p>
 <pre><code class="language-julia">using GMT
 bar&#40;&#91;2 0.5 1 NaN 1; 4 NaN NaN 2 NaN; 1 3 4 3 2; NaN 3 NaN 1 2&#93;, fillalpha&#61;&#91;0.3 0.5 0.7&#93;,
     xticks&#61;&#40;:d1, :d2, :d3, :d4&#41;, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_5558057798338818360">
- <img src="/GMTjl_doc/assets/examples/plotting_functions/03_bars/code/output/example_5558057798338818360.png" alt=""> 
-</a>
-
+	<a id="example_5558057798338818360">
+	 <img src="/GMTjl_doc/assets/examples/plotting_functions/03_bars/code/output/example_5558057798338818360.png" alt=""> 
+	</a>
+	
 <p>Next example shows how to plot error bars in a grouped bar. Similar to this <a href="https://matplotlib.org/3.1.1/gallery/lines_bars_and_markers/barchart.html#sphx-glr-gallery-lines-bars-and-markers-barchart-py">mapplotlib&#39;s example</a> &#40;labels will come later&#41;.</p>
 <pre><code class="language-julia">using GMT
 bar&#40;1:5, &#91;20 25; 35 32; 30 34; 35 20; 27 25&#93;, width&#61;0.7, fill&#61;&#91;&quot;lightblue&quot;, &quot;brown&quot;&#93;,
@@ -453,44 +453,44 @@ bar&#40;1:5, &#91;20 25; 35 32; 30 34; 35 20; 27 25&#93;, width&#61;0.7, fill&#6
     xticks&#61;&#40;:G1, :G2, :G3, :G4, :G5&#41;, yaxis&#61;&#40;annot&#61;5,label&#61;:Scores&#41;,
     frame&#61;&#40;title&#61;&quot;Scores by group and gender&quot;, axes&#61;:WSrt&#41;, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_3119173120873874080">
- <img src="/GMTjl_doc/assets/examples/plotting_functions/03_bars/code/output/example_3119173120873874080.png" alt=""> 
-</a>
-
+	<a id="example_3119173120873874080">
+	 <img src="/GMTjl_doc/assets/examples/plotting_functions/03_bars/code/output/example_3119173120873874080.png" alt=""> 
+	</a>
+	
 <p>Example of a verticaly stacked bar plot. In this exampled we pass the <em>xx</em> coordinates as first argument and the individual bar heights in a matrix with smae number of rows as the number of elements in the <em>x</em> vector. To make it plot a stracked bar we used the option <strong>stacked</strong>&#61;<em>true</em>.</p>
 <pre><code class="language-julia">using GMT
 bar&#40;1:3,&#91;-5 -15 20; 17 10 21; 10 5 15&#93;, stacked&#61;1, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_1863758899398864474">
- <img src="/GMTjl_doc/assets/examples/plotting_functions/03_bars/code/output/example_1863758899398864474.png" alt=""> 
-</a>
-
+	<a id="example_1863758899398864474">
+	 <img src="/GMTjl_doc/assets/examples/plotting_functions/03_bars/code/output/example_1863758899398864474.png" alt=""> 
+	</a>
+	
 <h2 id="a_waterfall_chart"><a href="#a_waterfall_chart" class="header-anchor">A waterfall chart</a></h2>
 <pre><code class="language-julia">using GMT
 bar&#40;&#91;1 2 3 0 -1 -2 0&#93;, stacked&#61;:water, connector&#61;true, bargap&#61;25,
     xticks&#61;&#40;:A, :B, :C, :Partial, :D, :E, :Total&#41;, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_3072171201843427746">
- <img src="/GMTjl_doc/assets/examples/plotting_functions/03_bars/code/output/example_3072171201843427746.png" alt=""> 
-</a>
-
+	<a id="example_3072171201843427746">
+	 <img src="/GMTjl_doc/assets/examples/plotting_functions/03_bars/code/output/example_3072171201843427746.png" alt=""> 
+	</a>
+	
 <h2 id="horizontal_bar_plots"><a href="#horizontal_bar_plots" class="header-anchor">Horizontal bar plots</a></h2>
 <p>To create an horizontal bar plot we use the <strong>hbar</strong>&#61;<em>true</em> option</p>
 <pre><code class="language-julia">using GMT
 bar&#40;&#91;0. 1 2 3; 1 2 3 4&#93;, hbar&#61;true, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_10128296778107440681">
- <img src="/GMTjl_doc/assets/examples/plotting_functions/03_bars/code/output/example_10128296778107440681.png" alt=""> 
-</a>
-
+	<a id="example_10128296778107440681">
+	 <img src="/GMTjl_doc/assets/examples/plotting_functions/03_bars/code/output/example_10128296778107440681.png" alt=""> 
+	</a>
+	
 <p>And one horizontally stacked but this time we pick the colors.</p>
 <pre><code class="language-julia">using GMT
 bar&#40;&#91;0. 1 2 3; 1 2 3 4&#93;, stack&#61;true, hbar&#61;true, fill&#61;&#91;&quot;red&quot;, &quot;green&quot;, &quot;blue&quot;&#93;, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_3716059622877782551">
- <img src="/GMTjl_doc/assets/examples/plotting_functions/03_bars/code/output/example_3716059622877782551.png" alt=""> 
-</a>
-
+	<a id="example_3716059622877782551">
+	 <img src="/GMTjl_doc/assets/examples/plotting_functions/03_bars/code/output/example_3716059622877782551.png" alt=""> 
+	</a>
+	
 <h2 id="make_a_3d_bar_plot_with_constant_color"><a href="#make_a_3d_bar_plot_with_constant_color" class="header-anchor">Make a 3D bar plot with constant color</a></h2>
 <pre><code class="language-julia">using GMT
 
@@ -503,10 +503,10 @@ bar3&#40;G,                 # &#39;G&#39; is the grid created above
      lw&#61;:thinnest,      # Line thickness &#40;0.25 pt&#41;
      show&#61;true&#41;         # Display the figure.</code></pre></p>
 <p>
-<a id="example_12178199112419810315">
- <img src="/GMTjl_doc/assets/examples/plotting_functions/03_bars/code/output/example_12178199112419810315.png" alt=""> 
-</a>
-
+	<a id="example_12178199112419810315">
+	 <img src="/GMTjl_doc/assets/examples/plotting_functions/03_bars/code/output/example_12178199112419810315.png" alt=""> 
+	</a>
+	
 <h4 id="plot_a_grid_as_3d_prisms"><a href="#plot_a_grid_as_3d_prisms" class="header-anchor">Plot a grid as 3D prisms.</a></h4>
 <pre><code class="language-julia">using GMT
 
@@ -518,16 +518,16 @@ bar3&#40;G,               # &#39;G&#39; is the grid created above
      color&#61;cmap,      # Paint the prisms with colormap computed from grid
      show&#61;true&#41;       # Display the figure.</code></pre></p>
 <p>
-<a id="example_2146444488728053260">
- <img src="/GMTjl_doc/assets/examples/plotting_functions/03_bars/code/output/example_2146444488728053260.png" alt=""> 
-</a>
-
+	<a id="example_2146444488728053260">
+	 <img src="/GMTjl_doc/assets/examples/plotting_functions/03_bars/code/output/example_2146444488728053260.png" alt=""> 
+	</a>
+	
 <hr />
 <p><em>Download a <a href="bars.jl">Pluto Notebook here</a></em></p>
 <div class="page-foot">
   <div class="copyright">
-    &copy; GMT.jl. Last modified: April 17, 2024. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
-      <p>These docs were autogenerated using GMT: v1.12.2</p>
+    &copy; GMT.jl. Last modified: May 10, 2024. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+      <p>These docs were autogenerated using GMT: v1.13.2</p>
   </div>
 </div>
 </div><!-- CONTENT ENDS HERE -->

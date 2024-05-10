@@ -380,7 +380,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/weather">weather</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/whereami">whereami</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/wmsinfo">wmsinfo</a></div></li>
-<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/wmsread">wmread</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/wmsread">wmsread</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/wmstest">wmstest</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/worldrectangular">worldrectangular</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/worldrectcoast">worldrectcoast</a></div></li>
@@ -418,20 +418,20 @@
 df &#61; DataFrame&#40;t &#61; 1:10, series1 &#61; sin.&#40;1:10&#41;, series2&#61;rand&#40;10&#41;&#41;;
 plot&#40;df, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_1185821875404548154">
- <img src="/GMTjl_doc/assets/Interoperability/code/output/example_1185821875404548154.png" alt=""> 
-</a>
-
+	<a id="example_1185821875404548154">
+	 <img src="/GMTjl_doc/assets/Interoperability/code/output/example_1185821875404548154.png" alt=""> 
+	</a>
+	
 <p>But one problem with the above solution is that although the <code>df</code> has three columns it only plotted a single curve. This happens because in GMT 3rd and on columns may be used to control color, symbol sizes etc and cannot therefore be assumed to <em>plotting data</em> by default. If we want that all columns are interpreted as data, we use the <code>multicol</code> option, like:</p>
 <pre><code class="language-julia">using GMT, DataFrames
 
 df &#61; DataFrame&#40;t &#61; 1:10, series1 &#61; sin.&#40;1:10&#41;, series2&#61;rand&#40;10&#41;&#41;;
 plot&#40;df, legend&#61;:colnames, multicol&#61;true, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_17709031256156991341">
- <img src="/GMTjl_doc/assets/Interoperability/code/output/example_17709031256156991341.png" alt=""> 
-</a>
-
+	<a id="example_17709031256156991341">
+	 <img src="/GMTjl_doc/assets/Interoperability/code/output/example_17709031256156991341.png" alt=""> 
+	</a>
+	
 <p>in the example above we took the legend entry from the column names, but if we want to use other labels we can do:</p>
 <pre><code class="language-julia">plot&#40;df, legend&#61;&#40;&quot;A&quot;,&quot;B&quot;&#41;, multicol&#61;true, show&#61;true&#41;</code></pre>
 <h3 id="differentialequations"><a href="#differentialequations" class="header-anchor">DifferentialEquations</a></h3>
@@ -452,31 +452,31 @@ sol &#61; solve&#40;prob&#41;;
 
 plot&#40;sol, multi&#61;true, legend&#61;:colnames, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_9869033248516946857">
- <img src="/GMTjl_doc/assets/Interoperability/code/output/example_9869033248516946857.png" alt=""> 
-</a>
-
+	<a id="example_9869033248516946857">
+	 <p><span style="color:red;">// Image matching '/assets/Interoperability/code/example_9869033248516946857.png' not found. //</span></p> 
+	</a>
+	
 <p>If we make a 3D plot of the <em>sol</em> result, we get the following because first dimension in the converted type is the time.</p>
 <pre><code class="language-julia">plot3&#40;sol, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_15501699269802528270">
- <img src="/GMTjl_doc/assets/Interoperability/code/output/example_15501699269802528270.png" alt=""> 
-</a>
-
+	<a id="example_15501699269802528270">
+	 <p><span style="color:red;">// Image matching '/assets/Interoperability/code/example_15501699269802528270.png' not found. //</span></p> 
+	</a>
+	
 <p>To plot the parametric curve with the three <em>u1, u2, u3</em> components, we do:</p>
 <pre><code class="language-julia">plot3&#40;sol, x&#61;:u1, y&#61;:u2, z&#61;:u3, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_15532411533284762997">
- <img src="/GMTjl_doc/assets/Interoperability/code/output/example_15532411533284762997.png" alt=""> 
-</a>
-
+	<a id="example_15532411533284762997">
+	 <p><span style="color:red;">// Image matching '/assets/Interoperability/code/example_15532411533284762997.png' not found. //</span></p> 
+	</a>
+	
 <p>To interpolate the solution &#40;must be done manually&#41; at 5 times more points that original, do:</p>
 <pre><code class="language-julia">plot3&#40;sol, x&#61;:u1, y&#61;:u2, z&#61;:u3, interp&#61;5, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_338153476756803741">
- <img src="/GMTjl_doc/assets/Interoperability/code/output/example_338153476756803741.png" alt=""> 
-</a>
-
+	<a id="example_338153476756803741">
+	 <p><span style="color:red;">// Image matching '/assets/Interoperability/code/example_338153476756803741.png' not found. //</span></p> 
+	</a>
+	
 <h3 id="rasters"><a href="#rasters" class="header-anchor">Rasters</a></h3>
 <p>Though many of the use cases shown could be reproduced by GMT.jl directly &#40;it also reads netCDF and multi-layred files&#41; the Rasters.jl package is able to keep some metadata &#40;namely the time axis&#41; and lazy reading of large files that GMT is not yet able to match. Here we will reproduce some of the examples from this Rasters.jl <a href="https://rafaqz.github.io/Rasters.jl/dev/#Examples-and-Plotting">docs</a>.</p>
 <pre><code class="language-julia">using GMT
@@ -486,10 +486,10 @@ ENV&#91;&quot;RASTERDATASOURCES_PATH&quot;&#93; &#61; tempdir&#40;&#41;;
 A &#61; Raster&#40;WorldClim&#123;BioClim&#125;, 5&#41;;
 viz&#40;A, colorbar&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_6067877061220207994">
- <img src="/GMTjl_doc/assets/Interoperability/code/output/example_6067877061220207994.png" alt=""> 
-</a>
-
+	<a id="example_6067877061220207994">
+	 <p><span style="color:red;">// Image matching '/assets/Interoperability/code/example_6067877061220207994.png' not found. //</span></p> 
+	</a>
+	
 <pre><code class="language-julia">using GMT, Rasters
 import NCDatasets
 
@@ -498,30 +498,30 @@ filename &#61; download&#40;url, &quot;tos_O1_2001-2002.nc&quot;&#41;;
 A &#61; Raster&#40;filename&#41;;
 viz&#40;A&#91;Ti&#61;6&#93;, proj&#61;:guess, coast&#61;true, colorbar&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_15545010966387706337">
- <img src="/GMTjl_doc/assets/Interoperability/code/output/example_15545010966387706337.png" alt=""> 
-</a>
-
+	<a id="example_15545010966387706337">
+	 <img src="/GMTjl_doc/assets/Interoperability/code/output/example_15545010966387706337.png" alt=""> 
+	</a>
+	
 <pre><code class="language-julia">viz&#40;A&#91;Ti&#61;1:6&#93;, proj&#61;:Robinson, coast&#61;true, colorbar&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_16397760735173912814">
- <img src="/GMTjl_doc/assets/Interoperability/code/output/example_16397760735173912814.png" alt=""> 
-</a>
-
+	<a id="example_16397760735173912814">
+	 <img src="/GMTjl_doc/assets/Interoperability/code/output/example_16397760735173912814.png" alt=""> 
+	</a>
+	
 <p>But <em>I Don&#39;t like Kelvins</em>. Fine, want centigrade? Just offset the <em>z</em> values.</p>
 <pre><code class="language-julia">using GMT
 
 G &#61; mat2grid&#40;A&#91;Ti&#61;1:6&#93;, offset&#61;-273.15&#41;;
 viz&#40;G, proj&#61;:Robinson, coast&#61;true, colorbar&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_13797966950964796180">
- <img src="/GMTjl_doc/assets/Interoperability/code/output/example_13797966950964796180.png" alt=""> 
-</a>
-
+	<a id="example_13797966950964796180">
+	 <img src="/GMTjl_doc/assets/Interoperability/code/output/example_13797966950964796180.png" alt=""> 
+	</a>
+	
 <div class="page-foot">
   <div class="copyright">
-    &copy; GMT.jl. Last modified: April 17, 2024. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
-      <p>These docs were autogenerated using GMT: v1.12.2</p>
+    &copy; GMT.jl. Last modified: May 10, 2024. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+      <p>These docs were autogenerated using GMT: v1.13.2</p>
   </div>
 </div>
 </div><!-- CONTENT ENDS HERE -->

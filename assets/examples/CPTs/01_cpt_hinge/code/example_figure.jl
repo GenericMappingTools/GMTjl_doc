@@ -1,9 +1,9 @@
 # This file was generated, do not modify it. # hide
 begin # hide
-	using GMT   # hide
-	GMT.isFranklin[1] = true    # hide
-	getpath4docs(file::String) = joinpath("..", "..", "..", "..", "..", file) # hide
-	using GMT
+		using GMT   # hide
+		GMT.isFranklin[1] = true    # hide
+		getpath4docs(file::String) = joinpath("..", "..", "..", "..", "..", file) # hide
+		using GMT
 
 C = makecpt(cmap=((197,0,255),(81,0,255),(0,35,255),(0,151,255),(0,255,244),(0,255,127),(0,255,11),
                   (104,255,0),(220,255,0),(255,174,0),(255,58,0)),
@@ -38,9 +38,9 @@ colorbar!(pos=(paper=true, anchor=(16,4), size=(-8,0.5), justify=:ML, triangles=
           B=:none, equal_size=(range=true,))
 colorbar!(pos=(paper=true, anchor=(20,4), size=(-8,0.5), justify=:ML, triangles=:f),
           B=:none, equal_size=(range=true, gap=0.1), show=true)
-end # hide
-mv(joinpath(tempdir(), "GMTjl_" * GMT.TMPDIR_USR[2] * "." * "png"), joinpath(@OUTPUT, "example_1336622456775633275.png"), force=true);    # hide
-GMT.isFranklin[1] = false    # hide
-GMT.IamModern[1]  = false    # hide
+	end # hide
+	mv(joinpath(tempdir(), "GMTjl_" * GMT.TMPDIR_USR[2] * "." * "png"), joinpath(@OUTPUT, "example_1336622456775633275.png"), force=true);    # hide
+	GMT.isFranklin[1] = false    # hide
+	GMT.IamModern[1]  = false    # hide
  
-nothing # hide
+	nothing # hide

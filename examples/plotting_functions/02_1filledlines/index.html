@@ -386,7 +386,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/weather">weather</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/whereami">whereami</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/wmsinfo">wmsinfo</a></div></li>
-<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/wmsread">wmread</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/wmsread">wmsread</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/wmstest">wmstest</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/worldrectangular">worldrectangular</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/worldrectcoast">worldrectcoast</a></div></li>
@@ -409,10 +409,10 @@
 x &#61; -10:0.11:10;
 band&#40;x, sin.&#40;x&#41;./x, width&#61;0.1, fill&#61;&quot;green@80&quot;, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_11137246392590427696">
- <img src="/GMTjl_doc/assets/examples/plotting_functions/02_1filledlines/code/output/example_11137246392590427696.png" alt=""> 
-</a>
-
+	<a id="example_11137246392590427696">
+	 <img src="/GMTjl_doc/assets/examples/plotting_functions/02_1filledlines/code/output/example_11137246392590427696.png" alt=""> 
+	</a>
+	
 <p>We could have obtained the same plot using a function as argument.</p>
 <pre><code class="language-julia">band&#40;x-&gt;sin&#40;x&#41;/x, 10, width&#61;0.1, fill&#61;&quot;green@80&quot;, show&#61;true&#41;</code></pre>
 <p>Next example hides the line and plots only the bands. Since when we ask for a color fill the lines is always plotted, the trick to no see it is to assign it full transparency. We use also a theme to change the default tick orientation and add automatic grid lines.</p>
@@ -422,28 +422,28 @@ band&#40;x, sin.&#40;x&#41;, region&#61;&#40;-10,10,-1.5,1.5&#41;, width&#61;0.3
      fill&#61;&quot;blue@80&quot;, theme&#61;&#40;&quot;A2atgIT&quot;&#41;&#41;
 band&#33;&#40;x, cos.&#40;x&#41;, width&#61;0.3, pen&#61;&#40;0,&quot;red@100&quot;&#41;, fill&#61;&quot;red@80&quot;, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_10372419528361198800">
- <img src="/GMTjl_doc/assets/examples/plotting_functions/02_1filledlines/code/output/example_10372419528361198800.png" alt=""> 
-</a>
-
+	<a id="example_10372419528361198800">
+	 <img src="/GMTjl_doc/assets/examples/plotting_functions/02_1filledlines/code/output/example_10372419528361198800.png" alt=""> 
+	</a>
+	
 <p>And another example where the band is asymetric and grows in width. We had to add <code>eps&#40;&#41;</code> to first <code>x</code> to not have a NaN in first element of <code>y</code>.</p>
 <pre><code class="language-julia">using GMT
 x &#61; 0&#43;eps&#40;&#41;:0.05:4π
 y &#61;  sin.&#40;3x&#41; ./ &#40;cos.&#40;x&#41; .&#43; 2&#41;./x
 band&#40;&#91;x y&#93;, y .- 0.1 .- 0.015x, y .&#43; 0.1 .&#43; 0.03x, fill&#61;&quot;blue@80&quot;, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_4676774229937441044">
- <img src="/GMTjl_doc/assets/examples/plotting_functions/02_1filledlines/code/output/example_4676774229937441044.png" alt=""> 
-</a>
-
+	<a id="example_4676774229937441044">
+	 <img src="/GMTjl_doc/assets/examples/plotting_functions/02_1filledlines/code/output/example_4676774229937441044.png" alt=""> 
+	</a>
+	
 <p>A papillon</p>
 <pre><code class="language-julia">using GMT
 plot&#40;sin, x-&gt;sin&#40;2x&#41;, &#91;0 2pi&#93;, fill&#61;&quot;blue@70&quot;, pen&#61;&#40;1,&quot;blue@40&quot;&#41;, show&#61;1&#41;</code></pre></p>
 <p>
-<a id="example_16255661678775668923">
- <img src="/GMTjl_doc/assets/examples/plotting_functions/02_1filledlines/code/output/example_16255661678775668923.png" alt=""> 
-</a>
-
+	<a id="example_16255661678775668923">
+	 <img src="/GMTjl_doc/assets/examples/plotting_functions/02_1filledlines/code/output/example_16255661678775668923.png" alt=""> 
+	</a>
+	
 <h2 id="fill_between"><a href="#fill_between" class="header-anchor">Fill between</a></h2>
 <p>Fill the area between the two sinc functions. Here we use the default values for line thickness and fill color but all of that can be changed. We also add a thin white border arround tke lines.</p>
 <pre><code class="language-julia">using GMT
@@ -452,23 +452,23 @@ y1 &#61; sin.&#40;theta&#41; ./ theta;
 y2 &#61; sin.&#40;2*theta&#41; ./ theta;
 fill_between&#40;&#91;theta y1&#93;, &#91;theta y2&#93;, white&#61;true, legend&#61;&quot;Sinc1,Sinc2&quot;, show&#61;1&#41;</code></pre></p>
 <p>
-<a id="example_10484981274128584898">
- <img src="/GMTjl_doc/assets/examples/plotting_functions/02_1filledlines/code/output/example_10484981274128584898.png" alt=""> 
-</a>
-
+	<a id="example_10484981274128584898">
+	 <img src="/GMTjl_doc/assets/examples/plotting_functions/02_1filledlines/code/output/example_10484981274128584898.png" alt=""> 
+	</a>
+	
 <pre><code class="language-julia">using GMT
 D &#61; gmtread&#40;getpath4docs&#40;&quot;1635541200000.dat&quot;&#41;&#41;;
 D.attrib&#91;&quot;Timecol&quot;&#93; &#61; &quot;1&quot;;         # Inform that first column has Time
 fill_between&#40;D, figsize&#61;&#40;16,9&#41;, yaxis&#61;&#40;annot&#61;20,&#41;, theme&#61;&quot;A0XYag&quot;, show&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_14370248663441072830">
- <img src="/GMTjl_doc/assets/examples/plotting_functions/02_1filledlines/code/output/example_14370248663441072830.png" alt=""> 
-</a>
-
+	<a id="example_14370248663441072830">
+	 <img src="/GMTjl_doc/assets/examples/plotting_functions/02_1filledlines/code/output/example_14370248663441072830.png" alt=""> 
+	</a>
+	
 <div class="page-foot">
   <div class="copyright">
-    &copy; GMT.jl. Last modified: April 17, 2024. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
-      <p>These docs were autogenerated using GMT: v1.12.2</p>
+    &copy; GMT.jl. Last modified: May 10, 2024. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+      <p>These docs were autogenerated using GMT: v1.13.2</p>
   </div>
 </div>
 </div><!-- CONTENT ENDS HERE -->

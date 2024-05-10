@@ -1,9 +1,9 @@
 # This file was generated, do not modify it. # hide
 begin # hide
-	using GMT   # hide
-	GMT.isFranklin[1] = true    # hide
-	getpath4docs(file::String) = joinpath("..", "..", "..", "..", "..", file) # hide
-	using GMT
+		using GMT   # hide
+		GMT.isFranklin[1] = true    # hide
+		getpath4docs(file::String) = joinpath("..", "..", "..", "..", "..", file) # hide
+		using GMT
 resetGMT() # hide
 
 pol, nodes = sphtriangulate("@gshhs_c.txt", voronoi=:v, skip=true, nodes=true)
@@ -21,9 +21,9 @@ grdcontour!(Gtt, cont=500, annot=(int=1000, labels=(font=(10,:Helvetica,:white),
 plot!(pol, pen=(0.25, :green, :dotted))
 coast!(shore=1, land=:steelblue, area=(0,1,1),
        frame=(annot=30, grid=30, title="Distances from GSHHG crude coastlines"), show=true)
-end # hide
-mv(joinpath(tempdir(), "GMTjl_" * GMT.TMPDIR_USR[2] * "." * "png"), joinpath(@OUTPUT, "example_6405238181549328204.png"), force=true);    # hide
-GMT.isFranklin[1] = false    # hide
-GMT.IamModern[1]  = false    # hide
+	end # hide
+	mv(joinpath(tempdir(), "GMTjl_" * GMT.TMPDIR_USR[2] * "." * "png"), joinpath(@OUTPUT, "example_6405238181549328204.png"), force=true);    # hide
+	GMT.isFranklin[1] = false    # hide
+	GMT.IamModern[1]  = false    # hide
  
-nothing # hide
+	nothing # hide

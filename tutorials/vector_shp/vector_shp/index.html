@@ -387,7 +387,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/weather">weather</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/whereami">whereami</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/wmsinfo">wmsinfo</a></div></li>
-<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/wmsread">wmread</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/wmsread">wmsread</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/wmstest">wmstest</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/worldrectangular">worldrectangular</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/worldrectcoast">worldrectcoast</a></div></li>
@@ -437,46 +437,46 @@ WKT: GEOGCS&#91;&quot;WGS 84&quot;,
 <p>A fundamental starting point to understand data is to plot it. GMT can do it with great simplicity.</p>
 <pre><code class="language-julia">viz&#40;deptos&#41;</code></pre></p>
 <p>
-<a id="example_16202825213880730057">
- <img src="/GMTjl_doc/assets/tutorials/vector_shp/vector_shp/code/output/example_16202825213880730057.png" alt=""> 
-</a>
-
+	<a id="example_16202825213880730057">
+	 <img src="/GMTjl_doc/assets/tutorials/vector_shp/vector_shp/code/output/example_16202825213880730057.png" alt=""> 
+	</a>
+	
 <p>The somewhat large blank part on the upper part of the figure is due to small islands that are barely visible at this scale but also due to the automatic determination of the region boundaries. Also, since Colombia is close to equator the deformation implied by plotting geographical coordinates is not easily visible, but we can do better. We can tell GMT to guess a good projection for this region and automatically apply it.</p>
 <pre><code class="language-julia">viz&#40;deptos, proj&#61;:guess&#41;</code></pre></p>
 <p>
-<a id="example_11759776448808257274">
- <img src="/GMTjl_doc/assets/tutorials/vector_shp/vector_shp/code/output/example_11759776448808257274.png" alt=""> 
-</a>
-
+	<a id="example_11759776448808257274">
+	 <img src="/GMTjl_doc/assets/tutorials/vector_shp/vector_shp/code/output/example_11759776448808257274.png" alt=""> 
+	</a>
+	
 <h2 id="filtering_geospatial_data_based_on_attributes"><a href="#filtering_geospatial_data_based_on_attributes" class="header-anchor">Filtering geospatial data based on attributes</a></h2>
 <p>In this demonstration we are interested only in one departament, so we will filter the data to fulfill a department name condition. Review the following code and change it to match your department.</p>
 <pre><code class="language-julia">antioquia &#61; filter&#40;deptos, NAME_1 &#61; &quot;Antioquia&quot;&#41;;</code></pre>
 <p>Nex, plot the new object.</p>
 <pre><code class="language-julia">viz&#40;antioquia, proj&#61;:guess&#41;</code></pre></p>
 <p>
-<a id="example_11822140665902836021">
- <img src="/GMTjl_doc/assets/tutorials/vector_shp/vector_shp/code/output/example_11822140665902836021.png" alt=""> 
-</a>
-
+	<a id="example_11822140665902836021">
+	 <img src="/GMTjl_doc/assets/tutorials/vector_shp/vector_shp/code/output/example_11822140665902836021.png" alt=""> 
+	</a>
+	
 <p>We can repeat the previous steps to load the Colombian municipalities and filter the Antioquian ones.</p>
 <pre><code class="language-julia">munic &#61; gmtread&#40;GMT.TESTSDIR * &quot;COL_adm2.shp.zip&quot;&#41;;
 mun_antioquia &#61; filter&#40;munic, NAME_1&#61;:Antioquia&#41;;    # Symbols are as good as strings for attribute values
 viz&#40;mun_antioquia, proj&#61;:guess&#41;</code></pre></p>
 <p>
-<a id="example_9841375670635784215">
- <img src="/GMTjl_doc/assets/tutorials/vector_shp/vector_shp/code/output/example_9841375670635784215.png" alt=""> 
-</a>
-
+	<a id="example_9841375670635784215">
+	 <img src="/GMTjl_doc/assets/tutorials/vector_shp/vector_shp/code/output/example_9841375670635784215.png" alt=""> 
+	</a>
+	
 <p>Now we are going to compute the centroids of the Antioquia municipes and use them as placers to contents of the <em>ID_2</em> attribute &#40;that are numbers, though confess that I don&#39;t know what they represent&#41;.</p>
 <pre><code class="language-julia">antioquia_points &#61; centroid&#40;mun_antioquia&#41;;
 t &#61; info&#40;mun_antioquia, att&#61;&quot;ID_2&quot;&#41;;        # Get the values of the ID_2 attribute
 antioquia_points.text &#61; t;                  # Add the tex column to the centroids object
 viz&#40;mun_antioquia, proj&#61;:guess, fill&#61;:beige, lw&#61;0, text&#61;&#40;data&#61;antioquia_points, font&#61;4&#41;&#41;</code></pre></p>
 <p>
-<a id="example_11591273172018779456">
- <img src="/GMTjl_doc/assets/tutorials/vector_shp/vector_shp/code/output/example_11591273172018779456.png" alt=""> 
-</a>
-
+	<a id="example_11591273172018779456">
+	 <img src="/GMTjl_doc/assets/tutorials/vector_shp/vector_shp/code/output/example_11591273172018779456.png" alt=""> 
+	</a>
+	
 <p>And as an example, we can use the numeric information contained in the <em>ID_2</em> attribute &#40;which comes out as string but we can easily convert it to numbers&#41; and paint the municipe polygons according to those numbers. That is, make a choropleth map.</p>
 <pre><code class="language-julia"># Convert t to numeric. Needed for creating a color map and make the choropleth style plot.
 tn &#61; parse.&#40;Int,t&#41;;
@@ -487,17 +487,17 @@ C &#61; makecpt&#40;range&#61;&#40;minimum&#40;tn&#41;,maximum&#40;tn&#41;&#41;,
 # Vizualize 
 viz&#40;mun_antioquia, proj&#61;:guess, levels&#61;tn, cmap&#61;C, lw&#61;0, title&#61;&quot;Another Map of Antioquia&quot;, text&#61;&#40;data&#61;antioquia_points, font&#61;5&#41;, colorbar&#61;true&#41;</code></pre></p>
 <p>
-<a id="example_6832767284945348136">
- <img src="/GMTjl_doc/assets/tutorials/vector_shp/vector_shp/code/output/example_6832767284945348136.png" alt=""> 
-</a>
-
+	<a id="example_6832767284945348136">
+	 <img src="/GMTjl_doc/assets/tutorials/vector_shp/vector_shp/code/output/example_6832767284945348136.png" alt=""> 
+	</a>
+	
 <p>The examples shown here use vector data in the shapefile format, but the same could have been obtained using for example the geopackage format. In fact, as indicated in the SAGA-GIS site from where the shapefiles were downloaded, the original data originates from the <a href="https://gadm.org">GADM</a> project where data was in <em>gpkg</em> format. We can access the data from that site using the <em>gadm</em> function &#40;see examples in <a href="/GMTjl_doc/documentation/utilities/gadm/index.html#gadm">GADM</a>&#41;. For example, the Antioquia municipes can be downloaded with:</p>
 <pre><code class="language-julia">antioquia &#61; gadm&#40;&quot;COL&quot;, &quot;Antioquia&quot;, children&#61;true&#41;;</code></pre>
 <p>But that object does not contain the <em>ID_2</em> attribute so in fact we couldn&#39;t have made the same choropleth map.</p>
 <div class="page-foot">
   <div class="copyright">
-    &copy; GMT.jl. Last modified: April 17, 2024. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
-      <p>These docs were autogenerated using GMT: v1.12.2</p>
+    &copy; GMT.jl. Last modified: May 10, 2024. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+      <p>These docs were autogenerated using GMT: v1.13.2</p>
   </div>
 </div>
 </div><!-- CONTENT ENDS HERE -->

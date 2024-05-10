@@ -1,9 +1,9 @@
 # This file was generated, do not modify it. # hide
 begin # hide
-	using GMT   # hide
-	GMT.isFranklin[1] = true    # hide
-	getpath4docs(file::String) = joinpath("..", "..", "..", "..", "..", file) # hide
-	using GMT
+		using GMT   # hide
+		GMT.isFranklin[1] = true    # hide
+		getpath4docs(file::String) = joinpath("..", "..", "..", "..", "..", file) # hide
+		using GMT
 resetGMT() # hide
 
 basemap(region=(0,360,-1.25,1.75), frame=(axes=:WS, title="Two Trigonometric Functions"), xaxis=(annot=90, ticks=30, suffix="@."), yaxis=(annot=1, grid=10), par=(MAP_FRAME_TYPE=:graph, MAP_VECTOR_SHAPE=0.5), figsize=(20,15), portrait=false)
@@ -55,9 +55,9 @@ T = mat2ds([-0.16666 0 0; -0.3333 0.2888675 0; 0.22 0.27 -30; -0.33333 0.6 30],
 text!(T, offset=(away=true, shift=0.1), font="", angle="", justify="")
 
 plot!([0 0 1.25 0 120], marker=:matang, ms="0.4+e", ml=1, fill=:black, show=true)
-end # hide
-mv(joinpath(tempdir(), "GMTjl_" * GMT.TMPDIR_USR[2] * "." * "png"), joinpath(@OUTPUT, "example_2733267212985635290.png"), force=true);    # hide
-GMT.isFranklin[1] = false    # hide
-GMT.IamModern[1]  = false    # hide
+	end # hide
+	mv(joinpath(tempdir(), "GMTjl_" * GMT.TMPDIR_USR[2] * "." * "png"), joinpath(@OUTPUT, "example_2733267212985635290.png"), force=true);    # hide
+	GMT.isFranklin[1] = false    # hide
+	GMT.IamModern[1]  = false    # hide
  
-nothing # hide
+	nothing # hide

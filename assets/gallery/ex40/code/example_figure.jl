@@ -1,9 +1,9 @@
 # This file was generated, do not modify it. # hide
 begin # hide
-	using GMT   # hide
-	GMT.isFranklin[1] = true    # hide
-	getpath4docs(file::String) = joinpath("..", "..", "..", "..", "..", file) # hide
-	using GMT, Printf
+		using GMT   # hide
+		GMT.isFranklin[1] = true    # hide
+		getpath4docs(file::String) = joinpath("..", "..", "..", "..", "..", file) # hide
+		using GMT, Printf
 resetGMT() # hide
 
 # Interpolate data of Mars radius from Mariner9 and Viking Orbiter spacecrafts
@@ -34,9 +34,9 @@ plot!(centroid, marker=:cross, ms=0.75, ml=3)
 text!(text_record([112 -10], "T = 100 km"), offset=(away=true, shift=(0.25,0.25)), font=18, justify=:TL)
 text!(text_record(area), font=14, region_justify=:CM)
 text!(text_record(area_T100k), font=14, region_justify=:LB, offset=(away=true, shift=0.5), show=true)
-end # hide
-mv(joinpath(tempdir(), "GMTjl_" * GMT.TMPDIR_USR[2] * "." * "png"), joinpath(@OUTPUT, "example_9686346439013016404.png"), force=true);    # hide
-GMT.isFranklin[1] = false    # hide
-GMT.IamModern[1]  = false    # hide
+	end # hide
+	mv(joinpath(tempdir(), "GMTjl_" * GMT.TMPDIR_USR[2] * "." * "png"), joinpath(@OUTPUT, "example_9686346439013016404.png"), force=true);    # hide
+	GMT.isFranklin[1] = false    # hide
+	GMT.IamModern[1]  = false    # hide
  
-nothing # hide
+	nothing # hide

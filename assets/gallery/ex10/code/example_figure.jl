@@ -1,9 +1,9 @@
 # This file was generated, do not modify it. # hide
 begin # hide
-	using GMT   # hide
-	GMT.isFranklin[1] = true    # hide
-	getpath4docs(file::String) = joinpath("..", "..", "..", "..", "..", file) # hide
-	using GMT
+		using GMT   # hide
+		GMT.isFranklin[1] = true    # hide
+		getpath4docs(file::String) = joinpath("..", "..", "..", "..", "..", file) # hide
+		using GMT
 GMT.resetGMT() # hide
 
 coast(region=:global, shore=:faint, land=:wheat, ocean=:azure2, area=5000,
@@ -19,9 +19,9 @@ bar3!(D, region=(-180,180,-90,90,0,2500), color=cpt, bar=(width=0.6, Nbands=5),
 legend!("@legend_10.txt", JZ=true, pos=(anchor=:LB, width=3.5, justify=:LB, offset=0.5),
         par=(:FONT,"Helvetica-Bold"),
         box=(fill=:lightgrey, pen=:thinner, shaded="-4p/-6p/grey20@40"), show=true)
-end # hide
-mv(joinpath(tempdir(), "GMTjl_" * GMT.TMPDIR_USR[2] * "." * "png"), joinpath(@OUTPUT, "example_17305510664398726472.png"), force=true);    # hide
-GMT.isFranklin[1] = false    # hide
-GMT.IamModern[1]  = false    # hide
+	end # hide
+	mv(joinpath(tempdir(), "GMTjl_" * GMT.TMPDIR_USR[2] * "." * "png"), joinpath(@OUTPUT, "example_17305510664398726472.png"), force=true);    # hide
+	GMT.isFranklin[1] = false    # hide
+	GMT.IamModern[1]  = false    # hide
  
-nothing # hide
+	nothing # hide
