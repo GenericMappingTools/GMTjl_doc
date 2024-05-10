@@ -43,6 +43,9 @@ Specify data type (with *type*=true, e.g. `img=true`). Choose among:
   (the one with `gdal`) uses GDAL to read the cube and outputs and 3D array in row major order.
   Remember that the ``layout`` member of the GMTgrid type informs about memory layout.
 
+- `stride`: When reading table data via GMT (but not GDAL), this option allows subsampling the data.
+  Provide a number to be used as stride for the rows. A `stride=2` will read every other row.
+
 - `layer`| `layers` | `band` | `bands`: When files are multiband or nc files with 3D or 4D arrays,
   we access them via these keywords. `layer=4` reads the fourth layer (or band) of the file.
   But the file can be a grid or an image. If it is a grid, layer can be a scalar (to read 3D arrays)

@@ -118,7 +118,7 @@ we use the ``geocoder`` function to give us the map limits
 using GMT
 
 # Get the geographical limits of the Big Island in Hawaii
-D = geocoder("Hawaii Island, USA");
+D = geocoder("Big Island Hawaii, USA");
 
 # Get the image tiles of the Big Island in Hawaii using the Bing provider and automatic zoom level
 I = mosaic(D, bbox=true);

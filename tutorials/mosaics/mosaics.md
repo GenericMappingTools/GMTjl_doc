@@ -67,7 +67,7 @@ particular its coordinates and BoundingBox.
 The syntax is very simple. Just give an address that it understands. It can be a general address like:
 
 ```julia
-D = geocoder("Hawaii Island, USA")
+D = geocoder("Big Island Hawaii, USA")
 
 Attribute table
 ┌────────────┬──────────────┬────────┬────────────────┬────────────┬───────┬────────────────────┬──────────────┬────────┬──────────┬───────

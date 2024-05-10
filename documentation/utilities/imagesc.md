@@ -20,6 +20,16 @@ result (that we easily do with ``imshow(mat)``) but return instead a \myreflink{
   to set spatial contents (x,y coordinates) and projection info that one may attach to the created
   image result. This is a handy alterative to the `x=, y=, proj4=...` options.
 
+- `stretch`: This option is indicated to select an interval of the range of the `z` values and use only
+  those to scale to the [0 255] interval. A `stretch=true` automatically determines good values for
+  histogram stretching via a call to \myreflink{histogram}. The form `stretch=(zmin,zmax)` allows specifying the
+  input limits directly. A previous plot of ``histogram(mat, show=true)`` can help determine good values.
+  Note that when this option `stretch` is used, ALL OTHER options are ignored. See also the ``rescale`` function.
+
+If `mat` is instead a UInt16 \myreflink{GMTimage} type we call `rescale(I, stretch=true, type=UInt8)` instead of
+issuing an error. In this case `clim` can be a two elements vector to specify the desired stretch range.
+The default is to let \myreflink{histogram} guess these values.
+
 Examples
 --------
 

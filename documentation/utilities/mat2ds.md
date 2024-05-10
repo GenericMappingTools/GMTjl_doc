@@ -64,6 +64,14 @@ does not need explicit coordinates to place the text.
    to check if ``length(txtcol) == size(mat,1)`` as it must.
 
 ```julia
+D = mat2ds(mat::Array{T,N}, D::GMTdataset)
+```
+
+Take a 2D `mat` array and convert it into a GMTdataset. Pass in a reference GMTdataset from which we'll take
+the georeference info as well as `attrib` and `colnames`.
+
+
+```julia
 D = mat2ds(mat::Vector{<:AbstractMatrix}; hdr=String[], kwargs...)::Vector{GMTdataset}
 ```
 
@@ -92,6 +100,14 @@ In the former case (Vector{Vector}) the length of each Vector[i] must equal to t
 - `fillalpha`: When `fill` option is used, we can set the transparency of filled polygons or symbols with this
    option that takes in an array (vec or 1-row matrix) with numeric values between [0-1] or ]1-100],
    where 100 (or 1) means full transparency.
+
+```julia
+D = mat2ds(D::GMTdataset, inds::Tuple)::GMTdataset
+```
+
+Cut a GMTdataset D with the indices in INDS but updating the colnames and the Timecol info.
+INDS is a Tuple of 2 with ranges in rows and columns. Ex: (:, 1:3) or (:, [1,4,7]), etc...
+Attention, if original had attributes other than 'Timeinfo' there is no guarentie that they remain correct. 
 
 
 Example

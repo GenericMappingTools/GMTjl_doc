@@ -1,4 +1,4 @@
-# wmread
+# wmsread
 
 ```julia
 wmsread(wms::WMS; layer, kwargs...)

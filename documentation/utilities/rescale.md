@@ -19,7 +19,8 @@ R = rescale(A, a=0.0, b=1.0; inputmin=nothing, inputmax=nothing, stretch=false, 
    than `imax` will be replaced with `imax`. The default is max(A).
 
 - `rescale(..., stretch=true)` automatically determines [inputmin inputmax] via a call to histogram that
-   will (try to) find good limits for histogram stretching. 
+   will (try to) find good limits for histogram stretching. The form `stretch=(imin,imax)` allows
+   specifying the input limits directly.
 
 - `type`: Converts the scaled array to this data type. Valid options are all Unsigned types (e.g. `UInt8`).
    Default returns the same data type as `A` if it's an AbstractFloat, or Flot64 if `A` is an integer.
