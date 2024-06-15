@@ -113,7 +113,7 @@ wth **position** option explained above.
 - **inset** -- *inset=(data, zoom=(...), coast=(...), position=(...), box=(...), clearance=(...))*\
 
     - **data** An image, a grid a table (GMTdataset) or a file name that can be automatically read by
-    \myreflink{gmtread}. Depending on the data type an _x,y_ plot or an image is displayed inside the inset window. 
+    gmtread. Depending on the data type an _x,y_ plot or an image is displayed inside the inset window. 
 
     - **zoom** This refers to an area of the main window that we wish to make a zoom of. Its arguments depend
     on whether we are zooming an _x,y_ plot or an image. In the first case we pass an _x_ location and a half-width.
@@ -127,8 +127,8 @@ wth **position** option explained above.
     in the inset. But since in this case the inset does not have to share the same coordinates with main figure, we
     only provide here the point coordinates of the interesting area. The syntax is hence `pzoom=(x0,y0)`.
 
-    - **coast** With this argument we can call the \myreflink{coast} command with all of its normal arguments. And
-    furthermore, we can even call the \myreflink{plot} (or any of its avatars) to add line/symbol plots over the
+    - **coast** With this argument we can call the coast command with all of its normal arguments. And
+    furthermore, we can even call the plot (or any of its avatars) to add line/symbol plots over the
     inset map. A further option to this form of calling `coast` is the option `rect=?`. If `?` is `true`, it will
     plot a 0.75 pt blue rectangle showing the main window limits. Alternatives is `rect=number`, `rect=color` or
     `rect=(number, color)`, where `color` is a color name and `number` is the rectangle line thickness in points
