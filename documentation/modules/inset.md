@@ -102,7 +102,7 @@ in a mix mode in _one-liners_ commands. It is mixed because the functioning reli
 _modern_ modes (in a way transparent to the user). And, as just said, this mix mode consists in calling the `inset`
 function as an option to the `plot`, `basemap` and `grdimage` functions. Since we are doing a nested call, we need
 to pass all options as argument to `inset` and this ofc reduces the number of possibilities but still, it offers
-quite nice features that allow creating elaborated figures with very short commands. The \myreflink{Figure insets}
+quite nice features that allow creating elaborated figures with very short commands. The "Figure insets" tutorial
 shows several examples of this usage.
 
 The inset windows are located according to an algorithm that tries to avoid overlapping lines in line plots (with

@@ -1,6 +1,6 @@
 # Figure insets
 
-The inset function can be used as an option to the `plot`, `basemap` and `grdimage`
+The \myreflink{inset} function can be used as an option to the `plot`, `basemap` and `grdimage`
 functions. While not all the possibilities offered by the `inset` function are available in this case,
 because all functionalities  must be requested via a nested call, it offers quite nice features that
 allow creating elaborated figures with very short commands.
