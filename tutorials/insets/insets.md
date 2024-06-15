@@ -1,6 +1,6 @@
 # Figure insets
 
-The \myreflink{inset} function can be used as an option to the `plot`, `basemap` and `grdimage`
+The inset function can be used as an option to the `plot`, `basemap` and `grdimage`
 functions. While not all the possibilities offered by the `inset` function are available in this case,
 because all functionalities  must be requested via a nested call, it offers quite nice features that
 allow creating elaborated figures with very short commands.
@@ -90,8 +90,8 @@ have plotted a thinner (0.75 pt) blue rectangle.
 ```julia
 using GMT
 
-G = grdcut("@earth_relief_04m", R="-48/-43/-26/-20");
-viz(G, cmap=:world, J=:merc, inset=(coast, R="-80/-28/-43/10", J=:merc, shore=true, ocean=:blue, rect=(2,:red)))
+G = grdcut("@earth_relief_04m", limits=(-48, -43, -26, -20));
+viz(G, cmap=:world, J=:merc, inset=(coast, limits=(-80,-28,-43,10), J=:merc, shore=true, ocean=:blue, rect=(2,:red)))
 ```
 \end{examplefig}
 
@@ -105,9 +105,9 @@ to the `plot` function. _e.g._, `plot=(data=D, ...)`
 ```julia
 using GMT
 
-G = grdcut("@earth_relief_04m", R="-48/-43/-26/-20");
+G = grdcut("@earth_relief_04m", limits=(-48, -43, -26, -20));
 viz(G, J=:merc,
-    inset=(coast, R="-80/-28/-43/10", J=:merc, shore=true, pos=(anchor=:BR,),
+    inset=(coast, limits=(-80,-28,-43,10), J=:merc, shore=true, pos=(anchor=:BR,),
            plot=(data=[-45.5 -23], marker=:circ, fill=:red))
    )
 ```
@@ -123,7 +123,7 @@ choose where to put the inset window. In the second we decide that ourselves.
 ```julia
 using GMT
 
-im = gmtread("https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/NGC_3372a-full.jpg/2560px-NGC_3372a-full.jpg")
+im = gmtread("https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/NGC_3372a-full.jpg/2560px-NGC_3372a-full.jpg");
 viz(im, inset=(zoom=(910,980,350,430),))
 ```
 \end{examplefig}
@@ -142,7 +142,7 @@ which expects a _x,y_ location only. Since these images are not referenced, we u
 ```julia
 using GMT
 
-im = gmtread("https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/NGC_3372a-full.jpg/2560px-NGC_3372a-full.jpg")
+im = gmtread("https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/NGC_3372a-full.jpg/2560px-NGC_3372a-full.jpg");
 dedo = gdaltranslate("https://upload.wikimedia.org/wikipedia/commons/f/f8/NGC_3372a-full.jpg", srcwin=1,
                      limits=(10580, 11360, 9410, 10270));
 viz(im, inset=(dedo, pzoom=(945, 390), pos=(anchor=:MR,)))
