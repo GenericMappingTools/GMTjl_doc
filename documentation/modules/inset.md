@@ -29,7 +29,7 @@ region and projection that will be used to draw in the inset, then give these ar
 Required Arguments
 ------------------
 
-- **D** or **inset** or **inset_box** or **insetbox** : -- *inset_box=(map=true, inside=true, outside=true, norm=true, paper=true, anchor=XX, size=XX, width=XX, justify=code, offset=XX)*\
+- **D** or **pos**  or **position**or **inset_box** or **insetbox** : -- *position=(map=true, inside=true, outside=true, norm=true, paper=true, anchor=XX, size=XX, width=XX, justify=code, offset=XX)*\
     Define the map inset rectangle on the map. Specify the rectangle in one of three ways:
 
     1. Use `map=(lon,lat)` for map coordinates. Requires both **region** and **proj** to be set.
@@ -43,7 +43,7 @@ Required Arguments
     by using **justify=??** where *??* stands for a 2-char justification code *justify* (see \myreflink{text}).
     Note: with the default **outside=true**, the *justify* defaults to the same as **anchor**, if **inside=true** is used then *justify* defaults to the mirror opposite of **anchor**. Specify inset box attributes via the **box** option [outline only].
 
-    Alternatively, use **inset_box="west/east/south/north"** of geographic rectangle bounded by parallels and
+    Alternatively, use **position="west/east/south/north"** of geographic rectangle bounded by parallels and
     meridians; append **+r** if the coordinates instead are the lower left and upper right corners of the desired
     rectangle. (Or, give *xmin/xmax/ymin/ymax* of bounding rectangle in projected coordinates and optionally
     append **+u**unit [Default coordinate unit is meter (e)]. NOTE that this form requires passing the options
@@ -94,6 +94,47 @@ The **inset(:end)** command finalizes the current inset, which returns the plott
 prior to the start of the inset. The previous region and map projection will be in effect going forward.
 
 
+The nested call mode
+--------------------
+
+The options described above respect the _pure_ use of `inset` as a _modern_ mode function. But we can also use it
+in a mix mode in _one-liners_ commands. It is mixed because the functioning relies in mixing the _classic_ and
+_modern_ modes (in a way transparent to the user). And, as just said, this mix mode consists in calling the `inset`
+function as an option to the `plot`, `basemap` and `grdimage` functions. Since we are doing a nested call, we need
+to pass all options as argument to `inset` and this ofc reduces the number of possibilities but still, it offers
+quite nice features that allow creating elaborated figures with very short commands. The \myreflink{Figure insets}
+shows several examples of this usage.
+
+The inset windows are located according to an algorithm that tries to avoid overlapping lines in line plots (with
+a moderate success), or in some corner position for insets with images. Inset windows sizes are also automatically
+estimated from image sizes and projections (when they are geographical). However, user can manually control this
+wth **position** option explained above.
+
+- **inset** -- *inset=(data, zoom=(...), coast=(...), position=(...), box=(...), clearance=(...))*\
+
+    - **data** An image, a grid a table (GMTdataset) or a file name that can be automatically read by
+    \myreflink{gmtread}. Depending on the data type an _x,y_ plot or an image is displayed inside the inset window. 
+
+    - **zoom** This refers to an area of the main window that we wish to make a zoom of. Its arguments depend
+    on whether we are zooming an _x,y_ plot or an image. In the first case we pass an _x_ location and a half-width.
+    For example `zoom=(10,2)` means that the zoom window covers the abscissa [8 12] range. The _y_ extent is whatever
+    the line has between those _x_ limits. But for the case of images we need one more argument because now we have 2
+    dimensions. The syntax now is `zoom=(x0,y0,delta)`, an extension of the previous concept, which requires that the
+    units of _x_ and _y_ are the same and we get a square zoom window. The alternative is to use the usual way of GMT
+    specifying region limits. That is `zoom=(x_min, x_max, y_min, y_max)`
+
+    - **pzoom** When adding insets to images we can provide an external image (or file name) that will be displayed
+    in the inset. But since in this case the inset does not have to share the same coordinates with main figure, we
+    only provide here the point coordinates of the interesting area. The syntax is hence `pzoom=(x0,y0)`.
+
+    - **coast** With this argument we can call the \myreflink{coast} command with all of its normal arguments. And
+    furthermore, we can even call the \myreflink{plot} (or any of its avatars) to add line/symbol plots over the
+    inset map. A further option to this form of calling `coast` is the option `rect=?`. If `?` is `true`, it will
+    plot a 0.75 pt blue rectangle showing the main window limits. Alternatives is `rect=number`, `rect=color` or
+    `rect=(number, color)`, where `color` is a color name and `number` is the rectangle line thickness in points
+
+    - **position, box, clearance** Have the same meaning/usage as explained above. 
+
 Examples
 --------
 
@@ -104,11 +145,34 @@ To make a simple basemap plot that demonstrates the inset module, try
 using GMT
 gmtbegin()
 	basemap(region=(0,40,20,60), proj=:merc, frame=(annot=:afg, fill=:lightgreen))
-	inset(inset_box=(anchor=:TR, width=6.4, offset=0.5), box=(fill=:pink, pen=0.5), margins=0.6)
+	inset(position=(anchor=:TR, width=6.4, offset=0.5), box=(fill=:pink, pen=0.5), margins=0.6)
 		basemap(region=:global360, proj=(name=:laea, center=[20,20]), figsize=5, frame=:afg)
 		text(text="INSET", font=18, region_justify=:TR, offset=(away=true, shift=-0.4), noclip=true)
 	inset(:end)
 	text(text="MAP", font=18, region_justify=:BL, offset=(away=true, shift=0.5))
 gmtend(:show)
+```
+\end{examplefig}
+
+Make a zoom over a region of a synthetic plot.
+
+\begin{examplefig}{}
+```julia
+using GMT
+
+t = 0:0.01:2pi;
+plot(t, cos.(t).+rand(length(t))*0.1, inset=(zoom=(pi,pi/4), box=(fill=:lightblue,)), show=true)
+```
+\end{examplefig}
+
+
+Add an inset to basemap image with a rectangle in the inset taken from main image limits.
+
+\begin{examplefig}{}
+```julia
+using GMT
+
+basemap(region=(-48,-43,-26,-20), J=:merc,
+        inset=(coast, R="-80/-28/-43/10", J=:merc, shore=true, rect=(2,:red)), show=true)
 ```
 \end{examplefig}

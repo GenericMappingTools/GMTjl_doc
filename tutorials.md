@@ -100,4 +100,15 @@
     ~~~</a>~~~
   @@
 
+  @@box
+    ~~~<a class="boxlink" href="insets/insets/">~~~
+    @@title Insets in figures@@
+    @@box-content
+      ~~~
+      <img src="/tutorials/insets/tilelogo.jpg">
+      ~~~
+    @@
+    ~~~</a>~~~
+  @@
+
 @@
