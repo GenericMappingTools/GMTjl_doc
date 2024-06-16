@@ -458,9 +458,19 @@
 </li>
 </ul>
 <ul>
+<li><p><strong>J</strong> or <strong>proj</strong> or <strong>projection</strong> : – <em>proj&#61;&lt;parameters&gt;</em><br /> Select map projection. More at <a href="/GMTjl_doc/documentation/common_opts/common_opts/index.html#proj">proj</a></p>
+</li>
+</ul>
+
+<ul>
 <li><p><strong>N</strong> or <strong>noclip</strong> or <strong>no&#95;clip</strong> : <em>noclip&#61;true</em><br />  Do <strong>not</strong> clip features extruding outside map inset boundaries &#91;Default will clip&#93;.</p>
 </li>
 </ul>
+<ul>
+<li><p><strong>R</strong> or <strong>region</strong> or <strong>limits</strong> : – <em>limits&#61;&#40;xmin, xmax, ymin, ymax&#41;</em> <strong>|</strong> <em>limits&#61;&#40;BB&#61;&#40;xmin, xmax, ymin, ymax&#41;,&#41;</em>  <strong>|</strong> <em>limits&#61;&#40;LLUR&#61;&#40;xmin, xmax, ymin, ymax&#41;,units&#61;&quot;unit&quot;&#41;</em> <strong>|</strong> ...more<br /> Specify the region of interest. More at <a href="/GMTjl_doc/documentation/common_opts/common_opts/index.html#limits">limits</a>. For perspective view <strong>view</strong>, optionally add  <em>zmin,zmax</em>. This option may be used to indicate the range used for the 3-D axes. You may ask for a  larger w/e/s/n region to have more room between the image and the axes.</p>
+</li>
+</ul>
+
 <ul>
 <li><p><strong>V</strong> or <em>verbose</em> : – <em>verbose&#61;true</em> <strong>|</strong> <em>verbose&#61;level</em><br /> Select verbosity level. More at <a href="/GMTjl_doc/documentation/common_opts/common_opts/index.html#verbose">verbose</a></p>
 </li>
@@ -469,7 +479,7 @@
 <h2>Synopsis &#40;end mode&#41;</h2>
 <p>The <strong>inset&#40;:end&#41;</strong> command finalizes the current inset, which returns the plotting environment to the state prior to the start of the inset. The previous region and map projection will be in effect going forward.</p>
 <h2>The nested call mode</h2>
-<p>The options described above respect the <em>pure</em> use of <code>inset</code> as a <em>modern</em> mode function. But we can also use it in a mix mode in <em>one-liners</em> commands. It is mixed because the functioning relies in mixing the <em>classic</em> and <em>modern</em> modes &#40;in a way transparent to the user&#41;. And, as just said, this mix mode consists in calling the <code>inset</code> function as an option to the <code>plot</code>, <code>basemap</code> and <code>grdimage</code> functions. Since we are doing a nested call, we need to pass all options as argument to <code>inset</code> and this ofc reduces the number of possibilities but still, it offers quite nice features that allow creating elaborated figures with very short commands. The myreflink&#123;Figure insets&#125; shows several examples of this usage.</p>
+<p>The options described above respect the <em>pure</em> use of <code>inset</code> as a <em>modern</em> mode function. But we can also use it in a mix mode in <em>one-liners</em> commands. It is mixed because the functioning relies in mixing the <em>classic</em> and <em>modern</em> modes &#40;in a way transparent to the user&#41;. And, as just said, this mix mode consists in calling the <code>inset</code> function as an option to the <code>plot</code>, <code>basemap</code> and <code>grdimage</code> functions. Since we are doing a nested call, we need to pass all options as argument to <code>inset</code> and this ofc reduces the number of possibilities but still, it offers quite nice features that allow creating elaborated figures with very short commands. The <a href="/GMTjl_doc/tutorials/insets/index.html#figure_insets">Figure insets</a> shows several examples of this usage.</p>
 <p>The inset windows are located according to an algorithm that tries to avoid overlapping lines in line plots &#40;with a moderate success&#41;, or in some corner position for insets with images. Inset windows sizes are also automatically estimated from image sizes and projections &#40;when they are geographical&#41;. However, user can manually control this wth <strong>position</strong> option explained above.</p>
 <ul>
 <li><p><strong>inset</strong> – <em>inset&#61;&#40;data, zoom&#61;&#40;...&#41;, coast&#61;&#40;...&#41;, position&#61;&#40;...&#41;, box&#61;&#40;...&#41;, clearance&#61;&#40;...&#41;&#41;</em><br /></p>
@@ -477,7 +487,7 @@
 <li><p><strong>data</strong> An image, a grid a table &#40;GMTdataset&#41; or a file name that can be automatically read by</p>
 </li>
 </ul>
-<p>myreflink&#123;gmtread&#125;. Depending on the data type an <em>x,y</em> plot or an image is displayed inside the inset window. </p>
+<p>\myreflink&#123;gmtread&#125;. Depending on the data type an <em>x,y</em> plot or an image is displayed inside the inset window. </p>
 <ul>
 <li><p><strong>zoom</strong> This refers to an area of the main window that we wish to make a zoom of. Its arguments depend</p>
 </li>
@@ -489,10 +499,10 @@
 </ul>
 <p>in the inset. But since in this case the inset does not have to share the same coordinates with main figure, we   only provide here the point coordinates of the interesting area. The syntax is hence <code>pzoom&#61;&#40;x0,y0&#41;</code>.</p>
 <ul>
-<li><p><strong>coast</strong> With this argument we can call the myreflink&#123;coast&#125; command with all of its normal arguments. And</p>
+<li><p><strong>coast</strong> With this argument we can call the \myreflink&#123;coast&#125; command with all of its normal arguments. And</p>
 </li>
 </ul>
-<p>furthermore, we can even call the myreflink&#123;plot&#125; &#40;or any of its avatars&#41; to add line/symbol plots over the   inset map. A further option to this form of calling <code>coast</code> is the option <code>rect&#61;?</code>. If <code>?</code> is <code>true</code>, it will   plot a 0.75 pt blue rectangle showing the main window limits. Alternatives is <code>rect&#61;number</code>, <code>rect&#61;color</code> or   <code>rect&#61;&#40;number, color&#41;</code>, where <code>color</code> is a color name and <code>number</code> is the rectangle line thickness in points</p>
+<p>furthermore, we can even call the \myreflink&#123;plot&#125; &#40;or any of its avatars&#41; to add line/symbol plots over the   inset map. A further option to this form of calling <code>coast</code> is the option <code>rect&#61;?</code>. If <code>?</code> is <code>true</code>, it will   plot a 0.75 pt blue rectangle showing the main window limits. Alternatives is <code>rect&#61;number</code>, <code>rect&#61;color</code> or   <code>rect&#61;&#40;number, color&#41;</code>, where <code>color</code> is a color name and <code>number</code> is the rectangle line thickness in points</p>
 <ul>
 <li><p><strong>position, box, clearance</strong> Have the same meaning/usage as explained above. </p>
 </li>
