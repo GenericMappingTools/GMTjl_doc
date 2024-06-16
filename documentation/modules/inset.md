@@ -78,7 +78,6 @@ Optional Arguments
     
     - **shadded=true** or **shadded=(dx,dy)** or **shadded=shade** to draw an offset background shaded region. Here, *dx/dy* indicates the shift relative to the foreground frame [*4p/-4p*]and *shade* sets the fill style to use for shading ("gray50").
 
-\textinput{common_opts/opt_J}
 
 - **N** or **noclip** or **no\_clip** : *noclip=true*\
     Do **not** clip features extruding outside map inset boundaries [Default will clip].
