@@ -40,7 +40,7 @@ Required Arguments
 
     Use **size=(length,width)** (or **width**) of bounding rectangle or box in plot coordinates (inches, cm, etc.).
     By default, the anchor point on the scale is assumed to be the bottom left corner (BL), but this can be changed
-    by using **justify=??** where *??* stands for a 2-char justification code *justify* (see \myreflink{text}).
+    by using **justify=??** where *??* stands for a 2-char justification code *justify* (see myreflink{text}).
     Note: with the default **outside=true**, the *justify* defaults to the same as **anchor**, if **inside=true** is used then *justify* defaults to the mirror opposite of **anchor**. Specify inset box attributes via the **box** option [outline only].
 
     Alternatively, use **position="west/east/south/north"** of geographic rectangle bounded by parallels and
@@ -68,11 +68,11 @@ Optional Arguments
 
     - **clearance=val** where *val* is either *gap* or *(xgap,ygap)*, or *(lgap,rgap,bgap,tgap)* where these items are uniform, separate in x- and y-direction, or individual side spacings between the map embellishment and the border for each side.
     
-    - **fill=color**, where *color* is any valid color setting (see \myreflink{Setting color}), to fill the scale panel [no fill].
+    - **fill=color**, where *color* is any valid color setting (see myreflink{Setting color}), to fill the scale panel [no fill].
     
     - **inner=true** to draw a secondary, inner border as well. We use a uniform *gap* between borders of *2p* and the `MAP_DEFAULTS_PEN` unless other values are specified (like **inner="gap/pen"**). 
     
-    - **pen=pen**, to specify different \myreflink{Pen attributes} attributes.
+    - **pen=pen**, to specify different myreflink{Pen attributes} attributes.
     
     - **rounded=true** to draw rounded rectangular borders instead, with a *6p* corner radius. You can override this radius by using another value instead of *true*.
     
@@ -100,7 +100,7 @@ in a mix mode in _one-liners_ commands. It is mixed because the functioning reli
 _modern_ modes (in a way transparent to the user). And, as just said, this mix mode consists in calling the `inset`
 function as an option to the `plot`, `basemap` and `grdimage` functions. Since we are doing a nested call, we need
 to pass all options as argument to `inset` and this ofc reduces the number of possibilities but still, it offers
-quite nice features that allow creating elaborated figures with very short commands. The \myreflink{Figure insets}
+quite nice features that allow creating elaborated figures with very short commands. The myreflink{Figure insets}
 shows several examples of this usage.
 
 The inset windows are located according to an algorithm that tries to avoid overlapping lines in line plots (with
@@ -111,7 +111,7 @@ wth **position** option explained above.
 - **inset** -- *inset=(data, zoom=(...), coast=(...), position=(...), box=(...), clearance=(...))*\
 
     - **data** An image, a grid a table (GMTdataset) or a file name that can be automatically read by
-    \myreflink{gmtread}. Depending on the data type an _x,y_ plot or an image is displayed inside the inset window. 
+    myreflink{gmtread}. Depending on the data type an _x,y_ plot or an image is displayed inside the inset window. 
 
     - **zoom** This refers to an area of the main window that we wish to make a zoom of. Its arguments depend
     on whether we are zooming an _x,y_ plot or an image. In the first case we pass an _x_ location and a half-width.
@@ -125,8 +125,8 @@ wth **position** option explained above.
     in the inset. But since in this case the inset does not have to share the same coordinates with main figure, we
     only provide here the point coordinates of the interesting area. The syntax is hence `pzoom=(x0,y0)`.
 
-    - **coast** With this argument we can call the \myreflink{coast} command with all of its normal arguments. And
-    furthermore, we can even call the \myreflink{plot} (or any of its avatars) to add line/symbol plots over the
+    - **coast** With this argument we can call the myreflink{coast} command with all of its normal arguments. And
+    furthermore, we can even call the myreflink{plot} (or any of its avatars) to add line/symbol plots over the
     inset map. A further option to this form of calling `coast` is the option `rect=?`. If `?` is `true`, it will
     plot a 0.75 pt blue rectangle showing the main window limits. Alternatives is `rect=number`, `rect=color` or
     `rect=(number, color)`, where `color` is a color name and `number` is the rectangle line thickness in points
