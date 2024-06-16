@@ -68,7 +68,7 @@ Optional Arguments
 
     - **clearance=val** where *val* is either *gap* or *(xgap,ygap)*, or *(lgap,rgap,bgap,tgap)* where these items are uniform, separate in x- and y-direction, or individual side spacings between the map embellishment and the border for each side.
     
-    - **fill=color**, where *color* is any valid color setting (see myreflink{Setting color}), to fill the scale panel [no fill].
+    - **fill=color**, where *color* is any valid color setting (see \myreflink{Setting color}), to fill the scale panel [no fill].
     
     - **inner=true** to draw a secondary, inner border as well. We use a uniform *gap* between borders of *2p* and the `MAP_DEFAULTS_PEN` unless other values are specified (like **inner="gap/pen"**). 
     
