@@ -34,7 +34,7 @@ Required Arguments
 
     1. Use `map=(lon,lat)` for map coordinates. Requires both **region** and **proj** to be set.
     2. Use `inside=code` or `outside=code` for setting the refpoint via a 2-char justification code that refers to
-         the (invisible) projected map bounding box. Requires both **region** and **proj** to be set.
+       the (invisible) projected map bounding box. Requires both **region** and **proj** to be set.
     3. Use `norm=(x,y)` for normalized bounding box coordinates (0-1). Requires both **region** and **proj** to be set.
     4. Use `paper=(x,y)` for plot coordinates (append cm, inch, or point).
 
@@ -68,7 +68,7 @@ Optional Arguments
 
     - **clearance=val** where *val* is either *gap* or *(xgap,ygap)*, or *(lgap,rgap,bgap,tgap)* where these items are uniform, separate in x- and y-direction, or individual side spacings between the map embellishment and the border for each side.
     
-    - **fill=color**, where *color* is any valid color setting (see \myreflink{Setting color}, to fill the scale panel [no fill].
+    - **fill=color**, where *color* is any valid color setting (see \myreflink{Setting color}), to fill the scale panel [no fill].
     
     - **inner=true** to draw a secondary, inner border as well. We use a uniform *gap* between borders of *2p* and the `MAP_DEFAULTS_PEN` unless other values are specified (like **inner="gap/pen"**). 
     
@@ -83,7 +83,6 @@ Optional Arguments
 - **N** or **noclip** or **no\_clip** : *noclip=true*\
     Do **not** clip features extruding outside map inset boundaries [Default will clip].
 
-\textinput{common_opts/opt_R}
 
 \textinput{common_opts/opt_V}
 

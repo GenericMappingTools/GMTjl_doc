@@ -96,7 +96,7 @@ viz(G, cmap=:world, J=:merc, inset=(coast, limits=(-80,-28,-43,10), J=:merc, sho
 \end{examplefig}
 
 
-But if instead of a rectangle we want to plot a symbol, let’s say, a red circle, we can call the `plot` function
+But if instead of a rectangle we want to plot a symbol, let’s say, a red circle, we can call the \myreflink{plot} function
 inside `inset`. In next example we also ask to plot the inset at bottom right (:BR) instead of the default
 top right (:TR) default position. If wished, things can be made more complex by passing a full featured GMTdataset
 to the `plot` function. _e.g._, `plot=(data=D, ...)`
