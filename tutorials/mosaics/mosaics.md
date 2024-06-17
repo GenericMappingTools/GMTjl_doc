@@ -93,7 +93,7 @@ an image of the Big Island, Hawaii we do:
 ```julia
 using GMT
 
-D = geocoder("Hawaii Island, USA");
+D = geocoder("Hawaii Big Island, USA");
 I = mosaic(D, bbox=true);
 viz(I)
 ```

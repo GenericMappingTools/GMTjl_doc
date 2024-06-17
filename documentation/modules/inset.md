@@ -40,7 +40,7 @@ Required Arguments
 
     Use **size=(length,width)** (or **width**) of bounding rectangle or box in plot coordinates (inches, cm, etc.).
     By default, the anchor point on the scale is assumed to be the bottom left corner (BL), but this can be changed
-    by using **justify=??** where *??* stands for a 2-char justification code *justify* (see myreflink{text}).
+    by using **justify=??** where *??* stands for a 2-char justification code *justify* (see \myreflink{text}).
     Note: with the default **outside=true**, the *justify* defaults to the same as **anchor**, if **inside=true** is used then *justify* defaults to the mirror opposite of **anchor**. Specify inset box attributes via the **box** option [outline only].
 
     Alternatively, use **position="west/east/south/north"** of geographic rectangle bounded by parallels and

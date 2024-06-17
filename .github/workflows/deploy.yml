@@ -45,6 +45,7 @@ jobs:
             run(`$(npm_cmd()) install lunr`);
             using Franklin;
             serve(single=true, cleanup=false);
+            isfile("robots.txt") && rm("robots.txt");
             lunr();
             optimize(minify=false, prerender=false);'
     - name: Build and Deploy
