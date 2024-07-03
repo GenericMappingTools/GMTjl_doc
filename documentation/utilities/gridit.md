@@ -19,7 +19,7 @@ Interpolation methods may be those of GMT and GDAL (gdal_grid).
   "lowest" will compute those amounts inside each *rectangular* cell.
 
     - Or (GDAL): "invdist", "invdistnn", "average", "nearest", "linear", "minimum", "maximum", "range",
-      "count", "average_distance", "average_distance_pts". See https://gdal.org/programs/gdal_grid.html#gdal-grid
+      "count", "average\_distance", "average\_distance_pts". See [gdal_grid](https://gdal.org/programs/gdal_grid.html#gdal-grid)
 
     - Note that there is some overlap between the diverse methods. For example, the GMT's \myreflink{nearneighbor}
       and GDAL's `invdist` apply the same algorithm (the Inverse Distance Weight) but they difer on how

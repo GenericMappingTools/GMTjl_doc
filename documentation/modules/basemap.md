@@ -18,8 +18,6 @@ At least one of the options \myreflink{frame}, **map_scale**, or **rose** must b
 
 \textinput{common_opts/opt_R}
 
-\textinput{common_opts/opt_R_3D}
-
 - **A** or **polygon** : *polygon=true* or *polygon=fname*\
     No plotting is performed. Instead, we determine the geographical coordinates of the polygon outline
     for the (possibly oblique) rectangular map domain. The plot domain must be given via \myreflink{limits}

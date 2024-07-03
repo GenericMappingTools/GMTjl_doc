@@ -64,10 +64,11 @@ Optional Arguments
    color bar on the right side of the image using the current color map stored in the global scope. To
    access all options available in the *colorbar* module passe them in the named tuple (...).
 
-- **clim** : -- *clim=(z_min,z_max)*\
+- **clim** : -- *clim=(z_min,z_max)* **|** *clim=:zscale*\
    When doing an automatic colorization (*i.e.*, when a colormap is not provided explicitly), limit the automatic
    color map to be computed between *z_min,z_max*. Grid values below *z_min* and above *z_max* will be painted
-   with the same color as those.
+   with the same color as those. Alternatively, use *clim=:zscale* to use the Interval based on IRAF’s zscale
+   that is an algorithm used in astronomy for finding colorbar limits of for the grid, which showcase data near the median.
 
 - **equalize** : -- *equalize=true* **|** *equalize=ncolors*\
    With automatic colorization, map data values to colors through the data’s cumulative distribution function (CDF),

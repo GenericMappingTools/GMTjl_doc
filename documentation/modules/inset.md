@@ -172,7 +172,7 @@ Add an inset to basemap image with a rectangle in the inset taken from main imag
 ```julia
 using GMT
 
-basemap(region=(-48,-43,-26,-20), J=:merc,
-        inset=(coast, R="-80/-28/-43/10", J=:merc, shore=true, rect=(2,:red)), show=true)
+basemap(region=(-48,-43,-26,-20), proj=:merc,
+        inset=(coast, R="-80/-28/-43/10", proj=:merc, shore=true, rect=(2,:red)), show=true)
 ```
 \end{examplefig}

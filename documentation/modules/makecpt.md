@@ -10,6 +10,12 @@ or
 makecpt(name::Symbol; kwargs...)
 ```
 
+or
+
+```julia
+makecpt(G::GMTgrid; kwargs...)
+```
+
 *keywords: GMT, Julia, colormaps*
 
 Make static color palette tables (CPTs) from master CPTs.
@@ -33,10 +39,13 @@ The color model (RGB, HSV or CMYK) of the palette created by **makecpt** will be
 the master CPT. When there is no `COLOR_MODEL` entry in the master CPT, the `COLOR_MODEL` specified in the `gmt.conf`
 file or on the command line will be used.
 
-The second form is a quick way of generating CPT objects for use in the ``imshow`` function. Here `name` (as a symbol)
+The second form is a quick way of generating CPT objects for use in the ``imshow/viz`` functions. Here `name` (as a symbol)
 is the name of any of the GM default palettes. It can also be the name of CPT file living in current directory. With it,
 you don't specify the `color=cptname` as it is already implied by the fact that first argin is a symbol. As mentioned,
 its primary usage is to quickly show a CPT with the ``imshow`` command. *e.g* ``imshow(:gray)``
+
+The third form created the colormap from _z_min, z_max_ limits of the grid `G`. The options for this form are the same as
+for the other two, plus the `equalize` option that actually call `grd2cpt` and call a histgram equalized cmap.
 
 Optional Arguments
 ------------------
@@ -59,6 +68,11 @@ Optional Arguments
     information is used instead of providing the **range** option. We create a linear color table by dividing the
     table data z-range into *nlevels* equidistant slices. If *nlevels* is not given it defaults to the number of
     levels in the chosen CPT.
+
+- **equalize** -- *equalize=true* **|** *equalize=nlevels*\
+    Create an histgram equalized CPT. If *nlevels* is not given it defaults to the number guessed by `grd2cpt`.
+    Note that when using this option and, by consequence, the form that takes a grid as input, the other
+    options are those of the `grd2cpt` function.
 
 - **F** or **color_model** : -- *color_model=true|:r|:h|:c["+c"[label]]* **|** *color_model="+kkeys"*\
     Force output CPT to be written with r/g/b codes, gray-scale values or color name (the default)
