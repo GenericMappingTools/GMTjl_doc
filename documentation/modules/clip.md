@@ -101,6 +101,18 @@ clip!(endclip=true, frame=:same, show=true)
 where we activate and deactivate the clip path.  Note we also draw the
 outline of the clip path to make it clear what is being clipped.
 
+But although the above example shows how we can fine tune what is plotted under the clip path, and we could
+have drawn more elements if whiched, it is also a bit cumbersome for simple plots. A much more straightforward
+command can be done using the _nested_ clip program that is available to all plotting modules. This one-liner
+produces almost the same plot.
+
+\begin{examplefig}{}
+```julia
+using GMT
+plot("@tut_data.txt", fill=:red, marker=:circ, ms=2, region=(0,6,0,6), clip=[0 0; 5 1; 5 5], show=true)
+```
+\end{examplefig}
+
 See Also
 --------
 

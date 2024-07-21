@@ -54,6 +54,20 @@ Optional Arguments
 
 \textinput{common_opts/use_cpt_grd}
 
+- **clim** : -- *clim=(z_min,z_max)* **|** *clim=:zscale*\
+   When doing an automatic colorization (*i.e.*, when a colormap is not provided explicitly), limit the automatic
+   color map to be computed between *z_min,z_max*. Grid values below *z_min* and above *z_max* will be painted
+   with the same color as those. Alternatively, use *clim=:zscale* to use the Interval based on IRAF’s zscale
+   that is an algorithm used in astronomy for finding colorbar limits of for the grid, which showcase data near the median.
+
+- **clip** : -- *clip="land"* **|** *clip=:ocean* **|** *clip="country_code(s)"* **|** *clip=(country="code(s)", [outside=true])* **|** *clip=xy* **|** *clip=(xy, inverse=true)*\
+   Clip the image according to the selected option. First set of options do the clipping using the `coast` module. _e.,g._:
+   **clip="land"** (or =:land) clip outside land areas. **clip="ocean"** does the inverse. **clip="country_code(s)"** uses
+   one or more country codes (separated by commas) to do the clipping. If want to reverse the sense of the clipping, use the
+   form **clip=(country="code(s)", outside=true)**. Use **clip=(continent=code, [outside=true])** to pass the name of
+   continent. Pay attention that this option must be a named tuple. The second set of options make use of the `clip` module
+   and expect a first argument with a Mx2 matrix with the coordinates of the clipping polygon. 
+
 - **coast** : -- *coast=true* **|** *coast=(...)*\
    Call the \myreflink{coast} module to overlay coastlines and/or countries. The short form *coast=true* just
    plots the coastlines with a black, 0.5p thickness line. To access all options available in the *coast*
@@ -63,12 +77,6 @@ Optional Arguments
    Call the \myreflink{colorbar} module to add a colorbar. The short form *colorbar=true* automatically adds a
    color bar on the right side of the image using the current color map stored in the global scope. To
    access all options available in the *colorbar* module passe them in the named tuple (...).
-
-- **clim** : -- *clim=(z_min,z_max)* **|** *clim=:zscale*\
-   When doing an automatic colorization (*i.e.*, when a colormap is not provided explicitly), limit the automatic
-   color map to be computed between *z_min,z_max*. Grid values below *z_min* and above *z_max* will be painted
-   with the same color as those. Alternatively, use *clim=:zscale* to use the Interval based on IRAF’s zscale
-   that is an algorithm used in astronomy for finding colorbar limits of for the grid, which showcase data near the median.
 
 - **equalize** : -- *equalize=true* **|** *equalize=ncolors*\
    With automatic colorization, map data values to colors through the data’s cumulative distribution function (CDF),
@@ -154,5 +162,15 @@ For a quick-and-dirty illuminated color map of the data in the remote file @AK_g
 ```julia
 using GMT
 grdimage("@AK_gulf_grav.nc", shade=true, coast=true, show=true)
+```
+\end{examplefig}
+
+Clip the outside of Africa from Bing mosaic. (You can try also `viz(I, clip=:land)` and `viz(I, clip=(continent=:AF, outside=true))`)
+
+\begin{examplefig}{}
+```julia
+using GMT
+I = mosaic(region=(continent="AF",));   # Get a mosaic of the ~Africa region
+viz(I, clip=(continent=:AF,))           # Clip outside of the African continent.
 ```
 \end{examplefig}
