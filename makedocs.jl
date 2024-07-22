@@ -14,6 +14,7 @@ using Documenter: deploydocs, deploy_folder, GitHubActions
 using Gumbo
 using AbstractTrees
 
+
 cfg = GitHubActions() # this should pick up all details via GHA environment variables
 
 repo = "github.com/GenericMappingTools/GMT.jl.git"
