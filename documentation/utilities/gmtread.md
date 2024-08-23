@@ -13,8 +13,8 @@ the chance of letting the data type be guessed via the file extension. Known ext
 
 - Grids:      .grd, .jp2 .nc
 - Images:     .jpg, .jp2 .png, .tif, .tiff, .bmp, .webp
-- Datasets:   .dat, .txt, .csv
-- Datasets:   .shp, .kml, .json, .geojson, .gmt, .gpkg, .gpx, .gml (or *.zip.ext)
+- Datasets:   .dat, .txt, .csv, .isf
+- Datasets:   .arrow .arrows .shp .kml .kmz .json .gmt .feather .fgb .gpkg .geojson .gpx .gml .ipc .parquet .sqlite (or *.ext.zip)
 - CPT:        .cpt
 - PostScript: .ps, .eps
 
@@ -42,6 +42,8 @@ Specify data type (with *type*=true, e.g. `img=true`). Choose among:
   uses GMT lib to read the cube and outputs and 3D array in column major order, later case
   (the one with `gdal`) uses GDAL to read the cube and outputs and 3D array in row major order.
   Remember that the ``layout`` member of the GMTgrid type informs about memory layout.
+
+- `inrows`: Select specific data rows to be read. Valid args include ranges or a string with an hard core GMT -q option.
 
 - `stride`: When reading table data via GMT (but not GDAL), this option allows subsampling the data.
   Provide a number to be used as stride for the rows. A `stride=2` will read every other row.

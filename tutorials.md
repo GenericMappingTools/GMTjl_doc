@@ -90,6 +90,17 @@
   @@
 
   @@box
+    ~~~<a class="boxlink" href="blender_shading/blender_rt/">~~~
+    @@title Raytrace shading@@
+    @@box-content
+      ~~~
+      <img src="/tutorials/blender_shading/tilelogo.jpg">
+      ~~~
+    @@
+    ~~~</a>~~~
+  @@
+
+  @@box
     ~~~<a class="boxlink" href="mosaics/mosaics/">~~~
     @@title Images mosaic@@
     @@box-content
