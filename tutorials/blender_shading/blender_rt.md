@@ -1,7 +1,7 @@
 # Shading with Blender
 
 This tutorial shows how we can create stunning shaded relief images using the Blender ray tracer to solve
-the hard jobb of computing illumination with realist shadows of a DEM surface. The tutorial linked bellow
+the hard job of computing illumination with realist shadows of a DEM surface. The tutorial linked below
 takes some time to follow and the time needed to compute the raytraced image is on the order of minutes.
 However, as the author says at the end, once we have it set for one case it is easy and fast to adapt it
 to other cases. In a posterior improvement of this tutorial we will show how to modify needed parameters
@@ -23,7 +23,7 @@ viz(I, coast=true)
 
 Load the previously created raytrace image computed with Blender following the tutorial
 [Creating Shaded Relief in Blender](https://somethingaboutmaps.wordpress.com/2017/11/16/creating-shaded-relief-in-blender/)
-But note that the first part of that tutorial where it explains how to cretae the UInt16 _heightmap_ can be replaced by
+But note that the first part of that tutorial where it explains how to create the UInt16 _heightmap_ can be replaced by
 this simple command:
 
 ```julia
