@@ -18,13 +18,15 @@ When saving grids we have a panoply of formats at our disposal.
 Parameters
 ----------
 
+- `binary`: Applyes only when saving a ``stl`` file. By default it is true. Use `binary=false` to save in ascii.
+
 - `id`: Use an `id` code when not not saving a grid into a standard COARDS-compliant netCDF grid. This `id`
   is made up of two characters like ``ef`` to save in ESRI Arc/Info ASCII Grid Interchange format (ASCII float).
   See the full list of ids at [grdconvert](https://docs.generic-mapping-tools.org/latest/grdconvert.html#format-identifier)
 
 - `scale` | `offset`: You may optionally ask to scale the data and then offset them with the specified amounts.
   These modifiers are particularly practical when storing the data as integers, by first removing an offset
-  and then scaling down the values.
+  and then scaling down the values. The `scale` factor can also be applied when saving to stl (scales the z values).
 
 - `nan` | `novalue` | `invalid` | `missing`: Lets you supply a value that represents an invalid grid entry, i.e., NaN.
 

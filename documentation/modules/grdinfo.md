@@ -132,7 +132,7 @@ To obtain all the information about the remote data set in file earth_relief_10m
 Get the grid spacing in earth_relief_10m:
 
 ```julia
-    dx = grdinfo("@earth_relief_10m", oneliner=:n, out_cols=7)
+    dx = grdinfo("@earth_relief_10m", oneliner=:n, outcols=7)
 ```
 
 To learn about the extreme values and coordinates in the 3-D data cube S362ANI_kmps.nc?vs::

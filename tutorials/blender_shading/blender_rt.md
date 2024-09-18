@@ -26,13 +26,9 @@ Load the previously created raytrace image computed with Blender following the t
 But note that the first part of that tutorial where it explains how to cretae the UInt16 _heightmap_ can be replaced by
 this simple command:
 
-\begin{examplefig}{}
 ```julia
-using GMT
-
 gdalwrite("Gwib.tiff", rescale(Gwib, type=UInt16))
 ```
-\end{examplefig}
 
 Load the gray scale image and show it:
 
