@@ -374,6 +374,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/polygonlevels">polygonlevels</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/rasterzones">rasterzones&#33;</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/regiongeog">regiongeog</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/remotegrid">remotegrid</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/rescale">rescale</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/sealand">sealand</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/slicecube">slicecube</a></div></li>
@@ -588,6 +589,7 @@
 <a href="#buffer">buffer</a>
 </div>
 <div class="doc-content"><pre><code>buffer&#40;geom, dist::Real, quadsegs::Integer&#61;30; gdataset&#61;false&#41;</code></pre>
+<p>Compute buffer of a geometry.</p>
 <h3>Parameters</h3>
 <ul>
 <li><p><code>geom</code>: the geometry. This can either be a GDAL AbstractGeometry or a GMTdataset &#40;or vector of it&#41;, or a Matrix</p>
@@ -596,10 +598,12 @@
 </li>
 <li><p><code>quadsegs</code>: the number of segments used to approximate a 90 degree &#40;quadrant&#41; of curvature.</p>
 </li>
+</ul>
+<h3>Keywords</h3>
+<ul>
 <li><p><code>gdataset</code>: Returns a GDAL IGeometry even when input is a GMTdataset or Matrix</p>
 </li>
 </ul>
-<p>Compute buffer of geometry.</p>
 <p>Builds a new geometry containing the buffer region around the geometry on which it is invoked. The buffer is a polygon containing the region within the buffer distance of the original geometry.</p>
 <p>Some buffer sections are properly described as curves, but are converted to approximate polygons. The <code>quadsegs</code> parameter can be used to control how many segments should be used to define a 90 degree curve - a quadrant of a circle. A value of 30 is a reasonable default. Large values result in large numbers of vertices in the resulting buffer geometry while small numbers reduce the accuracy of the result.</p>
 <h3>Returns</h3>
@@ -656,6 +660,9 @@
 <ul>
 <li><p><code>geom</code>: the geometry. This can either be a GDAL AbstractGeometry or a GMTdataset &#40;or vector of them&#41;, or a Matrix</p>
 </li>
+</ul>
+<h3>Keywords</h3>
+<ul>
 <li><p><code>gdataset</code>: Returns a GDAL IGeometry even when input is a GMTdataset or Matrix</p>
 </li>
 </ul>
@@ -839,6 +846,9 @@ false</code></pre>
 </li>
 <li><p><code>geom2</code>: Second geometry. AbstractGeometry if <code>geom1::AbstractGeometry</code> or a GMTdataset/Matrix if <code>geom1</code> is GMT type </p>
 </li>
+</ul>
+<h3>Keywords</h3>
+<ul>
 <li><p><code>gdataset</code>: Returns a GDAL IGeometry even when input is GMTdataset or Matrix</p>
 </li>
 </ul>
@@ -1154,6 +1164,9 @@ false</code></pre>
 </li>
 <li><p><code>geom2</code>: Second geometry. AbstractGeometry if <code>geom1::AbstractGeometry</code> or a GMTdataset/Matrix if <code>geom1</code> is GMT type </p>
 </li>
+</ul>
+<h3>Keywords</h3>
+<ul>
 <li><p><code>gdataset</code>: Returns a GDAL IGeometry even when input is GMTdataset or Matrix</p>
 </li>
 </ul>
@@ -1549,16 +1562,19 @@ And in fact that is what we do when using &#96;simplify&#61;:auto&#96;.</code></
 <a href="#polyunion">polyunion</a>
 </div>
 <div class="doc-content"><pre><code>polyunion&#40;geom1, geom2; gdataset&#61;false&#41;</code></pre>
+<p>Computes a new geometry representing the union of the geometries.</p>
 <h3>Parameters</h3>
 <ul>
 <li><p><code>geom1</code>: the geometry. This can either be a GDAL AbstractGeometry or a GMTdataset &#40;or vector of it&#41;, or a Matrix</p>
 </li>
 <li><p><code>geom2</code>: Second geometry. AbstractGeometry if <code>geom1::AbstractGeometry</code> or a GMTdataset/Matrix if <code>geom1</code> is GMT type </p>
 </li>
+</ul>
+<h3>Keywords</h3>
+<ul>
 <li><p><code>gdataset</code>: Returns a GDAL IGeometry even when input is GMTdataset or Matrix</p>
 </li>
 </ul>
-<p>Computes a new geometry representing the union of the geometries.</p>
 <h3>Returns</h3>
 <p>A GMT dataset when input is a Matrix or a GMT type &#40;except if <code>gdaset&#61;true</code>&#41;, or a GDAL IGeometry otherwise</p>
 
@@ -1601,6 +1617,9 @@ And in fact that is what we do when using &#96;simplify&#61;:auto&#96;.</code></
 </li>
 <li><p><code>tol</code>: the distance tolerance for the simplification.</p>
 </li>
+</ul>
+<h3>Keywords</h3>
+<ul>
 <li><p><code>gdataset</code>: Returns a GDAL IGeometry even when input is GMTdataset or Matrix</p>
 </li>
 </ul>
@@ -1619,6 +1638,9 @@ And in fact that is what we do when using &#96;simplify&#61;:auto&#96;.</code></
 </li>
 <li><p><code>geom2</code>: Second geometry. AbstractGeometry if <code>geom1::AbstractGeometry</code> or a GMTdataset/Matrix if <code>geom1</code> is GMT type </p>
 </li>
+</ul>
+<h3>Keywords</h3>
+<ul>
 <li><p><code>gdataset</code>: Returns a GDAL IGeometry even when input is GMTdataset or Matrix</p>
 </li>
 </ul>
@@ -1699,8 +1721,8 @@ And in fact that is what we do when using &#96;simplify&#61;:auto&#96;.</code></
 
 <div class="page-foot">
   <div class="copyright">
-    &copy; GMT.jl. Last modified: August 23, 2024. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
-      <p>These docs were autogenerated using GMT: v1.16.0</p>
+    &copy; GMT.jl. Last modified: September 19, 2024. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+      <p>These docs were autogenerated using GMT: v1.17.0</p>
   </div>
 </div>
 </div><!-- CONTENT ENDS HERE -->
