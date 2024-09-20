@@ -37,7 +37,7 @@ Load the gray scale image and show it:
 using GMT
 
 Iblend = gmtread("https://oceania.generic-mapping-tools.org/cache/wiberia_shade_blender.png");
-viz(Iblend, coast=true)
+viz(Iblend)
 ```
 \end{examplefig}
 

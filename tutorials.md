@@ -122,4 +122,15 @@
     ~~~</a>~~~
   @@
 
+  @@box
+    ~~~<a class="boxlink" href="remote_datasets/remote_datasets/">~~~
+    @@title Remote Grids@@
+    @@box-content
+      ~~~
+      <img src="/tutorials/remote_datasets/tilelogo.jpg">
+      ~~~
+    @@
+    ~~~</a>~~~
+  @@
+
 @@

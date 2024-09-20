@@ -144,7 +144,6 @@ the Rasters.jl package is able to keep some metadata (namely the time axis) and 
 is not yet able to match.
 Here we will reproduce some of the examples from this Rasters.jl [docs](https://rafaqz.github.io/Rasters.jl/dev/#Examples-and-Plotting).
 
-\begin{examplefig}{}
 ```julia
 using GMT
 using Rasters, RasterDataSources, ArchGDAL
@@ -153,7 +152,10 @@ ENV["RASTERDATASOURCES_PATH"] = tempdir();
 A = Raster(WorldClim{BioClim}, 5);
 viz(A, colorbar=true)
 ```
-\end{examplefig}
+
+~~~
+<img src="/assets/world_clim_bio_clim.png" width=80% class="center"/>
+~~~
 
 \begin{examplefig}{}
 ```julia
