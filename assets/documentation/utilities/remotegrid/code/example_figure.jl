@@ -5,10 +5,10 @@ begin # hide
 		getpath4docs(file::String) = joinpath("..", "..", "..", "..", "..", file) # hide
 		using GMT
 
-G = gmtread(remotegrid("earth_relief", res="15s"), region=(55,60,23,28))
+G = grdcut(remotegrid("earth_relief", res="15s"), region=(55,60,23,28))
 viz(G, proj=:guess, shade=true, coast=true, colorbar=true)
 	end # hide
-	mv(joinpath(tempdir(), "GMTjl_" * GMT.TMPDIR_USR[2] * "." * "png"), joinpath(@OUTPUT, "example_10697313021408187353.png"), force=true);    # hide
+	mv(joinpath(tempdir(), "GMTjl_" * GMT.TMPDIR_USR[2] * "." * "png"), joinpath(@OUTPUT, "example_3809073177815635498.png"), force=true);    # hide
 	GMT.isFranklin[1] = false    # hide
 	GMT.IamModern[1]  = false    # hide
  
