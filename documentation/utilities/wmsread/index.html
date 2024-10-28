@@ -363,9 +363,10 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/xyz2grd">xyz2grd</a></div></li>
 </ul></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/gdalfuns">GDAL related functions</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/solids">Solids functions</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/supplements">Supplements modules</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilfuns">Utility functions</a></div></li>
-<li><input class="collapse-toggle" id="menuitem-6-9" type="checkbox" checked><div class="tocitem-container"><label class="tocexpander" for="menuitem-6-9"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/documentation/utilities">Utilities</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/ODE2ds">ODE2ds</a></div></li>
+<li><input class="collapse-toggle" id="menuitem-6-10" type="checkbox" checked><div class="tocitem-container"><label class="tocexpander" for="menuitem-6-10"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/documentation/utilities">Utilities</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/ODE2ds">ODE2ds</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/ablines">ablines</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/append2fig">append2fig</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/blendimg">blendimg&#33;</a></div></li>
@@ -467,9 +468,25 @@
 </ul>
 <h3 id="kwargs_is_the_keywordsvalues_pairs_used_to_set"><a href="#kwargs_is_the_keywordsvalues_pairs_used_to_set" class="header-anchor"><code>kwargs</code> is the keywords/values pairs used to set</a></h3>
 <ul>
-<li><p><code>region | limits</code>: The region limits. This can be a Tuple or Array with 4 elements defining the <code>&#40;xmin, xmax, ymin, ymax&#41;</code>  or a string defining the limits in all ways that GMT can recognize. When the layer has the data projected, we can  a Tuple or Array with 3 elements <code>&#40;lon0, lat0, width&#41;</code>, where first two set the center of a square in geographical  coordinates and the third &#40;<code>width</code>&#41; is the width of that box in meters.</p>
+<li><p><code>region | limits</code>: The region limits. Options are:</p>
+<ul>
+<li><p>A Tuple or Array with 4 elements defining the <code>&#40;xmin, xmax, ymin, ymax&#41;</code> or a string defining the limits in all ways that GMT can recognize.</p>
+</li>
+<li><p>When the layer has the data projected, we can pass a Tuple or Array with 3 elements <code>&#40;lon0, lat0, width&#41;</code>, where first two set the center of a square in geographical coordinates and the third &#40;<code>width</code>&#41; is the width of that box in meters.</p>
+</li>
+<li><p>A <code>mosaic</code> tile name in the form <code>X,Y,Z</code> or a quadtree. Example: <code>region&#61;&quot;7829,6374,14&quot;</code>. See the <code>mosaic</code> function manual for more information. This form also sets the default cellsize for that tile. NOTE: this is a geographical coordinates only that implicitly sets <code>geog&#61;true</code>. See below on how to change the default resolution.</p>
+</li>
+</ul>
 </li>
 <li><p><code>cellsize | pixelsize | resolution | res</code>: Sets the requested cell size in meters &#91;default&#93;. Use a string appended with a &#39;d&#39;  &#40;e.g. <code>resolution&#61;&quot;0.001d&quot;</code>&#41; if the resolution is given in degrees. This way works only when the layer is in geogs.</p>
+</li>
+<li><p><code>zoom or refine</code>: When the region is derived from a <code>mosaic</code> tile name, the default is to get an image with 256 columns  and <em>n</em> rows where <em>n</em> depends on latitude. So, either the area is large and consequently the resolution is low, or  the inverse &#40;small area and resolution is high&#41;. To change this status, use the <code>zoom</code> or <code>refine</code> options.</p>
+<ul>
+<li><p><code>zoom</code>: an integer &gt;&#61; 1 that for each increment duplicates the base resolution by 2. <em>e.g.</em>, <code>zoom&#61;2</code>  quadruplicates the default resolution. This option is almost redundant with the <code>refine</code>, but is offered  for consistency with the <code>mosaic</code> function.</p>
+</li>
+<li><p><code>refine</code>: an integer &gt;&#61; 2 multiplication factor that is used to increment the resolution by factor. <em>e.g.</em>, <code>refine&#61;2</code>  duplicates the image resolution.</p>
+</li>
+</ul>
 </li>
 <li><p><code>size</code>: Alternatively to the the <code>cellsize</code> use this option, a tuple or array with two elements, to specify  the image dimensions. Example, <code>size&#61;&#40;1200, 100&#41;</code> to get an image with 1200 rows and 100 columns.</p>
 </li>
@@ -493,8 +510,8 @@ imshow&#40;img, proj&#61;:guess&#41;</code></pre>
 <p><a href="/GMTjl_doc/documentation/utilities/wmsinfo/index.html#wmsinfo">wmsinfo</a>, <a href="/GMTjl_doc/documentation/utilities/wmstest/index.html#wmstest">wmstest</a></p>
 <div class="page-foot">
   <div class="copyright">
-    &copy; GMT.jl. Last modified: September 20, 2024. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
-      <p>These docs were autogenerated using GMT: v1.17.0</p>
+    &copy; GMT.jl. Last modified: October 28, 2024. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+      <p>These docs were autogenerated using GMT: v1.20.0</p>
   </div>
 </div>
 </div><!-- CONTENT ENDS HERE -->

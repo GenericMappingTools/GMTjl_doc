@@ -47,12 +47,12 @@ av   = grdvolume(Gtmp, cont=50, unit=:k);
 
 T = mat2ds(["Volumes: $(av.data[3]) mGal\\264km@+2@+"
     ""
-    sprintf("Areas: %.2f km@+2@+", av.data[2])], hdr="> -149 52.5 14p 2.6i j")
+    @sprintf("Areas: %.2f km@+2@+", av.data[2])], hdr="> -149 52.5 14p 2.6i j")
 
 text!(T, paragraph=true, fill=:white, pen=:thin, offset=0.75, font=(14,"Helvetica-Bold"),
       justify=:LB, clearance=0.25, show=true)
 	end # hide
-	mv(joinpath(tempdir(), "GMTjl_" * GMT.TMPDIR_USR[2] * "." * "png"), joinpath(@OUTPUT, "example_1731182142131920823.png"), force=true);    # hide
+	mv(joinpath(tempdir(), "GMTjl_" * GMT.TMPDIR_USR[2] * "." * "png"), joinpath(@OUTPUT, "example_5518542999440993498.png"), force=true);    # hide
 	GMT.isFranklin[1] = false    # hide
 	GMT.IamModern[1]  = false    # hide
  

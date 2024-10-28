@@ -276,6 +276,7 @@
 <li><a href="#dataset_type/">Dataset type</a></li>
 <li><a href="#cpt_type/">CPT type</a></li>
 <li><a href="#postscript_type/">Postscript type</a></li>
+<li><a href="#face-vertices_type/">Face-Vertices type</a></li>
 </ul>
 </ul>
 </li>
@@ -373,9 +374,10 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/xyz2grd">xyz2grd</a></div></li>
 </ul></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/gdalfuns">GDAL related functions</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/solids">Solids functions</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/supplements">Supplements modules</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilfuns">Utility functions</a></div></li>
-<li><input class="collapse-toggle" id="menuitem-6-9" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-6-9"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/documentation/utilities">Utilities</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/ODE2ds">ODE2ds</a></div></li>
+<li><input class="collapse-toggle" id="menuitem-6-10" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-6-10"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/documentation/utilities">Utilities</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/ODE2ds">ODE2ds</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/ablines">ablines</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/append2fig">append2fig</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/blendimg">blendimg&#33;</a></div></li>
@@ -460,7 +462,7 @@
 <div class="franklin-content"><h1 id="the_gmtjl_types_important"><a href="#the_gmtjl_types_important" class="header-anchor">The GMT.jl types &#40;important&#41;</a></h1>
 <h2 id="grid_type"><a href="#grid_type" class="header-anchor">Grid type</a></h2>
 <p>The GMTgrid type is how grids, &#40;geo&#41;referenced or not, comunicate in/out with the GMT library. They implement the AbstractArray interface.</p>
-<pre><code class="language-julia">type GMTgrid&#123;T&lt;:Real,N&#125; &lt;: AbstractArray&#123;T,N&#125;      # The type holding a local header and data of a GMT grid
+<pre><code class="language-julia">struct GMTgrid&#123;T&lt;:Real,N&#125; &lt;: AbstractArray&#123;T,N&#125;      # The type holding a local header and data of a GMT grid
     proj4::String                      # Projection string in PROJ4 syntax &#40;Optional&#41;
     wkt::String                        # Projection string in WKT syntax &#40;Optional&#41;
     epsg::Int                          # EPSG code
@@ -489,7 +491,7 @@
     hasnans::Int&#61;0                     # 0 -&gt; &quot;don&#39;t know&quot;; 1 -&gt; confirmed, &quot;have no NaNs&quot;; 0 -&gt; confirmed, &quot;have NaNs&quot;
 end</code></pre>
 <h2 id="image_type"><a href="#image_type" class="header-anchor">Image type</a></h2>
-<pre><code class="language-julia">type GMTimage&#123;T&lt;:Unsigned, N&#125; &lt;: AbstractArray&#123;T,N&#125;   # The type holding a local header and data of a GMT image
+<pre><code class="language-julia">struct GMTimage&#123;T&lt;:Unsigned, N&#125; &lt;: AbstractArray&#123;T,N&#125;   # The type holding a local header and data of a GMT image
     proj4::String              # Projection string in PROJ4 syntax &#40;Optional&#41;
     wkt::String                # Projection string in WKT syntax &#40;Optional&#41;
     epsg::Int                  # EPSG code
@@ -513,7 +515,7 @@ end</code></pre>
     pad::Int                   # When &#33;&#61; 0 means that the array is placed in a padded array of PAD rows/cols
 end</code></pre>
 <h2 id="dataset_type"><a href="#dataset_type" class="header-anchor">Dataset type</a></h2>
-<pre><code class="language-julia">type GMTdataset&#123;T&lt;:Real, N&#125; &lt;: AbstractArray&#123;T,N&#125;
+<pre><code class="language-julia">struct GMTdataset&#123;T&lt;:Real, N&#125; &lt;: AbstractArray&#123;T,N&#125;
     data::Array&#123;T,N&#125;           # Mx2 Matrix with segment data
     ds_bbox::Vector&#123;Float64&#125;   # Global BoundingBox &#40;for when there are many segments&#41;
     bbox::Vector&#123;Float64&#125;      # Segment BoundingBox
@@ -528,7 +530,7 @@ end</code></pre>
     geom::Integer              # Geometry type. One of the GDAL&#39;s enum &#40;wkbPoint, wkbPolygon, etc...&#41;
 end</code></pre>
 <h2 id="cpt_type"><a href="#cpt_type" class="header-anchor">CPT type</a></h2>
-<pre><code class="language-julia">type GMTcpt
+<pre><code class="language-julia">struct GMTcpt
     colormap::Array&#123;Float64,2&#125; # Mx3 matrix equal to the first three columns of cpt
     alpha::Array&#123;Float64,1&#125;    # Vector of alpha values. One for each color.
     range::Array&#123;Float64,2&#125;    # Mx2 matrix with z range for each slice
@@ -544,16 +546,28 @@ end</code></pre>
     comment::Vector&#123;String&#125;    # Cell array with any comments
 end</code></pre>
 <h2 id="postscript_type"><a href="#postscript_type" class="header-anchor">Postscript type</a></h2>
-<pre><code class="language-julia">type GMTps
+<pre><code class="language-julia">struct GMTps
     postscript::String         # Actual PS plot &#40;text string&#41;
     length::Int                # Byte length of postscript
     mode::Int                  # 1 &#61; Has header, 2 &#61; Has trailer, 3 &#61; Has both
     comment::Vector&#123;String&#125;    # Cell array with any comments
 end</code></pre>
+<h2 id="face-vertices_type"><a href="#face-vertices_type" class="header-anchor">Face-Vertices type</a></h2>
+<pre><code class="language-julia">struct GMTfv&#123;T&lt;:AbstractFloat&#125; &lt;: AbstractMatrix&#123;T&#125;
+	verts::AbstractMatrix&#123;T&#125;    # Mx3 Matrix with the data vertices
+	faces::Vector&#123;&lt;:AbstractMatrix&#123;&lt;:Integer&#125;&#125;  # A vector of matrices with the faces. Each row is a face
+	faces_view::Vector&#123;Matrix&#123;Int&#125;&#125;             # A subset of &#96;faces&#96; with only the visible faces from a certain perspective
+	bbox::Vector&#123;Float64&#125;       # The vertices BoundingBox
+	zscale::Float64             # A multiplicative factor to scale the z values
+	bfculling::Bool             # If culling of invisible faces is wished
+	proj4::String               # Projection string in PROJ4 syntax &#40;Optional&#41;
+	wkt::String                 # Projection string in WKT syntax &#40;Optional&#41;
+	epsg::Int                   # EPSG projection code &#40;Optional&#41;
+end</code></pre>
 <div class="page-foot">
   <div class="copyright">
-    &copy; GMT.jl. Last modified: September 20, 2024. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
-      <p>These docs were autogenerated using GMT: v1.17.0</p>
+    &copy; GMT.jl. Last modified: October 28, 2024. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+      <p>These docs were autogenerated using GMT: v1.20.0</p>
   </div>
 </div>
 </div><!-- CONTENT ENDS HERE -->

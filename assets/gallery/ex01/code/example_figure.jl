@@ -4,7 +4,6 @@ begin # hide
 		GMT.isFranklin[1] = true    # hide
 		getpath4docs(file::String) = joinpath("..", "..", "..", "..", "..", file) # hide
 		using GMT
-GMT.resetGMT() # hide
 
 subplot(grid=(2,1), region=:global, autolabel=true, margins=0.5,
         title="Low Order Geoid", panel_size=(16,0), frame="lrtb", proj=:Hammer, figsize=16)
@@ -24,7 +23,7 @@ subplot(grid=(2,1), region=:global, autolabel=true, margins=0.5,
                 range=(-1,1000), ticks=(gap=(0.25,0.05),))
 subplot("show")
 	end # hide
-	mv(joinpath(tempdir(), "GMTjl_" * GMT.TMPDIR_USR[2] * "." * "png"), joinpath(@OUTPUT, "example_12211371695113556997.png"), force=true);    # hide
+	mv(joinpath(tempdir(), "GMTjl_" * GMT.TMPDIR_USR[2] * "." * "png"), joinpath(@OUTPUT, "example_8285577633788810153.png"), force=true);    # hide
 	GMT.isFranklin[1] = false    # hide
 	GMT.IamModern[1]  = false    # hide
  

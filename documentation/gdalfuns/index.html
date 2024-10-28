@@ -365,9 +365,10 @@
 <li><a href="#gdal_related_functions/">GDAL related functions</a></li>
 </ul>
 </li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/solids">Solids functions</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/supplements">Supplements modules</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilfuns">Utility functions</a></div></li>
-<li><input class="collapse-toggle" id="menuitem-6-9" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-6-9"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/documentation/utilities">Utilities</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/ODE2ds">ODE2ds</a></div></li>
+<li><input class="collapse-toggle" id="menuitem-6-10" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-6-10"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/documentation/utilities">Utilities</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/ODE2ds">ODE2ds</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/ablines">ablines</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/append2fig">append2fig</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/blendimg">blendimg&#33;</a></div></li>
@@ -587,14 +588,14 @@
 </li>
 <li><p><code>secondary_radius</code>: Y radius of ellipse.</p>
 </li>
-<li><p><code>start_angle</code>: angle to first point on arc &#40;clockwise of X-positive&#41; </p>
+<li><p><code>start_angle</code>: angle to first point on arc &#40;clockwise of X-positive&#41;</p>
 </li>
-<li><p><code>end_angle</code>: angle to last point on arc &#40;clockwise of X-positive&#41; </p>
+<li><p><code>end_angle</code>: angle to last point on arc &#40;clockwise of X-positive&#41;</p>
 </li>
 </ul>
 <h3>Keywords</h3>
 <ul>
-<li><p><code>rotation</code>: rotation of the ellipse clockwise. </p>
+<li><p><code>rotation</code>: rotation of the ellipse clockwise.</p>
 </li>
 <li><p><code>z0</code>: center Z. Optional, if not provided the output is flat 2D</p>
 </li>
@@ -724,14 +725,15 @@
 <a href="#circgeo">circgeo</a>
 </div>
 <div class="doc-content"><pre><code>circgeo&#40;lon, lat; radius&#61;X, proj&#61;&quot;&quot;, s_srs&#61;&quot;&quot;, epsg&#61;0, dataset&#61;false, unit&#61;:m, np&#61;120, shape&#61;&quot;&quot;&#41;</code></pre>
-<p>or</p>
+<p>Or</p>
 <pre><code>circgeo&#40;lonlat; radius&#61;X, proj&#61;&quot;&quot;, s_srs&#61;&quot;&quot;, epsg&#61;0, dataset&#61;false, unit&#61;:m, np&#61;120, shape&#61;&quot;&quot;&#41;</code></pre>
-<p>Args:</p>
+<p>Compute a geographical circle &#40;and other shapes&#41; in geographical or in projected coordinates.</p>
+<h3>Args</h3>
 <ul>
-<li><p><code>lonlat</code>:   - longitude, latitude &#40;degrees&#41;. If a Mx2 matrix, returns as many segments as number of rows.               Use this to compute multiple shapes at different positions. In this case output type is</p>
+<li><p><code>lonlat</code>:   - longitude, latitude &#40;degrees&#41;. If a Mx2 matrix, returns as many segments as number of rows.               Use this to compute multiple shapes at different positions. In this case output type is               always a vector of GMTdatasets.</p>
 </li>
 </ul>
-<pre><code>			always a vector of GMTdatasets.</code></pre>
+<h3>Kwargs</h3>
 <ul>
 <li><p><code>radius</code>:   - The circle radius in meters &#40;but see <code>unit</code>&#41; or circumscribing circle for the other shapes</p>
 </li>
@@ -753,8 +755,9 @@
 <li><p>circ - A Mx2 matrix or GMTdataset with the circle coordinates</p>
 </li>
 </ul>
-<h2>Example: Compute circle about the &#40;0,0&#41; point with a radius of 50 km</h2>
-<pre><code>c &#61; circgeo&#40;&#91;0.,0&#93;, radius&#61;50, unit&#61;:k&#41;</code></pre>
+<h3>Example:</h3>
+<p>Compute a circle about the &#40;0,0&#41; point with a radius of 50 km</p>
+<pre><code class="language-julia">    c &#61; circgeo&#40;&#91;0. 0&#93;, radius&#61;50, unit&#61;:k&#41;</code></pre>
 
 
 </div>
@@ -1389,9 +1392,9 @@ false</code></pre>
 <p>When DATASET is a string it may contain the file name or the name of a subdataset. In former case you can use the kwarg <code>sds</code> to selec the subdataset numerically. Alternatively, provide the full <code>sds</code> name. For files with <code>sds</code> with a scale_factor &#40;e.g. MODIS data&#41;, that scale is applyied automaticaly.</p>
 <h3>Examples:</h3>
 <p>G &#61; gd2gmt&#40;&quot;AQUA_MODIS.20210228.L3m.DAY.NSST.sst.4km.NRT.nc&quot;, sds&#61;1&#41;;</p>
-<p>or</p>
+<p>Or</p>
 <p>G &#61; gd2gmt&#40;&quot;SUBDATASET<em>1</em>NAME&#61;NETCDF:AQUA_MODIS.20210228.L3m.DAY.NSST.sst.4km.NRT.nc:sst&quot;&#41;;</p>
-<p>or</p>
+<p>Or</p>
 <p>G &#61; gd2gmt&#40;&quot;NETCDF:AQUA_MODIS.20210228.L3m.DAY.NSST.sst.4km.NRT.nc:sst&quot;&#41;;</p>
 
 
@@ -1452,7 +1455,7 @@ false</code></pre>
 <li><p><code>kwargs</code>: This options accept the GMT region &#40;-R&#41; and increment &#40;-I&#41;</p>
 </li>
 </ul>
-<p>or</p>
+<p>Or</p>
 <pre><code>gdalwrite&#40;cube::GItype, fname::AbstractString, v&#61;nothing; dim_name::String&#61;&quot;time&quot;, dim_units::String&#61;&quot;&quot;&#41;</code></pre>
 <p>Write a MxNxP <code>cube</code> object to disk as a multilayered file.</p>
 <ul>
@@ -1765,8 +1768,8 @@ And in fact that is what we do when using &#96;simplify&#61;:auto&#96;.</code></
 
 <div class="page-foot">
   <div class="copyright">
-    &copy; GMT.jl. Last modified: September 20, 2024. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
-      <p>These docs were autogenerated using GMT: v1.17.0</p>
+    &copy; GMT.jl. Last modified: October 28, 2024. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+      <p>These docs were autogenerated using GMT: v1.20.0</p>
   </div>
 </div>
 </div><!-- CONTENT ENDS HERE -->

@@ -366,9 +366,10 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/xyz2grd">xyz2grd</a></div></li>
 </ul></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/gdalfuns">GDAL related functions</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/solids">Solids functions</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/supplements">Supplements modules</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilfuns">Utility functions</a></div></li>
-<li><input class="collapse-toggle" id="menuitem-6-9" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-6-9"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/documentation/utilities">Utilities</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/ODE2ds">ODE2ds</a></div></li>
+<li><input class="collapse-toggle" id="menuitem-6-10" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-6-10"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/documentation/utilities">Utilities</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/ODE2ds">ODE2ds</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/ablines">ablines</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/append2fig">append2fig</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/blendimg">blendimg&#33;</a></div></li>
@@ -483,6 +484,8 @@
 <li><p><strong>D</strong> or <strong>offset</strong> : – <em>offset&#61;&#40;&#91;away&#61;true, corners&#61;true,&#93; shift&#61;&#40;dx,dy&#41; &#91;,line&#61;pen&#93;&#41;</em><br />  Offsets the text from the projected &#40;<em>x, y</em>&#41; point by <em>shift&#61;&#40;dx, dy&#41;</em>. If <em>dy</em> is not   specified then it is set equal to <em>dx</em>. Use <strong>offset&#61;&#40;away&#61;true,&#41;</strong> to offset the text   away from the point instead &#40;i.e., the text justification will determine the direction   of the shift&#41;. Using <strong>offset&#61;&#40;corners&#61;true,&#41;</strong> will shorten diagonal offsets at corners   by sqrt&#40;2&#41;. Optionally, use <strong>offset&#61;&#40;line&#61;true,&#41;</strong> which will draw a line from the original   point to the shifted point; use <strong>offset&#61;&#40;line&#61;pen,&#41;</strong> to change the <em>pen</em> attributes for this line.</p>
 </li>
 <li><p><strong>F</strong> or <strong>attrib</strong> : – <em>attrib&#61;&#40;angle&#61;val, font&#61;font, justify&#61;code, region&#95;justify&#61;code, header&#61;true, label&#61;true, rec&#95;number&#61;first, text&#61;text, zvalues&#61;format&#41;</em><br />  By default, text will be placed horizontally, using the primary annotation font attributes   &#40;<code>FONT_ANNOT_PRIMARY</code>&#41;, and centered on the data point. Use this option to override these   defaults by specifying up to three text attributes &#40;font, angle, and justification&#41;. Use   <strong>font&#61;font</strong> to set the font &#40;size,fontname,color&#41;. For example <strong>font&#61;18</strong> or   <strong>font&#61;&#40;18, &quot;Helvetica-Bold&quot;, :red&#41;</strong>; if no font info is given then the input file must have   this information in one of its columns. Use <strong>angle&#61;val</strong> to set the angle; if no angle is   given then the input file must have this as a column.  Alternatively, use <strong>Angle&#61;val</strong> to   force text-baselines to convert into the -90/&#43;90 range. Use <strong>justify&#61;code</strong> to set the   justification; if no justification is given then the input file must have this as a column.   Items read from the data should be in the same order as specified with the <strong>F</strong> option.   Example: <strong>font&#61;&#40;18, &quot;Helvetica-Bold&quot;, :red&#41;, justify&#61;&quot;&quot;, angle&#61;&quot;&quot;</strong> selects a 12p red   Helvetica-Bold font and expects to read the justification and angle from the file, in that   order, after <em>x</em>, <em>y</em> and before <em>text</em>. In addition, the <strong>region&#95;justify</strong> justification   lets us use x,y coordinates extracted from the <strong>region</strong> string instead of providing them   in the input file. For example <strong>region&#95;justify&#61;:TL</strong> gets the <em>x&#95;min</em>, <em>y&#95;max</em> from the   <strong>region</strong> string and plots the text at the Upper Left corner of the map. Normally,the text   to be plotted comes from the data record. Instead, use <strong>header&#61;true</strong> or <strong>label&#61;true</strong> to   select the text as the most recent segment header or segment label, respectively in a multisegment   input file, <strong>rec&#95;number&#61;first</strong> to use the record number &#40;counting up from <em>first</em>&#41;, <strong>text&#61;text</strong>   to set a fixed <em>text</em> string, or <strong>zvalues</strong> to format incoming <em>z</em> values to a string using the   supplied <em>format</em> &#40;<strong>zvalues&#61;&quot;&quot;</strong> uses <code>FORMAT_FLOAT_MAP</code>&#41;. Note: If <strong>threeD</strong> is in effect then   the <em>z</em> value used for formatting is in the 4th, not 3rd column.  Exceptionally, this option can   be broken up in its individual pieces by dropping the <strong>attrib</strong> keyword. </p>
+</li>
+<li><p><strong>outline</strong> : – <em>outline&#61;true</em> <strong>|</strong> <em>outline&#61;&quot;thk,color&quot;</em><br />  Plots an outline arround the text. By setting <strong>outline&#61;true</strong> we plot a 1 point white outline around   the text. To control the outline pen use the form &quot;thickness,color&quot;. For example <strong>outline&#61;&quot;3p,red&quot;</strong>   adds a 3 points thickness red outline.</p>
 </li>
 <li><p><strong>G</strong> or <strong>fill</strong> : – <em>fill&#61;color</em> <strong>|</strong> <em>fill&#61;:c</em><br />  Sets the shade or color used for filling the text box &#91;Default is no fill&#93;. Alternatively, use <strong>fill&#61;:c</strong> to plot   the text and then use the text dimensions &#40;and <strong>clearance</strong>&#41; to build clip paths and turn clipping on. This clipping   can then be turned off later with <code>clip</code><strong>C</strong>. To <em>not</em> plot the text but activate clipping, use <strong>fill&#61;:C</strong> instead.</p>
 </li>
@@ -614,6 +617,14 @@ text&#40;&#91;&quot;Hello World&quot;&#93;, x&#61;2.0, y&#61;2.0, show&#61;true&
 	 <img src="/GMTjl_doc/assets/documentation/modules/text/code/output/example_6046692248022155076.png" alt=""> 
 	</a>
 	
+<p>A similar example but using the <code>outline</code> option to plot a 3 points green outline.</p>
+<pre><code class="language-julia">using GMT
+text&#40;&#91;&quot;Hello World&quot;&#93;, x&#61;2.0, y&#61;2.0, outline&#61;&quot;3p,red&quot;, font&#61;40, show&#61;true&#41;</code></pre></p>
+<p>
+	<a id="example_7235951188380718707">
+	 <img src="/GMTjl_doc/assets/documentation/modules/text/code/output/example_7235951188380718707.png" alt=""> 
+	</a>
+	
 <p>Example using the <em>rich</em> function &#40;reproduces the original example in Makie&#41;.</p>
 <pre><code class="language-julia">using GMT
 text&#40;rich&#40;&quot;H&quot;, subscript&#40;&quot;2&quot;&#41;, greek&#40;&quot;O&quot;&#41;,&quot; is the &quot;, smallcaps&#40;&quot;formula&quot;&#41;,&quot; for &quot;,
@@ -633,8 +644,8 @@ text&#33;&#40;join&#40;rainbow_chars&#41;, x&#61;1, y&#61;0.99, font&#61;&quot;H
 	
 <div class="page-foot">
   <div class="copyright">
-    &copy; GMT.jl. Last modified: September 20, 2024. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
-      <p>These docs were autogenerated using GMT: v1.17.0</p>
+    &copy; GMT.jl. Last modified: October 28, 2024. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+      <p>These docs were autogenerated using GMT: v1.20.0</p>
   </div>
 </div>
 </div><!-- CONTENT ENDS HERE -->
