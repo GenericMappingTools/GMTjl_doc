@@ -25,9 +25,15 @@ file name of the dataset to any grid plotting method if no CPT is explicitly spe
 Refer to [moon_relief](https://www.generic-mapping-tools.org/remote-datasets/moon-relief.html) for more details
 about technical detail, available resolutions, sizes, version information and references.
 
-### Examples
+### Example
 
+A shaded relief of the Tycho Crater.
+
+\begin{examplefig}{}
 ```julia
-G = gmtread(remotegrid("moon", res="10m"))
-viz(G, shade=true)
+using GMT
+
+G = gmtread(remotegrid("moon", res="14s"), region=(-14,-8.5,-45.25, -41.25))
+viz(G, proj=:guess, shade=true)
 ```
+\end{examplefig}

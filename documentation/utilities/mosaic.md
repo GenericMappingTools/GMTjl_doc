@@ -25,6 +25,11 @@ I = mosaic(G::Union{GMTgrid, GMTimage}; pt_radius=6371007.0, provider="", zoom::
 I = mosaic(region=??, ..., kw...)
 ```
 
+---
+
+```julia
+I = mosaic([zoom::Int=??])
+```
 
 *keywords: GMT, Julia, tiles image*
 
@@ -137,6 +142,20 @@ D = mosaic(region=(-10, -8, 37, 39), zoom=9, mesh=true);
 viz(D, coast=true)
 ```
 \end{examplefig}
+
+- Print a table with the zoom level 10 basic characteristics.
+
+```julia
+using GMT
+
+mosaic(zoom=10)
+┌───────┬────────────────┬────────────┬────────────────┬────────────────────┐
+│ Level │     Tile width │  m / pixel │         ~Scale │        Examples of │
+│       │ ° of longitude │ on Equator │                │ areas to represent │
+├───────┼────────────────┼────────────┼────────────────┼────────────────────┤
+│    10 │          0.352 │    153.054 │ 1:500 thousand │  metropolitan area │
+└───────┴────────────────┴────────────┴────────────────┴────────────────────┘
+```
 
 See Also
 --------

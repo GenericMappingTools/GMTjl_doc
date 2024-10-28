@@ -102,6 +102,11 @@ Optional Arguments
     the *z* value used for formatting is in the 4th, not 3rd column.  Exceptionally, this option can
     be broken up in its individual pieces by dropping the **attrib** keyword. 
 
+- **outline** : -- *outline=true* **|** *outline="thk,color"*\
+    Plots an outline arround the text. By setting **outline=true** we plot a 1 point white outline around
+    the text. To control the outline pen use the form "thickness,color". For example **outline="3p,red"**
+    adds a 3 points thickness red outline.
+
 - **G** or **fill** : -- *fill=color* **|** *fill=:c*\
     Sets the shade or color used for filling the text box [Default is no fill]. Alternatively, use **fill=:c** to plot
     the text and then use the text dimensions (and **clearance**) to build clip paths and turn clipping on. This clipping
@@ -198,6 +203,15 @@ To plot just the "Hello World" and let the program estimate the *region*, do
 ```julia
 using GMT
 text(["Hello World"], x=2.0, y=2.0, show=true)
+```
+\end{examplefig}
+
+A similar example but using the `outline` option to plot a 3 points green outline.
+
+\begin{examplefig}{}
+```julia
+using GMT
+text(["Hello World"], x=2.0, y=2.0, outline="3p,red", font=40, show=true)
 ```
 \end{examplefig}
 

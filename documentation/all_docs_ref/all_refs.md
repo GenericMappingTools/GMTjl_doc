@@ -55,6 +55,10 @@ its use requires resorting to the \myreflink{Monolithic} mode.
 | \myreflink{weather} | \myreflink{whereami} | \myreflink{wmsinfo} | \myreflink{wmsread} | \myreflink{wmstest} | \myreflink{worldrectgrid} | \myreflink{worldrectcoast} | \myreflink{worldrectangular} |
 | \myreflink{xyzw2cube} | \myreflink{yeardecimal} | \myreflink{zonal_stats} |  |  |  |  |  |
 
+## Solids functions
+
+{{ generate_tablerefs solids}}
+
 
 ## GDAL utility functions
 

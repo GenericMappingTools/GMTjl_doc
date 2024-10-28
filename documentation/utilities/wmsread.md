@@ -15,13 +15,30 @@ Read the `layer` number provided by the service from which the `wms` type was cr
    both of these forms are allowed: `layer=3` or `layer="Invented layer name"`
 
 ### `kwargs` is the keywords/values pairs used to set
-- `region | limits`: The region limits. This can be a Tuple or Array with 4 elements defining the `(xmin, xmax, ymin, ymax)`
-   or a string defining the limits in all ways that GMT can recognize. When the layer has the data projected, we can
-   a Tuple or Array with 3 elements `(lon0, lat0, width)`, where first two set the center of a square in geographical
-   coordinates and the third (`width`) is the width of that box in meters.
+- `region | limits`: The region limits. Options are:
+   - A Tuple or Array with 4 elements defining the `(xmin, xmax, ymin, ymax)` or a string defining the
+     limits in all ways that GMT can recognize.
+
+   - When the layer has the data projected, we can pass a Tuple or Array with 3 elements `(lon0, lat0, width)`,
+     where first two set the center of a square in geographical coordinates and the third (`width`) is the
+     width of that box in meters.
+
+   - A ``mosaic`` tile name in the form ``X,Y,Z`` or a quadtree. Example: ``region="7829,6374,14"``. See the ``mosaic``
+     function manual for more information. This form also sets the default cellsize for that tile. NOTE:
+     this is a geographical coordinates only that implicitly sets ``geog=true``. See below on how to change
+     the default resolution.
 
 - `cellsize | pixelsize | resolution | res`: Sets the requested cell size in meters [default]. Use a string appended with a 'd'
    (e.g. `resolution="0.001d"`) if the resolution is given in degrees. This way works only when the layer is in geogs.
+
+- `zoom or refine`: When the region is derived from a ``mosaic`` tile name, the default is to get an image with 256 columns
+   and _n_ rows where _n_ depends on latitude. So, either the area is large and consequently the resolution is low, or
+   the inverse (small area and resolution is high). To change this status, use the `zoom` or `refine` options.
+   - `zoom`: an integer >= 1 that for each increment duplicates the base resolution by 2. _e.g._, `zoom=2`
+      quadruplicates the default resolution. This option is almost redundant with the `refine`, but is offered
+      for consistency with the ``mosaic`` function.
+   - `refine`: an integer >= 2 multiplication factor that is used to increment the resolution by factor. _e.g._, `refine=2`
+      duplicates the image resolution.
 
 - `size`: Alternatively to the the `cellsize` use this option, a tuple or array with two elements, to specify
    the image dimensions. Example, `size=(1200, 100)` to get an image with 1200 rows and 100 columns.

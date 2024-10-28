@@ -6,7 +6,7 @@ The GMTgrid type is how grids, (geo)referenced or not, comunicate in/out with th
 They implement the AbstractArray interface.
 
 ```julia
-type GMTgrid{T<:Real,N} <: AbstractArray{T,N}      # The type holding a local header and data of a GMT grid
+struct GMTgrid{T<:Real,N} <: AbstractArray{T,N}      # The type holding a local header and data of a GMT grid
     proj4::String                      # Projection string in PROJ4 syntax (Optional)
     wkt::String                        # Projection string in WKT syntax (Optional)
     epsg::Int                          # EPSG code
@@ -39,7 +39,7 @@ end
 ## Image type
 
 ```julia
-type GMTimage{T<:Unsigned, N} <: AbstractArray{T,N}   # The type holding a local header and data of a GMT image
+struct GMTimage{T<:Unsigned, N} <: AbstractArray{T,N}   # The type holding a local header and data of a GMT image
     proj4::String              # Projection string in PROJ4 syntax (Optional)
     wkt::String                # Projection string in WKT syntax (Optional)
     epsg::Int                  # EPSG code
@@ -67,7 +67,7 @@ end
 ## Dataset type
 
 ```julia
-type GMTdataset{T<:Real, N} <: AbstractArray{T,N}
+struct GMTdataset{T<:Real, N} <: AbstractArray{T,N}
     data::Array{T,N}           # Mx2 Matrix with segment data
     ds_bbox::Vector{Float64}   # Global BoundingBox (for when there are many segments)
     bbox::Vector{Float64}      # Segment BoundingBox
@@ -86,7 +86,7 @@ end
 ## CPT type
 
 ```julia
-type GMTcpt
+struct GMTcpt
     colormap::Array{Float64,2} # Mx3 matrix equal to the first three columns of cpt
     alpha::Array{Float64,1}    # Vector of alpha values. One for each color.
     range::Array{Float64,2}    # Mx2 matrix with z range for each slice
@@ -106,10 +106,26 @@ end
 ## Postscript type
 
 ```julia
-type GMTps
+struct GMTps
     postscript::String         # Actual PS plot (text string)
     length::Int                # Byte length of postscript
     mode::Int                  # 1 = Has header, 2 = Has trailer, 3 = Has both
     comment::Vector{String}    # Cell array with any comments
+end
+```
+
+## Face-Vertices type
+
+```julia
+struct GMTfv{T<:AbstractFloat} <: AbstractMatrix{T}
+	verts::AbstractMatrix{T}    # Mx3 Matrix with the data vertices
+	faces::Vector{<:AbstractMatrix{<:Integer}}  # A vector of matrices with the faces. Each row is a face
+	faces_view::Vector{Matrix{Int}}             # A subset of `faces` with only the visible faces from a certain perspective
+	bbox::Vector{Float64}       # The vertices BoundingBox
+	zscale::Float64             # A multiplicative factor to scale the z values
+	bfculling::Bool             # If culling of invisible faces is wished
+	proj4::String               # Projection string in PROJ4 syntax (Optional)
+	wkt::String                 # Projection string in WKT syntax (Optional)
+	epsg::Int                   # EPSG projection code (Optional)
 end
 ```

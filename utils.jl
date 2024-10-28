@@ -52,6 +52,13 @@ function hfun_utilfuns_reference()
 	join(map(html_docstring, names))
 end
 
+function hfun_solids_reference()
+	fid = open("documentation/solids.txt", "r")
+	names = readlines(fid)
+	close(fid)
+	join(map(html_docstring, names))
+end
+
 function hfun_supplements_reference()
 	fid = open("documentation/supplements.txt", "r")
 	names = readlines(fid)

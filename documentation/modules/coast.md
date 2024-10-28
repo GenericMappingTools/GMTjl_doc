@@ -118,6 +118,12 @@ painted and no land fill is set then the land-areas will be transparent. A map p
    equivalent of the `borders` and `rivers` form **shore=(level,pen)** is not possible here because the parser cannot
    tell if `shore=(2,:red)` means plot *level=2* in red or all levels with a line thicknes of 2 points and color `red`. 
 
+- **Z** : -- *Z=true* **|** *Z=grid*\
+   Add a third column to the **dump** option (**Z** is ignored if **dump** is not set). This third column will be filled
+   with zeros when **Z=true** or it interpolates the grid _grid_ (a file name or a \myreflink{GMTgrid} object) with
+   \myreflink{grdrack} at the locations of the coastline. This is particularly useful if one wants to drape a coastline
+   on top of a \myreflink{grdview} plot.
+
 \textinput{common_opts/opt_X}
 
 \textinput{common_opts/opt_Y}
