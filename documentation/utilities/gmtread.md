@@ -55,7 +55,7 @@ Specify data type (with *type*=true, e.g. `img=true`). Choose among:
 
   If file is an image `layer` can be a 1 or a 1x3 array (to read a RGB image). Not that in this later case
   bands do not need to be contiguous. A `band=[1,5,2]` composes an RGB out of those bands. See more at
-  [Modifiers for COARDS-compliant netCDF files](https://docs.generic-mapping-tools.org/latest/cookbook/features.html#modifiers-for-cf)
+  [Modifiers for COARDS-compliant netCDF files](https://docs.generic-mapping-tools.org/latest/reference/features.html#modifiers-for-cf)
   but note that we use **1 based** indexing here.
 
   Use ``layers=:all`` to read all levels of a 3D cube netCDF file.

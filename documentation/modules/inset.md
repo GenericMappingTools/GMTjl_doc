@@ -63,7 +63,7 @@ Optional Arguments
 - **F** or **box** : -- *box=(clearance=val, fill=color, inner=true, pen=pen, rounded=true, shaded=XX)*\
     Without further options, draws a rectangular border around the map inset using `MAP_FRAME_PEN`. The following
     modifiers can be appended to |-F|, with additional explanation and examples provided in the
-    [The background panel](https://docs.generic-mapping-tools.org/dev/cookbook/features.html#background-panel)
+    [The background panel](https://docs.generic-mapping-tools.org/dev/reference/features.html#background-panel)
     cookbook section:
 
     - **clearance=val** where *val* is either *gap* or *(xgap,ygap)*, or *(lgap,rgap,bgap,tgap)* where these items are uniform, separate in x- and y-direction, or individual side spacings between the map embellishment and the border for each side.

@@ -93,14 +93,14 @@ Optional Arguments
 - **G** or **truncate** : -- *truncate=(zlo,zhi)*\
     Truncate the incoming CPT so that the lowest and highest z-levels are to *zlo* and *zhi*. If one of these
     equal NaN then we leave that end of the CPT alone. The truncation takes place before any resampling.
-    See also [Manipulating CPTs](https://docs.generic-mapping-tools.org/dev/cookbook/features.html#manipulating-cpts)
+    See also [Manipulating CPTs](https://docs.generic-mapping-tools.org/dev/reference/features.html#manipulating-cpts)
 
 - **I** or **inverse** or **reverse** : -- *inverse=true* **|** *inverse=:z*\
     Reverse the sense of color progression in the master CPT. Also exchanges the foreground and background colors,
     including those specified by the parameters `COLOR_BACKGROUND` and `COLOR_FOREGROUND`. Use **inverse=:z** to
     reverse the sign of z-values in the color table. Note that this change of *z*-direction happens before **truncate**
     and **range** values are used so the latter much be compatible with the changed *z*-range. See also
-    [Manipulating CPTs](https://docs.generic-mapping-tools.org/dev/cookbook/features.html#manipulating-cpts)
+    [Manipulating CPTs](https://docs.generic-mapping-tools.org/dev/reference/features.html#manipulating-cpts)
 
 - **M** or **overrule_bg** : -- *overrule_bg=true*\
     Overrule background, foreground, and NaN colors specified in the master CPT with the values of the parameters

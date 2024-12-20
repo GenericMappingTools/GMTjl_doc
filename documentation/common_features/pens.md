@@ -80,5 +80,7 @@ those guesses by using the `markersize`, `markecolor`, `markerline` options of t
 
 In addition to these pen settings there are several PostScript settings that can affect the appearance of lines.
 These are controlled via the GMT defaults settings `PS_LINE_CAP`, `PS_LINE_JOIN`, and `PS_MITER_LIMIT`.
-See the end of the GMT CookBook section on [Specifying pen attributes](https://docs.generic-mapping-tools.org/latest/cookbook/features.html#specifying-pen-attributes)
+See the end of the GMT CookBook section on [Specifying pen attributes](https://docs.generic-mapping-tools.org/latest/reference/features.html#specifying-pen-attributes)
 for a visual display on the effect of changing these defaults.
+
+Finaly, lines can be terminated with arrows, See \myreflink{Vector attributes}

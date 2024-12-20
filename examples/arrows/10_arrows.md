@@ -119,6 +119,46 @@ showfig()
 ```
 \end{examplefig}
 
+## Cartesian, circular, and geographic vectors
+
+Plot Cartesian, circular, and geographic vectors. This [example](https://www.pygmt.org/dev/gallery/lines/vector_styles.html)
+was picked from the PyGMT gallery.
+
+\begin{examplefig}{}
+```julia
+using GMT
+coast(region=[-127, -64, 24, 53], proj=:merc, borders=1, area=4000, shore=true)
+
+# Left: plot 12 Cartesian vectors with different lengths
+x = fill(-116, 12);               # x vector coordinates
+y = linspace(33.5, 42.5, 12);     # y vector coordinates
+direction = zeros(12);            # direction of vectors (horizontal)
+length = linspace(0.5, 2.4, 12);  # length of vectors
+arrows!([x y direction length], pen=(1,:red),
+        paper=true, arrow=(len="0.2", stop=true, fill=:red, angle=40, shape=:triang))
+text!(text="CARTESIAN", x=-112, y=44.2, font="13p,Helvetica-Bold,red")
+
+# Middle: plot 7 math angle arcs with different radii
+num = 7
+x, y = fill(-95, 7), fill(37, 7)
+radius = 1.8 .- 0.2 * (0:num-1)
+startdir = fill(90, num)
+stopdir  = 180 .+ 40 * (0:num-1)
+data = [x y radius startdir stopdir]
+plot!(data, marker=(matang=true, arrow=(length=0.5, stop=true)), fill=:red3, pen="1.5,black")
+text!(text="CIRCULAR", x=-95, y=44.2, font="13p,Helvetica-Bold,black")
+
+# Right: plot geographic vectors using endpoints
+NYC = [-74.0060 40.7128]
+CHI = [-87.6298 41.8781]
+SEA = [-122.3321 47.6062]
+NO = [-90.0715 29.9511]
+plot!([NYC CHI; NYC SEA; NYC NO], pen="1.0,blue",
+      geovec=(length=0.5, stop=true, endpoint=true, fill=:blue, angle=30, pen="1p,blue"))
+text!(text="GEOGRAPHIC", x=-74.5, y=44.2, font="13p,Helvetica-Bold,blue", show=1)
+```
+\end{examplefig}
+
 ## Quivers
 
 A (nicer looking) Matlab quiver plot example. To fully reproduce the Matlab example we also use the extremely

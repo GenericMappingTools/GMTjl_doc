@@ -39,7 +39,7 @@ Optional Arguments
 - **T** or **toggle** : *toggle=true*\
    Translate between grid and pixel registration; if the input is grid-registered, the output will be
    pixel-registered and vice-versa. This is a *destructive* grid change; see 
-   [Switching registrations](https://docs.generic-mapping-tools.org/dev/cookbook/options.html#switch-registrations).
+   [Switching registrations](https://docs.generic-mapping-tools.org/dev/reference/options.html#switch-registrations).
 
 \textinput{common_opts/opt_V}
 

@@ -68,7 +68,7 @@ Normally, **grdedit** will overwrite the existing grid with the modified grid.
     Make necessary changes in the header to convert a gridline-registered grid to a pixel-registered grid,
     or vice-versa. Basically, gridline-registered grids will have their domain extended by half the x- and
     y-increments whereas pixel-registered grids will have their domain shrunk by the same amount. This is a
-    *non-destructive* grid change; see [Switching registrations](https://docs.generic-mapping-tools.org/latest/cookbook/options.html#switch-registrations).
+    *non-destructive* grid change; see [Switching registrations](https://docs.generic-mapping-tools.org/latest/reference/options.html#switch-registrations).
 
 \textinput{common_opts/opt_V}
 

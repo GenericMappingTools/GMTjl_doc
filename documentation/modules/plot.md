@@ -25,13 +25,13 @@ Parameters
    Fills the plotting canvas with a backround image. That image may come from a file (*e.g.* **bg="cute.png"**) or
    from a predefined function name. Possible names are: *akley, eggs, circle, parabola, rosenbrok, sombrero, x, y, xy, x+y* (see also \myreflink{Plot surfaces}). In the forms **bg=img** and **bg=grd**, the *img* and *grd* stand for a
    \myreflink{Image type} and a \myreflink{Grid type} object respectively. Image types can have associated a color map
-   (if they do not see the \myreflink{image_cpt!} on how to assign one) but grid type do not so we need to provide that
+   (if they do not, see the \myreflink{image_cpt!} on how to assign one) but a grid type do not so we need to provide that
    information in case the *turbo* default is not intended. To assign a colormap the **bg** argument must be a two elements
    tuple, where first element is any of *funname|img|grd* and the second a colormap name (a CPT) or a \myreflink{CPT type}
    object (see also \myreflink{makecpt}). To revert the sense of the color progression prefix the colormap name or of
    the predefined function with a '-'. Example: `plot(rand(8,2), bg=(:sombrero, "-magma"))`. Note that the images,
    either generated or read from file, will normally be deformed to fill the entire area selected with the **region**
-   option. If that is not wished or if the image coordinates are intended to be used than this is not the right
+   option. If that is not wished or if the image coordinates are intended to be used, then this is not the right
    option but instead you should \myreflink{grdimage} followed plot call(s). Another point to notice is that the
    \myreflink{frame} option also has a *fill* or *bg|background* option that also fills the canvas but it does it using
    a constant color by replicating a pattern (that can be an image too) and this has a quite different result.
@@ -153,7 +153,7 @@ Parameters
     - **decorated**    i.e., lines with symbols along them. See \myreflink{Decorated lines}
 
 - **csymbol** or **cmarker** or **custom_symbol** or **custom_marker** : -- *csymbol=(name=symbname, size=val, unit=unity)*\
-   Use one the GMT's [custom symbols](https://docs.generic-mapping-tools.org/dev/cookbook/custom-symbols.html#custom-symbols)
+   Use one the GMT's [custom symbols](https://docs.generic-mapping-tools.org/dev/reference/custom-symbols.html#custom-symbols)
    where *symbname* is the lowercase name of any of those in the table, plus `arrow` or `ski_alpine` (these are from GMT.jl).
 
 - **W** or **pen=pen**\

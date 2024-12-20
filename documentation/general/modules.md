@@ -123,7 +123,7 @@ tuple-in-a-tuple because here we need also to specify the political boundary lev
 So, in summary, a *pen* attribute may be set in three different ways:
 
 1. With a text string that follows the *width*, *color*, *style* specs as explained in
-   [`Specifying pen attributes`](https://docs.generic-mapping-tools.org/latest/cookbook/features.html#wpen-attrib)
+   [`Specifying pen attributes`](https://docs.generic-mapping-tools.org/latest/reference/features.html#wpen-attrib)
 
 2. By using the **lw** or **linewidth** keyword where its value is either a number, meaning the
    line thickness in points, or a string like the *width* above; the color is set with the
