@@ -457,6 +457,12 @@
 </div>
 <div class="doc-content"><pre><code>FV &#61; cube&#40;r&#61;1.0; radius&#61;1.0, origin&#61;&#40;0.0, 0.0, 0.0&#41;&#41;</code></pre>
 <p>Create a cube mesh with radius <code>r</code>. </p>
+<h3>Args</h3>
+<ul>
+<li><p><code>r</code>: the radius of the enclosing sphere.</p>
+</li>
+</ul>
+<h3>Kwargs</h3>
 <ul>
 <li><p><code>radius</code>: the keyword <code>radius</code> is an alternative to the positional argument <code>r</code>.</p>
 </li>
@@ -509,6 +515,12 @@
 </div>
 <div class="doc-content"><pre><code>FV &#61; dodecahedron&#40;r&#61;1.0; radius&#61;1.0, origin&#61;&#40;0.0, 0.0, 0.0&#41;&#41;</code></pre>
 <p>Create an dodecahedron mesh with radius <code>r</code>. </p>
+<h3>Args</h3>
+<ul>
+<li><p><code>r</code>: the radius of the enclosing sphere.</p>
+</li>
+</ul>
+<h3>Kwargs</h3>
 <ul>
 <li><p><code>radius</code>: the keyword <code>radius</code> is an alternative to the positional argument <code>r</code>.</p>
 </li>
@@ -536,9 +548,14 @@
 <ul>
 <li><p><code>base</code>: The base height of the 2D shape to extrude. Default is 0. Ignored if the shape is a 3D polygon.</p>
 </li>
-<li><p><code>closed</code>: If true &#40;the default&#41;, close the shapre at top and bottom.</p>
+<li><p><code>closed</code>: If true &#40;the default&#41;, close the shape at top and bottom.</p>
 </li>
 </ul>
+<h3>Example</h3>
+<p>Extrude the Swisserland</p>
+<pre><code class="language-julia">	Dsw &#61; coast&#40;M&#61;true, DCW&#61;&#40;country&#61;:CH, file&#61;:ODS&#41;&#41;;	# Get the Swiss border
+	FV &#61; extrude&#40;Dsw, 0.2&#41;
+	viz&#40;FV&#41;</code></pre>
 
 
 </div>
@@ -548,12 +565,16 @@
 <a href="#fv2fv">fv2fv</a>
 </div>
 <div class="doc-content"><pre><code>FV &#61; fv2fv&#40;F, V; proj&#61;&quot;&quot;, proj4&#61;&quot;&quot;, wkt&#61;&quot;&quot;, epsg&#61;0&#41; -&gt; GMTfv</code></pre>
-<p>Create a FacesVerices object from a matrix of faces indices and another matrix of vertices &#40;a Mx3 matrix&#41;.</p>
+<p>Create a FacesVertices object from a matrix of faces indices and another matrix of vertices &#40;a Mx3 matrix&#41;.</p>
+<h3>Args</h3>
 <ul>
-<li><p><code>F</code>:  A matrix of faces indices or a vector of matrices when defining more than one body.</p>
+<li><p><code>F</code>:  A matrix of faces indices or a vector of matrices when defining bodies made of multiple  surfaces &#40;cylinders for example&#41;.</p>
 </li>
 <li><p><code>V</code>:  A Mx3 matrix of vertices.</p>
 </li>
+</ul>
+<h3>Kargs</h3>
+<ul>
 <li><p><code>proj</code> or <code>proj4</code>:  A proj4 string for setting the Coordinate Referencing System</p>
 </li>
 <li><p><code>wkt</code>:  A WKT SRS.</p>
@@ -587,35 +608,36 @@ viz&#40;FV, cmap&#61;makecpt&#40;T&#61;&quot;0/1&quot;, cmap&#61;&quot;darkgreen
 <div class="doc-header" id="grid2tri">
 <a href="#grid2tri">grid2tri</a>
 </div>
-<div class="doc-content"><pre><code>D &#61; grid2tri&#40;G, G2&#61;nothing; bottom&#61;false, downsample&#61;0, level&#61;false, ratio&#61;0.01,
+<div class="doc-content"><pre><code>D &#61; grid2tri&#40;G, G2&#61;nothing; bottom&#61;false, downsample&#61;0, isbase&#61;false, ratio&#61;0.01,
              thickness&#61;0.0, wall_only&#61;false, top_only&#61;false, geog&#61;false&#41;</code></pre>
-<p>Triangulates the surface defined by the grid <code>G</code>, and optionally the bottom surface <code>G2</code>, plus the vertical wall between them, or between <code>G</code> and constant level or a constant thickness. Optionally computes only the vertical wall or the full closed bodie &#40;that is, including the bottom surface&#41;.</p>
+<p>Triangulate the surface defined by the grid <code>G</code>, and optionally the bottom surface <code>G2</code>.</p>
+<p>Other than the triangulation, this function computes also a vertical wall between <code>G</code> and <code>G2</code>, or between <code>G</code> and constant level or a constant thickness. Optionally, computes only the vertical wall or the full closed bodie &#40;that is, including the bottom surface&#41;.</p>
 <p>The output of this function can be used in &#36;plot3d&#36; to create 3D views of volume layer.</p>
 <p>NOTE: The <code>G</code> grid should have a <em>out-skirt</em> of NaNs, otherwise just use &#36;grdview&#36; with the &#36;N&#36; option.</p>
-<h3>Parameters</h3>
+<h3>Args</h3>
 <ul>
 <li><p><code>G</code>: A GMTgrid object or a grid file name representing the surface to be triangulated.</p>
 </li>
 <li><p><code>G2</code>: An optional second grid &#40;or file name&#41; representing the bottom surface of the layer. Using this option makes the <code>thickness</code> option be ignored.</p>
 </li>
 </ul>
-<h3>Keywords</h3>
+<h3>Kwargs</h3>
 <ul>
 <li><p><code>bottom</code>: If true, fully close the body with the bottom surface. By default we don&#39;t do this because that surface is often not visible whem elevation view angle is positive. But we may want this if later we want to save this mesh in STL for importing in a 3D viewer software.</p>
 </li>
-<li><p><code>layer</code>: If true, we interpret <code>thickness</code> option as meaning a contant level value. That is, the vertical wall is computed from the sides of <code>G</code> and a constant level provided via the <code>thickness</code> option.</p>
-</li>
 <li><p><code>downsample</code>: If the grid is of too high resolution, files here get big and operations slow down with this and later figures may not benefit much. In those cases it is a good idea to downsample the grid. The  <code>downsample</code> option accepts an integer reduction factor. <code>downsample&#61;2</code> will shrink the grid by a factor two in each dimention, <code>downsample&#61;3</code> will shrink it by a factor three etc.</p>
 </li>
-<li><p><code>geog</code>: If the <code>G</code> grid has no referencing information but you know that it is in geographical coordinates set <code>geog&#61;true</code>. This information will be added to the triangulation output and is usefull for plotting purposes.</p>
+<li><p><code>isbase</code>: If true, we interpret <code>thickness</code> option as meaning a contant level value. That is, the vertical wall is computed from the sides of <code>G</code> and a constant level provided via the <code>thickness</code> option.</p>
 </li>
 <li><p><code>ratio</code>: A slightly tricky parameter that determines how close the computed concave hull is to the true concave hull. A value smaller to 0.005 seems to do it but we normally don&#39;t want that close because the vertical wall obtained from this will be too jagged. The default value of 0.01 seems to work well to get a smoother concave hull but one that still fits the objective of getting a nice vertical wall. May need tweaking for specific cases.</p>
 </li>
 <li><p><code>thickness</code>: A scalar representing the layer thickness in the same units as those of the input grid. NOTE: this option is ignored when two grids are passed in input.</p>
 </li>
+<li><p><code>wall_only</code>: If true, only the vertical wall  between <code>G</code> and <code>G2</code>, or <code>G</code> &#43; <code>thickness</code> is computed and returned.</p>
+</li>
 <li><p><code>top_only</code>: If true, only the triangulation of <code>G</code>is returned.</p>
 </li>
-<li><p><code>wall_only</code>: If true, only the vertical wall  between <code>G</code> and <code>G2</code>, or <code>G</code> &#43; <code>thickness</code> is computed and returned.</p>
+<li><p><code>geog</code>: If the <code>G</code> grid has no referencing information but you know that it is in geographical coordinates set <code>geog&#61;true</code>. This information will be added to the triangulation output and is usefull for plotting purposes.</p>
 </li>
 </ul>
 <h3>Returns</h3>
@@ -630,6 +652,12 @@ viz&#40;FV, cmap&#61;makecpt&#40;T&#61;&quot;0/1&quot;, cmap&#61;&quot;darkgreen
 </div>
 <div class="doc-content"><pre><code>FV &#61; icosahedron&#40;r&#61;1.0; radius&#61;1.0, origin&#61;&#40;0.0, 0.0, 0.0&#41;&#41;</code></pre>
 <p>Create an icosahedron mesh with radius <code>r</code>. </p>
+<h3>Args</h3>
+<ul>
+<li><p><code>r</code>: the radius of the enclosing sphere.</p>
+</li>
+</ul>
+<h3>Kwargs</h3>
 <ul>
 <li><p><code>radius</code>: the keyword <code>radius</code> is an alternative to the positional argument <code>r</code>.</p>
 </li>
@@ -646,6 +674,12 @@ viz&#40;FV, cmap&#61;makecpt&#40;T&#61;&quot;0/1&quot;, cmap&#61;&quot;darkgreen
 </div>
 <div class="doc-content"><pre><code>FV &#61; octahedron&#40;r&#61;1.0; radius&#61;1.0, origin&#61;&#40;0.0, 0.0, 0.0&#41;&#41;</code></pre>
 <p>Create an octahedron mesh with radius <code>r</code>. </p>
+<h3>Args</h3>
+<ul>
+<li><p><code>r</code>: the radius of the enclosing sphere.</p>
+</li>
+</ul>
+<h3>Kwargs</h3>
 <ul>
 <li><p><code>radius</code>: the keyword <code>radius</code> is an alternative to the positional argument <code>r</code>.</p>
 </li>
@@ -699,6 +733,12 @@ viz&#40;FV, replicate&#61;&#40;centers&#61;rand&#40;10,3&#41;*10, scales&#61;0.1
 <div class="doc-content"><pre><code>FV &#61; sphere&#40;r&#61;1; radius&#61;1.0, n&#61;1, center&#61;&#40;0.0, 0.0, 0.0&#41;&#41;</code></pre>
 <p>Create a triangulated geodesic sphere. </p>
 <p>Generates a geodesic sphere triangulation based on the number of refinement iterations <code>n</code> and the radius <code>r</code>. Geodesic spheres &#40;aka Buckminster-Fuller spheres&#41; are triangulations of a sphere that have near uniform edge lenghts.  The algorithm starts with a regular icosahedron. Next this icosahedron is refined <code>n</code> times, while nodes are pushed to a sphere surface with radius <code>r</code> at each iteration.</p>
+<h3>Args</h3>
+<ul>
+<li><p><code>r</code>: the radius of the sphere.</p>
+</li>
+</ul>
+<h3>Kwargs</h3>
 <ul>
 <li><p><code>radius</code>: the keyword <code>radius</code> is an alternative to the positional argument <code>r</code>.</p>
 </li>
@@ -719,6 +759,12 @@ viz&#40;FV, replicate&#61;&#40;centers&#61;rand&#40;10,3&#41;*10, scales&#61;0.1
 </div>
 <div class="doc-content"><pre><code>FV &#61; tetrahedron&#40;r&#61;1.0; radius&#61;1.0, origin&#61;&#40;0.0, 0.0, 0.0&#41;&#41;</code></pre>
 <p>Create a tetrahedron mesh with radius <code>r</code>. </p>
+<h3>Args</h3>
+<ul>
+<li><p><code>r</code>: the radius of the enclosing sphere.</p>
+</li>
+</ul>
+<h3>Kwargs</h3>
 <ul>
 <li><p><code>radius</code>: the keyword <code>radius</code> is an alternative to the positional argument <code>r</code>.</p>
 </li>
@@ -735,6 +781,7 @@ viz&#40;FV, replicate&#61;&#40;centers&#61;rand&#40;10,3&#41;*10, scales&#61;0.1
 </div>
 <div class="doc-content"><pre><code>FV &#61; torus&#40;; r&#61;2.0, R&#61;5.0, center&#61;&#40;0.0, 0.0, 0.0&#41;, nx&#61;100, ny&#61;50&#41; -&gt; GMTfv</code></pre>
 <p>Create a torus mesh with radius <code>r</code>. </p>
+<h3>Kwargs</h3>
 <ul>
 <li><p><code>r</code>: the inner radius of the torus.</p>
 </li>
@@ -755,16 +802,30 @@ viz&#40;FV, replicate&#61;&#40;centers&#61;rand&#40;10,3&#41;*10, scales&#61;0.1
 <div class="doc-header" id="surf2fv">
 <a href="#surf2fv">surf2fv</a>
 </div>
-<div class="doc-content"><pre><code>FV &#61; surf2fv&#40;X::Matrix&#123;T&#125;, Y::Matrix&#123;T&#125;, Z::Matrix&#123;T&#125;; proj&#61;&quot;&quot;, proj4&#61;&quot;&quot;, wkt&#61;&quot;&quot;, epsg&#61;0&#41; -&gt; GMTfv</code></pre>
-<p>Create a creates a three-dimensional FacesVerices object suitable for 3D plotting either of closed bodies or 3D surfaces. The values in matrix Z represent the heights above a grid in the x-y plane defined by X and Y</p>
+<div class="doc-content"><pre><code>FV &#61; surf2fv&#40;X::Matrix&#123;T&#125;, Y::Matrix&#123;T&#125;, Z::Matrix&#123;T&#125;; type&#61;:tri, bfculling&#61;true,
+             proj&#61;&quot;&quot;, proj4&#61;&quot;&quot;, wkt&#61;&quot;&quot;, epsg&#61;0, top&#61;nothing, bottom&#61;nothing&#41; -&gt; GMTfv</code></pre>
+<p>Create a three-dimensional FacesVertices object.</p>
+<p>This function is suitable for 3D plotting either of closed bodies or 3D surfaces. The values in matrix Z represent the heights above a grid in the x-y plane defined by X and Y</p>
+<h3>Args</h3>
 <ul>
 <li><p><code>X,Y,Z</code>: Three matrices of the same size and type float.</p>
 </li>
-<li><p><code>proj</code> or <code>proj4</code>:  A proj4 string for setting the Coordinate Referencing System</p>
+</ul>
+<h3>Kwargs</h3>
+<ul>
+<li><p><code>type</code>: The face type. Either &#36;:tri&#36; &#40;the default&#41; or &#36;:quad&#36; for triangular or quadrangular faces.</p>
 </li>
-<li><p><code>wkt</code>: A WKT SRS.</p>
+<li><p><code>bfculling</code>: Boolean that specifies if culling of invisible faces is wished &#40;default is &#36;true&#36;&#41;</p>
 </li>
-<li><p><code>epsg</code>: Same as <code>proj</code> but using an EPSG code.</p>
+<li><p><code>proj</code> or <code>proj4</code>:  A proj4 string for setting the Coordinate Referencing System &#40;optional&#41;.</p>
+</li>
+<li><p><code>wkt</code>: A WKT SRS &#40;optional&#41;.</p>
+</li>
+<li><p><code>epsg</code>: Same as <code>proj</code> but using an EPSG code &#40;optional&#41;.</p>
+</li>
+<li><p><code>top</code>: A Faces 1 row matrix with the top of the body &#40;optional&#41;. Note that we have to impose that this  is an already created faces matrix because inside this function we no longer know what the order of  the &#36;X&#36; and &#36;Y&#36; matrices represent.</p>
+</li>
+<li><p><code>bottom</code>: A Faces 1 row matrix with the bottom of the body &#40;optional&#41;.</p>
 </li>
 </ul>
 <h3>Example</h3>
@@ -779,8 +840,8 @@ viz&#40;FV&#41;</code></pre>
 
 <div class="page-foot">
   <div class="copyright">
-    &copy; GMT.jl. Last modified: October 28, 2024. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
-      <p>These docs were autogenerated using GMT: v1.20.0</p>
+    &copy; GMT.jl. Last modified: December 20, 2024. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+      <p>These docs were autogenerated using GMT: v1.22.2</p>
   </div>
 </div>
 </div><!-- CONTENT ENDS HERE -->
@@ -793,7 +854,6 @@ viz&#40;FV&#41;</code></pre>
           <!-- end custom footer snippets -->
           <div class="page__footer-follow">
             <ul class="social-icons">
-              <li><a href="https://twitter.com/gmt_dev" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
               <li><a href="https://github.com/GenericMappingTools/GMT.jl" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
             </ul>
           </div>
