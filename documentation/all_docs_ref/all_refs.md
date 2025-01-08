@@ -59,6 +59,10 @@ its use requires resorting to the \myreflink{Monolithic} mode.
 
 {{ generate_tablerefs solids}}
 
+## IP functions
+
+{{ generate_tablerefs improc}}
+
 
 ## GDAL utility functions
 
