@@ -33,8 +33,8 @@ Before diving more in the way options may be transmitted into the module, we hav
 happens with the output image file. By not directly specifying any format we are using the default
 output image format which is PNG (actually, except for *grdimage -A*, the only format that
 *GMT* can write PostScript). But we can select other formats by using the *fmt* keyword, for example
-*fmt="jpg"* or *fmt=:pdf*. In such cases, the *ghostscript* program (you need to have
-it installed) will take care of converting the *ps* file into the selected format.
+*fmt="jpg"* or *fmt=:pdf*. In such cases, the *ghostscript* program (that gets installed by default)
+will take care of converting the *ps* file into the selected format.
 
 When runing from Jupyter notebooks one does not need to worry about the image format. In fact the only
 allowed is *png* but that is taken care automatically, meaning that any *fmt=xxx* will be ignored.
@@ -75,7 +75,7 @@ one is the part created by *grdimage*, which is complemented by the color scale 
 keyword. If our example had more layers, we would have used the same rule: second and on layers use the
 **!** construct and the last is signaled by *show=true*.
 
-By defaultn the image files are written into *tmp* system directory under the name *GMTjl_tmp.ps* (remember
+By default the image files are written into *tmp* system directory under the name *GMTjl_tmp.ps* (remember
 *PostScript* is the default format) and *GMTjl_tmp.xxx* when user specifies a different format with the
 *fmt* keyword. It's one of this files that shows up when *show=true* is used. But we may want to save the
 image file permanently under a different name and location. For that use the keyword *savefig=name*, where

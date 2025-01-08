@@ -54,9 +54,9 @@ imshow(Gavg)
 ```
 
 Here we introduced also the use of a module that does not exist in GMT, \myreflink{imshow}, but one that
-is in fact a mockup made with \myreflink{grdimage} and \myreflink{grdview} and with a set of defaults and
-guesswork that allows quick and easy display of grids and images. It also opens the door for a more vast
-ensemble of tools that go beyond the use of pure GMT syntax.
+is in fact a mockup made with \myreflink{grdimage}, \myreflink{grdview}, \myreflink{plot} and \myreflink{plot3d}
+and with a set of defaults and guesswork that allows quick and easy display of grids and images. It also
+opens the door for a more vast ensemble of tools that go beyond the use of pure GMT syntax.
 
 ## Case 2. You are a new GMT user or one that wants to use long verbose options
 

@@ -54,11 +54,11 @@ While GMT come with the world countries in its DCW data base, those countries po
 too high resolution for world maps and hence produce files unnecessarily, which also makes them slower
 to create. An alternative is to use a much lower resolution file that can be found
 [here](https://github.com/datasets/geo-countries/blob/master/data/countries.geojson) but whose
-download link is [here](https://github.com/datasets/geo-countries/raw/master/data/countries.geojson).
+download link is [here](https://github.com/datasets/geo-countries/raw/main/data/countries.geojson).
 And we can read it directly into GMT (and wait a bit while it gets downloaded).
 
 ```julia
-countries = gmtread("/vsicurl/https://github.com/datasets/geo-countries/raw/master/data/countries.geojson");
+countries = gmtread("/vsicurl/https://github.com/datasets/geo-countries/raw/main/data/countries.geojson");
 ```
 
 The country polygons have attributes like:
