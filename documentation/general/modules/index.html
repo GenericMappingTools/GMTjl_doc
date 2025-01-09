@@ -378,7 +378,8 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/solids">Solids functions</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/supplements">Supplements modules</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilfuns">Utility functions</a></div></li>
-<li><input class="collapse-toggle" id="menuitem-6-10" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-6-10"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/documentation/utilities">Utilities</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/ODE2ds">ODE2ds</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/improc">IP functions</a></div></li>
+<li><input class="collapse-toggle" id="menuitem-6-11" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-6-11"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/documentation/utilities">Utilities</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/ODE2ds">ODE2ds</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/ablines">ablines</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/append2fig">append2fig</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/blendimg">blendimg&#33;</a></div></li>
@@ -393,6 +394,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/delrows">delrows&#33;</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/df2ds">df2ds</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/doy2date">doy2date</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/fillsinks">fillsinks</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/gadm">gadm</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/geocoder">geocoder</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/geodetic2enu">geodetic2enu</a></div></li>
@@ -406,6 +408,8 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/image_alpha">image_alpha&#33;</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/image_cpt">image_cpt&#33;</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/imagesc">imagesc</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/imfill">imfill</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/imreconstruct">imreconstruct</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/imshow">imshow</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/ind2rgb">ind2rgb</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/info">info</a></div></li>
@@ -468,7 +472,7 @@
 <p>This command creates a map in PotScript file called <em>GMTjl_tmp.ps</em> and save it in your system&#39;s <em>tmp</em> directory. For comparison, the same command could have been written, using the classical one letter option syntax, as:</p>
 <pre><code class="language-julia">coast&#40;R&#61;&quot;g&quot;, J&#61;&quot;A300/30/6c&quot;, B&#61;&quot;g&quot;, D&#61;&quot;c&quot;, G&#61;&quot;navy&quot;&#41;</code></pre>
 <p>So, each module defines a set of aliases to the one letter options that are reported in each module man page.</p>
-<p>Before diving more in the way options may be transmitted into the module, we have to understand what happens with the output image file. By not directly specifying any format we are using the default output image format which is PNG &#40;actually, except for <em>grdimage -A</em>, the only format that <em>GMT</em> can write PostScript&#41;. But we can select other formats by using the <em>fmt</em> keyword, for example <em>fmt&#61;&quot;jpg&quot;</em> or <em>fmt&#61;:pdf</em>. In such cases, the <em>ghostscript</em> program &#40;you need to have it installed&#41; will take care of converting the <em>ps</em> file into the selected format.</p>
+<p>Before diving more in the way options may be transmitted into the module, we have to understand what happens with the output image file. By not directly specifying any format we are using the default output image format which is PNG &#40;actually, except for <em>grdimage -A</em>, the only format that <em>GMT</em> can write PostScript&#41;. But we can select other formats by using the <em>fmt</em> keyword, for example <em>fmt&#61;&quot;jpg&quot;</em> or <em>fmt&#61;:pdf</em>. In such cases, the <em>ghostscript</em> program &#40;that gets installed by default&#41; will take care of converting the <em>ps</em> file into the selected format.</p>
 <p>When runing from Jupyter notebooks one does not need to worry about the image format. In fact the only allowed is <em>png</em> but that is taken care automatically, meaning that any <em>fmt&#61;xxx</em> will be ignored.</p>
 <p>Note that we used either strings &#40;&quot;&quot;&#41; or symbols &#40;:&#41; to represent the format. Here the rule is we can use symbols for any string argument that can be safely written as a symbol. Example, this is valid &#61;:abc, but this is not &#61;:&#43;a &#40;apparently parser will try to add to <em>a</em>&#41;. The use of symbols may be preferred for a question of laziness &#40;less typing&#41;.</p>
 <p>The above example, however, does not use any input data &#40;<em>coast</em> knows how to find its own data&#41;. One way of providing it to modules that work on them is to send in a file name with the data to operate on. This example</p>
@@ -479,7 +483,7 @@ grdimage&#40;&quot;@tut_relief.nc&quot;, shade&#61;&quot;&#43;ne0.8&#43;a100&quo
 colorbar&#33;&#40;position&#61;&quot;jTC&#43;w5i/0.25i&#43;h&#43;o0/-1i&quot;, region&#61;&quot;@tut_relief.nc&quot;, color&#61;topo,
           axes&#61;&quot;y&#43;lm&quot;, fmt&#61;:jpg, show&#61;true&#41;</code></pre>
 <p>Here we use the <em>makecpt</em> command to compute a colormap object and used it as the value of the <em>color</em> keyword of both <em>grdimage</em> and <em>colorbar</em> modules. The final image is made up of two layers, the first one is the part created by <em>grdimage</em>, which is complemented by the color scale plot performed by <em>colorbar</em>. But since this was an appending operation we <strong>HAD</strong> to use the <strong>&#33;</strong> form. This form tells <em>GMT</em> to append to a previous initiated image. The image layer cake is finalized by the <em>show&#61;true</em> keyword. If our example had more layers, we would have used the same rule: second and on layers use the <strong>&#33;</strong> construct and the last is signaled by <em>show&#61;true</em>.</p>
-<p>By defaultn the image files are written into <em>tmp</em> system directory under the name <em>GMTjl_tmp.ps</em> &#40;remember <em>PostScript</em> is the default format&#41; and <em>GMTjl_tmp.xxx</em> when user specifies a different format with the <em>fmt</em> keyword. It&#39;s one of this files that shows up when <em>show&#61;true</em> is used. But we may want to save the image file permanently under a different name and location. For that use the keyword <em>savefig&#61;name</em>, where <em>name</em> is relative or full file name.</p>
+<p>By default the image files are written into <em>tmp</em> system directory under the name <em>GMTjl_tmp.ps</em> &#40;remember <em>PostScript</em> is the default format&#41; and <em>GMTjl_tmp.xxx</em> when user specifies a different format with the <em>fmt</em> keyword. It&#39;s one of this files that shows up when <em>show&#61;true</em> is used. But we may want to save the image file permanently under a different name and location. For that use the keyword <em>savefig&#61;name</em>, where <em>name</em> is relative or full file name.</p>
 <p>The examples above show also that we didn&#39;t completely get rid of the compact <em>GMT</em> syntax. For example the <em>shade&#61;&quot;&#43;ne0.8&#43;a100&quot;</em> in <em>grdimage</em> means that we are computing the shade using a normalized a cumulative Laplace distribution and setting the Sun direction from the 100 azimuth direction. For as much we would like to simplify that, it&#39;s just not possible for the time being. To access the &#40;very&#41; high degree of control that <em>GMT</em> provides one need to use its full syntax. As such, readers are redirected to the main <em>GMT</em> documentation to learn about the fine details of those options.</p>
 <p>Setting line and symbol attributes has received, however, a set of aliases. So, instead of declaring the pen line attributes like <em>-W0.5,blue,–</em>, one can use the aliases <em>lw&#61;0.5, lc&#61;&quot;blue&quot;, ls&#61;&quot;–&quot;</em>. An example would be:</p>
 <pre><code class="language-julia">plot&#40;collect&#40;1:10&#41;,rand&#40;10&#41;, lw&#61;0.5, lc&#61;:blue, ls&#61;&quot;--&quot;, marker&#61;:circle,
@@ -533,8 +537,8 @@ grdimage&#40;data&#61;G, intens&#61;I, J&#61;:merc, color&#61;C, B&#61;&quot;1 W
 grdview&#40;G, intens&#61;:&#43;, J&#61;:merc, zsize&#61;&quot;2i&quot;, view&#61;&#40;145,35&#41;, G&#61;&#40;Gr,Gg,Gb&#41;, Q&#61;:i, show&#61;1&#41;</code></pre>
 <div class="page-foot">
   <div class="copyright">
-    &copy; GMT.jl. Last modified: December 20, 2024. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
-      <p>These docs were autogenerated using GMT: v1.22.2</p>
+    &copy; GMT.jl. Last modified: January 09, 2025. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+      <p>These docs were autogenerated using GMT: v1.23.0</p>
   </div>
 </div>
 </div><!-- CONTENT ENDS HERE -->

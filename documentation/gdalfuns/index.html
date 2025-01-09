@@ -368,7 +368,8 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/solids">Solids functions</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/supplements">Supplements modules</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilfuns">Utility functions</a></div></li>
-<li><input class="collapse-toggle" id="menuitem-6-10" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-6-10"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/documentation/utilities">Utilities</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/ODE2ds">ODE2ds</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/improc">IP functions</a></div></li>
+<li><input class="collapse-toggle" id="menuitem-6-11" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-6-11"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/documentation/utilities">Utilities</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/ODE2ds">ODE2ds</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/ablines">ablines</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/append2fig">append2fig</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/blendimg">blendimg&#33;</a></div></li>
@@ -383,6 +384,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/delrows">delrows&#33;</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/df2ds">df2ds</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/doy2date">doy2date</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/fillsinks">fillsinks</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/gadm">gadm</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/geocoder">geocoder</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/geodetic2enu">geodetic2enu</a></div></li>
@@ -396,6 +398,8 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/image_alpha">image_alpha&#33;</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/image_cpt">image_cpt&#33;</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/imagesc">imagesc</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/imfill">imfill</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/imreconstruct">imreconstruct</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/imshow">imshow</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/ind2rgb">ind2rgb</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/info">info</a></div></li>
@@ -456,15 +460,21 @@
 <a href="#gdaltranslate">gdaltranslate</a>
 </div>
 <div class="doc-content"><pre><code>gdaltranslate&#40;indata, options&#61;String&#91;&#93;; dest&#61;&quot;/vsimem/tmp&quot;, kwargs...&#41;</code></pre>
-<p>Convert raster data between different formats and other operations also provided by the GDAL &#39;gdal_translate&#39; tool. Namely sub-region extraction and resampling. The <code>kwargs</code> options accept the GMT region &#40;-R&#41;, increment &#40;-I&#41;, target SRS &#40;-J&#41;. Any of the keywords <code>outgrid</code>, <code>outfile</code> or <code>save</code> &#61; outputname options to make this function save the result in disk in the file &#39;outputname&#39;. The file format is picked from the &#39;outputname&#39; file extension. When no output file name is provided it returns a GMT object &#40;either a grid or an image, depending on the input type&#41;. To force the return of a GDAL dataset use the option <code>gdataset&#61;true</code>.</p>
+<p>Convert raster data between different formats.</p>
+<p>Operations provided by the GDAL &#39;gdal_translate&#39; tool. Namely sub-region extraction and resampling. The <code>kwargs</code> options accept the GMT region &#40;-R&#41;, increment &#40;-I&#41;, target SRS &#40;-J&#41;. Any of the keywords <code>outgrid</code>, <code>outfile</code> or <code>save</code> &#61; outputname options to make this function save the result on  a file designated by &#39;outputname&#39;. The file format is picked from the &#39;outputname&#39; file extension. When no output file name is provided it returns a GMT object &#40;either a grid or an image, depending on the input type&#41;. To force the return of a GDAL dataset use the option <code>gdataset&#61;true</code>.</p>
+<h3>Args</h3>
 <ul>
 <li><p><code>indata</code>: Input data. It can be a file name, a GMTgrid or GMTimage object or a GDAL dataset</p>
 </li>
 <li><p><code>options</code>: List of options. The accepted options are the ones of the gdal_translate utility.           This list can be in the form of a vector of strings, or joined in a single string.</p>
 </li>
-<li><p><code>kwargs</code>: Besides what was mentioned above one can also use <code>meta&#61;metadata</code>, where <code>metadata</code>           is a string vector with the form &quot;NAME&#61;....&quot; for each of its elements. This data           will be recognized by GDAL as Metadata.           The <code>kwargs</code> may also contain the GMT region &#40;-R&#41;, proj &#40;-J&#41;, inc &#40;-I&#41; and <code>save&#61;fname</code> options.</p>
+</ul>
+<h3>Kwargs</h3>
+<ul>
+<li><p><code>meta&#61;metadata</code>, where <code>metadata</code> is a string vector with the form &quot;NAME&#61;....&quot; for each of its elements. This data will be recognized by GDAL as Metadata.</p>
 </li>
 </ul>
+<p>The <code>kwargs</code> may also contain the GMT region &#40;-R&#41;, proj &#40;-J&#41;, inc &#40;-I&#41; and <code>save&#61;fname</code> options.</p>
 <h3>Returns</h3>
 <p>A GMT grid or Image, or a GDAL dataset &#40;or nothing if file was writen on disk&#41;.</p>
 
@@ -1576,21 +1586,20 @@ false</code></pre>
 
 <pre><code>D &#61; polygonize&#40;data::GItype; kwargs...&#41; -&gt; Vector&#123;GMTdataset&#125;</code></pre>
 <p>This method, which uses the GDAL GDALPolygonize function, creates vector polygons for all connected regions of pixels in the raster sharing a common pixel/cell value. The input may be a grid or an image. This function can be rather slow as it picks lots of polygons in pixels with slightly different values at transitions between colors. Its natural use is to digitize masks images.</p>
-<h3>Parameters</h3>
+<h3>Args</h3>
 <ul>
 <li><p><code>data</code>: Input data. It can be a GMTgrid or GMTimage object.</p>
 </li>
-<li><p><code>kwargs</code>:</p>
+</ul>
+<h3>Kwargs</h3>
 <ul>
-<li><p><code>min, nmin, npixels or ncells</code>: The minimum number of cells/pixels for a polygon to be retained. Default is 1. This can be set to filter out small polygons.</p>
+<li><p><code>min, nmin, npixels or ncells</code>: The minimum number of cells/pixels for a polygon to be retained.   Default is 1. This can be set to filter out small polygons.</p>
 </li>
-<li><p><code>min_area</code>: Minimum area in m2 for a polygon to be retained. This option takes precedence over the one above that is based in the counting of cells. Note also that this is an approximate value because at this point we still don&#39;t know exactly the latitudes of the polygons.</p>
+<li><p><code>min_area</code>: Minimum area in m2 for a polygon to be retained. This option takes precedence over the one   above that is based in the counting of cells. Note also that this is an approximate value because at this   point we still don&#39;t know exactly the latitudes of the polygons.</p>
 </li>
 <li><p><code>max_area</code>: Maximum area in m2 for a polygon to be retained.</p>
 </li>
-<li><p><code>simplify</code>: Apply the Douglas-Peucker line simplification algorithm to the poligons. Provide a tolerence in meters. For example: <code>simplify&#61;0.5</code>. But be warned that this is a risky option since a too large tolerance</p>
-</li>
-</ul>
+<li><p><code>simplify</code>: Apply the Douglas-Peucker line simplification algorithm to the poligons. Provide a tolerence   in meters. For example: <code>simplify&#61;0.5</code>. But be warned that this is a risky option since a too large tolerance</p>
 </li>
 </ul>
 <pre><code>can lead to loss of otherwise good polygons. A good rule of thumb is to use the cell size for the tolerance.
@@ -1767,8 +1776,8 @@ And in fact that is what we do when using &#96;simplify&#61;:auto&#96;.</code></
 
 <div class="page-foot">
   <div class="copyright">
-    &copy; GMT.jl. Last modified: December 20, 2024. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
-      <p>These docs were autogenerated using GMT: v1.22.2</p>
+    &copy; GMT.jl. Last modified: January 09, 2025. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+      <p>These docs were autogenerated using GMT: v1.23.0</p>
   </div>
 </div>
 </div><!-- CONTENT ENDS HERE -->

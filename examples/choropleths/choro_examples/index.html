@@ -374,7 +374,8 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/solids">Solids functions</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/supplements">Supplements modules</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilfuns">Utility functions</a></div></li>
-<li><input class="collapse-toggle" id="menuitem-6-10" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-6-10"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/documentation/utilities">Utilities</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/ODE2ds">ODE2ds</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/improc">IP functions</a></div></li>
+<li><input class="collapse-toggle" id="menuitem-6-11" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-6-11"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/documentation/utilities">Utilities</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/ODE2ds">ODE2ds</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/ablines">ablines</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/append2fig">append2fig</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/blendimg">blendimg&#33;</a></div></li>
@@ -389,6 +390,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/delrows">delrows&#33;</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/df2ds">df2ds</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/doy2date">doy2date</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/fillsinks">fillsinks</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/gadm">gadm</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/geocoder">geocoder</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/geodetic2enu">geodetic2enu</a></div></li>
@@ -402,6 +404,8 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/image_alpha">image_alpha&#33;</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/image_cpt">image_cpt&#33;</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/imagesc">imagesc</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/imfill">imfill</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/imreconstruct">imreconstruct</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/imshow">imshow</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/ind2rgb">ind2rgb</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/info">info</a></div></li>
@@ -476,8 +480,8 @@
 <img src="/GMTjl_doc/assets/choro1_dcw.png" alt="DCW choropleth" title="DCW choropleth" width="500" class="center"/>
 
 <h2 id="countries_world"><a href="#countries_world" class="header-anchor">Countries &#40;World&#41;</a></h2>
-<p>While GMT come with the world countries in its DCW data base, those countries polygons have a somewhat too high resolution for world maps and hence produce files unnecessarily, which also makes them slower to create. An alternative is to use a much lower resolution file that can be found <a href="https://github.com/datasets/geo-countries/blob/master/data/countries.geojson">here</a> but whose download link is <a href="https://github.com/datasets/geo-countries/raw/master/data/countries.geojson">here</a>. And we can read it directly into GMT &#40;and wait a bit while it gets downloaded&#41;.</p>
-<pre><code class="language-julia">countries &#61; gmtread&#40;&quot;/vsicurl/https://github.com/datasets/geo-countries/raw/master/data/countries.geojson&quot;&#41;;</code></pre>
+<p>While GMT come with the world countries in its DCW data base, those countries polygons have a somewhat too high resolution for world maps and hence produce files unnecessarily, which also makes them slower to create. An alternative is to use a much lower resolution file that can be found <a href="https://github.com/datasets/geo-countries/blob/master/data/countries.geojson">here</a> but whose download link is <a href="https://github.com/datasets/geo-countries/raw/main/data/countries.geojson">here</a>. And we can read it directly into GMT &#40;and wait a bit while it gets downloaded&#41;.</p>
+<pre><code class="language-julia">countries &#61; gmtread&#40;&quot;/vsicurl/https://github.com/datasets/geo-countries/raw/main/data/countries.geojson&quot;&#41;;</code></pre>
 <p>The country polygons have attributes like:</p>
 <code>Attributes:  Dict&#40;&quot;ISO_A2&quot; &#61;&gt; &quot;AW&quot;, &quot;ISO_A3&quot; &#61;&gt; &quot;ABW&quot;, &quot;ADMIN&quot; &#61;&gt; &quot;Aruba&quot;&#41;</code>
 <p>Like in the Europe case above, we load the world population into a DataFrame</p>
@@ -530,8 +534,8 @@ colorbar&#33;&#40;pos&#61;&#40;anchor&#61;:MR,length&#61;&#40;12,0.6&#41;, offse
 
 <div class="page-foot">
   <div class="copyright">
-    &copy; GMT.jl. Last modified: December 20, 2024. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
-      <p>These docs were autogenerated using GMT: v1.22.2</p>
+    &copy; GMT.jl. Last modified: January 09, 2025. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+      <p>These docs were autogenerated using GMT: v1.23.0</p>
   </div>
 </div>
 </div><!-- CONTENT ENDS HERE -->
