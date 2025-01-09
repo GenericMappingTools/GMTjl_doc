@@ -36,12 +36,12 @@ Example from Matlab imfill.
 ```julia
 using GMT
 
-I = gmtread(getpath4docs("coins.jpg");
+I = gmtread(getpath4docs("coins.jpg"));
 Ibw1 = binarize(I);
-Ibw2 = imfill(Ibw);
+Ibw2 = imfill(Ibw1);
 grdimage(I, figsize=5)
-grdimage!(Ibw1, figsize=5, xshift=5)
-grdimage!(Ibw2, figsize=5, xshift=5, show=true)
+grdimage!(Ibw1, figsize=5, xshift=5.1)
+grdimage!(Ibw2, figsize=5, xshift=5.1, show=true)
 ```
 \end{examplefig}
 

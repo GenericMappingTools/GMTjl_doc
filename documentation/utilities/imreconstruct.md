@@ -39,7 +39,7 @@ text(["Hello World"], region=(1.92,2.08,1.97,2.02), x=2.0, y=2.0,
      font=(30, "Helvetica-Bold", :white),
      frame=(axes=:none, bg=:black), figsize=(6,0), name="tmp.png")
 
-# Read only one band (althouh gray scale the "tmp.png" is actually RGB)
+# Read only one band (althouh gray scale, the "tmp.png" is actually RGB)
 I = gmtread("tmp.png", band=1);
 
 # Create a marker image that identifies the object in the image you want to extract through segmentation.
@@ -48,9 +48,9 @@ marker = fill(UInt8(0),(size(I)));
 marker[390,130] = UInt8(255);
 
 # Perform segmentation of the mask image using the marker image.
-Ir = imreconstruct(Im, I)
-grdimage(I, figsize=8, yshift=2.56)
-grdimage!(Ir, figsize=8, show=true)
+Ir = imreconstruct(marker, I);
+grdimage(I, figsize=8)
+grdimage!(Ir, figsize=8, yshift=-2.57, show=true)
 ```
 \end{examplefig}
 

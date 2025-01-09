@@ -61,8 +61,9 @@ its use requires resorting to the \myreflink{Monolithic} mode.
 
 ## IP functions
 
-{{ generate_tablerefs improc}}
-
+|  |  |  |  |  |  |  |  |
+|:-----|:----|:----|:----|:----|:----|:----|:----|
+| \myreflink{fillsinks} | \myreflink{imfill} | \myreflink{imreconstruct} | | | | | |
 
 ## GDAL utility functions
 
