@@ -5,12 +5,12 @@ begin # hide
 		getpath4docs(file::String) = joinpath("..", "..", "..", "..", "..", file) # hide
 		using GMT      # Hide
 
-cubeplot(GMT.TESTSDIR * "seila_gray.jpg",
-         GMT.TESTSDIR * "seis_section_rgb.jpg",
-         GMT.TESTSDIR * "seis_section_gray.jpg",
+cubeplot(GMT.TESTSDIR * "assets/seila_gray.jpg",
+         GMT.TESTSDIR * "assets/seis_section_rgb.jpg",
+         GMT.TESTSDIR * "assets/seis_section_gray.jpg",
          zsize=6, show=true)
 	end # hide
-	mv(joinpath(tempdir(), "GMTjl_" * GMT.TMPDIR_USR[2] * "." * "png"), joinpath(@OUTPUT, "example_8262897934945409651.png"), force=true);    # hide
+	mv(joinpath(tempdir(), "GMTjl_" * GMT.TMPDIR_USR[2] * "." * "png"), joinpath(@OUTPUT, "example_2674213671419879138.png"), force=true);    # hide
 	GMT.isFranklin[1] = false    # hide
 	GMT.IamModern[1]  = false    # hide
  

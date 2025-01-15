@@ -7,10 +7,10 @@ begin # hide
 
 G = peaks(N=128);
 G2 = fillsinks(G, saco=true);
-grdimage(G2)
-plot!(get(GMT.SACO[1], "saco", nothing), color=:white, show=true)
+grdimage(G2, shade=true)
+plot!(get(GMT.SACO[1], "saco", nothing), lc=:white, show=true)
 	end # hide
-	mv(joinpath(tempdir(), "GMTjl_" * GMT.TMPDIR_USR[2] * "." * "png"), joinpath(@OUTPUT, "example_2854691465170704960.png"), force=true);    # hide
+	mv(joinpath(tempdir(), "GMTjl_" * GMT.TMPDIR_USR[2] * "." * "png"), joinpath(@OUTPUT, "example_5520361753391954480.png"), force=true);    # hide
 	GMT.isFranklin[1] = false    # hide
 	GMT.IamModern[1]  = false    # hide
  
