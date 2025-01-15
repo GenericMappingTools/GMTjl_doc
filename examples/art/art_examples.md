@@ -23,7 +23,7 @@ lines([-0.7 -0.25 0], [-1.5 -0.8 0], # The flower stem
       figsize=(14,0),                # Fig size. Second arg = 0 means compute the height keeping aspect ratio
       frame=:none)                   # Do not plot the frame
 plot!(x, y,
-      fill=(pattern=getpath4docs("tiling2.jpg"),  # Fill pattern file
+      fill=(pattern=TESTSDIR * "assets/tiling2.jpg",  # Fill pattern file
       dpi=200), show=true)           # The pattern DPI
 ```
 \end{examplefig}

@@ -11,7 +11,7 @@ run(`$(npm_cmd()) install cheerio`)
 
 using Franklin
 using Documenter: deploydocs, deploy_folder, GitHubActions
-using Gumbo
+#using Gumbo
 using AbstractTrees
 
 

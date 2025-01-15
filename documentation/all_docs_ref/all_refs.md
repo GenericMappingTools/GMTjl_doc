@@ -63,7 +63,9 @@ its use requires resorting to the \myreflink{Monolithic} mode.
 
 |  |  |  |  |  |  |  |  |
 |:-----|:----|:----|:----|:----|:----|:----|:----|
-| \myreflink{fillsinks} | \myreflink{imfill} | \myreflink{imreconstruct} | | | | | |
+| \myreflink{binarize} | \myreflink{fillsinks} | \myreflink{imclose} | \myreflink{imcomplement} | \myreflink{imdilate} | \myreflink{imerode} | \myreflink{imfill} | \myreflink{imopen} |
+| \myreflink{imreconstruct} | \myreflink{isodata} | \myreflink{padarray} | \myreflink{strel} | \myreflink{rgb2gray} | | \myreflink{rgb2lab} | \myreflink{rgb2ycbcr} |  |
+    
 
 ## GDAL utility functions
 

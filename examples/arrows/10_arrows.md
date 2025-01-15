@@ -198,7 +198,7 @@ them if we are not satisfied with the default results.
 \begin{examplefig}{}
 ```julia
 using GMT
-quiver(getpath4docs("nuvel1_vx.nc"), getpath4docs("nuvel1_vy.nc"), proj=:guess,
+quiver(TESTSDIR * "assets/nuvel1_vx.nc", TESTSDIR * "assets/nuvel1_vy.nc", proj=:guess,
        coast=(shore=:gray70, area=5000), lw=1, C=:turbo, show=true, Vd=1)
 ```
 \end{examplefig}
@@ -214,7 +214,7 @@ factor (**136.92637** in this case) and **k** means kilometers. So if we want la
 \begin{examplefig}{}
 ```julia
 using GMT
-quiver(getpath4docs("nuvel1_vx.nc"), getpath4docs("nuvel1_vy.nc"), proj=:guess, lw=1, 
+quiver(TESTSDIR * "assets/nuvel1_vx.nc", TESTSDIR * "assets/nuvel1_vy.nc", proj=:guess, lw=1, 
        coast=(shore=:gray70, area=5000), vscale=(inverse=true, scale="400k"), C=:turbo, show=true)
 ```
 \end{examplefig}

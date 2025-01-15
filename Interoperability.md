@@ -51,7 +51,6 @@ plot(df, legend=("A","B"), multicol=true, show=true)
 
 The examples in this section were taken from DifferentialEquations.jl [examples](https://docs.sciml.ai/DiffEqDocs/stable/basics/plot/#Example)
 
-\begin{examplefig}{}
 ```julia
 using GMT, DifferentialEquations
 
@@ -69,13 +68,14 @@ sol = solve(prob);
 
 plot(sol, multi=true, legend=:colnames, show=true)
 ```
-\end{examplefig}
 
+~~~
+<img src="/assets/ex_difeq_01.png" width=80% class="center"/>
+~~~
 
 If we make a 3D plot of the _sol_ result, we get the following because first dimension
 in the converted type is the time.
 
-\begin{examplefig}{}
 ```julia
 using GMT, DifferentialEquations  # Hide
 
@@ -93,11 +93,13 @@ sol = solve(prob);			# Hide
 
 plot3(sol, show=true)
 ```
-\end{examplefig}
+
+~~~
+<img src="/assets/ex_difeq_02.png" width=80% class="center"/>
+~~~
 
 To plot the parametric curve with the three _u1, u2, u3_ components, we do:
 
-\begin{examplefig}{}
 ```julia
 using GMT, DifferentialEquations  # Hide
 
@@ -114,11 +116,13 @@ prob = ODEProblem(lorenz, u0, tspan, p);	# Hide
 sol = solve(prob);			# Hide
 plot3(sol, x=:u1, y=:u2, z=:u3, show=true)
 ```
-\end{examplefig}
+
+~~~
+<img src="/assets/ex_difeq_03.png" width=80% class="center"/>
+~~~
 
 To interpolate the solution (must be done manually) at 5 times more points that original, do:
 
-\begin{examplefig}{}
 ```julia
 using GMT, DifferentialEquations  # Hide
 
@@ -135,7 +139,10 @@ prob = ODEProblem(lorenz, u0, tspan, p);	# Hide
 sol = solve(prob);			# Hide
 plot3(sol, x=:u1, y=:u2, z=:u3, interp=5, show=true)
 ```
-\end{examplefig}
+
+~~~
+<img src="/assets/ex_difeq_04.png" width=80% class="center"/>
+~~~
 
 ### Rasters
 

@@ -17,9 +17,7 @@ a couple track of the Aqua satellite. To compute the orbits, we need the help of
 that in turn use the so called [Two-Line Elements](https://en.wikipedia.org/wiki/Two-line_element_set)
 orbit descriptor.
 
-\begin{examplefig}{}
 ```julia
-import Pkg; Pkg.add("RemoteS"); Pkg.add("SatelliteToolboxTle"); Pkg.add("SatelliteToolboxPropagators"); Pkg.add("SatelliteToolboxTransformations"); # Hide
 using GMT, RemoteS, SatelliteToolboxTle, SatelliteToolboxPropagators, SatelliteToolboxTransformations
 
 # Compute some Aqua orbits for ... 
@@ -29,5 +27,9 @@ orb = sat_tracks(tle=["1 27424U 02022A   23229.43455053  .00001116  00000-0  251
 
 orbits(orb, lon0=45, land=:tomato, show=true)
 ```
-\end{examplefig}
 
+\begin{examplefig}{}
+```julia
+orbits(gmtread(TESTSDIR * "assets/orbits_aqua.dat"), lon0=45, land=:tomato, show=true)
+```
+\end{examplefig}

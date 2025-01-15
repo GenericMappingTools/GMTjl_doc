@@ -98,7 +98,7 @@ Show the data used in this example.
 using GMT, PrettyTables   # hide
 getpath4docs(file::String) = joinpath("..", "..", "..", "..", "..", file) # hide
 io = IOBuffer() # hide
-D = gmtread(GMT.TESTSDIR * "wind_faro_s.dat")
+D = gmtread(TESTSDIR * "assets/wind_faro_s.dat")
 pretty_table(io, D.data; header=D.colnames, backend=Val(:html))	# hide
 println("~~~" * String(take!(io)) * "~~~") # hide
 ```
@@ -112,6 +112,6 @@ in the plot. We select the columns from teir names in the `D` *GMTdataset*.
 ```julia
 using GMT
 GMT.resetGMT()  # hide
-feather(GMT.TESTSDIR * "wind_faro.dat", xvar=:Time, yvar=[:azimuth, :vmean], rtheta=true, nohead=1, lw=0.1, show=true)
+feather(TESTSDIR * "assets/wind_faro.dat", xvar=:Time, yvar=[:azimuth, :vmean], rtheta=true, nohead=1, lw=0.1, show=true)
 ```
 \end{examplefig}

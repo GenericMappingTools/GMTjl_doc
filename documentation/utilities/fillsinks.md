@@ -61,8 +61,8 @@ using GMT
 
 G = peaks(N=128);
 G2 = fillsinks(G, saco=true);
-grdimage(G2)
-plot!(get(GMT.SACO[1], "saco", nothing), color=:white, show=true)
+grdimage(G2, shade=true)
+plot!(get(GMT.SACO[1], "saco", nothing), lc=:white, show=true)
 ```
 \end{examplefig}
 

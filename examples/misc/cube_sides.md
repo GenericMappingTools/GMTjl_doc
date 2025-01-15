@@ -7,9 +7,9 @@ and use the left available space to plot another *thing*, as in:
 ```julia
 using GMT
 
-viz(GMT.peaks(N=100), zsize=8, facades=(GMT.TESTSDIR * "cenora_base.jpg",
-                                        GMT.TESTSDIR * "bunny_cenora.jpg",
-                                        GMT.TESTSDIR * "burro_cenora.jpg"))
+viz(GMT.peaks(N=100), zsize=8, facades=(GMT.TESTSDIR * "assets/cenora_base.jpg",
+                                        GMT.TESTSDIR * "assets/bunny_cenora.jpg",
+                                        GMT.TESTSDIR * "assets/burro_cenora.jpg"))
 ```
 \end{examplefig}
 
@@ -21,9 +21,9 @@ how to call that function directly to plot three images in the front sides of th
 ```julia
 using GMT      # Hide
 
-cubeplot(GMT.TESTSDIR * "seila_gray.jpg",
-         GMT.TESTSDIR * "seis_section_rgb.jpg",
-         GMT.TESTSDIR * "seis_section_gray.jpg",
+cubeplot(GMT.TESTSDIR * "assets/seila_gray.jpg",
+         GMT.TESTSDIR * "assets/seis_section_rgb.jpg",
+         GMT.TESTSDIR * "assets/seis_section_gray.jpg",
          zsize=6, show=true)
 ```
 \end{examplefig}

@@ -108,9 +108,9 @@ Examples
 ```julia
 using GMT
 
-cubeplot(GMT.TESTSDIR * "seila_gray.jpg",
-         GMT.TESTSDIR * "seis_section_rgb.jpg",
-         GMT.TESTSDIR * "seis_section_gray.jpg",
+cubeplot(GMT.TESTSDIR * "assets/seila_gray.jpg",
+         GMT.TESTSDIR * "assets/seis_section_rgb.jpg",
+         GMT.TESTSDIR * "assets/seis_section_gray.jpg",
          zsize=6, show=true)
 ```
 \end{examplefig}

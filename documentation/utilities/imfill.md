@@ -36,7 +36,7 @@ Example from Matlab imfill.
 ```julia
 using GMT
 
-I = gmtread(getpath4docs("coins.jpg"));
+I = gdalread(GMT.TESTSDIR * "assets/coins.jpg");
 Ibw1 = binarize(I);
 Ibw2 = imfill(Ibw1);
 grdimage(I, figsize=5)
