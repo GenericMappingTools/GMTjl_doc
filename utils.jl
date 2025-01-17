@@ -4,7 +4,7 @@ using Chain
 using Markdown
 using GMT
 using FileIO
-#using ImageTransformations
+using ImageTransformations
 using Colors
 using Pkg
 
