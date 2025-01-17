@@ -59,13 +59,14 @@ its use requires resorting to the \myreflink{Monolithic} mode.
 
 {{ generate_tablerefs solids}}
 
-## IP functions
+## Image Processing functions
 
 |  |  |  |  |  |  |  |  |
 |:-----|:----|:----|:----|:----|:----|:----|:----|
-| \myreflink{binarize} | \myreflink{fillsinks} | \myreflink{imclose} | \myreflink{imcomplement} | \myreflink{imdilate} | \myreflink{imerode} | \myreflink{imfill} | \myreflink{imopen} |
-| \myreflink{imreconstruct} | \myreflink{isodata} | \myreflink{padarray} | \myreflink{strel} | \myreflink{rgb2gray} | | \myreflink{rgb2lab} | \myreflink{rgb2ycbcr} |  |
-    
+| \myreflink{binarize} | \myreflink{bwhitmiss} | \myreflink{bwperim} | \myreflink{bwskell} | \myreflink{fillsinks} | \myreflink{imbothat} | \myreflink{imclose} | \myreflink{imcomplement} |
+| \myreflink{imdilate} | \myreflink{imerode} | \myreflink{imfill} | \myreflink{imhdome} | \myreflink{imhmin} | \myreflink{imhmax} | \myreflink{immorphgrad} | \myreflink{imopen} |
+| \myreflink{imreconstruct} | \myreflink{imtophat} | \myreflink{isodata} | \myreflink{padarray} | \myreflink{strel} | \myreflink{rgb2gray} | \myreflink{rgb2lab} | \myreflink{rgb2ycbcr} |
+
 
 ## GDAL utility functions
 

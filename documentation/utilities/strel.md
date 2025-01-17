@@ -18,9 +18,9 @@ the morphological computation, and the 0's pixels are not.
 - `nhood`: must be a matrix of 0’s and 1’s.
 
 - `name`: Alternatively, you can specify a structuring element name among:
-  ``"disk"``, ``"diamond"``, ``"square"``, ``"box"``, and ``"rec"`` or ``"rectangle"``.
+  `"cross"`, `"disk"`, `"diamond"`, `"square"`, `"box"`, and `"rec"` or `"rectangle"`.
 
-- `par1`: Is the radius of the structuring element for ``"disk"`` and ``"diamond"`` and the width
+- `par1`: Is the radius of the structuring element for `"disk"` and `"diamond"` and the width
   for the remaining ones.
 
 - `par2`: If provided (the height), all structuring elements become rectangular with a `par1 x par2`
@@ -32,4 +32,4 @@ A ``Sel`` type object.
 See Also
 --------
 
-\myreflink{imdilate}, \myreflink{imerode}, \myreflink{imerode}, \myreflink{imopeb}
+\myreflink{imdilate}, \myreflink{imerode}, \myreflink{imclose}, \myreflink{imopen}

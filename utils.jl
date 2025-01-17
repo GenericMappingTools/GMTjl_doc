@@ -3,9 +3,9 @@
 using Chain
 using Markdown
 using GMT
-using FileIO
-using ImageTransformations
-using Colors
+#using FileIO
+#using ImageTransformations
+#using Colors
 using Pkg
 
 ############################ Functions ##############################
