@@ -371,6 +371,9 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/append2fig">append2fig</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/binarize">binarize</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/blendimg">blendimg&#33;</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/bwhitmiss">bwhitmiss</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/bwperim">bwperim</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/bwskell">bwskell</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/cart2pol">cart2pol</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/cart2sph">cart2sph</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/coastlinesproj">coastlinesproj</a></div></li>
@@ -396,11 +399,14 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/image_alpha">image_alpha&#33;</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/image_cpt">image_cpt&#33;</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/imagesc">imagesc</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/imbothat">imbothat</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/imclose">imclose</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/imcomplement">imcomplement</a></div></li>
 <li><div class="tocitem-container"><a class = active href="/GMTjl_doc/documentation/utilities/imdilate">imdilate</a></div><ul class="page-content">
 <li><a href="#imdilate/">imdilate</a></li>
 <li><ul>
+<li><a href="#args/">Args</a></li>
+<li><a href="#kwargs/">Kwargs</a></li>
 <li><a href="#returns/">Returns</a></li>
 <li><a href="#example/">Example</a></li>
 </ul>
@@ -408,9 +414,14 @@
 </li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/imerode">imerode</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/imfill">imfill</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/imhdome">imhdome</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/imhmax">imhmax</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/imhmin">imhmin</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/immorphgrad">immorphgrad</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/imopen">imopen</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/imreconstruct">imreconstruct</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/imshow">imshow</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/imtophat">imtophat</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/ind2rgb">ind2rgb</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/info">info</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/inpolygon">inpolygon</a></div></li>
@@ -475,12 +486,26 @@
 <p><em>keywords: GMT, Julia, image morphology, dilation</em></p>
 <p>Dilate the grayscale or binary image I.</p>
 <p>The dilation is performed with a matrix of 0’s and 1’s with width <code>hsize</code> and height <code>vsize</code>, or, if possible, with the structuring element <a href="/GMTjl_doc/documentation/utilities/strel/index.html#strel">strel</a>. Later case is faster but it is only available for binary images, where by <em>binary</em> images we mean Boolean images or images with only 0’s and 1’s of UInt8 type.</p>
+<h3 id="args"><a href="#args" class="header-anchor">Args</a></h3>
+<ul>
+<li><p><code>I::Union&#123;GMTimage&#123;&lt;:UInt8, 2&#125;, GMTimage&#123;&lt;:Bool, 2&#125;&#125;</code>: Input image.</p>
+</li>
+</ul>
+<h3 id="kwargs"><a href="#kwargs" class="header-anchor">Kwargs</a></h3>
+<ul>
+<li><p><code>hsize::Int&#61;3</code>: Horizontal size of the &#39;box&#39; structuring element.</p>
+</li>
+<li><p><code>vsize::Int&#61;3</code>: Vertical size of the &#39;box&#39; structuring element.</p>
+</li>
+<li><p><code>sel&#61;nothing</code>: Structuring element &#40;See <a href="/GMTjl_doc/documentation/utilities/strel/index.html#strel">strel</a> function&#41;. An alternative to <code>hsize</code> and <code>vsize</code> options. If equal to <code>nothing</code>, a structuring box of size <code>hsize</code> x <code>vsize</code> is used.</p>
+</li>
+</ul>
 <h3 id="returns"><a href="#returns" class="header-anchor">Returns</a></h3>
 <p>A new <a href="#">GMTimage</a> of the same type as <code>I</code> with the dilation applied.</p>
 <h3 id="example"><a href="#example" class="header-anchor">Example</a></h3>
 <p>Dilation with a square of width 3 &#40;the default when neither <code>sel</code>, nor <code>hsize</code> or <code>vsize</code> are specified&#41;</p>
 <h2>Examples</h2>
-<p>Erosion with a disk radius of 10, 5 and 20</p>
+<p>Dilation with a square of width 3 &#40;the default when neither <code>sel</code>, nor <code>hsize</code> or <code>vsize</code> are specified&#41;</p>
 <pre><code class="language-julia">using GMT
 
 I &#61; gmtread&#40;TESTSDIR * &quot;assets/fig_text_bw.png&quot;&#41;;
@@ -489,14 +514,14 @@ grdimage&#40;I, figsize&#61;7&#41;
 grdimage&#33;&#40;J, figsize&#61;7, xshift&#61;7.1, show&#61;true&#41;</code></pre></p>
 <p>
 	<a id="example_1963935957541903516">
-	 <p><span style="color:red;">// Image matching '/assets/documentation/utilities/imdilate/code/example_1963935957541903516.png' not found. //</span></p> 
+	 <img src="/GMTjl_doc/assets/documentation/utilities/imdilate/code/output/example_1963935957541903516.png" alt=""> 
 	</a>
 	
 <h2>See Also</h2>
 <p><a href="/GMTjl_doc/documentation/utilities/imerode/index.html#imerode">imerode</a>, <a href="/GMTjl_doc/documentation/utilities/imopen/index.html#imopen">imopen</a>, <a href="/GMTjl_doc/documentation/utilities/imclose/index.html#imclose">imclose</a>, <a href="/GMTjl_doc/documentation/utilities/strel/index.html#strel">strel</a></p>
 <div class="page-foot">
   <div class="copyright">
-    &copy; GMT.jl. Last modified: January 15, 2025. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+    &copy; GMT.jl. Last modified: January 17, 2025. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
       <p>These docs were autogenerated using GMT: v1.24.0</p>
   </div>
 </div>
