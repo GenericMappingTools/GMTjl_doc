@@ -1,7 +1,7 @@
 # imfilter
 
 ```julia
-J = imfilter(I::GMTimage, kernel::Matrix{<:Real}; normalize::Int=1)::GMTimage
+J = imfilter(I::GMTimage, kernel::Matrix{<:Real}; normalize::Int=1, sep::Bool=false)::GMTimage
 ```
 
 *keywords: GMT, Julia, fill convolution filtering*
@@ -13,6 +13,10 @@ J = imfilter(I::GMTimage, kernel::Matrix{<:Real}; normalize::Int=1)::GMTimage
 ### Kwargs
 - `normalize::Int=1`: Normalize the filter to unit sum. This is the default, unless ``sum(kernel) == 0``,
    case in which we change it to 0.
+
+- `sep::Bool=false`: Try to decompose the filter into two 1-D components. If possible, this leads
+   to a faster execution.  MxN x (m+n) operations, instead of MxN x mxn. Where M,N and m,n are the
+   sizes of the image I and the kernel filter respectively.
 
 ### Returns
 A new \myreflink{GMTimage} of the same type as `I` with the filtered image.

@@ -93,8 +93,7 @@ is not likely to have fully converged. The general approach would be something l
 grd2xyz old.grd | gmt surface -Rold.grd -Inewinc -Gnew.grd [other options]
 ```
 
-For moderate data set one could also achieve an exact solution with `greenspline`,
-such as
+For moderate data set one could also achieve an exact solution with `greenspline`, such as
 
 ```julia
 grd2xyz old.grd | gmt greenspline -Rold.grd -Inewinc -Gnew.grd [other options]
@@ -106,14 +105,14 @@ Examples
 To resample a sub-region of the 5 x 5 minute remote grid earth_relief_05m onto a 1 minute grid::
 
 ```julia
-grdsample @earth_relief_05m -R0/20/0/20 -I1m -Gtopo_1m.nc
+G = grdsample("@earth_relief_05m", region="0/20/0/20", inc="1m");
 ```
 
 To translate the gridline-registered remote grid earth_relief_05m to pixel
 registration while keeping the same region and grid interval::
 
 ```julia
-grdsample @earth_relief_05m -T -Gpixel.nc
+G = grdsample("@earth_relief_05m", toggle=true);
 ```
 
 See Also
