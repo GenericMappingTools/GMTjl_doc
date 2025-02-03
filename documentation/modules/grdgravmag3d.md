@@ -44,7 +44,7 @@ Optional Arguments
 
     OR for a grid mode
 
-      - *maggrid*, a GMTgrid grid, or *magfile*, where *magfile* is the name of the magnetic intensity file.
+      - *maggrid*, a GMTgrid  grid, or *magfile*, where *magfile* is the name of the magnetic intensity file.
 
     To compute a component, specify any of:
 
