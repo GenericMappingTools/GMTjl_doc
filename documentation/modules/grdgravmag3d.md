@@ -20,7 +20,7 @@ Required Arguments
 If two grids are provided then the gravity/magnetic effect of the volume between them is computed.
 
 - **C** or **density** : -- *density=??*\
-    Sets body density in _SI_. Append either a constant, the name of a grid file or a GMTgrid
+    Sets body density in _SI_. Append either a constant, the name of a grid file or a \myreflink{GMTgrid}
     grid with variable densities. This option is mutually exclusive with **mag_params**
 
 - **F** or **track** : -- *track=xy_loc*\
@@ -44,7 +44,7 @@ Optional Arguments
 
     OR for a grid mode
 
-      - *maggrid*, a GMTgrid  grid, or *magfile*, where *magfile* is the name of the magnetic intensity file.
+      - *maggrid*, a \myreflink{GMTgrid}  grid, or *magfile*, where *magfile* is the name of the magnetic intensity file.
 
     To compute a component, specify any of:
 
@@ -84,7 +84,7 @@ Optional Arguments
 
 \textinput{common_opts/opt_V}
 
-**Z** or **level** or **reference_level** : -- *level="b|t"* **|** *level=(bottom=true | top=true)*\
+- **Z** or **level** or **reference_level** : -- *level="b|t"* **|** *level=(bottom=true | top=true)*\
     level of reference plane [Default = 0]. Use this option when the triangles describe a non-closed
     surface and the volume is defined from each triangle and this reference level. An example will be
     the water depth to compute a Bouguer anomaly. Use **level=:b** or **level=:t** to close the body
@@ -92,7 +92,7 @@ Optional Arguments
 
 \textinput{common_opts/opt_f}
 
-\textinput{common_opts/opt_x}
+\textinput{common_opts/opt__x}
 
 Grid Distance Units
 -------------------
@@ -127,7 +127,7 @@ viz(G, title="Gorringe FAA", colorbar=true)
 See Also
 --------
 
-gravmag3d, gravprism, talwani2d, talwani3d
+\myreflink{gravmag3d}, \myreflink{gravprism}, talwani2d, talwani3d
 
 Reference
 ---------

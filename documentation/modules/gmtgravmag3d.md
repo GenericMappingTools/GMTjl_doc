@@ -123,11 +123,11 @@ Optional Arguments
 
 \textinput{common_opts/opt_h}
 
-\textinput{common_opts/opt_i}
+\textinput{common_opts/opt__i}
 
 \textinput{common_opts/opt_o}
 
-\textinput{common_opts/opt_r}
+\textinput{common_opts/opt__r}
 
 Grid Distance Units
 -------------------
@@ -154,7 +154,7 @@ viz(G, colorbar=true)
 See Also
 --------
 
-\myreflink{grdgravmag3d}, \myreflink{gravprism}, talwani2d, talwani3d, \myreflink{triangulate}
+\myreflink{grdgravmag3d}, \myreflink{gravprisms}, talwani2d, talwani3d, \myreflink{triangulate}
 
 Reference
 ---------

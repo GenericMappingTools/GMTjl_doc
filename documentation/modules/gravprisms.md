@@ -137,7 +137,7 @@ Optional Arguments
 
 \textinput{common_opts/opt_bo}
 
-\textinput{common_opts/opt_d}
+\textinput{common_opts/opt_di}
 
 \textinput{common_opts/opt_e}
 
@@ -147,11 +147,11 @@ Optional Arguments
 
 \textinput{common_opts/opt_h}
 
-\textinput{common_opts/opt_i}
+\textinput{common_opts/opt__i}
 
 \textinput{common_opts/opt_o}
 
-\textinput{common_opts/opt_r}
+\textinput{common_opts/opt__r}
 
 \textinput{common_opts/opt_xy}
 
