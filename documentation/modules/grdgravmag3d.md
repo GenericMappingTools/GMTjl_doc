@@ -27,6 +27,7 @@ If two grids are provided then the gravity/magnetic effect of the volume between
     Provide *xy_loc* (file name or GMTdataset) locations where the anomaly will be computed. Note,
     this option is mutually exclusive with the **save** option.
 
+\textinput{common_opts/opt_save_grd}
 
 Optional Arguments
 ------------------
@@ -74,6 +75,7 @@ Optional Arguments
 
       - *pad="west/east/south/north"* Same syntax as **region**.
 
+\textinput{common_opts/opt_R}
 
 - **S** or **radius** : -- *radius=30*\
     Set search radius in km (valid only in the two grids mode OR when **thickness**) [Default = 30 km].

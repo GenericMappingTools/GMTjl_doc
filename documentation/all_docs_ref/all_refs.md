@@ -37,7 +37,7 @@
 ## Supplemental Modules (with extended docs)
 |  |  |  |  |  |  |  |  |
 |:-----|:----|:----|:----|:----|:----|:----|:----|
-| \myreflink{gravmag3d} | \myreflink{grdgravmag3d} | \myreflink{gravprisms} |  |  |  |  |  |
+| \myreflink{gravmag3d} | | \myreflink{gravprisms} |  |  |  |  |  |
 
 ## Supplemental Modules
 
