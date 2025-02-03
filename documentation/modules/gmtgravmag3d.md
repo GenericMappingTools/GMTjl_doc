@@ -28,7 +28,7 @@ Required Arguments (not all)
     made out of quadrangles. Note, if the **body** option is used neither this option nor **fname** are used.
 
 - **C** or **density** : -- *density=??*\
-    Sets body density in _SI_. Append either a constant, the name of a grid file or a \myreflink{GMTgrid}
+    Sets body density in _SI_. Append either a constant, the name of a grid file or a GMTgrid
     grid with variable densities. This option is mutually exclusive with **mag_params**
 
 - **H** or **mag_params** : -- *mag_params=f_dec/f_dip/m_int/m_dec/m_dip*\
