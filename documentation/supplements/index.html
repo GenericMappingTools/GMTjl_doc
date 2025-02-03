@@ -294,11 +294,13 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/gmtbinstats">gmtbinstats</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/gmtconnect">gmtconnect</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/gmtconvert">gmtconvert</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/gmtgravmag3d">gravmag3d</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/gmtmath">gmtmath</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/gmtselect">gmtselect</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/gmtset">gmtset</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/gmtsimplify">gmtsimplify</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/gmtsplit">gmtsplit</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/gravprisms">gravprisms</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grd2cpt">grd2cpt</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grd2kml">grd2kml</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grd2xyz">grd2xyz</a></div></li>
@@ -308,6 +310,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdedit">grdedit</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdfill">grdfill</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdgradient">grdgradient</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdgravmag3d">grdgravmag3d</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdhisteq">grdhisteq</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdimage">grdimage</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdinfo">grdinfo</a></div></li>
@@ -504,60 +507,6 @@
 </div>
 </div>
 <div class="docstring">
-<div class="doc-header" id="gmtgravmag3d">
-<a href="#gmtgravmag3d">gmtgravmag3d</a>
-</div>
-<div class="doc-content"><pre><code>gmtgravmag3d&#40;cmd0::String&#61;&quot;&quot;; kwargs...&#41;</code></pre>
-<p>Compute the gravity/magnetic anomaly of a 3-D body by the method of Okabe.</p>
-<p>See full GMT &#40;not the <code>GMT.jl</code> one&#41; docs at <a href="http://docs.generic-mapping-tools.org/latest/supplements/potential/gmtgravmag3d.html"><code>gmtgravmag3d</code></a></p>
-<h2>Parameters</h2>
-<ul>
-<li><p><strong>C</strong> | <strong>density</strong> :: &#91;Type &#61;&gt; Str | GMTgrid&#93;</p>
-<p>Sets body density in SI. Provide either a constant density or a grid with a variable one.</p>
-</li>
-<li><p><strong>F</strong> | <strong>track</strong> :: &#91;Type &#61;&gt; Str | Matrix | GMTdataset&#93;</p>
-<p>Provide locations where the anomaly will be computed. Note this option is mutually exclusive with <code>outgrid</code>.</p>
-</li>
-<li><p><strong>G</strong> | <strong>save</strong> | <strong>outgrid</strong> | <strong>outfile</strong> :: &#91;Type &#61;&gt; Str&#93;</p>
-<p>Output grid file name. Note that this is optional and to be used only when saving   the result directly on disk. Otherwise, just use the G &#61; gmtgravmag3d&#40;....&#41; form.</p>
-</li>
-<li><p><strong>H</strong> | <strong>mag_params</strong> :: &#91;Type &#61;&gt; Number&#93;</p>
-<p>Sets parameters for computation of magnetic anomaly. Alternatively, provide a magnetic intensity grid. </p>
-</li>
-<li><p><strong>I</strong> | <strong>inc</strong> | <strong>increment</strong> | <strong>spacing</strong> :: &#91;Type &#61;&gt; Str&#93;	&#36;Arg &#61; xinc&#91;unit&#93;&#91;&#43;e|n&#93;&#91;/yinc&#91;unit&#93;&#91;&#43;e|n&#93;&#93;&#93;&#36;</p>
-<p><em>x_inc</em> &#91;and optionally <em>y_inc</em>&#93; is the grid spacing. Optionally, append an increment unit.</p>
-</li>
-<li><p><strong>L</strong> | <strong>z_obs</strong> | <strong>observation_level</strong> :: &#91;Type &#61;&gt; Number&#93;</p>
-<p>Sets level of observation &#91;Default &#61; 0&#93;. That is the height &#40;z&#41; at which anomalies are computed.</p>
-</li>
-<li><p><strong>M</strong> | <strong>body</strong> :: &#91;Type &#61;&gt; Str | Tuple&#93;</p>
-<p>Create geometric bodies and compute their grav/mag effect.</p>
-</li>
-<li><p><strong>R</strong> | <strong>region</strong> | <strong>limits</strong> :: &#91;Type &#61;&gt; Str or list or GMTgrid|image&#93;	&#36;Arg &#61; &#40;xmin,xmax,ymin,ymax&#41;&#36;</p>
-<p>Specify the region of interest. Set to data minimum BoundinBox if not provided.</p>
-</li>
-<li><p><strong>S</strong> | <strong>radius</strong> :: &#91;Type &#61;&gt; Number&#93;</p>
-<p>Set search radius in km &#40;valid only in the two grids mode OR when <code>thickness</code>&#41; &#91;Default &#61; 30 km&#93;.</p>
-</li>
-<li><p><strong>Tv</strong> | <strong>index</strong> :: &#91;Type &#61;&gt; Str&#93;</p>
-</li>
-<li><p><strong>Tr</strong> | <strong>raw_triang</strong> :: &#91;Type &#61;&gt; Str&#93;</p>
-</li>
-<li><p><strong>Ts</strong> | <strong>stl</strong> :: &#91;Type &#61;&gt; Str&#93;</p>
-<p>Gives names of a xyz and vertex &#40;ndex&#61;&quot;vert_file&quot;&#41; files defining a close surface.</p>
-</li>
-<li><p><strong>Z</strong> | <strong>z_level</strong> | <strong>reference_level</strong> :: &#91;Type &#61;&gt; Number&#93;</p>
-<p>Level of reference plane &#91;Default &#61; 0&#93;.</p>
-</li>
-</ul>
-<h3>Example</h3>
-<pre><code class="language-julia">	G &#61; gmtgravmag3d&#40;M&#61;&#40;shape&#61;:prism, params&#61;&#40;1,1,1,5&#41;&#41;, inc&#61;1.0, region&#61;&quot;-15/15/-15/15&quot;, mag_params&#61;&quot;10/60/10/-10/40&quot;&#41;;
-	imshow&#40;G&#41;</code></pre>
-
-
-</div>
-</div>
-<div class="docstring">
 <div class="doc-header" id="gmtisf">
 <a href="#gmtisf">gmtisf</a>
 </div>
@@ -639,65 +588,6 @@
 <pre><code class="language-julia">    G &#61; grdcut&#40;&quot;@earth_relief_10m&quot;, region&#61;&#40;-12.5,-10,35.5,37.5&#41;&#41;;
 	G2 &#61; gravfft&#40;G, density&#61;1700, F&#61;&#40;faa&#61;6,slab&#61;4&#41;, f&#61;:g&#41;;
 	imshow&#40;G2&#41;</code></pre>
-
-
-</div>
-</div>
-<div class="docstring">
-<div class="doc-header" id="grdgravmag3d">
-<a href="#grdgravmag3d">grdgravmag3d</a>
-</div>
-<div class="doc-content"><pre><code>grdgravmag3d&#40;cmd0::String&#61;&quot;&quot;, arg1&#61;nothing, arg2&#61;nothing; kwargs...&#41;</code></pre>
-<p>Compute the gravity/magnetic anomaly of the volume contained between a surface provided by one grid and a plane, or between a top and a bottom surface provided by two grids.</p>
-<p>See full GMT &#40;not the <code>GMT.jl</code> one&#41; docs at <a href="http://docs.generic-mapping-tools.org/latest/supplements/potential/grdgravmag3d.html"><code>grdgravmag3d</code></a></p>
-<h2>Parameters</h2>
-<ul>
-<li><p><strong>C</strong> | <strong>density</strong> :: &#91;Type &#61;&gt; Str | GMTgrid&#93;</p>
-<p>Sets body density in SI. Provide either a constant density or a grid with a variable one.</p>
-</li>
-<li><p><strong>F</strong> | <strong>track</strong> :: &#91;Type &#61;&gt; Str | Matrix | GMTdataset&#93;</p>
-<p>Provide locations where the anomaly will be computed. Note this option is mutually exclusive with <code>outgrid</code>.</p>
-</li>
-<li><p><strong>G</strong> | <strong>save</strong> | <strong>outgrid</strong> | <strong>outfile</strong> :: &#91;Type &#61;&gt; Str&#93;</p>
-<p>Output grid file name. Note that this is optional and to be used only when saving   the result directly on disk. Otherwise, just use the G &#61; grdgravmag3d&#40;....&#41; form.</p>
-</li>
-<li><p><strong>E</strong> | <strong>thickness</strong> :: &#91;Type &#61;&gt; Number&#93;</p>
-<p>Provide the layer thickness in m &#91;Default &#61; 500 m&#93;.</p>
-</li>
-<li><p><strong>H</strong> | <strong>mag_params</strong> :: &#91;Type &#61;&gt; Number&#93;</p>
-<p>Sets parameters for computation of magnetic anomaly. Alternatively, provide a magnetic intensity grid. </p>
-</li>
-<li><p><strong>I</strong> | <strong>inc</strong> | <strong>increment</strong> | <strong>spacing</strong> :: &#91;Type &#61;&gt; Str&#93;	&#36;Arg &#61; xinc&#91;unit&#93;&#91;&#43;e|n&#93;&#91;/yinc&#91;unit&#93;&#91;&#43;e|n&#93;&#93;&#93;&#36;</p>
-<p><em>x_inc</em> &#91;and optionally <em>y_inc</em>&#93; is the grid spacing. Optionally, append an increment unit.</p>
-</li>
-<li><p><strong>L</strong> | <strong>z_obs</strong> | <strong>observation_level</strong> :: &#91;Type &#61;&gt; Number&#93;</p>
-<p>Sets level of observation &#91;Default &#61; 0&#93;. That is the height &#40;z&#41; at which anomalies are computed.</p>
-</li>
-<li><p><strong>Q</strong> | <strong>pad</strong> :: &#91;Type &#61;&gt; Number&#93;</p>
-<p>Extend the domain of computation with respect to output <code>region</code>.</p>
-</li>
-<li><p><strong>R</strong> | <strong>region</strong> | <strong>limits</strong> :: &#91;Type &#61;&gt; Str or list or GMTgrid|image&#93;	&#36;Arg &#61; &#40;xmin,xmax,ymin,ymax&#41;&#36;</p>
-<p>Specify the region of interest. Set to data minimum BoundinBox if not provided.</p>
-</li>
-<li><p><strong>S</strong> | <strong>radius</strong> :: &#91;Type &#61;&gt; Number&#93;</p>
-<p>Set search radius in km &#40;valid only in the two grids mode OR when <code>thickness</code>&#41; &#91;Default &#61; 30 km&#93;.</p>
-</li>
-<li><p><strong>Z</strong> | <strong>z_level</strong> | <strong>reference_level</strong> :: &#91;Type &#61;&gt; Number&#93;</p>
-<p>Level of reference plane &#91;Default &#61; 0&#93;.</p>
-</li>
-<li><p><strong>V</strong> | <strong>verbose</strong> :: &#91;Type &#61;&gt; Bool or Str&#93;		&#36;Arg &#61; &#91;level&#93;&#36;</p>
-<p>Select verbosity level, which will send progress reports to stderr.</p>
-</li>
-<li><p><strong>f</strong> | <strong>geog</strong> | <strong>colinfo</strong> | <strong>coltypes</strong> | <strong>coltype</strong> :: &#91;Type &#61;&gt; Str&#93;        &#36;Arg &#61; &#91;i|o&#93;colinfo&#36;</p>
-<p>Specify the data types of input and/or output columns &#40;time or geographical data&#41;.</p>
-</li>
-<li><p><strong>x</strong> | <strong>cores</strong> | <strong>n_threads</strong> :: &#91;Type &#61;&gt; Str or Number&#93;  &#36;Arg &#61; &#91;&#91;-&#93;n&#93;&#36;</p>
-<p>Limit the number of cores to be used in any OpenMP-enabled multi-threaded algorithms.   &#40;http://docs.generic-mapping-tools.org/latest/gmt.html#x-full&#41;</p>
-</li>
-</ul>
-<h3>Example. Compute the gravity effect of the Gorringe bank.</h3>
-<pre><code class="language-julia">	G &#61; grdgravmag3d&#40;&quot;@earth_relief_10m&quot;, region&#61;&#40;-12.5,-10,35.5,37.5&#41;, density&#61;2700, inc&#61;0.05, pad&#61;0.5, z_level&#61;:bottom, f&#61;:g&#41;;
-	imshow&#40;G&#41;</code></pre>
 
 
 </div>
@@ -878,8 +768,8 @@ imshow&#40;Gr, plot&#61;&#40;data&#61;tri_rot,&#41;&#41;</code></pre>
 
 <div class="page-foot">
   <div class="copyright">
-    &copy; GMT.jl. Last modified: January 20, 2025. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
-      <p>These docs were autogenerated using GMT: v1.24.0</p>
+    &copy; GMT.jl. Last modified: February 03, 2025. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+      <p>These docs were autogenerated using GMT: v1.25.1</p>
   </div>
 </div>
 </div><!-- CONTENT ENDS HERE -->
