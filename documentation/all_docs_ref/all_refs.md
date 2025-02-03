@@ -34,6 +34,12 @@
 | \myreflink{streamlines} | \myreflink{triplot} | \myreflink{trisurf} | \myreflink{vband} | \myreflink{violin} | \myreflink{vlines} |  |  |  |  |
 
 
+## Supplemental Modules (with extended docs)
+|  |  |  |  |  |  |  |  |
+
+|:-----|:----|:----|:----|:----|:----|:----|:----|
+| \myreflink{gravmag3d} | \myreflink{grdgravmag3d} | \myreflink{gravprisms} |  |  |  |  |  |
+
 ## Supplemental Modules
 
 {{ generate_tablerefs supplements}}
