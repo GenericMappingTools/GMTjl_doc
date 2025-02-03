@@ -154,7 +154,7 @@ viz(G, colorbar=true)
 See Also
 --------
 
-\myreflink{grdgravmag3d}, \myreflink{gravprism}, \myreflink{talwani2d}, \myreflink{talwani3d}, \myreflink{triangulate}
+\myreflink{grdgravmag3d}, \myreflink{gravprism}, talwani2d, talwani3d, \myreflink{triangulate}
 
 Reference
 ---------

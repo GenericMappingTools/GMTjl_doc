@@ -269,4 +269,4 @@ for the prism, *J. Geod., 74*, 552–560,
 See Also
 --------
 
-\myreflink{gravmag3d}, \myreflink{grdgravmag3d}, \myreflink{grdseamount}, \myreflink{talwani2d}, \myreflink{talwani3d}
+\myreflink{gravmag3d}, \myreflink{grdgravmag3d}, grdseamount, talwani2d, talwani3d
