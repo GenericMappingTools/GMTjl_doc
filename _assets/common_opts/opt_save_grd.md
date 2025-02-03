@@ -1,1 +1,1 @@
-- **G** or **save** or **outgrid** or **outfile** : -- *save=file_name.grd*\
+    Write one or more fields directly to grids on disk or return them to the Julia REPL as grid objects.
