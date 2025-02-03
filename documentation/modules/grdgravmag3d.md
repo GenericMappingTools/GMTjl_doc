@@ -26,19 +26,3 @@ If two grids are provided then the gravity/magnetic effect of the volume between
 - **F** or **track** : -- *track=xy_loc*\
     Provide *xy_loc* (file name or GMTdataset) locations where the anomaly will be computed. Note,
     this option is mutually exclusive with the **save** option.
-
-
-Optional Arguments
-------------------
-
-- **E** or **thickness** : -- *thickness=??*\
-    To provide the layer thickness in m [Default = 500 m].
-
-- **H** or **mag_params** : -- *mag_params=f_dec/f_dip/m_int/m_dec/m_dip* **|** *mag_params="magfile"|maggrid* **|**  *mag_params="x|X|y|Y|z|Z|h|H|t|T|f|F" **|** *mag_params="+i|+n"*\
-    Sets parameters for computation of magnetic anomaly (Can be used multiple times).
-
-      - *f_dec/f_dip* -> geomagnetic declination/inclination
-
-      - *m_int/m_dec/m_dip* -> body magnetic intensity/declination/inclination
-
-    OR for a grid mode
