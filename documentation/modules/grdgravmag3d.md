@@ -84,7 +84,7 @@ Optional Arguments
 
 \textinput{common_opts/opt_V}
 
-**-Z** or **level** or **reference_level** : -- *level="b|t"* **|** *level=(bottom=true | top=true)*\
+**Z** or **level** or **reference_level** : -- *level="b|t"* **|** *level=(bottom=true | top=true)*\
     level of reference plane [Default = 0]. Use this option when the triangles describe a non-closed
     surface and the volume is defined from each triangle and this reference level. An example will be
     the water depth to compute a Bouguer anomaly. Use **level=:b** or **level=:t** to close the body
