@@ -20,7 +20,7 @@ Required Arguments
 If two grids are provided then the gravity/magnetic effect of the volume between them is computed.
 
 - **C** or **density** : -- *density=??*\
-    Sets body density in _SI_. Append either a constant, the name of a grid file or a \myreflink{GMTgrid}
+    Sets body density in _SI_. Append either a constant, the name of a grid file or a GMTgrid
     grid with variable densities. This option is mutually exclusive with **mag_params**
 
 - **F** or **track** : -- *track=xy_loc*\
@@ -44,7 +44,7 @@ Optional Arguments
 
     OR for a grid mode
 
-      - *maggrid*, a \myreflink{GMTgrid} grid, or *magfile*, where *magfile* is the name of the magnetic intensity file.
+      - *maggrid*, a GMTgrid grid, or *magfile*, where *magfile* is the name of the magnetic intensity file.
 
     To compute a component, specify any of:
 
