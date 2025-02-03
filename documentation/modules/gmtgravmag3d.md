@@ -40,7 +40,10 @@ Required Arguments (not all)
     Provide *xy_loc* (file name or GMTdataset) locations where the anomaly will be computed. Note,
     this option is mutually exclusive with the **save** option.
 
-\textinput{common_opts/opt_save_grd}
+- **G** or **save** or **outgrid** or **outfile** : -- *save=file_name.grd*\
+    Write one or more fields directly to grids on disk or return them to the Julia REPL as grid objects.
+    If more than one field is specified via **fields** then *file_name* must contain the format flag
+    %s so that we can embed the field code in the file names.
 
 - **M** or **body** : -- *body=shape,params* **|** *body=(shape=name, params=...)*\
     (An alternative to **raw_triang** and **stl**). Create geometric bodies and compute their grav/mag effect.
