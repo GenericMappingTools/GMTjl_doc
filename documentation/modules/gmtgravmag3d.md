@@ -16,15 +16,15 @@ fast but allows computing the anomaly of arbitrarily complex shapes.
 Required Arguments (not all)
 ----------------------------
 
-- **fname** : Optional positional argument with the name of a _xyz..._ file that can be read by \myreflink{gmtread}.
+- **fname** : Optional positional argument with the name of a _xyz..._ file that can be read by gmtread.
     The *xyz* file can have 3, 4, 5, 6 or 8 columns. In first case (3 columns) the magnetization (or density)
     are assumed constant (controlled by **density** or **mag_params**). Following cases are: 4 columns -> 4rth col
     magnetization intensity; 5 columns: mag, mag dip; 6 columns: mag, mag dec, mag dip; 8 columns: field dec, field dip,
     mag, mag dec, mag dip.  When n columns > 3 the third argument of the **mag_params** option is ignored.
 
-- **arg1** : In alternative to `fname` pass in a Mx3 matrix or a \myreflink{GMTdataset} with at least 3 columns.
-    `arg1` can also be a \myreflink{GMTfv} type like those produced by the _solids_ functions (\myreflink{sphere}, etc)
-    but it must be one made of triangles. That is, the output of \myreflink{cube} wont work because the body is
+- **arg1** : In alternative to `fname` pass in a Mx3 matrix or a GMTdataset with at least 3 columns.
+    `arg1` can also be a GMTfv type like those produced by the _solids_ functions (sphere, etc)
+    but it must be one made of triangles. That is, the output of cube wont work because the body is
     made out of quadrangles. Note, if the **body** option is used neither this option nor **fname** are used.
 
 - **C** or **density** : -- *density=??*\
