@@ -20,13 +20,14 @@ Required Arguments
 If two grids are provided then the gravity/magnetic effect of the volume between them is computed.
 
 - **C** or **density** : -- *density=??*\
-    Sets body density in _SI_. Append either a constant, the name of a grid file or a \myreflink{GMTgrid}
+    Sets body density in _SI_. Append either a constant, the name of a grid file or a GMTgrid
     grid with variable densities. This option is mutually exclusive with **mag_params**
 
 - **F** or **track** : -- *track=xy_loc*\
     Provide *xy_loc* (file name or GMTdataset) locations where the anomaly will be computed. Note,
     this option is mutually exclusive with the **save** option.
 
+\textinput{common_opts/opt_save_grd}
 
 Optional Arguments
 ------------------
@@ -126,7 +127,7 @@ viz(G, title="Gorringe FAA", colorbar=true)
 See Also
 --------
 
-gravmag3d, gravprism, talwani2d, talwani3d
+gravmag3d, \myreflink{gravprism}, talwani2d, talwani3d
 
 Reference
 ---------
