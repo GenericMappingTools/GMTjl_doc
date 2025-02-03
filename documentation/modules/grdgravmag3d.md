@@ -127,7 +127,7 @@ viz(G, title="Gorringe FAA", colorbar=true)
 See Also
 --------
 
-\myreflink{gravmag3d}, \myreflink{gravprism}, talwani2d, talwani3d
+gravmag3d, gravprism, talwani2d, talwani3d
 
 Reference
 ---------
