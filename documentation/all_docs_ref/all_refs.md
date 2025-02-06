@@ -68,10 +68,10 @@ its use requires resorting to the \myreflink{Monolithic} mode.
 
 |  |  |  |  |  |  |  |  |
 |:-----|:----|:----|:----|:----|:----|:----|:----|
-| \myreflink{binarize} | \myreflink{bwhitmiss} | \myreflink{bwperim} | \myreflink{bwskell} | \myreflink{fillsinks} | \myreflink{imbothat} | \myreflink{imclose} | \myreflink{imcomplement} |
-| \myreflink{imdilate} | \myreflink{imerode} | \myreflink{imfill} | \myreflink{imfilter} | \myreflink{imhdome} | \myreflink{imhmin} | \myreflink{imhmax} | \myreflink{immorphgrad} |
-| \myreflink{imopen} | \myreflink{imrankfilter} | \myreflink{imreconstruct} | \myreflink{imsegment} | \myreflink{imsobel} | \myreflink{imtophat} | \myreflink{isodata} | \myreflink{padarray} |
-| \myreflink{strel} | \myreflink{rgb2gray} | \myreflink{rgb2lab} | \myreflink{rgb2ycbcr} |  |  |  |  |
+| \myreflink{binarize} | \myreflink{bwareaopen} | \myreflink{bwhitmiss} | \myreflink{bwperim} | \myreflink{bwskell} | \myreflink{fillsinks} | \myreflink{imbothat} | \myreflink{imclose} |
+| \myreflink{imcomplement} | \myreflink{imdilate} | \myreflink{imerode} | \myreflink{imfill} | \myreflink{imfilter} | \myreflink{imhdome} | \myreflink{imhmin} | \myreflink{imhmax} |
+| \myreflink{immorphgrad} | \myreflink{imopen} | \myreflink{imrankfilter} | \myreflink{imreconstruct} | \myreflink{imsegment} | \myreflink{imsobel} | \myreflink{imtophat} | \myreflink{isodata} |
+| \myreflink{padarray} | \myreflink{strel} | \myreflink{rgb2gray} | \myreflink{rgb2lab} | \myreflink{rgb2ycbcr} |  |  |  |
 
 ## GDAL utility functions
 
