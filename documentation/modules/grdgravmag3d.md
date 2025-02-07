@@ -20,17 +20,14 @@ Required Arguments
 If two grids are provided then the gravity/magnetic effect of the volume between them is computed.
 
 - **C** or **density** : -- *density=??*\
-    Sets body density in _SI_. Append either a constant, the name of a grid file or a \myreflink{GMTgrid}
+    Sets body density in _SI_. Append either a constant, the name of a grid file or a GMTgrid
     grid with variable densities. This option is mutually exclusive with **mag_params**
 
 - **F** or **track** : -- *track=xy_loc*\
     Provide *xy_loc* (file name or GMTdataset) locations where the anomaly will be computed. Note,
     this option is mutually exclusive with the **save** option.
 
-- **G** or **save** or **outgrid** or **outfile** : -- *save=file_name.grd*\
-    Write one or more fields directly to grids on disk or return them to the Julia REPL as grid objects.
-    If more than one field is specified via **fields** then *file_name* must contain the format flag
-    %s so that we can embed the field code in the file names.
+\textinput{common_opts/opt_save_grd}
 
 Optional Arguments
 ------------------
