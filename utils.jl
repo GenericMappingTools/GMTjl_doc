@@ -3,6 +3,7 @@
 using Chain
 using Markdown
 using GMT
+using FFTW
 using FileIO
 using ImageTransformations
 using Colors
