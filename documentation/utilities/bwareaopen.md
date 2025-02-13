@@ -1,4 +1,4 @@
-# bwskell
+# bwareaopen
 
 ```julia
 bwareaopen(I::Union{GMTimage{UInt8,2}, GMTimage{Bool,2}}; keepwhites::Bool=false, keepblacks::Bool=false, kwargs...)::GMTimage
@@ -68,7 +68,7 @@ I = gmtread(TESTSDIR * "assets/face_bw.png");  #Hide
 Ic1 = bwareaopen(I, thresh=1000);
 
 # Retain the "blacks"
-Ic2 = bwareaopen(Ic1, thresh=1000, keepblacks=true);
+Ic2 = bwareaopen(I, thresh=1000, keepblacks=true);
 
 # But this still leaves some noise over the eyes, so clean it again
 Ic3 = bwareaopen(Ic2)

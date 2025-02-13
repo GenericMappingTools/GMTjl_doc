@@ -34,12 +34,12 @@
 | \myreflink{streamlines} | \myreflink{triplot} | \myreflink{trisurf} | \myreflink{vband} | \myreflink{violin} | \myreflink{vlines} |  |  |  |  |
 
 
-## Supplemental Modules (with extended docs)
+## Supplemental Modules (Potential methods)
 |  |  |  |  |  |  |  |  |
 |:-----|:----|:----|:----|:----|:----|:----|:----|
-| \myreflink{gravmag3d} | \myreflink{grdgravmag3d} | \myreflink{gravprisms} |  |  |  |  |  |
+| \myreflink{gravmag3d} | \myreflink{grdgravmag3d} | \myreflink{gravprisms} | \myreflink{parkergrav} | \myreflink{parkermag} |  |  |  |
 
-## Supplemental Modules
+## Supplemental Modules (short docs)
 
 {{ generate_tablerefs supplements}}
 
