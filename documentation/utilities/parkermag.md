@@ -75,7 +75,7 @@ magnetic field created by it and invert this field.
 
 \begin{examplefig}{}
 ```julia
-using GMT
+using GMT, FFTW
 
 m = zeros(Float32, 64,64);  m[32:40,32:40] .= 10;
 h = fill(-2.0f0, 64,64);

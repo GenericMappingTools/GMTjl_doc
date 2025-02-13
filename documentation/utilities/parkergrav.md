@@ -71,9 +71,9 @@ magnetic field created by it and invert this field.
 
 \begin{examplefig}{}
 ```julia
-using GMT
+using GMT, FFTW
 
-Gbat = gmtread(GMT.TESTSDIT * "/assets/model_interface_4parker.grd");
+Gbat = gmtread(GMT.TESTSDIR * "/assets/model_interface_4parker.grd");
 
 # Compute the gravity due to the interface. The direct problem
 Ggrv = parkergrav(Gbat, rho=400, nterms=10)
