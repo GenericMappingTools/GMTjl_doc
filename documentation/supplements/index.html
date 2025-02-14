@@ -300,6 +300,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/gmtset">gmtset</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/gmtsimplify">gmtsimplify</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/gmtsplit">gmtsplit</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/gravfft">gravfft</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/gravprisms">gravprisms</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grd2cpt">grd2cpt</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grd2kml">grd2kml</a></div></li>
@@ -542,60 +543,6 @@
 </div>
 </div>
 <div class="docstring">
-<div class="doc-header" id="gravfft">
-<a href="#gravfft">gravfft</a>
-</div>
-<div class="doc-content"><pre><code>gravfft&#40;cmd0::String&#61;&quot;&quot;, arg1&#61;nothing, arg2&#61;nothing; kwargs...&#41;</code></pre>
-<p>Spectral calculations of gravity, isostasy, admittance, and coherence for grids.</p>
-<p>See full GMT &#40;not the <code>GMT.jl</code> one&#41; docs at <a href="http://docs.generic-mapping-tools.org/latest/supplements/potential/gravfft.html"><code>gravfft</code></a></p>
-<h2>Parameters</h2>
-<ul>
-<li><p><strong>D</strong> | <strong>density</strong> :: &#91;Type &#61;&gt; Str | GMTgrid&#93;</p>
-<p>Sets body density in SI. Provide either a constant density or a grid with a variable one.</p>
-</li>
-<li><p><strong>E</strong> | <strong>n_terms</strong> :: &#91;Type &#61;&gt; Number&#93;</p>
-<p>Number of terms used in Parker expansion &#91;Default &#61; 3&#93;.</p>
-</li>
-<li><p><strong>F</strong> | <strong>geopotential</strong> :: &#91;Type &#61;&gt; Str | Tuple&#93;</p>
-<p>Specify desired geopotential field: compute geoid rather than gravity </p>
-</li>
-<li><p><strong>I</strong> | <strong>admittance</strong> :: &#91;Type &#61;&gt; Number&#93;</p>
-<p>Use ingrid2 and ingrid1 &#40;a grid with topography/bathymetry&#41; to estimate admittance|coherence and return a GMTdataset.</p>
-</li>
-<li><p><strong>N</strong> | <strong>inquire</strong> :: &#91;Type &#61;&gt; Str&#93;         &#36;Arg &#61; &#91;a|f|m|r|s|nx/ny&#93;&#91;&#43;a|&#91;&#43;d|h|l&#93;&#91;&#43;e|n|m&#93;&#91;&#43;twidth&#93;&#91;&#43;v&#93;&#91;&#43;w&#91;suffix&#93;&#93;&#91;&#43;z&#91;p&#93;&#93;&#36;</p>
-<p>Choose or inquire about suitable grid dimensions for FFT and set optional parameters. Control the FFT dimension:</p>
-</li>
-<li><p><strong>Q</strong> | <strong>flex_topo</strong> | <strong>flexural_topography</strong> :: &#91;Type &#61;&gt; Bool&#93;</p>
-<p>Computes grid with the flexural topography.</p>
-</li>
-<li><p><strong>S</strong> | <strong>subplate</strong> | <strong>subplate_load</strong> :: &#91;Type &#61;&gt; Bool&#93;</p>
-<p>Computes predicted gravity or geoid grid due to a subplate load produced by the current bathymetry and the theoretical model.</p>
-</li>
-<li><p><strong>T</strong> | <strong>topo_load</strong> :: &#91;Type &#61;&gt; Str&#93;</p>
-<p>Compute the isostatic compensation from the topography load &#40;input grid file&#41; on an elastic plate of thickness <code>te</code>.</p>
-</li>
-<li><p><strong>W</strong> | <strong>z_obs</strong> | <strong>observation_level</strong> :: &#91;Type &#61;&gt; Number&#93;</p>
-<p>Set water depth &#40;or observation height&#41; relative to topography in meters &#91;0&#93;. Append k to indicate km.</p>
-</li>
-<li><p><strong>Z</strong> | <strong>moho_depth</strong> :: &#91;Type &#61;&gt; Number&#93;</p>
-<p>Moho &#91;and swell&#93; average compensation depths &#40;in meters positive down&#41;.</p>
-</li>
-<li><p><strong>V</strong> | <strong>verbose</strong> :: &#91;Type &#61;&gt; Bool or Str&#93;		&#36;Arg &#61; &#91;level&#93;&#36;</p>
-<p>Select verbosity level, which will send progress reports to stderr.</p>
-</li>
-<li><p><strong>f</strong> | <strong>geog</strong> | <strong>colinfo</strong> | <strong>coltypes</strong> | <strong>coltype</strong> :: &#91;Type &#61;&gt; Str&#93;        &#36;Arg &#61; &#91;i|o&#93;colinfo&#36;</p>
-<p>Specify the data types of input and/or output columns &#40;time or geographical data&#41;.</p>
-</li>
-</ul>
-<h3>Example. Compute the gravity effect of the Gorringe bank.</h3>
-<pre><code class="language-julia">    G &#61; grdcut&#40;&quot;@earth_relief_10m&quot;, region&#61;&#40;-12.5,-10,35.5,37.5&#41;&#41;;
-	G2 &#61; gravfft&#40;G, density&#61;1700, F&#61;&#40;faa&#61;6,slab&#61;4&#41;, f&#61;:g&#41;;
-	imshow&#40;G2&#41;</code></pre>
-
-
-</div>
-</div>
-<div class="docstring">
 <div class="doc-header" id="grdrotater">
 <a href="#grdrotater">grdrotater</a>
 </div>
@@ -771,8 +718,8 @@ imshow&#40;Gr, plot&#61;&#40;data&#61;tri_rot,&#41;&#41;</code></pre>
 
 <div class="page-foot">
   <div class="copyright">
-    &copy; GMT.jl. Last modified: February 13, 2025. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
-      <p>These docs were autogenerated using GMT: v1.25.1</p>
+    &copy; GMT.jl. Last modified: February 14, 2025. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+      <p>These docs were autogenerated using GMT: v1.26.0</p>
   </div>
 </div>
 </div><!-- CONTENT ENDS HERE -->

@@ -301,6 +301,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/gmtset">gmtset</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/gmtsimplify">gmtsimplify</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/gmtsplit">gmtsplit</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/gravfft">gravfft</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/gravprisms">gravprisms</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grd2cpt">grd2cpt</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grd2kml">grd2kml</a></div></li>
@@ -497,7 +498,7 @@
 <p><em>keywords: GMT, Julia, Gravity inversion</em></p>
 <p>Calculate the gravity direct or inverse problem using Parker&#39;s &#91;1973&#93; Fourier series summation approach.</p>
 <p>Depending on the value of <code>dir</code> it will calculate the direct or inverse problem. The direct problem calculates gravity anomaly given the topography of an interface. The inverse calculates interface &#40;in meters&#41; from the gravity anomaly and a mean depth of that interface.</p>
-<p>This function, for the direct problem, is equivalent to the GMT&#39;s <a href="#">gravfft</a> module. The inverse problem follows the aproach of the magnetic case and the description in Parker&#39;s paper and should give the ~same results of the <code>3DINVER.M</code> program &#40;https://doi.org/10.1016/j.cageo.2004.11.004&#41; although I did not check it &#40;couldn&#39;t find the package&#41;. It does, however, reproduce very well the tests from the <code>Grav3D.m</code> program &#40;https://github.com/PhamLT/Grav3D&#41;, of which we are using its test synthetic interface grid.</p>
+<p>This function, for the direct problem, is equivalent to the GMT&#39;s <a href="/GMTjl_doc/documentation/modules/gravfft/index.html#gravfft">gravfft</a> module. The inverse problem follows the aproach of the magnetic case and the description in Parker&#39;s paper and should give the ~same results of the <code>3DINVER.M</code> program &#40;https://doi.org/10.1016/j.cageo.2004.11.004&#41; although I did not check it &#40;couldn&#39;t find the package&#41;. It does, however, reproduce very well the tests from the <code>Grav3D.m</code> program &#40;https://github.com/PhamLT/Grav3D&#41;, of which we are using its test synthetic interface grid.</p>
 <h3 id="args"><a href="#args" class="header-anchor">Args</a></h3>
 <ul>
 <li><p><code>G</code>: GMTgrid or filename of the interface &#40;meters or km positive up&#41; for the direct problem  or gravity anomaly &#40;mGal&#41; for the inverse problem.</p>
@@ -536,9 +537,9 @@
 <p>A <a href="#">GMTgrid</a> with gravity anomaly &#40;mGal&#41; or interface &#40;m&#41;</p>
 <h2>Example</h2>
 <p>A synthetic example. Make a Kaba like magnetization distribution of 10 A/m, compute the magnetic field created by it and invert this field.</p>
-<pre><code class="language-julia">using GMT
+<pre><code class="language-julia">using GMT, FFTW
 
-Gbat &#61; gmtread&#40;GMT.TESTSDIT * &quot;/assets/model_interface_4parker.grd&quot;&#41;;
+Gbat &#61; gmtread&#40;GMT.TESTSDIR * &quot;/assets/model_interface_4parker.grd&quot;&#41;;
 
 # Compute the gravity due to the interface. The direct problem
 Ggrv &#61; parkergrav&#40;Gbat, rho&#61;400, nterms&#61;10&#41;
@@ -559,18 +560,16 @@ grdimage&#33;&#40;Ggrv, figsize&#61;7, xshift&#61;9, title&#61;&quot;Gravity ano
 grdimage&#33;&#40;Gbat_inv, figsize&#61;7, xshift&#61;-9, yshift&#61;-9.0, title&#61;&quot;Calculated Interface &#40;m&#41;&quot;,
           cmap&#61;:auto, contour&#61;true, colorbar&#61;true&#41;
 grdimage&#33;&#40;Gres, figsize&#61;7, xshift&#61;9, title&#61;&quot;Residues &#40;mGal&#41;&quot;, cmap&#61;:auto,
-          contour&#61;true, colorbar&#61;true, show&#61;true&#41;</code></pre></p>
-<p>
-	<a id="example_17254431186972183576">
-	 <p><span style="color:red;">// Image matching '/assets/documentation/utilities/parkergrav/code/example_17254431186972183576.png' not found. //</span></p> 
-	</a>
-	
+          contour&#61;true, colorbar&#61;true, show&#61;true&#41;</code></pre>
+
+<img src="/GMTjl_doc/assets/Parker_grav.png" width="1000" class="center"/>
+
 <h2>See Also</h2>
-<p><a href="/GMTjl_doc/documentation/utilities/parkermag/index.html#parkermag">parkermag</a>, <a href="#">gravfft</a></p>
+<p><a href="/GMTjl_doc/documentation/utilities/parkermag/index.html#parkermag">parkermag</a>, <a href="/GMTjl_doc/documentation/modules/gravfft/index.html#gravfft">gravfft</a></p>
 <div class="page-foot">
   <div class="copyright">
-    &copy; GMT.jl. Last modified: February 13, 2025. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
-      <p>These docs were autogenerated using GMT: v1.25.1</p>
+    &copy; GMT.jl. Last modified: February 14, 2025. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+      <p>These docs were autogenerated using GMT: v1.26.0</p>
   </div>
 </div>
 </div><!-- CONTENT ENDS HERE -->
