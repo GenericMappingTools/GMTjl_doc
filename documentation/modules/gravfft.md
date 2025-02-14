@@ -59,21 +59,15 @@ Optional Arguments
 
 - **F** or **field** : -- *field=(faa=true, slab=true, far_field=true, bouguer=true, geoid=true, vgg=true, east=true, north=true)*\
     Specify desired geopotential field: compute geoid rather than gravity
-
-    -  **faa** = Free-air anomalies (mGal) [Default]. Add **slab=true** to add in the slab
+    - **faa** = Free-air anomalies (mGal) [Default]. Add **slab=true** to add in the slab
        implied when removing the mean value from the topography.  This requires zero topography
        to mean no mass anomaly. Alternatively, to force the far-field to be exactly zero
        (i.e., the corner nodes of the grid), select **far_field=true** instead.
-
-    -  **bouguer** = Bouguer gravity anomalies (mGal).
-
-    -  **geoid** = Geoid anomalies (m).
-
-    -  **vgg** = Vertical Gravity Gradient (VGG; 1 Eotvos = 0.1 mGal/km).
-
-    -  **east** = East deflections of the vertical (micro-radian).
-
-    -  **north** = North deflections of the vertical (micro-radian).
+    - **bouguer** = Bouguer gravity anomalies (mGal).
+    - **geoid** = Geoid anomalies (m).
+    - **vgg** = Vertical Gravity Gradient (VGG; 1 Eotvos = 0.1 mGal/km).
+    - **east** = East deflections of the vertical (micro-radian).
+    - **north** = North deflections of the vertical (micro-radian).
 
 \textinput{common_opts/opt_save_grd}
 
@@ -171,9 +165,9 @@ Examples
 ```julia
 using GMT, FFTW
 
-G = grdcut("@earth_relief_10m", region=(-12.5,-10,35.5,37.5));
+G = grdcut("@earth_relief_02m", region=(-12.5,-10,35.5,37.5));
 G2 = gravfft(G, density=1700, field=(faa=6, slab=4), f=:g);
-imshow(G2)
+imshow(G2, colorbar=true)
 ```
 \end{examplefig}
 

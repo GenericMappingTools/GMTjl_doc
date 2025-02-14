@@ -69,7 +69,6 @@ Example
 A synthetic example. Make a Kaba like magnetization distribution of 10 A/m, compute the
 magnetic field created by it and invert this field.
 
-\begin{examplefig}{}
 ```julia
 using GMT, FFTW
 
@@ -96,7 +95,10 @@ grdimage!(Gbat_inv, figsize=7, xshift=-9, yshift=-9.0, title="Calculated Interfa
 grdimage!(Gres, figsize=7, xshift=9, title="Residues (mGal)", cmap=:auto,
           contour=true, colorbar=true, show=true)
 ```
-\end{examplefig}
+
+~~~
+<img src="/assets/Parker_grav.png" width="1000" class="center"/>
+~~~
 
 See Also
 --------

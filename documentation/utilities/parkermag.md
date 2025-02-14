@@ -73,7 +73,6 @@ Example
 A synthetic example. Make a Kaba like magnetization distribution of 10 A/m, compute the
 magnetic field created by it and invert this field.
 
-\begin{examplefig}{}
 ```julia
 using GMT, FFTW
 
@@ -85,10 +84,12 @@ f3d = parkermag(Gm,  Gh, "dir", year=2000, thickness=1, pct=0);
 m3d = parkermag(f3d, Gh, "inv", year=2000, thickness=1, pct=0);
 
 grdimage(f3d, figsize=6, title="Field (nT)", colorbar=true)
-C = makecpt(m3d);		# Need a different colormap for the magnetization
-grdview!(f3d, figsize=6, zsize=4, view=(210, 40), title="Magnetization (A/m)", cmap=C, surf=:image, B=:za, xshift=8, show=true)
+grdview!(m3d, figsize=6, zsize=4, view=(210, 40), title="Magnetization (A/m)", cmap=:auto, surf=:image, B=:za, xshift=8, show=true)
 ```
-\end{examplefig}
+
+~~~
+<img src="/assets/Parker_mag.png" width="900" class="center"/>
+~~~
 
 
 See Also
