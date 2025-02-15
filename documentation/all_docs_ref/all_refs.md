@@ -62,7 +62,12 @@ its use requires resorting to the \myreflink{Monolithic} mode.
 
 ## Solids functions
 
-{{ generate_tablerefs solids}}
+|  |  |  |  |  |  |  |  |
+|:----|:----|:----|:----|:----|:----|:----|:----|
+| \myreflink{cube} | \myreflink{cylinder} | \myreflink{dodecahedron} | \myreflink{ellipse3D} | \myreflink{icosahedron} | \myreflink{octahedron} | \myreflink{sphere} | \myreflink{tetrahedron} |
+| \myreflink{torus} | \myreflink{extrude} | \myreflink{flatfv} | \myreflink{fv2fv} | \myreflink{grid2tri} | \myreflink{loft} | \myreflink{replicant} | \myreflink{revolve} |
+| \myreflink{surf2fv} | \myreflink{torus} |  |  |  |  |  |  |
+
 
 ## Image Processing functions
 
