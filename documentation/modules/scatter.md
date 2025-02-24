@@ -33,16 +33,16 @@ Optional Arguments
    Take the vector `xx` (same size as number os points in data) and interpolate the current color scale to paint the
    symbols based on that color scale. The form `zcolor=true` is equivant to *zcolor=1:npoints*
 
-- **S** or *symbol* or *marker* or *Marker* or *shape* : -- Default is `circle` with a diameter of 7 points
+- **S** or **symbol** or **marker** or **Marker** or **shape** : -- Default is `circle` with a diameter of 7 points
    - *symbol=symbol* string\
       A full GMT compact string.
    - *symbol=(symb=??, size=??, unit=??)*\
       Where *symb* is one \myreflink{Symbols} like `:circle`, *size* is symbol size in cm, unless *unit*
       is specified i.e. `:points`
 
-   In alternative to the `symbol keyword, user can select the symbol name with either `marker or `shape
+   In alternative to the `symbol` keyword, user can select the symbol name with either `marker` or `shape`
    and symbol size with `markersize` or `ms`. The value of these keywords can be either numeric
-   (symb meaning size in cm) or string if an unit is appended, *e.g.*  markersize="5p"` This form of symbol
+   (symb meaning size in cm) or string if an unit is appended, *e.g.*  `markersize="5p"` This form of symbol
    selection allows also to specify a variable symbol size. All it's need for this is that the keyword's value
    be an array with the same number of elements as the number of data points. 
 

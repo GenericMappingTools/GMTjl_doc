@@ -20,7 +20,7 @@
 | \myreflink{grdmask} | \myreflink{grdmath} | grdmix | \myreflink{grdpaste} |  grdproject | \myreflink{grdsample} | \myreflink{grdtrack} | \myreflink{grdtrend} |
 | \myreflink{grdvector} | \myreflink{grdview} | grdvolume | greenspline | \myreflink{histogram} | \myreflink{image} | \myreflink{inset} | kml2gmt |
 | \myreflink{legend} | \myreflink{makecpt} |  mapproject | \myreflink{mask} | \myreflink{movie} | \myreflink{nearneighbor} | \myreflink{plot} | \myreflink{plot3d} |
-| \myreflink{project} |  psconvert | \myreflink{rose} | \myreflink{sample1d} | \myreflink{solar} | spectrum1d | sph2grd | sphdistance |
+| \myreflink{project} |  psconvert | \myreflink{rose} | \myreflink{sample1d} | \myreflink{solar} | \myreflink{spectrum1d} | sph2grd | sphdistance |
 | \myreflink{sphinterpolate} | \myreflink{sphtriangulate} | \myreflink{subplot} | \myreflink{surface} | \myreflink{ternary} | \myreflink{text} | \myreflink{trend1d} | \myreflink{trend2d} |
 | \myreflink{triangulate} | \myreflink{wiggle} | \myreflink{xyz2grd} |  |  |  |  |  |
 
@@ -57,13 +57,14 @@ its use requires resorting to the \myreflink{Monolithic} mode.
 |  |  |  |  |  |  |  |  |
 |:-----|:----|:----|:----|:----|:----|:----|:----|
 | \myreflink{ablines} | \myreflink{append2fig} | \myreflink{blendimg!} | \myreflink{cart2pol} | \myreflink{cart2sph} | \myreflink{colorzones!} | \myreflink{cpt4dcw} | \myreflink{crop} |
-| \myreflink{cubeplot} | \myreflink{coastlinesproj} | \myreflink{cubeslice} | \myreflink{date2doy} | \myreflink{delrows!} | \myreflink{doy2date} | \myreflink{gadm} | \myreflink{geocoder} |
-| \myreflink{geodetic2enu} | \myreflink{getbyattrib} | \myreflink{gmtread} | \myreflink{gmtwrite} | \myreflink{graticules} | \myreflink{gridit} | \myreflink{gunique} | \myreflink{imagesc} |
-| \myreflink{inpolygon} | \myreflink{inwhichpolygon} | \myreflink{image_alpha!} | \myreflink{image_cpt!} | \myreflink{imshow} | \myreflink{ind2rgb} | \myreflink{info} | \myreflink{isnodata} |
-| \myreflink{lelandshade} | \myreflink{linearfitxy} | \myreflink{magic} | \myreflink{mat2ds} | \myreflink{mat2grid} | \myreflink{mat2img} | \myreflink{mosaic} | \myreflink{ODE2ds} |
-| \myreflink{orbits} | \myreflink{pca} | \myreflink{plotgrid!} | \myreflink{plotyy} \myreflink{pol2cart} | \myreflink{polygonlevels} | \myreflink{rasterzones!} | \myreflink{regiongeog} | \myreflink{remotegrid} |
-| \myreflink{rescale} | \myreflink{slicecube} | \myreflink{sph2cart} | \myreflink{stackgrids} | \myreflink{ter2cart} | \myreflink{theme} | \myreflink{uniqueind} | \myreflink{vecangles} |
-| \myreflink{weather} | \myreflink{whereami} | \myreflink{worldrectgrid} | \myreflink{worldrectcoast} | \myreflink{worldrectangular} | \myreflink{xyzw2cube} | \myreflink{yeardecimal} | \myreflink{zonal_stats} |
+| \myreflink{cubeplot} | \myreflink{coastlinesproj} | \myreflink{cubeslice} | \myreflink{date2doy} | \myreflink{delrows!} | \myreflink{doy2date} | \myreflink{findpeaks} | \myreflink{gadm} |
+| \myreflink{geocoder} | \myreflink{geodetic2enu} | \myreflink{getbyattrib} | \myreflink{gmtread} | \myreflink{gmtwrite} | \myreflink{graticules} | \myreflink{gridit} | \myreflink{gunique} |
+| \myreflink{hampel} | \myreflink{imagesc} | \myreflink{inpolygon} | \myreflink{inwhichpolygon} | \myreflink{image_alpha!} | \myreflink{image_cpt!} | \myreflink{imshow} | \myreflink{ind2rgb} |
+| \myreflink{info} | \myreflink{isnodata} | \myreflink{lelandshade} | \myreflink{linearfitxy} | \myreflink{magic} | \myreflink{mat2ds} | \myreflink{mat2grid} | \myreflink{mat2img} |
+| \myreflink{mosaic} | \myreflink{ODE2ds} | \myreflink{orbits} | \myreflink{pca} | \myreflink{plotgrid!} | \myreflink{plotyy} | \myreflink{pol2cart} | \myreflink{polygonlevels} |
+| \myreflink{rasterzones!} | \myreflink{regiongeog} | \myreflink{remotegrid} | \myreflink{rescale} | \myreflink{slicecube} | \myreflink{sph2cart} | \myreflink{stackgrids} | \myreflink{ter2cart} |
+| \myreflink{theme} | \myreflink{uniqueind} | \myreflink{vecangles} | \myreflink{whereami} | \myreflink{worldrectgrid} | \myreflink{worldrectcoast} | \myreflink{worldrectangular} | \myreflink{xyzw2cube} |
+| \myreflink{yeardecimal} | \myreflink{zonal_stats} |  |  |  |  |  |  |
 
 ## Solids functions
 
