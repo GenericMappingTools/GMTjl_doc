@@ -5,8 +5,6 @@
                    show=false, color=false, opts=String[], cmap="", kw...)
 ```
 
-*keywords: GMT, Julia, image, texture shading*
-
 Compute a grayscale or color shaded illumination image using the thechnique developed by [Leland Brown's "texture shading"](http://www.textureshading.com/Home.html) 
 
 Returns a \myreflink{GMTimage} object (8 or 16 bits depending on the `intensity` option) if `show == false`,

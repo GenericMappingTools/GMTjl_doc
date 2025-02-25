@@ -31,8 +31,6 @@ I = mosaic(region=??, ..., kw...)
 I = mosaic([zoom::Int=??])
 ```
 
-*keywords: GMT, Julia, tiles image*
-
 Get image tiles from a web map tiles provider for given longitude, latitude coordinates.
 
 ### Arguments

@@ -4,8 +4,6 @@
 fillsinks(G::GMTgrid; conn=4, region=nothing, saco=false, insitu=false)
 ```
 
-*keywords: GMT, Julia, fill sinks DTM*
-
 Fill sinks in a grid.
 
 This function uses the \myreflink{imfill} function to find how to fill sinks in a grid. But since \myreflink{imfill}

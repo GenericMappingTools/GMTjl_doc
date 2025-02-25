@@ -5,8 +5,6 @@ xyzw2cube(fname::AbstractString; datatype::DataType=Float32, proj4::String="", w
 	        epsg::Int=0, tit::String="", names::Vector{String}=String[])
 ```
 
-*keywords: GMT, Julia, grid cube*
-
 Convert data table containing a cube into a \myreflink{GMTgrid} cube. The input data must contain a completelly filled
 3D matrix and the data layout is guessed from file analysis (if it fails ... bad luck). 
 

@@ -5,8 +5,6 @@ cubeplot(img1::Union{GMTimage, String}, img2::Union{GMTimage, String}="", img3::
          back::Bool=false, show=false, notop::Bool=false, kw...)
 ```
 
-*keywords: GMT, Julia, image cube plots*
-
 Plot images on the sides of a cube. Those images can be provided as file names, or \myreflink{GMTimage} objects.
 
 - `img1,2,3`: File names or GMTimages of the images to be plotted on the three cube sides. Of those three, only

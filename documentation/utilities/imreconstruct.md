@@ -4,8 +4,6 @@
 I = imreconstruct(marker::Union{Matrix{Bool}, Matrix{UInt8}}, Imask::GMTimage{<:UInt8, 2}; conn=4, insitu=true)
 ```
 
-*keywords: GMT, Julia, morphological reconstruction*
-
 Perform morphological reconstruction of the image `marker` under the image `mask`.
 
 The elements of `marker` must be less than or equal to the corresponding elements of `mask`.

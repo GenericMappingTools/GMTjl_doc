@@ -8,8 +8,6 @@ or
 inwhichpolygon(D::Vector{GMTdataset}, x, y; on_is_in=false)
 ```
 
-*keywords: GMT, Julia, point in polygon*
-
 Finds the IDs of the polygons enclosing the query points in `point`. Each row in the matrix `point` contains
 the coordinates of a query point. Query points that don't fall in any polygon get an ID = 0.
 Returns either an ``Int`` or a ``Vector{Int}`` depending on the number of input query points.

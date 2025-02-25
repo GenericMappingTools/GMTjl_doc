@@ -5,8 +5,6 @@ stackgrids(names::Vector{String}, v=nothing; zcoord=nothing, zdim_name="time",
 	       z_unit="", save="", mirone=false)
 ```
 
-*keywords: GMT, Julia, cube grid stack*
-
 Stack a bunch of single grids in a multiband cube like file.
 
 - `names`: A string vector with the names of the grids to stack

@@ -4,8 +4,6 @@
 J = imcomplement(I::GMTimage) -> GMTimage
 ```
 
-*keywords: GMT, Julia, image processing*
-
 Compute the complement of the image `I` and returns the result in `J`.
 
 `I` can be a binary, intensity, or truecolor image. `J` has the same type and size as `I`. `I` can

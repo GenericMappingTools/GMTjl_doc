@@ -7,8 +7,6 @@ or
 D = maregrams(lon::Real, lat::Real; days=2, starttime::String="")
 ```
 
-*keywords: GMT, Julia, Plate Kinematics*
-
 Download maregrams data from [www.ioc-sealevelmonitoring.org](http://www.ioc-sealevelmonitoring.org).
 
 The default is to download the last 2 days, but length and duration is configurable by input options.

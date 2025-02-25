@@ -6,8 +6,6 @@ G = parkergrav(G, dir::String="dir"; nnx=0, nny=0, nterms=6, depth=0.0, zobs=0.0
                isKm::Bool=false, verbose=false)::GMTgrid
 ```
 
-*keywords: GMT, Julia, Gravity inversion*
-
 Calculate the gravity direct or inverse problem using Parker's [1973] Fourier series summation approach.
 
 Depending on the value of `dir` it will calculate the direct or inverse problem. The direct problem

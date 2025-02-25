@@ -6,8 +6,6 @@ G = parkermag(mag, bat, dir::String="dir"; year=2020.0, nnx=0, nny=0, nterms=6, 
               geocentric=false, padtype::String="taper", isRTP=false, verbose=false)::GMTgrid
 ```
 
-*keywords: GMT, Julia, Geomagnetic inversion*
-
 Calculate the magnetic direct or inverse problem using Parker's [1973] Fourier series summation approach.
 
 Depending on the vaule of `dir` it will calculate the direct or inverse problem. The direct problem

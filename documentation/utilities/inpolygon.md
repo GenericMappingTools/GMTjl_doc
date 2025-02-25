@@ -8,8 +8,6 @@ or
 in = inpolygon(point, polygon)
 ```
 
-*keywords: GMT, Julia, point in polygon*
-
 Returns `in` indicating if the query points specified by `x` and `y` are inside of the polygon area defined by:
 - `polygon`: a GMTdatset defining the polygon or a Mx2 matrix of reals that should have the
   first and last elements equal.

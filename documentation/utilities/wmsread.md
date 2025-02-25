@@ -4,8 +4,6 @@
 wmsread(wms::WMS; layer, kwargs...)
 ```
 
-*keywords: GMT, Julia, WMS*
-
 Read the `layer` number provided by the service from which the `wms` type was created.
 
 ### Parameters

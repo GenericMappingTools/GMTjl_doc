@@ -4,8 +4,6 @@
 wmsinfo(server::String)
 ```
 
-*keywords: GMT, Julia, WMS*
-
 Read the xml information from the WebMapServer service and create a WMS data type that holds the information
 necessary to download the data. The `show` method will display the contents of the WMS data type.
 

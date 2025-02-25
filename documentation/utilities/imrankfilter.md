@@ -4,8 +4,6 @@
 J = imrankfilter(I::GMTimage; width::Int=3, height::Int=0, rank=0.5)::GMTimage
 ```
 
-*keywords: GMT, Julia, image rank filter*
-
 Rank order filter.
 
 This defines, for each pixel, a neighborhood of pixels given by a rectangle "centered" on the pixel.

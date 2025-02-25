@@ -4,8 +4,6 @@
 J = bwhitmiss(I::Union{GMTimage{<:UInt8, 2}, GMTimage{<:Bool, 2}}, interval::Matrix{<:Integer})::GMTimage
 ```
 
-*keywords: GMT, Julia, image morphology, Hit-Miss*
-
 Performs the hit-miss operation on a binary image defined in terms of a matrix called an _interval_.
 
 An _interval_ is a matrix whose elements are 0 or 1 or 2 and results from _joining_ two structural

@@ -4,8 +4,6 @@
 blendimg!(img1::GMTimage, img2::GMTimage; new=false, transparency=0.5)
 ```
 
-*keywords: GMT, Julia, images blend*
-
 Blend the RGB `color` \myreflink{GMTimage} with the `shade` intensity image (normally obtained with
 \myreflink{gdaldem}). The `new` argument determines if we return a new RGB image or update the `color` argument.
 

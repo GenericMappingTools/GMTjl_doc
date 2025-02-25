@@ -8,8 +8,6 @@ or
 ablines(D::GMTdataset; kw...)
 ```
 
-*keywords: GMT, Julia, line plots*
-
 Creates a straight line(s) defined by Y = a + b * X. Input can be a pair of `a,b` parameters or a vector
 of them, case in which multiple straight lines are plotted. Plot limits are passed through the usual `region`
 option in `kw` or, if missing, we plot lines in the x = [0 10] interval. The third form, when input is a

@@ -4,8 +4,6 @@
 J = imsobel(I::GMTimage{<:UInt8, 2}; direction::Int=2)::GMTimage
 ```
 
-*keywords: GMT, Julia, Sobel filter*
-
 Sobel edge detecting filter.
 
 Returns a binary \myreflink{GMTimage} containing 1s where the function finds edges in the grayscale or binary image I and 0s elsewhere.

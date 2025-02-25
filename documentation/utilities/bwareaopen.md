@@ -4,8 +4,6 @@
 bwareaopen(I::Union{GMTimage{UInt8,2}, GMTimage{Bool,2}}; keepwhites::Bool=false, keepblacks::Bool=false, kwargs...)::GMTimage
 ```
 
-*keywords: GMT, Julia, image processing, area opening*
-
 Remove all connected components (groups of pixels) that have fewer than P pixels from the binary image ``Ibw``.
 
 Remove groups of pixels in the image that are smaller than a provided threshold size (in pixels)

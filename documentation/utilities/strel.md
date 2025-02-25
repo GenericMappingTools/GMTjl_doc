@@ -8,8 +8,6 @@ or
 	sel = strel(name::String, par1::Int, par2::Int=0)::Sel
 ```
 
-*keywords: GMT, Julia, image morphology, structuring element*
-
 Create a strel (structuring element) object for morphological operations.
 A flat structuring element is a binary valued neighborhood in which the 1's pixels are included in
 the morphological computation, and the 0's pixels are not.

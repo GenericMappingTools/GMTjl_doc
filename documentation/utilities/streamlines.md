@@ -4,8 +4,6 @@
 S = streamlines(U::GMTgrid, V::GMTgrid, startX, startY; step=0.1, max_vert::Int=10000)
 ```
 
-*keywords: GMT, Julia, grid, streamlines*
-
 Compute 2-D streamlines as a 2-D matrix (in fact, a \myreflink{GMTdataset}) of vector fields.
 The inputs `U` and `V` are \myreflink{GMTgrid}s with the `x` and `y` velocity components, and `startX` and
 `startY` are the starting positions of the streamlines. `step` is the step size in data units for

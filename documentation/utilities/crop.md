@@ -4,8 +4,6 @@
 GI = crop(arg::GItype; kw...)
 ```
 
-*keywords: GMT, Julia, grid, image crop*
-
 Crop a subregion of a grid (\myreflink{GMTgrid}) or a image (\myreflink{GMTimage}). The subregion is
 specified with the ``limits`` or ``region`` keyword; the specified range must not exceed the range of the input.
 This function differs from \myreflink{grdcut} in the sense that it doesn't call the GMT lib and works only on

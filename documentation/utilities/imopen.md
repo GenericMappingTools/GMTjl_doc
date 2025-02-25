@@ -4,8 +4,6 @@
 J = imopen(I::Union{GMTimage{<:UInt8, 2}, GMTimage{<:Bool, 2}}; hsize=3, vsize=3, sel=nothing)::GMTimage
 ```
 
-*keywords: GMT, Julia, image morphology, opening*
-
 Open the grayscale or binary image I.
 
 The morphological opening operation is an erosion followed by a dilation, using the same structuring

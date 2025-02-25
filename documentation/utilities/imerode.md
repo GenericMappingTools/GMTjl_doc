@@ -4,8 +4,6 @@
 J = imerode(I::Union{GMTimage{<:UInt8, 2}, GMTimage{<:Bool, 2}}; hsize=3, vsize=3, sel=nothing)::GMTimage
 ```
 
-*keywords: GMT, Julia, image morphology, erosion*
-
 Erode the grayscale or binary image I.
 
 The erosion is performed with a matrix of 0’s and 1’s with width `hsize` and height `vsize`, or, if possible,

@@ -5,8 +5,6 @@
               endtime::Union{DateTime, String}="", variable="temperature_2m", debug=false, show=false, kw...)
 ```
 
-*keywords: GMT, Julia, weather*
-
 Plot and/or retrieve weather data obtained from the [Open-Meteo](https://open-meteo.com/en/docs) API.
 Please consult the site for further details. You will find that there are many variables available to plot
 and with not so obvious names. There are also *forecast* and *archive* versions of the variables. This

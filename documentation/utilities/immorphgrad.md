@@ -4,8 +4,6 @@
 J = immorphgrad(I::Union{GMTimage{<:UInt8, 2}, GMTimage{<:Bool, 2}}; hsize=3, vsize=3, smooth=0)::GMTimage
 ```
 
-*keywords: GMT, Julia, image morphology, Gradient Morphology*
-
 Compute the morphological gradient of a grayscale or binary image.
 
 This is the difference between dilation and erosion of an image. The parameter `smooth` can be used to

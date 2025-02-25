@@ -4,8 +4,6 @@
 J = function imsegment(I::GMTimage{<:UInt8, 3}; maxdist::Int=0, maxcolors::Int=0, selsize::Int=3, colors::Int=5)::GMTimage
 ```
 
-*keywords: GMT, Julia, image segmentation*
-
 Unsupervised RGB color segmentation.
 
 For more details see the docs in Leptonica's function ``pixColorSegment`` (in src/colorseg.c).

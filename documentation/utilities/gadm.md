@@ -4,8 +4,6 @@
 gadm(country, subregions...; children=false, names=false, children_raw=false, reportlevels=false)
 ```
 
-*keywords: GMT, Julia, GADM*
-
 Returns a \myreflink{GMTdataset} for the requested country, or country subregion(s)
 
 - `country`: ISO 3166 Alpha 3 country code.

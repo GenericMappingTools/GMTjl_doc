@@ -4,8 +4,6 @@
 GI[,coast] = worldrectangular(GI; proj::String="+proj=vandg", pm=0, latlim=:auto, coast=false)
 ```
 
-*keywords: GMT, Julia, grid, rectangular, mapping*
-
 Try to create a rectangular map out miscellaneous and not cylindrical projections. We say *try* because
 only some projections are supported and those depend on the GDAL version. So a (slow) moving target.
 

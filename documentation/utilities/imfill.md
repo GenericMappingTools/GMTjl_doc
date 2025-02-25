@@ -4,8 +4,6 @@
 I2 = imfill(I; conn=4, is_transposed=true, layout="TRBa")
 ```
 
-*keywords: GMT, Julia, fill image regions and holes*
-
 Fill holes in the grayscale \myreflink{GMTimage} I or UInt8 matrix I.
 
 Here, a hole is defined as an area of dark pixels surrounded by lighter pixels.

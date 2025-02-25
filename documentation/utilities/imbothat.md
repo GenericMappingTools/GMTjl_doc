@@ -4,8 +4,6 @@
 J = imbothat(I::Union{GMTimage{<:UInt8, 2}, GMTimage{<:Bool, 2}}; hsize=3, vsize=3)::GMTimage
 ```
 
-*keywords: GMT, Julia, image morphology, bothat*
-
 Do a morphological bop-hat operation on a grayscale or binary image.
 
 Bottom-hat computes the morphological closing of the image and does a: `closing - orig_image`

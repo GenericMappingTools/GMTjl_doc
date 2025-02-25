@@ -12,8 +12,6 @@ slicecube(G::GMTgrid, slice::Union{Int, AbstractVector{<:Int}}; axis="z")
 
 Extract a slice from a \myreflink{GMTgrid} cube.
 
-*keywords: GMT, Julia, cube slice*
-
 - `slice`: If it is an Int it will return a GMTgrid corresponding to that layer.
   However, if `slice` is a float this is interpreted to mean: search that dimension (see the `axis` below)
   coordinates and find the closest layer that has coordinate = `slice`. If the `slice` value is not within

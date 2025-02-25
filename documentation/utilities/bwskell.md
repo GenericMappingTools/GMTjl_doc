@@ -4,8 +4,6 @@
 J = bwskell(I::Union{GMTimage{<:UInt8, 2}, GMTimage{<:Bool, 2}}; type::Int=1, maxiters::Int=0, conn::Int=4)::GMTimage
 ```
 
-*keywords: GMT, Julia, image morphology, Thinning, Skeletonize*
-
 Reduce all objects to lines in 2-D binary image.
 
 Reduces all objects in the 2-D binary image `I` to 1-pixel wide curved lines, without changing the essential

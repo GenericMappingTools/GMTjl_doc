@@ -12,8 +12,6 @@ or
 findall(D::Vector{<:GMTdataset}; kw...)
 ```
 
-*keywords: GMT, Julia, spatial filter*
-
 Take a \myreflink{GMTdataset} vector and return only its elements that match the condition(s) set by the `kw` keywords.
 Note, this assumes that `D` has its `attrib` fields set with usable information.
 

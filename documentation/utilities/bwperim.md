@@ -4,8 +4,6 @@
 J = bwperim(I::Union{GMTimage{<:UInt8, 2}, GMTimage{<:Bool, 2}}; hsize=3, vsize=3, sel=nothing)::GMTimage
 ```
 
-*keywords: GMT, Julia, image morphology, Gradient Morphology*
-
 Find perimeter of objects in binary image I.
 
 A pixel is part of the perimeter if it is nonzero and it is connected to at least one zero-valued pixel.

@@ -4,8 +4,6 @@
 J = imtophat(I::Union{GMTimage{<:UInt8, 2}, GMTimage{<:Bool, 2}}; hsize=3, vsize=3)::GMTimage
 ```
 
-*keywords: GMT, Julia, image morphology, tophat*
-
 Do a morphological top-hat operation on a grayscale or binary image.
 
 Top-hat computes the morphological opening of the image and does a: `orig_image - opening`

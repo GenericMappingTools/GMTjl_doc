@@ -4,8 +4,6 @@
 pastplates(; time=100, proj="", title="time", coastlines=true, fmt="png", name="", data=false, show=true)
 ```
 
-*keywords: GMT, Julia, Plate Kinematics*
-
 Plots the reconstruction of the past plates at a given time. Data is extracted from the GPLATES
 https://gws.gplates.org website.
 

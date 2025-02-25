@@ -4,8 +4,6 @@
 J = imfilter(I::GMTimage, kernel::Matrix{<:Real}; normalize::Int=1, sep::Bool=false)::GMTimage
 ```
 
-*keywords: GMT, Julia, fill convolution filtering*
-
 ### Args
 - `I::GMTimage`: Input image. This can be a RGB or grayscale image.
 - `kernel::Matrix{<:Real}`: The filter kernel MxN matrix.

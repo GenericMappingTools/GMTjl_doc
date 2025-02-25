@@ -4,8 +4,6 @@
 J = imhdome(I::GMTimage{<:UInt8, 2}, H; conn=4)::GMTimage
 ```
 
-*keywords: GMT, Julia, image morphology, HDome transform*
-
 Suppress regional minima in image using H-minima transform.
 
 The H-minima transform decreases the depth of all regional minima by an amount up to `H`. As a result,

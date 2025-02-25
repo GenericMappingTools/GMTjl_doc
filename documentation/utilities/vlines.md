@@ -4,8 +4,6 @@
 vlines(arg; decorated=(...), xmin=NaN, xmax=NaN, percent=false, kwargs...)
 ```
 
-*keywords: GMT, Julia, line plots*
-
 Plots one or a collection of vertical lines with eventual decorations
 
 - `ymin` & `ymax`: Limit the vertical lines to start a `ymin` and/or end at `ymax`

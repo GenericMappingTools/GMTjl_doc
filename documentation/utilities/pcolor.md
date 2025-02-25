@@ -4,8 +4,6 @@
 pcolor(X, Y, C::Matrix{<:Real}; kwargs...)
 ```
 
-*keywords: GMT, Julia, grid, pseudo-color plots*
-
 Creates a colored cells plot using the values in matrix `C`. The color of each cell depends on the value of each
 value of `C` after consulting a color table (cpt). If a color table is not provided via option `cmap=xxx` we
 compute a default one.

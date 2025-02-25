@@ -4,8 +4,6 @@
 J = imhmax(I::GMTimage{<:UInt8, 2}, H; conn=4)::GMTimage
 ```
 
-*keywords: GMT, Julia, image morphology, H-maxima transform*
-
 Suppress regional maxima in image using H-maxima transform.
 
 The H-maxima transform decreases the height of all regional maxima by an amount up to `H`. As a result,
