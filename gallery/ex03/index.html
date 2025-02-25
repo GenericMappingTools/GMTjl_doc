@@ -352,6 +352,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/scatter3">scatter3</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/seismicity">seismicity</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/solar">solar</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/spectrum1d">spectrum1d</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/sphinterpolate">sphinterpolate</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/sphtriangulate">sphtriangulate</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/stairs">stairs</a></div></li>
@@ -509,7 +510,7 @@
 
 <!-- Content appended here -->
 <div class="franklin-content"><h1 id="3_spectral_estimation_and_xy-plots"><a href="#3_spectral_estimation_and_xy-plots" class="header-anchor">&#40;3&#41; Spectral estimation and xy-plots</a></h1>
-<p>In this example we will show how to use the GMT programs <a href="/GMTjl_doc/documentation/modules/fitcircle/index.html#fitcircle">fitcircle</a>, <a href="/GMTjl_doc/documentation/modules/project/index.html#project">project</a>, <a href="/GMTjl_doc/documentation/modules/sample1d/index.html#sample1d">sample1d</a>, <a href="#">spectrum1d</a>, and <a href="/GMTjl_doc/documentation/modules/plot/index.html#plot">plot</a>. Suppose you have &#40;lon, lat, gravity&#41; along a satellite track in a file called <code>sat.xyg</code>, and &#40;lon, lat, gravity&#41; along a ship track in a file called <code>ship.xyg</code>. You want to make a cross-spectral analysis of these data. First, you will have to get the two data sets into equidistantly sampled time-series form. To do this, it will be convenient to project these along the great circle that best fits the sat track. We must use <a href="/GMTjl_doc/documentation/modules/fitcircle/index.html#fitcircle">fitcircle</a> to find this great circle and choose the L2 estimates of best pole. We project the data using <a href="/GMTjl_doc/documentation/modules/project/index.html#project">project</a> to find out what their ranges are in the projected coordinate. The script computes the common range. We can then resample the projected data, and carry out the cross-spectral calculations, assuming that the ship is the input and the satellite is the output data. The final plot example_03.ps shows the ship and sat power in one diagram and the coherency on another diagram, both on the same page, with an auto-generated legend. Thus, the complete automated script reads:</p>
+<p>In this example we will show how to use the GMT programs <a href="/GMTjl_doc/documentation/modules/fitcircle/index.html#fitcircle">fitcircle</a>, <a href="/GMTjl_doc/documentation/modules/project/index.html#project">project</a>, <a href="/GMTjl_doc/documentation/modules/sample1d/index.html#sample1d">sample1d</a>, <a href="/GMTjl_doc/documentation/modules/spectrum1d/index.html#spectrum1d">spectrum1d</a>, and <a href="/GMTjl_doc/documentation/modules/plot/index.html#plot">plot</a>. Suppose you have &#40;lon, lat, gravity&#41; along a satellite track in a file called <code>sat.xyg</code>, and &#40;lon, lat, gravity&#41; along a ship track in a file called <code>ship.xyg</code>. You want to make a cross-spectral analysis of these data. First, you will have to get the two data sets into equidistantly sampled time-series form. To do this, it will be convenient to project these along the great circle that best fits the sat track. We must use <a href="/GMTjl_doc/documentation/modules/fitcircle/index.html#fitcircle">fitcircle</a> to find this great circle and choose the L2 estimates of best pole. We project the data using <a href="/GMTjl_doc/documentation/modules/project/index.html#project">project</a> to find out what their ranges are in the projected coordinate. The script computes the common range. We can then resample the projected data, and carry out the cross-spectral calculations, assuming that the ship is the input and the satellite is the output data. The final plot example_03.ps shows the ship and sat power in one diagram and the coherency on another diagram, both on the same page, with an auto-generated legend. Thus, the complete automated script reads:</p>
 <p>The final illustration shows that the ship gravity anomalies have more power than altimetry derived gravity for short wavelengths and that the coherency between the two signals improves dramatically for wavelengths &gt; 20 km.</p>
 <pre><code class="language-julia">using GMT
 
@@ -572,8 +573,8 @@ subplot&#40;:show&#41;</code></pre></p>
 	
 <div class="page-foot">
   <div class="copyright">
-    &copy; GMT.jl. Last modified: February 24, 2025. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
-      <p>These docs were autogenerated using GMT: v1.26.0</p>
+    &copy; GMT.jl. Last modified: February 25, 2025. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+      <p>These docs were autogenerated using GMT: v1.27.0</p>
   </div>
 </div>
 </div><!-- CONTENT ENDS HERE -->
