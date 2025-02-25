@@ -4,8 +4,6 @@
 violin(data, grp=[]; pos=nothing, kwargs...)
 ```
 
-*keywords: GMT, Julia, statistical plots*
-
 Draw a violin plot that is similar to a box plot, with the addition of a kernel density plot on each side.
 The input data can take several different forms.
 

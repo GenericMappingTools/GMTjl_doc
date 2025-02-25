@@ -5,8 +5,6 @@
                      res, registration="", exact=false)
 ```
 
-*keywords: GMT, Julia, geography*
-
 Plots or automatically extracts grid/image over a named geographic region.
 
 ---

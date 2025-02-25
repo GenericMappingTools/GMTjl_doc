@@ -16,8 +16,6 @@ or
 makecpt(G::GMTgrid; kwargs...)
 ```
 
-*keywords: GMT, Julia, colormaps*
-
 Make static color palette tables (CPTs) from master CPTs.
 
 Description

@@ -6,8 +6,6 @@ vband(mat::Matrix; region=(...), width=false,  percent=false, fill=nothing, fill
 hband(mat::Matrix; region=(...), height=false, percent=false, fill=nothing, fillalpha=nothing)
 ```
 
-*keywords: GMT, Julia, plot*
-
 Reads a MxN array where 2 <= N <= 4 and plot a vertical (`vband` or `vspan`) or horizontal (`hband` or `hspan`)
 bands across the *xy* plot. If N == 2 the bands are plotted from *ymin* to *ymax* (`vband`) and from
 *xmin* to *xmax* (`hband`). The optional 1 or 2 extra columns control the begin/end of each band (see examples).

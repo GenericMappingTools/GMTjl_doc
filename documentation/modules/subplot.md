@@ -4,8 +4,6 @@
 subplot(fim=nothing; stop=false, kwargs...)
 ```
 
-*keywords: GMT, Julia, subplot*
-
 **subplot** module is used to split the current figure into a rectangular layout of subplots
 that each may contain a single self-contained figure. A subplot setup is started with the **subplot**
 directive that defines the layout of the subplots, while positioning to a particular subplot for

@@ -4,8 +4,6 @@
 grdgradient(cmd0::String="", arg1=nothing; kwargs...)
 ```
 
-*keywords: GMT, Julia, grid gradients, derivatives*
-
 Compute directional derivative or gradient from a grid
 
 Description

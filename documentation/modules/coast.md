@@ -4,8 +4,6 @@
 coast(cmd0::String=""; kwargs...)
 ```
 
-*keywords: GMT, Julia, geographical mapping*
-
 Plot continents, shorelines, rivers, and borders on maps
 
 Description

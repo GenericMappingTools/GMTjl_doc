@@ -4,8 +4,6 @@
     magref(cmd0::String=""; kwargs...)
 ```
 
-*keywords: GMT, Julia, Geomagnetic, IGRF, CM4*
-
 Description
 -----------
 

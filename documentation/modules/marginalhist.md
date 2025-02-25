@@ -4,9 +4,6 @@
 marginalhist(data; kwargs...)
 ```
 
-*keywords: GMT, Julia, statistical plots*
-
-
 Takes a Mx2 array, and make a scatter plot of first vs second column. The default is to do a scatter3
 plot if number of points <= 200 and bihex plot otherwise, but this is configurable.  Input `data`
 can be a MxN matrix, a `GMTdataset` or a file name that upon reading with `gmtread` returns a `GMTdataset`.

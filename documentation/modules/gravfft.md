@@ -4,8 +4,6 @@
 gravfft(cmd0::String="", arg1=nothing, kwargs...)
 ```
 
-*keywords: GMT, Julia, potential methods, gravity*
-
 Spectral calculations of gravity, isostasy, admittance, and coherence for grids.
 
 Synopsis

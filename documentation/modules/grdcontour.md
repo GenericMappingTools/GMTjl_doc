@@ -4,8 +4,6 @@
 grdcontour(cmd0::String="", arg1=nothing; kwargs...)
 ```
 
-*keywords: GMT, Julia, grid contour plots, mapping*
-
 Make contour plot or map (using a projection) from a grid.
 
 Read a 2-D grid and produces a contour plot by tracing each contour through the grid. Various options

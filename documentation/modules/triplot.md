@@ -4,8 +4,6 @@
 triplot(in::Matrix; onlyedges::Bool=false, noplot::Bool=false, kw...)
 ```
 
-*keywords: GMT, Julia, plot triangulation*
-
 Plots the 2-D triangulation or Voronoi polygons defined by the points in a matrix.
 
 - `in`: The input data. Can be either a Mx2 or Mx3 matrix.

@@ -4,8 +4,6 @@
 	grdtrend(cmd0::String="", arg1=nothing, arg2=nothing; kwargs...)
 ```
 
-*keywords: GMT, Julia, trend surfaces*
-
 Fit trend surface to grids and compute residuals
 
 Description

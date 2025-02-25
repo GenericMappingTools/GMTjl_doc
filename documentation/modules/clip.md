@@ -4,8 +4,6 @@
 clip(cmd0::String="", arg1=[]; kwargs...)
 ```
 
-*keywords: GMT, Julia, clip paths*
-
 Initialize or terminate polygonal clip paths
 
 Description

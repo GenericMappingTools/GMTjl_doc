@@ -4,8 +4,6 @@
 	grd2cpt(cmd0::String="", arg1=nothing, kwargs...)
 ```
 
-*keywords: GMT, Julia, histogram equalizetiond, colormaps*
-
 Make linear or histogram-equalized color palette table from grid
 
 Description

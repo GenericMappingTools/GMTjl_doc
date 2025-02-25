@@ -4,8 +4,6 @@
 filter1d(cmd0::String="", arg1=[]; kwargs...)
 ```
 
-*keywords: GMT, Julia, 1D filter*
-
 Time domain filtering of 1-D data tables
 
 Description

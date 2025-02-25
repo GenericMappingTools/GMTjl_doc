@@ -4,8 +4,6 @@
 contourf(cmd0::String="", arg1=nothing, arg2=nothing; kwargs...)
 ```
 
-*keywords: GMT, Julia, filled contour plots, visualization, mapping*
-
 Create filled contour mapps.
 
 Description

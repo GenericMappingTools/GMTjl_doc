@@ -4,8 +4,6 @@
 	trend2d(cmd0::String="", arg1=nothing, kwargs...)
 ```
 
-*keywords: GMT, Julia, polynomial fit*
-
 Fit [weighted] [robust] polynomial for z = f(x,y) to xyz[w] data.
 
 Description

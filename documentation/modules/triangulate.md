@@ -4,8 +4,6 @@
 	triangulate(cmd0::String="", arg1=nothing; kwargs...)
 ```
 
-*keywords: GMT, Julia, grid interpolation, Delaunay triangulation, Voronoi*
-
 Delaunay triangulation or Voronoi partitioning and gridding of Cartesian data
 
 Description

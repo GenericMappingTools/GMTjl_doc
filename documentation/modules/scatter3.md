@@ -4,8 +4,6 @@
 scatter3(cmd0::String="", arg1=[]; kwargs...)
 ```
 
-*keywords: GMT, Julia, symbols 3D plots, mapping*
-
 Reads (x,y,z) triplets and plot symbols at those locations on a map. This module is a subset of `plot` to make
 it simpler to draw scatter plots. So many (fine) controlling parameters are not listed here. For a
 finer control, user should consult the `plot` module.

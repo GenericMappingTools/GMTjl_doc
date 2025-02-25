@@ -4,8 +4,6 @@
 	grdclip(cmd0::String="", arg1=nothing; kwargs...)
 ```
 
-*keywords: GMT, Julia, grid clip*
-
 Clip the range of grid values
 
 Description

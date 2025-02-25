@@ -4,8 +4,6 @@
 	grdmask(cmd0::String="", arg1=nothing, kwargs...)
 ```
 
-*keywords: GMT, Julia, masks, grid*
-
 Create mask grid from polygons or point coverage.
 
 Description

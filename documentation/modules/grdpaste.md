@@ -4,8 +4,6 @@
     grdpaste(cmd0::String="", arg1=nothing, arg2=nothing, kwargs...)
 ```
 
-*keywords: GMT, Julia, grid join*
-
 Join two grids along their common edge
 
 

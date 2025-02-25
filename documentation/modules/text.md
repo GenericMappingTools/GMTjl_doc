@@ -4,8 +4,6 @@
 text(cmd0::String="", arg1=nothing; kwargs...)
 ```
 
-*keywords: GMT, Julia, plot text maps*
-
 Plot or typeset text on maps
 
 Description

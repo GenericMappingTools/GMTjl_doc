@@ -4,8 +4,6 @@
 fill_between(D1 [,D2]; kwargs...)
 ```
 
-*keywords: GMT, Julia, area fill plots*
-
 Fill the area between two horizontal curves.
 
 The curves are defined by the points (x, y1, y2) in matrix or GMTdataset `D1`. This creates one or

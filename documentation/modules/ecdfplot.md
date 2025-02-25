@@ -6,8 +6,6 @@ ecdfplot(x::AbstractVector{AbstractFloat}, y::AbstractVector{AbstractFloat}; kwa
 
 ecdfplot(x, ...) plot the empirical cumulative distribution function (ECDF) of `x`.
 
-*keywords: GMT, Julia, statistical plots*
-
 -----------
 This module is a subset of `plot` to make it simpler to draw stair plots. So not all (fine)
 controlling parameters are not listed here. For the finest control, user should consult the \myreflink{plot} module.

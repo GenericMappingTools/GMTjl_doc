@@ -4,8 +4,6 @@
 	trend1d(cmd0::String="", arg1=nothing, kwargs...)
 ```
 
-*keywords: GMT, Julia, polynomial fit*
-
 Fit [weighted] [robust] polynomial/Fourier model for y = f(x) to xy[w] data.
 
 Description

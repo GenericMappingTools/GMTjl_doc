@@ -4,8 +4,6 @@
     grdcut(cmd0::String="", arg1=[], kwargs...)
 ```
 
-*keywords: GMT, Julia, grid sub-region*
-
 Extract subregion from a grid or image
 
 Description

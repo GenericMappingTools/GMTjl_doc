@@ -6,8 +6,6 @@ or
     grdvector(X, Y, U, V; kwargs...)
 ```
 
-*keywords: GMT, Julia, vector plots, mapping*
-
 Plot vector field from two component grids
 
 Description

@@ -4,8 +4,6 @@
 	gmtselect(cmd0::String="", arg1=nothing, kwargs...)
 ```
 
-*keywords: GMT, Julia, spatial*
-
 Select data table subsets based on multiple spatial criteria
 
 

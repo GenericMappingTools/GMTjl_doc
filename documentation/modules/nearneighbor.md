@@ -4,8 +4,6 @@
     nearneighbor(cmd0::String="", arg1=nothing; kwargs...)
 ```
 
-*keywords: GMT, Julia, grid interpolation, nearest neighbor*
-
 Grid table data using a "Nearest neighbor" algorithm
 
 Description

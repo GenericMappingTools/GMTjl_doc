@@ -4,8 +4,6 @@
 	grdfill(cmd0::String="", arg1=nothing, kwargs...)
 ```
 
-*keywords: GMT, Julia, grid filling*
-
 Interpolate across holes in a grid.
 
 Description

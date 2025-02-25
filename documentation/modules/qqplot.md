@@ -4,8 +4,6 @@
 qqplot(x::AbstractVector{AbstractFloat}, y::AbstractVector{AbstractFloat}; kwargs...)
 ```
 
-*keywords: GMT, Julia, stair plots*
-
 The `qqplot` function compares the quantiles of two distributions. The `qqnorm` is a shorthand for comparing a
 distribution to the normal distribution. If the distributions are similar the points will be on a straight line.
 

@@ -4,8 +4,6 @@
 cornerplot(data; kwargs...)
 ```
 
-*keywords: GMT, Julia, statistical plots*
-
 Takes a nSamples-by-nDimensions array, and makes density plots of every combination of the dimensions.
 Plots as a triangular matrix of subplots showing the correlation among input variables. Input `data`
 can be a MxN matrix, a `GMTdataset` or a file name that upon reading with `gmtread` returns a `GMTdataset`.

@@ -4,8 +4,6 @@
 	wiggle(cmd0::String="", arg1=nothing; kwargs...)
 ```
 
-*keywords: GMT, Julia, wiggle plots*
-
 Plot z = f(x,y) anomalies along tracks
 
 Description

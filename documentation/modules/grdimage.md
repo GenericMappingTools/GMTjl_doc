@@ -4,8 +4,6 @@
     grdimage(cmd0::String=""; kwargs...)
 ```
 
-*keywords: GMT, Julia, grid visualization, Geotiff, mapping*
-
 Project grids or images and plot them on maps
 
 Description

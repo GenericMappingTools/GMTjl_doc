@@ -12,8 +12,6 @@ or
 band(Function, range; width=0.0, envelope=false, kwargs...)
 ```
 
-*keywords: GMT, Julia, band plots*
-
 Plot a line with a symmetrical or asymmetrical band around it. If the band is not color filled then,
 by default, only the envelope outline is plotted.
 

@@ -4,8 +4,6 @@
 grdview(cmd0::String=""; kwargs...)
 ```
 
-*keywords: GMT, Julia, surface visualization, 3D view, mapping*
-
 Create 3-D perspective image or surface mesh from a grid
 
 Description

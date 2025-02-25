@@ -10,8 +10,6 @@ mask(GI:GItype, shapes::GMTdataset, touches=false, inverse::Bool=false, maskvalu
 
 Clip or mask map areas with no data table coverage
 
-*keywords: GMT, Julia, grid clip*
-
 Description
 -----------
 

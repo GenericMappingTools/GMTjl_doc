@@ -8,8 +8,6 @@ or
 	grdlandmask(GI:GItype, ...)
 ```
 
-*keywords: GMT, Julia, land masks, mapping*
-
 Create a "wet-dry" mask grid from shoreline data base
 
 

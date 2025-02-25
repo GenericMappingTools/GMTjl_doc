@@ -4,8 +4,6 @@
 	bar(cmd0::String="", arg1=[]; kwargs...)
 ```
 
-*keywords: GMT, Julia, bar plots*
-
 Reads (x,y) pairs and plots a bar graph. This module is a subset of `plot` to make it simpler to draw bar
 plots. So not all (fine) controlling parameters are listed here. For a finer control, user should
 consult the \myreflink{plot} module.

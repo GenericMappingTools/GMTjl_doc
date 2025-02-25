@@ -4,8 +4,6 @@
     grdinfo(cmd0::String="", arg1=nothing; kwargs...)
 ```
 
-*keywords: GMT, Julia, grid info*
-
 Reads a 2-D grid file and reports metadata and various statistics for the (x,y,z) data in the grid file
 
 

@@ -4,8 +4,6 @@
 scatter(cmd0::String="", arg1=nothing; kwargs...)
 ```
 
-*keywords: GMT, Julia, symbols plots, mapping*
-
 Reads (x,y) pairs and plot symbols at those locations on a map/figure. The input can either be a file
 name of a file with at least two columns (x,y), but optionally more, a GMTdatset object with also two
 or more columns.

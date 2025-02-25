@@ -5,8 +5,6 @@ parallelplot(cmd0::String="", arg1=nothing; labels|axeslabels=String[], group=Ve
              groupvar="", normalize="range", kwargs...)
 ```
 
-*keywords: GMT, Julia, statistical plots*
-
 Creates a parallel coordinates plot from the table (Matrix or \myreflink{GMTdataset}). Each line in the plot
 represents a row in the table, and each coordinate variable in the plot corresponds to a column in the table.
 By default, table columns are plotted.

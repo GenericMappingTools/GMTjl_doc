@@ -4,8 +4,6 @@
 bubblechart(cmd0::String="", arg1=nothing; size=?, kwargs...)
 ```
 
-*keywords: GMT, Julia, bubble plots*
-
 Reads (x,y) pairs and plot *bubbles* at those locations on a map/figure. The input can either be a file
 name of a file with at least two columns (x,y), but optionally more, a GMTdatset object with also two
 or more columns.

@@ -4,8 +4,6 @@
 stem(cmd0::String="", arg1=nothing; kwargs...)
 ```
 
-*keywords: GMT, Julia, stem plots*
-
 Reads (x,y) pairs and plot the data sequence, *y*, as stems that extend from a baseline along the x-axis.
 The data values are indicated by circles terminating each stem. The input can either be a file name of a file with
 at least two columns (x,y), but optionally more, a GMTdatset object with also two or more columns, or direct *x,y* inputs

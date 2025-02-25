@@ -4,8 +4,6 @@
 seismicity(starttime="", endtime="", minmagnitude=3, mindepth=0, maxdepth=0, last=0, printurl=false, show=true, kw...)
 ```
 
-*keywords: GMT, Julia, seismicity, mapping*
-
 Make automatic maps of the world-wide seismicity obtained from [USGS Earthquake Hazards Program](https://earthquake.usgs.gov)
 in Julia using GMT.
 

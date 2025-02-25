@@ -4,8 +4,6 @@
 grdgravmag3d(cmd0::String="", arg1=nothing, kwargs...)
 ```
 
-*keywords: GMT, Julia, gravity, magnetism*
-
 Description
 -----------
 

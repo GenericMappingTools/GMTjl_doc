@@ -4,8 +4,6 @@
 	sphinterpolate(cmd0::String="", arg1=nothing, kwargs...)
 ```
 
-*keywords: GMT, Julia, spherical grid interpolation*
-
 Spherical gridding in tension of data on a sphere.
 
 Description

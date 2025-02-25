@@ -4,8 +4,6 @@
 	grdtrack(cmd0::String="", arg1=nothing, arg2=nothing; kwargs...)
 ```
 
-*keywords: GMT, Julia, grid sample*
-
 Sample grids at specified (x,y) locations
 
 ## WARNING: ONLY HALF PORTED TO GMT.JL NEED HELP FOR FINISHING
