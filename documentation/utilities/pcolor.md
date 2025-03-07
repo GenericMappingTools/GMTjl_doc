@@ -90,6 +90,16 @@ pcolor(G.x, G.y, G.z, labels=2, font=(angle=45, font=(5,:red)), show=1)
 ```
 \end{examplefig}
 
+Display a Pearson's correlation matrix
+
+\begin{examplefig}{}
+```julia
+using GMT
+
+pcolor(GMT.cor(rand(4,4)), labels=:y, colorbar=1, show=true)
+```
+\end{examplefig}
+
 An irregular grid
 
 \begin{examplefig}{}

@@ -106,19 +106,22 @@ The optional *annot_unit* indicates the unit of the *stride* and can be any of t
 Note for geographic axes **m** and **s** instead mean arc minutes and arc seconds.
 All entities that are language-specific are under control by [GMT\_LANGUAGE](http://docs.generic-mapping-tools.org/latest/gmt.conf.html#gmt-language). 
 
-For custom annotations and intervals, let *intervals* be given as *custom="intfile"*, where
+For custom annotations and intervals, let *intervals* be given as **custom**=*"intfile"*, where
 *intfile* contains any number of records with *coord type* [*label*]. Here, *type* is one or more
 letters from **a** or **i**, **f**, and **g**. For **a** or **i** you must supply a *label* that will
-be plotted at the *coord* location.
+be plotted at the *coord* location. The **custom** option can also be used giving it a NamedTuple
+argument. For example **xaxis=(custom=(pos=[1,2,3], label=(:Aa, :Bb, :Cc)), angle=45)** (and we could have
+used _type_, as described above, intead of _label_). NOTE, the _angle_ keyword can only be used on `x` axis.
 
 A simpler way of controling the ticks and annotations with custom settings is to use the **xticks** option
-(same for **yticks** and **zticks**). Here, one give a tuple with annotations interval and labels. E.g.
-**xticks=(1:5, ["a", "b", "c", "d"])** where first element is an AbstractArray and second an array or tuple of
+(same for **yticks** and **zticks**). Here, one give a tuple with labels, annotations interval, and angle of annotations.
+Of these, only the _labels_ is mandatory, and the angle (a single value) can only be used for **xticks**. E.g.
+**xticks=(1:5, ["a", "b", "c", "d"], 90)** where first element is an AbstractArray and second an array or tuple of
 strings or symbols. The more elaborate effect described above for the *custom* options is achieved here by
 escaping the **a** or **i**, **f**, and **g** codes with a forward slash in a text string. Example:
 **xticks=(1:5, ["a", "f", "/ag e", "f", "/ag @~p@~"])**. Here "/ag e" means annotate the third value with *e*
 and add a grid line. These *x|y|zticks* options work only for the primary axes. To change the secondary use
-the *customtics* form. *E.g.* **xaxis2=(customticks(...),)**. Note that the *ticks* keyword is already taken
+the *customticks* form. *E.g.* **xaxis2=(customticks(...),)**. Note that the *ticks* keyword is already taken
 to control the ticks interval hence the need to use a different one (*customticks*).
 
 For non-geographical projections: Give negative scale or figure sizes to change the direction of increasing

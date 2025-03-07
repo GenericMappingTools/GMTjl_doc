@@ -214,7 +214,16 @@ imshow(makecpt(cmap=(:red,:green,:blue), range=[0,100,300,1000], no_bg=true), ho
 ```
 \end{examplefig}
 
-To make a continuous CPT from white to blue as z goes from 3 to 10, try
+To make a discrete CPT from white to blue as z goes from 3 to 10, try
+
+\begin{examplefig}{}
+```julia
+using GMT
+imshow(makecpt(cmap="white,blue", range=(3,10)), continuous=true, horizontal=true)
+```
+\end{examplefig}
+
+And to get a continuous CPT, use the option `continuous=true`.
 
 \begin{examplefig}{}
 ```julia
@@ -222,6 +231,7 @@ using GMT
 imshow(makecpt(cmap="white,blue", range=(3,10)), horizontal=true)
 ```
 \end{examplefig}
+
 
 To make a wrapped (cyclic) CPT from the turbo table over the interval 0 to 500, i.e., the color will be wrapped every 500
 z-units so that we always get a color regardless of the *z* value, try

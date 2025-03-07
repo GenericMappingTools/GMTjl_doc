@@ -18,21 +18,21 @@ The output has 3 columns: f or w, p, and e. f or w is the frequency or wavelengt
 the one standard deviation error bar size. If the **output** option is used, up to eight files are
 created; otherwise only one (xpower) is written.
 
-*name_stem*.xpower
+- *name_stem*.xpower\
     Power spectral density of *X*\ (*t*). Units of X \* X \* *dt*.
-*name_stem*.ypower
+- *name_stem*.ypower\
     Power spectral density of *Y*\ (*t*). Units of Y \* Y \* *dt*.
-*name_stem*.cpower
+- *name_stem*.cpower\
     Power spectral density of the coherent output. Units same as ypower.
-*name_stem*.npower
+- *name_stem*.npower\
     Power spectral density of the noise output. Units same as ypower.
-*name_stem*.gain
+- *name_stem*.gain\
     Gain spectrum, or modulus of the transfer function. Units of (Y / X).
-*name_stem*.phase
+- *name_stem*.phase\
     Phase spectrum, or phase of the transfer function. Units are radians.
-*name_stem*.admit
+- *name_stem*.admit\
     Admittance spectrum, or real part of the transfer function. Units of (Y / X).
-*name_stem*.coh
+- *name_stem*.coh\
     (Squared) coherency spectrum, or linear correlation coefficient as a
     function of frequency. Dimensionless number in [0, 1]. The
     Signal-to-Noise-Ratio (SNR) is coh / (1 - coh). SNR = 1 when coh = 0.5.
@@ -68,7 +68,6 @@ Optional Arguments
     coherent output and the noise output are uncorrelated. Optionally specify up to 8 directives from the set
     refered above in any order to create only those output files instead of the default [all]. Use in alternatively
     a string made of the `acgnopxy` characters, or the expanded version that uses the keywords.
- 
     - **a** or `admitt=true`: Admittance spectrum, or real part of the transfer function.
     - **c** or `cpower=true`: Power spectral density of the coherent output.
     - **g** or `gain=true`: Gain spectrum, or modulus of the transfer function.
