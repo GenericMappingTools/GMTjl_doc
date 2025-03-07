@@ -521,6 +521,7 @@
 </div>
 <div class="doc-content"><pre><code>pcolor&#40;X, Y, C::Matrix&#123;&lt;:Real&#125;; kwargs...&#41;</code></pre>
 <p>Creates a colored cells plot using the values in matrix <code>C</code>. The color of each cell depends on the value of each value of <code>C</code> after consulting a color table &#40;cpt&#41;. If a color table is not provided via option <code>cmap&#61;xxx</code> we compute a default one.</p>
+<h3>Args</h3>
 <ul>
 <li><p><code>X</code>, <code>Y</code>: Vectors or 1 row matrices with the x- and y-coordinates for the vertices. The number of elements of <code>X</code> must match the number of columns in <code>C</code> &#40;is using the grid registration model&#41; or exceed it by one &#40;pixel registration&#41;. The same for <code>Y</code> and the number of rows in <code>C</code>. Notice that <code>X</code> and <code>Y</code> do not need to be equispaced.</p>
 </li>
@@ -528,8 +529,10 @@
 </li>
 <li><p><code>C</code>: A matrix with the values that will be used to color the cells.</p>
 </li>
-<li><p><code>kwargs</code>: This form of <code>pcolor</code> is in fact a wrap up of &#36;plot&#36; so any option of that module can be used here.</p>
-</li>
+</ul>
+<h3>Kwargs</h3>
+<p>This form of <code>pcolor</code> is in fact a wrap up of &#36;plot&#36; so any option of that module can be used here.</p>
+<ul>
 <li><p><code>labels</code>: If this &#36;keyword&#36; is used then we plot the value of each node in the corresponding cell. Use <code>label&#61;n</code>, where &#36;n&#36; is integer and represents the number of printed decimals. Any other value like &#36;true&#36;, &#36;&quot;y&quot;&#36; or &#36;:y&#36; tells the program to guess the number of decimals.</p>
 </li>
 <li><p><code>font</code>: When <code>label</code> is used one may also control text font settings. Options are a subset of the &#36;text&#36; <code>attrib</code> option. Namely, the angle and the &#36;font&#36;. Example: &#36;font&#61;&#40;angle&#61;45, font&#61;&#40;5,:red&#41;&#41;&#36;. If not specified, it defaults to &#36;font&#61;&#40;font&#61;&#40;6,:black&#41;,&#41;&#36;.</p>
@@ -547,25 +550,30 @@
 <li><p><code>kwargs</code>: This form of <code>pcolor</code> is a wrap of &#36;grdview&#36; so any option of that module can be used here. One can for example control the tilling option via &#36;grdview&#39;s&#36; &#36;tiles&#36; option.</p>
 </li>
 </ul>
+<hr />
+<pre><code>pcolor&#40;GorD; kwargs...&#41;</code></pre>
+<p>If <code>GorD</code> is either a GMTgrid or a GMTdataset containing a Pearson correlation matrix obtained with &#36;GMT.cor&#40;&#41;&#36;, the processing recieves a special treatment. In this case, other than the <code>labels</code> keyword, user is also interested in seing if the automatic choice of x-annotaions angle is correct. If not, one can force it by setting the <code>rotx</code> &#40;ot <code>slanted</code>&#41; keywords.</p>
 <h3>Examples</h3>
-<pre><code># Create an example grid
-G &#61; GMT.peaks&#40;N&#61;21&#41;;
+<pre><code class="language-julia">    # Create an example grid
+	G &#61; GMT.peaks&#40;N&#61;21&#41;;
 
-pcolor&#40;G, outline&#61;&#40;0.5,:dot&#41;, show&#61;true&#41;
+	pcolor&#40;G, outline&#61;&#40;0.5,:dot&#41;, show&#61;true&#41;
 
-# Now use the G x,y coordinates in the non-regular form
-pcolor&#40;G.x, G.y, G.z, show&#61;true&#41;
+	# Now use the G x,y coordinates in the non-regular form
+	pcolor&#40;G.x, G.y, G.z, show&#61;true&#41;
 
-# Add labels to cells using default settings &#40;font size &#61; 6p&#41;
-pcolor&#40;G.x, G.y, G.z, labels&#61;:y, show&#61;true&#41;
+	# Add labels to cells using default settings &#40;font size &#61; 6p&#41;
+	pcolor&#40;G.x, G.y, G.z, labels&#61;:y, show&#61;true&#41;
 
-# Similar to above but now set the number of decimlas in labels as well as it font settings
-pcolor&#40;G.x, G.y, G.z, labels&#61;2, font&#61;&#40;angle&#61;45, font&#61;&#40;5,:red&#41;&#41;, show&#61;1&#41;
+	# Similar to above but now set the number of decimlas in labels as well as it font settings
+	pcolor&#40;G.x, G.y, G.z, labels&#61;2, font&#61;&#40;angle&#61;45, font&#61;&#40;5,:red&#41;&#41;, show&#61;1&#41;
 
-# An irregular grid
-X,Y &#61; meshgrid&#40;-3:6/17:3&#41;;
-XX &#61; 2*X .* Y;	YY &#61; X.^2 .- Y.^2;
-pcolor&#40;XX,YY, reshape&#40;repeat&#40;&#91;1:18; 18:-1:1&#93;, 9,1&#41;, size&#40;XX&#41;&#41;, lc&#61;:black, show&#61;true&#41;</code></pre>
+	# An irregular grid
+	X,Y &#61; meshgrid&#40;-3:6/17:3&#41;;
+	XX &#61; 2*X .* Y;	YY &#61; X.^2 .- Y.^2;
+	pcolor&#40;XX,YY, reshape&#40;repeat&#40;&#91;1:18; 18:-1:1&#93;, 9,1&#41;, size&#40;XX&#41;&#41;, lc&#61;:black, show&#61;true&#41;</code></pre>
+<p>Display a Pearson&#39;s correlation matrix</p>
+<pre><code class="language-julia">pcolor&#40;GMT.cor&#40;rand&#40;4,4&#41;&#41;, labels&#61;:y, colorbar&#61;1, show&#61;true&#41;</code></pre>
 
 
 </div>
@@ -604,8 +612,8 @@ pcolor&#40;XX,YY, reshape&#40;repeat&#40;&#91;1:18; 18:-1:1&#93;, 9,1&#41;, size
 	
 <div class="page-foot">
   <div class="copyright">
-    &copy; GMT.jl. Last modified: February 25, 2025. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
-      <p>These docs were autogenerated using GMT: v1.27.0</p>
+    &copy; GMT.jl. Last modified: March 07, 2025. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+      <p>These docs were autogenerated using GMT: v1.27.1</p>
   </div>
 </div>
 </div><!-- CONTENT ENDS HERE -->
