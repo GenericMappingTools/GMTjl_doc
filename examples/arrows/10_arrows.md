@@ -130,12 +130,12 @@ using GMT
 coast(region=[-127, -64, 24, 53], proj=:merc, borders=1, area=4000, shore=true)
 
 # Left: plot 12 Cartesian vectors with different lengths
-x = fill(-116, 12);               # x vector coordinates
+x = fill(-117, 12);               # x vector coordinates
 y = linspace(33.5, 42.5, 12);     # y vector coordinates
 direction = zeros(12);            # direction of vectors (horizontal)
-length = linspace(0.5, 2.4, 12);  # length of vectors
+length = linspace(2, 10, 12);  # length of vectors
 arrows!([x y direction length], pen=(1,:red),
-        paper=true, arrow=(len="0.2", stop=true, fill=:red, angle=40, shape=:triang))
+        arrow=(len="0.2", stop=true, fill=:red, angle=40, shape=:triang))
 text!(text="CARTESIAN", x=-112, y=44.2, font="13p,Helvetica-Bold,red")
 
 # Middle: plot 7 math angle arcs with different radii

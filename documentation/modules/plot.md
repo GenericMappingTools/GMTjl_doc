@@ -146,6 +146,8 @@ Parameters
       corner radius must be found in columns 3, 4, and 5.
     - **s** or **square**    size is diameter of circumscribing circle.
     - **t** or **^** or **triangle**  size is diameter of circumscribing circle.
+    - **w** or **wedge** or **web** or **pie** size is diameter of circumscribing circle. Data is x,y (center) startdir and stopdir
+    - **W** or **Wedge** or **Web** or **Pie** Same as **wedge**, except azimuths (in degrees east of north) should be given instead of the two directions.
     - **x** or **cross**    size is diameter of circumscribing circle.
     - **y** or **y-dash**  (|). size is the length of a short vertical (y-dir) line segment.
     - **decorated**    i.e., lines with symbols along them. See \myreflink{Decorated lines}

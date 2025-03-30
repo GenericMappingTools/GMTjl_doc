@@ -219,7 +219,7 @@ To make a discrete CPT from white to blue as z goes from 3 to 10, try
 \begin{examplefig}{}
 ```julia
 using GMT
-imshow(makecpt(cmap="white,blue", range=(3,10)), continuous=true, horizontal=true)
+imshow(makecpt(cmap="white,blue", range=(3,10)), horizontal=true)
 ```
 \end{examplefig}
 
@@ -228,7 +228,7 @@ And to get a continuous CPT, use the option `continuous=true`.
 \begin{examplefig}{}
 ```julia
 using GMT
-imshow(makecpt(cmap="white,blue", range=(3,10)), horizontal=true)
+imshow(makecpt(cmap="white,blue", range=(3,10), continuous=true), horizontal=true)
 ```
 \end{examplefig}
 

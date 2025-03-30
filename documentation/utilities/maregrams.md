@@ -1,7 +1,7 @@
 # maregrams
 
 ```
-D = maregrams(list::Bool=false, code="", name="", days::Real=2, starttime::String="", printurl=false)
+D = maregrams(list=false, code="", name="", days::Real=2, starttime::String="", printurl=false)
 or
 
 D = maregrams(lon::Real, lat::Real; days=2, starttime::String="")
@@ -26,7 +26,8 @@ that we don't know about, but is a valid one, we still return the data for that 
    This is an alternative way of selecting a station instead of using `code` or `name` that require knowing them.
 
 ### Kwargs
-- `list::Bool`: If true, returns a GMTdataset with the list all available stations and their codes and coords.
+- `list`: If equal to `true`, returns a GMTdataset with the list all available stations and their codes and coords.
+   If it is a string, search all entries that contain that string. _e.g.,_ `list=Canada` returns all stations in Canada.
 
 - `code`: Station code (See the output of `list`)
 
