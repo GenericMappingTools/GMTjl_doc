@@ -16,7 +16,13 @@ of 2 and 3D (perspective, not volumetric) graphics.
 
 ## Installation and use
 
-Using Julia's inbuilt package manager.
+- **NOTE**: It is **highly recommended** to use the Julia version 1.10 and avoid later versions that have seriously degraded
+  the start time, compilation speed and the so called TTFP (*time to first plot*). The recommended version is the
+  [Long-term support (LTS) release](https://julialang-s3.julialang.org/bin/winnt/x64/1.10/julia-1.10.9-win64.exe)
+  that is now in the 1.10.9 release.
+
+
+And use the Julia's inbuilt package manager to install  GMT.
 
 ```julia
 ] add GMT

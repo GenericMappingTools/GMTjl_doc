@@ -105,6 +105,18 @@ gmtend(:show)
     Compute the cumulative distance along the input line. Note that for this the first two columns must
     contain the spatial coordinates and the accumulated distance is appended after last column of the table.
 
+- **keep_nans** : -- *keep_nans=true*\
+    By default we will ignore all NaN values in the input. This option will keep the NaN values in interpolation,
+    meaning that all to-interpolate points in a vicinity of a NaN will be NaN. Use this option if you want NaNs to be
+    used as gap separators.
+
+- **fill_nans** or **interp_nans** : -- *interp_nans=true*\
+    Replace all NaNs in input by their interpolated values. All other values will be kept as is.
+
+- **nonans** : -- *nonans=true*\
+    iWhen using the **gaps** option, make sure that the output does not contain any NaN values. That means all
+    rows that contain at least one record with a NaN will be removed. The default behavior is to keep the NaN values.
+
 \textinput{common_opts/opt_V}
 
 - **W** or **weights** : -- *weights=col*\

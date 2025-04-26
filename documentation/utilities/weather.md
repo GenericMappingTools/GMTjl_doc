@@ -12,10 +12,10 @@ function tries to guess that from the variable names. That list of variable name
 and we are not reproducing it entirely here, but given it interest for climatological reason, we do list
 the so called $daily$ variables.
 
-- `variable`: "temperature_2m_max", "temperature_2m_min", "apparent_temperature_max", "apparent_temperature_min",
-"precipitation_sum", "rain_sum", "snowfall_sum", "precipitation_hours", "sunshine_duration", "daylight_duration",
-"wind_speed_10m_max", "wind_gusts_10m_max", "wind_direction_10m_dominant", "shortwave_radiation_sum",
-"et0_fao_evapotranspiration"
+- `variable`: "temperature\_2m\_max", "temperature\_2m\_min", "apparent\_temperature\_max", "apparent\_temperature\_min",
+"precipitation\_sum", "rain\_sum", "snowfall\_sum", "precipitation\_hours", "sunshine\_duration", "daylight\_duration",
+"wind\_speed\_10m\_max", "wind\_gusts\_10m\_max", "wind\_direction\_10m\_dominant", "shortwave\_radiation\_sum",
+"et0\_fao\_evapotranspiration"
 
 A word of aknowledge is also due to the [WeatherReport.jl](https://github.com/vnegi10/WeatherReport.jl) project
 that inspired this function, that is much smaller (~25 LOC) and has no further dependencies than GMT itself.

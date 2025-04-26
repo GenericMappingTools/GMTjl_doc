@@ -37,7 +37,7 @@
 
 |  |  |  |  |  |  |  |  |
 |:-----|:----|:----|:----|:----|:----|:----|:----|
-| \myreflink{maregrams} | \myreflink{pastplates} | \myreflink{seismicity} | \myreflink{weather} | \myreflink{wmsinfo} | \myreflink{wmsread} | \myreflink{wmstest} |  |
+| \myreflink{maregrams} | \myreflink{mosaic} | \myreflink{pastplates} | \myreflink{seismicity} | \myreflink{weather} | \myreflink{wmsread} |  |  |
 
 
 ## Supplemental Modules (Potential methods)
@@ -60,11 +60,11 @@ its use requires resorting to the \myreflink{Monolithic} mode.
 | \myreflink{cubeplot} | \myreflink{coastlinesproj} | \myreflink{cubeslice} | \myreflink{date2doy} | \myreflink{delrows!} | \myreflink{doy2date} | \myreflink{findpeaks} | \myreflink{gadm} |
 | \myreflink{geocoder} | \myreflink{geodetic2enu} | \myreflink{getbyattrib} | \myreflink{gmtread} | \myreflink{gmtwrite} | \myreflink{graticules} | \myreflink{gridit} | \myreflink{gunique} |
 | \myreflink{hampel} | \myreflink{imagesc} | \myreflink{inpolygon} | \myreflink{inwhichpolygon} | \myreflink{image_alpha!} | \myreflink{image_cpt!} | \myreflink{imshow} | \myreflink{ind2rgb} |
-| \myreflink{info} | \myreflink{isnodata} | \myreflink{lelandshade} | \myreflink{linearfitxy} | \myreflink{magic} | \myreflink{mat2ds} | \myreflink{mat2grid} | \myreflink{mat2img} |
-| \myreflink{mosaic} | \myreflink{ODE2ds} | \myreflink{orbits} | \myreflink{pca} | \myreflink{plotgrid!} | \myreflink{plotyy} | \myreflink{pol2cart} | \myreflink{polygonlevels} |
-| \myreflink{rasterzones!} | \myreflink{regiongeog} | \myreflink{remotegrid} | \myreflink{rescale} | \myreflink{slicecube} | \myreflink{sph2cart} | \myreflink{stackgrids} | \myreflink{ter2cart} |
-| \myreflink{theme} | \myreflink{uniqueind} | \myreflink{vecangles} | \myreflink{whereami} | \myreflink{worldrectgrid} | \myreflink{worldrectcoast} | \myreflink{worldrectangular} | \myreflink{xyzw2cube} |
-| \myreflink{yeardecimal} | \myreflink{zonal_stats} |  |  |  |  |  |  |
+| \myreflink{info} | \myreflink{isnodata} | \myreflink{isoutlier} | \myreflink{lelandshade} | \myreflink{linearfitxy} | \myreflink{magic} | \myreflink{mat2ds} | \myreflink{mat2grid} |
+| \myreflink{mat2img} | \myreflink{mosaic} | \myreflink{ODE2ds} | \myreflink{orbits} | \myreflink{pca} | \myreflink{plotgrid!} | \myreflink{plotyy} | \myreflink{pol2cart} |
+| \myreflink{polygonlevels} | \myreflink{rasterzones!} | \myreflink{regiongeog} | \myreflink{remotegrid} | \myreflink{rescale} | \myreflink{slicecube} | \myreflink{sph2cart} | \myreflink{stackgrids} |
+| \myreflink{ter2cart} | \myreflink{theme} | \myreflink{uniqueind} | \myreflink{vecangles} | \myreflink{whereami} | \myreflink{worldrectgrid} | \myreflink{worldrectcoast} | \myreflink{worldrectangular} |
+| \myreflink{xyzw2cube} | \myreflink{yeardecimal} | \myreflink{zonal_stats} |  |  |  |  |  |
 
 ## Solids functions
 
