@@ -1,10 +1,10 @@
 # findpeaks
 
 ```
-findpeaks(y, x=1:length(y); min_height=minimum(y), min_prom=minimum(y), min_dist=0, threshold=0)
+findpeaks(y, x=1:length(y); min_height=minimum(y), min_prom=minimum(y), min_dist=0, threshold=0; xsorted::Bool=false)
 or
     
-findpeaks(D::GMTdataset; min_height=D.bbox[1], min_prom=zero(D[1]), min_dist=0, threshold=0)
+findpeaks(D::GMTdataset; min_height=D.bbox[1], min_prom=zero(D[1]), min_dist=0, threshold=0; xsorted::Bool=false)
 ```
 
 Returns indices of local maxima (sorted from highest peaks to lowest) in 1D array of real numbers.
@@ -35,8 +35,10 @@ The peaks are output in order of occurrence. This function is from the [Findpeak
 - `threshold`: Minimal difference (absolute value) between peak and neighboring points. Use this argument to have
    ``findpeaks`` return only those peaks that exceed their immediate neighboring values by at least the value of `threshold`.
 
+- `xsorted`: If true, the indices of local maxima are sorted in ascending order of `x`. Default is to sort by amplitude.
+
 ### Returns
-- `peaks`: A vector of indices of local maxima (sorted from highest peaks to lowest).
+- `peaks`: A vector of indices of local maxima (sorted from highest peaks to lowest when `xsorted=false`).
 
 ### Examples
 

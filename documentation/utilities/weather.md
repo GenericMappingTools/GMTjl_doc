@@ -2,7 +2,7 @@
 
 ```julia
 [D =] weather(lon=0.0, lat=0.0; city::String="", last=0, days=7, year::Int=0, starttime::Union{DateTime, String}="",
-              endtime::Union{DateTime, String}="", variable="temperature_2m", debug=false, show=false, kw...)
+              endtime::Union{DateTime, String}="", variable="temperature_2m", dryrun=false, show=false, kw...)
 ```
 
 Plot and/or retrieve weather data obtained from the [Open-Meteo](https://open-meteo.com/en/docs) API.
@@ -39,7 +39,7 @@ that inspired this function, that is much smaller (~25 LOC) and has no further d
 
 - `year`: An integer, restrict data download to this year.
 
-- `debug`: Print the url of the requested data and return.
+- `dryrun`: Print the url of the requested data and return.
 
 - `data`: The default is to make a seismicity map but if the `data` option is used (containing whatever)
   we return the data in a ``GMTdataset``

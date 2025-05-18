@@ -37,7 +37,7 @@
 
 |  |  |  |  |  |  |  |  |
 |:-----|:----|:----|:----|:----|:----|:----|:----|
-| \myreflink{maregrams} | \myreflink{mosaic} | \myreflink{pastplates} | \myreflink{seismicity} | \myreflink{weather} | \myreflink{wmsread} |  |  |
+| \myreflink{ecmwf} | \myreflink{gadm} | \myreflink{maregrams} | \myreflink{mosaic} | \myreflink{pastplates} | \myreflink{seismicity} | \myreflink{weather} | \myreflink{wmsread} |
 
 
 ## Supplemental Modules (Potential methods)

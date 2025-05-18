@@ -55,8 +55,8 @@ Get image tiles from a web map tiles provider for given longitude, latitude coor
 - `provider`: Tile provider name. Currently available options are (but for more details see the docs of the
   `getprovider` function, *i.e.* ``? getprovider``):
   - "Bing" (the default), "OSM", "Esri" or a custom provider.
-  - A `Provider` type from the ``TileProviders.jl`` package. You must consult the documentation of that package
-    for more details on how to choose a *provider*.
+  - A `Provider` type from the [TileProviders.jl](https://github.com/JuliaGeo/TileProviders.jl) package.
+    You must consult the documentation of that package for more details on how to choose a *provider*.
 
 - `zoom`: Zoom level (0 for automatic). A number between 0 and ~19. The maximum is provider and area dependent.
   If `zoom=0`, the zoom level is computed automatically based on the `mapwidth` and `dpi` options.
