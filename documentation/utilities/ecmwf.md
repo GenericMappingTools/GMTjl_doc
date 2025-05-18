@@ -138,12 +138,23 @@ Download forecast data
 Example
 -------
 
-Get the latest 10m wind and 2m temperature forecast for today.
+Get the latest 10m wind and 2m temperature forecast for the region of North Atlantic.
 
 ```julia
-ecmwf(:forecast, vars=["10u", "2t"])
+ecmwf(:forecast, var=["10u", "10v", "2t"], R="IHO23")
 ```
 
+Get the 1000, 925 and 850 hPa temperature forecast for the Portugal region. Result is saved in a 3D netCDF file.
+
+```julia
+ecmwf(:forecast, var="t", R="PTC", levlist=["1000", "925", "850"])
+```
+
+The same as above but now we request 5 time steps of the Temperature at the 1000 hPa level.
+
+```julia
+ecmwf(:forecast, var="t", R="PTC", steps=0:3:12)
+```
 
 See Also
 --------
