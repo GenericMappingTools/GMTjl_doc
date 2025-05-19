@@ -34,7 +34,7 @@
 </style>
 <![endif]-->
 
-   <title>windbarb</title>  
+   <title>windbarbs</title>  
   <!-- end custom head snippets -->
 </head>
 <body class="layout--single">
@@ -368,8 +368,8 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/vband">vband</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/violins">violin</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/wiggle">wiggle</a></div></li>
-<li><div class="tocitem-container"><a class = active href="/GMTjl_doc/documentation/modules/windbarbs">windbarb</a></div><ul class="page-content">
-<li><a href="#windbarb/">windbarb</a></li>
+<li><div class="tocitem-container"><a class = active href="/GMTjl_doc/documentation/modules/windbarbs">windbarbs</a></div><ul class="page-content">
+<li><a href="#windbarbs/">windbarbs</a></li>
 </ul>
 </li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/xyz2grd">xyz2grd</a></div></li>
@@ -517,7 +517,7 @@
 
 
 <!-- Content appended here -->
-<div class="franklin-content"><h1 id="windbarb"><a href="#windbarb" class="header-anchor">windbarb</a></h1>
+<div class="franklin-content"><h1 id="windbarbs"><a href="#windbarbs" class="header-anchor">windbarbs</a></h1>
 <pre><code class="language-julia">windbarbs&#40;u, v; kwargs...&#41;</code></pre>
 <p>Plot wind barb field from two component grids with the <em>x</em> and <em>y</em> components of the wind field.</p>
 <p><hr /> or</p>
@@ -550,8 +550,6 @@
 <ul>
 <li><p><strong>G</strong> or <strong>fill</strong> : – <em>fill&#61;fill</em><br />  Sets color or shade for wind barb interiors &#40;see <a href="#">Fill color/pattern</a>&#41; &#91;Default is no fill&#93;.</p>
 </li>
-</ul>
-<ul>
 <li><p><strong>I</strong> or <strong>inc</strong> or <strong>increment</strong> or <strong>spacing</strong> : – <em>inc&#61;x_inc</em> <strong>|</strong> <em>inc&#61;&#40;x<em>inc, y</em>inc&#41;</em> <strong>|</strong> <em>inc&#61;&quot;x&quot;&quot;multx&quot;&#91;&quot;/multy&quot;&#93;</em><br />  Only plot wind barbs at nodes every <em>x&#95;inc</em>, <em>y&#95;inc</em> apart &#40;must be multiples of original grid spacing&#41;.   Append <strong>m</strong> for arc minutes or <strong>s</strong> for arc seconds. Alternatively, use <strong>inc&#61;&quot;x&quot;</strong> to specify the   multiples <em>multx</em>&#91;/<em>multy</em>&#93; directly &#91;Default plots every node&#93;. Example <strong>inc&#61;&quot;x10/5&quot;</strong> to select every other   10 nodes in <em>x</em> and 5 nodes in <em>y</em>. <strong><em>NOTE</em></strong>: by default we estimate good values so that the arrows do no   overlap so you may start by jumping this option unless some fine control is desired.</p>
 </li>
 </ul>
@@ -563,7 +561,7 @@
 <ul>
 <li><p><strong>N</strong> or <strong>noclip</strong> or <strong>no&#95;clip</strong> : <em>noclip&#61;true</em><br />  Do NOT clip wind barbs at map boundaries &#91;Default will clip&#93;.</p>
 </li>
-<li><p><strong>Q</strong> or <strong>barbs</strong> : – <em>barbs&#61;&#40;length&#61;length, angle&#61;angle, fill&#61;fill, pen&#61;pen, justify&#61;&quot;b|e|c&quot;, scale&#61;scale, width&#61;width&#41;</em><br />  Modify wind barb parameters. Append wind barb <em>length</em> &#91;Default is 0.5c&#93;. Several modifiers may be   appended to specify the placement of barbs, their shapes, and the justification of the wind barb.   Below, left and right refers to the side of the wind barb line when viewed from the start point to   the end point of the segment. Chose among these modifiers:</p>
+<li><p><strong>Q</strong> or <strong>barbs</strong> : – <em>barbs&#61;&#40;length&#61;length, angle&#61;angle, fill&#61;fill, pen&#61;pen, justify&#61;&quot;b|e|c&quot;, speed&#61;speed, width&#61;width&#41;</em><br />  Modify wind barb parameters. Append wind barb <em>length</em> &#91;Default is 0.5c&#93;. Several modifiers may be   appended to specify the placement of barbs, their shapes, and the justification of the wind barb.   Below, left and right refers to the side of the wind barb line when viewed from the start point to   the end point of the segment. Chose among these modifiers:</p>
 <ul>
 <li><p><strong>angle</strong> - Set the angle of the wind barb &#91;120&#93;.</p>
 </li>
@@ -573,7 +571,7 @@
 </li>
 <li><p><strong>justify</strong> - Determines how the input <em>x</em>, <em>y</em> point relates to the wind barb. Choose from <strong>b</strong>eginning  &#91;default&#93;, <strong>e</strong>nd, or <strong>c</strong>enter.</p>
 </li>
-<li><p><strong>scale</strong> - Set the wind speed which corresponds to a long barb &#91;default 5&#93;.</p>
+<li><p><strong>speed</strong> - Set the wind speed which corresponds to a long barb &#91;default 5&#93;.</p>
 </li>
 <li><p><strong>width</strong> - Set the <em>width</em> of wind barbs.</p>
 </li>

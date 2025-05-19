@@ -371,7 +371,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/vband">vband</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/violins">violin</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/wiggle">wiggle</a></div></li>
-<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/windbarbs">windbarb</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/windbarbs">windbarbs</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/xyz2grd">xyz2grd</a></div></li>
 </ul></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/gdalfuns">GDAL related functions</a></div></li>
@@ -530,7 +530,7 @@
 </li>
 <li><p><strong>L</strong> or <strong>location</strong> : – <em>location&#61;&#40;lon,lat&#41;</em><br />  Geographical coordinate of the location where to compute a time-series. Coordinates are geodetic   &#40;ellipsoidal&#41; latitude and longitude. GRS80 ellipsoid is used. &#40;Which can be considered equivalent   to the WGS84 ellipsoid at the sub-millimeter level.&#41;</p>
 </li>
-<li><p><strong>C</strong> or <strong>components</strong> : – <em>components&#61;&quot;x|e,y|n,z|v&quot;</em><br />  Select which component&#40;s&#41; to compute in individual grid&#40;s&#41;. When returning the grid to Julia workspace,   only one component can be selected &#40;<em>e.g.</em> <strong>component&#61;&quot;e&quot;</strong> to compute the East component&#41;.   To save grids on files <strong>outgrid</strong> must be set.   Append comma-separated codes for available components: <strong>x</strong> or <strong>e</strong> for the east component;   <strong>y</strong> or <strong>n</strong> for the north component; and <strong>z</strong> or <strong>v</strong> for the vertical component.   For example, <strong>-Ce</strong>,<strong>v</strong>, will write 2 grids. One with east and other with the vertical components.   If <strong>outgrid</strong> is set but not <strong>components</strong> then the default is to compute the vertical component.</p>
+<li><p><strong>C</strong> or <strong>components</strong> : – <em>components&#61;&quot;x|e,y|n,z|v&quot;</em><br />  Select which component&#40;s&#41; to compute in individual grid&#40;s&#41;. When returning the grid to Julia workspace,   only one component can be selected &#40;<em>e.g.</em> <strong>component&#61;&quot;e&quot;</strong> to compute the East component&#41;.   To save grids on files <strong>outgrid</strong> must be set.   Append comma-separated codes for available components: <strong>x</strong> or <strong>e</strong> for the east component;   <strong>y</strong> or <strong>n</strong> for the north component; and <strong>z</strong> or <strong>v</strong> for the vertical component.   For example, <strong>C&#61;e,v</strong>, will write 2 grids. One with east and other with the vertical components.   If <strong>outgrid</strong> is set but not <strong>components</strong> then the default is to compute the vertical component.</p>
 </li>
 </ul>
 <ul>
