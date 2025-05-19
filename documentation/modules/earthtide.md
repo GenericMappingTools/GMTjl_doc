@@ -42,7 +42,7 @@ Arguments
     To save grids on files **outgrid** must be set.
     Append comma-separated codes for available components: **x** or **e** for the east component;
     **y** or **n** for the north component; and **z** or **v** for the vertical component.
-    For example, **-Ce**,**v**, will write 2 grids. One with east and other with the vertical components.
+    For example, **C=e,v**, will write 2 grids. One with east and other with the vertical components.
     If **outgrid** is set but not **components** then the default is to compute the vertical component.
 
 \textinput{common_opts/opt_I}

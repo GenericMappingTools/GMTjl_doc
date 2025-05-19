@@ -1,4 +1,4 @@
-# windbarb
+# windbarbs
 
 ```julia
 windbarbs(u, v; kwargs...)
@@ -45,7 +45,6 @@ Optional Arguments
 - **G** or **fill** : -- *fill=fill*\
     Sets color or shade for wind barb interiors (see \myreflink{Fill color/pattern}) [Default is no fill].
 
-
 - **I** or **inc** or **increment** or **spacing** : -- *inc=x_inc* **|** *inc=(x_inc, y_inc)* **|** *inc="x""multx"["/multy"]*\
     Only plot wind barbs at nodes every *x\_inc*, *y\_inc* apart (must be multiples of original grid spacing).
     Append **m** for arc minutes or **s** for arc seconds. Alternatively, use **inc="x"** to specify the
@@ -58,7 +57,7 @@ Optional Arguments
 - **N** or **noclip** or **no\_clip** : *noclip=true*\
     Do NOT clip wind barbs at map boundaries [Default will clip].
 
-- **Q** or **barbs** : -- *barbs=(length=length, angle=angle, fill=fill, pen=pen, justify="b|e|c", scale=scale, width=width)*\
+- **Q** or **barbs** : -- *barbs=(length=length, angle=angle, fill=fill, pen=pen, justify="b|e|c", speed=speed, width=width)*\
     Modify wind barb parameters. Append wind barb *length* [Default is 0.5c]. Several modifiers may be
     appended to specify the placement of barbs, their shapes, and the justification of the wind barb.
     Below, left and right refers to the side of the wind barb line when viewed from the start point to
@@ -70,7 +69,7 @@ Optional Arguments
        [Default pen is used, and outline is drawn].
     - **justify** - Determines how the input *x*, *y* point relates to the wind barb. Choose from **b**eginning
        [default], **e**nd, or **c**enter.
-    - **scale** - Set the wind speed which corresponds to a long barb [default 5].
+    - **speed** - Set the wind speed which corresponds to a long barb [default 5].
     - **width** - Set the *width* of wind barbs.
  
 \textinput{common_opts/opt_R}
