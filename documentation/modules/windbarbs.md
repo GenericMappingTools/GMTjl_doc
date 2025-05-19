@@ -123,8 +123,8 @@ windbarb("comp_x.nc", "comp_y.nc", inc="x3", proj=:guess, barbs=(len=0.25, justi
 using GMT
 
 ecmwf(:forecast, var=["10u", "10v"], R="IHO23", prefix="vel")
-windbarbs("10u_step0_ifs_oper_fc_20250517_00.grd", "10v_step0_ifs_oper_fc_20250517_00.grd",
-          barbs=(length=0.25, width=0.15), inc="x10", coast=true, proj=:guess, show=true)
+windbarbs("vel_10u.grd", "vel_10v.grd", barbs=(length=0.25, width=0.15),
+          inc="x10", coast=true, proj=:guess, show=true)
 ```
 \end{examplefig}
 
