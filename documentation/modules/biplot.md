@@ -9,6 +9,16 @@ biplot(name::String | D::GMTDataset; arrow::Tuple=(0.3, 0.5, 0.75, "#0072BD"), c
 Create a 2D biplot of the Principal Component Analysis (PCA) of a two-dimensional chart that
 represents the relationship between the rows and columns of a table.
 
+The biplot function:
+
+- Imposes a sign convention, forcing the element with the largest magnitude in each column of coefs to be positive.
+  This action flips some of the vectors in coefs to the opposite direction, but often makes the plot easier to read.
+  Interpretation of the plot is unaffected, because changing the sign of a coefficient vector does not change its meaning.
+
+- Scales the scores so that they fit on the plot. That is, the function divides each score by the maximum absolute
+  value of all scores, and multiplies by the maximum coefficient length of coefs. Then biplot changes the sign of
+  the score coordinates according to the sign convention for the coefficients.
+
 - `cmd0`: The name of a 2D data table file readable with ``gmtread()``, or a ``GMTdataset`` with the data.
 
 - `arrow`: a tuple with the following values: (len, shape, width, color). If this default is used we scale them by fig size.
