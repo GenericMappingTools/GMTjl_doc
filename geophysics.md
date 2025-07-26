@@ -26,4 +26,15 @@
     ~~~</a>~~~
   @@
 
+  @@box
+    ~~~<a class="boxlink" href="weather/">~~~
+    @@title Weather maps @@
+    @@box-content
+      ~~~
+      <img src="/geophysics/weather/tillelogo.jpg">
+      ~~~
+    @@
+    ~~~</a>~~~
+  @@
+
 @@
