@@ -40,7 +40,7 @@ GMT.resetGMT() # hide
 ecmwf(:forecast, var="10u", region="IHO23", filename="u10.grd")
 ecmwf(:forecast, var="10v", region="IHO23", filename="v10.grd")
 
-windbarbs("10u.grd", "10v.grd", Q="0.25c+s20+w0.15c", I="x10", proj=:guess)
+windbarbs("u10.grd", "v10.grd", Q="0.25c+s20+w0.15c", I="x10", proj=:guess)
 rm("u10.grd") # Hide
 rm("v10.grd") # Hide
 coast!(shore=true, show=true)
