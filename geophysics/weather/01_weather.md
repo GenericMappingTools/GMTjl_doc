@@ -37,8 +37,8 @@ using GMT
 GMT.resetGMT() # hide
 
 # Download the ecmwf forcasts for the _u_ and _v_ components of the wind at 10 meters above the surface
-ecmwf(:forecast, var="10u", region="IHO23", filename="u10.grd")
-ecmwf(:forecast, var="10v", region="IHO23", filename="v10.grd")
+ecmwf(:forecast, var="10u", limits="IHO23", filename="u10.grd")
+ecmwf(:forecast, var="10v", limits="IHO23", filename="v10.grd")
 
 windbarbs("u10.grd", "v10.grd", Q="0.25c+s20+w0.15c", I="x10", proj=:guess)
 rm("u10.grd") # Hide
