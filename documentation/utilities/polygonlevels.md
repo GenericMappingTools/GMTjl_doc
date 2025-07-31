@@ -1,11 +1,11 @@
 # polygonlevels
 
 ```julia
-zvals = polygonlevels(D::GDtype, ids::Vector{String}, vals::Vector{<:Real}; kw...) -> Vector{Float64}
+zvals = polygonlevels(D::GDtype, ids::VecOrMat{String}, vals::Vector{<:Real}; kw...) -> Vector{Float64}
 
 or
 
-zvals = polygonlevels(D::GDtype, ids::Matrix{String}, vals::Vector{<:Real}; kw...) -> Vector{Float64}
+zvals = polygonlevels(D::GDtype, idvals::GMTdataset; kw...) -> Vector{Float64}
 ```
 
 Creates a vector with `zvals` to use in `plot` and where length(zvals) == length(D)
@@ -17,6 +17,10 @@ The elements of `zvals` are made up from the `vals`.
          The idea here is to match two conditions: `att[1] == ids[n,1] && att[2] == ids[n,2]`
 
 - `vals`: is a vector with the numbers to be used in plot `level` to color the polygons.
+
+- `idvals`: is a GMTdataset with the `text` field containing the ids to match against the `ids` strings.
+            The first column of `id_vals` must contain the values to be used in `vals`. This is a comodity
+            function when both the `ids` and `vals` are store in a GMTdataset.
 
 - `attrib` or `att`: keyword to select which attribute to use when matching with contents of the `ids` strings.
 

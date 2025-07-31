@@ -46,6 +46,17 @@
   @@
 
   @@box
+    ~~~<a class="boxlink" href="choropleths/choropleths/">~~~
+    @@title US Choropleths@@
+    @@box-content
+      ~~~
+      <img src="/tutorials/choropleths/tilelogo.png">
+      ~~~
+    @@
+    ~~~</a>~~~
+  @@
+
+  @@box
     ~~~<a class="boxlink" href="dlakelan/GMTMaps/">~~~
     @@title @dlakelan choropleths@@
     @@box-content
