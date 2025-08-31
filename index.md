@@ -3,7 +3,7 @@
 @def frontpage = true
 
 # Welcome to GMT.jl
-
+ 
 GMT is a data processing and visualization package for the [Julia](https://julialang.org/) programming
 language, with high performance and extensibility. It provides the ability for drawing simple and very
 complex static vector graphics as well as conversion to the most common raster formats (PNG, JPG, GeoTIFF, etc...).
