@@ -8,8 +8,7 @@ or
 zvals = polygonlevels(D::GDtype, idvals::GMTdataset; kw...) -> Vector{Float64}
 ```
 
-Creates a vector with `zvals` to use in `plot` and where length(zvals) == length(D)
-The elements of `zvals` are made up from the `vals`.
+Creates a vector with `zvals` to use in `plot` when creating choropleth maps and where length(zvals) == length(D).
 
 - `ids`: is a string Vector or Matrix with the ids (attribute names) of the \myreflink{GMTdataset} D.
          If a Matrix (2 columns only) then the `att` bellow must also have the two names (string vector
@@ -26,6 +25,10 @@ The elements of `zvals` are made up from the `vals`.
 
 - `nocase` or `insensitive`: a keyword from `kw`. Perform a case insensitive comparision between the contents of
          `ids` and the attribute specified with `attrib`. Default compares as case sensistive.
+
+- `starts,ends,contains`: Sometimes the attribute value is only part of the string in `ids`.
+			Use one of these options to specify how to match. E.g. `ends=true` selects all attributes
+			that ends with a match in `ids`. Default is the exact match.
 
 - `repeat`: keyword to replicate the previously known value until it finds a new segment ID for the case
             when a polygon have no attributes (may happen for the islands in a country).

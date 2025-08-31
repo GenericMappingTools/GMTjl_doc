@@ -1,7 +1,7 @@
 # coastlinesproj
 
 ```julia
-cl = coastlinesproj(proj="?", res="crude", coastlines=nothing)
+cl = coastlinesproj(proj="?", res="crude", coastlines=nothing, limits=Float64[])
 ```
 
 Extract the coastlines from GMT's GSHHG database and project them using PROJ (NOT the GMT projection machinery).
@@ -21,7 +21,7 @@ This allows the use of many of the PROJ projections that are not available from 
 Returns
 -------
 
-A Vector of \myreflink{GMTdataset} containing the projected (or not) world GSHHG coastlines at resolution `res`.
+A Vector of \myreflink{GMTdataset} containing the projected world GSHHG coastlines at resolution `res`.
 
 
 Example

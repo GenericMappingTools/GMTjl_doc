@@ -23,9 +23,16 @@ NOTE: Instead of ``getbyattrib`` one can use instead ``filter`` (..., `index=fal
   means select all elements from ``Antioquia`` and ``Caldas`` that have the attribute `feature_id` = 0.
 
   A second set of attributes can be used to select elements by region, number of polygon vertices and area.
-  For that, name the keyword with a leading underscore, e.g. `_region`, `_nps`, `_area`. Their values are
+  For that, name the keyword with a leading underscore, e.g. `_region`, `_nps`, `_area`, `_unique`. Their values are
   passed respectively a 4 elements tuple and numbers. E.g. `_region=(-8.0, -7.0, 37.0, 38.0)`, `_nps=100`, `_area=10`.
-  Areas are in square km when input is in geographic coordinates, otherwise squre data unites.
+  Areas are in square km when input is in geographic coordinates, otherwise squre data unites. The `_unique` case is
+  a bit special and is meant to be used when more than one polygon share the same attribute value (_e.g._ countries with islands).
+  In that case, set the value of `_unique` to the name of the attribute that is shared by the polygons (_e.g._ `_unique="NAME"`).
+  By default (_e.g._ `_unique=true`), the attribute name is `Feature_ID` which is the one used by GMT when creating unique
+  IDs for polygons read from OGR formats (.shp, .geojson, etc). If this attrib name is not found, we search for `CODE` which is
+  the one assigned by GMT when extracting polygons from the internal GMT coasts database. If none of these is found,
+  it is users responsibility to provide a valid attribute name. The uniqueness is determined by selecting the polygon
+  with the largest area.
 
 - `attrib` or `att`: (OLD SYNTAX) A NamedTuple with the attribname, attribvalue as in `att=(NAME_2="value",)`.
   Use more elements if wishing to do a composite match. E.g. `att=(NAME_1="val1", NAME_2="val2")` in which

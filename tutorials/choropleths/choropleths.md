@@ -2,9 +2,10 @@
 
 ### What color is your State?
 
-This example shows an adaptation of the [Average color of World](https://erdavis.com/2021/06/26/average-colors-of-the-world/) examples.
-It differs slightly for the also shown US case likely due to the different data used. Here we retrieve
-the image data (Sentinel 2) from the [EOX WMS server](https://eox.at/) and use the year 2020.
+This example shows an adaptation of the [Average color of World](https://erdavis.com/2021/06/26/average-colors-of-the-world/)
+examples. It differs slightly for the also shown US case likely due to the different data used. Here we retrieve
+the image data (Sentinel 2) from the [EOX WMS server](https://eox.at/) and use the year 2020. And, as a side note, realize
+how incredibly simpler this example is as comparing to the codes used to generate the figures in that blog.
 
 Note how the sates polygons are read directly from source, without any previous download, uncompressing file format conversions, etc...
 We will also filter the states polygons to use only those inside the US continental zone and limit them by number
@@ -82,3 +83,64 @@ viz(D, region=(-125,-66,24,50), level=zvals, cmap=C, proj=:guess,
     plot=(data=D,lw=0), title="Population (Millions)", colorbar=true)
 ```
 \end{examplefig}
+
+### Choropleths by symbol color
+
+To avoid the perceptual problem of over-enphasize the polygon's are we can alternatively use colored
+symbols (or symbols of different sizes). That can be done with the `bubblechart` program. One issue,
+though, that we have to deal in this case is that a state can have multiple polygons (for example
+Hawaii has many islands, and Michigan has two main landmasses). So, we need to calculate the largest
+polygon of each state and its centroid to place the symbol there.
+
+\begin{examplefig}{}
+```julia
+using GMT   # Hide
+D = gmtread("/vsizip//vsicurl/https://www2.census.gov/geo/tiger/GENZ2024/shp/cb_2024_us_state_500k.zip");  # Hide
+
+Df = filter(D, _region=(-125,-66,24,50), _unique=true);  # Keep only the largest polygon per state
+
+pop = gmtread(TESTSDIR * "assets/uspop.csv");
+zvals = polygonlevels(Df, pop, att="NAME") / 1e6;
+C = makecpt(zvals, auto=:r, reverse =true, cmap=:bamako);
+
+bubblechart(Df, labels="attrib=STUSPS", proj=:guess, zcolor=zvals,
+            cmap=C, colorbar=true, show=true)
+```
+\end{examplefig}
+
+
+In all the examples above we have used the US states polygons from a downloaded file, but we actually no not
+need that as the internal GMT coasts database has the US states polygons. So, we can use the `coast` function
+to get extract the states polygons and use them in the same way as above. Here is an example that would
+produce the exactly same image. But note how attribute names are different now as state names are stored
+under the "CODE" attribute.
+
+```julia
+using GMT   # Hide
+
+D = coast(DCW=(states="US",))   # Or simply D = coast(DCW="+US");
+Df = filter(D, _region=(-125,-66,24,50), _unique=true);
+
+pop = gmtread(TESTSDIR * "assets/uspop.csv");
+zvals = polygonlevels(Df, pop, att="NAME", contains=true) / 1e6;
+C = makecpt(zvals, auto=:r, reverse =true, cmap=:bamako);
+
+bubblechart(Df, labels="attrib=CODE", proj=:guess, zcolor=zvals,
+            cmap=C, colorbar=true, show=true)
+```
+
+Note the `contains=true` option in the `polygonlevels` function call. That is needed because the state
+names in the `Df` dataset are like "Alabama (United States)" while in the `pop` table they are simply
+"Alabama".  So, to do the joining operation, we had to be more relaxed and not impose an quality comparions
+(like the cases above) but to satisfy that the name in `pop` is contained in the name in `Df`.
+
+```
+Df
+
+Attribute table
+┌─────┬──────┬──────────────────────────────────────┐
+│ Row │ CODE │ NAME                                 │
+├─────┼──────┼──────────────────────────────────────┤
+│   1 │ AL   │ Alabama (United States)              │
+│   2 │ AR   │ Arkansas (United States)             │
+```

@@ -41,8 +41,31 @@ painted and no land fill is set then the land-areas will be transparent. A map p
    The resolution drops off by 80% between data sets. The default is **res=:auto**, which chooses
    to automatically select the best resolution given the chosen map scale.
 
-- **E** or **DCW** : -- *DCW=code1,code2,...* **|** *DCW=(country=code, continent=code, pen=pen, fill=fill, file=fname, inside=true, outside=false, adjust_r=??, , adjust_R=??, , adjust_e=??, headers=false)*\
-   Select painting country polygons from the Digital Chart of the World. This is another dataset independent of GSHHG and hence the **area** and **resolution** options do not apply. **DCW="+l"** just list the countries and their codes [plotting takes place] and **DCW="+L"** shows states/territories for Argentina, Australia, Brazil, Canada, and the US. *country* or **name=code(s)**, where **code(s)** is a one or more comma-separated countries using the 2-character ISO 3166-1 alpha-2 convention. To select a state of a country (if available), append .state, e.g, US.TX for Texas. To specify a whole continent, use **continent=code**, with continent codes AF (Africa),AN (Antarctica), AS (Asia), EU (Europe), OC (Oceania), NA (North America), or SA (South America). Use **pen=pen** (see \myreflink{Pen attributes}) to draw polygon outlines and **fill=fill** (see \myreflink{Fill color/pattern}) to fill them [default is no fill]. At least one of these must be specified unless **dump** is in effect, in which case only one **DCW** option can be given. It is also possible to specify the parameters using simple Tuples. For example: **DCW=("PT", (0.5,"red","--"), "blue")** plots the polygon *PT* with a 0.5p red dashed line and filled with blue and **DCW=:PT** uses a default pen of 0.5. **DCW=(:PT, :blue)** fills with blue. You may repeat **DCW** to give different groups of items their own *pen/fill* settings. However, since we cannot repeat a keyword, the solution to setting different groupes is to use a tuple of tuples. An example would be *DCW=((country=:PT, pen=(2,:red), fill=:blue), (country=:ES, pen=(2,:blue)) )*. If neither **proj** nor **dump** are set then we just print the **region**. The **file=fname** is a option to let users select alternative DCW files. Available options by default are: *ODS*, *NE10m* or *NE110m*. For example: `DCW=(country=:CH, file=:ODS)` extracts the Swiss polygon from (small) `ODS.nc` file. The **inside=true** (the default) means that data is ket _inside_ the clipping polygon. Use **outside=true** if want the reverse. **adjust_r=??** adjusts the region boundaries to be multiples of the steps indicated by _inc_ or _xinc/yinc_ or _winc/einc/sinc/ninc_. **adjust_R=??** adjusts the region boundaries adding the amounts specified by _inc_ or _xinc/yinc_ or _winc/einc/sinc/ninc_. **headers=true** place the country code in the segment headers via _-Zcode_ settings (for use with the **dump** option). 
+- **E** or **DCW** : -- *DCW=code1,code2,...* **|** *DCW=(country=code, continent=code, states=code, pen=pen, fill=fill, file=fname, inside=true, outside=false, adjust_r=??, , adjust_R=??, , adjust_e=??, headers=false)*\
+   Select painting country polygons from the Digital Chart of the World. This is another dataset independent
+   of GSHHG and hence the **area** and **resolution** options do not apply. **DCW="+l"** just list the countries
+   and their codes [plotting takes place] and **DCW="+L"** shows states/territories for Argentina (AR), Australia (AU),
+   Brazil (BR), Canada (CA), China (CN), Great Britan (GB), India (IR), Russia (RU), and the US (US).
+   *country* or **name=code(s)**, where **code(s)** is a one or more comma-separated countries using the 2-character
+   ISO 3166-1 alpha-2 convention. To select a state of a country (if available), append .state, e.g, US.TX for Texas.
+   To get all states in a country, use **states=code** or `DCW=+code` (only available for AR, AU, BR, CA, CN, GB, IN,
+   NO, RU, and US).  To specify a whole continent, use **continent=code**,
+   with continent codes AF (Africa), AN (Antarctica), AS (Asia), EU (Europe), OC (Oceania), NA (North America),
+   or SA (South America). Use **pen=pen** (see \myreflink{Pen attributes}) to draw polygon outlines and **fill=fill**
+   (see \myreflink{Fill color/pattern}) to fill them [default is no fill]. At least one of these must be specified
+   unless **dump** is in effect, in which case only one **DCW** option can be given. It is also possible to specify
+   the parameters using simple Tuples. For example: **DCW=("PT", (0.5,"red","--"), "blue")** plots the polygon *PT*
+   with a 0.5p red dashed line and filled with blue and **DCW=:PT** uses a default pen of 0.5. **DCW=(:PT, :blue)**
+   fills with blue. You may repeat **DCW** to give different groups of items their own *pen/fill* settings. However,
+   since we cannot repeat a keyword, the solution to setting different groupes is to use a tuple of tuples. An example
+   would be *DCW=((country=:PT, pen=(2,:red), fill=:blue), (country=:ES, pen=(2,:blue)) )*. If neither **proj** nor
+   **dump** are set then we just print the **region**. The **file=fname** is a option to let users select alternative
+   DCW files. Available options by default are: *ODS*, *NE10m* or *NE110m*. For example: `DCW=(country=:CH, file=:ODS)`
+   extracts the Swiss polygon from (small) `ODS.nc` file. The **inside=true** (the default) means that data is kept
+   _inside_ the clipping polygon. Use **outside=true** if want the reverse. **adjust_r=??** adjusts the region boundaries
+   to be multiples of the steps indicated by _inc_ or _xinc/yinc_ or _winc/einc/sinc/ninc_. **adjust_R=??** adjusts
+   the region boundaries adding the amounts specified by _inc_ or _xinc/yinc_ or _winc/einc/sinc/ninc_. **headers=true**
+   place the country code in the segment headers via _-Zcode_ settings (for use with the **dump** option). 
 
 - **getR** or **getregion** or **get_region** : -- *getR=code1,code2,...*\
    Return the region corresponding to the code/list-of-codes passed in as argument. The code(s) are the same

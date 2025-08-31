@@ -1,7 +1,7 @@
 # worldrectangular
 
 ```julia
-GI[,coast] = worldrectangular(GI; proj::String="+proj=vandg", pm=0, latlim=:auto, coast=false)
+GI[,coast] = worldrectangular(fname::String|GI::GItype; proj::String="+proj=vandg", pm=0, latlim=:auto, coast=false)
 ```
 
 Try to create a rectangular map out miscellaneous and not cylindrical projections. We say *try* because
@@ -45,5 +45,5 @@ viz(G)
 See Also
 --------
 
-\myreflink{coastlinesproj}, \myreflink{graticules}, \myreflink{plotgrid!}, \myreflink{worldrectgrid}, \myreflink{worldrectcoast},
+\myreflink{coastlinesproj}, \myreflink{graticules}, \myreflink{leepacific}, \myreflink{plotgrid!}, \myreflink{worldrectgrid}, \myreflink{worldrectcoast},
 \myreflink{Best rectangular world map projection}
