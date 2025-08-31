@@ -6,19 +6,16 @@ begin # hide
 		using GMT   # Hide
 D = gmtread("/vsizip//vsicurl/https://www2.census.gov/geo/tiger/GENZ2024/shp/cb_2024_us_state_500k.zip");  # Hide
 
-# Read a simple text file that has population and State name, one per row.
+Df = filter(D, _region=(-125,-66,24,50), _unique=true);  # Keep only the largest polygon per state
+
 pop = gmtread(TESTSDIR * "assets/uspop.csv");
-
-# Use the polygonlevels function to get the values in the same order as the polygons in D.
-zvals = polygonlevels(D, pop, att="NAME") / 1e6;
-
-# Create a color table for the values in zvals.
+zvals = polygonlevels(Df, pop, att="NAME") / 1e6;
 C = makecpt(zvals, auto=:r, reverse =true, cmap=:bamako);
 
-viz(D, region=(-125,-66,24,50), level=zvals, cmap=C, proj=:guess,
-    plot=(data=D,lw=0), title="Population (Millions)", colorbar=true)
+bubblechart(Df, labels="attrib=STUSPS", proj=:guess, zcolor=zvals,
+            cmap=C, colorbar=true, show=true)
 	end # hide
-	mv(joinpath(tempdir(), "GMTjl_" * GMT.TMPDIR_USR[2] * "." * "png"), joinpath(@OUTPUT, "example_10477366832373137496.png"), force=true);    # hide
+	mv(joinpath(tempdir(), "GMTjl_" * GMT.TMPDIR_USR[2] * "." * "png"), joinpath(@OUTPUT, "example_9720144734230891732.png"), force=true);    # hide
 	GMT.isFranklin[1] = false    # hide
 	GMT.IamModern[1]  = false    # hide
  
