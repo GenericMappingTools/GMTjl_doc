@@ -50,9 +50,12 @@ does not need explicit coordinates to place the text.
 
 - `geom`: The data geometry. By default, we set `wkbUnknown` but try to do some basic guess.
 
-- `proj` or `proj4`: A proj4 string for dataset CRS (Coordinate Reference System).
+- `proj` or `proj4`: A proj4 string for dataset CRS (Coordinate Reference System). Default is empty.
+   To set it to lon,lat in WGS84 use ``proj=prj4WGS84``
 
-- `wkt`:  A WKT (Well Known Text) CRS.
+- `wkt`:  A WKT (Well Known Text) CRS. Default is empty.
+
+- `epsg`: An integer EPSG code. _e.g._ ``epsg=4326`` for lon,lat in WGS84. Default is 0.
 
 - `colnames`: Optional string vector with names for each column of `mat`.
 

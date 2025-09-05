@@ -144,4 +144,14 @@
     ~~~</a>~~~
   @@
 
+  @@box
+    ~~~<a class="boxlink" href="signal/signal/">~~~
+    @@title Signal Processing@@
+    @@box-content
+      ~~~
+      <img src="/tutorials/signal/tilelogo.jpg">
+      ~~~
+    @@
+    ~~~</a>~~~
+  @@
 @@
