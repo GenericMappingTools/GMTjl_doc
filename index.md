@@ -21,7 +21,6 @@ of 2 and 3D (perspective, not volumetric) graphics.
   [Long-term support (LTS) release](https://julialang-s3.julialang.org/bin/winnt/x64/1.10/julia-1.10.9-win64.exe)
   that is now in the 1.10.9 release.
 
-
 And use the Julia's inbuilt package manager to install  GMT.
 
 ```julia
