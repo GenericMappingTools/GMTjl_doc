@@ -25,7 +25,7 @@ deploydecision = deploy_folder(cfg; repo, push_preview, devbranch="master", devu
 @info "Setting PREVIEW_FRANKLIN_WEBSITE_URL to $repo"
 ENV["PREVIEW_FRANKLIN_WEBSITE_URL"] = repo
 
-serve(; single=true, cleanup=false)
+serve(; single=true, cleanup=true, clear=true)
 # serve(; single=true, cleanup=false, fail_on_warning=true)
 # for interactive development of the docs, use:
 # cd(@__DIR__); serve(single=false, cleanup=true, clear=true, fail_on_warning = false)
