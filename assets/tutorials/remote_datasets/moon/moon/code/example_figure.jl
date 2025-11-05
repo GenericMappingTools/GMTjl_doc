@@ -8,7 +8,7 @@ begin # hide
 G = gmtread(remotegrid("moon", res="14s"), region=(-14,-8.5,-45.25, -41.25))
 viz(G, proj=:guess, shade=true)
 	end # hide
-	mv(joinpath(tempdir(), "GMTjl_" * GMT.TMPDIR_USR[2] * "." * "png"), joinpath(@OUTPUT, "example_1634765693653904079.png"), force=true);    # hide
+	mv(joinpath(tempdir(), "GMTjl_" * GMT.TMPDIR_USR[2] * "." * "png"), joinpath(@OUTPUT, "example_13501238747380941525.png"), force=true);    # hide
 	GMT.isFranklin[1] = false    # hide
 	GMT.IamModern[1]  = false    # hide
  
