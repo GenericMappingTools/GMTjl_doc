@@ -569,7 +569,7 @@ x &#61; 0:0.01:4pi;</code></pre>
 viz&#40;x,y, figsize&#61;&#40;14,3&#41;&#41;</code></pre></p>
 <p>
 	<a id="example_5145788156870773413">
-	 <img src="/GMTjl_doc/assets/tutorials/signal/fft_ex1/fft_ex1/code/output/example_5145788156870773413.png" alt=""> 
+	 <p><span style="color:red;">// Image matching '/assets/tutorials/signal/fft_ex1/fft_ex1/code/example_5145788156870773413.png' not found. //</span></p> 
 	</a>
 	
 <pre><code class="language-julia">Fs &#61; 50000;     # Sampling frequency
@@ -592,16 +592,16 @@ plot&#40;t, sig1, xlabel&#61;&quot;Time &#91;s&#93;&quot;, ylabel&#61;&quot;Ampl
 plot&#33;&#40;t, sig2, label&#61;&quot;Signal 2&quot;, lc&#61;:green&#41;
 plot&#33;&#40;t, sig3, label&#61;&quot;Signal 3&quot;, lc&#61;:blue, show&#61;true&#41;</code></pre></p>
 <p>
-	<a id="example_12222006587395598758">
-	 <img src="/GMTjl_doc/assets/tutorials/signal/fft_ex1/fft_ex1/code/output/example_12222006587395598758.png" alt=""> 
+	<a id="example_8295120994327316766">
+	 <p><span style="color:red;">// Image matching '/assets/tutorials/signal/fft_ex1/fft_ex1/code/example_8295120994327316766.png' not found. //</span></p> 
 	</a>
 	
 <p>Add the three signals together and plot the result.</p>
 <pre><code class="language-julia">final&#61; sig1 .&#43; sig2 .&#43; sig3;	# Add the three signals together
 plot&#40;t, final, xlabel&#61;&quot;Time &#91;s&#93;&quot;, ylabel&#61;&quot;Amplitude&quot;, figsize&#61;&#40;14,6&#41;, show&#61;1&#41;</code></pre></p>
 <p>
-	<a id="example_14929483213744431140">
-	 <img src="/GMTjl_doc/assets/tutorials/signal/fft_ex1/fft_ex1/code/output/example_14929483213744431140.png" alt=""> 
+	<a id="example_11712692861424273921">
+	 <p><span style="color:red;">// Image matching '/assets/tutorials/signal/fft_ex1/fft_ex1/code/example_11712692861424273921.png' not found. //</span></p> 
 	</a>
 	
 <p>Decompose the 3 added components into its constituent frequencies.</p>
@@ -615,7 +615,7 @@ P &#61; abs.&#40;Y / L&#41;;		# Need to take the &#39;abs&#39; because the FFT r
 plot&#40;f, 2*P&#91;1:length&#40;f&#41;&#93;, limits&#61;&#40;0,1000,0,350&#41;, xlabel&#61;&quot;Frequency &#91;hz&#93;&quot;, ylabel&#61;&quot;Amplitude&quot;, figsize&#61;&#40;14,6&#41;, show&#61;1&#41;</code></pre></p>
 <p>
 	<a id="example_12450021483636673413">
-	 <img src="/GMTjl_doc/assets/tutorials/signal/fft_ex1/fft_ex1/code/output/example_12450021483636673413.png" alt=""> 
+	 <p><span style="color:red;">// Image matching '/assets/tutorials/signal/fft_ex1/fft_ex1/code/example_12450021483636673413.png' not found. //</span></p> 
 	</a>
 	
 <p>While in this simple example we can visually see that the peaks corresponds to the frequencies of the three sine waves that we generated &#40;<em>sig1</em>, <em>sig2</em> and <em>sig3</em>&#41;, let us find that numerically using the function <code>findpeaks</code> that we used in the autocorrelation example.</p>
@@ -639,7 +639,7 @@ inv &#61; ifft&#40;Yfilt&#41;;
 viz&#40;real&#40;inv&#41;, figsize&#61;&#40;14,6&#41;&#41;</code></pre></p>
 <p>
 	<a id="example_11816764142469003329">
-	 <img src="/GMTjl_doc/assets/tutorials/signal/fft_ex1/fft_ex1/code/output/example_11816764142469003329.png" alt=""> 
+	 <p><span style="color:red;">// Image matching '/assets/tutorials/signal/fft_ex1/fft_ex1/code/example_11816764142469003329.png' not found. //</span></p> 
 	</a>
 	
 <p>And if we want to retain only the lowest frequency component, we remove everything above 11&#39;th element </p>
@@ -649,7 +649,7 @@ inv &#61; ifft&#40;Yfilt&#41;;
 viz&#40;real&#40;inv&#41;, figsize&#61;&#40;14,6&#41;&#41;</code></pre></p>
 <p>
 	<a id="example_13840207710349751300">
-	 <img src="/GMTjl_doc/assets/tutorials/signal/fft_ex1/fft_ex1/code/output/example_13840207710349751300.png" alt=""> 
+	 <p><span style="color:red;">// Image matching '/assets/tutorials/signal/fft_ex1/fft_ex1/code/example_13840207710349751300.png' not found. //</span></p> 
 	</a>
 	
 <p>Exercise: remove only the lowest frequency.</p>

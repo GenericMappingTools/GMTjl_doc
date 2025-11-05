@@ -565,7 +565,7 @@ I &#61; mosaic&#40;&#91;-10, 3.5&#93;, &#91;36.0, 44&#93;&#41;
 viz&#40;I&#41;</code></pre></p>
 <p>
 	<a id="example_8570117357154337143">
-	 <img src="/GMTjl_doc/assets/tutorials/mosaics/mosaics/code/output/example_8570117357154337143.png" alt=""> 
+	 <p><span style="color:red;">// Image matching '/assets/tutorials/mosaics/mosaics/code/example_8570117357154337143.png' not found. //</span></p> 
 	</a>
 	
 <p>If we want instead a map from OpenStreetMap, we need to specify that via the <code>provider</code> option. To know more about the <code>provider</code> usage, see the manual of the <code>getprovider</code> function &#40;e.,g._ type <code>? getprovider</code> in the Julia command window.&#41;</p>
@@ -575,7 +575,7 @@ I &#61; mosaic&#40;&#91;-10, 3.5&#93;, &#91;36.0, 44&#93;, provider&#61;:OSM&#41
 viz&#40;I&#41;</code></pre></p>
 <p>
 	<a id="example_11610198135807503741">
-	 <img src="/GMTjl_doc/assets/tutorials/mosaics/mosaics/code/output/example_11610198135807503741.png" alt=""> 
+	 <p><span style="color:red;">// Image matching '/assets/tutorials/mosaics/mosaics/code/example_11610198135807503741.png' not found. //</span></p> 
 	</a>
 	
 <p>A question that will often arise is: <em>but what if I want to control the resolution, what zoom level should I choose?</em>. Well, the answer is using trial an error or help yourself a bit and make a figures with the tiles limits. For that we use the <code>mesh</code> option and plot the tiles limits only.</p>
@@ -585,7 +585,7 @@ D &#61; mosaic&#40;&#91;-10, 3.5&#93;, &#91;36.0, 44&#93;, mesh&#61;true&#41;
 viz&#40;D, coast&#61;true&#41;</code></pre></p>
 <p>
 	<a id="example_7257419996595660945">
-	 <img src="/GMTjl_doc/assets/tutorials/mosaics/mosaics/code/output/example_7257419996595660945.png" alt=""> 
+	 <p><span style="color:red;">// Image matching '/assets/tutorials/mosaics/mosaics/code/example_7257419996595660945.png' not found. //</span></p> 
 	</a>
 	
 <p>Typing <code>D&#91;1&#93;.comment</code> shows that the default zoom level for that area is 8</p>
@@ -622,7 +622,7 @@ I &#61; mosaic&#40;D, bbox&#61;true&#41;;
 viz&#40;I&#41;</code></pre></p>
 <p>
 	<a id="example_2514664728219245646">
-	 <img src="/GMTjl_doc/assets/tutorials/mosaics/mosaics/code/output/example_2514664728219245646.png" alt=""> 
+	 <p><span style="color:red;">// Image matching '/assets/tutorials/mosaics/mosaics/code/example_2514664728219245646.png' not found. //</span></p> 
 	</a>
 	
 <p>But when it comes to image real small areas the BoundingBox trick no longer works because it normally is ... too small. We must than use the alternative, which is to specify the number of neighbor tiles around the obtained address. And here we must specify the zoom level manually.</p>
@@ -634,7 +634,7 @@ I &#61; mosaic&#40;D, zoom&#61;19, neighbors&#61;7&#41;;
 viz&#40;I&#41;</code></pre></p>
 <p>
 	<a id="example_14147416263419283586">
-	 <img src="/GMTjl_doc/assets/tutorials/mosaics/mosaics/code/output/example_14147416263419283586.png" alt=""> 
+	 <p><span style="color:red;">// Image matching '/assets/tutorials/mosaics/mosaics/code/example_14147416263419283586.png' not found. //</span></p> 
 	</a>
 	
 <p>But not all small and beautifull places are geocoded. To see the lovely <em>Fish Island</em> in Croatia, we still have to provide the central coordinates &#40;or the right BoundingBox&#41;.</p>
@@ -644,7 +644,7 @@ I &#61; mosaic&#40;13.71862, 44.939234, zoom&#61;18, provider&#61;:Google, neigh
 viz&#40;I, proj&#61;:guess&#41;</code></pre></p>
 <p>
 	<a id="example_13448775722079320192">
-	 <img src="/GMTjl_doc/assets/tutorials/mosaics/mosaics/code/output/example_13448775722079320192.png" alt=""> 
+	 <p><span style="color:red;">// Image matching '/assets/tutorials/mosaics/mosaics/code/example_13448775722079320192.png' not found. //</span></p> 
 	</a>
 	
 <div class="page-foot">
