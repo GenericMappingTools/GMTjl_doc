@@ -340,6 +340,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdcut">grdcut</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdedit">grdedit</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdfill">grdfill</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdfilter">grdfilter</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdgradient">grdgradient</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdgravmag3d">grdgravmag3d</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdhisteq">grdhisteq</a></div></li>
@@ -362,6 +363,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/lines">lines</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/magref">magref</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/makecpt">makecpt</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/mapproject">mapproject</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/marginalhist">marginalhist</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/mask">mask</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/movie">movie</a></div></li>
@@ -410,11 +412,14 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/binarize">binarize</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/blendimg">blendimg&#33;</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/bwareaopen">bwareaopen</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/bwconncomp">bwconncomp</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/bwdist">bwdist</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/bwhitmiss">bwhitmiss</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/bwperim">bwperim</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/bwskell">bwskell</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/cart2pol">cart2pol</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/cart2sph">cart2sph</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/cc2bw">cc2bw</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/coastlinesproj">coastlinesproj</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/colorzones">colorzones&#33;</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/cpt4dcw">cpt4dcw</a></div></li>
@@ -443,6 +448,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/gmtread">gmtread</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/gmtwrite">gmtwrite</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/graticules">graticules</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/graydist">graydist</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/grid2tri">grid2tri</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/gridit">gridit</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/gunique">gunique</a></div></li>
@@ -466,6 +472,8 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/imopen">imopen</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/imrankfilter">imrankfilter</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/imreconstruct">imreconstruct</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/imregionalmax">imregionalmax</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/imregionalmin">imregionalmin</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/imsegment">imsegment</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/imshow">imshow</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/imsobel">imsobel</a></div></li>
@@ -570,61 +578,7 @@ feather&#40;u,v, show&#61;true&#41;</code></pre></p>
 	
 <p>Show the data used in this example.</p>
 <pre><code class="language-julia">D &#61; gmtread&#40;TESTSDIR * &quot;assets/wind_faro_s.dat&quot;&#41;</code></pre>
-<table>
-  <thead>
-    <tr class = "header headerLastRow">
-      <th style = "text-align: right;">Time</th>
-      <th style = "text-align: right;">azimuth</th>
-      <th style = "text-align: right;">vmean</th>
-      <th style = "text-align: right;">vmax</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style = "text-align: right;">1.4936e9</td>
-      <td style = "text-align: right;">310.0</td>
-      <td style = "text-align: right;">2.4</td>
-      <td style = "text-align: right;">3.6</td>
-    </tr>
-    <tr>
-      <td style = "text-align: right;">1.4936e9</td>
-      <td style = "text-align: right;">328.0</td>
-      <td style = "text-align: right;">2.5</td>
-      <td style = "text-align: right;">4.3</td>
-    </tr>
-    <tr>
-      <td style = "text-align: right;">1.4936e9</td>
-      <td style = "text-align: right;">340.0</td>
-      <td style = "text-align: right;">2.0</td>
-      <td style = "text-align: right;">4.2</td>
-    </tr>
-    <tr>
-      <td style = "text-align: right;">1.49361e9</td>
-      <td style = "text-align: right;">26.0</td>
-      <td style = "text-align: right;">1.3</td>
-      <td style = "text-align: right;">3.5</td>
-    </tr>
-    <tr>
-      <td style = "text-align: right;">1.49361e9</td>
-      <td style = "text-align: right;">350.0</td>
-      <td style = "text-align: right;">2.8</td>
-      <td style = "text-align: right;">5.7</td>
-    </tr>
-    <tr>
-      <td style = "text-align: right;">1.49361e9</td>
-      <td style = "text-align: right;">349.0</td>
-      <td style = "text-align: right;">2.7</td>
-      <td style = "text-align: right;">6.6</td>
-    </tr>
-    <tr>
-      <td style = "text-align: right;">1.49362e9</td>
-      <td style = "text-align: right;">337.0</td>
-      <td style = "text-align: right;">1.9</td>
-      <td style = "text-align: right;">3.9</td>
-    </tr>
-  </tbody>
-</table>
-
+TypeError: in keyword argument backend, expected Symbol, got a value of type Val&#123;:html&#125;
 <p>Create a winbarb plot. Note that since the data has 4 columns we must select the 3 that we want to use in the plot. We select the columns from teir names in the <code>D</code><em>GMTdataset</em>.</p>
 <pre><code class="language-julia">using GMT
 feather&#40;TESTSDIR * &quot;assets/wind_faro.dat&quot;, xvar&#61;:Time, yvar&#61;&#91;:azimuth, :vmean&#93;,
@@ -636,8 +590,8 @@ feather&#40;TESTSDIR * &quot;assets/wind_faro.dat&quot;, xvar&#61;:Time, yvar&#6
 	
 <div class="page-foot">
   <div class="copyright">
-    &copy; GMT.jl. Last modified: September 09, 2025. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
-      <p>These docs were autogenerated using GMT: v1.33.0</p>
+    &copy; GMT.jl. Last modified: November 05, 2025. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+      <p>These docs were autogenerated using GMT: v1.33.1</p>
   </div>
 </div>
 </div><!-- CONTENT ENDS HERE -->

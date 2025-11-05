@@ -6,11 +6,11 @@ begin # hide
 		using GMT
 
 G = peaks(N=128);
-G2 = fillsinks(G, saco=true);
-grdimage(G2, shade=true)
-plot!(get(GMT.SACO[1], "saco", nothing), lc=:white, show=true)
+G2 = fillsinks(G);
+grdimage(G, figsize=6, shade=true)
+grdimage!(G2, figsize=6, xshift=6.2, frame="wSen", shade=true, show=true)
 	end # hide
-	mv(joinpath(tempdir(), "GMTjl_" * GMT.TMPDIR_USR[2] * "." * "png"), joinpath(@OUTPUT, "example_5520361753391954480.png"), force=true);    # hide
+	mv(joinpath(tempdir(), "GMTjl_" * GMT.TMPDIR_USR[2] * "." * "png"), joinpath(@OUTPUT, "example_5134001357695658876.png"), force=true);    # hide
 	GMT.isFranklin[1] = false    # hide
 	GMT.IamModern[1]  = false    # hide
  

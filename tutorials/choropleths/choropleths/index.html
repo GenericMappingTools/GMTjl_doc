@@ -345,6 +345,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdcut">grdcut</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdedit">grdedit</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdfill">grdfill</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdfilter">grdfilter</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdgradient">grdgradient</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdgravmag3d">grdgravmag3d</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdhisteq">grdhisteq</a></div></li>
@@ -367,6 +368,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/lines">lines</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/magref">magref</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/makecpt">makecpt</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/mapproject">mapproject</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/marginalhist">marginalhist</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/mask">mask</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/movie">movie</a></div></li>
@@ -415,11 +417,14 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/binarize">binarize</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/blendimg">blendimg&#33;</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/bwareaopen">bwareaopen</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/bwconncomp">bwconncomp</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/bwdist">bwdist</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/bwhitmiss">bwhitmiss</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/bwperim">bwperim</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/bwskell">bwskell</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/cart2pol">cart2pol</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/cart2sph">cart2sph</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/cc2bw">cc2bw</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/coastlinesproj">coastlinesproj</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/colorzones">colorzones&#33;</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/cpt4dcw">cpt4dcw</a></div></li>
@@ -448,6 +453,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/gmtread">gmtread</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/gmtwrite">gmtwrite</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/graticules">graticules</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/graydist">graydist</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/grid2tri">grid2tri</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/gridit">gridit</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/gunique">gunique</a></div></li>
@@ -471,6 +477,8 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/imopen">imopen</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/imrankfilter">imrankfilter</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/imreconstruct">imreconstruct</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/imregionalmax">imregionalmax</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/imregionalmin">imregionalmin</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/imsegment">imsegment</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/imshow">imshow</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/imsobel">imsobel</a></div></li>
@@ -575,7 +583,7 @@ colorzones&#33;&#40;Df, median, img&#61;img&#41;
 viz&#40;Df, region&#61;img, proj&#61;:guess, plot&#61;&#40;data&#61;Df, lw&#61;0&#41;, title&#61;&quot;Sate Color &#40;median&#41;&quot;&#41;</code></pre></p>
 <p>
 	<a id="example_4497912710696516595">
-	 <img src="/GMTjl_doc/assets/tutorials/choropleths/choropleths/code/output/example_4497912710696516595.png" alt=""> 
+	 <p><span style="color:red;">// Image matching '/assets/tutorials/choropleths/choropleths/code/example_4497912710696516595.png' not found. //</span></p> 
 	</a>
 	
 <h3 id="represent_colors_by_average_altitude"><a href="#represent_colors_by_average_altitude" class="header-anchor">Represent colors by average altitude</a></h3>
@@ -592,7 +600,7 @@ viz&#40;D, region&#61;&#40;-125,-66,24,50&#41;, proj&#61;:guess, levels&#61;Dh, 
                plot&#61;&#40;data&#61;D,lw&#61;0&#41;, title&#61;&quot;Mean Elevation&quot;, colorbar&#61;true&#41;</code></pre></p>
 <p>
 	<a id="example_4235982037790693837">
-	 <img src="/GMTjl_doc/assets/tutorials/choropleths/choropleths/code/output/example_4235982037790693837.png" alt=""> 
+	 <p><span style="color:red;">// Image matching '/assets/tutorials/choropleths/choropleths/code/example_4235982037790693837.png' not found. //</span></p> 
 	</a>
 	
 <p>The case above was relatively easy because the data was already prepared in a form that GMT could use. That is, the <code>zvals</code> vector, which together with the colorscale, determines the color of the polygons was already in the same order as the polygons themselves &#40;in the GMTdataset <code>D</code>&#41;. However, often that is not the case, and we have the variable that contains the information that we want to <em>colorize</em> in a different source and with a different order than that of the polygons in <code>D</code>. So, we need to do a kind of <em>join</em> operation. That can be done with <em>join</em> functions or use the internal <code>polygonlevels</code> function that links the polygon names provide by a stored attribute in <code>D</code> and the values in a vector or a table that must also have some text information &#40;a name&#41; associated with each value. It is that we will do in the next example.</p>
@@ -609,7 +617,7 @@ viz&#40;D, region&#61;&#40;-125,-66,24,50&#41;, level&#61;zvals, cmap&#61;C, pro
     plot&#61;&#40;data&#61;D,lw&#61;0&#41;, title&#61;&quot;Population &#40;Millions&#41;&quot;, colorbar&#61;true&#41;</code></pre></p>
 <p>
 	<a id="example_10477366832373137496">
-	 <img src="/GMTjl_doc/assets/tutorials/choropleths/choropleths/code/output/example_10477366832373137496.png" alt=""> 
+	 <p><span style="color:red;">// Image matching '/assets/tutorials/choropleths/choropleths/code/example_10477366832373137496.png' not found. //</span></p> 
 	</a>
 	
 <h3 id="choropleths_by_symbol_color"><a href="#choropleths_by_symbol_color" class="header-anchor">Choropleths by symbol color</a></h3>
@@ -648,8 +656,8 @@ Attribute table
 │   2 │ AR   │ Arkansas &#40;United States&#41;             │</code></pre>
 <div class="page-foot">
   <div class="copyright">
-    &copy; GMT.jl. Last modified: September 09, 2025. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
-      <p>These docs were autogenerated using GMT: v1.33.0</p>
+    &copy; GMT.jl. Last modified: November 05, 2025. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+      <p>These docs were autogenerated using GMT: v1.33.1</p>
   </div>
 </div>
 </div><!-- CONTENT ENDS HERE -->

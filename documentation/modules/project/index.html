@@ -338,6 +338,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdcut">grdcut</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdedit">grdedit</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdfill">grdfill</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdfilter">grdfilter</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdgradient">grdgradient</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdgravmag3d">grdgravmag3d</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdhisteq">grdhisteq</a></div></li>
@@ -360,6 +361,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/lines">lines</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/magref">magref</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/makecpt">makecpt</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/mapproject">mapproject</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/marginalhist">marginalhist</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/mask">mask</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/movie">movie</a></div></li>
@@ -411,11 +413,14 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/binarize">binarize</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/blendimg">blendimg&#33;</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/bwareaopen">bwareaopen</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/bwconncomp">bwconncomp</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/bwdist">bwdist</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/bwhitmiss">bwhitmiss</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/bwperim">bwperim</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/bwskell">bwskell</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/cart2pol">cart2pol</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/cart2sph">cart2sph</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/cc2bw">cc2bw</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/coastlinesproj">coastlinesproj</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/colorzones">colorzones&#33;</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/cpt4dcw">cpt4dcw</a></div></li>
@@ -444,6 +449,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/gmtread">gmtread</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/gmtwrite">gmtwrite</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/graticules">graticules</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/graydist">graydist</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/grid2tri">grid2tri</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/gridit">gridit</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/gunique">gunique</a></div></li>
@@ -467,6 +473,8 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/imopen">imopen</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/imrankfilter">imrankfilter</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/imreconstruct">imreconstruct</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/imregionalmax">imregionalmax</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/imregionalmin">imregionalmin</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/imsegment">imsegment</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/imshow">imshow</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/imsobel">imsobel</a></div></li>
@@ -569,7 +577,7 @@
 <p>Data can be selectively windowed by using the <strong>length</strong> and <strong>width</strong> options. If <strong>width</strong> is used, the projection width is set to use only points with \(w_{min} < q < w_{max}\). If <strong>length</strong> is set, then the length is set to use only those points with \(l_{min} < p < l_{max}\). If the <strong>endpoint</strong> option has been used to define the projection, then <strong>length</strong>&#92;<strong>w</strong> may be selected to window the length of the projection to exactly the span from the center &#40;<strong>origin</strong>&#41; to to the endpoint &#40;<strong>endpoint</strong>&#41;.</p>
 <p>Flat Earth &#40;Cartesian&#41; coordinate transformations can also be made. Set <strong>flat_earth</strong> and remember that <em>azimuth</em> is clockwise from North &#40;the \(y\) axis&#41;, NOT the usual cartesian theta, which is counterclockwise from the \(x\) axis. &#40;i.e., \(azimuth = 90 - theta\)&#41;.</p>
 <p>No assumptions are made regarding the units for \(x, y, r, s, p, q\), <em>dist</em>, \(l_{min}, l_{max}, w_{min}, w_{max}\). However, if <strong>km</strong> is selected, map units are assumed and \(x, y, r, s\), must be in degrees and \(p, q\), <em>dist</em>, \(l_{min}, l_{max}, w_{min}, w_{max}\) will be in km.</p>
-<p>Calculations of specific great-circle and geodesic distances or for back-azimuths or azimuths are better done using <a href="#">mapproject</a> as <strong>project</strong> is strictly spherical.</p>
+<p>Calculations of specific great-circle and geodesic distances or for back-azimuths or azimuths are better done using <a href="/GMTjl_doc/documentation/modules/mapproject/index.html#mapproject">mapproject</a> as <strong>project</strong> is strictly spherical.</p>
 <pre><code class="language-julia">using GMT
 
 a &#61; atand&#40;4 / 2.5&#41;
@@ -779,11 +787,11 @@ imshow&#40;Dellip, coast&#61;true&#41;</code></pre></p>
 <p>then <code>Gflow</code> is a grid in the same area as pacific_topo.nc, but flow contains the latitudes about the pole of the projection. You now can use <a href="/GMTjl_doc/documentation/modules/grdcontour/index.html#grdcontour">grdcontour</a> on <code>Gflow</code> to draw lines of constant oblique latitude, which are flow lines in the hotspot frame.</p>
 <p>If you have an arbitrarily rotation pole <em>px,py</em> and you would like to draw an oblique small circle on a map, you will first need to make a file with the oblique coordinates for the small circle &#40;i.e., lon &#61; 0-360, lat is constant&#41;, then create a file with two records: the north pole &#40;0/90&#41; and the origin &#40;0/0&#41;, and find what their oblique coordinates are using your rotation pole. Now, use the projected North pole and origin coordinates as the rotation pole and center, respectively, and project your file as in the pacific example above. This gives coordinates for an oblique small circle.</p>
 <h2>See Also</h2>
-<p><a href="/GMTjl_doc/documentation/modules/fitcircle/index.html#fitcircle">fitcircle</a>, <a href="#">gmtvector</a>, <a href="/GMTjl_doc/documentation/modules/grdtrack/index.html#grdtrack">grdtrack</a>, <a href="#">mapproject</a>, <a href="#">grdproject</a>, <a href="/GMTjl_doc/documentation/modules/grdtrack/index.html#grdtrack">grdtrack</a></p>
+<p><a href="/GMTjl_doc/documentation/modules/fitcircle/index.html#fitcircle">fitcircle</a>, <a href="#">gmtvector</a>, <a href="/GMTjl_doc/documentation/modules/grdtrack/index.html#grdtrack">grdtrack</a>, <a href="/GMTjl_doc/documentation/modules/mapproject/index.html#mapproject">mapproject</a>, <a href="#">grdproject</a>, <a href="/GMTjl_doc/documentation/modules/grdtrack/index.html#grdtrack">grdtrack</a></p>
 <div class="page-foot">
   <div class="copyright">
-    &copy; GMT.jl. Last modified: September 09, 2025. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
-      <p>These docs were autogenerated using GMT: v1.33.0</p>
+    &copy; GMT.jl. Last modified: November 05, 2025. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+      <p>These docs were autogenerated using GMT: v1.33.1</p>
   </div>
 </div>
 </div><!-- CONTENT ENDS HERE -->

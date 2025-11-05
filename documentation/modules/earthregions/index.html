@@ -340,6 +340,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdcut">grdcut</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdedit">grdedit</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdfill">grdfill</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdfilter">grdfilter</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdgradient">grdgradient</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdgravmag3d">grdgravmag3d</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdhisteq">grdhisteq</a></div></li>
@@ -362,6 +363,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/lines">lines</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/magref">magref</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/makecpt">makecpt</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/mapproject">mapproject</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/marginalhist">marginalhist</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/mask">mask</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/movie">movie</a></div></li>
@@ -410,11 +412,14 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/binarize">binarize</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/blendimg">blendimg&#33;</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/bwareaopen">bwareaopen</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/bwconncomp">bwconncomp</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/bwdist">bwdist</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/bwhitmiss">bwhitmiss</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/bwperim">bwperim</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/bwskell">bwskell</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/cart2pol">cart2pol</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/cart2sph">cart2sph</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/cc2bw">cc2bw</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/coastlinesproj">coastlinesproj</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/colorzones">colorzones&#33;</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/cpt4dcw">cpt4dcw</a></div></li>
@@ -443,6 +448,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/gmtread">gmtread</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/gmtwrite">gmtwrite</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/graticules">graticules</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/graydist">graydist</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/grid2tri">grid2tri</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/gridit">gridit</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/gunique">gunique</a></div></li>
@@ -466,6 +472,8 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/imopen">imopen</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/imrankfilter">imrankfilter</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/imreconstruct">imreconstruct</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/imregionalmax">imregionalmax</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/imregionalmin">imregionalmin</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/imsegment">imsegment</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/imshow">imshow</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/imsobel">imsobel</a></div></li>
@@ -580,64 +588,13 @@
 <p>Show the contents of the <code>Mainlands</code> collection. We use this as example because it is a small one &#40;contains only the continental parts of some countries that otherwise contain also distant islands&#41; and therefore, good to show what information is displayed to the user.</p>
 <pre><code class="language-julia">using GMT
 earthregions&#40;&quot;Mainlands&quot;&#41;</code></pre>
-4×4 GMT.GMTdataset&#123;Float64, 2&#125;  Row │    W&#40;lon&#41;     E&#40;lon&#41;    S&#40;lat&#41;    N&#40;lat&#41;  Code          Region          ⋯ ─────┼──────────────────────────────────────────────────────────────────────────    1 │ -85.9506   -82.5561    8.0329   11.2167    CRC  Continental Costa Rica  ⋯    2 │ -81.0788   -75.1848   -4.99882   1.43894   ECC   Continental Ecuador    3 │  -9.56      -6.18     36.955    42.16      PTC   Continental Portugal    4 │  -9.29092    4.31502  35.1852   43.7915    ESC    Continental Spain                                                                 1 column omitted<table>
-  <thead>
-    <tr class = "header headerLastRow">
-      <th style = "text-align: right;">W(lon)</th>
-      <th style = "text-align: right;">E(lon)</th>
-      <th style = "text-align: right;">S(lat)</th>
-      <th style = "text-align: right;">N(lat)</th>
-      <th style = "text-align: right;">Code</th>
-      <th style = "text-align: right;">Region</th>
-      <th style = "text-align: right;">Ref</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style = "text-align: right;">-85.9506</td>
-      <td style = "text-align: right;">-82.5561</td>
-      <td style = "text-align: right;">8.0329</td>
-      <td style = "text-align: right;">11.2167</td>
-      <td style = "text-align: right;">CRC</td>
-      <td style = "text-align: right;">Continental Costa Rica</td>
-      <td style = "text-align: right;">Mainlands</td>
-    </tr>
-    <tr>
-      <td style = "text-align: right;">-81.0788</td>
-      <td style = "text-align: right;">-75.1848</td>
-      <td style = "text-align: right;">-4.99882</td>
-      <td style = "text-align: right;">1.43894</td>
-      <td style = "text-align: right;">ECC</td>
-      <td style = "text-align: right;">Continental Ecuador</td>
-      <td style = "text-align: right;">Mainlands</td>
-    </tr>
-    <tr>
-      <td style = "text-align: right;">-9.56</td>
-      <td style = "text-align: right;">-6.18</td>
-      <td style = "text-align: right;">36.955</td>
-      <td style = "text-align: right;">42.16</td>
-      <td style = "text-align: right;">PTC</td>
-      <td style = "text-align: right;">Continental Portugal</td>
-      <td style = "text-align: right;">Mainlands</td>
-    </tr>
-    <tr>
-      <td style = "text-align: right;">-9.29092</td>
-      <td style = "text-align: right;">4.31502</td>
-      <td style = "text-align: right;">35.1852</td>
-      <td style = "text-align: right;">43.7915</td>
-      <td style = "text-align: right;">ESC</td>
-      <td style = "text-align: right;">Continental Spain</td>
-      <td style = "text-align: right;">Mainlands</td>
-    </tr>
-  </tbody>
-</table>
-
+UndefVarError: <code>GMT</code> not defined
 <p>Consulting the <code>UN</code> collection we would have found that the &quot;Caribbean&quot; region has the code <code>UN029</code>. So, making a map of the Caribe is as simple as:</p>
 <pre><code class="language-julia">using GMT
 earthregions&#40;&quot;UN029&quot;&#41;</code></pre></p>
 <p>
 	<a id="example_2473503848863651057">
-	 <img src="/GMTjl_doc/assets/documentation/modules/earthregions/code/output/example_2473503848863651057.png" alt=""> 
+	 <p><span style="color:red;">// Image matching '/assets/documentation/modules/earthregions/code/example_2473503848863651057.png' not found. //</span></p> 
 	</a>
 	
 <p>But the examples above do not let us plot the country’s borders that help referencing a map. For the time being that is only possible when we use the <code>DCW</code> collection. Next example shows a case with country borders. Also note that for the regions in the <code>DCW</code> &#40;there are 248 of them&#41; we can combine as many countries as we want.</p>
@@ -645,7 +602,7 @@ earthregions&#40;&quot;UN029&quot;&#41;</code></pre></p>
 earthregions&#40;&quot;PT,ES,FR&quot;, country&#61;true&#41;</code></pre></p>
 <p>
 	<a id="example_13738318151082669420">
-	 <img src="/GMTjl_doc/assets/documentation/modules/earthregions/code/output/example_13738318151082669420.png" alt=""> 
+	 <p><span style="color:red;">// Image matching '/assets/documentation/modules/earthregions/code/example_13738318151082669420.png' not found. //</span></p> 
 	</a>
 	
 <p>Our last example shows how to extract a topo/bathymetric grid of the &quot;Sea of Azov&quot; and letting the <code>earthregions</code> select the grid resolution. We also show how to make a pretty map with very few commands. Note that for this later case we have much more plotting possibilities than with the <code>earthregions</code> function that is only a tool to select named regions and quickly visualize them.</p>
@@ -654,15 +611,15 @@ G &#61; earthregions&#40;&quot;IHO31&quot;, grid&#61;true&#41;;
 viz&#40;G, shade&#61;true, coast&#61;true, cmap&#61;:earth&#41;</code></pre></p>
 <p>
 	<a id="example_1602102458812413774">
-	 <img src="/GMTjl_doc/assets/documentation/modules/earthregions/code/output/example_1602102458812413774.png" alt=""> 
+	 <p><span style="color:red;">// Image matching '/assets/documentation/modules/earthregions/code/example_1602102458812413774.png' not found. //</span></p> 
 	</a>
 	
 <h2>See Also</h2>
 <p><a href="/GMTjl_doc/documentation/modules/coast/index.html#coast">coast</a>, <a href="/GMTjl_doc/documentation/utilities/mosaic/index.html#mosaic">mosaic</a></p>
 <div class="page-foot">
   <div class="copyright">
-    &copy; GMT.jl. Last modified: September 09, 2025. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
-      <p>These docs were autogenerated using GMT: v1.33.0</p>
+    &copy; GMT.jl. Last modified: November 05, 2025. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+      <p>These docs were autogenerated using GMT: v1.33.1</p>
   </div>
 </div>
 </div><!-- CONTENT ENDS HERE -->

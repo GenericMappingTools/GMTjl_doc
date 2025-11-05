@@ -343,6 +343,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdcut">grdcut</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdedit">grdedit</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdfill">grdfill</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdfilter">grdfilter</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdgradient">grdgradient</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdgravmag3d">grdgravmag3d</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdhisteq">grdhisteq</a></div></li>
@@ -365,6 +366,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/lines">lines</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/magref">magref</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/makecpt">makecpt</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/mapproject">mapproject</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/marginalhist">marginalhist</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/mask">mask</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/movie">movie</a></div></li>
@@ -413,11 +415,14 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/binarize">binarize</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/blendimg">blendimg&#33;</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/bwareaopen">bwareaopen</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/bwconncomp">bwconncomp</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/bwdist">bwdist</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/bwhitmiss">bwhitmiss</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/bwperim">bwperim</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/bwskell">bwskell</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/cart2pol">cart2pol</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/cart2sph">cart2sph</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/cc2bw">cc2bw</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/coastlinesproj">coastlinesproj</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/colorzones">colorzones&#33;</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/cpt4dcw">cpt4dcw</a></div></li>
@@ -446,6 +451,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/gmtread">gmtread</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/gmtwrite">gmtwrite</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/graticules">graticules</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/graydist">graydist</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/grid2tri">grid2tri</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/gridit">gridit</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/gunique">gunique</a></div></li>
@@ -469,6 +475,8 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/imopen">imopen</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/imrankfilter">imrankfilter</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/imreconstruct">imreconstruct</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/imregionalmax">imregionalmax</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/imregionalmin">imregionalmin</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/imsegment">imsegment</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/imshow">imshow</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/imsobel">imsobel</a></div></li>
@@ -570,7 +578,7 @@ I2 &#61; blendimg&#33;&#40;I1, Ihill, new&#61;true, transparency&#61;0.6&#41;;
 viz&#40;I2&#41;</code></pre></p>
 <p>
 	<a id="example_9307403668145453743">
-	 <img src="/GMTjl_doc/assets/tutorials/texture_shading/texture/code/output/example_9307403668145453743.png" alt=""> 
+	 <p><span style="color:red;">// Image matching '/assets/tutorials/texture_shading/texture/code/example_9307403668145453743.png' not found. //</span></p> 
 	</a>
 	
 <p>The <code>new&#61;true</code> option above forced the creation of the new array <code>I2</code>, but we could have just done <code>blendimg&#33;&#40;I1, Ihill, transparency&#61;0.6&#41;</code> and the final image would be stored in &#40;overritten&#41; <code>I1</code>. That is what is implemented in the wrapper function <a href="/GMTjl_doc/documentation/utilities/lelandshade/index.html#lelandshade">lelandshade</a> that aglutinates all of the above steps, plus some extra options, in a single function.</p>
@@ -578,14 +586,14 @@ viz&#40;I2&#41;</code></pre></p>
 <pre><code class="language-julia">lelandshade&#40;G, color&#61;true, colorbar&#61;true, show&#61;true&#41;</code></pre></p>
 <p>
 	<a id="example_13320856959436073735">
-	 <img src="/GMTjl_doc/assets/tutorials/texture_shading/texture/code/output/example_13320856959436073735.png" alt=""> 
+	 <p><span style="color:red;">// Image matching '/assets/tutorials/texture_shading/texture/code/example_13320856959436073735.png' not found. //</span></p> 
 	</a>
 	
 <p>A variation of the above is to make the color image with equalized color distribution where each color covers approximatelly the same area in the figure. We do that using the <code>equalize&#61;true</code> option.</p>
 <pre><code class="language-julia">lelandshade&#40;G, color&#61;true, equalize&#61;true, colorbar&#61;true, show&#61;true&#41;</code></pre></p>
 <p>
 	<a id="example_6375560252983994228">
-	 <img src="/GMTjl_doc/assets/tutorials/texture_shading/texture/code/output/example_6375560252983994228.png" alt=""> 
+	 <p><span style="color:red;">// Image matching '/assets/tutorials/texture_shading/texture/code/example_6375560252983994228.png' not found. //</span></p> 
 	</a>
 	
 <h2 id="the_effect_of_the_transparency_option"><a href="#the_effect_of_the_transparency_option" class="header-anchor">The effect of the transparency option.</a></h2>
@@ -594,38 +602,38 @@ viz&#40;I2&#41;</code></pre></p>
 lelandshade&#40;G, transparency&#61;0.0, title&#61;&quot;0 &#37; texture shading&quot;, par&#61;&#40;FONT_TITLE&#61;10,&#41;, show&#61;true&#41;</code></pre></p>
 <p>
 	<a id="example_1374393951701530804">
-	 <img src="/GMTjl_doc/assets/tutorials/texture_shading/texture/code/output/example_1374393951701530804.png" alt=""> 
+	 <p><span style="color:red;">// Image matching '/assets/tutorials/texture_shading/texture/code/example_1374393951701530804.png' not found. //</span></p> 
 	</a>
 	
 <pre><code class="language-julia">lelandshade&#40;G, transparency&#61;0.3, title&#61;&quot;30 &#37; texture shading&quot;, par&#61;&#40;FONT_TITLE&#61;10,&#41;, show&#61;true&#41;</code></pre></p>
 <p>
 	<a id="example_12610863805596452992">
-	 <img src="/GMTjl_doc/assets/tutorials/texture_shading/texture/code/output/example_12610863805596452992.png" alt=""> 
+	 <p><span style="color:red;">// Image matching '/assets/tutorials/texture_shading/texture/code/example_12610863805596452992.png' not found. //</span></p> 
 	</a>
 	
 <pre><code class="language-julia">lelandshade&#40;G, transparency&#61;0.6, title&#61;&quot;60 &#37; texture shading&quot;, par&#61;&#40;FONT_TITLE&#61;10,&#41;, show&#61;true&#41;</code></pre></p>
 <p>
 	<a id="example_15979510306398055712">
-	 <img src="/GMTjl_doc/assets/tutorials/texture_shading/texture/code/output/example_15979510306398055712.png" alt=""> 
+	 <p><span style="color:red;">// Image matching '/assets/tutorials/texture_shading/texture/code/example_15979510306398055712.png' not found. //</span></p> 
 	</a>
 	
 <pre><code class="language-julia">lelandshade&#40;G, transparency&#61;0.8, title&#61;&quot;80 &#37; texture shading&quot;, par&#61;&#40;FONT_TITLE&#61;10,&#41;, show&#61;true&#41;</code></pre></p>
 <p>
 	<a id="example_13145136627327103153">
-	 <img src="/GMTjl_doc/assets/tutorials/texture_shading/texture/code/output/example_13145136627327103153.png" alt=""> 
+	 <p><span style="color:red;">// Image matching '/assets/tutorials/texture_shading/texture/code/example_13145136627327103153.png' not found. //</span></p> 
 	</a>
 	
 <pre><code class="language-julia">lelandshade&#40;G, transparency&#61;1.0, title&#61;&quot;100 &#37; texture shading&quot;, par&#61;&#40;FONT_TITLE&#61;10,&#41;, show&#61;true&#41;</code></pre></p>
 <p>
 	<a id="example_13080378090788732131">
-	 <img src="/GMTjl_doc/assets/tutorials/texture_shading/texture/code/output/example_13080378090788732131.png" alt=""> 
+	 <p><span style="color:red;">// Image matching '/assets/tutorials/texture_shading/texture/code/example_13080378090788732131.png' not found. //</span></p> 
 	</a>
 	
 <p>Other than the <code>transparency</code>, several other parameters influence the look of the texture shaded images. Consult the <a href="/GMTjl_doc/documentation/utilities/lelandshade/index.html#lelandshade">lelandshade</a> manual to learn about them.</p>
 <div class="page-foot">
   <div class="copyright">
-    &copy; GMT.jl. Last modified: September 09, 2025. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
-      <p>These docs were autogenerated using GMT: v1.33.0</p>
+    &copy; GMT.jl. Last modified: November 05, 2025. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+      <p>These docs were autogenerated using GMT: v1.33.1</p>
   </div>
 </div>
 </div><!-- CONTENT ENDS HERE -->
