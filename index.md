@@ -23,7 +23,6 @@ of 2 and 3D (perspective, not volumetric) graphics.
 
 And use the Julia's inbuilt package manager to install  GMT.
 
-
 ```julia
 ] add GMT
 using GMT
