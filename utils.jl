@@ -148,13 +148,13 @@ function env_examplefig(com, _)
 	```julia:example_figure
 	begin # hide
 		using GMT   # hide
-		GMT.isFranklin[1] = true    # hide
+		GMT.isFranklin[] = true    # hide
 		getpath4docs(file::String) = joinpath("..", "..", "..", "..", "..", file) # hide
 		$code
 	end # hide
-	mv(joinpath(tempdir(), "GMTjl_" * GMT.TMPDIR_USR[2] * "." * "$ext"), joinpath(@OUTPUT, "$pngfile"), force=true);    # hide
-	GMT.isFranklin[1] = false    # hide
-	GMT.IamModern[1]  = false    # hide
+	mv(joinpath(TMPDIR_USR.dir, "GMTjl_" * TMPDIR_USR.username * "." * "$ext"), joinpath(@OUTPUT, "$pngfile"), force=true);    # hide
+	GMT.isFranklin[] = false    # hide
+	GMT.IamModern[]  = false    # hide
  
 	nothing # hide
 	```
