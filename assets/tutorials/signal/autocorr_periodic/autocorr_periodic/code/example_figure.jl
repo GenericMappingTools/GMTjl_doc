@@ -20,7 +20,7 @@ plot(lags/fs, ac, figsize=(15, 7))
 scatter!(lags[locs]/fs,ac[locs], fill=:red)
 scatter!(lags[locs_long]/fs, ac[locs_long], fill=:blue, show=1)
 	end # hide
-	mv(joinpath(tempdir(), "GMTjl_" * GMT.TMPDIR_USR[2] * "." * "png"), joinpath(@OUTPUT, "example_18212460617792455548.png"), force=true);    # hide
+	mv(joinpath(tempdir(), "GMTjl_" * GMT.TMPDIR_USR[2] * "." * "png"), joinpath(@OUTPUT, "example_8331890914479075795.png"), force=true);    # hide
 	GMT.isFranklin[1] = false    # hide
 	GMT.IamModern[1]  = false    # hide
  

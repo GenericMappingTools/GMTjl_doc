@@ -16,7 +16,7 @@ f = Fs * (0:(L/2)-1)/L;
 
 viz(1 ./ f ./ 3600, 2*P[1:length(f)], limits=(0,25,0,1.5), lc=:red, marker=:point, figsize=(15,6))
 	end # hide
-	mv(joinpath(tempdir(), "GMTjl_" * GMT.TMPDIR_USR[2] * "." * "png"), joinpath(@OUTPUT, "example_7335309434728730265.png"), force=true);    # hide
+	mv(joinpath(tempdir(), "GMTjl_" * GMT.TMPDIR_USR[2] * "." * "png"), joinpath(@OUTPUT, "example_15685902757269880473.png"), force=true);    # hide
 	GMT.isFranklin[1] = false    # hide
 	GMT.IamModern[1]  = false    # hide
  
