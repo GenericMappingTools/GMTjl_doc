@@ -49,6 +49,7 @@ A2=200;			# Hide
 f2=400;			# Hide
 A3=150;			# Hide
 f3=800;			# Hide
+t = (0:L-1)*T; # Hide
 
 sig1 = A1*sin.(2*pi*f1*t);
 sig2 = A2*sin.(2*pi*f2*t);
@@ -66,6 +67,7 @@ Add the three signals together and plot the result.
 \begin{examplefig}{}
 ```julia
 using GMT	# Hide
+Fs = 50000;     # Hide
 T = 1/Fs;       # Hide
 L = 10000;      # Hide
 t = (0:L-1)*T;  # Hide
