@@ -49,6 +49,7 @@ A2=200;			# Hide
 f2=400;			# Hide
 A3=150;			# Hide
 f3=800;			# Hide
+Fs = 50000;    # Hide
 T = 1/Fs;      # Hide
 L = 10000;     # Hide
 t = (0:L-1)*T; # Hide
