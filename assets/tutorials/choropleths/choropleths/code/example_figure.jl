@@ -15,7 +15,7 @@ C = makecpt(zvals, auto=:r, reverse =true, cmap=:bamako);
 bubblechart(Df, labels="attrib=STUSPS", proj=:guess, zcolor=zvals,
             cmap=C, colorbar=true, show=true)
 	end # hide
-	mv(joinpath(tempdir(), "GMTjl_" * GMT.TMPDIR_USR[2] * "." * "png"), joinpath(@OUTPUT, "example_9720144734230891732.png"), force=true);    # hide
+	mv(joinpath(tempdir(), "GMTjl_" * GMT.TMPDIR_USR[2] * "." * "png"), joinpath(@OUTPUT, "example_3457114486642325480.png"), force=true);    # hide
 	GMT.isFranklin[1] = false    # hide
 	GMT.IamModern[1]  = false    # hide
  
