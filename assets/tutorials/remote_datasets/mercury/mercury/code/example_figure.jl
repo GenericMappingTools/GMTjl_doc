@@ -7,7 +7,7 @@ begin # hide
 I = gdalread("https://github.com/GenericMappingTools/remote-datasets/blob/main/docs/_static/GMT_mercury_relief.jpg?raw=true"); # hide
 viz(I) # hide
 	end # hide
-	mv(joinpath(tempdir(), "GMTjl_" * GMT.TMPDIR_USR[2] * "." * "png"), joinpath(@OUTPUT, "example_16893971129865793126.png"), force=true);    # hide
+	mv(joinpath(tempdir(), "GMTjl_" * GMT.TMPDIR_USR[2] * "." * "png"), joinpath(@OUTPUT, "example_4446287055444674061.png"), force=true);    # hide
 	GMT.isFranklin[1] = false    # hide
 	GMT.IamModern[1]  = false    # hide
  
