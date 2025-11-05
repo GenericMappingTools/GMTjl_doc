@@ -1,7 +1,7 @@
 # fillsinks
 
 ```julia
-fillsinks(G::GMTgrid; conn=4, region=nothing, saco=false, insitu=false)
+fillsinks(G::GMTgrid; conn=8, region=nothing, saco=false, insitu=false)
 ```
 
 Fill sinks in a grid.
@@ -14,26 +14,13 @@ which is not that much.
 - `G::GMTgrid`: The input grid to process.
 
 ### Kwargs
-- `conn::Int`: Connectivity for sink filling (4 or 8). Default is 4.
+- `conn::Int`: Connectivity for sink filling (4 or 8). Default is 8.
 
 - `region`: Limit the action to a region of the grid specified by `region`. See for example the \myreflink{coast}
   manual for and extended doc on this keword, but note that here only `region` is accepted and not `R`, etc...
 
-- `saco::Bool`: Save the lines (GMTdataset ~contours) used to fill the sinks in a global variable called
-  GMT.SACO. This is intended to avoid return them all the time when function ends. This global variable
-  is a ``[Dict{String,Union{AbstractArray, Vector{AbstractArray}}}()]``, so to access its contents you must use:
-
-  ``D = get(GMT.SACO[1], "saco", nothing)``, where ``D`` is now a GMTdataset or a vector of them.
-
-  NOTE: It is the user's responsibility to empty this global variable when it is no longer needed.
-
-  You do that with: ``delete!(GMT.SACO[1], "saco")``
-
-- `insitu::Bool`: If `true`, modify the grid in place. Default is `false`.
-  Alternatively, use the conventional form ``fillsinks!(G; conn=4)``.
-
 ### Returns
-- A new \myreflink{GMTgrid} with sinks filled, unless `insitu` is `true`, in which case the input grid is modified and returned.
+- A new \myreflink{GMTgrid} with sinks filled.
 
 Examples
 --------
@@ -48,19 +35,6 @@ G = peaks(N=128);
 G2 = fillsinks(G);
 grdimage(G, figsize=6, shade=true)
 grdimage!(G2, figsize=6, xshift=6.2, frame="wSen", shade=true, show=true)
-```
-\end{examplefig}
-
-Now save the filling contours n the SACO global variable and make a plot that overlayes them
-
-\begin{examplefig}{}
-```julia
-using GMT
-
-G = peaks(N=128);
-G2 = fillsinks(G, saco=true);
-grdimage(G2, shade=true)
-plot!(get(GMT.SACO[1], "saco", nothing), lc=:white, show=true)
 ```
 \end{examplefig}
 

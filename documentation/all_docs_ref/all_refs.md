@@ -16,10 +16,10 @@
 | gmtdefaults | gmtget | gmtinfo |  gmtlogo | \myreflink{gmtmath} | gmtregress | \myreflink{gmtselect} | \myreflink{gmtset} |
 | \myreflink{gmtsimplify} | gmtspatial | \myreflink{gmtsplit} | gmtvector | gmtwhich | \myreflink{grd2cpt} | \myreflink{grd2kml} | \myreflink{grd2xyz} |
 |  grdblend | \myreflink{grdclip} | \myreflink{grdcontour} | grdconvert | \myreflink{grdcut} |  grdedit |  grdfft | \myreflink{grdfill} |
-| grdfilter | grdgdal | \myreflink{grdgradient} | \myreflink{grdhisteq} | \myreflink{grdimage} | \myreflink{grdinfo} | grdinterpolate | \myreflink{grdlandmask} |
+| \myreflink{grdfilter} | grdgdal | \myreflink{grdgradient} | \myreflink{grdhisteq} | \myreflink{grdimage} | \myreflink{grdinfo} | grdinterpolate | \myreflink{grdlandmask} |
 | \myreflink{grdmask} | \myreflink{grdmath} | grdmix | \myreflink{grdpaste} |  grdproject | \myreflink{grdsample} | \myreflink{grdtrack} | \myreflink{grdtrend} |
 | \myreflink{grdvector} | \myreflink{grdview} | grdvolume | greenspline | \myreflink{histogram} | \myreflink{image} | \myreflink{inset} | kml2gmt |
-| \myreflink{legend} | \myreflink{makecpt} |  mapproject | \myreflink{mask} | \myreflink{movie} | \myreflink{nearneighbor} | \myreflink{plot} | \myreflink{plot3d} |
+| \myreflink{legend} | \myreflink{makecpt} |  \myreflink{mapproject} | \myreflink{mask} | \myreflink{movie} | \myreflink{nearneighbor} | \myreflink{plot} | \myreflink{plot3d} |
 | \myreflink{project} |  psconvert | \myreflink{rose} | \myreflink{sample1d} | \myreflink{solar} | \myreflink{spectrum1d} | sph2grd | sphdistance |
 | \myreflink{sphinterpolate} | \myreflink{sphtriangulate} | \myreflink{subplot} | \myreflink{surface} | \myreflink{ternary} | \myreflink{text} | \myreflink{trend1d} | \myreflink{trend2d} |
 | \myreflink{triangulate} | \myreflink{wiggle} | \myreflink{xyz2grd} |  |  |  |  |  |
@@ -84,10 +84,11 @@ its use requires resorting to the \myreflink{Monolithic} mode.
 
 |  |  |  |  |  |  |  |  |
 |:-----|:----|:----|:----|:----|:----|:----|:----|
-| \myreflink{binarize} | \myreflink{bwareaopen} | \myreflink{bwhitmiss} | \myreflink{bwperim} | \myreflink{bwskell} | \myreflink{fillsinks} | \myreflink{imbothat} | \myreflink{imclose} |
-| \myreflink{imcomplement} | \myreflink{imdilate} | \myreflink{imerode} | \myreflink{imfill} | \myreflink{imfilter} | \myreflink{imhdome} | \myreflink{imhmin} | \myreflink{imhmax} |
-| \myreflink{immorphgrad} | \myreflink{imopen} | \myreflink{imrankfilter} | \myreflink{imreconstruct} | \myreflink{imsegment} | \myreflink{imsobel} | \myreflink{imtophat} | \myreflink{isodata} |
-| \myreflink{padarray} | \myreflink{strel} | \myreflink{rgb2gray} | \myreflink{rgb2lab} | \myreflink{rgb2ycbcr} |  |  |  |
+| \myreflink{binarize} | \myreflink{bwareaopen} | \myreflink{bwconncomp} | \myreflink{bwdist} | \myreflink{bwhitmiss} | \myreflink{bwperim} | \myreflink{bwskell} | \myreflink{cc2bw} |
+| \myreflink{fillsinks} | \myreflink{graydist} | \myreflink{imbothat} | \myreflink{imclose} | \myreflink{imcomplement} | \myreflink{imdilate} | \myreflink{imerode} | \myreflink{imfill} |
+| \myreflink{imfilter} | \myreflink{imhdome} | \myreflink{imhmin} | \myreflink{imhmax} | \myreflink{immorphgrad} | \myreflink{imopen} | \myreflink{imrankfilter} | \myreflink{imreconstruct} |
+| \myreflink{imregionalmax} | \myreflink{imregionalmin} | \myreflink{imsegment} | \myreflink{imsobel} | \myreflink{imtophat} | \myreflink{isodata} | \myreflink{padarray} | \myreflink{strel} |
+| \myreflink{rgb2gray} | \myreflink{rgb2lab} | \myreflink{rgb2ycbcr} |  |  |  |  |  |  |
 
 ## GDAL utility functions
 

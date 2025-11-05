@@ -16,7 +16,7 @@ Plot a stereonet map in either Schmidt or Wulff projection.
   and line & marker settings (see ``plots`` manual for details on them).
 
 In case the produced figure is still not satisfactory, you can make one by yourself.
-For that use the `Dv, Dp = _stereonet(mat)` function to get the fault planes and poles. A good place
+For that use the `Dv, Dp = stereonet_data(mat)` function to get the fault planes and poles. A good place
 to start is the `stereonet` function itself. Type ``@edit GMT.stereonet([0 0])`` to see the code.
 
 
@@ -27,7 +27,7 @@ Example
 ```julia
 using GMT
 
-stereonet([90 30; 180 45; 270 60; 0 15; 30 45; 120 48; 225 27; 350 80])
+stereonet([90 30; 180 45; 270 60; 0 15; 30 45; 120 48; 225 27; 350 80], show=true)
 ```
 \end{examplefig}
 

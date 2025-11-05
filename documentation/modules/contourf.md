@@ -9,7 +9,16 @@ Create filled contour mapps.
 Description
 -----------
 
-This module is a wrapper to \myreflink{grdview}, *contour* and \myreflink{grdcontour} and as such it works with two different kinds of input data. If input is a grid (either a grid file name or a GMTgrid object) it will make a filled contour with *grdview* and optionally  overlay contours by calling \myreflink{grdcontour}. If, on the other hand, the input data is table data file or a Mx3 array (or GMTdataset), it first compute a Delaunay triangulation and makes the plot from it. In this later case, the job is done by *contour* module alone.
+This module is a wrapper to \myreflink{grdview}, *contour* and \myreflink{grdcontour} and as such it works with two
+different kinds of input data. If input is a grid (either a grid file name or a GMTgrid object) it will make a filled
+contour with *grdview* and optionally  overlay contours by calling \myreflink{grdcontour}. If, on the other hand,
+the input data is table data file or a Mx3 array (or GMTdataset), it first compute a Delaunay triangulation and makes
+the plot from it. In this later case, the job is done by *contour* module alone.
+
+Optionaly one can plot the so called Tanaka contours. These are contour lines whose thickness and intensity vary based
+on illumination direction, creating an illusion of 3D relief. Illuminated slopes get lighter/thinner lines, shaded slopes
+get darker/thicker lines. This is a slow method (not to be used with large grids) but with a nice visual effect.
+See the **tanaka** option.
 
 The **region** option can be used to select a map region larger or smaller than that implied by the extent of the grid. 
 
@@ -46,9 +55,9 @@ Optional Arguments
 
    2. If ``cont_int`` is a constant or an array it means plot those contour intervals. This works also to draw
       single contours. *E.g.* **contour=[0]** will draw only the zero contour. The **annot** option offers the same
-	   possibility so they may be used together to plot a single annotated contour and another single non-annotated contour,
-	   as in **anot=[10], cont=[5]** that plots an annotated 10 contour and an non-annotated 5 contour. If **annot** is set
-	   and **cont** is not, then the contour interval is set equal to the specified annotation interval.
+      possibility so they may be used together to plot a single annotated contour and another single non-annotated contour,
+      as in **anot=[10], cont=[5]** that plots an annotated 10 contour and an non-annotated 5 contour. If **annot** is set
+      and **cont** is not, then the contour interval is set equal to the specified annotation interval.
 
 	If no **contour** option and no *GMTcpt* are passed then for grid a default color map is computed and all of
 	those automatically contours are drwan. Also, no *GMTcpt* and **contour=[array]** computes a cmap with only the
@@ -79,7 +88,7 @@ Optional Arguments
 
 - **S** or **skip** : -- *skip=true|"t"*\
    Skip all input xyz points that fall outside the region [Default uses all the data in the triangulation].
-   Alternatively, use **skip="t"* to skip triangles whose three vertices are all outside the region.
+   Alternatively, use **skip="t"** to skip triangles whose three vertices are all outside the region.
    *This option should be used only when input data is a grid*.
 
 - **T** or **ticks** : -- *ticks=(local\_high=true, local\_low=true, gap=gap, closed=true, labels=labels)*\
@@ -92,6 +101,11 @@ Optional Arguments
    will plot the two characters (here, *L* and *H*) as labels. For more elaborate labels, separate the low and hight
    label strings with a comma (*e.g.*, *labels="lo,hi"*). If a file is given by **cont**, and **ticks** is set,
    then only contours marked with upper case C or A will have tick marks [and annotations].
+
+- **tanaka** : -- *tanaka=true* **|** *tanaka=azimuth*\
+   Draw Tanaka-style contours with varying line thickness and intensity to simulate illumination from a
+   given direction. The *azimuth* (in degrees) gives the illumination direction (default is 315 degrees,
+   i.e., NW). Tanaka contours are a bit slow to compute so avoid using this option with large grids.
 
 \textinput{common_opts/opt_U}
 
@@ -121,9 +135,9 @@ Using a grid
 
 \begin{examplefig}{}
 ```julia
-using GMT
+using GMT   # Hide
 
-	G = GMT.peaks();
+	G = peaks();
 	C = makecpt(T=(-7,9,2));
 
 	contourf(G, show=1)
@@ -144,5 +158,15 @@ using GMT
 
 	d = [0 2 5; 1 4 5; 2 0.5 5; 3 3 9; 4 4.5 5; 4.2 1.2 5; 6 3 1; 8 1 5; 9 4.5 5];
 	contourf(d, limits=(-0.5,9.5,0,5), pen=0.25, labels=(line=(:min,:max),), show=1)
+```
+\end{examplefig}
+
+Tanaka contours
+
+\begin{examplefig}{}
+```julia
+using GMT   # Hide
+G = peaks();
+contourf(G, tanaka=true, show=true)
 ```
 \end{examplefig}

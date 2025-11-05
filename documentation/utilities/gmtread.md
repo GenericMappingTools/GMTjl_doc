@@ -63,6 +63,19 @@ Specify data type (with *type*=true, e.g. `img=true`). Choose among:
 
   Use ``layers=:all`` to read all levels of a 3D cube netCDF file.
 
+- `R` | `region` | `limits`: A numeric vector (or a Tuple) or a string defining the region of interest.
+  If numeric, it must have four elements: `[xmin, xmax, ymin, ymax]`.
+  If string, it must be in the form `xmin/xmax/ymin/ymax`. Default is to read entire file extent.
+
+  When reading remote files via the '@' mechanism, the region can be given in projected coordinates,
+  provided that the `proj` option is also given and describing system used in `R`.
+
+- `J` | `proj` | `projection`: When `region` is given in projected coordinates, this option must be
+  provided, otherwise it is ignored. The syntax is the same as in all modules that use the `proj` option.
+
+- `convert`: In case that both the `region` and `proj` options are used, this option (any value will do)
+  can be used to request that the grid be converted to the new projection defined by `proj`.
+
 \textinput{common_opts/opt_R}
 
 \textinput{common_opts/opt_V}
@@ -90,6 +103,12 @@ to read a zip comtressed shape file
 
 ```julia
 I = gmtread("fileshapes.zip.shp");
+```
+
+to read remote dataset at 3 arc sec resolution with the region given in UTM and projection conversion
+
+```julia
+G = gmtread("@earth_relief_03s", R=[420000, 470000, 4510000, 4535000], J="+proj=utm +zone=33", convert=true);
 ```
 
 See Also

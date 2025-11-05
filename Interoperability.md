@@ -169,7 +169,7 @@ viz(A, colorbar=true)
 using GMT, Rasters
 import NCDatasets
 
-url = "https://www.unidata.ucar.edu/software/netcdf/examples/tos_O1_2001-2002.nc";
+url = "https://archive.unidata.ucar.edu/software/netcdf/examples/tos_O1_2001-2002.nc";
 filename = download(url, "tos_O1_2001-2002.nc");
 A = Raster(filename);
 viz(A[Ti=6], proj=:guess, coast=true, colorbar=true)
@@ -180,6 +180,9 @@ viz(A[Ti=6], proj=:guess, coast=true, colorbar=true)
 ```julia
 using GMT, Rasters		# Hide
 import NCDatasets		# Hide
+url = "https://archive.unidata.ucar.edu/software/netcdf/examples/tos_O1_2001-2002.nc";	# Hide
+filename = download(url, "tos_O1_2001-2002.nc");	# Hide
+A = Raster(filename);	# Hide
 viz(A[Ti=1:6], proj=:Robinson, coast=true, colorbar=true)
 ```
 \end{examplefig}
@@ -188,7 +191,11 @@ But _I Don't like Kelvins_. Fine, want centigrade? Just offset the _z_ values.
 
 \begin{examplefig}{}
 ```julia
-using GMT
+using GMT, Rasters		# Hide
+import NCDatasets		# Hide
+url = "https://archive.unidata.ucar.edu/software/netcdf/examples/tos_O1_2001-2002.nc";	# Hide
+filename = download(url, "tos_O1_2001-2002.nc");	# Hide
+A = Raster(filename);	# Hide
 
 G = mat2grid(A[Ti=1:6], offset=-273.15);
 viz(G, proj=:Robinson, coast=true, colorbar=true)
