@@ -10,7 +10,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
-  
+   <link rel="stylesheet" href="/GMTjl_doc/libs/highlight/github.min.css">
+   
   <link rel="stylesheet" href="/GMTjl_doc/css/franklin.css">
 <link rel="stylesheet" href="/GMTjl_doc/css/minimal-mistakes.css">
 <link rel="stylesheet" href="/GMTjl_doc/css/gmt.css">
@@ -201,6 +202,8 @@
 <li><a href="#choropleths/">Choropleths</a></li>
 <li><ul>
 <li><a href="#what_color_is_your_state/">What color is your State?</a></li>
+<li><a href="#represent_colors_by_average_altitude/">Represent colors by average altitude</a></li>
+<li><a href="#choropleths_by_symbol_color/">Choropleths by symbol color</a></li>
 </ul>
 </ul>
 </li>
@@ -562,6 +565,95 @@
 <h3 id="what_color_is_your_state"><a href="#what_color_is_your_state" class="header-anchor">What color is your State?</a></h3>
 <p>This example shows an adaptation of the <a href="https://erdavis.com/2021/06/26/average-colors-of-the-world/">Average color of World</a> examples. It differs slightly for the also shown US case likely due to the different data used. Here we retrieve the image data &#40;Sentinel 2&#41; from the <a href="https://eox.at/">EOX WMS server</a> and use the year 2020. And, as a side note, realize how incredibly simpler this example is as comparing to the codes used to generate the figures in that blog.</p>
 <p>Note how the sates polygons are read directly from source, without any previous download, uncompressing file format conversions, etc... We will also filter the states polygons to use only those inside the US continental zone and limit them by number of points and with that dropping those polygons of small islands &#40;smaller in area than 10 km^2&#41;.</p>
+<pre><code class="language-julia">using GMT
+
+# Fetch the state polygons from the US Census Bureau 
+D &#61; gmtread&#40;&quot;/vsizip//vsicurl/https://www2.census.gov/geo/tiger/GENZ2024/shp/cb_2024_us_state_500k.zip&quot;&#41;;
+
+# Filter to keep only the continental US states &#40;except Alaska&#41;, with an area larger than 10 km^2.
+Df &#61; filter&#40;D, _region&#61;&#40;-125,-66,24,50&#41;, _area&#61;10&#41;;
+
+# Fetch the Sentinel 2 image that is used to calculate the average color. Restrain to pixel size of 2000 m.
+wms &#61; wmsinfo&#40;&quot;http://tiles.maps.eox.at/wms?&quot;&#41;;
+img &#61; wmsread&#40;wms, layer&#61;4, region&#61;&#40;-125,-66,24,50&#41;, pixelsize&#61;2000&#41;;
+
+# Calculate the average color per State.
+colorzones&#33;&#40;Df, median, img&#61;img&#41;
+
+viz&#40;Df, region&#61;img, proj&#61;:guess, plot&#61;&#40;data&#61;Df, lw&#61;0&#41;, title&#61;&quot;Sate Color &#40;median&#41;&quot;&#41;</code></pre></p>
+<p>
+	<a id="example_4497912710696516595">
+	 <p><span style="color:red;">// Image matching '/assets/tutorials/choropleths/choropleths/code/example_4497912710696516595.png' not found. //</span></p> 
+	</a>
+	
+<h3 id="represent_colors_by_average_altitude"><a href="#represent_colors_by_average_altitude" class="header-anchor">Represent colors by average altitude</a></h3>
+<p>We can also use the same polygons to represent some other variable, such as the average altitude of each state. We will use the <a href="https://www.generic-mapping-tools.org/remote-datasets/earth-relief.html">Earth Relief 06m</a> dataset</p>
+<pre><code class="language-julia">G &#61; gmtread&#40;&quot;@earth_relief_06m&quot;&#41;;
+
+# Calculate the mean elevation per State.
+Dh &#61; zonal_statistics&#40;G, D, mean&#41;;
+
+# Create a color table for the mean elevation values.
+C &#61; makecpt&#40;range&#61;&#40;0, ceil&#40;Dh.ds_bbox&#91;2&#93;&#41;&#41;, cmap&#61;:bamako&#41;;
+
+viz&#40;D, region&#61;&#40;-125,-66,24,50&#41;, proj&#61;:guess, levels&#61;Dh, cmap&#61;C,
+               plot&#61;&#40;data&#61;D,lw&#61;0&#41;, title&#61;&quot;Mean Elevation&quot;, colorbar&#61;true&#41;</code></pre></p>
+<p>
+	<a id="example_4235982037790693837">
+	 <p><span style="color:red;">// Image matching '/assets/tutorials/choropleths/choropleths/code/example_4235982037790693837.png' not found. //</span></p> 
+	</a>
+	
+<p>The case above was relatively easy because the data was already prepared in a form that GMT could use. That is, the <code>zvals</code> vector, which together with the colorscale, determines the color of the polygons was already in the same order as the polygons themselves &#40;in the GMTdataset <code>D</code>&#41;. However, often that is not the case, and we have the variable that contains the information that we want to <em>colorize</em> in a different source and with a different order than that of the polygons in <code>D</code>. So, we need to do a kind of <em>join</em> operation. That can be done with <em>join</em> functions or use the internal <code>polygonlevels</code> function that links the polygon names provide by a stored attribute in <code>D</code> and the values in a vector or a table that must also have some text information &#40;a name&#41; associated with each value. It is that we will do in the next example.</p>
+<pre><code class="language-julia"># Read a simple text file that has population and State name, one per row.
+pop &#61; gmtread&#40;TESTSDIR * &quot;assets/uspop.csv&quot;&#41;;
+
+# Use the polygonlevels function to get the values in the same order as the polygons in D.
+zvals &#61; polygonlevels&#40;D, pop, att&#61;&quot;NAME&quot;&#41; / 1e6;
+
+# Create a color table for the values in zvals.
+C &#61; makecpt&#40;zvals, auto&#61;:r, reverse &#61;true, cmap&#61;:bamako&#41;;
+
+viz&#40;D, region&#61;&#40;-125,-66,24,50&#41;, level&#61;zvals, cmap&#61;C, proj&#61;:guess,
+    plot&#61;&#40;data&#61;D,lw&#61;0&#41;, title&#61;&quot;Population &#40;Millions&#41;&quot;, colorbar&#61;true&#41;</code></pre></p>
+<p>
+	<a id="example_10477366832373137496">
+	 <p><span style="color:red;">// Image matching '/assets/tutorials/choropleths/choropleths/code/example_10477366832373137496.png' not found. //</span></p> 
+	</a>
+	
+<h3 id="choropleths_by_symbol_color"><a href="#choropleths_by_symbol_color" class="header-anchor">Choropleths by symbol color</a></h3>
+<p>To avoid the perceptual problem of over-enphasize the polygon&#39;s are we can alternatively use colored symbols &#40;or symbols of different sizes&#41;. That can be done with the <code>bubblechart</code> program. One issue, though, that we have to deal in this case is that a state can have multiple polygons &#40;for example Hawaii has many islands, and Michigan has two main landmasses&#41;. So, we need to calculate the largest polygon of each state and its centroid to place the symbol there.</p>
+<pre><code class="language-julia">Df &#61; filter&#40;D, _region&#61;&#40;-125,-66,24,50&#41;, _unique&#61;true&#41;;  # Keep only the largest polygon per state
+
+pop &#61; gmtread&#40;TESTSDIR * &quot;assets/uspop.csv&quot;&#41;;
+zvals &#61; polygonlevels&#40;Df, pop, att&#61;&quot;NAME&quot;&#41; / 1e6;
+C &#61; makecpt&#40;zvals, auto&#61;:r, reverse &#61;true, cmap&#61;:bamako&#41;;
+
+bubblechart&#40;Df, labels&#61;&quot;attrib&#61;STUSPS&quot;, proj&#61;:guess, zcolor&#61;zvals,
+            cmap&#61;C, colorbar&#61;true, show&#61;true&#41;</code></pre></p>
+<p>
+	<a id="example_9720144734230891732">
+	 <img src="/GMTjl_doc/assets/tutorials/choropleths/choropleths/code/output/example_9720144734230891732.png" alt=""> 
+	</a>
+	
+<p>In all the examples above we have used the US states polygons from a downloaded file, but we actually no not need that as the internal GMT coasts database has the US states polygons. So, we can use the <code>coast</code> function to get extract the states polygons and use them in the same way as above. Here is an example that would produce the exactly same image. But note how attribute names are different now as state names are stored under the &quot;CODE&quot; attribute.</p>
+<pre><code class="language-julia">D &#61; coast&#40;DCW&#61;&#40;states&#61;&quot;US&quot;,&#41;&#41;   # Or simply D &#61; coast&#40;DCW&#61;&quot;&#43;US&quot;&#41;;
+Df &#61; filter&#40;D, _region&#61;&#40;-125,-66,24,50&#41;, _unique&#61;true&#41;;
+
+pop &#61; gmtread&#40;TESTSDIR * &quot;assets/uspop.csv&quot;&#41;;
+zvals &#61; polygonlevels&#40;Df, pop, att&#61;&quot;NAME&quot;, contains&#61;true&#41; / 1e6;
+C &#61; makecpt&#40;zvals, auto&#61;:r, reverse &#61;true, cmap&#61;:bamako&#41;;
+
+bubblechart&#40;Df, labels&#61;&quot;attrib&#61;CODE&quot;, proj&#61;:guess, zcolor&#61;zvals,
+            cmap&#61;C, colorbar&#61;true, show&#61;true&#41;</code></pre>
+<p>Note the <code>contains&#61;true</code> option in the <code>polygonlevels</code> function call. That is needed because the state names in the <code>Df</code> dataset are like &quot;Alabama &#40;United States&#41;&quot; while in the <code>pop</code> table they are simply &quot;Alabama&quot;.  So, to do the joining operation, we had to be more relaxed and not impose an quality comparions &#40;like the cases above&#41; but to satisfy that the name in <code>pop</code> is contained in the name in <code>Df</code>.</p>
+<pre><code class="language-julia">Df
+
+Attribute table
+┌─────┬──────┬──────────────────────────────────────┐
+│ Row │ CODE │ NAME                                 │
+├─────┼──────┼──────────────────────────────────────┤
+│   1 │ AL   │ Alabama &#40;United States&#41;              │
+│   2 │ AR   │ Arkansas &#40;United States&#41;             │</code></pre>
 <div class="page-foot">
   <div class="copyright">
     &copy; GMT.jl. Last modified: November 06, 2025. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
@@ -597,6 +689,10 @@
     <script defer src="https://use.fontawesome.com/releases/v5.8.2/js/all.js" integrity="sha384-DJ25uNYET2XCl5ZF++U8eNxPWqcKohUUBUpKGlNLMchM7q4Wjg2CUpjHLaL8yYPH" crossorigin="anonymous"></script>
 
     
+    
+        <script src="/GMTjl_doc/libs/highlight/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();hljs.configure({tabReplace: '    '});</script>
+
     
   </body>
 </html>
