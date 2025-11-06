@@ -615,7 +615,7 @@ G &#61; grdcut&#40;&quot;@earth_relief_04m&quot;, limits&#61;&#40;-48, -43, -26,
 viz&#40;G, cmap&#61;:world, J&#61;:merc, inset&#61;&#40;coast, limits&#61;&#40;-80,-28,-43,10&#41;, J&#61;:merc, shore&#61;true, ocean&#61;:blue, rect&#61;&#40;2,:red&#41;&#41;&#41;</code></pre></p>
 <p>
 	<a id="example_18290629918265990822">
-	 <p><span style="color:red;">// Image matching '/assets/tutorials/insets/insets/code/example_18290629918265990822.png' not found. //</span></p> 
+	 <img src="/GMTjl_doc/assets/tutorials/insets/insets/code/output/example_18290629918265990822.png" alt=""> 
 	</a>
 	
 <p>But if instead of a rectangle we want to plot a symbol, let’s say, a red circle, we can call the <a href="/GMTjl_doc/documentation/modules/plot/index.html#plot">plot</a> function inside <code>inset</code>. In next example we also ask to plot the inset at bottom right &#40;:BR&#41; instead of the default top right &#40;:TR&#41; default position. If wished, things can be made more complex by passing a full featured GMTdataset to the <code>plot</code> function. <em>e.g.</em>, <code>plot&#61;&#40;data&#61;D, ...&#41;</code></p>
@@ -628,7 +628,7 @@ viz&#40;G, J&#61;:merc,
    &#41;</code></pre></p>
 <p>
 	<a id="example_15023154532337556823">
-	 <p><span style="color:red;">// Image matching '/assets/tutorials/insets/insets/code/example_15023154532337556823.png' not found. //</span></p> 
+	 <img src="/GMTjl_doc/assets/tutorials/insets/insets/code/output/example_15023154532337556823.png" alt=""> 
 	</a>
 	
 <p>Next examples show how we can zoom out a region of an image and show it in the inset. We will use as example the image containing the &quot;Finger of God&quot; Bok globule in the Carina Nebula. We download the images directly from the Wikipedia site. The first example lets the inset location algorithm choose where to put the inset window. In the second we decide that ourselves.</p>
@@ -638,7 +638,7 @@ im &#61; gmtread&#40;&quot;https://upload.wikimedia.org/wikipedia/commons/thumb/
 viz&#40;im, inset&#61;&#40;zoom&#61;&#40;910,980,350,430&#41;,&#41;&#41;</code></pre></p>
 <p>
 	<a id="example_947781329336825860">
-	 <p><span style="color:red;">// Image matching '/assets/tutorials/insets/insets/code/example_947781329336825860.png' not found. //</span></p> 
+	 <img src="/GMTjl_doc/assets/tutorials/insets/insets/code/output/example_947781329336825860.png" alt=""> 
 	</a>
 	
 <p>Hmm, the above figure is nice, but the finger is a bit fuzzy. The issue is the image is somewhat low resolution. The Wikipedia page has a high-resolution image but it&#39;s a 200 MB jpeg compressed image. Too big to use in these examples. But we can download only the <em>finger</em> and add it as the inset. In this case we don&#39;t have a rectangle to zoom out &#40;because we are using a different image in the inset&#41; but still want to indicate what zone of the base image is shown in higher resolution. For that, we use the <code>pzoom</code> option &#40;that stands for <em>pseudo-zoom</em>&#41;, which expects a <em>x,y</em> location only. Since these images are not referenced, we use <em>rows</em> and <em>column</em> numbers &#40;counting from lower left corner&#41; as coordinates.</p>

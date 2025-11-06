@@ -588,13 +588,13 @@
 <p>Show the contents of the <code>Mainlands</code> collection. We use this as example because it is a small one &#40;contains only the continental parts of some countries that otherwise contain also distant islands&#41; and therefore, good to show what information is displayed to the user.</p>
 <pre><code class="language-julia">using GMT
 earthregions&#40;&quot;Mainlands&quot;&#41;</code></pre>
-UndefVarError: <code>GMT</code> not defined
+4×4 GMT.GMTdataset&#123;Float64, 2&#125;  Row │    W&#40;lon&#41;     E&#40;lon&#41;    S&#40;lat&#41;    N&#40;lat&#41;  Code          Region          ⋯ ─────┼──────────────────────────────────────────────────────────────────────────    1 │ -85.9506   -82.5561    8.0329   11.2167    CRC  Continental Costa Rica  ⋯    2 │ -81.0788   -75.1848   -4.99882   1.43894   ECC   Continental Ecuador    3 │  -9.56      -6.18     36.955    42.16      PTC   Continental Portugal    4 │  -9.29092    4.31502  35.1852   43.7915    ESC    Continental Spain                                                                 1 column omittedTypeError: in keyword argument backend, expected Symbol, got a value of type Val&#123;:html&#125;
 <p>Consulting the <code>UN</code> collection we would have found that the &quot;Caribbean&quot; region has the code <code>UN029</code>. So, making a map of the Caribe is as simple as:</p>
 <pre><code class="language-julia">using GMT
 earthregions&#40;&quot;UN029&quot;&#41;</code></pre></p>
 <p>
 	<a id="example_2473503848863651057">
-	 <p><span style="color:red;">// Image matching '/assets/documentation/modules/earthregions/code/example_2473503848863651057.png' not found. //</span></p> 
+	 <img src="/GMTjl_doc/assets/documentation/modules/earthregions/code/output/example_2473503848863651057.png" alt=""> 
 	</a>
 	
 <p>But the examples above do not let us plot the country’s borders that help referencing a map. For the time being that is only possible when we use the <code>DCW</code> collection. Next example shows a case with country borders. Also note that for the regions in the <code>DCW</code> &#40;there are 248 of them&#41; we can combine as many countries as we want.</p>
@@ -602,7 +602,7 @@ earthregions&#40;&quot;UN029&quot;&#41;</code></pre></p>
 earthregions&#40;&quot;PT,ES,FR&quot;, country&#61;true&#41;</code></pre></p>
 <p>
 	<a id="example_13738318151082669420">
-	 <p><span style="color:red;">// Image matching '/assets/documentation/modules/earthregions/code/example_13738318151082669420.png' not found. //</span></p> 
+	 <img src="/GMTjl_doc/assets/documentation/modules/earthregions/code/output/example_13738318151082669420.png" alt=""> 
 	</a>
 	
 <p>Our last example shows how to extract a topo/bathymetric grid of the &quot;Sea of Azov&quot; and letting the <code>earthregions</code> select the grid resolution. We also show how to make a pretty map with very few commands. Note that for this later case we have much more plotting possibilities than with the <code>earthregions</code> function that is only a tool to select named regions and quickly visualize them.</p>
@@ -611,7 +611,7 @@ G &#61; earthregions&#40;&quot;IHO31&quot;, grid&#61;true&#41;;
 viz&#40;G, shade&#61;true, coast&#61;true, cmap&#61;:earth&#41;</code></pre></p>
 <p>
 	<a id="example_1602102458812413774">
-	 <p><span style="color:red;">// Image matching '/assets/documentation/modules/earthregions/code/example_1602102458812413774.png' not found. //</span></p> 
+	 <img src="/GMTjl_doc/assets/documentation/modules/earthregions/code/output/example_1602102458812413774.png" alt=""> 
 	</a>
 	
 <h2>See Also</h2>

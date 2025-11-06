@@ -583,7 +583,7 @@ colorzones&#33;&#40;Df, median, img&#61;img&#41;
 viz&#40;Df, region&#61;img, proj&#61;:guess, plot&#61;&#40;data&#61;Df, lw&#61;0&#41;, title&#61;&quot;Sate Color &#40;median&#41;&quot;&#41;</code></pre></p>
 <p>
 	<a id="example_4497912710696516595">
-	 <p><span style="color:red;">// Image matching '/assets/tutorials/choropleths/choropleths/code/example_4497912710696516595.png' not found. //</span></p> 
+	 <img src="/GMTjl_doc/assets/tutorials/choropleths/choropleths/code/output/example_4497912710696516595.png" alt=""> 
 	</a>
 	
 <h3 id="represent_colors_by_average_altitude"><a href="#represent_colors_by_average_altitude" class="header-anchor">Represent colors by average altitude</a></h3>
@@ -600,7 +600,7 @@ viz&#40;D, region&#61;&#40;-125,-66,24,50&#41;, proj&#61;:guess, levels&#61;Dh, 
                plot&#61;&#40;data&#61;D,lw&#61;0&#41;, title&#61;&quot;Mean Elevation&quot;, colorbar&#61;true&#41;</code></pre></p>
 <p>
 	<a id="example_4235982037790693837">
-	 <p><span style="color:red;">// Image matching '/assets/tutorials/choropleths/choropleths/code/example_4235982037790693837.png' not found. //</span></p> 
+	 <img src="/GMTjl_doc/assets/tutorials/choropleths/choropleths/code/output/example_4235982037790693837.png" alt=""> 
 	</a>
 	
 <p>The case above was relatively easy because the data was already prepared in a form that GMT could use. That is, the <code>zvals</code> vector, which together with the colorscale, determines the color of the polygons was already in the same order as the polygons themselves &#40;in the GMTdataset <code>D</code>&#41;. However, often that is not the case, and we have the variable that contains the information that we want to <em>colorize</em> in a different source and with a different order than that of the polygons in <code>D</code>. So, we need to do a kind of <em>join</em> operation. That can be done with <em>join</em> functions or use the internal <code>polygonlevels</code> function that links the polygon names provide by a stored attribute in <code>D</code> and the values in a vector or a table that must also have some text information &#40;a name&#41; associated with each value. It is that we will do in the next example.</p>
@@ -617,7 +617,7 @@ viz&#40;D, region&#61;&#40;-125,-66,24,50&#41;, level&#61;zvals, cmap&#61;C, pro
     plot&#61;&#40;data&#61;D,lw&#61;0&#41;, title&#61;&quot;Population &#40;Millions&#41;&quot;, colorbar&#61;true&#41;</code></pre></p>
 <p>
 	<a id="example_10477366832373137496">
-	 <p><span style="color:red;">// Image matching '/assets/tutorials/choropleths/choropleths/code/example_10477366832373137496.png' not found. //</span></p> 
+	 <img src="/GMTjl_doc/assets/tutorials/choropleths/choropleths/code/output/example_10477366832373137496.png" alt=""> 
 	</a>
 	
 <h3 id="choropleths_by_symbol_color"><a href="#choropleths_by_symbol_color" class="header-anchor">Choropleths by symbol color</a></h3>
