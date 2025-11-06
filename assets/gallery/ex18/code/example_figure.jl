@@ -1,7 +1,7 @@
 # This file was generated, do not modify it. # hide
 begin # hide
 		using GMT   # hide
-		GMT.isFranklin[1] = true    # hide
+		GMT.isFranklin[] = true    # hide
 		getpath4docs(file::String) = joinpath("..", "..", "..", "..", "..", file) # hide
 		using GMT, Printf
 GMT.resetGMT() # hide
@@ -52,8 +52,8 @@ T = mat2ds(["Volumes: $(av.data[3]) mGal\\264km@+2@+"
 text!(T, paragraph=true, fill=:white, pen=:thin, offset=0.75, font=(14,"Helvetica-Bold"),
       justify=:LB, clearance=0.25, show=true)
 	end # hide
-	mv(joinpath(tempdir(), "GMTjl_" * GMT.TMPDIR_USR[2] * "." * "png"), joinpath(@OUTPUT, "example_5518542999440993498.png"), force=true);    # hide
-	GMT.isFranklin[1] = false    # hide
-	GMT.IamModern[1]  = false    # hide
+	mv(joinpath(TMPDIR_USR.dir, "GMTjl_" * TMPDIR_USR.username * "." * "png"), joinpath(@OUTPUT, "example_5518542999440993498.png"), force=true);    # hide
+	GMT.isFranklin[] = false    # hide
+	GMT.IamModern[]  = false    # hide
  
 	nothing # hide

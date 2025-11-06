@@ -1,7 +1,7 @@
 # This file was generated, do not modify it. # hide
 begin # hide
 		using GMT   # hide
-		GMT.isFranklin[1] = true    # hide
+		GMT.isFranklin[] = true    # hide
 		getpath4docs(file::String) = joinpath("..", "..", "..", "..", "..", file) # hide
 		using GMT
 subplot(grid=(3,2), dims=(panels=true, sizes=(("2i","4i"),("2.5i","5i","1.25i"))), row_axes=(left=true, parallel=true),
@@ -14,8 +14,8 @@ subplot(grid=(3,2), dims=(panels=true, sizes=(("2i","4i"),("2.5i","5i","1.25i"))
 	basemap(region=(10,15,10,15), frame=(fill=:orange,), panel=:next)
 subplot(:show)
 	end # hide
-	mv(joinpath(tempdir(), "GMTjl_" * GMT.TMPDIR_USR[2] * "." * "png"), joinpath(@OUTPUT, "example_18072810986697530659.png"), force=true);    # hide
-	GMT.isFranklin[1] = false    # hide
-	GMT.IamModern[1]  = false    # hide
+	mv(joinpath(TMPDIR_USR.dir, "GMTjl_" * TMPDIR_USR.username * "." * "png"), joinpath(@OUTPUT, "example_18072810986697530659.png"), force=true);    # hide
+	GMT.isFranklin[] = false    # hide
+	GMT.IamModern[]  = false    # hide
  
 	nothing # hide

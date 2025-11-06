@@ -1,7 +1,7 @@
 # This file was generated, do not modify it. # hide
 begin # hide
 		using GMT   # hide
-		GMT.isFranklin[1] = true    # hide
+		GMT.isFranklin[] = true    # hide
 		getpath4docs(file::String) = joinpath("..", "..", "..", "..", "..", file) # hide
 		using GMT
 resetGMT() # hide
@@ -27,8 +27,8 @@ coast!(region=R, proj=:merc, figscale=0.635, frame=(axes=:WSne, annot=10, ticks=
 colorbar!(region=R, pos=(inside=true, anchor=:TL, offset=1, length=(5, 0.4)),
           xaxis=(annot=50, ticks=10), ylabel="mGal", shade=true, box=(pen=1, fill=:white), show=true)
 	end # hide
-	mv(joinpath(tempdir(), "GMTjl_" * GMT.TMPDIR_USR[2] * "." * "png"), joinpath(@OUTPUT, "example_10765948773824140670.png"), force=true);    # hide
-	GMT.isFranklin[1] = false    # hide
-	GMT.IamModern[1]  = false    # hide
+	mv(joinpath(TMPDIR_USR.dir, "GMTjl_" * TMPDIR_USR.username * "." * "png"), joinpath(@OUTPUT, "example_10765948773824140670.png"), force=true);    # hide
+	GMT.isFranklin[] = false    # hide
+	GMT.IamModern[]  = false    # hide
  
 	nothing # hide

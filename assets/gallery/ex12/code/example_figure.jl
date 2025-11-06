@@ -1,7 +1,7 @@
 # This file was generated, do not modify it. # hide
 begin # hide
 		using GMT   # hide
-		GMT.isFranklin[1] = true    # hide
+		GMT.isFranklin[] = true    # hide
 		getpath4docs(file::String) = joinpath("..", "..", "..", "..", "..", file) # hide
 		using GMT
 GMT.resetGMT() # hide
@@ -28,8 +28,8 @@ subplot(grid=(2,2), limits=(0,6.5,-0.2,6.5), col_axes=(bott=true,), row_axes=(le
 	contour(table_5, colorize=true, panel=(2,2))
 subplot("show")
 	end # hide
-	mv(joinpath(tempdir(), "GMTjl_" * GMT.TMPDIR_USR[2] * "." * "png"), joinpath(@OUTPUT, "example_13197490205388992066.png"), force=true);    # hide
-	GMT.isFranklin[1] = false    # hide
-	GMT.IamModern[1]  = false    # hide
+	mv(joinpath(TMPDIR_USR.dir, "GMTjl_" * TMPDIR_USR.username * "." * "png"), joinpath(@OUTPUT, "example_13197490205388992066.png"), force=true);    # hide
+	GMT.isFranklin[] = false    # hide
+	GMT.IamModern[]  = false    # hide
  
 	nothing # hide

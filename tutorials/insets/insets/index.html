@@ -565,7 +565,7 @@ t &#61; 0:0.01:2pi;
 plot&#40;t, cos.&#40;t&#41;.&#43;rand&#40;length&#40;t&#41;&#41;*0.1, inset&#61;&#40;zoom&#61;&#40;pi,pi/4&#41;, box&#61;&#40;fill&#61;:lightblue,&#41;&#41;, show&#61;true&#41;</code></pre></p>
 <p>
 	<a id="example_685927309103925449">
-	 <p><span style="color:red;">// Image matching '/assets/tutorials/insets/insets/code/example_685927309103925449.png' not found. //</span></p> 
+	 <img src="/GMTjl_doc/assets/tutorials/insets/insets/code/output/example_685927309103925449.png" alt=""> 
 	</a>
 	
 <p>If we select the zooming interval over a region where the zoom window has a different aspect ratio &#40;such that as in this case it would overlap the inset located above it&#41; the inset location jumps to another location. In case of need the inset size is scaled down such that it doesn&#39;t go out of the main figure dimensions. But all of this can be manually controlled by using the <code>pos</code> or <code>position</code> sub-options.</p>
@@ -575,7 +575,7 @@ t &#61; 0:0.01:2pi;
 plot&#40;t, cos.&#40;t&#41;.&#43;rand&#40;length&#40;t&#41;&#41;*0.1, inset&#61;&#40;zoom&#61;&#40;pi/2,pi/6&#41;, box&#61;&#40;fill&#61;:lightblue,&#41;&#41;, show&#61;true&#41;</code></pre></p>
 <p>
 	<a id="example_14618946306087529413">
-	 <p><span style="color:red;">// Image matching '/assets/tutorials/insets/insets/code/example_14618946306087529413.png' not found. //</span></p> 
+	 <img src="/GMTjl_doc/assets/tutorials/insets/insets/code/output/example_14618946306087529413.png" alt=""> 
 	</a>
 	
 <p>We can make zooms on more than one line but for it to work we must plot them as a multi-column dataset. That is, we must plot all the lines in one command like the next example. Lines existing in the figure resulting from previous plot commands &#40;case in which we should have used the <code>plot&#33;</code> form&#41; are ignored.</p>
@@ -585,7 +585,7 @@ t &#61; 0:0.1:2pi;
 plot&#40;&#91;t cos.&#40;t&#41; cos.&#40;t.&#43;0.1&#41;&#93;, multi&#61;true, inset&#61;&#40;zoom&#61;&#40;pi,pi/4&#41;, box&#61;&#40;fill&#61;:lightblue,&#41;&#41;, show&#61;true&#41;</code></pre></p>
 <p>
 	<a id="example_14194152400981963159">
-	 <p><span style="color:red;">// Image matching '/assets/tutorials/insets/insets/code/example_14194152400981963159.png' not found. //</span></p> 
+	 <img src="/GMTjl_doc/assets/tutorials/insets/insets/code/output/example_14194152400981963159.png" alt=""> 
 	</a>
 	
 <p>If we want to plot another curve instead of zooming a part of the one in the main figure we pass the data of that second curve as argument to the <code>inset</code> option. Here, for simplicity, we will show a sinusoid over the same domain.</p>
@@ -595,7 +595,7 @@ t &#61; 0:0.1:2pi;
 plot&#40;t, cos.&#40;t&#41;, inset&#61;&#40;&#91;t sin.&#40;t&#41;&#93;&#41;, lc&#61;:red, ls&#61;:dash, show&#61;true&#41;</code></pre></p>
 <p>
 	<a id="example_5784584290375612705">
-	 <p><span style="color:red;">// Image matching '/assets/tutorials/insets/insets/code/example_5784584290375612705.png' not found. //</span></p> 
+	 <img src="/GMTjl_doc/assets/tutorials/insets/insets/code/output/example_5784584290375612705.png" alt=""> 
 	</a>
 	
 <p>In the above examples, selecting the zoom coordinates was simple but when the <em>xx</em> axis represents time, things get a bit more complicated because time is in fact stored as a number of seconds since a reference epoch. And there are <em>lots</em> of seconds in an interval. So, when <em>xx</em> axis has time, we must provide the zooming interval in a date or date-time format. Currently the program accepts time in the ISO &quot;yyyy-mm-ddTHH:MM:SS&quot;, &quot;dd-o-yyyy&quot; or &quot;dd-o-yy&quot; formats. When using the ISO format the <em>time</em>, that is the part that includes and follows the <code>T....</code>, is optional</p>
@@ -605,7 +605,7 @@ D &#61; gmtread&#40;&quot;@RHAT_price.csv&quot;, o&#61;&quot;0,2&quot;, par&#61;
 viz&#40;D, inset&#61;&#40;zoom&#61;&#40;&quot;2004-01-01&quot;,&quot;2005-01-01&quot;&#41;,&#41;&#41;</code></pre></p>
 <p>
 	<a id="example_7482223195903935481">
-	 <p><span style="color:red;">// Image matching '/assets/tutorials/insets/insets/code/example_7482223195903935481.png' not found. //</span></p> 
+	 <img src="/GMTjl_doc/assets/tutorials/insets/insets/code/output/example_7482223195903935481.png" alt=""> 
 	</a>
 	
 <p>For an inset with a rectangle showing the zone that is displayed in main figure, use the <code>rect</code> &#40;or <code>rectangle</code>&#41; option. Arguments in this example mean a line thickness of 2 points and a red line color. <code>rect&#61;true</code> would have plotted a thinner &#40;0.75 pt&#41; blue rectangle.</p>
@@ -650,12 +650,12 @@ dedo &#61; gdaltranslate&#40;&quot;https://upload.wikimedia.org/wikipedia/common
 viz&#40;im, inset&#61;&#40;dedo, pzoom&#61;&#40;945, 390&#41;, pos&#61;&#40;anchor&#61;:MR,&#41;&#41;&#41;</code></pre></p>
 <p>
 	<a id="example_7255253521385924773">
-	 <p><span style="color:red;">// Image matching '/assets/tutorials/insets/insets/code/example_7255253521385924773.png' not found. //</span></p> 
+	 <img src="/GMTjl_doc/assets/tutorials/insets/insets/code/output/example_7255253521385924773.png" alt=""> 
 	</a>
 	
 <div class="page-foot">
   <div class="copyright">
-    &copy; GMT.jl. Last modified: November 05, 2025. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+    &copy; GMT.jl. Last modified: November 06, 2025. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
       <p>These docs were autogenerated using GMT: v1.33.1</p>
   </div>
 </div>
