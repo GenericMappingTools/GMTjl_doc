@@ -14,7 +14,7 @@
 | \myreflink{basemap} | \myreflink{blockmean} | \myreflink{blockmedian} | \myreflink{blockmode} | \myreflink{clip} | \myreflink{coast} | \myreflink{colorbar} | \myreflink{contour} |
 | dimfilter  |  events  | \myreflink{filter1d} | \myreflink{fitcircle} | \myreflink{gmt2kml} | \myreflink{gmtbinstats} | \myreflink{gmtconnect} | \myreflink{gmtconvert} |
 | gmtdefaults | gmtget | gmtinfo |  gmtlogo | \myreflink{gmtmath} | gmtregress | \myreflink{gmtselect} | \myreflink{gmtset} |
-| \myreflink{gmtsimplify} | gmtspatial | \myreflink{gmtsplit} | gmtvector | gmtwhich | \myreflink{grd2cpt} | \myreflink{grd2kml} | \myreflink{grd2xyz} |
+| \myreflink{gmtsimplify} | \myreflink{gmtspatial} | \myreflink{gmtsplit} | gmtvector | gmtwhich | \myreflink{grd2cpt} | \myreflink{grd2kml} | \myreflink{grd2xyz} |
 |  grdblend | \myreflink{grdclip} | \myreflink{grdcontour} | grdconvert | \myreflink{grdcut} |  grdedit |  grdfft | \myreflink{grdfill} |
 | \myreflink{grdfilter} | grdgdal | \myreflink{grdgradient} | \myreflink{grdhisteq} | \myreflink{grdimage} | \myreflink{grdinfo} | grdinterpolate | \myreflink{grdlandmask} |
 | \myreflink{grdmask} | \myreflink{grdmath} | grdmix | \myreflink{grdpaste} |  grdproject | \myreflink{grdsample} | \myreflink{grdtrack} | \myreflink{grdtrend} |
