@@ -2,7 +2,7 @@
 
 Geospatial operations on points, lines and polygons
 
-(Warning: Manual translate by Claude. Needs revision)
+(**Warning: Manual translate by Claude. Needs revision**)
 
 ## Synopsis
 

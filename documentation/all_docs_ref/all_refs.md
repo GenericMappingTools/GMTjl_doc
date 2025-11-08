@@ -15,12 +15,12 @@
 | dimfilter  |  events  | \myreflink{filter1d} | \myreflink{fitcircle} | \myreflink{gmt2kml} | \myreflink{gmtbinstats} | \myreflink{gmtconnect} | \myreflink{gmtconvert} |
 | gmtdefaults | gmtget | gmtinfo |  gmtlogo | \myreflink{gmtmath} | gmtregress | \myreflink{gmtselect} | \myreflink{gmtset} |
 | \myreflink{gmtsimplify} | \myreflink{gmtspatial} | \myreflink{gmtsplit} | gmtvector | gmtwhich | \myreflink{grd2cpt} | \myreflink{grd2kml} | \myreflink{grd2xyz} |
-|  grdblend | \myreflink{grdclip} | \myreflink{grdcontour} | grdconvert | \myreflink{grdcut} |  grdedit |  grdfft | \myreflink{grdfill} |
+|  grdblend | \myreflink{grdclip} | \myreflink{grdcontour} | grdconvert | \myreflink{grdcut} |  grdedit |  \myreflink{grdfft} | \myreflink{grdfill} |
 | \myreflink{grdfilter} | grdgdal | \myreflink{grdgradient} | \myreflink{grdhisteq} | \myreflink{grdimage} | \myreflink{grdinfo} | grdinterpolate | \myreflink{grdlandmask} |
-| \myreflink{grdmask} | \myreflink{grdmath} | grdmix | \myreflink{grdpaste} |  grdproject | \myreflink{grdsample} | \myreflink{grdtrack} | \myreflink{grdtrend} |
-| \myreflink{grdvector} | \myreflink{grdview} | grdvolume | greenspline | \myreflink{histogram} | \myreflink{image} | \myreflink{inset} | kml2gmt |
+| \myreflink{grdmask} | \myreflink{grdmath} | grdmix | \myreflink{grdpaste} |  \myreflink{grdproject} | \myreflink{grdsample} | \myreflink{grdtrack} | \myreflink{grdtrend} |
+| \myreflink{grdvector} | \myreflink{grdview} | \myreflink{grdvolume} | \myreflink{greenspline} | \myreflink{histogram} | \myreflink{image} | \myreflink{inset} | kml2gmt |
 | \myreflink{legend} | \myreflink{makecpt} |  \myreflink{mapproject} | \myreflink{mask} | \myreflink{movie} | \myreflink{nearneighbor} | \myreflink{plot} | \myreflink{plot3d} |
-| \myreflink{project} |  psconvert | \myreflink{rose} | \myreflink{sample1d} | \myreflink{solar} | \myreflink{spectrum1d} | sph2grd | sphdistance |
+| \myreflink{project} |  psconvert | \myreflink{rose} | \myreflink{sample1d} | \myreflink{solar} | \myreflink{spectrum1d} | sph2grd | \myreflink{sphdistance} |
 | \myreflink{sphinterpolate} | \myreflink{sphtriangulate} | \myreflink{subplot} | \myreflink{surface} | \myreflink{ternary} | \myreflink{text} | \myreflink{trend1d} | \myreflink{trend2d} |
 | \myreflink{triangulate} | \myreflink{wiggle} | \myreflink{xyz2grd} |  |  |  |  |  |
 

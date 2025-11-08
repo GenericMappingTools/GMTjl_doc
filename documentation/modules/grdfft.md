@@ -36,7 +36,8 @@ Mathematical operations on grids in the spectral domain
 ## Optional Arguments
 
 - **G** or **outgrid** or **save** : -- *save="outfile.grd"* **|** *save="table.txt"*\
-    Specify the name of the output grid file or the 1-D spectrum table (see **spectrum**). This is optional for **spectrum** (output to standard output) but mandatory for all other options that require a grid output.
+    Specify the name of the output grid file or the 1-D spectrum table (see **radial\_power**).
+    This is optional for **radial\_power** but mandatory for all other options that require a grid output.
 
 - **A** or **azim** : -- *azim=angle* **|** *azim=deg*\
     Take the directional derivative in the azimuth direction measured in degrees CW from north.
