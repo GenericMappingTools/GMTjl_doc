@@ -340,6 +340,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdcontour">grdcontour</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdcut">grdcut</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdedit">grdedit</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdfft">grdfft</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdfill">grdfill</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdfilter">grdfilter</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdgradient">grdgradient</a></div></li>
@@ -351,11 +352,14 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdmask">grdmask</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdmath">grdmath</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdpaste">grdpaste</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdproject">grdproject</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdsample">grdsample</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdtrack">grdtrack</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdtrend">grdtrend</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdvector">grdvector</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdview">grdview</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdvolume">grdvolume</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/greenspline">greenspline</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/hband">hband</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/histogram">histogram</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/image">image</a></div></li>
@@ -383,6 +387,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/seismicity">seismicity</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/solar">solar</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/spectrum1d">spectrum1d</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/sphdistance">sphdistance</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/sphinterpolate">sphinterpolate</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/sphtriangulate">sphtriangulate</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/stairs">stairs</a></div></li>
@@ -558,7 +563,7 @@
 
 <!-- Content appended here -->
 <div class="franklin-content"><h1 id="18_volumes_and_spatial_selections"><a href="#18_volumes_and_spatial_selections" class="header-anchor">&#40;18&#41; Volumes and Spatial Selections</a></h1>
-<p>To demonstrate potential usage of the programs <a href="/GMTjl_doc/documentation/modules/gmtspatial/index.html#gmtspatial">gmtspatial</a>, <a href="#">grdvolume</a> and <a href="/GMTjl_doc/documentation/modules/gmtselect/index.html#gmtselect">gmtselect</a> we extract a subset of the Sandwell &amp; Smith altimetric gravity field 1 for the northern Pacific and decide to isolate all seamounts that &#40;1&#41; exceed 50 mGal in amplitude and &#40;2&#41; are within 200 km of the Pratt seamount. We do this by dumping the 50 mGal contours to disk, then use gmtspatial that returns the mean location of the points making up each closed polygon, and then pass these locations to <a href="/GMTjl_doc/documentation/modules/gmtselect/index.html#gmtselect">gmtselect</a>, which retains only the points within 200 km of Pratt. We then mask out all the data outside this radius and use <a href="#">grdvolume</a> to determine the combined area and &#40;gravimetric&#41; volumes of the chosen seamounts. Our illustration is presented in Figure 18 which also shows the automatic labeling offered by <a href="/GMTjl_doc/documentation/modules/subplot/index.html#subplot">subplot</a>.</p>
+<p>To demonstrate potential usage of the programs <a href="/GMTjl_doc/documentation/modules/gmtspatial/index.html#gmtspatial">gmtspatial</a>, <a href="/GMTjl_doc/documentation/modules/grdvolume/index.html#grdvolume">grdvolume</a> and <a href="/GMTjl_doc/documentation/modules/gmtselect/index.html#gmtselect">gmtselect</a> we extract a subset of the Sandwell &amp; Smith altimetric gravity field 1 for the northern Pacific and decide to isolate all seamounts that &#40;1&#41; exceed 50 mGal in amplitude and &#40;2&#41; are within 200 km of the Pratt seamount. We do this by dumping the 50 mGal contours to disk, then use gmtspatial that returns the mean location of the points making up each closed polygon, and then pass these locations to <a href="/GMTjl_doc/documentation/modules/gmtselect/index.html#gmtselect">gmtselect</a>, which retains only the points within 200 km of Pratt. We then mask out all the data outside this radius and use <a href="/GMTjl_doc/documentation/modules/grdvolume/index.html#grdvolume">grdvolume</a> to determine the combined area and &#40;gravimetric&#41; volumes of the chosen seamounts. Our illustration is presented in Figure 18 which also shows the automatic labeling offered by <a href="/GMTjl_doc/documentation/modules/subplot/index.html#subplot">subplot</a>.</p>
 <pre><code class="language-julia">using GMT, Printf
 
 pratt &#61; &#91;-142.65 56.25 400&#93;
@@ -613,7 +618,7 @@ text&#33;&#40;T, paragraph&#61;true, fill&#61;:white, pen&#61;:thin, offset&#61;
 	
 <div class="page-foot">
   <div class="copyright">
-    &copy; GMT.jl. Last modified: November 07, 2025. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+    &copy; GMT.jl. Last modified: November 08, 2025. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
       <p>These docs were autogenerated using GMT: v1.33.1</p>
   </div>
 </div>

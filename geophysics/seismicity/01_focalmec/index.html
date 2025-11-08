@@ -346,6 +346,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdcontour">grdcontour</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdcut">grdcut</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdedit">grdedit</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdfft">grdfft</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdfill">grdfill</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdfilter">grdfilter</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdgradient">grdgradient</a></div></li>
@@ -357,11 +358,14 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdmask">grdmask</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdmath">grdmath</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdpaste">grdpaste</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdproject">grdproject</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdsample">grdsample</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdtrack">grdtrack</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdtrend">grdtrend</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdvector">grdvector</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdview">grdview</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdvolume">grdvolume</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/greenspline">greenspline</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/hband">hband</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/histogram">histogram</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/image">image</a></div></li>
@@ -389,6 +393,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/seismicity">seismicity</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/solar">solar</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/spectrum1d">spectrum1d</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/sphdistance">sphdistance</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/sphinterpolate">sphinterpolate</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/sphtriangulate">sphtriangulate</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/stairs">stairs</a></div></li>
@@ -600,7 +605,397 @@ showfig&#40;&#41;</code></pre></p>
 <p>The &quot;mff_bb.txt&quot; file contains a couple of focal mechanisms for the Venezuela region specified in the CMT convention format.</p>
 <pre><code class="language-julia">#D &#61; gmtread&#40;getpath4docs&#40;&quot;mff_bb.txt&quot;&#41;&#41;
 D &#61; gmtread&#40;GMT.TESTSDIR * &quot;mff_bb.txt&quot;&#41;</code></pre>
-TypeError: in keyword argument backend, expected Symbol, got a value of type Val&#123;:html&#125;
+<table>
+  <thead>
+    <tr class = "header headerLastRow">
+      <th style = "text-align: right;">lon</th>
+      <th style = "text-align: right;">lat</th>
+      <th style = "text-align: right;">depth</th>
+      <th style = "text-align: right;">str1</th>
+      <th style = "text-align: right;">dip1</th>
+      <th style = "text-align: right;">slip1</th>
+      <th style = "text-align: right;">str2</th>
+      <th style = "text-align: right;">dip2</th>
+      <th style = "text-align: right;">slip2</th>
+      <th style = "text-align: right;">mant</th>
+      <th style = "text-align: right;">exp</th>
+      <th style = "text-align: right;">plon</th>
+      <th style = "text-align: right;">plat</th>
+      <th style = "text-align: right;">Time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style = "text-align: right;">-73.069</td>
+      <td style = "text-align: right;">6.801</td>
+      <td style = "text-align: right;">161.7</td>
+      <td style = "text-align: right;">19.0</td>
+      <td style = "text-align: right;">51.0</td>
+      <td style = "text-align: right;">-143.5</td>
+      <td style = "text-align: right;">264.0</td>
+      <td style = "text-align: right;">62.4</td>
+      <td style = "text-align: right;">-45.2</td>
+      <td style = "text-align: right;">5.5</td>
+      <td style = "text-align: right;">0.0</td>
+      <td style = "text-align: right;">-73.069</td>
+      <td style = "text-align: right;">7.801</td>
+      <td style = "text-align: right;">1.20321e9</td>
+    </tr>
+    <tr>
+      <td style = "text-align: right;">-70.96</td>
+      <td style = "text-align: right;">10.219</td>
+      <td style = "text-align: right;">4.6</td>
+      <td style = "text-align: right;">6.0</td>
+      <td style = "text-align: right;">73.0</td>
+      <td style = "text-align: right;">13.5</td>
+      <td style = "text-align: right;">272.0</td>
+      <td style = "text-align: right;">77.1</td>
+      <td style = "text-align: right;">162.5</td>
+      <td style = "text-align: right;">5.0</td>
+      <td style = "text-align: right;">0.0</td>
+      <td style = "text-align: right;">-70.96</td>
+      <td style = "text-align: right;">11.219</td>
+      <td style = "text-align: right;">1.2039e9</td>
+    </tr>
+    <tr>
+      <td style = "text-align: right;">-72.989</td>
+      <td style = "text-align: right;">6.912</td>
+      <td style = "text-align: right;">160.9</td>
+      <td style = "text-align: right;">41.0</td>
+      <td style = "text-align: right;">37.0</td>
+      <td style = "text-align: right;">-16.1</td>
+      <td style = "text-align: right;">144.0</td>
+      <td style = "text-align: right;">80.4</td>
+      <td style = "text-align: right;">-125.9</td>
+      <td style = "text-align: right;">5.2</td>
+      <td style = "text-align: right;">0.0</td>
+      <td style = "text-align: right;">-72.489</td>
+      <td style = "text-align: right;">5.912</td>
+      <td style = "text-align: right;">1.20666e9</td>
+    </tr>
+    <tr>
+      <td style = "text-align: right;">-62.244</td>
+      <td style = "text-align: right;">11.126</td>
+      <td style = "text-align: right;">128.2</td>
+      <td style = "text-align: right;">207.0</td>
+      <td style = "text-align: right;">87.0</td>
+      <td style = "text-align: right;">-59.1</td>
+      <td style = "text-align: right;">302.0</td>
+      <td style = "text-align: right;">31.0</td>
+      <td style = "text-align: right;">-174.2</td>
+      <td style = "text-align: right;">5.2</td>
+      <td style = "text-align: right;">0.0</td>
+      <td style = "text-align: right;">-62.244</td>
+      <td style = "text-align: right;">12.126</td>
+      <td style = "text-align: right;">1.21452e9</td>
+    </tr>
+    <tr>
+      <td style = "text-align: right;">-64.168</td>
+      <td style = "text-align: right;">10.523</td>
+      <td style = "text-align: right;">13.7</td>
+      <td style = "text-align: right;">90.0</td>
+      <td style = "text-align: right;">86.0</td>
+      <td style = "text-align: right;">0.0</td>
+      <td style = "text-align: right;">360.0</td>
+      <td style = "text-align: right;">90.0</td>
+      <td style = "text-align: right;">-4.0</td>
+      <td style = "text-align: right;">5.2</td>
+      <td style = "text-align: right;">0.0</td>
+      <td style = "text-align: right;">-65.168</td>
+      <td style = "text-align: right;">11.123</td>
+      <td style = "text-align: right;">1.21841e9</td>
+    </tr>
+    <tr>
+      <td style = "text-align: right;">-67.03</td>
+      <td style = "text-align: right;">10.206</td>
+      <td style = "text-align: right;">1.6</td>
+      <td style = "text-align: right;">64.0</td>
+      <td style = "text-align: right;">85.0</td>
+      <td style = "text-align: right;">180.0</td>
+      <td style = "text-align: right;">154.0</td>
+      <td style = "text-align: right;">90.0</td>
+      <td style = "text-align: right;">5.0</td>
+      <td style = "text-align: right;">5.6</td>
+      <td style = "text-align: right;">0.0</td>
+      <td style = "text-align: right;">-66.73</td>
+      <td style = "text-align: right;">11.206</td>
+      <td style = "text-align: right;">1.2414e9</td>
+    </tr>
+    <tr>
+      <td style = "text-align: right;">-67.909</td>
+      <td style = "text-align: right;">10.807</td>
+      <td style = "text-align: right;">5.8</td>
+      <td style = "text-align: right;">270.0</td>
+      <td style = "text-align: right;">83.0</td>
+      <td style = "text-align: right;">-171.8</td>
+      <td style = "text-align: right;">179.0</td>
+      <td style = "text-align: right;">81.9</td>
+      <td style = "text-align: right;">-7.1</td>
+      <td style = "text-align: right;">6.4</td>
+      <td style = "text-align: right;">0.0</td>
+      <td style = "text-align: right;">-67.909</td>
+      <td style = "text-align: right;">11.807</td>
+      <td style = "text-align: right;">1.25271e9</td>
+    </tr>
+    <tr>
+      <td style = "text-align: right;">-69.744</td>
+      <td style = "text-align: right;">10.464</td>
+      <td style = "text-align: right;">5.0</td>
+      <td style = "text-align: right;">19.0</td>
+      <td style = "text-align: right;">51.0</td>
+      <td style = "text-align: right;">48.1</td>
+      <td style = "text-align: right;">254.0</td>
+      <td style = "text-align: right;">54.7</td>
+      <td style = "text-align: right;">129.5</td>
+      <td style = "text-align: right;">5.6</td>
+      <td style = "text-align: right;">0.0</td>
+      <td style = "text-align: right;">-69.744</td>
+      <td style = "text-align: right;">11.464</td>
+      <td style = "text-align: right;">1.25928e9</td>
+    </tr>
+    <tr>
+      <td style = "text-align: right;">-63.494</td>
+      <td style = "text-align: right;">10.505</td>
+      <td style = "text-align: right;">5.0</td>
+      <td style = "text-align: right;">267.0</td>
+      <td style = "text-align: right;">74.0</td>
+      <td style = "text-align: right;">180.0</td>
+      <td style = "text-align: right;">357.0</td>
+      <td style = "text-align: right;">90.0</td>
+      <td style = "text-align: right;">16.0</td>
+      <td style = "text-align: right;">5.4</td>
+      <td style = "text-align: right;">0.0</td>
+      <td style = "text-align: right;">-63.994</td>
+      <td style = "text-align: right;">11.305</td>
+      <td style = "text-align: right;">1.26351e9</td>
+    </tr>
+    <tr>
+      <td style = "text-align: right;">-61.92</td>
+      <td style = "text-align: right;">11.25</td>
+      <td style = "text-align: right;">137.4</td>
+      <td style = "text-align: right;">338.0</td>
+      <td style = "text-align: right;">33.0</td>
+      <td style = "text-align: right;">-172.9</td>
+      <td style = "text-align: right;">242.0</td>
+      <td style = "text-align: right;">86.1</td>
+      <td style = "text-align: right;">-57.2</td>
+      <td style = "text-align: right;">5.3</td>
+      <td style = "text-align: right;">0.0</td>
+      <td style = "text-align: right;">-61.5</td>
+      <td style = "text-align: right;">12.5</td>
+      <td style = "text-align: right;">1.29678e9</td>
+    </tr>
+    <tr>
+      <td style = "text-align: right;">-62.4</td>
+      <td style = "text-align: right;">10.65</td>
+      <td style = "text-align: right;">62.3</td>
+      <td style = "text-align: right;">268.0</td>
+      <td style = "text-align: right;">69.0</td>
+      <td style = "text-align: right;">171.7</td>
+      <td style = "text-align: right;">1.0</td>
+      <td style = "text-align: right;">82.2</td>
+      <td style = "text-align: right;">21.2</td>
+      <td style = "text-align: right;">5.0</td>
+      <td style = "text-align: right;">0.0</td>
+      <td style = "text-align: right;">-63.0</td>
+      <td style = "text-align: right;">11.0</td>
+      <td style = "text-align: right;">1.32106e9</td>
+    </tr>
+    <tr>
+      <td style = "text-align: right;">-62.14</td>
+      <td style = "text-align: right;">10.85</td>
+      <td style = "text-align: right;">100.5</td>
+      <td style = "text-align: right;">101.0</td>
+      <td style = "text-align: right;">80.0</td>
+      <td style = "text-align: right;">26.7</td>
+      <td style = "text-align: right;">6.0</td>
+      <td style = "text-align: right;">63.7</td>
+      <td style = "text-align: right;">168.8</td>
+      <td style = "text-align: right;">5.0</td>
+      <td style = "text-align: right;">0.0</td>
+      <td style = "text-align: right;">-61.14</td>
+      <td style = "text-align: right;">11.65</td>
+      <td style = "text-align: right;">1.36279e9</td>
+    </tr>
+    <tr>
+      <td style = "text-align: right;">-62.12</td>
+      <td style = "text-align: right;">10.82</td>
+      <td style = "text-align: right;">67.9</td>
+      <td style = "text-align: right;">15.0</td>
+      <td style = "text-align: right;">45.0</td>
+      <td style = "text-align: right;">-155.3</td>
+      <td style = "text-align: right;">267.0</td>
+      <td style = "text-align: right;">72.8</td>
+      <td style = "text-align: right;">-47.7</td>
+      <td style = "text-align: right;">5.8</td>
+      <td style = "text-align: right;">0.0</td>
+      <td style = "text-align: right;">-61.12</td>
+      <td style = "text-align: right;">10.72</td>
+      <td style = "text-align: right;">1.38154e9</td>
+    </tr>
+    <tr>
+      <td style = "text-align: right;">-69.67</td>
+      <td style = "text-align: right;">9.705</td>
+      <td style = "text-align: right;">3.4</td>
+      <td style = "text-align: right;">248.0</td>
+      <td style = "text-align: right;">66.0</td>
+      <td style = "text-align: right;">169.8</td>
+      <td style = "text-align: right;">342.2</td>
+      <td style = "text-align: right;">80.7</td>
+      <td style = "text-align: right;">24.3</td>
+      <td style = "text-align: right;">5.3</td>
+      <td style = "text-align: right;">0.0</td>
+      <td style = "text-align: right;">-69.17</td>
+      <td style = "text-align: right;">10.505</td>
+      <td style = "text-align: right;">1.39277e9</td>
+    </tr>
+    <tr>
+      <td style = "text-align: right;">-72.13</td>
+      <td style = "text-align: right;">8.236</td>
+      <td style = "text-align: right;">5.0</td>
+      <td style = "text-align: right;">13.0</td>
+      <td style = "text-align: right;">52.0</td>
+      <td style = "text-align: right;">90.0</td>
+      <td style = "text-align: right;">193.0</td>
+      <td style = "text-align: right;">38.0</td>
+      <td style = "text-align: right;">90.0</td>
+      <td style = "text-align: right;">5.2</td>
+      <td style = "text-align: right;">0.0</td>
+      <td style = "text-align: right;">-73.13</td>
+      <td style = "text-align: right;">9.236</td>
+      <td style = "text-align: right;">1.42301e9</td>
+    </tr>
+    <tr>
+      <td style = "text-align: right;">-71.43</td>
+      <td style = "text-align: right;">8.493</td>
+      <td style = "text-align: right;">5.0</td>
+      <td style = "text-align: right;">323.0</td>
+      <td style = "text-align: right;">63.0</td>
+      <td style = "text-align: right;">-8.8</td>
+      <td style = "text-align: right;">57.0</td>
+      <td style = "text-align: right;">82.2</td>
+      <td style = "text-align: right;">-152.7</td>
+      <td style = "text-align: right;">5.1</td>
+      <td style = "text-align: right;">0.0</td>
+      <td style = "text-align: right;">-71.43</td>
+      <td style = "text-align: right;">9.493</td>
+      <td style = "text-align: right;">1.44685e9</td>
+    </tr>
+    <tr>
+      <td style = "text-align: right;">-71.41</td>
+      <td style = "text-align: right;">8.484</td>
+      <td style = "text-align: right;">5.0</td>
+      <td style = "text-align: right;">318.0</td>
+      <td style = "text-align: right;">77.0</td>
+      <td style = "text-align: right;">-8.8</td>
+      <td style = "text-align: right;">50.0</td>
+      <td style = "text-align: right;">81.4</td>
+      <td style = "text-align: right;">-166.8</td>
+      <td style = "text-align: right;">5.1</td>
+      <td style = "text-align: right;">0.0</td>
+      <td style = "text-align: right;">-70.41</td>
+      <td style = "text-align: right;">8.484</td>
+      <td style = "text-align: right;">1.44815e9</td>
+    </tr>
+    <tr>
+      <td style = "text-align: right;">-72.032</td>
+      <td style = "text-align: right;">7.232</td>
+      <td style = "text-align: right;">5.0</td>
+      <td style = "text-align: right;">9.0</td>
+      <td style = "text-align: right;">65.0</td>
+      <td style = "text-align: right;">67.1</td>
+      <td style = "text-align: right;">234.0</td>
+      <td style = "text-align: right;">33.4</td>
+      <td style = "text-align: right;">129.9</td>
+      <td style = "text-align: right;">5.1</td>
+      <td style = "text-align: right;">0.0</td>
+      <td style = "text-align: right;">-71.532</td>
+      <td style = "text-align: right;">7.232</td>
+      <td style = "text-align: right;">1.50794e9</td>
+    </tr>
+    <tr>
+      <td style = "text-align: right;">-73.67</td>
+      <td style = "text-align: right;">10.227</td>
+      <td style = "text-align: right;">90.0</td>
+      <td style = "text-align: right;">81.0</td>
+      <td style = "text-align: right;">76.0</td>
+      <td style = "text-align: right;">43.7</td>
+      <td style = "text-align: right;">338.0</td>
+      <td style = "text-align: right;">47.9</td>
+      <td style = "text-align: right;">161.0</td>
+      <td style = "text-align: right;">5.1</td>
+      <td style = "text-align: right;">0.0</td>
+      <td style = "text-align: right;">-73.17</td>
+      <td style = "text-align: right;">11.227</td>
+      <td style = "text-align: right;">1.50898e9</td>
+    </tr>
+    <tr>
+      <td style = "text-align: right;">-71.93</td>
+      <td style = "text-align: right;">8.363</td>
+      <td style = "text-align: right;">5.0</td>
+      <td style = "text-align: right;">219.0</td>
+      <td style = "text-align: right;">49.0</td>
+      <td style = "text-align: right;">95.9</td>
+      <td style = "text-align: right;">30.0</td>
+      <td style = "text-align: right;">41.4</td>
+      <td style = "text-align: right;">83.2</td>
+      <td style = "text-align: right;">5.0</td>
+      <td style = "text-align: right;">0.0</td>
+      <td style = "text-align: right;">-72.43</td>
+      <td style = "text-align: right;">9.363</td>
+      <td style = "text-align: right;">1.51096e9</td>
+    </tr>
+    <tr>
+      <td style = "text-align: right;">-62.034</td>
+      <td style = "text-align: right;">10.277</td>
+      <td style = "text-align: right;">25.1</td>
+      <td style = "text-align: right;">113.0</td>
+      <td style = "text-align: right;">75.0</td>
+      <td style = "text-align: right;">-172.3</td>
+      <td style = "text-align: right;">21.0</td>
+      <td style = "text-align: right;">82.6</td>
+      <td style = "text-align: right;">-15.1</td>
+      <td style = "text-align: right;">5.1</td>
+      <td style = "text-align: right;">0.0</td>
+      <td style = "text-align: right;">-61.534</td>
+      <td style = "text-align: right;">9.277</td>
+      <td style = "text-align: right;">1.51692e9</td>
+    </tr>
+    <tr>
+      <td style = "text-align: right;">-62.73</td>
+      <td style = "text-align: right;">10.656</td>
+      <td style = "text-align: right;">99.6</td>
+      <td style = "text-align: right;">45.0</td>
+      <td style = "text-align: right;">35.0</td>
+      <td style = "text-align: right;">81.8</td>
+      <td style = "text-align: right;">235.0</td>
+      <td style = "text-align: right;">55.4</td>
+      <td style = "text-align: right;">95.7</td>
+      <td style = "text-align: right;">6.9</td>
+      <td style = "text-align: right;">0.0</td>
+      <td style = "text-align: right;">-62.73</td>
+      <td style = "text-align: right;">9.656</td>
+      <td style = "text-align: right;">1.53481e9</td>
+    </tr>
+    <tr>
+      <td style = "text-align: right;">-62.84</td>
+      <td style = "text-align: right;">10.624</td>
+      <td style = "text-align: right;">82.5</td>
+      <td style = "text-align: right;">225.0</td>
+      <td style = "text-align: right;">35.0</td>
+      <td style = "text-align: right;">64.7</td>
+      <td style = "text-align: right;">75.0</td>
+      <td style = "text-align: right;">58.8</td>
+      <td style = "text-align: right;">106.7</td>
+      <td style = "text-align: right;">5.9</td>
+      <td style = "text-align: right;">0.0</td>
+      <td style = "text-align: right;">-63.34</td>
+      <td style = "text-align: right;">12.224</td>
+      <td style = "text-align: right;">1.5349e9</td>
+    </tr>
+  </tbody>
+</table>
+
 <pre><code class="language-julia">using GMT
 
 # Background map
@@ -620,7 +1015,7 @@ meca&#33;&#40;GMT.TESTSDIR * &quot;mff_bb.txt&quot;, CMT&#61;&#40;scale&#61;0.4,
 	
 <div class="page-foot">
   <div class="copyright">
-    &copy; GMT.jl. Last modified: November 07, 2025. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+    &copy; GMT.jl. Last modified: November 08, 2025. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
       <p>These docs were autogenerated using GMT: v1.33.1</p>
   </div>
 </div>

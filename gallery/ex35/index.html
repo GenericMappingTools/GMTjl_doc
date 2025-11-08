@@ -340,6 +340,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdcontour">grdcontour</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdcut">grdcut</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdedit">grdedit</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdfft">grdfft</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdfill">grdfill</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdfilter">grdfilter</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdgradient">grdgradient</a></div></li>
@@ -351,11 +352,14 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdmask">grdmask</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdmath">grdmath</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdpaste">grdpaste</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdproject">grdproject</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdsample">grdsample</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdtrack">grdtrack</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdtrend">grdtrend</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdvector">grdvector</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdview">grdview</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdvolume">grdvolume</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/greenspline">greenspline</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/hband">hband</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/histogram">histogram</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/image">image</a></div></li>
@@ -383,6 +387,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/seismicity">seismicity</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/solar">solar</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/spectrum1d">spectrum1d</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/sphdistance">sphdistance</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/sphinterpolate">sphinterpolate</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/sphtriangulate">sphtriangulate</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/stairs">stairs</a></div></li>
@@ -558,7 +563,7 @@
 
 <!-- Content appended here -->
 <div class="franklin-content"><h1 id="35_spherical_triangulation_and_distance_calculations"><a href="#35_spherical_triangulation_and_distance_calculations" class="header-anchor">&#40;35&#41; Spherical triangulation and distance calculations</a></h1>
-<p>The script produces the plot in Figure. Here we demonstrate how <a href="/GMTjl_doc/documentation/modules/sphtriangulate/index.html#sphtriangulate">sphtriangulate</a> and <a href="#">sphdistance</a> are used to compute the Delauney and Voronoi information on a sphere, using a decimated GSHHG crude coastline. We show a color image of the distances, highlighted with 500-km contours, and overlay the Voronoi polygons in green. Finally, the continents are placed on top.</p>
+<p>The script produces the plot in Figure. Here we demonstrate how <a href="/GMTjl_doc/documentation/modules/sphtriangulate/index.html#sphtriangulate">sphtriangulate</a> and <a href="/GMTjl_doc/documentation/modules/sphdistance/index.html#sphdistance">sphdistance</a> are used to compute the Delauney and Voronoi information on a sphere, using a decimated GSHHG crude coastline. We show a color image of the distances, highlighted with 500-km contours, and overlay the Voronoi polygons in green. Finally, the continents are placed on top.</p>
 <pre><code class="language-julia">using GMT
 
 pol, nodes &#61; sphtriangulate&#40;&quot;@gshhs_c.txt&quot;, voronoi&#61;:v, skip&#61;true, nodes&#61;true&#41;
@@ -583,7 +588,7 @@ coast&#33;&#40;shore&#61;1, land&#61;:steelblue, area&#61;&#40;0,1,1&#41;,
 	
 <div class="page-foot">
   <div class="copyright">
-    &copy; GMT.jl. Last modified: November 07, 2025. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+    &copy; GMT.jl. Last modified: November 08, 2025. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
       <p>These docs were autogenerated using GMT: v1.33.1</p>
   </div>
 </div>

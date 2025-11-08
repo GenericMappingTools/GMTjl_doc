@@ -338,6 +338,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdcontour">grdcontour</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdcut">grdcut</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdedit">grdedit</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdfft">grdfft</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdfill">grdfill</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdfilter">grdfilter</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdgradient">grdgradient</a></div></li>
@@ -349,11 +350,14 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdmask">grdmask</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdmath">grdmath</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdpaste">grdpaste</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdproject">grdproject</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdsample">grdsample</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdtrack">grdtrack</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdtrend">grdtrend</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdvector">grdvector</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdview">grdview</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdvolume">grdvolume</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/greenspline">greenspline</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/hband">hband</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/histogram">histogram</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/image">image</a></div></li>
@@ -384,6 +388,7 @@
 <li><a href="#spectrum1d/">spectrum1d</a></li>
 </ul>
 </li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/sphdistance">sphdistance</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/sphinterpolate">sphinterpolate</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/sphtriangulate">sphtriangulate</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/stairs">stairs</a></div></li>
@@ -699,13 +704,13 @@
 <p>In all problems of estimating parameters from data, there is a classic trade-off between resolution and variance. If you want to try to squeeze more resolution out of your data set, then you have to be willing to accept more noise in the estimates. The same trade-off is evident here in Welch&#39;s method. If you want to have very low noise in the spectral estimates, then you have to choose <em>N</em> &lt;&lt; <em>M</em>, and this means that you get only <em>N</em> samples of the spectrum, and the longest period that you can resolve is only <em>N</em> &#42;<em>delta_t</em>. So you see that reducing the noise lowers the number of spectral samples and lowers the longest period. Conversely, if you choose <em>N</em> approaching <em>M</em>, then you approach the periodogram with its very bad statistical properties, but you get lots of samples and a large fundamental period.</p>
 <p>The other spectral estimation methods also can do a good job. Welch&#39;s method was selected because the way it works, how one can code it, and its effects on statistical distributions, resolution, side-lobe leakage, bias, variance, etc. are all easily understood. Some of the other methods &#40;e.g. Maximum Entropy&#41; tend to hide where some of these trade-offs are happening inside a &quot;black box&quot;.</p>
 <h2>See Also</h2>
-<a href="#">grdfft</a>
+<a href="/GMTjl_doc/documentation/modules/grdfft/index.html#grdfft">grdfft</a>
 <h2>References</h2>
 <p>Bendat, J. S., and A. G. Piersol, 1986, Random Data, 2nd revised ed., John Wiley &amp; Sons.</p>
 <p>Welch, P. D., 1967, The use of Fast Fourier Transform for the estimation of power spectra: a method based on time averaging over short, modified periodograms, IEEE Transactions on Audio and Electroacoustics, Vol AU-15, No 2.</p>
 <div class="page-foot">
   <div class="copyright">
-    &copy; GMT.jl. Last modified: November 07, 2025. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+    &copy; GMT.jl. Last modified: November 08, 2025. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
       <p>These docs were autogenerated using GMT: v1.33.1</p>
   </div>
 </div>

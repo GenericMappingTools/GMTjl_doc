@@ -340,6 +340,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdcontour">grdcontour</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdcut">grdcut</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdedit">grdedit</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdfft">grdfft</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdfill">grdfill</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdfilter">grdfilter</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdgradient">grdgradient</a></div></li>
@@ -351,11 +352,14 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdmask">grdmask</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdmath">grdmath</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdpaste">grdpaste</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdproject">grdproject</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdsample">grdsample</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdtrack">grdtrack</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdtrend">grdtrend</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdvector">grdvector</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdview">grdview</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdvolume">grdvolume</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/greenspline">greenspline</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/hband">hband</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/histogram">histogram</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/image">image</a></div></li>
@@ -383,6 +387,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/seismicity">seismicity</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/solar">solar</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/spectrum1d">spectrum1d</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/sphdistance">sphdistance</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/sphinterpolate">sphinterpolate</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/sphtriangulate">sphtriangulate</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/stairs">stairs</a></div></li>
@@ -577,7 +582,7 @@
 </ul>
 
 <ul>
-<li><p><strong>T</strong> or <strong>stl</strong> or <strong>STL</strong> : – <em>STL&#61;true</em> <strong>|</strong> <em>STL&#61;&#91;:b&#93;&#91;base&#93;</em><br />  Write STL triangulation for 3-D printing to standard output. By default we write an STL ASCII file.   Append <strong>b</strong> to instead write the STL binary &#40;little-endian&#41; format. For more information on STL, see the   <a href="https://en.wikipedia.org/wiki/STL_&#40;file_format&#41;">STL overview on Wikipedia</a>. <strong>Note</strong>: All coordinates are   adjusted so that <em>xmin &#61; ymin &#61; zmin &#61; 0</em>. For other adjustments, see <a href="/GMTjl_doc/documentation/modules/grdedit/index.html#grdedit">grdedit</a> and <a href="#">grdproject</a>   Optionally, append a lower <em>base</em> other than the grid&#39;s minimum value &#91;Default&#93;. <strong>Note</strong>: The grid must be free   of NaN values. If your grid contains NaNs then we automatically replace these with the minimum value in the grid.</p>
+<li><p><strong>T</strong> or <strong>stl</strong> or <strong>STL</strong> : – <em>STL&#61;true</em> <strong>|</strong> <em>STL&#61;&#91;:b&#93;&#91;base&#93;</em><br />  Write STL triangulation for 3-D printing to standard output. By default we write an STL ASCII file.   Append <strong>b</strong> to instead write the STL binary &#40;little-endian&#41; format. For more information on STL, see the   <a href="https://en.wikipedia.org/wiki/STL_&#40;file_format&#41;">STL overview on Wikipedia</a>. <strong>Note</strong>: All coordinates are   adjusted so that <em>xmin &#61; ymin &#61; zmin &#61; 0</em>. For other adjustments, see <a href="/GMTjl_doc/documentation/modules/grdedit/index.html#grdedit">grdedit</a> and <a href="/GMTjl_doc/documentation/modules/grdproject/index.html#grdproject">grdproject</a>   Optionally, append a lower <em>base</em> other than the grid&#39;s minimum value &#91;Default&#93;. <strong>Note</strong>: The grid must be free   of NaN values. If your grid contains NaNs then we automatically replace these with the minimum value in the grid.</p>
 </li>
 </ul>
 <ul>
@@ -657,7 +662,7 @@
 <strong>Units</strong></p>
 <p>For map distance unit, append unit d for arc degree, m for arc minute, and s for arc second, or e for meter &#91;Default unless stated otherwise&#93;, f for foot, k for km, M for statute mile, n for nautical mile, and u for US survey foot. By default we compute such distances using a spherical approximation with great circles &#40;-jg&#41; using the authalic radius &#40;see <code>PROJ_MEAN_RADIUS</code>&#41;. You can use -jf to perform “Flat Earth” calculations &#40;quicker but less accurate&#41; or -je to perform exact geodesic calculations &#40;slower but more accurate; see <code>PROJ_GEODESIC</code> for method used&#41;.
 <h2>Non-equidistant x/y Coordinates</h2>
-<p>In general, GMT modules cannot accept grids with variable <em>x</em> and/or <em>y</em> coordinates as most algorithms and plotting options expect equidistant grids. However, you can use <strong>grd2xyz</strong> to dump the original <em>x y z</em> triplets and then reprocess the data onto an equidistant lattice via <a href="#">greenspline</a>, <a href="/GMTjl_doc/documentation/modules/nearneighbor/index.html#nearneighbor">nearneighbor</a> or <a href="/GMTjl_doc/documentation/modules/surface/index.html#surface">surface</a>, for instance.</p>
+<p>In general, GMT modules cannot accept grids with variable <em>x</em> and/or <em>y</em> coordinates as most algorithms and plotting options expect equidistant grids. However, you can use <strong>grd2xyz</strong> to dump the original <em>x y z</em> triplets and then reprocess the data onto an equidistant lattice via <a href="/GMTjl_doc/documentation/modules/greenspline/index.html#greenspline">greenspline</a>, <a href="/GMTjl_doc/documentation/modules/nearneighbor/index.html#nearneighbor">nearneighbor</a> or <a href="/GMTjl_doc/documentation/modules/surface/index.html#surface">surface</a>, for instance.</p>
 <h2>Time Coordinates</h2>
 <p>Time coordinates in netCDF grids, be it the x, y, or z coordinate, will be recognized as such. The variable&#39;s <strong>unit</strong> attribute is parsed to determine the unit and epoch of the time coordinate in the grid. Values are then converted to the internal time system specified by <code>TIME_UNIT</code> and <code>TIME_EPOCH</code> in the <code>gmt.conf</code> file or on the command line. The default output is relative time in that time system, or absolute time when using the option <strong>colinfo&#61;&quot;0T&quot;</strong>, <strong>colinfo&#61;&quot;1T&quot;</strong>, or <strong>colinfo&#61;&quot;2T&quot;</strong> for x, y, or z coordinate, respectively.</p>
 <h2>Row Order</h2>
@@ -673,7 +678,7 @@
 <p><a href="/GMTjl_doc/documentation/modules/grdedit/index.html#grdedit">grdedit</a>, <a href="#">grdconvert</a>, <a href="/GMTjl_doc/documentation/modules/xyz2grd/index.html#xyz2grd">xyz2grd</a></p>
 <div class="page-foot">
   <div class="copyright">
-    &copy; GMT.jl. Last modified: November 07, 2025. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+    &copy; GMT.jl. Last modified: November 08, 2025. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
       <p>These docs were autogenerated using GMT: v1.33.1</p>
   </div>
 </div>

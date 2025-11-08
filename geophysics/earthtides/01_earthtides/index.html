@@ -345,6 +345,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdcontour">grdcontour</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdcut">grdcut</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdedit">grdedit</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdfft">grdfft</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdfill">grdfill</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdfilter">grdfilter</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdgradient">grdgradient</a></div></li>
@@ -356,11 +357,14 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdmask">grdmask</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdmath">grdmath</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdpaste">grdpaste</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdproject">grdproject</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdsample">grdsample</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdtrack">grdtrack</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdtrend">grdtrend</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdvector">grdvector</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdview">grdview</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdvolume">grdvolume</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/greenspline">greenspline</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/hband">hband</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/histogram">histogram</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/image">image</a></div></li>
@@ -388,6 +392,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/seismicity">seismicity</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/solar">solar</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/spectrum1d">spectrum1d</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/sphdistance">sphdistance</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/sphinterpolate">sphinterpolate</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/sphtriangulate">sphtriangulate</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/stairs">stairs</a></div></li>
@@ -578,7 +583,49 @@ imshow&#40;G, coast&#61;true, colorbar&#61;true, title&#61;&quot;Earth tide at n
 <p>Now we show the three components of the Earth tide for a specific location &#40;the Panama Cannal&#41; and time interval &#40;the 7&#39;th July 2022&#41;.</p>
 <p>First we compute the components that will come out in a <a href="#">GMTdataset</a> with named columns. This is handy because we can refer to them by name instead of by column number.</p>
 <pre><code class="language-julia">D &#61; earthtide&#40;range&#61;&#40;&quot;2022-07-07T&quot;, &quot;2022-07-08T&quot;, &quot;1m&quot;&#41;, location&#61;&#40;-82,9&#41;&#41;</code></pre>
-TypeError: in keyword argument backend, expected Symbol, got a value of type Val&#123;:html&#125;
+<table>
+  <thead>
+    <tr class = "header headerLastRow">
+      <th style = "text-align: right;">Time</th>
+      <th style = "text-align: right;">East</th>
+      <th style = "text-align: right;">North</th>
+      <th style = "text-align: right;">Vertical</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style = "text-align: right;">1.65715e9</td>
+      <td style = "text-align: right;">-0.0186548</td>
+      <td style = "text-align: right;">-0.0120856</td>
+      <td style = "text-align: right;">0.152718</td>
+    </tr>
+    <tr>
+      <td style = "text-align: right;">1.65715e9</td>
+      <td style = "text-align: right;">-0.0187063</td>
+      <td style = "text-align: right;">-0.0123039</td>
+      <td style = "text-align: right;">0.152364</td>
+    </tr>
+    <tr>
+      <td style = "text-align: right;">1.65715e9</td>
+      <td style = "text-align: right;">-0.0187575</td>
+      <td style = "text-align: right;">-0.0125214</td>
+      <td style = "text-align: right;">0.152003</td>
+    </tr>
+    <tr>
+      <td style = "text-align: right;">1.65715e9</td>
+      <td style = "text-align: right;">-0.0188083</td>
+      <td style = "text-align: right;">-0.0127382</td>
+      <td style = "text-align: right;">0.151636</td>
+    </tr>
+    <tr>
+      <td style = "text-align: right;">1.65715e9</td>
+      <td style = "text-align: right;">-0.0188586</td>
+      <td style = "text-align: right;">-0.0129542</td>
+      <td style = "text-align: right;">0.151263</td>
+    </tr>
+  </tbody>
+</table>
+
 <p>Now plot the three of them with a legend</p>
 <pre><code class="language-julia">using GMT
 plot&#40;D&#91;:Time, :Vertical&#93;, lc&#61;:red, lw&#61;1, legend&#61;:Vertical,
@@ -602,7 +649,7 @@ plot&#40;D&#91;:Time, :Vertical&#93;, lc&#61;:blue, legend&#61;:Vertical, title&
 	
 <div class="page-foot">
   <div class="copyright">
-    &copy; GMT.jl. Last modified: November 07, 2025. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+    &copy; GMT.jl. Last modified: November 08, 2025. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
       <p>These docs were autogenerated using GMT: v1.33.1</p>
   </div>
 </div>

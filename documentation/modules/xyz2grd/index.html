@@ -337,6 +337,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdcontour">grdcontour</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdcut">grdcut</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdedit">grdedit</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdfft">grdfft</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdfill">grdfill</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdfilter">grdfilter</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdgradient">grdgradient</a></div></li>
@@ -348,11 +349,14 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdmask">grdmask</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdmath">grdmath</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdpaste">grdpaste</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdproject">grdproject</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdsample">grdsample</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdtrack">grdtrack</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdtrend">grdtrend</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdvector">grdvector</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdview">grdview</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdvolume">grdvolume</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/greenspline">greenspline</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/hband">hband</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/histogram">histogram</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/image">image</a></div></li>
@@ -380,6 +384,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/seismicity">seismicity</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/solar">solar</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/spectrum1d">spectrum1d</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/sphdistance">sphdistance</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/sphinterpolate">sphinterpolate</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/sphtriangulate">sphtriangulate</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/stairs">stairs</a></div></li>
@@ -561,7 +566,7 @@
 <p>	xyz2grd&#40;cmd0::String&#61;&quot;&quot;, arg1&#61;nothing, kwargs...&#41;</p>
 <p>Convert data table to a GMTgrid type. </p>
 <h2>Description</h2>
-<p>Reads one or more <em>x, y, z</em> or <em>z</em> tables and creates a grid. It will report if some of the nodes are not filled in with data. Such unconstrained nodes are set to a value specified by the user &#91;Default is NaN&#93;. Nodes with more than one value will be set to the mean value. As an option &#40;using <strong>flags</strong>&#41;, a 1-column <em>z</em> table may be read assuming all nodes are present &#40;<em>z</em> tables can be organized in a number of formats, see <strong>flags</strong> below.&#41; <strong>Note</strong>: <strong>xyz2grd</strong> does not grid the data, it simply reformats existing data to a grid structure. For gridding, see <a href="/GMTjl_doc/documentation/modules/surface/index.html#surface">surface</a>, <a href="#">greenspline</a>, <a href="/GMTjl_doc/documentation/modules/nearneighbor/index.html#nearneighbor">nearneighbor</a>, or <a href="/GMTjl_doc/documentation/modules/triangulate/index.html#triangulate">triangulate</a>.</p>
+<p>Reads one or more <em>x, y, z</em> or <em>z</em> tables and creates a grid. It will report if some of the nodes are not filled in with data. Such unconstrained nodes are set to a value specified by the user &#91;Default is NaN&#93;. Nodes with more than one value will be set to the mean value. As an option &#40;using <strong>flags</strong>&#41;, a 1-column <em>z</em> table may be read assuming all nodes are present &#40;<em>z</em> tables can be organized in a number of formats, see <strong>flags</strong> below.&#41; <strong>Note</strong>: <strong>xyz2grd</strong> does not grid the data, it simply reformats existing data to a grid structure. For gridding, see <a href="/GMTjl_doc/documentation/modules/surface/index.html#surface">surface</a>, <a href="/GMTjl_doc/documentation/modules/greenspline/index.html#greenspline">greenspline</a>, <a href="/GMTjl_doc/documentation/modules/nearneighbor/index.html#nearneighbor">nearneighbor</a>, or <a href="/GMTjl_doc/documentation/modules/triangulate/index.html#triangulate">triangulate</a>.</p>
 <h2>Required Arguments</h2>
 <ul>
 <li><p><em>table</em><br />  A data table holding <em>z</em> or <em>x, y, z</em> values. The <em>x, y, z</em> triplets do not have to   be sorted. One-column <em>z</em> tables must be sorted and the <strong>flags</strong> option must be set.</p>
@@ -700,10 +705,10 @@
 <p>To create a grid file from the raw binary &#40;3-column, single-precision scanline-oriented data raw.b, use</p>
 <pre><code class="language-julia">G &#61; xyz2grd&#40;&quot;raw.b&quot;, region&#61;&#40;0,100,0,100&#41;, inc&#61;1, flags&#61;true, binary_in&#61;&quot;3f&quot;&#41;</code></pre>
 <h2>See Also</h2>
-<p><a href="/GMTjl_doc/documentation/modules/grd2xyz/index.html#grd2xyz">grd2xyz</a>, <a href="#">greenspline</a>, <a href="/GMTjl_doc/documentation/modules/nearneighbor/index.html#nearneighbor">nearneighbor</a>, <a href="/GMTjl_doc/documentation/modules/surface/index.html#surface">surface</a>, <a href="/GMTjl_doc/documentation/modules/triangulate/index.html#triangulate">triangulate</a></p>
+<p><a href="/GMTjl_doc/documentation/modules/grd2xyz/index.html#grd2xyz">grd2xyz</a>, <a href="/GMTjl_doc/documentation/modules/greenspline/index.html#greenspline">greenspline</a>, <a href="/GMTjl_doc/documentation/modules/nearneighbor/index.html#nearneighbor">nearneighbor</a>, <a href="/GMTjl_doc/documentation/modules/surface/index.html#surface">surface</a>, <a href="/GMTjl_doc/documentation/modules/triangulate/index.html#triangulate">triangulate</a></p>
 <div class="page-foot">
   <div class="copyright">
-    &copy; GMT.jl. Last modified: November 07, 2025. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+    &copy; GMT.jl. Last modified: November 08, 2025. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
       <p>These docs were autogenerated using GMT: v1.33.1</p>
   </div>
 </div>

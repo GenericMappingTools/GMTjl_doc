@@ -340,6 +340,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdcontour">grdcontour</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdcut">grdcut</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdedit">grdedit</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdfft">grdfft</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdfill">grdfill</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdfilter">grdfilter</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdgradient">grdgradient</a></div></li>
@@ -351,11 +352,14 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdmask">grdmask</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdmath">grdmath</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdpaste">grdpaste</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdproject">grdproject</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdsample">grdsample</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdtrack">grdtrack</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdtrend">grdtrend</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdvector">grdvector</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdview">grdview</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdvolume">grdvolume</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/greenspline">greenspline</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/hband">hband</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/histogram">histogram</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/image">image</a></div></li>
@@ -383,6 +387,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/seismicity">seismicity</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/solar">solar</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/spectrum1d">spectrum1d</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/sphdistance">sphdistance</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/sphinterpolate">sphinterpolate</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/sphtriangulate">sphtriangulate</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/stairs">stairs</a></div></li>
@@ -689,7 +694,7 @@
 <h2>Grid Distance Units</h2>
 <p>If the grid does not have meter as the horizontal unit, append <strong>&#43;u</strong>&#92;<em>unit</em> to the input file name to convert from the specified unit to meter. If your grid is geographic, convert distances to meters by supplying <strong>colinfo</strong> instead.</p>
 <h2>Considerations</h2>
-<p>netCDF COARDS grids will automatically be recognized as geographic. For other grids geographical grids were you want to convert degrees into meters, select <strong>colinfo</strong>. If the data are close to either pole, you should consider projecting the grid file onto a rectangular coordinate system using <a href="#">grdproject</a>.</p>
+<p>netCDF COARDS grids will automatically be recognized as geographic. For other grids geographical grids were you want to convert degrees into meters, select <strong>colinfo</strong>. If the data are close to either pole, you should consider projecting the grid file onto a rectangular coordinate system using <a href="/GMTjl_doc/documentation/modules/grdproject/index.html#grdproject">grdproject</a>.</p>
 <h2>Handling of Grids with NaNs</h2>
 <p>Since we cannot take FFTs of 2-D grids that contain NaNs, we perform simple substitutions. If any of the input grids contain NaNs they will be replaced with zeros. In contrast, if <strong>density</strong> passes a grid with density contrasts then we replace any NaNs with the minimum density in the grid.</p>
 <h2>Data Detrending</h2>
@@ -739,10 +744,10 @@ imshow&#40;G2, colorbar&#61;true&#41;</code></pre></p>
 <p>Parker, R. L., 1972, The rapid calculation of potential anomalies, Geophys. J., 31, 447–455.</p>
 <p>Wessel. P., 2001, Global distribution of seamounts inferred from gridded Geosat/ERS-1 altimetry, J. Geophys. Res., 106&#40;B9&#41;, 19,431–19,441, <code>https://doi.org/10.1029/2000JB000083 &lt;https://doi.org/10.1029/2000JB000083&gt;</code>_</p>
 <h2>See Also</h2>
-<p><a href="/GMTjl_doc/documentation/utilities/parkergrav/index.html#parkergrav">parkergrav</a>, <a href="#">grdfft</a>, <a href="#">grdproject</a></p>
+<p><a href="/GMTjl_doc/documentation/utilities/parkergrav/index.html#parkergrav">parkergrav</a>, <a href="/GMTjl_doc/documentation/modules/grdfft/index.html#grdfft">grdfft</a>, <a href="/GMTjl_doc/documentation/modules/grdproject/index.html#grdproject">grdproject</a></p>
 <div class="page-foot">
   <div class="copyright">
-    &copy; GMT.jl. Last modified: November 07, 2025. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+    &copy; GMT.jl. Last modified: November 08, 2025. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
       <p>These docs were autogenerated using GMT: v1.33.1</p>
   </div>
 </div>

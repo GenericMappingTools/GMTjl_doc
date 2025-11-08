@@ -350,6 +350,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdcontour">grdcontour</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdcut">grdcut</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdedit">grdedit</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdfft">grdfft</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdfill">grdfill</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdfilter">grdfilter</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdgradient">grdgradient</a></div></li>
@@ -361,11 +362,14 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdmask">grdmask</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdmath">grdmath</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdpaste">grdpaste</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdproject">grdproject</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdsample">grdsample</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdtrack">grdtrack</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdtrend">grdtrend</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdvector">grdvector</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdview">grdview</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdvolume">grdvolume</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/greenspline">greenspline</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/hband">hband</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/histogram">histogram</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/image">image</a></div></li>
@@ -393,6 +397,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/seismicity">seismicity</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/solar">solar</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/spectrum1d">spectrum1d</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/sphdistance">sphdistance</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/sphinterpolate">sphinterpolate</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/sphtriangulate">sphtriangulate</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/stairs">stairs</a></div></li>
@@ -569,7 +574,7 @@
 <!-- Content appended here -->
 <div class="franklin-content"><h1 id="gmtspatial"><a href="#gmtspatial" class="header-anchor">gmtspatial</a></h1>
 <p>Geospatial operations on points, lines and polygons</p>
-<p>&#40;Warning: Manual translate by Claude. Needs revision&#41;</p>
+<p>&#40;<strong>Warning: Manual translate by Claude. Needs revision</strong>&#41;</p>
 <h2 id="synopsis"><a href="#synopsis" class="header-anchor">Synopsis</a></h2>
 <p><strong>gmtspatial</strong> &#91; <em>table</em> &#93; &#91; <strong>A</strong> | <strong>nn</strong> | <strong>nearest&#95;neighbor</strong> &#93; &#91; <strong>C</strong> | <strong>clip</strong> &#93; &#91; <strong>D</strong> | <strong>duplicates</strong> &#93; &#91; <strong>E</strong> | <strong>handedness</strong> &#93; &#91; <strong>F</strong> | <strong>force_polygons</strong> &#93; &#91; <strong>I</strong> | <strong>intersections</strong> &#93; &#91; <strong>L</strong> | <strong>tile&#95;lines</strong> &#93; &#91; <strong>N</strong> | <strong>in&#95;polyg</strong> | <strong>in&#95;polygons</strong> &#93; &#91; <strong>Q</strong> | <strong>area</strong> | <strong>length</strong> &#93; &#91; <strong>R</strong> | <strong>region</strong> | <strong>limits</strong> &#93; &#91; <strong>S</strong> | <strong>polygons</strong> | <strong>polyg&#95;process</strong>&#93; &#91; <strong>T</strong> | <strong>truncate</strong> &#93; &#91; <strong>V</strong> | <strong>verbose</strong> &#93; &#91; <strong>W</strong> | <strong>extend</strong> &#93; &#91; <strong>a</strong> | <strong>aspatial</strong> &#93; &#91; <strong>bi</strong> | <strong>binary&#95;in</strong> &#93; &#91; <strong>di</strong> | <strong>nodata&#95;in</strong> &#93; &#91; <strong>e</strong> | <strong>pattern</strong> &#93; &#91; <strong>f</strong> | <strong>colinfo</strong> &#93; &#91; <strong>g</strong> | <strong>gap</strong> &#93; &#91; <strong>h</strong> | <strong>header</strong> &#93; &#91; <strong>i</strong> | <strong>incol</strong> | <strong>incols</strong> &#93; &#91; <strong>j</strong> | <strong>spherical&#95;dist</strong> | <strong>spherical</strong> &#93; &#91; <strong>o</strong> | <strong>outcol</strong> | <strong>outcols</strong> &#93; &#91; <strong>q</strong> | <strong>inrows</strong> | <strong>query</strong> &#93; &#91; <strong>s</strong> | <strong>skipNaN</strong> | <strong>skip&#95;NaN</strong> &#93; &#91; <strong>yx</strong> &#93;</p>
 <h2 id="description"><a href="#description" class="header-anchor">Description</a></h2>
@@ -782,7 +787,7 @@ D &#61; gmtspatial&#40;&quot;@GSHHS_h_Australia.txt&quot;, colinfo&#61;:g, area&
 <p><a href="/GMTjl_doc/documentation/modules/gmtselect/index.html#gmtselect">gmtselect</a>, <a href="/GMTjl_doc/documentation/modules/gmtsimplify/index.html#gmtsimplify">gmtsimplify</a>, <a href="/GMTjl_doc/documentation/modules/mapproject/index.html#mapproject">mapproject</a></p>
 <div class="page-foot">
   <div class="copyright">
-    &copy; GMT.jl. Last modified: November 07, 2025. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+    &copy; GMT.jl. Last modified: November 08, 2025. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
       <p>These docs were autogenerated using GMT: v1.33.1</p>
   </div>
 </div>

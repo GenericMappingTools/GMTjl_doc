@@ -338,6 +338,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdcontour">grdcontour</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdcut">grdcut</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdedit">grdedit</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdfft">grdfft</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdfill">grdfill</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdfilter">grdfilter</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdgradient">grdgradient</a></div></li>
@@ -349,11 +350,14 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdmask">grdmask</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdmath">grdmath</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdpaste">grdpaste</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdproject">grdproject</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdsample">grdsample</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdtrack">grdtrack</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdtrend">grdtrend</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdvector">grdvector</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdview">grdview</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdvolume">grdvolume</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/greenspline">greenspline</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/hband">hband</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/histogram">histogram</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/image">image</a></div></li>
@@ -384,6 +388,7 @@
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/seismicity">seismicity</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/solar">solar</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/spectrum1d">spectrum1d</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/sphdistance">sphdistance</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/sphinterpolate">sphinterpolate</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/sphtriangulate">sphtriangulate</a></div></li>
 <li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/stairs">stairs</a></div></li>
@@ -722,10 +727,10 @@ imshow&#40;G&#41;</code></pre></p>
 <p>To make a global grid file from the data in geoid.xyz using a 1 degree grid, a 200 km search radius, spherical distances, using an quadrant search, and set nodes to NaN only when fewer than two quadrants contain at least one value:</p>
 <pre><code class="language-julia">G &#61; nearneighbor&#40;&quot;geoid.xyz&quot;, region&#61;&#40;0,360,-90,90&#41;, inc&#61;1, -Lg search_radius&#61;&quot;200k&quot;, sectors&#61;4&#41;</code></pre>
 <h2>See Also</h2>
-<p><a href="/GMTjl_doc/documentation/modules/blockmean/index.html#blockmean">blockmean</a>, <a href="/GMTjl_doc/documentation/modules/blockmedian/index.html#blockmedian">blockmedian</a>, <a href="/GMTjl_doc/documentation/modules/blockmode/index.html#blockmode">blockmode</a>, <a href="#">greenspline</a>, <a href="/GMTjl_doc/documentation/modules/sphtriangulate/index.html#sphtriangulate">sphtriangulate</a>, <a href="/GMTjl_doc/documentation/modules/surface/index.html#surface">surface</a>, <a href="/GMTjl_doc/documentation/modules/triangulate/index.html#triangulate">triangulate</a></p>
+<p><a href="/GMTjl_doc/documentation/modules/blockmean/index.html#blockmean">blockmean</a>, <a href="/GMTjl_doc/documentation/modules/blockmedian/index.html#blockmedian">blockmedian</a>, <a href="/GMTjl_doc/documentation/modules/blockmode/index.html#blockmode">blockmode</a>, <a href="/GMTjl_doc/documentation/modules/greenspline/index.html#greenspline">greenspline</a>, <a href="/GMTjl_doc/documentation/modules/sphtriangulate/index.html#sphtriangulate">sphtriangulate</a>, <a href="/GMTjl_doc/documentation/modules/surface/index.html#surface">surface</a>, <a href="/GMTjl_doc/documentation/modules/triangulate/index.html#triangulate">triangulate</a></p>
 <div class="page-foot">
   <div class="copyright">
-    &copy; GMT.jl. Last modified: November 07, 2025. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+    &copy; GMT.jl. Last modified: November 08, 2025. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
       <p>These docs were autogenerated using GMT: v1.33.1</p>
   </div>
 </div>
