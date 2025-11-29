@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>triangulate</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-0615b85506723fa54ab13a613a4e9e4c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../custom.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../GMTjl_logo.png" alt="" class="navbar-logo light-content">
+    <img src="../../GMTjl_logo.png" alt="" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-documentation" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Documentation</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-documentation">    
+        <li>
+    <a class="dropdown-item" href="../../documentation.html">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../../documentation/modules.html">
+ <span class="dropdown-text">Modules</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/general/types.html">
+ <span class="dropdown-text">GMT.jl Types</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/extensions.html">
+ <span class="dropdown-text">GMT.jl Extensions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/gdalfuns.html">
+ <span class="dropdown-text">GDAL Functions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/solids.html">
+ <span class="dropdown-text">Solids</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/imgproc.html">
+ <span class="dropdown-text">Image Processing</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/common_features.html">
+ <span class="dropdown-text">Common Features</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/alphabetical.html">
+ <span class="dropdown-text">Alphabetical List</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../../examples.html"> 
+<span class="menu-text">Examples</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../gallery.html"> 
+<span class="menu-text">Gallery</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-tutorials" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Tutorials</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-tutorials">    
+        <li>
+    <a class="dropdown-item" href="../../tutorials.html">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../../tutorials/Landsat8/histogram_stretch.html">
+ <span class="dropdown-text">Landsat 8/9</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/coast/coastlines.html">
+ <span class="dropdown-text">Coastlines</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/choropleths/choropleths.html">
+ <span class="dropdown-text">US Choropleths</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/longest_sail/longestsail.html">
+ <span class="dropdown-text">Longest Sail</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/vector_shp/vector_shp.html">
+ <span class="dropdown-text">Geospatial vector</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/texture_shading/texture.html">
+ <span class="dropdown-text">Texture Shading</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/mosaics/mosaics.html">
+ <span class="dropdown-text">Mosaics</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/mosaics/mosaics.html">
+ <span class="dropdown-text">Mosaics</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/insets/insets.html">
+ <span class="dropdown-text">Insets</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/remote_datasets/remote_datasets.html">
+ <span class="dropdown-text">Remote Grids</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/blender_shading/blender_rt.html">
+ <span class="dropdown-text">Blender</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/signal/signal.html">
+ <span class="dropdown-text">Signal</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-geophysics" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Geophysics</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-geophysics">    
+        <li>
+    <a class="dropdown-item" href="../../geophysics.html">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../../geophysics/seismicity/global_seis.html">
+ <span class="dropdown-text">Seismicity</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../geophysics/earthtides/01_earthtides.html">
+ <span class="dropdown-text">Earth Tides</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../geophysics/weather/01_weather.html">
+ <span class="dropdown-text">Weather Data</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-help" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Help</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-help">    
+        <li>
+    <a class="dropdown-item" href="https://github.com/quarto-dev/quarto-cli/issues"><i class="bi bi-bug" role="img">
+</i> 
+ <span class="dropdown-text">Report a Bug</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://github.com/quarto-dev/quarto-cli/discussions"><i class="bi bi-chat-right-text" role="img">
+</i> 
+ <span class="dropdown-text">Ask a Question</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#triangulate" id="toc-triangulate" class="nav-link active" data-scroll-target="#triangulate">triangulate</a>
+  <ul class="collapse">
+  <li><a href="#description" id="toc-description" class="nav-link" data-scroll-target="#description">Description</a></li>
+  <li><a href="#required-arguments" id="toc-required-arguments" class="nav-link" data-scroll-target="#required-arguments">Required Arguments</a></li>
+  <li><a href="#optional-arguments" id="toc-optional-arguments" class="nav-link" data-scroll-target="#optional-arguments">Optional Arguments</a></li>
+  <li><a href="#grid-values-precision" id="toc-grid-values-precision" class="nav-link" data-scroll-target="#grid-values-precision">Grid Values Precision</a></li>
+  <li><a href="#insideoutside-status" id="toc-insideoutside-status" class="nav-link" data-scroll-target="#insideoutside-status">Inside/outside Status</a></li>
+  <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
+  <li><a href="#notes" id="toc-notes" class="nav-link" data-scroll-target="#notes">Notes</a></li>
+  <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<section id="triangulate" class="level1">
+<h1>triangulate</h1>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">triangulate</span>(cmd0<span class="op">::</span><span class="dt">String</span>=<span class="st">""</span>, arg1<span class="op">=</span><span class="cn">nothing</span>; kwargs<span class="op">...</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Delaunay triangulation or Voronoi partitioning and gridding of Cartesian data</p>
+<section id="description" class="level2">
+<h2 class="anchored" data-anchor-id="description">Description</h2>
+<p>Reads x,y[,z] from file or table and performs Delaunay triangulation, i.e., it finds how the points should be connected to give the most equilateral triangulation possible. If a map projection (give <strong>region</strong> and <strong>proj</strong>) is chosen then it is applied before the triangulation is calculated. By default, the output is triplets of point id numbers that make up each triangle and is written to standard output. The id numbers refer to the points position (line number, starting at 0 for the first line) in the input file. As an option, you may choose to create a multiple segment file that can be send to <a href="../..\documentation/modules/plot.html">plot</a> to draw the triangulation network.</p>
+<p>Using <code>x,y[,z]</code> or only <code>x,y</code> in input depends on the intended usage of this module. If only the triangulation is desired, then only <code>x,y</code> is used and even if the input table has a <code>z</code> column, that is ignored. If, however, we wish to compute a grid (see below) than <code>z</code> is mandatory and is interpreted as a functional value, <code>z = f(x,y)</code>.</p>
+<p>If <strong>region</strong> and <strong>inc</strong> are set a grid will be calculated based on the surface defined by the planar triangles. The algorithm used in the triangulations is that of Shewchuk [1996] and you can also perform the calculation of Voronoi polygons and optionally grid your data via the natural nearest neighbor algorithm. <strong>Note</strong>: For geographic data with global or very large extent you should consider <a href="../..\documentation/modules/sphtriangulate.html">sphtriangulate</a> instead since <strong>triangulate</strong> is a Cartesian or small-geographic area operator and is unaware of periodic or polar boundary conditions.</p>
+</section>
+<section id="required-arguments" class="level2">
+<h2 class="anchored" data-anchor-id="required-arguments">Required Arguments</h2>
+<ul>
+<li><em>table</em><br>
+One or more data tables holding a number of data columns.</li>
+</ul>
+</section>
+<section id="optional-arguments" class="level2">
+<h2 class="anchored" data-anchor-id="optional-arguments">Optional Arguments</h2>
+<ul>
+<li><p><strong>A</strong> or <strong>area</strong> : – <em>area=true</em><br>
+Compute the area of the Cartesian triangles and append the areas in the output segment headers [no areas calculated]. Requires <strong>triangles</strong> and is not compatible with <strong>voronoi</strong> (GMT &gt;= 6.4).</p></li>
+<li><p><strong>C</strong> or <strong>slope_grid</strong> : – <em>slope_grid=slpfile</em><br>
+Read a slope grid (in degrees), either a file or a <a href="../..\documentation/general/types.html#sec-grid-type">GMTgrid</a>, and compute the propagated uncertainty in the bathymetry using the CURVE algorithm [Zambo et al, 2016]. Requires the <strong>outgrid</strong> option to specify the output grid. Note that the <strong>slope_grid</strong> sets the domain for the output grid so <strong>region</strong>, <strong>inc</strong>, <strong>registration</strong> are not required. Cannot be used in conjunction with <strong>derivatives</strong>, <strong>network</strong>, <strong>ids</strong>, <strong>voronoi</strong>, <strong>triangles</strong> and <strong>edges</strong>.</p></li>
+<li><p><strong>D</strong> or <strong>derivatives</strong> : <em>derivatives=:x|y</em><br>
+Take either the <em>x</em>- or <em>y</em>-derivatives of surface represented by the planar facets (only used when <strong>outgrid</strong> is set).</p></li>
+<li><p><strong>E</strong> or <strong>empty</strong> : – <em>empty=??</em><br>
+Set the value assigned to empty nodes when <strong>outgrid</strong> is set [NaN].</p></li>
+<li><p><strong>G</strong> or <strong>save</strong> or <strong>outgrid</strong> or <strong>outfile</strong> : – <em>outgrid=[=ID][+ddivisor][+ninvalid][+ooffset|a][+sscale|a][:driver[dataType][+coptions]]</em><br>
+Use triangulation to grid the data onto an even grid. <strong>NOTE:</strong> by specifying the <strong>region</strong> and <strong>inc</strong> options this one is automatically selected. Now, if you want to save the result in a grid file explicitly use this option and append the name of the output grid file. The interpolation is performed in the original coordinates, so if your triangles are close to the poles you are better off projecting all data to a local coordinate system before using <strong>triangulate</strong> (this is true of all gridding routines) or instead use <a href="../..\documentation/modules/sphtriangulate.html">sphtriangulate</a>. For natural nearest neighbor gridding you must add <strong>voronoi=:pol</strong>. See other modules that also write files, such as <a href="../..\documentation/modules/surface.html">surface</a>, to see further options to this.</p></li>
+<li><p><strong>I</strong> or <strong>inc</strong> or <strong>increment</strong> or <strong>spacing</strong> : – <em>inc=x_inc</em> <strong>|</strong> <em>inc=(x_inc, y_inc)</em> <strong>|</strong> <em>inc=“xinc[+e|n][/yinc[+e|n]]”</em><br>
+Specify the grid increments or the block sizes. More at [spacing](../common_opts/opt_I.html)</p></li>
+<li><p><strong>J</strong> or <strong>proj</strong> or <strong>projection</strong> : – <em>proj=<parameters></parameters></em><br>
+Select map projection. More at [proj](../common_opts/opt_J.html)</p></li>
+<li><p><strong>L</strong> or <strong>index</strong> : – <em>index=indexfile[<em>+b</em>]</em><br>
+Give name of file or a <a href="../..\documentation/general/types.html#sec-dataset-type">GMTdataset</a> with previously computed Delaunay information. Each record must contain triplets of node numbers for a triangle in the input <em>table</em> [Default computes these using Delaunay triangulation]. If the <em>indexfile</em> is binary and can be read the same way as the binary input <em>table</em> then you can append <strong>+b</strong> to spead up the reading (GMT6.4).</p></li>
+<li><p><strong>M</strong> or <strong>network</strong> : – <em>network=true</em><br>
+Output triangulation network as multiple line segments separated by a segment header record.</p></li>
+<li><p><strong>N</strong> or <strong>ids</strong> : – <em>ids=true</em><br>
+Used in conjunction with <strong>outgrid</strong> to also write the triplets of the ids of all the Delaunay vertices [Default only writes the grid].</p></li>
+<li><p><strong>Q</strong> or <strong>voronoi</strong> : – <em>voronoi=true</em> <strong>|</strong> <em>voronoi=:polygon</em><br>
+Output the edges of the Voronoi cells instead [Default is Delaunay triangle edges]. Requires <strong>region</strong> and is only available if linked with the Shewchuk [1996] library. Note that <strong>xyz</strong> is ignored on output. Optionally, use <strong>voronoi=:polygon</strong> (or just <code>=:pol</code>) for combining the edges into closed Voronoi polygons.</p></li>
+<li><p><strong>R</strong> or <strong>region</strong> or <strong>limits</strong> : – <em>limits=(xmin, xmax, ymin, ymax)</em> <strong>|</strong> <em>limits=(BB=(xmin, xmax, ymin, ymax),)</em> <strong>|</strong> <em>limits=(LLUR=(xmin, xmax, ymin, ymax),units=“unit”)</em> <strong>|</strong> …more<br>
+Specify the region of interest. More at [limits](../common_opts/opt_R.html). For perspective view <strong>view</strong>, optionally add <em>zmin,zmax</em>. This option may be used to indicate the range used for the 3-D axes. You may ask for a larger w/e/s/n region to have more room between the image and the axes.</p></li>
+<li><p><strong>S</strong> or <strong>triangles</strong> : – <em>triangles=true</em><br>
+Output triangles as polygon segments separated by a segment header record. Requires Delaunay triangulation.</p></li>
+<li><p><strong>T</strong> or <strong>edges</strong> : – <em>edges=true</em><br>
+Output edges or polygons even if gridding has been selected with the <strong>outgrid</strong> option [Default will not output the triangulation or Voronoi polygons is gridding is selected].</p></li>
+<li><p><strong>V</strong> or <em>verbose</em> : – <em>verbose=true</em> <strong>|</strong> <em>verbose=level</em><br>
+Select verbosity level. More at [verbose](../common_opts/opt_V.html)</p></li>
+<li><p><strong>Z</strong> or <strong>xyz</strong> or <strong>triplets</strong> : – <em>xyz=true</em><br>
+Controls whether we read (x,y) or (x,y,z) data and if z should be output when <strong>network</strong> or <strong>triangles</strong> are used [Read (x,y) only].</p></li>
+<li><p><strong>bi</strong> or <strong>binary_in</strong> : – <em>binary_in=??</em><br>
+Select native binary format for primary table input. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#bi-full">More at</a></p></li>
+<li><p><strong>di</strong> or <strong>nodata_in</strong> : – <em>nodata_in=??</em><br>
+Substitute specific values with NaN. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#di-full">More at</a></p></li>
+<li><p><strong>e</strong> or <strong>pattern</strong> : – <em>pattern=??</em><br>
+Only accept ASCII data records that contain the specified pattern. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#e-full">More at</a></p></li>
+<li><p><strong>f</strong> or <strong>colinfo</strong> : – <em>colinfo=??</em><br>
+Specify the data types of input and/or output columns (time or geographical data). <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#f-full">More at</a></p></li>
+<li><p><strong>g</strong> or <strong>gap</strong> : – <em>gap=??</em><br>
+Examine the spacing between consecutive data points in order to impose breaks in the line. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#g-full">More at</a></p></li>
+<li><p><strong>h</strong> or <strong>header</strong> : – <em>header=??</em><br>
+Specify that input and/or output file(s) have n header records. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#h-full">More at</a></p></li>
+<li><p><strong>i</strong> or <strong>incol</strong> or <strong>incols</strong> : – <em>incol=col_num</em> <strong>|</strong> <em>incol=“opts”</em><br>
+Select input columns and transformations (0 is first column, t is trailing text, append word to read one word only). More at <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#icols-full">incol</a></p></li>
+<li><p><strong>q</strong> or <strong>inrows</strong> : – <em>inrows=??</em><br>
+Select specific data rows to be read and/or written. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#the-q-option">More at</a></p></li>
+</ul>
+<p>{{&lt; include ../common_opts/opt__r.md &gt;}} (Only valid with <strong>outgrid</strong>).</p>
+<ul>
+<li><p><strong>s</strong> or <strong>skiprows</strong> or <strong>skip_NaN</strong> : – <em>skip_NaN=true</em> <strong>|</strong> <em>skip_NaN=“&lt;cols[+a][+r]&gt;”</em><br>
+Suppress output of data records whose z-value(s) equal NaN. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#the-s-option">More at</a></p></li>
+<li><p><strong>w</strong> or <strong>wrap</strong> or <strong>cyclic</strong> : – <em>wrap=??</em><br>
+Convert input records to a cyclical coordinate. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#w-full">More at</a></p></li>
+<li><p><strong>yx</strong> : – <em>yx=true</em><br>
+Swap 1st and 2nd column on input and/or output. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#colon-full">More at</a></p></li>
+</ul>
+</section>
+<section id="grid-values-precision" class="level2">
+<h2 class="anchored" data-anchor-id="grid-values-precision">Grid Values Precision</h2>
+<p>Regardless of the precision of the input data, GMT programs that create grid files will internally hold the grids in 4-byte floating point arrays. This is done to conserve memory and furthermore most if not all real data can be stored using 4-byte floating point values. Data with higher precision (i.e., double precision values) will lose that precision once GMT operates on the grid or writes out new grids. To limit loss of precision when processing data you should always consider normalizing the data prior to processing.</p>
+</section>
+<section id="insideoutside-status" class="level2">
+<h2 class="anchored" data-anchor-id="insideoutside-status">Inside/outside Status</h2>
+<p>To determine if a point is inside, outside, or exactly on the boundary of a polygon we need to balance the complexity (and execution time) of the algorithm with the type of data and shape of the polygons. For any Cartesian data we use a non-zero winding algorithm, which is quite fast. For geographic data we will also use this algorithm as long as (1) the polygons do not include a geographic pole, and (2) the longitude extent of the polygons is less than 360. If this is the situation we also carefully adjust the test point longitude for any 360 degree offsets, if appropriate. Otherwise, we employ a full spherical ray-shooting method to determine a points status.</p>
+</section>
+<section id="examples" class="level2">
+<h2 class="anchored" data-anchor-id="examples">Examples</h2>
+<p>To triangulate the points in the file samples.xyz, return the triangle information, and make a grid for the given area and spacing, use</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>    D <span class="op">=</span> <span class="fu">triangulate</span>(<span class="st">"samples.xyz"</span>, region<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">30</span>,<span class="fl">0</span>,<span class="fl">30</span>), inc<span class="op">=</span><span class="fl">2</span>, save<span class="op">=</span><span class="st">"surf.nc"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>To draw the optimal Delaunay triangulation network based on the same file using a 15-cm-wide Mercator map, use</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>    D <span class="op">=</span> <span class="fu">triangulate</span>(<span class="st">"samples.xyz"</span>, region<span class="op">=</span>(<span class="fl">100</span>,<span class="op">-</span><span class="fl">90</span>,<span class="fl">30</span>,<span class="fl">34</span>), network<span class="op">=</span><span class="cn">true</span>, proj<span class="op">=:</span>Mercator)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">plot</span>(D, pen<span class="op">=</span><span class="fl">0.5</span>, frame<span class="op">=</span>(annot<span class="op">=</span><span class="fl">1</span>,), show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>To instead plot the Voronoi cell outlines, try</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>    D <span class="op">=</span> <span class="fu">triangulate</span>(<span class="st">"samples.xyz"</span>, region<span class="op">=</span>(<span class="fl">100</span>,<span class="op">-</span><span class="fl">90</span>,<span class="fl">30</span>,<span class="fl">34</span>), network<span class="op">=</span><span class="cn">true</span>, voronoi<span class="op">=</span><span class="cn">true</span>, proj<span class="op">=:</span>Mercator)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">plot</span>(D, pen<span class="op">=</span><span class="fl">0.5</span>, frame<span class="op">=</span>(annot<span class="op">=</span><span class="fl">1</span>,), show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>To combine the Voronoi outlines into polygons and paint them according to their ID, try</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>    D <span class="op">=</span> <span class="fu">triangulate</span>(<span class="st">"samples.xyz"</span>, region<span class="op">=</span>(<span class="fl">100</span>,<span class="op">-</span><span class="fl">90</span>,<span class="fl">30</span>,<span class="fl">34</span>), network<span class="op">=</span><span class="cn">true</span>, voronoi<span class="op">=:</span>polyg, proj<span class="op">=:</span>Mercator)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">plot</span>(D, pen<span class="op">=</span><span class="st">"0.5p+cf"</span>, frame<span class="op">=</span>(annot<span class="op">=</span><span class="fl">1</span>,), cmap<span class="op">=</span><span class="st">"colors.cpt"</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>To grid the data using the natural nearest neighbor algorithm, try</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>    G <span class="op">=</span> <span class="fu">triangulate</span>(<span class="st">"samples.xyz"</span>, region<span class="op">=</span>(<span class="fl">100</span>,<span class="op">-</span><span class="fl">90</span>,<span class="fl">30</span>,<span class="fl">34</span>), inc<span class="op">=</span><span class="fl">0.5</span>, voronoi<span class="op">=:</span>polygon)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="notes" class="level2">
+<h2 class="anchored" data-anchor-id="notes">Notes</h2>
+<p>The uncertainty propagation for bathymetric grids requires both horizontal and vertical uncertainties and these are weighted given the local slope. See the <em>Zambo et al.</em> [2014] and <em>Zhou and Liu</em> [2004] references for more details.</p>
+</section>
+<section id="see-also" class="level2">
+<h2 class="anchored" data-anchor-id="see-also">See Also</h2>
+<p><a href="../..\documentation/modules/greenspline.html">greenspline</a>, <a href="../..\documentation/modules/nearneighbor.html">nearneighbor</a>, <a href="../..\documentation/modules/contour.html">contour</a>, <a href="../..\documentation/modules/sphdistance.html">sphdistance</a>, <a href="../..\documentation/modules/sphinterpolate.html">sphinterpolate</a>, <a href="../..\documentation/modules/sphtriangulate.html">sphtriangulate</a>, <a href="../..\documentation/modules/surface.html">surface</a></p>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<p>Shewchuk, J. R., 1996, Triangle: Engineering a 2D Quality Mesh Generator and Delaunay Triangulator, First Workshop on Applied Computational Geometry (Philadelphia, PA), 124-133, ACM, May 1996.</p>
+<p>Zambo, S., Elmore, P. A., Bourgeois, B. S., and Perkins, A. L., 2016, Uncertainty estimation for sparse data gridding algorithms, Proceedings of the U.S. Hydro Conference,National Harbor, MD, 16-19 March 2015.</p>
+<p>Zhou, Q., and Liu, X., 2004, Error analysis on grid-based slope and aspect algorithms, <em>Photogrammetric Eng. &amp; Remote Sensing</em>, <strong>70</strong> (8), 957-962.</p>
+<p><a href="http://www.cs.cmu.edu/~quake/triangle.html">Shewchuk’s Homepage</a></p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script>
+
+// JavaScript to handle card hover effects for cards with images
+
+document.addEventListener('DOMContentLoaded', function() {
+
+  // Find all cards
+
+  const cards = document.querySelectorAll('.card');
+
+
+
+  cards.forEach(card => {
+
+    const paragraphs = card.querySelectorAll('p');
+
+
+
+    // If card has only one paragraph (with image)
+
+    if (paragraphs.length === 1) {
+
+      const p = paragraphs[0];
+
+      const img = p.querySelector('img');
+
+
+
+      if (img) {
+
+        // Get all text nodes
+
+        const textContent = Array.from(p.childNodes)
+
+          .filter(node => node.nodeType === Node.TEXT_NODE)
+
+          .map(node => node.textContent.trim())
+
+          .filter(text => text.length > 0)
+
+          .join(' ');
+
+
+
+        if (textContent) {
+
+          // Create overlay div for description
+
+          const overlay = document.createElement('div');
+
+          overlay.className = 'card-description-overlay';
+
+          overlay.textContent = textContent;
+
+          card.appendChild(overlay);
+
+
+
+          // Remove text nodes completely
+
+          Array.from(p.childNodes).forEach(node => {
+
+            if (node.nodeType === Node.TEXT_NODE && node.textContent.trim().length > 0) {
+
+              node.remove();
+
+            }
+
+          });
+
+        }
+
+      }
+
+    }
+
+  });
+
+});
+
+</script>
+
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/GenericMappingTools\.github\.io\/GMTjl_doc\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

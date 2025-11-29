@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>gmtspatial</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-0615b85506723fa54ab13a613a4e9e4c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../custom.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../GMTjl_logo.png" alt="" class="navbar-logo light-content">
+    <img src="../../GMTjl_logo.png" alt="" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-documentation" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Documentation</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-documentation">    
+        <li>
+    <a class="dropdown-item" href="../../documentation.html">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../../documentation/modules.html">
+ <span class="dropdown-text">Modules</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/general/types.html">
+ <span class="dropdown-text">GMT.jl Types</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/extensions.html">
+ <span class="dropdown-text">GMT.jl Extensions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/gdalfuns.html">
+ <span class="dropdown-text">GDAL Functions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/solids.html">
+ <span class="dropdown-text">Solids</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/imgproc.html">
+ <span class="dropdown-text">Image Processing</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/common_features.html">
+ <span class="dropdown-text">Common Features</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/alphabetical.html">
+ <span class="dropdown-text">Alphabetical List</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../../examples.html"> 
+<span class="menu-text">Examples</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../gallery.html"> 
+<span class="menu-text">Gallery</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-tutorials" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Tutorials</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-tutorials">    
+        <li>
+    <a class="dropdown-item" href="../../tutorials.html">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../../tutorials/Landsat8/histogram_stretch.html">
+ <span class="dropdown-text">Landsat 8/9</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/coast/coastlines.html">
+ <span class="dropdown-text">Coastlines</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/choropleths/choropleths.html">
+ <span class="dropdown-text">US Choropleths</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/longest_sail/longestsail.html">
+ <span class="dropdown-text">Longest Sail</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/vector_shp/vector_shp.html">
+ <span class="dropdown-text">Geospatial vector</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/texture_shading/texture.html">
+ <span class="dropdown-text">Texture Shading</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/mosaics/mosaics.html">
+ <span class="dropdown-text">Mosaics</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/mosaics/mosaics.html">
+ <span class="dropdown-text">Mosaics</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/insets/insets.html">
+ <span class="dropdown-text">Insets</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/remote_datasets/remote_datasets.html">
+ <span class="dropdown-text">Remote Grids</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/blender_shading/blender_rt.html">
+ <span class="dropdown-text">Blender</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/signal/signal.html">
+ <span class="dropdown-text">Signal</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-geophysics" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Geophysics</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-geophysics">    
+        <li>
+    <a class="dropdown-item" href="../../geophysics.html">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../../geophysics/seismicity/global_seis.html">
+ <span class="dropdown-text">Seismicity</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../geophysics/earthtides/01_earthtides.html">
+ <span class="dropdown-text">Earth Tides</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../geophysics/weather/01_weather.html">
+ <span class="dropdown-text">Weather Data</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-help" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Help</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-help">    
+        <li>
+    <a class="dropdown-item" href="https://github.com/quarto-dev/quarto-cli/issues"><i class="bi bi-bug" role="img">
+</i> 
+ <span class="dropdown-text">Report a Bug</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://github.com/quarto-dev/quarto-cli/discussions"><i class="bi bi-chat-right-text" role="img">
+</i> 
+ <span class="dropdown-text">Ask a Question</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#synopsis" id="toc-synopsis" class="nav-link active" data-scroll-target="#synopsis">Synopsis</a></li>
+  <li><a href="#description" id="toc-description" class="nav-link" data-scroll-target="#description">Description</a></li>
+  <li><a href="#required-arguments" id="toc-required-arguments" class="nav-link" data-scroll-target="#required-arguments">Required Arguments</a></li>
+  <li><a href="#optional-arguments" id="toc-optional-arguments" class="nav-link" data-scroll-target="#optional-arguments">Optional Arguments</a></li>
+  <li><a href="#units" id="toc-units" class="nav-link" data-scroll-target="#units">Units</a></li>
+  <li><a href="#insideoutside-status" id="toc-insideoutside-status" class="nav-link" data-scroll-target="#insideoutside-status">Inside/Outside Status</a></li>
+  <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
+  <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">gmtspatial</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Geospatial operations on points, lines and polygons</p>
+<p>(<strong>Warning: Manual translate by Claude. Needs revision</strong>)</p>
+<section id="synopsis" class="level2">
+<h2 class="anchored" data-anchor-id="synopsis">Synopsis</h2>
+<p><strong>gmtspatial</strong> [ <em>table</em> ] [ <strong>A</strong> | <strong>nn</strong> | <strong>nearest_neighbor</strong> ] [ <strong>C</strong> | <strong>clip</strong> ] [ <strong>D</strong> | <strong>duplicates</strong> ] [ <strong>E</strong> | <strong>handedness</strong> ] [ <strong>F</strong> | <strong>force_polygons</strong> ] [ <strong>I</strong> | <strong>intersections</strong> ] [ <strong>L</strong> | <strong>tile_lines</strong> ] [ <strong>N</strong> | <strong>in_polyg</strong> | <strong>in_polygons</strong> ] [ <strong>Q</strong> | <strong>area</strong> | <strong>length</strong> ] [ <strong>R</strong> | <strong>region</strong> | <strong>limits</strong> ] [ <strong>S</strong> | <strong>polygons</strong> | <strong>polyg_process</strong>] [ <strong>T</strong> | <strong>truncate</strong> ] [ <strong>V</strong> | <strong>verbose</strong> ] [ <strong>W</strong> | <strong>extend</strong> ] [ <strong>a</strong> | <strong>aspatial</strong> ] [ <strong>bi</strong> | <strong>binary_in</strong> ] [ <strong>di</strong> | <strong>nodata_in</strong> ] [ <strong>e</strong> | <strong>pattern</strong> ] [ <strong>f</strong> | <strong>colinfo</strong> ] [ <strong>g</strong> | <strong>gap</strong> ] [ <strong>h</strong> | <strong>header</strong> ] [ <strong>i</strong> | <strong>incol</strong> | <strong>incols</strong> ] [ <strong>j</strong> | <strong>spherical_dist</strong> | <strong>spherical</strong> ] [ <strong>o</strong> | <strong>outcol</strong> | <strong>outcols</strong> ] [ <strong>q</strong> | <strong>inrows</strong> | <strong>query</strong> ] [ <strong>s</strong> | <strong>skipNaN</strong> | <strong>skip_NaN</strong> ] [ <strong>yx</strong> ]</p>
+</section>
+<section id="description" class="level2">
+<h2 class="anchored" data-anchor-id="description">Description</h2>
+<p><strong>gmtspatial</strong> reads a table (which may be multisegment files) that contains closed polygons and operates on these polygons in the specified way. Operations include area calculation, handedness reversals, and polygon intersections.</p>
+</section>
+<section id="required-arguments" class="level2">
+<h2 class="anchored" data-anchor-id="required-arguments">Required Arguments</h2>
+<dl>
+<dt><em>table</em></dt>
+<dd>
+One data table or file. Can be a file name, a <a href="../..\documentation/general/types.html#sec-dataset-type">GMTdataset</a> object, or a Matrix.
+</dd>
+</dl>
+</section>
+<section id="optional-arguments" class="level2">
+<h2 class="anchored" data-anchor-id="optional-arguments">Optional Arguments</h2>
+<ul>
+<li><p><strong>A</strong> or <strong>nn</strong> or <strong>nearest_neighbor</strong> : – <em>nn=[amin_dist][unit]</em><br>
+Perform spatial nearest neighbor (NN) analysis: Determine the nearest neighbor of each point and report the NN distances and the point IDs involved in each pair (IDs are the input record numbers starting at 0). Use <strong>nn=amin_dist</strong> to decimate a data set so that no NN distance is lower than the threshold <em>amin_dist</em>. In this case we write out the (possibly averaged) coordinates and the updated NN distances and point IDs. A negative point number means the original point was replaced by a weighted average (the absolute ID value gives the ID of the first original point ID to be included in the average). Note: The input data are assumed to contain (lon, lat) or (x, y), optionally followed by a z and a weight [1] column. We compute a weighted average of the location and z (if weight is present).</p></li>
+<li><p><strong>C</strong> or <strong>clip</strong> : – <em>clip=true</em><br>
+Clips polygons to the map region, including map boundary to the polygon as needed. The result is a closed polygon (see <strong>truncate</strong> for truncation instead). Requires <strong>region</strong>.</p></li>
+<li><p><strong>D</strong> or <strong>duplicates</strong> : – <em>duplicates=(modifiers…)</em><br>
+Check for duplicates among the input lines (or polygons). We consider both exact (same number and coordinates) and approximate matches (average distance between nearest points of two features is less than a threshold). We also consider that some features may have been reversed. By default, we compute the mean line separation. Available modifiers:</p>
+<ul>
+<li><strong>closeness</strong> or <strong>c</strong> : <em>c=cmax</em> – Set threshold of a pair’s closeness (defined as the average distance between the features divided by their average length) [0.01].</li>
+<li><strong>Closeness</strong> or <strong>C</strong> : <em>C=cmin</em> – Use this to compute the median line separation and therefore a robust closeness value.</li>
+<li><strong>dist</strong> or <strong>d</strong> : <em>d=dmax</em> – Features are considered approximate matches if their minimum distance is less than <em>dmax</em> [0] and their closeness is less than <em>cmax</em>.</li>
+<li><strong>file</strong> or <strong>f</strong> : <em>f=“file”</em> – Check if the input features already exist among the features in <em>file</em>.</li>
+<li><strong>perpendicular</strong> or <strong>p</strong> : <em>p=true</em> – Limit the comparison to points that project perpendicularly to points on the other line (and not its extension) [Default considers all distances between points on one line and another].</li>
+<li><strong>scale</strong> or <strong>s</strong> : <em>s=factor</em> – Scale factor to apply.</li>
+</ul>
+<p>For each duplicate found, the output record begins with Y (exact match) or ~ (approximate match). If the two matching segments differ in length by more than a factor of 2 then we consider the duplicate to be either a subset (-) or a superset (+). Finally, we also note if two lines are the result of splitting a continuous line across the Dateline (|).</p></li>
+<li><p><strong>E</strong> or <strong>handedness</strong> : – <em>handedness=:p</em> <strong>|</strong> <em>handedness=:n</em> <strong>|</strong> <em>handedness=(pol=“+p”)</em> <strong>|</strong> <em>handedness=(pol=“+n”)</em><br>
+Reset the handedness of all polygons to match the given modifier:</p>
+<ul>
+<li><strong>+p</strong> or <strong>pol=“+p”</strong> : Counter-clockwise (positive).</li>
+<li><strong>+n</strong> or <strong>pol=“+n”</strong> : Clockwise (negative).</li>
+</ul></li>
+<li><p><strong>F</strong> or <strong>force_polygons</strong> : – <em>force_polygons=true</em> <strong>|</strong> <em>force_polygons=:l</em><br>
+Force input data to become polygons on output, i.e., close them explicitly if not already closed. Optionally, append <strong>:l</strong> to force line geometry.</p></li>
+<li><p><strong>I</strong> or <strong>intersections</strong> : – <em>intersections=true</em> <strong>|</strong> <em>intersections=:i</em> <strong>|</strong> <em>intersections=:e</em><br>
+Determine the intersection locations between all pairs of polygons. Modifiers:</p>
+<ul>
+<li><strong>i</strong> or <strong>:i</strong> : Only compute internal (self-intersecting polygons) crossovers.</li>
+<li><strong>e</strong> or <strong>:e</strong> : Only compute external (between pairs of polygons) crossovers.</li>
+<li>Default is both.</li>
+</ul>
+<p>Output records list the coordinates of the crossing, the relative times along the two segments (i.e., floating point record numbers at the crossing), and the names of the two segments (as trailing text).</p></li>
+<li><p><strong>L</strong> or <strong>tilelines</strong> : – <em>tilelines=(dist, noise, offset)</em><br>
+Remove tile lines. These are superfluous lines that were digitized with a polygon but that all fall along the rectangular <strong>region</strong> border and should be removed. Append <em>dist</em> (in m) [0], coordinate <em>noise</em> [1e-10], and max <em>offset</em> from gridlines [1e-10].</p></li>
+<li><p><strong>N</strong> or <strong>in_polyg</strong> or <strong>in_polygons</strong> : – <em>in_polyg=pfile</em> <strong>|</strong> <em>in_polyg=(poly=“pfile”, modifiers…)</em><br>
+Determine if one (or all) points of each feature in the input data are inside any of the polygons given in <em>pfile</em>. If inside, then report which polygon it is. The polygon ID is taken from the aspatial value assigned to Z or the segment header. By default, the input segments that are found to be inside a polygon are written to standard output with the polygon ID encoded in the segment header as <em>-ZID</em>. Available modifiers:</p>
+<ul>
+<li><strong>all</strong> or <strong>a</strong> : <em>all=true</em> – All points of a feature must be inside the polygon.</li>
+<li><strong>individual</strong> or <strong>i</strong> : <em>individual=true</em> – Point clouds: determine the polygon ID for every individual input point and add it as the last output column.</li>
+<li><strong>running_id</strong> or <strong>start</strong> or <strong>p</strong> : <em>start=n</em> – Instead of segment headers, assign a running ID number that is initialized to begin from <em>n</em> [0].</li>
+<li><strong>report</strong> or <strong>r</strong> : <em>report=true</em> – Just report which polygon contains a feature.</li>
+<li><strong>id_column</strong> or <strong>z</strong> : <em>z=true</em> – Add the IDs as an extra data column on output.</li>
+</ul>
+<p>Segments that fail to be inside a polygon are not written out. If more than one polygon contains the same segment, we skip the second (and further) scenarios.</p></li>
+<li><p><strong>Q</strong> or <strong>area</strong> or <strong>length</strong> : – <em>area=true</em> <strong>|</strong> <em>area=unit</em> <strong>|</strong> <em>area=(unit=“k”, modifiers…)</em><br>
+Measure the area of all polygons or length of all line segments. For polygons, we also compute the centroid location while for lines we compute the mid-point (half-length) position. For geographical data, optionally append a distance <em>unit</em> to select the unit used [k]. Note that the area will depend on the current setting of PROJ_ELLIPSOID; this should be a recent ellipsoid to get accurate results. The centroid is computed using the mean of the 3-D Cartesian vectors making up the polygon vertices, while the area is obtained via a sum of areas for spherical triangles. Normally, all input segments will be reflected on output. By default, we consider open polygons as lines and closed polygons as polygons. Available modifiers:</p>
+<ul>
+<li><strong>limits</strong> or <strong>c</strong> : <em>limits=(min, max)</em> <strong>|</strong> <em>c=“min/max”</em> – Restrict processing to those features whose length (or area for polygons) fall inside the specified range. If <em>max</em> is not set it defaults to infinity.</li>
+<li><strong>header</strong> or <strong>h</strong> : <em>header=true</em> – Append the area to each polygon’s segment header [Default simply writes the area to standard output].</li>
+<li><strong>lines</strong> or <strong>l</strong> : <em>lines=true</em> – Consider all input features as lines, even if closed.</li>
+<li><strong>polygons</strong> or <strong>p</strong> : <em>polygons=true</em> – Close open polygons and thus consider all input as polygons.</li>
+<li><strong>sort</strong> or <strong>s</strong> : <em>sort=:a</em> <strong>|</strong> <em>sort=:d</em> – Sort the segments based on their lengths or area. Append <strong>:a</strong> for ascending [Default] and <strong>:d</strong> for descending order.</li>
+</ul></li>
+<li><p><strong>R</strong> or <strong>region</strong> or <strong>limits</strong> : – <em>region=(xmin, xmax, ymin, ymax)</em> <strong>|</strong> <em>region=“west/east/south/north”</em> <strong>|</strong> <em>region=“gridfile”</em> <strong>|</strong> <em>region=country_code</em><br>
+Specify the region of interest. Clips polygons to the map region, including map boundary to the polygon as needed. The result is a closed polygon. [More at region]</p></li>
+<li><p><strong>S</strong> or <strong>polygons</strong> or <strong>polyg_process</strong> : – <em>polygons=:bwidth</em> <strong>|</strong> <em>polygons=:h</em> <strong>|</strong> <em>polygons=:s</em> <strong>|</strong> <em>polygons=(buffer=width,)</em><br>
+Spatial processing of polygons. Choose from several directives:</p>
+<ul>
+<li><strong>buffer</strong> or <strong>b</strong> : <em>buffer=width</em> – Computes a buffer polygon around lines with the specified <em>width</em>. Note: This is a purely Cartesian operation, so <em>width</em> must be in data units. For geographical coordinates, <em>width</em> must be in degrees or, preferably, project data into an equal-area projection with <strong>mapproject</strong>, compute the buffer, and then convert back to geographical.</li>
+<li><strong>h</strong> : Identifies perimeter and hole polygons (and flags/reverses them).</li>
+<li><strong>s</strong> : Split polygons that straddle the Dateline.</li>
+</ul></li>
+<li><p><strong>T</strong> or <strong>truncate</strong> : – <em>truncate=true</em> <strong>|</strong> <em>truncate=polygon_file</em><br>
+Truncate polygons and lines against the specified polygon, possibly resulting in open polygons. If no argument is given, we create a clipping polygon from <strong>region</strong> which then is required. Note that when the <strong>region</strong> clipping is in effect we will also look for polygons of length 4 or 5 that exactly match the <strong>region</strong> clipping polygon.</p></li>
+<li><p><strong>V</strong> or <em>verbose</em> : – <em>verbose=true</em> <strong>|</strong> <em>verbose=level</em><br>
+Select verbosity level. More at [verbose](../common_opts/opt_V.html)</p></li>
+<li><p><strong>W</strong> or <strong>extend</strong> : – <em>extend=dist</em> <strong>|</strong> <em>extend=(dist=val, unit=“k”, modifiers…)</em><br>
+Extend all segments with a new first and last point such that these points are <em>dist</em> away from their neighbor point in the direction implied by the two points at each end of the segment. For geographic data you may append a unit. To give separate distances for the two ends, give <em>distf/distl</em> instead. Available modifiers:</p>
+<ul>
+<li><strong>first</strong> or <strong>f</strong> : <em>first=true</em> – Only extend the first point.</li>
+<li><strong>last</strong> or <strong>l</strong> : <em>last=true</em> – Only extend the last point.</li>
+</ul>
+<p>The mode of geographical calculations depends on <strong>spherical_dist</strong>.</p></li>
+<li><p><strong>a</strong> or <strong>aspatial</strong> : – <em>aspatial=??</em><br>
+Control how aspatial data are handled in GMT during input and output. [More at aspatial]</p></li>
+<li><p><strong>bi</strong> or <strong>binary_in</strong> : – <em>binary_in=??</em><br>
+Select native binary format for primary table input. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#bi-full">More at</a></p></li>
+<li><p><strong>di</strong> or <strong>nodata_in</strong> : – <em>nodata_in=??</em><br>
+Substitute specific values with NaN. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#di-full">More at</a></p></li>
+<li><p><strong>e</strong> or <strong>pattern</strong> : – <em>pattern=??</em><br>
+Only accept ASCII data records that contain the specified pattern. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#e-full">More at</a></p></li>
+<li><p><strong>f</strong> or <strong>colinfo</strong> : – <em>colinfo=??</em><br>
+Specify the data types of input and/or output columns (time or geographical data). <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#f-full">More at</a></p></li>
+<li><p><strong>g</strong> or <strong>gap</strong> : – <em>gap=??</em><br>
+Examine the spacing between consecutive data points in order to impose breaks in the line. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#g-full">More at</a></p></li>
+<li><p><strong>h</strong> or <strong>header</strong> : – <em>header=??</em><br>
+Specify that input and/or output file(s) have n header records. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#h-full">More at</a></p></li>
+<li><p><strong>i</strong> or <strong>incol</strong> or <strong>incols</strong> : – <em>incol=col_num</em> <strong>|</strong> <em>incol=“opts”</em><br>
+Select input columns and transformations (0 is first column, t is trailing text, append word to read one word only). More at <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#icols-full">incol</a></p></li>
+<li><p><strong>j</strong> or <strong>metric</strong> or <strong>spherical_dist</strong> or <strong>spherical</strong> : – <em>metric=greatcirc</em> or <em>spherical=:flat</em> or <em>spherical=:ellipsoidal</em><br>
+Determine how spherical distances are calculated in modules that support this [Default is <code>spherical=:greatcirc</code>]. GMT has different ways to compute distances on planetary bodies:</p>
+<ul>
+<li><p>spherical=:greatcirc to perform great circle distance calculations, with parameters such as distance increments or radii compared against calculated great circle distances [Default is <code>spherical=:greatcirc</code>].</p></li>
+<li><p>spherical=:flat to select Flat Earth mode, which gives a more approximate but faster result.</p></li>
+<li><p>spherical=:ellipsoidal to select ellipsoidal (or geodesic) mode for the highest precision and slowest calculation time.</p></li>
+</ul>
+<p>Note: All spherical distance calculations depend on the current ellipsoid (<code>PROJ_ELLIPSOID</code>), the definition of the mean radius (<code>PROJ_MEAN_RADIUS</code>), and the specification of latitude type (<code>PROJ_AUX_LATITUDE</code>). Geodesic distance calculations is also controlled by method (<code>PROJ_GEODESIC</code>).</p></li>
+<li><p><strong>o</strong> or <strong>outcol</strong> : – <em>outcol=??</em><br>
+Select specific data columns for primary output, in arbitrary order. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#ocols-full">More at</a></p></li>
+<li><p><strong>q</strong> or <strong>inrows</strong> : – <em>inrows=??</em><br>
+Select specific data rows to be read and/or written. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#the-q-option">More at</a></p></li>
+<li><p><strong>s</strong> or <strong>skiprows</strong> or <strong>skip_NaN</strong> : – <em>skip_NaN=true</em> <strong>|</strong> <em>skip_NaN=“&lt;cols[+a][+r]&gt;”</em><br>
+Suppress output of data records whose z-value(s) equal NaN. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#the-s-option">More at</a></p></li>
+<li><p><strong>yx</strong> : – <em>yx=true</em><br>
+Swap 1st and 2nd column on input and/or output. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#colon-full">More at</a></p></li>
+</ul>
+</section>
+<section id="units" class="level2">
+<h2 class="anchored" data-anchor-id="units">Units</h2>
+<p>For map distance unit, append unit <strong>d</strong> for arc degree, <strong>m</strong> for arc minute, and <strong>s</strong> for arc second, or <strong>e</strong> for meter [Default unless stated otherwise], <strong>f</strong> for foot, <strong>k</strong> for km, <strong>M</strong> for statute mile, <strong>n</strong> for nautical mile, and <strong>u</strong> for US survey foot. By default we compute such distances using a spherical approximation with great circles (<strong>spherical=:greatcirc</strong>) using the authalic radius (see PROJ_MEAN_RADIUS). You can use <strong>spherical=:flat</strong> to perform “Flat Earth” calculations (quicker but less accurate) or <strong>spherical=:ellipsoidal</strong> to perform exact geodesic calculations (slower but more accurate; see PROJ_GEODESIC for method used).</p>
+</section>
+<section id="insideoutside-status" class="level2">
+<h2 class="anchored" data-anchor-id="insideoutside-status">Inside/Outside Status</h2>
+<p>To determine if a point is inside, outside, or exactly on the boundary of a polygon we need to balance the complexity (and execution time) of the algorithm with the type of data and shape of the polygons. For any Cartesian data we use a non-zero winding algorithm, which is quite fast. For geographic data we will also use this algorithm as long as (1) the polygons do not include a geographic pole, and (2) the longitude extent of the polygons is less than 360. If this is the situation we also carefully adjust the test point longitude for any 360 degree offsets, if appropriate. Otherwise, we employ a full spherical ray-shooting method to determine a point’s status.</p>
+</section>
+<section id="examples" class="level2">
+<h2 class="anchored" data-anchor-id="examples">Examples</h2>
+<p>To determine the centroid of the remote GSHHH high-resolution polygon for Australia, as well as the land area in km squared, try:</p>
+<div id="078a53b4" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">gmtspatial</span>(<span class="st">"@GSHHS_h_Australia.txt"</span>, colinfo<span class="op">=:</span>g, area<span class="op">=</span><span class="st">"k"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>BoundingBox: [134.2087857138511, 134.2087857138511, -25.66163647094111, -25.66163647094111, 7.585270245486038e6, 7.585270245486038e6]
+PROJ: +proj=longlat +datum=WGS84 +units=m +no_defs
+</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<pre><code></code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>1×3 GMTdataset{Float64, 2}
+ Row │ centroid_x  centroid_y       area
+─────┼───────────────────────────────────
+   1 │    134.209    -25.6616  7.58527e6</code></pre>
+</div>
+</div>
+<p>To turn all lines in the multisegment file lines.txt into closed polygons, run:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">gmtspatial</span>(<span class="st">"lines.txt"</span>, force_polygons<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>To append the polygon ID of every individual point in cloud.txt that is inside the polygons in the file poly.txt and write that ID as the last column per output row, run:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">gmtspatial</span>(<span class="st">"cloud.txt"</span>, in_polyg<span class="op">=</span>(poly<span class="op">=</span><span class="st">"poly.txt"</span>, individual<span class="op">=</span><span class="cn">true</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>To compute the area of all geographic polygons in the multisegment file polygons.txt, run:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">gmtspatial</span>(<span class="st">"polygons.txt"</span>, area<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Same data, but now orient all polygons to go counter-clockwise and write their areas to the segment headers, run:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">gmtspatial</span>(<span class="st">"polygons.txt"</span>, area<span class="op">=</span>(header<span class="op">=</span><span class="cn">true</span>,), handedness<span class="op">=:</span>p)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>To determine the areas of all the polygon segments in the file janmayen_land_full.txt, add this information to the segment headers, sort the segments from largest to smallest in area but only keep polygons with area larger than 1000 sq. meters, run:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">gmtspatial</span>(<span class="st">"janmayen_land_full.txt"</span>, area<span class="op">=</span>(unit<span class="op">=</span><span class="st">"e"</span>, header<span class="op">=</span><span class="cn">true</span>, polygons<span class="op">=</span><span class="cn">true</span>, </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>                limits<span class="op">=</span>(<span class="fl">1000</span>, <span class="cn">Inf</span>), sort<span class="op">=:</span>d), verbose<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>To determine the intersections between the polygons A.txt and B.txt, run:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">gmtspatial</span>([<span class="st">"A.txt"</span>, <span class="st">"B.txt"</span>], intersections<span class="op">=:</span><span class="cn">e</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>To truncate polygons A.txt against polygon B.txt, resulting in an open line segment, run:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">gmtspatial</span>(<span class="st">"A.txt"</span>, truncate<span class="op">=</span><span class="st">"B.txt"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>If you want to plot a polygon with holes (donut polygon) from a multiple segment file which contains both perimeters and holes, it could be necessary first to reorganize the file so it can be plotted with plot. To do this, run:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">gmtspatial</span>(<span class="st">"file.txt"</span>, polygons<span class="op">=:</span>h)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="see-also" class="level2">
+<h2 class="anchored" data-anchor-id="see-also">See Also</h2>
+<p><a href="../..\documentation/modules/gmtselect.html">gmtselect</a>, <a href="../..\documentation/modules/gmtsimplify.html">gmtsimplify</a>, <a href="../..\documentation/modules/mapproject.html">mapproject</a></p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script>
+
+// JavaScript to handle card hover effects for cards with images
+
+document.addEventListener('DOMContentLoaded', function() {
+
+  // Find all cards
+
+  const cards = document.querySelectorAll('.card');
+
+
+
+  cards.forEach(card => {
+
+    const paragraphs = card.querySelectorAll('p');
+
+
+
+    // If card has only one paragraph (with image)
+
+    if (paragraphs.length === 1) {
+
+      const p = paragraphs[0];
+
+      const img = p.querySelector('img');
+
+
+
+      if (img) {
+
+        // Get all text nodes
+
+        const textContent = Array.from(p.childNodes)
+
+          .filter(node => node.nodeType === Node.TEXT_NODE)
+
+          .map(node => node.textContent.trim())
+
+          .filter(text => text.length > 0)
+
+          .join(' ');
+
+
+
+        if (textContent) {
+
+          // Create overlay div for description
+
+          const overlay = document.createElement('div');
+
+          overlay.className = 'card-description-overlay';
+
+          overlay.textContent = textContent;
+
+          card.appendChild(overlay);
+
+
+
+          // Remove text nodes completely
+
+          Array.from(p.childNodes).forEach(node => {
+
+            if (node.nodeType === Node.TEXT_NODE && node.textContent.trim().length > 0) {
+
+              node.remove();
+
+            }
+
+          });
+
+        }
+
+      }
+
+    }
+
+  });
+
+});
+
+</script>
+
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/GenericMappingTools\.github\.io\/GMTjl_doc\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

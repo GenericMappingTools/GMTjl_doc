@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>grd2kml</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-0615b85506723fa54ab13a613a4e9e4c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../custom.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../GMTjl_logo.png" alt="" class="navbar-logo light-content">
+    <img src="../../GMTjl_logo.png" alt="" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-documentation" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Documentation</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-documentation">    
+        <li>
+    <a class="dropdown-item" href="../../documentation.html">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../../documentation/modules.html">
+ <span class="dropdown-text">Modules</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/general/types.html">
+ <span class="dropdown-text">GMT.jl Types</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/extensions.html">
+ <span class="dropdown-text">GMT.jl Extensions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/gdalfuns.html">
+ <span class="dropdown-text">GDAL Functions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/solids.html">
+ <span class="dropdown-text">Solids</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/imgproc.html">
+ <span class="dropdown-text">Image Processing</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/common_features.html">
+ <span class="dropdown-text">Common Features</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/alphabetical.html">
+ <span class="dropdown-text">Alphabetical List</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../../examples.html"> 
+<span class="menu-text">Examples</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../gallery.html"> 
+<span class="menu-text">Gallery</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-tutorials" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Tutorials</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-tutorials">    
+        <li>
+    <a class="dropdown-item" href="../../tutorials.html">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../../tutorials/Landsat8/histogram_stretch.html">
+ <span class="dropdown-text">Landsat 8/9</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/coast/coastlines.html">
+ <span class="dropdown-text">Coastlines</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/choropleths/choropleths.html">
+ <span class="dropdown-text">US Choropleths</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/longest_sail/longestsail.html">
+ <span class="dropdown-text">Longest Sail</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/vector_shp/vector_shp.html">
+ <span class="dropdown-text">Geospatial vector</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/texture_shading/texture.html">
+ <span class="dropdown-text">Texture Shading</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/mosaics/mosaics.html">
+ <span class="dropdown-text">Mosaics</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/mosaics/mosaics.html">
+ <span class="dropdown-text">Mosaics</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/insets/insets.html">
+ <span class="dropdown-text">Insets</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/remote_datasets/remote_datasets.html">
+ <span class="dropdown-text">Remote Grids</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/blender_shading/blender_rt.html">
+ <span class="dropdown-text">Blender</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/signal/signal.html">
+ <span class="dropdown-text">Signal</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-geophysics" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Geophysics</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-geophysics">    
+        <li>
+    <a class="dropdown-item" href="../../geophysics.html">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../../geophysics/seismicity/global_seis.html">
+ <span class="dropdown-text">Seismicity</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../geophysics/earthtides/01_earthtides.html">
+ <span class="dropdown-text">Earth Tides</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../geophysics/weather/01_weather.html">
+ <span class="dropdown-text">Weather Data</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-help" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Help</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-help">    
+        <li>
+    <a class="dropdown-item" href="https://github.com/quarto-dev/quarto-cli/issues"><i class="bi bi-bug" role="img">
+</i> 
+ <span class="dropdown-text">Report a Bug</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://github.com/quarto-dev/quarto-cli/discussions"><i class="bi bi-chat-right-text" role="img">
+</i> 
+ <span class="dropdown-text">Ask a Question</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#grd2kml" id="toc-grd2kml" class="nav-link active" data-scroll-target="#grd2kml">grd2kml</a>
+  <ul class="collapse">
+  <li><a href="#description" id="toc-description" class="nav-link" data-scroll-target="#description">Description</a></li>
+  <li><a href="#required-arguments" id="toc-required-arguments" class="nav-link" data-scroll-target="#required-arguments">Required Arguments</a></li>
+  <li><a href="#optional-arguments" id="toc-optional-arguments" class="nav-link" data-scroll-target="#optional-arguments">Optional Arguments</a></li>
+  <li><a href="#quadtree-building" id="toc-quadtree-building" class="nav-link" data-scroll-target="#quadtree-building">Quadtree building</a></li>
+  <li><a href="#contour-overlays" id="toc-contour-overlays" class="nav-link" data-scroll-target="#contour-overlays">Contour overlays</a></li>
+  <li><a href="#notes" id="toc-notes" class="nav-link" data-scroll-target="#notes">Notes</a></li>
+  <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
+  <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<section id="grd2kml" class="level1">
+<h1>grd2kml</h1>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">grd2kml</span>(cmd0<span class="op">::</span><span class="dt">String</span>=<span class="st">""</span>, arg1<span class="op">=</span><span class="cn">nothing</span>, kwargs<span class="op">...</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Create KML image quadtree from single grid</p>
+<section id="description" class="level2">
+<h2 class="anchored" data-anchor-id="description">Description</h2>
+<p><strong>grd2kml</strong> reads a 2-D grid and makes a <em>quadtree</em> of PNG or JPG images and KML wrappers for Google Earth using the selected tile size. We downsample the grid depending on the viewing level in the quadtree using a Gaussian filter, but other filters can be selected as well. Optionally, illumination may be added by providing a grid file with intensities in the (-1,+1) range or by giving instructions to derive intensities from the input data grid automatically (see <strong>shading</strong>). Values outside the (-1,+1) intensity range will be clipped. Map colors are specified via a color palette lookup table. Contour overlays are optional. If plain tiles are selected (i.e., no contours specified) then the PNG tiles are written directly from <a href="../..\documentation/modules/grdimage.html">grdimage</a>. Otherwise, we must first make a PostScript plot that is then converted to raster image via [psconvert].</p>
+</section>
+<section id="required-arguments" class="level2">
+<h2 class="anchored" data-anchor-id="required-arguments">Required Arguments</h2>
+<p>The 2-D gridded data set.</p>
+<ul>
+<li><strong>N</strong> or <strong>prefix</strong> : – <em>prefix=name</em><br>
+Sets a unique name prefixed used for the top-level KML filename <em>and</em> the directory where all referenced KML files and raster images will be written <a href="GMT_Quadtree.html">GMT_Quadtree</a>.</li>
+</ul>
+</section>
+<section id="optional-arguments" class="level2">
+<h2 class="anchored" data-anchor-id="optional-arguments">Optional Arguments</h2>
+<ul>
+<li><p><strong>A</strong> or <strong>mode</strong> : – <em>mode=:a|:g|s</em> <strong>|</strong> <em>mode=“a|g|saltitude”</em><br>
+Select one of three altitude modes recognized by Google Earth that determines the altitude (in m) of the tile layer: <strong>a</strong> absolute altitude, <strong>g</strong> altitude relative to sea surface or ground, <strong>s</strong> altitude relative to seafloor or ground. To plot the tiles at a fixed altitude, append an altitude <em>altitude</em> (in m). Use 0 to clamp the features to the chosen reference surface. [By default the tiles are clamped to the sea surface or ground].</p></li>
+<li><p><strong>C</strong> or <strong>color</strong> or <strong>cmap</strong> or <strong>colorap</strong> or <strong>colorscale</strong> : – <em>color=cpt</em><br>
+Where <em>cpt</em> is a <em><a href="../..\documentation/general/types.html#sec-cpt-type">GMTcpt</a></em> type or a cpt file name (for <em>grd_z</em> only). Alternatively, supply the name of a GMT color master dynamic CPT [turbo] to automatically determine a continuous CPT from the grid’s z-range; you may round up/down the z-range by adding <strong>+i</strong> <em>zinc</em>. Yet another option is to specify <em>color=“color1,color2 [,color3 ,…]”</em> or <em>color=((r1,g1,b1),(r2,g2,b2),…)</em> to build a linear continuous CPT from those colors automatically. In this case <em>color1</em> etc can be a (r,g,b) triplet, a color name, or an HTML hexadecimal color (e.g.&nbsp;#aabbcc ) (see [Setting color](../common_features/color.html)). When not explicitly set, but a color map is needed, we will either use the current color map, if available (set by a previous call to <em>makecpt</em>), or the default <em>turbo</em> color map.</p></li>
+<li><p><strong>E</strong> or <strong>url</strong> : – <em>url=URL</em><br>
+Instead of hosting all files on your computer, you may prepend a remote site URL. Then, the top-level <em>prefix</em>.kml file will use this URL to find all other files it references. After building completes you must place the entire <em>prefix</em> directory at the remote location pointed to by the <em>URL</em> [local files only]. With this arrangement you can share the <em>prefix</em>.kml with others (say, via email or for download) and users can open the file in their Google Earth and access the remote files from your server as needed.</p></li>
+<li><p><strong>F</strong> or <strong>filter</strong> : – <em>filter=type</em><br>
+Specifies the filter to use for the downsampling of the grid for more distant viewing. Choose among <strong>b</strong>oxcar, <strong>c</strong>osine arch, <strong>g</strong>aussian, or <strong>m</strong>edian [Gaussian]. The filter width is set automatically depending on the level.</p></li>
+<li><p><strong>H</strong> or <strong>subpixel</strong> : – <em>subpixel=scale</em><br>
+Improve the quality of rasterization by passing the sub-pixel smoothing scale to psconvert (same as <strong>H</strong> option in [psconvert]) [no sub-pixel smoothing]. Ignored when |-W| is not used.</p></li>
+<li><p><strong>I</strong> or <strong>shade</strong> or <strong>shading</strong> or <strong>intensity</strong> : – <em>shade=grid</em> <strong>|</strong> <em>shade=azim</em> <strong>|</strong> <em>shade=(azimuth=az, norm=params, auto=true)</em><br>
+Gives the name of a grid with intensities in the (-1,+1) range, or a constant intensity to apply everywhere (affects the ambient light). Alternatively, derive an intensity grid from the input data grid <em>grd_z</em> via a call to <a href="../..\documentation/modules/grdgradient.html">grdgradient</a>; use <code>shade=az</code> or <code>shade=(azimuth=az, norm=params)</code> to specify azimuth and intensity arguments for that module or just give <code>shade=true</code> to select the default arguments <em>(azim=-45,nom=:t1)</em>. If you want a more specific intensity scenario then run grdgradient separately first.</p></li>
+<li><p><strong>L</strong> or <strong>tilesize</strong> : – <em>tilesize=size</em><br>
+Sets the fixed size of the image building blocks. Must be an integer that is radix 2. Typical values are 256 or 512 [256]. <strong>Note</strong>: For global grids (here meaning 360-degree longitude range), we will select a <em>tilesize</em> of 360 if <strong>tilesize</strong> is not specified.</p></li>
+<li><p><strong>S</strong> or <strong>extralayers</strong> or <strong>extra_layers</strong> : – <em>extralayers=true</em> <strong>|</strong> <em>extralayers=extra</em><br>
+Add extra layers beyond that necessary to capture the full resolution of the data [none]. This will let GMT interpolate your grid and make more tiles, versus letting Google Earth interpolate the last resolution raster images.</p></li>
+<li><p><strong>T</strong> or <strong>title</strong> : –<em>title=XXX</em><br>
+Sets the title of the top-level document (i.e., its description).</p></li>
+<li><p><strong>V</strong> or <em>verbose</em> : – <em>verbose=true</em> <strong>|</strong> <em>verbose=level</em><br>
+Select verbosity level. More at [verbose](../common_opts/opt_V.html)</p></li>
+<li><p><strong>W</strong> or <strong>contours</strong> : – <em>contours=“cfile|pen[+sscale/limit]”</em><br>
+Supply a file with records each holding a contour value and a contour pen. We then overlay the selected contour lines on top of the image [no contours]. Consequently, <strong>contours</strong> triggers the tile creation via PostScript and thus is slower. If <em>cfile</em> is not a valid file we assume you instead gave a <em>pen</em> and want to draw all the contours implied by the <em>cpt</em> specified in <strong>cmap</strong>. The contours are overlain via calls to <a href="../..\documentation/modules/grdcontour.html">grdcontour</a>. <strong>Note</strong>: The contour pen width(s) refer to the highest tile level and are reduced by a factor of <em>scale</em> [sqrt(2)] for each lower level. Contours with scaled pen widths &lt; <em>limit</em> [0.1] points are skipped (except for pen widths that exactly equal 0 or “faint”). Use <strong>+s</strong> to change these values.</p></li>
+<li><p><strong>f</strong> or <strong>colinfo</strong> : – <em>colinfo=??</em><br>
+Specify the data types of input and/or output columns (time or geographical data). <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#f-full">More at</a></p></li>
+<li><p><strong>n</strong> or <strong>interp</strong> or <strong>interpol</strong> : – <em>interp=params</em><br>
+Select interpolation mode for grids. More at [interp](../common_opts/opt_n.html)</p></li>
+</ul>
+</section>
+<section id="quadtree-building" class="level2">
+<h2 class="anchored" data-anchor-id="quadtree-building">Quadtree building</h2>
+<p>We extend the input grid vi <a href="../..\documentation/modules/grdcut.html">grdcut</a> to obtain a square dimension that can be repeatedly divided by 2 until we arrive at tiles with the original grid increments. For global grids this mean we extend the grid to a 360 x 360 Cartesian region and an initial grid increment of one degree. This is the first global tile. As the quartering of tiles and halving of grid increment continue we may not end exactly at the original grid spacing but at the largest increment less than or equal to the original increment. For non-global grids, e.g., smaller (local or regional) grids, we extend the domain to a radix-2 multiple of the <em>tilesize</em> times the grid increment. This initial tile is then quartered and the grid increment halved until we reach the original grid increment. Tiles that have all NaNs are not produced. THe tiles are inherently pixel-registered. Thus, if a global grid has gridline-registration then we are down-sampling the extended grid onto a pixel-registered coarser grid. Because these nodes do not coincide with the original nodes we widen the filter width by a factor of sqrt(2). We detect if NaNs are present in any tile and if so produce a transparent PNG tile; otherwise we make an opaque JPG tile.</p>
+</section>
+<section id="contour-overlays" class="level2">
+<h2 class="anchored" data-anchor-id="contour-overlays">Contour overlays</h2>
+<p>Because each tile is a fixed size image (e.g., 512x512 pixels) but the amount of data represented changes by factors of 4 for each new level, we cannot use a constant thickness contour pen for all levels. Thus, the pen you supply must be considered the final pen applied to the highest resolution map overlays. Furthermore, because the <em>dpi</em> here is very small compared to regular GMT plots, it is important to improve the appearance of the contours by using sub-pixel smoothing (<strong>subpixel</strong>). Both generating PostScript tiles and using sub-pixel smoothing adds considerable processing time over plain tiles.</p>
+</section>
+<section id="notes" class="level2">
+<h2 class="anchored" data-anchor-id="notes">Notes</h2>
+<p>The intensity grid can be created from the data grid using <a href="../..\documentation/modules/grdgradient.html">grdgradient</a> and, optionally, modified by <a href="../..\documentation/modules/grdmath.html">grdmath</a> or <a href="../..\documentation/modules/grdhisteq.html">grdhisteq</a>. Custom intensity grids built with several different illumination angles can be combined with <a href="../..\documentation/modules/grdmath.html">grdmath</a>. For a single illumination angle the automatic illumination can be used instead.</p>
+</section>
+<section id="examples" class="level2">
+<h2 class="anchored" data-anchor-id="examples">Examples</h2>
+<p>To test a quadtree image representation of the coarse topography grid earth_relief_06m, using the optimally determined tile size, auto color, and supplying a suitable title, try::</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">grd2kml</span>(<span class="st">"@earth_relief_06m"</span>, prefix<span class="op">=</span><span class="st">"Earth6m"</span>, title<span class="op">=</span><span class="st">"Earth Relief 6x6 arc minutes"</span>, cmap<span class="op">=:</span>earth)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>To make a quadtree image representation of the large topography grid file ellice_basin.nc, supplying automatic shading based on the topography, and using 512x512 tiles, supplying a suitable title, and using color masking for unmapped area, try::</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">grd2kml</span>(<span class="st">"ellice_basin.nc"</span>, shade<span class="op">=</span><span class="st">"+d"</span>, prefix<span class="op">=</span><span class="st">"ellice"</span>, <span class="op">-</span>L512, title<span class="op">=</span><span class="st">"Ellice Basin Bathymetry"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="see-also" class="level2">
+<h2 class="anchored" data-anchor-id="see-also">See Also</h2>
+<p><a href="../..\documentation/modules/gmt2kml.html">gmt2kml</a>, <a href="../..\documentation/modules/grdgradient.html">grdgradient</a>, <a href="../..\documentation/modules/grdhisteq.html">grdhisteq</a>, <a href="../..\documentation/modules/grdimage.html">grdimage</a>, <a href="../..\documentation/modules/grdmath.html">grdmath</a>, [kml2gmt], [psconvert]</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script>
+
+// JavaScript to handle card hover effects for cards with images
+
+document.addEventListener('DOMContentLoaded', function() {
+
+  // Find all cards
+
+  const cards = document.querySelectorAll('.card');
+
+
+
+  cards.forEach(card => {
+
+    const paragraphs = card.querySelectorAll('p');
+
+
+
+    // If card has only one paragraph (with image)
+
+    if (paragraphs.length === 1) {
+
+      const p = paragraphs[0];
+
+      const img = p.querySelector('img');
+
+
+
+      if (img) {
+
+        // Get all text nodes
+
+        const textContent = Array.from(p.childNodes)
+
+          .filter(node => node.nodeType === Node.TEXT_NODE)
+
+          .map(node => node.textContent.trim())
+
+          .filter(text => text.length > 0)
+
+          .join(' ');
+
+
+
+        if (textContent) {
+
+          // Create overlay div for description
+
+          const overlay = document.createElement('div');
+
+          overlay.className = 'card-description-overlay';
+
+          overlay.textContent = textContent;
+
+          card.appendChild(overlay);
+
+
+
+          // Remove text nodes completely
+
+          Array.from(p.childNodes).forEach(node => {
+
+            if (node.nodeType === Node.TEXT_NODE && node.textContent.trim().length > 0) {
+
+              node.remove();
+
+            }
+
+          });
+
+        }
+
+      }
+
+    }
+
+  });
+
+});
+
+</script>
+
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/GenericMappingTools\.github\.io\/GMTjl_doc\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

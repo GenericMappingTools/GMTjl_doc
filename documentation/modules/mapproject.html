@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>mapproject</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-0615b85506723fa54ab13a613a4e9e4c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../custom.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../GMTjl_logo.png" alt="" class="navbar-logo light-content">
+    <img src="../../GMTjl_logo.png" alt="" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-documentation" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Documentation</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-documentation">    
+        <li>
+    <a class="dropdown-item" href="../../documentation.html">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../../documentation/modules.html">
+ <span class="dropdown-text">Modules</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/general/types.html">
+ <span class="dropdown-text">GMT.jl Types</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/extensions.html">
+ <span class="dropdown-text">GMT.jl Extensions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/gdalfuns.html">
+ <span class="dropdown-text">GDAL Functions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/solids.html">
+ <span class="dropdown-text">Solids</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/imgproc.html">
+ <span class="dropdown-text">Image Processing</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/common_features.html">
+ <span class="dropdown-text">Common Features</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/alphabetical.html">
+ <span class="dropdown-text">Alphabetical List</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../../examples.html"> 
+<span class="menu-text">Examples</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../gallery.html"> 
+<span class="menu-text">Gallery</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-tutorials" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Tutorials</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-tutorials">    
+        <li>
+    <a class="dropdown-item" href="../../tutorials.html">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../../tutorials/Landsat8/histogram_stretch.html">
+ <span class="dropdown-text">Landsat 8/9</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/coast/coastlines.html">
+ <span class="dropdown-text">Coastlines</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/choropleths/choropleths.html">
+ <span class="dropdown-text">US Choropleths</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/longest_sail/longestsail.html">
+ <span class="dropdown-text">Longest Sail</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/vector_shp/vector_shp.html">
+ <span class="dropdown-text">Geospatial vector</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/texture_shading/texture.html">
+ <span class="dropdown-text">Texture Shading</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/mosaics/mosaics.html">
+ <span class="dropdown-text">Mosaics</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/mosaics/mosaics.html">
+ <span class="dropdown-text">Mosaics</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/insets/insets.html">
+ <span class="dropdown-text">Insets</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/remote_datasets/remote_datasets.html">
+ <span class="dropdown-text">Remote Grids</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/blender_shading/blender_rt.html">
+ <span class="dropdown-text">Blender</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/signal/signal.html">
+ <span class="dropdown-text">Signal</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-geophysics" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Geophysics</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-geophysics">    
+        <li>
+    <a class="dropdown-item" href="../../geophysics.html">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../../geophysics/seismicity/global_seis.html">
+ <span class="dropdown-text">Seismicity</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../geophysics/earthtides/01_earthtides.html">
+ <span class="dropdown-text">Earth Tides</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../geophysics/weather/01_weather.html">
+ <span class="dropdown-text">Weather Data</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-help" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Help</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-help">    
+        <li>
+    <a class="dropdown-item" href="https://github.com/quarto-dev/quarto-cli/issues"><i class="bi bi-bug" role="img">
+</i> 
+ <span class="dropdown-text">Report a Bug</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://github.com/quarto-dev/quarto-cli/discussions"><i class="bi bi-chat-right-text" role="img">
+</i> 
+ <span class="dropdown-text">Ask a Question</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#mapproject" id="toc-mapproject" class="nav-link active" data-scroll-target="#mapproject">mapproject</a>
+  <ul class="collapse">
+  <li><a href="#synopsis" id="toc-synopsis" class="nav-link" data-scroll-target="#synopsis">Synopsis</a></li>
+  <li><a href="#description" id="toc-description" class="nav-link" data-scroll-target="#description">Description</a></li>
+  <li><a href="#required-arguments" id="toc-required-arguments" class="nav-link" data-scroll-target="#required-arguments">Required Arguments</a></li>
+  <li><a href="#optional-arguments" id="toc-optional-arguments" class="nav-link" data-scroll-target="#optional-arguments">Optional Arguments</a></li>
+  <li><a href="#units" id="toc-units" class="nav-link" data-scroll-target="#units">Units</a></li>
+  <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
+  <li><a href="#important-notes" id="toc-important-notes" class="nav-link" data-scroll-target="#important-notes">Important Notes</a></li>
+  <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<section id="mapproject" class="level1">
+<h1>mapproject</h1>
+<p>Forward and inverse map transformations, datum conversions and geodesy</p>
+<section id="synopsis" class="level2">
+<h2 class="anchored" data-anchor-id="synopsis">Synopsis</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">mapproject</span>(cmd0<span class="op">::</span><span class="dt">String</span>=<span class="st">""</span>, arg1<span class="op">=</span><span class="cn">nothing</span>; kwargs<span class="op">...</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="description" class="level2">
+<h2 class="anchored" data-anchor-id="description">Description</h2>
+<p><strong>mapproject</strong> reads (lon, lat) positions from tables and computes (x, y) coordinates using the specified map projection and scales. Optionally, it can read (x, y) positions and compute (lon, lat) values doing the inverse transformation.</p>
+<p>This can be used to transform linear (x, y) points obtained by digitizing a map of known projection to geographical coordinates. May also calculate distances along track, to a fixed point, or closest approach to a line.</p>
+<p>Alternatively, can be used to perform various datum conversions. Additional data fields are permitted after the first 2 columns which must have (longitude,latitude) or (x, y). See option <code>colinfo</code> on how to read (latitude,longitude) files.</p>
+<p>Finally, <strong>mapproject</strong> can compute a variety of auxiliary output data from input coordinates that make up a track. Items like azimuth, distances, distances to other lines, and travel-times along lines can all be computed by using one or more of the options <code>azim</code>, <code>dist</code>, <code>dist2line</code>, and <code>travel_time</code>.</p>
+<p><strong>Note:</strong> Depending on the Optional Arguments listed below, most times <code>proj</code> or <code>region</code> are not actually required.</p>
+</section>
+<section id="required-arguments" class="level2">
+<h2 class="anchored" data-anchor-id="required-arguments">Required Arguments</h2>
+<ul>
+<li><p><strong>table</strong> (or provide data via first positional argument)</p>
+<p>One table file name or a <a href="../..\documentation/general/types.html#sec-dataset-type">GMTdataset</a> or a Matrix object holding (lon, lat) or (x, y) data.</p></li>
+</ul>
+</section>
+<section id="optional-arguments" class="level2">
+<h2 class="anchored" data-anchor-id="optional-arguments">Optional Arguments</h2>
+<ul>
+<li><p><strong>A</strong> or <strong>azim</strong> or <strong>azimuth</strong> : – <em>azim=:b</em> <strong>|</strong> <em>azim=:f</em> <strong>|</strong> <em>azim=:o</em> <strong>|</strong> <em>azim=(fixed_pt=(lon, lat),)</em> <strong>|</strong> <em>azim=(var_pt=true,)</em></p>
+<p>Calculate azimuth along track or to the optional fixed point. Choose among several directives:</p>
+<ul>
+<li><code>:b</code> - Calculate the back-azimuth from data points to the fixed point</li>
+<li><code>:f</code> - Calculate the forward azimuth from the fixed point to each data point<br>
+</li>
+<li><code>:o</code> - Get orientations (-90/90) rather than azimuths (0/360)</li>
+<li><code>azim=(back=true | forward=true | orientation=true, fixed_pt=(lon, lat))</code> - Specify fixed point</li>
+<li><code>azim=(back=true | forward=true | orientation=true, var_pt=true)</code> - Obtain variable 2nd point via columns 3-4 in input</li>
+</ul></li>
+</ul>
+<blockquote class="blockquote">
+<p>Use <code>distcalc=:e</code> to compute azimuths on the ellipsoid. If no fixed point is given, computes azimuth from the previous point. <strong>Note:</strong> If <code>region</code> and <code>proj</code> are given, coordinates are projected first and then Cartesian angles are computed.</p>
+</blockquote>
+<ul>
+<li><p><strong>C</strong> or <strong>center</strong> : – <em>center=true</em> <strong>|</strong> <em>center=(dx, dy)</em> <strong>|</strong> <em>center=((dx, dy), merc=true)</em></p>
+<p>Set center of projected coordinates to be at map projection center [Default is lower left corner]. Optionally, add offsets in the projected units to be added (or subtracted when <code>inverse</code> is set):</p>
+<ul>
+<li><code>center=true</code> - Center at map projection center</li>
+<li><code>center=(dx, dy)</code> - Add false easting/northing offsets</li>
+<li><code>center=((dx, dy), merc=true)</code> - For Mercator only, set origin at standard parallel</li>
+</ul>
+<p>The offset unit is the plot distance unit unless <code>unit</code> is used (in which case offsets are in meters).</p></li>
+<li><p><strong>D</strong> or <strong>lengthunit</strong> : – <em>lengthunit=:c</em> <strong>|</strong> <em>lengthunit=:i</em> <strong>|</strong> <em>lengthunit=:p</em></p>
+<p>Temporarily override PROJ_LENGTH_UNIT:</p>
+<ul>
+<li><code>:c</code> - Use centimeters</li>
+<li><code>:i</code> - Use inches<br>
+</li>
+<li><code>:p</code> - Use points</li>
+</ul>
+<p>Cannot be used with <code>one2one</code>.</p></li>
+<li><p><strong>E</strong> or <strong>ecef</strong> or <strong>geod2ecef</strong> : – <em>ecef=true</em> <strong>|</strong> <em>ecef=datum</em></p>
+<p>Convert from geodetic (lon, lat, height) to Earth Centered Earth Fixed (ECEF) (x, y, z) coordinates. Add <code>inverse=true</code> for the reverse. Append datum ID or ellipsoid parameters.</p></li>
+<li><p><strong>F</strong> or <strong>one2one</strong> : – <em>one2one=true</em> <strong>|</strong> <em>one2one=:e</em> <strong>|</strong> <em>one2one=:f</em> <strong>|</strong> <em>one2one=:k</em> <strong>|</strong> <em>one2one=:M</em> <strong>|</strong> <em>one2one=:n</em> <strong>|</strong> <em>one2one=:u</em> <strong>|</strong> <em>one2one=:c</em> <strong>|</strong> <em>one2one=:i</em> <strong>|</strong> <em>one2one=:p</em></p>
+<p>Force 1:1 scaling (output data in actual projected meters). Specify desired unit:</p>
+<ul>
+<li><code>:e</code> - meters [Default]</li>
+<li><code>:f</code> - feet</li>
+<li><code>:k</code> - kilometers</li>
+<li><code>:M</code> - statute miles</li>
+<li><code>:n</code> - nautical miles</li>
+<li><code>:u</code> - US survey feet</li>
+<li><code>:c</code>, <code>:i</code>, <code>:p</code> - centimeters, inches, points</li>
+</ul></li>
+<li><p><strong>G</strong> or <strong>track_distances</strong> : – <em>track_distances=true</em> <strong>|</strong> <em>track_distances=(fixed_pt=(lon,lat), accumulated=true, incremental=true, unit=“??”, var_pt=true)</em></p>
+<p>Calculate distances along track or to optional fixed point:</p>
+<ul>
+<li><code>track_distances=true</code> - Accumulated distances along track</li>
+<li><code>track_distances=(lon, lat)</code> - Incremental distances to fixed point</li>
+<li>Modifiers:
+<ul>
+<li><code>fixed_pt=(lon, lat)</code> - Incremental distances to fixed point</li>
+<li><code>accumulated=true</code> - Accumulated distances</li>
+<li><code>incr=true</code> - Incremental distances<br>
+</li>
+<li><code>unit=:k</code> - Distance unit (see Units)</li>
+<li><code>unit=:c</code> - Cartesian distance using input coordinates</li>
+<li><code>unit=:C</code> - Cartesian distance using projected coordinates (requires <code>region</code> and <code>proj</code>)</li>
+<li><code>var=true</code> - Variable 2nd point via columns 3-4</li>
+</ul></li>
+</ul></li>
+<li><p><strong>I</strong> or <strong>inverse</strong> : – <em>inverse=true</em></p>
+<p>Do inverse transformation: get (longitude, latitude) from (x, y) data.</p></li>
+<li><p><strong>J</strong> or <strong>proj</strong> or <strong>projection</strong> : – <em>proj=<parameters></parameters></em><br>
+Select map projection. More at [proj](../common_opts/opt_J.html)</p></li>
+<li><p><strong>L</strong> or <strong>dist2line</strong> : – <em>dist2line=table”</em> <strong>|</strong> <em>dist2line=(“table.txt”, unit=“??”, cartesian=true, project=true, fractional_pt=true)</em></p>
+<p>Determine shortest distance from input data points to line(s) in the multisegment file. Appends distance and nearest point coordinates:</p>
+<ul>
+<li><code>dist2line=Matrix|Datset|"table.txt"</code> - Basic usage</li>
+<li>Modifiers:
+<ul>
+<li><code>fractional_pt=true</code> - Report segment id and fractional point number instead of lon/lat</li>
+<li><code>unit=:k</code> - Distance unit (see Units)</li>
+<li><code>cartesian=true</code> - Cartesian distances</li>
+<li><code>project=true</code> - Cartesian distances using projected coordinates (requires <code>region</code> and <code>proj</code>)</li>
+</ul></li>
+</ul></li>
+</ul>
+<blockquote class="blockquote">
+<p><strong>Note:</strong> Calculation mode for geographic data is spherical; <code>distcalc=:e</code> cannot be used with <code>dist2line</code>.</p>
+</blockquote>
+<ul>
+<li><p><strong>N</strong> or <strong>geod2aux</strong> : – <em>geod2aux=:a</em> <strong>|</strong> <em>geod2aux=:c</em> <strong>|</strong> <em>geod2aux=:g</em> <strong>|</strong> <em>geod2aux=:m</em></p>
+<p>Convert from geodetic latitudes to auxiliary latitudes (longitudes unaffected):</p>
+<ul>
+<li><code>:a</code> - Authalic latitudes</li>
+<li><code>:c</code> - Conformal latitudes</li>
+<li><code>:g</code> - Geocentric latitudes [Default]</li>
+<li><code>:m</code> - Meridional latitudes</li>
+</ul>
+<p>Use <code>inverse=true</code> to convert from auxiliary to geodetic latitudes.</p></li>
+<li><p><strong>Q</strong> or <strong>list</strong> : – <em>list=true</em> <strong>|</strong> <em>list=:d</em> <strong>|</strong> <em>list=:e</em></p>
+<p>List all projection parameters:</p>
+<ul>
+<li><code>list=:d</code> - List only datums</li>
+<li><code>list=:e</code> - List only ellipsoids</li>
+</ul></li>
+<li><p><strong>R</strong> or <strong>region</strong> or <strong>limits</strong> : – <em>limits=(xmin, xmax, ymin, ymax)</em> <strong>|</strong> <em>limits=(BB=(xmin, xmax, ymin, ymax),)</em> <strong>|</strong> <em>limits=(LLUR=(xmin, xmax, ymin, ymax),units=“unit”)</em> <strong>|</strong> …more<br>
+Specify the region of interest. More at [limits](../common_opts/opt_R.html). For perspective view <strong>view</strong>, optionally add <em>zmin,zmax</em>. This option may be used to indicate the range used for the 3-D axes. You may ask for a larger w/e/s/n region to have more room between the image and the axes.</p></li>
+<li><p><strong>S</strong> or <strong>suppress</strong> : – <em>suppress=true</em></p>
+<p>Suppress points that fall outside the region.</p></li>
+<li><p><strong>T</strong> or <strong>datum</strong> : – <em>datum=“from/to”</em> <strong>|</strong> <em>datum=(“from”, “to”, height=true)</em></p>
+<p>Coordinate conversions between datums using standard Molodensky transformation:</p>
+<ul>
+<li><code>datum="from/to"</code> - Convert between datums</li>
+<li><code>datum=("from", "to", height=true)</code> - Use when 3rd input column has height above ellipsoid</li>
+</ul>
+<p>Specify datums using datum ID or ellipsoid parameters. May be used with <code>region</code> and <code>proj</code> to change datum before projection (add <code>inverse=true</code> for datum conversion after inverse projection).</p></li>
+<li><p><strong>V</strong> or <em>verbose</em> : – <em>verbose=true</em> <strong>|</strong> <em>verbose=level</em><br>
+Select verbosity level. More at [verbose](../common_opts/opt_V.html)</p></li>
+<li><p><strong>W</strong> or <strong>mapsize</strong> or <strong>map_size</strong> : – <em>mapsize=true</em> <strong>|</strong> <em>mapsize=:b</em> <strong>|</strong> <em>mapsize=:e</em> <strong>|</strong> <em>mapsize=:g</em> <strong>|</strong> <em>mapsize=:h</em> <strong>|</strong> <em>mapsize=:w</em> <strong>|</strong> <em>mapsize=:r <strong>|</strong> </em>mapsize=“r+n200*</p>
+<p>Report plot dimensions or map regions. No input files are read:</p>
+<ul>
+<li><code>mapsize=true</code> - Report map width and height</li>
+<li><code>mapsize=:b</code> - Bounding box in lon/lat</li>
+<li><code>mapsize=:B</code> - Same, in region string format<br>
+</li>
+<li><code>mapsize=:e</code> - Rectangular area encompassing non-rectangular domain</li>
+<li><code>mapsize=:E</code> - Same, in region string format</li>
+<li><code>mapsize=(:g, lon, lat)</code> - Plot coordinates of map point</li>
+<li><code>mapsize=:h</code> - Only height</li>
+<li><code>mapsize=:w</code> - Only width</li>
+<li><code>mapsize=(:j, code)</code> - Map coords of reference point (e.g., <code>:TL</code>)</li>
+<li><code>mapsize=(:n, (rx, ry))</code> - Normalized reference point (0-1 range)</li>
+<li><code>mapsize=:o</code> - Diagonal corner coords for oblique domain</li>
+<li><code>mapsize=:O</code> - Same, in region string format</li>
+<li><code>mapsize=:m</code> - Rectangular region in projected plot coords</li>
+<li><code>mapsize=:M</code> - Same, in region string format</li>
+<li><code>mapsize=:r</code> - Rectangular domain covering oblique area</li>
+<li><code>mapsize=:R</code> - Same, in region string format</li>
+<li><code>mapsize=(:x, (px, py))</code> - Map coords of specific plot reference point</li>
+</ul></li>
+<li><p><strong>Z</strong> or <strong>travel_time</strong> : – <em>travel_time=speed</em> <strong>|</strong> <em>travel_time=(speed=speed, accum=true, incr=true, iso=true, epoch=t0)</em></p>
+<p>Calculate travel times along track as specified with <code>dist</code>:</p>
+<ul>
+<li><code>travel_time=12</code> - Constant speed (in distance units per TIME_UNIT)</li>
+<li>Modifiers:
+<ul>
+<li><code>incr=true</code> - Incremental travel times</li>
+<li><code>accum=true</code> - Accumulated travel times</li>
+<li><code>iso=true</code> - Format accumulated time per ISO 8601 convention</li>
+<li><code>epoch=t0</code> - Report absolute times (ETA) for successive points</li>
+</ul></li>
+</ul>
+<p>If speed is omitted, expects to read variable speed from column 3. Requires <code>dist</code> option with <code>incr=true</code> modifier when using <code>epoch</code>.</p></li>
+<li><p><strong>bi</strong> or <strong>binary_in</strong> : – <em>binary_in=??</em><br>
+Select native binary format for primary table input. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#bi-full">More at</a></p></li>
+<li><p><strong>bo</strong> or <strong>binary_out</strong> : – <em>binary_out=??</em><br>
+Select native binary format for table output. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#bo-full">More at</a></p></li>
+<li><p><strong>f</strong> or <strong>colinfo</strong> : – <em>colinfo=??</em><br>
+Specify the data types of input and/or output columns (time or geographical data). <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#f-full">More at</a></p></li>
+<li><p><strong>di</strong> or <strong>nodata_in</strong> : – <em>nodata_in=??</em><br>
+Substitute specific values with NaN. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#di-full">More at</a></p></li>
+<li><p><strong>e</strong> or <strong>pattern</strong> : – <em>pattern=??</em><br>
+Only accept ASCII data records that contain the specified pattern. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#e-full">More at</a></p></li>
+<li><p><strong>g</strong> or <strong>gap</strong> : – <em>gap=??</em><br>
+Examine the spacing between consecutive data points in order to impose breaks in the line. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#g-full">More at</a></p></li>
+<li><p><strong>h</strong> or <strong>header</strong> : – <em>header=??</em><br>
+Specify that input and/or output file(s) have n header records. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#h-full">More at</a></p></li>
+<li><p><strong>j</strong> or <strong>metric</strong> or <strong>spherical_dist</strong> or <strong>spherical</strong> : – <em>metric=greatcirc</em> or <em>spherical=:flat</em> or <em>spherical=:ellipsoidal</em><br>
+Determine how spherical distances are calculated in modules that support this [Default is <code>spherical=:greatcirc</code>]. GMT has different ways to compute distances on planetary bodies:</p>
+<ul>
+<li><p>spherical=:greatcirc to perform great circle distance calculations, with parameters such as distance increments or radii compared against calculated great circle distances [Default is <code>spherical=:greatcirc</code>].</p></li>
+<li><p>spherical=:flat to select Flat Earth mode, which gives a more approximate but faster result.</p></li>
+<li><p>spherical=:ellipsoidal to select ellipsoidal (or geodesic) mode for the highest precision and slowest calculation time.</p></li>
+</ul>
+<p>Note: All spherical distance calculations depend on the current ellipsoid (<code>PROJ_ELLIPSOID</code>), the definition of the mean radius (<code>PROJ_MEAN_RADIUS</code>), and the specification of latitude type (<code>PROJ_AUX_LATITUDE</code>). Geodesic distance calculations is also controlled by method (<code>PROJ_GEODESIC</code>).</p></li>
+<li><p><strong>i</strong> or <strong>incol</strong> or <strong>incols</strong> : – <em>incol=col_num</em> <strong>|</strong> <em>incol=“opts”</em><br>
+Select input columns and transformations (0 is first column, t is trailing text, append word to read one word only). More at <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#icols-full">incol</a></p></li>
+<li><p><strong>o</strong> or <strong>outcol</strong> : – <em>outcol=??</em><br>
+Select specific data columns for primary output, in arbitrary order. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#ocols-full">More at</a></p></li>
+<li><p><strong>p</strong> or <strong>view</strong> or <strong>perspective</strong> : – <em>view=(azim, elev)</em><br>
+Default is viewpoint from an azimuth of 200 and elevation of 30 degrees.<br>
+Specify the viewpoint in terms of azimuth and elevation. The azimuth is the horizontal rotation about the z-axis as measured in degrees from the positive y-axis. That is, from North. This option is not yet fully expanded. Current alternatives are:</p>
+<ul>
+<li><em>view=??</em><br>
+A full GMT compact string with the full set of options.</li>
+<li><em>view=(azim,elev)</em><br>
+A two elements tuple with azimuth and elevation</li>
+<li><em>view=true</em><br>
+To propagate the viewpoint used in a previous module (makes sense only in <code>bar3!</code>) More at [perspective](../common_opts/opt_p.html)</li>
+</ul></li>
+<li><p><strong>q</strong> or <strong>inrows</strong> : – <em>inrows=??</em><br>
+Select specific data rows to be read and/or written. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#the-q-option">More at</a></p></li>
+<li><p><strong>s</strong> or <strong>skiprows</strong> or <strong>skip_NaN</strong> : – <em>skip_NaN=true</em> <strong>|</strong> <em>skip_NaN=“&lt;cols[+a][+r]&gt;”</em><br>
+Suppress output of data records whose z-value(s) equal NaN. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#the-s-option">More at</a></p></li>
+<li><p><strong>yx</strong> : – <em>yx=true</em><br>
+Swap 1st and 2nd column on input and/or output. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#colon-full">More at</a></p></li>
+</ul>
+</section>
+<section id="units" class="level2">
+<h2 class="anchored" data-anchor-id="units">Units</h2>
+<p>For map distance unit, append unit: - <code>d</code> - arc degree - <code>m</code> - arc minute - <code>s</code> - arc second - <code>e</code> - meter [Default unless stated otherwise] - <code>f</code> - foot - <code>k</code> - kilometer - <code>M</code> - statute mile - <code>n</code> - nautical mile - <code>u</code> - US survey foot</p>
+<p>By default, distances use spherical approximation with great circles (<code>distcalc=:g</code>) using the authalic radius. Use <code>distcalc=:f</code> for “Flat Earth” calculations (quicker but less accurate) or <code>distcalc=:e</code> for exact geodesic calculations (slower but more accurate).</p>
+</section>
+<section id="examples" class="level2">
+<h2 class="anchored" data-anchor-id="examples">Examples</h2>
+<p><strong>Transform remote file with (latitude, longitude) to (x, y) in cm on Mercator grid:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">mapproject</span>(<span class="st">"@waypoints.txt"</span>, region<span class="op">=</span>(<span class="op">-</span><span class="fl">180</span>,<span class="fl">180</span>,<span class="op">-</span><span class="fl">72</span>,<span class="fl">72</span>), proj<span class="op">=</span><span class="st">"M0.5c"</span>, yx<span class="op">=:</span>i)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Convert UTM coordinates to geographic locations:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">mapproject</span>(<span class="st">"utm.txt"</span>, proj<span class="op">=</span>(utm<span class="op">=</span><span class="fl">11</span>,), center<span class="op">=</span><span class="cn">true</span>, inverse<span class="op">=</span><span class="cn">true</span>, unit<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Transform binary files with (latitude, longitude) to (x, y) on Transverse Mercator:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">mapproject</span>(<span class="st">"tracks.bin"</span>, region<span class="op">=</span>(<span class="op">-</span><span class="fl">80</span>,<span class="op">-</span><span class="fl">70</span>,<span class="fl">20</span>,<span class="fl">40</span>), proj<span class="op">=</span>(tmerc<span class="op">=-</span><span class="fl">75</span>, scale<span class="op">=</span><span class="st">"1:500000"</span>),</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>               swap_xy<span class="op">=:</span>i, suppress<span class="op">=</span><span class="cn">true</span>, lengthunit<span class="op">=:</span>i, binary_in<span class="op">=</span><span class="fl">2</span>, binary_out<span class="op">=</span><span class="fl">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Convert NAD27 to WGS84 datum:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">mapproject</span>(<span class="st">"old.txt"</span>, datum<span class="op">=</span><span class="st">"131"</span>)  <span class="co"># From NAD27 CONUS (datum 131) to WGS84</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Compute closest distance between points and line segments:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">mapproject</span>(<span class="st">"quakes.txt"</span>, line_dist<span class="op">=</span>(<span class="st">"coastline.txt"</span>, unit<span class="op">=:</span>k))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Compute accumulated distance along Cartesian track:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">mapproject</span>(<span class="st">"pos.txt"</span>, dist<span class="op">=</span>(unit<span class="op">=:</span>c,))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Compute distances and travel times with fixed speed:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">mapproject</span>(<span class="st">"track.txt"</span>, dist<span class="op">=</span>(unit<span class="op">=:</span>n, accum<span class="op">=</span><span class="cn">true</span>, incr<span class="op">=</span><span class="cn">true</span>),</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>               travel_time<span class="op">=</span>(<span class="fl">12</span>, accum<span class="op">=</span><span class="cn">true</span>), par<span class="op">=</span>(TIME_UNIT<span class="op">=:</span>h,))</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Speed is 12 nm/hour, times reported in hours</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Get geographic coordinates of map mid-point:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">mapproject</span>(region<span class="op">=</span>(<span class="op">-</span><span class="fl">80</span>,<span class="op">-</span><span class="fl">70</span>,<span class="fl">20</span>,<span class="fl">40</span>), proj<span class="op">=</span>(tmerc<span class="op">=-</span><span class="fl">75</span>, scale<span class="op">=</span><span class="st">"1:500000"</span>), W<span class="op">=</span>(<span class="op">:</span>j, <span class="op">:</span>CM))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Determine rectangular region encompassing oblique region:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">mapproject</span>(region<span class="op">=</span><span class="st">"270/20/305/25+r"</span>, proj<span class="op">=</span>(obl_merc<span class="op">=</span>(<span class="fl">280</span>,<span class="fl">25.5</span>,<span class="fl">22</span>,<span class="fl">69</span>), width<span class="op">=</span><span class="fl">2</span>), W<span class="op">=:</span>R)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Get oblique region string from rectangular projected region:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">mapproject</span>(region<span class="op">=</span><span class="st">"-2800/2400/-570/630+uk"</span>, proj<span class="op">=</span>(obl_merc<span class="op">=</span>(<span class="fl">190</span>,<span class="fl">25</span>,<span class="fl">266</span>,<span class="fl">68</span>), scale<span class="op">=</span><span class="st">"1:1"</span>), W<span class="op">=:</span>O)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Get closed polygon of oblique area in geographic coords:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">mapproject</span>(region<span class="op">=</span><span class="st">"-2800/2400/-570/630+uk"</span>, proj<span class="op">=</span>(obl_merc<span class="op">=</span>(<span class="fl">190</span>,<span class="fl">25</span>,<span class="fl">266</span>,<span class="fl">68</span>), scale<span class="op">=</span><span class="st">"1:1"</span>),</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>               W<span class="op">=</span>(<span class="op">:</span>r, npts<span class="op">=</span><span class="fl">100</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Get bounding box for stereographic projection:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">mapproject</span>(proj<span class="op">=</span>(stereo<span class="op">=</span>(<span class="fl">36</span>,<span class="fl">90</span>), width<span class="op">=</span><span class="fl">30</span>), region<span class="op">=</span>(<span class="op">-</span><span class="fl">15</span>,<span class="fl">60</span>,<span class="fl">68</span>,<span class="fl">90</span>), W<span class="op">=:</span>E)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Obtain azimuth of railroad using entry/exit points:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Input: lon1 lat1 lon2 lat2</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> <span class="fu">mapproject</span>([(<span class="op">-</span><span class="fl">87.7447873</span> <span class="fl">42.1192976</span>; <span class="op">-</span><span class="fl">87.7725841</span> <span class="fl">42.1523955</span>)],</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>                    azim<span class="op">=</span>(<span class="op">:</span>f, var<span class="op">=</span><span class="cn">true</span>), colinfo<span class="op">=:</span>g, outcols<span class="op">=</span><span class="st">"4"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="important-notes" class="level2">
+<h2 class="anchored" data-anchor-id="important-notes">Important Notes</h2>
+<section id="centering-output-region" class="level3">
+<h3 class="anchored" data-anchor-id="centering-output-region">Centering Output Region</h3>
+<p>The rectangular input region set with <code>region</code> will generally be mapped into a non-rectangular grid. Unless <code>center</code> is set, the leftmost point has x=0.0 and lowermost point has y=0.0. Before digitizing a map, run extreme coordinates through mapproject to see their (x, y) values for proper setup.</p>
+</section>
+<section id="ellipsoidal-vs-spherical-solution" class="level3">
+<h3 class="anchored" data-anchor-id="ellipsoidal-vs-spherical-solution">Ellipsoidal vs Spherical Solution</h3>
+<p>GMT uses ellipsoidal formulae when implemented and an ellipsoid is selected. Be aware:</p>
+<ol type="1">
+<li>Some projections (Transverse Mercator, Albers, Lambert’s conformal conic) use ellipsoidal expressions for small areas and switch to spherical for larger maps:
+<ul>
+<li>Transverse Mercator: All points within 10° of central meridian</li>
+<li>Conic projections: Longitudinal range &lt; 90°</li>
+<li>Cassini: All points within 4° of central meridian</li>
+</ul></li>
+<li>Historical data discrepancies may arise from:
+<ul>
+<li>Different precision in calculations</li>
+<li>Different reference datums</li>
+<li>Different PROJ_SCALE_FACTOR values</li>
+</ul></li>
+<li>Some projections may use spherical solution despite ellipsoid selection when the region exceeds valid domain for ellipsoidal series expansions.</li>
+</ol>
+</section>
+<section id="output-order" class="level3">
+<h3 class="anchored" data-anchor-id="output-order">Output Order</h3>
+<p>The production order for geodetic and temporal columns from <code>azim</code>, <code>dist</code>, <code>line_dist</code>, and <code>travel_time</code> is fixed (alphabetical by option). Command-line order is irrelevant. Use <code>outcols</code> to modulate the final output order.</p>
+</section>
+</section>
+<section id="see-also" class="level2">
+<h2 class="anchored" data-anchor-id="see-also">See Also</h2>
+<p><a href="https://www.generic-mapping-tools.org/GMTjl_doc/documentation/modules/project/">project</a></p>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ul>
+<li>Bomford, G., 1952, Geodesy, Oxford U. Press.</li>
+<li>Snyder, J. P., 1987, Map Projections - A Working Manual, U.S. Geological Survey Prof.&nbsp;Paper 1395.</li>
+<li>Vanicek, P. and Krakiwsky, E, 1982, Geodesy - The Concepts, North-Holland Publ., ISBN: 0 444 86149 1.</li>
+</ul>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script>
+
+// JavaScript to handle card hover effects for cards with images
+
+document.addEventListener('DOMContentLoaded', function() {
+
+  // Find all cards
+
+  const cards = document.querySelectorAll('.card');
+
+
+
+  cards.forEach(card => {
+
+    const paragraphs = card.querySelectorAll('p');
+
+
+
+    // If card has only one paragraph (with image)
+
+    if (paragraphs.length === 1) {
+
+      const p = paragraphs[0];
+
+      const img = p.querySelector('img');
+
+
+
+      if (img) {
+
+        // Get all text nodes
+
+        const textContent = Array.from(p.childNodes)
+
+          .filter(node => node.nodeType === Node.TEXT_NODE)
+
+          .map(node => node.textContent.trim())
+
+          .filter(text => text.length > 0)
+
+          .join(' ');
+
+
+
+        if (textContent) {
+
+          // Create overlay div for description
+
+          const overlay = document.createElement('div');
+
+          overlay.className = 'card-description-overlay';
+
+          overlay.textContent = textContent;
+
+          card.appendChild(overlay);
+
+
+
+          // Remove text nodes completely
+
+          Array.from(p.childNodes).forEach(node => {
+
+            if (node.nodeType === Node.TEXT_NODE && node.textContent.trim().length > 0) {
+
+              node.remove();
+
+            }
+
+          });
+
+        }
+
+      }
+
+    }
+
+  });
+
+});
+
+</script>
+
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/GenericMappingTools\.github\.io\/GMTjl_doc\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

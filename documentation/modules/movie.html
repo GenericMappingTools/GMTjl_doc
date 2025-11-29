@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>movie</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-0615b85506723fa54ab13a613a4e9e4c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../custom.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../GMTjl_logo.png" alt="" class="navbar-logo light-content">
+    <img src="../../GMTjl_logo.png" alt="" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-documentation" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Documentation</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-documentation">    
+        <li>
+    <a class="dropdown-item" href="../../documentation.html">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../../documentation/modules.html">
+ <span class="dropdown-text">Modules</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/general/types.html">
+ <span class="dropdown-text">GMT.jl Types</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/extensions.html">
+ <span class="dropdown-text">GMT.jl Extensions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/gdalfuns.html">
+ <span class="dropdown-text">GDAL Functions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/solids.html">
+ <span class="dropdown-text">Solids</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/imgproc.html">
+ <span class="dropdown-text">Image Processing</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/common_features.html">
+ <span class="dropdown-text">Common Features</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/alphabetical.html">
+ <span class="dropdown-text">Alphabetical List</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../../examples.html"> 
+<span class="menu-text">Examples</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../gallery.html"> 
+<span class="menu-text">Gallery</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-tutorials" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Tutorials</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-tutorials">    
+        <li>
+    <a class="dropdown-item" href="../../tutorials.html">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../../tutorials/Landsat8/histogram_stretch.html">
+ <span class="dropdown-text">Landsat 8/9</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/coast/coastlines.html">
+ <span class="dropdown-text">Coastlines</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/choropleths/choropleths.html">
+ <span class="dropdown-text">US Choropleths</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/longest_sail/longestsail.html">
+ <span class="dropdown-text">Longest Sail</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/vector_shp/vector_shp.html">
+ <span class="dropdown-text">Geospatial vector</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/texture_shading/texture.html">
+ <span class="dropdown-text">Texture Shading</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/mosaics/mosaics.html">
+ <span class="dropdown-text">Mosaics</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/mosaics/mosaics.html">
+ <span class="dropdown-text">Mosaics</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/insets/insets.html">
+ <span class="dropdown-text">Insets</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/remote_datasets/remote_datasets.html">
+ <span class="dropdown-text">Remote Grids</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/blender_shading/blender_rt.html">
+ <span class="dropdown-text">Blender</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/signal/signal.html">
+ <span class="dropdown-text">Signal</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-geophysics" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Geophysics</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-geophysics">    
+        <li>
+    <a class="dropdown-item" href="../../geophysics.html">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../../geophysics/seismicity/global_seis.html">
+ <span class="dropdown-text">Seismicity</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../geophysics/earthtides/01_earthtides.html">
+ <span class="dropdown-text">Earth Tides</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../geophysics/weather/01_weather.html">
+ <span class="dropdown-text">Weather Data</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-help" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Help</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-help">    
+        <li>
+    <a class="dropdown-item" href="https://github.com/quarto-dev/quarto-cli/issues"><i class="bi bi-bug" role="img">
+</i> 
+ <span class="dropdown-text">Report a Bug</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://github.com/quarto-dev/quarto-cli/discussions"><i class="bi bi-chat-right-text" role="img">
+</i> 
+ <span class="dropdown-text">Ask a Question</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#movie" id="toc-movie" class="nav-link active" data-scroll-target="#movie">movie</a>
+  <ul class="collapse">
+  <li><a href="#description" id="toc-description" class="nav-link" data-scroll-target="#description">Description</a></li>
+  <li><a href="#required-arguments" id="toc-required-arguments" class="nav-link" data-scroll-target="#required-arguments">Required Arguments</a></li>
+  <li><a href="#optional-arguments" id="toc-optional-arguments" class="nav-link" data-scroll-target="#optional-arguments">Optional Arguments</a></li>
+  <li><a href="#parameters" id="toc-parameters" class="nav-link" data-scroll-target="#parameters">Parameters</a></li>
+  <li><a href="#data-files" id="toc-data-files" class="nav-link" data-scroll-target="#data-files">Data Files</a></li>
+  <li><a href="#plotting-temporal-changes" id="toc-plotting-temporal-changes" class="nav-link" data-scroll-target="#plotting-temporal-changes">Plotting Temporal Changes</a></li>
+  <li><a href="#your-canvas" id="toc-your-canvas" class="nav-link" data-scroll-target="#your-canvas">Your Canvas</a></li>
+  <li><a href="#external-postscript-layers" id="toc-external-postscript-layers" class="nav-link" data-scroll-target="#external-postscript-layers">External <em>PostScript</em> Layers</a></li>
+  <li><a href="#basemap-frames" id="toc-basemap-frames" class="nav-link" data-scroll-target="#basemap-frames">Basemap Frames</a></li>
+  <li><a href="#transparent-images" id="toc-transparent-images" class="nav-link" data-scroll-target="#transparent-images">Transparent Images</a></li>
+  <li><a href="#technical-details" id="toc-technical-details" class="nav-link" data-scroll-target="#technical-details">Technical Details</a></li>
+  <li><a href="#hints-for-movie-makers" id="toc-hints-for-movie-makers" class="nav-link" data-scroll-target="#hints-for-movie-makers">Hints for Movie Makers</a></li>
+  <li><a href="#color-table-usage" id="toc-color-table-usage" class="nav-link" data-scroll-target="#color-table-usage">Color Table Usage</a></li>
+  <li><a href="#progress-indicators" id="toc-progress-indicators" class="nav-link" data-scroll-target="#progress-indicators">Progress Indicators</a></li>
+  <li><a href="#title-sequence-and-fading" id="toc-title-sequence-and-fading" class="nav-link" data-scroll-target="#title-sequence-and-fading">Title Sequence and Fading</a></li>
+  <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
+  <li><a href="#longer-examples" id="toc-longer-examples" class="nav-link" data-scroll-target="#longer-examples">Longer Examples</a></li>
+  <li><a href="#other-movie-formats" id="toc-other-movie-formats" class="nav-link" data-scroll-target="#other-movie-formats">Other Movie Formats</a></li>
+  <li><a href="#remaking-movie-with-existing-png-frames" id="toc-remaking-movie-with-existing-png-frames" class="nav-link" data-scroll-target="#remaking-movie-with-existing-png-frames">Remaking Movie with Existing PNG Frames</a></li>
+  <li><a href="#manipulating-multiple-movies" id="toc-manipulating-multiple-movies" class="nav-link" data-scroll-target="#manipulating-multiple-movies">Manipulating Multiple Movies</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<section id="movie" class="level1">
+<h1>movie</h1>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">movie</span>(main; pre<span class="op">=</span><span class="cn">nothing</span>, post<span class="op">=</span><span class="cn">nothing</span>, kwargs<span class="op">...</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="description" class="level2">
+<h2 class="anchored" data-anchor-id="description">Description</h2>
+<p><strong>movie</strong> module can generate GMT animation sequences using a single-plot script that is repeated for all frames, with some variation using specific frame variables. The module simplifies (and hides) most of the steps normally needed to set up a full-blown animation job. Instead, the user can focus on composing the main frame plot and let the parallel execution of frames and assembly of images into a movie take place in the background. Individual frames are converted from <em>PostScript</em> plots to lossless, transparent PNG images and optionally assembled into an animation (this last step requires external tools that must be present in your path; see Technical Details below). For opaque PNG images, simply specify a background color via <strong>-G</strong>.</p>
+</section>
+<section id="required-arguments" class="level2">
+<h2 class="anchored" data-anchor-id="required-arguments">Required Arguments</h2>
+<ul>
+<li><p><strong>mainscript</strong> This argument can be one of: (1) The name of a Julia function containg GMT.jl commands that makes the frame-dependent plot. (2) Name of a stand-alone GMT.jl script that makes the frame-dependent plot. The function or script may access frame variables, such as frame number and others. Parameters that can be accessed are discussed below.</p></li>
+<li><p><strong>C</strong> or <strong>canvas</strong> : – <em>canvas=…</em><br>
+Specify the canvas size used when composing the movie frames. You can choose from a set of preset formats or specify a custom layout. The named 16:9 ratio formats have a canvas dimension of 24 x 13.5 cm <em>or</em> 9.6 x 5.4 inch and are (with pixel dimensions given in parenthesis):</p>
+<ul>
+<li><strong>4320p</strong> (7680 x 4320), <strong>2160p</strong> (3840 x 2160), <strong>1080p</strong> (1920 x 1080), <strong>720p</strong> (1280 x 720),</li>
+<li><strong>540p</strong> (960 x 540), <strong>480p</strong> (854 x 480), <strong>360p</strong> (640 x 360), and <strong>240p</strong> (426 x 240). We also accept <strong>8k</strong> or <strong>uhd-2</strong> to mean <strong>4320p</strong>, <strong>4k</strong> or <strong>uhd</strong> to mean <strong>2160p</strong>, and <strong>hd</strong> to mean <strong>1080p</strong>. The recognized 4:3 ratio formats have a canvas dimension of 24 x 18 cm <em>or</em> 9.6 x 7.2 inch and are (with pixel dimensions given in parenthesis):</li>
+<li><strong>uxga</strong> (1600 x 1200), <strong>sxga+</strong> (1400 x 1050), <strong>xga</strong> (1024 x 768),</li>
+<li><strong>svga</strong> (800 x 600), and <strong>dvd</strong> (640 x 480). <strong>Note</strong>: Your <code>PROJ_LENGTH_UNIT</code> setting determines if <strong>movie</strong> sets you up to work with the SI or US canvas dimensions. Instead of a named format you can request a custom format directly by giving <em>width</em> <strong>x</strong> <em>height</em> <strong>x</strong> <em>dpu</em> (no spaces arround the <strong>x</strong>), where <em>dpu</em> is the dots-per-unit pixel density (pixel density is set automatically for the named formats).</li>
+</ul></li>
+<li><p><strong>N</strong> or <strong>name</strong> : – <em>name=…</em><br>
+Determines the name of the final movie file and a sub-directory with frame images (but see <strong>work_dir</strong>). <strong>Note</strong>: If the subdirectory exist then we exit immediately. You are therefore required to remove any old directory by that name first. This is done to prevent the accidental loss of valuable data.</p></li>
+<li><p><strong>T</strong> or <strong>frames</strong> : – <em>frames=(range=…, n_frames=…, first=…, tag_width=…, split_words=…)</em><br>
+Either specify how many image frames to make (ex <strong>frames=30</strong>), create a one-column data set width values from <em>min</em> to <em>max</em> every <em>inc</em> (ex <strong>frames=range(min,max,inc)</strong>, append <strong>n_frames=““</strong> if <strong>inc</strong> is number of frames instead), or supply a file with a set of parameters, one record (i.e., row) per frame (ex <strong>frame=</strong> <em>timefile</em>). The values in the columns will be available to the <em>mainscript</em> as named variables <strong>MOVIE_COL0</strong>, <strong>MOVIE_COL1</strong>, etc., while any trailing text can be accessed via the variable <strong>MOVIE_TEXT</strong>. Append <strong>split_words=““</strong> to split the trailing string into individual words that can be accessed via variables <strong>MOVIE_WORD0</strong>, <strong>MOVIE_WORD1</strong>, etc. By default we use any white-space to separate words. Use <strong>split_words=str</strong> to select another character(s) as the valid separator(s). The number of records equals the number of frames. Note that the <em>background</em> script is allowed to create <em>timefile</em>, hence we check for its existence both before <em>and</em> after the background script has completed. Normally, the frame numbering starts at 0; you can change this by appending a different starting frame number via <strong>first=…</strong>. <strong>Note</strong>: All frames are still included; this modifier only affects the numbering of the given frames. Finally, <strong>tag_width=…</strong> can be used to set the tag <em>width</em> of the format used in naming frames. For instance, name_000010.png has a tag width of 6. By default, this is automatically set but if you are splitting large jobs across several computers then you must use the same tag width for all names.</p></li>
+</ul>
+</section>
+<section id="optional-arguments" class="level2">
+<h2 class="anchored" data-anchor-id="optional-arguments">Optional Arguments</h2>
+<ul>
+<li><p><strong>A</strong> or <strong>gif</strong> : – <em>gif=(loop=…, stride=…)</em><br>
+Build an animated GIF file. You may specify if the movie should play more than once (i.e., <strong>loop=N</strong>) and if so append how many times to repeat [default is infinite]. If a video product is also selected (<strong>format</strong>) then you can limit the frames being used to make the GIF file. Append <strong>stride=stride</strong> to only use every <em>stride</em> frame, with <em>stride</em> being one of a fixed set of strides: 2, 5, 10, 20, 50, 100, 200, and 500.</p></li>
+<li><p><strong>D</strong> or <strong>frame_rate</strong> : – <em>frame_rate=…</em><br>
+Set the display frame rate in frames per seconds for the final animation [24].</p></li>
+<li><p><strong>-E</strong> or <strong>titlepage</strong> : – <em>titlepage=(script=…, duration=N, fade=…, fill=…)</em><br>
+Give a <em>titlepage</em> script that creates a static title page for the movie (<em>i.e.</em> <strong>titlepage=(script=Fun|sc.jl,)</strong>) [no title]. Alternatively, <em>titlepage</em> can be a <em>PostScript</em> plot (<strong>titlepage=(script=“psfile.ps”, )</strong>) of dimensions exactly matching the canvas size set in <strong>canvas</strong>. You control the duration of the title sequence with <strong>duration</strong> and specify the number of frames (or append <strong>s</strong> for a duration in seconds instead, <em>e.g.</em> <strong>duration=“10s”</strong>) [4s]. Optionally, supply the fade length via <strong>fade=N</strong> (in frames or seconds [1s]) as well [no fading]; Use <strong>fade=“iN”</strong> and/or <strong>fade=“oN”</strong> to specify one-sided fading or to give unequal fade intervals [Default is same duration for both]. The fading affects the beginning and end of the title page <em>duration</em>. We fade from and to black by default; append <strong>fill=color</strong> to use another terminal fade color.</p></li>
+<li><p><strong>F</strong> or <strong>format</strong> : – <em>format=(format=…, transparent=““, options=…)</em><br>
+Set the format of the final video product. Choose either <strong>mp4</strong> (MPEG-4 movie) or <strong>webm</strong> (WebM movie). You may optionally add additional FFmpeg encoding settings for this format via the <strong>options=…</strong> modifier (in quotes if more than one word). If <strong>“none”</strong> is chosen then no PNGs will be created at all; this requires <strong>cover_page</strong>. Choose <strong>transparent=true</strong> to generate transparent PNG images [opaque].</p></li>
+<li><p><strong>G</strong> or <strong>fill</strong> : – <em>fill=color</em> | <em>fill=(fill=color, pen=pen)</em><br>
+Set the canvas color or fill before plotting commences [none]. Optionally, append <strong>pen=pen</strong> to draw the canvas outline with <em>pen</em> [no outline]. See [Setting color] and [Pen attributes] for extend color and pen selections.</p></li>
+<li><p><strong>H</strong> or <strong>scale</strong> : – <em>scale=factor</em><br>
+Given the finite dots-per-unit used to rasterize <em>PostScript</em> frames to PNGs, the quantizing of features to discrete pixel will lead to rounding. Some of this is mitigated by the anti-aliasing settings. However, changes from frame to frame is outside the control of the individual frame rasterization and we find that, in particular, moving text may appear jittery when seen in the final animation. You can mitigate this effect by selecting a scale <em>factor</em> that, in effect, temporarily increases the effective dots-per-unit by <em>factor</em>, rasterizes the frame, then downsamples the image by the same factor at the end. The larger the <em>factor</em>, the smoother the transitions. Because processing time increases with <em>factor</em> we suggest you try values in the 2-5 range. Note that images can also suffer from quantizing when the original data have much higher resolution than your final frame pixel dimensions. The <strong>scale</strong> option may then be used to smooth the result to avoid aliasing [no downsampling]. This effect is called <a href="https://en.wikipedia.org/wiki/Subpixel_rendering">subpixel</a> rendering.</p></li>
+<li><p><strong>I</strong> or <strong>includefile</strong> : – <em>includefile=file</em><br>
+Insert the contents of <em>includefile</em> into the movie_init.sh|bat script that is accessed by all movie scripts. This mechanism is used to add information (typically constant variable assignments) that the <em>mainscript</em> and any optional <strong>S</strong> scripts rely on. Warning, the contents of this file are pure GMT commands.</p></li>
+<li><p><strong>K</strong> or <strong>fading</strong> : – <em>fading=(fade=N, fill=color, preserve=true))</em><br>
+Add fading in and out for the main animation sequence [no fading]. Append the length of the fading in number of frames (<em>e.g.</em> <strong>fading=10</strong> or <strong>fading=5s</strong> for fading in seconds) [1s]. Use <strong>fading=“iN(s)</strong> and/or <strong>fading=“oN”</strong> to specify one-sided fading or to give unequal fade intervals [Default is same duration for both]. Normally, fading will be overlaid on the first and last <em>fade</em> frames of the main animation. Append <strong>preserve=true</strong> to <em>preserve</em> these frames by fading over only the first and last (repeated) animation frames instead. We fade from and to black by default; append <strong>fill=color</strong> to use another terminal fade color.</p></li>
+<li><p><strong>L</strong> or <strong>label</strong> : – <em>label=str</em> (not yet translated to keywords)<br>
+Automatic labeling of individual frames. Places the chosen label at the frame perimeter: <strong>e</strong> selects the elapsed time in seconds as the label; append <strong>+sscale</strong> to set the length in seconds of each frame [Default is 1/<em>framerate</em>], <strong>sstring</strong> uses the fixed text <em>string</em> as the label, <strong>f</strong> selects the running frame number as the label, <strong>p</strong> selects the percentage of progress so far, <strong>ccol</strong> uses the value in column number <em>col</em> of <em>timefile</em> as label (first column is 0), while <strong>tcol</strong> uses word number <em>col</em> from the trailing text in <em>timefile</em> (first word is 0). <strong>Note</strong>: If you use <strong>-Lc</strong> with an absolute time column, then the format of the timestamp will depend on the two default settings <code>FORMAT_DATE_MAP</code> and <code>FORMAT_CLOCK_MAP</code>. By default, both <em>date</em> and <em>time</em> are displayed (with a space between); set one of the settings to “-” to skip that component. Append <strong>+cdx</strong> [/<em>dy</em>] for the clearance between label and bounding box; only used if <strong>+g</strong> or <strong>+p</strong> are set. Append units <strong>c</strong> | <strong>i</strong> | <strong>p</strong> or % of the font size [15%]. Append <strong>+f</strong> to use a specific <em>font</em> [<code>FONT_TAG</code>]. Append <strong>+g</strong> to fill the label bounding box with <em>fill</em> color [no fill]. Use <strong>+jrefpoint</strong> to specify where the label should be plotted [TL]. Append <strong>+odx</strong> [/<em>dy</em>] to offset label in direction implied by <em>justify</em>. Append units <strong>c</strong> | <strong>i</strong> | <strong>p</strong> or % of the font size [20% of font size]. Append <strong>+p</strong> to draw the outline of the bounding box using selected <em>pen</em> [no outline]. Append <strong>+t</strong> to provide a <em>format</em> statement to be used with the label item selected [no special formatting]. If <strong>-Lt</strong> is used then the format statement must contain a %s-like format, else it may have an integer (%d) or floating point (%e, %f, %g) format specification.</p></li>
+<li><p><strong>M</strong> or <strong>cover_page</strong> : – <em>cover_page=frame</em> | <em>cover_page=“frame,format”</em><br>
+In addition to making the animation sequence, select a single master frame [0] for a cover page. The master frame will be written to the current directory with name <em>prefix.format</em>, where <em>format</em> can one of the graphics extensions from the allowable graphics <a href="https://docs.generic-mapping-tools.org/latest/begin.html#tbl-formats">formats</a> [pdf].</p></li>
+<li><p><strong>P</strong> or <strong>progress</strong> : – <em>progress=(indicator=char, annot=“…”, font=font, justify=tag, offset=(dx,dy), width=…, fill=color, Fill=color, pen=pen, Pen=pen)</em><br>
+</p>
+<p>Automatic placement of progress indicator(s). Places the chosen indicator at the frame perimeter. Select from six indicators called a-f [a]. Indicators a-c are different types of circular indicators while d-f are linear (axis-like) indicators. Specify dimension of the indicator with <strong>wdth=…</strong> [5% of max canvas dimension for circular indicators and 60% of relevant canvas dimension for the linear indicators] and placement via <strong>justify=tag</strong> [TR for circular and BC for axes]. Indicators b-f can optionally add annotations if modifier <strong>annot</strong> is used, append one of <strong>e</strong> or <strong>f</strong> or <strong>p</strong> or <strong>s</strong> or <strong>c</strong>&nbsp;<em>col</em> or <strong>t</strong>&nbsp;<em>col</em> to indicate what should be annotated (see <strong>label</strong> for more information on what these are); append <strong>font=font</strong> to use a specific <em>font</em> [<code>FONT_ANNOT_SECONDARY</code> scaled as needed]. Append <strong>offset=dx</strong> or <strong>offset=(dx,dy)</strong> to offset indicator in direction implied by <em>justify</em>. Append <strong>fill=color</strong> to set moving item fill <em>color</em> [see below for defaults]. Use <strong>pen=pen</strong> to set moving item <em>pen</em>. For corresponding static fill and pen, use <strong>Fill</strong> and <strong>Pen</strong> instead.</p></li>
+<li><p><strong>Q</strong> or <strong>debug</strong> : – <em>debug=true</em> | <em>debug=“s”</em><br>
+Debugging: Leave all files and directories we create behind for inspection. Alternatively, append <strong>s</strong> to only build the movie scripts but not perform any execution. One exception involves the optional background script derived from <strong>-Sb</strong> which is always executed since it may produce data needed when building the movie scripts.</p></li>
+<li><p><strong>Sb</strong> or <strong>background</strong> : – <em>background=“script.jl”</em> or <em>background=Fun</em><br>
+The optional <em>background</em> Julia script or function can be used for one or two purposes: (1) It may create files (such as <em>timefile</em>) that will be needed by <em>mainscript</em> to make the movie, and (2) It may make a static background plot that should form the background for all frames. If a plot is generated the script must make sure it uses the same positioning (i.e., <strong>X Y</strong>) as the main script so that the layered plot will stack correctly (unless you actually want a different offset). Alternatively, <em>background</em> can be a <em>PostScript</em> plot layer of dimensions exactly matching the canvas size.</p></li>
+<li><p><strong>Sf</strong> or <strong>foreground</strong> : – <em>foreground=“script.jl”</em> or <em>foreground=Fun</em>&nbsp; The optional <em>foreground</em> can be used to make a static foreground plot that should be overlain on all frames. Make sure the script uses the same positioning (i.e., <strong>X Y</strong>) as the main script so that the layers will stack correctly. Alternatively, <em>foreground</em> can be a <em>PostScript</em> plot layer of dimensions exactly matching the canvas size.</p></li>
+<li><p><strong>V</strong> or <em>verbose</em> : – <em>verbose=true</em> <strong>|</strong> <em>verbose=level</em><br>
+Select verbosity level. More at [verbose](../common_opts/opt_V.html)</p></li>
+<li><p><strong>W</strong> or <strong>workdir</strong> : – <em>name=“prefix”</em><br>
+By default, all temporary files and frame PNG file are created in the subdirectory <em>prefix</em> set via <strong>name</strong>. You can override that selection by giving another <em>workdir</em> as a relative or full directory path. If no path is given then we create a working directory in the system temp folder named <em>prefix</em>. The main benefit of a working directory is to avoid endless syncing by agents like DropBox or TimeMachine, or to avoid problems related to low space in the main directory.</p></li>
+<li><p><strong>Z</strong> or <strong>clean</strong> : – <em>clean=true</em> or <em>clean=“s”</em><br>
+Erase the entire <em>prefix</em> directory after assembling the final movie [Default leaves directory with all images; the temporary script files, parameter files, and layer <em>PostScript</em> files are all removed (but see <strong>debug</strong>)]. If your <em>mainscript</em> and all input scripts via <strong>titlepage</strong>, <strong>includefile</strong>, and <strong>fore|background</strong> should be deleted as well then append <strong>s</strong>.</p></li>
+<li><p><strong>x</strong> or <strong>cores</strong> : – <em>cores=N</em><br>
+Limit the number of cores used when making the individual frames. By default we try to use all available cores. Append <em>N</em> to only use <em>n</em> cores (if too large it will be truncated to the maximum cores available). Finally, give a negative <em>N</em> to select (all - <em>N</em>) cores (or at least 1 if <em>N</em> equals or exceeds all). The parallel processing does not depend on OpenMP.</p></li>
+</ul>
+</section>
+<section id="parameters" class="level2">
+<h2 class="anchored" data-anchor-id="parameters">Parameters</h2>
+<p>Several parameters are automatically assigned and can be used when composing <em>mainscript</em> and the optional <em>background</em> and <em>foreground</em> scripts. There are two sets of parameters: Those that are constants and those that change with the frame number. The constants are accessible by all the scripts: <strong>MOVIE_WIDTH</strong>: The width of the canvas (the full movie frame), <strong>MOVIE_HEIGHT</strong>: The height of the canvas (the full movie frame), <strong>MOVIE_DPU</strong>: The current dots-per-unit, <strong>MOVIE_RATE</strong>: The current number of frames per second, <strong>MOVIE_NFRAMES</strong>: The total number of frames. Also, if <strong>includefile</strong> was used then any static parameters listed there will be available to all the scripts as well. In addition, the <em>mainscript</em> also has access to parameters that vary with the frame counter: <strong>MOVIE_FRAME</strong>: The current frame number (an integer, e.g., 136), <strong>MOVIE_TAG</strong>: The formatted frame number (a string, e.g., 000136), and <strong>MOVIE_NAME</strong>: The name prefix for the current frame (i.e., <em>prefix</em>&nbsp;_&nbsp;<strong>MOVIE_TAG</strong>), Furthermore, if a <em>timefile</em> was given then variables <strong>MOVIE_COL0</strong>, <strong>MOVIE_COL1</strong>, etc. are also set, yielding one variable per column in <em>timefile</em>. If <em>timefile</em> has trailing text then that text can be accessed via the variable <strong>MOVIE_TEXT</strong>, and if word-splitting was explicitly requested by <strong>-T+w</strong> or implicitly by selecting word labels in <strong>format</strong> or <strong>progress</strong>) then the trailing text is also split into individual word parameters <strong>MOVIE_WORD0</strong>, <strong>MOVIE_WORD1</strong>, etc.</p>
+</section>
+<section id="data-files" class="level2">
+<h2 class="anchored" data-anchor-id="data-files">Data Files</h2>
+<p>The movie scripts will be able to find any files present in the starting directory when <strong>movie</strong> was initiated, as well as any new files produced by <em>mainscript</em> or the optional scripts set via <strong>fore|background</strong>. No path specification is needed to access these files. Other files may require full paths unless their directories were already included in the <code>DIR_DATA</code> setting.</p>
+</section>
+<section id="plotting-temporal-changes" class="level2">
+<h2 class="anchored" data-anchor-id="plotting-temporal-changes">Plotting Temporal Changes</h2>
+<p>A movie is not very interesting if nothing changes. For the animation to change you need to have your <em>mainscript</em> either access a <em>different</em> data set as the frame counter changes, or you need to plot only a varying <em>subset</em> of a data set, showing only the part that should be displayed in each frame. There are several strategies you can use to accomplish these effects:</p>
+<ol type="1">
+<li>Your <em>timefile</em> passed to <strong>frames</strong> may have names of specific data files and you simply have your <em>mainscript</em> use the relevant <strong>MOVIE_TEXT</strong> or <strong>MOVIE_WORD?</strong> to access the frame-specific file name.</li>
+<li>You have a single data table which includes absolute time for each record, and you wish to plot these <em>events</em> as time moves forward, yet not displaying events still in the future. This effect is achieved via the module <code>events</code>.</li>
+<li>You have a 3-D grid (or a stack of 2-D grids) and you want to interpolate along the axis perpendicular to the 2-D slices (e.g., time, or it could be depth). In this situation you will use the module <code>grdinterpolate</code> to have the <em>mainscript</em> obtain a slice for the correct time (this may be an interpolation between two different times or depths) and make the frame plot with this temporary grid file.</li>
+<li>You may be creating data on the fly using <code>gmtmath</code> or <code>grdmath</code>, or perhaps processing data slightly differently per frame (using parameters in the <em>timefile</em>) and displaying these or the changes between frames.</li>
+</ol>
+</section>
+<section id="your-canvas" class="level2">
+<h2 class="anchored" data-anchor-id="your-canvas">Your Canvas</h2>
+<p>As you can see from <strong>canvas</strong>, unless you specified a custom format you are given a canvas size that is either 24 x 13.5 cm (16:9) or 24 x 18 cm (4:3). If your <code>PROJ_LENGTH_UNIT</code> setting is inch then the custom canvas sizes are just slightly (1.6%) larger than the corresponding SI sizes (9.6 x 5.4” or 9.6 x 7.2”); this has no effect on the size of the movie frames but allow us to use good sizes that work well with the <em>dpu</em> chosen. You should compose your plots using the given canvas size, and <strong>movie</strong> will make proper conversions of the canvas to image pixel dimensions. It is your responsibility to use <strong>X Y</strong> to allow for suitable margins and any positioning of items on the canvas. To minimize processing time it is recommended that any static part of the movie be considered either a static background (to be made once by <em>background</em>) and/or a static foreground (to be made once by <em>foreground</em>); <strong>movie</strong> will then assemble these layers per frame. Also, any computation of static data files to be used in the loop over frames can be produced by <em>background</em>. Any data or variables that depend on the frame number must be computed or set by <em>mainscript</em> or provided via the parameters as discussed above. <strong>Note</strong>: Using the variables <strong>MOVIE_WIDTH</strong> or <strong>MOVIE_HIGHT</strong> to set plot dimensions may lead to clipping against the canvas since these are also the exact canvas dimensions.</p>
+</section>
+<section id="external-postscript-layers" class="level2">
+<h2 class="anchored" data-anchor-id="external-postscript-layers">External <em>PostScript</em> Layers</h2>
+<p>Instead of passing scripts/functions to <strong>fore|background</strong> you can alternatively provide the name of <em>PostScript</em> plot layer files. Note that these must exactly match the canvas size. As a simple example, if you are making a HD movie using the US unit dimensions then a background pink layer would be created by</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">basemap</span>(region<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">9.6</span>,<span class="fl">0</span>,<span class="fl">5.4</span>), proj<span class="op">=:</span>linear, figscale<span class="op">=</span><span class="st">"1i"</span>, axes<span class="op">=</span>(fill<span class="op">=:</span>pink,), X<span class="op">=</span><span class="fl">0</span>, Y<span class="op">=</span><span class="fl">0</span>, par<span class="op">=</span>(PS_MEDIA<span class="op">=</span><span class="st">"9.6ix5.4i"</span>, figname<span class="op">=</span><span class="st">"background.ps"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Note the canvas selection via <code>PS_MEDIA</code>, the matching region and projection, and the zero location of the origin.</p>
+</section>
+<section id="basemap-frames" class="level2">
+<h2 class="anchored" data-anchor-id="basemap-frames">Basemap Frames</h2>
+<p>Some map projections will by default draw a <em>fancy</em> map frame; this feature is under the control of <code>MAP_FRAME_TYPE</code>. However, whether a <em>fancy</em> or <em>plain</em> frame is actually drawn also depends on the projection center <em>latitude</em>. Thus, if your movie varies the projection center latitude by changing the view, you should set the frame setting to <em>plain</em> as part of your setup.</p>
+</section>
+<section id="transparent-images" class="level2">
+<h2 class="anchored" data-anchor-id="transparent-images">Transparent Images</h2>
+<p>By default, <strong>movie</strong> will build <em>opaque</em> PNG images which can then be assembled into an animation. The vast majority of movies is likely to be made that way. Use the <strong>format</strong> option’s experimental modifier <strong>transparent</strong> to make <em>transparent</em> PNG images. Currently, very few video codecs support transparency. It is claimed both H.265 (HECV) and VP9 (Webm) offer this capability; we have only been able to verify the latter by viewing a transparent webm movie in Chrome. Animated GIFs can be built from transparent PNGs as well and here each additional frame accumulate in the final movie. Experts may create transparent PNGs and create movies in professional tools that support a movie alpha channel.</p>
+</section>
+<section id="technical-details" class="level2">
+<h2 class="anchored" data-anchor-id="technical-details">Technical Details</h2>
+<p>The <strong>movie</strong> module creates several hidden script files that are used in the generation of the images (here we have left the file extension off since it depends on the scripting language used): <em>movie_init</em> (initializes variables related to canvas size and dots-per-unit, and includes the contents of the optional <em>includefile</em>), <em>movie_preflight</em> (optional since it derives from <strong>background</strong> and computes needed data files and possibly a background layer), <em>movie_postflight</em> (optional since it derives from <strong>foreground</strong> and builds a foreground layer), <em>movie_frame</em> (accepts a frame counter argument and builds the frame image), and <em>movie_cleanup</em> (removes temporary files at the end of the run). For each frame there is a separate <em>movie_params_######</em> script that provides frame-specific variables (e.g., frame number and anything given via <strong>frames</strong>). The pre- and post-flight scripts have access to the information in <em>movie_init</em> while the frame script in addition has access to the frame-specific parameter file. Using the <strong>debug</strong> option will just produce these scripts which you can then examine. <strong>Note</strong>: The <em>mainscript</em> is duplicated per frame and each copy is run simultaneously on all available cores. Multi-treaded GMT modules will therefore be limited to a single core as well.</p>
+<p>The conversion of PNG frames to an animated GIF (<strong>format=“gif”</strong>) relies on <a href="http://www.graphicsmagick.org/">GraphicsMagick</a>. Thus, <strong>gm</strong> must be accessible via your standard search path. Likewise, the conversion of PNG frames to an MP4 (<strong>format=“mp4”</strong>) or WebM (<strong>format=“webm”</strong>) movie relies on <a href="https://www.ffmpeg.org/">FFmpeg</a>.</p>
+</section>
+<section id="hints-for-movie-makers" class="level2">
+<h2 class="anchored" data-anchor-id="hints-for-movie-makers">Hints for Movie Makers</h2>
+<p>Composing movies is relatively simple but you have to think in terms of variables. Examine the examples we have described. Then, start by making a single plot script (your <em>mainscript</em>) and identify which things should change with time (i.e., with the frame number). Create variables for these values. If they are among the listed parameters that <strong>movie</strong> creates then use those names. Unless you only require the frame number you will need to make a file that you can pass to <strong>frames</strong>. This file should then have all the values you need, per frame (i.e., row), with values across all the columns you need. If you need to assign various fixed variables that do not change with time then your <em>mainscript</em> will look shorter and cleaner if you offload those assignments to a separate <em>includefile</em> (<strong>includefile</strong>). To test your movie, start by using options <strong>format=:none</strong> <strong>debug cover_page</strong> to ensure your master frame page looks correct. This page shows you one frame of your movie (you can select which frame via the <strong>cover_page</strong> arguments). Fix any issues with your use of variables and options until this works. You can then try to remove <strong>debug</strong>. We recommend you make a very short (i.e., <strong>frames</strong>) and small (i.e., <strong>canvas</strong>) movie so you don’t have to wait very long to see the result. Once things are working you can beef up number of frames and movie quality.</p>
+</section>
+<section id="color-table-usage" class="level2">
+<h2 class="anchored" data-anchor-id="color-table-usage">Color Table Usage</h2>
+<p>Because <strong>movie</strong> launches individual frame plots as separate sessions running in parallel, we cannot utilize the current CPT (i.e., the last CPT created directly by <code>makecpt</code> or <code>grd2cpt</code>, or indirectly by <code>grdimage</code> or <code>grdview</code>). Instead, you must create CPTs using explicit files and pass those names to the modules that require CPT information. In modern mode, this means you need to use the <strong>H</strong> option in <code>makecpt</code> or <code>grd2cpt</code> in order to redirect their output to named files.</p>
+</section>
+<section id="progress-indicators" class="level2">
+<h2 class="anchored" data-anchor-id="progress-indicators">Progress Indicators</h2>
+<pre><code>&lt;img src="/assets/docs/GMT_movie_progress.png" alt="Simple color contour" width="500" class="center"/&gt;</code></pre>
+<p>The six types of movie progress indicators. All have default sizes, placements, colors and pens (shown) but these can be overridden by the corresponding modifiers (see below).</p>
+<p>The letters a-f select one of the six progress indicators shown above. - Indicator a) needs a static [lightgreen] and moving [lightred] <em>fill</em> (set via <strong>Fill</strong> and <strong>fill</strong>); there is no label option. - Indicator b) takes a static [lightblue] and moving [blue] <em>pen</em> (set via <strong>Pen</strong> and <strong>pen</strong>), and if <strong>annot</strong> is set we place a centered label with a font size scaled to 30% of indicator size (unless <strong>font</strong> was set which is used as given). - Indicator c) takes a static [dashed darkred, pen width is 1% of indicator size] and moving [red] <em>pen</em> (default pen width is 5% of indicator size) for a circular arrow (head size is 20% of indicator size), with a central label (if given <strong>annot</strong>) with a font size 30% of indicator size (unless <strong>font</strong> was set which we will honor). - Indicator d) takes a static [black] and moving [yellow, width 0.5% of length] <em>pen</em> for a rounded line with a cross-mark. If label is requested (<strong>annot</strong>) we use a font size that is twice the static pen thickness (unless <strong>font</strong> was set). - Indicator e) takes a static [red] and moving [lightgreen] <em>pen</em>. If labels are requested (<strong>annot</strong>) we use a font size that is twice the static pen thickness (unless <strong>font</strong> was set). - Finally, indicator f) takes a <em>pen</em> for the static axis [black] and a <em>fill</em> for the moving triangle [red]; the triangle size is scaled to twice the axis width (see below), and a font size scaled to thrice the axis width.<br>
+Note for indicators d-f: If percentage labels are selected (<strong>annot=“p”</strong>), then the axes display a unit label, otherwise no unit label is supplied. The indicators d-f are horizontal for all <em>justify</em> codes except for <strong>ML</strong> and <strong>MR</strong>. The default pen thickness for the linear static lines is the smallest of 2.5% of their lengths and 8p (1.5% and 3p for f). If no size is specified (<strong>width</strong>) then we default to 5% of canvas width for the three circular indicators and 60% of the relevant canvas dimension for the linear indicators.</p>
+</section>
+<section id="title-sequence-and-fading" class="level2">
+<h2 class="anchored" data-anchor-id="title-sequence-and-fading">Title Sequence and Fading</h2>
+<pre><code>&lt;img src="/assets/docs/GMT_title_fade.png" alt="Simple color contour" width="500" class="center"/&gt;</code></pre>
+<p>The fade-level (0 means black, 100 means normal visibility) for the complete movie, including an optional title sequence.</p>
+<p>The complete movie may have an optional leading title sequence (<strong>titlepage</strong>) of a given <em>duration</em>. A short section at the beginning and/or end of this duration may be designated to fade in/out via the designated fade color [black]. The main animation sequence may also have an optional fade in and/or out section (<strong>fading</strong>). Here, you can choose to fade on top of the animation or you can “freeze” the first and/or last animation frame and only fade over those static images (via modifier <strong>preserve</strong>) in order to preserve the whole animation sequence.</p>
+</section>
+<section id="examples" class="level2">
+<h2 class="anchored" data-anchor-id="examples">Examples</h2>
+<p>To make an animated GIF movie based on the script globe.sh, which simply spins a globe using the frame number to serve as the view longitude, using a custom square 600 by 600 pixel canvas and 360 frames, place a frame counter in the top left corner, and place a progress indicator in the top right corner, try</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">globe_sc</span>()</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coast</span>(region<span class="op">=:</span><span class="kw">global</span>, proj<span class="op">=</span>(name<span class="op">=:</span>Ortho, center<span class="op">=</span>(<span class="st">"MOVIE_FRAME"</span>,<span class="fl">20</span>)), figsize<span class="op">=</span><span class="st">"MOVIE_WIDTH"</span>, land<span class="op">=:</span>maroon, water<span class="op">=:</span>turquoise, frame<span class="op">=:</span>g, X<span class="op">=</span><span class="fl">0</span>, Y<span class="op">=</span><span class="fl">0</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">movie</span>(globe_sc, name<span class="op">=:</span>globe, frames<span class="op">=</span><span class="fl">360</span>, gif<span class="op">=</span><span class="cn">true</span>, canvas<span class="op">=</span><span class="st">"15x15x100"</span>, label<span class="op">=:</span>f, progress<span class="op">=</span><span class="cn">true</span>, Vd<span class="op">=</span><span class="fl">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Here, the globe_sc function simply plots a map with <code>coast</code> but uses the frame number variable as the center longitude. As the automatic frame loop is executed the different frames will be produced with different longitudes.</p>
+<p>At the end of the execution we find the animated GIF globe.gif and a directory (called globe) that contains all 360 PNG images. Note that there is no information in the globe scripts that reflects the name of the plot, the canvas size, the dimensions of the rasterized <em>PostScript</em>, and so on. That information is hidden from the user; the actual movie scripts that execute are derived from the user-provided scripts and supply the extra machinery. The <strong>movie</strong> module automatically manages the parallel execution loop over all frames using all available cores.</p>
+<p>You will note also that it was printed a line with</p>
+<pre><code>movie main_script.bat -C6ix6ix100 -Nglobe -Lf -A -P -T360</code></pre>
+<p>this is the result of having used the option <strong>Vd=1</strong> in the <em>movie</em> command. It means <em>print the GMT command that creates the movie</em>. Another option is to use <strong>Vd=2</strong>. In this case, the same command is printed but it’s not executed. This can be very handy if one wants to run that command from a system shell instead of from the Julia REPL because movie commands can take a long time to run.</p>
+<p>As another simple example, this will create mp4 movie with 25 scroling numbers like in very old movies of 20th century.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">main_sc</span>()</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">text</span>(limits<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">1</span>,<span class="fl">0</span>,<span class="fl">1</span>), proj<span class="op">=:</span>linear, figsize<span class="op">=</span><span class="fl">10</span>, font<span class="op">=</span><span class="st">"200p"</span>, region_justify<span class="op">=:</span>CM, text<span class="op">=</span><span class="st">"MOVIE_FRAME"</span>, axes<span class="op">=:</span>noannot, X<span class="op">=</span><span class="fl">0</span>, Y<span class="op">=</span><span class="fl">0</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">movie</span>(main_sc, canvas<span class="op">=</span><span class="st">"10cx10cx30"</span>, name<span class="op">=:</span>count, frames<span class="op">=</span><span class="fl">25</span>, fill<span class="op">=:</span>pink, format<span class="op">=:</span>mp4, frame_rate<span class="op">=</span><span class="fl">4</span>, clean<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="longer-examples" class="level2">
+<h2 class="anchored" data-anchor-id="longer-examples">Longer Examples</h2>
+<p>To explore more elaborate movies, see the Animations examples under our <a href="https://docs.generic-mapping-tools.org/latest/animations.html">GMT Animations</a> or view high-resolution movies on the GMT <a href="https://www.youtube.com/channel/UCo1drOh0OZPcB7S8TmIyf8Q/">Youtube</a> channel.</p>
+</section>
+<section id="other-movie-formats" class="level2">
+<h2 class="anchored" data-anchor-id="other-movie-formats">Other Movie Formats</h2>
+<p>As configured, <strong>movie</strong> only offers the MP4 and WebM formats for movies. The conversion is performed by the tool <a href="https://www.ffmpeg.org/">FFmpeg</a>, which has more codecs and processing options than there are children in China. If you wish to run FFmpeg with other options, run <strong>movie</strong> with one of the two video formats. At the end it will print the FFmpeg command used. You can copy, paste, and modify this command to select other codecs, bit-rates, and arguments. You can also use the PNG sequence as input to tools such as QuickTime Player, iMovie, MovieMaker, and other commercial programs to make a movie that way.</p>
+</section>
+<section id="remaking-movie-with-existing-png-frames" class="level2">
+<h2 class="anchored" data-anchor-id="remaking-movie-with-existing-png-frames">Remaking Movie with Existing PNG Frames</h2>
+<p>Perhaps you made your movie and then decided you want to change the frame rate or adjust something else in how the movie is put together from all the still images. If you kept all the frame images then you do not have to rerun the whole render process. Assuming you want a MP4 movie and that you want to rerun just the ffmpeg command, here is an example</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>ffmpeg <span class="op">-</span>loglevel warning <span class="op">-</span>f image2 <span class="op">-</span>framerate <span class="fl">24</span> <span class="op">-</span>y <span class="op">-</span>i <span class="st">"mydir/myimages_%04d.png"</span> <span class="op">-</span>vcodec libx264 <span class="op">-</span>pix_fmt yuv420p mymovie.mp4</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>This command is also written out when movie performs this step. For other movie formats you will need to consult the <a href="https://www.ffmpeg.org/">FFmpeg</a> documentation. <strong>Note</strong>: On Windows, the percentage character is special (like the dollar sign under shells) so you will need to enter two (%%).</p>
+</section>
+<section id="manipulating-multiple-movies" class="level2">
+<h2 class="anchored" data-anchor-id="manipulating-multiple-movies">Manipulating Multiple Movies</h2>
+<p>If you are making a series of similar movies, you can use FFmpeg to paste and stitch them into a single movie. Assume we have four movies called movie_1.mp4, movie_2.mp4, movie_3.mp4, and movie_4.mp4, and you wish to combine them into a 2x2 panel showing the four movies simultaneously. You would first combine movies (1,2) and (3,4) horizontally, then combine the two resulting strips vertically</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>ffmpeg <span class="op">-</span>i movie_1.mp4 <span class="op">-</span>i movie_2.mp4 <span class="op">-</span>filter_complex hstack<span class="op">=</span>inputs<span class="op">=</span><span class="fl">2</span> top.mp4</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>ffmpeg <span class="op">-</span>i movie_3.mp4 <span class="op">-</span>i movie_4.mp4 <span class="op">-</span>filter_complex hstack<span class="op">=</span>inputs<span class="op">=</span><span class="fl">2</span> bottom.mp4</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>ffmpeg <span class="op">-</span>i top.mp4 <span class="op">-</span>i bottom.mp4 <span class="op">-</span>filter_complex vstack<span class="op">=</span>inputs<span class="op">=</span><span class="fl">2</span> four_movies.mp4</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>For more information on such manipulations, see the FFmpeg documentation.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script>
+
+// JavaScript to handle card hover effects for cards with images
+
+document.addEventListener('DOMContentLoaded', function() {
+
+  // Find all cards
+
+  const cards = document.querySelectorAll('.card');
+
+
+
+  cards.forEach(card => {
+
+    const paragraphs = card.querySelectorAll('p');
+
+
+
+    // If card has only one paragraph (with image)
+
+    if (paragraphs.length === 1) {
+
+      const p = paragraphs[0];
+
+      const img = p.querySelector('img');
+
+
+
+      if (img) {
+
+        // Get all text nodes
+
+        const textContent = Array.from(p.childNodes)
+
+          .filter(node => node.nodeType === Node.TEXT_NODE)
+
+          .map(node => node.textContent.trim())
+
+          .filter(text => text.length > 0)
+
+          .join(' ');
+
+
+
+        if (textContent) {
+
+          // Create overlay div for description
+
+          const overlay = document.createElement('div');
+
+          overlay.className = 'card-description-overlay';
+
+          overlay.textContent = textContent;
+
+          card.appendChild(overlay);
+
+
+
+          // Remove text nodes completely
+
+          Array.from(p.childNodes).forEach(node => {
+
+            if (node.nodeType === Node.TEXT_NODE && node.textContent.trim().length > 0) {
+
+              node.remove();
+
+            }
+
+          });
+
+        }
+
+      }
+
+    }
+
+  });
+
+});
+
+</script>
+
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/GenericMappingTools\.github\.io\/GMTjl_doc\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

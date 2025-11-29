@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>gmtconvert</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-0615b85506723fa54ab13a613a4e9e4c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../custom.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../GMTjl_logo.png" alt="" class="navbar-logo light-content">
+    <img src="../../GMTjl_logo.png" alt="" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-documentation" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Documentation</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-documentation">    
+        <li>
+    <a class="dropdown-item" href="../../documentation.html">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../../documentation/modules.html">
+ <span class="dropdown-text">Modules</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/general/types.html">
+ <span class="dropdown-text">GMT.jl Types</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/extensions.html">
+ <span class="dropdown-text">GMT.jl Extensions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/gdalfuns.html">
+ <span class="dropdown-text">GDAL Functions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/solids.html">
+ <span class="dropdown-text">Solids</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/imgproc.html">
+ <span class="dropdown-text">Image Processing</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/common_features.html">
+ <span class="dropdown-text">Common Features</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/alphabetical.html">
+ <span class="dropdown-text">Alphabetical List</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../../examples.html"> 
+<span class="menu-text">Examples</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../gallery.html"> 
+<span class="menu-text">Gallery</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-tutorials" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Tutorials</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-tutorials">    
+        <li>
+    <a class="dropdown-item" href="../../tutorials.html">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../../tutorials/Landsat8/histogram_stretch.html">
+ <span class="dropdown-text">Landsat 8/9</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/coast/coastlines.html">
+ <span class="dropdown-text">Coastlines</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/choropleths/choropleths.html">
+ <span class="dropdown-text">US Choropleths</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/longest_sail/longestsail.html">
+ <span class="dropdown-text">Longest Sail</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/vector_shp/vector_shp.html">
+ <span class="dropdown-text">Geospatial vector</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/texture_shading/texture.html">
+ <span class="dropdown-text">Texture Shading</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/mosaics/mosaics.html">
+ <span class="dropdown-text">Mosaics</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/mosaics/mosaics.html">
+ <span class="dropdown-text">Mosaics</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/insets/insets.html">
+ <span class="dropdown-text">Insets</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/remote_datasets/remote_datasets.html">
+ <span class="dropdown-text">Remote Grids</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/blender_shading/blender_rt.html">
+ <span class="dropdown-text">Blender</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/signal/signal.html">
+ <span class="dropdown-text">Signal</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-geophysics" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Geophysics</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-geophysics">    
+        <li>
+    <a class="dropdown-item" href="../../geophysics.html">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../../geophysics/seismicity/global_seis.html">
+ <span class="dropdown-text">Seismicity</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../geophysics/earthtides/01_earthtides.html">
+ <span class="dropdown-text">Earth Tides</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../geophysics/weather/01_weather.html">
+ <span class="dropdown-text">Weather Data</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-help" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Help</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-help">    
+        <li>
+    <a class="dropdown-item" href="https://github.com/quarto-dev/quarto-cli/issues"><i class="bi bi-bug" role="img">
+</i> 
+ <span class="dropdown-text">Report a Bug</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://github.com/quarto-dev/quarto-cli/discussions"><i class="bi bi-chat-right-text" role="img">
+</i> 
+ <span class="dropdown-text">Ask a Question</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#gmtconvert" id="toc-gmtconvert" class="nav-link active" data-scroll-target="#gmtconvert">gmtconvert</a>
+  <ul class="collapse">
+  <li><a href="#warning-only-half-ported-to-gmt.jl-need-help-for-finishing" id="toc-warning-only-half-ported-to-gmt.jl-need-help-for-finishing" class="nav-link" data-scroll-target="#warning-only-half-ported-to-gmt.jl-need-help-for-finishing">WARNING: ONLY HALF PORTED TO GMT.JL NEED HELP FOR FINISHING</a></li>
+  <li><a href="#description" id="toc-description" class="nav-link" data-scroll-target="#description">Description</a></li>
+  <li><a href="#required-arguments" id="toc-required-arguments" class="nav-link" data-scroll-target="#required-arguments">Required Arguments</a></li>
+  <li><a href="#optional-arguments" id="toc-optional-arguments" class="nav-link" data-scroll-target="#optional-arguments">Optional Arguments</a></li>
+  <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
+  <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<section id="gmtconvert" class="level1">
+<h1>gmtconvert</h1>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gmtconvert</span>(cmd0<span class="op">::</span><span class="dt">String</span>=<span class="st">""</span>, arg1<span class="op">=</span><span class="cn">nothing</span>, kwargs<span class="op">...</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="warning-only-half-ported-to-gmt.jl-need-help-for-finishing" class="level2">
+<h2 class="anchored" data-anchor-id="warning-only-half-ported-to-gmt.jl-need-help-for-finishing">WARNING: ONLY HALF PORTED TO GMT.JL NEED HELP FOR FINISHING</h2>
+</section>
+<section id="description" class="level2">
+<h2 class="anchored" data-anchor-id="description">Description</h2>
+<p>Can do a combination of nine tasks: (1) convert between binary and ASCII data tables, (2) paste corresponding records from multiple files horizontally into a single file, (3) extract a subset of the available columns, (4) only extract segments whose header record matches a text pattern search, (5) only list segment headers and no data records, (6) extract first and/or last data record for each segment, (7) reverse the order of items on output, (8) output only ranges of segment numbers, and (9) output only segments whose record count matches criteria. Input (and hence output) may have multiple sub-headers, and ASCII tables may have regular headers as well.</p>
+</section>
+<section id="required-arguments" class="level2">
+<h2 class="anchored" data-anchor-id="required-arguments">Required Arguments</h2>
+<ul>
+<li><em>table</em><br>
+One or more data tables holding a number of data columns.</li>
+</ul>
+</section>
+<section id="optional-arguments" class="level2">
+<h2 class="anchored" data-anchor-id="optional-arguments">Optional Arguments</h2>
+<ul>
+<li><p><strong>A</strong> or <strong>hcat</strong> : – <em>hcat=true</em><br>
+The records from the input files should be pasted horizontally, not appended vertically [Default]. All files must have the same number of segments and number of rows per segment. Note for binary input, all the files you want to paste must have the same number of columns (as set with <strong>-bi</strong>); ASCII tables can have different number of columns.</p></li>
+<li><p><strong>C</strong> or <strong>n_records</strong> : – <em>n_records=[<strong>+l</strong>&nbsp;<em>min</em>][<strong>+u</strong>&nbsp;<em>max</em>][<strong>+i</strong>]</em><br>
+Only output segments whose number of records matches your given criteria: Append <strong>+l</strong>&nbsp;<em>min</em> to ensure all segment must have at least <em>min</em> records to be written to output [0], and append <strong>+u</strong>&nbsp;<em>max</em> to ensure all segments must have at most <em>max</em> records to be written [inf]. You may append <strong>+i</strong> to invert the selection, i.e., only segments with record counts outside the given range will be output.</p></li>
+<li><p><strong>D</strong> or <strong>dump</strong> : – <em>dump=[<em>template</em>&nbsp;[<strong>+o</strong>&nbsp;<em>orig</em>]]</em><br>
+For multiple segment data, dump each segment to a separate output file [Default writes a multiple segment file to standard output]. Append a format template for the individual file names; this template <strong>must</strong> contain a C format specifier that can format an integer argument (the running segment number across all tables); this is usually %d but could be %08d which gives leading zeros, etc. [Default is gmtconvert_segment_%d.{txt|bin}, depending on <strong>-bo</strong>]. Append <strong>+o</strong>&nbsp;<em>orig</em> to start the numbering from <em>orig</em> instead of zero. Alternatively, give a template with two C format specifiers and we will supply the table number and the segment number within the table to build the file name. Append <strong>+o</strong>&nbsp;<em>torig</em>&nbsp;/<em>sorig</em> to start the numbering of tables from <em>torig</em> and numbering of segments within a table from <em>sorig</em> instead of zero. The <strong>+o</strong> modifier will be stripped off before the <em>template</em> is used.</p></li>
+<li><p><strong>E</strong> or <strong>first_last</strong> : – <em>first_last=[<strong>f|l|m|M</strong> <em>stride</em>]</em><br>
+Only extract the first and last record for each segment of interest [Default extracts all records]. Optionally, append <strong>f</strong> or <strong>l</strong> to only extract the first or last record of each segment, respectively. Alternatively, append <strong>m</strong>&nbsp;<em>stride</em> to extract every <em>stride</em> records; use <strong>M</strong> to also include the last record.</p></li>
+<li><p><strong>F</strong> or <strong>conn_method</strong> : – <em>conn_method=[<strong>c|n|p|v</strong>][**a|t|s|r| <em>refpoint</em>]</em><br>
+Alter the way points are connected (by specifying a <em>scheme</em>) and data are grouped (by specifying a <em>method</em>). Append one of four line connection schemes:</p>
+<ul>
+<li><strong>c</strong> : Form continuous line segments for each group [Default].</li>
+<li><strong>p</strong> : Form line segments from a reference point reset for each group.</li>
+<li><strong>n</strong> : Form networks of line segments between all points in each group.</li>
+<li><strong>v</strong> : Form vector line segments suitable for :doc:<code>plot</code> <strong>-Sv+s</strong>. Optionally, append the one of four segmentation methods to define the group:</li>
+<li><strong>a</strong> : Ignore all segment headers, i.e., let all points belong to a single group, and set group reference point to the very first point of the first file.</li>
+<li><strong>t</strong> : Consider all data in each table to be a single separate group and reset the group reference point to the first point of each group.</li>
+<li><strong>s</strong> : Segment headers are honored so each segment is a group; the group reference point is reset to the first point of each incoming segment [Default].</li>
+<li><strong>r</strong> : Same as <strong>s</strong>, but the group reference point is reset after each record to the previous point (this method is only available with the <strong>Fp</strong> scheme).</li>
+</ul>
+<p>Instead of the codes <strong>a|f|s|r</strong> you may append the coordinates of a <em>refpoint</em> which will serve as a fixed external reference point for all groups.</p></li>
+<li><p><strong>I</strong> or <strong>invert</strong> or <strong>reverse</strong> : – <em>invert=true</em> <strong>|</strong> <em>invert=:tsr</em><br>
+Invert the order of items, i.e., output the items in reverse order, starting with the last and ending up with the first item [Default keeps original order]. Append up to three items that should be reversed: <strong>t</strong> will reverse the order of tables, <strong>s</strong> will reverse the order of segments within each table, and <strong>r</strong> will reverse the order of records within each segment [Default].</p></li>
+<li><p><strong>L</strong> or <strong>list_only</strong> : – <em>list_only=true</em><br>
+Only output a listing of all segment header records and no data records (requires ASCII data).</p></li>
+<li><p><strong>N</strong> or <strong>sort</strong> : – <em>sort=</em>col* [<strong>+a|d</strong>]<em><br>
+Numerically sort each segment based on values in column </em>col*. The data records will be sorted such that the chosen column will fall into ascending order [<strong>+a</strong>, which is Default]. Append <strong>+d</strong> to sort into descending order instead. The <strong>sort</strong> option can be combined with any other ordering scheme except <strong>conn_method</strong> (segmentation) and is applied at the end.</p></li>
+<li><p><strong>Q</strong> or <strong>segments</strong> : – <em>segments=[<strong>~</strong>]&nbsp;</em>selection* <em><br>
+Only write segments whose number is included in </em>selection* and skip all others. Cannot be used with |-S|. The <em>selection</em> syntax is <em>range</em>[,<em>range</em>,…] where each <em>range</em> of items is either a single segment <em>number</em> or a range with stepped increments given via <em>start</em>&nbsp;[:<em>step</em>:]&nbsp;:<em>stop</em> (<em>step</em> is optional and defaults to 1). A leading <strong>~</strong> will invert the selection and write all segments but the ones listed. Instead of a list of ranges, use <strong>+f</strong> <em>file</em> to supply a file list with one <em>range</em> per line.</p></li>
+<li><p><strong>S</strong> or <strong>select_hdr</strong> : – <em>select_hdr=[<strong>~</strong>]&nbsp;</em>”search string”<em>|&nbsp;<strong>+f</strong>|&nbsp;</em>file<em>&nbsp;[<strong>+e</strong>] | |-S|&nbsp;[<strong>~</strong>]/&nbsp;</em>regexp<em>/[<strong>i</strong>][<strong>+e</strong>]</em><br>
+Only output those segments whose header record contains the specified text string. To reverse the search, i.e., to output segments whose headers do <em>not</em> contain the specified pattern, use <strong>select_hdr=:~</strong>. Should your pattern happen to start with ~ you need to escape this character with a backslash [Default output all segments]. Cannot be used with |-Q|. For matching segments based on aspatial values (via OGR/GMT format), give the search string as <em>varname</em>&nbsp;=&nbsp;<em>value</em> and we will compare <em>value</em> against the value of <em>varname</em> for each segment. <strong>Note</strong>: If the features are polygons then a match of a particular polygon perimeter also means that any associated polygon holes will also be matched. For matching segment headers against extended regular expressions enclose the expression in slashes. Append <strong>i</strong> for case-insensitive matching. For a list of such patterns, give <strong>+f</strong>&nbsp;<em>file</em> with one pattern per line. To give a single pattern starting with “+f”, escape it with a backslash. Finally, append <strong>+e</strong> as last modifier to request an exact match [Default will match any sub-string in the target].</p></li>
+<li><p><strong>T</strong> or <strong>skip</strong> : – <em>skip=[<strong>h</strong>][<strong>d</strong>&nbsp;[[<strong>~</strong>]&nbsp;<em>selection</em>]]</em><br>
+Suppress the writing of certain records on output. Append <strong>h</strong> to suppress segment headers [Default], and/or <strong>d</strong> to suppress duplicate data records. Use <strong>skip=:hd</strong> to suppress both types of records. By default, all columns must be identical across the two records to skip the record. Alternatively, append a column <em>selection</em> to only use those columns in the comparisons instead. The <em>selection</em> syntax is <em>range</em>&nbsp;[,&nbsp;<em>range</em>,…] where each <em>range</em> of items is either a single column <em>number</em> or a range with stepped increments given via <em>start</em>&nbsp;[:<em>step</em>:]&nbsp;:<em>stop</em> (<em>step</em> is optional and defaults to 1). A leading <strong>~</strong> will invert the selection and select all columns but the ones listed. To add the trailing text to the comparison as well, add the column <em>t</em> to the list. If no numerical columns are specified, just <em>t</em>, then we only consider trailing text.</p></li>
+<li><p><strong>V</strong> or <em>verbose</em> : – <em>verbose=true</em> <strong>|</strong> <em>verbose=level</em><br>
+Select verbosity level. More at [verbose](../common_opts/opt_V.html)</p></li>
+<li><p><strong>W</strong> or <strong>word2num</strong> : – <em>word2num=true</em> <strong>|</strong> <em>word2num=“+n”</em><br>
+Attempt to convert each word in the trailing text to a number and append such values to the numerical output columns. Text that cannot be converted (because they are not numbers) will appear as NaNs. Use modifier <strong>+n</strong> to exclude the columns with NaNs. <strong>Note</strong>: These columns are identified based on the first input record only.</p></li>
+<li><p><strong>a</strong> or <strong>aspatial</strong> : – <em>aspatial=??</em><br>
+Control how aspatial data are handled in GMT during input and output. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#aspatial-full">More at</a></p></li>
+<li><p><strong>bi</strong> or <strong>binary_in</strong> : – <em>binary_in=??</em><br>
+Select native binary format for primary table input. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#bi-full">More at</a></p></li>
+<li><p><strong>bo</strong> or <strong>binary_out</strong> : – <em>binary_out=??</em><br>
+Select native binary format for table output. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#bo-full">More at</a></p></li>
+<li><p><strong>di</strong> or <strong>nodata_in</strong> : – <em>nodata_in=??</em><br>
+Substitute specific values with NaN. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#di-full">More at</a></p></li>
+<li><p><strong>e</strong> or <strong>pattern</strong> : – <em>pattern=??</em><br>
+Only accept ASCII data records that contain the specified pattern. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#e-full">More at</a></p></li>
+<li><p><strong>f</strong> or <strong>colinfo</strong> : – <em>colinfo=??</em><br>
+Specify the data types of input and/or output columns (time or geographical data). <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#f-full">More at</a></p></li>
+<li><p><strong>g</strong> or <strong>gap</strong> : – <em>gap=??</em><br>
+Examine the spacing between consecutive data points in order to impose breaks in the line. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#g-full">More at</a></p></li>
+<li><p><strong>h</strong> or <strong>header</strong> : – <em>header=??</em><br>
+Specify that input and/or output file(s) have n header records. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#h-full">More at</a></p></li>
+<li><p><strong>i</strong> or <strong>incol</strong> or <strong>incols</strong> : – <em>incol=col_num</em> <strong>|</strong> <em>incol=“opts”</em><br>
+Select input columns and transformations (0 is first column, t is trailing text, append word to read one word only). More at <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#icols-full">incol</a></p></li>
+<li><p><strong>j</strong> or <strong>metric</strong> or <strong>spherical_dist</strong> or <strong>spherical</strong> : – <em>metric=greatcirc</em> or <em>spherical=:flat</em> or <em>spherical=:ellipsoidal</em><br>
+Determine how spherical distances are calculated in modules that support this [Default is <code>spherical=:greatcirc</code>]. GMT has different ways to compute distances on planetary bodies:</p>
+<ul>
+<li><p>spherical=:greatcirc to perform great circle distance calculations, with parameters such as distance increments or radii compared against calculated great circle distances [Default is <code>spherical=:greatcirc</code>].</p></li>
+<li><p>spherical=:flat to select Flat Earth mode, which gives a more approximate but faster result.</p></li>
+<li><p>spherical=:ellipsoidal to select ellipsoidal (or geodesic) mode for the highest precision and slowest calculation time.</p></li>
+</ul>
+<p>Note: All spherical distance calculations depend on the current ellipsoid (<code>PROJ_ELLIPSOID</code>), the definition of the mean radius (<code>PROJ_MEAN_RADIUS</code>), and the specification of latitude type (<code>PROJ_AUX_LATITUDE</code>). Geodesic distance calculations is also controlled by method (<code>PROJ_GEODESIC</code>).</p></li>
+<li><p><strong>q</strong> or <strong>inrows</strong> : – <em>inrows=??</em><br>
+Select specific data rows to be read and/or written. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#the-q-option">More at</a></p></li>
+<li><p><strong>s</strong> or <strong>skiprows</strong> or <strong>skip_NaN</strong> : – <em>skip_NaN=true</em> <strong>|</strong> <em>skip_NaN=“&lt;cols[+a][+r]&gt;”</em><br>
+Suppress output of data records whose z-value(s) equal NaN. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#the-s-option">More at</a></p></li>
+<li><p><strong>w</strong> or <strong>wrap</strong> or <strong>cyclic</strong> : – <em>wrap=??</em><br>
+Convert input records to a cyclical coordinate. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#w-full">More at</a></p></li>
+<li><p><strong>yx</strong> : – <em>yx=true</em><br>
+Swap 1st and 2nd column on input and/or output. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#colon-full">More at</a></p></li>
+</ul>
+</section>
+<section id="examples" class="level2">
+<h2 class="anchored" data-anchor-id="examples">Examples</h2>
+<p>To convert the binary file test.b (single precision) with 4 columns to ASCII:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">convert</span>(<span class="st">"test.b"</span>, bi<span class="op">=</span><span class="st">"4f"</span>, save<span class="op">=</span><span class="st">"test.dat"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>To convert the multiple segment ASCII table test.txt to a double precision binary file:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">convert</span>(<span class="st">"test.txt"</span>, b<span class="op">=:</span>o, save<span class="op">=</span><span class="st">"test.b"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>If the file instead is the binary file results.b which has 9 single-precision values per record, we extract the last column and columns 4-6 with the command:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>    D <span class="op">=</span> <span class="fu">convert</span>(<span class="st">"results.b"</span>, outcol<span class="op">=</span><span class="st">"8,4-6"</span>, binary_in<span class="op">=</span><span class="st">"9s"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>To extract all segments in the file big_file.txt whose headers contain the string “RIDGE AXIS”, try:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>    D <span class="op">=</span> <span class="fu">convert</span>(<span class="st">"big_file.txt"</span>, select_hdr<span class="op">=</span><span class="st">"RIDGE AXIS"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>To only get the segments in the file big_file.txt whose headers exactly matches the string “Spitsbergen”, try:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>    D <span class="op">=</span> <span class="fu">convert</span>(<span class="st">"big_file.txt"</span>, select_hdr<span class="op">=</span><span class="st">"Spitsbergen+e"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>To invert the selection of segments whose headers begin with “profile” followed by an integer number and any letter between “g” and “l”, try:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>    D <span class="op">=</span> <span class="fu">convert</span>(select_hdr<span class="op">=</span><span class="st">"~</span><span class="sc">\"</span><span class="st">/^profile [0-9]+[g-l]</span><span class="sc">$</span><span class="st">/\"")</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>To reverse the order of segments in a file without reversing the order of records within each segment, try:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">convert</span>(<span class="st">"lots_of_segments.txt"</span>, invert<span class="op">=:</span>s)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>To extract segments 20 to 40 in steps of 2, plus segment 0 in a file, try:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">convert</span>(<span class="st">"lots_of_segments.txt"</span>, segments<span class="op">=</span><span class="st">"0,20:2:40"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>To extract the attribute ELEVATION from an ogr gmt file like this:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>    <span class="co"># @VGMT1.0 @GPOINT</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="op">...</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># @NELEVATION|DISPX|DISPY</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># @Tdouble|double|double</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># FEATURE_DATA</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># @D4.945000|-106500.00000000|-32700.00000000</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    <span class="op">-</span><span class="fl">9.36890245902635</span> <span class="fl">39.367156766570389</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>do</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>    D <span class="op">=</span> <span class="fu">convert</span>(<span class="st">"file.gmt"</span>, aspatial<span class="op">=</span><span class="st">"ELEVATION"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>To connect all points in the file sensors.txt with the specified origin at 23.5/19, try:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>    Dlines <span class="op">=</span> <span class="fu">convert</span>(<span class="st">"sensors.txt"</span>, conn_method<span class="op">=</span>(<span class="fl">23.5</span>,<span class="fl">19</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>To write all segments in the two files A.txt and B.txt to individual files named profile_005000.txt, profile_005001.txt, etc., where we reset the origin of the sequential numbering from 0 to 5000, try:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">convert</span>(<span class="st">"A.txt"</span>, <span class="st">"B.txt"</span>, D<span class="op">=</span><span class="st">"profile_%6.6d.txt+o5000"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>To only read rows 100-200 and 500-600 from file junk.txt, try:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>    D <span class="op">=</span> <span class="fu">convert</span>(<span class="st">"junk.txt"</span>, q<span class="op">=</span><span class="st">"100-200,500-600"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>To get all rows except those bad ones between rows 1000-2000, try:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>    D <span class="op">=</span> <span class="fu">convert</span>(<span class="st">"junk.txt"</span>, q<span class="op">=</span><span class="st">"~1000-2000"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="see-also" class="level2">
+<h2 class="anchored" data-anchor-id="see-also">See Also</h2>
+<p><a href="../..\documentation/modules/gmtinfo.html">gmtinfo</a>, <a href="../..\documentation/modules/gmtselect.html">gmtselect</a></p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script>
+
+// JavaScript to handle card hover effects for cards with images
+
+document.addEventListener('DOMContentLoaded', function() {
+
+  // Find all cards
+
+  const cards = document.querySelectorAll('.card');
+
+
+
+  cards.forEach(card => {
+
+    const paragraphs = card.querySelectorAll('p');
+
+
+
+    // If card has only one paragraph (with image)
+
+    if (paragraphs.length === 1) {
+
+      const p = paragraphs[0];
+
+      const img = p.querySelector('img');
+
+
+
+      if (img) {
+
+        // Get all text nodes
+
+        const textContent = Array.from(p.childNodes)
+
+          .filter(node => node.nodeType === Node.TEXT_NODE)
+
+          .map(node => node.textContent.trim())
+
+          .filter(text => text.length > 0)
+
+          .join(' ');
+
+
+
+        if (textContent) {
+
+          // Create overlay div for description
+
+          const overlay = document.createElement('div');
+
+          overlay.className = 'card-description-overlay';
+
+          overlay.textContent = textContent;
+
+          card.appendChild(overlay);
+
+
+
+          // Remove text nodes completely
+
+          Array.from(p.childNodes).forEach(node => {
+
+            if (node.nodeType === Node.TEXT_NODE && node.textContent.trim().length > 0) {
+
+              node.remove();
+
+            }
+
+          });
+
+        }
+
+      }
+
+    }
+
+  });
+
+});
+
+</script>
+
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/GenericMappingTools\.github\.io\/GMTjl_doc\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

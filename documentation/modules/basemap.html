@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>basemap</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-0615b85506723fa54ab13a613a4e9e4c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../custom.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../GMTjl_logo.png" alt="" class="navbar-logo light-content">
+    <img src="../../GMTjl_logo.png" alt="" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-documentation" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Documentation</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-documentation">    
+        <li>
+    <a class="dropdown-item" href="../../documentation.html">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../../documentation/modules.html">
+ <span class="dropdown-text">Modules</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/general/types.html">
+ <span class="dropdown-text">GMT.jl Types</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/extensions.html">
+ <span class="dropdown-text">GMT.jl Extensions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/gdalfuns.html">
+ <span class="dropdown-text">GDAL Functions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/solids.html">
+ <span class="dropdown-text">Solids</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/imgproc.html">
+ <span class="dropdown-text">Image Processing</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/common_features.html">
+ <span class="dropdown-text">Common Features</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/alphabetical.html">
+ <span class="dropdown-text">Alphabetical List</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../../examples.html"> 
+<span class="menu-text">Examples</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../gallery.html"> 
+<span class="menu-text">Gallery</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-tutorials" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Tutorials</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-tutorials">    
+        <li>
+    <a class="dropdown-item" href="../../tutorials.html">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../../tutorials/Landsat8/histogram_stretch.html">
+ <span class="dropdown-text">Landsat 8/9</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/coast/coastlines.html">
+ <span class="dropdown-text">Coastlines</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/choropleths/choropleths.html">
+ <span class="dropdown-text">US Choropleths</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/longest_sail/longestsail.html">
+ <span class="dropdown-text">Longest Sail</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/vector_shp/vector_shp.html">
+ <span class="dropdown-text">Geospatial vector</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/texture_shading/texture.html">
+ <span class="dropdown-text">Texture Shading</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/mosaics/mosaics.html">
+ <span class="dropdown-text">Mosaics</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/mosaics/mosaics.html">
+ <span class="dropdown-text">Mosaics</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/insets/insets.html">
+ <span class="dropdown-text">Insets</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/remote_datasets/remote_datasets.html">
+ <span class="dropdown-text">Remote Grids</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/blender_shading/blender_rt.html">
+ <span class="dropdown-text">Blender</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/signal/signal.html">
+ <span class="dropdown-text">Signal</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-geophysics" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Geophysics</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-geophysics">    
+        <li>
+    <a class="dropdown-item" href="../../geophysics.html">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../../geophysics/seismicity/global_seis.html">
+ <span class="dropdown-text">Seismicity</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../geophysics/earthtides/01_earthtides.html">
+ <span class="dropdown-text">Earth Tides</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../geophysics/weather/01_weather.html">
+ <span class="dropdown-text">Weather Data</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-help" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Help</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-help">    
+        <li>
+    <a class="dropdown-item" href="https://github.com/quarto-dev/quarto-cli/issues"><i class="bi bi-bug" role="img">
+</i> 
+ <span class="dropdown-text">Report a Bug</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://github.com/quarto-dev/quarto-cli/discussions"><i class="bi bi-chat-right-text" role="img">
+</i> 
+ <span class="dropdown-text">Ask a Question</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#description" id="toc-description" class="nav-link active" data-scroll-target="#description">Description</a></li>
+  <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
+  <li><a href="#non-geographical-projections" id="toc-non-geographical-projections" class="nav-link" data-scroll-target="#non-geographical-projections">Non-geographical Projections</a></li>
+  <li><a href="#cylindrical-map-projections" id="toc-cylindrical-map-projections" class="nav-link" data-scroll-target="#cylindrical-map-projections">Cylindrical Map Projections</a></li>
+  <li><a href="#conic-map-projections" id="toc-conic-map-projections" class="nav-link" data-scroll-target="#conic-map-projections">Conic Map Projections</a></li>
+  <li><a href="#azimuthal-map-projections" id="toc-azimuthal-map-projections" class="nav-link" data-scroll-target="#azimuthal-map-projections">Azimuthal Map Projections</a></li>
+  <li><a href="#miscellaneous-map-projections" id="toc-miscellaneous-map-projections" class="nav-link" data-scroll-target="#miscellaneous-map-projections">Miscellaneous Map Projections</a></li>
+  <li><a href="#custom-labels-or-intervals" id="toc-custom-labels-or-intervals" class="nav-link" data-scroll-target="#custom-labels-or-intervals">Custom Labels or Intervals</a></li>
+  <li><a href="#restrictions" id="toc-restrictions" class="nav-link" data-scroll-target="#restrictions">Restrictions</a></li>
+  <li><a href="#bugs" id="toc-bugs" class="nav-link" data-scroll-target="#bugs">Bugs</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">basemap</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">basemap</span>(; kwargs<span class="op">...</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Plot base maps and frames</p>
+<section id="description" class="level2">
+<h2 class="anchored" data-anchor-id="description">Description</h2>
+<p>Creates a basic or fancy basemap with axes, fill, and titles. Several map projections are available, and the user may specify separate tick-mark intervals for boundary annotation, ticking, and (optionally) gridlines. A simple map scale (<strong>map_scale</strong>) or directional rose (<strong>rose</strong>) may also be plotted. At least one of the options [frame], <strong>map_scale</strong>, or <strong>rose</strong> must be specified.</p>
+<ul>
+<li><p><strong>J</strong> or <strong>proj</strong> or <strong>projection</strong> : – <em>proj=<parameters></parameters></em><br>
+Select map projection. More at [proj](../common_opts/opt_J.html)</p></li>
+<li><p><strong>R</strong> or <strong>region</strong> or <strong>limits</strong> : – <em>limits=(xmin, xmax, ymin, ymax)</em> <strong>|</strong> <em>limits=(BB=(xmin, xmax, ymin, ymax),)</em> <strong>|</strong> <em>limits=(LLUR=(xmin, xmax, ymin, ymax),units=“unit”)</em> <strong>|</strong> …more<br>
+Specify the region of interest. More at [limits](../common_opts/opt_R.html). For perspective view <strong>view</strong>, optionally add <em>zmin,zmax</em>. This option may be used to indicate the range used for the 3-D axes. You may ask for a larger w/e/s/n region to have more room between the image and the axes.</p></li>
+<li><p><strong>A</strong> or <strong>polygon</strong> : <em>polygon=true</em> or <em>polygon=fname</em><br>
+No plotting is performed. Instead, we determine the geographical coordinates of the polygon outline for the (possibly oblique) rectangular map domain. The plot domain must be given via [limits] and [proj], with no other options allowed. The sampling interval is controlled via <code>MAP_LINE_STEP</code> parameter. The coordinates are return in a <a href="../..\documentation/general/types.html#sec-dataset-type">GMTdataset</a> or written to <em>fname</em> if a file name is specified.</p></li>
+<li><p><strong>B</strong> or <strong>axes</strong> or <strong>frame</strong><br>
+Set map boundary frame and axes attributes. Default is to draw and annotate left, bottom and vertical axes and just draw left and top axes. More at [frame](../common_opts/opt_B.html)</p></li>
+<li><p><strong>F</strong> or <strong>box</strong> : – <em>box=(clearance=gap, pen=pen, fill=fill, inner=(gap,pen), rounded=xx, shaded=(dx,dy[,shade]))</em><br>
+Without further options, draws a rectangular border around the map scale or rose using <a href="http://docs.generic-mapping-tools.org/latest/gmt.conf.html#map-frame-pen">MAP_FRAME_PEN</a>; specify a different pen with <strong>pen=new_pen</strong>. Add <code>fill=fill_value</code> to fill the logo box [no fill]. Append <strong>clearance=gap</strong> where <strong>gap</strong> is either a scalar, or tuples with <em>(xgap, ygap)</em>, or <em>(lgap,rgap,bgap,tgap</em>) where these items are uniform, separate in x- and y-direction, or individual side spacings between logo and border. Append <code>inner</code> to draw a secondary, inner border as well. We use a uniform <strong>gap</strong> between borders of <strong>2p</strong> and the <a href="http://docs.generic-mapping-tools.org/latest/gmt.conf.html#map-default-pen">MAP_DEFAULT_PEN</a> unless other values are specified. Append <strong>rounded=6</strong> to draw rounded rectangular borders instead, with a <strong>6p</strong> corner radius. You can override this radius by appending another value. Finally, append <strong>shaded=(dx,dy[,shade])</strong> to draw an offset background shaded region. Here, <strong>dx,dy</strong> indicates the shift relative to the foreground frame [<strong>4p,4p</strong>] and <strong>shade</strong> sets the fill style to use for shading [gray50]. Requires <strong>map_scale</strong> or <strong>rose</strong>. If both <strong>map_scale</strong> or <strong>rose</strong>, you may repeat <strong>box</strong> after each of these but remember to put repeated settings inside a tuple of tuples.</p></li>
+<li><p><strong>L</strong> or <strong>map_scale</strong> : – <em>map_scale=([map=true, inside=true, norm=true, paper=true,] anchor=refpoint, scale_at_lat=lat, length=len [,align=side, justify=code, fancy=true, label=lab, offset=(dx,dy), units=unit, vertical=true])</em><br>
+Draws a simple map scale centered on the reference point specified using one of four coordinate systems: (1) Use <strong>map=true</strong> for map (user) coordinates, (2) use <strong>inner=code</strong> for setting <strong>refpoint</strong> via a 2-char justification code that refers to the (invisible) map domain rectangle, (3) use <strong>norm=true</strong> for normalized (0-1) coordinates, or (4) use <strong>paper=true</strong> for plot coordinates (inches, cm, etc.). Scale is calculated for latitude <strong>slat</strong> (optionally supply longitude <strong>slon</strong> for oblique projections [Default is central meridian]), <strong>length=len</strong> when <strong>len</strong> is in km, or append unit from <strong>e</strong> or <strong>f</strong> or <strong>k</strong> or <strong>M</strong> ot <strong>n</strong> or <strong>u</strong>. Change the label alignment with <strong>align=:left|:right|:top|:bottom</strong>. Use <strong>fancy=true</strong> to get a “fancy” scale [Default is plain]. By default, the anchor point on the map scale is assumed to be the center of the scale (MC), but this can be changed by adding <strong>justify=code</strong>, where <strong>code</strong> is a 2-char justification code (see [<span class="quarto-shortcode__-param" data-is-shortcode="1" data-value="gmtref" data-raw="gmtref"></span> <span class="quarto-shortcode__-param" data-is-shortcode="1" data-value="text" data-raw="text"></span> ]{.quarto-shortcode__ data-is-shortcode=“1” data-raw=“{{&lt; gmtref text &gt;}}”} for list and explanation of codes). <strong>label=lab</strong> selects the default label, which equals the distance unit (meter, foot, km, mile, nautical mile, US survey foot) and is justified on top of the scale. Change this by giving your own label <strong>lab</strong>. Add <strong>offset=(dx,dy)</strong> to offset the map scale by <strong>dx,dy</strong> away from the <strong>anchor</strong> in the direction implied by <strong>justify</strong>. Select <strong>units=unit</strong> to append the unit to all distance annotations along the scale (for the plain scale, this will instead select the unit to be appended to the distance length). Cartesian projections: Origin <strong>scale_at_lat</strong> is not required, <strong>fancy</strong> is not allowed, and no units should be specified in <strong>length</strong>. You must set any Cartesian data units via <strong>label</strong>. For a vertical rather than horizontal Cartesian scale, append <strong>vertical=true</strong>. Note: Use [FONT_LABEL] to change the label font and [FONT_ANNOT_PRIMARY] to change the annotation font. The height of the map scale is controlled by [MAP_SCALE_HEIGHT], and the pen thickness is set by [MAP_TICK_PEN_PRIMARY]. See <strong>box</strong> on how to place a panel behind the scale.</p></li>
+<li><p><strong>Td</strong> or <strong>rose</strong> : – <em>rose=([map=true, inside=true, outside=true, norm=true, paper=true,] anchor=refpoint, width=width [,justify=code, fancy=level, labels=labels, offset=(dx,dy)])</em><br>
+Draws a map directional rose on the map at the location defined by the reference and anchor points: Give the reference point on the map for the rose using one of four coordinate systems: (1) Use <strong>map=true</strong> for map (user) coordinates, (2) use <code>inside=code</code> for setting <strong>refpoint</strong> via a 2-char justification code that refers to the (invisible) map domain rectangle, (3) use <strong>norm=true</strong> for normalized (0-1) coordinates, or (4) use <strong>paper=true</strong> for plot coordinates (inches, cm, etc.). You can offset the reference point with <strong>offset=(dx,dy)</strong> in the direction implied by <strong>justify=code</strong>. By default, the anchor point is assumed to be the center of the rose (MC), but this can be changed by using <strong>justify=code</strong> where <strong>code</strong> is a 2-char justification code (see <code>text</code> for list and explanation of codes). Note: If <strong>outside=true</strong> is used then <strong>justify</strong> defaults to the same as <strong>refpoint</strong>, if <strong>outside=true</strong> is used then <strong>justify</strong> defaults to the mirror opposite of <strong>refpoint</strong>. Use <strong>width=width</strong> to set the width of the rose in plot coordinates (in inches, cm, or points). Add <strong>fancy=true</strong> to get a “fancy” rose, and specify in <strong>level</strong> what you want drawn. The default [1 or <em>true</em>] draws the two principal E-W, N-S orientations, 2 adds the two intermediate NW-SE and NE-SW orientations, while 3 adds the eight minor orientations WNW-ESE, NNW-SSE, NNE-SSW, and ENE-WSW. Label the cardinal points W,E,S,N by adding <strong>labels</strong> and append your own four comma-separated string to override the default. Skip a specific label by leaving it blank. See <code>Placing-dir-map-roses</code> and <strong>box</strong> on how to place a panel behind the scale.</p></li>
+<li><p><strong>Tm</strong> or <strong>compass</strong> : – <em>compass=([map=true, inside=true, outside=true, norm=true, paper=true,] anchor=refpoint, width=width, [dec=(dec, dlabel), justify=code, labels=labels, rose_primary=pen, rose_secondary=pen, offset=(dx,dy)])</em><br>
+Draws a map magnetic rose on the map at the location defined by the reference and anchor points: Give the reference point on the map for the rose using one of four coordinate systems: (1) Use <strong>map=true</strong> for map (user) coordinates, (2) use <strong>inner=code</strong> for setting <strong>refpoint</strong> via a 2-char justification code that refers to the (invisible) map domain rectangle, (3) use <strong>norm=true</strong> for normalized (0-1) coordinates, or (4) use <strong>paper=true</strong> for plot coordinates (inches, cm, etc.). You can offset the reference point with <strong>offset=(dx,dy)</strong> in the direction implied by <strong>justify=code</strong>. By default, the anchor point is assumed to be the center of the rose (MC), but this can be changed by using <strong>justify=code</strong> where <strong>code</strong> is a 2-char justification code (see <code>text</code> for list and explanation of codes). Note: If <strong>outside=true</strong> is used then <strong>justify</strong> defaults to the same as <strong>refpoint</strong>, if <strong>outside=true</strong> is used then <strong>justify</strong> defaults to the mirror opposite of <strong>refpoint</strong>. Use <strong>width=width</strong> to set the width of the rose in plot coordinates (in inches, cm, or points). Use <strong>dec=dec</strong> to assign the magnetic declination or <strong>dec=(dec, dlabel)</strong> to set <strong>dlabel</strong>, which is a label for the magnetic compass needle (use “-” as <strong>dlabel</strong> to bypass labeling). With <strong>dec</strong>, both directions to geographic and magnetic north are plotted [Default is geographic only]. If the north label is a star <code>*</code> as in <em>dec=(1,“W,E,S,<code>*</code>”)</em> then a north star is plotted instead of the north label. Annotation and two levels of tick intervals for both geographic and magnetic directions default to 30/5/1 degrees; override these settings by appending <strong>annot=(…,…,.)</strong>, and enter six intervals to set both the geographic (first three) and magnetic (last three) intervals. Label the cardinal points W,E,S,N by adding <strong>label=lab</strong> where <strong>lab</strong> is your own four comma-separated string to override the default. Skip a specific label by leaving it blank. The <strong>rose_primary=pen</strong> and <strong>rose_secondary=pen</strong> modify the pens used to plot the outter and inner circles of the comapss. A number GMT default parameters control pens, fonts, and color. See <code>Placing-dir-map-roses</code> and <strong>box</strong> on how to place a panel behind the scale.</p></li>
+<li><p><strong>U</strong> or <strong>time_stamp</strong> : – <em>time_stamp=true</em> <strong>|</strong> <em>time_stamp=(just=“code”, pos=(dx,dy), label=“label”, com=true)</em><br>
+Draw GMT time stamp logo on plot. More at [timestamp](../common_opts/opt_U.html)</p></li>
+<li><p><strong>V</strong> or <em>verbose</em> : – <em>verbose=true</em> <strong>|</strong> <em>verbose=level</em><br>
+Select verbosity level. More at [verbose](../common_opts/opt_V.html)</p></li>
+<li><p><strong>X</strong> or <strong>xshift</strong> or <strong>x_offset</strong> : <em>xshift=true</em> <strong>|</strong> <em>xshift=x-shift</em> <strong>|</strong> <em>xshift=(shift=x-shift, mov=“a|c|f|r”)</em><br>
+Shift plot origin. More at [xshift](../common_opts/opt_X.html)</p></li>
+<li><p><strong>Y</strong> or <strong>yshift</strong> or <strong>y_offset</strong> : <em>yshift=true</em> <strong>|</strong> <em>yshift=y-shift</em> <strong>|</strong> <em>yshift=(shift=y-shift, mov=“a|c|f|r”)</em><br>
+Shift plot origin. More at [yshift](../common_opts/opt_Y.html)</p></li>
+<li><p><strong>f</strong> or <strong>colinfo</strong> : – <em>colinfo=??</em><br>
+Specify the data types of input and/or output columns (time or geographical data). <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#f-full">More at</a></p></li>
+<li><p><strong>p</strong> or <strong>view</strong> or <strong>perspective</strong> : – <em>view=(azim, elev)</em><br>
+Default is viewpoint from an azimuth of 200 and elevation of 30 degrees.<br>
+Specify the viewpoint in terms of azimuth and elevation. The azimuth is the horizontal rotation about the z-axis as measured in degrees from the positive y-axis. That is, from North. This option is not yet fully expanded. Current alternatives are:</p>
+<ul>
+<li><em>view=??</em><br>
+A full GMT compact string with the full set of options.</li>
+<li><em>view=(azim,elev)</em><br>
+A two elements tuple with azimuth and elevation</li>
+<li><em>view=true</em><br>
+To propagate the viewpoint used in a previous module (makes sense only in <code>bar3!</code>) More at [perspective](../common_opts/opt_p.html)</li>
+</ul></li>
+<li><p><strong>t</strong> or <strong>transparency</strong> or <strong>alpha</strong>: – <em>alpha=50</em><br>
+Set PDF transparency level for an overlay, in (0-100] percent range. [Default is 0, <em>i.e.</em>, opaque]. Works only for the PDF and PNG formats.</p></li>
+</ul>
+</section>
+<section id="examples" class="level2">
+<h2 class="anchored" data-anchor-id="examples">Examples</h2>
+<p>The following section illustrates the use of the options by giving some examples for the available map projections. Note how scales may be given in several different ways depending on the projection. Also note the use of upper case letters to specify map width instead of map scale.</p>
+<p>WARNING: the examples have not yet been translated to GMT.jl</p>
+</section>
+<section id="non-geographical-projections" class="level2">
+<h2 class="anchored" data-anchor-id="non-geographical-projections">Non-geographical Projections</h2>
+<section id="linear-x-y-plot" class="level3">
+<h3 class="anchored" data-anchor-id="linear-x-y-plot">Linear x-y plot</h3>
+<p>To make a linear x/y frame with all axes, but with only left and bottom axes annotated, using xscale = yscale = 1 cm per unit, ticking every 1 unit and annotating every 2, and using xlabel = “Distance” and ylabel = “No of samples”, use</p>
+<div id="2474762a" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">basemap</span>(region<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">9</span>,<span class="fl">0</span>,<span class="fl">5</span>), figscale<span class="op">=</span><span class="fl">1</span>,</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>        frame<span class="op">=</span>(axes<span class="op">=:</span>WeSn, annot<span class="op">=</span><span class="fl">2</span>, ticks<span class="op">=</span><span class="fl">1</span>, xlabel<span class="op">=:</span>Distance, ylabel<span class="op">=</span><span class="st">"No of samples"</span>), show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="basemap_files/figure-html/cell-2-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="log-log-plot" class="level3">
+<h3 class="anchored" data-anchor-id="log-log-plot">Log-log plot</h3>
+<p>To make a log-log frame with only the left and bottom axes, where the x-axis is 25 cm and annotated every 1-2-5 and the y-axis is 15 cm and annotated every power of 10 but has tick-marks every 0.1, run</p>
+<div id="972d245e" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">basemap</span>(region<span class="op">=</span>(<span class="fl">1</span>,<span class="fl">10000</span>,<span class="fl">1e20</span>,<span class="fl">1e25</span>), figsize<span class="op">=</span>(<span class="fl">25</span>,<span class="fl">15</span>), proj<span class="op">=:</span>logxy, frame<span class="op">=</span>(axes<span class="op">=:</span>WS,),</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    xaxis<span class="op">=</span>(annot<span class="op">=</span><span class="fl">2</span>, label<span class="op">=:</span>Wavelength),</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    yaxis<span class="op">=</span>(annot<span class="op">=</span><span class="fl">1</span>, ticks<span class="op">=</span><span class="fl">3</span>, label<span class="op">=:</span>Power, scale<span class="op">=:</span>pow), show<span class="op">=</span><span class="fl">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="basemap_files/figure-html/cell-3-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="power-axes" class="level3">
+<h3 class="anchored" data-anchor-id="power-axes">Power axes</h3>
+<p>To design an axis system to be used for a depth-sqrt(age) plot with depth positive down, ticked and annotated every 500m, and ages (in millions of years) annotated at 1 My, 4 My, 9 My etc., use</p>
+<div id="9d038dab" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># This still fails to generate the intended GMT command. (maybe let scale="pow0.5")</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">#basemap(region=(0,100,0,5000), figscale=(1,-0.001), xaxis=(annot=1, label="Crustal age", scale=:pow), yaxis=(annot=500, label=:Depth), show=true)</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">basemap</span>(region<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">100</span>,<span class="fl">0</span>,<span class="fl">5000</span>), frame<span class="op">=</span><span class="st">"x1p+l</span><span class="sc">\"</span><span class="st">Crustal age</span><span class="sc">\"</span><span class="st"> y500+lDepth"</span>, proj<span class="op">=</span><span class="st">"x1cp0.5/-0.001c"</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="basemap_files/figure-html/cell-4-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="polar-thetar-plot" class="level3">
+<h3 class="anchored" data-anchor-id="polar-thetar-plot">Polar (theta,r) plot</h3>
+<p>For a base map for use with polar coordinates, where the radius from 0 to 1000 should correspond to 5 cm and with gridlines and ticks intervals automatically determined, use</p>
+<div id="5923b4c1" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">basemap</span>(region<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">360</span>,<span class="fl">0</span>,<span class="fl">1000</span>), figsize<span class="op">=</span><span class="fl">10</span>, frame<span class="op">=:</span>afg, proj<span class="op">=:</span>polar, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="basemap_files/figure-html/cell-5-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="cylindrical-map-projections" class="level2">
+<h2 class="anchored" data-anchor-id="cylindrical-map-projections">Cylindrical Map Projections</h2>
+<section id="cassini" class="level3">
+<h3 class="anchored" data-anchor-id="cassini">Cassini</h3>
+<p>A 10-cm-wide basemap using the Cassini projection may be obtained by</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>    gmt basemap <span class="op">-</span>R20<span class="op">/</span><span class="fl">50</span><span class="op">/</span><span class="fl">20</span><span class="op">/</span><span class="fl">35</span> <span class="op">-</span>JC35<span class="op">/</span><span class="fl">28</span><span class="op">/</span><span class="fl">10</span>c <span class="op">-</span>Bafg <span class="op">-</span>B<span class="op">+</span>tCassini</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="mercator-conformal" class="level3">
+<h3 class="anchored" data-anchor-id="mercator-conformal">Mercator [conformal]</h3>
+<p>A Mercator map with scale 0.025 inch/degree along equator, and showing the length of 5000 km along the equator (centered on 1/1 inch), may be plotted as</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>    gmt basemap <span class="op">-</span>R90<span class="op">/</span><span class="fl">180</span><span class="op">/-</span><span class="fl">50</span><span class="op">/</span><span class="fl">50</span> <span class="op">-</span>Jm0<span class="fl">.025</span>i <span class="op">-</span>Bafg <span class="op">-</span>B<span class="op">+</span>tMercator <span class="op">-</span>Lx1i<span class="op">/</span><span class="fl">1</span>i<span class="op">+</span>c0<span class="op">+</span>w5000k</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="miller" class="level3">
+<h3 class="anchored" data-anchor-id="miller">Miller</h3>
+<p>A global Miller cylindrical map with scale 1:200,000,000 may be plotted as</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>    gmt basemap <span class="op">-</span>Rg <span class="op">-</span>Jj180<span class="op">/</span><span class="fl">1</span><span class="op">:</span><span class="fl">200000000</span> <span class="op">-</span>Bafg <span class="op">-</span>B<span class="op">+</span>tMiller</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="oblique-mercator-conformal" class="level3">
+<h3 class="anchored" data-anchor-id="oblique-mercator-conformal">Oblique Mercator [conformal]</h3>
+<p>To create a page-size global oblique Mercator basemap for a pole at (90,30) with gridlines every 30 degrees, run</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>    gmt basemap <span class="op">-</span>R0<span class="op">/</span><span class="fl">360</span><span class="op">/-</span><span class="fl">70</span><span class="op">/</span><span class="fl">70</span> <span class="op">-</span>Joc0<span class="op">/</span><span class="fl">0</span><span class="op">/</span><span class="fl">90</span><span class="op">/</span><span class="fl">30</span><span class="op">/</span><span class="fl">0.064</span>cd <span class="op">-</span>B30g30 <span class="op">-</span>B<span class="op">+</span>t<span class="st">"Oblique Mercator"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="transverse-mercator-conformal" class="level3">
+<h3 class="anchored" data-anchor-id="transverse-mercator-conformal">Transverse Mercator [conformal]</h3>
+<p>A regular Transverse Mercator basemap for some region may look like</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>    gmt basemap <span class="op">-</span>R69<span class="op">:</span><span class="fl">30</span><span class="op">/</span><span class="fl">71</span><span class="op">:</span><span class="fl">45</span><span class="op">/-</span><span class="fl">17</span><span class="op">/-</span><span class="fl">15</span><span class="op">:</span><span class="fl">15</span> <span class="op">-</span>Jt70<span class="op">/</span><span class="fl">1</span><span class="op">:</span><span class="fl">1000000</span> <span class="op">-</span>Bafg <span class="op">-</span>B<span class="op">+</span>t<span class="st">"Survey area"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="equidistant-cylindrical-projection" class="level3">
+<h3 class="anchored" data-anchor-id="equidistant-cylindrical-projection">Equidistant Cylindrical Projection</h3>
+<p>This projection only needs the central meridian and scale. A 25 cm wide global basemap centered on the 130E meridian is made by</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>    gmt basemap <span class="op">-</span>R<span class="op">-</span><span class="fl">50</span><span class="op">/</span><span class="fl">310</span><span class="op">/-</span><span class="fl">90</span><span class="op">/</span><span class="fl">90</span> <span class="op">-</span>JQ130<span class="op">/</span><span class="fl">25</span>c <span class="op">-</span>Bafg <span class="op">-</span>B<span class="op">+</span>t<span class="st">"Equidistant Cylindrical"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="universal-transverse-mercator-conformal" class="level3">
+<h3 class="anchored" data-anchor-id="universal-transverse-mercator-conformal">Universal Transverse Mercator [conformal]</h3>
+<p>To use this projection you must know the UTM zone number, which defines the central meridian. A UTM basemap for Indo-China can be plotted as</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>    gmt basemap <span class="op">-</span>R95<span class="op">/</span><span class="fl">5</span><span class="op">/</span><span class="fl">108</span><span class="op">/</span><span class="fl">20</span><span class="op">+</span>r <span class="op">-</span>Ju46<span class="op">/</span><span class="fl">1</span><span class="op">:</span><span class="fl">10000000</span> <span class="op">-</span>Bafg <span class="op">-</span>B<span class="op">+</span>tUTM</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="cylindrical-equal-area" class="level3">
+<h3 class="anchored" data-anchor-id="cylindrical-equal-area">Cylindrical Equal-Area</h3>
+<p>First select which of the cylindrical equal-area projections you want by deciding on the standard parallel. Here we will use 45 degrees which gives the Gall projection. A 9 inch wide global basemap centered on the Pacific is made by</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>    gmt basemap <span class="op">-</span>Rg <span class="op">-</span>JY180<span class="op">/</span><span class="fl">45</span><span class="op">/</span><span class="fl">9</span>i <span class="op">-</span>Bafg <span class="op">-</span>B<span class="op">+</span>tGall</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="conic-map-projections" class="level2">
+<h2 class="anchored" data-anchor-id="conic-map-projections">Conic Map Projections</h2>
+<section id="albers-equal-area" class="level3">
+<h3 class="anchored" data-anchor-id="albers-equal-area">Albers [equal-area]</h3>
+<p>A basemap for middle Europe may be created by</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>    gmt basemap <span class="op">-</span>R0<span class="op">/</span><span class="fl">90</span><span class="op">/</span><span class="fl">25</span><span class="op">/</span><span class="fl">55</span> <span class="op">-</span>Jb45<span class="op">/</span><span class="fl">20</span><span class="op">/</span><span class="fl">32</span><span class="op">/</span><span class="fl">45</span><span class="op">/</span><span class="fl">0.25</span>c <span class="op">-</span>Bafg <span class="op">-</span>B<span class="op">+</span>t<span class="st">"Albers Equal-area"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="lambert-conformal" class="level3">
+<h3 class="anchored" data-anchor-id="lambert-conformal">Lambert [conformal]</h3>
+<p>Another basemap for middle Europe may be created by</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>    gmt basemap <span class="op">-</span>R0<span class="op">/</span><span class="fl">90</span><span class="op">/</span><span class="fl">25</span><span class="op">/</span><span class="fl">55</span> <span class="op">-</span>Jl45<span class="op">/</span><span class="fl">20</span><span class="op">/</span><span class="fl">32</span><span class="op">/</span><span class="fl">45</span><span class="op">/</span><span class="fl">0.1</span>i <span class="op">-</span>Bafg <span class="op">-</span>B<span class="op">+</span>t<span class="st">"Lambert Conformal Conic"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="conic-equidistant" class="level3">
+<h3 class="anchored" data-anchor-id="conic-equidistant">Conic Equidistant</h3>
+<p>Yet another basemap of width 6 inch for middle Europe may be created by</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>    gmt basemap <span class="op">-</span>R0<span class="op">/</span><span class="fl">90</span><span class="op">/</span><span class="fl">25</span><span class="op">/</span><span class="fl">55</span> <span class="op">-</span>JD45<span class="op">/</span><span class="fl">20</span><span class="op">/</span><span class="fl">32</span><span class="op">/</span><span class="fl">45</span><span class="op">/</span><span class="fl">6</span>i <span class="op">-</span>Bafg <span class="op">-</span>B<span class="op">+</span>t<span class="st">"Equidistant conic"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="polyconic" class="level3">
+<h3 class="anchored" data-anchor-id="polyconic">Polyconic</h3>
+<p>A basemap for north America may be created by</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>    gmt basemap <span class="op">-</span>R<span class="op">-</span><span class="fl">180</span><span class="op">/-</span><span class="fl">20</span><span class="op">/</span><span class="fl">0</span><span class="op">/</span><span class="fl">90</span> <span class="op">-</span>JPoly<span class="op">/</span><span class="fl">4</span>i <span class="op">-</span>Bafg <span class="op">-</span>B<span class="op">+</span>tPolyconic</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="azimuthal-map-projections" class="level2">
+<h2 class="anchored" data-anchor-id="azimuthal-map-projections">Azimuthal Map Projections</h2>
+<section id="lambert-equal-area" class="level3">
+<h3 class="anchored" data-anchor-id="lambert-equal-area">Lambert [equal-area]</h3>
+<p>A 15-cm-wide global view of the world from the vantage point -80/-30 will give the following basemap:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>    basemap <span class="op">-</span>Rg <span class="op">-</span>JA<span class="op">-</span><span class="fl">80</span><span class="op">/-</span><span class="fl">30</span><span class="op">/</span><span class="fl">15</span>c <span class="op">-</span>Bafg <span class="op">-</span>B<span class="op">+</span>t<span class="st">"Lambert Azimuthal"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Follow the instructions for stereographic projection if you want to impose rectangular boundaries on the azimuthal equal-area map but substitute [proj] <strong>a</strong> for [proj] <strong>s</strong>.</p>
+</section>
+<section id="azimuthal-equidistant" class="level3">
+<h3 class="anchored" data-anchor-id="azimuthal-equidistant">Azimuthal Equidistant</h3>
+<p>A 15-cm-wide global map in which distances from the center (here 125/10) to any point is true can be obtained by:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>    gmt basemap <span class="op">-</span>Rg <span class="op">-</span>JE125<span class="op">/</span><span class="fl">10</span><span class="op">/</span><span class="fl">15</span>c <span class="op">-</span>Bafg <span class="op">-</span>B<span class="op">+</span>tEquidistant</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="gnomonic" class="level3">
+<h3 class="anchored" data-anchor-id="gnomonic">Gnomonic</h3>
+<p>A view of the world from the vantage point -100/40 out to a horizon of 60 degrees from the center can be made using the Gnomonic projection:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>    gmt basemap <span class="op">-</span>Rg <span class="op">-</span>JF<span class="op">-</span><span class="fl">100</span><span class="op">/</span><span class="fl">40</span><span class="op">/</span><span class="fl">60</span><span class="op">/</span><span class="fl">6</span>i <span class="op">-</span>Bafg <span class="op">-</span>B<span class="op">+</span>tGnomonic</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="orthographic" class="level3">
+<h3 class="anchored" data-anchor-id="orthographic">Orthographic</h3>
+<p>A global perspective (from infinite distance) view of the world from the vantage point 125/10 will give the following 6-inch-wide basemap:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>    gmt basemap <span class="op">-</span>Rg <span class="op">-</span>JG125<span class="op">/</span><span class="fl">10</span><span class="op">/</span><span class="fl">6</span>i <span class="op">-</span>Bafg <span class="op">-</span>B<span class="op">+</span>tOrthographic</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="general-perspective" class="level3">
+<h3 class="anchored" data-anchor-id="general-perspective">General Perspective</h3>
+<p>The [proj] <strong>G</strong> option can be used in a more generalized form, specifying altitude above the surface, width and height of the view point, and twist and tilt. A view from 160 km above -74/41.5 with a tilt of 55 and azimuth of 210 degrees, and limiting the viewpoint to 30 degrees width and height will product a 6-inch-wide basemap:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>    gmt basemap <span class="op">-</span>Rg <span class="op">-</span>JG<span class="op">-</span><span class="fl">74</span><span class="op">/</span><span class="fl">41.5</span><span class="op">/</span><span class="fl">6</span>i<span class="op">+</span>z160<span class="op">+</span>a210<span class="op">+</span>t55<span class="op">+</span>v30 <span class="op">-</span>Bafg <span class="op">-</span>B<span class="op">+</span>t<span class="st">"General Perspective"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="stereographic-conformal" class="level3">
+<h3 class="anchored" data-anchor-id="stereographic-conformal">Stereographic [conformal]</h3>
+<p>To make a polar stereographic projection basemap with radius = 12 cm to -60 degree latitude, with plot title “Salinity measurements”, using 5 degrees annotation/tick interval and 1 degree gridlines, run</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>    gmt basemap <span class="op">-</span>R<span class="op">-</span><span class="fl">45</span><span class="op">/</span><span class="fl">45</span><span class="op">/-</span><span class="fl">90</span><span class="op">/-</span><span class="fl">60</span> <span class="op">-</span>Js0<span class="op">/-</span><span class="fl">90</span><span class="op">/</span><span class="fl">12</span>c<span class="op">/-</span><span class="fl">60</span> <span class="op">-</span>B5g1 <span class="op">-</span>B<span class="op">+</span>t<span class="st">"Salinity measurements"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>To make a 12-cm-wide stereographic basemap for Australia from an arbitrary view point (not the poles), and use a rectangular boundary, we must give the pole for the new projection and use the [limits] option to indicate the lower left and upper right corners (in lon/lat) that will define our rectangle. We choose a pole at 130/-30 and use 100/-45 and 160/-5 as our corners. The command becomes</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>    gmt basemap <span class="op">-</span>R100<span class="op">/-</span><span class="fl">45</span><span class="op">/</span><span class="fl">160</span><span class="op">/-</span><span class="fl">5</span><span class="op">+</span>r <span class="op">-</span>JS130<span class="op">/-</span><span class="fl">30</span><span class="op">/</span><span class="fl">12</span>c <span class="op">-</span>Bafg <span class="op">-</span>B<span class="op">+</span>t<span class="st">"General Stereographic View"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="miscellaneous-map-projections" class="level2">
+<h2 class="anchored" data-anchor-id="miscellaneous-map-projections">Miscellaneous Map Projections</h2>
+<section id="hammer-equal-area" class="level3">
+<h3 class="anchored" data-anchor-id="hammer-equal-area">Hammer [equal-area]</h3>
+<p>The Hammer projection is mostly used for global maps and thus the spherical form is used. To get a world map centered on Greenwich at a scale of 1:200000000, use</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>    gmt basemap <span class="op">-</span>Rd <span class="op">-</span>Jh0<span class="op">/</span><span class="fl">1</span><span class="op">:</span><span class="fl">200000000</span> <span class="op">-</span>Bafg <span class="op">-</span>B<span class="op">+</span>tHammer</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="sinusoidal-equal-area" class="level3">
+<h3 class="anchored" data-anchor-id="sinusoidal-equal-area">Sinusoidal [equal-area]</h3>
+<p>To make a sinusoidal world map centered on Greenwich, with a scale along the equator of 0.02 inch/degree, use</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>    gmt basemap <span class="op">-</span>Rd <span class="op">-</span>Ji0<span class="op">/</span><span class="fl">0.02</span>i <span class="op">-</span>Bafg <span class="op">-</span>B<span class="op">+</span>tSinusoidal</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>To make an interrupted sinusoidal world map with breaks at 160W, 20W, and 60E, with a scale along the equator of 0.02 inch/degree, run the following sequence of commands:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>    gmt <span class="cf">begin</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>    gmt basemap <span class="op">-</span>R<span class="op">-</span><span class="fl">160</span><span class="op">/-</span><span class="fl">20</span><span class="op">/-</span><span class="fl">90</span><span class="op">/</span><span class="fl">90</span> <span class="op">-</span>Ji<span class="op">-</span><span class="fl">90</span><span class="op">/</span><span class="fl">0.02</span>i <span class="op">-</span>Bx30g30 <span class="op">-</span>By15g15 <span class="op">-</span>BWesn</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>    gmt basemap <span class="op">-</span>Bx30g30 <span class="op">-</span>By15g15 <span class="op">-</span>Bwesn <span class="op">-</span>X2<span class="fl">.8</span>i</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>    gmt basemap <span class="op">-</span>Bx30g30 <span class="op">-</span>By15g15 <span class="op">-</span>BwEsn <span class="op">-</span>X1<span class="fl">.6</span>i</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>    gmt <span class="cf">end</span> show</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="eckert-iv-equal-area" class="level3">
+<h3 class="anchored" data-anchor-id="eckert-iv-equal-area">Eckert IV [equal-area]</h3>
+<p>Pseudo-cylindrical projection typically used for global maps only. Set the central longitude and scale, e.g.,</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>    gmt basemap <span class="op">-</span>Rg <span class="op">-</span>Jkf180<span class="op">/</span><span class="fl">0.064</span>c <span class="op">-</span>Bafg <span class="op">-</span>B<span class="op">+</span>t<span class="st">"Eckert IV"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="eckert-vi-equal-area" class="level3">
+<h3 class="anchored" data-anchor-id="eckert-vi-equal-area">Eckert VI [equal-area]</h3>
+<p>Another pseudo-cylindrical projection typically used for global maps only. Set the central longitude and scale, e.g.,</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>    gmt basemap <span class="op">-</span>Rg <span class="op">-</span>Jks180<span class="op">/</span><span class="fl">0.064</span>c <span class="op">-</span>Bafg <span class="op">-</span>B<span class="op">+</span>t<span class="st">"Eckert VI"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="robinson" class="level3">
+<h3 class="anchored" data-anchor-id="robinson">Robinson</h3>
+<p>Projection designed to make global maps “look right”. Set the central longitude and width, e.g.,</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>    gmt basemap <span class="op">-</span>Rd <span class="op">-</span>JN0<span class="op">/</span><span class="fl">8</span>i <span class="op">-</span>Bafg <span class="op">-</span>B<span class="op">+</span>tRobinson</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="winkel-tripel" class="level3">
+<h3 class="anchored" data-anchor-id="winkel-tripel">Winkel Tripel</h3>
+<p>Yet another projection typically used for global maps only. You can set the central longitude, e.g.,</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb31"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>    gmt basemap <span class="op">-</span>R90<span class="op">/</span><span class="fl">450</span><span class="op">/-</span><span class="fl">90</span><span class="op">/</span><span class="fl">90</span> <span class="op">-</span>JR270<span class="op">/</span><span class="fl">25</span>c <span class="op">-</span>Bafg <span class="op">-</span>B<span class="op">+</span>t<span class="st">"Winkel Tripel"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="mollweide-equal-area" class="level3">
+<h3 class="anchored" data-anchor-id="mollweide-equal-area">Mollweide [equal-area]</h3>
+<p>The Mollweide projection is also mostly used for global maps and thus the spherical form is used. To get a 25-cm-wide world map centered on the Dateline:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb32"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>    gmt basemap <span class="op">-</span>Rg <span class="op">-</span>JW180<span class="op">/</span><span class="fl">25</span>c <span class="op">-</span>Bafg <span class="op">-</span>B<span class="op">+</span>tMollweide</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="van-der-grinten" class="level3">
+<h3 class="anchored" data-anchor-id="van-der-grinten">Van der Grinten</h3>
+<p>The Van der Grinten projection is also mostly used for global maps and thus the spherical form is used. To get a 18-cm-wide world map centered on the Dateline:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb33"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>    gmt basemap <span class="op">-</span>Rg <span class="op">-</span>JV180<span class="op">/</span><span class="fl">18</span>c <span class="op">-</span>Bafg <span class="op">-</span>B<span class="op">+</span>t<span class="st">"Van der Grinten"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="arbitrary-rotation" class="level3">
+<h3 class="anchored" data-anchor-id="arbitrary-rotation">Arbitrary rotation</h3>
+<p>If you need to plot a map but have it rotated about a vertical axis then use the |-p| option. For instance, to rotate the basemap below 90 degrees about an axis centered on the map, try</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb34"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>    gmt basemap <span class="op">-</span>R10<span class="op">/</span><span class="fl">40</span><span class="op">/</span><span class="fl">10</span><span class="op">/</span><span class="fl">40</span> <span class="op">-</span>JM10c <span class="op">-</span>Bafg <span class="op">-</span>B<span class="op">+</span>t<span class="st">"I am rotated"</span> <span class="op">-</span>p90<span class="op">+</span>w25<span class="op">/</span><span class="fl">25</span> <span class="op">-</span>Xc</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="custom-labels-or-intervals" class="level2">
+<h2 class="anchored" data-anchor-id="custom-labels-or-intervals">Custom Labels or Intervals</h2>
+<p>The [frame] option sets up a regular annotation interval and the annotations derive from the corresponding <em>x</em>, <em>y</em>, or <em>z</em> coordinates. However, some applications requires special control on which annotations to plot and even replace the annotation with other labels. This is achieved by using <strong>c</strong> <em>intfile</em> in the [frame] option, where <em>intfile</em> contains all the information about annotations, ticks, and even gridlines. Each record is of the form <em>coord</em> <em>type</em> [<em>label</em>], where <em>coord</em> is the coordinate for this annotation (or tick or gridline), <em>type</em> is one or more letters from <strong>a</strong> (annotation), <strong>i</strong> interval annotation, <strong>f</strong> tickmark, and <strong>g</strong> gridline. Note that <strong>a</strong> and <strong>i</strong> are mutually exclusive and cannot both appear in the same <em>intfile</em>. Both <strong>a</strong> and <strong>i</strong> requires you to supply a <em>label</em> which is used as the plot annotation. If not given then a regular formatted annotation based on the coordinate will occur.</p>
+</section>
+<section id="restrictions" class="level2">
+<h2 class="anchored" data-anchor-id="restrictions">Restrictions</h2>
+<p>For some projections, a spherical earth is implicitly assumed. A warning will notify the user if <strong>verbose</strong> is set.</p>
+</section>
+<section id="bugs" class="level2">
+<h2 class="anchored" data-anchor-id="bugs">Bugs</h2>
+<p>The [frame] option is somewhat complicated to explain and comprehend. However, it is fairly simple for most applications (see examples).</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script>
+
+// JavaScript to handle card hover effects for cards with images
+
+document.addEventListener('DOMContentLoaded', function() {
+
+  // Find all cards
+
+  const cards = document.querySelectorAll('.card');
+
+
+
+  cards.forEach(card => {
+
+    const paragraphs = card.querySelectorAll('p');
+
+
+
+    // If card has only one paragraph (with image)
+
+    if (paragraphs.length === 1) {
+
+      const p = paragraphs[0];
+
+      const img = p.querySelector('img');
+
+
+
+      if (img) {
+
+        // Get all text nodes
+
+        const textContent = Array.from(p.childNodes)
+
+          .filter(node => node.nodeType === Node.TEXT_NODE)
+
+          .map(node => node.textContent.trim())
+
+          .filter(text => text.length > 0)
+
+          .join(' ');
+
+
+
+        if (textContent) {
+
+          // Create overlay div for description
+
+          const overlay = document.createElement('div');
+
+          overlay.className = 'card-description-overlay';
+
+          overlay.textContent = textContent;
+
+          card.appendChild(overlay);
+
+
+
+          // Remove text nodes completely
+
+          Array.from(p.childNodes).forEach(node => {
+
+            if (node.nodeType === Node.TEXT_NODE && node.textContent.trim().length > 0) {
+
+              node.remove();
+
+            }
+
+          });
+
+        }
+
+      }
+
+    }
+
+  });
+
+});
+
+</script>
+
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/GenericMappingTools\.github\.io\/GMTjl_doc\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

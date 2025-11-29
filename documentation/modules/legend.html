@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>legend</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-0615b85506723fa54ab13a613a4e9e4c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../custom.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../GMTjl_logo.png" alt="" class="navbar-logo light-content">
+    <img src="../../GMTjl_logo.png" alt="" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-documentation" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Documentation</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-documentation">    
+        <li>
+    <a class="dropdown-item" href="../../documentation.html">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../../documentation/modules.html">
+ <span class="dropdown-text">Modules</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/general/types.html">
+ <span class="dropdown-text">GMT.jl Types</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/extensions.html">
+ <span class="dropdown-text">GMT.jl Extensions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/gdalfuns.html">
+ <span class="dropdown-text">GDAL Functions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/solids.html">
+ <span class="dropdown-text">Solids</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/imgproc.html">
+ <span class="dropdown-text">Image Processing</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/common_features.html">
+ <span class="dropdown-text">Common Features</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/alphabetical.html">
+ <span class="dropdown-text">Alphabetical List</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../../examples.html"> 
+<span class="menu-text">Examples</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../gallery.html"> 
+<span class="menu-text">Gallery</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-tutorials" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Tutorials</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-tutorials">    
+        <li>
+    <a class="dropdown-item" href="../../tutorials.html">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../../tutorials/Landsat8/histogram_stretch.html">
+ <span class="dropdown-text">Landsat 8/9</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/coast/coastlines.html">
+ <span class="dropdown-text">Coastlines</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/choropleths/choropleths.html">
+ <span class="dropdown-text">US Choropleths</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/longest_sail/longestsail.html">
+ <span class="dropdown-text">Longest Sail</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/vector_shp/vector_shp.html">
+ <span class="dropdown-text">Geospatial vector</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/texture_shading/texture.html">
+ <span class="dropdown-text">Texture Shading</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/mosaics/mosaics.html">
+ <span class="dropdown-text">Mosaics</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/mosaics/mosaics.html">
+ <span class="dropdown-text">Mosaics</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/insets/insets.html">
+ <span class="dropdown-text">Insets</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/remote_datasets/remote_datasets.html">
+ <span class="dropdown-text">Remote Grids</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/blender_shading/blender_rt.html">
+ <span class="dropdown-text">Blender</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/signal/signal.html">
+ <span class="dropdown-text">Signal</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-geophysics" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Geophysics</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-geophysics">    
+        <li>
+    <a class="dropdown-item" href="../../geophysics.html">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../../geophysics/seismicity/global_seis.html">
+ <span class="dropdown-text">Seismicity</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../geophysics/earthtides/01_earthtides.html">
+ <span class="dropdown-text">Earth Tides</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../geophysics/weather/01_weather.html">
+ <span class="dropdown-text">Weather Data</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-help" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Help</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-help">    
+        <li>
+    <a class="dropdown-item" href="https://github.com/quarto-dev/quarto-cli/issues"><i class="bi bi-bug" role="img">
+</i> 
+ <span class="dropdown-text">Report a Bug</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://github.com/quarto-dev/quarto-cli/discussions"><i class="bi bi-chat-right-text" role="img">
+</i> 
+ <span class="dropdown-text">Ask a Question</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#description" id="toc-description" class="nav-link active" data-scroll-target="#description">Description</a></li>
+  <li><a href="#required-arguments" id="toc-required-arguments" class="nav-link" data-scroll-target="#required-arguments">Required Arguments</a></li>
+  <li><a href="#optional-arguments" id="toc-optional-arguments" class="nav-link" data-scroll-target="#optional-arguments">Optional Arguments</a></li>
+  <li><a href="#legend-codes" id="toc-legend-codes" class="nav-link" data-scroll-target="#legend-codes">Legend Codes</a></li>
+  <li><a href="#defaults" id="toc-defaults" class="nav-link" data-scroll-target="#defaults">Defaults</a></li>
+  <li><a href="#note-on-legend-height" id="toc-note-on-legend-height" class="nav-link" data-scroll-target="#note-on-legend-height">Note On Legend Height</a></li>
+  <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">legend</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(cmd0<span class="op">::</span><span class="dt">String</span>=<span class="st">""</span>, arg1<span class="op">=</span><span class="cn">nothing</span>; kwargs<span class="op">...</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="description" class="level2">
+<h2 class="anchored" data-anchor-id="description">Description</h2>
+<p>Makes legends that can be overlaid on maps. It reads specific legend-related information from an input file or from a GMTdatset type. Unless otherwise noted, annotations will be made using the primary annotation font and size in effect (i.e., <code>FONT_ANNOT_PRIMARY</code>)</p>
+<pre><code>&lt;img src="/assets/seislegend.png" alt="Simple" width="500" class="center"/&gt;</code></pre>
+<p>Example of a map legend, here for seismicity in the Pacific region.</p>
+</section>
+<section id="required-arguments" class="level2">
+<h2 class="anchored" data-anchor-id="required-arguments">Required Arguments</h2>
+<ul>
+<li><strong>D</strong> or <strong>pos</strong> or <strong>position</strong> : – <em>pos=(map=(lon,lat), inside=true, outside=true, norm=(x,y), paper=(x,y), justify=code, offset=XX)</em><br>
+Defines the reference point on the map for the legend using one of four coordinate systems:</li>
+</ul>
+<ol type="1">
+<li><p>Use <code>map=(lon,lat)</code> for map coordinates. Requires both <strong>region</strong> and <strong>proj</strong> to be set.</p></li>
+<li><p>Use <code>inside=code</code> or <code>outside=code</code> for setting the refpoint via a 2-char justification code that refers to the (invisible) projected map bounding box. Requires both <strong>region</strong> and <strong>proj</strong> to be set.</p></li>
+<li><p>Use <code>norm=(x,y)</code> for normalized bounding box coordinates (0-1). Requires both <strong>region</strong> and <strong>proj</strong> to be set.</p></li>
+<li><p>Use <code>paper=(x,y)</code> for plot coordinates (append cm, inch, or point).</p></li>
+</ol>
+<p>Use <code>width=(width,height)</code> to set the <em>width</em> (and <em>height</em>) of the legend box in plot coordinates (inches, cm, etc.). If <em>height</em> is zero or not given then we estimate <em>height</em> based the expected vertical extent of the items to be placed. By default, the anchor point on the legend is assumed to be the bottom left corner (:BL), but this can be changed by appending <code>justify</code> followed by a 2-char justification code <em>justify</em> (see <a href="../..\documentation/modules/text.html">text</a>). <strong>Note</strong>: If <code>inside</code> is used then <em>justify</em> defaults to the same as <code>anchor</code>, if <code>outside</code> is used then <code>justify</code> defaults to the mirror opposite of <code>anchor</code>. Use <code>spacing=val</code> to change the line-spacing factor in units of the current font size [1.1].</p>
+</section>
+<section id="optional-arguments" class="level2">
+<h2 class="anchored" data-anchor-id="optional-arguments">Optional Arguments</h2>
+<ul>
+<li><p><strong>B</strong> or <strong>axes</strong> or <strong>frame</strong><br>
+Set map boundary frame and axes attributes. Default is to draw and annotate left, bottom and vertical axes and just draw left and top axes. More at [frame](../common_opts/opt_B.html)</p></li>
+<li><p><strong>C</strong> or <strong>clearance</strong> : – <em>clearance=(dx,dy)</em><br>
+Sets the clearance between the legend frame and the internal items [4p/4p].</p></li>
+<li><p><strong>F</strong> or <strong>box</strong> : – <em>box=(clearance=val, fill=color, inner=true, pen=pen, rounded=true, shaded=XX)</em><br>
+Without further options, draws a rectangular border around the scale using <code>MAP_FRAME_PEN</code>; specify a different pen with <code>pen=pen</code> (see [Pen attributes]).</p>
+<ul>
+<li><code>fill=color</code> where <em>color</em> is any valid color setting (see [Setting color]), to fill the scale panel [no fill].</li>
+<li><code>clearance=val</code> where <em>val</em> is either <em>gap</em> or <em>(xgap,ygap)</em>, or <em>(lgap,rgap,bgap,tgap)</em> where these items are uniform, separate in x- and y-direction, or individual side spacings between scale and border.</li>
+<li><code>inner=true</code> to draw a secondary, inner border as well. We use a uniform <em>gap</em> between borders of <em>2p</em> and the <code>MAP_DEFAULTS_PEN</code> unless other values are specified (like <code>inner="gap/pen"</code>)</li>
+<li><code>rounded=true</code> to draw rounded rectangular borders instead, with a <em>6p</em> corner radius. You can override this radius by using another value instead of <em>true</em> (default is <strong>6p</strong>).</li>
+<li><code>shadded=true</code> or <code>shadded=(dx,dy)</code> or <code>shadded=shade</code> to draw an offset background shaded region. Here, <em>dx/dy</em> indicates the shift relative to the foreground frame [<em>4p/-4p</em>]and <em>shade</em> sets the fill style to use for shading (“gray50”).</li>
+</ul></li>
+<li><p><strong>J</strong> or <strong>proj</strong> or <strong>projection</strong> : – <em>proj=<parameters></parameters></em><br>
+Select map projection. More at [proj](../common_opts/opt_J.html)</p></li>
+<li><p><strong>M</strong> or <strong>source</strong><br>
+Modern mode only: Read both (1) the hidden auto-generated legend information file created by plotting-modules’ <strong>legend</strong> option (warning: <strong>not</strong> this <strong>legend</strong> module) and (2) additional information from input file(s) given on the command line [hidden file only].</p></li>
+<li><p><strong>R</strong> or <strong>region</strong> or <strong>limits</strong> : – <em>limits=(xmin, xmax, ymin, ymax)</em> <strong>|</strong> <em>limits=(BB=(xmin, xmax, ymin, ymax),)</em> <strong>|</strong> <em>limits=(LLUR=(xmin, xmax, ymin, ymax),units=“unit”)</em> <strong>|</strong> …more<br>
+Specify the region of interest. More at [limits](../common_opts/opt_R.html). For perspective view <strong>view</strong>, optionally add <em>zmin,zmax</em>. This option may be used to indicate the range used for the 3-D axes. You may ask for a larger w/e/s/n region to have more room between the image and the axes.</p></li>
+<li><p><strong>S</strong> or <strong>scale</strong> : <em>scale=val</em><br>
+Scale all symbol sizes by a common <em>scale</em>.</p></li>
+<li><p><strong>T</strong> or <strong>leg_file</strong> : <em>leg_file=fname</em><br>
+Modern mode only: Write hidden legend specification file to <em>fname</em>.</p></li>
+<li><p><strong>U</strong> or <strong>time_stamp</strong> : – <em>time_stamp=true</em> <strong>|</strong> <em>time_stamp=(just=“code”, pos=(dx,dy), label=“label”, com=true)</em><br>
+Draw GMT time stamp logo on plot. More at [timestamp](../common_opts/opt_U.html)</p></li>
+<li><p><strong>V</strong> or <em>verbose</em> : – <em>verbose=true</em> <strong>|</strong> <em>verbose=level</em><br>
+Select verbosity level. More at [verbose](../common_opts/opt_V.html)</p></li>
+<li><p><strong>X</strong> or <strong>xshift</strong> or <strong>x_offset</strong> : <em>xshift=true</em> <strong>|</strong> <em>xshift=x-shift</em> <strong>|</strong> <em>xshift=(shift=x-shift, mov=“a|c|f|r”)</em><br>
+Shift plot origin. More at [xshift](../common_opts/opt_X.html)</p></li>
+<li><p><strong>Y</strong> or <strong>yshift</strong> or <strong>y_offset</strong> : <em>yshift=true</em> <strong>|</strong> <em>yshift=y-shift</em> <strong>|</strong> <em>yshift=(shift=y-shift, mov=“a|c|f|r”)</em><br>
+Shift plot origin. More at [yshift](../common_opts/opt_Y.html)</p></li>
+<li><p><strong>p</strong> or <strong>view</strong> or <strong>perspective</strong> : – <em>view=(azim, elev)</em><br>
+Default is viewpoint from an azimuth of 200 and elevation of 30 degrees.<br>
+Specify the viewpoint in terms of azimuth and elevation. The azimuth is the horizontal rotation about the z-axis as measured in degrees from the positive y-axis. That is, from North. This option is not yet fully expanded. Current alternatives are:</p>
+<ul>
+<li><em>view=??</em><br>
+A full GMT compact string with the full set of options.</li>
+<li><em>view=(azim,elev)</em><br>
+A two elements tuple with azimuth and elevation</li>
+<li><em>view=true</em><br>
+To propagate the viewpoint used in a previous module (makes sense only in <code>bar3!</code>) More at [perspective](../common_opts/opt_p.html)</li>
+</ul></li>
+<li><p><strong>q</strong> or <strong>inrows</strong> : – <em>inrows=??</em><br>
+Select specific data rows to be read and/or written. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#the-q-option">More at</a></p></li>
+<li><p><strong>t</strong> or <strong>transparency</strong> or <strong>alpha</strong>: – <em>alpha=50</em><br>
+Set PDF transparency level for an overlay, in (0-100] percent range. [Default is 0, <em>i.e.</em>, opaque]. Works only for the PDF and PNG formats.</p></li>
+</ul>
+</section>
+<section id="legend-codes" class="level2">
+<h2 class="anchored" data-anchor-id="legend-codes">Legend Codes</h2>
+<p>Each legend item is described by a unique record. All records begin with a unique keyword name template that is common to all records of the same kind. We may have to use a template because <em>keyword</em> names cannot be repeated but several records of the same type can. Hence, when needing to repeat a record type we use, for example, <strong>symbol1</strong>, <strong>symbol2</strong>, etc… The order of the legend items is implied by the order of the records. Fourteen different record types are recognized, and the syntax for each of these records are presented below:</p>
+<ul>
+<li><p><strong>A</strong> or <strong>cmap</strong> or <strong>cpt</strong> : <em>cmap=<code>cptname</code></em><br>
+Symbol or cell color fills may be given indirectly via a <em>z</em>-value which can be used for the color look-up via the given CPT <em>cptname</em>. You may switch to other <em>cptname</em> by repeating this command.</p></li>
+<li><p><strong>B</strong> or <strong>colorbar</strong> : <em>colorbar=(name=<code>cptname</code>, offset=<code>val</code>, height=<code>val</code> [, extra=“…”])</em><br>
+This record will plot a horizontal color bar, <a href="../..\documentation/modules/colorbar.html">colorbar</a> -style in the middle, starting at <code>offset</code> from the left edge, and of the given <code>height</code>. You may add any additional <a href="../..\documentation/modules/colorbar.html">colorbar</a> options as well as string in <code>extra=opts</code>. Any of the modifiers (here in hardcore GMT syntax) [<strong>+e</strong>[<strong>b</strong>|<strong>f</strong>][<em>length</em>]][<strong>+h</strong>][<strong>+m</strong>[<strong>a</strong>|<strong>c</strong>|<strong>l</strong>|<strong>u</strong>]][<strong>+n</strong>[<em>txt</em>]] may be appended ts a string o the <code>height</code> argument, while other module options <strong>frame</strong>, <strong>shade</strong>, <strong>equal</strong>, <strong>monochrome</strong>, <strong>dpi</strong>, <strong>nolines</strong> <strong>zfile</strong> and <strong>view</strong> may be appended as <em>optional arguments</em> at the end of the record. See <a href="../..\documentation/modules/colorbar.html">colorbar</a> for details on all modifiers and options.</p></li>
+<li><p><strong>C</strong> or <strong>textcolor</strong> : <em>textcolor=<code>color</code></em><br>
+Specifies the color with which the remaining text is to be printed via z=<em>value</em> (requires a prior <strong>cmap</strong> code as well). When <strong>textcolor</strong> is used in a legend then your font specifications cannot also contain a color specification since we will append <em>,textcolor</em> to the font. Use <strong>-</strong> to reset to default color.</p></li>
+<li><p><strong>D</strong> or <strong>hline</strong> : <em>hline=(pen=<code>pen</code>, offset=<code>val</code>)</em><br>
+The <strong>hline</strong> record results in a horizontal line with specified <code>pen</code> across the legend with one quarter of the line-spacing left blank above and below the line. Two gaps of <code>offset</code> units are left blank between the horizontal line and the left and right frame sides [0]. If no pen is given we use <code>MAP_GRID_PEN_PRIMARY</code>, and if <code>pen</code> is set to <strong>-</strong> then no visible line is drawn (we just remember the location as a possible start/stop point for a vertical line; see <strong>vline</strong>). To <em>not</em> add the quarter line-spacing before the line, add <strong>-</strong>. To <em>not</em> add the spacing after the line, add <strong>+</strong>. For no spacing at all, add <strong>=</strong> [Default places a quarter line-spacing both before and after the line].</p></li>
+<li><p><strong>F</strong> or <strong>fill</strong> : <em>fill=<code>fill1</code> <strong>|</strong> fill=(fill1, fill2, …)</em><br>
+Specify fill (color of pattern) for cells. Alternatively, you can specify an indirect color via <em>z=value</em> (requires a prior <strong>cmap</strong> code). If only <em>fill1</em> is given then it is used to fill the entire row, otherwise give one fill value for each active column (see <strong>ncol</strong>). If any fill is <strong>-</strong> then no fill takes place [Default].</p></li>
+<li><p><strong>G</strong> or <strong>gap</strong> or <strong>vspace</strong> : <em>vspace=<code>space</code></em><br>
+This record specifies a vertical gap of the given length. In addition to the standard units (<strong>i</strong>, <strong>c</strong>, <strong>p</strong>) you may use <strong>l</strong> for lines. A negative <code>gap</code> will move the current line upwards (thus closing a gap).</p></li>
+<li><p><strong>H</strong> or <strong>header</strong> : <em>header=(text=<code>txt</code>, [font=<code>font</code>])</em><br>
+This record plots a centered text string using the specified font parameters. If <code>font</code> is not used we default to size and fonttype of <code>FONT_TITLE</code>.</p></li>
+<li><p><strong>I</strong> or <strong>image</strong> : <em>image=(image=<code>fname</code>, width=<code>val</code>, justify=<code>code</code>)</em><br>
+Place an EPS or raster image in the legend justified relative to the current point. The image <code>width</code> determines the size of the image on the page and <code>code</code> is 2-chars positioning code.</p></li>
+<li><p><strong>L</strong> or <strong>label</strong> : <em>label=(label=<code>text</code>, justify=<code>code</code> [,font=<code>font</code>])</em><br>
+Plots a (L)eft, (C)entered, or (R)ight-justified <code>text</code> string within a column using the specified font parameters. <code>code</code> is one of :L, :C or :R. If <code>font</code> is not used we default to size and fonttype of <code>FONT_TITLE</code></p></li>
+<li><p><strong>M</strong> or <strong>map_scale</strong> : <em>map_scale=([lon=<code>val</code>,] lat|y=<code>val</code>, length=<code>val</code> [,region=?, proj=?, box=?])</em><br>
+Place a map scale in the legend. Specify <code>lon lat</code>, the point on the map where the scale applies (<code>lon</code> is only meaningful for certain oblique projections. Give <code>length=val</code>, the length of the scale in km (for other units append <strong>e</strong> (meter), <strong>f</strong> (foot), <strong>M</strong> (mile), <strong>n</strong> (nautical mile), or <strong>u</strong> (survey foot)). Append <strong>+f</strong> for a fancy map scale [Default is plain]. All these cases using a unit imply that <code>val</code> must be a string. Append <strong>+l</strong> to the <em>length</em> to select the default label which equals the distance unit (meter, feet, km, miles, nautical miles, survey feet) and is justified on top of the scale [t]. Change this by giving your own label (append <strong>+l</strong>_label_). Change label alignment with <strong>+a</strong>_align_ (choose among <strong>l</strong>(eft), <strong>r</strong>(ight), <strong>t</strong>(op) , and <strong>b</strong>(ottom)). Apply <strong>+u</strong> to append the unit to all distance annotations along the scale. If you want to place a map panel behind the scale, add a suitable <strong>box</strong> panel option (see <code>basemap</code> for details on panels as well as map scale modifiers). All <strong>+</strong>_modifiers_ must be appended to <code>length</code> to make a single string argument. If the <strong>region</strong> <strong>proj</strong> supplied to the module is different than the projection needed for the scale (or not given at all, e.g., with <strong>pos=(x=(…),</strong>), supply the two optional <strong>region</strong> and <strong>proj</strong> settings as well.</p></li>
+<li><p><strong>N</strong> or <strong>ncols</strong> : <em>ncols=<code>val</code></em><br>
+Change the number of columns in the legend [1]. This only affects the printing of symbols (<strong>symbol</strong>) and labels (<strong>label</strong>). The number of columns stay in effect until <strong>ncols</strong> is used again. To get columns of unequal width, instead provide the relative width of each column separated by whitespace in the form of a string as in <em>relwidth1 relwidth2 … relwidthn</em>. The sum of these widths are equated to the legend width set via <strong>position</strong>. If no argument is given the we set <code>ncols</code> to 1.</p></li>
+<li><p><strong>P</strong> or <strong>paragraph</strong> : <em>paragraph=true</em> <strong>|</strong> <em>paragraph=<code>options</code></em><br>
+Start a new text paragraph by specifying all the parameters needed (see <a href="../..\documentation/modules/text.html">text</a> <strong>paragraph</strong> record description). Note that the module knows what all those values should be, so normally you can just use <code>paragraph=true</code>. If you need to set at least one of the parameters directly, you must specify all and set the ones you want to leave at their default value to <strong>-</strong>.</p></li>
+<li><p><strong>S</strong> or <strong>symbol</strong> : <em>symbol=(marker=<code>name</code>, [dx_left=<code>val</code>,] size=<code>val</code> [fill=<code>fill</code>, pen=<code>pen</code>] [, dx_right, label=<code>text</code>])</em><br>
+Plots the selected symbol with specified diameter, fill, and outline (see <a href="../..\documentation/modules/plot.html">plot</a>). The symbol is centered at <code>dx_left</code> from the left margin of the column, with the optional explanatory <em>label</em> starting <code>dx_right</code> from the margin, printed with <code>FONT_ANNOT_PRIMARY</code>. If <code>dx_left</code> is not given then it is automatically computed from half the largest symbol size. If <code>dx_right</code> is not given then it is automatically computed as 1.5 times the largest symbol size. The <code>fill</code> can be a pen of pattern or may be specified indirectly via <em>z=value</em> and the color is assigned via the CPT look-up (requires a prior <strong>cmap</strong> code). When plotting just a symbol, without text, <code>dx_right</code> and <code>label</code> can be omitted. The <code>dx_left</code> value can also be given as a justification code <strong>L</strong>, <strong>C</strong>, or <strong>R</strong> which justifies the symbol with respect to the current column. If no arguments are given to <strong>symbol</strong> then we simply skip to the next column. Three <a href="../..\documentation/modules/plot.html">plot</a> symbols may take special modifiers: <em>front</em> (<strong>f</strong>), <em>quoted line</em> (<strong>q</strong>) and <em>vector</em> (<strong>v</strong>). You can append modifiers to the symbol and affect how the fronts, quoted lines and vectors are presented (see <a href="../..\documentation/modules/plot.html">plot</a> man page for modifiers). The module will determine default settings for all modifiers and secondary arguments if not provided. A few other symbols (the rectangles, ellipse, wedge, mathangle) may take more than a single argument size. Note that for a line segment you should use the horizontal dash symbol (<strong>-</strong>). If just a single size if given then we will provide reasonable arguments to plot the symbol (See <strong>Defaults</strong>). Alternatively, combine the required arguments into a single, comma-separated string and use that as the symbol size (again, see <a href="../..\documentation/modules/plot.html">plot</a> for details on the arguments needed).</p></li>
+<li><p><strong>T</strong> or <strong>text[xx]</strong> : <em>text[xx]=<code>text</code></em><br>
+One or more of these <strong>text</strong> records with <em>paragraph-text</em> printed with <code>FONT_ANNOT_PRIMARY</code>. To specify special positioning and typesetting arrangements, or to enter a paragraph break, use the optional <strong>paragraph</strong> record. <strong>NOTE:</strong> since we cannot repeat keyword names, if we want to provide several text strings we must use different keyword names. Hence the <code>text[xx]</code> that means we can repeat this option with <code>text1</code>, <code>text2</code>, etc…</p></li>
+<li><p><strong>V</strong> or <strong>vline</strong> : <em>vline=(pen=<code>pen</code>[, offset=<code>val</code>])</em><br>
+Draws a vertical line between columns (if more than one) using the selected <code>pen</code>. Here, <code>offset</code> is analogous to the offset for the <strong>hline</strong> records but in the vertical direction [0]. The first time <strong>vline</strong> is used we remember the vertical position of the last <strong>hline</strong> line, and the second time <strong>vline</strong> is set we draw from that past location to the most recent location of the <strong>hline</strong> line. Thus, <strong>hline</strong> must be used to mark the start and stop of a vertical line (so <strong>vline</strong> must follow <strong>hline</strong>). If no horizontal line is desired simply give <strong>-</strong> as <code>pen</code> to <strong>hline</strong>.</p></li>
+<li><p><strong>figname</strong> or <strong>savefig</strong> or <strong>name</strong> : – <em>figname=<code>name.png</code></em><br>
+Save the figure with the <code>figname=name.ext</code> where <code>ext</code> chooses the figure image format.</p></li>
+</ul>
+<p>The function <code>GMT.mk_legend(kwargs...)</code> can be used to generate the hard core GMT <em>Legend Codes</em>, which in turn can be written to a file and feed to this module as input. It can also be used in debug to check that the appropriate ASCII codes were generated.</p>
+</section>
+<section id="defaults" class="level2">
+<h2 class="anchored" data-anchor-id="defaults">Defaults</h2>
+<p>When attributes are not provided, or extended symbol information (for symbols taking more than just an overall size) are not given as comma-separated quantities, we will provide the following defaults:</p>
+<p>Front: The <code>size</code> argument is <em>length</em>[/<em>gap</em>[<em>ticklength</em>]]. Front symbol is left-side (here, that means upper side) box, with <em>ticklength</em> set 30% of the given symbol <em>length (if not specified separately), and </em>gap* defaulting to -1 (one entered front symbol) if not specified. Modifiers to the symbol argument can be provided.</p>
+<p>Vector: Head size is 30% of given symbol size.</p>
+<p>Ellipse: Minor axis is 65% of major axis (the symbol size), with an azimuth of 0 degrees.</p>
+<p>Rectangle: Height is 65% of width (the symbol size).</p>
+<p>Rotated rectangle: Same, with a rotation of 30 degrees.</p>
+<p>Rounded rectangle: Same as rectangle, but with corner radius of 10% of width.</p>
+<p>Mathangle: Angles are -10 and 45 degrees, with arrow head size 30% of symbol size.</p>
+<p>Wedge: Angles are -30 and 30 degrees.</p>
+</section>
+<section id="note-on-legend-height" class="level2">
+<h2 class="anchored" data-anchor-id="note-on-legend-height">Note On Legend Height</h2>
+<p>As <strong>position</strong> suggests, leaving the <code>height</code> off forces a calculation of the expected height. This is an exact calculation except in the case of legends that place paragraph text. Here we simply do a first-order estimate of how many typeset lines might appear. Without access to font metrics this estimate will occasionally be off by 1 line. If so, note the reported height (with <strong>verbose</strong>) and specify a slightly larger or smaller height in <strong>position</strong>.</p>
+</section>
+<section id="examples" class="level2">
+<h2 class="anchored" data-anchor-id="examples">Examples</h2>
+<p>To add an example of a legend to a Mercator plot with the given specifications:</p>
+<div id="ed3003e2" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">makecpt</span>(<span class="st">"-Cpanoply -T-8/8 &gt; tt.cpt"</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>((</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>       vspace<span class="op">=-</span><span class="fl">0.25</span>,</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>       header<span class="op">=</span>(text<span class="op">=</span><span class="st">"My Map Legend"</span>, font<span class="op">=</span>(<span class="fl">24</span>,<span class="st">"Times-Roman"</span>)),</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>       hline<span class="op">=</span>(pen<span class="op">=</span><span class="fl">1</span>, offset<span class="op">=</span><span class="fl">0.5</span>),</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>       ncolumns<span class="op">=</span><span class="fl">2</span>,</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>       vline<span class="op">=</span>(pen<span class="op">=</span><span class="fl">1</span>, offset<span class="op">=</span><span class="fl">0</span>),</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>       symbol1<span class="op">=</span>(marker<span class="op">=:</span>circ,    size<span class="op">=</span><span class="fl">0.4</span>, dx_left<span class="op">=</span><span class="fl">0.25</span>, fill<span class="op">=</span><span class="st">"p300/12"</span>, dx_right<span class="op">=</span><span class="fl">0.75</span>, text<span class="op">=</span><span class="st">"This circle is hachured"</span>),</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>       symbol2<span class="op">=</span>(marker<span class="op">=:</span>ellipse, size<span class="op">=</span><span class="fl">0.4</span>, dx_left<span class="op">=</span><span class="fl">0.25</span>, fill<span class="op">=:</span>yellow,   dx_right<span class="op">=</span><span class="fl">0.75</span>, text<span class="op">=</span><span class="st">"This ellipse is yellow"</span>),</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>       symbol3<span class="op">=</span>(marker<span class="op">=:</span>wedge,   size<span class="op">=</span><span class="fl">0.4</span>, dx_left<span class="op">=</span><span class="fl">0.25</span>, fill<span class="op">=:</span>green, pen<span class="op">=</span><span class="fl">0.25</span>, dx_right<span class="op">=</span><span class="fl">0.75</span>, text<span class="op">=</span><span class="st">"This wedge is green"</span>),</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>       symbol4<span class="op">=</span>(marker<span class="op">=:</span>fault,   size<span class="op">=</span><span class="fl">0.65</span>, dx_left<span class="op">=</span><span class="fl">0.25</span>, fill<span class="op">=:</span>blue, dx_right<span class="op">=</span><span class="fl">0.75</span>, text<span class="op">=</span><span class="st">"This is a fault"</span>),</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>       symbol5<span class="op">=</span>(marker<span class="op">=</span><span class="st">"-"</span>, size<span class="op">=</span><span class="fl">0.4</span>,  dx_left<span class="op">=</span><span class="fl">0.25</span>, pen<span class="op">=</span>(<span class="fl">0.25</span>,<span class="op">:</span>dash), dx_right<span class="op">=</span><span class="fl">0.75</span>, text<span class="op">=</span><span class="st">"A contour"</span>),</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>       symbol6<span class="op">=</span>(marker<span class="op">=:</span>vector, size<span class="op">=</span><span class="fl">0.65</span>, dx_left<span class="op">=</span><span class="fl">0.25</span>, fill<span class="op">=:</span>magenta, pen<span class="op">=</span><span class="fl">0.5</span>, dx_right<span class="op">=</span><span class="fl">0.75</span>, text<span class="op">=</span><span class="st">"This is a vector"</span>),</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>       symbol7<span class="op">=</span>(marker<span class="op">=</span><span class="st">"i"</span>, size<span class="op">=</span><span class="fl">0.4</span>,  dx_left<span class="op">=</span><span class="fl">0.25</span>, fill<span class="op">=:</span>cyan,    pen<span class="op">=</span><span class="fl">0.25</span>, dx_right<span class="op">=</span><span class="fl">0.75</span>, text<span class="op">=</span><span class="st">"This triangle is boring"</span>),</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>       hline2<span class="op">=</span>(pen<span class="op">=</span><span class="fl">1</span>, offset<span class="op">=</span><span class="fl">0.5</span>),</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>       vline2<span class="op">=</span>(pen<span class="op">=</span><span class="fl">1</span>, offset<span class="op">=</span><span class="fl">0</span>),</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>       ncolumns2<span class="op">=</span><span class="fl">1</span>,</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>       map_scale<span class="op">=</span>(lon<span class="op">=</span><span class="fl">5</span>, lat<span class="op">=</span><span class="fl">5</span>, length<span class="op">=</span><span class="st">"600+u+f"</span>),</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>       vspace2<span class="op">=</span><span class="fl">0.13</span>,</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>       image<span class="op">=</span>(width<span class="op">=</span><span class="fl">7.5</span>, fname<span class="op">=</span><span class="st">"@SOEST_block4.png"</span>, justify<span class="op">=:</span>CT),</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>       vspacep3<span class="op">=</span><span class="fl">0.13</span>,</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>       colorbar<span class="op">=</span>(name<span class="op">=</span><span class="st">"tt.cpt"</span>, offset<span class="op">=</span><span class="fl">0.5</span>, height<span class="op">=</span><span class="fl">0.5</span>, extra<span class="op">=</span><span class="st">"-B0"</span>),</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>       label<span class="op">=</span>(txt<span class="op">=</span><span class="st">"Smith et al., @%5%J. Geophys. Res., 99@%%, 2000"</span>, justify<span class="op">=:</span>R, font<span class="op">=</span>(<span class="fl">9</span>, <span class="st">"Times-Roman"</span>)),</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>       vspace4<span class="op">=</span><span class="fl">0.25</span>,</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>       text1<span class="op">=</span><span class="st">"Let us just try some simple text that can go on a few lines. There is no easy way to predetermine"</span>,</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>       text2<span class="op">=</span><span class="st">"how many lines may be required so we may have to adjust the height to get the right size box."</span></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>       ),</span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>       region<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">10</span>,<span class="fl">0</span>,<span class="fl">8</span>), pos<span class="op">=</span>(paper<span class="op">=</span>(<span class="fl">1.25</span>,<span class="fl">1.25</span>), width<span class="op">=</span><span class="fl">14</span>, justify<span class="op">=:</span>BL, spacing<span class="op">=</span><span class="fl">1.2</span>),</span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>       clearance<span class="op">=</span>(<span class="fl">0.25</span>,<span class="fl">0.25</span>), box<span class="op">=</span>(pen<span class="op">=</span><span class="fl">0.5</span>, fill<span class="op">=:</span>azure1),</span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>       figsize<span class="op">=</span><span class="fl">16</span>, proj<span class="op">=:</span>Mercator, show<span class="op">=</span><span class="cn">true</span></span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>       )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="legend_files/figure-html/cell-2-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script>
+
+// JavaScript to handle card hover effects for cards with images
+
+document.addEventListener('DOMContentLoaded', function() {
+
+  // Find all cards
+
+  const cards = document.querySelectorAll('.card');
+
+
+
+  cards.forEach(card => {
+
+    const paragraphs = card.querySelectorAll('p');
+
+
+
+    // If card has only one paragraph (with image)
+
+    if (paragraphs.length === 1) {
+
+      const p = paragraphs[0];
+
+      const img = p.querySelector('img');
+
+
+
+      if (img) {
+
+        // Get all text nodes
+
+        const textContent = Array.from(p.childNodes)
+
+          .filter(node => node.nodeType === Node.TEXT_NODE)
+
+          .map(node => node.textContent.trim())
+
+          .filter(text => text.length > 0)
+
+          .join(' ');
+
+
+
+        if (textContent) {
+
+          // Create overlay div for description
+
+          const overlay = document.createElement('div');
+
+          overlay.className = 'card-description-overlay';
+
+          overlay.textContent = textContent;
+
+          card.appendChild(overlay);
+
+
+
+          // Remove text nodes completely
+
+          Array.from(p.childNodes).forEach(node => {
+
+            if (node.nodeType === Node.TEXT_NODE && node.textContent.trim().length > 0) {
+
+              node.remove();
+
+            }
+
+          });
+
+        }
+
+      }
+
+    }
+
+  });
+
+});
+
+</script>
+
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/GenericMappingTools\.github\.io\/GMTjl_doc\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

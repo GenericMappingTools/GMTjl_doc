@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>grdfft</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-0615b85506723fa54ab13a613a4e9e4c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../custom.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../GMTjl_logo.png" alt="" class="navbar-logo light-content">
+    <img src="../../GMTjl_logo.png" alt="" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-documentation" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Documentation</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-documentation">    
+        <li>
+    <a class="dropdown-item" href="../../documentation.html">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../../documentation/modules.html">
+ <span class="dropdown-text">Modules</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/general/types.html">
+ <span class="dropdown-text">GMT.jl Types</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/extensions.html">
+ <span class="dropdown-text">GMT.jl Extensions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/gdalfuns.html">
+ <span class="dropdown-text">GDAL Functions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/solids.html">
+ <span class="dropdown-text">Solids</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/imgproc.html">
+ <span class="dropdown-text">Image Processing</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/common_features.html">
+ <span class="dropdown-text">Common Features</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/alphabetical.html">
+ <span class="dropdown-text">Alphabetical List</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../../examples.html"> 
+<span class="menu-text">Examples</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../gallery.html"> 
+<span class="menu-text">Gallery</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-tutorials" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Tutorials</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-tutorials">    
+        <li>
+    <a class="dropdown-item" href="../../tutorials.html">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../../tutorials/Landsat8/histogram_stretch.html">
+ <span class="dropdown-text">Landsat 8/9</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/coast/coastlines.html">
+ <span class="dropdown-text">Coastlines</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/choropleths/choropleths.html">
+ <span class="dropdown-text">US Choropleths</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/longest_sail/longestsail.html">
+ <span class="dropdown-text">Longest Sail</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/vector_shp/vector_shp.html">
+ <span class="dropdown-text">Geospatial vector</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/texture_shading/texture.html">
+ <span class="dropdown-text">Texture Shading</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/mosaics/mosaics.html">
+ <span class="dropdown-text">Mosaics</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/mosaics/mosaics.html">
+ <span class="dropdown-text">Mosaics</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/insets/insets.html">
+ <span class="dropdown-text">Insets</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/remote_datasets/remote_datasets.html">
+ <span class="dropdown-text">Remote Grids</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/blender_shading/blender_rt.html">
+ <span class="dropdown-text">Blender</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/signal/signal.html">
+ <span class="dropdown-text">Signal</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-geophysics" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Geophysics</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-geophysics">    
+        <li>
+    <a class="dropdown-item" href="../../geophysics.html">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../../geophysics/seismicity/global_seis.html">
+ <span class="dropdown-text">Seismicity</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../geophysics/earthtides/01_earthtides.html">
+ <span class="dropdown-text">Earth Tides</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../geophysics/weather/01_weather.html">
+ <span class="dropdown-text">Weather Data</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-help" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Help</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-help">    
+        <li>
+    <a class="dropdown-item" href="https://github.com/quarto-dev/quarto-cli/issues"><i class="bi bi-bug" role="img">
+</i> 
+ <span class="dropdown-text">Report a Bug</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://github.com/quarto-dev/quarto-cli/discussions"><i class="bi bi-chat-right-text" role="img">
+</i> 
+ <span class="dropdown-text">Ask a Question</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#synopsis" id="toc-synopsis" class="nav-link active" data-scroll-target="#synopsis">Synopsis</a></li>
+  <li><a href="#description" id="toc-description" class="nav-link" data-scroll-target="#description">Description</a></li>
+  <li><a href="#required-arguments" id="toc-required-arguments" class="nav-link" data-scroll-target="#required-arguments">Required Arguments</a></li>
+  <li><a href="#optional-arguments" id="toc-optional-arguments" class="nav-link" data-scroll-target="#optional-arguments">Optional Arguments</a></li>
+  <li><a href="#grid-distance-units" id="toc-grid-distance-units" class="nav-link" data-scroll-target="#grid-distance-units">Grid Distance Units</a></li>
+  <li><a href="#considerations" id="toc-considerations" class="nav-link" data-scroll-target="#considerations">Considerations</a></li>
+  <li><a href="#data-detrending" id="toc-data-detrending" class="nav-link" data-scroll-target="#data-detrending">Data Detrending</a></li>
+  <li><a href="#normalization-of-spectrum" id="toc-normalization-of-spectrum" class="nav-link" data-scroll-target="#normalization-of-spectrum">Normalization of Spectrum</a></li>
+  <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
+  <li><a href="#notes" id="toc-notes" class="nav-link" data-scroll-target="#notes">Notes</a></li>
+  <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">grdfft</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Mathematical operations on grids in the spectral domain</p>
+<p>(<strong>Warning: Manual translate by Claude. Needs revision</strong>)</p>
+<section id="synopsis" class="level2">
+<h2 class="anchored" data-anchor-id="synopsis">Synopsis</h2>
+<p><strong>grdfft</strong> <em>ingrid</em> [ <em>ingrid2</em> ] [ <strong>G</strong> | <strong>outgrid</strong> | <strong>save</strong> ] [ <strong>A</strong> | <strong>azim</strong> | <strong>azimuth</strong> ] [ <strong>C</strong> | <strong>upward</strong> | <strong>continue</strong> ] [ <strong>D</strong> | <strong>dfdz</strong> | <strong>differentiate</strong> ] [ <strong>E</strong> | <strong>radial_power</strong> | <strong>spectrum</strong> ] [ <strong>F</strong> | <strong>filter</strong> ] [ <strong>I</strong> | <strong>integrate</strong> ] [ <strong>M</strong> | <strong>mgal45</strong> ] [ <strong>N</strong> | <strong>inquire</strong> | <strong>fft_params</strong> ] [ <strong>Q</strong> | <strong>no_wavenumber</strong> ] [ <strong>S</strong> | <strong>scale</strong> ] [ <strong>V</strong> | <strong>verbose</strong> ] [ <strong>f</strong> | <strong>colinfo</strong> ]</p>
+</section>
+<section id="description" class="level2">
+<h2 class="anchored" data-anchor-id="description">Description</h2>
+<p><strong>grdfft</strong> will take the 2-D forward Fast Fourier Transform and perform one or more mathematical operations in the frequency domain before transforming back to the space domain. An option is provided to scale the data before writing the new values to an output file. The horizontal dimensions of the grid are assumed to be in meters. Geographical grids may be used by specifying the <strong>colinfo</strong> option that scales degrees to meters. If you have grids with dimensions in km, you could change this to meters using <strong>grdedit</strong>.</p>
+</section>
+<section id="required-arguments" class="level2">
+<h2 class="anchored" data-anchor-id="required-arguments">Required Arguments</h2>
+<dl>
+<dt><em>ingrid</em></dt>
+<dd>
+2-D binary grid file to be operated on. Can be a file name, a <a href="../..\documentation/general/types.html#sec-grid-type">GMTgrid</a> object, or a Matrix.
+</dd>
+<dt><em>ingrid2</em></dt>
+<dd>
+Optional second grid file for cross-spectral estimates (see <strong>E</strong> | <strong>spectrum</strong>).
+</dd>
+</dl>
+</section>
+<section id="optional-arguments" class="level2">
+<h2 class="anchored" data-anchor-id="optional-arguments">Optional Arguments</h2>
+<ul>
+<li><p><strong>G</strong> or <strong>outgrid</strong> or <strong>save</strong> : – <em>save=“outfile.grd”</em> <strong>|</strong> <em>save=“table.txt”</em><br>
+Specify the name of the output grid file or the 1-D spectrum table (see <strong>radial_power</strong>). This is optional for <strong>radial_power</strong> but mandatory for all other options that require a grid output.</p></li>
+<li><p><strong>A</strong> or <strong>azim</strong> : – <em>azim=angle</em> <strong>|</strong> <em>azim=deg</em><br>
+Take the directional derivative in the azimuth direction measured in degrees CW from north.</p></li>
+<li><p><strong>C</strong> or <strong>upward</strong> : – <em>upward=zlevel</em><br>
+Upward (for <em>zlevel</em> &gt; 0) or downward (for <em>zlevel</em> &lt; 0) continue the field <em>zlevel</em> meters.</p></li>
+<li><p><strong>D</strong> or <strong>dfdz</strong> : – <em>dfdz=true</em> <strong>|</strong> <em>dfdz=scale</em> <strong>|</strong> <em>dfdz=“<scale>g”</scale></em><br>
+Differentiate the field, i.e., take ∂/∂z of the grid z. This is equivalent to multiplying by kr in the frequency domain (kr is radial wave number). Options:</p>
+<ul>
+<li>No argument or <strong>true</strong> : Multiply by kr [Default].</li>
+<li><em>scale</em> (Number) : Multiply by kr × <em>scale</em> instead.</li>
+<li><strong>“<scale>g”</scale></strong> : Indicates that your data are geoid heights in meters and output should be gravity anomalies in mGal. Here, <em>scale</em> is a numerical factor to multiply kr by (e.g., 2π × 6.673e-11 × 5.972e24 / 6371000³ = 6.2638e-7 for Earth). Note that in this case, the whole value must be provided as a string.</li>
+</ul>
+<p>Repeatable. [Default is no scale].</p></li>
+<li><p><strong>E</strong> or <strong>radial_power</strong> : – <em>radial_power=true</em> <strong>|</strong> <em>radial_power=:r</em> <strong>|</strong> <em>radial_power=(dir=:x, modifiers…)</em> <strong>|</strong> <em>radial_power=“r+w+n”</em><br>
+Estimate power spectrum in the radial or a horizontal direction. No grid file is created. If one grid is given then f (i.e., frequency or wave number), power[f], and 1 standard deviation in power[f] are written to the file set by <strong>save</strong> [standard output]. If two grids are given we write f and 8 quantities: Xpower[f], Ypower[f], coherent power[f], noise power[f], phase[f], admittance[f], gain[f], coherency[f]. Each quantity is followed by its own 1-std dev error estimate, hence the output is 17 columns wide. Select your spectrum by choosing one of these directives:</p>
+<ul>
+<li><strong>dir=:r</strong> : Choose a radial spectrum [Default].</li>
+<li><strong>dir=:x</strong> : Compute the spectrum in the x-direction instead.</li>
+<li><strong>dir=:y</strong> : Compute the spectrum in the y-direction instead.</li>
+</ul>
+<p>Two modifiers are available to adjust the output further:</p>
+<ul>
+<li><strong>wavelength</strong> : <em>wavelength=true</em> <strong>|</strong> <em>wavelength=:k</em> – Write wavelength w instead of frequency f, and if your grid is geographic you may further append <strong>:k</strong> to scale wavelengths from meter [Default] to km.</li>
+<li><strong>normalize</strong> : <em>normalize=true</em> – Normalize spectrum so that the mean spectral values per frequency are reported [By default the spectrum is obtained by summing over several frequencies].</li>
+</ul></li>
+<li><p><strong>F</strong> or <strong>filter</strong> : – <em>filter=(lc, lp, hp, hc)</em> <strong>|</strong> <em>filter=“lc/lp/hp/hc”</em> <strong>|</strong> <em>filter=(dir=:x, lc=lc, lp=lp, hp=hp, hc=hc)</em> <strong>|</strong> <em>filter=(dir=:r, lo=lo, hi=hi)</em> <strong>|</strong> <em>filter=(dir=:y, lo=lo, hi=hi, order=n)</em><br>
+Filter the data. Place <strong>:x</strong> or <strong>:y</strong> immediately after <strong>F</strong> (or use <strong>dir=:x</strong> or <strong>dir=:y</strong>) to filter x or y direction only; default is isotropic [<strong>:r</strong>]. Choose between a cosine-tapered band-pass, a Gaussian band-pass filter, or a Butterworth band-pass filter:</p>
+<p><strong>Cosine-taper</strong>: Specify four wavelengths <em>lc/lp/hp/hc</em> in correct units (see <strong>colinfo</strong>) to design a bandpass filter: wavelengths greater than <em>lc</em> or less than <em>hc</em> will be cut, wavelengths greater than <em>lp</em> and less than <em>hp</em> will be passed, and wavelengths in between will be cosine-tapered. E.g., <code>filter=(1000000, 250000, 50000, 10000), colinfo=:g</code> will bandpass, cutting wavelengths &gt; 1000 km and &lt; 10 km, passing wavelengths between 250 km and 50 km. To make a highpass or lowpass filter, give hyphens (-) or <code>missing</code> for <em>hp/hc</em> or <em>lc/lp</em>. E.g., <code>filter=(dir=:x, lp=missing, hp=50, hc=10)</code> will lowpass x, passing wavelengths &gt; 50 and rejecting wavelengths &lt; 10. <code>filter=(dir=:y, lc=1000, lp=250, hp=missing)</code> will highpass y, passing wavelengths &lt; 250 and rejecting wavelengths &gt; 1000.</p>
+<p><strong>Gaussian band-pass</strong>: Append <em>lo/hi</em>, the two wavelengths in correct units (see <strong>colinfo</strong>) to design a bandpass filter. At the given wavelengths the Gaussian filter weights will be 0.5. To make a highpass or lowpass filter, give a hyphen (-) or <code>missing</code> for the <em>hi</em> or <em>lo</em> wavelength, respectively. E.g., <code>filter=(lo=missing, hi=30)</code> will lowpass the data using a Gaussian filter with half-weight at 30, while <code>filter=(lo=400, hi=missing)</code> will highpass the data.</p>
+<p><strong>Butterworth band-pass</strong>: Append <em>lo/hi/order</em>, the two wavelengths in correct units (see <strong>colinfo</strong>) and the filter order (an integer) to design a bandpass filter. At the given cut-off wavelengths the Butterworth filter weights will be 0.707 (i.e., the power spectrum will therefore be reduced by 0.5). To make a highpass or lowpass filter, give a hyphen (-) or <code>missing</code> for the <em>hi</em> or <em>lo</em> wavelength, respectively. E.g., <code>filter=(lo=missing, hi=30, order=2)</code> will lowpass the data using a 2nd-order Butterworth filter, with half-weight at 30, while <code>filter=(lo=400, hi=missing, order=2)</code> will highpass the data.</p>
+<p>Note: For filtering in the time (or space) domain instead, see <strong>grdfilter</strong>.</p></li>
+<li><p><strong>I</strong> or <strong>integrate</strong> : – <em>integrate=true</em> <strong>|</strong> <em>integrate=scale</em> <strong>|</strong> <em>integrate=“<scale>g”</scale></em><br>
+Integrate the field, i.e., compute ∫ z(x,y) dz. This is equivalent to divide by kr in the frequency domain (kr is radial wave number). Options:</p>
+<ul>
+<li>No argument or <strong>true</strong> : Divide by kr [Default].</li>
+<li><em>scale</em> (Number) : Divide by kr × <em>scale</em> instead.</li>
+<li><strong><scale>g</scale></strong> : Indicates that your data set is gravity anomalies in mGal and output should be geoid heights in meters. Note that in this case, the whole value must be provided as a string.</li>
+</ul></li>
+<li><p><strong>M</strong> or <strong>mgal45</strong> : – <em>mgal45=value</em><br>
+Specify the value of the gravity in mili Gals at 45 degrees latitude (used to convert gravity anomalies to geoid heights). Default is 980619.9203 mGal (Moritz’s 1980 IGF value). This value needs to be changed accordingly when using data from other planets.</p></li>
+<li><p><strong>N</strong> or <strong>inquire</strong> : – <em>inquire=true</em> <strong>|</strong> <em>inquire=:a</em> <strong>|</strong> <em>inquire=(mode=:f, modifiers…)</em> <strong>|</strong> <em>inquire=“a+d+e+t50+v+w+z”</em><br>
+Choose or inquire about suitable grid dimensions for FFT and set optional parameters. Control the FFT dimension via these directives:</p>
+<ul>
+<li><strong>:a</strong> or <strong>mode=:a</strong> : Let the FFT select dimensions yielding the most accurate result.</li>
+<li><strong>:f</strong> or <strong>mode=:f</strong> : Force the FFT to use the actual dimensions of the data.</li>
+<li><strong>:m</strong> or <strong>mode=:m</strong> : Let the FFT select dimensions using the least work memory.</li>
+<li><strong>:r</strong> or <strong>mode=:r</strong> : Let the FFT select dimensions yielding the most rapid calculation.</li>
+<li><strong>:s</strong> or <strong>mode=:s</strong> : Just present a list of optional dimensions, then exit.</li>
+<li><em>nx/ny</em> or <strong>size=(nx, ny)</strong> : Do FFT on array size nx/ny (must be &gt;= grid file size).</li>
+</ul>
+<p>Without a directive we expect nx/ny which will do FFT on array size nx/ny (must be &gt;= grid file size). Default chooses dimensions &gt;= data which optimize speed and accuracy of FFT. If FFT dimensions &gt; grid file dimensions, data are extended and tapered to zero.</p>
+<p>Control detrending of data by appending a modifier for removing a linear trend. The default action is to remove a best-fitting linear plane (<strong>+d</strong>):</p>
+<ul>
+<li><strong>detrend</strong> or <strong>+d</strong> : <em>detrend=true</em> – Detrend data, i.e.&nbsp;remove best-fitting linear trend.</li>
+<li><strong>mean</strong> or <strong>+a</strong> : <em>mean=true</em> – Only remove the mean value.</li>
+<li><strong>mid</strong> or <strong>+h</strong> : <em>mid=true</em> – Only remove the mid value, i.e.&nbsp;0.5 × (max + min).</li>
+<li><strong>leave</strong> or <strong>+l</strong> : <em>leave=true</em> – Leave data alone.</li>
+</ul>
+<p>Control extension and tapering of data by appending a modifier to control how the extension and tapering are to be performed:</p>
+<ul>
+<li><strong>extend</strong> or <strong>+e</strong> : <em>extend=true</em> – Extend the grid by imposing edge-point symmetry [Default].</li>
+<li><strong>mirror</strong> or <strong>+m</strong> : <em>mirror=true</em> – Extends the grid by imposing edge mirror symmetry.</li>
+<li><strong>no_extend</strong> or <strong>+n</strong> : <em>no_extend=true</em> – Turns off data extension.</li>
+</ul>
+<p>Tapering is performed from the data edge to the FFT grid edge [100%]. Change this percentage via modifier:</p>
+<ul>
+<li><strong>taper</strong> or <strong>+t</strong> : <em>taper=width</em> – Set taper width as percentage.</li>
+</ul>
+<p>When <strong>+n</strong> is in effect, the tapering is applied instead to the data margins as no extension is available [0%].</p>
+<p>Control messages being reported:</p>
+<ul>
+<li><strong>+v</strong> : <em>verbose_fft=true</em> – Report suitable dimensions during processing.</li>
+</ul>
+<p>Control writing of temporary results: For detailed investigation you can write the intermediate grid being passed to the forward FFT; this is likely to have been detrended, extended by point-symmetry along all edges, and tapered. Use these modifiers to save such grids:</p>
+<ul>
+<li><strong>write</strong> or <strong>+w</strong> : <em>write=“suffix”</em> – Set the suffix from which output file name(s) will be created (i.e., <em>ingrid_suffix.ext</em>) [Default is “tapered”], where ext is your file extension.</li>
+<li><strong>save_fft</strong> or <strong>+z</strong> : <em>save_fft=true</em> <strong>|</strong> <em>save_fft=:p</em> – Save the complex grid produced by the forward FFT. By default we write the real and imaginary components to <em>ingrid_real.ext</em> and <em>ingrid_imag.ext</em>. Append <strong>:p</strong> to instead use the polar form of magnitude and phase to files <em>ingrid_mag.ext</em> and <em>ingrid_phase.ext</em>.</li>
+</ul></li>
+<li><p><strong>Q</strong> or <strong>no_wavenumber</strong> : – <em>no_wavenumber=true</em><br>
+Selects no wavenumber operations. Useful in conjunction with <strong>inquire</strong> modifiers when you wish to write out the 2-D spectrum (or other intermediate grid products) only.</p></li>
+<li><p><strong>S</strong> or <strong>scale</strong> : – <em>scale=factor</em> <strong>|</strong> <em>scale=:d</em><br>
+Multiply each element by <em>factor</em> in the space domain (after the frequency domain operations). [Default is 1.0]. Alternatively, append <strong>:d</strong> to convert deflection of vertical to micro-radians.</p></li>
+<li><p><strong>V</strong> or <em>verbose</em> : – <em>verbose=true</em> <strong>|</strong> <em>verbose=level</em><br>
+Select verbosity level. More at [verbose](../common_opts/opt_V.html)</p></li>
+<li><p><strong>f</strong> or <strong>colinfo</strong> : – <em>colinfo=??</em><br>
+Specify the data types of input and/or output columns (time or geographical data). <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#f-full">More at</a></p></li>
+</ul>
+</section>
+<section id="grid-distance-units" class="level2">
+<h2 class="anchored" data-anchor-id="grid-distance-units">Grid Distance Units</h2>
+<p>If the grid does not have meter as the horizontal unit, append <strong>+u</strong><em>unit</em> to the input file name to convert from the specified unit to meter. If your grid is geographic, convert distances to meters by supplying <strong>colinfo=:g</strong> instead.</p>
+</section>
+<section id="considerations" class="level2">
+<h2 class="anchored" data-anchor-id="considerations">Considerations</h2>
+<p>netCDF COARDS grids will automatically be recognized as geographic. For other geographical grids where you want to convert degrees into meters, select <strong>colinfo=:g</strong>. If the data are close to either pole, you should consider projecting the grid file onto a rectangular coordinate system using <a href="../..\documentation/modules/grdproject.html">grdproject</a>.</p>
+</section>
+<section id="data-detrending" class="level2">
+<h2 class="anchored" data-anchor-id="data-detrending">Data Detrending</h2>
+<p>The default detrending mode is to remove a best-fitting linear plane (<strong>+d</strong>). Consult and use <strong>inquire</strong> to select other modes.</p>
+</section>
+<section id="normalization-of-spectrum" class="level2">
+<h2 class="anchored" data-anchor-id="normalization-of-spectrum">Normalization of Spectrum</h2>
+<p>By default, the power spectrum returned by <strong>spectrum</strong> simply sums the contributions from frequencies that are part of the output frequency. For x- or y-spectra this means summing the power across the other frequency dimension, while for the radial spectrum it means summing up power within each annulus of width delta_q, the radial frequency (q) spacing. A consequence of this summing is that the radial spectrum of a white noise process will give a linear radial power spectrum that is proportional to q. Appending <strong>normalize=true</strong> will instead compute the mean power per output frequency and in this case the white noise process will have a white radial spectrum as well.</p>
+</section>
+<section id="examples" class="level2">
+<h2 class="anchored" data-anchor-id="examples">Examples</h2>
+<p>To obtain the normalized radial spectrum from the remote data grid <span class="citation" data-cites="white">@white</span>_noise.nc, after removing the mean, try:</p>
+<div id="e30de4ea" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">grdfft</span>(<span class="st">"@white_noise.nc"</span>, radial_power<span class="op">=</span>(dir<span class="op">=:</span>r, normalize<span class="op">=</span><span class="cn">true</span>, wavelength<span class="op">=</span><span class="cn">true</span>));</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">viz</span>(D)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="grdfft_files/figure-html/cell-2-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>To upward continue the sea-level magnetic anomalies in the file mag_0.nc to a level 800 m above sealevel:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">grdfft</span>(<span class="st">"mag_0.nc"</span>, upward<span class="op">=</span><span class="fl">800</span>, verbose<span class="op">=</span><span class="cn">true</span>, save<span class="op">=</span><span class="st">"mag_800.nc"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>To transform geoid heights in m (geoid.nc) on a geographical grid to free-air gravity anomalies in mGal:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">grdfft</span>(<span class="st">"geoid.nc"</span>, dfdz<span class="op">=:</span>g, verbose<span class="op">=</span><span class="cn">true</span>, save<span class="op">=</span><span class="st">"grav.nc"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>To transform gravity anomalies in mGal (faa.nc) to deflections of the vertical (in micro-radians) in the 038 direction, we must first integrate gravity to get geoid, then take the directional derivative, and finally scale radians to micro-radians:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">grdfft</span>(<span class="st">"faa.nc"</span>, integrate<span class="op">=:</span>g, azim<span class="op">=</span><span class="fl">38</span>, scale<span class="op">=</span><span class="fl">1e6</span>, verbose<span class="op">=</span><span class="cn">true</span>, save<span class="op">=</span><span class="st">"defl_38.nc"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Second vertical derivatives of gravity anomalies are related to the curvature of the field. We can compute these as mGal/m² by:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">grdfft</span>(<span class="st">"gravity.nc"</span>, dfdz<span class="op">=</span><span class="cn">true</span>, dfdz<span class="op">=</span><span class="cn">true</span>, verbose<span class="op">=</span><span class="cn">true</span>, save<span class="op">=</span><span class="st">"grav_2nd_derivative.nc"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Note: To repeat <strong>dfdz</strong> twice, you would need to call grdfft twice in sequence or use the monolithic syntax.</p>
+<p>To compute cross-spectral estimates for co-registered bathymetry and gravity grids, and report result as functions of wavelengths in km, try:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">grdfft</span>([<span class="st">"bathymetry.nc"</span>, <span class="st">"gravity.grd"</span>], spectrum<span class="op">=</span>(wavelength<span class="op">=:</span>k,), colinfo<span class="op">=:</span>g, verbose<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Or using two separate grid arguments:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>bathy <span class="op">=</span> <span class="fu">gmtread</span>(<span class="st">"bathymetry.nc"</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>grav <span class="op">=</span> <span class="fu">gmtread</span>(<span class="st">"gravity.grd"</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">grdfft</span>(bathy, grav, spectrum<span class="op">=</span>(wavelength<span class="op">=:</span>k,), colinfo<span class="op">=:</span>g, verbose<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>To examine the pre-FFT grid after detrending, point-symmetry reflection, and tapering has been applied, as well as saving the real and imaginary components of the raw spectrum of the data in topo.nc, try:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grdfft</span>(<span class="st">"topo.nc"</span>, inquire<span class="op">=</span>(write<span class="op">=</span><span class="cn">true</span>, save_fft<span class="op">=</span><span class="cn">true</span>), colinfo<span class="op">=:</span>g, verbose<span class="op">=</span><span class="cn">true</span>, </span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>       no_wavenumber<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>You can now make plots of the data in topo_taper.nc, topo_real.nc, and topo_imag.nc.</p>
+</section>
+<section id="notes" class="level2">
+<h2 class="anchored" data-anchor-id="notes">Notes</h2>
+<section id="repeating-operations" class="level3">
+<h3 class="anchored" data-anchor-id="repeating-operations">Repeating Operations</h3>
+<p>Some operations like <strong>dfdz</strong> and <strong>integrate</strong> can be repeated to get higher-order derivatives or multiple integrations. In GMT.jl, you have two options:</p>
+<ol type="1">
+<li><strong>Chain calls</strong>: Call grdfft multiple times in sequence</li>
+<li><strong>Monolithic syntax</strong>: Use the GMT command string directly</li>
+</ol>
+<p>Example for second derivative:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Option 1: Chain calls</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>G1 <span class="op">=</span> <span class="fu">grdfft</span>(<span class="st">"gravity.nc"</span>, dfdz<span class="op">=</span><span class="cn">true</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>G2 <span class="op">=</span> <span class="fu">grdfft</span>(G1, dfdz<span class="op">=</span><span class="cn">true</span>)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Option 2: Monolithic syntax  </span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">grdfft</span>(<span class="st">"gravity.nc"</span>, D<span class="op">=</span><span class="st">"-D -D"</span>, save<span class="op">=</span><span class="st">"output.nc"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="see-also" class="level2">
+<h2 class="anchored" data-anchor-id="see-also">See Also</h2>
+<p><a href="../..\documentation/modules/grdfilter.html">grdfilter</a>, <a href="../..\documentation/modules/grdproject.html">grdproject</a></p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script>
+
+// JavaScript to handle card hover effects for cards with images
+
+document.addEventListener('DOMContentLoaded', function() {
+
+  // Find all cards
+
+  const cards = document.querySelectorAll('.card');
+
+
+
+  cards.forEach(card => {
+
+    const paragraphs = card.querySelectorAll('p');
+
+
+
+    // If card has only one paragraph (with image)
+
+    if (paragraphs.length === 1) {
+
+      const p = paragraphs[0];
+
+      const img = p.querySelector('img');
+
+
+
+      if (img) {
+
+        // Get all text nodes
+
+        const textContent = Array.from(p.childNodes)
+
+          .filter(node => node.nodeType === Node.TEXT_NODE)
+
+          .map(node => node.textContent.trim())
+
+          .filter(text => text.length > 0)
+
+          .join(' ');
+
+
+
+        if (textContent) {
+
+          // Create overlay div for description
+
+          const overlay = document.createElement('div');
+
+          overlay.className = 'card-description-overlay';
+
+          overlay.textContent = textContent;
+
+          card.appendChild(overlay);
+
+
+
+          // Remove text nodes completely
+
+          Array.from(p.childNodes).forEach(node => {
+
+            if (node.nodeType === Node.TEXT_NODE && node.textContent.trim().length > 0) {
+
+              node.remove();
+
+            }
+
+          });
+
+        }
+
+      }
+
+    }
+
+  });
+
+});
+
+</script>
+
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/GenericMappingTools\.github\.io\/GMTjl_doc\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

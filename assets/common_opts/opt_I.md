@@ -1,2 +1,0 @@
-- **I** or **inc** or **increment** or **spacing** : -- *inc=x_inc* **|** *inc=(x_inc, y_inc)* **|** *inc="xinc[+e|n][/yinc[+e|n]]"*\
-   Specify the grid increments or the block sizes. More at \myreflink{spacing}

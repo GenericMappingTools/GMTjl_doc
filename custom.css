@@ -1,0 +1,24 @@
+/* Remove top spacing between navbar and banner */
+#quarto-content main { 
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+
+main.page-columns {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+
+/* Use smaller negative margin to close gap without cutting banner */
+.column-page:first-of-type {
+  margin-top: -0.5rem !important;
+  padding-top: 0 !important;
+}
+
+.column-page:first-of-type img {
+  display: block;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  width: 80% !important;  /* Reduce banner to 80% of its width */
+  height: auto;
+}

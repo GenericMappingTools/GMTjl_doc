@@ -1,0 +1,1703 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>GMT.jl Extensions</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-0615b85506723fa54ab13a613a4e9e4c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../custom.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../GMTjl_logo.png" alt="" class="navbar-logo light-content">
+    <img src="../GMTjl_logo.png" alt="" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-documentation" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Documentation</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-documentation">    
+        <li>
+    <a class="dropdown-item" href="../documentation.html">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../documentation/modules.html">
+ <span class="dropdown-text">Modules</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../documentation/general/types.html">
+ <span class="dropdown-text">GMT.jl Types</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../documentation/extensions.html">
+ <span class="dropdown-text">GMT.jl Extensions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../documentation/gdalfuns.html">
+ <span class="dropdown-text">GDAL Functions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../documentation/solids.html">
+ <span class="dropdown-text">Solids</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../documentation/imgproc.html">
+ <span class="dropdown-text">Image Processing</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../documentation/common_features.html">
+ <span class="dropdown-text">Common Features</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../documentation/alphabetical.html">
+ <span class="dropdown-text">Alphabetical List</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../examples.html"> 
+<span class="menu-text">Examples</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../gallery.html"> 
+<span class="menu-text">Gallery</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-tutorials" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Tutorials</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-tutorials">    
+        <li>
+    <a class="dropdown-item" href="../tutorials.html">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../tutorials/Landsat8/histogram_stretch.html">
+ <span class="dropdown-text">Landsat 8/9</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../tutorials/coast/coastlines.html">
+ <span class="dropdown-text">Coastlines</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../tutorials/choropleths/choropleths.html">
+ <span class="dropdown-text">US Choropleths</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../tutorials/longest_sail/longestsail.html">
+ <span class="dropdown-text">Longest Sail</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../tutorials/vector_shp/vector_shp.html">
+ <span class="dropdown-text">Geospatial vector</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../tutorials/texture_shading/texture.html">
+ <span class="dropdown-text">Texture Shading</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../tutorials/mosaics/mosaics.html">
+ <span class="dropdown-text">Mosaics</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../tutorials/mosaics/mosaics.html">
+ <span class="dropdown-text">Mosaics</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../tutorials/insets/insets.html">
+ <span class="dropdown-text">Insets</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../tutorials/remote_datasets/remote_datasets.html">
+ <span class="dropdown-text">Remote Grids</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../tutorials/blender_shading/blender_rt.html">
+ <span class="dropdown-text">Blender</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../tutorials/signal/signal.html">
+ <span class="dropdown-text">Signal</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-geophysics" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Geophysics</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-geophysics">    
+        <li>
+    <a class="dropdown-item" href="../geophysics.html">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../geophysics/seismicity/global_seis.html">
+ <span class="dropdown-text">Seismicity</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../geophysics/earthtides/01_earthtides.html">
+ <span class="dropdown-text">Earth Tides</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../geophysics/weather/01_weather.html">
+ <span class="dropdown-text">Weather Data</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-help" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Help</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-help">    
+        <li>
+    <a class="dropdown-item" href="https://github.com/quarto-dev/quarto-cli/issues"><i class="bi bi-bug" role="img">
+</i> 
+ <span class="dropdown-text">Report a Bug</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://github.com/quarto-dev/quarto-cli/discussions"><i class="bi bi-chat-right-text" role="img">
+</i> 
+ <span class="dropdown-text">Ask a Question</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#quick-links" id="toc-quick-links" class="nav-link active" data-scroll-target="#quick-links">Quick Links</a></li>
+  <li><a href="#plotting-extensions" id="toc-plotting-extensions" class="nav-link" data-scroll-target="#plotting-extensions">Plotting Extensions</a></li>
+  <li><a href="#data-processing" id="toc-data-processing" class="nav-link" data-scroll-target="#data-processing">Data Processing</a></li>
+  <li><a href="#data-conversion" id="toc-data-conversion" class="nav-link" data-scroll-target="#data-conversion">Data Conversion</a></li>
+  <li><a href="#data-manipulation" id="toc-data-manipulation" class="nav-link" data-scroll-target="#data-manipulation">Data Manipulation</a></li>
+  <li><a href="#data-access" id="toc-data-access" class="nav-link" data-scroll-target="#data-access">Data Access</a></li>
+  <li><a href="#geographic-utilities" id="toc-geographic-utilities" class="nav-link" data-scroll-target="#geographic-utilities">Geographic Utilities</a></li>
+  <li><a href="#geophysical" id="toc-geophysical" class="nav-link" data-scroll-target="#geophysical">Geophysical</a></li>
+  <li><a href="#table-operations" id="toc-table-operations" class="nav-link" data-scroll-target="#table-operations">Table Operations</a></li>
+  <li><a href="#miscellaneous" id="toc-miscellaneous" class="nav-link" data-scroll-target="#miscellaneous">Miscellaneous</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">GMT.jl Extensions</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<style>
+.grid {
+  gap: 3px;
+}
+</style>
+<p>GMT.jl provides additional high-level plotting functions and data access utilities that extend GMT’s core capabilities with Julia-specific features.</p>
+<section id="quick-links" class="level2">
+<h2 class="anchored" data-anchor-id="quick-links">Quick Links</h2>
+<ul>
+<li><a href="#plotting-extensions">Plotting Extensions</a> - High-level plotting and visualization</li>
+<li><a href="#data-processing">Data Processing</a> - Smoothing, filtering, and statistical analysis</li>
+<li><a href="#data-conversion">Data Conversion</a> - Format and coordinate transformations</li>
+<li><a href="#data-manipulation">Data Manipulation</a> - Grid and data operations</li>
+<li><a href="#data-access">Data Access</a> - Geographic data and remote datasets</li>
+<li><a href="#geographic-utilities">Geographic Utilities</a> - Geographic and geospatial tools</li>
+<li><a href="#geophysical">Geophysical</a> - Geophysical and Earth science applications</li>
+<li><a href="#table-operations">Table Operations</a> - DataFrame-style table joins</li>
+<li><a href="#miscellaneous">Miscellaneous</a> - Other utilities</li>
+</ul>
+<hr>
+</section>
+<section id="plotting-extensions" class="level2">
+<h2 class="anchored" data-anchor-id="plotting-extensions">Plotting Extensions</h2>
+<p>High-level plotting functions for common visualization tasks.</p>
+<div class="grid">
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/ablines.html">ablines</a> <a href="utilities/ablines.html"><img src="modules/assets/ablines_logo.jpg" class="card-img-top img-fluid"></a> Add reference lines to plots</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/anaglyph.html">anaglyph</a> <a href="utilities/anaglyph.html"><img src="modules/assets/anaglyph_logo.jpg" class="card-img-top img-fluid"></a> Create 3D anaglyph images</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/append2fig.html">append2fig</a> <a href="utilities/append2fig.html"><img src="modules/assets/append2fig_logo.jpg" class="card-img-top img-fluid"></a> Append elements to existing figure</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/coastlinesproj.html">coastlinesproj</a> <a href="utilities/coastlinesproj.html"><img src="modules/assets/coastlinesproj_logo.jpg" class="card-img-top img-fluid"></a> Project coastlines to map</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/colorzones.html">colorzones</a> <a href="utilities/colorzones.html"><img src="modules/assets/colorzones_logo.jpg" class="card-img-top img-fluid"></a> Apply color palettes to segmented data</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/cubeplot.html">cubeplot</a> <a href="utilities/cubeplot.html"><img src="modules/assets/cubeplot_logo.jpg" class="card-img-top img-fluid"></a> 3D cube plotting</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/earthregions.html">earthregions</a> <a href="utilities/earthregions.html"><img src="modules/assets/earthregions_logo.jpg" class="card-img-top img-fluid"></a> Plot or extract named geographic regions</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/graticules.html">graticules</a> <a href="utilities/graticules.html"><img src="modules/assets/graticules_logo.jpg" class="card-img-top img-fluid"></a> Create map graticules</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/hlines.html">hlines</a> <a href="utilities/hlines.html"><img src="modules/assets/hlines_logo.jpg" class="card-img-top img-fluid"></a> Plot horizontal reference lines</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/imagesc.html">imagesc</a> <a href="utilities/imagesc.html"><img src="modules/assets/imagesc_logo.jpg" class="card-img-top img-fluid"></a> Scaled image display</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/imshow.html">imshow</a> <a href="utilities/imshow.html"><img src="modules/assets/imshow_logo.jpg" class="card-img-top img-fluid"></a> Display images</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/leepacific.html">leepacific</a> <a href="utilities/leepacific.html"><img src="modules/assets/leepacific_logo.jpg" class="card-img-top img-fluid"></a> Lee’s Pacific projection utilities</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/lelandshade.html">lelandshade</a> <a href="utilities/lelandshade.html"><img src="modules/assets/lelandshade_logo.jpg" class="card-img-top img-fluid"></a> Lee’s landshading utilities</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/linearfitxy.html">linearfitxy</a> <a href="utilities/linearfitxy.html"><img src="modules/assets/linearfitxy_logo.jpg" class="card-img-top img-fluid"></a> Plot data with fitted line</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/gmtlogo.html">logo</a> <a href="utilities/gmtlogo.html"><img src="modules/assets/gmtlogo_logo.jpg" class="card-img-top img-fluid"></a> Plot the GMT &amp; Julia logos.</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/pcolor.html">pcolor</a> <a href="utilities/pcolor.html"><img src="modules/assets/pcolor_logo.jpg" class="card-img-top img-fluid"></a> Pseudocolor plot with scaled colors.</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/piechart.html">piechart</a> <a href="utilities/piechart.html"><img src="modules/assets/piechart_logo.jpg" class="card-img-top img-fluid"></a> Create pie charts.</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/plotlinefit.html">plotlinefit</a> <a href="utilities/plotlinefit.html"><img src="modules/assets/plotlinefit_logo.jpg" class="card-img-top img-fluid"></a> Plot data with linear fit.</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/plotyy.html">plotyy</a> <a href="utilities/plotyy.html"><img src="modules/assets/plotyy_logo.jpg" class="card-img-top img-fluid"></a> Dual y-axis plots.</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/polygonlevels.html">polygonlevels</a> <a href="utilities/polygonlevels.html"><img src="modules/assets/polygonlevels_logo.jpg" class="card-img-top img-fluid"></a> Create polygons from contour levels.</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/qqplot.html">qqplot</a> <a href="utilities/qqplot.html"><img src="modules/assets/qqplot_logo.jpg" class="card-img-top img-fluid"></a> Quantile-quantile plots.</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/quiver.html">quiver</a> <a href="utilities/quiver.html"><img src="modules/assets/quiver_logo.jpg" class="card-img-top img-fluid"></a> Vector field plots with arrows</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/radar.html">radar</a> <a href="utilities/radar.html"><img src="modules/assets/radar_logo.jpg" class="card-img-top img-fluid"></a> Create radar/spider plots</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/rasterzones.html">rasterzones</a> <a href="utilities/rasterzones.html"><img src="modules/assets/rasterzones_logo.jpg" class="card-img-top img-fluid"></a> Create rasterized zone maps</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/scatter3.html">scatter3</a> <a href="utilities/scatter3.html"><img src="modules/assets/scatter3_logo.jpg" class="card-img-top img-fluid"></a> 3D scatter plots</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/trisurf.html">trisurf</a> <a href="utilities/trisurf.html"><img src="modules/assets/trisurf_logo.jpg" class="card-img-top img-fluid"></a> Triangulated surface plots</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/vband.html">vband</a> <a href="utilities/vband.html"><img src="modules/assets/vband_logo.jpg" class="card-img-top img-fluid"></a> Plot vertical bands/shaded regions</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/vlines.html">vlines</a> <a href="utilities/vlines.html"><img src="modules/assets/vlines_logo.jpg" class="card-img-top img-fluid"></a> Plot vertical reference lines</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/worldrectangular.html">worldrectangular</a> <a href="utilities/worldrectangular.html"><img src="modules/assets/worldrectangular_logo.jpg" class="card-img-top img-fluid"></a> World in rectangular projection</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/worldrectcoast.html">worldrectcoast</a> <a href="utilities/worldrectcoast.html"><img src="modules/assets/worldrectcoast_logo.jpg" class="card-img-top img-fluid"></a> World coastlines rectangular</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/worldrectgrid.html">worldrectgrid</a> <a href="utilities/worldrectgrid.html"><img src="modules/assets/worldrectgrid_logo.jpg" class="card-img-top img-fluid"></a> World graticules rectangular</p>
+</div>
+</div>
+</div>
+</section>
+<section id="data-processing" class="level2">
+<h2 class="anchored" data-anchor-id="data-processing">Data Processing</h2>
+<p>Functions for data smoothing, filtering, and statistical analysis.</p>
+<div class="grid">
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/autocor.html">autocor</a> <a href="utilities/autocor.html"><img src="modules/assets/autocor_logo.jpg" class="card-img-top img-fluid"></a> Autocorrelation function</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/autocov.html">autocov</a> <a href="utilities/autocov.html"><img src="modules/assets/autocov_logo.jpg" class="card-img-top img-fluid"></a> Autocovariance function</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/conv.html">conv</a> <a href="utilities/conv.html"><img src="modules/assets/conv_logo.jpg" class="card-img-top img-fluid"></a> Convolution</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/crop.html">crop</a> <a href="utilities/crop.html"><img src="modules/assets/crop_logo.jpg" class="card-img-top img-fluid"></a> Crop grids or images</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/delrows.html">delrows</a> <a href="utilities/delrows.html"><img src="modules/assets/delrows_logo.jpg" class="card-img-top img-fluid"></a> Delete rows from dataset</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/findpeaks.html">findpeaks</a> <a href="utilities/findpeaks.html"><img src="modules/assets/findpeaks_logo.jpg" class="card-img-top img-fluid"></a> Find peaks in data</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/flipdim.html">flipdim</a> <a href="utilities/flipdim.html"><img src="modules/assets/flipdim_logo.jpg" class="card-img-top img-fluid"></a> Flip array dimensions</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/fliplr.html">fliplr</a> <a href="utilities/fliplr.html"><img src="modules/assets/fliplr_logo.jpg" class="card-img-top img-fluid"></a> Flip left-right</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/flipud.html">flipud</a> <a href="utilities/flipud.html"><img src="modules/assets/flipud_logo.jpg" class="card-img-top img-fluid"></a> Flip up-down</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/gunique.html">gunique</a> <a href="utilities/gunique.html"><img src="modules/assets/gunique_logo.jpg" class="card-img-top img-fluid"></a> Get unique elements with indices</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/hampel.html">hampel</a> <a href="utilities/hampel.html"><img src="modules/assets/hampel_logo.jpg" class="card-img-top img-fluid"></a> Hampel outlier filter</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/isoutlier.html">isoutlier</a> <a href="utilities/isoutlier.html"><img src="modules/assets/isoutlier_logo.jpg" class="card-img-top img-fluid"></a> Identify outliers</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/kmeans.html">kmeans</a> <a href="utilities/kmeans.html"><img src="modules/assets/kmeans_logo.jpg" class="card-img-top img-fluid"></a> K-means clustering</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/lowess.html">lowess</a> <a href="utilities/lowess.html"><img src="modules/assets/lowess_logo.jpg" class="card-img-top img-fluid"></a> Locally weighted regression smoothing</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/mad.html">mad</a> <a href="utilities/mad.html"><img src="modules/assets/mad_logo.jpg" class="card-img-top img-fluid"></a> Median absolute deviation</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/nanmean.html">nanmean</a> <a href="utilities/nanmean.html"><img src="modules/assets/nanmean_logo.jpg" class="card-img-top img-fluid"></a> Mean ignoring NaNs</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/nanstd.html">nanstd</a> <a href="utilities/nanstd.html"><img src="modules/assets/nanstd_logo.jpg" class="card-img-top img-fluid"></a> Standard deviation ignoring NaNs</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/pca.html">pca</a> <a href="utilities/pca.html"><img src="modules/assets/pca_logo.jpg" class="card-img-top img-fluid"></a> Principal component analysis</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/polyfit.html">polyfit</a> <a href="utilities/polyfit.html"><img src="modules/assets/polyfit_logo.jpg" class="card-img-top img-fluid"></a> Polynomial fitting</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/polyval.html">polyval</a> <a href="utilities/polyval.html"><img src="modules/assets/polyval_logo.jpg" class="card-img-top img-fluid"></a> Evaluate polynomial</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/rescale.html">rescale</a> <a href="utilities/rescale.html"><img src="modules/assets/rescale_logo.jpg" class="card-img-top img-fluid"></a> Rescale data</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/sortslicesperm.html">sortslicesperm</a> <a href="utilities/sortslicesperm.html"><img src="modules/assets/sortslicesperm_logo.jpg" class="card-img-top img-fluid"></a> Sort with permutation</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/squeeze.html">squeeze</a> <a href="utilities/squeeze.html"><img src="modules/assets/squeeze_logo.jpg" class="card-img-top img-fluid"></a> Remove singleton dimensions</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/stats.html">stats</a> <a href="utilities/stats.html"><img src="modules/assets/stats_logo.jpg" class="card-img-top img-fluid"></a> Statistical summary</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/whittaker.html">whittaker</a> <a href="utilities/whittaker.html"><img src="modules/assets/whittaker_logo.jpg" class="card-img-top img-fluid"></a> Whittaker-Henderson smoothing</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/xcorr.html">xcorr</a> <a href="utilities/xcorr.html"><img src="modules/assets/xcorr_logo.jpg" class="card-img-top img-fluid"></a> Cross-correlation</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/xcov.html">xcov</a> <a href="utilities/xcov.html"><img src="modules/assets/xcov_logo.jpg" class="card-img-top img-fluid"></a> Cross-covariance</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/zscores.html">zscores</a> <a href="utilities/zscores.html"><img src="modules/assets/zscores_logo.jpg" class="card-img-top img-fluid"></a> Compute z-scores</p>
+</div>
+</div>
+</div>
+</section>
+<section id="data-conversion" class="level2">
+<h2 class="anchored" data-anchor-id="data-conversion">Data Conversion</h2>
+<p>Functions for format and coordinate transformations.</p>
+<div class="grid">
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/ISOtime2unix.html">ISOtime2unix</a> <a href="utilities/ISOtime2unix.html"><img src="modules/assets/ISOtime2unix_logo.jpg" class="card-img-top img-fluid"></a> ISO time to Unix time</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/ODE2ds.html">ODE2ds</a> <a href="utilities/ODE2ds.html"><img src="modules/assets/ODE2ds_logo.jpg" class="card-img-top img-fluid"></a> ODE solution to dataset</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/cart2pol.html">cart2pol</a> <a href="utilities/cart2pol.html"><img src="modules/assets/cart2pol_logo.jpg" class="card-img-top img-fluid"></a> Cartesian to polar coordinates</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/cart2sph.html">cart2sph</a> <a href="utilities/cart2sph.html"><img src="modules/assets/cart2sph_logo.jpg" class="card-img-top img-fluid"></a> Cartesian to spherical coordinates</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/date2doy.html">date2doy</a> <a href="utilities/date2doy.html"><img src="modules/assets/date2doy_logo.jpg" class="card-img-top img-fluid"></a> Date to day-of-year</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/df2ds.html">df2ds</a> <a href="utilities/df2ds.html"><img src="modules/assets/df2ds_logo.jpg" class="card-img-top img-fluid"></a> DataFrame to GMTdataset</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/doy2date.html">doy2date</a> <a href="utilities/doy2date.html"><img src="modules/assets/doy2date_logo.jpg" class="card-img-top img-fluid"></a> Day-of-year to date</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/ds2df.html">ds2df</a> <a href="utilities/ds2df.html"><img src="modules/assets/ds2df_logo.jpg" class="card-img-top img-fluid"></a> GMTdataset to DataFrame</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/grid2tri.html">grid2tri</a> <a href="utilities/grid2tri.html"><img src="modules/assets/grid2tri_logo.jpg" class="card-img-top img-fluid"></a> Grid to triangulation</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/ind2bool.html">ind2bool</a> <a href="utilities/ind2bool.html"><img src="modules/assets/ind2bool_logo.jpg" class="card-img-top img-fluid"></a> Indices to boolean</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/ind2rgb.html">ind2rgb</a> <a href="utilities/ind2rgb.html"><img src="modules/assets/ind2rgb_logo.jpg" class="card-img-top img-fluid"></a> Indexed to RGB image</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/mat2ds.html">mat2ds</a> <a href="utilities/mat2ds.html"><img src="modules/assets/mat2ds_logo.jpg" class="card-img-top img-fluid"></a> Matrix to GMTdataset</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/mat2grid.html">mat2grid</a> <a href="utilities/mat2grid.html"><img src="modules/assets/mat2grid_logo.jpg" class="card-img-top img-fluid"></a> Matrix to GMT grid</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/mat2img.html">mat2img</a> <a href="utilities/mat2img.html"><img src="modules/assets/mat2img_logo.jpg" class="card-img-top img-fluid"></a> Matrix to GMT image</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/pol2cart.html">pol2cart</a> <a href="utilities/pol2cart.html"><img src="modules/assets/pol2cart_logo.jpg" class="card-img-top img-fluid"></a> Polar to Cartesian</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/sph2cart.html">sph2cart</a> <a href="utilities/sph2cart.html"><img src="modules/assets/sph2cart_logo.jpg" class="card-img-top img-fluid"></a> Spherical to Cartesian</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/tern2cart.html">tern2cart</a> <a href="utilities/tern2cart.html"><img src="modules/assets/tern2cart_logo.jpg" class="card-img-top img-fluid"></a> Ternary to Cartesian</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/xyzw2cube.html">xyzw2cube</a> <a href="utilities/xyzw2cube.html"><img src="modules/assets/xyzw2cube_logo.jpg" class="card-img-top img-fluid"></a> Table to data cube</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/yeardecimal.html">yeardecimal</a> <a href="utilities/yeardecimal.html"><img src="modules/assets/yeardecimal_logo.jpg" class="card-img-top img-fluid"></a> Decimal year conversion</p>
+</div>
+</div>
+</div>
+</section>
+<section id="data-manipulation" class="level2">
+<h2 class="anchored" data-anchor-id="data-manipulation">Data Manipulation</h2>
+<p>Functions for grid and data operations.</p>
+<div class="grid">
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/slicecube.html">cubeslice</a> <a href="utilities/slicecube.html"><img src="modules/assets/slicecube_logo.jpg" class="card-img-top img-fluid"></a> Slice data cubes</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/fields.html">fields</a> <a href="utilities/fields.html"><img src="modules/assets/fields_logo.jpg" class="card-img-top img-fluid"></a> Get structure fields</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/fileparts.html">fileparts</a> <a href="utilities/fileparts.html"><img src="modules/assets/fileparts_logo.jpg" class="card-img-top img-fluid"></a> Parse file paths</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/getbyattrib.html">getbyattrib</a> <a href="utilities/getbyattrib.html"><img src="modules/assets/getbyattrib_logo.jpg" class="card-img-top img-fluid"></a> Get data by attribute</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/getregion.html">getregion</a> <a href="utilities/getregion.html"><img src="modules/assets/getregion_logo.jpg" class="card-img-top img-fluid"></a> Get data region</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/gridit.html">gridit</a> <a href="utilities/gridit.html"><img src="modules/assets/gridit_logo.jpg" class="card-img-top img-fluid"></a> Grid scattered data</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/groupby.html">groupby</a> <a href="utilities/groupby.html"><img src="modules/assets/groupby_logo.jpg" class="card-img-top img-fluid"></a> Group data by values</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/info.html">info</a> <a href="utilities/info.html"><img src="modules/assets/info_logo.jpg" class="card-img-top img-fluid"></a> Get data information</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/isclockwise.html">isclockwise</a> <a href="utilities/isclockwise.html"><img src="modules/assets/isclockwise_logo.jpg" class="card-img-top img-fluid"></a> Check polygon orientation</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/isnodata.html">isnodata</a> <a href="utilities/isnodata.html"><img src="modules/assets/isnodata_logo.jpg" class="card-img-top img-fluid"></a> Check for no-data values</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/makeDCWs.html">makeDCWs</a> <a href="utilities/makeDCWs.html"><img src="modules/assets/makeDCWs_logo.jpg" class="card-img-top img-fluid"></a> Make DCW polygons</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/meshgrid.html">meshgrid</a> <a href="utilities/meshgrid.html"><img src="modules/assets/meshgrid_logo.jpg" class="card-img-top img-fluid"></a> Create coordinate arrays</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/mksymbol.html">mksymbol</a> <a href="utilities/mksymbol.html"><img src="modules/assets/mksymbol_logo.jpg" class="card-img-top img-fluid"></a> Make custom symbols</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/peaks.html">peaks</a> <a href="utilities/peaks.html"><img src="modules/assets/peaks_logo.jpg" class="card-img-top img-fluid"></a> Generate peaks function</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/pow.html">pow</a> <a href="utilities/pow.html"><img src="modules/assets/pow_logo.jpg" class="card-img-top img-fluid"></a> Power function</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/quadbounds.html">quadbounds</a> <a href="utilities/quadbounds.html"><img src="modules/assets/quadbounds_logo.jpg" class="card-img-top img-fluid"></a> Quadtree bounds</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/quadkey.html">quadkey</a> <a href="utilities/quadkey.html"><img src="modules/assets/quadkey_logo.jpg" class="card-img-top img-fluid"></a> Quadtree key</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/randinpolygon.html">randinpolygon</a> <a href="utilities/randinpolygon.html"><img src="modules/assets/randinpolygon_logo.jpg" class="card-img-top img-fluid"></a> Random points in polygon</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/slicecube.html">slicecube</a> <a href="utilities/slicecube.html"><img src="modules/assets/slicecube_logo.jpg" class="card-img-top img-fluid"></a> Slice through cube</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/spatialjoin.html">spatialjoin</a> <a href="utilities/spatialjoin.html"><img src="modules/assets/spatialjoin_logo.jpg" class="card-img-top img-fluid"></a> Spatial join operations</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/stackgrids.html">stackgrids</a> <a href="utilities/stackgrids.html"><img src="modules/assets/stackgrids_logo.jpg" class="card-img-top img-fluid"></a> Stack multiple grids</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/texture_img.html">texture_img</a> <a href="utilities/texture_img.html"><img src="modules/assets/texture_img_logo.jpg" class="card-img-top img-fluid"></a> Apply texture to image</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/togglemask.html">togglemask</a> <a href="utilities/togglemask.html"><img src="modules/assets/togglemask_logo.jpg" class="card-img-top img-fluid"></a> Toggle mask values</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/vector_attrib.html">vector_attrib</a> <a href="utilities/vector_attrib.html"><img src="modules/assets/vector_attrib_logo.jpg" class="card-img-top img-fluid"></a> Vector attributes</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/zonal_stats.html">zonal_statistics</a> <a href="utilities/zonal_stats.html"><img src="modules/assets/zonal_stats_logo.jpg" class="card-img-top img-fluid"></a> Zonal statistics (alias)</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/zonal_stats.html">zonal_stats</a> <a href="utilities/zonal_stats.html"><img src="modules/assets/zonal_stats_logo.jpg" class="card-img-top img-fluid"></a> Zonal statistics</p>
+</div>
+</div>
+</div>
+</section>
+<section id="data-access" class="level2">
+<h2 class="anchored" data-anchor-id="data-access">Data Access</h2>
+<p>Functions for accessing geographic datasets and remote data sources.</p>
+<div class="grid">
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/ecmwf.html">ecmwf</a> <a href="utilities/ecmwf.html"><img src="modules/assets/ecmwf_logo.jpg" class="card-img-top img-fluid"></a> Access ECMWF weather data</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/era5time.html">era5time</a> <a href="utilities/era5time.html"><img src="modules/assets/era5time_logo.jpg" class="card-img-top img-fluid"></a> ERA5 time information</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/era5vars.html">era5vars</a> <a href="utilities/era5vars.html"><img src="modules/assets/era5vars_logo.jpg" class="card-img-top img-fluid"></a> ERA5 variable information</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/gadm.html">gadm</a> <a href="utilities/gadm.html"><img src="modules/assets/gadm_logo.jpg" class="card-img-top img-fluid"></a> Access GADM administrative boundaries</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/gmtread.html">gmtread</a> <a href="utilities/gmtread.html"><img src="modules/assets/gmtread_logo.jpg" class="card-img-top img-fluid"></a> Read GMT data files</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/gmtwrite.html">gmtwrite</a> <a href="utilities/gmtwrite.html"><img src="modules/assets/gmtwrite_logo.jpg" class="card-img-top img-fluid"></a> Write GMT data files</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/lazread.html">lasread</a> <a href="utilities/lazread.html"><img src="modules/assets/lazread_logo.jpg" class="card-img-top img-fluid"></a> Read LAS point cloud</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/lazwrite.html">laswrite</a> <a href="utilities/lazwrite.html"><img src="modules/assets/lazwrite_logo.jpg" class="card-img-top img-fluid"></a> Write LAS point cloud</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/lazinfo.html">lazinfo</a> <a href="utilities/lazinfo.html"><img src="modules/assets/lazinfo_logo.jpg" class="card-img-top img-fluid"></a> LAZ file information</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/lazread.html">lazread</a> <a href="utilities/lazread.html"><img src="modules/assets/lazread_logo.jpg" class="card-img-top img-fluid"></a> Read LAZ point cloud</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/lazwrite.html">lazwrite</a> <a href="utilities/lazwrite.html"><img src="modules/assets/lazwrite_logo.jpg" class="card-img-top img-fluid"></a> Write LAZ point cloud</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/listecmwfvars.html">listecmwfvars</a> <a href="utilities/listecmwfvars.html"><img src="modules/assets/listecmwfvars_logo.jpg" class="card-img-top img-fluid"></a> List ECMWF variables</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/maregrams.html">maregrams</a> <a href="utilities/maregrams.html"><img src="modules/assets/maregrams_logo.jpg" class="card-img-top img-fluid"></a> Plot tidal mareograms</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/mbgetdata.html">mbgetdata</a> <a href="utilities/mbgetdata.html"><img src="modules/assets/mbgetdata_logo.jpg" class="card-img-top img-fluid"></a> Get MB-System data</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/mbimport.html">mbimport</a> <a href="utilities/mbimport.html"><img src="modules/assets/mbimport_logo.jpg" class="card-img-top img-fluid"></a> Import MB-System data</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/mblevitus.html">mblevitus</a> <a href="utilities/mblevitus.html"><img src="modules/assets/mblevitus_logo.jpg" class="card-img-top img-fluid"></a> Levitus database access</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/mbsvplist.html">mbsvplist</a> <a href="utilities/mbsvplist.html"><img src="modules/assets/mbsvplist_logo.jpg" class="card-img-top img-fluid"></a> Sound velocity profiles</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/meteostat.html">meteostat</a> <a href="utilities/meteostat.html"><img src="modules/assets/meteostat_logo.jpg" class="card-img-top img-fluid"></a> Meteostat weather data</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/mosaic.html">mosaic</a> <a href="utilities/mosaic.html"><img src="modules/assets/mosaic_logo.jpg" class="card-img-top img-fluid"></a> Create image mosaics from tiles</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/pastplates.html">pastplates</a> <a href="utilities/pastplates.html"><img src="modules/assets/pastplates_logo.jpg" class="card-img-top img-fluid"></a> Tectonic plate reconstructions</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/remotegrid.html">remotegrid</a> <a href="utilities/remotegrid.html"><img src="modules/assets/remotegrid_logo.jpg" class="card-img-top img-fluid"></a> Access remote grid datasets</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/sealand.html">sealand</a> <a href="utilities/sealand.html"><img src="modules/assets/sealand_logo.jpg" class="card-img-top img-fluid"></a> Mask grid/image by land/sea</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/weather.html">weather</a> <a href="utilities/weather.html"><img src="modules/assets/weather_logo.jpg" class="card-img-top img-fluid"></a> Weather data and forecasts</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/wmsinfo.html">wmsinfo</a> <a href="utilities/wmsinfo.html"><img src="modules/assets/wmsinfo_logo.jpg" class="card-img-top img-fluid"></a> WMS service information</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/wmsread.html">wmsread</a> <a href="utilities/wmsread.html"><img src="modules/assets/wmsread_logo.jpg" class="card-img-top img-fluid"></a> Fetch Web Map Service data</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/wmstest.html">wmstest</a> <a href="utilities/wmstest.html"><img src="modules/assets/wmstest_logo.jpg" class="card-img-top img-fluid"></a> Test WMS service</p>
+</div>
+</div>
+</div>
+</section>
+<section id="geographic-utilities" class="level2">
+<h2 class="anchored" data-anchor-id="geographic-utilities">Geographic Utilities</h2>
+<p>Specialized geographic and geospatial tools.</p>
+<div class="grid">
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/cpt4dcw.html">cpt4dcw</a> <a href="utilities/cpt4dcw.html"><img src="modules/assets/cpt4dcw_logo.jpg" class="card-img-top img-fluid"></a> Color palette for DCW</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/geocoder.html">geocoder</a> <a href="utilities/geocoder.html"><img src="modules/assets/geocoder_logo.jpg" class="card-img-top img-fluid"></a> Geocoding utilities</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/geodetic2enu.html">geodetic2enu</a> <a href="utilities/geodetic2enu.html"><img src="modules/assets/geodetic2enu_logo.jpg" class="card-img-top img-fluid"></a> Geodetic to ENU coordinates</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/getprovider.html">getprovider</a> <a href="utilities/getprovider.html"><img src="modules/assets/getprovider_logo.jpg" class="card-img-top img-fluid"></a> Get tile provider info.</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/inpolygon.html">inpolygon</a> <a href="utilities/inpolygon.html"><img src="modules/assets/inpolygon_logo.jpg" class="card-img-top img-fluid"></a> Test points in polygon.</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/inwhichpolygon.html">inwhichpolygon</a> <a href="utilities/inwhichpolygon.html"><img src="modules/assets/inwhichpolygon_logo.jpg" class="card-img-top img-fluid"></a> Find containing polygon.</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/mapsize2region.html">mapsize2region</a> <a href="utilities/mapsize2region.html"><img src="modules/assets/mapsize2region_logo.jpg" class="card-img-top img-fluid"></a> Map size to region.</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/orbits.html">orbits</a> <a href="utilities/orbits.html"><img src="modules/assets/orbits_logo.jpg" class="card-img-top img-fluid"></a> Satellite orbit calculations.</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/regiongeog.html">regiongeog</a> <a href="utilities/regiongeog.html"><img src="modules/assets/regiongeog_logo.jpg" class="card-img-top img-fluid"></a> Geographic region utilities.</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/sealand.html">terramar</a> <a href="utilities/sealand.html"><img src="modules/assets/sealand_logo.jpg" class="card-img-top img-fluid"></a> Land/sea utilities.</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/vecangles.html">vecangles</a> <a href="utilities/vecangles.html"><img src="modules/assets/vecangles_logo.jpg" class="card-img-top img-fluid"></a> Vector angle calculations.</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/whereami.html">whereami</a> <a href="utilities/whereami.html"><img src="modules/assets/whereami_logo.jpg" class="card-img-top img-fluid"></a> Location information.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="geophysical" class="level2">
+<h2 class="anchored" data-anchor-id="geophysical">Geophysical</h2>
+<p>Specialized functions for geophysical and Earth science applications.</p>
+<div class="grid">
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/okada.html">okada</a> <a href="utilities/okada.html"><img src="modules/assets/okada_logo.jpg" class="card-img-top img-fluid"></a> Okada deformation model.</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/parkergrav.html">parkergrav</a> <a href="utilities/parkergrav.html"><img src="modules/assets/parkergrav_logo.jpg" class="card-img-top img-fluid"></a> Calculate gravity anomalies.</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/parkermag.html">parkermag</a> <a href="utilities/parkermag.html"><img src="modules/assets/parkermag_logo.jpg" class="card-img-top img-fluid"></a> Calculate magnetic anomalies.</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/seismicity.html">seismicity</a> <a href="utilities/seismicity.html"><img src="modules/assets/seismicity_logo.jpg" class="card-img-top img-fluid"></a> Plot earthquake data.</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/stereonet.html">stereonet</a> <a href="utilities/stereonet.html"><img src="modules/assets/stereonet_logo.jpg" class="card-img-top img-fluid"></a> Stereonets for structural geology.</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/streamlines.html">streamlines</a> <a href="utilities/streamlines.html"><img src="modules/assets/streamlines_logo.jpg" class="card-img-top img-fluid"></a> Compute and plot streamlines.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="table-operations" class="level2">
+<h2 class="anchored" data-anchor-id="table-operations">Table Operations</h2>
+<p>DataFrame-style operations for GMT datasets.</p>
+<div class="grid">
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/Gantijoin.html">Gantijoin</a> <a href="utilities/Gantijoin.html"><img src="modules/assets/Gantijoin_logo.jpg" class="card-img-top img-fluid"></a> Anti join operation</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/Gcrossjoin.html">Gcrossjoin</a> <a href="utilities/Gcrossjoin.html"><img src="modules/assets/Gcrossjoin_logo.jpg" class="card-img-top img-fluid"></a> Cross join operation</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/Ginnerjoin.html">Ginnerjoin</a> <a href="utilities/Ginnerjoin.html"><img src="modules/assets/Ginnerjoin_logo.jpg" class="card-img-top img-fluid"></a> Inner join operation</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/Gleftjoin.html">Gleftjoin</a> <a href="utilities/Gleftjoin.html"><img src="modules/assets/Gleftjoin_logo.jpg" class="card-img-top img-fluid"></a> Left join operation</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/Gouterjoin.html">Gouterjoin</a> <a href="utilities/Gouterjoin.html"><img src="modules/assets/Gouterjoin_logo.jpg" class="card-img-top img-fluid"></a> Outer join operation</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/Grightjoin.html">Grightjoin</a> <a href="utilities/Grightjoin.html"><img src="modules/assets/Grightjoin_logo.jpg" class="card-img-top img-fluid"></a> Right join operation</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/Gsemijoin.html">Gsemijoin</a> <a href="utilities/Gsemijoin.html"><img src="modules/assets/Gsemijoin_logo.jpg" class="card-img-top img-fluid"></a> Semi join operation</p>
+</div>
+</div>
+</div>
+</section>
+<section id="miscellaneous" class="level2">
+<h2 class="anchored" data-anchor-id="miscellaneous">Miscellaneous</h2>
+<p>Other utility functions.</p>
+<div class="grid">
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/bezier.html">bezier</a> <a href="utilities/bezier.html"><img src="modules/assets/bezier_logo.jpg" class="card-img-top img-fluid"></a> Bezier curve generation</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/circfit.html">circfit</a> <a href="utilities/circfit.html"><img src="modules/assets/circfit_logo.jpg" class="card-img-top img-fluid"></a> Fit circle to points</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/linspace.html">linspace</a> <a href="utilities/linspace.html"><img src="modules/assets/linspace_logo.jpg" class="card-img-top img-fluid"></a> Linearly spaced vector</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/logspace.html">logspace</a> <a href="utilities/logspace.html"><img src="modules/assets/logspace_logo.jpg" class="card-img-top img-fluid"></a> Logarithmically spaced vector</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/magic.html">magic</a> <a href="utilities/magic.html"><img src="modules/assets/magic_logo.jpg" class="card-img-top img-fluid"></a> Magic square generation</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/resetGMT.html">resetGMT</a> <a href="utilities/resetGMT.html"><img src="modules/assets/resetGMT_logo.jpg" class="card-img-top img-fluid"></a> Reset GMT session</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/theme.html">theme</a> <a href="utilities/theme.html"><img src="modules/assets/theme_logo.jpg" class="card-img-top img-fluid"></a> Set plot theme</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/tic.html">tic</a> <a href="utilities/tic.html"><img src="modules/assets/tic_logo.jpg" class="card-img-top img-fluid"></a> Start timer</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/toc.html">toc</a> <a href="utilities/toc.html"><img src="modules/assets/toc_logo.jpg" class="card-img-top img-fluid"></a> Stop timer</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/uniqueind.html">uniqueind</a> <a href="utilities/uniqueind.html"><img src="modules/assets/uniqueind_logo.jpg" class="card-img-top img-fluid"></a> Unique with indices</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/upGMT.html">upGMT</a> <a href="utilities/upGMT.html"><img src="modules/assets/upGMT_logo.jpg" class="card-img-top img-fluid"></a> Update GMT</p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-2">
+<div class="card">
+<p><a href="utilities/vizpdf.html">vizpdf</a> <a href="utilities/vizpdf.html"><img src="modules/assets/vizpdf_logo.jpg" class="card-img-top img-fluid"></a> Visualize PDF</p>
+</div>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script>
+
+// JavaScript to handle card hover effects for cards with images
+
+document.addEventListener('DOMContentLoaded', function() {
+
+  // Find all cards
+
+  const cards = document.querySelectorAll('.card');
+
+
+
+  cards.forEach(card => {
+
+    const paragraphs = card.querySelectorAll('p');
+
+
+
+    // If card has only one paragraph (with image)
+
+    if (paragraphs.length === 1) {
+
+      const p = paragraphs[0];
+
+      const img = p.querySelector('img');
+
+
+
+      if (img) {
+
+        // Get all text nodes
+
+        const textContent = Array.from(p.childNodes)
+
+          .filter(node => node.nodeType === Node.TEXT_NODE)
+
+          .map(node => node.textContent.trim())
+
+          .filter(text => text.length > 0)
+
+          .join(' ');
+
+
+
+        if (textContent) {
+
+          // Create overlay div for description
+
+          const overlay = document.createElement('div');
+
+          overlay.className = 'card-description-overlay';
+
+          overlay.textContent = textContent;
+
+          card.appendChild(overlay);
+
+
+
+          // Remove text nodes completely
+
+          Array.from(p.childNodes).forEach(node => {
+
+            if (node.nodeType === Node.TEXT_NODE && node.textContent.trim().length > 0) {
+
+              node.remove();
+
+            }
+
+          });
+
+        }
+
+      }
+
+    }
+
+  });
+
+});
+
+</script>
+
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/GenericMappingTools\.github\.io\/GMTjl_doc\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
