@@ -45,9 +45,9 @@ Optional Arguments
 
 \textinput{common_opts/opt_n}
 
-\textinput{common_opts/opt_r}
+\textinput{common_opts/opt__r}
 
-\textinput{common_opts/opt_x}
+\textinput{common_opts/opt__x}
 
 
 Grid Values Precision

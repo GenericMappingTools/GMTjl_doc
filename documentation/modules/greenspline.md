@@ -171,7 +171,9 @@ using GMT
 data = [1.0 2.0; 3.0 4.5; 5.0 3.0; 7.0 5.5; 9.0 6.0]
 
 # Minimum curvature spline
-result = greenspline(data, region=(0,10), inc=0.1, S=:c)
+result = greenspline(data, region="0/10", inc=0.1, S=:c);
+plot(data)
+plot!(result, lc=:blue, show=true)
 ```
 
 Spline in tension (tension = 0.7):

@@ -289,7 +289,7 @@ using GMT
 grid = gmtread("@earth_relief_05m", region=(140,260,0,50))
 
 # Apply median filter with 600 km width (spherical distances)
-G = grdfilter(grid, filter="m600", D=4, region=(150,250,10,40), inc=0.5, V=true)
+G = grdfilter(grid, filter="m600", D=4, region=(150,250,10,40), inc=0.5)
 ```
 
 ### High-Pass Filtering
@@ -300,8 +300,7 @@ G_residual = grdfilter("@earth_relief_05m",
     F="m600+h", 
     D=4, 
     R=(150,250,10,40), 
-    I=0.5, 
-    V=true)
+    I=0.5)
 ```
 
 ### Different Filter Types
@@ -375,9 +374,7 @@ G_pacific = grdfilter("@earth_relief_05m",
     filter="m600",
     distance=4,
     region=(150, 250, 10, 40),
-    inc=0.5,
-    save="filtered_pacific.nc",
-    V=true)
+    inc=0.5)
 ```
 
 ### NaN Handling

@@ -75,7 +75,6 @@ The STRIPACK algorithm and implementation expect that there are no duplicate poi
 To generate a grid with distances (in km) to the nearest points in the hotspots file:
 
 ```julia
-using GMT
 # Using sphtriangulate to pre-compute the Voronoi polygons
 V = sphtriangulate("@hotspots.txt", voronoi=true, skip=true)
 G = sphdistance(voronoi=V, region=:global, inc=1, outgrid="globedist.nc", dist_unit=:k)

@@ -46,9 +46,9 @@
 | \myreflink{gravmag3d} | \myreflink{gravfft} | \myreflink{grdgravmag3d} | \myreflink{gravprisms} | \myreflink{magref} | \myreflink{parkergrav} | \myreflink{parkermag} |  |
 
 ## Supplemental Modules (Others)
-|  |  |
-|:-----|:----|
-| \myreflink{earthtide} | \myreflink{windbarbs} |
+|  |  |  |  |
+|:-----|:----|:-----|:----|
+| \myreflink{earthtide} | \myreflink{windbarbs} | \myreflink{meca} | \myreflink{coupe} |
 
 ## Supplemental Modules (short docs)
 

@@ -96,15 +96,15 @@ Columns: lon, lat, depth, T_value, T_azim, T_plunge, N_value, N_azim, N_plunge, 
 - **G** or **fill** or **extensionfill** : -- *fill=color*\
    Selects filling of compressive quadrants [Default is black].
 
-- **H** or **scale** : -- *scale=scale*\
+- **H** or **scale** : -- *scale=true* **|** *scale=scale*\
    Scale symbol sizes and pen widths on a per-record basis using the *scale* read from the data file.
-   The symbol size is either provided by -S or via the input size column. Alternatively, append a
+   The symbol size is either provided by **convention** or via the input size column. Alternatively, append a
    constant scale that should be used instead of reading a scale column.
 
 - **I** or **intens** or **intensity** : -- *intens=val* **|** *intens=:a*\
    Use the supplied intens value (nominally in the ±1 range) to modulate the compressional fill color
    by simulating illumination [none]. If no intensity is provided we will instead read intens from an
-   extra data column after the required input columns determined by -S.
+   extra data column after the required input columns determined by **convention**.
 
 - **L** or **pen_outline** : -- *pen_outline=pen*\
    Draws the "beach ball" outline using specified pen attributes.

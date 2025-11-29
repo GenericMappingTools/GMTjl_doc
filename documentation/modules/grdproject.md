@@ -86,56 +86,6 @@ The **region** option can be used to select a map region larger or smaller than 
 
 \textinput{common_opts/opt_n}
 
-## Examples
-
-To transform a chunk of the geographical remote grid earth\_relief\_05m onto a pixel Mercator grid at 300 dpi given a scale of 0.25 inches per degree, run:
-
-```julia
-using GMT
-G = grdproject("@earth_relief_05m", region=(20, 50, 12, 25), proj=:Mercator, 
-               proj=(scale=0.25,), dpi=300, reg=:pixel, save="etopo5_merc.nc", 
-               unit=:i)
-```
-
-Or using the short form:
-
-```julia
-G = grdproject("@earth_relief_05m", R=(20, 50, 12, 25), J="m0.25i", E=300, 
-               r=:pixel, G="etopo5_merc.nc", M=:i)
-```
-
-To inversely transform the file topo\_tm.nc back onto a geographical grid, use:
-
-```julia
-G = grdproject("topo_tm.nc", region=(-80, -70, 20, 40), proj=:TransverseMercator, 
-               proj=(center=-75, scale="1:500000"), inverse=true, inc="5m", 
-               verbose=true, save="topo.nc")
-```
-
-This assumes, of course, that the coordinates in topo\_tm.nc were created with the same projection parameters.
-
-To inversely transform the file topo\_utm.nc (which is in UTM meters) back to a geographical grid we specify a one-to-one mapping with meter as the measure unit:
-
-```julia
-G = grdproject("topo_utm.nc", region=(203, 205, 60, 65), proj=:UTM, 
-               proj=(zone=5, scale="1:1"), inverse=true, 
-               save="topo.nc", verbose=true)
-```
-
-To inversely transform the file data.nc (which is in Mercator meters with Greenwich as the central longitude and a false easting of -4 and produced on the ellipse WGS-72) back to a geographical grid we specify a one-to-one mapping with meter as the measure unit:
-
-```julia
-G = grdproject("data.nc", proj=:Mercator, proj=(scale="1:1"), inverse=true, 
-               scaling=:e, center=(-4, 0), save="data_geo.nc", verbose=true, 
-               par=("PROJ_ELLIPSOID", "WGS-72"))
-```
-
-Or in monolithic style:
-
-```julia
-G = grdproject("data.nc", J="m/1:1", I=true, F=true, C="-4/0", G="data_geo.nc", 
-               V=true, par=("PROJ_ELLIPSOID", "WGS-72"))
-```
 
 ## Output Region Issues
 

@@ -10,8 +10,9 @@ Alternatively, if `mat` is a string or vector of strings we return a dataset wit
 the coordinates. This form is useful to pass to `text` when using the `region_justify` option that
 does not need explicit coordinates to place the text.
 
-- `txt`: Return a Text record which is a \myreflink{GMTdataset} with data = Mx2 and text in third column. The ``text``
-   can be an array with same size as `mat` rows or a string (will be repeated n_rows times.) 
+- `txt`: (A **postional** arg) Return a Text record which is a \myreflink{GMTdataset} with data = Mx2 and text
+   in third column. The ``text`` can be an array with same size as `mat` rows or a string (will be repeated
+   n_rows times). The keywords `txt` or `text` are also accepted in alternative to this (positional) `txt` argument.
 
 - `x`: An optional vector with the _xx_ coordinates
 
@@ -62,6 +63,9 @@ does not need explicit coordinates to place the text.
 - `attrib`: Optional dictionary{String, String} with attributes of this dataset.
 
 - `ref:` Pass in a reference \myreflink{GMTdataset} from which we'll take the georeference info as well as `attrib` and `colnames`
+
+- `txt` or `text`: Vector{String} with text to add into the .text field, but this forces the return of a Text record.
+   See what is said above about the `txt` positional argument.
 
 - `txtcol` or `textcol`: Vector{String} with text to add into the .text field. Warning: no testing is done
    to check if ``length(txtcol) == size(mat,1)`` as it must.
