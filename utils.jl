@@ -27,6 +27,7 @@ function html_docstring(fname)
 
 	# body = fd2html(replace(txt, raw"$" => raw"\$"), internal = true)
 
+
 	return """
 	<div class="docstring">
 	<div class="doc-header" id="$fname">
