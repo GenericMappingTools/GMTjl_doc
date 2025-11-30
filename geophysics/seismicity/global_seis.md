@@ -14,12 +14,12 @@ seismicity()
 \end{examplefig}
 
 But we can select the period that we want under the condition that the request doesn't imply more than
-20,000 events. For example, to plot the last year of seismicity:
+20,000 events (that is why we restrict the next search to events of magnitude >= 4). For example, to plot the last year of seismicity:
 
 \begin{examplefig}{}
 ```julia
 using GMT	# Hide
-seismicity(last="1Y")
+seismicity(last="1Y", minmagnitude=4)
 ```
 \end{examplefig}
 

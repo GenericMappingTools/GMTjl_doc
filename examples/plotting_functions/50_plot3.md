@@ -9,7 +9,7 @@ Draw a flight path approaching landing with variable line thickness and color de
 \begin{examplefig}{}
 ```julia
 using GMT
-D = gmtread(getpath4docs("track_sample_data.txt"), incols="7,6,3");
+D = gmtread(TESTSDIR * "assets/track_sample_data.txt", incols="7,6,3");
 plot3d(D, lc=:gradient, lt=[1,5], par=(PS_LINE_CAP="round",), show=true)
 ```
 \end{examplefig}

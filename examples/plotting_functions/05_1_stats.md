@@ -133,7 +133,7 @@ identified in species, and label the horizontal axis using the variable names.
 \begin{examplefig}{}
 ```julia
 using GMT
-parallelplot(getpath4docs("iris.dat"), groupvar="text", normalize="none", legend=true,
+parallelplot(TESTSDIR * "assets/iris.dat", groupvar="text", normalize="none", legend=true,
              title="Parallel plot", show=true)
 ```
 \end{examplefig}
@@ -144,7 +144,7 @@ Label the horizontal axis using the variable names.
 \begin{examplefig}{}
 ```julia
 using GMT
-parallelplot(getpath4docs("iris.dat"), groupvar="text", quantile=0.25, legend=true, show=true)
+parallelplot(TESTSDIR * "assets/iris.dat", groupvar="text", quantile=0.25, legend=true, show=true)
 ```
 \end{examplefig}
 
@@ -153,7 +153,7 @@ Plot bands enveloping the +- 25% percentil arround the median.
 \begin{examplefig}{}
 ```julia
 using GMT
-parallelplot(getpath4docs("iris.dat"), groupvar="text", band=true, legend=true, show=true)
+parallelplot(TESTSDIR * "assets/iris.dat", groupvar="text", band=true, legend=true, show=true)
 ```
 \end{examplefig}
 
@@ -245,7 +245,7 @@ Condition the regression fit on another variable and represent it using color.
 \begin{examplefig}{}
 ```julia
 using GMT
-D = gmtread(getpath4docs("iris.dat"));
+D = gmtread(TESTSDIR * "assets/iris.dat");
 plot(D, xvar=1, yvar=2, hue="Species", xlabel=:auto, ylabel=:auto, linefit=true,
      band_ci=true, legend=true, show=1)
 ```

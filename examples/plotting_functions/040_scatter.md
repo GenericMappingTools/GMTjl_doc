@@ -54,7 +54,7 @@ in dataset and label the axes with their column names.
 \begin{examplefig}{}
 ```julia
 using GMT
-scatter(getpath4docs("iris.dat"), xvar=1, yvar=2, hue="Species", xlabel=:auto, ylabel=:auto,
+scatter(TESTSDIR * "assets/iris.dat", xvar=1, yvar=2, hue="Species", xlabel=:auto, ylabel=:auto,
         legend=(pos=:TC, box=(pen=1, fill="gray95", shade=true, rounded=true)), show=true)
 ```
 \end{examplefig}

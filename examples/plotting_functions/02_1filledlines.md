@@ -72,7 +72,7 @@ fill_between([theta y1], [theta y2], white=true, legend="Sinc1,Sinc2", show=1)
 \begin{examplefig}{}
 ```julia
 using GMT
-D = gmtread(getpath4docs("1635541200000.dat"));
+D = gmtread(TESTSDIR * "assets/1635541200000.dat");
 D.attrib["Timecol"] = "1";         # Inform that first column has Time
 fill_between(D, figsize=(16,9), yaxis=(annot=20,), theme="A0XYag", show=true)
 ```
