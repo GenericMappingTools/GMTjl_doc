@@ -1,0 +1,20 @@
+# This file was generated, do not modify it. # hide
+begin # hide
+		using GMT   # hide
+		GMT.isFranklin[] = true    # hide
+		getpath4docs(file::String) = joinpath("..", "..", "..", "..", "..", file) # hide
+		using GMT   # Hide
+import Random   # Hide
+Random.seed!(1243);   # Hide
+x = -50.0:50;   # Hide
+y = 4 * (x / 50) .^3 .+ 3 .+ 0.25 * rand(length(x));  # Hide
+y[[15, 40, 90]] = [3, 4, 3];  # Hide
+
+D2 = trend1d([x y], model=((polynome=0,single=1),(polynome=3,single=true)), out=:xr);
+viz(D2, figsize=(15, 5))
+	end # hide
+	mv(joinpath(TMPDIR_USR.dir, "GMTjl_" * TMPDIR_USR.username * "." * "png"), joinpath(@OUTPUT, "example_16081146074055734689.png"), force=true);    # hide
+	GMT.isFranklin[] = false    # hide
+	GMT.IamModern[]  = false    # hide
+ 
+	nothing # hide

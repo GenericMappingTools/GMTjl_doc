@@ -1,0 +1,837 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.16.4 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+   <link rel="stylesheet" href="/GMTjl_doc/libs/highlight/github.min.css">
+   
+  <link rel="stylesheet" href="/GMTjl_doc/css/franklin.css">
+<link rel="stylesheet" href="/GMTjl_doc/css/minimal-mistakes.css">
+<link rel="stylesheet" href="/GMTjl_doc/css/gmt.css">
+<link rel="icon" href="/GMTjl_doc/assets/GMTjl_logo.png">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/fontawesome.min.css" rel="stylesheet" type="text/css"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/solid.min.css" rel="stylesheet" type="text/css"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/brands.min.css" rel="stylesheet" type="text/css"/>
+<!--[if IE ]>
+<style>
+  /* old IE unsupported flexbox fixes */
+  .greedy-nav .site-title {
+    padding-right: 3em;
+  }
+  .greedy-nav button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+  }
+</style>
+<![endif]-->
+
+   <title>Arrow examples</title>  
+  <!-- end custom head snippets -->
+</head>
+<body class="layout--single">
+  <div class="site-container">
+    <div class="masthead">
+    <div class="masthead__inner-wrap">
+        <div class="masthead__menu">
+            <nav id="site-nav" class="greedy-nav">
+                <a class="title-icon" href="/GMTjl_doc/"><img src="/GMTjl_doc/assets/GMTjl_logo.png"/></a>
+                <!-- github link -->
+                
+
+                <ul class="visible-links">
+                    <li class="masthead__menu-item">
+                        <a href="https://github.com/GenericMappingTools/GMTjl_doc"><img src="/GMTjl_doc/assets/GitHub-Mark-64px.png" class="masthead-icon" /></a>
+                    </li>
+                    <li class="masthead__menu-item"><a href="/GMTjl_doc/examples/">Examples</a></li>
+                    <li class="masthead__menu-item"><a href="/GMTjl_doc/gallery/">Gallery</a></li>
+                    <li class="masthead__menu-item"><a href="/GMTjl_doc/tutorials/">Tutorials</a></li>
+                    <li class="masthead__menu-item"><a href="/GMTjl_doc/geophysics/">Geophysics</a></li>
+                    <li class="masthead__menu-item"><a href="/GMTjl_doc/documentation/">Documentation</a></li>
+                </ul>
+                <button class="greedy-nav__toggle" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+                <ul class="hidden-links hidden"></ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+    
+      <div id="main" role="main">
+        <div id="overlay"></div>
+        <div id="navbar-container">
+          <div id="navbar">
+            <form id="lunrSearchForm" name="lunrSearchForm" action="/GMTjl_doc/search/index.html">
+              <input class="search-input" name="q" placeholder="Search docs" type="text">
+            </form>
+            <h1>Navigation</h1>
+            <ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/">Home</a></div></li>
+<li><input class="collapse-toggle" id="menuitem-2" type="checkbox" checked><div class="tocitem-container"><label class="tocexpander" for="menuitem-2"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/examples">Examples</a></div><ul><li><input class="collapse-toggle" id="menuitem-2-1" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-2-1"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/examples/CPTs">Color maps</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/examples/CPTs/01_cpt_hinge">Color maps</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-2-2" type="checkbox" checked><div class="tocitem-container"><label class="tocexpander" for="menuitem-2-2"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/examples/arrows">Årrows</a></div><ul><li><div class="tocitem-container"><a class = active href="/GMTjl_doc/examples/arrows/10_arrows">Arrow examples</a></div><ul class="page-content">
+<li><a href="#arrow_examples/">Arrow examples</a></li>
+<li><ul>
+<li><a href="#gmt4_gmt5_style_arrows/">GMT4 &amp; GMT5 style arrows</a></li>
+<li><a href="#mat_angles/">Mat angles</a></li>
+<li><a href="#vector_heads_and_tails/">Vector heads and tails</a></li>
+<li><a href="#cartesian_circular_and_geographic_vectors/">Cartesian, circular, and geographic vectors</a></li>
+<li><a href="#quivers/">Quivers</a></li>
+</ul>
+</ul>
+</li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/examples/arrows/11_feathers">Feathers</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-2-3" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-2-3"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/examples/art">Art</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/examples/art/art_examples">Art</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-2-4" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-2-4"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/examples/choropleths">Choropleths</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/examples/choropleths/choro_examples">Choropleths</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-2-5" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-2-5"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/examples/contours">Contour plots</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/examples/contours/01_contour_examples">Contours</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/examples/contours/02_polar_contours">Polar Contours</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-2-6" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-2-6"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/examples/embellish">Embellishments</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/examples/embellish/01_mapscale">Map scales</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/examples/embellish/02_roses">Magnetic compass</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/examples/embellish/03_insets">Map insets</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-2-7" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-2-7"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/examples/frames">Frames</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/examples/frames/frames">Draw Frames</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-2-8" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-2-8"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/examples/images">Images</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/examples/images/01_grdimage">Color images</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/examples/images/01b_grdview">Perspective view</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/examples/images/01c_funs3d">Plot surfaces</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/examples/images/02_pcolor">Pcolor</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/examples/images/03_hexbin">Hexagonal binning</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/examples/images/04_triplot">Triplot</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/examples/images/05_wms">Web Map Service</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-2-9" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-2-9"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/examples/legends">Legends</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/examples/legends/01_legends">Legends</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-2-10" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-2-10"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/examples/misc">Misc</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/examples/misc/buffer">Geodesic buffers</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/examples/misc/cube_sides">Plot on the sides of a cube</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/examples/misc/gadm">GADM</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/examples/misc/mix_paper_geog">Annotations in geog maps</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/examples/misc/orbits">Plotting orbits</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-2-11" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-2-11"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/examples/plotting_functions">Plotting functions</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/examples/plotting_functions/01_lines">Line plots</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/examples/plotting_functions/02_1filledlines">Filled curves</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/examples/plotting_functions/02_2stairs">Stairs</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/examples/plotting_functions/02_2stems">Stems</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/examples/plotting_functions/02_plotyy">Plotyy</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/examples/plotting_functions/035_radars">Radar plots</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/examples/plotting_functions/03_bars">Bar plots</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/examples/plotting_functions/040_scatter">Scatters</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/examples/plotting_functions/05_1_stats">Stat plots</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/examples/plotting_functions/05_2_biplots">PCAs </a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/examples/plotting_functions/05_error_bars">Error bars</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/examples/plotting_functions/06_spirals">Spirals</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/examples/plotting_functions/07_symbols">Symbols &amp; Linestyes</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/examples/plotting_functions/08_rectangles">Patterns &amp; trasparency</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/examples/plotting_functions/10_histograms">Histograms</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/examples/plotting_functions/50_plot3">Plot3d</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-2-12" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-2-12"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/examples/projections">Projections</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/examples/projections/01_hello">The true Hello World</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/examples/projections/02_proj_examples">GMT Map Projections</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/examples/projections/best_rectangular">Best rectangular world map projection</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/examples/projections/ex28">Mixing UTM and geographic axes annotations</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/examples/projections/leepacific">Lee Oblated Stereographic projection</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/examples/projections/spilhaus">Spilhaus projection</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/examples/projections/stereonet">Stereonets</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-2-13" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-2-13"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/examples/subplot">Subplots</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/examples/subplot/01_subplots">Subplots</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-2-14" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-2-14"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/examples/ternary">Ternary plots</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/examples/ternary/ternary_examples">Ternary plots</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-2-15" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-2-15"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/examples/themes">Themes</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/examples/themes/01_themes">Theming</a></div></li>
+</ul></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-3" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-3"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/gallery">Gallery &#40;Classic&#41;</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/gallery/ex01">Contour maps</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/gallery/ex02">&#40;2&#41; Image presentations</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/gallery/ex03">&#40;3&#41; Spectral estimation and xy-plots</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/gallery/ex04">&#40;4&#41; A 3-D perspective mesh plot</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/gallery/ex05">&#40;5&#41; A 3-D illuminated surface &#40;in bw&#41;</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/gallery/ex06">&#40;6&#41; Plotting of histograms</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/gallery/ex07">&#40;7&#41; A simple location map</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/gallery/ex08">&#40;8&#41; A 3-D histogram</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/gallery/ex09">&#40;9&#41; Time-series along tracks</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/gallery/ex10">&#40;10&#41; A geographical bar graph plot</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/gallery/ex12">&#40;12&#41; Optimal triangulation of data</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/gallery/ex13">&#40;13&#41; Plotting of vector fields</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/gallery/ex14">&#40;14&#41; Gridding of data and trend surfaces</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/gallery/ex15">&#40;15&#41; Gridding, contouring, and masking of unconstrained areas</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/gallery/ex16">&#40;16&#41; Gridding of data, continued</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/gallery/ex17">&#40;17&#41; Images clipped by coastlines</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/gallery/ex18">&#40;18&#41; Volumes and Spatial Selections</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/gallery/ex19">&#40;19&#41; Color patterns on maps</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/gallery/ex20">&#40;20&#41; Custom plot symbols</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/gallery/ex21">&#40;21&#41; Time-series of RedHat stock price</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/gallery/ex22">&#40;22&#41; World-wide seismicity of last month</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/gallery/ex23">&#40;23&#41; All great-circle paths lead to Rome</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/gallery/ex24">&#40;24&#41; Data selection based on geospatial criteria</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/gallery/ex25">&#40;25&#41; Global distribution of antipodes</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/gallery/ex26">&#40;26&#41; General vertical perspective projection</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/gallery/ex27">&#40;27&#41; Plotting Sandwell/Smith Mercator img grids</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/gallery/ex28">&#40;28&#41; Mixing UTM and geographic data sets</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/gallery/ex29">&#40;29&#41; Gridding spherical surface data using splines</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/gallery/ex30">&#40;30&#41; Trigonometric functions plotted in graph mode</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/gallery/ex33">&#40;33&#41; Stacking automatically generated cross-profiles</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/gallery/ex34">&#40;34&#41; Using country polygons for plotting and shading</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/gallery/ex35">&#40;35&#41; Spherical triangulation and distance calculations</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/gallery/ex36">&#40;36&#41; Spherical gridding using Renka’s algorithms</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/gallery/ex40">&#40;40&#41; Line simplification</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/gallery/ex41">&#40;41&#41; Legend with tables</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/gallery/ex42">&#40;42&#41; Antarctica and stereographic data</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/gallery/ex44">&#40;44&#41; Map insets</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/gallery/ex45">&#40;45&#41; Trend modeling</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/gallery/ex46">&#40;46&#41; Day-light terminators and other sunlight parameters</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/gallery/ex48">&#40;48&#41; Line networks, map embellishments, and curved titles</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-4" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-4"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/geophysics">Geophysics</a></div><ul><li><input class="collapse-toggle" id="menuitem-4-1" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-4-1"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/geophysics/earthtides">Earth tides</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/geophysics/earthtides/01_earthtides">Earth tides</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-4-2" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-4-2"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/geophysics/seismicity">Seismic¡ty</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/geophysics/seismicity/01_focalmec">Focal mechanisms</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/geophysics/seismicity/ThreeD_vp_vs">3D models with side walls</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/geophysics/seismicity/global_seis">Global seismicity</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-4-3" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-4-3"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/geophysics/weather">Weather Maps</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/geophysics/weather/01_weather">Weather Maps</a></div></li>
+</ul></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-5" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-5"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/tutorials">Tutorials</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/tutorials/ISC">ISC</a></div></li>
+<li><input class="collapse-toggle" id="menuitem-5-2" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-5-2"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/tutorials/Landsat8">Landsat8</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/tutorials/Landsat8/histogram_stretch">Plot Landsat 8 images</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-5-3" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-5-3"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/tutorials/blender_shading">Shading with Blender</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/tutorials/blender_shading/blender_rt">Shading with Blender</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-5-4" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-5-4"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/tutorials/choropleths">Choropleths</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/tutorials/choropleths/choropleths">Choropleths</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-5-5" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-5-5"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/tutorials/coast">Coastlines</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/tutorials/coast/coastlines">Coastlines and borders</a></div></li>
+</ul></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/tutorials/dlakelan">dlakelan</a></div></li>
+<li><input class="collapse-toggle" id="menuitem-5-7" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-5-7"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/tutorials/insets">Figure insets</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/tutorials/insets/insets">Figure insets</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-5-8" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-5-8"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/tutorials/longest_sail">Longest sail</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/tutorials/longest_sail/longestsail">The longest sail</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-5-9" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-5-9"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/tutorials/mosaics">Mosaicing from Web tiles servers</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/tutorials/mosaics/mosaics">Mosaicing from Web tiles servers</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-5-10" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-5-10"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/tutorials/remote_datasets">GMT Remote Datasets</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/tutorials/remote_datasets/remote_datasets">GMT Remote Datasets </a></div></li>
+<li><input class="collapse-toggle" id="menuitem-5-10-2" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-5-10-2"><i class="docs-chevron"></i></label><span ></span></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/tutorials/remote_datasets/age/age">Seafloor Crustal Age</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-5-10-3" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-5-10-3"><i class="docs-chevron"></i></label><span ></span></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/tutorials/remote_datasets/daynight/daynight">NASA Earth Day/Night Images</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-5-10-4" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-5-10-4"><i class="docs-chevron"></i></label><span ></span></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/tutorials/remote_datasets/dist/dist">GSHHG Earth Distace to Shoreline</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-5-10-5" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-5-10-5"><i class="docs-chevron"></i></label><span ></span></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/tutorials/remote_datasets/edefl/edefl">IGPP Earth West-East Defections</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-5-10-6" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-5-10-6"><i class="docs-chevron"></i></label><span ></span></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/tutorials/remote_datasets/faa/faa">IGPP Earth Free-Air Anomaly</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-5-10-7" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-5-10-7"><i class="docs-chevron"></i></label><span ></span></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/tutorials/remote_datasets/faa_err/faa_err">IGPP Earth Free-Air Anomaly Error</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-5-10-8" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-5-10-8"><i class="docs-chevron"></i></label><span ></span></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/tutorials/remote_datasets/gebco/gebco">GEBCO Earth Relief</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-5-10-9" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-5-10-9"><i class="docs-chevron"></i></label><span ></span></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/tutorials/remote_datasets/geoid/geoid">EGM2008 Earth Geoid</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-5-10-10" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-5-10-10"><i class="docs-chevron"></i></label><span ></span></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/tutorials/remote_datasets/mag/mag">Earth Magnetic Anomaly Model &#40;EMAG2&#41;</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-5-10-11" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-5-10-11"><i class="docs-chevron"></i></label><span ></span></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/tutorials/remote_datasets/mars/mars">NASA Mars Relief</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-5-10-12" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-5-10-12"><i class="docs-chevron"></i></label><span ></span></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/tutorials/remote_datasets/mask/mask">GSHHG Earth Mask</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-5-10-13" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-5-10-13"><i class="docs-chevron"></i></label><span ></span></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/tutorials/remote_datasets/mdt/mdt">CNES Earth Mean Dynamic Topography</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-5-10-14" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-5-10-14"><i class="docs-chevron"></i></label><span ></span></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/tutorials/remote_datasets/mercury/mercury">USGS Mercury Relief</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-5-10-15" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-5-10-15"><i class="docs-chevron"></i></label><span ></span></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/tutorials/remote_datasets/moon/moon">USGS Moon Relief</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-5-10-16" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-5-10-16"><i class="docs-chevron"></i></label><span ></span></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/tutorials/remote_datasets/mss/mss">CNES Earth Mean Sea Surface</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-5-10-17" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-5-10-17"><i class="docs-chevron"></i></label><span ></span></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/tutorials/remote_datasets/ndefl/ndefl">IGPP Earth South-North Defections</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-5-10-18" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-5-10-18"><i class="docs-chevron"></i></label><span ></span></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/tutorials/remote_datasets/pluto/pluto">USGS Pluto Relief</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-5-10-19" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-5-10-19"><i class="docs-chevron"></i></label><span ></span></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/tutorials/remote_datasets/relief/relief">IGPP Earth Relief</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-5-10-20" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-5-10-20"><i class="docs-chevron"></i></label><span ></span></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/tutorials/remote_datasets/venus/venus">USGS Venus Relief</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-5-10-21" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-5-10-21"><i class="docs-chevron"></i></label><span ></span></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/tutorials/remote_datasets/vgg/vgg">IGPP Earth Vertical Gravity Gradient</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-5-10-22" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-5-10-22"><i class="docs-chevron"></i></label><span ></span></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/tutorials/remote_datasets/wdmam/wdmam">World Digital Magnetic Anomaly Map</a></div></li>
+</ul></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-5-11" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-5-11"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/tutorials/signal">Signal processing</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/tutorials/signal/signal">Signal processing examples </a></div></li>
+<li><input class="collapse-toggle" id="menuitem-5-11-2" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-5-11-2"><i class="docs-chevron"></i></label><span ></span></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/tutorials/signal/autocorr_chloro/autocorr_chloro">Find Periodicity in Chlorophyl time series</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-5-11-3" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-5-11-3"><i class="docs-chevron"></i></label><span ></span></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/tutorials/signal/autocorr_periodic/autocorr_periodic">Find Periodicity Using Autocorrelation</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-5-11-4" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-5-11-4"><i class="docs-chevron"></i></label><span ></span></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/tutorials/signal/clean_outliers/clean_outliers">Remove outliers</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-5-11-5" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-5-11-5"><i class="docs-chevron"></i></label><span ></span></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/tutorials/signal/fft_ex1/fft_ex1">FFT example I</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-5-11-6" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-5-11-6"><i class="docs-chevron"></i></label><span ></span></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/tutorials/signal/fft_tide/fft_tide">FFT tide components.</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-5-11-7" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-5-11-7"><i class="docs-chevron"></i></label><span ></span></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/tutorials/signal/keeling/keeling">Trend modeling</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-5-11-8" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-5-11-8"><i class="docs-chevron"></i></label><span ></span></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/tutorials/signal/tide_smooth/tide_smooth">Smooth a tide record</a></div></li>
+</ul></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-5-12" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-5-12"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/tutorials/texture_shading">Leland Brown&#39;s &quot;texture shading&quot;</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/tutorials/texture_shading/texture">Leland Brown&#39;s &quot;texture shading&quot;</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-5-13" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-5-13"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/tutorials/vector_shp">Reading, filtering and visualizing geospatial vector data</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/tutorials/vector_shp/vector_shp">Reading, filtering and visualizing geospatial vector data</a></div></li>
+</ul></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-6" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-6"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/documentation">Documentation</a></div><ul><li><input class="collapse-toggle" id="menuitem-6-1" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-6-1"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/documentation/all_docs_ref">All documentations</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/all_docs_ref/all_refs">Manuals</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-6-2" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-6-2"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/documentation/common_features">Common features</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/common_features/arrows_control">Vector Attributes</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/common_features/color">Setting color</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/common_features/decorated">Line decorations</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/common_features/fonts">Setting fonts</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/common_features/justify">Justify</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/common_features/pens">Pen attributes</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/common_features/symbols">Symbols</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/common_features/themes">theme</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/common_features/units">Units</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-6-3" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-6-3"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/documentation/common_opts">Common options</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/common_opts/common_opts">frame</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-6-4" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-6-4"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/documentation/general">General</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/general/introduction">Introduction</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/general/modules">By Modules</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/general/monolitic">Monolithic</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/general/quick_learn">Quick learn</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/general/types">The GMT.jl types &#40;important&#41;</a></div></li>
+</ul></li>
+<li><input class="collapse-toggle" id="menuitem-6-5" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-6-5"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/documentation/modules">GMT Modules</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/band">band</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/bar">bar</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/bar3">bar3</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/basemap">basemap</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/biplot">biplot</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/blockmean">blockmean</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/blockmedian">blockmedian</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/blockmode">blockmode</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/boxplot">boxplot</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/bubblechart">bubblechart</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/clip">clip</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/coast">coast</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/colorbar">colorbar</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/contour">contour</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/contourf">contourf</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/cornerplot">cornerplot</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/coupe">coupe</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/earthregions">earthregions</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/earthtide">earthtide</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/ecdfplot">ecdfplot</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/feather">feather</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/fill_between">fill_between</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/filter1d">filter1d</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/fitcircle">fitcircle</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/gmt2kml">gmt2kml</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/gmtbinstats">gmtbinstats</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/gmtconnect">gmtconnect</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/gmtconvert">gmtconvert</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/gmtgravmag3d">gravmag3d</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/gmtmath">gmtmath</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/gmtselect">gmtselect</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/gmtset">gmtset</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/gmtsimplify">gmtsimplify</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/gmtspatial">gmtspatial</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/gmtsplit">gmtsplit</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/gravfft">gravfft</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/gravprisms">gravprisms</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grd2cpt">grd2cpt</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grd2kml">grd2kml</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grd2xyz">grd2xyz</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdclip">grdclip</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdcontour">grdcontour</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdcut">grdcut</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdedit">grdedit</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdfft">grdfft</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdfill">grdfill</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdfilter">grdfilter</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdgradient">grdgradient</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdgravmag3d">grdgravmag3d</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdhisteq">grdhisteq</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdimage">grdimage</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdinfo">grdinfo</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdlandmask">grdlandmask</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdmask">grdmask</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdmath">grdmath</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdpaste">grdpaste</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdproject">grdproject</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdsample">grdsample</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdtrack">grdtrack</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdtrend">grdtrend</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdvector">grdvector</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdview">grdview</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/grdvolume">grdvolume</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/greenspline">greenspline</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/hband">hband</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/histogram">histogram</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/image">image</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/inset">inset</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/legend">legend</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/lines">lines</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/magref">magref</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/makecpt">makecpt</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/mapproject">mapproject</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/marginalhist">marginalhist</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/mask">mask</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/meca">meca</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/movie">movie</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/nearneighbor">nearneighbor</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/parallelplot">parallelplot</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/piechart">piechart</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/plot">plot</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/project">project</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/qqplot">qqplot</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/quiver">quiver</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/radar">radar</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/rose">rose</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/sample1d">sample1d</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/scatter">scatter</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/scatter3">scatter3</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/seismicity">seismicity</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/solar">solar</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/spectrum1d">spectrum1d</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/sphdistance">sphdistance</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/sphinterpolate">sphinterpolate</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/sphtriangulate">sphtriangulate</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/stairs">stairs</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/stem">stem</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/subplot">subplot</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/surface">surface</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/ternary">ternary</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/text">text</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/trend1d">trend1d</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/trend2d">trend2d</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/triangulate">triangulate</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/triplot">triplot</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/trisurf">trisurf</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/vband">vband</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/violins">violin</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/wiggle">wiggle</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/windbarbs">windbarbs</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/modules/xyz2grd">xyz2grd</a></div></li>
+</ul></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/gdalfuns">GDAL related functions</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/solids">Solids functions</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/supplements">Supplements modules</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilfuns">Utility functions</a></div></li>
+<li><input class="collapse-toggle" id="menuitem-6-10" type="checkbox" ><div class="tocitem-container"><label class="tocexpander" for="menuitem-6-10"><i class="docs-chevron"></i></label><a  href="/GMTjl_doc/documentation/utilities">Utilities</a></div><ul><li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/ODE2ds">ODE2ds</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/ablines">ablines</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/anaglyph">anaglyph</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/append2fig">append2fig</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/binarize">binarize</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/blendimg">blendimg&#33;</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/bwareaopen">bwareaopen</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/bwconncomp">bwconncomp</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/bwdist">bwdist</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/bwhitmiss">bwhitmiss</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/bwperim">bwperim</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/bwskell">bwskell</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/cart2pol">cart2pol</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/cart2sph">cart2sph</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/cc2bw">cc2bw</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/coastlinesproj">coastlinesproj</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/colorzones">colorzones&#33;</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/cpt4dcw">cpt4dcw</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/crop">crop</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/cube">cube</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/cubeplot">cubeplot</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/cylinder">cylinder</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/date2doy">date2doy</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/delrows">delrows&#33;</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/df2ds">df2ds</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/dodecahedron">dodecahedron</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/doy2date">doy2date</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/ecmwf">ecmwf</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/ellipse3D">ellipse3D</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/era5time">era5time</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/era5vars">era5vars</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/extrude">extrude</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/fillsinks">fillsinks</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/findpeaks">findpeaks</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/flatfv">flatfv</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/fv2fv">fv2fv</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/gadm">gadm</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/geocoder">geocoder</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/geodetic2enu">geodetic2enu</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/getbyattrib">getbyattrib</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/gmtread">gmtread</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/gmtwrite">gmtwrite</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/graticules">graticules</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/graydist">graydist</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/grid2tri">grid2tri</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/gridit">gridit</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/gunique">gunique</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/hampel">hampel</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/hlines">hlines</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/icosahedron">icosahedron</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/image_alpha">image_alpha&#33;</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/image_cpt">image_cpt&#33;</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/imagesc">imagesc</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/imbothat">imbothat</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/imclose">imclose</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/imcomplement">imcomplement</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/imdilate">imdilate</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/imerode">imerode</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/imfill">imfill</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/imfilter">imfilter</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/imhdome">imhdome</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/imhmax">imhmax</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/imhmin">imhmin</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/immorphgrad">immorphgrad</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/imopen">imopen</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/imrankfilter">imrankfilter</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/imreconstruct">imreconstruct</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/imregionalmax">imregionalmax</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/imregionalmin">imregionalmin</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/imsegment">imsegment</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/imshow">imshow</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/imsobel">imsobel</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/imtophat">imtophat</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/ind2rgb">ind2rgb</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/info">info</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/inpolygon">inpolygon</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/inwhichpolygon">inwhichpolygon</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/isnodata">isnodata</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/isodata">isodata</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/isoutlier">isoutlier</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/lazread">lazread</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/lazwrite">lazwrite</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/leepacific">leepacific</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/lelandshade">lelandshade</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/linearfitxy">linearfitxy</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/listecmwfvars">listecmwfvars</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/loft">loft</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/logo">logo</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/magic">magic</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/maregrams">maregrams</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/mat2ds">mat2ds</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/mat2grid">mat2grid</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/mat2img">mat2img</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/meteostat">meteostat</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/mosaic">mosaic</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/octahedron">octahedron</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/orbits">orbits</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/padarray">padarray</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/parkergrav">parkergrav</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/parkermag">parkermag</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/pastplates">pastplates</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/pca">pca</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/pcolor">pcolor</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/plotgrid">plotgrid&#33;</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/plotlinefit">plotlinefit</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/plotyy">plotyy</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/polygonlevels">polygonlevels</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/rasterzones">rasterzones&#33;</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/regiongeog">regiongeog</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/remotegrid">remotegrid</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/replicant">replicant</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/rescale">rescale</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/revolve">revolve</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/rgb2gray">rgb2gray</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/rgb2lab">rgb2lab</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/rgb2ycbcr">rgb2YCbCr</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/sealand">sealand</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/slicecube">slicecube</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/sph2cart">sph2cart</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/sphere">sphere</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/stackgrids">stackgrids</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/stereonet">stereonet</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/streamlines">streamlines</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/strel">strel</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/surf2fv">surf2fv</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/tetrahedron">tetrahedron</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/theme">theme</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/torus">torus</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/uniqueind">uniqueind</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/vecangles">vecangles</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/vlines">vlines</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/weather">weather</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/whereami">whereami</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/wmsinfo">wmsinfo</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/wmsread">wmsread</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/wmstest">wmstest</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/worldrectangular">worldrectangular</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/worldrectcoast">worldrectcoast</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/worldrectgrid">worldrectgrid</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/xyzw2cube">xyzw2cube</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/documentation/utilities/zonal_stats">zonal_stats</a></div></li>
+</ul></li>
+</ul></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/Interoperability">Interoperability with &#40;some&#41; other packages</a></div></li>
+<li><div class="tocitem-container"><a  href="/GMTjl_doc/comp_other_pkgs">Comparison with other plotting packages</a></div></li>
+</ul>
+          </div>
+        </div>
+
+
+<!-- Content appended here -->
+<div class="franklin-content"><h1 id="arrow_examples"><a href="#arrow_examples" class="header-anchor">Arrow examples</a></h1>
+<div class="docstring">
+<div class="doc-header" id="arrows">
+<a href="#arrows">arrows</a>
+</div>
+<div class="doc-content"><pre><code>arrows&#40;cmd0::String&#61;&quot;&quot;, arg1&#61;nothing; arrow&#61;&#40;...&#41;, kwargs...&#41;</code></pre>
+<p>Plot an arrow field.</p>
+<p>When the keyword <code>arrow&#61;&#40;...&#41;</code> or <code>vector&#61;&#40;...&#41;</code> is used, the direction &#40;in degrees counter-clockwise from horizontal&#41; and length must be found in columns 3 and 4, and size, if not specified on the command-line, should be present in column 5. The size is the length of the vector head. Vector stem width is set by option <code>pen</code> or <code>line_attrib</code>.</p>
+<p>The <code>vecmap&#61;&#40;...&#41;</code> variation is similar to above except azimuth &#40;in degrees east of north&#41; should be given instead of direction. The azimuth will be mapped into an angle based on the chosen map projection. If length is not in plot units but in arbitrary user units &#40;e.g., a rate in mm/yr&#41; then you can use the <em>input_col</em> option to scale the corresponding column via the &#43;sscale modifier.</p>
+<p>The <code>geovec&#61;&#40;...&#41;</code> or <code>geovector&#61;&#40;...&#41;</code> keywords plot geovectors. In geovectors, azimuth &#40;in degrees east from north&#41; and geographical length must be found in columns 3 and 4. The size is the length of the vector head. Vector width is set by <code>pen</code> or <code>line_attrib</code>. Note: Geovector stems are drawn as thin filled polygons and hence pen attributes like dashed and dotted are not available. For allowable geographical units, see the <code>units&#61;&#40;&#41;</code> option.</p>
+<p>The full <code>arrow</code> options list can be consulted at <a href="@ref">Vector Attributes</a></p>
+<ul>
+<li><p><strong>B</strong> | <strong>frame</strong> | <strong>axis</strong> | <strong>xaxis yaxis</strong>:: &#91;Type &#61;&gt; Str&#93; </p>
+<p>Set map boundary frame and axes attributes.</p>
+</li>
+<li><p><strong>J</strong> | <strong>proj</strong> | <strong>projection</strong> :: &#91;Type &#61;&gt; String&#93;</p>
+<p>Select map projection. Defaults to 15x10 cm with linear &#40;non-projected&#41; maps.</p>
+</li>
+<li><p><strong>R</strong> | <strong>region</strong> | <strong>limits</strong> :: &#91;Type &#61;&gt; Str or list or GMTgrid|image&#93;	&#36;Arg &#61; &#40;xmin,xmax,ymin,ymax&#41;&#36;</p>
+<p>Specify the region of interest. Set to data minimum BoundinBox if not provided.</p>
+</li>
+<li><p><strong>W</strong> | <strong>pen</strong> | <strong>line_attrib</strong> :: &#91;Type &#61;&gt; Str&#93;</p>
+<p>Set pen attributes for lines or the outline of symbols</p>
+</li>
+<li><p><strong>savefig</strong> | <strong>figname</strong> | <strong>name</strong> :: &#91;Type &#61;&gt; Str&#93;</p>
+<p>Save the figure with the <code>figname&#61;name.ext</code> where <code>ext</code> chooses the figure format &#40;e.g. figname&#61;&quot;name.png&quot;&#41;</p>
+</li>
+</ul>
+<p>Example:</p>
+<pre><code>arrows&#40;&#91;0 8.2 0 6&#93;, limits&#61;&#40;-2,4,0,9&#41;, arrow&#61;&#40;len&#61;2,stop&#61;1,shape&#61;0.5,fill&#61;:red&#41;, axis&#61;:a, pen&#61;&quot;6p&quot;, show&#61;true&#41;</code></pre>
+
+
+</div>
+</div>
+
+<pre><code class="language-julia">using GMT
+arrows&#40;&#91;0.5 0.5 0 2&#93;, limits&#61;&#40;0.,3,0,2.5&#41;, figsize&#61;&#40;15,5&#41;,
+       arrow&#61;&#40;len&#61;2,&#41;, pen&#61;6,
+       frame&#61;&#40;axes&#61;:WSrt, annot&#61;:auto, title&#61;&quot;Arrow I&quot;&#41;&#41;
+# Add the plotting command to the figure
+T1 &#61; &quot;arrows&#40;&#91;0.5 0.5 0 2&#93;, limits&#61;&#40;0,3,0,2.5&#41;, figsize&#61;&#40;15,5&#41;,&quot;;
+T2 &#61; &quot;   arrow&#61;&#40;len&#61;2,stop&#61;1,shape&#61;0.5&#41;, pen&#61;6&quot;;
+pstext&#33;&#40;&#91;1.5 2.0&#93;, text&#61;T1, font&#61;&#40;18,&quot;Times-Italic&quot;&#41;, justify&#61;:CB&#41;
+pstext&#33;&#40;&#91;1.5 1.5&#93;, text&#61;T2, font&#61;&#40;18,&quot;Times-Italic&quot;&#41;, justify&#61;:CB, show&#61;true&#41;</code></pre></p>
+<p>
+	<a id="example_6821421499651979431">
+	 <img src="/GMTjl_doc/assets/examples/arrows/10_arrows/code/output/example_6821421499651979431.png" alt=""> 
+	</a>
+	
+<pre><code class="language-julia">using GMT
+arrows&#40;&#91;0.5 0.5 0 2&#93;, limits&#61;&#40;0,3,0,2.5&#41;, figsize&#61;&#40;15,5&#41;,
+       arrow&#61;&#40;len&#61;2,start&#61;:arrow,stop&#61;:tail,shape&#61;0.5&#41;, fill&#61;:red, pen&#61;6,
+       frame&#61;&#40;axes&#61;:WSrt, annot&#61;:auto, title&#61;&quot;Arrow II&quot;&#41;&#41;
+# Add the plotting command to the figure
+T1 &#61; &quot;arrows&#40;&#91;0.5 0.5 0 2&#93;, limits&#61;&#40;0,3,0,2.5&#41;, figsize&#61;&#40;15,5&#41;,&quot;;
+T2 &#61; &quot;       arrow&#61;&#40;len&#61;2,start&#61;:arrow,stop&#61;:tail,shape&#61;0.5&#41;,&quot;;
+T3 &#61; &quot;       pen&#61;6, fill&#61;:red&quot;;
+pstext&#33;&#40;&#91;0.1 2.0&#93;, text&#61;T1, font&#61;&#40;18,&quot;Times-Italic&quot;&#41;, justify&#61;:LB&#41;
+pstext&#33;&#40;&#91;0.1 1.5&#93;, text&#61;T2, font&#61;&#40;18,&quot;Times-Italic&quot;&#41;, justify&#61;:LB&#41;
+pstext&#33;&#40;&#91;0.1 1.1&#93;, text&#61;T3, font&#61;&#40;18,&quot;Times-Italic&quot;&#41;, justify&#61;:LB, show&#61;true&#41;</code></pre></p>
+<p>
+	<a id="example_2462103057010452190">
+	 <img src="/GMTjl_doc/assets/examples/arrows/10_arrows/code/output/example_2462103057010452190.png" alt=""> 
+	</a>
+	
+<h2 id="gmt4_gmt5_style_arrows"><a href="#gmt4_gmt5_style_arrows" class="header-anchor">GMT4 &amp; GMT5 style arrows</a></h2>
+<p>Plot GMT4 style arrows. We show here three alternatives to set arrow heads</p>
+<pre><code class="language-julia">using GMT
+arrows&#40;&#91;1 0 45 2&#93;, region&#61;&#40;0,6,-1,1&#41;, figscale&#61;&quot;2.5&quot;,
+       frame&#61;&#40;annot&#61;:auto, grid&#61;1, title&#61;&quot;GMT4 Vectors&quot;&#41;,
+       pen&#61;&#40;1,:blue&#41;, fill&#61;:red, arrow4&#61;&#40;align&#61;:middle,
+       head&#61;&#40;arrowwidth&#61;&quot;4p&quot;, headlength&#61;&quot;18p&quot;, headwidth&#61;&quot;7.5p&quot;&#41;, double&#61;true&#41;&#41;
+arrows&#33;&#40;&#91;3 0 45 2&#93;, pen&#61;&#40;1,:blue&#41;, fill&#61;:red,
+        arrow4&#61;&#40;align&#61;:middle, head&#61;&#40;&quot;4p&quot;,&quot;18p&quot;, &quot;12p&quot;&#41;&#41;&#41;
+arrows&#33;&#40;&#91;5 0 45 2&#93;, pen&#61;&#40;1,:blue&#41;, fill&#61;:red,
+        arrow4&#61;&#40;align&#61;:middle, head&#61;&quot;8p/18p/17.5p&quot;&#41;&#41;
+
+# Now the GMT5 type arrows
+arrows&#33;&#40;&#91;1 0 45 2&#93;, frame&#61;&#40;annot&#61;:auto, grid&#61;1, title&#61;&quot;GMT5 Vectors&quot;&#41;, lw&#61;2, fill&#61;:red,
+        arrow&#61;&#40;length&#61;&quot;18p&quot;, start&#61;true, stop&#61;true, pen&#61;&#40;1,:blue&#41;,
+               angle&#61;45, justify&#61;:center, shape&#61;0.5&#41;, yshift&#61;7&#41;
+arrows&#33;&#40;&#91;3 0 45 2&#93;, lw&#61;2, fill&#61;:red,
+        arrow&#61;&#40;length&#61;&quot;18p&quot;, stop&#61;true, pen&#61;&quot;-&quot;, angle&#61;45, justify&#61;:center, shape&#61;0.5&#41;&#41;
+arrows&#33;&#40;&#91;5 0 45 2&#93;, lw&#61;2, fill&#61;:red,
+        arrow&#61;&#40;length&#61;&quot;18p&quot;, stop&#61;true, angle&#61;45, justify&#61;:center, shape&#61;0.5&#41;, show&#61;true&#41;</code></pre></p>
+<p>
+	<a id="example_9707417971529069677">
+	 <img src="/GMTjl_doc/assets/examples/arrows/10_arrows/code/output/example_9707417971529069677.png" alt=""> 
+	</a>
+	
+<h2 id="mat_angles"><a href="#mat_angles" class="header-anchor">Mat angles</a></h2>
+<p>Plot matangle symbols with vector heads.</p>
+<pre><code class="language-julia">using GMT
+plot&#40;&#91;0.5 1 1.75 5 85&#93;, region&#61;&#40;0,5,0,5&#41;, figsize&#61;12,
+        marker&#61;&#40;matang&#61;true, arrow&#61;&#40;length&#61;0.75, start&#61;true, stop&#61;true, half&#61;:right&#41;&#41;,
+        ml&#61;&#40;0.5,:red&#41;, fill&#61;:blue&#41;
+# Now add another matangle symbol but transmit the angle parameters via the
+# keyword. Note that in this case the arrow attributes are wrapped in a NamedTuple
+plot&#33;&#40;&#91;2.5 2.5&#93;, marker&#61;&#40;:matang, &#91;2 50 350&#93;, &#40;length&#61;0.75, start&#61;true, stop&#61;true, half&#61;:left&#41;&#41;,
+        ml&#61;&#40;0.5,:red&#41;, fill&#61;:blue, show&#61;true&#41;</code></pre></p>
+<p>
+	<a id="example_7599887368237968004">
+	 <img src="/GMTjl_doc/assets/examples/arrows/10_arrows/code/output/example_7599887368237968004.png" alt=""> 
+	</a>
+	
+<h2 id="vector_heads_and_tails"><a href="#vector_heads_and_tails" class="header-anchor">Vector heads and tails</a></h2>
+<p>There are many methods to plot vectors with individual heads and tails. For this purpose, several modifiers may be set to the corresponding vector-producing parameters for specifying the placement of vector heads and tails, their shapes, and the justification of the vector, see more at <a href="/GMTjl_doc/documentation/common_features/arrows_control/index.html#vector_attributes">Vector Attributes</a>.</p>
+<pre><code class="language-julia">using GMT
+
+arrows&#40;&#91;1 14 0 35&#93;, limits&#61;&#40;-5,100,1,15&#41;, figsize&#61;&#40;15,10&#41;, pen&#61;2, arrow&#61;&#40;len&#61;0,&#41;, 
+       frame&#61;:none, title&#61;&quot;Vector heads and tails&quot;&#41;
+text&#33;&#40;&#91;&quot;arrow&#61;&#40;len&#61;0,&#41;&quot;&#93;, x&#61;40, y&#61;14, font&#61;8, justify&#61;:LM&#41;
+arrows&#33;&#40;&#91;1 13 0 35&#93;, pen&#61;2, arrow&#61;&#40;len&#61;0.6, start&#61;:open_arrow, stop&#61;:open_arrow, angle&#61;50&#41;&#41;
+text&#33;&#40;&#91;&quot;arrow&#61;&#40;len&#61;0.6, start&#61;:open_arrow, stop&#61;:open_arrow, angle&#61;50&#41;&quot;&#93;, x&#61;40, y&#61;13, font&#61;8, justify&#61;:LM&#41;
+arrows&#33;&#40;&#91;1 12 0 35&#93;, pen&#61;2, arrow&#61;&#40;len&#61;0.4, start&#61;:open_tail, stop&#61;:open_tail&#41;&#41;
+text&#33;&#40;&#91;&quot;arrow&#61;&#40;len&#61;0.4, start&#61;:open_tail, stop&#61;:open_tail&#41;&quot;&#93;, x&#61;40, y&#61;12, font&#61;8, justify&#61;:LM&#41;
+arrows&#33;&#40;&#91;1 11 0 35&#93;, pen&#61;2, arrow&#61;&#40;len&#61;0.3, start&#61;:line, stop&#61;:line, angle&#61;80&#41;&#41;
+text&#33;&#40;&#91;&quot;arrow&#61;&#40;len&#61;0.3, start&#61;:line, stop&#61;:line, angle&#61;80&#41;&quot;&#93;, x&#61;40, y&#61;11, font&#61;8, justify&#61;:LM&#41;
+arrows&#33;&#40;&#91;1 10 0 35&#93;, pen&#61;2, arrow&#61;&#40;len&#61;0.6, stop&#61;true&#41;, fill&#61;:red3&#41;
+text&#33;&#40;&#91;&quot;arrow&#61;&#40;len&#61;0.6, stop&#61;true&#41;&quot;&#93;, x&#61;40, y&#61;10, font&#61;8, justify&#61;:LM&#41;
+arrows&#33;&#40;&#91;1  9 0 35&#93;, pen&#61;2, arrow&#61;&#40;len&#61;0.6, start&#61;:circle, stop&#61;true&#41;, fill&#61;:red3&#41;
+text&#33;&#40;&#91;&quot;arrow&#61;&#40;len&#61;0.6, start&#61;:circle, stop&#61;true&#41;&quot;&#93;, x&#61;40, y&#61;9, font&#61;8, justify&#61;:LM&#41;
+arrows&#33;&#40;&#91;1  8 0 35&#93;, pen&#61;2, arrow&#61;&#40;len&#61;0.6, start&#61;:line, stop&#61;true&#41;, fill&#61;:red3&#41;
+text&#33;&#40;&#91;&quot;arrow&#61;&#40;len&#61;0.6, start&#61;:line, stop&#61;true&#41;&quot;&#93;, x&#61;40, y&#61;8, font&#61;8, justify&#61;:LM&#41;
+arrows&#33;&#40;&#91;1  7 0 35&#93;, pen&#61;2, arrow&#61;&#40;len&#61;1, stop&#61;true, shape&#61;0.5&#41;, fill&#61;:red3&#41;
+text&#33;&#40;&#91;&quot;arrow&#61;&#40;len&#61;1, stop&#61;true, shape&#61;0.5&#41;&quot;&#93;, x&#61;40, y&#61;7, font&#61;8, justify&#61;:LM&#41;
+arrows&#33;&#40;&#91;1  6 0 35&#93;, pen&#61;2, arrow&#61;&#40;len&#61;1, start&#61;true, stop&#61;true, shape&#61;0.5&#41;, fill&#61;:red3&#41;
+text&#33;&#40;&#91;&quot;arrow&#61;&#40;len&#61;1, start&#61;true, stop&#61;true, shape&#61;0.5&#41;&quot;&#93;, x&#61;40, y&#61;6, font&#61;8, justify&#61;:LM&#41;
+arrows&#33;&#40;&#91;1  5 0 35&#93;, pen&#61;2, arrow&#61;&#40;len&#61;1, start&#61;:tail, stop&#61;true, shape&#61;0.5&#41;, fill&#61;:red3&#41;
+text&#33;&#40;&#91;&quot;arrow&#61;&#40;len&#61;1, start&#61;:tail, stop&#61;true, shape&#61;0.5&#41;&quot;&#93;, x&#61;40, y&#61;5, font&#61;8, justify&#61;:LM&#41;
+arrows&#33;&#40;&#91;1  4 0 35&#93;, pen&#61;2, arrow&#61;&#40;len&#61;1, start&#61;:right, stop&#61;true, shape&#61;0.5&#41;, fill&#61;:red3&#41;
+text&#33;&#40;&#91;&quot;arrow&#61;&#40;len&#61;1, start&#61;:right, stop&#61;true, shape&#61;0.5&#41;&quot;&#93;, x&#61;40, y&#61;4, font&#61;8, justify&#61;:LM&#41;
+arrows&#33;&#40;&#91;1  3 0 35&#93;, pen&#61;2, arrow&#61;&#40;len&#61;1, start&#61;:right, stop&#61;:left, shape&#61;0.5&#41;, fill&#61;:red3&#41;
+text&#33;&#40;&#91;&quot;arrow&#61;&#40;len&#61;1, start&#61;:right, stop&#61;:left, shape&#61;0.5&#41;&quot;&#93;, x&#61;40, y&#61;3, font&#61;8, justify&#61;:LM&#41;
+arrows&#33;&#40;&#91;1  2 0 35&#93;, pen&#61;2, arrow&#61;&#40;len&#61;1, start&#61;:tail, stop&#61;true, half&#61;:right, shape&#61;0.5, angle&#61;45&#41;, fill&#61;:red3&#41;
+text&#33;&#40;&#91;&quot;arrow&#61;&#40;len&#61;1, start&#61;:tail, stop&#61;true, half&#61;:right, shape&#61;0.5, angle&#61;45&#41;&quot;&#93;, x&#61;40, y&#61;2, font&#61;8, justify&#61;:LM&#41;
+showfig&#40;&#41;</code></pre></p>
+<p>
+	<a id="example_14734748061526542541">
+	 <img src="/GMTjl_doc/assets/examples/arrows/10_arrows/code/output/example_14734748061526542541.png" alt=""> 
+	</a>
+	
+<h2 id="cartesian_circular_and_geographic_vectors"><a href="#cartesian_circular_and_geographic_vectors" class="header-anchor">Cartesian, circular, and geographic vectors</a></h2>
+<p>Plot Cartesian, circular, and geographic vectors. This <a href="https://www.pygmt.org/dev/gallery/lines/vector_styles.html">example</a> was picked from the PyGMT gallery.</p>
+<pre><code class="language-julia">using GMT
+coast&#40;region&#61;&#91;-127, -64, 24, 53&#93;, proj&#61;:merc, borders&#61;1, area&#61;4000, shore&#61;true&#41;
+
+# Left: plot 12 Cartesian vectors with different lengths
+x &#61; fill&#40;-117, 12&#41;;               # x vector coordinates
+y &#61; linspace&#40;33.5, 42.5, 12&#41;;     # y vector coordinates
+direction &#61; zeros&#40;12&#41;;            # direction of vectors &#40;horizontal&#41;
+length &#61; linspace&#40;2, 10, 12&#41;;  # length of vectors
+arrows&#33;&#40;&#91;x y direction length&#93;, pen&#61;&#40;1,:red&#41;,
+        arrow&#61;&#40;len&#61;&quot;0.2&quot;, stop&#61;true, fill&#61;:red, angle&#61;40, shape&#61;:triang&#41;&#41;
+text&#33;&#40;text&#61;&quot;CARTESIAN&quot;, x&#61;-112, y&#61;44.2, font&#61;&quot;13p,Helvetica-Bold,red&quot;&#41;
+
+# Middle: plot 7 math angle arcs with different radii
+num &#61; 7
+x, y &#61; fill&#40;-95, 7&#41;, fill&#40;37, 7&#41;
+radius &#61; 1.8 .- 0.2 * &#40;0:num-1&#41;
+startdir &#61; fill&#40;90, num&#41;
+stopdir  &#61; 180 .&#43; 40 * &#40;0:num-1&#41;
+data &#61; &#91;x y radius startdir stopdir&#93;
+plot&#33;&#40;data, marker&#61;&#40;matang&#61;true, arrow&#61;&#40;length&#61;0.5, stop&#61;true&#41;&#41;, fill&#61;:red3, pen&#61;&quot;1.5,black&quot;&#41;
+text&#33;&#40;text&#61;&quot;CIRCULAR&quot;, x&#61;-95, y&#61;44.2, font&#61;&quot;13p,Helvetica-Bold,black&quot;&#41;
+
+# Right: plot geographic vectors using endpoints
+NYC &#61; &#91;-74.0060 40.7128&#93;
+CHI &#61; &#91;-87.6298 41.8781&#93;
+SEA &#61; &#91;-122.3321 47.6062&#93;
+NO &#61; &#91;-90.0715 29.9511&#93;
+plot&#33;&#40;&#91;NYC CHI; NYC SEA; NYC NO&#93;, pen&#61;&quot;1.0,blue&quot;,
+      geovec&#61;&#40;length&#61;0.5, stop&#61;true, endpoint&#61;true, fill&#61;:blue, angle&#61;30, pen&#61;&quot;1p,blue&quot;&#41;&#41;
+text&#33;&#40;text&#61;&quot;GEOGRAPHIC&quot;, x&#61;-74.5, y&#61;44.2, font&#61;&quot;13p,Helvetica-Bold,blue&quot;, show&#61;1&#41;</code></pre></p>
+<p>
+	<a id="example_5778009529224419563">
+	 <img src="/GMTjl_doc/assets/examples/arrows/10_arrows/code/output/example_5778009529224419563.png" alt=""> 
+	</a>
+	
+<h2 id="quivers"><a href="#quivers" class="header-anchor">Quivers</a></h2>
+<p>A &#40;nicer looking&#41; Matlab quiver plot example. To fully reproduce the Matlab example we also use the extremely memory wasting <code>meshgrid</code>. And because we turn <code>U</code> and <code>V</code> into grids before sending them to GMT, not specifying the limits would lose all first/last column/rows because most of the arrows are going <em>out</em> of the grid domain. We could have done it but it looks nicer if we specify a slightly wider domain.</p>
+<pre><code class="language-julia">using GMT
+X,Y &#61; meshgrid&#40;-pi:pi/8:pi,-pi:pi/8:pi&#41;;
+U &#61; sin.&#40;Y&#41;;
+V &#61; cos.&#40;X&#41;;
+quiver&#40;X, Y, U, V, region&#61;&#40;-3.6,3.6,-3.6,3.6&#41;, fill&#61;:black, lc&#61;:red, show&#61;true&#41;</code></pre></p>
+<p>
+	<a id="example_18014022190894630975">
+	 <img src="/GMTjl_doc/assets/examples/arrows/10_arrows/code/output/example_18014022190894630975.png" alt=""> 
+	</a>
+	
+<p>Next example doesn&#39;t need our <em>help</em> to extend the plotting limits and it uses grids directly. And for simplicity let&#39;s create a grid using <code>grdmath</code> and compute its horizontal derivatives. Then we plot them as an arrow field.</p>
+<pre><code class="language-julia">using GMT
+G &#61; gmt&#40;&quot;grdmath -R-2/2/-2/2 -I0.1 X Y R2 NEG EXP X MUL&quot;&#41;;
+dzdy &#61; gmt&#40;&quot;grdmath ? DDY&quot;, G&#41;;
+dzdx &#61; gmt&#40;&quot;grdmath ? DDX&quot;, G&#41;;
+grdcontour&#40;G, annot&#61;:none, pen&#61;:gray80&#41;
+grdvector&#33;&#40;dzdx, dzdy, cmap&#61;:turbo, lw&#61;1, show&#61;true&#41;</code></pre></p>
+<p>
+	<a id="example_10969400782848897093">
+	 <img src="/GMTjl_doc/assets/examples/arrows/10_arrows/code/output/example_10969400782848897093.png" alt=""> 
+	</a>
+	
+<p>The above examples used Cartesian coordinates, but we can use also geographic coordinates where the arrows <em>know</em> where they are on Earth. This example plots the NUVEL1 plate motion model velocities relative to the Eurasian plate. The defaults guess pretty much a good solution for the arrow&#39;s length and header sizes, but we can modify them if we are not satisfied with the default results.</p>
+<pre><code class="language-julia">using GMT
+quiver&#40;TESTSDIR * &quot;assets/nuvel1_vx.nc&quot;, TESTSDIR * &quot;assets/nuvel1_vy.nc&quot;, proj&#61;:guess,
+       coast&#61;&#40;shore&#61;:gray70, area&#61;5000&#41;, lw&#61;1, C&#61;:turbo, show&#61;true, Vd&#61;1&#41;</code></pre></p>
+<p>
+	<a id="example_8163402402045110667">
+	 <img src="/GMTjl_doc/assets/examples/arrows/10_arrows/code/output/example_8163402402045110667.png" alt=""> 
+	</a>
+	
+<p>A nice and instructive plot but we may want a somewhat larger arrows. Figuring out a best sized arrows is very tricky and no solution will please all users. The above command used the option <code>Vd&#61;1</code>, which prints the real hard core command that is sent to GMT. Many users get scared with it but fine tuning implies understanding its contents. Specifically the <code>-Si136.92637k</code> part that sets arrows scale factor. Much more information is provided in the <a href="/GMTjl_doc/documentation/modules/grdvector/index.html#grdvector">grdvector</a> manual page, but as a quick help here we inform that <strong>i</strong> stands for inverse scale factor &#40;<strong>136.92637</strong> in this case&#41; and <strong>k</strong> means kilometers. So if we want larger arrows we must increase the &#40;inverse&#41; scale factor. A slightly modified version of the above is obtained with:</p>
+<pre><code class="language-julia">using GMT
+quiver&#40;TESTSDIR * &quot;assets/nuvel1_vx.nc&quot;, TESTSDIR * &quot;assets/nuvel1_vy.nc&quot;, proj&#61;:guess, lw&#61;1, 
+       coast&#61;&#40;shore&#61;:gray70, area&#61;5000&#41;, vscale&#61;&#40;inverse&#61;true, scale&#61;&quot;400k&quot;&#41;, C&#61;:turbo, show&#61;true&#41;</code></pre></p>
+<p>
+	<a id="example_999538644060835513">
+	 <img src="/GMTjl_doc/assets/examples/arrows/10_arrows/code/output/example_999538644060835513.png" alt=""> 
+	</a>
+	
+<p>Here we exaggerated on the arrow scale to show the other side of the problem. If arrows are too long chances are high that they intersect.</p>
+<div class="page-foot">
+  <div class="copyright">
+    &copy; GMT.jl. Last modified: November 30, 2025. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+      <p>These docs were autogenerated using GMT: v1.34.0</p>
+  </div>
+</div>
+</div><!-- CONTENT ENDS HERE -->
+
+      </div> <!-- closure of main -->
+
+      <div class="page__footer">
+        <footer>
+          <!-- start custom footer snippets -->
+          <!-- end custom footer snippets -->
+          <div class="page__footer-follow">
+            <ul class="social-icons">
+              <li><a href="https://github.com/GenericMappingTools/GMT.jl" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+            </ul>
+          </div>
+          <div class="page__footer-copyright">&copy; GMT.jl. Powered by <a href="https://github.com/tlienart/Franklin.jl">Franklin</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+        </footer>
+      </div>
+
+    </div>   <!-- closure of class site-container -->
+
+    
+
+    <script src="/GMTjl_doc/libs/navbar.js"></script>
+    <script src="/GMTjl_doc/libs/lunr/lunr.min.js"></script>
+    <script src="/GMTjl_doc/libs/lunr/lunr_index.js"></script>
+    <script src="/GMTjl_doc/libs/lunr/lunrclient.min.js"></script>
+    <!-- <script src="/GMTjl_doc/libs/minimal-mistakes/main.min.js"></script> -->
+    <script defer src="https://use.fontawesome.com/releases/v5.8.2/js/all.js" integrity="sha384-DJ25uNYET2XCl5ZF++U8eNxPWqcKohUUBUpKGlNLMchM7q4Wjg2CUpjHLaL8yYPH" crossorigin="anonymous"></script>
+
+    
+    
+        <script src="/GMTjl_doc/libs/highlight/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();hljs.configure({tabReplace: '    '});</script>
+
+    
+  </body>
+</html>
