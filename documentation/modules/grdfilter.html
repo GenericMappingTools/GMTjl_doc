@@ -1,0 +1,1611 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>grdfilter</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-0615b85506723fa54ab13a613a4e9e4c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../custom.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/GMTjl_logo.png" alt="" class="navbar-logo light-content">
+    <img src="../../assets/GMTjl_logo.png" alt="" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-documentation" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Documentation</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-documentation">    
+        <li>
+    <a class="dropdown-item" href="../../documentation.html">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../../documentation/modules.html">
+ <span class="dropdown-text">GMT Modules</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/general/types.html">
+ <span class="dropdown-text">GMT.jl Types</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/extensions.html">
+ <span class="dropdown-text">GMT.jl Extensions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/gdalfuns.html">
+ <span class="dropdown-text">GDAL Functions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/solids.html">
+ <span class="dropdown-text">Solids Functions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/imgproc.html">
+ <span class="dropdown-text">Image Processing</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/common_features.html">
+ <span class="dropdown-text">Common Features</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/alphabetical.html">
+ <span class="dropdown-text">Alphabetical List</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../../examples.html"> 
+<span class="menu-text">Examples</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-gallery-(gmt-gallery" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Gallery (GMT Gallery)</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-gallery-(gmt-gallery">    
+        <li>
+    <a class="dropdown-item" href="../../gallery.html">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex01.html">
+ <span class="dropdown-text">(1) Contour maps</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex02.html">
+ <span class="dropdown-text">(2) Image presentations</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex03.html">
+ <span class="dropdown-text">(3) Spectral estimation and xy-plots</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex04.html">
+ <span class="dropdown-text">(4)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex05.html">
+ <span class="dropdown-text">(5) A 3-D illuminated surface</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex06.html">
+ <span class="dropdown-text">(6) Plotting of histograms</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex07.html">
+ <span class="dropdown-text">(7) A simple location map</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex08.html">
+ <span class="dropdown-text">(8) A 3-D histogram</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex09.html">
+ <span class="dropdown-text">(9) Time-series along tracks</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex10.html">
+ <span class="dropdown-text">(10) A geographical bar graph plot</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex11.html">
+ <span class="dropdown-text">(11)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex12.html">
+ <span class="dropdown-text">(12) Optimal triangulation of data</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex13.html">
+ <span class="dropdown-text">(13) Plotting of vector fields</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex14.html">
+ <span class="dropdown-text">(14) Gridding of data and trend surfaces</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex15.html">
+ <span class="dropdown-text">(15) Gridding, contouring, and masking of unconstrained areas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex16.html">
+ <span class="dropdown-text">(16) Gridding of data, continued</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex17.html">
+ <span class="dropdown-text">(17) Images clipped by coastlines</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex18.html">
+ <span class="dropdown-text">(18) Volumes and Spatial Selections</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex19.html">
+ <span class="dropdown-text">(19) Color patterns on maps</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex20.html">
+ <span class="dropdown-text">(20) Custom plot symbols</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex21.html">
+ <span class="dropdown-text">(21)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex22.html">
+ <span class="dropdown-text">(22)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex23.html">
+ <span class="dropdown-text">(23)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex24.html">
+ <span class="dropdown-text">(24)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex25.html">
+ <span class="dropdown-text">(25)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex26.html">
+ <span class="dropdown-text">(26)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex27.html">
+ <span class="dropdown-text">(27)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex28.html">
+ <span class="dropdown-text">(28)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex29.html">
+ <span class="dropdown-text">(29)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex30.html">
+ <span class="dropdown-text">(30)</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-tutorials" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Tutorials</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-tutorials">    
+        <li>
+    <a class="dropdown-item" href="../../tutorials.html">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../../tutorials/ISC/isc.jl.html">
+ <span class="dropdown-text">ISC seismicity</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/Landsat8/histogram_stretch.html">
+ <span class="dropdown-text">Landsat 8/9</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/coast/coastlines.html">
+ <span class="dropdown-text">Coastlines</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/choropleths/choropleths.html">
+ <span class="dropdown-text">US Choropleths</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/dlakelan/GMTMaps.html">
+ <span class="dropdown-text"><span class="citation" data-cites="dlakelan">@dlakelan</span> choropleths</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/longest_sail/longestsail.html">
+ <span class="dropdown-text">Longest Sail</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/vector_shp/vector_shp.html">
+ <span class="dropdown-text">Geospatial vector</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/texture_shading/texture.html">
+ <span class="dropdown-text">Texture Shading</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/mosaics/mosaics.html">
+ <span class="dropdown-text">Mosaics</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/insets/insets.html">
+ <span class="dropdown-text">Insets</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/remote_datasets/remote_datasets.html">
+ <span class="dropdown-text">Remote Grids</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/blender_shading/blender_rt.html">
+ <span class="dropdown-text">Blender</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/signal/signal.html">
+ <span class="dropdown-text">Signal</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-geophysics" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Geophysics</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-geophysics">    
+        <li>
+    <a class="dropdown-item" href="../../geophysics.html">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../../geophysics/seismicity/global_seis.html">
+ <span class="dropdown-text">Seismicity</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../geophysics/earthtides/01_earthtides.html">
+ <span class="dropdown-text">Earth Tides</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../geophysics/weather/01_weather.html">
+ <span class="dropdown-text">Weather Data</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-help" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Help</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-help">    
+        <li>
+    <a class="dropdown-item" href="https://github.com/GenericMappingTools/GMT.jl/issues"><i class="bi bi-bug" role="img">
+</i> 
+ <span class="dropdown-text">Report a Bug</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://forum.generic-mapping-tools.org/c/questions/5"><i class="bi bi-chat-right-text" role="img">
+</i> 
+ <span class="dropdown-text">Ask a Question</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#synopsis" id="toc-synopsis" class="nav-link active" data-scroll-target="#synopsis">Synopsis</a></li>
+  <li><a href="#description" id="toc-description" class="nav-link" data-scroll-target="#description">Description</a></li>
+  <li><a href="#required-arguments" id="toc-required-arguments" class="nav-link" data-scroll-target="#required-arguments">Required Arguments</a></li>
+  <li><a href="#optional-arguments" id="toc-optional-arguments" class="nav-link" data-scroll-target="#optional-arguments">Optional Arguments</a></li>
+  <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
+  <li><a href="#distance-flag-details" id="toc-distance-flag-details" class="nav-link" data-scroll-target="#distance-flag-details">Distance Flag Details</a></li>
+  <li><a href="#filter-type-comparison" id="toc-filter-type-comparison" class="nav-link" data-scroll-target="#filter-type-comparison">Filter Type Comparison</a></li>
+  <li><a href="#limitations" id="toc-limitations" class="nav-link" data-scroll-target="#limitations">Limitations</a></li>
+  <li><a href="#tips-for-julia-users" id="toc-tips-for-julia-users" class="nav-link" data-scroll-target="#tips-for-julia-users">Tips for Julia Users</a></li>
+  <li><a href="#geographical-and-time-coordinates" id="toc-geographical-and-time-coordinates" class="nav-link" data-scroll-target="#geographical-and-time-coordinates">Geographical and Time Coordinates</a></li>
+  <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">grdfilter</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><strong>Filter a grid in the space (or time) domain</strong></p>
+<section id="synopsis" class="level2">
+<h2 class="anchored" data-anchor-id="synopsis">Synopsis</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">grdfilter</span>(cmd0<span class="op">::</span><span class="dt">String</span>=<span class="st">""</span>, arg1<span class="op">=</span><span class="cn">nothing</span>; kwargs<span class="op">...</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="description" class="level2">
+<h2 class="anchored" data-anchor-id="description">Description</h2>
+<p><code>grdfilter</code> filters a grid in the time (or space) domain using one of the selected convolution or non-convolution isotropic or rectangular filters and computes distances using Cartesian or Spherical geometries. The output grid can optionally be generated as a sub-region of the input (via <code>region</code>/<code>R</code>) and/or with new increment (via <code>inc</code>/<code>I</code>) or registration (via <code>toggle</code>/<code>T</code>). In this way, one may have “extra space” in the input data so that the edges will not be used and the output can be within one half-width of the input edges. If the filter is low-pass, then the output may be less frequently sampled than the input.</p>
+<p><strong>Note:</strong> For filtering in the frequency (or wavenumber) domain instead, see <code>grdfft</code>.</p>
+</section>
+<section id="required-arguments" class="level2">
+<h2 class="anchored" data-anchor-id="required-arguments">Required Arguments</h2>
+<section id="input-grid" class="level3">
+<h3 class="anchored" data-anchor-id="input-grid">Input Grid</h3>
+<ul>
+<li><strong>First positional argument</strong> or <strong><code>ingrid</code></strong>: Input grid as a file name (String) or a <a href="../..\documentation/general/types.html#sec-grid-type">GMTgrid</a> object
+<ul>
+<li>Optionally, append <code>=ID</code> for reading a specific file format [Default is <code>=nf</code>]</li>
+<li>Append <code>?varname</code> for a specific netCDF variable</li>
+<li>Modifiers supported:
+<ul>
+<li><code>+b</code>: Select a band [Default is 0]</li>
+<li><code>+d</code>: Divide data values by given divisor [Default is 1]</li>
+<li><code>+n</code>: Replace data values matching invalid with NaN</li>
+<li><code>+o</code>: Offset data values by given offset [Default is 0]</li>
+<li><code>+s</code>: Scale data values by given scale [Default is 1]</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="distance-or-d" class="level3">
+<h3 class="anchored" data-anchor-id="distance-or-d"><code>distance</code> or <code>D</code></h3>
+<p>Distance flag tells how grid (x, y) relates to filter width. <strong>Required</strong> option.</p>
+<p><strong>Syntax:</strong> <code>D=flag</code> or <code>distance=flag</code> where flag is one of: - <code>D="p"</code> or <code>D=:p</code>: Grid (px,py) with width an odd number of pixels; Cartesian distances - <code>D=0</code> or <code>D="0"</code>: Grid (x,y) same units as width, Cartesian distances - <code>D=1</code> or <code>D="1"</code>: Grid (x,y) in degrees, width in km, Cartesian distances - <code>D=2</code> or <code>D="2"</code>: Grid (x,y) in degrees, width in km, dx scaled by cos(middle y), Cartesian distances - <code>D=3</code> or <code>D="3"</code>: Grid (x,y) in degrees, width in km, dx scaled by cos(y), Cartesian distances (slower) - <code>D=4</code> or <code>D="4"</code>: Grid (x,y) in degrees, width in km, Spherical distance calculation (slower) - <code>D=5</code> or <code>D="5"</code>: Grid (x,y) in Mercator -Jm1 img units, width in km, Spherical distance calculation</p>
+<p><strong>Notes:</strong> - Flags 0-2 are fastest (weight matrix computed once) - Flags 3-5 are slower (weights recomputed for each latitude)</p>
+<p><strong>Examples:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Spherical distance calculation for geographic grid</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">grdfilter</span>(<span class="st">"@earth_relief_05m"</span>, filter<span class="op">=</span><span class="st">"m600"</span>, D<span class="op">=</span><span class="fl">4</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Cartesian distances for projected grid</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">grdfilter</span>(grid, filter<span class="op">=</span><span class="st">"g100"</span>, D<span class="op">=</span><span class="fl">0</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="filter-or-f" class="level3">
+<h3 class="anchored" data-anchor-id="filter-or-f"><code>filter</code> or <code>F</code></h3>
+<p>Sets the filter type and width. <strong>Required</strong> option.</p>
+<p><strong>Syntax:</strong> <code>F="xwidth[/width2][+modifiers]"</code> or <code>filter="xwidth[/width2][+modifiers]"</code></p>
+<p>Where <code>x</code> is the filter type code followed by the full diameter width. Append <code>/width2</code> for a rectangular filter (requires <code>D="p"</code> or <code>D=0</code>).</p>
+<p><strong>Convolution Filters:</strong> - <code>b</code>: <strong>Boxcar</strong> - All weights are equal - <code>c</code>: <strong>Cosine Arch</strong> - Weights follow a cosine arch curve<br>
+- <code>g</code>: <strong>Gaussian</strong> - Weights given by Gaussian function (width is 6×sigma) - <code>f</code>: <strong>Custom</strong> - Weights from filter weight grid file (requires <code>D=0</code>) - <code>o</code>: <strong>Operator</strong> - Weights from filter weight grid file, sum to zero (requires <code>D=0</code>)</p>
+<p><strong>Non-Convolution Filters:</strong> - <code>m</code>: <strong>Median</strong> - Returns median value [default] - <code>+qquantile</code>: Select another quantile (0-1 range) [default is 0.5] - <code>p</code>: <strong>Mode (probability)</strong> - Returns modal value - <code>+l</code>: Return lowermost mode if multiple - <code>+u</code>: Return uppermost mode if multiple - <code>h</code>: <strong>Histogram Mode</strong> - Modal value as center of dominant peak - Append <code>/binwidth</code> to specify binning interval - <code>+c</code>: Center bins on multiples of binwidth - <code>+l</code>: Return lowermost mode if multiple - <code>+u</code>: Return uppermost mode if multiple - <code>l</code>: <strong>Lower</strong> - Return minimum of all values - <code>L</code>: <strong>Lower+</strong> - Return minimum of all positive values only - <code>u</code>: <strong>Upper</strong> - Return maximum of all values - <code>U</code>: <strong>Upper-</strong> - Return maximum of all negative values only</p>
+<p><strong>Modifiers:</strong> - <code>+h</code>: High-pass filtering [default is low-pass] - <code>+c</code>: Center bins (for histogram mode) - <code>+l</code>: Return lowermost value (for mode filters) - <code>+u</code>: Return uppermost value (for mode filters) - <code>+qquantile</code>: Specify quantile for median filter (0-1)</p>
+<p><strong>Examples:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Median filter, 600 km width</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">grdfilter</span>(<span class="st">"input.nc"</span>, F<span class="op">=</span><span class="st">"m600"</span>, D<span class="op">=</span><span class="fl">4</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Gaussian filter, 100 km width</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">grdfilter</span>(grid, filter<span class="op">=</span><span class="st">"g100"</span>, distance<span class="op">=</span><span class="fl">4</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># High-pass Gaussian filter</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">grdfilter</span>(grid, F<span class="op">=</span><span class="st">"g100+h"</span>, D<span class="op">=</span><span class="fl">4</span>)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 25th percentile (lower quartile)</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">grdfilter</span>(grid, filter<span class="op">=</span><span class="st">"m600+q0.25"</span>, D<span class="op">=</span><span class="fl">4</span>)</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Rectangular boxcar filter</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">grdfilter</span>(grid, F<span class="op">=</span><span class="st">"b50/20"</span>, D<span class="op">=</span><span class="fl">0</span>)</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Histogram mode with 10-unit bins</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">grdfilter</span>(grid, filter<span class="op">=</span><span class="st">"h600/10"</span>, D<span class="op">=</span><span class="fl">4</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="optional-arguments" class="level2">
+<h2 class="anchored" data-anchor-id="optional-arguments">Optional Arguments</h2>
+<section id="outgrid-or-g-or-save" class="level3">
+<h3 class="anchored" data-anchor-id="outgrid-or-g-or-save"><code>outgrid</code> or <code>G</code> or <code>save</code></h3>
+<p>Output grid file name or let the function return a <a href="../..\documentation/general/types.html#sec-grid-type">GMTgrid</a> object.</p>
+<p><strong>Syntax:</strong> <code>G="filename.nc"</code> or <code>outgrid="filename.nc"</code></p>
+<p><strong>Modifiers:</strong> - <code>=ID</code>: Write specific file format - <code>+d</code>: Divide data values by divisor - <code>+n</code>: Replace invalid with NaN<br>
+- <code>+o</code>: Offset data values (or <code>+oa</code> for automatic) - <code>+s</code>: Scale data values (or <code>+sa</code> for automatic)</p>
+<p><strong>Examples:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Save to file</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">grdfilter</span>(<span class="st">"input.nc"</span>, filter<span class="op">=</span><span class="st">"m600"</span>, D<span class="op">=</span><span class="fl">4</span>, G<span class="op">=</span><span class="st">"filtered.nc"</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Return GMTgrid object (default)</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">grdfilter</span>(<span class="st">"input.nc"</span>, filter<span class="op">=</span><span class="st">"m600"</span>, D<span class="op">=</span><span class="fl">4</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="inc-or-i-or-spacing" class="level3">
+<h3 class="anchored" data-anchor-id="inc-or-i-or-spacing"><code>inc</code> or <code>I</code> or <code>spacing</code></h3>
+<p>Set the output grid spacing.</p>
+<p><strong>Syntax:</strong> <code>I=x_inc[/y_inc]</code> or <code>inc="x_inc[/y_inc]"</code> or <code>spacing=x_inc</code></p>
+<p><strong>Geographic coordinates units:</strong> - <code>d</code>: Arc degrees - <code>m</code>: Arc minutes - <code>s</code>: Arc seconds - <code>e</code>, <code>f</code>, <code>k</code>, <code>M</code>, <code>n</code>, <code>u</code>: Length units (converted to degrees)</p>
+<p><strong>Modifiers:</strong> - <code>+e</code>: Adjust max extent to fit increment exactly - <code>+n</code>: Specify number of nodes instead of increment</p>
+<p><strong>Examples:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 0.5 degree spacing</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">grdfilter</span>(grid, F<span class="op">=</span><span class="st">"m600"</span>, D<span class="op">=</span><span class="fl">4</span>, I<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Different x and y spacing</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">grdfilter</span>(grid, filter<span class="op">=</span><span class="st">"g100"</span>, D<span class="op">=</span><span class="fl">4</span>, inc<span class="op">=</span><span class="st">"1/0.5"</span>)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 30 arc minutes</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">grdfilter</span>(grid, F<span class="op">=</span><span class="st">"m600"</span>, D<span class="op">=</span><span class="fl">4</span>, I<span class="op">=</span><span class="st">"30m"</span>)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 100 nodes in x, 50 in y</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">grdfilter</span>(grid, filter<span class="op">=</span><span class="st">"g50"</span>, D<span class="op">=</span><span class="fl">4</span>, I<span class="op">=</span><span class="st">"100+n/50+n"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="nans-or-n" class="level3">
+<h3 class="anchored" data-anchor-id="nans-or-n"><code>nans</code> or <code>N</code></h3>
+<p>Determine how NaN-values in input grid affect filtered output.</p>
+<p><strong>Syntax:</strong> <code>N="directive"</code> or <code>nans="directive"</code></p>
+<p><strong>Directives:</strong> - <code>i</code>: Ignore all NaNs in calculation [Default] - <code>p</code>: Force output to NaN if any NaN found in filter circle - <code>r</code>: Like <code>i</code> but preserve NaN if input node was NaN (co-registered grids only)</p>
+<p><strong>Examples:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ignore NaNs (default)</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">grdfilter</span>(grid, F<span class="op">=</span><span class="st">"m600"</span>, D<span class="op">=</span><span class="fl">4</span>, N<span class="op">=</span><span class="st">"i"</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Propagate NaNs</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">grdfilter</span>(grid, filter<span class="op">=</span><span class="st">"g100"</span>, D<span class="op">=</span><span class="fl">4</span>, nans<span class="op">=</span><span class="st">"p"</span>)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Preserve input NaNs</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">grdfilter</span>(grid, F<span class="op">=</span><span class="st">"m600"</span>, D<span class="op">=</span><span class="fl">4</span>, N<span class="op">=</span><span class="st">"r"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li><strong>R</strong> or <strong>region</strong> or <strong>limits</strong> : – <em>limits=(xmin, xmax, ymin, ymax)</em> <strong>|</strong> <em>limits=(BB=(xmin, xmax, ymin, ymax),)</em> <strong>|</strong> <em>limits=(LLUR=(xmin, xmax, ymin, ymax),units=“unit”)</em> <strong>|</strong> …more<br>
+Specify the region of interest. More at [limits](../common_opts/opt_R.html). For perspective view <strong>view</strong>, optionally add <em>zmin,zmax</em>. This option may be used to indicate the range used for the 3-D axes. You may ask for a larger w/e/s/n region to have more room between the image and the axes.</li>
+</ul>
+</section>
+<section id="region-or-r" class="level3">
+<h3 class="anchored" data-anchor-id="region-or-r"><code>region</code> or <code>R</code></h3>
+<p>Specify the output region (sub-region of input).</p>
+<p><strong>Syntax:</strong> <code>R=(xmin, xmax, ymin, ymax)</code> or <code>R="xmin/xmax/ymin/ymax"</code> or <code>region=...</code></p>
+<p><strong>Examples:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Tuple format</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">grdfilter</span>(grid, F<span class="op">=</span><span class="st">"m600"</span>, D<span class="op">=</span><span class="fl">4</span>, R<span class="op">=</span>(<span class="fl">150</span>, <span class="fl">250</span>, <span class="fl">10</span>, <span class="fl">40</span>))</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># String format  </span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">grdfilter</span>(grid, filter<span class="op">=</span><span class="st">"g100"</span>, D<span class="op">=</span><span class="fl">4</span>, region<span class="op">=</span><span class="st">"150/250/10/40"</span>)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract Pacific region</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">grdfilter</span>(<span class="st">"@earth_relief_05m"</span>, F<span class="op">=</span><span class="st">"m600"</span>, D<span class="op">=</span><span class="fl">4</span>, R<span class="op">=</span>(<span class="fl">150</span>,<span class="fl">250</span>,<span class="fl">10</span>,<span class="fl">40</span>), I<span class="op">=</span><span class="fl">0.5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="toggle-or-t" class="level3">
+<h3 class="anchored" data-anchor-id="toggle-or-t"><code>toggle</code> or <code>T</code></h3>
+<p>Toggle the node registration for output grid (gridline ↔︎ pixel).</p>
+<p><strong>Examples:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Toggle registration</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">grdfilter</span>(grid, F<span class="op">=</span><span class="st">"m600"</span>, D<span class="op">=</span><span class="fl">4</span>, T<span class="op">=</span><span class="cn">true</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Equivalent using toggle keyword</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">grdfilter</span>(grid, filter<span class="op">=</span><span class="st">"g100"</span>, D<span class="op">=</span><span class="fl">4</span>, toggle<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="registration-or-r" class="level3">
+<h3 class="anchored" data-anchor-id="registration-or-r"><code>registration</code> or <code>r</code></h3>
+<p>Set node registration explicitly.</p>
+<p><strong>Syntax:</strong> <code>r="g"</code> (gridline) or <code>r="p"</code> (pixel)</p>
+<p><strong>Examples:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Force gridline registration</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">grdfilter</span>(grid, F<span class="op">=</span><span class="st">"m600"</span>, D<span class="op">=</span><span class="fl">4</span>, r<span class="op">=</span><span class="st">"g"</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Force pixel registration</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">grdfilter</span>(grid, filter<span class="op">=</span><span class="st">"g100"</span>, D<span class="op">=</span><span class="fl">4</span>, registration<span class="op">=</span><span class="st">"p"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="verbose-or-v" class="level3">
+<h3 class="anchored" data-anchor-id="verbose-or-v"><code>verbose</code> or <code>V</code></h3>
+<p>Control verbosity level.</p>
+<p><strong>Syntax:</strong> <code>V=true</code> or <code>V=level</code> or <code>verbose=level</code></p>
+<p><strong>Examples:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Verbose output</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">grdfilter</span>(grid, F<span class="op">=</span><span class="st">"m600"</span>, D<span class="op">=</span><span class="fl">4</span>, V<span class="op">=</span><span class="cn">true</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Specific verbosity level</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">grdfilter</span>(grid, filter<span class="op">=</span><span class="st">"g100"</span>, D<span class="op">=</span><span class="fl">4</span>, verbose<span class="op">=:</span>w)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="colinfo-or-f" class="level3">
+<h3 class="anchored" data-anchor-id="colinfo-or-f"><code>colinfo</code> or <code>f</code></h3>
+<p>Specify data types of input/output columns (time or geographical data).</p>
+<p><strong>Examples:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Time/geographic data specification</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">grdfilter</span>(grid, F<span class="op">=</span><span class="st">"m600"</span>, D<span class="op">=</span><span class="fl">4</span>, f<span class="op">=</span><span class="st">"0x,1t"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="cores-or-x" class="level3">
+<h3 class="anchored" data-anchor-id="cores-or-x"><code>cores</code> or <code>x</code></h3>
+<p>Limit number of cores used in multi-threaded algorithms.</p>
+<p><strong>Syntax:</strong> <code>x=n</code> where: - <code>n &gt; 0</code>: Use n cores - <code>n &lt; 0</code>: Use (all - n) cores - <code>x=true</code>: Use all available cores [default]</p>
+<p><strong>Examples:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use 4 cores</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">grdfilter</span>(grid, F<span class="op">=</span><span class="st">"m600"</span>, D<span class="op">=</span><span class="fl">4</span>, x<span class="op">=</span><span class="fl">4</span>)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Use all but 2 cores</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">grdfilter</span>(grid, filter<span class="op">=</span><span class="st">"g100"</span>, D<span class="op">=</span><span class="fl">4</span>, cores<span class="op">=-</span><span class="fl">2</span>)</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Single-threaded</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">grdfilter</span>(grid, F<span class="op">=</span><span class="st">"m600"</span>, D<span class="op">=</span><span class="fl">4</span>, x<span class="op">=</span><span class="fl">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="examples" class="level2">
+<h2 class="anchored" data-anchor-id="examples">Examples</h2>
+<section id="basic-filtering" class="level3">
+<h3 class="anchored" data-anchor-id="basic-filtering">Basic Filtering</h3>
+<div id="40cd5269" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Load Earth relief data</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>grid <span class="op">=</span> <span class="fu">gmtread</span>(<span class="st">"@earth_relief_05m"</span>, region<span class="op">=</span>(<span class="fl">140</span>,<span class="fl">260</span>,<span class="fl">0</span>,<span class="fl">50</span>))</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply median filter with 600 km width (spherical distances)</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">grdfilter</span>(grid, filter<span class="op">=</span><span class="st">"m600"</span>, D<span class="op">=</span><span class="fl">4</span>, region<span class="op">=</span>(<span class="fl">150</span>,<span class="fl">250</span>,<span class="fl">10</span>,<span class="fl">40</span>), inc<span class="op">=</span><span class="fl">0.5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<pre><code>61×201 GMTgrid{Float32, 2}:
+ -5368.0  -5432.0  -5508.5  -5554.5  …  -3837.0  -3801.0  -3765.0  -3727.5
+ -5635.0  -5682.5  -5701.5  -5710.0     -3833.5  -3800.0  -3761.0  -3714.5
+ -5734.0  -5767.5  -5792.0  -5805.5     -3834.5  -3802.0  -3765.0  -3721.0
+ -5791.0  -5817.0  -5837.0  -5858.0     -3853.0  -3807.5  -3767.0  -3725.0
+ -5821.5  -5856.5  -5885.0  -5903.0     -3881.5  -3825.0  -3781.0  -3743.0
+ -5850.0  -5885.0  -5912.5  -5939.0  …  -3889.0  -3840.5  -3799.5  -3769.5
+ -5871.0  -5898.0  -5925.5  -5953.0     -3889.5  -3842.5  -3803.5  -3777.0
+ -5883.5  -5904.5  -5933.5  -5953.5     -3873.0  -3834.5  -3805.0  -3781.5
+ -5886.0  -5906.5  -5933.5  -5951.5     -3847.0  -3820.0  -3798.0  -3773.0
+ -5860.0  -5885.0  -5918.5  -5940.5     -3799.0  -3780.0  -3766.0  -3747.0
+ -5796.5  -5820.5  -5856.0  -5878.0  …  -3733.0  -3711.0  -3703.5  -3699.5
+ -5716.0  -5738.0  -5755.0  -5778.5     -3639.0  -3624.0  -3628.0  -3639.0
+ -5647.5  -5659.0  -5657.0  -5672.5     -3554.0  -3541.5  -3554.5  -3576.5
+     ⋮                               ⋱                                 ⋮
+ -5987.5  -5986.5  -5978.5  -5963.5      1520.0   1623.0   1699.0   1732.0
+ -5982.5  -5982.5  -5973.5  -5952.5  …   1595.0   1662.5   1725.0   1784.5
+ -5962.5  -5961.0  -5953.0  -5941.0      1651.0   1720.0   1781.0   1835.5
+ -5910.0  -5914.5  -5917.5  -5910.5      1695.0   1754.0   1820.0   1875.5
+ -5860.5  -5866.5  -5872.0  -5870.5      1726.5   1778.5   1843.0   1906.5
+ -5812.5  -5820.5  -5829.5  -5834.5      1745.5   1795.0   1846.5   1914.0
+ -5775.0  -5782.5  -5791.0  -5799.5  …   1772.5   1806.0   1850.0   1915.0
+ -5734.5  -5744.5  -5753.0  -5764.0      1784.5   1809.0   1855.0   1925.0
+ -5686.0  -5704.0  -5716.0  -5727.5      1795.0   1837.0   1890.5   1955.0
+ -5631.0  -5655.5  -5672.5  -5682.5      1831.5   1869.0   1925.5   1993.5
+ -5527.5  -5573.5  -5595.5  -5609.0      1861.0   1894.0   1957.0   2026.5
+ -5444.0  -5471.5  -5507.0  -5537.5  …   1894.0   1933.5   1986.0   2048.0</code></pre>
+</div>
+</div>
+</section>
+<section id="high-pass-filtering" class="level3">
+<h3 class="anchored" data-anchor-id="high-pass-filtering">High-Pass Filtering</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># High-pass filter (residuals from low-pass)</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>G_residual <span class="op">=</span> <span class="fu">grdfilter</span>(<span class="st">"@earth_relief_05m"</span>, </span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    F<span class="op">=</span><span class="st">"m600+h"</span>, </span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    D<span class="op">=</span><span class="fl">4</span>, </span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    R<span class="op">=</span>(<span class="fl">150</span>,<span class="fl">250</span>,<span class="fl">10</span>,<span class="fl">40</span>), </span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    I<span class="op">=</span><span class="fl">0.5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="different-filter-types" class="level3">
+<h3 class="anchored" data-anchor-id="different-filter-types">Different Filter Types</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Gaussian smoothing</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>G_gauss <span class="op">=</span> <span class="fu">grdfilter</span>(grid, filter<span class="op">=</span><span class="st">"g100"</span>, distance<span class="op">=</span><span class="fl">4</span>)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Boxcar (moving average)</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>G_box <span class="op">=</span> <span class="fu">grdfilter</span>(grid, F<span class="op">=</span><span class="st">"b200"</span>, D<span class="op">=</span><span class="fl">4</span>)</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Cosine arch</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>G_cos <span class="op">=</span> <span class="fu">grdfilter</span>(grid, filter<span class="op">=</span><span class="st">"c150"</span>, D<span class="op">=</span><span class="fl">4</span>)</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Maximum value in window</span></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>G_max <span class="op">=</span> <span class="fu">grdfilter</span>(grid, F<span class="op">=</span><span class="st">"u500"</span>, D<span class="op">=</span><span class="fl">4</span>)</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Minimum value in window</span></span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>G_min <span class="op">=</span> <span class="fu">grdfilter</span>(grid, filter<span class="op">=</span><span class="st">"l500"</span>, D<span class="op">=</span><span class="fl">4</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="quantile-filtering" class="level3">
+<h3 class="anchored" data-anchor-id="quantile-filtering">Quantile Filtering</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Lower quartile (25th percentile)</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>G_q25 <span class="op">=</span> <span class="fu">grdfilter</span>(grid, F<span class="op">=</span><span class="st">"m600+q0.25"</span>, D<span class="op">=</span><span class="fl">4</span>)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Upper quartile (75th percentile)</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>G_q75 <span class="op">=</span> <span class="fu">grdfilter</span>(grid, filter<span class="op">=</span><span class="st">"m600+q0.75"</span>, D<span class="op">=</span><span class="fl">4</span>)</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 90th percentile</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>G_q90 <span class="op">=</span> <span class="fu">grdfilter</span>(grid, F<span class="op">=</span><span class="st">"m600+q0.9"</span>, D<span class="op">=</span><span class="fl">4</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="custom-filter-from-grid" class="level3">
+<h3 class="anchored" data-anchor-id="custom-filter-from-grid">Custom Filter from Grid</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create custom anisotropic Gaussian filter</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="co"># exp(-0.5*r^2) where r^2 = (2x^2 + y^2 - 2xy)/6</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>filter_grid <span class="op">=</span> <span class="fu">grdmath</span>(<span class="st">"-R-10/10/-10/10 -I1 X 2 POW 2 MUL Y 2 POW ADD X Y MUL 2 MUL SUB 6 DIV NEG 2 DIV EXP DUP SUM DIV"</span>)</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply custom filter</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">grdfilter</span>(<span class="st">"ripples.nc"</span>, F<span class="op">=</span><span class="st">"f</span><span class="sc">$</span>(filter_grid)<span class="st">"</span>, D<span class="op">=</span><span class="fl">0</span>, G<span class="op">=</span><span class="st">"smooth.nc"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="rectangular-filters" class="level3">
+<h3 class="anchored" data-anchor-id="rectangular-filters">Rectangular Filters</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Rectangular boxcar filter (100 km × 50 km)</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">grdfilter</span>(grid, F<span class="op">=</span><span class="st">"b100/50"</span>, D<span class="op">=</span><span class="fl">0</span>, I<span class="op">=</span><span class="fl">1</span>)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Rectangular Gaussian</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">grdfilter</span>(grid, filter<span class="op">=</span><span class="st">"g200/100"</span>, D<span class="op">=</span><span class="fl">0</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="variable-filter-width" class="level3">
+<h3 class="anchored" data-anchor-id="variable-filter-width">Variable Filter Width</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create variable width grid (must match output dimensions)</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>width_grid <span class="op">=</span> <span class="co"># ... GMTgrid with varying filter widths</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply variable width median filter</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">grdfilter</span>(grid, F<span class="op">=</span>width_grid, D<span class="op">=</span><span class="fl">4</span>, I<span class="op">=</span><span class="fl">0.5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="sub-region-extraction-with-filtering" class="level3">
+<h3 class="anchored" data-anchor-id="sub-region-extraction-with-filtering">Sub-Region Extraction with Filtering</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter and extract Pacific region</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>G_pacific <span class="op">=</span> <span class="fu">grdfilter</span>(<span class="st">"@earth_relief_05m"</span>,</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    filter<span class="op">=</span><span class="st">"m600"</span>,</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    distance<span class="op">=</span><span class="fl">4</span>,</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>    region<span class="op">=</span>(<span class="fl">150</span>, <span class="fl">250</span>, <span class="fl">10</span>, <span class="fl">40</span>),</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>    inc<span class="op">=</span><span class="fl">0.5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="nan-handling" class="level3">
+<h3 class="anchored" data-anchor-id="nan-handling">NaN Handling</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ignore NaNs (default)</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>G1 <span class="op">=</span> <span class="fu">grdfilter</span>(grid, F<span class="op">=</span><span class="st">"m600"</span>, D<span class="op">=</span><span class="fl">4</span>, N<span class="op">=</span><span class="st">"i"</span>)</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Propagate NaNs (conservative)</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>G2 <span class="op">=</span> <span class="fu">grdfilter</span>(grid, F<span class="op">=</span><span class="st">"m600"</span>, D<span class="op">=</span><span class="fl">4</span>, nans<span class="op">=</span><span class="st">"p"</span>)</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Preserve input NaNs only</span></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>G3 <span class="op">=</span> <span class="fu">grdfilter</span>(grid, F<span class="op">=</span><span class="st">"m600"</span>, D<span class="op">=</span><span class="fl">4</span>, N<span class="op">=</span><span class="st">"r"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="multi-threaded-processing" class="level3">
+<h3 class="anchored" data-anchor-id="multi-threaded-processing">Multi-Threaded Processing</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use all available cores (default)</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">grdfilter</span>(grid, F<span class="op">=</span><span class="st">"m600"</span>, D<span class="op">=</span><span class="fl">4</span>)</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Use 8 cores</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">grdfilter</span>(grid, filter<span class="op">=</span><span class="st">"g100"</span>, D<span class="op">=</span><span class="fl">4</span>, x<span class="op">=</span><span class="fl">8</span>)</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Single-threaded</span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">grdfilter</span>(grid, F<span class="op">=</span><span class="st">"m600"</span>, D<span class="op">=</span><span class="fl">4</span>, cores<span class="op">=</span><span class="fl">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="comparison-of-filter-types" class="level3">
+<h3 class="anchored" data-anchor-id="comparison-of-filter-types">Comparison of Filter Types</h3>
+<div id="87d4d489" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Original data</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>grid <span class="op">=</span> <span class="fu">gmtread</span>(<span class="st">"@earth_relief_05m"</span>, region<span class="op">=</span>(<span class="fl">150</span>,<span class="fl">200</span>,<span class="fl">10</span>,<span class="fl">40</span>))</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply different filters</span></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>G_median <span class="op">=</span> <span class="fu">grdfilter</span>(grid, F<span class="op">=</span><span class="st">"m600"</span>, D<span class="op">=</span><span class="fl">4</span>, I<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>G_gauss <span class="op">=</span> <span class="fu">grdfilter</span>(grid, F<span class="op">=</span><span class="st">"g600"</span>, D<span class="op">=</span><span class="fl">4</span>, I<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>G_boxcar <span class="op">=</span> <span class="fu">grdfilter</span>(grid, F<span class="op">=</span><span class="st">"b600"</span>, D<span class="op">=</span><span class="fl">4</span>, I<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>G_mode <span class="op">=</span> <span class="fu">grdfilter</span>(grid, F<span class="op">=</span><span class="st">"p600"</span>, D<span class="op">=</span><span class="fl">4</span>, I<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize differences</span></span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a><span class="fu">subplot</span>(grid<span class="op">=</span>(<span class="fl">2</span>,<span class="fl">2</span>), F<span class="op">=</span>(width<span class="op">=</span><span class="fl">20</span>, height<span class="op">=</span><span class="fl">15</span>))</span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">grdimage</span>(G_median, panel<span class="op">=</span>(<span class="fl">1</span>,<span class="fl">1</span>), title<span class="op">=</span><span class="st">"Median"</span>)</span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">grdimage</span>(G_gauss, panel<span class="op">=</span>(<span class="fl">1</span>,<span class="fl">2</span>), title<span class="op">=</span><span class="st">"Gaussian"</span>)</span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">grdimage</span>(G_boxcar, panel<span class="op">=</span>(<span class="fl">2</span>,<span class="fl">1</span>), title<span class="op">=</span><span class="st">"Boxcar"</span>)</span>
+<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">grdimage</span>(G_mode, panel<span class="op">=</span>(<span class="fl">2</span>,<span class="fl">2</span>), title<span class="op">=</span><span class="st">"Mode"</span>)</span>
+<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a><span class="fu">subplot</span>(<span class="op">:</span>show)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="grdfilter_files/figure-html/cell-3-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="distance-flag-details" class="level2">
+<h2 class="anchored" data-anchor-id="distance-flag-details">Distance Flag Details</h2>
+<p>The distance flag (<code>D</code>) determines how grid coordinates relate to filter width:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Flag</th>
+<th>Grid Units</th>
+<th>Width Units</th>
+<th>X Scaling</th>
+<th>Distance Calc</th>
+<th>Speed</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>p</code></td>
+<td>Pixels</td>
+<td>Pixels (odd)</td>
+<td>None</td>
+<td>Cartesian</td>
+<td>Fast</td>
+</tr>
+<tr class="even">
+<td><code>0</code></td>
+<td>Any</td>
+<td>Same as grid</td>
+<td>None</td>
+<td>Cartesian</td>
+<td>Fast</td>
+</tr>
+<tr class="odd">
+<td><code>1</code></td>
+<td>Degrees</td>
+<td>Kilometers</td>
+<td>None</td>
+<td>Cartesian</td>
+<td>Fast</td>
+</tr>
+<tr class="even">
+<td><code>2</code></td>
+<td>Degrees</td>
+<td>Kilometers</td>
+<td>cos(mid_y)</td>
+<td>Cartesian</td>
+<td>Fast</td>
+</tr>
+<tr class="odd">
+<td><code>3</code></td>
+<td>Degrees</td>
+<td>Kilometers</td>
+<td>cos(y)</td>
+<td>Cartesian</td>
+<td>Slow</td>
+</tr>
+<tr class="even">
+<td><code>4</code></td>
+<td>Degrees</td>
+<td>Kilometers</td>
+<td>cos(y)</td>
+<td>Spherical</td>
+<td>Slow</td>
+</tr>
+<tr class="odd">
+<td><code>5</code></td>
+<td>Mercator</td>
+<td>Kilometers</td>
+<td>cos(y)</td>
+<td>Spherical</td>
+<td>Slow</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Recommendations:</strong> - Use <code>D=4</code> for accurate geographic filtering (most common) - Use <code>D=0</code> for Cartesian grids or custom filters - Use <code>D=1</code> or <code>D=2</code> for faster approximate geographic filtering - Use <code>D=5</code> for Mercator projected grids from <code>img2mercgrd</code></p>
+</section>
+<section id="filter-type-comparison" class="level2">
+<h2 class="anchored" data-anchor-id="filter-type-comparison">Filter Type Comparison</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 19%">
+<col style="width: 32%">
+<col style="width: 22%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Filter</th>
+<th>Type</th>
+<th>Use Case</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Boxcar (b)</strong></td>
+<td>Convolution</td>
+<td>Simple smoothing</td>
+<td>Equal weights, sharp cutoff</td>
+</tr>
+<tr class="even">
+<td><strong>Cosine Arch (c)</strong></td>
+<td>Convolution</td>
+<td>Smooth lowpass</td>
+<td>Gradual weight decay</td>
+</tr>
+<tr class="odd">
+<td><strong>Gaussian (g)</strong></td>
+<td>Convolution</td>
+<td>Standard smoothing</td>
+<td>Width = 6σ, smooth decay</td>
+</tr>
+<tr class="even">
+<td><strong>Median (m)</strong></td>
+<td>Non-convolution</td>
+<td>Outlier removal</td>
+<td>Robust to spikes</td>
+</tr>
+<tr class="odd">
+<td><strong>Mode (p)</strong></td>
+<td>Non-convolution</td>
+<td>Peak detection</td>
+<td>Finds most common value</td>
+</tr>
+<tr class="even">
+<td><strong>Histogram Mode (h)</strong></td>
+<td>Non-convolution</td>
+<td>Peak detection</td>
+<td>Like mode with binning</td>
+</tr>
+<tr class="odd">
+<td><strong>Min/Max (l/u)</strong></td>
+<td>Non-convolution</td>
+<td>Envelope detection</td>
+<td>Extract extremes</td>
+</tr>
+<tr class="even">
+<td><strong>Custom (f)</strong></td>
+<td>Convolution</td>
+<td>Specialized</td>
+<td>User-defined weights</td>
+</tr>
+<tr class="odd">
+<td><strong>Operator (o)</strong></td>
+<td>Convolution</td>
+<td>Derivatives</td>
+<td>Weights sum to zero</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="limitations" class="level2">
+<h2 class="anchored" data-anchor-id="limitations">Limitations</h2>
+<ol type="1">
+<li><strong>Mercator grids</strong> (D=5): Input must be created by <code>img2mercgrd</code> with origin at Equator</li>
+<li><strong>Performance</strong>: If output increments are not integer multiples of input increments, filtering is considerably slower</li>
+<li><strong>Custom filters</strong> (f/o): Require <code>D=0</code> and odd dimensions; output spacing must match or be integer multiples of input</li>
+<li><strong>Variable width</strong>: Filter width grid must match output grid dimensions and registration</li>
+</ol>
+</section>
+<section id="tips-for-julia-users" class="level2">
+<h2 class="anchored" data-anchor-id="tips-for-julia-users">Tips for Julia Users</h2>
+<ol type="1">
+<li><p><strong>Input formats</strong>: GMT.jl accepts:</p>
+<ul>
+<li><a href="../..\documentation/general/types.html#sec-grid-type">GMTgrid</a> objects</li>
+<li>File names as strings</li>
+<li>Remote GMT datasets (e.g., <code>"@earth_relief_05m"</code>)</li>
+</ul></li>
+<li><p><strong>Output options</strong>:</p>
+<ul>
+<li>Omit <code>G</code> to return <a href="../..\documentation/general/types.html#sec-grid-type">GMTgrid</a> object</li>
+<li>Specify <code>G="filename.nc"</code> to save to file</li>
+<li>Use <code>save=</code> as alias for <code>G=</code></li>
+</ul></li>
+<li><p><strong>Boolean options</strong>: Use <code>true</code> instead of empty strings:</p>
+<ul>
+<li><code>T=true</code> not <code>T=""</code></li>
+<li><code>V=true</code> not <code>V=""</code></li>
+</ul></li>
+<li><p><strong>Keyword flexibility</strong>: Most options have multiple aliases:</p>
+<ul>
+<li><code>filter=</code> or <code>F=</code></li>
+<li><code>distance=</code> or <code>D=</code></li>
+<li><code>region=</code> or <code>R=</code></li>
+<li><code>inc=</code> or <code>I=</code> or <code>spacing=</code></li>
+</ul></li>
+<li><p><strong>Piping workflows</strong>: <a href="../..\documentation/general/types.html#sec-grid-type">GMTgrid</a> objects can be piped through functions:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> <span class="fu">gmtread</span>(<span class="st">"input.nc"</span>) <span class="op">|&gt;</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>         g <span class="op">-&gt;</span> <span class="fu">grdfilter</span>(g, F<span class="op">=</span><span class="st">"m600"</span>, D<span class="op">=</span><span class="fl">4</span>) <span class="op">|&gt;</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>         g <span class="op">-&gt;</span> <span class="fu">grdimage</span>(g, proj<span class="op">=:</span>Mercator, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<li><p><strong>Performance</strong>: For large grids, consider:</p>
+<ul>
+<li>Using coarser output increments</li>
+<li>Smaller filter widths</li>
+<li>Faster distance flags (D=0,1,2 vs D=4)</li>
+<li>Limiting cores if memory constrained</li>
+</ul></li>
+</ol>
+</section>
+<section id="geographical-and-time-coordinates" class="level2">
+<h2 class="anchored" data-anchor-id="geographical-and-time-coordinates">Geographical and Time Coordinates</h2>
+<p>When the output grid type is netCDF, coordinates are labeled “longitude”, “latitude”, or “time” based on input attributes or <code>f</code>/<code>R</code> options. Time coordinates are stored as relative time since epoch (specified by <code>TIME_UNIT</code> and <code>TIME_EPOCH</code>).</p>
+</section>
+<section id="see-also" class="level2">
+<h2 class="anchored" data-anchor-id="see-also">See Also</h2>
+<p>GMT.jl related functions: - <code>grdfft</code> - Filtering in frequency domain - <code>grdmath</code> - Grid calculator operations - <code>grdproject</code> - Map projection transformations - <code>grdsample</code> - Resampling grids - <code>grdgradient</code> - Gradient calculations</p>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ul>
+<li>GMT Documentation: <a href="https://docs.generic-mapping-tools.org/latest/grdfilter.html">https://docs.generic-mapping-tools.org/latest/grdfilter.html</a></li>
+<li>GMT.jl Documentation: <a href="https://www.generic-mapping-tools.org/GMTjl_doc/">https://www.generic-mapping-tools.org/GMTjl_doc/</a></li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script>
+
+// JavaScript to handle card hover effects for cards with images
+
+document.addEventListener('DOMContentLoaded', function() {
+
+  // Find all cards
+
+  const cards = document.querySelectorAll('.card');
+
+
+
+  cards.forEach(card => {
+
+    const paragraphs = card.querySelectorAll('p');
+
+
+
+    // If card has only one paragraph (with image)
+
+    if (paragraphs.length === 1) {
+
+      const p = paragraphs[0];
+
+      const img = p.querySelector('img');
+
+
+
+      if (img) {
+
+        // Get all text nodes
+
+        const textContent = Array.from(p.childNodes)
+
+          .filter(node => node.nodeType === Node.TEXT_NODE)
+
+          .map(node => node.textContent.trim())
+
+          .filter(text => text.length > 0)
+
+          .join(' ');
+
+
+
+        if (textContent) {
+
+          // Create overlay div for description
+
+          const overlay = document.createElement('div');
+
+          overlay.className = 'card-description-overlay';
+
+          overlay.textContent = textContent;
+
+          card.appendChild(overlay);
+
+
+
+          // Remove text nodes completely
+
+          Array.from(p.childNodes).forEach(node => {
+
+            if (node.nodeType === Node.TEXT_NODE && node.textContent.trim().length > 0) {
+
+              node.remove();
+
+            }
+
+          });
+
+        }
+
+      }
+
+    }
+
+  });
+
+
+
+  // Equalize heights of grid sections (documentation cards)
+
+  function equalizeGridHeights() {
+
+    const grids = document.querySelectorAll('.grid');
+
+
+
+    grids.forEach(grid => {
+
+      const sections = Array.from(grid.querySelectorAll(':scope > section, :scope > div'));
+
+
+
+      if (sections.length === 0) return;
+
+
+
+      // Reset heights
+
+      sections.forEach(section => {
+
+        section.style.height = 'auto';
+
+      });
+
+
+
+      // Group sections by row (based on offsetTop)
+
+      const rows = new Map();
+
+      sections.forEach(section => {
+
+        const top = section.offsetTop;
+
+        if (!rows.has(top)) {
+
+          rows.set(top, []);
+
+        }
+
+        rows.get(top).push(section);
+
+      });
+
+
+
+      // Equalize heights within each row
+
+      rows.forEach(rowSections => {
+
+        const maxHeight = Math.max(...rowSections.map(s => s.offsetHeight));
+
+        rowSections.forEach(section => {
+
+          section.style.height = maxHeight + 'px';
+
+        });
+
+      });
+
+    });
+
+  }
+
+
+
+  // Run on load and resize
+
+  equalizeGridHeights();
+
+  window.addEventListener('resize', equalizeGridHeights);
+
+});
+
+</script>
+
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/GenericMappingTools\.github\.io\/GMTjl_doc\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

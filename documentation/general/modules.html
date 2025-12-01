@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>modules</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-0615b85506723fa54ab13a613a4e9e4c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../custom.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/GMTjl_logo.png" alt="" class="navbar-logo light-content">
+    <img src="../../assets/GMTjl_logo.png" alt="" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-documentation" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Documentation</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-documentation">    
+        <li>
+    <a class="dropdown-item" href="../../documentation.html">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../../documentation/modules.html">
+ <span class="dropdown-text">GMT Modules</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/general/types.html">
+ <span class="dropdown-text">GMT.jl Types</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/extensions.html">
+ <span class="dropdown-text">GMT.jl Extensions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/gdalfuns.html">
+ <span class="dropdown-text">GDAL Functions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/solids.html">
+ <span class="dropdown-text">Solids Functions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/imgproc.html">
+ <span class="dropdown-text">Image Processing</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/common_features.html">
+ <span class="dropdown-text">Common Features</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/alphabetical.html">
+ <span class="dropdown-text">Alphabetical List</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../../examples.html"> 
+<span class="menu-text">Examples</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-gallery-(gmt-gallery" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Gallery (GMT Gallery)</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-gallery-(gmt-gallery">    
+        <li>
+    <a class="dropdown-item" href="../../gallery.html">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex01.html">
+ <span class="dropdown-text">(1) Contour maps</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex02.html">
+ <span class="dropdown-text">(2) Image presentations</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex03.html">
+ <span class="dropdown-text">(3) Spectral estimation and xy-plots</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex04.html">
+ <span class="dropdown-text">(4)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex05.html">
+ <span class="dropdown-text">(5) A 3-D illuminated surface</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex06.html">
+ <span class="dropdown-text">(6) Plotting of histograms</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex07.html">
+ <span class="dropdown-text">(7) A simple location map</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex08.html">
+ <span class="dropdown-text">(8) A 3-D histogram</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex09.html">
+ <span class="dropdown-text">(9) Time-series along tracks</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex10.html">
+ <span class="dropdown-text">(10) A geographical bar graph plot</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex11.html">
+ <span class="dropdown-text">(11)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex12.html">
+ <span class="dropdown-text">(12) Optimal triangulation of data</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex13.html">
+ <span class="dropdown-text">(13) Plotting of vector fields</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex14.html">
+ <span class="dropdown-text">(14) Gridding of data and trend surfaces</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex15.html">
+ <span class="dropdown-text">(15) Gridding, contouring, and masking of unconstrained areas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex16.html">
+ <span class="dropdown-text">(16) Gridding of data, continued</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex17.html">
+ <span class="dropdown-text">(17) Images clipped by coastlines</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex18.html">
+ <span class="dropdown-text">(18) Volumes and Spatial Selections</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex19.html">
+ <span class="dropdown-text">(19) Color patterns on maps</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex20.html">
+ <span class="dropdown-text">(20) Custom plot symbols</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex21.html">
+ <span class="dropdown-text">(21)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex22.html">
+ <span class="dropdown-text">(22)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex23.html">
+ <span class="dropdown-text">(23)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex24.html">
+ <span class="dropdown-text">(24)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex25.html">
+ <span class="dropdown-text">(25)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex26.html">
+ <span class="dropdown-text">(26)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex27.html">
+ <span class="dropdown-text">(27)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex28.html">
+ <span class="dropdown-text">(28)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex29.html">
+ <span class="dropdown-text">(29)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex30.html">
+ <span class="dropdown-text">(30)</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-tutorials" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Tutorials</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-tutorials">    
+        <li>
+    <a class="dropdown-item" href="../../tutorials.html">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../../tutorials/ISC/isc.jl.html">
+ <span class="dropdown-text">ISC seismicity</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/Landsat8/histogram_stretch.html">
+ <span class="dropdown-text">Landsat 8/9</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/coast/coastlines.html">
+ <span class="dropdown-text">Coastlines</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/choropleths/choropleths.html">
+ <span class="dropdown-text">US Choropleths</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/dlakelan/GMTMaps.html">
+ <span class="dropdown-text"><span class="citation" data-cites="dlakelan">@dlakelan</span> choropleths</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/longest_sail/longestsail.html">
+ <span class="dropdown-text">Longest Sail</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/vector_shp/vector_shp.html">
+ <span class="dropdown-text">Geospatial vector</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/texture_shading/texture.html">
+ <span class="dropdown-text">Texture Shading</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/mosaics/mosaics.html">
+ <span class="dropdown-text">Mosaics</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/insets/insets.html">
+ <span class="dropdown-text">Insets</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/remote_datasets/remote_datasets.html">
+ <span class="dropdown-text">Remote Grids</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/blender_shading/blender_rt.html">
+ <span class="dropdown-text">Blender</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/signal/signal.html">
+ <span class="dropdown-text">Signal</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-geophysics" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Geophysics</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-geophysics">    
+        <li>
+    <a class="dropdown-item" href="../../geophysics.html">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../../geophysics/seismicity/global_seis.html">
+ <span class="dropdown-text">Seismicity</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../geophysics/earthtides/01_earthtides.html">
+ <span class="dropdown-text">Earth Tides</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../geophysics/weather/01_weather.html">
+ <span class="dropdown-text">Weather Data</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-help" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Help</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-help">    
+        <li>
+    <a class="dropdown-item" href="https://github.com/GenericMappingTools/GMT.jl/issues"><i class="bi bi-bug" role="img">
+</i> 
+ <span class="dropdown-text">Report a Bug</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://forum.generic-mapping-tools.org/c/questions/5"><i class="bi bi-chat-right-text" role="img">
+</i> 
+ <span class="dropdown-text">Ask a Question</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#sec-by-modules" id="toc-sec-by-modules" class="nav-link active" data-scroll-target="#sec-by-modules">By Modules</a>
+  <ul class="collapse">
+  <li><a href="#specifying-the-pen-attributes" id="toc-specifying-the-pen-attributes" class="nav-link" data-scroll-target="#specifying-the-pen-attributes">Specifying the pen attributes</a></li>
+  <li><a href="#specifying-the-axes" id="toc-specifying-the-axes" class="nav-link" data-scroll-target="#specifying-the-axes">Specifying the axes</a></li>
+  <li><a href="#axes-and-other-configuration" id="toc-axes-and-other-configuration" class="nav-link" data-scroll-target="#axes-and-other-configuration">Axes (and other) configuration</a></li>
+  <li><a href="#specifying-the-figure-size" id="toc-specifying-the-figure-size" class="nav-link" data-scroll-target="#specifying-the-figure-size">Specifying the figure size</a></li>
+  <li><a href="#the-output-format" id="toc-the-output-format" class="nav-link" data-scroll-target="#the-output-format">The output format</a></li>
+  <li><a href="#saving-data-to-disk" id="toc-saving-data-to-disk" class="nav-link" data-scroll-target="#saving-data-to-disk">Saving data to disk</a></li>
+  <li><a href="#how-inputs-are-transmitted-to-modules" id="toc-how-inputs-are-transmitted-to-modules" class="nav-link" data-scroll-target="#how-inputs-are-transmitted-to-modules">How inputs are transmitted to modules</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<section id="sec-by-modules" class="level1">
+<h1>By Modules</h1>
+<p>In this mode we access the individual <strong>GMT</strong> modules directly by their name, and options are set using keyword arguments. The general syntax is (where the brackets mean optional parameters):</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>    [output objects] <span class="op">=</span> <span class="fu">modulename</span>([cmd<span class="op">::</span><span class="dt">String</span>=<span class="st">""</span>,] [argi<span class="op">=</span>[],] opt1<span class="op">=</span>val1, opt2<span class="op">=</span>val2, kwargs<span class="op">...</span>);</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>where <em>modulename</em> is the program name (<em>e.g.&nbsp;coast</em>), <em>cmd</em> is used to transmit a file name for modules that will read data from files and <em>argi</em> is one or, and for certain modules, more data arrays or <em>GMT.jl</em> data types. <em>opti</em> named arguments common to many modules used for example to set the output format. Finally <em>kwargs</em> are keyword parameters used to set the individual module options. But contrary to the <a href="monolitic.html">Monolithic</a> usage, the one letter <em>GMT</em> option syntax may be replaced by more verbose aliases. To make it clear let us look at couple of examples.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coast</span>(region<span class="op">=:</span><span class="kw">global</span>, proj<span class="op">=</span>(name<span class="op">=:</span>laea, center<span class="op">=</span>[<span class="fl">300</span>,<span class="fl">30</span>]), figsize<span class="op">=</span><span class="fl">6</span>, axes<span class="op">=</span><span class="st">"g"</span>, land<span class="op">=</span><span class="st">"navy"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>This command creates a map in PotScript file called <em>GMTjl_tmp.ps</em> and save it in your system’s <em>tmp</em> directory. For comparison, the same command could have been written, using the classical one letter option syntax, as:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coast</span>(R<span class="op">=</span><span class="st">"g"</span>, J<span class="op">=</span><span class="st">"A300/30/6c"</span>, B<span class="op">=</span><span class="st">"g"</span>, D<span class="op">=</span><span class="st">"c"</span>, G<span class="op">=</span><span class="st">"navy"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>So, each module defines a set of aliases to the one letter options that are reported in each module man page.</p>
+<p>Before diving more in the way options may be transmitted into the module, we have to understand what happens with the output image file. By not directly specifying any format we are using the default output image format which is PNG (actually, except for <em>grdimage -A</em>, the only format that <em>GMT</em> can write PostScript). But we can select other formats by using the <em>fmt</em> keyword, for example <em>fmt=“jpg”</em> or <em>fmt=:pdf</em>. In such cases, the <em>ghostscript</em> program (that gets installed by default) will take care of converting the <em>ps</em> file into the selected format.</p>
+<p>When runing from Jupyter notebooks one does not need to worry about the image format. In fact the only allowed is <em>png</em> but that is taken care automatically, meaning that any <em>fmt=xxx</em> will be ignored.</p>
+<p>Note that we used either strings (““) or symbols (:) to represent the format. Here the rule is we can use symbols for any string argument that can be safely written as a symbol. Example, this is valid =:abc, but this is not =:+a (apparently parser will try to add to <em>a</em>). The use of symbols may be preferred for a question of laziness (less typing).</p>
+<p>The above example, however, does not use any input data (<em>coast</em> knows how to find its own data). One way of providing it to modules that work on them is to send in a file name with the data to operate on. This example</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">grdimage</span>(<span class="st">"@tut_relief.nc"</span>, shade<span class="op">=</span><span class="st">"+ne0.8+a100"</span>, proj<span class="op">=:</span>merc, axes<span class="op">=:</span>a, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>reads a the netCDF grid <em>tut_relief.nc</em> and displays it as a Mercator projected image. The ‘@’ prefix is used by <em>GMT</em> to know that the grid file should be downloaded from a server and cached locally. This example introduces also the <em>show=true</em> keyword. It means that we want to see right way the image that has just been created. While it might seem obvious that one wants to see the result, the result might not be ready with only one <em>GMT</em> module call. And that’s why the <em>GMT</em> philosophy uses a <em>layer cake</em> model to construct potentially highly complex figures. Next example illustrates a slightly more evolved example</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>topo <span class="op">=</span> <span class="fu">makecpt</span>(color<span class="op">=:</span>rainbow, range<span class="op">=</span>(<span class="fl">1000</span>,<span class="fl">5000</span>,<span class="fl">500</span>), Z<span class="op">=</span>[]);</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">grdimage</span>(<span class="st">"@tut_relief.nc"</span>, shade<span class="op">=</span><span class="st">"+ne0.8+a100"</span>, proj<span class="op">=:</span>merc, axes<span class="op">=:</span>a, color<span class="op">=</span>topo)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">colorbar!</span>(position<span class="op">=</span><span class="st">"jTC+w5i/0.25i+h+o0/-1i"</span>, region<span class="op">=</span><span class="st">"@tut_relief.nc"</span>, color<span class="op">=</span>topo,</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>          axes<span class="op">=</span><span class="st">"y+lm"</span>, fmt<span class="op">=:</span>jpg, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Here we use the <em>makecpt</em> command to compute a colormap object and used it as the value of the <em>color</em> keyword of both <em>grdimage</em> and <em>colorbar</em> modules. The final image is made up of two layers, the first one is the part created by <em>grdimage</em>, which is complemented by the color scale plot performed by <em>colorbar</em>. But since this was an appending operation we <strong>HAD</strong> to use the <strong>!</strong> form. This form tells <em>GMT</em> to append to a previous initiated image. The image layer cake is finalized by the <em>show=true</em> keyword. If our example had more layers, we would have used the same rule: second and on layers use the <strong>!</strong> construct and the last is signaled by <em>show=true</em>.</p>
+<p>By default the image files are written into <em>tmp</em> system directory under the name <em>GMTjl_tmp.ps</em> (remember <em>PostScript</em> is the default format) and <em>GMTjl_tmp.xxx</em> when user specifies a different format with the <em>fmt</em> keyword. It’s one of this files that shows up when <em>show=true</em> is used. But we may want to save the image file permanently under a different name and location. For that use the keyword <em>savefig=name</em>, where <em>name</em> is relative or full file name.</p>
+<p>The examples above show also that we didn’t completely get rid of the compact <em>GMT</em> syntax. For example the <em>shade=“+ne0.8+a100”</em> in <em>grdimage</em> means that we are computing the shade using a normalized a cumulative Laplace distribution and setting the Sun direction from the 100 azimuth direction. For as much we would like to simplify that, it’s just not possible for the time being. To access the (very) high degree of control that <em>GMT</em> provides one need to use its full syntax. As such, readers are redirected to the main <em>GMT</em> documentation to learn about the fine details of those options.</p>
+<p>Setting line and symbol attributes has received, however, a set of aliases. So, instead of declaring the pen line attributes like <em>-W0.5,blue,–</em>, one can use the aliases <em>lw=0.5, lc=“blue”, ls=“–”</em>. An example would be:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">collect</span>(<span class="fl">1</span><span class="op">:</span><span class="fl">10</span>),<span class="fu">rand</span>(<span class="fl">10</span>), lw<span class="op">=</span><span class="fl">0.5</span>, lc<span class="op">=:</span>blue, ls<span class="op">=</span><span class="st">"--"</span>, marker<span class="op">=:</span>circle,</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>     markeredgecolor<span class="op">=</span><span class="fl">0</span>, size<span class="op">=</span><span class="fl">0.2</span>, markerfacecolor<span class="op">=:</span>red, title<span class="op">=</span><span class="st">"Bla Bla"</span>,</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>     x_label<span class="op">=:</span>Spoons, y_label<span class="op">=:</span>Forks, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>This example introduces also keywords to plot symbols and set their attributes. Also shown are the parameters used to set the image’s title and labels.</p>
+<p>But setting pen attributes like illustrated above may be complicated if one has more that one set of graphical objects (lines and polygons) that need to receive different settings. A good example of this is again provided by a <em>coast</em> command. Imagine that we want to plot coast lines as well as country borders with different line colors and thickness. Here we cannot simple state <em>lw=1</em> because the program wouldn’t know which of the shore line or borders this attribute applies to. The solution for this is to use tuples as values of corresponding keyword options.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">coast</span>(limits<span class="op">=</span>[<span class="op">-</span><span class="fl">10</span> <span class="fl">0</span> <span class="fl">35</span> <span class="fl">45</span>], proj<span class="op">=:</span>merc, shore<span class="op">=</span>(<span class="fl">0.5</span>,<span class="st">"red"</span>), axes<span class="op">=:</span>a,</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>      show<span class="op">=</span><span class="cn">true</span>, borders<span class="op">=</span>(<span class="fl">1</span>,(<span class="fl">1</span>,<span class="st">"green"</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Here we used tuples to set the pen attributes, where the tuple may have 1 to 3 elements in the form (width[c|i|p]], [color], [style[c|i|p|]). The <em>borders=(1,(1,“green”))</em> option is actually a tuple-in-a-tuple because here we need also to specify the political boundary level to plot (1 = National Boundaries).</p>
+<section id="specifying-the-pen-attributes" class="level2">
+<h2 class="anchored" data-anchor-id="specifying-the-pen-attributes">Specifying the pen attributes</h2>
+<p>So, in summary, a <em>pen</em> attribute may be set in three different ways:</p>
+<ol type="1">
+<li><p>With a text string that follows the <em>width</em>, <em>color</em>, <em>style</em> specs as explained in <a href="https://docs.generic-mapping-tools.org/latest/reference/features.html#wpen-attrib"><code>Specifying pen attributes</code></a></p></li>
+<li><p>By using the <strong>lw</strong> or <strong>linewidth</strong> keyword where its value is either a number, meaning the line thickness in points, or a string like the <em>width</em> above; the color is set with the <strong>lc</strong> or <strong>linecolor</strong> and the value is either a number between <em>[0 255]</em> (meaning a gray shade) or a color name (for example “red”); and a <strong>ls</strong> or <strong>linestyle</strong> with the value specified as a string (example: “- -” plot a dashed line).</p></li>
+<li><p>A tuple with one to three elements: ([<em>width</em>], [<em>color</em>], [<em>style</em>]) where each of the elements follow the same syntax as explained in the case (2) above.</p></li>
+</ol>
+</section>
+<section id="specifying-the-axes" class="level2">
+<h2 class="anchored" data-anchor-id="specifying-the-axes">Specifying the axes</h2>
+<p>The axes are controlled by the <strong>B</strong> or <strong>frame</strong> or <strong>axes</strong> keywords. The easiest form it can have is the <em>axes=:a</em>, which means do an automatic annotation of the 4 map boundaries – left, bottom, right and top – axes. To annotate only the left and bottom boundaries, one would do <em>axes=“a WSne”</em> (note the space between <em>a</em> and <em>WSne</em>). For a higher level of control the user must really consult the original <a href="http://docs.generic-mapping-tools.org/latest/gmt.html#b-full"><code>-B documentation</code></a>.</p>
+<p>Other than setting titles and labels with a <strong>axes</strong> string we can also do it by using the keywords <strong>title</strong>, <strong>x_label</strong> and <strong>y_label</strong>.</p>
+<p>The figure limits is set with the <strong>R</strong>, <strong>region</strong> or <strong>limits</strong> keywords. Again, the full docs for this option are explained in <a href="http://docs.generic-mapping-tools.org/latest/gmt.html#r-full"><code>-R documentation</code></a>. But other than the string version, the numeric form <em>region=[x_min x_max y_min y_max]</em> is also permitted. And when dealing with grids, even the <em>region=mygrid.grd</em> is a valid operation. Where <em>mygrid.grd</em> is a <em><a href="../..\documentation/general/types.html#sec-grid-type">GMTgrid</a></em> type. The <code>plot()</code> function allows a no limits setting, in which case it will default to the data’s bounding box.</p>
+</section>
+<section id="axes-and-other-configuration" class="level2">
+<h2 class="anchored" data-anchor-id="axes-and-other-configuration">Axes (and other) configuration</h2>
+<p>There are almost 150 parameters which can be adjusted individually to modify the appearance of plots or affect the manipulation of data. When a program is run, it initializes all parameters to the GMTdefaults (see more at <a href="https://docs.generic-mapping-tools.org/latest/GMT_Docs.html#gmt-defaults"><code>GMT defaults</code></a>). At times it may be desirable to temporarily override some of those defaults. We can do that easily by using any of the keywords <em>conf</em>, <em>par</em> or <em>params</em>, which are recognized by all modules. Its usage follows closely the syntax described at <a href="https://docs.generic-mapping-tools.org/latest/gmt.conf.html"><code>gmt.conf</code></a> but using Named Tuples. The parameter names are always given in UPPER CASE. The parameter values are case-insensitive unless otherwise noted and can be given as strings or numeric. Provide as many parameters as you want in the named tuple. Example</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">basemap</span>(<span class="op">...</span>., conf<span class="op">=</span>(MAP_TICK_LENGTH_PRIMARY<span class="op">=</span><span class="fl">0.25</span>, FORMAT_GEO_MAP<span class="op">=</span><span class="st">"ddd:mm:ssF"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="specifying-the-figure-size" class="level2">
+<h2 class="anchored" data-anchor-id="specifying-the-figure-size">Specifying the figure size</h2>
+<p>Figure sizes are automatically set to 12x8 cm for basic case of Cartesian <em>xy</em> plots done with the <em>plot()</em> function but otherwise in general they need to be user specified using the <strong>J</strong> or <strong>proj</strong> or <strong>projection</strong> keywords. See the full doc at <a href="http://docs.generic-mapping-tools.org/latest/gmt.html#j-full"><code>-J documentation</code></a>. For Cartesian plots one can also use the <em>figsize=width</em> or <em>figsize=[width height]</em> keyword, where the dimensions are in centimeters. The array form allows also set <em>height</em> or <em>width</em> to 0 to have it recomputed based on the implied scale of the other axis. Use negative sizes to reverse the direction of an axis (e.g., to have y be positive down). If neither of these forms is used, the figure width defaults to 14 cm.</p>
+</section>
+<section id="the-output-format" class="level2">
+<h2 class="anchored" data-anchor-id="the-output-format">The output format</h2>
+<p>It was referred above that the <strong>fmt</strong> determines the output format and that the default is <em>PostScript</em>. Actually, the default format is chosen by the contents of the global <strong>FMT</strong> variable set at the top of the <em>GMT.jl</em> file. Eventually this will evolve to using an environment variable but for the moment users will have to edit that file to set a different default format.</p>
+<p>An interesting alternative is to set <strong>FMT=““</strong>, that is to not specify any image format. This will result in <em>NOT</em> saving any file on disk but to keep the PS figure internally stored in the program’s memory. In other words, the figure is built and kept in memory only. This allows converting to another format directly without the use of an intermediary disk file. The conversion is performed by the <em>psconvert</em> <em>GMT</em> module that would be used like this (to convert to PDF):</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">psconvert</span>(in_memory<span class="op">=</span><span class="cn">true</span>, adjust<span class="op">=</span><span class="cn">true</span>, format<span class="op">=:</span>f, out_name<span class="op">=</span><span class="st">"myfig.pdf"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The issue with this solution, that could be implemented internally without user intervention, is that it currently only works on Windows.</p>
+<p>Another alternative to a file format is the option to create RGB images with <em>psconvert</em> and return it to Julia as a <a href="../..\documentation/general/types.html#sec-image-type">GMTimage</a> type.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>    I <span class="op">=</span> <span class="fu">psconvert</span>(in_memory<span class="op">=</span><span class="cn">true</span>, adjust<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>but again, so far on Windows only. A cool thing to develop would be the possibility to display this <em>I</em> image with the <a href="https://github.com/JuliaImages/Images.jl"><code>Images.jl</code></a> package.</p>
+</section>
+<section id="saving-data-to-disk" class="level2">
+<h2 class="anchored" data-anchor-id="saving-data-to-disk">Saving data to disk</h2>
+<p>As referred in the <a href="monolitic.html">Monolithic</a> section, we have two programs to do read and writing. Their module names are <em>gmtread</em> and <em>gmtwrite</em>. These modules allow to import and export any of the GMT data types to and from external files. For instance, to save the grid <em>G</em> stored into a <a href="../..\documentation/general/types.html#sec-grid-type">GMTgrid</a> type into the file <em>relief.nc</em> we run</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gmtwrite</span>(<span class="st">"relief.nc"</span>, G)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Here there is no need to inform about the type of data that we are dealing with because that can be inferred from the type of the numeric argument. There are cases, however, where we may want to save the result of a computation directly on disk instead of assigning it to a Julia variable and latter save it with <em>gmtwrite</em>. For computations that deal with grids that is easy. Just provide ask for an output name using the <em>outgrid</em> keyword, like</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">grdcut</span>(G, limits<span class="op">=</span>[<span class="fl">3</span> <span class="fl">9</span> <span class="fl">2</span> <span class="fl">8</span>], outgrid<span class="op">=</span><span class="st">"lixo.grd"</span>);</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>but for table data the <strong>GMT</strong> programs normally output their results to <em>stdout</em> so if we want to save data directly to disk (as would do the corresponding GMT shell command) we use the <em>write</em> or <em>|&gt;</em> keywords. We can also use this mechanism to append to an existing file, but then we use the <em>append</em> keyword. Use together with the <strong>bo</strong> option to save as a binary file. The following converts the grid <em>G</em> to <em>x,y,z</em> triplets and save the result in an ASCII disk file.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">grd2xyz</span>(G, write<span class="op">=</span><span class="st">"lixo.xyz"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="how-inputs-are-transmitted-to-modules" class="level2">
+<h2 class="anchored" data-anchor-id="how-inputs-are-transmitted-to-modules">How inputs are transmitted to modules</h2>
+<p>Different modules take different number of inputs (for example <em>grdblend</em> accepts a variable number of grids) and some modules accept primary input and optionally a secondary input (for example the <em>weights</em> option in <em>grdtrend</em>). The primary input(s) can be sent as text strings with the names of files to be read or as Julia variables holding the appropriate data type, and that as the first argument to the module call. Alternatively, the numeric input can be sent via the <em>data</em> keyword whose value can be a tuple when the expected input is composed by more than one variable. The same applies when an option is expected to receive more than one arguments (for example the three <em>R,G,B</em> in <em>grdview</em>). Examples:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grdimage</span>(G, intens<span class="op">=</span>I, J<span class="op">=:</span>merc, color<span class="op">=</span>C, B<span class="op">=</span><span class="st">"1 WSne"</span>, X<span class="op">=:</span>c, Y<span class="op">=</span><span class="fl">0.5</span>, show<span class="op">=</span><span class="fl">1</span>)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">grdimage</span>(data<span class="op">=</span>G, intens<span class="op">=</span>I, J<span class="op">=:</span>merc, color<span class="op">=</span>C, B<span class="op">=</span><span class="st">"1 WSne"</span>, X<span class="op">=:</span>c, Y<span class="op">=</span><span class="fl">0.5</span>, show<span class="op">=</span><span class="fl">1</span>)</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="fu">grdview</span>(G, intens<span class="op">=:+</span>, J<span class="op">=:</span>merc, zsize<span class="op">=</span><span class="st">"2i"</span>, view<span class="op">=</span>(<span class="fl">145</span>,<span class="fl">35</span>), G<span class="op">=</span>(Gr,Gg,Gb), Q<span class="op">=:</span>i, show<span class="op">=</span><span class="fl">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script>
+
+// JavaScript to handle card hover effects for cards with images
+
+document.addEventListener('DOMContentLoaded', function() {
+
+  // Find all cards
+
+  const cards = document.querySelectorAll('.card');
+
+
+
+  cards.forEach(card => {
+
+    const paragraphs = card.querySelectorAll('p');
+
+
+
+    // If card has only one paragraph (with image)
+
+    if (paragraphs.length === 1) {
+
+      const p = paragraphs[0];
+
+      const img = p.querySelector('img');
+
+
+
+      if (img) {
+
+        // Get all text nodes
+
+        const textContent = Array.from(p.childNodes)
+
+          .filter(node => node.nodeType === Node.TEXT_NODE)
+
+          .map(node => node.textContent.trim())
+
+          .filter(text => text.length > 0)
+
+          .join(' ');
+
+
+
+        if (textContent) {
+
+          // Create overlay div for description
+
+          const overlay = document.createElement('div');
+
+          overlay.className = 'card-description-overlay';
+
+          overlay.textContent = textContent;
+
+          card.appendChild(overlay);
+
+
+
+          // Remove text nodes completely
+
+          Array.from(p.childNodes).forEach(node => {
+
+            if (node.nodeType === Node.TEXT_NODE && node.textContent.trim().length > 0) {
+
+              node.remove();
+
+            }
+
+          });
+
+        }
+
+      }
+
+    }
+
+  });
+
+
+
+  // Equalize heights of grid sections (documentation cards)
+
+  function equalizeGridHeights() {
+
+    const grids = document.querySelectorAll('.grid');
+
+
+
+    grids.forEach(grid => {
+
+      const sections = Array.from(grid.querySelectorAll(':scope > section, :scope > div'));
+
+
+
+      if (sections.length === 0) return;
+
+
+
+      // Reset heights
+
+      sections.forEach(section => {
+
+        section.style.height = 'auto';
+
+      });
+
+
+
+      // Group sections by row (based on offsetTop)
+
+      const rows = new Map();
+
+      sections.forEach(section => {
+
+        const top = section.offsetTop;
+
+        if (!rows.has(top)) {
+
+          rows.set(top, []);
+
+        }
+
+        rows.get(top).push(section);
+
+      });
+
+
+
+      // Equalize heights within each row
+
+      rows.forEach(rowSections => {
+
+        const maxHeight = Math.max(...rowSections.map(s => s.offsetHeight));
+
+        rowSections.forEach(section => {
+
+          section.style.height = maxHeight + 'px';
+
+        });
+
+      });
+
+    });
+
+  }
+
+
+
+  // Run on load and resize
+
+  equalizeGridHeights();
+
+  window.addEventListener('resize', equalizeGridHeights);
+
+});
+
+</script>
+
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/GenericMappingTools\.github\.io\/GMTjl_doc\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

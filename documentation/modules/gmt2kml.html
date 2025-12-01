@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>gmt2kml</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-0615b85506723fa54ab13a613a4e9e4c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../custom.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/GMTjl_logo.png" alt="" class="navbar-logo light-content">
+    <img src="../../assets/GMTjl_logo.png" alt="" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-documentation" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Documentation</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-documentation">    
+        <li>
+    <a class="dropdown-item" href="../../documentation.html">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../../documentation/modules.html">
+ <span class="dropdown-text">GMT Modules</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/general/types.html">
+ <span class="dropdown-text">GMT.jl Types</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/extensions.html">
+ <span class="dropdown-text">GMT.jl Extensions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/gdalfuns.html">
+ <span class="dropdown-text">GDAL Functions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/solids.html">
+ <span class="dropdown-text">Solids Functions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/imgproc.html">
+ <span class="dropdown-text">Image Processing</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/common_features.html">
+ <span class="dropdown-text">Common Features</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/alphabetical.html">
+ <span class="dropdown-text">Alphabetical List</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../../examples.html"> 
+<span class="menu-text">Examples</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-gallery-(gmt-gallery" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Gallery (GMT Gallery)</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-gallery-(gmt-gallery">    
+        <li>
+    <a class="dropdown-item" href="../../gallery.html">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex01.html">
+ <span class="dropdown-text">(1) Contour maps</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex02.html">
+ <span class="dropdown-text">(2) Image presentations</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex03.html">
+ <span class="dropdown-text">(3) Spectral estimation and xy-plots</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex04.html">
+ <span class="dropdown-text">(4)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex05.html">
+ <span class="dropdown-text">(5) A 3-D illuminated surface</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex06.html">
+ <span class="dropdown-text">(6) Plotting of histograms</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex07.html">
+ <span class="dropdown-text">(7) A simple location map</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex08.html">
+ <span class="dropdown-text">(8) A 3-D histogram</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex09.html">
+ <span class="dropdown-text">(9) Time-series along tracks</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex10.html">
+ <span class="dropdown-text">(10) A geographical bar graph plot</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex11.html">
+ <span class="dropdown-text">(11)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex12.html">
+ <span class="dropdown-text">(12) Optimal triangulation of data</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex13.html">
+ <span class="dropdown-text">(13) Plotting of vector fields</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex14.html">
+ <span class="dropdown-text">(14) Gridding of data and trend surfaces</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex15.html">
+ <span class="dropdown-text">(15) Gridding, contouring, and masking of unconstrained areas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex16.html">
+ <span class="dropdown-text">(16) Gridding of data, continued</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex17.html">
+ <span class="dropdown-text">(17) Images clipped by coastlines</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex18.html">
+ <span class="dropdown-text">(18) Volumes and Spatial Selections</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex19.html">
+ <span class="dropdown-text">(19) Color patterns on maps</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex20.html">
+ <span class="dropdown-text">(20) Custom plot symbols</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex21.html">
+ <span class="dropdown-text">(21)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex22.html">
+ <span class="dropdown-text">(22)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex23.html">
+ <span class="dropdown-text">(23)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex24.html">
+ <span class="dropdown-text">(24)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex25.html">
+ <span class="dropdown-text">(25)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex26.html">
+ <span class="dropdown-text">(26)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex27.html">
+ <span class="dropdown-text">(27)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex28.html">
+ <span class="dropdown-text">(28)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex29.html">
+ <span class="dropdown-text">(29)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex30.html">
+ <span class="dropdown-text">(30)</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-tutorials" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Tutorials</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-tutorials">    
+        <li>
+    <a class="dropdown-item" href="../../tutorials.html">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../../tutorials/ISC/isc.jl.html">
+ <span class="dropdown-text">ISC seismicity</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/Landsat8/histogram_stretch.html">
+ <span class="dropdown-text">Landsat 8/9</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/coast/coastlines.html">
+ <span class="dropdown-text">Coastlines</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/choropleths/choropleths.html">
+ <span class="dropdown-text">US Choropleths</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/dlakelan/GMTMaps.html">
+ <span class="dropdown-text"><span class="citation" data-cites="dlakelan">@dlakelan</span> choropleths</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/longest_sail/longestsail.html">
+ <span class="dropdown-text">Longest Sail</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/vector_shp/vector_shp.html">
+ <span class="dropdown-text">Geospatial vector</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/texture_shading/texture.html">
+ <span class="dropdown-text">Texture Shading</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/mosaics/mosaics.html">
+ <span class="dropdown-text">Mosaics</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/insets/insets.html">
+ <span class="dropdown-text">Insets</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/remote_datasets/remote_datasets.html">
+ <span class="dropdown-text">Remote Grids</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/blender_shading/blender_rt.html">
+ <span class="dropdown-text">Blender</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/signal/signal.html">
+ <span class="dropdown-text">Signal</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-geophysics" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Geophysics</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-geophysics">    
+        <li>
+    <a class="dropdown-item" href="../../geophysics.html">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../../geophysics/seismicity/global_seis.html">
+ <span class="dropdown-text">Seismicity</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../geophysics/earthtides/01_earthtides.html">
+ <span class="dropdown-text">Earth Tides</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../geophysics/weather/01_weather.html">
+ <span class="dropdown-text">Weather Data</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-help" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Help</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-help">    
+        <li>
+    <a class="dropdown-item" href="https://github.com/GenericMappingTools/GMT.jl/issues"><i class="bi bi-bug" role="img">
+</i> 
+ <span class="dropdown-text">Report a Bug</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://forum.generic-mapping-tools.org/c/questions/5"><i class="bi bi-chat-right-text" role="img">
+</i> 
+ <span class="dropdown-text">Ask a Question</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#gmt2kml" id="toc-gmt2kml" class="nav-link active" data-scroll-target="#gmt2kml">gmt2kml</a>
+  <ul class="collapse">
+  <li><a href="#description" id="toc-description" class="nav-link" data-scroll-target="#description">Description</a></li>
+  <li><a href="#required-arguments" id="toc-required-arguments" class="nav-link" data-scroll-target="#required-arguments">Required Arguments</a></li>
+  <li><a href="#optional-arguments" id="toc-optional-arguments" class="nav-link" data-scroll-target="#optional-arguments">Optional Arguments</a></li>
+  <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
+  <li><a href="#limitations" id="toc-limitations" class="nav-link" data-scroll-target="#limitations">Limitations</a></li>
+  <li><a href="#making-kmz-files" id="toc-making-kmz-files" class="nav-link" data-scroll-target="#making-kmz-files">Making Kmz Files</a></li>
+  <li><a href="#kml-hierarchy" id="toc-kml-hierarchy" class="nav-link" data-scroll-target="#kml-hierarchy">Kml Hierarchy</a></li>
+  <li><a href="#segment-information" id="toc-segment-information" class="nav-link" data-scroll-target="#segment-information">Segment Information</a></li>
+  <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<section id="gmt2kml" class="level1">
+<h1>gmt2kml</h1>
+<p>Convert GMT data table to Google Earth KML file.</p>
+<section id="description" class="level2">
+<h2 class="anchored" data-anchor-id="description">Description</h2>
+<p><strong>gmt2kml</strong> reads one or more GMT table file and converts them to a single output file using Google Earth’s KML format. Data may represent points, lines, polygons, or wiggles, and you may specify additional attributes such as title, altitude mode, colors, pen widths, transparency, regions, and data descriptions. You may also extend the feature down to ground level (assuming it is above it) and use custom icons for point symbols. Finally, there are controls on visibility depending on level of detail settings, altitude, regions, including the status upon loading into Google Earth as well as fading depending on zoom.</p>
+<p>The input files should contain the following columns:</p>
+<p><em>lon</em> <em>lat</em> [ <em>alt</em> ] [ <em>timestart</em> [ <em>timestop</em> ] ]</p>
+<p>where <em>lon</em> and <em>lat</em> are required for all features, <em>alt</em> is optional for all features (see also <strong>mode</strong> and <strong>cmap</strong>), and <em>timestart</em> and <em>timestop</em> apply to events and timespan features. For wiggles, the <em>alt</em> column is required but is expected to represent an along-track data anomaly such as gravity, magnetics, etc. These values will be scaled to yield distances from the line in degrees.</p>
+<p>The output of this function can be sent back to Julia as a <a href="../..\documentation/general/types.html#sec-dataset-type">GMTdataset</a> but most of times there is no real interest in that. The more useful usage is to redirect the result into a disk file since that’s what GE reads. To do this, one should use the <strong>|&gt;=“fname”</strong> or <strong>write=“fname”</strong> options.</p>
+</section>
+<section id="required-arguments" class="level2">
+<h2 class="anchored" data-anchor-id="required-arguments">Required Arguments</h2>
+<ul>
+<li><em>table</em><br>
+One or more data tables holding a number of data columns.</li>
+</ul>
+</section>
+<section id="optional-arguments" class="level2">
+<h2 class="anchored" data-anchor-id="optional-arguments">Optional Arguments</h2>
+<ul>
+<li><p><strong>A</strong> or <strong>mode</strong> : – <em>mode=:a|:g|s</em> <strong>|</strong> <em>mode=“a|g|s<altitude>”</altitude></em><br>
+Select one of three altitude modes recognized by Google Earth that determines the altitude (in m) of the tile layer: <strong>a</strong> absolute altitude, <strong>g</strong> altitude relative to sea surface or ground, <strong>s</strong> altitude relative to seafloor or ground. To plot the tiles at a fixed altitude, append an altitude <em>altitude</em> (in m). Use 0 to clamp the features to the chosen reference surface. [By default the tiles are clamped to the sea surface or ground].</p></li>
+<li><p><strong>C</strong> or <strong>color</strong> or <strong>cmap</strong> or <strong>colorap</strong> or <strong>colorscale</strong> : – <em>color=cpt</em><br>
+Where <em>cpt</em> is a <em><a href="../..\documentation/general/types.html#sec-cpt-type">GMTcpt</a></em> type or a cpt file name (for <em>grd_z</em> only). Alternatively, supply the name of a GMT color master dynamic CPT [turbo] to automatically determine a continuous CPT from the grid’s z-range; you may round up/down the z-range by adding <strong>+i</strong> <em>zinc</em>. Yet another option is to specify <em>color=“color1,color2 [,color3 ,…]”</em> or <em>color=((r1,g1,b1),(r2,g2,b2),…)</em> to build a linear continuous CPT from those colors automatically. In this case <em>color1</em> etc can be a (r,g,b) triplet, a color name, or an HTML hexadecimal color (e.g.&nbsp;#aabbcc ) (see [Setting color](../common_features/color.html)). When not explicitly set, but a color map is needed, we will either use the current color map, if available (set by a previous call to <em>makecpt</em>), or the default <em>turbo</em> color map.</p></li>
+<li><p><strong>D</strong> or <strong>descript</strong> : – <em>descript=descriptfile</em><br>
+File with HTML snippets that will be included as part of the main description content for the KML file [no description]. See SEGMENT INFORMATION below for feature-specific descriptions.</p></li>
+<li><p><strong>E</strong> or <strong>extrude</strong> : – <em>extrude=true</em> <strong>|</strong> <em>extrude=“+e”</em> <em>extrude=“+s”</em><br>
+Control how lines and polygons are rendered in Google Earth. Use <strong>+e</strong> to extrude the feature down to ground level [no extrusion]. Use <strong>+s</strong> to connect points with straight lines (which may intersect the Earth’s surface and be invisible) [tessellate onto surface].</p></li>
+<li><p><strong>F</strong> or <strong>feature_type</strong> : – <em>feature_type=:e|:s|:t|:l|:p|:w</em><br>
+Sets the feature type. Choose from points (<strong>e</strong>vent, <strong>s</strong>ymbol, or <strong>t</strong>imespan), <strong>l</strong>ine, <strong>p</strong>olygon, or <strong>w</strong>iggle [symbol]. The first two columns of the input file should contain (<em>lon</em>, <em>lat</em>). When altitude or value is required (i.e., no <em>altitude</em> value was given with <strong>mode</strong>, or <strong>cmap</strong> is set), the third column needs to contain the <em>altitude</em> (in m) or <em>value</em>. The event (<strong>feature_type=:e</strong>) is a symbol that should only be active at a particular <em>time</em>, given in the next column. Timespan (<strong>feature_type=:t</strong>) is a symbol that should only be active during a particular time period indicated by the next two columns (<em>timestart</em>, <em>timestop</em>). Use NaN to indicate unbounded time limits. If used, times should be in ISO format yyyy-mm-ddThh:mm:ss[.xxx] or in GMT relative time format (see <strong>colinfo</strong>). For wiggles, the data anomaly is required to be in the 3rd input column. If you also need to plot the track itself then do that separately with <strong>feature_type=:l</strong>.</p></li>
+<li><p><strong>G</strong> or <strong>fill</strong> : – <em>fill=color</em> <strong>|</strong> <em>fill=“+f|+n”</em><br>
+Sets <em>color</em> for fill (modifier <strong>+f</strong> [Default]) or label font (modifier <strong>+n</strong>). Fill sets infill color for symbols, extrusions, polygons and positive anomaly wiggles [Default is light orange at 75% transparency]. Alternatively, use <strong>fill=“+f”</strong> to turn off such infill. Text labels: Specify <em>color</em> for the font [Default is white]. Alternatively, use <strong>fill=“+n”</strong> to instead disable the labels.</p></li>
+<li><p><strong>I</strong> or <strong>icon</strong> : – <em>icon=URL</em><br>
+Specify the URL to an alternative icon that should be used for the symbol [Default is a Google Earth circle]. If the URL starts with + then we will prepend <code>http://maps.google.com/mapfiles/kml/</code> to the name. To turn off icons entirely (e.g., when just wanting a text label), use <strong>icon=-</strong>. [Default is a local icon with no directory path].</p></li>
+<li><p><strong>K</strong> or <strong>not_over</strong> : – <em>not_over=true</em><br>
+Allow more KML code to be appended to the output later [finalize the KML file].</p></li>
+<li><p><strong>L</strong> or <strong>extra_data</strong> : – <em>extra_data=“name1,name2,…”</em><br>
+Extended data given. Append one or more column names separated by commas. We will expect the listed data columns to exist in the input immediately following the data coordinates required for the selected feature set by <strong>feature</strong>, and they will be encoded in the KML file as Extended Data sets, whose attributes will be available in a Google Earth balloon when the item is selected. The data file must have enough data columns and trailing text to accommodate the number of columns requested. If the number of extended data is one larger than the number of available numerical columns then the entire trailing text is set as the last extended data column. Otherwise, the trailing text is split into individual words and set as separate extended columns.</p></li>
+<li><p><strong>N</strong> or <strong>feature_name</strong> : – <em>feature_name=true</em> <strong>|</strong> <em>feature_name=“t|col|name_template|name”</em><br>
+By default, if segment headers contain a <strong>-L</strong>”label string” then we use that for the name of the KML feature (polygon, line segment or set of symbols). Default names for these segments are “Line %d” and “Point Set %d”, depending on the feature, where %d is a sequence number of line segments within a file. Each point within a line segment will be named after the line segment plus a sequence number. Default is simply “Point %d”. Alternatively, select one of these options:</p>
+<ol type="1">
+<li>append <em>col</em> to supply individual symbol labels as the string formatted from the <em>col</em> data column,</li>
+<li>append <strong>t</strong> to let individual symbol labels be the trailing text of each record</li>
+<li>append a string that may include %d or a similar integer format to assign unique name IDs for each feature, with the segment number (for lines and polygons) or point number (symbols) appearing where %d is placed,</li>
+<li>give no arguments to turn symbol labeling off; line segments will still be named.</li>
+</ol>
+<p>Also note that option (2) is not available unless input is an ASCII file.</p></li>
+<li><p><strong>O</strong> or <strong>overlay</strong> : – <em>overlay=true</em><br>
+Append KML code to an existing KML file [initialize a new KML file]. <strong>WARNING</strong> the use of this option requires saving the result to file (that is, not returning it as a dataset) <strong>and</strong> the use of <code>append="kmlfile"</code> and <strong>not</strong> any of the <code>|&gt;="kmlfile"</code> or <code>write="kmlfile"</code> file saving options.</p></li>
+<li><p><strong>Qa</strong> or <strong>wiggles</strong> or <strong>wiggle_fixedazim</strong> or <strong>wiggle_scale=</strong> : – <em>wiggles=az</em> <strong>|</strong> <em>wiggle_fixedazim=az</em> <strong>|</strong> <em>wiggle_scale=scale</em><br>
+Option in support of wiggle plots (requires <strong>feature_type=:w</strong>). You may control which directions the positive wiggles will tend to point to with <strong>wiggles=</strong>azim. The appended <em>azimuth</em> defines a half-circle centered on the selected azimuth [0] where positive anomalies will plot. If outside then switch by 180 degrees. Alternatively, use <strong>wiggle_fixedazim</strong> to set a fixed <em>azimuth</em> with no further variation. Scaling is also required via <strong>wiggle_scale=</strong>scale. Set a wiggle scale in <em>z</em>-data units per the user’s units (given via the trailing unit taken from d|m|s|e|f|k|M|n|u [e]). This scale is then inverted to yield degrees per user z-unit and used to convert wiggle anomalies to map distances and positions.</p></li>
+<li><p><strong>R</strong> or <strong>region</strong> : – <em>region=:e</em> <strong>|</strong> <em>region=(w,e,s,n)</em><br>
+Issue a single Region tag. Use <strong>region=(w,e,s,n)</strong> to set a particular region (will ignore points outside the region), or <strong>region=:e</strong> to determine and use the exact domain of the data (single file only) [no region tags issued].</p></li>
+<li><p><strong>S</strong> or <strong>ilscale</strong> : – <em>ilscale=“c<scale>”</scale></em> <strong>|</strong> <em>ilscale=“n<scale>”</scale></em><br>
+Scale icons or labels. Here, <strong>ilscale=“c<scale>”</scale></strong> sets a scale for the symbol icon, whereas <strong>ilscale=“n<scale>”</scale></strong> sets a scale for the name labels [1 for both].</p></li>
+<li><p><strong>T</strong> or <strong>title</strong> : – <em>title=title</em> <strong>|</strong> <em>title=(“title”,“FolderName”)</em><br>
+Sets the document title [default is unset]. Optionally, set also the <em>FolderName</em>; this allows you, with <strong>overlay</strong>, <strong>not_over</strong>, to group features into folders within the KML document. [The default folder name is “<em>Name</em> Features”, where <em>Name</em> is Point, Event, Timespan, Line, Polygon or Wiggle].</p></li>
+<li><p><strong>V</strong> or <em>verbose</em> : – <em>verbose=true</em> <strong>|</strong> <em>verbose=level</em><br>
+Select verbosity level. More at [verbose](../common_opts/opt_V.html)</p></li>
+<li><p><strong>W</strong> or <strong>pen</strong>=<code>pen</code><br>
+Set pen attributes for the arrow stem [Defaults: width = default, color = black, style = solid]. See [Pen attributes](../common_features/pens.html) and [Vector attributes](../common_features/arrows_control.html) for arrow line terminations.</p></li>
+<li><p><strong>Z</strong> or <strong>attrib</strong> : – <em>attrib=“+aalt_min/alt_max][+fminfade/maxfade][+lminLOD/maxLOD][+o][+v]”</em><br>
+Set one or more attributes of the Document and Region tags. Append <strong>+aalt_min/alt_max</strong> to specify limits on visibility based on altitude. Add <strong>+f</strong>fade_min/fade_max** to fade in and out over a ramp [abrupt]. Add <strong>+llod_min/lod_max</strong> to specify limits on visibility based on Level Of Detail, where a <em>lod_max</em> of -1 means it is visible to infinite size. Add <strong>+o</strong> to open a older or document in the sidebar when loaded [closed]. Add <strong>+v</strong> to make a feature <em>not</em> visible when loaded [visible].</p></li>
+<li><p><strong>a</strong> or <strong>aspatial</strong> : – <em>aspatial=??</em><br>
+Control how aspatial data are handled in GMT during input and output. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#aspatial-full">More at</a></p></li>
+<li><p><strong>bi</strong> or <strong>binary_in</strong> : – <em>binary_in=??</em><br>
+Select native binary format for primary table input. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#bi-full">More at</a></p></li>
+<li><p><strong>di</strong> or <strong>nodata_in</strong> : – <em>nodata_in=??</em><br>
+Substitute specific values with NaN. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#di-full">More at</a></p></li>
+<li><p><strong>e</strong> or <strong>pattern</strong> : – <em>pattern=??</em><br>
+Only accept ASCII data records that contain the specified pattern. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#e-full">More at</a></p></li>
+<li><p><strong>f</strong> or <strong>colinfo</strong> : – <em>colinfo=??</em><br>
+Specify the data types of input and/or output columns (time or geographical data). <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#f-full">More at</a></p></li>
+<li><p><strong>g</strong> or <strong>gap</strong> : – <em>gap=??</em><br>
+Examine the spacing between consecutive data points in order to impose breaks in the line. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#g-full">More at</a></p></li>
+<li><p><strong>h</strong> or <strong>header</strong> : – <em>header=??</em><br>
+Specify that input and/or output file(s) have n header records. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#h-full">More at</a></p></li>
+<li><p><strong>i</strong> or <strong>incol</strong> or <strong>incols</strong> : – <em>incol=col_num</em> <strong>|</strong> <em>incol=“opts”</em><br>
+Select input columns and transformations (0 is first column, t is trailing text, append word to read one word only). More at <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#icols-full">incol</a></p></li>
+<li><p><strong>q</strong> or <strong>inrows</strong> : – <em>inrows=??</em><br>
+Select specific data rows to be read and/or written. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#the-q-option">More at</a></p></li>
+<li><p><strong>yx</strong> : – <em>yx=true</em><br>
+Swap 1st and 2nd column on input and/or output. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#colon-full">More at</a></p></li>
+</ul>
+</section>
+<section id="examples" class="level2">
+<h2 class="anchored" data-anchor-id="examples">Examples</h2>
+<p>To plot colored symbols based on a CPT of the remote file <span class="citation" data-cites="kml_pointsets.txt">@kml_pointsets.txt</span>, first make the CPT and then create the KML file thus:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>    C <span class="op">=</span> <span class="fu">makecpt</span>(cmap<span class="op">=:</span>categorical)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gmt2kml</span>(<span class="st">"@kml_pointsets.txt"</span>, cmap<span class="op">=</span>C, <span class="op">|&gt;=</span><span class="st">"points.kml"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>To convert a file with point locations (lon, lat) into a KML file with red circle symbols, try</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gmt2kml</span>(<span class="st">"mypoints.txt"</span>, fill<span class="op">=</span><span class="st">"red+f"</span>, feature_type<span class="op">=:</span>s, <span class="op">|&gt;=</span><span class="st">"mypoints.kml"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>To convert a multisegment file with lines (lon, lat) separated by segment headers that contain a <strong>-L</strong>&nbsp;labelstring with the feature name, selecting a thick white pen, and title the document, try</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gmt2kml</span>(<span class="st">"mylines.txt"</span>, pen<span class="op">=</span>(<span class="op">:</span>thick,<span class="op">:</span>white), feature_type<span class="op">=:</span>l,</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>            title<span class="op">=</span><span class="st">"Lines from here to there"</span>, <span class="op">|&gt;=</span><span class="st">"mylines.kml"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>To convert a multisegment file with polygons (lon, lat) separated by segment headers that contain a <strong>-L</strong>&nbsp;labelstring with the feature name, selecting a thick black pen and semi-transparent yellow fill, giving a title to the document, and prescribing a particular region limit, try</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gmt2kml</span>(<span class="st">"mypolygons.txt"</span>, fill<span class="op">=</span><span class="st">"yellow@50+f"</span>, feature_type<span class="op">=:</span>p, title<span class="op">=</span><span class="st">"My polygons"</span>,</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>            region<span class="op">=</span>(<span class="fl">30</span>,<span class="fl">90</span>,<span class="op">-</span><span class="fl">20</span>,<span class="fl">40</span>), <span class="op">|&gt;=</span><span class="st">"mypolygons.kml"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>To extract contours and labels every 10 units from the grid temp.nc and plot them in KML, using red lines at 75% transparency and red labels (no transparency), try</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>    D <span class="op">=</span> <span class="fu">grdcontour</span>(<span class="st">"temp.nc"</span>, scale<span class="op">=</span><span class="fl">1</span>, annot<span class="op">=</span><span class="st">"10+tlabel.txt"</span>, cont<span class="op">=</span><span class="fl">10</span>, dump<span class="op">=</span><span class="cn">true</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gmt2kml</span>(D, feature_type<span class="op">=:</span>l, pen<span class="op">=</span>(<span class="fl">1</span>,<span class="st">"red@75"</span>), not_over<span class="op">=</span><span class="cn">true</span>, <span class="op">|&gt;</span><span class="st">"contours.kml"</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gmt2kml</span>(<span class="st">"label.txt"</span>, overlay<span class="op">=</span><span class="cn">true</span>, feature_name<span class="op">=:</span>t, feature_type<span class="op">=:</span>s ilscale<span class="op">=</span><span class="st">"n2"</span>,</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>            fill<span class="op">=</span><span class="st">"red@0+n"</span>, icon<span class="op">=</span><span class="st">"-"</span>, append<span class="op">=</span><span class="st">"contours.kml"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>To instead plot the contours as lines with colors taken from the cpt file contours.cpt, try</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gmt2kml</span>(<span class="st">"contours.txt"</span>, feature_type<span class="op">=:</span>l, cmap<span class="op">=</span><span class="st">"contours.cpt"</span>, <span class="op">|&gt;=</span><span class="st">"contours.kml"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>To plot magnetic anomalies as wiggles along track, with positive wiggles painted orange and the wiggle line drawn with a black pen of width 2p, scaling the magnetic anomalies (in nTesla) so that 50 nT equals 1 nm on the map, and place the wiggles 50m above the sea surface, use</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gmt2kml</span>(<span class="st">"magnetics_lon_lat_mag.txt"</span>, feature_type<span class="op">=:</span>w, fill<span class="op">=</span><span class="st">"orange+f"</span>,</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>            pen<span class="op">=</span><span class="fl">2</span>, mode<span class="op">=</span><span class="st">"g50"</span>, wiggle_scale<span class="op">=</span><span class="st">"50n"</span>, <span class="op">|&gt;=</span><span class="st">"wiggles.kml"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="limitations" class="level2">
+<h2 class="anchored" data-anchor-id="limitations">Limitations</h2>
+<p>Google Earth has trouble displaying filled polygons across the Dateline. For now you must manually break any polygon crossing the dateline into a west and east polygon and plot them separately. Google Earth also has other less obvious limitations on file size or line length. These do not seem to be documented. If features do not show and you are not getting an error, try to reduce the size of the file by splitting things up.</p>
+</section>
+<section id="making-kmz-files" class="level2">
+<h2 class="anchored" data-anchor-id="making-kmz-files">Making Kmz Files</h2>
+<p>Using the KMZ format is preferred as it takes less space. KMZ is simply a KML file and any data files, icons, or images referenced by the KML, contained in a zip archive. One way to organize large data sets is to split them into groups called Folders. A Document can contain any number of folders. Using scripts you can create a composite KML file using the <strong>not_over</strong>, <strong>overlay</strong> options just like you do with GMT plots. See <strong>title</strong> for switching between folders and documents. The gmt_shell_scripts.sh contains function gmt_build_kmz that can assist in building a KMZ file from any number of KML files (and optionally images they may refer to).</p>
+<p>If you have made a series of KML files (which may depend on other items like local PNG images), you can consolidate these into a single KMZ file for saving space and for grouping related files together. The bash function <strong>gmt_build_kmz</strong> in the <code>gmt_shell_functions.sh</code> can be used to do this. You need to source gmt_shell_functions.sh first before you can use it.</p>
+</section>
+<section id="kml-hierarchy" class="level2">
+<h2 class="anchored" data-anchor-id="kml-hierarchy">Kml Hierarchy</h2>
+<p>GMT stores the different features in hierarchical folders by feature type (when using <strong>overlay</strong>, <strong>not_over</strong> or <strong>title=tit/foldername</strong>), by input file (if not standard input), and by line segment (using the name from the segment header, or <strong>feature_name</strong>). This makes it more easy in Google Earth to switch on or off parts of the contents of the Document.</p>
+</section>
+<section id="segment-information" class="level2">
+<h2 class="anchored" data-anchor-id="segment-information">Segment Information</h2>
+<p><strong>gmt2kml</strong> will scan the segment headers for substrings of the form <strong>-L</strong>”<em>some label</em>” [also see <strong>feature_name</strong> discussion] and <strong>-T</strong>”<em>some text description</em>”. If present, these are parsed to supply name and description tags, respectively, for the current feature.</p>
+</section>
+<section id="see-also" class="level2">
+<h2 class="anchored" data-anchor-id="see-also">See Also</h2>
+<p><a href="../..\documentation/modules/grd2kml.html">grd2kml</a>, [kml2gmt], [psconvert]</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script>
+
+// JavaScript to handle card hover effects for cards with images
+
+document.addEventListener('DOMContentLoaded', function() {
+
+  // Find all cards
+
+  const cards = document.querySelectorAll('.card');
+
+
+
+  cards.forEach(card => {
+
+    const paragraphs = card.querySelectorAll('p');
+
+
+
+    // If card has only one paragraph (with image)
+
+    if (paragraphs.length === 1) {
+
+      const p = paragraphs[0];
+
+      const img = p.querySelector('img');
+
+
+
+      if (img) {
+
+        // Get all text nodes
+
+        const textContent = Array.from(p.childNodes)
+
+          .filter(node => node.nodeType === Node.TEXT_NODE)
+
+          .map(node => node.textContent.trim())
+
+          .filter(text => text.length > 0)
+
+          .join(' ');
+
+
+
+        if (textContent) {
+
+          // Create overlay div for description
+
+          const overlay = document.createElement('div');
+
+          overlay.className = 'card-description-overlay';
+
+          overlay.textContent = textContent;
+
+          card.appendChild(overlay);
+
+
+
+          // Remove text nodes completely
+
+          Array.from(p.childNodes).forEach(node => {
+
+            if (node.nodeType === Node.TEXT_NODE && node.textContent.trim().length > 0) {
+
+              node.remove();
+
+            }
+
+          });
+
+        }
+
+      }
+
+    }
+
+  });
+
+
+
+  // Equalize heights of grid sections (documentation cards)
+
+  function equalizeGridHeights() {
+
+    const grids = document.querySelectorAll('.grid');
+
+
+
+    grids.forEach(grid => {
+
+      const sections = Array.from(grid.querySelectorAll(':scope > section, :scope > div'));
+
+
+
+      if (sections.length === 0) return;
+
+
+
+      // Reset heights
+
+      sections.forEach(section => {
+
+        section.style.height = 'auto';
+
+      });
+
+
+
+      // Group sections by row (based on offsetTop)
+
+      const rows = new Map();
+
+      sections.forEach(section => {
+
+        const top = section.offsetTop;
+
+        if (!rows.has(top)) {
+
+          rows.set(top, []);
+
+        }
+
+        rows.get(top).push(section);
+
+      });
+
+
+
+      // Equalize heights within each row
+
+      rows.forEach(rowSections => {
+
+        const maxHeight = Math.max(...rowSections.map(s => s.offsetHeight));
+
+        rowSections.forEach(section => {
+
+          section.style.height = maxHeight + 'px';
+
+        });
+
+      });
+
+    });
+
+  }
+
+
+
+  // Run on load and resize
+
+  equalizeGridHeights();
+
+  window.addEventListener('resize', equalizeGridHeights);
+
+});
+
+</script>
+
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/GenericMappingTools\.github\.io\/GMTjl_doc\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

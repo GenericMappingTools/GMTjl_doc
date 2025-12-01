@@ -1,0 +1,89 @@
+/* Remove top spacing between navbar and banner */
+#quarto-content main {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+
+main.page-columns {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+
+/* Use smaller negative margin to close gap without cutting banner */
+.column-page:first-of-type {
+  margin-top: -1.00rem !important;
+  padding-top: 0 !important;
+}
+
+.column-page:first-of-type img {
+  display: block;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  width: 85% !important;  /* Reduce banner to 80% of its width */
+  height: auto;
+}
+
+/* Card styling for text-only cards (without images) */
+.card h3:first-child {
+  margin-top: 0;
+}
+
+.card:not(:has(img)) {
+  padding: 1.5rem;
+}
+
+.card:not(:has(img)):hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+  border-color: #0d6efd !important;
+  transition: all 0.2s ease-in-out;
+}
+
+.card p {
+  color: #6c757d;
+  margin-bottom: 0;
+}
+
+/* Card styling for cards WITH images */
+.card:has(img) {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.2s ease-in-out;
+}
+
+.card:has(img):hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+  border-color: #0d6efd !important;
+}
+
+/* Hide card body (description) by default, show on hover */
+.card .card-body {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  max-height: 40%;
+  background: rgba(255, 255, 255, 0.98);
+  opacity: 0;
+  transform: translateY(100%);
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  padding: 0 !important;
+  margin: 0 !important;
+  border-top: 1px solid #dee2e6;
+  font-size: 0.85rem;
+  overflow: hidden;
+}
+
+.card:hover .card-body {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+  padding: 0.05rem !important;
+}
+
+.figure-img {
+  display: block;
+  margin: 0 auto;
+  width: 70%;
+  max-width: 600px;
+}
