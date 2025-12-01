@@ -1257,7 +1257,14 @@
     "href": "documentation/gdalfuns/geodesic.html",
     "title": "geodesic",
     "section": "",
-    "text": "geodesicarea(geom)\nCompute geometry area, considered as a surface on the underlying ellipsoid of the SRS attached to the geometry. The returned area will always be in square meters, and assumes that polygon edges describe geodesic lines on the ellipsoid. If the geometry’ SRS is not a geographic one, geometries are reprojected to the underlying geographic SRS of the geometry’ SRS.\n\nParameters\n\ngeom: the geometry. This can either be a GDAL AbstractGeometry or a GMTdataset (or vector of it), or a Matrix\n\nReturns the area of the geometry in square meters or a negative value in case of error for unsupported geometry types."
+    "text": "geodesic(D; step=0, unit=:m, np=0, proj::String=\"\", epsg::Integer=0, longest::Bool=false)\nor\nGenerate geodesic line(s) (shortest distace) on an ellipsoid. Input data can be two or more points. In later case each line segment is descretized at step increments,"
+  },
+  {
+    "objectID": "documentation/gdalfuns/geodesic.html#example-compute-an-geodesic-between-points-00-and-3050-discretized-at-100-km-steps.",
+    "href": "documentation/gdalfuns/geodesic.html#example-compute-an-geodesic-between-points-00-and-3050-discretized-at-100-km-steps.",
+    "title": "geodesic",
+    "section": "Example: Compute an geodesic between points (0,0) and (30,50) discretized at 100 km steps.",
+    "text": "Example: Compute an geodesic between points (0,0) and (30,50) discretized at 100 km steps.\nmat = geodesic([0 0; 30 50], step=100, unit=:k);"
   },
   {
     "objectID": "documentation/gdalfuns/gdalwrite.html",
@@ -10987,7 +10994,7 @@
     "href": "documentation/gdalfuns/gdaldem.html",
     "title": "gdaldem",
     "section": "",
-    "text": "function bwareaopen(I::Union{GMTimage{UInt8,2}, GMTimage{Bool,2}}; keepwhites::Bool=false, keepblacks::Bool=false, kwargs…)::GMTimage d = KW(kwargs) # When the memory layout is column major, the gmt2gd step has to make a data copy, so we better forget the # possibility an insitu gdalsievefilter operation and do a copy right away when layout is row major. Ic::GMTimage{UInt8,2} = helper_run_GDAL_fun(gdalsievefilter, I.layout[2] == ‘C’ ? I : deepcopy(I), ““, String[],”“, d…) (!keepwhites && !keepblacks) && return Ic white = (I.range[6] == 1) ? UInt8(1) : UInt8(255) black = UInt8(0) if (keepwhites) for k = 1:numel(Ic) @inbounds (I[k] == white) && (Ic[k] = white) end else for k = 1:numel(Ic) @inbounds (I[k] == black) && (Ic[k] = black) end end return Ic end function bwareaopen(data::String; kwargs…) data = gmtread(data, layout=”TRB”) bwareaopen(data; kwargs…) end\n\n—————————————————————————————————\n““” gdaldem(dataset, method, options=String[]; dest=“/vsimem/tmp”, color=name|GMTcpt, kw…)\nTools to analyze and visualize DEMs.\n\nParameters\n\ndataset The source dataset.\nmethod the processing to apply (one of “hillshade”, “slope”, “aspect”, “color-relief”, “TRI”, “TPI”, “Roughness”).\noptions List of options (potentially including filename and open options). The accepted options are the ones of the gdaldem utility.\n\n\n\n\nKeyword Arguments\n\ncolor color file (mandatory for “color-relief” processing, should be empty otherwise). If color is just a CPT name we compute a CPT from it and the input grid.\nkw... keyword=value arguments when method is hillshade.\n\n\nReturns\nA GMT grid or Image, or a GDAL dataset (or nothing if file was writen on disk)."
+    "text": "gdaldem(dataset, method, options=String[]; dest=\"/vsimem/tmp\", color=name|GMTcpt, kw...)\nTools to analyze and visualize DEMs.\n\nParameters\n\ndataset: The source dataset.\nmethod: the processing to apply (one of “hillshade”, “slope”, “aspect”, “color-relief”, “TRI”, “TPI”, “Roughness”).\noptions: List of options (potentially including filename and open options). The accepted options are the ones of the gdaldem utility.\n\n\n\nKeyword Arguments\n\ncolor: color file (mandatory for “color-relief” processing, should be empty otherwise). If color is just a CPT name we compute a CPT from it and the input grid.\nkw...: keyword=value arguments when method is hillshade.\n\n\nReturns\nA GMT grid or Image, or a GDAL dataset (or nothing if file was writen on disk)."
   },
   {
     "objectID": "documentation/gdalfuns/gdalshade.html",
@@ -11008,7 +11015,14 @@
     "href": "documentation/gdalfuns/geod.html",
     "title": "geod",
     "section": "",
-    "text": "geodesicarea(geom)\nCompute geometry area, considered as a surface on the underlying ellipsoid of the SRS attached to the geometry. The returned area will always be in square meters, and assumes that polygon edges describe geodesic lines on the ellipsoid. If the geometry’ SRS is not a geographic one, geometries are reprojected to the underlying geographic SRS of the geometry’ SRS.\n\nParameters\n\ngeom: the geometry. This can either be a GDAL AbstractGeometry or a GMTdataset (or vector of it), or a Matrix\n\nReturns the area of the geometry in square meters or a negative value in case of error for unsupported geometry types."
+    "text": "dest, azim = geod(lonlat, azim, distance; proj::String=\"\", s_srs::String=\"\", epsg::Integer=0, dataset=false, unit=:m)\nSolve the direct geodesic problem.\nArgs:\nThe distance argument can be a scalar, a Vector, a Vector{Vector} or an AbstractRange. The azimuth can be a scalar or a Vector.\nWhen azimuth is a Vector we always return a GMTdataset with the multiple lines. Use this together with a non-scalar distance to get lines with multiple points along the line. The number of points along line does not need to be the same. For data, give the distance as a Vector{Vector} where each element of distance is a vector with the distances of the points along a line. In this case the number of distance elements must be equal to the number of azimuth."
+  },
+  {
+    "objectID": "documentation/gdalfuns/geod.html#example-compute-two-lines-starting-at-00-with-lengths-111100-50000-heading-at-15-and-45-degrees.",
+    "href": "documentation/gdalfuns/geod.html#example-compute-two-lines-starting-at-00-with-lengths-111100-50000-heading-at-15-and-45-degrees.",
+    "title": "geod",
+    "section": "Example: Compute two lines starting at (0,0) with lengths 111100 & 50000, heading at 15 and 45 degrees.",
+    "text": "Example: Compute two lines starting at (0,0) with lengths 111100 & 50000, heading at 15 and 45 degrees.\ndest, = geod([0., 0], [15., 45], [[0, 10000, 50000, 111100.], [0., 50000]])[1]"
   },
   {
     "objectID": "documentation/gdalfuns/geodesicarea.html",

@@ -235,7 +235,7 @@ ul.task-list li input[type="checkbox"] {
   </li>  
         <li>
     <a class="dropdown-item" href="../../gallery/ex21.html">
- <span class="dropdown-text">(21)</span></a>
+ <span class="dropdown-text">(21) Time-series of RedHat stock price</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../../gallery/ex22.html">
@@ -391,8 +391,14 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#example-compute-an-geodesic-between-points-00-and-3050-discretized-at-100-km-steps." id="toc-example-compute-an-geodesic-between-points-00-and-3050-discretized-at-100-km-steps." class="nav-link active" data-scroll-target="#example-compute-an-geodesic-between-points-00-and-3050-discretized-at-100-km-steps.">Example: Compute an geodesic between points (0,0) and (30,50) discretized at 100 km steps.</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -416,14 +422,29 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<pre><code>geodesicarea(geom)</code></pre>
-<p>Compute geometry area, considered as a surface on the underlying ellipsoid of the SRS attached to the geometry. The returned area will always be in square meters, and assumes that polygon edges describe geodesic lines on the ellipsoid. If the geometry’ SRS is not a geographic one, geometries are reprojected to the underlying geographic SRS of the geometry’ SRS.</p>
+<pre><code>geodesic(D; step=0, unit=:m, np=0, proj::String="", epsg::Integer=0, longest::Bool=false)</code></pre>
+<p>or</p>
+<pre><code>geodesic(lon1, lat1, lon2, lat2; step=0, unit=:m, np=0, proj::String="", epsg::Integer=0, longest::Bool=false)</code></pre>
+<p>Generate geodesic line(s) (shortest distace) on an ellipsoid. Input data can be two or more points. In later case each line segment is descretized at <code>step</code> increments,</p>
 <section id="parameters" class="level3">
 <h3 class="anchored" data-anchor-id="parameters">Parameters</h3>
 <ul>
-<li><code>geom</code>: the geometry. This can either be a GDAL AbstractGeometry or a <a href="../..\documentation/general/types.html#sec-dataset-type">GMTdataset</a> (or vector of it), or a Matrix</li>
+<li><p><code>D</code>: - the input points. This can either be a GMTdataset (or vector of it), a Mx2 matrix, the name of file that can be read as a GMTdataset by <code>gmtread()</code> or a GDAL AbstractDataset object.</p></li>
+<li><p><code>step</code>: - Incremental distance at which the segment line is descretized in meters(the default), but see <code>unit</code></p></li>
+<li><p><code>unit</code>: - If <code>step</code> is not in meters use one of <code>unit=:km</code>, or <code>unit=:Nautical</code> or <code>unit=:Miles</code></p></li>
+<li><p><code>np</code>: - Number of intermediate points between poly-line vertices (alternative to <code>step</code>)</p></li>
+<li><p><code>proj</code> - If line data is in Cartesians but with a known projection pass in a PROJ4 string.</p></li>
+<li><p><code>epsg</code> - Same as <code>proj</code> but using an EPSG code.</p></li>
+<li><p><code>longest</code> - Compute the ‘long way around’ of the geodesic. That is, going from point A to B taking the longest path. But mind you that geodesics other than meridians and equator are not closed paths (see https://en.wikipedia.org/wiki/Geodesics_on_an_ellipsoid). This line is obtained by computing the azimuth from A to B, at B, and start the line at B with that azimuth and go around the Earth till we reach, <em>close</em> to A, but not exactly A (except for the simple meridian cases).</p></li>
 </ul>
-<p>Returns the area of the geometry in square meters or a negative value in case of error for unsupported geometry types.</p>
+</section>
+<section id="returns" class="level3">
+<h3 class="anchored" data-anchor-id="returns">Returns</h3>
+<p>A Mx2 matrix with the lon lat of the points along the geodesic when input is a matrix. A GMT dataset or a vector of it (when input is Vector{GMTdataset}).</p>
+</section>
+<section id="example-compute-an-geodesic-between-points-00-and-3050-discretized-at-100-km-steps." class="level2">
+<h2 class="anchored" data-anchor-id="example-compute-an-geodesic-between-points-00-and-3050-discretized-at-100-km-steps.">Example: Compute an geodesic between points (0,0) and (30,50) discretized at 100 km steps.</h2>
+<pre><code>mat = geodesic([0 0; 30 50], step=100, unit=:k);</code></pre>
 
 
 </section>

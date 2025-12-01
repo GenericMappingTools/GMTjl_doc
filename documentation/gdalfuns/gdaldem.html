@@ -235,7 +235,7 @@ ul.task-list li input[type="checkbox"] {
   </li>  
         <li>
     <a class="dropdown-item" href="../../gallery/ex21.html">
- <span class="dropdown-text">(21)</span></a>
+ <span class="dropdown-text">(21) Time-series of RedHat stock price</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../../gallery/ex22.html">
@@ -396,8 +396,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#section" id="toc-section" class="nav-link active" data-scroll-target="#section">—————————————————————————————————</a></li>
-  <li><a href="#keyword-arguments" id="toc-keyword-arguments" class="nav-link" data-scroll-target="#keyword-arguments">Keyword Arguments</a></li>
+  <li><a href="#keyword-arguments" id="toc-keyword-arguments" class="nav-link active" data-scroll-target="#keyword-arguments">Keyword Arguments</a></li>
   </ul>
 </nav>
     </div>
@@ -423,25 +422,21 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>function bwareaopen(I::Union{GMTimage{UInt8,2}, GMTimage{Bool,2}}; keepwhites::Bool=false, keepblacks::Bool=false, kwargs…)::GMTimage d = KW(kwargs) # When the memory layout is column major, the gmt2gd step has to make a data copy, so we better forget the # possibility an insitu gdalsievefilter operation and do a copy right away when layout is row major. Ic::GMTimage{UInt8,2} = helper_run_GDAL_fun(gdalsievefilter, I.layout[2] == ‘C’ ? I : deepcopy(I), ““, String[],”“, d…) (!keepwhites &amp;&amp; !keepblacks) &amp;&amp; return Ic white = (I.range[6] == 1) ? UInt8(1) : UInt8(255) black = UInt8(0) if (keepwhites) for k = 1:numel(Ic) <span class="citation" data-cites="inbounds">@inbounds</span> (I[k] == white) &amp;&amp; (Ic[k] = white) end else for k = 1:numel(Ic) <span class="citation" data-cites="inbounds">@inbounds</span> (I[k] == black) &amp;&amp; (Ic[k] = black) end end return Ic end function bwareaopen(data::String; kwargs…) data = gmtread(data, layout=”TRB”) bwareaopen(data; kwargs…) end</p>
-<section id="section" class="level1">
-<h1>—————————————————————————————————</h1>
-<p>““” gdaldem(dataset, method, options=String[]; dest=“/vsimem/tmp”, color=name|<a href="../..\documentation/general/types.html#sec-cpt-type">GMTcpt</a>, kw…)</p>
+<pre><code>gdaldem(dataset, method, options=String[]; dest="/vsimem/tmp", color=name|GMTcpt, kw...)</code></pre>
 <p>Tools to analyze and visualize DEMs.</p>
 <section id="parameters" class="level3">
 <h3 class="anchored" data-anchor-id="parameters">Parameters</h3>
 <ul>
-<li><code>dataset</code> The source dataset.</li>
-<li><code>method</code> the processing to apply (one of “hillshade”, “slope”, “aspect”, “color-relief”, “TRI”, “TPI”, “Roughness”).</li>
-<li><code>options</code> List of options (potentially including filename and open options). The accepted options are the ones of the gdaldem utility.</li>
+<li><p><code>dataset</code>: The source dataset.</p></li>
+<li><p><code>method</code>: the processing to apply (one of “hillshade”, “slope”, “aspect”, “color-relief”, “TRI”, “TPI”, “Roughness”).</p></li>
+<li><p><code>options</code>: List of options (potentially including filename and open options). The accepted options are the ones of the gdaldem utility.</p></li>
 </ul>
-</section>
 </section>
 <section id="keyword-arguments" class="level1">
 <h1>Keyword Arguments</h1>
 <ul>
-<li><p><code>color</code> color file (mandatory for “color-relief” processing, should be empty otherwise). If <code>color</code> is just a CPT name we compute a CPT from it and the input grid.</p></li>
-<li><p><code>kw...</code> keyword=value arguments when <code>method</code> is hillshade.</p></li>
+<li><p><code>color</code>: color file (mandatory for “color-relief” processing, should be empty otherwise). If <code>color</code> is just a CPT name we compute a CPT from it and the input grid.</p></li>
+<li><p><code>kw...</code>: keyword=value arguments when <code>method</code> is hillshade.</p></li>
 </ul>
 <section id="returns" class="level3">
 <h3 class="anchored" data-anchor-id="returns">Returns</h3>
