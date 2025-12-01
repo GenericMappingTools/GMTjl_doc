@@ -468,26 +468,20 @@ function.</p>
 <ul>
 <li>Create and plot a DataFrame</li>
 </ul>
-<div id="47b07d97" class="cell" data-execution_count="1">
+<div id="f81196ec" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span>, <span class="bu">DataFrames</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> <span class="fu">DataFrame</span>(t <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, series1 <span class="op">=</span> <span class="fu">sin</span>.(<span class="fl">1</span><span class="op">:</span><span class="fl">10</span>), series2<span class="op">=</span><span class="fu">rand</span>(<span class="fl">10</span>));</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(df, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stderr">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-cyan-fg ansi-bold">[ </span><span class="ansi-cyan-fg ansi-bold">Info: </span>Precompiling GMTDataFramesExt [b0121151-b40e-578b-8798-214dacfa5da6]
-</pre>
-</div>
-</div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Interoperability_files/figure-html/cell-2-output-2.png" class="img-fluid figure-img"></p>
+<p><img src="Interoperability_files/figure-html/cell-2-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>But one problem with the above solution is that although the <code>df</code> has three columns it only plotted a single curve. This happens because in GMT 3rd and on columns may be used to control color, symbol sizes etc and cannot therefore be assumed to <em>plotting data</em> by default. If we want that all columns are interpreted as data, we use the <code>multicol</code> option, like:</p>
-<div id="45806737" class="cell" data-execution_count="2">
+<div id="9d9dcd0d" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span>, <span class="bu">DataFrames</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> <span class="fu">DataFrame</span>(t <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, series1 <span class="op">=</span> <span class="fu">sin</span>.(<span class="fl">1</span><span class="op">:</span><span class="fl">10</span>), series2<span class="op">=</span><span class="fu">rand</span>(<span class="fl">10</span>));</span>
@@ -582,31 +576,51 @@ function.</p>
 <span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> <span class="fu">Raster</span>(WorldClim{BioClim}, <span class="fl">5</span>);</span>
 <span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="fu">viz</span>(A, colorbar<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><img src=".\assets/world_clim_bio_clim.png" class="center img-fluid" style="width:80.0%"></p>
-<p>begin{examplefig}{}</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span>, <span class="bu">Rasters</span></span>
+<div id="2aa2cfb5" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span>, <span class="bu">Rasters</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> <span class="bu">NCDatasets</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"https://archive.unidata.ucar.edu/software/netcdf/examples/tos_O1_2001-2002.nc"</span>;</span>
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>filename <span class="op">=</span> <span class="fu">download</span>(url, <span class="st">"tos_O1_2001-2002.nc"</span>);</span>
 <span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> <span class="fu">Raster</span>(filename);</span>
 <span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="fu">viz</span>(A[Ti<span class="op">=</span><span class="fl">6</span>], proj<span class="op">=:</span>guess, coast<span class="op">=</span><span class="cn">true</span>, colorbar<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>begin{examplefig}{}</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span>, <span class="bu">Rasters</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> <span class="bu">NCDatasets</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"https://archive.unidata.ucar.edu/software/netcdf/examples/tos_O1_2001-2002.nc"</span>;</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>filename <span class="op">=</span> <span class="fu">download</span>(url, <span class="st">"tos_O1_2001-2002.nc"</span>);</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> <span class="fu">Raster</span>(filename);</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="fu">viz</span>(A[Ti<span class="op">=</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span>], proj<span class="op">=:</span>Robinson, coast<span class="op">=</span><span class="cn">true</span>, colorbar<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Interoperability_files/figure-html/cell-4-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="b2d56fc5" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"https://archive.unidata.ucar.edu/software/netcdf/examples/tos_O1_2001-2002.nc"</span>;</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>filename <span class="op">=</span> <span class="fu">download</span>(url, <span class="st">"tos_O1_2001-2002.nc"</span>);</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> <span class="fu">Raster</span>(filename);</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="fu">viz</span>(A[Ti<span class="op">=</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span>], proj<span class="op">=:</span>Robinson, coast<span class="op">=</span><span class="cn">true</span>, colorbar<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Interoperability_files/figure-html/cell-5-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
 <p>But <em>I Don’t like Kelvins</em>. Fine, want centigrade? Just offset the <em>z</em> values.</p>
-<p>begin{examplefig}{}</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span>, <span class="bu">Rasters</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> <span class="bu">NCDatasets</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"https://archive.unidata.ucar.edu/software/netcdf/examples/tos_O1_2001-2002.nc"</span>;</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>filename <span class="op">=</span> <span class="fu">download</span>(url, <span class="st">"tos_O1_2001-2002.nc"</span>);</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> <span class="fu">Raster</span>(filename);</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">mat2grid</span>(A[Ti<span class="op">=</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span>], offset<span class="op">=-</span><span class="fl">273.15</span>);</span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="fu">viz</span>(G, proj<span class="op">=:</span>Robinson, coast<span class="op">=</span><span class="cn">true</span>, colorbar<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="65ede19e" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"https://archive.unidata.ucar.edu/software/netcdf/examples/tos_O1_2001-2002.nc"</span>;</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>filename <span class="op">=</span> <span class="fu">download</span>(url, <span class="st">"tos_O1_2001-2002.nc"</span>);</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> <span class="fu">Raster</span>(filename);</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">mat2grid</span>(A[Ti<span class="op">=</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span>], offset<span class="op">=-</span><span class="fl">273.15</span>);</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="fu">viz</span>(G, proj<span class="op">=:</span>Robinson, coast<span class="op">=</span><span class="cn">true</span>, colorbar<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Interoperability_files/figure-html/cell-6-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
 
 
 </section>
