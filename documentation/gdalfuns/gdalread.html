@@ -391,14 +391,8 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul class="collapse">
-  <li><a href="#section" id="toc-section" class="nav-link active" data-scroll-target="#section">—————————————————————————————————</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -422,27 +416,19 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>function gdalshade(fname; kwargs…) d = KW(kwargs) band = ((val = find_in_dict(d, [:band], false)[1]) !== nothing) ? string(val) : “1” cmap = find_in_dict(d, CPTaliases)[1] # The color cannot be passed to second call to gdaldem</p>
-<pre><code>A = gdaldem(fname, "color-relief", ["-b", band], C=cmap)
-B = gdaldem(fname, "hillshade"; d...)
-blendimg!(A, B)</code></pre>
-<p>end</p>
-<section id="section" class="level1">
-<h1>—————————————————————————————————</h1>
-<p>““” gdalread(fname::AbstractString, opts=String[]; gdataset=false, kwargs…)</p>
+<pre><code>gdalread(fname::AbstractString, opts=String[]; gdataset=false, kwargs...)</code></pre>
 <p>Read a raster or a vector file from a disk file and return the result either as a GMT type (the default) or a GDAL dataset.</p>
 <ul>
-<li><code>fname</code>: Input data. It can be a file name, a <a href="../..\documentation/general/types.html#sec-grid-type">GMTgrid</a> or <a href="../..\documentation/general/types.html#sec-image-type">GMTimage</a> object or a GDAL dataset</li>
-<li><code>opts</code>: List of options. The accepted options are the ones of the gdal_translate utility. This list can be in the form of a vector of strings, or joined in a simgle string.</li>
-<li><code>gdataset</code>: If set to <code>true</code> forces the return of a GDAL dataset instead of a GMT type.</li>
-<li><code>kwargs</code>: This options accept the GMT region (-R) and increment (-I)</li>
+<li><p><code>fname</code>: Input data. It can be a file name, a <a href="../..\documentation/general/types.html#sec-grid-type">GMTgrid</a> or <a href="../..\documentation/general/types.html#sec-image-type">GMTimage</a> object or a GDAL dataset</p></li>
+<li><p><code>opts</code>: List of options. The accepted options are the ones of the gdal_translate utility. This list can be in the form of a vector of strings, or joined in a simgle string.</p></li>
+<li><p><code>gdataset</code>: If set to <code>true</code> forces the return of a GDAL dataset instead of a GMT type.</p></li>
+<li><p><code>kwargs</code>: This options accept the GMT region (-R) and increment (-I)</p></li>
 </ul>
 <section id="returns" class="level3">
 <h3 class="anchored" data-anchor-id="returns">Returns</h3>
 <p>A GMT grid/image or a GDAL dataset</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

@@ -1166,7 +1166,7 @@
     "href": "documentation/gdalfuns/xy2lonlat.html",
     "title": "xy2lonlat",
     "section": "",
-    "text": "function lonlat2xy(xy::Vector{&lt;:Real}, t_srs_=nothing; t_srs=nothing, s_srs=prj4WGS84) vec(lonlat2xy(reshape(xy[:],1,length(xy)), t_srs_; t_srs=t_srs, s_srs=s_srs)) end lonlat2xy(x::Real, y::Real, t_srs_=nothing; t_srs=nothing, s_srs=prj4WGS84) = lonlat2xy([x y], t_srs_; t_srs=t_srs, s_srs=s_srs)\nfunction lonlat2xy(xy::Matrix{T}, t_srs_=nothing; t_srs=nothing, s_srs=prj4WGS84) where {T &lt;: Real} (t_srs_ !== nothing) && (t_srs = t_srs_) isa(s_srs, Int) && (s_srs = epsg2wkt(s_srs)) isa(t_srs, Int) && (t_srs = epsg2wkt(t_srs)) (t_srs === nothing) && error(“Must specify at least the target referencing system.”) opts = (size(xy,2) == 2) ? [“-s_srs”, s_srs, “-t_srs”, t_srs, “-overwrite”] : [“-s_srs”, s_srs, “-t_srs”, t_srs, “-overwrite”, “-dim”, “XYZ”] D = ogr2ogr(xy, opts) return D.data # Return only the array because that’s what was sent in end\nlonlat2xy(D::GMTdataset, t_srs_=nothing; t_srs=nothing, s_srs=prj4WGS84) = lonlat2xy([D], t_srs_; t_srs=t_srs, s_srs=s_srs) function lonlat2xy(D::Vector{&lt;:GMTdataset{T,2}}, t_srs_=nothing; t_srs=nothing, s_srs=prj4WGS84) where {T&lt;:Real} (t_srs_ !== nothing) && (t_srs = t_srs_) isa(t_srs, Int) && (t_srs = epsg2wkt(t_srs)) isa(s_srs, Int) && (s_srs = epsg2wkt(s_srs))\n(D[1].proj4 == \"\" && D[1].wkt == \"\" && t_srs === nothing) && error(\"No projection information whatsoever on the input data.\")\nif (t_srs != \"\") _t_srs = t_srs\nelse             _t_srs = (D[1].proj4 != \"\") ? D[1].proj4 : D[1].wkt\nend\nopts = (size(D[1].data,2) == 2) ? [\"-s_srs\", s_srs, \"-t_srs\", t_srs, \"-overwrite\"] :\n                                  [\"-s_srs\", s_srs, \"-t_srs\", t_srs, \"-overwrite\", \"-dim\", \"XYZ\"]\nr = ogr2ogr(D, opts)\n# For some bloody reason if we don't do this and call gdalwarp after, we get a \"gdalwarp returned a NULL pointer.\" error \n(length(D) &gt; 1) && ogr2ogr([0.0 0], [\"-s_srs\", \"+proj=lonlat\", \"-t_srs\", \"+proj=lonlat\", \"-overwrite\"])\nreturn r\nend\n\n—————————————————————————————————\n““” xy2lonlat(xy::Matrix{&lt;:Real}, s_srs=““; s_srs=”“, t_srs=”+proj=longlat +datum=WGS84”) or\nxy2lonlat(D::GMTdataset, s_srs=\"\"; s_srs=\"\", t_srs=\"+proj=longlat +datum=WGS84\")\nComputes the inverse projection from XY to LonLat in the given projection. The output is assumed to be in WGS84. If that isn’t right, pass the appropriate projection info via the t_srs option (PROJ4, WKT, EPSG).\n\nParameters\n\nxy: The input data. It can be a Matrix, or a GMTdataset (or vector of it)\ns_srs: The data projection system. This can be a PROJ4, a WKT string or EPSG code\nt_srs: The target SRS. If the default is not satisfactory, provide a new projection info (PROJ4, WKT, EPSG)\n\n\n\nReturns\nA Matrix if input is a Matrix or a GMTdadaset if input had that type"
+    "text": "xy2lonlat(xy::Matrix{&lt;:Real}, s_srs=\"\"; s_srs=\"\", t_srs=\"+proj=longlat +datum=WGS84\")\nor\nxy2lonlat(D::GMTdataset, s_srs=\"\"; s_srs=\"\", t_srs=\"+proj=longlat +datum=WGS84\")\nComputes the inverse projection from XY to LonLat in the given projection. The output is assumed to be in WGS84. If that isn’t right, pass the appropriate projection info via the t_srs option (PROJ4, WKT, EPSG).\n\nParameters\n\nxy: The input data. It can be a Matrix, or a GMTdataset (or vector of it)\ns_srs: The data projection system. This can be a PROJ4, a WKT string or EPSG code.\nt_srs: The target SRS. If the default is not satisfactory, provide a new projection info (PROJ4, WKT, EPSG)\n\n\n\nReturns\nA Matrix if input is a Matrix or a GMTdadaset if input had that type"
   },
   {
     "objectID": "documentation/gdalfuns/within.html",
@@ -1218,11 +1218,11 @@
     "text": "function loxodrome_inverse(lon1, lat1, lon2, lat2, a=6378137.0, f=0.0033528106647474805)\nCompute the inverse problem of a loxodrome on the ellipsoid.\nGiven latitudes and longitudes of P1 and P2 on the ellipsoid, compute the azimuth a12 of the loxodrome P1P2, the arc length s along the loxodrome curve.\nArgs:"
   },
   {
-    "objectID": "documentation/gdalfuns/loxodrome_direct.html#example-compute-the-distance-and-azimuth-beyween-points-00-and-55",
-    "href": "documentation/gdalfuns/loxodrome_direct.html#example-compute-the-distance-and-azimuth-beyween-points-00-and-55",
+    "objectID": "documentation/gdalfuns/loxodrome_direct.html#example",
+    "href": "documentation/gdalfuns/loxodrome_direct.html#example",
     "title": "loxodrome_direct",
-    "section": "Example: Compute the distance and azimuth beyween points (0,0) and (5,5)",
-    "text": "Example: Compute the distance and azimuth beyween points (0,0) and (5,5)\ndist, azim = loxodrome_inverse(0,0,5,5)\n““” function loxodrome_inverse(lon1, lat1, lon2, lat2, a=6378137.0, f=0.0033528106647474805) D2R = pi / 180 lon1 = D2R; lat1 = D2R lon2 = D2R; lat2 = D2R e2 = f * (2 - f)\nisolat1 = isometric_lat(lat1, e2)\nisolat2 = isometric_lat(lat2, e2)\n\n# Compute changes in isometric latitude and longitude between P1 and P2\nAz12 = atan((lon2 - lon1), (isolat2 - isolat1))     # The azimuth\n# Compute distance along loxodromic curve\nm1 = meridian_dist(lat1, a, e2)\nm2 = meridian_dist(lat2, a, e2)\nlox_s = (m2 - m1) / cos(Az12);\nreturn lox_s, Az12 / D2R\nend"
+    "section": "Example",
+    "text": "Example\nCompute the distance and azimuth beyween points (0,0) and (5,5)\ndist, azim = loxodrome_inverse(0,0,5,5)"
   },
   {
     "objectID": "documentation/gdalfuns/lonlat2xy.html",
@@ -1260,11 +1260,11 @@
     "text": "geodesic(D; step=0, unit=:m, np=0, proj::String=\"\", epsg::Integer=0, longest::Bool=false)\nor\nGenerate geodesic line(s) (shortest distace) on an ellipsoid. Input data can be two or more points. In later case each line segment is descretized at step increments,"
   },
   {
-    "objectID": "documentation/gdalfuns/geodesic.html#example-compute-an-geodesic-between-points-00-and-3050-discretized-at-100-km-steps.",
-    "href": "documentation/gdalfuns/geodesic.html#example-compute-an-geodesic-between-points-00-and-3050-discretized-at-100-km-steps.",
+    "objectID": "documentation/gdalfuns/geodesic.html#example",
+    "href": "documentation/gdalfuns/geodesic.html#example",
     "title": "geodesic",
-    "section": "Example: Compute an geodesic between points (0,0) and (30,50) discretized at 100 km steps.",
-    "text": "Example: Compute an geodesic between points (0,0) and (30,50) discretized at 100 km steps.\nmat = geodesic([0 0; 30 50], step=100, unit=:k);"
+    "section": "Example",
+    "text": "Example\nCompute an geodesic between points (0,0) and (30,50) discretized at 100 km steps.\nmat = geodesic([0 0; 30 50], step=100, unit=:k);"
   },
   {
     "objectID": "documentation/gdalfuns/gdalwrite.html",
@@ -1285,7 +1285,7 @@
     "href": "documentation/gdalfuns/gdalread.html",
     "title": "gdalread",
     "section": "",
-    "text": "function gdalshade(fname; kwargs…) d = KW(kwargs) band = ((val = find_in_dict(d, [:band], false)[1]) !== nothing) ? string(val) : “1” cmap = find_in_dict(d, CPTaliases)[1] # The color cannot be passed to second call to gdaldem\nA = gdaldem(fname, \"color-relief\", [\"-b\", band], C=cmap)\nB = gdaldem(fname, \"hillshade\"; d...)\nblendimg!(A, B)\nend\n\n—————————————————————————————————\n““” gdalread(fname::AbstractString, opts=String[]; gdataset=false, kwargs…)\nRead a raster or a vector file from a disk file and return the result either as a GMT type (the default) or a GDAL dataset.\n\nfname: Input data. It can be a file name, a GMTgrid or GMTimage object or a GDAL dataset\nopts: List of options. The accepted options are the ones of the gdal_translate utility. This list can be in the form of a vector of strings, or joined in a simgle string.\ngdataset: If set to true forces the return of a GDAL dataset instead of a GMT type.\nkwargs: This options accept the GMT region (-R) and increment (-I)\n\n\nReturns\nA GMT grid/image or a GDAL dataset"
+    "text": "gdalread(fname::AbstractString, opts=String[]; gdataset=false, kwargs...)\nRead a raster or a vector file from a disk file and return the result either as a GMT type (the default) or a GDAL dataset.\n\nfname: Input data. It can be a file name, a GMTgrid or GMTimage object or a GDAL dataset\nopts: List of options. The accepted options are the ones of the gdal_translate utility. This list can be in the form of a vector of strings, or joined in a simgle string.\ngdataset: If set to true forces the return of a GDAL dataset instead of a GMT type.\nkwargs: This options accept the GMT region (-R) and increment (-I)\n\n\nReturns\nA GMT grid/image or a GDAL dataset"
   },
   {
     "objectID": "documentation/gdalfuns/gd2gmt.html",
@@ -1306,7 +1306,7 @@
     "href": "documentation/gdalfuns/epsg2proj.html",
     "title": "epsg2proj",
     "section": "",
-    "text": "wkt2proj(wkt_str::String) = toPROJ4(importWKT(wkt_str))\n““” epsg2proj(code::Integer)\nConvert a EPSG code into the PROJ4 form."
+    "text": "epsg2proj(code::Integer)\nConvert a EPSG code into the PROJ4 form."
   },
   {
     "objectID": "documentation/gdalfuns/envelope.html",
@@ -10980,7 +10980,7 @@
     "href": "documentation/gdalfuns/epsg2wkt.html",
     "title": "epsg2wkt",
     "section": "",
-    "text": "epsg2proj(code::Integer) = toPROJ4(importEPSG(code))\n““” epsg2wkt(code::Integer, pretty::Bool=false)\nConvert a EPSG code into the WKT form. Use pretty=true to return a more human readable text."
+    "text": "epsg2wkt(code::Integer, pretty::Bool=false)\nConvert a EPSG code into the WKT form. Use pretty=true to return a more human readable text."
   },
   {
     "objectID": "documentation/gdalfuns/fillnodata.html",
@@ -11018,11 +11018,11 @@
     "text": "dest, azim = geod(lonlat, azim, distance; proj::String=\"\", s_srs::String=\"\", epsg::Integer=0, dataset=false, unit=:m)\nSolve the direct geodesic problem.\nArgs:\nThe distance argument can be a scalar, a Vector, a Vector{Vector} or an AbstractRange. The azimuth can be a scalar or a Vector.\nWhen azimuth is a Vector we always return a GMTdataset with the multiple lines. Use this together with a non-scalar distance to get lines with multiple points along the line. The number of points along line does not need to be the same. For data, give the distance as a Vector{Vector} where each element of distance is a vector with the distances of the points along a line. In this case the number of distance elements must be equal to the number of azimuth."
   },
   {
-    "objectID": "documentation/gdalfuns/geod.html#example-compute-two-lines-starting-at-00-with-lengths-111100-50000-heading-at-15-and-45-degrees.",
-    "href": "documentation/gdalfuns/geod.html#example-compute-two-lines-starting-at-00-with-lengths-111100-50000-heading-at-15-and-45-degrees.",
+    "objectID": "documentation/gdalfuns/geod.html#example",
+    "href": "documentation/gdalfuns/geod.html#example",
     "title": "geod",
-    "section": "Example: Compute two lines starting at (0,0) with lengths 111100 & 50000, heading at 15 and 45 degrees.",
-    "text": "Example: Compute two lines starting at (0,0) with lengths 111100 & 50000, heading at 15 and 45 degrees.\ndest, = geod([0., 0], [15., 45], [[0, 10000, 50000, 111100.], [0., 50000]])[1]"
+    "section": "Example",
+    "text": "Example\nCompute two lines starting at (0,0) with lengths 111100 & 50000, heading at 15 and 45 degrees.\ndest, = geod([0., 0], [15., 45], [[0, 10000, 50000, 111100.], [0., 50000]])[1]"
   },
   {
     "objectID": "documentation/gdalfuns/geodesicarea.html",
@@ -11081,11 +11081,11 @@
     "text": "function loxodrome_inverse(lon1, lat1, lon2, lat2, a=6378137.0, f=0.0033528106647474805)\nCompute the inverse problem of a loxodrome on the ellipsoid.\nGiven latitudes and longitudes of P1 and P2 on the ellipsoid, compute the azimuth a12 of the loxodrome P1P2, the arc length s along the loxodrome curve.\nArgs:"
   },
   {
-    "objectID": "documentation/gdalfuns/loxodrome_inverse.html#example-compute-the-distance-and-azimuth-beyween-points-00-and-55",
-    "href": "documentation/gdalfuns/loxodrome_inverse.html#example-compute-the-distance-and-azimuth-beyween-points-00-and-55",
+    "objectID": "documentation/gdalfuns/loxodrome_inverse.html#example",
+    "href": "documentation/gdalfuns/loxodrome_inverse.html#example",
     "title": "loxodrome_inverse",
-    "section": "Example: Compute the distance and azimuth beyween points (0,0) and (5,5)",
-    "text": "Example: Compute the distance and azimuth beyween points (0,0) and (5,5)\ndist, azim = loxodrome_inverse(0,0,5,5)"
+    "section": "Example",
+    "text": "Example\nCompute the distance and azimuth beyween points (0,0) and (5,5)\ndist, azim = loxodrome_inverse(0,0,5,5)"
   },
   {
     "objectID": "documentation/gdalfuns/overlaps.html",
@@ -11127,7 +11127,7 @@
     "href": "documentation/gdalfuns/wkt2proj.html",
     "title": "wkt2proj",
     "section": "",
-    "text": "function proj2wkt(proj4_str::String; pretty::Bool=false) !startswith(proj4_str, “+proj=”) && error(“$(proj4_str) is not a valid proj4 string”) toWKT(importPROJ4(proj4_str), pretty) end\n““” wkt2proj(wkt_str::String)\nConvert a WKT SRS string into the PROJ4 form."
+    "text": "wkt2proj(wkt_str::String)\nConvert a WKT SRS string into the PROJ4 form."
   },
   {
     "objectID": "documentation/solids.html",
@@ -11834,21 +11834,21 @@
     "href": "geophysics/earthtides/01_earthtides.html#a-global-view",
     "title": "Earth tides",
     "section": "A global view",
-    "text": "A global view\nThis example shows a global view of the vertical component of the Earth tide for a perticular data.\n\nusing GMT\nGMT.resetGMT() # hide\nG = earthtide(T=\"2022-07-07T12:00:00\");\nimshow(G, coast=true, colorbar=true, title=\"Earth tide at noon 7-July-2022\")"
+    "text": "A global view\nThis example shows a global view of the vertical component of the Earth tide for a perticular data.\n\nusing GMT\nGMT.resetGMT() # hide\nG = earthtide(T=\"2022-07-07T12:00:00\");\nimshow(G, coast=true, colorbar=true, title=\"Earth tide at noon 7-July-2022\")\n\n\nPrecompiling packages...\n\n  62761.4 ms  ✓ GMT\n\n  1 dependency successfully precompiled in 68 seconds. 80 already precompiled.\n\n[ Info: Precompiling GMTParkerFFTExt [35a23bc9-6f20-5cbc-8971-9cdf66427582]"
   },
   {
     "objectID": "geophysics/earthtides/01_earthtides.html#the-3-components",
     "href": "geophysics/earthtides/01_earthtides.html#the-3-components",
     "title": "Earth tides",
     "section": "The 3 components",
-    "text": "The 3 components\nNow we show the three components of the Earth tide for a specific location (the Panama Cannal) and time interval (the 7’th July 2022).\nFirst we compute the components that will come out in a with named columns. This is handy because we can refer to them by name instead of by column number.\nusing GMT, PrettyTables   # hide\ngetpath4docs(file::String) = joinpath(\"..\", \"..\", \"..\", \"..\", \"..\", file) # hide\nio = IOBuffer() # hide\nD = earthtide(range=(\"2022-07-07T\", \"2022-07-08T\", \"1m\"), location=(-82,9))\nPrettyTables.pretty_table(io, D.data[1:5,:]; header=D.colnames, backend=Val(:html)) # hide\nprintln(\"~~~\" * String(take!(io)) * \"~~~\") # hide\nNow plot the three of them with a legend\n\nusing GMT\nD = earthtide(range=\"2022-07-07T/2022-07-08T/1m\", location=(-82,9));    # hide\nplot(D[:Time, :Vertical], lc=:red, lw=1, legend=:Vertical,\n     title=\"Earth tide components (m) at Panama Cannal\")\nplot!(D[:Time, :East],  lc=:green, lw=1, legend=:East)\nplot!(D[:Time, :North], lc=:blue,  lw=1, legend=:North, show=true)"
+    "text": "The 3 components\nNow we show the three components of the Earth tide for a specific location (the Panama Cannal) and time interval (the 7’th July 2022).\nFirst we compute the components that will come out in a with named columns. This is handy because we can refer to them by name instead of by column number.\nD = earthtide(range=(\"2022-07-07T\", \"2022-07-08T\", \"1m\"), location=(-82,9))\n\n1441×4 GMTdataset{Float64, 2}\n Row │                Time        East        North  Vertical\n─────┼────────────────────────────────────────────────────────\n   1 │ 2022-07-07T00:00:00  -0.0186548  -0.0120856   0.152718\n   2 │ 2022-07-07T00:01:00  -0.0187063  -0.0123039   0.152364\n   3 │ 2022-07-07T00:02:00  -0.0187575  -0.0125214   0.152003\n   4 │ 2022-07-07T00:03:00  -0.0188083  -0.0127382   0.151636\n   5 │ 2022-07-07T00:04:00  -0.0188586  -0.0129542   0.151263\n   6 │ 2022-07-07T00:05:00  -0.0189085  -0.0131695   0.150883\n   7 │ 2022-07-07T00:06:00  -0.018958   -0.0133839   0.150496\n   8 │ 2022-07-07T00:07:00  -0.0190071  -0.0135975   0.150103\n   9 │ 2022-07-07T00:08:00  -0.0190558  -0.0138102   0.149704\n  10 │ 2022-07-07T00:09:00  -0.0191041  -0.0140221   0.149298\n  11 │ 2022-07-07T00:10:00  -0.0191519  -0.0142331   0.148886\n  12 │ 2022-07-07T00:11:00  -0.0191993  -0.0144432   0.148468\n  13 │ 2022-07-07T00:12:00  -0.0192463  -0.0146525   0.148044\n  ⋮  │          ⋮               ⋮            ⋮          ⋮\nNow plot the three of them with a legend\n\nD = earthtide(range=\"2022-07-07T/2022-07-08T/1m\", location=(-82,9));    # hide\nplot(D[:Time, :Vertical], lc=:red, lw=1, legend=:Vertical,\n     title=\"Earth tide components (m) at Panama Cannal\")\nplot!(D[:Time, :East],  lc=:green, lw=1, legend=:East)\nplot!(D[:Time, :North], lc=:blue,  lw=1, legend=:North, show=true)"
   },
   {
     "objectID": "geophysics/earthtides/01_earthtides.html#one-month-of-tides",
     "href": "geophysics/earthtides/01_earthtides.html#one-month-of-tides",
     "title": "Earth tides",
     "section": "One month of tides",
-    "text": "One month of tides\nAnd now, let’s see a full month of tidal data (vertical component).\n\nusing GMT\nD = earthtide(range=(\"2022-07-01T\", \"2022-07-31T\", \"1m\"), location=(-82,9));\nplot(D[:Time, :Vertical], lc=:blue, legend=:Vertical, title=\"Tides (m), one month\", show=true)"
+    "text": "One month of tides\nAnd now, let’s see a full month of tidal data (vertical component).\n\nD = earthtide(range=(\"2022-07-01T\", \"2022-07-31T\", \"1m\"), location=(-82,9));\nplot(D[:Time, :Vertical], lc=:blue, legend=:Vertical, title=\"Tides (m), one month\", show=true)"
   },
   {
     "objectID": "examples/frames/frames.html",

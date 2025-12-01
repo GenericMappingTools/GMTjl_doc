@@ -391,14 +391,8 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul class="collapse">
-  <li><a href="#section" id="toc-section" class="nav-link active" data-scroll-target="#section">—————————————————————————————————</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -422,31 +416,16 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>function lonlat2xy(xy::Vector{&lt;:Real}, t_srs_=nothing; t_srs=nothing, s_srs=prj4WGS84) vec(lonlat2xy(reshape(xy[:],1,length(xy)), t_srs_; t_srs=t_srs, s_srs=s_srs)) end lonlat2xy(x::Real, y::Real, t_srs_=nothing; t_srs=nothing, s_srs=prj4WGS84) = lonlat2xy([x y], t_srs_; t_srs=t_srs, s_srs=s_srs)</p>
-<p>function lonlat2xy(xy::Matrix{T}, t_srs_=nothing; t_srs=nothing, s_srs=prj4WGS84) where {T &lt;: Real} (t_srs_ !== nothing) &amp;&amp; (t_srs = t_srs_) isa(s_srs, Int) &amp;&amp; (s_srs = epsg2wkt(s_srs)) isa(t_srs, Int) &amp;&amp; (t_srs = epsg2wkt(t_srs)) (t_srs === nothing) &amp;&amp; error(“Must specify at least the target referencing system.”) opts = (size(xy,2) == 2) ? [“-s_srs”, s_srs, “-t_srs”, t_srs, “-overwrite”] : [“-s_srs”, s_srs, “-t_srs”, t_srs, “-overwrite”, “-dim”, “XYZ”] D = ogr2ogr(xy, opts) return D.data # Return only the array because that’s what was sent in end</p>
-<p>lonlat2xy(D::GMTdataset, t_srs_=nothing; t_srs=nothing, s_srs=prj4WGS84) = lonlat2xy([D], t_srs_; t_srs=t_srs, s_srs=s_srs) function lonlat2xy(D::Vector{&lt;:GMTdataset{T,2}}, t_srs_=nothing; t_srs=nothing, s_srs=prj4WGS84) where {T&lt;:Real} (t_srs_ !== nothing) &amp;&amp; (t_srs = t_srs_) isa(t_srs, Int) &amp;&amp; (t_srs = epsg2wkt(t_srs)) isa(s_srs, Int) &amp;&amp; (s_srs = epsg2wkt(s_srs))</p>
-<pre><code>(D[1].proj4 == "" &amp;&amp; D[1].wkt == "" &amp;&amp; t_srs === nothing) &amp;&amp; error("No projection information whatsoever on the input data.")
-if (t_srs != "") _t_srs = t_srs
-else             _t_srs = (D[1].proj4 != "") ? D[1].proj4 : D[1].wkt
-end
-opts = (size(D[1].data,2) == 2) ? ["-s_srs", s_srs, "-t_srs", t_srs, "-overwrite"] :
-                                  ["-s_srs", s_srs, "-t_srs", t_srs, "-overwrite", "-dim", "XYZ"]
-r = ogr2ogr(D, opts)
-# For some bloody reason if we don't do this and call gdalwarp after, we get a "gdalwarp returned a NULL pointer." error 
-(length(D) &gt; 1) &amp;&amp; ogr2ogr([0.0 0], ["-s_srs", "+proj=lonlat", "-t_srs", "+proj=lonlat", "-overwrite"])
-return r</code></pre>
-<p>end</p>
-<section id="section" class="level1">
-<h1>—————————————————————————————————</h1>
-<p>““” xy2lonlat(xy::Matrix{&lt;:Real}, s_srs=““; s_srs=”“, t_srs=”+proj=longlat +datum=WGS84”) or</p>
+<pre><code>xy2lonlat(xy::Matrix{&lt;:Real}, s_srs=""; s_srs="", t_srs="+proj=longlat +datum=WGS84")</code></pre>
+<p>or</p>
 <pre><code>xy2lonlat(D::GMTdataset, s_srs=""; s_srs="", t_srs="+proj=longlat +datum=WGS84")</code></pre>
 <p>Computes the inverse projection from XY to LonLat in the given projection. The output is assumed to be in WGS84. If that isn’t right, pass the appropriate projection info via the <code>t_srs</code> option (PROJ4, WKT, EPSG).</p>
 <section id="parameters" class="level3">
 <h3 class="anchored" data-anchor-id="parameters">Parameters</h3>
 <ul>
-<li><code>xy</code>: The input data. It can be a Matrix, or a <a href="../..\documentation/general/types.html#sec-dataset-type">GMTdataset</a> (or vector of it)</li>
-<li><code>s_srs</code>: The data projection system. This can be a PROJ4, a WKT string or EPSG code</li>
-<li><code>t_srs</code>: The target SRS. If the default is not satisfactory, provide a new projection info (PROJ4, WKT, EPSG)</li>
+<li><p><code>xy</code>: The input data. It can be a Matrix, or a <a href="../..\documentation/general/types.html#sec-dataset-type">GMTdataset</a> (or vector of it)</p></li>
+<li><p><code>s_srs</code>: The data projection system. This can be a PROJ4, a WKT string or EPSG code.</p></li>
+<li><p><code>t_srs</code>: The target SRS. If the default is not satisfactory, provide a new projection info (PROJ4, WKT, EPSG)</p></li>
 </ul>
 </section>
 <section id="returns" class="level3">
@@ -454,7 +433,6 @@ return r</code></pre>
 <p>A Matrix if input is a Matrix or a GMTdadaset if input had that type</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
