@@ -431,33 +431,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#examples" id="toc-examples" class="nav-link active" data-scroll-target="#examples">Examples</a></li>
+  <li><a href="#imerode" id="toc-imerode" class="nav-link active" data-scroll-target="#imerode">imerode</a>
+  <ul class="collapse">
+  <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
   <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">imerode</h1>
-</div>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
 
 
-<div class="quarto-title-meta">
 
-    
-  
-    
-  </div>
-  
-
-
-</header>
-
-
+<section id="imerode" class="level1">
+<h1>imerode</h1>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>J <span class="op">=</span> <span class="fu">imerode</span>(I<span class="op">::</span><span class="dt">Union{GMTimage{&lt;:UInt8, 2}, GMTimage{&lt;:Bool, 2}}</span>; hsize<span class="op">=</span><span class="fl">3</span>, vsize<span class="op">=</span><span class="fl">3</span>, sel<span class="op">=</span><span class="cn">nothing</span>)<span class="op">::</span><span class="dt">GMTimage</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Erode the grayscale or binary image I.</p>
 <p>The erosion is performed with a matrix of 0’s and 1’s with width <code>hsize</code> and height <code>vsize</code>, or, if possible, with the structuring element <a href="../..\documentation/imgproc/strel.html">strel</a>. Later case is faster but it is only available for binary images, where by <em>binary</em> images we mean Boolean images or images with only 0’s and 1’s of UInt8 type.</p>
@@ -482,31 +471,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <p>Erosion with a disk radius of 10, 5 and 20</p>
-<div id="1597d48d" class="cell" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>I <span class="op">=</span> <span class="fu">gmtread</span>(TESTSDIR <span class="op">*</span> <span class="st">"assets/chip.png"</span>);</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>J1 <span class="op">=</span> <span class="fu">imerode</span>(I, sel<span class="op">=</span><span class="fu">strel</span>(<span class="st">"disk"</span>, <span class="fl">10</span>));</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>J2 <span class="op">=</span> <span class="fu">imerode</span>(I, sel<span class="op">=</span><span class="fu">strel</span>(<span class="st">"disk"</span>, <span class="fl">5</span>));</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>J3 <span class="op">=</span> <span class="fu">imerode</span>(I, sel<span class="op">=</span><span class="fu">strel</span>(<span class="st">"disk"</span>, <span class="fl">20</span>));</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">grdimage</span>(I, figsize<span class="op">=</span><span class="fl">6</span>)</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">grdimage!</span>(J1, figsize<span class="op">=</span><span class="fl">6</span>, xshift<span class="op">=</span><span class="fl">6.1</span>)</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="fu">grdimage!</span>(J2, figsize<span class="op">=</span><span class="fl">6</span>, xshift<span class="op">=-</span><span class="fl">6.1</span>, yshift<span class="op">=-</span><span class="fl">6.1</span>)</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="fu">grdimage!</span>(J3, figsize<span class="op">=</span><span class="fl">6</span>, xshift<span class="op">=</span><span class="fl">6.1</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="imerode_files/figure-html/cell-2-output-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>I <span class="op">=</span> <span class="fu">gmtread</span>(TESTSDIR <span class="op">*</span> <span class="st">"assets/chip.png"</span>);</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>J1 <span class="op">=</span> <span class="fu">imerode</span>(I, sel<span class="op">=</span><span class="fu">strel</span>(<span class="st">"disk"</span>, <span class="fl">10</span>));</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>J2 <span class="op">=</span> <span class="fu">imerode</span>(I, sel<span class="op">=</span><span class="fu">strel</span>(<span class="st">"disk"</span>, <span class="fl">5</span>));</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>J3 <span class="op">=</span> <span class="fu">imerode</span>(I, sel<span class="op">=</span><span class="fu">strel</span>(<span class="st">"disk"</span>, <span class="fl">20</span>));</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">grdimage</span>(I, figsize<span class="op">=</span><span class="fl">6</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">grdimage!</span>(J1, figsize<span class="op">=</span><span class="fl">6</span>, xshift<span class="op">=</span><span class="fl">6.1</span>)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">grdimage!</span>(J2, figsize<span class="op">=</span><span class="fl">6</span>, xshift<span class="op">=-</span><span class="fl">6.1</span>, yshift<span class="op">=-</span><span class="fl">6.1</span>)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">grdimage!</span>(J3, figsize<span class="op">=</span><span class="fl">6</span>, xshift<span class="op">=</span><span class="fl">6.1</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><img src="../..\assets/imerode_nocrash.png" class="center img-fluid" width="600"></p>
 </section>
 <section id="see-also" class="level2">
 <h2 class="anchored" data-anchor-id="see-also">See Also</h2>
 <p><a href="../..\documentation/imgproc/imdilate.html">imdilate</a>, <a href="../..\documentation/imgproc/imopen.html">imopen</a>, <a href="../..\documentation/imgproc/imclose.html">imclose</a>, <a href="../..\documentation/imgproc/strel.html">strel</a></p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
