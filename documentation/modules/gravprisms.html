@@ -509,9 +509,9 @@ window.Quarto = {
 <li><p><strong>fname</strong> or <strong>arg1</strong> : – <em>fname=file_name</em> <strong>|</strong> <em>arg1=matrix|D</em><br>
 The file name or a matrix/<a href="GMTdatset.html">GMTdatset</a> describing the prisms with record format <em>x y z_lo z_hi</em> [ <em>dx dy</em> ] [ <em>rho</em> ], where the optional items are controlled by options <strong>xy_sizes</strong> and <strong>density</strong>, respectively. Density contrasts can be given in <span class="math inline">\(kg/m^3\)</span> or <span class="math inline">\(g/cm^3\)</span>. <strong>Note</strong>: If <strong>prisms</strong> is used then no <em>table</em> will be read.</p></li>
 <li><p><strong>I</strong> or <strong>inc</strong> or <strong>increment</strong> or <strong>spacing</strong> : – <em>inc=x_inc</em> <strong>|</strong> <em>inc=(x_inc, y_inc)</em> <strong>|</strong> <em>inc=“xinc[+e|n][/yinc[+e|n]]”</em><br>
-Specify the grid increments or the block sizes. More at [spacing](../common_opts/opt_I.html)</p></li>
+Specify the grid increments or the block sizes. More at <a href="../../documentation/common_opts/opt_I.html">spacing</a></p></li>
 <li><p><strong>R</strong> or <strong>region</strong> or <strong>limits</strong> : – <em>limits=(xmin, xmax, ymin, ymax)</em> <strong>|</strong> <em>limits=(BB=(xmin, xmax, ymin, ymax),)</em> <strong>|</strong> <em>limits=(LLUR=(xmin, xmax, ymin, ymax),units=“unit”)</em> <strong>|</strong> …more<br>
-Specify the region of interest. More at [limits](../common_opts/opt_R.html). For perspective view <strong>view</strong>, optionally add <em>zmin,zmax</em>. This option may be used to indicate the range used for the 3-D axes. You may ask for a larger w/e/s/n region to have more room between the image and the axes.</p></li>
+Specify the region of interest. More at <a href="../../documentation/common_opts/opt_R.html">limits</a>. For perspective view <strong>view</strong>, optionally add <em>zmin,zmax</em>. This option may be used to indicate the range used for the 3-D axes. You may ask for a larger w/e/s/n region to have more room between the image and the axes.</p></li>
 </ul>
 </section>
 <section id="optional-arguments" class="level2">
@@ -563,7 +563,7 @@ Give name of grid with the full seamount heights, either for making prisms or as
 Give name of the top surface grid for a layer we wish to approximate with prisms, or give a constant <em>z</em>-level.</p>
 <ul>
 <li><strong>V</strong> or <em>verbose</em> : – <em>verbose=true</em> <strong>|</strong> <em>verbose=level</em><br>
-Select verbosity level. More at [verbose](../common_opts/opt_V.html)</li>
+Select verbosity level. More at <a href="../../documentation/common_opts/opt_V.html">verbose</a></li>
 </ul>
 <p><strong>-W</strong> or <strong>hvar_rho</strong> or <strong>avedens</strong> : – <em>hvar_rho=fname|grid</em><br>
 Give name of an output grid with spatially varying, vertically-averaged prism densities created by <strong>prisms</strong> and <strong>radial_rho</strong>.</p>
@@ -596,7 +596,7 @@ Swap 1st and 2nd column on input and/or output. <a href="https://docs.generic-ma
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <p>We have prepared a set of 2828 prisms that represent a truncated Gaussian seamount of height 6000 m, radius 30 km, with the base at z = 0 m, available in the remote file <span class="citation" data-cites="prisms.txt">@prisms.txt</span>. A quick view of the 3-D model can be had via:</p>
-<div id="1b704250" class="cell" data-execution_count="1">
+<div id="a70da8e5" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot3d</span>(<span class="st">"@prisms.txt"</span>, region<span class="op">=</span>(<span class="op">-</span><span class="fl">30</span>, <span class="fl">30</span>, <span class="op">-</span><span class="fl">30</span>, <span class="fl">30</span>, <span class="fl">0</span>, <span class="fl">7000</span>), zsize<span class="op">=</span><span class="fl">3</span>, fill<span class="op">=:</span>gray,</span>
@@ -610,7 +610,7 @@ Swap 1st and 2nd column on input and/or output. <a href="https://docs.generic-ma
 </div>
 </div>
 <p>To compute the free-air anomalies on a grid over the set of prisms given in _<span class="citation" data-cites="prisms.txt_">@prisms.txt_</span>, using 1700 <span class="math inline">\(kg/m^3\)</span> as a fixed density contrast, with horizontal distances in km and vertical distances in meters, observed at 7000 m, try:</p>
-<div id="066eb27d" class="cell" data-execution_count="2">
+<div id="aa9a6ce5" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">gravprisms</span>(<span class="st">"@prisms.txt"</span>, region<span class="op">=</span>(<span class="op">-</span><span class="fl">40</span>,<span class="fl">40</span>,<span class="op">-</span><span class="fl">40</span>,<span class="fl">40</span>), inc<span class="op">=</span><span class="fl">1</span>, units<span class="op">=:</span>horizontal,</span>
@@ -625,7 +625,7 @@ Swap 1st and 2nd column on input and/or output. <a href="https://docs.generic-ma
 </div>
 </div>
 <p>To obtain the vertical gravity gradient anomaly along the track given in crossing.txt for the same model, try:</p>
-<div id="f7c17a32" class="cell" data-execution_count="3">
+<div id="27e58672" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>Dcross <span class="op">=</span> <span class="fu">gmt</span>(<span class="st">"math -T-30/30/0.1 T 0 MUL ="</span>);</span>
@@ -640,7 +640,7 @@ Swap 1st and 2nd column on input and/or output. <a href="https://docs.generic-ma
 </div>
 </div>
 <p>Finally, redo the gravity calculation but now use the individual prism densities in the prism file and restrict calculations to the same crossing profile, i.e.:</p>
-<div id="88405939" class="cell" data-execution_count="4">
+<div id="59044617" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>Dcross <span class="op">=</span> <span class="fu">gmt</span>(<span class="st">"math -T-30/30/0.1 T 0 MUL ="</span>);</span>

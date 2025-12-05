@@ -478,9 +478,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p><em>table</em><br>
 One or more data tables holding a number of data columns.</p></li>
 <li><p><strong>I</strong> or <strong>inc</strong> or <strong>increment</strong> or <strong>spacing</strong> : – <em>inc=x_inc</em> <strong>|</strong> <em>inc=(x_inc, y_inc)</em> <strong>|</strong> <em>inc=“xinc[+e|n][/yinc[+e|n]]”</em><br>
-Specify the grid increments or the block sizes. More at [spacing](../common_opts/opt_I.html)</p></li>
+Specify the grid increments or the block sizes. More at <a href="../../documentation/common_opts/opt_I.html">spacing</a></p></li>
 <li><p><strong>R</strong> or <strong>region</strong> or <strong>limits</strong> : – <em>limits=(xmin, xmax, ymin, ymax)</em> <strong>|</strong> <em>limits=(BB=(xmin, xmax, ymin, ymax),)</em> <strong>|</strong> <em>limits=(LLUR=(xmin, xmax, ymin, ymax),units=“unit”)</em> <strong>|</strong> …more<br>
-Specify the region of interest. More at [limits](../common_opts/opt_R.html). For perspective view <strong>view</strong>, optionally add <em>zmin,zmax</em>. This option may be used to indicate the range used for the 3-D axes. You may ask for a larger w/e/s/n region to have more room between the image and the axes.</p></li>
+Specify the region of interest. More at <a href="../../documentation/common_opts/opt_R.html">limits</a>. For perspective view <strong>view</strong>, optionally add <em>zmin,zmax</em>. This option may be used to indicate the range used for the 3-D axes. You may ask for a larger w/e/s/n region to have more room between the image and the axes.</p></li>
 </ul>
 </section>
 <section id="optional-arguments" class="level2">
@@ -505,7 +505,7 @@ Sets the <em>out/edge/in</em> that will be assigned to nodes that are <em>out</e
 <li><p><strong>S</strong> or <strong>search_radius</strong> : – <em>search_radius=rad</em> <strong>|</strong> <em>search_radius=(xlim,ylim)</em><br>
 Set nodes to inside, on edge, or outside depending on their distance to the nearest data point. Nodes within <em>radius</em> [0] from the nearest data point are considered inside; append a distance unit (see [Units]). If <em>radius</em> is given as <strong>z</strong> then we instead read individual radii from the 3rd input column. Unless Cartesian data, specify the unit of these radii by appending it after <strong>-Sz</strong>. If <strong>search_radius</strong> is not set then we consider the input data to define one or more closed polygon(s) instead. For Cartesian data with different units you can instead use <em>search_radius=(xlim,ylim)</em> which will perform a rectangular search where all nodes within ±&nbsp;<em>xlim</em> and ±&nbsp;<em>ylim</em> of a data point will be considered inside. One can also achieve the rectangular selection effect by using the <strong>search_radius=</strong>n_cells<strong>c</strong> form. Here <em>n_cells</em> means the number of cells around each data point. As an example, <strong>search_radius=“0c”</strong> means that only the cell where point lies is masked, <strong>search_radius=“1c”</strong> masks one cell beyond that (i.e.&nbsp;makes a 3x3 neighborhood), and so on.</p></li>
 <li><p><strong>V</strong> or <em>verbose</em> : – <em>verbose=true</em> <strong>|</strong> <em>verbose=level</em><br>
-Select verbosity level. More at [verbose](../common_opts/opt_V.html)</p></li>
+Select verbosity level. More at <a href="../../documentation/common_opts/opt_V.html">verbose</a></p></li>
 <li><p><strong>a</strong> or <strong>aspatial</strong> : – <em>aspatial=??</em><br>
 Control how aspatial data are handled in GMT during input and output. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#aspatial-full">More at</a></p></li>
 <li><p><strong>bi</strong> or <strong>binary_in</strong> : – <em>binary_in=??</em><br>
@@ -531,7 +531,7 @@ Determine how spherical distances are calculated in modules that support this [D
 </ul>
 <p>Note: All spherical distance calculations depend on the current ellipsoid (<code>PROJ_ELLIPSOID</code>), the definition of the mean radius (<code>PROJ_MEAN_RADIUS</code>), and the specification of latitude type (<code>PROJ_AUX_LATITUDE</code>). Geodesic distance calculations is also controlled by method (<code>PROJ_GEODESIC</code>).</p></li>
 <li><p><strong>n</strong> or <strong>interp</strong> or <strong>interpol</strong> : – <em>interp=params</em><br>
-Select interpolation mode for grids. More at [interp](../common_opts/opt_n.html)</p></li>
+Select interpolation mode for grids. More at <a href="../../documentation/common_opts/opt_n.html">interp</a></p></li>
 <li><p><strong>q</strong> or <strong>inrows</strong> : – <em>inrows=??</em><br>
 Select specific data rows to be read and/or written. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#the-q-option">More at</a></p></li>
 <li><p><strong>r</strong> or <strong>reg</strong> or <strong>registration</strong> : – <em>reg=:p</em> <strong>|</strong> <em>reg=:g</em><br>

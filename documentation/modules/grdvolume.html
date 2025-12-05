@@ -486,13 +486,13 @@ Append the difference between the volume calculated and the volume of the grid d
 <li><p><strong>L</strong> or <strong>base_level</strong> or <strong>baselevel</strong> : – <em>base_level=val</em><br>
 Also compute the area, volume and mean height from <em>base</em> up to the contour. If no <strong>cont</strong> is given then we compute the area and volume below the surface and above <em>base</em> [Default base is contour].</p></li>
 <li><p><strong>R</strong> or <strong>region</strong> or <strong>limits</strong> : – <em>limits=(xmin, xmax, ymin, ymax)</em> <strong>|</strong> <em>limits=(BB=(xmin, xmax, ymin, ymax),)</em> <strong>|</strong> <em>limits=(LLUR=(xmin, xmax, ymin, ymax),units=“unit”)</em> <strong>|</strong> …more<br>
-Specify the region of interest. More at [limits](../common_opts/opt_R.html). For perspective view <strong>view</strong>, optionally add <em>zmin,zmax</em>. This option may be used to indicate the range used for the 3-D axes. You may ask for a larger w/e/s/n region to have more room between the image and the axes.</p></li>
+Specify the region of interest. More at <a href="../../documentation/common_opts/opt_R.html">limits</a>. For perspective view <strong>view</strong>, optionally add <em>zmin,zmax</em>. This option may be used to indicate the range used for the 3-D axes. You may ask for a larger w/e/s/n region to have more room between the image and the axes.</p></li>
 <li><p><strong>S</strong> or <strong>unit</strong> : – <em>unit=:letter</em><br>
 For geographical grids, append a unit from <strong>e|f|k|M|n|u</strong>. Default calculates areas and volumes based upon a spherical Earth using great circle distances.</p></li>
 <li><p><strong>T</strong> or <strong>find_max</strong> or <strong>findmax</strong>: – <em>find_max=:c</em> <strong>|</strong> <em>find_max=:h</em><br>
 Determine the single contour that maximized the average height (volume/area). Select <strong>find_max=:c</strong> to use the maximum curvature of heights versus contour value rather than the contour with the maximum height to pick the best contour value [Default is <strong>:h</strong>].</p></li>
 <li><p><strong>V</strong> or <em>verbose</em> : – <em>verbose=true</em> <strong>|</strong> <em>verbose=level</em><br>
-Select verbosity level. More at [verbose](../common_opts/opt_V.html)</p></li>
+Select verbosity level. More at <a href="../../documentation/common_opts/opt_V.html">verbose</a></p></li>
 <li><p><strong>Z</strong> or <strong>scale</strong> : – <em>scale=fact</em> <strong>|</strong> <em>scale=(fact,shift)</em><br>
 Optionally subtract <em>shift</em> before scaling data by <em>fact</em>. [Default is no scaling]. (Numbers with units are not supported).</p></li>
 <li><p><strong>f</strong> or <strong>colinfo</strong> : – <em>colinfo=??</em><br>
@@ -516,7 +516,7 @@ Swap 1st and 2nd column on input and/or output. <a href="https://docs.generic-ma
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <p>To determine area, volume, and mean height in km for all land areas (above zero contour) in the Hawaiian Islands from the remote grid (height in m):</p>
-<div id="0944f3ec" class="cell" data-execution_count="1">
+<div id="f1e45214" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">gmtread</span>(<span class="st">"@earth_relief_05m"</span>, region<span class="op">=</span>(<span class="fl">190</span>,<span class="fl">210</span>,<span class="fl">15</span>,<span class="fl">25</span>))</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">grdvolume</span>(G, cont<span class="op">=</span><span class="fl">0</span>, unit<span class="op">=:</span>k, scale<span class="op">=</span><span class="fl">0.001</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>

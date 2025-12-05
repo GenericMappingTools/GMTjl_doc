@@ -524,9 +524,9 @@ A data table (or matrices/datasets) containing focal mechanism parameters. The f
 <li><strong>zrange</strong> : control the depth range by appending <strong>a</strong> for automatic rounding, <strong>e</strong> to use the exact fit values [Default], <strong>dz</strong> to round depths to integer multiples of <strong>dz</strong>, or give desired <em>min/max</em> range. For <strong>a</strong> and <strong>dz</strong> you may prepend <strong>s</strong> to clamp the minimum depth at the surface (0). When automatic depth range selection is in effect we consider the size of the symbols so that no symbol close to the depth limits will be clipped.</li>
 </ul></li>
 <li><p><strong>J</strong> or <strong>proj</strong> or <strong>projection</strong> : – <em>proj=<parameters></parameters></em><br>
-Select map projection. More at [proj](../common_opts/opt_J.html)</p></li>
+Select map projection. More at <a href="../../documentation/common_opts/opt_J.html">proj</a></p></li>
 <li><p><strong>R</strong> or <strong>region</strong> or <strong>limits</strong> : – <em>limits=(xmin, xmax, ymin, ymax)</em> <strong>|</strong> <em>limits=(BB=(xmin, xmax, ymin, ymax),)</em> <strong>|</strong> <em>limits=(LLUR=(xmin, xmax, ymin, ymax),units=“unit”)</em> <strong>|</strong> …more<br>
-Specify the region of interest. More at [limits](../common_opts/opt_R.html). For perspective view <strong>view</strong>, optionally add <em>zmin,zmax</em>. This option may be used to indicate the range used for the 3-D axes. You may ask for a larger w/e/s/n region to have more room between the image and the axes.</p></li>
+Specify the region of interest. More at <a href="../../documentation/common_opts/opt_R.html">limits</a>. For perspective view <strong>view</strong>, optionally add <em>zmin,zmax</em>. This option may be used to indicate the range used for the 3-D axes. You may ask for a larger w/e/s/n region to have more room between the image and the axes.</p></li>
 <li><p><strong>S</strong> or <strong>convention</strong> : <em>Convention-specific options</em><br>
 Selects the input convention and symbol size. Choose from:</p>
 <ul>
@@ -561,7 +561,7 @@ Selects the input convention and symbol size. Choose from:</p>
 <h2 class="anchored" data-anchor-id="optional-arguments">Optional Arguments</h2>
 <ul>
 <li><p><strong>B</strong> or <strong>axes</strong> or <strong>frame</strong><br>
-Set map boundary frame and axes attributes. Default is to draw and annotate left, bottom and vertical axes and just draw left and top axes. More at [frame](../common_opts/opt_B.html)</p></li>
+Set map boundary frame and axes attributes. Default is to draw and annotate left, bottom and vertical axes and just draw left and top axes. More at <a href="../../documentation/common_opts/opt_B.html">frame</a></p></li>
 <li><p><strong>C</strong> or <strong>color</strong> or <strong>cmap</strong> : – <em>cmap=cpt</em><br>
 Give a CPT to determine compressive quadrant fill based on depth (3rd column).</p></li>
 <li><p><strong>D</strong> or <strong>offset</strong> : – <em>offset=true</em> <strong>|</strong> <em>offset=(dist_is_geog=true, fill=…, offset=.., pen=…, size=…)</em><br>
@@ -610,15 +610,15 @@ Plot nodal planes and circumference only. Specify which plane(s) to draw:</p>
 <p>Use tuple form to set pen: <code>nodal=(plane=0, pen=pen_spec)</code></p>
 <p>For double couple mechanisms, the <strong>nodal</strong> option renders the beach ball transparent by drawing only the nodal planes and the circumference. For non-double couple mechanisms, <strong>nodal=0</strong> option overlays best double couple transparently.</p></li>
 <li><p><strong>U</strong> or <strong>time_stamp</strong> : – <em>time_stamp=true</em> <strong>|</strong> <em>time_stamp=(just=“code”, pos=(dx,dy), label=“label”, com=true)</em><br>
-Draw GMT time stamp logo on plot. More at [timestamp](../common_opts/opt_U.html)</p></li>
+Draw GMT time stamp logo on plot. More at <a href="../../documentation/common_opts/opt_U.html">timestamp</a></p></li>
 <li><p><strong>V</strong> or <em>verbose</em> : – <em>verbose=true</em> <strong>|</strong> <em>verbose=level</em><br>
-Select verbosity level. More at [verbose](../common_opts/opt_V.html)</p></li>
+Select verbosity level. More at <a href="../../documentation/common_opts/opt_V.html">verbose</a></p></li>
 <li><p><strong>W</strong> or <strong>pen</strong> : – <em>pen=pen</em><br>
 Set pen attributes for text string or default pen attributes for fault plane edges. [Default: 0.25p,black,solid].</p></li>
 <li><p><strong>X</strong> or <strong>xshift</strong> or <strong>x_offset</strong> : <em>xshift=true</em> <strong>|</strong> <em>xshift=x-shift</em> <strong>|</strong> <em>xshift=(shift=x-shift, mov=“a|c|f|r”)</em><br>
-Shift plot origin. More at [xshift](../common_opts/opt_X.html)</p></li>
+Shift plot origin. More at <a href="../../documentation/common_opts/opt_X.html">xshift</a></p></li>
 <li><p><strong>Y</strong> or <strong>yshift</strong> or <strong>y_offset</strong> : <em>yshift=true</em> <strong>|</strong> <em>yshift=y-shift</em> <strong>|</strong> <em>yshift=(shift=y-shift, mov=“a|c|f|r”)</em><br>
-Shift plot origin. More at [yshift](../common_opts/opt_Y.html)</p></li>
+Shift plot origin. More at <a href="../../documentation/common_opts/opt_Y.html">yshift</a></p></li>
 <li><p><strong>di</strong> or <strong>nodata_in</strong> : – <em>nodata_in=??</em><br>
 Substitute specific values with NaN. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#di-full">More at</a></p></li>
 <li><p><strong>e</strong> or <strong>pattern</strong> : – <em>pattern=??</em><br>
@@ -636,7 +636,7 @@ A full GMT compact string with the full set of options.</li>
 <li><em>view=(azim,elev)</em><br>
 A two elements tuple with azimuth and elevation</li>
 <li><em>view=true</em><br>
-To propagate the viewpoint used in a previous module (makes sense only in <code>bar3!</code>) More at [perspective](../common_opts/opt_p.html)</li>
+To propagate the viewpoint used in a previous module (makes sense only in <code>bar3!</code>) More at <a href="../../documentation/common_opts/opt_p.html">perspective</a></li>
 </ul></li>
 <li><p><strong>q</strong> or <strong>inrows</strong> : – <em>inrows=??</em><br>
 Select specific data rows to be read and/or written. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#the-q-option">More at</a></p></li>

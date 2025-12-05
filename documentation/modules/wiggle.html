@@ -475,11 +475,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p><em>table</em><br>
 One or more data tables holding a number of data columns.</p></li>
 <li><p><strong>J</strong> or <strong>proj</strong> or <strong>projection</strong> : – <em>proj=<parameters></parameters></em><br>
-Select map projection. More at [proj](../common_opts/opt_J.html)</p></li>
+Select map projection. More at <a href="../../documentation/common_opts/opt_J.html">proj</a></p></li>
 <li><p><strong>R</strong> or <strong>region</strong> or <strong>limits</strong> : – <em>limits=(xmin, xmax, ymin, ymax)</em> <strong>|</strong> <em>limits=(BB=(xmin, xmax, ymin, ymax),)</em> <strong>|</strong> <em>limits=(LLUR=(xmin, xmax, ymin, ymax),units=“unit”)</em> <strong>|</strong> …more<br>
-Specify the region of interest. More at [limits](../common_opts/opt_R.html). For perspective view <strong>view</strong>, optionally add <em>zmin,zmax</em>. This option may be used to indicate the range used for the 3-D axes. You may ask for a larger w/e/s/n region to have more room between the image and the axes.</p></li>
+Specify the region of interest. More at <a href="../../documentation/common_opts/opt_R.html">limits</a>. For perspective view <strong>view</strong>, optionally add <em>zmin,zmax</em>. This option may be used to indicate the range used for the 3-D axes. You may ask for a larger w/e/s/n region to have more room between the image and the axes.</p></li>
 <li><p><strong>R</strong> or <strong>region</strong> or <strong>limits</strong> : – <em>limits=(xmin, xmax, ymin, ymax, zmin, zmax)</em> <strong>|</strong> <em>limits=(BB=(xmin, xmax, ymin, ymax, zmin, zmax),)</em> <strong>|</strong> …more<br>
-Specify the region of interest. Default limits are computed from data extents. More at [limits](../common_opts/opt_R.html)</p></li>
+Specify the region of interest. Default limits are computed from data extents. More at <a href="../../documentation/common_opts/opt_R.html">limits</a></p></li>
 <li><p><strong>Z</strong> or <strong>ampscale</strong> or <strong>amp_scale</strong> : – <em>ampscale=??</em><br>
 Gives anomaly scale in data-units/distance-unit. Append <strong>c</strong>, <strong>i</strong>, or <strong>p</strong> to indicate the distance unit (cm, inch, or point); if no unit is given we use the default unit that is controlled by <code>PROJ_LENGTH_UNIT</code>.</p></li>
 </ul>
@@ -490,7 +490,7 @@ Gives anomaly scale in data-units/distance-unit. Append <strong>c</strong>, <str
 <li><p><strong>A</strong> <strong>azimuth</strong> : – <em>azimuth=az</em><br>
 Sets the preferred positive azimuth. Positive wiggles will “gravitate” towards that direction, i.e., azimuths of the normal direction to the track will be flipped into the -90/+90 degree window centered on <em>azimuth</em> and that defines the positive wiggle side. If no azimuth is given the no preferred azimuth is enforced.</p></li>
 <li><p><strong>B</strong> or <strong>axes</strong> or <strong>frame</strong><br>
-Set map boundary frame and axes attributes. Default is to draw and annotate left, bottom and vertical axes and just draw left and top axes. More at [frame](../common_opts/opt_B.html)</p></li>
+Set map boundary frame and axes attributes. Default is to draw and annotate left, bottom and vertical axes and just draw left and top axes. More at <a href="../../documentation/common_opts/opt_B.html">frame</a></p></li>
 <li><p><strong>C</strong> or <strong>center</strong> : – <em>center=??</em><br>
 Subtract <em>center</em> from the data set before plotting [0].</p></li>
 <li><p><strong>D</strong> or <strong>scale_bar</strong> : – <em>pos=(map=(lon,lat), inside=true, outside=true, norm=(x,y), paper=(x,y), justify=code, offset=XX, anchor=XX, label=“the-label”, label_left=true)</em><br>
@@ -500,7 +500,7 @@ Defines the reference point on the map for the vertical scale bar using one of f
 </ol>
 <p>Use <code>width=(width,height)</code> to set the <em>length</em> (and <em>height</em>) of the scale bar in data (<em>z</em>) units. By default, the anchor point on the legend is assumed to be the bottom left corner (:ML), but this can be changed by appending <code>justify</code> followed by a 2-char justification code <em>justify</em> (see <a href="../..\documentation/modules/text.html">text</a>). <strong>Note</strong>: If <code>inside</code> is used (the default) then <em>justify</em> defaults to the same as <code>refpoint</code>, if <code>outside</code> is used then <code>justify</code> defaults to the mirror opposite of <code>refpoint</code>. Move scale label to the left side with <code>label_left=true</code> [Default is to the right of the scale]. Use <code>label="The label"</code> to set the <em>z</em> unit label that is used in the scale label [no unit]. The <code>FONT_ANNOT_PRIMARY</code> is used for the font setting, while <code>MAP_TICK_PEN_PRIMARY</code> is used to draw the scale bar.</p></li>
 <li><p><strong>W</strong> or <strong>pen</strong>=<code>pen</code><br>
-Set pen attributes for the arrow stem [Defaults: width = default, color = black, style = solid]. See [Pen attributes](../common_features/pens.html) and [Vector attributes](../common_features/arrows_control.html) for arrow line terminations.</p></li>
+Set pen attributes for the arrow stem [Defaults: width = default, color = black, style = solid]. See <a href="../../documentation/common_features/pens.html">Pen attributes</a> and <a href="../../documentation/common_features/arrows_control.html">Vector attributes</a> for arrow line terminations.</p></li>
 <li><p><strong>G</strong> or <strong>fill</strong> : – <em>fill=fill[+n][+p]</em><br>
 Set fill shade, color or pattern for positive and/or negative wiggles [Default is no fill]. Optionally, append <strong>+p</strong> to fill positive areas (this is the default behavior). Append <strong>+n</strong> to fill negative areas. Append <strong>+n+p</strong> to fill both positive and negative areas with the same fill. <strong>Note</strong>: You will need to repeat this option to select different fills for the positive and negative wiggles, but sie we cannot repeat keywords the solution is to pass in a tuple of tuples or of NamedTuples. For simpler cases one can pass also a 2 elements vector of strings thet will be used as is, that is, without any further parsing. See example below.</p></li>
 <li><p><strong>I</strong> or <strong>fixed_azim</strong> : <em>fixed_azim=az</em><br>
@@ -508,13 +508,13 @@ Set a fixed azimuth projection for wiggles [Default uses track azimuth, but see 
 <li><p><strong>T</strong> or <strong>track</strong> : – <em>track=pen</em><br>
 Draw track [Default is no track]. Append pen attributes to use [Defaults: width = 0.25p, color = black, style = solid].</p></li>
 <li><p><strong>U</strong> or <strong>time_stamp</strong> : – <em>time_stamp=true</em> <strong>|</strong> <em>time_stamp=(just=“code”, pos=(dx,dy), label=“label”, com=true)</em><br>
-Draw GMT time stamp logo on plot. More at [timestamp](../common_opts/opt_U.html)</p></li>
+Draw GMT time stamp logo on plot. More at <a href="../../documentation/common_opts/opt_U.html">timestamp</a></p></li>
 <li><p><strong>V</strong> or <em>verbose</em> : – <em>verbose=true</em> <strong>|</strong> <em>verbose=level</em><br>
-Select verbosity level. More at [verbose](../common_opts/opt_V.html)</p></li>
+Select verbosity level. More at <a href="../../documentation/common_opts/opt_V.html">verbose</a></p></li>
 <li><p><strong>X</strong> or <strong>xshift</strong> or <strong>x_offset</strong> : <em>xshift=true</em> <strong>|</strong> <em>xshift=x-shift</em> <strong>|</strong> <em>xshift=(shift=x-shift, mov=“a|c|f|r”)</em><br>
-Shift plot origin. More at [xshift](../common_opts/opt_X.html)</p></li>
+Shift plot origin. More at <a href="../../documentation/common_opts/opt_X.html">xshift</a></p></li>
 <li><p><strong>Y</strong> or <strong>yshift</strong> or <strong>y_offset</strong> : <em>yshift=true</em> <strong>|</strong> <em>yshift=y-shift</em> <strong>|</strong> <em>yshift=(shift=y-shift, mov=“a|c|f|r”)</em><br>
-Shift plot origin. More at [yshift](../common_opts/opt_Y.html)</p></li>
+Shift plot origin. More at <a href="../../documentation/common_opts/opt_Y.html">yshift</a></p></li>
 <li><p><strong>bi</strong> or <strong>binary_in</strong> : – <em>binary_in=??</em><br>
 Select native binary format for primary table input. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#bi-full">More at</a></p></li>
 <li><p><strong>di</strong> or <strong>nodata_in</strong> : – <em>nodata_in=??</em><br>
@@ -538,7 +538,7 @@ A full GMT compact string with the full set of options.</li>
 <li><em>view=(azim,elev)</em><br>
 A two elements tuple with azimuth and elevation</li>
 <li><em>view=true</em><br>
-To propagate the viewpoint used in a previous module (makes sense only in <code>bar3!</code>) More at [perspective](../common_opts/opt_p.html)</li>
+To propagate the viewpoint used in a previous module (makes sense only in <code>bar3!</code>) More at <a href="../../documentation/common_opts/opt_p.html">perspective</a></li>
 </ul></li>
 <li><p><strong>q</strong> or <strong>inrows</strong> : – <em>inrows=??</em><br>
 Select specific data rows to be read and/or written. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#the-q-option">More at</a></p></li>
@@ -555,7 +555,7 @@ Save the figure with the <code>figname=name.ext</code> where <code>ext</code> ch
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <p>To demonstrate a basic wiggle plot we create some synthetic data with <a href="../..\documentation/modules/gmtmath.html">gmtmath</a> and pipe it through <strong>wiggle</strong>:</p>
-<div id="50337e46" class="cell" data-execution_count="1">
+<div id="8fc98139" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="op">-</span><span class="fl">8</span><span class="op">:</span><span class="fl">0.01</span><span class="op">:</span><span class="fl">6</span>;</span>

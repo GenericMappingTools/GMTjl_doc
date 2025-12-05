@@ -1,0 +1,1825 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>common_opts</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-0615b85506723fa54ab13a613a4e9e4c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../custom.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/GMTjl_logo.png" alt="" class="navbar-logo light-content">
+    <img src="../../assets/GMTjl_logo.png" alt="" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-documentation" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Documentation</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-documentation">    
+        <li>
+    <a class="dropdown-item" href="../../documentation.html">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../../documentation/modules.html">
+ <span class="dropdown-text">GMT Modules</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/general/types.html">
+ <span class="dropdown-text">GMT.jl Types</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/extensions.html">
+ <span class="dropdown-text">GMT.jl Extensions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/gdalfuns.html">
+ <span class="dropdown-text">GDAL Functions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/solids.html">
+ <span class="dropdown-text">Solids Functions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/imgproc.html">
+ <span class="dropdown-text">Image Processing</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/common_features.html">
+ <span class="dropdown-text">Common Features</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/alphabetical.html">
+ <span class="dropdown-text">Alphabetical List</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../../examples.html"> 
+<span class="menu-text">Examples</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-gallery-(gmt-gallery" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Gallery (GMT Gallery)</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-gallery-(gmt-gallery">    
+        <li>
+    <a class="dropdown-item" href="../../gallery.html">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex01.html">
+ <span class="dropdown-text">(1) Contour maps</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex02.html">
+ <span class="dropdown-text">(2) Image presentations</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex03.html">
+ <span class="dropdown-text">(3) Spectral estimation and xy-plots</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex04.html">
+ <span class="dropdown-text">(4)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex05.html">
+ <span class="dropdown-text">(5) A 3-D illuminated surface</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex06.html">
+ <span class="dropdown-text">(6) Plotting of histograms</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex07.html">
+ <span class="dropdown-text">(7) A simple location map</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex08.html">
+ <span class="dropdown-text">(8) A 3-D histogram</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex09.html">
+ <span class="dropdown-text">(9) Time-series along tracks</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex10.html">
+ <span class="dropdown-text">(10) A geographical bar graph plot</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex11.html">
+ <span class="dropdown-text">(11)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex12.html">
+ <span class="dropdown-text">(12) Optimal triangulation of data</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex13.html">
+ <span class="dropdown-text">(13) Plotting of vector fields</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex14.html">
+ <span class="dropdown-text">(14) Gridding of data and trend surfaces</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex15.html">
+ <span class="dropdown-text">(15) Gridding, contouring, and masking of unconstrained areas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex16.html">
+ <span class="dropdown-text">(16) Gridding of data, continued</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex17.html">
+ <span class="dropdown-text">(17) Images clipped by coastlines</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex18.html">
+ <span class="dropdown-text">(18) Volumes and Spatial Selections</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex19.html">
+ <span class="dropdown-text">(19) Color patterns on maps</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex20.html">
+ <span class="dropdown-text">(20) Custom plot symbols</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex21.html">
+ <span class="dropdown-text">(21) Time-series of RedHat stock price</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex22.html">
+ <span class="dropdown-text">(22)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex23.html">
+ <span class="dropdown-text">(23)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex24.html">
+ <span class="dropdown-text">(24)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex25.html">
+ <span class="dropdown-text">(25)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex26.html">
+ <span class="dropdown-text">(26)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex27.html">
+ <span class="dropdown-text">(27)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex28.html">
+ <span class="dropdown-text">(28)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex29.html">
+ <span class="dropdown-text">(29)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex30.html">
+ <span class="dropdown-text">(30)</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-tutorials" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Tutorials</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-tutorials">    
+        <li>
+    <a class="dropdown-item" href="../../tutorials.html">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../../tutorials/ISC/isc.jl.html">
+ <span class="dropdown-text">ISC seismicity</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/Landsat8/histogram_stretch.html">
+ <span class="dropdown-text">Landsat 8/9</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/coast/coastlines.html">
+ <span class="dropdown-text">Coastlines</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/choropleths/choropleths.html">
+ <span class="dropdown-text">US Choropleths</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/dlakelan/GMTMaps.html">
+ <span class="dropdown-text"><span class="citation" data-cites="dlakelan">@dlakelan</span> choropleths</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/longest_sail/longestsail.html">
+ <span class="dropdown-text">Longest Sail</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/vector_shp/vector_shp.html">
+ <span class="dropdown-text">Geospatial vector</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/texture_shading/texture.html">
+ <span class="dropdown-text">Texture Shading</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/mosaics/mosaics.html">
+ <span class="dropdown-text">Mosaics</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/insets/insets.html">
+ <span class="dropdown-text">Insets</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/remote_datasets/remote_datasets.html">
+ <span class="dropdown-text">Remote Grids</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/blender_shading/blender_rt.html">
+ <span class="dropdown-text">Blender</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/signal/signal.html">
+ <span class="dropdown-text">Signal</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-geophysics" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Geophysics</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-geophysics">    
+        <li>
+    <a class="dropdown-item" href="../../geophysics.html">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../../geophysics/seismicity/global_seis.html">
+ <span class="dropdown-text">Seismicity</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../geophysics/earthtides/01_earthtides.html">
+ <span class="dropdown-text">Earth Tides</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../geophysics/weather/01_weather.html">
+ <span class="dropdown-text">Weather Data</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-help" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Help</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-help">    
+        <li>
+    <a class="dropdown-item" href="https://github.com/GenericMappingTools/GMT.jl/issues"><i class="bi bi-bug" role="img">
+</i> 
+ <span class="dropdown-text">Report a Bug</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://forum.generic-mapping-tools.org/c/questions/5"><i class="bi bi-chat-right-text" role="img">
+</i> 
+ <span class="dropdown-text">Ask a Question</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#axes-options-table" id="toc-axes-options-table" class="nav-link active" data-scroll-target="#axes-options-table">Axes options table</a></li>
+  <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
+  <li><a href="#spacing" id="toc-spacing" class="nav-link" data-scroll-target="#spacing">spacing</a></li>
+  <li><a href="#limits" id="toc-limits" class="nav-link" data-scroll-target="#limits">limits</a></li>
+  <li><a href="#proj" id="toc-proj" class="nav-link" data-scroll-target="#proj">proj</a></li>
+  <li><a href="#timestamp" id="toc-timestamp" class="nav-link" data-scroll-target="#timestamp">timestamp</a></li>
+  <li><a href="#verbose" id="toc-verbose" class="nav-link" data-scroll-target="#verbose">verbose</a></li>
+  <li><a href="#xshift" id="toc-xshift" class="nav-link" data-scroll-target="#xshift">xshift</a></li>
+  <li><a href="#yshift" id="toc-yshift" class="nav-link" data-scroll-target="#yshift">yshift</a></li>
+  <li><a href="#perspective" id="toc-perspective" class="nav-link" data-scroll-target="#perspective">perspective</a></li>
+  <li><a href="#spherical-distance" id="toc-spherical-distance" class="nav-link" data-scroll-target="#spherical-distance">Spherical distance</a></li>
+  <li><a href="#interp" id="toc-interp" class="nav-link" data-scroll-target="#interp">interp</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">frame</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<ul>
+<li><strong>B | frame | axes | xaxis | xaxis2 | yaxis |</strong> …</li>
+</ul>
+<p>Set map Axes parameters. They are specified by a keyword and a named tuple (but see [1])</p>
+<pre><code>frame=(axes=..., corners=..., xlabel=..., ylabel=..., annot=..., flipx=..., etc)</code></pre>
+<p>or separated on a per axes basis by using specific <strong>xaxis</strong>, <strong>yaxis</strong> and <strong>zaxis</strong> that share the same syntax as the generic <strong>frame</strong> option. The <strong>xaxis2</strong> and <strong>yaxis2</strong> apply when dealing with secondary axes.</p>
+<p>Before the rest, note that several modules have axes default settings (<code>scatter</code>, <code>bar</code>, etc…) but if no axes is desired, just use <em>axes=:none</em>. Also useful is the <em>axes=:same</em> to repeat the previously set (from another call) axes specification.</p>
+<p>By default, all 4 map boundaries (or plot axes) are plotted and two annotated. To customize, use the <em>axes</em> keyword that takes as value a tuple with a combination of words. Axes are named <em>left</em>, <em>bottom</em>, <em>right</em>, <em>top</em> and, for the 3D maps, <em>up</em>. Next we have three categories of axes: the <em>annotated and ticked</em>, the <em>ticked</em> and those with no annoations and no tick marks. We call them <em>full</em>, <em>ticks</em> and <em>bare</em> and combine with the axes name using an underscore to glue them. Hence <em>left_full</em> means draw and annotate left axis, whilst <em>top_bare</em> means draw only top axis. The full combination is <em>left|bottom|right|top|up_full|ticks|bare</em>. To not draw a boundary, simply omit the name of it in tuple. Note that the short one single char naming used by GMT is also valid. E.g. <em>axes=:WSn</em> will draw and annotate left and south boundaries and draw but no ticks or annotations the top boundary. Two special cases are provided by the <em>frame=:none</em> and <em>frame=:noannot</em> that do not plot any axes or just plot but do not annotate or tick them respectively.</p>
+<p>If a 3-D base map is selected with <em>view</em> and <em>J=:z</em>, by default a single vertical axes will be plotted at the most suitable map corner. Override the default by using the keyword <em>corners</em> and any combination of corner ids <strong>1234</strong>, where <strong>1</strong> represents the lower left corner and the order goes counter-clockwise.</p>
+<p>Use <em>cube=true</em> to draw the outline of the 3-D cube defined by <em>region</em> this option is also needed to display gridlines in the x-z, y-z planes. Note that for 3-D views the title, if given, will be suppressed. You can paint the interior of the canvas with <code>fill=fill</code> where the <em>fill</em> value can be a color or a pattern.</p>
+<p>Use <em>noframe=true</em> to have no frame and annotations at all [Default is controlled by the codes].</p>
+<p>Optionally append <em>pole=“plon/plat”</em> (or <em>pole=(plon,plat)</em>) to draw oblique gridlines about specified pole [regular gridlines]. Ignored if gridlines are not requested (below) and disallowed for the oblique Mercator projection.</p>
+<p><em>xx</em> and <em>yy</em> axes grow from left to right and bottom to top (<em>zz</em> axis too). This the default but that can be changed with the keywords <strong>flipx=true</strong>, <strong>flipy=</strong> and <strong>flipz=</strong>. Alternative names are <strong>xflip, yflip, zflip</strong>.</p>
+<p>For Cartesian plots the <em>slanted=angle</em> allows for the optional angle to plot slanted annotations; the angle is with respect to the horizontal and must be in the -90 &lt;= <em>angle</em> &lt;= 90 range only. This applies to the x-axis only, with the exception of the <em>slanted=:parallel</em> form that plots the y annotations parallel to y-axis.</p>
+<p>To add a plot title do <em>title=“My title”</em>. The Frame setting is optional but can be invoked once to override the above defaults.</p>
+<p>GMT uses the notion of <em>primary</em> (the default) and <em>secondary</em> axes. To set an axes as secondary, use <em>secondary=true</em> (mostly used for time axes annotations).</p>
+<p>The <strong>xaxis</strong>, <strong>yaxis</strong> and <strong>zaxis</strong> specify which axis you are providing information for. The syntax is the same as for the <em>axes</em> keyword but allows fine tuning of different options for the 4 (or 5) axes. In this case to flip the positive direction of one particular axis we use <strong>flip=true</strong>. Don’t need to explicitly say which axis because the function where it’s used already knows that.</p>
+<p>To add a label to an axis use <em>label=“Label text”</em> if using the <strong>xaxis</strong> etc form, or use the <strong>xlabel</strong>, <strong>ylabel</strong> and <strong>zlabel</strong> keywords in the common <strong>frame</strong> tuple of options.</p>
+<p>Still a third alternative to change the axis dirs is the option <strong>flipaxes=:x|:y|:z|:xy</strong> but note that so far this option is to be used mainly when creating <a href="../..\documentation/modules/subplot.html">subplot</a>’s</p>
+<p>Use <em>Yhlabel=true</em> to force a horizontal label for <em>y</em>-axes (useful for very short labels).</p>
+<p>If the axis annotation should have a leading text prefix (e.g., dollar sign for those plots of your net worth) you can add <em>prefix=“prefix”</em> For geographic maps the addition of degree symbols, etc. is automatic (and controlled by the GMT default setting <a href="http://docs.generic-mapping-tools.org/latest/gmt.conf.html#format-geo-map">FORMAT_GEO_MAP</a>). However, for other plots you can add specific units by adding <em>label_unit=“unit”</em></p>
+<p>Annotations, ticks and grid intervals are specified with the <em>annot</em>, <em>ticks</em> and <em>grid</em> keywords, which take as value the desired stride interval. As an example, <em>annot=10</em> means annotate at spacing of 10 data units. Alternatively, for linear maps, we can use the special value <em>:auto</em> annotations at automatically determined intervals.</p>
+<ul>
+<li><strong>annot=:auto, grid=:auto</strong> plots both annotations and grid lines with the same spacing,</li>
+<li><strong>annot=:auto, ticks=:auto, grid=:auto</strong> adds suitable minor tick intervals,</li>
+<li><strong>grid=:auto</strong> plots grid lines with the same interval as if <strong>ticks=:auto</strong> was used.</li>
+</ul>
+<p>The optional <em>phase_add=xx</em> and <em>phase_sub=xx</em> shifts the annotation interval by tht <em>xx</em> amount (positive or negative).</p>
+<p>The optional <em>annot_unit</em> indicates the unit of the <em>stride</em> and can be any of the ones listed below:</p>
+<ul>
+<li><strong>:year</strong> or <strong>:Y</strong> (year, plot with 4 digits)</li>
+<li><strong>:year2</strong> or <strong>:y</strong> (year, plot with 2 digits)</li>
+<li><strong>:month</strong> or <strong>:O</strong> (month, plot using <a href="http://docs.generic-mapping-tools.org/latest/gmt.conf.html#format-date-map">FORMAT_DATE_MAP</a>)</li>
+<li><strong>:month2</strong> or <strong>:o</strong> (month, plot with 2 digits)</li>
+<li><strong>:ISOweek</strong> or <strong>:U</strong> (ISO week, plot using <a href="http://docs.generic-mapping-tools.org/latest/gmt.conf.html#format-date-map">FORMAT_DATE_MAP</a>)</li>
+<li><strong>:ISOweek2</strong> or <strong>:u</strong> (ISO week, plot using 2 digits)</li>
+<li><strong>Gregorian_week</strong> or <strong>:r</strong> (Gregorian week, 7-day stride from start of week <a href="http://docs.generic-mapping-tools.org/latest/gmt.conf.html#time-week-start">TIME_WEEK_START</a>)</li>
+<li><strong>:ISOweekday</strong> or <strong>:K</strong> (ISO weekday, plot name of day)</li>
+<li><strong>:date</strong> or <strong>:D</strong> (date, plot using <a href="http://docs.generic-mapping-tools.org/latest/gmt.conf.html#format-date-map">FORMAT_DATE_MAP</a>)</li>
+<li><strong>:day_date</strong> or <strong>:d</strong> (day, plot day of month 0-31 or year 1-366, via <a href="http://docs.generic-mapping-tools.org/latest/gmt.conf.html#format-date-map">FORMAT_DATE_MAP</a>)</li>
+<li><strong>:day_week</strong> or <strong>:R</strong> (day, same as <strong>d</strong>, aligned with <a href="http://docs.generic-mapping-tools.org/latest/gmt.conf.html#time-week-start">TIME_WEEK_START</a>)</li>
+<li><strong>:hour</strong> or <strong>:H</strong> (hour, plot using <a href="http://docs.generic-mapping-tools.org/latest/gmt.conf.html#format-clock-map">FORMAT_CLOCK_MAP</a>)</li>
+<li><strong>:hour2</strong> or <strong>:h</strong> (hour, plot with 2 digits)</li>
+<li><strong>:minute</strong> or <strong>:M</strong> (minute, plot using <a href="http://docs.generic-mapping-tools.org/latest/gmt.conf.html#format-clock-map">FORMAT_CLOCK_MAP</a>)</li>
+<li><strong>:minute2</strong> or <strong>:m</strong> (minute, plot with 2 digits)</li>
+<li><strong>:second</strong> or <strong>:S</strong> (second, plot using <a href="http://docs.generic-mapping-tools.org/latest/gmt.conf.html#format-clock-map">FORMAT_CLOCK_MAP</a>)</li>
+<li><strong>:second2</strong> or <strong>:s</strong> (second, plot with 2 digits).</li>
+</ul>
+<p>Note for geographic axes <strong>m</strong> and <strong>s</strong> instead mean arc minutes and arc seconds. All entities that are language-specific are under control by <a href="http://docs.generic-mapping-tools.org/latest/gmt.conf.html#gmt-language">GMT_LANGUAGE</a>.</p>
+<p>For custom annotations and intervals, let <em>intervals</em> be given as <strong>custom</strong>=<em>“intfile”</em>, where <em>intfile</em> contains any number of records with <em>coord type</em> [<em>label</em>]. Here, <em>type</em> is one or more letters from <strong>a</strong> or <strong>i</strong>, <strong>f</strong>, and <strong>g</strong>. For <strong>a</strong> or <strong>i</strong> you must supply a <em>label</em> that will be plotted at the <em>coord</em> location. The <strong>custom</strong> option can also be used giving it a NamedTuple argument. For example <strong>xaxis=(custom=(pos=[1,2,3], label=(:Aa, :Bb, :Cc)), angle=45)</strong> (and we could have used <em>type</em>, as described above, intead of <em>label</em>). NOTE, the <em>angle</em> keyword can only be used on <code>x</code> axis.</p>
+<p>A simpler way of controling the ticks and annotations with custom settings is to use the <strong>xticks</strong> option (same for <strong>yticks</strong> and <strong>zticks</strong>). Here, one give a tuple with labels, annotations interval, and angle of annotations. Of these, only the <em>labels</em> is mandatory, and the angle (a single value) can only be used for <strong>xticks</strong>. E.g. <strong>xticks=(1:5, [“a”, “b”, “c”, “d”], 90)</strong> where first element is an AbstractArray and second an array or tuple of strings or symbols. The more elaborate effect described above for the <em>custom</em> options is achieved here by escaping the <strong>a</strong> or <strong>i</strong>, <strong>f</strong>, and <strong>g</strong> codes with a forward slash in a text string. Example: <strong>xticks=(1:5, [“a”, “f”, “/ag e”, “f”, “/ag @<sub>p@</sub>”])</strong>. Here “/ag e” means annotate the third value with <em>e</em> and add a grid line. These <em>x|y|zticks</em> options work only for the primary axes. To change the secondary use the <em>customticks</em> form. <em>E.g.</em> <strong>xaxis2=(customticks(…),)</strong>. Note that the <em>ticks</em> keyword is already taken to control the ticks interval hence the need to use a different one (<em>customticks</em>).</p>
+<p>For non-geographical projections: Give negative scale or figure sizes to change the direction of increasing coordinates. For example <strong>figsize(-10,-8)</strong> will revert the sense of <em>xx</em> and <em>yy</em> axes.</p>
+<p>For log10 axes: Annotations can be specified in one of three ways:</p>
+<ol type="1">
+<li><p><em>stride</em> can be 1, 2, 3, or -<em>n</em>. Annotations will then occur at 1, 1-2-5, or 1-2-3-4-…-9, respectively; for -<em>n</em> we annotate every <em>n</em>’t magnitude. This option can also be used for the frame and grid intervals.</p></li>
+<li><p>Use <em>log=true</em>, then log10 of the tick value is plotted at every integer log10 value.</p></li>
+<li><p>Use <em>10log=true</em>, or <em>pow=true</em> then annotations appear as 10 raised to log10 of the tick value.</p></li>
+</ol>
+<p>For power axes: Annotations can be specified in one of two ways:</p>
+<ol type="1">
+<li><p><em>stride</em> sets the regular annotation interval.</p></li>
+<li><p>Use <em>exp=true</em>, then, the annotation interval is expected to be in transformed units, but the annotation value will be plotted as untransformed units. E.g., if <em>stride</em> = 1 and <em>power</em> = 0.5 (i.e., sqrt), then equidistant annotations labeled 1-4-9… will appear.</p></li>
+</ol>
+<p>Finally, if your axis is in radians you can use multiples or fractions of <strong>pi</strong> to set such annotation intervals. The format is <em>pi=n</em> or <em>pi=(n,m)</em>, for an optional integer <em>n</em> and optional <em>m</em> fractions 2, 3, or 4.</p>
+<p>These GMT parameters can affect the appearance of the map boundary: <a href="http://docs.generic-mapping-tools.org/latest/gmt.conf.html#map-annot-min-angle">MAP_ANNOT_MIN_ANGLE</a>, <a href="http://docs.generic-mapping-tools.org/latest/gmt.conf.html#map-annot-min-spacing">MAP_ANNOT_MIN_SPACING</a>, <a href="http://docs.generic-mapping-tools.org/latest/gmt.conf.html#font-annot-primary">FONT_ANNOT_PRIMARY</a>, <a href="http://docs.generic-mapping-tools.org/latest/gmt.conf.html#font-annot-secondary">FONT_ANNOT_SECONDARY</a>, <a href="http://docs.generic-mapping-tools.org/latest/gmt.conf.html#map-annot-offset-primary">MAP_ANNOT_OFFSET_PRIMARY</a>, <a href="http://docs.generic-mapping-tools.org/latest/gmt.conf.html#map-annot-offset-secondary">MAP_ANNOT_OFFSET_SECONDARY</a>, <a href="http://docs.generic-mapping-tools.org/latest/gmt.conf.html#map-annot-ortho">MAP_ANNOT_ORTHO</a>, <a href="http://docs.generic-mapping-tools.org/latest/gmt.conf.html#map-frame-axes">MAP_FRAME_AXES</a>, <a href="http://docs.generic-mapping-tools.org/latest/gmt.conf.html#map-default-pen">MAP_DEFAULT_PEN</a>, <a href="http://docs.generic-mapping-tools.org/latest/gmt.conf.html#map-frame-type">MAP_FRAME_TYPE</a>, <a href="http://docs.generic-mapping-tools.org/latest/gmt.conf.html#format-geo-map">FORMAT_GEO_MAP</a>, <a href="http://docs.generic-mapping-tools.org/latest/gmt.conf.html#map-frame-pen">MAP_FRAME_PEN</a>, <a href="http://docs.generic-mapping-tools.org/latest/gmt.conf.html#map-frame-width">MAP_FRAME_WIDTH</a>, <a href="http://docs.generic-mapping-tools.org/latest/gmt.conf.html#map-grid-cross-size-primary">MAP_GRID_CROSS_SIZE_PRIMARY</a>, <a href="http://docs.generic-mapping-tools.org/latest/gmt.conf.html#map-grid-pen-primary">MAP_GRID_PEN_PRIMARY</a>, <a href="http://docs.generic-mapping-tools.org/latest/gmt.conf.html#language">MAP_GRID_CROSS_SIZE_SECONDARY</a>, <a href="http://docs.generic-mapping-tools.org/latest/gmt.conf.html#map-grid-pen-seondary">MAP_GRID_PEN_SECONDARY</a>, <a href="http://docs.generic-mapping-tools.org/latest/gmt.conf.html#font-title">FONT_TITLE</a>, <a href="http://docs.generic-mapping-tools.org/latest/gmt.conf.html#font-label">FONT_LABEL</a>, <a href="http://docs.generic-mapping-tools.org/latest/gmt.conf.html#map-line-step">MAP_LINE_STEP</a>, <a href="http://docs.generic-mapping-tools.org/latest/gmt.conf.html#map-annot-oblique">MAP_ANNOT_OBLIQUE</a>, <a href="http://docs.generic-mapping-tools.org/latest/gmt.conf.html#format-clock-map">FORMAT_CLOCK_MAP</a>, <a href="http://docs.generic-mapping-tools.org/latest/gmt.conf.html#format-date-map">FORMAT_DATE_MAP</a>, <a href="http://docs.generic-mapping-tools.org/latest/gmt.conf.html#format-time-primary-map">FORMAT_TIME_PRIMARY_MAP</a>, <a href="http://docs.generic-mapping-tools.org/latest/gmt.conf.html#format-time-secondary-map">FORMAT_TIME_SECONDARY_MAP</a>, <a href="http://docs.generic-mapping-tools.org/latest/gmt.conf.html#gmt-language">GMT_LANGUAGE</a>, <a href="http://docs.generic-mapping-tools.org/latest/gmt.conf.html#time-week-start">TIME_WEEK_START</a>, <a href="http://docs.generic-mapping-tools.org/latest/gmt.conf.html#map-tick-length-primary">MAP_TICK_LENGTH_PRIMARY</a>, and <a href="http://docs.generic-mapping-tools.org/latest/gmt.conf.html#map-tick-pen-primary">MAP_TICK_PEN_PRIMARY</a></p>
+<section id="axes-options-table" class="level2">
+<h2 class="anchored" data-anchor-id="axes-options-table">Axes options table</h2>
+<p>The entire parameters collection is displayed in the following table</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 22%">
+<col style="width: 27%">
+<col style="width: 29%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>keyword</th>
+<th style="text-align: center;">value</th>
+<th style="text-align: center;">type</th>
+<th style="text-align: right;">meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>axes</td>
+<td style="text-align: center;">false</td>
+<td style="text-align: center;">Str or Symb</td>
+<td style="text-align: right;">Do not plot any axis</td>
+</tr>
+<tr class="even">
+<td></td>
+<td style="text-align: center;">noannot|bare</td>
+<td style="text-align: center;">Str or Symb</td>
+<td style="text-align: right;">Plot axes but no annot</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td style="text-align: center;">left_full</td>
+<td style="text-align: center;">Str or Symb</td>
+<td style="text-align: right;">Annot and tick left axis</td>
+</tr>
+<tr class="even">
+<td></td>
+<td style="text-align: center;">left_ticks</td>
+<td style="text-align: center;">Str or Symb</td>
+<td style="text-align: right;">Tick left axis</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td style="text-align: center;">left_bare</td>
+<td style="text-align: center;">Str or Symb</td>
+<td style="text-align: right;">Just draw left axis</td>
+</tr>
+<tr class="even">
+<td></td>
+<td style="text-align: center;">bottom_full</td>
+<td style="text-align: center;">Str or Symb</td>
+<td style="text-align: right;">Same for bottom axis</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td style="text-align: center;">right_full</td>
+<td style="text-align: center;">Str or Symb</td>
+<td style="text-align: right;">Same for right axis</td>
+</tr>
+<tr class="even">
+<td></td>
+<td style="text-align: center;">top_full</td>
+<td style="text-align: center;">Str or Symb</td>
+<td style="text-align: right;">Same for top axis</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td style="text-align: center;">up_full</td>
+<td style="text-align: center;">Str or Symb</td>
+<td style="text-align: right;">Same for z axis</td>
+</tr>
+<tr class="even">
+<td></td>
+<td style="text-align: center;">WESNwesn…</td>
+<td style="text-align: center;">Str or Symb</td>
+<td style="text-align: right;">The classic GMT syntax</td>
+</tr>
+<tr class="odd">
+<td>corners</td>
+<td style="text-align: center;">1234</td>
+<td style="text-align: center;">Str or Symb</td>
+<td style="text-align: right;">Vertical axis</td>
+</tr>
+<tr class="even">
+<td>secondary</td>
+<td style="text-align: center;">true or false</td>
+<td style="text-align: center;">Bool</td>
+<td style="text-align: right;">Secondary axis info</td>
+</tr>
+<tr class="odd">
+<td>fill</td>
+<td style="text-align: center;"><code>color</code></td>
+<td style="text-align: center;">Str or Symb</td>
+<td style="text-align: right;">Paint interior</td>
+</tr>
+<tr class="even">
+<td>cube</td>
+<td style="text-align: center;">anything</td>
+<td style="text-align: center;">Sym or Bool</td>
+<td style="text-align: right;">Draw outline of the 3-D cube</td>
+</tr>
+<tr class="odd">
+<td>noframe</td>
+<td style="text-align: center;">anything</td>
+<td style="text-align: center;">Sym or Bool</td>
+<td style="text-align: right;">No frame and annotations at all</td>
+</tr>
+<tr class="even">
+<td>pole</td>
+<td style="text-align: center;">lon lat</td>
+<td style="text-align: center;">Str or Tuple</td>
+<td style="text-align: right;">Draw oblique gridlines abot pole</td>
+</tr>
+<tr class="odd">
+<td>title</td>
+<td style="text-align: center;">the title</td>
+<td style="text-align: center;">Str or Symb</td>
+<td style="text-align: right;">Add a plot title</td>
+</tr>
+<tr class="even">
+<td>label</td>
+<td style="text-align: center;">axis label</td>
+<td style="text-align: center;">Str or Symb</td>
+<td style="text-align: right;">Add a label to an axis</td>
+</tr>
+<tr class="odd">
+<td>Yhlabel</td>
+<td style="text-align: center;">y-axis hlabel</td>
+<td style="text-align: center;">Str or Symb</td>
+<td style="text-align: right;">Horizontal label for y-axes</td>
+</tr>
+<tr class="even">
+<td>prefix</td>
+<td style="text-align: center;">annot prefix</td>
+<td style="text-align: center;">Str or Symb</td>
+<td style="text-align: right;">Annot leading text prefix</td>
+</tr>
+<tr class="odd">
+<td>suffix</td>
+<td style="text-align: center;">annot suffix</td>
+<td style="text-align: center;">Str or Symb</td>
+<td style="text-align: right;">Annot trailing text suffix</td>
+</tr>
+<tr class="even">
+<td>xlabel</td>
+<td style="text-align: center;">x-axis label</td>
+<td style="text-align: center;">Str or Symb</td>
+<td style="text-align: right;">Add a label to X axis</td>
+</tr>
+<tr class="odd">
+<td>ylabel</td>
+<td style="text-align: center;">y-axis label</td>
+<td style="text-align: center;">Str or Symb</td>
+<td style="text-align: right;">Add a label to Y axis</td>
+</tr>
+<tr class="even">
+<td>zlabel</td>
+<td style="text-align: center;">z-axis label</td>
+<td style="text-align: center;">Str or Symb</td>
+<td style="text-align: right;">Add a label to Z axis</td>
+</tr>
+<tr class="odd">
+<td>xticks</td>
+<td style="text-align: center;">x-axis ticks</td>
+<td style="text-align: center;">Tuple</td>
+<td style="text-align: right;">Add custom ticks/annotations to X axis</td>
+</tr>
+<tr class="even">
+<td>yticks</td>
+<td style="text-align: center;">y-axis ticks</td>
+<td style="text-align: center;">Tuple</td>
+<td style="text-align: right;">Add custom ticks/annotations to Y axis</td>
+</tr>
+<tr class="odd">
+<td>zticks</td>
+<td style="text-align: center;">z-axis ticks</td>
+<td style="text-align: center;">Tuple</td>
+<td style="text-align: right;">Add custom ticks/annotations to Z axis</td>
+</tr>
+<tr class="even">
+<td>customticks</td>
+<td style="text-align: center;">x</td>
+<td style="text-align: center;">y</td>
+<td style="text-align: right;">z ticks</td>
+</tr>
+<tr class="odd">
+<td>seclabel</td>
+<td style="text-align: center;">second label</td>
+<td style="text-align: center;">Str or Symb</td>
+<td style="text-align: right;">Add a seconadry label to X</td>
+</tr>
+<tr class="even">
+<td>annot</td>
+<td style="text-align: center;">annot interval</td>
+<td style="text-align: center;">Symb or Num</td>
+<td style="text-align: right;">Annot stride interval</td>
+</tr>
+<tr class="odd">
+<td>ticks</td>
+<td style="text-align: center;">tick interval</td>
+<td style="text-align: center;">Symb or Num</td>
+<td style="text-align: right;">Tick interval</td>
+</tr>
+<tr class="even">
+<td>grid</td>
+<td style="text-align: center;">grid interval</td>
+<td style="text-align: center;">Symb or Num</td>
+<td style="text-align: right;">Grid lines interval</td>
+</tr>
+<tr class="odd">
+<td>slanted</td>
+<td style="text-align: center;">x-annot angle</td>
+<td style="text-align: center;">Symb or Num</td>
+<td style="text-align: right;">Angle of slanted annotations</td>
+</tr>
+<tr class="even">
+<td>phase_add</td>
+<td style="text-align: center;">xx</td>
+<td style="text-align: center;">Numb</td>
+<td style="text-align: right;">Shifts right the annot interval</td>
+</tr>
+<tr class="odd">
+<td>phase_sub</td>
+<td style="text-align: center;">xx</td>
+<td style="text-align: center;">Numb</td>
+<td style="text-align: right;">Shifts left the annot interval</td>
+</tr>
+<tr class="even">
+<td>annot_unit</td>
+<td style="text-align: center;">annot unit</td>
+<td style="text-align: center;">Str or Symb</td>
+<td style="text-align: right;">Unit of the <em>stride</em></td>
+</tr>
+<tr class="odd">
+<td>custom</td>
+<td style="text-align: center;">custom annot</td>
+<td style="text-align: center;">Str or Symb</td>
+<td style="text-align: right;">Custom annotations file</td>
+</tr>
+<tr class="even">
+<td>pi</td>
+<td style="text-align: center;">n or (n,m)</td>
+<td style="text-align: center;">Num or Tuple</td>
+<td style="text-align: right;">If axis is in radians</td>
+</tr>
+<tr class="odd">
+<td>scale</td>
+<td style="text-align: center;">log</td>
+<td style="text-align: center;">Str or Symb</td>
+<td style="text-align: right;">log10 of the tick value</td>
+</tr>
+<tr class="even">
+<td></td>
+<td style="text-align: center;">10log or pow</td>
+<td style="text-align: center;">Str or Symb</td>
+<td style="text-align: right;">Annot as 10 raised to log10</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td style="text-align: center;">exp</td>
+<td style="text-align: center;">Str or Symb</td>
+<td style="text-align: right;">Annot interval in transformed units</td>
+</tr>
+</tbody>
+</table>
+<p>[1] However, the original GMT compact syntax can also be used. I.e, <em>axes=:a</em>, or <em>frame=:WSen</em> or <em>frame=“a1Of1d WS”</em> also work.</p>
+<p><a href="https://www.generic-mapping-tools.org/gmt/latest/gmt.html#b-full"><code>-B GMT doc</code></a></p>
+</section>
+<section id="examples" class="level2">
+<h2 class="anchored" data-anchor-id="examples">Examples</h2>
+<p>Demonstrates use of dual (left vs right, bottom vs top) Cartesian axis labels</p>
+<div id="b76b481f" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">basemap</span>(limits<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">50</span>,<span class="fl">0</span>,<span class="fl">7</span>), figsize<span class="op">=</span><span class="fl">10</span>,</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>        xaxis<span class="op">=</span>(annot<span class="op">=:</span>auto, ticks<span class="op">=:</span>auto, label<span class="op">=</span><span class="st">"Bottom Label"</span>, seclabel<span class="op">=</span><span class="st">"Top label"</span>),</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>        yaxis<span class="op">=</span>(annot<span class="op">=:</span>auto, ticks<span class="op">=:</span>auto, label<span class="op">=</span><span class="st">"Left label"</span>, seclabel<span class="op">=</span><span class="st">"Right label"</span>), show<span class="op">=</span><span class="fl">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="common_opts_files/figure-html/cell-2-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>we can obtain the same result with a slightly shorter version of the above that shows how can mix <em>frame</em> and <em>xaxis</em> calls.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">basemap</span>(limits<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">50</span>,<span class="fl">0</span>,<span class="fl">7</span>), figsize<span class="op">=</span><span class="fl">8</span>,</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>        frame<span class="op">=</span>(annot<span class="op">=:</span>auto, ticks<span class="op">=:</span>auto, xlabel<span class="op">=</span><span class="st">"Bottom Label"</span>, ylabel<span class="op">=</span><span class="st">"Left label"</span>),</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>        xaxis<span class="op">=</span>(seclabel<span class="op">=</span><span class="st">"Top label"</span>,), yaxis<span class="op">=</span>(seclabel<span class="op">=</span><span class="st">"Right label"</span>,), show<span class="op">=</span><span class="fl">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Show inside labeling (use default fig size).</p>
+<div id="163ff924" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">basemap</span>(limits<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">13</span>,<span class="fl">0</span>,<span class="fl">10</span>), frame<span class="op">=</span>(annot<span class="op">=</span><span class="fl">2</span>, ticks<span class="op">=</span><span class="fl">0.5</span>), figsize<span class="op">=</span>(<span class="fl">12</span>,<span class="fl">6</span>), par<span class="op">=</span>(<span class="op">:</span>MAP_FRAME_TYPE,<span class="op">:</span>inside), show<span class="op">=</span><span class="fl">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="common_opts_files/figure-html/cell-3-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Show horizontal and vertical annotations</p>
+<div id="f5406e92" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">basemap</span>(region<span class="op">=</span>[<span class="fl">0</span> <span class="fl">1000</span> <span class="fl">0</span> <span class="fl">1000</span>], figsize<span class="op">=</span><span class="fl">5</span>,</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>        frame<span class="op">=</span>(axes<span class="op">=</span>(<span class="op">:</span>left_full,<span class="op">:</span>bottom_full,<span class="op">:</span>right_full,<span class="op">:</span>top_full), annot<span class="op">=</span><span class="fl">200</span>,</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>               ticks<span class="op">=</span><span class="fl">100</span>, xlabel<span class="op">=:</span>horizontal, ylabel<span class="op">=:</span>vertical),</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>        par<span class="op">=</span>(FONT_ANNOT_PRIMARY<span class="op">=</span><span class="fl">10</span>, FONT_LABEL<span class="op">=</span><span class="fl">16</span>, MAP_ANNOT_ORTHO<span class="op">=:</span>we))</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="fu">basemap!</span>(frame<span class="op">=</span>(axes<span class="op">=</span>(<span class="op">:</span>left_full,<span class="op">:</span>bottom_full,<span class="op">:</span>right_full,<span class="op">:</span>top_full), annot<span class="op">=</span><span class="fl">200</span>,</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>                ticks<span class="op">=</span><span class="fl">100</span>, xlabel<span class="op">=:</span>horizontal, ylabel<span class="op">=:</span>vertical),</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>         par<span class="op">=</span>(FONT_ANNOT_PRIMARY<span class="op">=</span><span class="fl">10</span>, FONT_LABEL<span class="op">=</span><span class="fl">16</span>, MAP_ANNOT_ORTHO<span class="op">=:</span>sn),</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>         x_offset<span class="op">=</span><span class="fl">9</span>, show<span class="op">=</span><span class="fl">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="common_opts_files/figure-html/cell-4-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Show <code>Yhlabel</code> for horizontal labels for y-axis</p>
+<div id="84b22464" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">basemap</span>(region<span class="op">=</span><span class="st">"-30/30/-20/20"</span>, figsize<span class="op">=</span>(<span class="fl">12</span>,<span class="fl">8</span>),</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>        frame<span class="op">=</span>(annot<span class="op">=:</span>a, ticks<span class="op">=:</span>a, xlabel<span class="op">=</span><span class="st">"Standard horizontal label"</span>, Yhlabel<span class="op">=</span><span class="st">"@~Y(q)@~"</span>,</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>               title<span class="op">=</span><span class="st">"Vertical Y-axis label"</span>), show<span class="op">=</span><span class="fl">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="common_opts_files/figure-html/cell-5-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<hr>
+</section>
+<section id="spacing" class="level1">
+<h1>spacing</h1>
+<ul>
+<li><strong>I</strong> or <strong>inc</strong> or <strong>increment</strong> or <strong>spacing</strong> : – <em>inc=x_inc</em> <strong>|</strong> <em>inc=(x_inc, y_inc)</em> <strong>|</strong> <em>inc=“xinc[+e|n][/yinc[+e|n]]”</em>
+<ul>
+<li><strong>Geographical (degrees) coordinates</strong>:<br>
+Optionally, append an increment unit. Choose among <code>m</code> to indicate arc minutes or <code>s</code> to indicate arc seconds. If one of the units <code>e</code>, <code>f</code>, <code>k</code>, <code>M</code>, <code>n</code> or <code>u</code> is appended instead, the increment is assumed to be given in meter, foot, km, mile, nautical mile or US survey foot, respectively, and will be converted to the equivalent degrees longitude at the middle latitude of the region (the conversion depends on PROJ_ELLIPSOID). If <em>y_inc</em> is given but set to 0 it will be reset equal to <em>x_inc</em>; otherwise it will be converted to degrees latitude.</li>
+<li><strong>All coordinates</strong>:<br>
+If <code>+e</code> is appended then the corresponding max <em>x</em> (east) or <em>y</em> (north) may be slightly adjusted to fit exactly the given increment [by default the increment may be adjusted slightly to fit the given domain]. Finally, instead of giving an increment you may specify the number of nodes desired by appending <code>+n</code> to the supplied integer argument; the increment is then recalculated from the number of nodes, the registration, and the domain. The resulting increment value depends on whether you have selected a gridline-registered or pixel-registered grid; see GMT File Formats for details. Note: If <code>region=grdfile</code> or <code>region=GMTgrid</code> is used then the grid spacing and the registration have already been initialized; use <code>spacing</code> and <code>registration</code> to override these values.</li>
+</ul></li>
+</ul>
+</section>
+<section id="limits" class="level1">
+<h1>limits</h1>
+<ul>
+<li><p><strong>R | region | limits | xlimits,ylimits | region_diag | limits_diag</strong></p>
+<p><em>xmin</em>, <em>xmax</em>, <em>ymin</em>, and <em>ymax</em> specify the region of interest (aka, BoundingBox). For geographic regions, these limits correspond to <em>west</em>, <em>east</em>, <em>south</em>, and <em>north</em> and you may specify them in decimal degrees or in [+|-]dd:mm[:ss.xxx][W|E|S|N] format or pass them in as a string argument. When it’s a string the shorthands <code>region="global"</code> and <code>region="global360"</code> are equivalent to <code>region=[-180 180 -90 90]</code> and <code>region=[0 360 -90 90]</code> respectively.</p>
+<p>Use the <em>region_diag</em> or <em>limits_diag</em> (or yet <em>region_llur</em> or <em>limits_llur</em>) to indicate that the limits are to be passed to GMT as <em>xmin, ymin, xmax, ymax</em>. This form may be needed when dealing with certain map projections.</p>
+<p>Using the form <em>region = [xmin xmax ymin ymax [zmin zmax]]</em> or the equivalent tuple alternative covers the largest chunk of user cases. However, for fine tunning the limits setting we have an extended syntax that involves the use of Named Tuples. This involves a NamedTuple keyword that can have any of the following members name/value:</p>
+<ul>
+<li><em>region=xx</em> or <em>limits=xx</em> – where <em>xx</em> is a string is interpreted as a GMT <strong>-R</strong> syntax string.</li>
+<li><em>lmits</em>, <em>region</em> – a four (or six) elements array or tuple with <em>xmin, xmax, ymin, ymax [zmin zmax]</em></li>
+<li><em>limits_diag</em>, <em>region_diag</em> – a four elements array with <em>xmin, ymin, xmax, ymax</em></li>
+<li><em>diag=true</em> – makes the <em>region</em> mean <em>region_diag</em></li>
+<li><em>cont</em> or <em>continents=continent name</em> where <em>continent name</em> is any of: <em>Africa</em>, <em>Antarctica</em>, <em>Asia</em>, <em>Europe</em>, <em>Oceania</em>, <em>North America</em> or <em>South America</em> (or the shorthands: <em>AF, AN, AS, EU, OC, NA, SA</em>). This sets the geographic limts covered by these continents.</li>
+<li><em>ISO=code</em> – use ISO country codes from the Digital Chart of the World. Append one or more comma-separated countries using the 2-character ISO 3166-1 alpha-2 convention. To select a state of a country (if available), append .state, e.g, US.TX for Texas.</li>
+<li><em>adjust=xx</em> – where <em>xx</em> is either a String, a Number or an Array/Tuple to set an <em>inc</em>, <em>xinc yinc</em>, or <em>winc einc sinc ninc</em> to adjust the region to be a multiple of these steps steps.</li>
+<li><em>pad=xx</em>, <em>extend=xx</em> or <em>expand=xx</em> – same as above but extend the region outward by adding these increments instead.</li>
+<li><em>unit=val</em> – use Cartesian projected coordinates compatible with the chosen projection. Append the length unit (e.g.&nbsp;“k” for kilometer). These coordinates are internally converted to the corresponding geographic (longitude, latitude) coordinates for the lower left and upper right corners. This form is convenient when you want to specify a region directly in the projected units (e.g., UTM meters). For Cartesian data in radians you can also use [+|-][s]pi[f], for optional integer scales <em>s</em> and fractions <em>f</em>.</li>
+</ul>
+<p>The <strong>xlimts</strong>, <strong>ylimits</strong> is used to break the specification into two pairs but it won’t support all the options of the <strong>limits</strong> functionality.</p>
+<p><a href="https://www.generic-mapping-tools.org/gmt/latest/gmt.html#r-full"><code>-R GMT doc</code></a></p></li>
+</ul>
+<hr>
+</section>
+<section id="proj" class="level1">
+<h1>proj</h1>
+<ul>
+<li><strong>J | proj | projection</strong> : <em>proj=<parameters></parameters></em></li>
+</ul>
+<p>Select map projection. The following table describes the projections available as well as extra parameters needed to set a specific projection. If the <strong>proj</strong> argument is a string then it is assumed that it contains a full GMT <strong>-J</strong> style specification. Please refer to the GMT manual to learn how that works. <a href="https://www.generic-mapping-tools.org/gmt/latest/gmt.html#j-full"><code>-J GMT doc</code></a> In the table, the <em>center</em> column indicates if a projection needs to set a projection center or if that is optional (when the parameters are under []). Several projections not to set also the standard paralalle(s). Those are indicated by a non-empty <em>parallels</em> column. Still, other projections accept an optional <em>horizon</em> parameter, which is an angle that specifies the max distance from projection center (in degrees, &lt;= 180, default 90) that is plotted.</p>
+<p>Given the different needs to specify a projection we can either use a simple form when only the projection name is required, <em>e.g.&nbsp;proj=Mercator</em> or in the more elaborated cases, a named tuple with fields <em>name, center, horizon, parallels</em>. An example of this later case would be to set an Oblique Mercator projection with center at 280ºW, 25.5ºN and standard parallels at 22 and 60ºN. We would do that with <em>proj=(name=:omercp, center=[280 25.5], parallels=[22 69])</em>. Note that we can either use arrays or tuples to specify pairs of values.</p>
+<p>In case the central meridian is an optional parameter and it is being omitted, then the center of the longitude range given by the <em>limits</em> option is used. The default standard parallel is the equator.</p>
+<p>For linear (Cartesian) projections one can use <em>proj=:linear</em> but the simplest is just to omit the projection setting, which will default to a fig with of 15 cm. To set other fig dimensions, use the <em>figsize</em> specification with <em>figsize=(width, height)</em> (both numeric or string) or just <em>figsize=width</em> and the <em>height</em> is computed automatically from the fig limits aspect ratio. We can also specify the scale separately: <em>e.g.</em> <em>figscale=x</em>, <em>figscale=1:xxxx</em>. As mentioned, when no size is provided a default width value of 15 cm is assumed.</p>
+<p>For logarithm and power axes use <code>logx</code>, <code>logy</code> or <code>loglog</code> to take log10 of values before scaling, and <code>powx</code> and/or <code>powy</code> to to raise values to <em>power</em> before scaling.</p>
+<p>When specifying a <em>figsize</em>, the UNIT is cm by default but it can be overridden by appending <strong>i</strong>, or <strong>p</strong> to the scale or width values. Append <strong>h</strong>, <strong>+</strong>, or <strong>-</strong> to the given width if you instead want to set map height, the maximum dimension, or the minimum dimension, respectively [Default is <strong>w</strong> for width]. Off course, when these settings are used, the argument to <em>figsize</em> must be in the form of strings.</p>
+<p>The ellipsoid used in the map projections is user-definable by editing the gmt.conf file in your home directory. 73 commonly used ellipsoids and spheroids are currently supported, and users may also specify their own custom ellipsoid parameters [Default is WGS-84]. Several GMT parameters can affect the projection: <em>PROJ_ELLIPSOID</em>, <em>GMT_INTERPOLANT</em>, <em>PROJ_SCALE_FACTOR</em>, and <em>PROJ_LENGTH_UNIT</em>; see the gmt.conf man page for details.</p>
+<p>See [GMT Map Projections] for a list of projection examples</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 18%">
+<col style="width: 12%">
+<col style="width: 16%">
+<col style="width: 12%">
+<col style="width: 10%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>name</th>
+<th style="text-align: center;">center</th>
+<th style="text-align: center;">horizon</th>
+<th style="text-align: center;">parallels</th>
+<th>GMT code</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>aea, Alberts</td>
+<td style="text-align: center;"><code>lon_0lat_0</code></td>
+<td style="text-align: center;"><em>NA</em></td>
+<td style="text-align: center;"><code>lat_1lat_2</code></td>
+<td><strong>B</strong><code>lon_0/lat_0/lat_1/lat_2</code></td>
+<td>Albers conic equal area</td>
+</tr>
+<tr class="even">
+<td>aeqd, azimuthalEquidistant</td>
+<td style="text-align: center;"><code>lon_0lat_0</code></td>
+<td style="text-align: center;"><em>yes</em></td>
+<td style="text-align: center;"><em>NA</em></td>
+<td><strong>E</strong><code>lon_0/lat_0</code></td>
+<td>Azimuthal equidistant</td>
+</tr>
+<tr class="odd">
+<td>Cyl_stere, cylindricalStereographic</td>
+<td style="text-align: center;"><code>[lon_0[lat_0]]</code></td>
+<td style="text-align: center;"><em>NA</em></td>
+<td style="text-align: center;"><em>NA</em></td>
+<td><strong>Cyl_stere</strong><code>[lon_0[/lat_0]]</code></td>
+<td>Cylindrical stereographic</td>
+</tr>
+<tr class="even">
+<td>cass, Cassini</td>
+<td style="text-align: center;"><code>lon_0lat_0</code></td>
+<td style="text-align: center;"><em>NA</em></td>
+<td style="text-align: center;"><em>NA</em></td>
+<td><strong>C</strong><code>lon_0/lat_0</code></td>
+<td>Cassini cylindrical</td>
+</tr>
+<tr class="odd">
+<td>cea, cylindricalEqualarea</td>
+<td style="text-align: center;"><code>lon_0lat_0</code></td>
+<td style="text-align: center;"><em>NA</em></td>
+<td style="text-align: center;"><em>NA</em></td>
+<td><strong>Y</strong><code>lon_0/lat_0</code></td>
+<td>Cylindrical equal area</td>
+</tr>
+<tr class="even">
+<td>eqdc, conicEquidistant</td>
+<td style="text-align: center;"><code>lon_0lat_0</code></td>
+<td style="text-align: center;"><em>NA</em></td>
+<td style="text-align: center;"><code>lat_1lat_2</code></td>
+<td><strong>D</strong><code>lon_0/lat_0/lat_1/lat_2</code></td>
+<td>Equidistant conic</td>
+</tr>
+<tr class="odd">
+<td>eqc, PlateCarree, equidistant</td>
+<td style="text-align: center;"><code>[lon_0[lat_0]]</code></td>
+<td style="text-align: center;"><em>NA</em></td>
+<td style="text-align: center;"><em>NA</em></td>
+<td><strong>Q</strong><code>[lon_0[/lat_0]]</code></td>
+<td>Equidistant cylindrical</td>
+</tr>
+<tr class="even">
+<td>eck4, EckertIV</td>
+<td style="text-align: center;"><code>[lon_0]</code></td>
+<td style="text-align: center;"><em>NA</em></td>
+<td style="text-align: center;"><em>NA</em></td>
+<td><strong>Kf</strong><code>[lon_0]</code></td>
+<td>Eckert IV equal area</td>
+</tr>
+<tr class="odd">
+<td>eck6, EckertVI</td>
+<td style="text-align: center;"><code>[lon_0]</code></td>
+<td style="text-align: center;"><em>NA</em></td>
+<td style="text-align: center;"><em>NA</em></td>
+<td><strong>Ks</strong><code>[lon_0]</code></td>
+<td>Eckert VI equal area</td>
+</tr>
+<tr class="even">
+<td>gnom, Gnomonic</td>
+<td style="text-align: center;"><code>lon_0lat_0</code></td>
+<td style="text-align: center;"><em>yes</em></td>
+<td style="text-align: center;"><em>NA</em></td>
+<td><strong>F</strong><code>lon_0/lat_0</code></td>
+<td>Azimuthal gnomonic</td>
+</tr>
+<tr class="odd">
+<td>hamm, Hammer</td>
+<td style="text-align: center;"><code>[lon_0]</code></td>
+<td style="text-align: center;"><em>NA</em></td>
+<td style="text-align: center;"><em>NA</em></td>
+<td><strong>H</strong><code>[lon_0]</code></td>
+<td>Hammer equal area</td>
+</tr>
+<tr class="even">
+<td>laea, lambertAzimuthal</td>
+<td style="text-align: center;"><code>lon_0lat_0</code></td>
+<td style="text-align: center;"><em>yes</em></td>
+<td style="text-align: center;"><em>NA</em></td>
+<td><strong>A</strong><code>lon_0/lat_0</code></td>
+<td>Lambert azimuthal equal area</td>
+</tr>
+<tr class="odd">
+<td>lcc, lambertConic</td>
+<td style="text-align: center;"><code>lon_0lat_0</code></td>
+<td style="text-align: center;"><em>NA</em></td>
+<td style="text-align: center;"><code>lat_1lat_2</code></td>
+<td><strong>L</strong><code>lon_0/lat_0/lat_1/lat_2</code></td>
+<td>Lambert conic conformal</td>
+</tr>
+<tr class="even">
+<td>lin, Linear</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><em>NA</em></td>
+<td style="text-align: center;"><em>NA</em></td>
+<td><strong>X</strong>[l</td>
+<td>pexp</td>
+</tr>
+<tr class="odd">
+<td>logx, logy, loglog</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td><strong>X</strong>l</td>
+<td>Log</td>
+</tr>
+<tr class="even">
+<td>powx, powy</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td><strong>X</strong>p exp</td>
+<td>Power</td>
+</tr>
+<tr class="odd">
+<td>merc, Mercator</td>
+<td style="text-align: center;"><code>[lon_0[lat_0]]</code></td>
+<td style="text-align: center;"><em>NA</em></td>
+<td style="text-align: center;"><em>NA</em></td>
+<td><strong>M</strong><code>[lon_0[/lat_0]]</code></td>
+<td>Mercator cylindrical</td>
+</tr>
+<tr class="even">
+<td>mill, Miller</td>
+<td style="text-align: center;"><code>[lon_0]</code></td>
+<td style="text-align: center;"><em>NA</em></td>
+<td style="text-align: center;"><em>NA</em></td>
+<td><strong>J</strong><code>[lon_0]</code></td>
+<td>Miller cylindrical</td>
+</tr>
+<tr class="odd">
+<td>moll, Molweide</td>
+<td style="text-align: center;"><code>[lon_0]</code></td>
+<td style="text-align: center;"><em>NA</em></td>
+<td style="text-align: center;"><em>NA</em></td>
+<td><strong>W</strong><code>[lon_0]</code></td>
+<td>Mollweide</td>
+</tr>
+<tr class="even">
+<td>omerc, obliqueMerc1</td>
+<td style="text-align: center;"><code>lon_0lat_0</code></td>
+<td style="text-align: center;"><em>NA</em></td>
+<td style="text-align: center;"><code>azim</code></td>
+<td><strong>Oa</strong><code>lon_0/lat_0/azim</code></td>
+<td>Oblique Mercator, 1: origin and azim</td>
+</tr>
+<tr class="odd">
+<td>omerc2, obliqueMerc2</td>
+<td style="text-align: center;"><code>lon_0lat_0</code></td>
+<td style="text-align: center;"><em>NA</em></td>
+<td style="text-align: center;"><code>lon_1lat_1</code></td>
+<td><strong>Ob</strong><code>lon_0/lat_0/lon_1/lat_1</code></td>
+<td>Oblique Mercator, 2: two points</td>
+</tr>
+<tr class="even">
+<td>omercp, obliqueMerc3</td>
+<td style="text-align: center;"><code>lon_0lat_0</code></td>
+<td style="text-align: center;"><em>NA</em></td>
+<td style="text-align: center;"><code>lon_plat_p</code></td>
+<td><strong>Oc</strong><code>lon_0/lat_0/lon_p/lat_p</code></td>
+<td>Oblique Mercator, 3: origin and pole</td>
+</tr>
+<tr class="odd">
+<td>ortho, Orthographic</td>
+<td style="text-align: center;"><code>lon_0lat_0</code></td>
+<td style="text-align: center;"><em>yes</em></td>
+<td style="text-align: center;"><em>NA</em></td>
+<td><strong>G</strong><code>lon_0/lat_0</code></td>
+<td>Azimuthal orthographic</td>
+</tr>
+<tr class="even">
+<td>poly, PolyConic</td>
+<td style="text-align: center;"><code>[lon_0[lat_0]]</code></td>
+<td style="text-align: center;"><em>NA</em></td>
+<td style="text-align: center;"><em>NA</em></td>
+<td><strong>Poly</strong><code>[lon_0[/lat_0]]</code></td>
+<td>(American) polyconic</td>
+</tr>
+<tr class="odd">
+<td>robin, Robinson</td>
+<td style="text-align: center;"><code>[lon_0]</code></td>
+<td style="text-align: center;"><em>NA</em></td>
+<td style="text-align: center;"><em>NA</em></td>
+<td><strong>N</strong><code>[lon_0]</code></td>
+<td>Robinson</td>
+</tr>
+<tr class="even">
+<td>stere, Stereographic</td>
+<td style="text-align: center;"><code>lon_0lat_0</code></td>
+<td style="text-align: center;"><em>yes</em></td>
+<td style="text-align: center;"><em>NA</em></td>
+<td><strong>S</strong><code>lon_0/lat_0</code></td>
+<td>General stereographic</td>
+</tr>
+<tr class="odd">
+<td>sinu, Sinusoidal</td>
+<td style="text-align: center;"><code>[lon_0]</code></td>
+<td style="text-align: center;"><em>NA</em></td>
+<td style="text-align: center;"><em>NA</em></td>
+<td><strong>I</strong><code>[lon_0]</code></td>
+<td>Sinusoidal equal area</td>
+</tr>
+<tr class="even">
+<td>tmerc, transverseMercator</td>
+<td style="text-align: center;"><code>[lon_0[lat_0]]</code></td>
+<td style="text-align: center;"><em>NA</em></td>
+<td style="text-align: center;"><em>NA</em></td>
+<td><strong>T</strong><code>[lon_0[/lat_0]]</code></td>
+<td>Transverse Mercator</td>
+</tr>
+<tr class="odd">
+<td>utm<em>xx</em>, UTM<em>xx</em></td>
+<td style="text-align: center;"><em>NA</em></td>
+<td style="text-align: center;"><em>NA</em></td>
+<td style="text-align: center;"><em>NA</em></td>
+<td><strong>U</strong><code>zone</code></td>
+<td>Universal Transverse Mercator (UTM)</td>
+</tr>
+<tr class="even">
+<td>vand, VanDerGritten</td>
+<td style="text-align: center;"><code>[lon_0]</code></td>
+<td style="text-align: center;"><em>NA</em></td>
+<td style="text-align: center;"><em>NA</em></td>
+<td><strong>V</strong><code>[lon_0]</code></td>
+<td>Van der Grinten</td>
+</tr>
+<tr class="odd">
+<td>win, WinkelTripel</td>
+<td style="text-align: center;"><code>[lon_0]</code></td>
+<td style="text-align: center;"><em>NA</em></td>
+<td style="text-align: center;"><em>NA</em></td>
+<td><strong>R</strong><code>[lon_0]</code></td>
+<td>Winkel Tripel</td>
+</tr>
+</tbody>
+</table>
+<p><a href="https://www.generic-mapping-tools.org/gmt/latest/gmt.html#j-full"><code>-J GMT doc</code></a></p>
+<hr>
+</section>
+<section id="timestamp" class="level1">
+<h1>timestamp</h1>
+<ul>
+<li><p><strong>U | timestamp | time_stamp</strong> : <em>timestamp=(just=“code”, pos=(dx,dy), label=“label”, com=true)</em></p>
+<p>Draw Unix System time stamp on plot. By adding [<em>just</em> ]<em>/dx/dy/</em>, the user may specify the justification of the stamp and where the stamp should fall on the page relative to lower left corner of the plot. For example, BL/0/0 will align the lower left corner of the time stamp with the lower left corner of the plot [LL]. Optionally, append a <em>label</em>, or <strong>c</strong> (which will plot the command string.). The GMT parameters <code>MAP_LOGO</code>, <code>MAP_LOGO_POS</code>, and <code>FORMAT_TIME_STAMP</code> can affect the appearance; see the <code>gmt.conf</code> man page for details. The time string will be in the locale set by the environment variable <strong>TZ</strong> (generally local time).</p>
+<p><a href="https://www.generic-mapping-tools.org/gmt/latest/gmt.html#u-full"><code>-U GMT doc</code></a></p></li>
+</ul>
+<hr>
+</section>
+<section id="verbose" class="level1">
+<h1>verbose</h1>
+<ul>
+<li><p><strong>V | verbose</strong> : <em>verbose=true</em> <strong>|</strong> <em>verbose=level</em></p>
+<p>Select verbose mode, which will send progress reports to <em>stderr</em>. Choose among 6 levels of verbosity; each level adds more messages:</p>
+<ul>
+<li><strong>q</strong> – Complete silence, not even fatal error messages are produced.</li>
+<li><strong>n</strong> – Normal verbosity: produce only fatal error messages.</li>
+<li><strong>c</strong> – Produce also compatibility warnings (same as when <em>verbose</em> is omitted).</li>
+<li><strong>v</strong> – Produce also warnings and progress messages (same as <em>verbose</em> only).</li>
+<li><strong>l</strong> – Produce also detailed progress messages.</li>
+<li><strong>d</strong> – Produce also debugging messages.</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="xshift" class="level1">
+<h1>xshift</h1>
+<ul>
+<li><strong>X | x_offset |</strong> <strong>xshift</strong> : <em>xshift=[]</em> <strong>|</strong> <em>xshift=x-shift</em> <strong>|</strong> <em>xshift=(shift=x-shift, mov=“a|c|f|r”)</em></li>
+</ul>
+</section>
+<section id="yshift" class="level1">
+<h1>yshift</h1>
+<ul>
+<li><p><strong>Y | y_offset | yshift</strong> : <em>yshift=[]</em> <strong>|</strong> <em>yshift=y-shift</em> <strong>|</strong> <em>yshift=(shift=y-shift, mov=“a|c|f|r”)</em></p>
+<p>Shift plot origin relative to the current origin by (<em>x-shift</em>, <em>y-shift</em>) and optionally append the length unit (<strong>c</strong>, <strong>i</strong>, or <strong>p</strong>). This second case (with units) implies that <em>x-shift</em> must be a string. To make non-default sifts, use the form <em>xshift=(shift=x-shift, mov=“a|c|f|r”)</em> where <strong>a</strong> shifts the origin back to the original position after plotting; <strong>c</strong> centers the plot on the center of the paper (optionally add shift); <strong>f</strong> shifts the origin relative to the fixed lower left corner of the page, and <strong>r</strong> [Default] to move the origin relative to its current location. For overlays the default (<em>x-shift</em>, <em>y-shift</em>) is (r0), otherwise it is (r1i). When <strong>xshift</strong> or <strong>yshift</strong> are used without any further arguments, the values from the last use of that option in a previous GMT command will be used. Note that <strong>xshift</strong> and <strong>yshift</strong> can also access the previous plot dimensions <em>w</em> and <em>h</em> and construct offsets that involves them. For instance, to move the origin up 2 cm beyond the height of the previous plot, use <em>yshift=“h+2c”</em>. To move the origin half the width to the right, use <em>xshift=“w/2”</em>.</p></li>
+</ul>
+</section>
+<section id="perspective" class="level1">
+<h1>perspective</h1>
+<ul>
+<li><p><strong>p | view | perspective</strong> : <em>view=(azim, elev)</em><br>
+Selects perspective view and sets the azimuth and elevation of the viewpoint (180,90). When <strong>view</strong> is used in consort with <strong>Jz</strong> or <strong>JZ</strong>, a third value can be appended which indicates at which z-level all 2D material, like the plot frame, is plotted (in perspective). [Default is at the bottom of the z-axis].</p>
+<p><a href="https://www.generic-mapping-tools.org/gmt/latest/gmt.html#p-full"><code>-p GMT doc</code></a></p></li>
+</ul>
+</section>
+<section id="spherical-distance" class="level1">
+<h1>Spherical distance</h1>
+<ul>
+<li><strong>j | spheric | spheric_dist</strong> : – <em>spheric=:e|:f|:g</em><br>
+Determine how spherical distances are calculated in modules that support this. By default (<strong>spheric=:g</strong>) we perform great circle distance calculations and parameters such as distance increments or radii will be compared against calculated great circle distances. To simplify and speed up calculations you can select Flat Earth mode (<strong>spheric=:f</strong>) which gives an approximate and fast result. Alternatively, you can select ellipsoidal (<strong>spheric=:e</strong>) or geodesic mode for the highest precision (and slowest calculation time). All spherical distance calculations depends on the current ellipsoid (<code>PROJ_ELLIPSOID</code>), the definition of the mean radius (<code>PROJ_MEAN_RADIUS</code>), and the specification of latitude type (<code>PROJ_AUX_LATITUDE</code>). Geodesic distance calculations is also controlled by method (<code>PROJ_GEODESIC</code>).</li>
+</ul>
+</section>
+<section id="interp" class="level1">
+<h1>interp</h1>
+<ul>
+<li><p><strong>n | interp | interpol</strong> : <em>interp=(B_spline=true, bicubic=true, bilinear=true, near_neighbor=true, aliasing=true, antialiasing=true, bc=?, clipz=true, threshold=?)</em><br>
+</p>
+<p>Select grid interpolation mode by adding <em>B-spline</em> smoothing, <em>bicubic</em> interpolation, <em>bilinear</em> interpolation, or <em>near-neighbor</em> (for example to plot categorical data). Optionally, append <em>antialiasing</em> to switch on antialiasing (where supported) or <em>aliasing</em> to leave it out (in grdproject). Append <em>bc</em> to override the boundary conditions used, adding <strong>g</strong> for geographic, <strong>p</strong> for periodic, or <strong>n</strong> for natural boundary conditions. For the latter two you may append x or y to specify just one direction, otherwise both are assumed. Append <em>clipz</em> to clip the interpolated grid to input z-min/max [Default may exceed limits]. Append <em>threshold=val</em> to control how close to nodes with NaNs the interpolation will go. A threshold of 1.0 requires all (4 or 16) nodes involved in interpolation to be non-NaN. 0.5 will interpolate about half way from a non-NaN value; 0.1 will go about 90% of the way, etc. [Default is bicubic interpolation with antialiasing and a threshold of 0.5, using geographic (if grid is known to be geographic) or natural boundary conditions].</p>
+<p><a href="https://www.generic-mapping-tools.org/gmt/latest/gmt.html#n-full"><code>-n GMT doc</code></a></p></li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script>
+
+// JavaScript to handle card hover effects for cards with images
+
+document.addEventListener('DOMContentLoaded', function() {
+
+  // Find all cards
+
+  const cards = document.querySelectorAll('.card');
+
+
+
+  cards.forEach(card => {
+
+    const paragraphs = card.querySelectorAll('p');
+
+
+
+    // If card has only one paragraph (with image)
+
+    if (paragraphs.length === 1) {
+
+      const p = paragraphs[0];
+
+      const img = p.querySelector('img');
+
+
+
+      if (img) {
+
+        // Get all text nodes
+
+        const textContent = Array.from(p.childNodes)
+
+          .filter(node => node.nodeType === Node.TEXT_NODE)
+
+          .map(node => node.textContent.trim())
+
+          .filter(text => text.length > 0)
+
+          .join(' ');
+
+
+
+        if (textContent) {
+
+          // Create overlay div for description
+
+          const overlay = document.createElement('div');
+
+          overlay.className = 'card-description-overlay';
+
+          overlay.textContent = textContent;
+
+          card.appendChild(overlay);
+
+
+
+          // Remove text nodes completely
+
+          Array.from(p.childNodes).forEach(node => {
+
+            if (node.nodeType === Node.TEXT_NODE && node.textContent.trim().length > 0) {
+
+              node.remove();
+
+            }
+
+          });
+
+        }
+
+      }
+
+    }
+
+  });
+
+
+
+  // Equalize heights of grid sections (documentation cards)
+
+  function equalizeGridHeights() {
+
+    const grids = document.querySelectorAll('.grid');
+
+
+
+    grids.forEach(grid => {
+
+      const sections = Array.from(grid.querySelectorAll(':scope > section, :scope > div'));
+
+
+
+      if (sections.length === 0) return;
+
+
+
+      // Reset heights
+
+      sections.forEach(section => {
+
+        section.style.height = 'auto';
+
+      });
+
+
+
+      // Group sections by row (based on offsetTop)
+
+      const rows = new Map();
+
+      sections.forEach(section => {
+
+        const top = section.offsetTop;
+
+        if (!rows.has(top)) {
+
+          rows.set(top, []);
+
+        }
+
+        rows.get(top).push(section);
+
+      });
+
+
+
+      // Equalize heights within each row
+
+      rows.forEach(rowSections => {
+
+        const maxHeight = Math.max(...rowSections.map(s => s.offsetHeight));
+
+        rowSections.forEach(section => {
+
+          section.style.height = maxHeight + 'px';
+
+        });
+
+      });
+
+    });
+
+  }
+
+
+
+  // Run on load and resize
+
+  equalizeGridHeights();
+
+  window.addEventListener('resize', equalizeGridHeights);
+
+});
+
+</script>
+
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/GenericMappingTools\.github\.io\/GMTjl_doc\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

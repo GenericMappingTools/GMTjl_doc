@@ -538,7 +538,7 @@ ASCII file with coordinates of desired output locations in the first column(s). 
 <li><p><strong>Q</strong> or <strong>dir_derivative</strong> : – <em>dir_derivative=az</em> <strong>|</strong> <em>dir_derivative=(x,y,z)</em><br>
 Take directional derivative instead of evaluating solution. For 1-D, give nothing (uses derivative). For 2-D, give azimuth in degrees. For 3-D, give three components of desired vector direction as a tuple; the vector will be normalized.</p></li>
 <li><p><strong>R</strong> or <strong>region</strong> or <strong>limits</strong> : – <em>limits=(xmin, xmax, ymin, ymax)</em> <strong>|</strong> <em>limits=(BB=(xmin, xmax, ymin, ymax),)</em> <strong>|</strong> <em>limits=(LLUR=(xmin, xmax, ymin, ymax),units=“unit”)</em> <strong>|</strong> …more<br>
-Specify the region of interest. More at [limits](../common_opts/opt_R.html). For perspective view <strong>view</strong>, optionally add <em>zmin,zmax</em>. This option may be used to indicate the range used for the 3-D axes. You may ask for a larger w/e/s/n region to have more room between the image and the axes.</p></li>
+Specify the region of interest. More at <a href="../../documentation/common_opts/opt_R.html">limits</a>. For perspective view <strong>view</strong>, optionally add <em>zmin,zmax</em>. This option may be used to indicate the range used for the 3-D axes. You may ask for a larger w/e/s/n region to have more room between the image and the axes.</p></li>
 <li><p><strong>S</strong> oe <strong>splines</strong> : – <em>splines=:c</em> <strong>|</strong> <em>splines=:t</em> <strong>|</strong> <em>splines=(:t, tension)</em> <strong>|</strong> <em>splines=(:q, tension, params…)</em><br>
 Select spline type. Append directive for spline selection:</p>
 <ul>
@@ -558,7 +558,7 @@ Select spline type. Append directive for spline selection:</p>
 <li><p><strong>T</strong> or <strong>mask</strong> : – <em>mask=“maskgrid”</em><br>
 For 2-D interpolation only. Evaluate solution only at nodes in maskgrid that are not NaN. This option eliminates the need for <strong>R</strong>, <strong>I</strong>, and <strong>r</strong>.</p></li>
 <li><p><strong>V</strong> or <em>verbose</em> : – <em>verbose=true</em> <strong>|</strong> <em>verbose=level</em><br>
-Select verbosity level. More at [verbose](../common_opts/opt_V.html)</p></li>
+Select verbosity level. More at <a href="../../documentation/common_opts/opt_V.html">verbose</a></p></li>
 <li><p><strong>W</strong> or <strong>uncertainties</strong> : – <em>uncertainties=true</em> <strong>|</strong> <em>uncertainties=:w</em><br>
 Data one-sigma uncertainties are in the last column. Compute weights inversely proportional to uncertainties squared. Append <strong>:w</strong> if weights are given directly instead of uncertainties (no squaring). Results in weighted least squares fit. Only has effect with <strong>C</strong>.</p></li>
 <li><p><strong>Z</strong> or <strong>mode</strong> or <strong>distmode</strong> : – <em>distmode=mode</em><br>
@@ -586,9 +586,9 @@ Select input columns and transformations (0 is first column, t is trailing text,
 <li><p><strong>o</strong> or <strong>outcol</strong> : – <em>outcol=??</em><br>
 Select specific data columns for primary output, in arbitrary order. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#ocols-full">More at</a></p></li>
 <li><p><strong>R</strong> or <strong>region</strong> or <strong>limits</strong> : – <em>limits=(xmin, xmax, ymin, ymax)</em> <strong>|</strong> <em>limits=(BB=(xmin, xmax, ymin, ymax),)</em> <strong>|</strong> <em>limits=(LLUR=(xmin, xmax, ymin, ymax),units=“unit”)</em> <strong>|</strong> …more<br>
-Specify the region of interest. More at [limits](../common_opts/opt_R.html). For perspective view <strong>view</strong>, optionally add <em>zmin,zmax</em>. This option may be used to indicate the range used for the 3-D axes. You may ask for a larger w/e/s/n region to have more room between the image and the axes.</p></li>
+Specify the region of interest. More at <a href="../../documentation/common_opts/opt_R.html">limits</a>. For perspective view <strong>view</strong>, optionally add <em>zmin,zmax</em>. This option may be used to indicate the range used for the 3-D axes. You may ask for a larger w/e/s/n region to have more room between the image and the axes.</p></li>
 <li><p><strong>X</strong> or <strong>xshift</strong> or <strong>x_offset</strong> : <em>xshift=true</em> <strong>|</strong> <em>xshift=x-shift</em> <strong>|</strong> <em>xshift=(shift=x-shift, mov=“a|c|f|r”)</em><br>
-Shift plot origin. More at [xshift](../common_opts/opt_X.html)</p></li>
+Shift plot origin. More at <a href="../../documentation/common_opts/opt_X.html">xshift</a></p></li>
 <li><p><strong>yx</strong> : – <em>yx=true</em><br>
 Swap 1st and 2nd column on input and/or output. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#colon-full">More at</a></p></li>
 </ul>
@@ -598,7 +598,7 @@ Swap 1st and 2nd column on input and/or output. <a href="https://docs.generic-ma
 <section id="d-spline" class="level3">
 <h3 class="anchored" data-anchor-id="d-spline">1-D Spline</h3>
 <p>Resample 1-D data using minimum curvature spline:</p>
-<div id="43e702ce" class="cell" data-execution_count="1">
+<div id="12b95455" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Create sample data</span></span>

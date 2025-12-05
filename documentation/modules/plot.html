@@ -472,7 +472,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p><strong>A</strong> or <strong>steps</strong> : – <em>steps=true</em> <strong>|</strong> <em>steps=:meridian|:parallel|:x|:y|:r|:theta</em><br>
 By default, geographic line segments (as indicated for example by the <strong>colinfo</strong> option) are drawn as great circle arcs. To draw them as straight lines, use the <strong>steps=true</strong>. Alternatively, use <strong>steps=:meridian</strong> to draw the line by first following a meridian, then a parallel. Or append <strong>steps=:parallel</strong> to start following a parallel, then a meridian. (This can be practical to draw a line along parallels, for example). For Cartesian data, points are simply connected, unless you use <strong>steps=:x</strong> or <strong>steps=:y</strong> to draw stair-case curves that whose first move is along <em>x</em> or <em>y</em>, respectively. If your Cartesian data are polar (<em>theta</em>, <em>r</em>), use <strong>steps=:t</strong> or <strong>steps=:r</strong> to construct stair-case paths whose first move is along <em>theta</em> or <em>r</em>, respectively.</p></li>
 <li><p><strong>B</strong> or <strong>axes</strong> or <strong>frame</strong><br>
-Set map boundary frame and axes attributes. Default is to draw and annotate left, bottom and vertical axes and just draw left and top axes. More at [frame](../common_opts/opt_B.html)</p></li>
+Set map boundary frame and axes attributes. Default is to draw and annotate left, bottom and vertical axes and just draw left and top axes. More at <a href="../../documentation/common_opts/opt_B.html">frame</a></p></li>
 <li><p><strong>bg</strong> or <strong>background</strong> : – <em>bg=imagename</em> <strong>|</strong> <em>bg=funname|img|grd</em> <strong>|</strong> <em>bg=(…, colormap)</em><br>
 Fills the plotting canvas with a backround image. That image may come from a file (<em>e.g.</em> <strong>bg=“cute.png”</strong>) or from a predefined function name. Possible names are: <em>akley, eggs, circle, parabola, rosenbrok, sombrero, x, y, xy, x+y</em> (see also [Plot surfaces]). In the forms <strong>bg=img</strong> and <strong>bg=grd</strong>, the <em>img</em> and <em>grd</em> stand for a <a href="../..\documentation/general/types.html#sec-image-type">GMTimage</a> and a <a href="../..\documentation/general/types.html#sec-grid-type">GMTgrid</a> object respectively. Image types can have associated a color map (if they do not, see the [image_cpt!] on how to assign one) but a grid type do not so we need to provide that information in case the <em>turbo</em> default is not intended. To assign a colormap the <strong>bg</strong> argument must be a two elements tuple, where first element is any of <em>funname|img|grd</em> and the second a colormap name (a CPT) or a <a href="../..\documentation/general/types.html#sec-cpt-type">GMTcpt</a> object (see also <a href="../..\documentation/modules/makecpt.html">makecpt</a>). To revert the sense of the color progression prefix the colormap name or of the predefined function with a ‘-’. Example: <code>plot(rand(8,2), bg=(:sombrero, "-magma"))</code>. Note that the images, either generated or read from file, will normally be deformed to fill the entire area selected with the <strong>region</strong> option. If that is not wished or if the image coordinates are intended to be used, then this is not the right option but instead you should <a href="../..\documentation/modules/grdimage.html">grdimage</a> followed plot call(s). Another point to notice is that the [frame] option also has a <em>fill</em> or <em>bg|background</em> option that also fills the canvas but it does it using a constant color by replicating a pattern (that can be an image too) and this has a quite different result. The example [Subplots] shows applications of this option.</p></li>
 <li><p><strong>C</strong> or <strong>color</strong> or <strong>cmap</strong> : – <em>color=cpt</em><br>
@@ -493,13 +493,13 @@ Alter the way points are connected (by specifying a <em>scheme</em>) and data ar
 <li><strong>segments_reset=true</strong> : Same as <strong>segments=true</strong>, but the group reference point is reset after each record to the previous point (this method is only available with the <strong>refpoint=true</strong> scheme). Instead of the codes <strong>ignore_hdr</strong>, <strong>single_group</strong>, <strong>segments</strong>, <strong>segments_reset</strong> you may append the coordinates of a <strong>anchor=(x,y)</strong> which will serve as a fixed external reference point for all groups.</li>
 </ul></li>
 <li><p><strong>J</strong> or <strong>proj</strong> or <strong>projection</strong> : – <em>proj=<parameters></parameters></em><br>
-Select map projection. More at [proj](../common_opts/opt_J.html)</p></li>
+Select map projection. More at <a href="../../documentation/common_opts/opt_J.html">proj</a></p></li>
 <li><p><strong>Jz</strong> or <strong>JZ</strong> or <strong>zscale</strong> or <strong>zsize</strong> (<em>for</em> <strong>plot3d</strong> <em>only</em>) : – <em>zscale=scale</em> <strong>|</strong> <em>zsize=size</em><br>
 Set z-axis scaling or or z-axis size. <code>zsize=size</code> sets the size to the fixed value <em>size</em> (for example <em>zsize=10</em> or <em>zsize=4i</em>). <code>zscale=scale</code> sets the vertical scale to UNIT/z-unit.</p></li>
 <li><p><strong>R</strong> or <strong>region</strong> or <strong>limits</strong> : – <em>limits=(xmin, xmax, ymin, ymax)</em> <strong>|</strong> <em>limits=(BB=(xmin, xmax, ymin, ymax),)</em> <strong>|</strong> <em>limits=(LLUR=(xmin, xmax, ymin, ymax),units=“unit”)</em> <strong>|</strong> …more<br>
-Specify the region of interest. More at [limits](../common_opts/opt_R.html). For perspective view <strong>view</strong>, optionally add <em>zmin,zmax</em>. This option may be used to indicate the range used for the 3-D axes. You may ask for a larger w/e/s/n region to have more room between the image and the axes.</p></li>
+Specify the region of interest. More at <a href="../../documentation/common_opts/opt_R.html">limits</a>. For perspective view <strong>view</strong>, optionally add <em>zmin,zmax</em>. This option may be used to indicate the range used for the 3-D axes. You may ask for a larger w/e/s/n region to have more room between the image and the axes.</p></li>
 <li><p><strong>G</strong> or <strong>markerfacecolor</strong> or <strong>MarkerFaceColor</strong> or <strong>markercolor</strong> or <strong>mc</strong> or <strong>fill</strong><br>
-Select color or pattern for filling of symbols [Default is no fill]. Note that plot will search for <em>fill</em> and <em>pen</em> settings in all the segment headers (when passing a GMTdaset or file of a multi-segment dataset) and let any values thus found over-ride the command line settings (but those must be provided in the terse GMT syntax). See [Setting color](../common_features/color.html) for extend color selection (including color map generation).</p></li>
+Select color or pattern for filling of symbols [Default is no fill]. Note that plot will search for <em>fill</em> and <em>pen</em> settings in all the segment headers (when passing a GMTdaset or file of a multi-segment dataset) and let any values thus found over-ride the command line settings (but those must be provided in the terse GMT syntax). See <a href="../../documentation/common_features/color.html">Setting color</a> for extend color selection (including color map generation).</p></li>
 <li><p><strong>hexbin</strong> : – <em>hexbin=true</em><br>
 Make a 2D hexagonal binning plot of points <em>xy</em> that have been processed by <code>binstats(xy, tiling=:hex, stats=...)</code>. Note thatb for this we rely in keeping a correct trac of the figure size and plot limis, which is not obvious because those are often given as strings and we must parse them back to numeric. In case it fails, it’s users responsability to provide a correct size to the <code>marker=hexagon, markersize=???</code> options.</p></li>
 <li><p><strong>I</strong> or <strong>shade</strong> : – <em>shade=intens</em><br>
@@ -567,13 +567,13 @@ Similar to the </strong>polygon** option above but where the data to build envel
 <li><p><strong>zcolor</strong> or <strong>markerz</strong> or <strong>mz</strong> : – <em>zcolor=xx</em> <strong>|</strong> <em>zcolor=true</em><br>
 Take the vector <code>xx</code> (same size as number os points in data) and interpolate the current color scale to paint the symbols based on that colr scale. The form <code>zcolor=true</code> is equivant to <em>zcolor=1:npoints</em></p></li>
 <li><p><strong>U</strong> or <strong>time_stamp</strong> : – <em>time_stamp=true</em> <strong>|</strong> <em>time_stamp=(just=“code”, pos=(dx,dy), label=“label”, com=true)</em><br>
-Draw GMT time stamp logo on plot. More at [timestamp](../common_opts/opt_U.html)</p></li>
+Draw GMT time stamp logo on plot. More at <a href="../../documentation/common_opts/opt_U.html">timestamp</a></p></li>
 <li><p><strong>V</strong> or <em>verbose</em> : – <em>verbose=true</em> <strong>|</strong> <em>verbose=level</em><br>
-Select verbosity level. More at [verbose](../common_opts/opt_V.html)</p></li>
+Select verbosity level. More at <a href="../../documentation/common_opts/opt_V.html">verbose</a></p></li>
 <li><p><strong>X</strong> or <strong>xshift</strong> or <strong>x_offset</strong> : <em>xshift=true</em> <strong>|</strong> <em>xshift=x-shift</em> <strong>|</strong> <em>xshift=(shift=x-shift, mov=“a|c|f|r”)</em><br>
-Shift plot origin. More at [xshift](../common_opts/opt_X.html)</p></li>
+Shift plot origin. More at <a href="../../documentation/common_opts/opt_X.html">xshift</a></p></li>
 <li><p><strong>Y</strong> or <strong>yshift</strong> or <strong>y_offset</strong> : <em>yshift=true</em> <strong>|</strong> <em>yshift=y-shift</em> <strong>|</strong> <em>yshift=(shift=y-shift, mov=“a|c|f|r”)</em><br>
-Shift plot origin. More at [yshift](../common_opts/opt_Y.html)</p></li>
+Shift plot origin. More at <a href="../../documentation/common_opts/opt_Y.html">yshift</a></p></li>
 <li><p><strong>Z</strong> or <strong>level</strong> : <em>level=vec</em> <strong>|</strong> <em>level=(data=vec, outline=true, nofill=true)</em> <strong>|</strong> <em>level=“att=???”</em><br>
 Instead of specifying a symbol or polygon fill and outline color via <strong>markercolor</strong> and <strong>pen</strong>, give both a value via <strong>level</strong> and a color lookup table via <strong>color</strong>. Alternatively, give a vector with one z-value for each polygon in the input data. To apply it to the pen color, use <strong>level=(data=vec, outline=true)</strong>. This results in filled polygons and outline color chosen from the <code>vec</code> and the active cmap. Use <strong>level=(data=vec, nofill=true)</strong> to only paint outlines but not fill. Instead of a numeric <code>vec</code>, one can pass an attribute name of the attrib holding the numeric data in the GMTdaset. For example, this is <em>legal</em> too: <strong>level=(data=“att=FROMAGE”, nofill=true)</strong>. Here, the contents of the FROMAGE attribute will be used to color lines or polygons. The default is to fill and draw outlines with default color (black). This option is particularly useful to make choropleth maps. Note, options <strong>fill</strong> and <strong>pen</strong> may overlap with this option.</p></li>
 <li><p><strong>figname</strong> or <strong>savefig</strong> or <strong>name</strong> : – <em>figname=<code>name.png</code></em><br>
@@ -587,20 +587,30 @@ Save the figure with the <code>figname=name.ext</code> where <code>ext</code> ch
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <p>Decorated curve with blue stars</p>
-<div id="20112510" class="cell" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>xy <span class="op">=</span> <span class="fu">gmt</span>(<span class="st">"gmtmath -T0/180/1 T SIND 4.5 ADD"</span>);</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(xy, axes<span class="op">=:</span>af, pen<span class="op">=</span>(<span class="fl">1</span>,<span class="op">:</span>red), decorated<span class="op">=</span>(dist<span class="op">=</span>(<span class="fl">2.5</span>,<span class="fl">0.25</span>), symbol<span class="op">=:</span>star,</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>      symbsize<span class="op">=</span><span class="fl">1</span>, pen<span class="op">=</span>(<span class="fl">0.5</span>,<span class="op">:</span>green), fill<span class="op">=:</span>blue, dec2<span class="op">=</span><span class="cn">true</span>), show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre>UndefVarError: `gmt` not defined
-
-Stacktrace:
- [1] top-level scope
-<span class="ansi-bright-black-fg">   @</span> <span style="text-decoration:underline" class="ansi-bright-black-fg">In[2]:1</span></pre>
+<div id="8143e6c1" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>xy <span class="op">=</span> <span class="fu">gmt</span>(<span class="st">"gmtmath -T0/180/1 T SIND 4.5 ADD"</span>);</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(xy, axes<span class="op">=:</span>af, pen<span class="op">=</span>(<span class="fl">1</span>,<span class="op">:</span>red), decorated<span class="op">=</span>(dist<span class="op">=</span>(<span class="fl">2.5</span>,<span class="fl">0.25</span>), symbol<span class="op">=:</span>star,</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>      ms<span class="op">=</span><span class="fl">1</span>, pen<span class="op">=</span>(<span class="fl">0.5</span>,<span class="op">:</span>green), fill<span class="op">=:</span>blue, dec2<span class="op">=</span><span class="cn">true</span>), show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="plot_files/figure-html/cell-2-output-1.png" class="img-fluid figure-img"></p>
+</figure>
 </div>
 </div>
 </div>
+<section id="other-examples-using-plot-and-its-avatars" class="level3">
+<h3 class="anchored" data-anchor-id="other-examples-using-plot-and-its-avatars">Other examples using <code>plot</code> (and its <em>avatars</em>)</h3>
+<div class="grid">
+<div class="g-col-6 g-col-md-4 g-col-lg-2">
+<div class="card h-100">
+<p><a href="../..\examples/plotting_functions/index.html" class="card-title stretched-link"><strong>Plot Examples</strong></a> <a href="../..\examples/plotting_functions/index.html"><img src="../..\examples/symbols.png" class="card-img-top img-fluid"></a></p>
+</div>
+</div>
+</div>
+</section>
 </section>
 <section id="source-code" class="level2">
 <h2 class="anchored" data-anchor-id="source-code">Source Code</h2>

@@ -515,7 +515,7 @@ Defines the range of the new CPT by giving the lowest and highest z-value (and o
 <li><p><strong>cumdist</strong> or <strong>cumsum</strong> : – <em>cumdist=true</em><br>
 Compute the cumulative distance along the input line. Note that for this the first two columns must contain the spatial coordinates and the accumulated distance is appended after last column of the table.</p></li>
 <li><p><strong>V</strong> or <em>verbose</em> : – <em>verbose=true</em> <strong>|</strong> <em>verbose=level</em><br>
-Select verbosity level. More at [verbose](../common_opts/opt_V.html)</p></li>
+Select verbosity level. More at <a href="../../documentation/common_opts/opt_V.html">verbose</a></p></li>
 <li><p><strong>a</strong> or <strong>aspatial</strong> : – <em>aspatial=??</em><br>
 Control how aspatial data are handled in GMT during input and output. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#aspatial-full">More at</a></p></li>
 <li><p><strong>bi</strong> or <strong>binary_in</strong> : – <em>binary_in=??</em><br>
@@ -554,7 +554,7 @@ Swap 1st and 2nd column on input and/or output. <a href="https://docs.generic-ma
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <p>To filter the remote CO2 data set in the file MaunaLoa_CO2.txt (year, CO2) with a 5 year Gaussian filter, try</p>
-<div id="98334c8e" class="cell" data-execution_count="1">
+<div id="1693571f" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">filter1d</span>(<span class="st">"@MaunaLoa_CO2.txt"</span>, filter<span class="op">=</span>(<span class="kw">type</span><span class="op">=:</span>gauss, width<span class="op">=</span><span class="fl">5</span>));</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="st">"@MaunaLoa_CO2.txt"</span>, legend<span class="op">=</span><span class="st">"Raw data"</span>)</span>

@@ -509,13 +509,13 @@ Adjust the longitude values in the grid (only applies to geographic grids). By d
 <li><p><strong>N</strong> or <strong>replace</strong> : – <em>replace=table</em> <strong>|</strong> <em>replace=“tablename”</em><br>
 Use a Mx3 matrix with <em>x,y,z</em> values (or read them from file “tablename”) and replace the corresponding nodal values in the grid with these values.</p></li>
 <li><p><strong>R</strong> or <strong>region</strong> or <strong>limits</strong> : – <em>limits=(xmin, xmax, ymin, ymax)</em> <strong>|</strong> <em>limits=(BB=(xmin, xmax, ymin, ymax),)</em> <strong>|</strong> <em>limits=(LLUR=(xmin, xmax, ymin, ymax),units=“unit”)</em> <strong>|</strong> …more<br>
-Specify the region of interest. More at [limits](../common_opts/opt_R.html). For perspective view <strong>view</strong>, optionally add <em>zmin,zmax</em>. This option may be used to indicate the range used for the 3-D axes. You may ask for a larger w/e/s/n region to have more room between the image and the axes.</p></li>
+Specify the region of interest. More at <a href="../../documentation/common_opts/opt_R.html">limits</a>. For perspective view <strong>view</strong>, optionally add <em>zmin,zmax</em>. This option may be used to indicate the range used for the 3-D axes. You may ask for a larger w/e/s/n region to have more room between the image and the axes.</p></li>
 <li><p><strong>S</strong> or <strong>wrap</strong> : – <em>wrap=true</em><br>
 For global, geographical grids only. Grid values will be shifted longitudinally according to the new borders given in <strong>region</strong> (if given, othersise use grid limits).</p></li>
 <li><p><strong>T</strong> or <strong>toggle_reg</strong> or <strong>toggle</strong> : – <em>toggle=true</em><br>
 Make necessary changes in the header to convert a gridline-registered grid to a pixel-registered grid, or vice-versa. Basically, gridline-registered grids will have their domain extended by half the x- and y-increments whereas pixel-registered grids will have their domain shrunk by the same amount. This is a <em>non-destructive</em> grid change; see <a href="https://docs.generic-mapping-tools.org/latest/reference/options.html#switch-registrations">Switching registrations</a>.</p></li>
 <li><p><strong>V</strong> or <em>verbose</em> : – <em>verbose=true</em> <strong>|</strong> <em>verbose=level</em><br>
-Select verbosity level. More at [verbose](../common_opts/opt_V.html)</p></li>
+Select verbosity level. More at <a href="../../documentation/common_opts/opt_V.html">verbose</a></p></li>
 <li><p><strong>bi</strong> or <strong>binary_in</strong> : – <em>binary_in=??</em><br>
 Select native binary format for primary table input. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#bi-full">More at</a></p></li>
 <li><p><strong>di</strong> or <strong>nodata_in</strong> : – <em>nodata_in=??</em><br>

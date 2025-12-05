@@ -475,13 +475,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Creates a basic or fancy basemap with axes, fill, and titles. Several map projections are available, and the user may specify separate tick-mark intervals for boundary annotation, ticking, and (optionally) gridlines. A simple map scale (<strong>map_scale</strong>) or directional rose (<strong>rose</strong>) may also be plotted. At least one of the options [frame], <strong>map_scale</strong>, or <strong>rose</strong> must be specified.</p>
 <ul>
 <li><p><strong>J</strong> or <strong>proj</strong> or <strong>projection</strong> : – <em>proj=<parameters></parameters></em><br>
-Select map projection. More at [proj](../common_opts/opt_J.html)</p></li>
+Select map projection. More at <a href="../../documentation/common_opts/opt_J.html">proj</a></p></li>
 <li><p><strong>R</strong> or <strong>region</strong> or <strong>limits</strong> : – <em>limits=(xmin, xmax, ymin, ymax)</em> <strong>|</strong> <em>limits=(BB=(xmin, xmax, ymin, ymax),)</em> <strong>|</strong> <em>limits=(LLUR=(xmin, xmax, ymin, ymax),units=“unit”)</em> <strong>|</strong> …more<br>
-Specify the region of interest. More at [limits](../common_opts/opt_R.html). For perspective view <strong>view</strong>, optionally add <em>zmin,zmax</em>. This option may be used to indicate the range used for the 3-D axes. You may ask for a larger w/e/s/n region to have more room between the image and the axes.</p></li>
+Specify the region of interest. More at <a href="../../documentation/common_opts/opt_R.html">limits</a>. For perspective view <strong>view</strong>, optionally add <em>zmin,zmax</em>. This option may be used to indicate the range used for the 3-D axes. You may ask for a larger w/e/s/n region to have more room between the image and the axes.</p></li>
 <li><p><strong>A</strong> or <strong>polygon</strong> : <em>polygon=true</em> or <em>polygon=fname</em><br>
 No plotting is performed. Instead, we determine the geographical coordinates of the polygon outline for the (possibly oblique) rectangular map domain. The plot domain must be given via [limits] and [proj], with no other options allowed. The sampling interval is controlled via <code>MAP_LINE_STEP</code> parameter. The coordinates are return in a <a href="../..\documentation/general/types.html#sec-dataset-type">GMTdataset</a> or written to <em>fname</em> if a file name is specified.</p></li>
 <li><p><strong>B</strong> or <strong>axes</strong> or <strong>frame</strong><br>
-Set map boundary frame and axes attributes. Default is to draw and annotate left, bottom and vertical axes and just draw left and top axes. More at [frame](../common_opts/opt_B.html)</p></li>
+Set map boundary frame and axes attributes. Default is to draw and annotate left, bottom and vertical axes and just draw left and top axes. More at <a href="../../documentation/common_opts/opt_B.html">frame</a></p></li>
 <li><p><strong>F</strong> or <strong>box</strong> : – <em>box=(clearance=gap, pen=pen, fill=fill, inner=(gap,pen), rounded=xx, shaded=(dx,dy[,shade]))</em><br>
 Without further options, draws a rectangular border around the map scale or rose using <a href="http://docs.generic-mapping-tools.org/latest/gmt.conf.html#map-frame-pen">MAP_FRAME_PEN</a>; specify a different pen with <strong>pen=new_pen</strong>. Add <code>fill=fill_value</code> to fill the logo box [no fill]. Append <strong>clearance=gap</strong> where <strong>gap</strong> is either a scalar, or tuples with <em>(xgap, ygap)</em>, or <em>(lgap,rgap,bgap,tgap</em>) where these items are uniform, separate in x- and y-direction, or individual side spacings between logo and border. Append <code>inner</code> to draw a secondary, inner border as well. We use a uniform <strong>gap</strong> between borders of <strong>2p</strong> and the <a href="http://docs.generic-mapping-tools.org/latest/gmt.conf.html#map-default-pen">MAP_DEFAULT_PEN</a> unless other values are specified. Append <strong>rounded=6</strong> to draw rounded rectangular borders instead, with a <strong>6p</strong> corner radius. You can override this radius by appending another value. Finally, append <strong>shaded=(dx,dy[,shade])</strong> to draw an offset background shaded region. Here, <strong>dx,dy</strong> indicates the shift relative to the foreground frame [<strong>4p,4p</strong>] and <strong>shade</strong> sets the fill style to use for shading [gray50]. Requires <strong>map_scale</strong> or <strong>rose</strong>. If both <strong>map_scale</strong> or <strong>rose</strong>, you may repeat <strong>box</strong> after each of these but remember to put repeated settings inside a tuple of tuples.</p></li>
 <li><p><strong>L</strong> or <strong>map_scale</strong> : – <em>map_scale=([map=true, inside=true, norm=true, paper=true,] anchor=refpoint, scale_at_lat=lat, length=len [,align=side, justify=code, fancy=true, label=lab, offset=(dx,dy), units=unit, vertical=true])</em><br>
@@ -491,13 +491,13 @@ Draws a map directional rose on the map at the location defined by the reference
 <li><p><strong>Tm</strong> or <strong>compass</strong> : – <em>compass=([map=true, inside=true, outside=true, norm=true, paper=true,] anchor=refpoint, width=width, [dec=(dec, dlabel), justify=code, labels=labels, rose_primary=pen, rose_secondary=pen, offset=(dx,dy)])</em><br>
 Draws a map magnetic rose on the map at the location defined by the reference and anchor points: Give the reference point on the map for the rose using one of four coordinate systems: (1) Use <strong>map=true</strong> for map (user) coordinates, (2) use <strong>inner=code</strong> for setting <strong>refpoint</strong> via a 2-char justification code that refers to the (invisible) map domain rectangle, (3) use <strong>norm=true</strong> for normalized (0-1) coordinates, or (4) use <strong>paper=true</strong> for plot coordinates (inches, cm, etc.). You can offset the reference point with <strong>offset=(dx,dy)</strong> in the direction implied by <strong>justify=code</strong>. By default, the anchor point is assumed to be the center of the rose (MC), but this can be changed by using <strong>justify=code</strong> where <strong>code</strong> is a 2-char justification code (see <code>text</code> for list and explanation of codes). Note: If <strong>outside=true</strong> is used then <strong>justify</strong> defaults to the same as <strong>refpoint</strong>, if <strong>outside=true</strong> is used then <strong>justify</strong> defaults to the mirror opposite of <strong>refpoint</strong>. Use <strong>width=width</strong> to set the width of the rose in plot coordinates (in inches, cm, or points). Use <strong>dec=dec</strong> to assign the magnetic declination or <strong>dec=(dec, dlabel)</strong> to set <strong>dlabel</strong>, which is a label for the magnetic compass needle (use “-” as <strong>dlabel</strong> to bypass labeling). With <strong>dec</strong>, both directions to geographic and magnetic north are plotted [Default is geographic only]. If the north label is a star <code>*</code> as in <em>dec=(1,“W,E,S,<code>*</code>”)</em> then a north star is plotted instead of the north label. Annotation and two levels of tick intervals for both geographic and magnetic directions default to 30/5/1 degrees; override these settings by appending <strong>annot=(…,…,.)</strong>, and enter six intervals to set both the geographic (first three) and magnetic (last three) intervals. Label the cardinal points W,E,S,N by adding <strong>label=lab</strong> where <strong>lab</strong> is your own four comma-separated string to override the default. Skip a specific label by leaving it blank. The <strong>rose_primary=pen</strong> and <strong>rose_secondary=pen</strong> modify the pens used to plot the outter and inner circles of the comapss. A number GMT default parameters control pens, fonts, and color. See <code>Placing-dir-map-roses</code> and <strong>box</strong> on how to place a panel behind the scale.</p></li>
 <li><p><strong>U</strong> or <strong>time_stamp</strong> : – <em>time_stamp=true</em> <strong>|</strong> <em>time_stamp=(just=“code”, pos=(dx,dy), label=“label”, com=true)</em><br>
-Draw GMT time stamp logo on plot. More at [timestamp](../common_opts/opt_U.html)</p></li>
+Draw GMT time stamp logo on plot. More at <a href="../../documentation/common_opts/opt_U.html">timestamp</a></p></li>
 <li><p><strong>V</strong> or <em>verbose</em> : – <em>verbose=true</em> <strong>|</strong> <em>verbose=level</em><br>
-Select verbosity level. More at [verbose](../common_opts/opt_V.html)</p></li>
+Select verbosity level. More at <a href="../../documentation/common_opts/opt_V.html">verbose</a></p></li>
 <li><p><strong>X</strong> or <strong>xshift</strong> or <strong>x_offset</strong> : <em>xshift=true</em> <strong>|</strong> <em>xshift=x-shift</em> <strong>|</strong> <em>xshift=(shift=x-shift, mov=“a|c|f|r”)</em><br>
-Shift plot origin. More at [xshift](../common_opts/opt_X.html)</p></li>
+Shift plot origin. More at <a href="../../documentation/common_opts/opt_X.html">xshift</a></p></li>
 <li><p><strong>Y</strong> or <strong>yshift</strong> or <strong>y_offset</strong> : <em>yshift=true</em> <strong>|</strong> <em>yshift=y-shift</em> <strong>|</strong> <em>yshift=(shift=y-shift, mov=“a|c|f|r”)</em><br>
-Shift plot origin. More at [yshift](../common_opts/opt_Y.html)</p></li>
+Shift plot origin. More at <a href="../../documentation/common_opts/opt_Y.html">yshift</a></p></li>
 <li><p><strong>f</strong> or <strong>colinfo</strong> : – <em>colinfo=??</em><br>
 Specify the data types of input and/or output columns (time or geographical data). <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#f-full">More at</a></p></li>
 <li><p><strong>p</strong> or <strong>view</strong> or <strong>perspective</strong> : – <em>view=(azim, elev)</em><br>
@@ -509,7 +509,7 @@ A full GMT compact string with the full set of options.</li>
 <li><em>view=(azim,elev)</em><br>
 A two elements tuple with azimuth and elevation</li>
 <li><em>view=true</em><br>
-To propagate the viewpoint used in a previous module (makes sense only in <code>bar3!</code>) More at [perspective](../common_opts/opt_p.html)</li>
+To propagate the viewpoint used in a previous module (makes sense only in <code>bar3!</code>) More at <a href="../../documentation/common_opts/opt_p.html">perspective</a></li>
 </ul></li>
 <li><p><strong>t</strong> or <strong>transparency</strong> or <strong>alpha</strong>: – <em>alpha=50</em><br>
 Set PDF transparency level for an overlay, in (0-100] percent range. [Default is 0, <em>i.e.</em>, opaque]. Works only for the PDF and PNG formats.</p></li>
@@ -525,7 +525,7 @@ Set PDF transparency level for an overlay, in (0-100] percent range. [Default is
 <section id="linear-x-y-plot" class="level3">
 <h3 class="anchored" data-anchor-id="linear-x-y-plot">Linear x-y plot</h3>
 <p>To make a linear x/y frame with all axes, but with only left and bottom axes annotated, using xscale = yscale = 1 cm per unit, ticking every 1 unit and annotating every 2, and using xlabel = “Distance” and ylabel = “No of samples”, use</p>
-<div id="4c3c20b6" class="cell" data-execution_count="1">
+<div id="31794aec" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">basemap</span>(region<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">9</span>,<span class="fl">0</span>,<span class="fl">5</span>), figscale<span class="op">=</span><span class="fl">1</span>,</span>
@@ -542,7 +542,7 @@ Set PDF transparency level for an overlay, in (0-100] percent range. [Default is
 <section id="log-log-plot" class="level3">
 <h3 class="anchored" data-anchor-id="log-log-plot">Log-log plot</h3>
 <p>To make a log-log frame with only the left and bottom axes, where the x-axis is 25 cm and annotated every 1-2-5 and the y-axis is 15 cm and annotated every power of 10 but has tick-marks every 0.1, run</p>
-<div id="ad08fb34" class="cell" data-execution_count="2">
+<div id="d4ff655c" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">basemap</span>(region<span class="op">=</span>(<span class="fl">1</span>,<span class="fl">10000</span>,<span class="fl">1e20</span>,<span class="fl">1e25</span>), figsize<span class="op">=</span>(<span class="fl">25</span>,<span class="fl">15</span>), proj<span class="op">=:</span>logxy, frame<span class="op">=</span>(axes<span class="op">=:</span>WS,),</span>
@@ -560,7 +560,7 @@ Set PDF transparency level for an overlay, in (0-100] percent range. [Default is
 <section id="power-axes" class="level3">
 <h3 class="anchored" data-anchor-id="power-axes">Power axes</h3>
 <p>To design an axis system to be used for a depth-sqrt(age) plot with depth positive down, ticked and annotated every 500m, and ages (in millions of years) annotated at 1 My, 4 My, 9 My etc., use</p>
-<div id="c44cdc95" class="cell" data-execution_count="3">
+<div id="91b8a498" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># This still fails to generate the intended GMT command. (maybe let scale="pow0.5")</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">#basemap(region=(0,100,0,5000), figscale=(1,-0.001), xaxis=(annot=1, label="Crustal age", scale=:pow), yaxis=(annot=500, label=:Depth), show=true)</span></span>
@@ -577,7 +577,7 @@ Set PDF transparency level for an overlay, in (0-100] percent range. [Default is
 <section id="polar-thetar-plot" class="level3">
 <h3 class="anchored" data-anchor-id="polar-thetar-plot">Polar (theta,r) plot</h3>
 <p>For a base map for use with polar coordinates, where the radius from 0 to 1000 should correspond to 5 cm and with gridlines and ticks intervals automatically determined, use</p>
-<div id="bd9f38fc" class="cell" data-execution_count="4">
+<div id="04c9e2be" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">basemap</span>(region<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">360</span>,<span class="fl">0</span>,<span class="fl">1000</span>), figsize<span class="op">=</span><span class="fl">10</span>, frame<span class="op">=:</span>afg, proj<span class="op">=:</span>polar, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">

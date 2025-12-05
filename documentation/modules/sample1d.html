@@ -526,7 +526,7 @@ The default is <code>Akima</code>. You may change the default interpolant; see <
 <p>You may optionally evaluate the first or second derivative of the spline by appending <strong>+d1</strong> or <strong>+d2</strong>, respectively.</p>
 <p>When using the second form (the <em>interp_type=(…)</em>), the first member is the same as above, except the <code>smooth</code> and the derivatives. To select first or second derivative use the <code>:first</code> or <code>:second</code> keywords. Examples of this syntax: <strong>interp=(:akima, :first)</strong>, or <strong>interp=(:smoothing, 0.1)</strong>, or <strong>interp=(:smoothing, 0.1, :second)</strong>.</p></li>
 </ul>
-<div id="624fc1d6" class="cell" data-execution_count="1">
+<div id="a9e5a568" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>mat <span class="op">=</span> [<span class="fl">0</span> <span class="fl">0</span>; <span class="fl">1</span> <span class="fl">1</span>; <span class="fl">2</span> <span class="fl">1.5</span>; <span class="fl">3</span> <span class="fl">1.25</span>; <span class="fl">4</span> <span class="fl">1.5</span>; <span class="fl">4.5</span> <span class="fl">3</span>; <span class="fl">5</span> <span class="fl">2</span>; <span class="fl">6</span> <span class="fl">2.5</span>];</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">gmtbegin</span>()</span>
@@ -566,7 +566,7 @@ Replace all NaNs in input by their interpolated values. All other values will be
 <li><p><strong>nonans</strong> : – <em>nonans=true</em><br>
 iWhen using the <strong>gaps</strong> option, make sure that the output does not contain any NaN values. That means all rows that contain at least one record with a NaN will be removed. The default behavior is to keep the NaN values.</p></li>
 <li><p><strong>V</strong> or <em>verbose</em> : – <em>verbose=true</em> <strong>|</strong> <em>verbose=level</em><br>
-Select verbosity level. More at [verbose](../common_opts/opt_V.html)</p></li>
+Select verbosity level. More at <a href="../../documentation/common_opts/opt_V.html">verbose</a></p></li>
 <li><p><strong>W</strong> or <strong>weights</strong> : – <em>weights=col</em><br>
 Sets the column number of the weights to be used with a smoothing cubic spline. Requires <strong>interp=:s</strong>.</p></li>
 <li><p><strong>bi</strong> or <strong>binary_in</strong> : – <em>binary_in=??</em><br>

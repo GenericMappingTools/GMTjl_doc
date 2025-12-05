@@ -552,7 +552,7 @@ Spatial processing of polygons. Choose from several directives:</p>
 <li><p><strong>T</strong> or <strong>truncate</strong> : – <em>truncate=true</em> <strong>|</strong> <em>truncate=polygon_file</em><br>
 Truncate polygons and lines against the specified polygon, possibly resulting in open polygons. If no argument is given, we create a clipping polygon from <strong>region</strong> which then is required. Note that when the <strong>region</strong> clipping is in effect we will also look for polygons of length 4 or 5 that exactly match the <strong>region</strong> clipping polygon.</p></li>
 <li><p><strong>V</strong> or <em>verbose</em> : – <em>verbose=true</em> <strong>|</strong> <em>verbose=level</em><br>
-Select verbosity level. More at [verbose](../common_opts/opt_V.html)</p></li>
+Select verbosity level. More at <a href="../../documentation/common_opts/opt_V.html">verbose</a></p></li>
 <li><p><strong>W</strong> or <strong>extend</strong> : – <em>extend=dist</em> <strong>|</strong> <em>extend=(dist=val, unit=“k”, modifiers…)</em><br>
 Extend all segments with a new first and last point such that these points are <em>dist</em> away from their neighbor point in the direction implied by the two points at each end of the segment. For geographic data you may append a unit. To give separate distances for the two ends, give <em>distf/distl</em> instead. Available modifiers:</p>
 <ul>
@@ -605,19 +605,19 @@ Swap 1st and 2nd column on input and/or output. <a href="https://docs.generic-ma
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <p>To determine the centroid of the remote GSHHH high-resolution polygon for Australia, as well as the land area in km squared, try:</p>
-<div id="c24f0dd1" class="cell" data-execution_count="1">
+<div id="88fecaef" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">gmtspatial</span>(<span class="st">"@GSHHS_h_Australia.txt"</span>, colinfo<span class="op">=:</span>g, area<span class="op">=</span><span class="st">"k"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>BoundingBox: [134.2087857138511, 134.2087857138511, -25.66163647094111, -25.66163647094111, 7.585270245486038e6, 7.585270245486038e6]
-PROJ: +proj=longlat +datum=WGS84 +units=m +no_defs
-</code></pre>
+PROJ: +proj=longlat +datum=WGS84 +units=m +no_defs</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="2">
 <pre><code></code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>1×3 GMTdataset{Float64, 2}
+<pre><code>
+1×3 GMTdataset{Float64, 2}
  Row │ centroid_x  centroid_y       area
 ─────┼───────────────────────────────────
    1 │    134.209    -25.6616  7.58527e6</code></pre>

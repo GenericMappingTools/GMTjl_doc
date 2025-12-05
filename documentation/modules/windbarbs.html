@@ -497,15 +497,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p><strong>A</strong> or <strong>polar</strong> : – <em>polar=true</em><br>
 The grid files contain polar (r, theta) components instead of Cartesian (x, y) [Default is Cartesian components]. This option is valid only when the input files are 2-D grids.</p></li>
 <li><p><strong>B</strong> or <strong>axes</strong> or <strong>frame</strong><br>
-Set map boundary frame and axes attributes. Default is to draw and annotate left, bottom and vertical axes and just draw left and top axes. More at [frame](../common_opts/opt_B.html)</p></li>
+Set map boundary frame and axes attributes. Default is to draw and annotate left, bottom and vertical axes and just draw left and top axes. More at <a href="../../documentation/common_opts/opt_B.html">frame</a></p></li>
 <li><p><strong>C</strong> or <strong>color</strong> or <strong>cmap</strong> or <strong>colorap</strong> or <strong>colorscale</strong> : – <em>color=cpt</em><br>
-Where <em>cpt</em> is a <em><a href="../..\documentation/general/types.html#sec-cpt-type">GMTcpt</a></em> type or a cpt file name (for <em>grd_z</em> only). Alternatively, supply the name of a GMT color master dynamic CPT [turbo] to automatically determine a continuous CPT from the grid’s z-range; you may round up/down the z-range by adding <strong>+i</strong> <em>zinc</em>. Yet another option is to specify <em>color=“color1,color2 [,color3 ,…]”</em> or <em>color=((r1,g1,b1),(r2,g2,b2),…)</em> to build a linear continuous CPT from those colors automatically. In this case <em>color1</em> etc can be a (r,g,b) triplet, a color name, or an HTML hexadecimal color (e.g.&nbsp;#aabbcc ) (see [Setting color](../common_features/color.html)). When not explicitly set, but a color map is needed, we will either use the current color map, if available (set by a previous call to <em>makecpt</em>), or the default <em>turbo</em> color map.</p></li>
+Where <em>cpt</em> is a <em><a href="../..\documentation/general/types.html#sec-cpt-type">GMTcpt</a></em> type or a cpt file name (for <em>grd_z</em> only). Alternatively, supply the name of a GMT color master dynamic CPT [turbo] to automatically determine a continuous CPT from the grid’s z-range; you may round up/down the z-range by adding <strong>+i</strong> <em>zinc</em>. Yet another option is to specify <em>color=“color1,color2 [,color3 ,…]”</em> or <em>color=((r1,g1,b1),(r2,g2,b2),…)</em> to build a linear continuous CPT from those colors automatically. In this case <em>color1</em> etc can be a (r,g,b) triplet, a color name, or an HTML hexadecimal color (e.g.&nbsp;#aabbcc ) (see <a href="../../documentation/common_features/color.html">Setting color</a>). When not explicitly set, but a color map is needed, we will either use the current color map, if available (set by a previous call to <em>makecpt</em>), or the default <em>turbo</em> color map.</p></li>
 <li><p><strong>G</strong> or <strong>fill</strong> : – <em>fill=fill</em><br>
 Sets color or shade for wind barb interiors (see <a href="../..\documentation/modules/Fill color/pattern.html">Fill color/pattern</a>) [Default is no fill].</p></li>
 <li><p><strong>I</strong> or <strong>inc</strong> or <strong>increment</strong> or <strong>spacing</strong> : – <em>inc=x_inc</em> <strong>|</strong> <em>inc=(x_inc, y_inc)</em> <strong>|</strong> <em>inc=“x”“multx”[“/multy”]</em><br>
 Only plot wind barbs at nodes every <em>x_inc</em>, <em>y_inc</em> apart (must be multiples of original grid spacing). Append <strong>m</strong> for arc minutes or <strong>s</strong> for arc seconds. Alternatively, use <strong>inc=“x”</strong> to specify the multiples <em>multx</em>[/<em>multy</em>] directly [Default plots every node]. Example <strong>inc=“x10/5”</strong> to select every other 10 nodes in <em>x</em> and 5 nodes in <em>y</em>. <strong><em>NOTE</em></strong>: by default we estimate good values so that the arrows do no overlap so you may start by jumping this option unless some fine control is desired.</p></li>
 <li><p><strong>J</strong> or <strong>proj</strong> or <strong>projection</strong> : – <em>proj=<parameters></parameters></em><br>
-Select map projection. More at [proj](../common_opts/opt_J.html)</p></li>
+Select map projection. More at <a href="../../documentation/common_opts/opt_J.html">proj</a></p></li>
 <li><p><strong>N</strong> or <strong>noclip</strong> or <strong>no_clip</strong> : <em>noclip=true</em><br>
 Do NOT clip wind barbs at map boundaries [Default will clip].</p></li>
 <li><p><strong>Q</strong> or <strong>barbs</strong> : – <em>barbs=(length=length, angle=angle, fill=fill, pen=pen, justify=“b|e|c”, speed=speed, width=width)</em><br>
@@ -519,19 +519,19 @@ Modify wind barb parameters. Append wind barb <em>length</em> [Default is 0.5c].
 <li><strong>width</strong> - Set the <em>width</em> of wind barbs.</li>
 </ul></li>
 <li><p><strong>R</strong> or <strong>region</strong> or <strong>limits</strong> : – <em>limits=(xmin, xmax, ymin, ymax)</em> <strong>|</strong> <em>limits=(BB=(xmin, xmax, ymin, ymax),)</em> <strong>|</strong> <em>limits=(LLUR=(xmin, xmax, ymin, ymax),units=“unit”)</em> <strong>|</strong> …more<br>
-Specify the region of interest. More at [limits](../common_opts/opt_R.html). For perspective view <strong>view</strong>, optionally add <em>zmin,zmax</em>. This option may be used to indicate the range used for the 3-D axes. You may ask for a larger w/e/s/n region to have more room between the image and the axes.</p></li>
+Specify the region of interest. More at <a href="../../documentation/common_opts/opt_R.html">limits</a>. For perspective view <strong>view</strong>, optionally add <em>zmin,zmax</em>. This option may be used to indicate the range used for the 3-D axes. You may ask for a larger w/e/s/n region to have more room between the image and the axes.</p></li>
 <li><p><strong>T</strong> or <strong>sign_scale</strong> : – <em>sign_scale=true</em><br>
 Means the azimuths of Cartesian data sets should be adjusted according to the signs of the scales in the x- and y-directions [Leave alone]. This option can be used to convert vector azimuths in cases when a negative scale is used in one of both directions (e.g., positive down).</p></li>
 <li><p><strong>U</strong> or <strong>time_stamp</strong> : – <em>time_stamp=true</em> <strong>|</strong> <em>time_stamp=(just=“code”, pos=(dx,dy), label=“label”, com=true)</em><br>
-Draw GMT time stamp logo on plot. More at [timestamp](../common_opts/opt_U.html)</p></li>
+Draw GMT time stamp logo on plot. More at <a href="../../documentation/common_opts/opt_U.html">timestamp</a></p></li>
 <li><p><strong>V</strong> or <em>verbose</em> : – <em>verbose=true</em> <strong>|</strong> <em>verbose=level</em><br>
-Select verbosity level. More at [verbose](../common_opts/opt_V.html)</p></li>
+Select verbosity level. More at <a href="../../documentation/common_opts/opt_V.html">verbose</a></p></li>
 <li><p><strong>W</strong> or <strong>pen</strong>=<code>pen</code><br>
-Set pen attributes for the arrow stem [Defaults: width = default, color = black, style = solid]. See [Pen attributes](../common_features/pens.html) and [Vector attributes](../common_features/arrows_control.html) for arrow line terminations.</p></li>
+Set pen attributes for the arrow stem [Defaults: width = default, color = black, style = solid]. See <a href="../../documentation/common_features/pens.html">Pen attributes</a> and <a href="../../documentation/common_features/arrows_control.html">Vector attributes</a> for arrow line terminations.</p></li>
 <li><p><strong>X</strong> or <strong>xshift</strong> or <strong>x_offset</strong> : <em>xshift=true</em> <strong>|</strong> <em>xshift=x-shift</em> <strong>|</strong> <em>xshift=(shift=x-shift, mov=“a|c|f|r”)</em><br>
-Shift plot origin. More at [xshift](../common_opts/opt_X.html)</p></li>
+Shift plot origin. More at <a href="../../documentation/common_opts/opt_X.html">xshift</a></p></li>
 <li><p><strong>Y</strong> or <strong>yshift</strong> or <strong>y_offset</strong> : <em>yshift=true</em> <strong>|</strong> <em>yshift=y-shift</em> <strong>|</strong> <em>yshift=(shift=y-shift, mov=“a|c|f|r”)</em><br>
-Shift plot origin. More at [yshift](../common_opts/opt_Y.html)</p></li>
+Shift plot origin. More at <a href="../../documentation/common_opts/opt_Y.html">yshift</a></p></li>
 <li><p><strong>Z</strong> or <strong>azimuth</strong> : – <em>azimuth=true</em><br>
 The theta grid provided contains azimuths rather than directions (implies <code>polar=true</code>). This option is valid only when the input files are 2-D grids.</p></li>
 <li><p><strong>f</strong> or <strong>colinfo</strong> : – <em>colinfo=??</em><br>
@@ -545,7 +545,7 @@ A full GMT compact string with the full set of options.</li>
 <li><em>view=(azim,elev)</em><br>
 A two elements tuple with azimuth and elevation</li>
 <li><em>view=true</em><br>
-To propagate the viewpoint used in a previous module (makes sense only in <code>bar3!</code>) More at [perspective](../common_opts/opt_p.html)</li>
+To propagate the viewpoint used in a previous module (makes sense only in <code>bar3!</code>) More at <a href="../../documentation/common_opts/opt_p.html">perspective</a></li>
 </ul></li>
 <li><p><strong>t</strong> or <strong>transparency</strong> or <strong>alpha</strong>: – <em>alpha=50</em><br>
 Set PDF transparency level for an overlay, in (0-100] percent range. [Default is 0, <em>i.e.</em>, opaque]. Works only for the PDF and PNG formats.</p></li>
@@ -557,37 +557,25 @@ Set PDF transparency level for an overlay, in (0-100] percent range. [Default is
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">windbarb</span>(<span class="st">"r.nc"</span>, <span class="st">"theta.nc"</span>, polar<span class="op">=</span><span class="cn">true</span>, barbs<span class="op">=</span>(len<span class="op">=</span><span class="fl">0.25</span>, justify<span class="op">=:</span>c), show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>To plot a geographic data sets given the files comp_x.nc and comp_y.nc, and only plot every 3rd node in either direction, try:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">windbarb</span>(<span class="st">"comp_x.nc"</span>, <span class="st">"comp_y.nc"</span>, inc<span class="op">=</span><span class="st">"x3"</span>, proj<span class="op">=:</span>guess, barbs<span class="op">=</span>(len<span class="op">=</span><span class="fl">0.25</span>, justify<span class="op">=:</span>c), show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="8a871d50" class="cell" data-execution_count="1">
+<div id="7e480459" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ecmwf</span>(<span class="op">:</span>forecast, var<span class="op">=</span>[<span class="st">"10u"</span>, <span class="st">"10v"</span>], R<span class="op">=</span><span class="st">"IHO23"</span>, prefix<span class="op">=</span><span class="st">"vel"</span>)</span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">windbarbs</span>(<span class="st">"vel_10u.grd"</span>, <span class="st">"vel_10v.grd"</span>, barbs<span class="op">=</span>(length<span class="op">=</span><span class="fl">0.25</span>, width<span class="op">=</span><span class="fl">0.15</span>),</span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>          inc<span class="op">=</span><span class="st">"x10"</span>, coast<span class="op">=</span><span class="cn">true</span>, proj<span class="op">=:</span>guess, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-error">
+<div class="cell-output cell-output-stderr">
 <div class="ansi-escaped-output">
-<pre>RequestError: HTTP/1.1 404 Not Found while requesting https://data.ecmwf.int/forecasts/20251205/12z/ifs/0p25/oper/20251205120000-0h-oper-fc.index
+<pre><span class="ansi-cyan-fg ansi-bold">[ </span><span class="ansi-cyan-fg ansi-bold">Info: </span>Downloading 10u and saving to vel_10u.grd
 
-Stacktrace:
-  [1] <span class="ansi-bold">#3</span>
-<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">C:\programs\Julia-1.10\share\julia\stdlib\v1.10\Downloads\src\</span><span style="text-decoration:underline" class="ansi-bright-black-fg">Downloads.jl:271</span><span class="ansi-bright-black-fg"> [inlined]</span>
-  [2] <span class="ansi-bold">open</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">f</span>::Downloads.var"#3#4"<span class="ansi-bright-black-fg">{Nothing, Vector{Pair{String, String}}, Float64, Nothing, Bool, Nothing, Nothing, String}</span>, <span class="ansi-bright-black-fg">args</span>::String; <span class="ansi-bright-black-fg">kwargs</span>::@Kwargs<span class="ansi-bright-black-fg">{write::Bool, lock::Bool}</span><span class="ansi-bold">)</span>
-<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">Base</span> <span class="ansi-bright-black-fg">.\</span><span style="text-decoration:underline" class="ansi-bright-black-fg">io.jl:396</span>
-  [3] <span class="ansi-bold">open_nolock</span>
-<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">C:\programs\Julia-1.10\share\julia\stdlib\v1.10\ArgTools\src\</span><span style="text-decoration:underline" class="ansi-bright-black-fg">ArgTools.jl:35</span><span class="ansi-bright-black-fg"> [inlined]</span>
-  [4] <span class="ansi-bold">arg_write</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">f</span>::Function, <span class="ansi-bright-black-fg">arg</span>::String<span class="ansi-bold">)</span>
-<span class="ansi-bright-black-fg">    @</span> <span class="ansi-magenta-fg">ArgTools</span> <span class="ansi-bright-black-fg">C:\programs\Julia-1.10\share\julia\stdlib\v1.10\ArgTools\src\</span><span style="text-decoration:underline" class="ansi-bright-black-fg">ArgTools.jl:103</span>
-  [5] <span class="ansi-bold">#download#2</span>
-<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">C:\programs\Julia-1.10\share\julia\stdlib\v1.10\Downloads\src\</span><span style="text-decoration:underline" class="ansi-bright-black-fg">Downloads.jl:258</span><span class="ansi-bright-black-fg"> [inlined]</span>
-  [6] <span class="ansi-bold">download</span>
-<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">C:\programs\Julia-1.10\share\julia\stdlib\v1.10\Downloads\src\</span><span style="text-decoration:underline" class="ansi-bright-black-fg">Downloads.jl:247</span><span class="ansi-bright-black-fg"> [inlined]</span>
-  [7] <span class="ansi-bold">ecmwf_fc</span><span class="ansi-bold">(</span>; <span class="ansi-bright-black-fg">filename</span>::String, <span class="ansi-bright-black-fg">levlist</span>::String, <span class="ansi-bright-black-fg">kw</span>::@Kwargs<span class="ansi-bright-black-fg">{dryrun::Bool, var::Vector{String}, R::String, prefix::String}</span><span class="ansi-bold">)</span>
-<span class="ansi-bright-black-fg">    @</span> <span class="ansi-cyan-fg">GMT</span> <span class="ansi-bright-black-fg">C:\Users\j\.julia\dev\GMT\src\extras\</span><span style="text-decoration:underline" class="ansi-bright-black-fg">weather.jl:423</span>
-  [8] <span class="ansi-bold">ecmwf_fc</span>
-<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">C:\Users\j\.julia\dev\GMT\src\extras\</span><span style="text-decoration:underline" class="ansi-bright-black-fg">weather.jl:315</span><span class="ansi-bright-black-fg"> [inlined]</span>
-  [9] <span class="ansi-bold">ecmwf</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">source</span>::Symbol; <span class="ansi-bright-black-fg">filename</span>::String, <span class="ansi-bright-black-fg">cb</span>::Bool, <span class="ansi-bright-black-fg">dataset</span>::String, <span class="ansi-bright-black-fg">params</span>::String, <span class="ansi-bright-black-fg">key</span>::String, <span class="ansi-bright-black-fg">url</span>::String, <span class="ansi-bright-black-fg">wait</span>::Float64, <span class="ansi-bright-black-fg">levlist</span>::String, <span class="ansi-bright-black-fg">region</span>::String, <span class="ansi-bright-black-fg">format</span>::String, <span class="ansi-bright-black-fg">dryrun</span>::Bool, <span class="ansi-bright-black-fg">verbose</span>::Bool, <span class="ansi-bright-black-fg">kw</span>::@Kwargs<span class="ansi-bright-black-fg">{var::Vector{String}, R::String, prefix::String}</span><span class="ansi-bold">)</span>
-<span class="ansi-bright-black-fg">    @</span> <span class="ansi-cyan-fg">GMT</span> <span class="ansi-bright-black-fg">C:\Users\j\.julia\dev\GMT\src\extras\</span><span style="text-decoration:underline" class="ansi-bright-black-fg">weather.jl:189</span>
- [10] top-level scope
-<span class="ansi-bright-black-fg">    @</span> <span style="text-decoration:underline" class="ansi-bright-black-fg">In[2]:3</span></pre>
+<span class="ansi-cyan-fg ansi-bold">[ </span><span class="ansi-cyan-fg ansi-bold">Info: </span>Downloading 10v and saving to vel_10v.grd
+</pre>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="windbarbs_files/figure-html/cell-2-output-2.png" class="img-fluid figure-img"></p>
+</figure>
 </div>
 </div>
 </div>

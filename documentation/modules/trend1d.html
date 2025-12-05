@@ -492,7 +492,7 @@ Set the maximum allowed condition number for the matrix solution. <strong>trend2
 <li><p><strong>I</strong> or <strong>conf_level</strong> : – <em>conf_level=true</em> <strong>|</strong> <em>conf_level=level</em><br>
 Iteratively increase the number of model parameters, starting at one, until <em>n_model</em> is reached or the reduction in variance of the model is not significant at the <em>confidence_level</em> level. You may set <strong>conf_level=true</strong> only, without an attached number; in this case the fit will be iterative with a default confidence level of 0.51. Or choose your own level between 0 and 1. See remarks section. Note that the model terms are added in the order they were given in <strong>model</strong> so you should place the most important terms first.</p></li>
 <li><p><strong>V</strong> or <em>verbose</em> : – <em>verbose=true</em> <strong>|</strong> <em>verbose=level</em><br>
-Select verbosity level. More at [verbose](../common_opts/opt_V.html)</p></li>
+Select verbosity level. More at <a href="../../documentation/common_opts/opt_V.html">verbose</a></p></li>
 <li><p><strong>W</strong> or <strong>weights</strong> : – <em>weights=true</em> <strong>|</strong> <em>weights=“+s|+w”</em><br>
 Weights are supplied in input column 4. Do a weighted least squares fit [or start with these weights when doing the iterative robust fit]. Append <strong>+s</strong> to instead read data uncertainties (one sigma) and create weights as 1/sigma^2, or use the weights as read (<strong>+w</strong>) [Default reads only the first 2 columns].</p></li>
 <li><p><strong>bi</strong> or <strong>binary_in</strong> : – <em>binary_in=??</em><br>
@@ -537,7 +537,7 @@ Swap 1st and 2nd column on input and/or output. <a href="https://docs.generic-ma
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>    D <span class="op">=</span> <span class="fu">trend2d</span>(<span class="st">"data.xyz"</span>, out<span class="op">=:</span>xm, model<span class="op">=</span><span class="st">"P0,P2,F3+l15"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>To find out how many terms (up to 20), say in a robust Fourier interpolant are significant in fitting data.xy, use:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">trend2d</span>(<span class="st">"data.xyz"</span>, model<span class="op">=</span><span class="st">"f20+r"</span>, conf_level<span class="op">=</span><span class="cn">true</span>, verbose<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="6dd2382e" class="cell" data-execution_count="1">
+<div id="4c975269" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="op">-</span><span class="fl">50.0</span><span class="op">:</span><span class="fl">50</span>;</span>
@@ -554,7 +554,7 @@ Swap 1st and 2nd column on input and/or output. <a href="https://docs.generic-ma
 </div>
 </div>
 <p>Fit with a constant and the cubic term only.</p>
-<div id="fd20b381" class="cell" data-execution_count="2">
+<div id="39ba9d0d" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="op">-</span><span class="fl">50.0</span><span class="op">:</span><span class="fl">50</span>;</span>
@@ -573,7 +573,7 @@ Swap 1st and 2nd column on input and/or output. <a href="https://docs.generic-ma
 </div>
 </div>
 <p>Fit a linear trend and a sinusoid</p>
-<div id="dcb133c9" class="cell" data-execution_count="3">
+<div id="60313247" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="fl">10.0</span><span class="op">:</span><span class="fl">110</span>;</span>

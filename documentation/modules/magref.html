@@ -513,7 +513,7 @@ Selects output items; Use, <strong>in alternative</strong>, the expanded form or
 <li><p><strong>G</strong> or <strong>geocentric</strong> : – <em>geocentric=true</em><br>
 Specifies that coordinates are geocentric [geodetic].</p></li>
 <li><p><strong>I</strong> or <strong>inc</strong> or <strong>increment</strong> or <strong>spacing</strong> : – <em>inc=x_inc</em> <strong>|</strong> <em>inc=(x_inc, y_inc)</em> <strong>|</strong> <em>inc=“xinc[+e|n][/yinc[+e|n]]”</em><br>
-Specify the grid increments or the block sizes. More at [spacing](../common_opts/opt_I.html)</p></li>
+Specify the grid increments or the block sizes. More at <a href="../../documentation/common_opts/opt_I.html">spacing</a></p></li>
 <li><p><strong>L</strong> or <strong>external</strong> : – <em>external=(all_input=true, total|T=true, X=true, Y=true, Z=true, mag_i=true, iono_p=true, iono_i=true, poloidal=true)</em><br>
 Computes J field vectors from certain external sources.</p>
 <ul>
@@ -528,13 +528,13 @@ Computes J field vectors from certain external sources.</p>
 <li><strong>4</strong> or <strong>poloidal=true</strong> means Poloidal field.</li>
 </ul></li>
 <li><p><strong>R</strong> or <strong>region</strong> or <strong>limits</strong> : – <em>limits=(xmin, xmax, ymin, ymax)</em> <strong>|</strong> <em>limits=(BB=(xmin, xmax, ymin, ymax),)</em> <strong>|</strong> <em>limits=(LLUR=(xmin, xmax, ymin, ymax),units=“unit”)</em> <strong>|</strong> …more<br>
-Specify the region of interest. More at [limits](../common_opts/opt_R.html). For perspective view <strong>view</strong>, optionally add <em>zmin,zmax</em>. This option may be used to indicate the range used for the 3-D axes. You may ask for a larger w/e/s/n region to have more room between the image and the axes.</p></li>
+Specify the region of interest. More at <a href="../../documentation/common_opts/opt_R.html">limits</a>. For perspective view <strong>view</strong>, optionally add <em>zmin,zmax</em>. This option may be used to indicate the range used for the 3-D axes. You may ask for a larger w/e/s/n region to have more room between the image and the axes.</p></li>
 <li><p><strong>Sc</strong> or <strong>core_coef</strong> : – <em>core_coef=(low,high)</em><br>
 Limits the wavelengths of the core field contribution to the band indicated by the low and high spherical harmonic order [1/13].</p></li>
 <li><p><strong>Sl</strong> or <strong>litho_coef</strong> : – <em>litho_coef=(low,high)</em><br>
 Limits the wavelengths of the lithosphere field contribution to the band indicated by the low and high spherical harmonic order [14/65].</p></li>
 <li><p><strong>V</strong> or <em>verbose</em> : – <em>verbose=true</em> <strong>|</strong> <em>verbose=level</em><br>
-Select verbosity level. More at [verbose](../common_opts/opt_V.html)</p></li>
+Select verbosity level. More at <a href="../../documentation/common_opts/opt_V.html">verbose</a></p></li>
 <li><p><strong>bi</strong> or <strong>binary_in</strong> : – <em>binary_in=??</em><br>
 Select native binary format for primary table input. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#bi-full">More at</a></p></li>
 <li><p><strong>h</strong> or <strong>header</strong> : – <em>header=??</em><br>
@@ -568,7 +568,7 @@ Swap 1st and 2nd column on input and/or output. <a href="https://docs.generic-ma
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="ss">```──────────</span></span>
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="ss">   1 │ 43758.0  -11.866  54.0388</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>And to see the IGRF field at 2025.0. Since we are not specifying the grid increments (<strong>inc</strong>) it will assume a <strong>inc=0.25</strong> degrees.</p>
-<div id="c45da5ed" class="cell" data-execution_count="1">
+<div id="d9d36526" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">magref</span>(R<span class="op">=:</span>d, onetime<span class="op">=</span><span class="fl">2025</span>);</span>

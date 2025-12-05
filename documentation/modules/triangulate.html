@@ -496,9 +496,9 @@ Set the value assigned to empty nodes when <strong>outgrid</strong> is set [NaN]
 <li><p><strong>G</strong> or <strong>save</strong> or <strong>outgrid</strong> or <strong>outfile</strong> : – <em>outgrid=[=ID][+ddivisor][+ninvalid][+ooffset|a][+sscale|a][:driver[dataType][+coptions]]</em><br>
 Use triangulation to grid the data onto an even grid. <strong>NOTE:</strong> by specifying the <strong>region</strong> and <strong>inc</strong> options this one is automatically selected. Now, if you want to save the result in a grid file explicitly use this option and append the name of the output grid file. The interpolation is performed in the original coordinates, so if your triangles are close to the poles you are better off projecting all data to a local coordinate system before using <strong>triangulate</strong> (this is true of all gridding routines) or instead use <a href="../..\documentation/modules/sphtriangulate.html">sphtriangulate</a>. For natural nearest neighbor gridding you must add <strong>voronoi=:pol</strong>. See other modules that also write files, such as <a href="../..\documentation/modules/surface.html">surface</a>, to see further options to this.</p></li>
 <li><p><strong>I</strong> or <strong>inc</strong> or <strong>increment</strong> or <strong>spacing</strong> : – <em>inc=x_inc</em> <strong>|</strong> <em>inc=(x_inc, y_inc)</em> <strong>|</strong> <em>inc=“xinc[+e|n][/yinc[+e|n]]”</em><br>
-Specify the grid increments or the block sizes. More at [spacing](../common_opts/opt_I.html)</p></li>
+Specify the grid increments or the block sizes. More at <a href="../../documentation/common_opts/opt_I.html">spacing</a></p></li>
 <li><p><strong>J</strong> or <strong>proj</strong> or <strong>projection</strong> : – <em>proj=<parameters></parameters></em><br>
-Select map projection. More at [proj](../common_opts/opt_J.html)</p></li>
+Select map projection. More at <a href="../../documentation/common_opts/opt_J.html">proj</a></p></li>
 <li><p><strong>L</strong> or <strong>index</strong> : – <em>index=indexfile[<em>+b</em>]</em><br>
 Give name of file or a <a href="../..\documentation/general/types.html#sec-dataset-type">GMTdataset</a> with previously computed Delaunay information. Each record must contain triplets of node numbers for a triangle in the input <em>table</em> [Default computes these using Delaunay triangulation]. If the <em>indexfile</em> is binary and can be read the same way as the binary input <em>table</em> then you can append <strong>+b</strong> to spead up the reading (GMT6.4).</p></li>
 <li><p><strong>M</strong> or <strong>network</strong> : – <em>network=true</em><br>
@@ -508,13 +508,13 @@ Used in conjunction with <strong>outgrid</strong> to also write the triplets of 
 <li><p><strong>Q</strong> or <strong>voronoi</strong> : – <em>voronoi=true</em> <strong>|</strong> <em>voronoi=:polygon</em><br>
 Output the edges of the Voronoi cells instead [Default is Delaunay triangle edges]. Requires <strong>region</strong> and is only available if linked with the Shewchuk [1996] library. Note that <strong>xyz</strong> is ignored on output. Optionally, use <strong>voronoi=:polygon</strong> (or just <code>=:pol</code>) for combining the edges into closed Voronoi polygons.</p></li>
 <li><p><strong>R</strong> or <strong>region</strong> or <strong>limits</strong> : – <em>limits=(xmin, xmax, ymin, ymax)</em> <strong>|</strong> <em>limits=(BB=(xmin, xmax, ymin, ymax),)</em> <strong>|</strong> <em>limits=(LLUR=(xmin, xmax, ymin, ymax),units=“unit”)</em> <strong>|</strong> …more<br>
-Specify the region of interest. More at [limits](../common_opts/opt_R.html). For perspective view <strong>view</strong>, optionally add <em>zmin,zmax</em>. This option may be used to indicate the range used for the 3-D axes. You may ask for a larger w/e/s/n region to have more room between the image and the axes.</p></li>
+Specify the region of interest. More at <a href="../../documentation/common_opts/opt_R.html">limits</a>. For perspective view <strong>view</strong>, optionally add <em>zmin,zmax</em>. This option may be used to indicate the range used for the 3-D axes. You may ask for a larger w/e/s/n region to have more room between the image and the axes.</p></li>
 <li><p><strong>S</strong> or <strong>triangles</strong> : – <em>triangles=true</em><br>
 Output triangles as polygon segments separated by a segment header record. Requires Delaunay triangulation.</p></li>
 <li><p><strong>T</strong> or <strong>edges</strong> : – <em>edges=true</em><br>
 Output edges or polygons even if gridding has been selected with the <strong>outgrid</strong> option [Default will not output the triangulation or Voronoi polygons is gridding is selected].</p></li>
 <li><p><strong>V</strong> or <em>verbose</em> : – <em>verbose=true</em> <strong>|</strong> <em>verbose=level</em><br>
-Select verbosity level. More at [verbose](../common_opts/opt_V.html)</p></li>
+Select verbosity level. More at <a href="../../documentation/common_opts/opt_V.html">verbose</a></p></li>
 <li><p><strong>Z</strong> or <strong>xyz</strong> or <strong>triplets</strong> : – <em>xyz=true</em><br>
 Controls whether we read (x,y) or (x,y,z) data and if z should be output when <strong>network</strong> or <strong>triangles</strong> are used [Read (x,y) only].</p></li>
 <li><p><strong>bi</strong> or <strong>binary_in</strong> : – <em>binary_in=??</em><br>
@@ -534,7 +534,7 @@ Select input columns and transformations (0 is first column, t is trailing text,
 <li><p><strong>q</strong> or <strong>inrows</strong> : – <em>inrows=??</em><br>
 Select specific data rows to be read and/or written. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#the-q-option">More at</a></p></li>
 </ul>
-<p>{{&lt; include ../common_opts/opt__r.md &gt;}} (Only valid with <strong>outgrid</strong>).</p>
+<p>{{&lt; include ../common_opts/opt__r.qmd &gt;}} (Only valid with <strong>outgrid</strong>).</p>
 <ul>
 <li><p><strong>s</strong> or <strong>skiprows</strong> or <strong>skip_NaN</strong> : – <em>skip_NaN=true</em> <strong>|</strong> <em>skip_NaN=“&lt;cols[+a][+r]&gt;”</em><br>
 Suppress output of data records whose z-value(s) equal NaN. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#the-s-option">More at</a></p></li>

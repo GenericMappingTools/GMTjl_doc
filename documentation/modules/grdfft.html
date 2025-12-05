@@ -579,7 +579,7 @@ Selects no wavenumber operations. Useful in conjunction with <strong>inquire</st
 <li><p><strong>S</strong> or <strong>scale</strong> : – <em>scale=factor</em> <strong>|</strong> <em>scale=:d</em><br>
 Multiply each element by <em>factor</em> in the space domain (after the frequency domain operations). [Default is 1.0]. Alternatively, append <strong>:d</strong> to convert deflection of vertical to micro-radians.</p></li>
 <li><p><strong>V</strong> or <em>verbose</em> : – <em>verbose=true</em> <strong>|</strong> <em>verbose=level</em><br>
-Select verbosity level. More at [verbose](../common_opts/opt_V.html)</p></li>
+Select verbosity level. More at <a href="../../documentation/common_opts/opt_V.html">verbose</a></p></li>
 <li><p><strong>f</strong> or <strong>colinfo</strong> : – <em>colinfo=??</em><br>
 Specify the data types of input and/or output columns (time or geographical data). <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#f-full">More at</a></p></li>
 </ul>
@@ -603,7 +603,7 @@ Specify the data types of input and/or output columns (time or geographical data
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <p>To obtain the normalized radial spectrum from the remote data grid <span class="citation" data-cites="white">@white</span>_noise.nc, after removing the mean, try:</p>
-<div id="ec604b4e" class="cell" data-execution_count="1">
+<div id="35654388" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">grdfft</span>(<span class="st">"@white_noise.nc"</span>, radial_power<span class="op">=</span>(dir<span class="op">=:</span>r, normalize<span class="op">=</span><span class="cn">true</span>, wavelength<span class="op">=</span><span class="cn">true</span>));</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">viz</span>(D)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>

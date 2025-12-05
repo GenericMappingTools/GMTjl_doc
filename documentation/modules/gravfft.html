@@ -543,7 +543,7 @@ Set the observation height relative to topography in meters [0]. Append <strong>
 <li><p><strong>Z</strong> or <strong>moho_depth</strong> : – <em>moho_depth=zm[/zl]</em><br>
 Moho [and swell] average compensation depths (in meters positive down – the depth). For the “load from top” model you only have to provide <code>zm</code>, but for the “loading from below” don’t forget to supply also <code>zl</code>.</p></li>
 <li><p><strong>V</strong> or <em>verbose</em> : – <em>verbose=true</em> <strong>|</strong> <em>verbose=level</em><br>
-Select verbosity level. More at [verbose](../common_opts/opt_V.html)</p></li>
+Select verbosity level. More at <a href="../../documentation/common_opts/opt_V.html">verbose</a></p></li>
 <li><p><strong>f</strong> or <strong>colinfo</strong> : – <em>colinfo=??</em><br>
 Specify the data types of input and/or output columns (time or geographical data). <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#f-full">More at</a></p></li>
 </ul>
@@ -570,7 +570,7 @@ Specify the data types of input and/or output columns (time or geographical data
 </section>
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
-<div id="6b5b6659" class="cell" data-execution_count="1">
+<div id="7734ca06" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span>, <span class="bu">FFTW</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">grdcut</span>(<span class="st">"@earth_relief_02m"</span>, region<span class="op">=</span>(<span class="op">-</span><span class="fl">12.5</span>,<span class="op">-</span><span class="fl">10</span>,<span class="fl">35.5</span>,<span class="fl">37.5</span>));</span>

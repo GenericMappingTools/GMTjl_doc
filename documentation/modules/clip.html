@@ -476,29 +476,29 @@ One or more data tables holding a number of data columns.</p></li>
 <li><p><strong>C</strong> or <strong>endclip</strong> : – <em>endclip=true</em> or <em>endclip=n</em><br>
 Mark end of existing clip path(s). No input file will be processed. No projection information is needed unless [frame] has been selected as well. With no arguments we terminate all active clipping paths. Experts may restrict the termination to just <em>n</em> of the active clipping path by passing that as the argument.</p></li>
 <li><p><strong>J</strong> or <strong>proj</strong> or <strong>projection</strong> : – <em>proj=<parameters></parameters></em><br>
-Select map projection. More at [proj](../common_opts/opt_J.html)</p></li>
+Select map projection. More at <a href="../../documentation/common_opts/opt_J.html">proj</a></p></li>
 <li><p><strong>R</strong> or <strong>region</strong> or <strong>limits</strong> : – <em>limits=(xmin, xmax, ymin, ymax)</em> <strong>|</strong> <em>limits=(BB=(xmin, xmax, ymin, ymax),)</em> <strong>|</strong> <em>limits=(LLUR=(xmin, xmax, ymin, ymax),units=“unit”)</em> <strong>|</strong> …more<br>
-Specify the region of interest. More at [limits](../common_opts/opt_R.html). For perspective view <strong>view</strong>, optionally add <em>zmin,zmax</em>. This option may be used to indicate the range used for the 3-D axes. You may ask for a larger w/e/s/n region to have more room between the image and the axes.</p></li>
+Specify the region of interest. More at <a href="../../documentation/common_opts/opt_R.html">limits</a>. For perspective view <strong>view</strong>, optionally add <em>zmin,zmax</em>. This option may be used to indicate the range used for the 3-D axes. You may ask for a larger w/e/s/n region to have more room between the image and the axes.</p></li>
 <li><p><strong>R</strong> or <strong>region</strong> or <strong>limits</strong> : – <em>limits=(xmin, xmax, ymin, ymax, zmin, zmax)</em> <strong>|</strong> <em>limits=(BB=(xmin, xmax, ymin, ymax, zmin, zmax),)</em> <strong>|</strong> …more<br>
-Specify the region of interest. Default limits are computed from data extents. More at [limits](../common_opts/opt_R.html)</p></li>
+Specify the region of interest. Default limits are computed from data extents. More at <a href="../../documentation/common_opts/opt_R.html">limits</a></p></li>
 <li><p><strong>A</strong> or <strong>steps</strong> : – <em>steps=true</em> <strong>|</strong> <em>steps=:meridian|:parallel|:x|:y|:r|:theta</em><br>
 By default, geographic line segments (as indicated for example by the <strong>colinfo</strong> option) are drawn as great circle arcs. To draw them as straight lines, use the <strong>steps=true</strong>. Alternatively, use <strong>steps=:meridian</strong> to draw the line by first following a meridian, then a parallel. Or append <strong>steps=:parallel</strong> to start following a parallel, then a meridian. (This can be practical to draw a line along parallels, for example). For Cartesian data, points are simply connected, unless you use <strong>steps=:x</strong> or <strong>steps=:y</strong> to draw stair-case curves that whose first move is along <em>x</em> or <em>y</em>, respectively. If your Cartesian data are polar (<em>theta</em>, <em>r</em>), use <strong>steps=:t</strong> or <strong>steps=:r</strong> to construct stair-case paths whose first move is along <em>theta</em> or <em>r</em>, respectively.</p></li>
 <li><p><strong>B</strong> or <strong>axes</strong> or <strong>frame</strong><br>
-Set map boundary frame and axes attributes. Default is to draw and annotate left, bottom and vertical axes and just draw left and top axes. More at [frame](../common_opts/opt_B.html)</p></li>
+Set map boundary frame and axes attributes. Default is to draw and annotate left, bottom and vertical axes and just draw left and top axes. More at <a href="../../documentation/common_opts/opt_B.html">frame</a></p></li>
 <li><p><strong>N</strong> or <strong>invert</strong> : – <em>invert=true</em><br>
 Invert the sense of what is inside and outside. For example, when using a single path, this means that only points outside that path will be shown. Cannot be used together with [frame].</p></li>
 <li><p><strong>T</strong> or <strong>clipregion</strong> : – <em>clipregion=</em><br>
 Rather than depending on input data, simply turn on clipping for the current map region. Cannot be used together with [frame].</p></li>
 <li><p><strong>U</strong> or <strong>time_stamp</strong> : – <em>time_stamp=true</em> <strong>|</strong> <em>time_stamp=(just=“code”, pos=(dx,dy), label=“label”, com=true)</em><br>
-Draw GMT time stamp logo on plot. More at [timestamp](../common_opts/opt_U.html)</p></li>
+Draw GMT time stamp logo on plot. More at <a href="../../documentation/common_opts/opt_U.html">timestamp</a></p></li>
 <li><p><strong>V</strong> or <em>verbose</em> : – <em>verbose=true</em> <strong>|</strong> <em>verbose=level</em><br>
-Select verbosity level. More at [verbose](../common_opts/opt_V.html)</p></li>
+Select verbosity level. More at <a href="../../documentation/common_opts/opt_V.html">verbose</a></p></li>
 <li><p><strong>W</strong> or <strong>pen</strong>=<code>pen</code><br>
-Set pen attributes for the arrow stem [Defaults: width = default, color = black, style = solid]. See [Pen attributes](../common_features/pens.html) and [Vector attributes](../common_features/arrows_control.html) for arrow line terminations.</p></li>
+Set pen attributes for the arrow stem [Defaults: width = default, color = black, style = solid]. See <a href="../../documentation/common_features/pens.html">Pen attributes</a> and <a href="../../documentation/common_features/arrows_control.html">Vector attributes</a> for arrow line terminations.</p></li>
 <li><p><strong>X</strong> or <strong>xshift</strong> or <strong>x_offset</strong> : <em>xshift=true</em> <strong>|</strong> <em>xshift=x-shift</em> <strong>|</strong> <em>xshift=(shift=x-shift, mov=“a|c|f|r”)</em><br>
-Shift plot origin. More at [xshift](../common_opts/opt_X.html)</p></li>
+Shift plot origin. More at <a href="../../documentation/common_opts/opt_X.html">xshift</a></p></li>
 <li><p><strong>Y</strong> or <strong>yshift</strong> or <strong>y_offset</strong> : <em>yshift=true</em> <strong>|</strong> <em>yshift=y-shift</em> <strong>|</strong> <em>yshift=(shift=y-shift, mov=“a|c|f|r”)</em><br>
-Shift plot origin. More at [yshift](../common_opts/opt_Y.html)</p></li>
+Shift plot origin. More at <a href="../../documentation/common_opts/opt_Y.html">yshift</a></p></li>
 <li><p><strong>bi</strong> or <strong>binary_in</strong> : – <em>binary_in=??</em><br>
 Select native binary format for primary table input. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#bi-full">More at</a></p></li>
 <li><p><strong>di</strong> or <strong>nodata_in</strong> : – <em>nodata_in=??</em><br>
@@ -522,7 +522,7 @@ A full GMT compact string with the full set of options.</li>
 <li><em>view=(azim,elev)</em><br>
 A two elements tuple with azimuth and elevation</li>
 <li><em>view=true</em><br>
-To propagate the viewpoint used in a previous module (makes sense only in <code>bar3!</code>) More at [perspective](../common_opts/opt_p.html)</li>
+To propagate the viewpoint used in a previous module (makes sense only in <code>bar3!</code>) More at <a href="../../documentation/common_opts/opt_p.html">perspective</a></li>
 </ul></li>
 <li><p><strong>q</strong> or <strong>inrows</strong> : – <em>inrows=??</em><br>
 Select specific data rows to be read and/or written. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#the-q-option">More at</a></p></li>
@@ -535,7 +535,7 @@ Swap 1st and 2nd column on input and/or output. <a href="https://docs.generic-ma
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <p>To see the effect of a simple clip path which result in some symbols being partly visible or missing altogether, try:</p>
-<div id="ba3bab61" class="cell" data-execution_count="1">
+<div id="718e9f89" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">clip</span>([<span class="fl">0</span> <span class="fl">0</span>; <span class="fl">5</span> <span class="fl">1</span>; <span class="fl">5</span> <span class="fl">5</span>], region<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">6</span>,<span class="fl">0</span>,<span class="fl">6</span>), figscale<span class="op">=</span><span class="fl">2.5</span>, pen<span class="op">=</span>(<span class="fl">1</span>,<span class="op">:</span>blue))</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot!</span>(<span class="st">"@tut_data.txt"</span>, fill<span class="op">=:</span>red, marker<span class="op">=:</span>circ, ms<span class="op">=</span><span class="fl">2</span>, region<span class="op">=:</span>same)</span>
@@ -550,7 +550,7 @@ Swap 1st and 2nd column on input and/or output. <a href="https://docs.generic-ma
 </div>
 <p>where we activate and deactivate the clip path. Note we also draw the outline of the clip path to make it clear what is being clipped.</p>
 <p>But although the above example shows how we can fine tune what is plotted under the clip path, and we could have drawn more elements if whiched, it is also a bit cumbersome for simple plots. A much more straightforward command can be done using the <em>nested</em> clip program that is available to all plotting modules. This one-liner produces almost the same plot.</p>
-<div id="3044bc99" class="cell" data-execution_count="2">
+<div id="9e018dcc" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="st">"@tut_data.txt"</span>, fill<span class="op">=:</span>red, marker<span class="op">=:</span>circ, ms<span class="op">=</span><span class="fl">2</span>, region<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">6</span>,<span class="fl">0</span>,<span class="fl">6</span>), clip<span class="op">=</span>[<span class="fl">0</span> <span class="fl">0</span>; <span class="fl">5</span> <span class="fl">1</span>; <span class="fl">5</span> <span class="fl">5</span>], show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">

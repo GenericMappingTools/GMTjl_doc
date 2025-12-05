@@ -496,7 +496,7 @@ Use <strong>voronoi=:d</strong> for Delaunay triangles or <strong>voronoi=:v</st
 <li><p><strong>T</strong> or <strong>arcs</strong> : – <em>arcs=true</em><br>
 Write the unique arcs of the construction [Default writes fillable triangles or polygons]. When used with <strong>area</strong> we store arc length in the segment header in chosen unit (see <strong>unit</strong>).</p></li>
 <li><p><strong>V</strong> or <em>verbose</em> : – <em>verbose=true</em> <strong>|</strong> <em>verbose=level</em><br>
-Select verbosity level. More at [verbose](../common_opts/opt_V.html)</p></li>
+Select verbosity level. More at <a href="../../documentation/common_opts/opt_V.html">verbose</a></p></li>
 <li><p><strong>bi</strong> or <strong>binary_in</strong> : – <em>binary_in=??</em><br>
 Select native binary format for primary table input. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#bi-full">More at</a></p></li>
 <li><p><strong>di</strong> or <strong>nodata_in</strong> : – <em>nodata_in=??</em><br>
@@ -528,7 +528,7 @@ Select gridline or pixel node registration. Used only when output is a grid. <a 
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <p>To create a spherical triangulation from the remote data set hotspots.txt and then plot it on a sphere, try:</p>
-<div id="d307dea1" class="cell" data-execution_count="1">
+<div id="17e052a7" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">sphtriangulate</span>(<span class="st">"@hotspots.txt"</span>, voronoi<span class="op">=:</span>d, arcs<span class="op">=</span><span class="cn">true</span>)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">imshow</span>(D, region<span class="op">=:</span><span class="kw">global</span>, proj<span class="op">=:</span>guess, frame<span class="op">=:</span>afg, pen<span class="op">=</span><span class="fl">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>

@@ -477,9 +477,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p><em>table</em><br>
 A data table holding <em>z</em> or <em>x, y, z</em> values. The <em>x, y, z</em> triplets do not have to be sorted. One-column <em>z</em> tables must be sorted and the <strong>flags</strong> option must be set.</p></li>
 <li><p><strong>I</strong> or <strong>inc</strong> or <strong>increment</strong> or <strong>spacing</strong> : – <em>inc=x_inc</em> <strong>|</strong> <em>inc=(x_inc, y_inc)</em> <strong>|</strong> <em>inc=“xinc[+e|n][/yinc[+e|n]]”</em><br>
-Specify the grid increments or the block sizes. More at [spacing](../common_opts/opt_I.html)</p></li>
+Specify the grid increments or the block sizes. More at <a href="../../documentation/common_opts/opt_I.html">spacing</a></p></li>
 <li><p><strong>R</strong> or <strong>region</strong> or <strong>limits</strong> : – <em>limits=(xmin, xmax, ymin, ymax)</em> <strong>|</strong> <em>limits=(BB=(xmin, xmax, ymin, ymax),)</em> <strong>|</strong> <em>limits=(LLUR=(xmin, xmax, ymin, ymax),units=“unit”)</em> <strong>|</strong> …more<br>
-Specify the region of interest. More at [limits](../common_opts/opt_R.html). For perspective view <strong>view</strong>, optionally add <em>zmin,zmax</em>. This option may be used to indicate the range used for the 3-D axes. You may ask for a larger w/e/s/n region to have more room between the image and the axes.</p></li>
+Specify the region of interest. More at <a href="../../documentation/common_opts/opt_R.html">limits</a>. For perspective view <strong>view</strong>, optionally add <em>zmin,zmax</em>. This option may be used to indicate the range used for the 3-D axes. You may ask for a larger w/e/s/n region to have more room between the image and the axes.</p></li>
 </ul>
 </section>
 <section id="optional-arguments" class="level2">
@@ -502,7 +502,7 @@ Give the name of the output grid file. Optionally, append <code>=ID</code> for w
 <li><p><strong>S</strong> or <strong>swap</strong> : – <em>swap=true</em> <strong>|</strong> <em>swap=zfile</em><br>
 Swap the byte-order of the <em>z</em> table input only. No grid is produced. You must also supply the <strong>flags</strong> option. The output is return to Julia or written to <em>zfile</em></p></li>
 <li><p><strong>V</strong> or <em>verbose</em> : – <em>verbose=true</em> <strong>|</strong> <em>verbose=level</em><br>
-Select verbosity level. More at [verbose](../common_opts/opt_V.html)</p></li>
+Select verbosity level. More at <a href="../../documentation/common_opts/opt_V.html">verbose</a></p></li>
 <li><p><strong>Z</strong> or <strong>flags</strong> : – <em>flags=flags</em><br>
 Read a 1-column table. This assumes that all the nodes are present and sorted according to specified ordering convention contained in <em>flags</em> (a string). If incoming data represents rows, make <em>flags</em> start with <strong>T</strong>(op) if first row is <em>y = ymax</em> or <strong>B</strong>(ottom) if first row is <em>y = ymin</em>. Then, append <strong>L</strong> or <strong>R</strong> to indicate that first element is at left or right end of row. Likewise for column formats: start with <strong>L</strong> or <strong>R</strong> to position first column, and then append <strong>T</strong> or <strong>B</strong> to position first element in a row. <strong>Note</strong>: These two row/column indicators are only required for grids; for other tables they do not apply. For gridline registered grids: If data are periodic in <em>x</em> but the incoming data do not contain the (redundant) column at <em>x = xmax</em>, append <strong>x</strong>. For data periodic in <em>y</em> without redundant row at <em>y = ymax</em>, append <strong>y</strong>. Append <strong>s</strong> <em>n</em> to skip the first <em>n</em> number of bytes (probably a header). If the byte-order or the words needs to be swapped, append <strong>w</strong>. Select one of several data types (all binary except <strong>a</strong>):</p>
 <ul>

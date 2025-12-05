@@ -499,7 +499,7 @@ window.Quarto = {
 <p>Reads randomly-spaced (<em>x,y,z</em>[,<em>w</em>]) triples [quadruplets] from file or table and uses a nearest neighbor algorithm to assign a weighted average value to each node that has one or more data points within a search radius (<em>R</em>) centered on the node with adequate coverage across a subset of the chosen sectors. The node value is computed as a weighted mean of the nearest point from each sector inside the search radius. The weighting function and the averaging used is given by</p>
 <p><span class="math display">\[ w(r_i) = \frac{w_i}{1 + d(r_i) ^ 2}, \quad d(r) = \frac {3r}{R}, \quad \bar{z} = \frac{\sum_i^n w(r_i) z_i}{\sum_i^n w(r_i)} \]</span></p>
 <p>where <em>n</em> is the number of data points that satisfy the selection criteria and <span class="math inline">\(r_i\)</span> is the distance from the node to the <em>i</em>’th data point. If no data weights are supplied then <span class="math inline">\(w_i = 1\)</span>.</p>
-<div id="85c06646" class="cell" data-execution_count="1">
+<div id="19acc839" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>([<span class="fl">0.75</span> <span class="fl">1.25</span>], region<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">2</span>,<span class="fl">0</span>,<span class="fl">2</span>), figscale<span class="op">=</span><span class="fl">4</span>, marker<span class="op">=:</span>circ, ms<span class="op">=</span><span class="fl">5</span>, pen<span class="op">=:</span>thick, fill<span class="op">=</span><span class="st">"lightgreen@70"</span>, frame<span class="op">=</span>(grid<span class="op">=</span><span class="fl">0.25</span>,))</span>
@@ -539,11 +539,11 @@ Give the name of the output grid file. Optionally, append <code>=ID</code> for w
 <p><strong>Note1:</strong> Any offset is added before any scaling. +sa also sets +oa (unless overridden). To write specific formats via GDAL, use =gd and supply driver (and optionally dataType) and/or one or more concatenated GDAL -co options using +c.&nbsp;See the <a href="https://docs.generic-mapping-tools.org/dev/reference/features.html#write-grids-images">“Writing grids and images”</a> cookbook section for more details.</p>
 <p><strong>Note2:</strong> This is optional and to be used only when saving the result directly on disk. Otherwise, just use the <code>G = modulename(...)</code> form.</p></li>
 <li><p><strong>I</strong> or <strong>inc</strong> or <strong>increment</strong> or <strong>spacing</strong> : – <em>inc=x_inc</em> <strong>|</strong> <em>inc=(x_inc, y_inc)</em> <strong>|</strong> <em>inc=“xinc[+e|n][/yinc[+e|n]]”</em><br>
-Specify the grid increments or the block sizes. More at [spacing](../common_opts/opt_I.html)</p></li>
+Specify the grid increments or the block sizes. More at <a href="../../documentation/common_opts/opt_I.html">spacing</a></p></li>
 <li><p><strong>J</strong> or <strong>proj</strong> or <strong>projection</strong> : – <em>proj=<parameters></parameters></em><br>
-Select map projection. More at [proj](../common_opts/opt_J.html)</p></li>
+Select map projection. More at <a href="../../documentation/common_opts/opt_J.html">proj</a></p></li>
 <li><p><strong>R</strong> or <strong>region</strong> or <strong>limits</strong> : – <em>limits=(xmin, xmax, ymin, ymax)</em> <strong>|</strong> <em>limits=(BB=(xmin, xmax, ymin, ymax),)</em> <strong>|</strong> <em>limits=(LLUR=(xmin, xmax, ymin, ymax),units=“unit”)</em> <strong>|</strong> …more<br>
-Specify the region of interest. More at [limits](../common_opts/opt_R.html). For perspective view <strong>view</strong>, optionally add <em>zmin,zmax</em>. This option may be used to indicate the range used for the 3-D axes. You may ask for a larger w/e/s/n region to have more room between the image and the axes.</p></li>
+Specify the region of interest. More at <a href="../../documentation/common_opts/opt_R.html">limits</a>. For perspective view <strong>view</strong>, optionally add <em>zmin,zmax</em>. This option may be used to indicate the range used for the 3-D axes. You may ask for a larger w/e/s/n region to have more room between the image and the axes.</p></li>
 <li><p><strong>S</strong> or <strong>search_radius</strong> : – <em>search_radius=rad</em><br>
 Sets the <em>search_radius</em> that determines which data points are considered close to a node. Append the distance unit (see [Units]).</p></li>
 </ul>
@@ -554,7 +554,7 @@ Sets the <em>search_radius</em> that determines which data points are considered
 <li><p><strong>E</strong> or <strong>empty</strong> : – <em>empty=??</em><br>
 Set the value assigned to empty nodes [NaN].</p></li>
 <li><p><strong>V</strong> or <em>verbose</em> : – <em>verbose=true</em> <strong>|</strong> <em>verbose=level</em><br>
-Select verbosity level. More at [verbose](../common_opts/opt_V.html)</p></li>
+Select verbosity level. More at <a href="../../documentation/common_opts/opt_V.html">verbose</a></p></li>
 <li><p><strong>N</strong> or <strong>sectors</strong> or <strong>nn</strong> or <strong>nearest</strong> : – <em>sectors=n_sectors</em> <strong>|</strong> <em>sectors=(n=n_sectors, min_sectors=n_min)</em><br>
 The circular search area centered on each node is divided into <em>n_sectors</em> sectors. Average values will only be computed if there is <em>at least</em> one value inside each of at least <em>n_min</em> of the sectors for a given node. Nodes that fail this test are assigned the value NaN (but see <strong>empty</strong>). If <strong>min_sectors</strong> is omitted then <em>n_min</em> is set to be at least 50% of <em>n_sectors</em> (i.e., rounded up to next integer) [Default is a quadrant search with 100% coverage, i.e., <em>n_sectors</em> = <em>n_min</em> = 4]. Note that only the nearest value per sector enters into the averaging; the more distant points are ignored. Alternatively, use <strong>sectors:nn</strong> or <strong>sectors=:nearest</strong> to call GDALʻs nearest neighbor algorithm instead.</p></li>
 <li><p><strong>W</strong> or <strong>weights</strong> : – <em>weights=true</em><br>
@@ -576,7 +576,7 @@ Specify that input and/or output file(s) have n header records. <a href="https:/
 <li><p><strong>i</strong> or <strong>incol</strong> or <strong>incols</strong> : – <em>incol=col_num</em> <strong>|</strong> <em>incol=“opts”</em><br>
 Select input columns and transformations (0 is first column, t is trailing text, append word to read one word only). More at <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#icols-full">incol</a></p></li>
 <li><p><strong>n</strong> or <strong>interp</strong> or <strong>interpol</strong> : – <em>interp=params</em><br>
-Select interpolation mode for grids. More at [interp](../common_opts/opt_n.html)</p></li>
+Select interpolation mode for grids. More at <a href="../../documentation/common_opts/opt_n.html">interp</a></p></li>
 <li><p><strong>q</strong> or <strong>inrows</strong> : – <em>inrows=??</em><br>
 Select specific data rows to be read and/or written. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#the-q-option">More at</a></p></li>
 <li><p><strong>r</strong> or <strong>reg</strong> or <strong>registration</strong> : – <em>reg=:p</em> <strong>|</strong> <em>reg=:g</em><br>
@@ -592,7 +592,7 @@ Swap 1st and 2nd column on input and/or output. <a href="https://docs.generic-ma
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <p>To grid the data in the remote file <span class="citation" data-cites="ship_15.txt">@ship_15.txt</span> at 5x5 arc minutes using a search radius of 15 arch minutes, and plot the resulting grid using default projection and colors, do</p>
-<div id="7093cfed" class="cell" data-execution_count="2">
+<div id="361afe02" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">nearneighbor</span>(<span class="st">"@ship_15.txt"</span>, region<span class="op">=</span>(<span class="fl">245</span>,<span class="fl">255</span>,<span class="fl">20</span>,<span class="fl">30</span>), inc<span class="op">=</span><span class="st">"5m"</span>, S<span class="op">=</span><span class="st">"15m"</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">imshow</span>(G)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>

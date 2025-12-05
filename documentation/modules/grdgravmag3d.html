@@ -506,7 +506,7 @@ Sets parameters for computation of magnetic anomaly (Can be used multiple times)
 - **t**|**T**|**f**|**F**  to compute the total field.</code></pre>
 <p>If we want to compute the magnetic anomalies over a large region where the ambient magnetic field can no longer be assumed to be constant we can set variable inclinations and declinations via IGRF. Set any of <strong>mag_params=“+i|+n”</strong> to do that.</p></li>
 <li><p><strong>I</strong> or <strong>inc</strong> or <strong>increment</strong> or <strong>spacing</strong> : – <em>inc=x_inc</em> <strong>|</strong> <em>inc=(x_inc, y_inc)</em> <strong>|</strong> <em>inc=“xinc[+e|n][/yinc[+e|n]]”</em><br>
-Specify the grid increments or the block sizes. More at [spacing](../common_opts/opt_I.html)</p></li>
+Specify the grid increments or the block sizes. More at <a href="../../documentation/common_opts/opt_I.html">spacing</a></p></li>
 <li><p><strong>L</strong> or <strong>level</strong> or <strong>reference_level</strong> : – <em>z_obs=0</em><br>
 Sets level of observation [Default = 0]. That is the height (z) at which anomalies are computed.</p></li>
 <li><p><strong>Q</strong> or <strong>pad</strong> : – <em>pad=“nn_pad” <strong>|</strong> </em>pad=“pad_dist”* <strong>|</strong> <em>pad=“region”</em><br>
@@ -515,11 +515,11 @@ Extend the domain of computation with respect to output <strong>region</strong> 
 
 - *pad="west/east/south/north"* Same syntax as **region**.</code></pre></li>
 <li><p><strong>R</strong> or <strong>region</strong> or <strong>limits</strong> : – <em>limits=(xmin, xmax, ymin, ymax)</em> <strong>|</strong> <em>limits=(BB=(xmin, xmax, ymin, ymax),)</em> <strong>|</strong> <em>limits=(LLUR=(xmin, xmax, ymin, ymax),units=“unit”)</em> <strong>|</strong> …more<br>
-Specify the region of interest. More at [limits](../common_opts/opt_R.html). For perspective view <strong>view</strong>, optionally add <em>zmin,zmax</em>. This option may be used to indicate the range used for the 3-D axes. You may ask for a larger w/e/s/n region to have more room between the image and the axes.</p></li>
+Specify the region of interest. More at <a href="../../documentation/common_opts/opt_R.html">limits</a>. For perspective view <strong>view</strong>, optionally add <em>zmin,zmax</em>. This option may be used to indicate the range used for the 3-D axes. You may ask for a larger w/e/s/n region to have more room between the image and the axes.</p></li>
 <li><p><strong>S</strong> or <strong>radius</strong> : – <em>radius=30</em><br>
 Set search radius in km (valid only in the two grids mode OR when <strong>thickness</strong>) [Default = 30 km]. This option serves to speed up the computation by not computing the effect of prisms that are further away than <em>radius</em> from the current node.</p></li>
 <li><p><strong>V</strong> or <em>verbose</em> : – <em>verbose=true</em> <strong>|</strong> <em>verbose=level</em><br>
-Select verbosity level. More at [verbose](../common_opts/opt_V.html)</p></li>
+Select verbosity level. More at <a href="../../documentation/common_opts/opt_V.html">verbose</a></p></li>
 <li><p><strong>Z</strong> or <strong>level</strong> or <strong>reference_level</strong> : – <em>level=“b|t”</em> <strong>|</strong> <em>level=(bottom=true | top=true)</em><br>
 level of reference plane [Default = 0]. Use this option when the triangles describe a non-closed surface and the volume is defined from each triangle and this reference level. An example will be the water depth to compute a Bouguer anomaly. Use <strong>level=:b</strong> or <strong>level=:t</strong> to close the body at its bottom (for example, to compute the effect of a dome) or at its top (to compute the effect of a <em>spoon</em>).</p></li>
 <li><p><strong>f</strong> or <strong>colinfo</strong> : – <em>colinfo=??</em><br>
@@ -537,7 +537,7 @@ Limit the number of cores used when making the individual frames. By default we 
 <p>To compute the vertical component due to a magnetization stored in <em>mag.grd</em> over a zone defined by the surface <em>bat.grd</em>, using variable declination and inclination provided the IGRF and using 4 processors, do:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">grdgravmag3d</span>(<span class="st">"bat.grd"</span>, thickness<span class="op">=</span><span class="fl">10000</span>, H<span class="op">=</span><span class="st">"z -H+n -H+mmag.grd"</span>, x<span class="op">=</span><span class="fl">4</span>, radius<span class="op">=</span><span class="fl">50</span>);</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Suppose you want to compute the gravity effect of the Gorringe bank.</p>
-<div id="4d8a2003" class="cell" data-execution_count="1">
+<div id="220f6d30" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">grdgravmag3d</span>(<span class="st">"@earth_relief_10m"</span>, region<span class="op">=</span>(<span class="op">-</span><span class="fl">12.5</span>,<span class="op">-</span><span class="fl">10</span>,<span class="fl">35.5</span>,<span class="fl">37.5</span>),</span>

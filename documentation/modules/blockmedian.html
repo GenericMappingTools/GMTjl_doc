@@ -476,9 +476,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 3 (or 4, see <strong>weights</strong>) column data table file (or binary, see <strong>binary_in</strong>) holding (<em>x,y,z[,w]</em>) data values, where [ <em>w</em>] is an optional weight for the data.</p>
 <ul>
 <li><p><strong>I</strong> or <strong>inc</strong> or <strong>increment</strong> or <strong>spacing</strong> : – <em>inc=x_inc</em> <strong>|</strong> <em>inc=(x_inc, y_inc)</em> <strong>|</strong> <em>inc=“xinc[+e|n][/yinc[+e|n]]”</em><br>
-Specify the grid increments or the block sizes. More at [spacing](../common_opts/opt_I.html)</p></li>
+Specify the grid increments or the block sizes. More at <a href="../../documentation/common_opts/opt_I.html">spacing</a></p></li>
 <li><p><strong>R</strong> or <strong>region</strong> or <strong>limits</strong> : – <em>limits=(xmin, xmax, ymin, ymax)</em> <strong>|</strong> <em>limits=(BB=(xmin, xmax, ymin, ymax),)</em> <strong>|</strong> <em>limits=(LLUR=(xmin, xmax, ymin, ymax),units=“unit”)</em> <strong>|</strong> …more<br>
-Specify the region of interest. More at [limits](../common_opts/opt_R.html). For perspective view <strong>view</strong>, optionally add <em>zmin,zmax</em>. This option may be used to indicate the range used for the 3-D axes. You may ask for a larger w/e/s/n region to have more room between the image and the axes.</p></li>
+Specify the region of interest. More at <a href="../../documentation/common_opts/opt_R.html">limits</a>. For perspective view <strong>view</strong>, optionally add <em>zmin,zmax</em>. This option may be used to indicate the range used for the 3-D axes. You may ask for a larger w/e/s/n region to have more room between the image and the axes.</p></li>
 </ul>
 </section>
 <section id="optional-arguments" class="level2">
@@ -499,7 +499,7 @@ Write one or more fields directly to grids on disk or return them to the Julia R
 <li><p><strong>T</strong> or <strong>quantile</strong> : – <em>quantile=val</em><br>
 Sets the quantile of the distribution to be returned [Default is 0.5 which returns the median z]. Here, 0 &lt; val &lt; 1.</p></li>
 <li><p><strong>V</strong> or <em>verbose</em> : – <em>verbose=true</em> <strong>|</strong> <em>verbose=level</em><br>
-Select verbosity level. More at [verbose](../common_opts/opt_V.html)</p></li>
+Select verbosity level. More at <a href="../../documentation/common_opts/opt_V.html">verbose</a></p></li>
 <li><p><strong>W</strong> or <strong>weights</strong> : – <em>weights=:i</em> <strong>|</strong> <em>weights=:o</em> <strong>|</strong> <em>weights=“i+s”</em> <strong>|</strong> <em>weights=“i|o+s|+w”</em><br>
 Weighted modifier[s]. Unweighted input and output have 3 columns <em>x,y,z</em>; Weighted i/o has 4 columns <em>x,y,z,w</em>. Weights can be used in input to construct weighted mean values for each block. Weight sums can be reported in output for later combining several runs, etc. Use <strong>weights</strong> for weighted i/o, <strong>weights=:i</strong> for weighted input only, and <strong>weights=:o</strong> for weighted output only. [Default uses unweighted i/o]. If your weights are actually uncertainties (one sigma) then append the string <strong>+s</strong> (as in <strong>weights=“i+s”</strong>) and we compute weight = 1/sigma. Otherwise (or via <strong>+w</strong>) we use the weights directly.</p></li>
 <li><p><strong>bi</strong> or <strong>binary_in</strong> : – <em>binary_in=??</em><br>

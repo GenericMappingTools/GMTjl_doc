@@ -510,7 +510,7 @@ window.Quarto = {
 <p>Flat Earth (Cartesian) coordinate transformations can also be made. Set <strong>flat_earth</strong> and remember that <em>azimuth</em> is clockwise from North (the <span class="math inline">\(y\)</span> axis), NOT the usual cartesian theta, which is counterclockwise from the <span class="math inline">\(x\)</span> axis. (i.e., <span class="math inline">\(azimuth = 90 - theta\)</span>).</p>
 <p>No assumptions are made regarding the units for <span class="math inline">\(x, y, r, s, p, q\)</span>, <em>dist</em>, <span class="math inline">\(l_{min}, l_{max}, w_{min}, w_{max}\)</span>. However, if <strong>km</strong> is selected, map units are assumed and <span class="math inline">\(x, y, r, s\)</span>, must be in degrees and <span class="math inline">\(p, q\)</span>, <em>dist</em>, <span class="math inline">\(l_{min}, l_{max}, w_{min}, w_{max}\)</span> will be in km.</p>
 <p>Calculations of specific great-circle and geodesic distances or for back-azimuths or azimuths are better done using <a href="../..\documentation/modules/mapproject.html">mapproject</a> as <strong>project</strong> is strictly spherical.</p>
-<div id="4ab37221" class="cell" data-execution_count="1">
+<div id="f34496a0" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="fu">atand</span>(<span class="fl">4</span> <span class="op">/</span> <span class="fl">2.5</span>)</span>
@@ -588,7 +588,7 @@ Sort the output into increasing <em>p</em> order. Useful when projecting random 
 <li><p><strong>T</strong> or <strong>pole</strong> : – <em>pole=(px,py)</em><br>
 Set the position of the rotation pole of the projection as <em>px,py</em>.</p></li>
 <li><p><strong>V</strong> or <em>verbose</em> : – <em>verbose=true</em> <strong>|</strong> <em>verbose=level</em><br>
-Select verbosity level. More at [verbose](../common_opts/opt_V.html)</p></li>
+Select verbosity level. More at <a href="../../documentation/common_opts/opt_V.html">verbose</a></p></li>
 <li><p><strong>W</strong> or <strong>width</strong> : – <em>width=(wmin,wmax)</em><br>
 Specify width controls for the projected points. Project only those points whose <em>q</em> coordinate is within <span class="math inline">\(w_{min} &lt; q &lt; w_{max}\)</span>.</p></li>
 <li><p><strong>Z</strong> or <strong>ellipse</strong> : – <em>ellipse=“major[<em>unit</em>][/<em>minor</em>/<em>azimuth</em>][<strong>+e</strong>]”</em><br>
@@ -627,7 +627,7 @@ Swap 1st and 2nd column on input and/or output. <a href="https://docs.generic-ma
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <p>To project the remote data sets ship_03.txt (lon,lat,depth) onto a great circle specified by the two points (330,-18) and (53,21) and sort the records on the projected distances along that circle and only output the distance and the depths, try</p>
-<div id="3c359afa" class="cell" data-execution_count="2">
+<div id="7fe15c70" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">project</span>(<span class="st">"@ship_03.txt"</span>, origin<span class="op">=</span>(<span class="fl">330</span>,<span class="op">-</span><span class="fl">18</span>), pole<span class="op">=</span>(<span class="fl">53</span>,<span class="fl">21</span>), sort<span class="op">=</span><span class="cn">true</span>, outvars<span class="op">=:</span>pz, km<span class="op">=</span><span class="cn">true</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">imshow</span>(D)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -640,7 +640,7 @@ Swap 1st and 2nd column on input and/or output. <a href="https://docs.generic-ma
 </div>
 </div>
 <p>To generate points every 10 km along a great circle from 10N,50W to 30N,10W:</p>
-<div id="81827208" class="cell" data-execution_count="3">
+<div id="b36d6046" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>Dgc <span class="op">=</span> <span class="fu">project</span>(origin<span class="op">=</span>(<span class="op">-</span><span class="fl">50</span>,<span class="fl">10</span>), endpoint<span class="op">=</span>(<span class="op">-</span><span class="fl">10</span>,<span class="fl">30</span>), step<span class="op">=</span><span class="fl">10</span>, km<span class="op">=</span><span class="cn">true</span>)</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">imshow</span>(Dgc, marker<span class="op">=:</span>point, lw<span class="op">=</span><span class="fl">0.5</span>, coast<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -657,7 +657,7 @@ Swap 1st and 2nd column on input and/or output. <a href="https://docs.generic-ma
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">project</span>(origin<span class="op">=</span>(<span class="st">"10W"</span>,<span class="st">"30N"</span>), azim<span class="op">=</span><span class="fl">30</span>, step<span class="op">=</span><span class="fl">1</span>, length<span class="op">=</span>(<span class="op">-</span><span class="fl">180</span>,<span class="fl">180</span>))</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">imshow</span>(D, coast<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>To generate points every 10 km along a small circle of colatitude 60 from 10N,50W to 30N,10W:</p>
-<div id="67a2edf7" class="cell" data-execution_count="4">
+<div id="364a4d7f" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>Dsc <span class="op">=</span> <span class="fu">project</span>(origin<span class="op">=</span>(<span class="op">-</span><span class="fl">50</span>,<span class="fl">10</span>), endpoint<span class="op">=</span>(<span class="op">-</span><span class="fl">10</span>,<span class="fl">30</span>), step<span class="op">=</span>(<span class="fl">10</span>,<span class="fl">60</span>), km<span class="op">=</span><span class="cn">true</span>)</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">imshow</span>(Dsc, marker<span class="op">=:</span>point, lw<span class="op">=</span><span class="fl">0.5</span>, coast<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -672,7 +672,7 @@ Swap 1st and 2nd column on input and/or output. <a href="https://docs.generic-ma
 <p>To create a partial small circle of colatitude 80 about a pole at 40E,85N, with extent of 45 degrees to either side of the meridian defined by the great circle from the pole to a point 15E,15N, try</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>    D <span class="op">=</span> <span class="fu">project</span>(origin<span class="op">=</span>(<span class="fl">15</span>,<span class="fl">15</span>), pole<span class="op">=</span>(<span class="fl">40</span>,<span class="fl">85</span>), step<span class="op">=</span>(<span class="fl">1</span>,<span class="fl">80</span>), <span class="fu">length</span>(<span class="op">-</span><span class="fl">45</span>,<span class="fl">45</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>To generate points approximately every 10 km along an ellipse centered on (30W,70N) with major axis of 1500 km with azimuth of 30 degree and a minor axis of 600 km, try</p>
-<div id="87561df4" class="cell" data-execution_count="5">
+<div id="f4dfe9f6" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>Dellip <span class="op">=</span> <span class="fu">project</span>(origin<span class="op">=</span>(<span class="op">-</span><span class="fl">30</span>,<span class="fl">70</span>), step<span class="op">=</span><span class="fl">10</span>, ellipse<span class="op">=</span><span class="st">"1500/600/30+e"</span>, km<span class="op">=</span><span class="cn">true</span>)</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">imshow</span>(Dellip, coast<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>

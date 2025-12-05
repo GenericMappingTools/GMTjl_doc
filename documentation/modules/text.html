@@ -489,7 +489,7 @@ As a third alternative, provide the input data in a form of a string vector and 
 <li><p><strong>A</strong> or <strong>azimuth</strong> or <strong>azim</strong> : – <em>azimuth=true</em><br>
 Angles are given as azimuths; convert them to directions using the current projection.</p></li>
 <li><p><strong>B</strong> or <strong>axes</strong> or <strong>frame</strong><br>
-Set map boundary frame and axes attributes. Default is to draw and annotate left, bottom and vertical axes and just draw left and top axes. More at [frame](../common_opts/opt_B.html)</p></li>
+Set map boundary frame and axes attributes. Default is to draw and annotate left, bottom and vertical axes and just draw left and top axes. More at <a href="../../documentation/common_opts/opt_B.html">frame</a></p></li>
 <li><p><strong>C</strong> or <strong>clearance</strong> : – <em>clearance=true</em> <strong>|</strong> <em>clearance=(margin=(dx,dy), round=true, concave=true, convex=true)</em><br>
 Adjust the clearance between the text and the surrounding box [15%]. Only used if <strong>pen</strong> or <strong>fill</strong> are specified. Append the unit you want (<strong>c</strong>m, <strong>i</strong>nch, or <strong>p</strong>oint); if not given we consult <code>PROJ_LENGTH_UNIT</code>) or % for a percentage of the font size. Optionally, use options <em>round</em> (rounded rectangle) or, for <strong>paragraph</strong> mode only, <em>concave</em> or <em>convex</em> to set the shape of the textbox when using <strong>fill</strong> and/or <strong>pen</strong>. Default gets a straight rectangle.</p></li>
 <li><p><strong>D</strong> or <strong>offset</strong> : – <em>offset=([away=true, corners=true,] shift=(dx,dy) [,line=pen])</em><br>
@@ -501,7 +501,7 @@ Plots an outline arround the text. By setting <strong>outline=true</strong> we p
 <li><p><strong>G</strong> or <strong>fill</strong> : – <em>fill=color</em> <strong>|</strong> <em>fill=:c</em><br>
 Sets the shade or color used for filling the text box [Default is no fill]. Alternatively, use <strong>fill=:c</strong> to plot the text and then use the text dimensions (and <strong>clearance</strong>) to build clip paths and turn clipping on. This clipping can then be turned off later with <code>clip</code> <strong>C</strong>. To <em>not</em> plot the text but activate clipping, use <strong>fill=:C</strong> instead.</p></li>
 <li><p><strong>J</strong> or <strong>proj</strong> or <strong>projection</strong> : – <em>proj=<parameters></parameters></em><br>
-Select map projection. More at [proj](../common_opts/opt_J.html)</p></li>
+Select map projection. More at <a href="../../documentation/common_opts/opt_J.html">proj</a></p></li>
 <li><p><strong>L</strong> or <strong>list</strong> : – <em>list=true</em><br>
 Lists the font-numbers and font-names available, then exits.</p></li>
 <li><p><strong>M</strong> or <strong>paragraph</strong> : – <em>paragraph=true</em><br>
@@ -511,19 +511,19 @@ Do NOT clip text at map boundaries [Default will clip].</p></li>
 <li><p><strong>Q</strong> or <strong>change_case</strong> : – <em>change_case=:lower</em> <strong>|</strong> <em>change_case=:upper</em><br>
 Change all text to either <strong>change_case=:lower</strong> or <strong>change_case=:upper</strong> case [Default leaves all text as is].</p></li>
 <li><p><strong>R</strong> or <strong>region</strong> or <strong>limits</strong> : – <em>limits=(xmin, xmax, ymin, ymax)</em> <strong>|</strong> <em>limits=(BB=(xmin, xmax, ymin, ymax),)</em> <strong>|</strong> <em>limits=(LLUR=(xmin, xmax, ymin, ymax),units=“unit”)</em> <strong>|</strong> …more<br>
-Specify the region of interest. More at [limits](../common_opts/opt_R.html). For perspective view <strong>view</strong>, optionally add <em>zmin,zmax</em>. This option may be used to indicate the range used for the 3-D axes. You may ask for a larger w/e/s/n region to have more room between the image and the axes.</p></li>
+Specify the region of interest. More at <a href="../../documentation/common_opts/opt_R.html">limits</a>. For perspective view <strong>view</strong>, optionally add <em>zmin,zmax</em>. This option may be used to indicate the range used for the 3-D axes. You may ask for a larger w/e/s/n region to have more room between the image and the axes.</p></li>
 <li><p><strong>S</strong> or <strong>shade</strong> : <em>shade=true</em> <strong>|</strong> <em>shade=(dx,dy)</em> <strong>|</strong> <em>shade=shade</em><br>
 Plot an offset background shaded region beneath the text box. Here, <em>(dx,dy)</em> indicates the shift relative to the text box in points [4p, 4p] and <em>shade</em> sets the fill color to use for shading [gray50]. Requires the <strong>fill</strong> option.</p></li>
 <li><p><strong>U</strong> or <strong>time_stamp</strong> : – <em>time_stamp=true</em> <strong>|</strong> <em>time_stamp=(just=“code”, pos=(dx,dy), label=“label”, com=true)</em><br>
-Draw GMT time stamp logo on plot. More at [timestamp](../common_opts/opt_U.html)</p></li>
+Draw GMT time stamp logo on plot. More at <a href="../../documentation/common_opts/opt_U.html">timestamp</a></p></li>
 <li><p><strong>V</strong> or <em>verbose</em> : – <em>verbose=true</em> <strong>|</strong> <em>verbose=level</em><br>
-Select verbosity level. More at [verbose](../common_opts/opt_V.html)</p></li>
+Select verbosity level. More at <a href="../../documentation/common_opts/opt_V.html">verbose</a></p></li>
 <li><p><strong>W</strong> or <strong>pen</strong> : – <em>pen=pen</em><br>
 Sets the pen used to draw a rectangle around the text string (see <strong>clearance</strong>) [Default is width = default, color = black, style = solid].</p></li>
 <li><p><strong>X</strong> or <strong>xshift</strong> or <strong>x_offset</strong> : <em>xshift=true</em> <strong>|</strong> <em>xshift=x-shift</em> <strong>|</strong> <em>xshift=(shift=x-shift, mov=“a|c|f|r”)</em><br>
-Shift plot origin. More at [xshift](../common_opts/opt_X.html)</p></li>
+Shift plot origin. More at <a href="../../documentation/common_opts/opt_X.html">xshift</a></p></li>
 <li><p><strong>Y</strong> or <strong>yshift</strong> or <strong>y_offset</strong> : <em>yshift=true</em> <strong>|</strong> <em>yshift=y-shift</em> <strong>|</strong> <em>yshift=(shift=y-shift, mov=“a|c|f|r”)</em><br>
-Shift plot origin. More at [yshift](../common_opts/opt_Y.html)</p></li>
+Shift plot origin. More at <a href="../../documentation/common_opts/opt_Y.html">yshift</a></p></li>
 <li><p><strong>Z</strong> or <strong>threeD</strong> : – <em>threeD=true</em><br>
 For 3-D projections: expect each item to have its own level given in the 3rd column, and <strong>noclip</strong> is implicitly set. (Not implemented for paragraph mode).</p></li>
 <li><p><strong>figname</strong> or <strong>savefig</strong> or <strong>name</strong> : – <em>figname=<code>name.png</code></em><br>
@@ -547,7 +547,7 @@ A full GMT compact string with the full set of options.</li>
 <li><em>view=(azim,elev)</em><br>
 A two elements tuple with azimuth and elevation</li>
 <li><em>view=true</em><br>
-To propagate the viewpoint used in a previous module (makes sense only in <code>bar3!</code>) More at [perspective](../common_opts/opt_p.html)</li>
+To propagate the viewpoint used in a previous module (makes sense only in <code>bar3!</code>) More at <a href="../../documentation/common_opts/opt_p.html">perspective</a></li>
 </ul></li>
 <li><p><strong>q</strong> or <strong>inrows</strong> : – <em>inrows=??</em><br>
 Select specific data rows to be read and/or written. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#the-q-option">More at</a></p></li>
@@ -572,7 +572,7 @@ Swap 1st and 2nd column on input and/or output. <a href="https://docs.generic-ma
 <p>To plot just the red outlines of the (lon lat text strings) stored in the file text.txt on a Mercator plot with the given specifications, use</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="st">"text.txt"</span>, region<span class="op">=</span>(<span class="op">-</span><span class="fl">30</span>,<span class="fl">30</span>,<span class="op">-</span><span class="fl">10</span>,<span class="fl">20</span>), proj<span class="op">=:</span>merc, figscale<span class="op">=</span><span class="fl">0.25</span>, font<span class="op">=</span>(<span class="fl">18</span>,<span class="op">:</span>Helvetica,<span class="st">"-=0.5p"</span>,<span class="op">:</span>red), frame<span class="op">=</span>(annot<span class="op">=</span><span class="fl">5</span>,), show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>To plot just the “Hello World” and let the program estimate the <em>region</em>, do</p>
-<div id="e270457c" class="cell" data-execution_count="1">
+<div id="ce73bd4d" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>([<span class="st">"Hello World"</span>], x<span class="op">=</span><span class="fl">2.0</span>, y<span class="op">=</span><span class="fl">2.0</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -584,7 +584,7 @@ Swap 1st and 2nd column on input and/or output. <a href="https://docs.generic-ma
 </div>
 </div>
 <p>A similar example but using the <code>outline</code> option to plot a 3 points green outline.</p>
-<div id="e80b53e5" class="cell" data-execution_count="2">
+<div id="17c4cb85" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>([<span class="st">"Hello World"</span>], x<span class="op">=</span><span class="fl">2.0</span>, y<span class="op">=</span><span class="fl">2.0</span>, outline<span class="op">=</span><span class="st">"3p,red"</span>, font<span class="op">=</span><span class="fl">40</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -596,7 +596,7 @@ Swap 1st and 2nd column on input and/or output. <a href="https://docs.generic-ma
 </div>
 </div>
 <p>Example using the <em>rich</em> function (reproduces the original example in Makie).</p>
-<div id="afdb8221" class="cell" data-execution_count="3">
+<div id="45715e11" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="fu">rich</span>(<span class="st">"H"</span>, <span class="fu">subscript</span>(<span class="st">"2"</span>), <span class="fu">greek</span>(<span class="st">"O"</span>),<span class="st">" is the "</span>, <span class="fu">smallcaps</span>(<span class="st">"formula"</span>),<span class="st">" for "</span>,</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>     <span class="fu">rich</span>(<span class="fu">underline</span>(<span class="st">"water"</span>), color<span class="op">=:</span>red, font<span class="op">=</span><span class="st">"Helvetica"</span>, size<span class="op">=</span><span class="fl">16</span>)), x<span class="op">=</span><span class="fl">1</span>, y<span class="op">=</span><span class="fl">1</span>, frame<span class="op">=:</span>none)</span>

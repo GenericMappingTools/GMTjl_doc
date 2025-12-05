@@ -501,7 +501,7 @@ Write one or more fields directly to grids on disk or return them to the Julia R
 
 - *sphere,rad/z_center[/x0/y0/npts/n_slices]* Sphere of radius *rad* and center at depth *z_center*</code></pre></li>
 <li><p><strong>R</strong> or <strong>region</strong> or <strong>limits</strong> : – <em>limits=(xmin, xmax, ymin, ymax)</em> <strong>|</strong> <em>limits=(BB=(xmin, xmax, ymin, ymax),)</em> <strong>|</strong> <em>limits=(LLUR=(xmin, xmax, ymin, ymax),units=“unit”)</em> <strong>|</strong> …more<br>
-Specify the region of interest. More at [limits](../common_opts/opt_R.html). For perspective view <strong>view</strong>, optionally add <em>zmin,zmax</em>. This option may be used to indicate the range used for the 3-D axes. You may ask for a larger w/e/s/n region to have more room between the image and the axes.</p></li>
+Specify the region of interest. More at <a href="../../documentation/common_opts/opt_R.html">limits</a>. For perspective view <strong>view</strong>, optionally add <em>zmin,zmax</em>. This option may be used to indicate the range used for the 3-D axes. You may ask for a larger w/e/s/n region to have more room between the image and the axes.</p></li>
 <li><p><strong>Tv</strong> or <strong>index</strong> : – <em>index=vert_file</em> <strong>|</strong> <em>index=D</em><br>
 Gives name of a vertex file defining a closed surface. The file formats correspond to the output of the <a href="../..\documentation/modules/triangulate.html">triangulate</a> module. The form <em>raw_triang=D</em> means that we can also pass the data as a <a href="../..\documentation/general/types.html#sec-dataset-type">GMTdataset</a></p></li>
 <li><p><strong>Tr</strong> or <strong>raw_triang</strong> : – <em>raw_triang=raw_file</em> <strong>|</strong> <em>raw_triang=D</em><br>
@@ -522,7 +522,7 @@ sets level of observation [Default = 0]. That is the height (z) at which anomali
 <li><p><strong>S</strong> or <strong>radius</strong> : – <em>radius=30</em><br>
 Set search radius in km (valid only in the two grids mode OR when <strong>thickness</strong>) [Default = 30 km]. This option serves to speed up the computation by not computing the effect of prisms that are further away than <em>radius</em> from the current node.</p></li>
 <li><p><strong>V</strong> or <em>verbose</em> : – <em>verbose=true</em> <strong>|</strong> <em>verbose=level</em><br>
-Select verbosity level. More at [verbose](../common_opts/opt_V.html)</p></li>
+Select verbosity level. More at <a href="../../documentation/common_opts/opt_V.html">verbose</a></p></li>
 </ul>
 <p><strong>Z</strong> or <strong>level</strong> or <strong>reference_level</strong> : – <em>level=0</em><br>
 level of reference plane [Default = 0]. Use this option when the triangles describe a non-closed surface and the volume is defined from each triangle and this reference level. An example will be the water depth to compute a Bouguer anomaly.</p>
@@ -549,7 +549,7 @@ Select gridline or pixel node registration. Used only when output is a grid. <a 
 <section id="example" class="level2">
 <h2 class="anchored" data-anchor-id="example">Example</h2>
 <p>To compute the magnetic anomaly of a cube of unit sides located at 5 meters depth and centered at -10,1 in a domain <em>R=“-15/15/-15/15”</em> with a magnetization of 10 Am with a declination of 10 degrees, inclination of 60 in a magnetic field with -10 deg of declination and 40 deg of inclination, do:</p>
-<div id="880a5fae" class="cell" data-execution_count="1">
+<div id="a51c7cd0" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">gravmag3d</span>(region<span class="op">=</span><span class="st">"-15/15/-15/15"</span>, I<span class="op">=</span><span class="fl">0.1</span>, mag_params<span class="op">=</span><span class="st">"10/60/10/-10/40"</span>, body<span class="op">=</span>(shape<span class="op">=:</span>prism, params<span class="op">=</span><span class="st">"1/1/1/-5/-10/1"</span>));</span>

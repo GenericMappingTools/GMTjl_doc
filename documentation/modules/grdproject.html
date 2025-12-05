@@ -451,7 +451,7 @@ ul.task-list li input[type="checkbox"] {
 </dl>
 <ul>
 <li><strong>J</strong> or <strong>proj</strong> or <strong>projection</strong> : – <em>proj=<parameters></parameters></em><br>
-Select map projection. More at [proj](../common_opts/opt_J.html)</li>
+Select map projection. More at <a href="../../documentation/common_opts/opt_J.html">proj</a></li>
 </ul>
 </section>
 <section id="optional-arguments" class="level2">
@@ -468,7 +468,7 @@ Give the name of the output grid file. Optionally, append <code>=ID</code> for w
 <p><strong>Note1:</strong> Any offset is added before any scaling. +sa also sets +oa (unless overridden). To write specific formats via GDAL, use =gd and supply driver (and optionally dataType) and/or one or more concatenated GDAL -co options using +c.&nbsp;See the <a href="https://docs.generic-mapping-tools.org/dev/reference/features.html#write-grids-images">“Writing grids and images”</a> cookbook section for more details.</p>
 <p><strong>Note2:</strong> This is optional and to be used only when saving the result directly on disk. Otherwise, just use the <code>G = modulename(...)</code> form.</p></li>
 <li><p><strong>R</strong> or <strong>region</strong> or <strong>limits</strong> : – <em>limits=(xmin, xmax, ymin, ymax)</em> <strong>|</strong> <em>limits=(BB=(xmin, xmax, ymin, ymax),)</em> <strong>|</strong> <em>limits=(LLUR=(xmin, xmax, ymin, ymax),units=“unit”)</em> <strong>|</strong> …more<br>
-Specify the region of interest. More at [limits](../common_opts/opt_R.html). For perspective view <strong>view</strong>, optionally add <em>zmin,zmax</em>. This option may be used to indicate the range used for the 3-D axes. You may ask for a larger w/e/s/n region to have more room between the image and the axes.</p></li>
+Specify the region of interest. More at <a href="../../documentation/common_opts/opt_R.html">limits</a>. For perspective view <strong>view</strong>, optionally add <em>zmin,zmax</em>. This option may be used to indicate the range used for the 3-D axes. You may ask for a larger w/e/s/n region to have more room between the image and the axes.</p></li>
 <li><p><strong>C</strong> or <strong>center</strong> : – <em>center=true</em> <strong>|</strong> <em>center=(dx, dy)</em> <strong>|</strong> <em>center=“dx/dy”</em><br>
 Let projected coordinates be relative to projection center [Default is relative to lower left corner]. Optionally, add offsets in the projected units to be added (or subtracted when <strong>inverse</strong> is set) to (from) the projected coordinates, such as false eastings and northings for particular projection zones [0/0].</p></li>
 <li><p><strong>D</strong> or <strong>inc</strong> : – <em>inc=xinc</em> <strong>|</strong> <em>inc=(xinc, yinc)</em> <strong>|</strong> <em>inc=“xinc[+e|n][/yinc[+e|n]]”</em><br>
@@ -504,9 +504,9 @@ Do the inverse transformation, from rectangular to geographical.</p></li>
 <li><p><strong>M</strong> or <strong>projected_unit</strong> : – <em>projected_unit=:c</em> <strong>|</strong> <em>projected_unit=:i</em> <strong>|</strong> <em>projected_unit=:p</em><br>
 Append <strong>:c</strong>, <strong>:i</strong>, or <strong>:p</strong> to indicate that cm, inch, or point should be the projected measure unit [Default is set by PROJ_LENGTH_UNIT in gmt.conf]. Cannot be used with <strong>scaling</strong>.</p></li>
 <li><p><strong>R</strong> or <strong>region</strong> or <strong>limits</strong> : – <em>limits=(xmin, xmax, ymin, ymax)</em> <strong>|</strong> <em>limits=(BB=(xmin, xmax, ymin, ymax),)</em> <strong>|</strong> <em>limits=(LLUR=(xmin, xmax, ymin, ymax),units=“unit”)</em> <strong>|</strong> …more<br>
-Specify the region of interest. More at [limits](../common_opts/opt_R.html). For perspective view <strong>view</strong>, optionally add <em>zmin,zmax</em>. This option may be used to indicate the range used for the 3-D axes. You may ask for a larger w/e/s/n region to have more room between the image and the axes.</p></li>
+Specify the region of interest. More at <a href="../../documentation/common_opts/opt_R.html">limits</a>. For perspective view <strong>view</strong>, optionally add <em>zmin,zmax</em>. This option may be used to indicate the range used for the 3-D axes. You may ask for a larger w/e/s/n region to have more room between the image and the axes.</p></li>
 <li><p><strong>V</strong> or <em>verbose</em> : – <em>verbose=true</em> <strong>|</strong> <em>verbose=level</em><br>
-Select verbosity level. More at [verbose](../common_opts/opt_V.html)</p></li>
+Select verbosity level. More at <a href="../../documentation/common_opts/opt_V.html">verbose</a></p></li>
 <li><p><strong>j</strong> or <strong>metric</strong> or <strong>spherical_dist</strong> or <strong>spherical</strong> : – <em>metric=greatcirc</em> or <em>spherical=:flat</em> or <em>spherical=:ellipsoidal</em><br>
 Determine how spherical distances are calculated in modules that support this [Default is <code>spherical=:greatcirc</code>]. GMT has different ways to compute distances on planetary bodies:</p>
 <ul>
@@ -516,7 +516,7 @@ Determine how spherical distances are calculated in modules that support this [D
 </ul>
 <p>Note: All spherical distance calculations depend on the current ellipsoid (<code>PROJ_ELLIPSOID</code>), the definition of the mean radius (<code>PROJ_MEAN_RADIUS</code>), and the specification of latitude type (<code>PROJ_AUX_LATITUDE</code>). Geodesic distance calculations is also controlled by method (<code>PROJ_GEODESIC</code>).</p></li>
 <li><p><strong>n</strong> or <strong>interp</strong> or <strong>interpol</strong> : – <em>interp=params</em><br>
-Select interpolation mode for grids. More at [interp](../common_opts/opt_n.html)</p></li>
+Select interpolation mode for grids. More at <a href="../../documentation/common_opts/opt_n.html">interp</a></p></li>
 </ul>
 </section>
 <section id="output-region-issues" class="level2">

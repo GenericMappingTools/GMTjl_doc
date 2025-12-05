@@ -508,7 +508,7 @@ Reverses the sense of the test for each of the criteria specified:</p>
 <li><strong>z</strong> - select records NOT within the range specified by |-Z|.</li>
 </ul></li>
 <li><p><strong>J</strong> or <strong>proj</strong> or <strong>projection</strong> : – <em>proj=<parameters></parameters></em><br>
-Select map projection. More at [proj](../common_opts/opt_J.html)</p></li>
+Select map projection. More at <a href="../../documentation/common_opts/opt_J.html">proj</a></p></li>
 <li><p><strong>L</strong> or <strong>dist2line</strong> : – <em>dist2line=(line=“linefile”, dist=dist [,ortho=true])</em> <strong>|</strong> <em>dist2line=(line=[pt1; pt2], dist=dist [,ortho=true])</em><br>
 Pass all records whose location is within <em>dist</em> of any of the line segments in the ASCII multiple-segment file <em>linefile</em> or <em>in-memory</em> matrix or <a href="../..\documentation/general/types.html#sec-dataset-type">GMTdataset</a>. If <em>dist</em> is zero then we will scan each sub-header in the <em>linefile</em> for an embedded <strong>-D</strong>&nbsp;<em>dist</em> setting that sets each line’s individual distance value. Distances are Cartesian and in user units; specify <strong>colinfo=:f</strong> to indicate spherical distances append a distance unit (see [Units]). Alternatively, if <strong>region</strong> and <strong>proj</strong> are used then geographic coordinates are projected to map coordinates (in cm, inch, m, or points, as determined by <code>PROJ_LENGTH_UNIT</code>) before Cartesian distances are compared to <em>dist</em>. Use <strong>ortho=true</strong> to ensure only points whose orthogonal projections onto the nearest line-segment fall within the segments endpoints [Default considers points “beyond” the line’s endpoints.</p></li>
 <li><p><strong>N</strong> or <strong>mask</strong> : – <em>mask=maskvalues</em><br>
@@ -519,9 +519,9 @@ Pass all records whose location is inside specified geographical features. Speci
 </ul>
 <p>Default is (:s,:k,:s,:k,:s) (i.e., (:s,:k)), which passes all points on dry land.</p></li>
 <li><p><strong>R</strong> or <strong>region</strong> or <strong>limits</strong> : – <em>limits=(xmin, xmax, ymin, ymax)</em> <strong>|</strong> <em>limits=(BB=(xmin, xmax, ymin, ymax),)</em> <strong>|</strong> <em>limits=(LLUR=(xmin, xmax, ymin, ymax),units=“unit”)</em> <strong>|</strong> …more<br>
-Specify the region of interest. More at [limits](../common_opts/opt_R.html). For perspective view <strong>view</strong>, optionally add <em>zmin,zmax</em>. This option may be used to indicate the range used for the 3-D axes. You may ask for a larger w/e/s/n region to have more room between the image and the axes.</p></li>
+Specify the region of interest. More at <a href="../../documentation/common_opts/opt_R.html">limits</a>. For perspective view <strong>view</strong>, optionally add <em>zmin,zmax</em>. This option may be used to indicate the range used for the 3-D axes. You may ask for a larger w/e/s/n region to have more room between the image and the axes.</p></li>
 <li><p><strong>V</strong> or <em>verbose</em> : – <em>verbose=true</em> <strong>|</strong> <em>verbose=level</em><br>
-Select verbosity level. More at [verbose](../common_opts/opt_V.html)</p></li>
+Select verbosity level. More at <a href="../../documentation/common_opts/opt_V.html">verbose</a></p></li>
 <li><p><strong>Z</strong> or <strong>in_range</strong> : – <em>in_range=(min,max)</em> <strong>|</strong> <em>in_range=min</em><br>
 Pass all records whose 3rd column lies within the given range or is NaN (use <strong>-s</strong> to skip NaN records). If <em>max</em> is omitted then we test if <em>z</em> equals <em>min</em> instead. This means equality within 5 ULPs <a href="http://en.wikipedia.org/wiki/Unit_in_the_last_place">unit of least precision</a>. Input file must have at least three columns. To indicate no limit on min or max, specify a hyphen (-). If your 3rd column is absolute time then remember to supply <strong>colinfo=“2T”</strong>. To specify another column, append <strong>“+ccol”</strong>. Be warned, these last options imply that the arguments to this option are all passed as a string. Note: repeating this option with different tests is not yet implemented.</p></li>
 <li><p><strong>a</strong> or <strong>aspatial</strong> : – <em>aspatial=??</em><br>
@@ -572,7 +572,7 @@ Swap 1st and 2nd column on input and/or output. <a href="https://docs.generic-ma
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <p>To only return the data points from the remote file <span class="citation" data-cites="ship_15.txt">@ship_15.txt</span> that lie within the region between longitudes 246 and 247 and latitudes 20 and 21, try:</p>
-<div id="34d8ba2b" class="cell" data-execution_count="1">
+<div id="d9a1e9e3" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">gmtselect</span>(<span class="st">"@ship_15.txt"</span>, region<span class="op">=</span>(<span class="fl">246</span>,<span class="fl">247</span>,<span class="fl">20</span>,<span class="fl">21</span>));</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(D, marker<span class="op">=:</span>point, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>

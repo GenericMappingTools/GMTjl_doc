@@ -510,7 +510,7 @@ window.Quarto = {
 <li><p><em>table</em><br>
 One or more data tables holding a number of data columns.</p></li>
 <li><p><strong>I</strong> or <strong>inc</strong> or <strong>increment</strong> or <strong>spacing</strong> : – <em>inc=x_inc</em> <strong>|</strong> <em>inc=(x_inc, y_inc)</em> <strong>|</strong> <em>inc=“xinc[+e|n][/yinc[+e|n]]”</em><br>
-Specify the grid increments or the block sizes. More at [spacing](../common_opts/opt_I.html)</p></li>
+Specify the grid increments or the block sizes. More at <a href="../../documentation/common_opts/opt_I.html">spacing</a></p></li>
 </ul>
 </section>
 <section id="optional-arguments" class="level2">
@@ -521,7 +521,7 @@ Aspect ratio. If desired, grid anisotropy can be added to the equations. Enter <
 <li><p><strong>C</strong> or <strong>convergence</strong> : – <em>convergence=clim</em> <strong>|</strong> <em>convergence=“clim%”</em><br>
 Convergence limit. Iteration is assumed to have converged when the maximum absolute change in any grid value is less than <em>clim</em>. (Units same as data z units). Alternatively, give limit in percentage of rms deviation by appending %. [Default is scaled to <span class="math inline">\(10^{-4}\)</span> of the root-mean-square deviation of the data from a best-fit (least-squares) plane.]. This is the final convergence limit at the desired grid spacing; for intermediate (coarser) grids the effective convergence limit is divided by the grid spacing multiplier.</p></li>
 <li><p><strong>J</strong> or <strong>proj</strong> or <strong>projection</strong> : – <em>proj=<parameters></parameters></em><br>
-Select map projection. More at [proj](../common_opts/opt_J.html)</p>
+Select map projection. More at <a href="../../documentation/common_opts/opt_J.html">proj</a></p>
 <p>Select the data map projection. This projection is only used to add a referencing info to the grid formats that support it. E.g., netCDF, GeoTIFF, and others supported by GDAL.</p></li>
 <li><p><strong>D</strong> or <strong>breakline</strong> : – <em>breakline=“bfile”</em> <strong>|</strong> <em>breakline=“bfile+z[level]”</em><br>
 Use <em>x, y, z</em> data in the <em>bfile</em> file (or a <a href="../..\documentation/general/types.html#sec-dataset-type">GMTdataset</a>) as a <code>soft breakline</code>. A <code>soft breakline</code> is a line whose vertices will be used to constrain the nearest grid nodes without any further interpolation. A coastline or a lake shore are good examples of <code>soft breaklines</code>. Multi-segments files are accepted. If your lines do not have <em>z</em>-values or you wish to override those with a constant z-value, then append <strong>+z</strong>level to the filename. If no value is given then we default to 0.</p></li>
@@ -548,7 +548,7 @@ Search radius. Enter <em>search_radius</em> in same units as x,y data; append <s
 <li><p><strong>T</strong> or <strong>tension</strong> : – <em>tension=factor</em> <strong>|</strong> <em>search_radius=“i|b_factor”</em><br>
 Tension factor[s]. These must be between 0 and 1. Tension may be used in the interior solution (above equation, where it suppresses spurious oscillations) and in the boundary conditions (where it tends to flatten the solution approaching the edges). Using zero for both values results in a minimum curvature surface with free edges, i.e., a natural bicubic spline. Use <strong>tension=i…</strong>, where <em>…</em> is the <em>tension_factor</em> to set interior tension, and <strong>tension=b…</strong> to set boundary tension. If you do not prepend <strong>i</strong> or <strong>b</strong>, both will be set to the same value. [Default = 0 for both gives minimum curvature solution.]</p></li>
 <li><p><strong>V</strong> or <em>verbose</em> : – <em>verbose=true</em> <strong>|</strong> <em>verbose=level</em><br>
-Select verbosity level. More at [verbose](../common_opts/opt_V.html)</p></li>
+Select verbosity level. More at <a href="../../documentation/common_opts/opt_V.html">verbose</a></p></li>
 <li><p><strong>W</strong> or <strong>log</strong> : – <em>log=true</em> <strong>|</strong> <em>log=logfile</em><br>
 Write convergence information to <em>logfile</em> [Default is <em>surface_log.txt</em>].</p></li>
 <li><p><strong>Z</strong> or <strong>over_relaxation</strong> : – <em>over_relaxation=factor</em><br>

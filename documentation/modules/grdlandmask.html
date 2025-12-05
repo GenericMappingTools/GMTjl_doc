@@ -482,9 +482,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="required-arguments-1st-method">Required Arguments (1st method)</h2>
 <ul>
 <li><p><strong>I</strong> or <strong>inc</strong> or <strong>increment</strong> or <strong>spacing</strong> : – <em>inc=x_inc</em> <strong>|</strong> <em>inc=(x_inc, y_inc)</em> <strong>|</strong> <em>inc=“xinc[+e|n][/yinc[+e|n]]”</em><br>
-Specify the grid increments or the block sizes. More at [spacing](../common_opts/opt_I.html)</p></li>
+Specify the grid increments or the block sizes. More at <a href="../../documentation/common_opts/opt_I.html">spacing</a></p></li>
 <li><p><strong>R</strong> or <strong>region</strong> or <strong>limits</strong> : – <em>limits=(xmin, xmax, ymin, ymax)</em> <strong>|</strong> <em>limits=(BB=(xmin, xmax, ymin, ymax),)</em> <strong>|</strong> <em>limits=(LLUR=(xmin, xmax, ymin, ymax),units=“unit”)</em> <strong>|</strong> …more<br>
-Specify the region of interest. More at [limits](../common_opts/opt_R.html). For perspective view <strong>view</strong>, optionally add <em>zmin,zmax</em>. This option may be used to indicate the range used for the 3-D axes. You may ask for a larger w/e/s/n region to have more room between the image and the axes.</p></li>
+Specify the region of interest. More at <a href="../../documentation/common_opts/opt_R.html">limits</a>. For perspective view <strong>view</strong>, optionally add <em>zmin,zmax</em>. This option may be used to indicate the range used for the 3-D axes. You may ask for a larger w/e/s/n region to have more room between the image and the axes.</p></li>
 </ul>
 </section>
 <section id="required-arguments-2nd-method" class="level2">
@@ -520,7 +520,7 @@ Sets the values that will be assigned to nodes. Values can be any number, includ
 </ul>
 <p>[Default is (0,1,0,1,0) (i.e., 0,1)].</p></li>
 <li><p><strong>V</strong> or <em>verbose</em> : – <em>verbose=true</em> <strong>|</strong> <em>verbose=level</em><br>
-Select verbosity level. More at [verbose](../common_opts/opt_V.html)</p></li>
+Select verbosity level. More at <a href="../../documentation/common_opts/opt_V.html">verbose</a></p></li>
 <li><p><strong>r</strong> or <strong>reg</strong> or <strong>registration</strong> : – <em>reg=:p</em> <strong>|</strong> <em>reg=:g</em><br>
 Select gridline or pixel node registration. Used only when output is a grid. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#nodereg-full">More at</a></p></li>
 <li><p><strong>x</strong> or <strong>cores</strong> : – <em>cores=N</em><br>
@@ -542,7 +542,7 @@ Limit the number of cores used when making the individual frames. By default we 
 <p>To make a 1x1 degree global grid with the hierarchical levels of the nodes based on the low resolution data:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">grdlandmask</span>(region<span class="op">=:</span>global360, res<span class="op">=:</span>low, inc<span class="op">=</span><span class="fl">1</span>, maskvalues<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>,<span class="fl">4</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Mask ocean areas to NaN from a relief grid.</p>
-<div id="f7b5ee8f" class="cell" data-execution_count="1">
+<div id="41fc3a16" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">grdcut</span>(<span class="st">"@earth_relief_04m"</span>, region<span class="op">=</span>(<span class="op">-</span><span class="fl">10.5</span>, <span class="op">-</span><span class="fl">5</span>, <span class="fl">35</span>, <span class="fl">44</span>));</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">grdlandmask</span>(G, maskvalues<span class="op">=</span>(<span class="cn">NaN</span>,<span class="fl">1</span>))</span>

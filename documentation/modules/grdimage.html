@@ -474,7 +474,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="required-arguments">Required Arguments</h2>
 <ul>
 <li><strong>J</strong> or <strong>proj</strong> or <strong>projection</strong> : – <em>proj=<parameters></parameters></em><br>
-Select map projection. More at [proj](../common_opts/opt_J.html)</li>
+Select map projection. More at <a href="../../documentation/common_opts/opt_J.html">proj</a></li>
 </ul>
 </section>
 <section id="optional-arguments" class="level2">
@@ -483,9 +483,9 @@ Select map projection. More at [proj](../common_opts/opt_J.html)</li>
 <li><p><strong>A</strong> or <strong>img_out</strong> or <strong>image_out</strong> : – <em>img_out=fname</em><br>
 Save an image in a raster format instead of PostScript. Use extension .ppm for a Portable Pixel Map format. For GDAL-aware versions there are more choices: Use <em>fname</em> to select the image file name and extension. If the extension is one of .bmp, .gif, .jpg, .png, or .tif then no driver information is required. For other output formats you must append the required GDAL driver. The <em>driver</em> is the driver code name used by GDAL; see your GDAL installation’s documentation for available drivers. Append a +c<options> string where <em>options</em> is a list of one or more concatenated number of GDAL -co options. For example, to write a GeoPDF with the TerraGo format use <em>“=PDF+cGEO_ENCODING=OGC_BP”</em>. Notes: (1) If a tiff file (.tif) is selected then we will write a GeoTiff image if the GMT projection syntax translates into a PROJ4 syntax, otherwise a plain tiff file is produced. (2) Any vector elements will be lost.</options></p></li>
 <li><p><strong>B</strong> or <strong>axes</strong> or <strong>frame</strong><br>
-Set map boundary frame and axes attributes. Default is to draw and annotate left, bottom and vertical axes and just draw left and top axes. More at [frame](../common_opts/opt_B.html)</p></li>
+Set map boundary frame and axes attributes. Default is to draw and annotate left, bottom and vertical axes and just draw left and top axes. More at <a href="../../documentation/common_opts/opt_B.html">frame</a></p></li>
 <li><p><strong>C</strong> or <strong>color</strong> or <strong>cmap</strong> or <strong>colorap</strong> or <strong>colorscale</strong> : – <em>color=cpt</em><br>
-Where <em>cpt</em> is a <em><a href="../..\documentation/general/types.html#sec-cpt-type">GMTcpt</a></em> type or a cpt file name (for <em>grd_z</em> only). Alternatively, supply the name of a GMT color master dynamic CPT [turbo] to automatically determine a continuous CPT from the grid’s z-range; you may round up/down the z-range by adding <strong>+i</strong> <em>zinc</em>. Yet another option is to specify <em>color=“color1,color2 [,color3 ,…]”</em> or <em>color=((r1,g1,b1),(r2,g2,b2),…)</em> to build a linear continuous CPT from those colors automatically. In this case <em>color1</em> etc can be a (r,g,b) triplet, a color name, or an HTML hexadecimal color (e.g.&nbsp;#aabbcc ) (see [Setting color](../common_features/color.html)). When not explicitly set, but a color map is needed, we will either use the current color map, if available (set by a previous call to <em>makecpt</em>), or the default <em>turbo</em> color map.</p></li>
+Where <em>cpt</em> is a <em><a href="../..\documentation/general/types.html#sec-cpt-type">GMTcpt</a></em> type or a cpt file name (for <em>grd_z</em> only). Alternatively, supply the name of a GMT color master dynamic CPT [turbo] to automatically determine a continuous CPT from the grid’s z-range; you may round up/down the z-range by adding <strong>+i</strong> <em>zinc</em>. Yet another option is to specify <em>color=“color1,color2 [,color3 ,…]”</em> or <em>color=((r1,g1,b1),(r2,g2,b2),…)</em> to build a linear continuous CPT from those colors automatically. In this case <em>color1</em> etc can be a (r,g,b) triplet, a color name, or an HTML hexadecimal color (e.g.&nbsp;#aabbcc ) (see <a href="../../documentation/common_features/color.html">Setting color</a>). When not explicitly set, but a color map is needed, we will either use the current color map, if available (set by a previous call to <em>makecpt</em>), or the default <em>turbo</em> color map.</p></li>
 <li><p><strong>clim</strong> : – <em>clim=(z_min,z_max)</em> <strong>|</strong> <em>clim=:zscale</em><br>
 When doing an automatic colorization (<em>i.e.</em>, when a colormap is not provided explicitly), limit the automatic color map to be computed between <em>z_min,z_max</em>. Grid values below <em>z_min</em> and above <em>z_max</em> will be painted with the same color as those. Alternatively, use <em>clim=:zscale</em> to use the Interval based on IRAF’s zscale that is an algorithm used in astronomy for finding colorbar limits of for the grid, which showcase data near the median.</p></li>
 <li><p><strong>clip</strong> : – <em>clip=“land”</em> <strong>|</strong> <em>clip=:ocean</em> <strong>|</strong> <em>clip=“country_code(s)”</em> <strong>|</strong> <em>clip=(country=“code(s)”, [outside=true])</em> <strong>|</strong> <em>clip=xy</em> <strong>|</strong> <em>clip=(xy, inverse=true)</em><br>
@@ -513,17 +513,17 @@ Do not clip the image at the map boundary (only relevant for non-rectangular map
 <li><p><strong>Q</strong> or <strong>nan_alpha</strong> or <strong>alpha_color</strong> : – <em>nan_alpha=true</em> or <em>alpha_color=true|(r,g,b)</em><br>
 Make grid nodes with z = NaN transparent. If input is an image <em>alpha_color</em> picks one color (default is black) and makes it transparent (requires GMT6.2 and above).</p></li>
 <li><p><strong>R</strong> or <strong>region</strong> or <strong>limits</strong> : – <em>limits=(xmin, xmax, ymin, ymax)</em> <strong>|</strong> <em>limits=(BB=(xmin, xmax, ymin, ymax),)</em> <strong>|</strong> <em>limits=(LLUR=(xmin, xmax, ymin, ymax),units=“unit”)</em> <strong>|</strong> …more<br>
-Specify the region of interest. More at [limits](../common_opts/opt_R.html). For perspective view <strong>view</strong>, optionally add <em>zmin,zmax</em>. This option may be used to indicate the range used for the 3-D axes. You may ask for a larger w/e/s/n region to have more room between the image and the axes.</p></li>
+Specify the region of interest. More at <a href="../../documentation/common_opts/opt_R.html">limits</a>. For perspective view <strong>view</strong>, optionally add <em>zmin,zmax</em>. This option may be used to indicate the range used for the 3-D axes. You may ask for a larger w/e/s/n region to have more room between the image and the axes.</p></li>
 <li><p><strong>U</strong> or <strong>time_stamp</strong> : – <em>time_stamp=true</em> <strong>|</strong> <em>time_stamp=(just=“code”, pos=(dx,dy), label=“label”, com=true)</em><br>
-Draw GMT time stamp logo on plot. More at [timestamp](../common_opts/opt_U.html)</p></li>
+Draw GMT time stamp logo on plot. More at <a href="../../documentation/common_opts/opt_U.html">timestamp</a></p></li>
 <li><p><strong>V</strong> or <em>verbose</em> : – <em>verbose=true</em> <strong>|</strong> <em>verbose=level</em><br>
-Select verbosity level. More at [verbose](../common_opts/opt_V.html)</p></li>
+Select verbosity level. More at <a href="../../documentation/common_opts/opt_V.html">verbose</a></p></li>
 <li><p><strong>X</strong> or <strong>xshift</strong> or <strong>x_offset</strong> : <em>xshift=true</em> <strong>|</strong> <em>xshift=x-shift</em> <strong>|</strong> <em>xshift=(shift=x-shift, mov=“a|c|f|r”)</em><br>
-Shift plot origin. More at [xshift](../common_opts/opt_X.html)</p></li>
+Shift plot origin. More at <a href="../../documentation/common_opts/opt_X.html">xshift</a></p></li>
 <li><p><strong>Y</strong> or <strong>yshift</strong> or <strong>y_offset</strong> : <em>yshift=true</em> <strong>|</strong> <em>yshift=y-shift</em> <strong>|</strong> <em>yshift=(shift=y-shift, mov=“a|c|f|r”)</em><br>
-Shift plot origin. More at [yshift](../common_opts/opt_Y.html)</p></li>
+Shift plot origin. More at <a href="../../documentation/common_opts/opt_Y.html">yshift</a></p></li>
 <li><p><strong>n</strong> or <strong>interp</strong> or <strong>interpol</strong> : – <em>interp=params</em><br>
-Select interpolation mode for grids. More at [interp](../common_opts/opt_n.html)</p></li>
+Select interpolation mode for grids. More at <a href="../../documentation/common_opts/opt_n.html">interp</a></p></li>
 <li><p><strong>p</strong> or <strong>view</strong> or <strong>perspective</strong> : – <em>view=(azim, elev)</em><br>
 Default is viewpoint from an azimuth of 200 and elevation of 30 degrees.<br>
 Specify the viewpoint in terms of azimuth and elevation. The azimuth is the horizontal rotation about the z-axis as measured in degrees from the positive y-axis. That is, from North. This option is not yet fully expanded. Current alternatives are:</p>
@@ -533,7 +533,7 @@ A full GMT compact string with the full set of options.</li>
 <li><em>view=(azim,elev)</em><br>
 A two elements tuple with azimuth and elevation</li>
 <li><em>view=true</em><br>
-To propagate the viewpoint used in a previous module (makes sense only in <code>bar3!</code>) More at [perspective](../common_opts/opt_p.html)</li>
+To propagate the viewpoint used in a previous module (makes sense only in <code>bar3!</code>) More at <a href="../../documentation/common_opts/opt_p.html">perspective</a></li>
 </ul></li>
 <li><p><strong>t</strong> or <strong>transparency</strong> or <strong>alpha</strong>: – <em>alpha=50</em><br>
 Set PDF transparency level for an overlay, in (0-100] percent range. [Default is 0, <em>i.e.</em>, opaque]. Works only for the PDF and PNG formats.</p></li>
@@ -544,7 +544,7 @@ Save the figure with the <code>figname=name.ext</code> where <code>ext</code> ch
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <p>To make a map of a shaded global bathymetry (automatically download it if needed) using the Winkel projection, add coast lines, a colorbar and do an histogram equalization with 64 colors, do:</p>
-<div id="f9c6b0b6" class="cell" data-execution_count="1">
+<div id="ee703361" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">grdimage</span>(<span class="st">"@earth_relief_20m_g"</span>, proj<span class="op">=:</span>Winkel, equalize<span class="op">=</span><span class="fl">64</span>, coast<span class="op">=</span><span class="cn">true</span>,</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>         colorbar<span class="op">=</span><span class="cn">true</span>, shade<span class="op">=</span><span class="cn">true</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -557,7 +557,7 @@ Save the figure with the <code>figname=name.ext</code> where <code>ext</code> ch
 </div>
 </div>
 <p>For a quick-and-dirty illuminated color map of the data in the remote file <span class="citation" data-cites="AK_gulf_grav.nc">@AK_gulf_grav.nc</span>, try:</p>
-<div id="718047ef" class="cell" data-execution_count="2">
+<div id="45103575" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">grdimage</span>(<span class="st">"@AK_gulf_grav.nc"</span>, shade<span class="op">=</span><span class="cn">true</span>, coast<span class="op">=</span><span class="cn">true</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -569,7 +569,7 @@ Save the figure with the <code>figname=name.ext</code> where <code>ext</code> ch
 </div>
 </div>
 <p>Clip the outside of Africa from Bing mosaic. (You can try also <code>viz(I, clip=:land)</code> and <code>viz(I, clip=(continent=:AF, outside=true))</code>)</p>
-<div id="a5654c0b" class="cell" data-execution_count="3">
+<div id="c6765868" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>I <span class="op">=</span> <span class="fu">mosaic</span>(region<span class="op">=</span>(continent<span class="op">=</span><span class="st">"AF"</span>,));   <span class="co"># Get a mosaic of the ~Africa region</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">viz</span>(I, clip<span class="op">=</span>(continent<span class="op">=:</span>AF,))           <span class="co"># Clip outside of the African continent.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>

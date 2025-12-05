@@ -485,7 +485,7 @@ Specifies the maximum mismatch tolerance in the user units. If the data are not 
 <h2 class="anchored" data-anchor-id="optional-arguments">Optional Arguments</h2>
 <ul>
 <li><p><strong>V</strong> or <em>verbose</em> : – <em>verbose=true</em> <strong>|</strong> <em>verbose=level</em><br>
-Select verbosity level. More at [verbose](../common_opts/opt_V.html)</p></li>
+Select verbosity level. More at <a href="../../documentation/common_opts/opt_V.html">verbose</a></p></li>
 <li><p><strong>bi</strong> or <strong>binary_in</strong> : – <em>binary_in=??</em><br>
 Select native binary format for primary table input. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#bi-full">More at</a></p></li>
 <li><p><strong>bo</strong> or <strong>binary_out</strong> : – <em>binary_out=??</em><br>
@@ -515,7 +515,7 @@ Swap 1st and 2nd column on input and/or output. <a href="https://docs.generic-ma
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <p>To reduce the remote high-resolution GSHHG polygon for Australia down to a tolerance of 500 km, use:</p>
-<div id="42d2f1d4" class="cell" data-execution_count="1">
+<div id="613fbe72" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">gmtsimplify</span>(<span class="st">"@GSHHS_h_Australia.txt"</span>, tolerance<span class="op">=</span><span class="st">"100k"</span>)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="st">"@GSHHS_h_Australia.txt"</span>, plot<span class="op">=</span>(data<span class="op">=</span>D, lc<span class="op">=:</span>red), show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>

@@ -481,9 +481,9 @@ Geographical coordinate of the location where to compute a time-series. Coordina
 <li><p><strong>C</strong> or <strong>components</strong> : – <em>components=“x|e,y|n,z|v”</em><br>
 Select which component(s) to compute in individual grid(s). When returning the grid to Julia workspace, only one component can be selected (<em>e.g.</em> <strong>component=“e”</strong> to compute the East component). To save grids on files <strong>outgrid</strong> must be set. Append comma-separated codes for available components: <strong>x</strong> or <strong>e</strong> for the east component; <strong>y</strong> or <strong>n</strong> for the north component; and <strong>z</strong> or <strong>v</strong> for the vertical component. For example, <strong>C=e,v</strong>, will write 2 grids. One with east and other with the vertical components. If <strong>outgrid</strong> is set but not <strong>components</strong> then the default is to compute the vertical component.</p></li>
 <li><p><strong>I</strong> or <strong>inc</strong> or <strong>increment</strong> or <strong>spacing</strong> : – <em>inc=x_inc</em> <strong>|</strong> <em>inc=(x_inc, y_inc)</em> <strong>|</strong> <em>inc=“xinc[+e|n][/yinc[+e|n]]”</em><br>
-Specify the grid increments or the block sizes. More at [spacing](../common_opts/opt_I.html)</p></li>
+Specify the grid increments or the block sizes. More at <a href="../../documentation/common_opts/opt_I.html">spacing</a></p></li>
 <li><p><strong>R</strong> or <strong>region</strong> or <strong>limits</strong> : – <em>limits=(xmin, xmax, ymin, ymax)</em> <strong>|</strong> <em>limits=(BB=(xmin, xmax, ymin, ymax),)</em> <strong>|</strong> <em>limits=(LLUR=(xmin, xmax, ymin, ymax),units=“unit”)</em> <strong>|</strong> …more<br>
-Specify the region of interest. More at [limits](../common_opts/opt_R.html). For perspective view <strong>view</strong>, optionally add <em>zmin,zmax</em>. This option may be used to indicate the range used for the 3-D axes. You may ask for a larger w/e/s/n region to have more room between the image and the axes.</p></li>
+Specify the region of interest. More at <a href="../../documentation/common_opts/opt_R.html">limits</a>. For perspective view <strong>view</strong>, optionally add <em>zmin,zmax</em>. This option may be used to indicate the range used for the 3-D axes. You may ask for a larger w/e/s/n region to have more room between the image and the axes.</p></li>
 <li><p><strong>T</strong> or <strong>range</strong> : – <em>range=(min,max,inc[,“+n”])</em> <strong>|</strong> <em>range=[list]</em> <strong>|</strong> <em>range=file</em><br>
 Make evenly spaced time-steps from <em>min</em> to <em>max</em> by <em>inc</em>. Append <strong>+n</strong> to indicate <em>inc</em> is the number of <em>t</em>-values to produce over the range instead. Append a valid time unit (<strong>d</strong> | <strong>h</strong> | <strong>m</strong> | <strong>s</strong>) to the increment. If only <em>min</em> is given then we use that date and time for the calculations. If no <strong>range</strong> is provided get current time in UTC from the computer clock. If no <code>grid(s)</code> or <strong>sun_moon</strong> are provided then <strong>range</strong> is interpreted to mean compute a time-series at the location specified by <strong>location</strong>, thus then <strong>location</strong> becomes mandatory. When <code>grid(s)</code> and <strong>range</strong>, only first time T series is considered. Finally, dates may range from 1901 through 2099.</p></li>
 <li><p><strong>bo</strong> or <strong>binary_out</strong> : – <em>binary_out=??</em><br>
@@ -491,17 +491,17 @@ Select native binary format for table output. <a href="https://docs.generic-mapp
 <li><p><strong>o</strong> or <strong>outcol</strong> : – <em>outcol=??</em><br>
 Select specific data columns for primary output, in arbitrary order. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#ocols-full">More at</a></p></li>
 <li><p><strong>R</strong> or <strong>region</strong> or <strong>limits</strong> : – <em>limits=(xmin, xmax, ymin, ymax)</em> <strong>|</strong> <em>limits=(BB=(xmin, xmax, ymin, ymax),)</em> <strong>|</strong> <em>limits=(LLUR=(xmin, xmax, ymin, ymax),units=“unit”)</em> <strong>|</strong> …more<br>
-Specify the region of interest. More at [limits](../common_opts/opt_R.html). For perspective view <strong>view</strong>, optionally add <em>zmin,zmax</em>. This option may be used to indicate the range used for the 3-D axes. You may ask for a larger w/e/s/n region to have more room between the image and the axes.</p></li>
+Specify the region of interest. More at <a href="../../documentation/common_opts/opt_R.html">limits</a>. For perspective view <strong>view</strong>, optionally add <em>zmin,zmax</em>. This option may be used to indicate the range used for the 3-D axes. You may ask for a larger w/e/s/n region to have more room between the image and the axes.</p></li>
 <li><p><strong>U</strong> or <strong>time_stamp</strong> : – <em>time_stamp=true</em> <strong>|</strong> <em>time_stamp=(just=“code”, pos=(dx,dy), label=“label”, com=true)</em><br>
-Draw GMT time stamp logo on plot. More at [timestamp](../common_opts/opt_U.html)</p></li>
+Draw GMT time stamp logo on plot. More at <a href="../../documentation/common_opts/opt_U.html">timestamp</a></p></li>
 <li><p><strong>V</strong> or <em>verbose</em> : – <em>verbose=true</em> <strong>|</strong> <em>verbose=level</em><br>
-Select verbosity level. More at [verbose](../common_opts/opt_V.html)</p></li>
+Select verbosity level. More at <a href="../../documentation/common_opts/opt_V.html">verbose</a></p></li>
 </ul>
 </section>
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <p>To compute a global grid of the vertical component with a grid step of 30m at noon of 18 Jun 2018, (note: we are using the defaults for <strong>region</strong> and <strong>inc</strong>) try</p>
-<div id="db636acf" class="cell" data-execution_count="1">
+<div id="e0539705" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">earthtide</span>(range<span class="op">=</span><span class="st">"2018-06-18T12:00:00"</span>);</span>

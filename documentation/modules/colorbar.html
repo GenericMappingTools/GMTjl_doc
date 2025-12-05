@@ -491,7 +491,7 @@ Truncate the incoming CPT so that the lowest and highest z-levels are to <em>zlo
 <li><p><strong>I</strong> or <strong>shade</strong> : – <em>shade=true</em> <strong>|</strong> <em>shade=max_intens</em> <strong>|</strong> <em>shade=(low_i,high_i)</em><br>
 Add illumination effects. Optionally, set the range of intensities from - to <strong>shade=max_intens</strong>. If not specified, 1 is used. Alternatively, use <strong>shade=(low,high)</strong> intensities to specify an asymmetric range [Default is no illumination].</p></li>
 <li><p><strong>J</strong> or <strong>proj</strong> or <strong>projection</strong> : – <em>proj=<parameters></parameters></em><br>
-Select map projection. More at [proj](../common_opts/opt_J.html)</p></li>
+Select map projection. More at <a href="../../documentation/common_opts/opt_J.html">proj</a></p></li>
 <li><p><strong>L</strong> or <strong>equal</strong> or <strong>equal_size</strong> : – <em>equal=true</em> <strong>|</strong> <em>equal=(range=true, gap=val)</em><br>
 Gives equal-sized color rectangles. Default scales rectangles according to the z-range in the CPT (Also see <strong>zfile</strong>). If set, any equal interval annotation set with <strong>frame</strong> will be ignored. If <strong>equal=(gap=val,)</strong> is appended and the CPT is discrete we will center each annotation on each rectangle, using the lower boundary z-value for the annotation. If <strong>equal=(range=true,)</strong> is prepended we annotate the interval range instead. If <strong>shade</strong> is used then each rectangle will have its constant color modified by the specified intensity.</p></li>
 <li><p><strong>M</strong> or <strong>monochrome</strong> : – <em>monochrome=true</em><br>
@@ -501,19 +501,19 @@ Controls how the color scale should be encoded graphically. To preferentially dr
 <li><p><strong>Q</strong> or <strong>log</strong> : – <em>log=true</em><br>
 Select logarithmic scale and power of ten annotations. All z-values in the CPT will be converted to p = log10(z) and only integer p values will be annotated using the 10^p format [Default is linear scale].</p></li>
 <li><p><strong>R</strong> or <strong>region</strong> or <strong>limits</strong> : – <em>limits=(xmin, xmax, ymin, ymax)</em> <strong>|</strong> <em>limits=(BB=(xmin, xmax, ymin, ymax),)</em> <strong>|</strong> <em>limits=(LLUR=(xmin, xmax, ymin, ymax),units=“unit”)</em> <strong>|</strong> …more<br>
-Specify the region of interest. More at [limits](../common_opts/opt_R.html). For perspective view <strong>view</strong>, optionally add <em>zmin,zmax</em>. This option may be used to indicate the range used for the 3-D axes. You may ask for a larger w/e/s/n region to have more room between the image and the axes.</p></li>
+Specify the region of interest. More at <a href="../../documentation/common_opts/opt_R.html">limits</a>. For perspective view <strong>view</strong>, optionally add <em>zmin,zmax</em>. This option may be used to indicate the range used for the 3-D axes. You may ask for a larger w/e/s/n region to have more room between the image and the axes.</p></li>
 <li><p><strong>S</strong> or <strong>nolines</strong> or <strong>appearance</strong> : – <em>nolines=true</em><br>
 Do not separate different color intervals with black grid lines.</p></li>
 <li><p><strong>U</strong> or <strong>time_stamp</strong> : – <em>time_stamp=true</em> <strong>|</strong> <em>time_stamp=(just=“code”, pos=(dx,dy), label=“label”, com=true)</em><br>
-Draw GMT time stamp logo on plot. More at [timestamp](../common_opts/opt_U.html)</p></li>
+Draw GMT time stamp logo on plot. More at <a href="../../documentation/common_opts/opt_U.html">timestamp</a></p></li>
 <li><p><strong>V</strong> or <em>verbose</em> : – <em>verbose=true</em> <strong>|</strong> <em>verbose=level</em><br>
-Select verbosity level. More at [verbose](../common_opts/opt_V.html)</p></li>
+Select verbosity level. More at <a href="../../documentation/common_opts/opt_V.html">verbose</a></p></li>
 <li><p><strong>W</strong> or <strong>scale</strong> : – <em>scale=true</em><br>
 Multiply all <em>z</em>-values in the CPT by the provided <em>scale</em>. By default the CPT is used as is.</p></li>
 <li><p><strong>X</strong> or <strong>xshift</strong> or <strong>x_offset</strong> : <em>xshift=true</em> <strong>|</strong> <em>xshift=x-shift</em> <strong>|</strong> <em>xshift=(shift=x-shift, mov=“a|c|f|r”)</em><br>
-Shift plot origin. More at [xshift](../common_opts/opt_X.html)</p></li>
+Shift plot origin. More at <a href="../../documentation/common_opts/opt_X.html">xshift</a></p></li>
 <li><p><strong>Y</strong> or <strong>yshift</strong> or <strong>y_offset</strong> : <em>yshift=true</em> <strong>|</strong> <em>yshift=y-shift</em> <strong>|</strong> <em>yshift=(shift=y-shift, mov=“a|c|f|r”)</em><br>
-Shift plot origin. More at [yshift](../common_opts/opt_Y.html)</p></li>
+Shift plot origin. More at <a href="../../documentation/common_opts/opt_Y.html">yshift</a></p></li>
 <li><p><strong>Z</strong> or <strong>zfile</strong> : <em>zfile=“file”</em><br>
 File with colorbar-width per color entry. By default, width of entry is scaled to color range, i.e., z = 0-100 gives twice the width as z = 100-150 (Also see <strong>equal</strong>).</p></li>
 <li><p><strong>figname</strong> or <strong>savefig</strong> or <strong>name</strong> : – <em>figname=<code>name.png</code></em><br>
@@ -523,7 +523,7 @@ Save the figure with the <code>figname=name.ext</code> where <code>ext</code> ch
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <p>To plot a horizontal color scale (12 cm long; 0.5 cm wide) at the reference point (8,1) (paper coordinates) with justification at top center and automatic annotation interval, do</p>
-<div id="3d1ede48" class="cell" data-execution_count="1">
+<div id="490ef458" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">makecpt</span>(range<span class="op">=</span>(<span class="op">-</span><span class="fl">200</span>,<span class="fl">1000</span>,<span class="fl">100</span>), cmap<span class="op">=:</span>rainbow)</span>
@@ -538,7 +538,7 @@ Save the figure with the <code>figname=name.ext</code> where <code>ext</code> ch
 </div>
 </div>
 <p>To append a vertical color scale (7.5 cm long; 1.25 cm wide) to the right of a plot that is 6 inch wide and 4 inch high, using illumination, and show back- and foreground colors, and annotating every 5 units, we provide the reference point and select the left-mid anchor point via</p>
-<div id="6cee8a83" class="cell" data-execution_count="2">
+<div id="57606466" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colorbar</span>(pos<span class="op">=</span>(paper<span class="op">=</span><span class="cn">true</span>, anchor<span class="op">=</span><span class="st">"6.5i/2i"</span>, justify<span class="op">=</span>(<span class="op">:</span>LM,<span class="st">"2i"</span>), size<span class="op">=</span>(<span class="fl">7.5</span>,<span class="fl">1.2</span>), triangles<span class="op">=</span><span class="cn">true</span>),</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>        cmap<span class="op">=:</span>geo, shade<span class="op">=</span><span class="cn">true</span>, xaxis<span class="op">=</span>(annot<span class="op">=</span><span class="fl">1000</span>, label<span class="op">=:</span>BATHYMETRY), ylabel<span class="op">=:</span>m, show<span class="op">=</span><span class="fl">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -550,7 +550,7 @@ Save the figure with the <code>figname=name.ext</code> where <code>ext</code> ch
 </div>
 </div>
 <p>To overlay a horizontal color scale (10 centimeters long and default width) above a Mercator map produced by a previous call, ensuring a 2 cm offset from the map frame, use</p>
-<div id="fca7e6d8" class="cell" data-execution_count="3">
+<div id="731ec6d2" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colorbar!</span>(region<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">10</span>,<span class="fl">0</span>,<span class="fl">10</span>), pos<span class="op">=</span>(justify<span class="op">=:</span>CT, width<span class="op">=</span><span class="fl">10</span>, offset<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">2</span>), horizontal<span class="op">=</span><span class="cn">true</span>), cmap<span class="op">=</span><span class="st">"colors.cpt"</span>, show<span class="op">=</span><span class="fl">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>psscale [ERROR]: GMT_Read_Data: File not found: colors.cpt</code></pre>
@@ -584,7 +584,7 @@ Stacktrace:
 </div>
 </div>
 <p>Show automatic placement of color bars when selecting a side mid-point.</p>
-<div id="92f21c4c" class="cell" data-execution_count="4">
+<div id="37e9b62e" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>C <span class="op">=</span> <span class="fu">makecpt</span>(cmap<span class="op">=:</span>jet, range<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">100</span>));</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">basemap</span>(region<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">30</span>,<span class="fl">0</span>,<span class="fl">45</span>), frame<span class="op">=</span>(axes<span class="op">=:</span>wsne, annot<span class="op">=:</span>auto, ticks<span class="op">=:</span>auto))</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">colorbar!</span>(position<span class="op">=</span>(inside<span class="op">=</span><span class="cn">true</span>, anchor<span class="op">=:</span>BC), xaxis<span class="op">=</span>(annot<span class="op">=:</span>auto, ticks<span class="op">=:</span>auto),</span>

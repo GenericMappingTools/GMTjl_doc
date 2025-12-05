@@ -497,7 +497,7 @@ Select filling of bars [Default is a type of blue].</p></li>
 <li><p><strong>I</strong> or <strong>inquire</strong> or <strong>bins</strong> : – <em>inquire=:all</em> <strong>|</strong> <em>inquire=:no_zero</em> <strong>|</strong> <em>inquire=:bins</em><br>
 Inquire about min/max x and y after binning. The <em>xmin xmax ymin ymax</em> is output; no plotting is done. Use <strong>inquire=:no_zero</strong> to output a table of the resulting x,y data instead. <strong>inquire=:all</strong> will output all x,y bin data even when y == 0. <strong>inquire=:bins</strong> outputs the binned array (the histogram).</p></li>
 <li><p><strong>J</strong> or <strong>proj</strong> or <strong>projection</strong> : – <em>proj=<parameters></parameters></em><br>
-Select map projection. More at [proj](../common_opts/opt_J.html)</p></li>
+Select map projection. More at <a href="../../documentation/common_opts/opt_J.html">proj</a></p></li>
 <li><p><strong>L</strong> or <strong>out_range</strong> : – <em>out_range=:first</em> <strong>|</strong> <em>out_range=:last</em> <strong>|</strong> <em>out_range=:both</em><br>
 The modifiers specify the handling of extreme values that fall outside the range set by <strong>bin</strong>. By default these values are ignored. Use <strong>out_range=:both</strong> to let these values be included in the first or last bins. To only include extreme values below first bin into the first bin, use <strong>out_range=:first</strong>, and to only include extreme values above the last bin into that last bin, use <strong>out_range=:last</strong>.</p></li>
 <li><p><strong>N</strong> or <strong>distribution</strong> : – <em>distribution=mode</em> <strong>|</strong> <em>distribution=(mode=mode, pen=(pen))</em><br>
@@ -532,7 +532,7 @@ When input is a <a href="../..\documentation/general/types.html#sec-image-type">
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <p>To draw a histogram of the data <em>v3206_06.txt</em> containing seafloor depths, using a 250 meter bin width, center bars, and draw bar outline, use:</p>
-<div id="f8b75119" class="cell" data-execution_count="1">
+<div id="430501d1" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">histogram</span>(<span class="st">"@v3206_06.txt"</span>, bin<span class="op">=</span><span class="fl">250</span>, center<span class="op">=</span><span class="cn">true</span>, pen<span class="op">=</span><span class="st">"0.5p"</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">

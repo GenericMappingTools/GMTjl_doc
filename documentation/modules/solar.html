@@ -472,7 +472,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="optional-arguments">Optional Arguments</h2>
 <ul>
 <li><p><strong>B</strong> or <strong>axes</strong> or <strong>frame</strong><br>
-Set map boundary frame and axes attributes. Default is to draw and annotate left, bottom and vertical axes and just draw left and top axes. More at [frame](../common_opts/opt_B.html)</p></li>
+Set map boundary frame and axes attributes. Default is to draw and annotate left, bottom and vertical axes and just draw left and top axes. More at <a href="../../documentation/common_opts/opt_B.html">frame</a></p></li>
 <li><p><strong>C</strong> or <strong>format</strong> : <em>format=true</em><br>
 Formats the report selected by <em>sun=??</em> using tab-separated fields on a single line. The output is Sun <em>Lon Lat Azimuth Elevation</em> in degrees, <em>Sunrise Sunset Noon</em> in decimal days, <em>day length</em> in minutes, <em>SolarElevationCorrected</em> corrected for the effect of refraction index and <em>Equation of time</em> in minutes. Note that if no position is provided in <em>sun=(lon,lat)</em> the data after <em>Elevation</em> refers to the point (0,0).</p></li>
 <li><p><strong>coast</strong> : <em>coast=true</em> <strong>|</strong> <em>coast=(full coast options list)</em><br>
@@ -482,25 +482,25 @@ Select color or pattern for filling of terminators; or use <em>G=:c</em> for cli
 <li><p><strong>I</strong> or <strong>sun</strong> : <em>sun=true</em> <strong>|</strong> <em>sun=(lon,lat)</em> <strong>|</strong> <em>sun=(pos=(lon,lat), date=date)</em> <strong>|</strong> <em>sun=(pos=(lon,lat), date=date, TZ=tzone)</em><br>
 Print current sun position as well as Azimuth and Elevation. Use <em>sun=(lon,lat)</em> to print also the times of Sunrise, Sunset, Noon and length of the day. To add a date, use a NamedTuple instead and add the element <em>date=date</em> in ISO format, e.g, <em>date=“2000-04-25”</em> to compute sun parameters for this date. If necessary, add another element with the time zone via <em>TZ=tzone</em>.</p></li>
 <li><p><strong>J</strong> or <strong>proj</strong> or <strong>projection</strong> : – <em>proj=<parameters></parameters></em><br>
-Select map projection. More at [proj](../common_opts/opt_J.html)</p></li>
+Select map projection. More at <a href="../../documentation/common_opts/opt_J.html">proj</a></p></li>
 <li><p><strong>M</strong> or <strong>dump</strong> : <em>dump=true</em><br>
 Write terminator(s) as a multisegment file to standard output. No plotting occurs.</p></li>
 <li><p><strong>N</strong> or <strong>invert</strong> : <em>invert=true</em><br>
 Invert the sense of what is inside and outside the terminator. Only used with clipping (<em>G=:c</em>) and cannot be used together with <strong>axes</strong>.</p></li>
 <li><p><strong>R</strong> or <strong>region</strong> or <strong>limits</strong> : – <em>limits=(xmin, xmax, ymin, ymax)</em> <strong>|</strong> <em>limits=(BB=(xmin, xmax, ymin, ymax),)</em> <strong>|</strong> <em>limits=(LLUR=(xmin, xmax, ymin, ymax),units=“unit”)</em> <strong>|</strong> …more<br>
-Specify the region of interest. More at [limits](../common_opts/opt_R.html). For perspective view <strong>view</strong>, optionally add <em>zmin,zmax</em>. This option may be used to indicate the range used for the 3-D axes. You may ask for a larger w/e/s/n region to have more room between the image and the axes.</p></li>
+Specify the region of interest. More at <a href="../../documentation/common_opts/opt_R.html">limits</a>. For perspective view <strong>view</strong>, optionally add <em>zmin,zmax</em>. This option may be used to indicate the range used for the 3-D axes. You may ask for a larger w/e/s/n region to have more room between the image and the axes.</p></li>
 <li><p><strong>T</strong> or <strong>terminators</strong> : <em>terminators=“d|c|n|a”</em> <strong>|</strong> <em>terminators=(term=“d|c|n|a”, date=date)</em> <strong>|</strong> <em>terminators=(term=“d|c|n|a”, date=date), TZ=tzone)</em><br>
 Plot (or dump; see <em>dump</em>) one or more terminators defined via the <strong>dcna</strong> flags. Where: <strong>d</strong> means day/night terminator; <strong>c</strong> means civil twilight; <strong>n</strong> means nautical twilight; <strong>a</strong> means astronomical twilight. To add a date, use a NamedTuple instead and add the element <em>date=date</em> in ISO format, e.g, <em>date=“2000-04-25”</em> to know where the day-night was at that date. If necessary, add another element with the time zone via <em>TZ=tzone</em>.</p></li>
 <li><p><strong>U</strong> or <strong>time_stamp</strong> : – <em>time_stamp=true</em> <strong>|</strong> <em>time_stamp=(just=“code”, pos=(dx,dy), label=“label”, com=true)</em><br>
-Draw GMT time stamp logo on plot. More at [timestamp](../common_opts/opt_U.html)</p></li>
+Draw GMT time stamp logo on plot. More at <a href="../../documentation/common_opts/opt_U.html">timestamp</a></p></li>
 <li><p><strong>V</strong> or <em>verbose</em> : – <em>verbose=true</em> <strong>|</strong> <em>verbose=level</em><br>
-Select verbosity level. More at [verbose](../common_opts/opt_V.html)</p></li>
+Select verbosity level. More at <a href="../../documentation/common_opts/opt_V.html">verbose</a></p></li>
 <li><p><strong>W</strong> or <strong>pen</strong> : <em>pen=pen</em><br>
 Set pen attributes for lines or the outline of symbols [Defaults: width = default, color = black, style = solid].</p></li>
 <li><p><strong>X</strong> or <strong>xshift</strong> or <strong>x_offset</strong> : <em>xshift=true</em> <strong>|</strong> <em>xshift=x-shift</em> <strong>|</strong> <em>xshift=(shift=x-shift, mov=“a|c|f|r”)</em><br>
-Shift plot origin. More at [xshift](../common_opts/opt_X.html)</p></li>
+Shift plot origin. More at <a href="../../documentation/common_opts/opt_X.html">xshift</a></p></li>
 <li><p><strong>Y</strong> or <strong>yshift</strong> or <strong>y_offset</strong> : <em>yshift=true</em> <strong>|</strong> <em>yshift=y-shift</em> <strong>|</strong> <em>yshift=(shift=y-shift, mov=“a|c|f|r”)</em><br>
-Shift plot origin. More at [yshift](../common_opts/opt_Y.html)</p></li>
+Shift plot origin. More at <a href="../../documentation/common_opts/opt_Y.html">yshift</a></p></li>
 <li><p><strong>figname</strong> or <strong>savefig</strong> or <strong>name</strong> : – <em>figname=<code>name.png</code></em><br>
 Save the figure with the <code>figname=name.ext</code> where <code>ext</code> chooses the figure image format.</p></li>
 </ul>
@@ -510,7 +510,7 @@ Save the figure with the <code>figname=name.ext</code> where <code>ext</code> ch
 <p>Print current Sun position and Sunrise, Sunset times at:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">solar</span>(sun<span class="op">=</span>(pos<span class="op">=</span>(<span class="op">-</span><span class="fl">7.93</span>,<span class="fl">37.079</span>), date<span class="op">=</span><span class="st">"2016-02-04T10:01:00"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Plot the day-night and civil twilight</p>
-<div id="2309dabb" class="cell" data-execution_count="1">
+<div id="f18c6a22" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">coast</span>(region<span class="op">=:</span>d, shore<span class="op">=</span><span class="fl">0.1</span>, proj<span class="op">=</span><span class="st">"Q0/14c"</span>, axes<span class="op">=</span>(annot<span class="op">=:</span>auto, axes<span class="op">=</span><span class="st">"WSen"</span>),</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>      resolution<span class="op">=:</span>low, area<span class="op">=</span><span class="fl">1000</span>)</span>
@@ -524,7 +524,7 @@ Save the figure with the <code>figname=name.ext</code> where <code>ext</code> ch
 </div>
 </div>
 <p>But it is much nicer if we paint the terminators</p>
-<div id="fad1f2cf" class="cell" data-execution_count="2">
+<div id="15feafe9" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">coast</span>(region<span class="op">=:</span>d, proj<span class="op">=</span><span class="st">"Ks0/12"</span>, resolution<span class="op">=:</span>low, area<span class="op">=</span><span class="fl">5000</span>, borders<span class="op">=</span><span class="st">"1/0.5p,gray"</span>,</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>      water<span class="op">=</span>(<span class="fl">175</span>,<span class="fl">210</span>,<span class="fl">255</span>), axes<span class="op">=</span>(annot<span class="op">=:</span>a,ticks<span class="op">=:</span>a,grid<span class="op">=:</span>a), shore<span class="op">=</span><span class="fl">0.5</span>) </span>

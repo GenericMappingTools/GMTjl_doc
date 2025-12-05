@@ -473,7 +473,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="required-arguments">Required Arguments</h2>
 <ul>
 <li><p><strong>J</strong> or <strong>proj</strong> or <strong>projection</strong> : – <em>proj=<parameters></parameters></em><br>
-Select map projection. More at [proj](../common_opts/opt_J.html)</p></li>
+Select map projection. More at <a href="../../documentation/common_opts/opt_J.html">proj</a></p></li>
 <li><p><strong>Jz</strong> or <strong>JZ</strong> or <em>zscale</em> or <em>zsize</em> : <em>zscale=scale</em> <strong>|</strong> <em>zsize=size</em><br>
 Set z-axis scaling or or z-axis size. <code>zsize=size</code> sets the size to the fixed value <em>size</em> (for example <em>zsize=10</em> or <em>zsize=4i</em>). <code>zscale=scale</code> sets the vertical scale to UNIT/z-unit.</p></li>
 </ul>
@@ -482,7 +482,7 @@ Set z-axis scaling or or z-axis size. <code>zsize=size</code> sets the size to t
 <h2 class="anchored" data-anchor-id="optional-arguments">Optional Arguments</h2>
 <ul>
 <li><p><strong>B</strong> or <strong>axes</strong> or <strong>frame</strong><br>
-Set map boundary frame and axes attributes. Default is to draw and annotate left, bottom and vertical axes and just draw left and top axes. More at [frame](../common_opts/opt_B.html)</p></li>
+Set map boundary frame and axes attributes. Default is to draw and annotate left, bottom and vertical axes and just draw left and top axes. More at <a href="../../documentation/common_opts/opt_B.html">frame</a></p></li>
 <li><p><strong>C</strong> or <strong>color</strong> or <strong>cmap</strong> : – <em>color=cpt</em><br>
 Where <em>cpt</em> is a <em><a href="../..\documentation/general/types.html#sec-cpt-type">GMTcpt</a></em> type or a cpt file name. Alternatively, supply the name of a GMT color master dynamic CPT [turbo] to automatically determine a continuous CPT from the grid’s z-range; you may round up/down the z-range by adding <strong>+i</strong> <em>zinc</em>. Yet another option is to specify <code>color="color1,color2[,color3 ,...]"</code> or <code>color=((r1,g1,b1),(r2,g2,b2),...)</code> to build a linear continuous CPT from those colors automatically (see [Setting color]). When not explicitly set, but a color map is needed, we will either use the current color map, if available (set by a previous call to <em>makecpt</em>), or the default <em>turbo</em> color map. Must be present if you want (1) mesh plot with contours (<code>surftype=(mesh=true,)</code>), or (2) shaded/colored perspective image (<code>surftype=(surface=true,)</code> or <code>surftype=(img=true,)</code>). For <code>surftype=(surface=true,)</code> you can specify that you want to skip a z-slice by setting the red r/g/b component to <strong>-</strong>.</p></li>
 <li><p><strong>G</strong> or <strong>drape</strong> : – <em>drape=grid</em> <strong>|</strong> <em>drape=(grid_r, grid_g, grid_b)</em> <strong>|</strong> <em>drape=image</em><br>
@@ -509,15 +509,15 @@ Select one of following settings. For any of these choices, you may force a mono
 <li><p>Specify <code>nan\_alpha=true</code>, same as <code>image=true</code> but will make nodes with <code>z = NaN</code> transparent, using the colormasking feature in PostScript Level 3.</p></li>
 </ul></li>
 <li><p><strong>R</strong> or <strong>region</strong> or <strong>limits</strong> : – <em>limits=(xmin, xmax, ymin, ymax, zmin, zmax)</em> <strong>|</strong> <em>limits=(BB=(xmin, xmax, ymin, ymax, zmin, zmax),)</em> <strong>|</strong> …more<br>
-Specify the region of interest. Default limits are computed from data extents. More at [limits](../common_opts/opt_R.html)</p></li>
+Specify the region of interest. Default limits are computed from data extents. More at <a href="../../documentation/common_opts/opt_R.html">limits</a></p></li>
 <li><p><strong>S</strong> or <strong>smooth</strong> : – <em>smooth=smoothfactor</em><br>
 Used to resample the contour lines at roughly every (<em>gridbox_size/smoothfactor</em>) interval.</p></li>
 <li><p><strong>T</strong> or <strong>no_interp</strong> : – <em>no_interp=(skip=true, outlines=true)</em><br>
 Plot image without any interpolation. This involves converting each node-centered bin into a polygon which is then painted separately. Use <code>skip=true</code> to skip nodes with z = NaN. This option is useful for categorical data where interpolating between values is meaningless. Optionally, add <code>outlines=true</code> to draw the tile outlines. If the default pen is not to your liking, use <code>outlines=pen</code> (see [Pen attributes]). As this option produces a flat surface it cannot be combined with -JZ or -Jz.</p></li>
 <li><p><strong>U</strong> or <strong>time_stamp</strong> : – <em>time_stamp=true</em> <strong>|</strong> <em>time_stamp=(just=“code”, pos=(dx,dy), label=“label”, com=true)</em><br>
-Draw GMT time stamp logo on plot. More at [timestamp](../common_opts/opt_U.html)</p></li>
+Draw GMT time stamp logo on plot. More at <a href="../../documentation/common_opts/opt_U.html">timestamp</a></p></li>
 <li><p><strong>V</strong> or <em>verbose</em> : – <em>verbose=true</em> <strong>|</strong> <em>verbose=level</em><br>
-Select verbosity level. More at [verbose](../common_opts/opt_V.html)</p></li>
+Select verbosity level. More at <a href="../../documentation/common_opts/opt_V.html">verbose</a></p></li>
 <li><p><strong>W</strong> or <strong>pen</strong> or <strong>pens</strong><br>
 </p>
 <ul>
@@ -529,11 +529,11 @@ Sets the pen attributes used for the mesh. [Default: width = 0.25p, color = blac
 Sets the pen attributes used for the facade. [Default: width = 0.25p, color = black, style = solid]. You must also select <strong>plane</strong> for the facade outline to be drawn.</p></li>
 </ul></li>
 <li><p><strong>X</strong> or <strong>xshift</strong> or <strong>x_offset</strong> : <em>xshift=true</em> <strong>|</strong> <em>xshift=x-shift</em> <strong>|</strong> <em>xshift=(shift=x-shift, mov=“a|c|f|r”)</em><br>
-Shift plot origin. More at [xshift](../common_opts/opt_X.html)</p></li>
+Shift plot origin. More at <a href="../../documentation/common_opts/opt_X.html">xshift</a></p></li>
 <li><p><strong>Y</strong> or <strong>yshift</strong> or <strong>y_offset</strong> : <em>yshift=true</em> <strong>|</strong> <em>yshift=y-shift</em> <strong>|</strong> <em>yshift=(shift=y-shift, mov=“a|c|f|r”)</em><br>
-Shift plot origin. More at [yshift](../common_opts/opt_Y.html)</p></li>
+Shift plot origin. More at <a href="../../documentation/common_opts/opt_Y.html">yshift</a></p></li>
 <li><p><strong>n</strong> or <strong>interp</strong> or <strong>interpol</strong> : – <em>interp=params</em><br>
-Select interpolation mode for grids. More at [interp](../common_opts/opt_n.html)</p></li>
+Select interpolation mode for grids. More at <a href="../../documentation/common_opts/opt_n.html">interp</a></p></li>
 <li><p><strong>p</strong> or <strong>view</strong> or <strong>perspective</strong> : – <em>view=(azim, elev)</em><br>
 Default is viewpoint from an azimuth of 200 and elevation of 30 degrees.<br>
 Specify the viewpoint in terms of azimuth and elevation. The azimuth is the horizontal rotation about the z-axis as measured in degrees from the positive y-axis. That is, from North. This option is not yet fully expanded. Current alternatives are:</p>
@@ -543,7 +543,7 @@ A full GMT compact string with the full set of options.</li>
 <li><em>view=(azim,elev)</em><br>
 A two elements tuple with azimuth and elevation</li>
 <li><em>view=true</em><br>
-To propagate the viewpoint used in a previous module (makes sense only in <code>bar3!</code>) More at [perspective](../common_opts/opt_p.html)</li>
+To propagate the viewpoint used in a previous module (makes sense only in <code>bar3!</code>) More at <a href="../../documentation/common_opts/opt_p.html">perspective</a></li>
 </ul></li>
 <li><p><strong>t</strong> or <strong>transparency</strong> or <strong>alpha</strong>: – <em>alpha=50</em><br>
 Set PDF transparency level for an overlay, in (0-100] percent range. [Default is 0, <em>i.e.</em>, opaque]. Works only for the PDF and PNG formats.</p></li>
@@ -555,7 +555,7 @@ Save the figure with the <code>figname=name.ext</code> where <code>ext</code> ch
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <p>See the Example 04 at the Historical Collection gallery.</p>
 <p>Make a low resolution image plot with texture draping. Use a dpi=50 to make it lighter to load the man page. The drape option is used to overlay an image texture (from a cork tree trunk) on the grid data from the Gulf of Guinea zone. (Note, the <code>viz</code> function calls <code>grdview</code> when it detects the <code>view</code> option)</p>
-<div id="c8c62e77" class="cell" data-execution_count="1">
+<div id="ab17eaa7" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">grdcut</span>(<span class="st">"@earth_relief_01m"</span>, region<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">10</span>,<span class="fl">0</span>,<span class="fl">10</span>));</span>
@@ -569,7 +569,7 @@ Save the figure with the <code>figname=name.ext</code> where <code>ext</code> ch
 </div>
 </div>
 <p>This example imagines that a OVNI (UFO) ship is pointing a spot light with a radius of 100 km over Denver.</p>
-<div id="a4aa2ef5" class="cell" data-execution_count="2">
+<div id="6ca06c19" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">grdcut</span>(<span class="st">"@earth_relief_30s"</span>, region<span class="op">=</span>(<span class="op">-</span><span class="fl">108</span>,<span class="op">-</span><span class="fl">103</span>,<span class="fl">35</span>,<span class="fl">40</span>));</span>

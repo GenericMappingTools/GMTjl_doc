@@ -509,15 +509,15 @@ Specify automatic tagging of each subplot. Use <strong>label=</strong> either a 
 <li>Append <strong>vertical=true</strong> to increase tag numbers vertically down columns [horizontally across rows].</li>
 </ul></li>
 <li><p><strong>B</strong> or <strong>axes</strong> or <strong>frame</strong><br>
-Set map boundary frame and axes attributes. Default is to draw and annotate left, bottom and vertical axes and just draw left and top axes. More at [frame](../common_opts/opt_B.html)</p></li>
+Set map boundary frame and axes attributes. Default is to draw and annotate left, bottom and vertical axes and just draw left and top axes. More at <a href="../../documentation/common_opts/opt_B.html">frame</a></p></li>
 <li><p><strong>C</strong> or <strong>clearance</strong> : – <em>clearance=val</em> <strong>|</strong> <em>clearance=(left=val, right=val, bott=val, bottom=val, top=val))</em><br>
 Reserve a space of dimension <em>val</em> between the margin and the subplot on the specified side, using <em>side</em> values from <strong>left=val</strong>, <strong>right=val</strong>, <strong>bottom=val</strong>, or <strong>top=val</strong>. No <em>side</em> means all sides. Can specify more than one side. Such space will be left untouched by the main map plotting but can be accessed by modules that plot scales, bars, text, etc. Settings specified under <strong>begin</strong> directive apply to all subplots, while settings under <strong>set</strong> only apply to the selected (active) subplot. <strong>Note</strong>: Common options <strong>xshift</strong> and <strong>yshift</strong> are not available during subplots; use <strong>clearance</strong> instead.</p></li>
 <li><p><strong>J</strong> or <strong>proj</strong> or <strong>projection</strong> : – <em>proj=<parameters></parameters></em><br>
-Select map projection. More at [proj](../common_opts/opt_J.html)</p></li>
+Select map projection. More at <a href="../../documentation/common_opts/opt_J.html">proj</a></p></li>
 <li><p><strong>M</strong> or <strong>margins</strong> : – <em>margins=val</em><br>
 This is margin space that is added <em>between</em> neighboring subplots (i.e., the interior margins) <em>in addition</em> to the automatic space added for tick marks, annotations, and labels. The margins can be specified as a single value (for same margin on all sides), a pair of values separated by slashes (for setting separate horizontal and vertical margins), or the full set of four slash-separated margins (for setting separate left, right, bottom, and top margins). The actual gap created is always a sum of the margins for the two opposing sides (e.g., east plus west or south plus north margins) [Default is half the primary annotation font size, giving the full annotation font size as the default gap].</p></li>
 <li><p><strong>R</strong> or <strong>region</strong> or <strong>limits</strong> : – <em>limits=(xmin, xmax, ymin, ymax)</em> <strong>|</strong> <em>limits=(BB=(xmin, xmax, ymin, ymax),)</em> <strong>|</strong> <em>limits=(LLUR=(xmin, xmax, ymin, ymax),units=“unit”)</em> <strong>|</strong> …more<br>
-Specify the region of interest. More at [limits](../common_opts/opt_R.html). For perspective view <strong>view</strong>, optionally add <em>zmin,zmax</em>. This option may be used to indicate the range used for the 3-D axes. You may ask for a larger w/e/s/n region to have more room between the image and the axes.</p></li>
+Specify the region of interest. More at <a href="../../documentation/common_opts/opt_R.html">limits</a>. For perspective view <strong>view</strong>, optionally add <em>zmin,zmax</em>. This option may be used to indicate the range used for the 3-D axes. You may ask for a larger w/e/s/n region to have more room between the image and the axes.</p></li>
 <li><p><strong>SC</strong> or <strong>col_axes</strong> or <strong>colaxes</strong> or <strong>sharex</strong> : – <em>col_axes=(top=““, bott=”“, bottom=”“, label=”“, grid=pen))</em><br>
 </p></li>
 <li><p><strong>SR</strong> or <strong>row_axes</strong> or <strong>rowaxes</strong> or <strong>sharey</strong> : – <em>row_axes=(left=““, right=”“, label=”“, parallel=”“, row_title=”t”, top_row_title=““, grid=pen))</em><br>
@@ -567,17 +567,17 @@ Reserve a space of dimension <em>clearance</em> between the margin and the subpl
 <p>This command finalizes the current subplot, including any placement of tags, and updates the gmt.history to reflect the dimensions and linear projection required to draw the entire figure outline. This allows subsequent commands, such as colorbar, to use <strong>pos=…</strong> to place bars with reference to the complete figure dimensions. We also reset the current plot location to where it was prior to the subplot. The keyword <strong>:end</strong> just finishes the plot silently whislst with <strong>:show</strong> the plot is displayed automatically.</p>
 <ul>
 <li><p><strong>V</strong> or <em>verbose</em> : – <em>verbose=true</em> <strong>|</strong> <em>verbose=level</em><br>
-Select verbosity level. More at [verbose](../common_opts/opt_V.html)</p></li>
+Select verbosity level. More at <a href="../../documentation/common_opts/opt_V.html">verbose</a></p></li>
 <li><p><strong>X</strong> or <strong>xshift</strong> or <strong>x_offset</strong> : <em>xshift=true</em> <strong>|</strong> <em>xshift=x-shift</em> <strong>|</strong> <em>xshift=(shift=x-shift, mov=“a|c|f|r”)</em><br>
-Shift plot origin. More at [xshift](../common_opts/opt_X.html)</p></li>
+Shift plot origin. More at <a href="../../documentation/common_opts/opt_X.html">xshift</a></p></li>
 <li><p><strong>Y</strong> or <strong>yshift</strong> or <strong>y_offset</strong> : <em>yshift=true</em> <strong>|</strong> <em>yshift=y-shift</em> <strong>|</strong> <em>yshift=(shift=y-shift, mov=“a|c|f|r”)</em><br>
-Shift plot origin. More at [yshift](../common_opts/opt_Y.html)</p></li>
+Shift plot origin. More at <a href="../../documentation/common_opts/opt_Y.html">yshift</a></p></li>
 </ul>
 </section>
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <p>To make a minimalistic 3x3 basemap layout, try::</p>
-<div id="3adf9077" class="cell" data-execution_count="1">
+<div id="fd252a9f" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">subplot</span>(grid<span class="op">=</span><span class="st">"3x3"</span>, panels_size<span class="op">=</span>(<span class="fl">5</span>,<span class="fl">7</span>), region<span class="op">=</span>(<span class="fl">0</span>, <span class="fl">100</span>, <span class="fl">0</span>, <span class="fl">80</span>), frame<span class="op">=:</span>WSen, autolabel<span class="op">=</span><span class="fl">1</span>, margins<span class="op">=</span><span class="st">"6p"</span>)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">basemap</span>(panel<span class="op">=</span><span class="fl">1</span>)</span>
@@ -611,7 +611,7 @@ Shift plot origin. More at [yshift](../common_opts/opt_Y.html)</p></li>
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">plot</span>([<span class="fl">50</span> <span class="fl">40</span>], marker<span class="op">=:</span>star, mc<span class="op">=:</span>blue)</span>
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="fu">subplot</span>(<span class="op">:</span>show)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Use variable panels with variable sizes:</p>
-<div id="8ef5708d" class="cell" data-execution_count="2">
+<div id="5a17e47b" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">subplot</span>(grid<span class="op">=</span>(<span class="fl">3</span>,<span class="fl">2</span>), dims<span class="op">=</span>(panels<span class="op">=</span><span class="cn">true</span>, sizes<span class="op">=</span>((<span class="st">"2i"</span>,<span class="st">"4i"</span>),(<span class="st">"2.5i"</span>,<span class="st">"5i"</span>,<span class="st">"1.25i"</span>))), row_axes<span class="op">=</span>(left<span class="op">=</span><span class="cn">true</span>, parallel<span class="op">=</span><span class="cn">true</span>),</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>        col_axes<span class="op">=</span>(bott<span class="op">=</span><span class="cn">true</span>,), margins<span class="op">=</span><span class="fl">0</span>, autolabel<span class="op">=</span>(label<span class="op">=:</span>A, vertical<span class="op">=</span><span class="cn">true</span>), title<span class="op">=</span><span class="st">"Variable dimensions"</span>)</span>
