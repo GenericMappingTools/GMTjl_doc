@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -463,7 +464,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="simple-contours" class="level3">
 <h3 class="anchored" data-anchor-id="simple-contours">Simple contours</h3>
 <p>Contours are created with grdcontour that takes a grid as input (or a GMTgrid data type). This example shows uses the peaks function to create a classical example. Note, however, that the memory consumption in this example, when creating the plot, is much lower than traditional likewise examples because we will be using only one 2D array instead of 3 3D arrays (ref). In the example cont=1 and annot=2 means draw contours at every 1 unit of the G grid and annotate at every other contour line. axes=“a” means pick a default automatic annotation and labeling for the axes.</p>
-<div id="3f20a640" class="cell" data-execution_count="1">
+<div id="309bf5a2" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> GMT.<span class="fu">peaks</span>();</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">grdcontour</span>(G, cont<span class="op">=</span><span class="fl">1</span>, annot<span class="op">=</span><span class="fl">2</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -479,7 +480,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="colored-contours" class="level3">
 <h3 class="anchored" data-anchor-id="colored-contours">Colored contours</h3>
 <p>To make colored contours we need to generate a color map and use it. Notice that we must specify a pen attribute to get the colored contours because pen specifications are always set separately. Here we will create first a colormap with makecpt that will from -6 to 8 with steps of 1. These values are picked up after the z values of the G grid.</p>
-<div id="655d5f2a" class="cell" data-execution_count="2">
+<div id="8ea4901c" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> GMT.<span class="fu">peaks</span>();</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>cpt <span class="op">=</span> <span class="fu">makecpt</span>(range<span class="op">=</span>(<span class="op">-</span><span class="fl">6</span>,<span class="fl">8</span>,<span class="fl">1</span>));      <span class="co"># Create the color map</span></span>
@@ -496,7 +497,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="contourf-examples" class="level3">
 <h3 class="anchored" data-anchor-id="contourf-examples">Contourf examples</h3>
 <p>GMT does not actually have a contourf module like Matlab for example, but we can obtain the same result using grdview, grdcontour and pscontour. However, to make things the Julia wrapper wrapped up a module called contourf that makes it really easy to use. To show how it works let’s start by creating an example grid and a CPT.</p>
-<div id="a7270d2e" class="cell" data-execution_count="3">
+<div id="92a7aca0" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> GMT.<span class="fu">peaks</span>();</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>C <span class="op">=</span> <span class="fu">makecpt</span>(T<span class="op">=</span>(<span class="op">-</span><span class="fl">7</span>,<span class="fl">9</span>,<span class="fl">2</span>));</span>
@@ -510,7 +511,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>If we want to just draw some contours and not annotate them, we pass an array with the contours to be drawn.</p>
-<div id="f7bc9847" class="cell" data-execution_count="4">
+<div id="c148dd7f" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> GMT.<span class="fu">peaks</span>();</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>C <span class="op">=</span> <span class="fu">makecpt</span>(T<span class="op">=</span>(<span class="op">-</span><span class="fl">7</span>,<span class="fl">9</span>,<span class="fl">2</span>));</span>
@@ -527,7 +528,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="contours-from-xyz" class="level3">
 <h3 class="anchored" data-anchor-id="contours-from-xyz">Contours from x,y,z</h3>
 <p>This example uses synthetic data.</p>
-<div id="622c8bec" class="cell" data-execution_count="5">
+<div id="f3317841" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>d <span class="op">=</span> [<span class="fl">0</span> <span class="fl">2</span> <span class="fl">5</span>; <span class="fl">1</span> <span class="fl">4</span> <span class="fl">5</span>; <span class="fl">2</span> <span class="fl">0.5</span> <span class="fl">5</span>; <span class="fl">3</span> <span class="fl">3</span> <span class="fl">9</span>; <span class="fl">4</span> <span class="fl">4.5</span> <span class="fl">5</span>; <span class="fl">4.2</span> <span class="fl">1.2</span> <span class="fl">5</span>; <span class="fl">6</span> <span class="fl">3</span> <span class="fl">1</span>; <span class="fl">8</span> <span class="fl">1</span> <span class="fl">5</span>; <span class="fl">9</span> <span class="fl">4.5</span> <span class="fl">5</span>];</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">contourf</span>(d, limits<span class="op">=</span>(<span class="op">-</span><span class="fl">0.5</span>,<span class="fl">9.5</span>,<span class="fl">0</span>,<span class="fl">5</span>), pen<span class="op">=</span><span class="fl">0.25</span>, labels<span class="op">=</span>(line<span class="op">=</span>(<span class="op">:</span>min,<span class="op">:</span>max),), show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -540,7 +541,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>In the above since we did not specify a CPT the program picked the GMT’s default one. But if we want use another one it’s only a question of creating and passed it in.</p>
-<div id="9187225a" class="cell" data-execution_count="6">
+<div id="f0ae4705" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>d <span class="op">=</span> [<span class="fl">0</span> <span class="fl">2</span> <span class="fl">5</span>; <span class="fl">1</span> <span class="fl">4</span> <span class="fl">5</span>; <span class="fl">2</span> <span class="fl">0.5</span> <span class="fl">5</span>; <span class="fl">3</span> <span class="fl">3</span> <span class="fl">9</span>; <span class="fl">4</span> <span class="fl">4.5</span> <span class="fl">5</span>; <span class="fl">4.2</span> <span class="fl">1.2</span> <span class="fl">5</span>; <span class="fl">6</span> <span class="fl">3</span> <span class="fl">1</span>; <span class="fl">8</span> <span class="fl">1</span> <span class="fl">5</span>; <span class="fl">9</span> <span class="fl">4.5</span> <span class="fl">5</span>];</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>cpt <span class="op">=</span> <span class="fu">makecpt</span>(range<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">10</span>,<span class="fl">1</span>), cmap<span class="op">=:</span>batlow);</span>
@@ -557,7 +558,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="earth-is-round-and-gmt-knows-it" class="level3">
 <h3 class="anchored" data-anchor-id="earth-is-round-and-gmt-knows-it">Earth is round and GMT knows it</h3>
 <p>Creating a periodic 0/360 grid then selecting a central meridian for a contour map.</p>
-<div id="eac7fdb3" class="cell" data-execution_count="7">
+<div id="cf8b0e3c" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">grdmath</span>(<span class="st">"-Rg -I5 35 21 SDIST"</span>);    <span class="co"># Example grid</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">grdcontour</span>(G, region<span class="op">=:</span>global360, proj<span class="op">=</span>(name<span class="op">=:</span>Mollweide, center<span class="op">=</span><span class="fl">35</span>),</span>
@@ -573,7 +574,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="streamlines" class="level3">
 <h3 class="anchored" data-anchor-id="streamlines">Streamlines</h3>
-<div id="67da8da3" class="cell" data-execution_count="8">
+<div id="9bba445c" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>x,y <span class="op">=</span> GMT.<span class="fu">meshgrid</span>(<span class="op">-</span><span class="fl">10</span><span class="op">:</span><span class="fl">10</span>);</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>u <span class="op">=</span> <span class="fl">2</span> <span class="op">.*</span> x <span class="op">.*</span> y;</span>

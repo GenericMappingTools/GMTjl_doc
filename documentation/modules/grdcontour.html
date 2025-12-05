@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -435,6 +436,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#optional-arguments" id="toc-optional-arguments" class="nav-link" data-scroll-target="#optional-arguments">Optional Arguments</a></li>
   <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
   <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See also</a></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
   </ul>
 </nav>
     </div>
@@ -525,7 +527,7 @@ Save the figure with the <code>figname=name.ext</code> where <code>ext</code> ch
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <p>Contour the <em>peaks</em> function. <em>cont=1</em> and <em>annot=2</em> means draw contours at every 1 unit of the <em>G</em> grid and annotate at every other contour line:</p>
-<div id="39fd170e" class="cell" data-execution_count="1">
+<div id="4242f36a" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> GMT.<span class="fu">peaks</span>();</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">grdcontour</span>(G, cont<span class="op">=</span><span class="fl">1</span>, annot<span class="op">=</span><span class="fl">2</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -542,6 +544,14 @@ Save the figure with the <code>figname=name.ext</code> where <code>ext</code> ch
 <section id="see-also" class="level2">
 <h2 class="anchored" data-anchor-id="see-also">See also</h2>
 <p>The <a href="https://www.generic-mapping-tools.org/gmt/dev/grdcontour_classic.html"><code>GMT man page</code></a></p>
+</section>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>This function has multiple methods:</p>
+<ul>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/grdcontour.jl#L66"><code>grdcontour(cmd0::String; kw...)</code></a> - grdcontour.jl:66</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/grdcontour.jl#L67"><code>grdcontour(arg1; kw...)</code></a> - grdcontour.jl:67</li>
+</ul>
 
 
 </section>

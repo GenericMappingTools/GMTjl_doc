@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -452,7 +453,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p>The Lee map projection is one that can be used to make maps over the Pacific Ocean with much less distortion than many of the normal map projections. This projection is not one that lieves in the GMT C library, but one whose interface is defined in the GMT Julia package. So the its using syntax is slightly different. For example we cannot add grid lines and annotations with the <code>frame</code> option. Instead, we use the <code>plotgrid!</code> function.</p>
-<div id="98e5bedc" class="cell" data-execution_count="1">
+<div id="d12538b4" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>G, cl <span class="op">=</span> <span class="fu">leepacific</span>(<span class="st">"@earth_relief_20m_p"</span>);</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">grdimage</span>(G, shade<span class="op">=</span><span class="cn">true</span>, plot<span class="op">=</span>(data<span class="op">=</span>cl,), title<span class="op">=</span><span class="st">"Lee Pacific"</span>, cmap<span class="op">=:</span>geo, B<span class="op">=:</span>none)</span>
@@ -466,7 +467,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Starting with GMT.jl version 1.32, we can use the <code>inner</code> option to make the annotations at the end of grid lines, in the inner side of the map.</p>
-<div id="d98cae78" class="cell" data-execution_count="2">
+<div id="8d5ec1ab" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>G, cl <span class="op">=</span> <span class="fu">leepacific</span>(<span class="st">"@earth_relief_20m_p"</span>);</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">grdimage</span>(G, shade<span class="op">=</span><span class="cn">true</span>, plot<span class="op">=</span>(data<span class="op">=</span>cl,), title<span class="op">=</span><span class="st">"Lee Pacific"</span>, cmap<span class="op">=:</span>geo, B<span class="op">=:</span>none)</span>

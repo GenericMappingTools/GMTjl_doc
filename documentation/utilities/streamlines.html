@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -433,6 +434,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#examples" id="toc-examples" class="nav-link active" data-scroll-target="#examples">Examples</a></li>
   <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
   </ul>
 </nav>
     </div>
@@ -474,7 +476,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Conpute 3D volume of vector fields with streamline. Here <code>U</code>,<code>V</code> and <code>W</code> are 3D cubes with <code>x,y,z</code> velocity components. <code>startX</code>, <code>startY</code> and <code>startZ</code> can be scalar or vector coordinate arrays. Returns a Vector{GMTdataset} with the streamlines.</p>
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
-<div id="7caed893" class="cell" data-execution_count="1">
+<div id="0d34d42a" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>x,y <span class="op">=</span> GMT.<span class="fu">meshgrid</span>(<span class="op">-</span><span class="fl">10</span><span class="op">:</span><span class="fl">10</span>);</span>
@@ -496,6 +498,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="see-also" class="level2">
 <h2 class="anchored" data-anchor-id="see-also">See Also</h2>
 <p><a href="../..\documentation/modules/plot.html">plot</a>, [plot3], <a href="https://www.generic-mapping-tools.org/GMTjl_doc/examples/contours/01_contour_examples/#streamlines">streamlines</a></p>
+</section>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>This function has multiple methods:</p>
+<ul>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/streamlines.jl#L57"><code>streamlines(x::Matrix, y::Matrix, U::Matrix, V::Matrix; step, max_vert)</code></a> - streamlines.jl:57</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/streamlines.jl#L231"><code>streamlines(U::GMTgrid, V::GMTgrid, W::GMTgrid, sx::Union{AbstractVector{&lt;:Real}, Matrix{&lt;:Real}}, sy::Union{AbstractVector{&lt;:Real}, Matrix{&lt;:Real}}, sz::Union{AbstractVector{&lt;:Real}, Matrix{&lt;:Real}}; step, max_vert)</code></a> - streamlines.jl:231</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/streamlines.jl#L214"><code>streamlines(U::GMTgrid, V::GMTgrid, W::GMTgrid, startx, starty, startz; step, max_vert)</code></a> - streamlines.jl:214</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/streamlines.jl#L65"><code>streamlines(U::GMTgrid, V::GMTgrid; side, step, max_vert, density, max_density)</code></a> - streamlines.jl:65</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/streamlines.jl#L100"><code>streamlines(U::GMTgrid, V::GMTgrid, sx::Union{AbstractVector{&lt;:Real}, Matrix{&lt;:Real}}, sy::Union{AbstractVector{&lt;:Real}, Matrix{&lt;:Real}}; step, max_vert)</code></a> - streamlines.jl:100</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/streamlines.jl#L85"><code>streamlines(U::GMTgrid, V::GMTgrid, sx, sy; step, max_vert)</code></a> - streamlines.jl:85</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/streamlines.jl#L95"><code>streamlines(U::GMTgrid, V::GMTgrid, D::GMTdataset; step, max_vert)</code></a> - streamlines.jl:95</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/streamlines.jl#L195"><code>streamlines(U::GMTgrid, V::GMTgrid, W::GMTgrid; axis, startx, starty, startz, step, max_vert)</code></a> - streamlines.jl:195</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/streamlines.jl#L52"><code>streamlines(x, y, U::Matrix, V::Matrix, sx, sy; step, max_vert)</code></a> - streamlines.jl:52</li>
+</ul>
 
 
 </section>

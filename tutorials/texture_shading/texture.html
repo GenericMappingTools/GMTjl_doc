@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -459,7 +460,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <p>This tutorial starts with the examples shown by <span class="citation" data-cites="KristofKoch">@KristofKoch</span> in the Github <a href="https://github.com/GenericMappingTools/gmt/pull/5138#issuecomment-821808989">issue</a> that lead to inclusion of <a href="http://www.textureshading.com/Home.html">Leland Brown’s “texture shading” technique</a> in the GMT lib (not in any executable sofar) and postior wrapping in Julia GMT.jl</p>
 <p>For the time being it is a set of examples on how to use the <a href="../..\documentation/utilities/lelandshade.html">lelandshade</a> and dependent functions. In the first example we get a demo grid from the GMT server and build a texture shaded image showing the inners of the calculation.</p>
-<div id="a47ff52f" class="cell" data-execution_count="1">
+<div id="079654fe" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract a region from the SRTM1 grids stored in the GMT server</span></span>
@@ -484,7 +485,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>The <code>new=true</code> option above forced the creation of the new array <code>I2</code>, but we could have just done <code>blendimg!(I1, Ihill, transparency=0.6)</code> and the final image would be stored in (overritten) <code>I1</code>. That is what is implemented in the wrapper function <a href="../..\documentation/utilities/lelandshade.html">lelandshade</a> that aglutinates all of the above steps, plus some extra options, in a single function.</p>
 <p>Map again the same refion but using this time a linear color scale. Since the <code>G</code> grid object is originated from the SRTM1 (1 arc second = ~30 m) stored in the GMT store, it comes with the indication of a default color map (<code>geo</code>) and is what we see (but we can select any cmap that we want).</p>
-<div id="77514a8b" class="cell" data-execution_count="2">
+<div id="e8e551a2" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span>   <span class="co"># Hide</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">gmtread</span>(<span class="st">"@earth_relief_01s_g"</span>, region<span class="op">=</span>(<span class="op">-</span><span class="fl">114.14</span>,<span class="op">-</span><span class="fl">111.28</span>,<span class="fl">35.50</span>,<span class="fl">37.06</span>));   <span class="co"># Hide</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">lelandshade</span>(G, color<span class="op">=</span><span class="cn">true</span>, colorbar<span class="op">=</span><span class="cn">true</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -497,7 +498,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>A variation of the above is to make the color image with equalized color distribution where each color covers approximatelly the same area in the figure. We do that using the <code>equalize=true</code> option.</p>
-<div id="7db85a8e" class="cell" data-execution_count="3">
+<div id="438d4874" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span>   <span class="co"># Hide</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">gmtread</span>(<span class="st">"@earth_relief_01s_g"</span>, region<span class="op">=</span>(<span class="op">-</span><span class="fl">114.14</span>,<span class="op">-</span><span class="fl">111.28</span>,<span class="fl">35.50</span>,<span class="fl">37.06</span>));   <span class="co"># Hide</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">lelandshade</span>(G, color<span class="op">=</span><span class="cn">true</span>, equalize<span class="op">=</span><span class="cn">true</span>, colorbar<span class="op">=</span><span class="cn">true</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -512,7 +513,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="the-effect-of-the-transparency-option." class="level2">
 <h2 class="anchored" data-anchor-id="the-effect-of-the-transparency-option.">The effect of the transparency option.</h2>
 <p>The examples shown above all used a <code>transparency=0.6</code>. Remember (from the manual) that the transparency represent the weight of the <code>img2</code> with respect to <code>img1</code> in the blend <code>img1 + img2</code>. So, when we used <code>transparency=0.6</code> explicitly in the first example, or implicitly in the 2nd and 3rth examples, we imposed that the texture image weighted 60% and the hillshade 40%. This parameter has a relevant importance in the final image, so let us see examples of it by varying the amount of transparency in the mixture. And for better appreciate it we will use grayscale images and over a smaller region.</p>
-<div id="cfd96df5" class="cell" data-execution_count="4">
+<div id="3a52ab20" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span>   <span class="co"># Hide</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">gmtread</span>(<span class="st">"@earth_relief_01s_g"</span>, region<span class="op">=</span>(<span class="op">-</span><span class="fl">112.06</span>, <span class="op">-</span><span class="fl">111.60</span>, <span class="fl">35.97</span>, <span class="fl">36.25</span>));</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">lelandshade</span>(G, transparency<span class="op">=</span><span class="fl">0.0</span>, title<span class="op">=</span><span class="st">"0 % texture shading"</span>, par<span class="op">=</span>(FONT_TITLE<span class="op">=</span><span class="fl">10</span>,), show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -524,7 +525,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="a3cef6f5" class="cell" data-execution_count="5">
+<div id="698bf6db" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span>   <span class="co"># Hide</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">gmtread</span>(<span class="st">"@earth_relief_01s_g"</span>, region<span class="op">=</span>(<span class="op">-</span><span class="fl">112.06</span>, <span class="op">-</span><span class="fl">111.60</span>, <span class="fl">35.97</span>, <span class="fl">36.25</span>));    <span class="co"># Hide</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">lelandshade</span>(G, transparency<span class="op">=</span><span class="fl">0.3</span>, title<span class="op">=</span><span class="st">"30 % texture shading"</span>, par<span class="op">=</span>(FONT_TITLE<span class="op">=</span><span class="fl">10</span>,), show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -536,7 +537,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="36441c4c" class="cell" data-execution_count="6">
+<div id="4ca89c21" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span>   <span class="co"># Hide</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">gmtread</span>(<span class="st">"@earth_relief_01s_g"</span>, region<span class="op">=</span>(<span class="op">-</span><span class="fl">112.06</span>, <span class="op">-</span><span class="fl">111.60</span>, <span class="fl">35.97</span>, <span class="fl">36.25</span>));    <span class="co"># Hide</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">lelandshade</span>(G, transparency<span class="op">=</span><span class="fl">0.6</span>, title<span class="op">=</span><span class="st">"60 % texture shading"</span>, par<span class="op">=</span>(FONT_TITLE<span class="op">=</span><span class="fl">10</span>,), show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -548,7 +549,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="c4040db2" class="cell" data-execution_count="7">
+<div id="226b270d" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span>   <span class="co"># Hide</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">gmtread</span>(<span class="st">"@earth_relief_01s_g"</span>, region<span class="op">=</span>(<span class="op">-</span><span class="fl">112.06</span>, <span class="op">-</span><span class="fl">111.60</span>, <span class="fl">35.97</span>, <span class="fl">36.25</span>));    <span class="co"># Hide</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">lelandshade</span>(G, transparency<span class="op">=</span><span class="fl">0.8</span>, title<span class="op">=</span><span class="st">"80 % texture shading"</span>, par<span class="op">=</span>(FONT_TITLE<span class="op">=</span><span class="fl">10</span>,), show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -560,7 +561,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="5b0a9230" class="cell" data-execution_count="8">
+<div id="1fdd416d" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span>   <span class="co"># Hide</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">gmtread</span>(<span class="st">"@earth_relief_01s_g"</span>, region<span class="op">=</span>(<span class="op">-</span><span class="fl">112.06</span>, <span class="op">-</span><span class="fl">111.60</span>, <span class="fl">35.97</span>, <span class="fl">36.25</span>));    <span class="co"># Hide</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">lelandshade</span>(G, transparency<span class="op">=</span><span class="fl">1.0</span>, title<span class="op">=</span><span class="st">"100 % texture shading"</span>, par<span class="op">=</span>(FONT_TITLE<span class="op">=</span><span class="fl">10</span>,), show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>

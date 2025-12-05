@@ -30,6 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -391,8 +392,14 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#source-code" id="toc-source-code" class="nav-link active" data-scroll-target="#source-code">Source Code</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -418,8 +425,16 @@ ul.task-list li input[type="checkbox"] {
 
 <p>dither(indata; n_colors=256, save=““, gdataset=false)</p>
 <p>Convert a 24bit RGB image to 8bit paletted. - Use the <code>save=fname</code> option to save the result to disk in a GeoTiff file <code>fname</code>. If <code>fname</code> has no extension a <code>.tif</code> one will be appended. Alternatively give file names with extension <code>.png</code> or <code>.nc</code> to save the file in one of those formats. - <code>gdataset=true</code>: to return a GDAL dataset. The default is to return a <a href="../..\documentation/general/types.html#sec-image-type">GMTimage</a> object. - <code>n_colors</code>: Select the number of colors in the generated color table. Defaults to 256.</p>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>This function has multiple methods:</p>
+<ul>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/gdal/gdal_tools.jl#L569"><code>dither(indata, opts; n_colors, save, gdataset)</code></a> - gdal_tools.jl:569</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/gdal/gdal_tools.jl#L569"><code>dither(indata; ...)</code></a> - gdal_tools.jl:569</li>
+</ul>
 
 
+</section>
 
 </main> <!-- /main -->
 <script>

@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../../">
+<link href="../../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -453,7 +454,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <p>This example (from the GMT gallery - EX45) shows how the module trend1d is used to fit the CO2 data set collected from the top of Mauna Loa. This yields the famous Keeling curve.</p>
 <p>Basic LS (Least Squares) line <code>y = a + bx</code></p>
-<div id="2939cfec" class="cell" data-execution_count="1">
+<div id="4933bbac" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> <span class="fu">trend1d</span>(<span class="st">"@MaunaLoa_CO2.txt"</span>, output<span class="op">=:</span>xm, model<span class="op">=</span>(polynome<span class="op">=</span><span class="fl">1</span>,))</span>
@@ -472,7 +473,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Basic LS line <code>y = a + bx + cx^2</code></p>
-<div id="85b7ecc4" class="cell" data-execution_count="2">
+<div id="90b6f807" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> <span class="fu">trend1d</span>(<span class="st">"@MaunaLoa_CO2.txt"</span>, output<span class="op">=:</span>xm, model<span class="op">=</span>(polynome<span class="op">=</span><span class="fl">2</span>,))</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="st">"@MaunaLoa_CO2.txt"</span>, frame<span class="op">=:</span>same, ms<span class="op">=</span><span class="fl">0.05</span>, fill<span class="op">=:</span>red, figsize<span class="op">=</span>(<span class="fl">12</span>,<span class="fl">5</span>))</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot!</span>(model, lt<span class="op">=</span><span class="fl">0.5</span>, lc<span class="op">=:</span>blue)</span>
@@ -487,7 +488,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Basic LS line <code>y = a + bx + cx^2</code> + <em>seasonal change</em></p>
-<div id="9752c605" class="cell" data-execution_count="3">
+<div id="92417088" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> <span class="fu">trend1d</span>(<span class="st">"@MaunaLoa_CO2.txt"</span>, output<span class="op">=:</span>xmr, model<span class="op">=</span>((polynome<span class="op">=</span><span class="fl">2</span>,), (fourier<span class="op">=</span><span class="fl">1</span>, origin<span class="op">=</span><span class="fl">1958</span>, length<span class="op">=</span><span class="fl">1</span>)))</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="st">"@MaunaLoa_CO2.txt"</span>, frame<span class="op">=:</span>same, ms<span class="op">=</span><span class="fl">0.05</span>, fill<span class="op">=:</span>red, figsize<span class="op">=</span>(<span class="fl">12</span>,<span class="fl">5</span>))</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot!</span>(model, pen<span class="op">=</span>(<span class="fl">0.25</span>,<span class="op">:</span>blue))</span>
@@ -502,7 +503,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Plot residuals of last model</p>
-<div id="17dbd5e9" class="cell" data-execution_count="4">
+<div id="9ddafee5" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(model, region<span class="op">=</span>(<span class="fl">1958</span>,<span class="fl">2016</span>,<span class="op">-</span><span class="fl">4</span>,<span class="fl">4</span>), frame<span class="op">=</span>(axes<span class="op">=:</span>WSen, bg<span class="op">=:</span>azure1,</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>      title<span class="op">=</span><span class="st">"The Keeling Curve [CO@-2@- at Mauna Loa]"</span>), xaxis<span class="op">=</span>(annot<span class="op">=:</span>auto, ticks<span class="op">=:</span>auto),</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>      yaxis<span class="op">=</span>(annot<span class="op">=:</span>auto, ticks<span class="op">=:</span>auto, suffix<span class="op">=</span><span class="st">" ppm"</span>),</span>

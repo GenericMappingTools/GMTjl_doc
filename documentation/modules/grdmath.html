@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -431,22 +432,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#grdmath" id="toc-grdmath" class="nav-link active" data-scroll-target="#grdmath">grdmath</a>
-  <ul class="collapse">
-  <li><a href="#description" id="toc-description" class="nav-link" data-scroll-target="#description">Description</a></li>
+  <li><a href="#description" id="toc-description" class="nav-link active" data-scroll-target="#description">Description</a></li>
   <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
-  </ul></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">grdmath</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
 
-<section id="grdmath" class="level1">
-<h1>grdmath</h1>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
 <p>Reverse Polish Notation (RPN) calculator for grids (element by element)</p>
 <section id="description" class="level2">
 <h2 class="anchored" data-anchor-id="description">Description</h2>
@@ -460,9 +473,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>    G <span class="op">=</span> <span class="fu">grdmath</span>(<span class="st">"-Rg -I1 0 90 SDIST ="</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>To create a grid with resolution 0.5x0.5 degrees with distances in km from the coast line, use::</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>    G <span class="op">=</span> <span class="fu">grdmath</span>(<span class="st">"-RNO,IS -Dc -I.5 LDISTG ="</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-
-
 </section>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>View the <a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/grdgmtmath.jl#L10">source code</a> for this function.</p>
+
+
 </section>
 
 </main> <!-- /main -->

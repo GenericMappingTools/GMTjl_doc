@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -431,29 +432,41 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#triangulate" id="toc-triangulate" class="nav-link active" data-scroll-target="#triangulate">triangulate</a>
-  <ul class="collapse">
-  <li><a href="#description" id="toc-description" class="nav-link" data-scroll-target="#description">Description</a></li>
+  <li><a href="#description" id="toc-description" class="nav-link active" data-scroll-target="#description">Description</a></li>
   <li><a href="#required-arguments" id="toc-required-arguments" class="nav-link" data-scroll-target="#required-arguments">Required Arguments</a></li>
   <li><a href="#optional-arguments" id="toc-optional-arguments" class="nav-link" data-scroll-target="#optional-arguments">Optional Arguments</a></li>
   <li><a href="#grid-values-precision" id="toc-grid-values-precision" class="nav-link" data-scroll-target="#grid-values-precision">Grid Values Precision</a></li>
   <li><a href="#insideoutside-status" id="toc-insideoutside-status" class="nav-link" data-scroll-target="#insideoutside-status">Inside/outside Status</a></li>
   <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
   <li><a href="#notes" id="toc-notes" class="nav-link" data-scroll-target="#notes">Notes</a></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
   <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
-  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">triangulate</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
 
-<section id="triangulate" class="level1">
-<h1>triangulate</h1>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">triangulate</span>(cmd0<span class="op">::</span><span class="dt">String</span>=<span class="st">""</span>, arg1<span class="op">=</span><span class="cn">nothing</span>; kwargs<span class="op">...</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Delaunay triangulation or Voronoi partitioning and gridding of Cartesian data</p>
 <section id="description" class="level2">
@@ -559,6 +572,14 @@ Swap 1st and 2nd column on input and/or output. <a href="https://docs.generic-ma
 <h2 class="anchored" data-anchor-id="notes">Notes</h2>
 <p>The uncertainty propagation for bathymetric grids requires both horizontal and vertical uncertainties and these are weighted given the local slope. See the <em>Zambo et al.</em> [2014] and <em>Zhou and Liu</em> [2004] references for more details.</p>
 </section>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>This function has multiple methods:</p>
+<ul>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/triangulate.jl#L68"><code>triangulate(cmd0::String; kwargs...)</code></a> - triangulate.jl:68</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/triangulate.jl#L69"><code>triangulate(arg1; kwargs...)</code></a> - triangulate.jl:69</li>
+</ul>
+</section>
 <section id="see-also" class="level2">
 <h2 class="anchored" data-anchor-id="see-also">See Also</h2>
 <p><a href="../..\documentation/modules/greenspline.html">greenspline</a>, <a href="../..\documentation/modules/nearneighbor.html">nearneighbor</a>, <a href="../..\documentation/modules/contour.html">contour</a>, <a href="../..\documentation/modules/sphdistance.html">sphdistance</a>, <a href="../..\documentation/modules/sphinterpolate.html">sphinterpolate</a>, <a href="../..\documentation/modules/sphtriangulate.html">sphtriangulate</a>, <a href="../..\documentation/modules/surface.html">surface</a></p>
@@ -571,7 +592,6 @@ Swap 1st and 2nd column on input and/or output. <a href="https://docs.generic-ma
 <p><a href="http://www.cs.cmu.edu/~quake/triangle.html">Shewchuk’s Homepage</a></p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

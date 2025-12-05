@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -431,23 +432,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#gmtwrite" id="toc-gmtwrite" class="nav-link active" data-scroll-target="#gmtwrite">gmtwrite</a>
-  <ul class="collapse">
-  <li><a href="#parameters" id="toc-parameters" class="nav-link" data-scroll-target="#parameters">Parameters</a></li>
+  <li><a href="#parameters" id="toc-parameters" class="nav-link active" data-scroll-target="#parameters">Parameters</a></li>
   <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
   <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
-  </ul></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">gmtwrite</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
 
-<section id="gmtwrite" class="level1">
-<h1>gmtwrite</h1>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gmtwrite</span>(fname<span class="op">::</span><span class="dt">AbstractString</span>, data; kwargs<span class="op">...</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Write a GMT object to file. The object is one of <code>grd</code> or <code>grid</code>, <code>image</code> or <code>img</code>, <code>dataset</code> or <code>table</code>, <code>cmap</code> or <code>cpt</code> and <code>ps</code> (for postscript). For the datasets case if the file name ends in .arrow, .shp, .json, .feather, .geojson, .gmt, .gpkg, .gpx, .gml or .parquet then it automatically selects <code>gdalwrite</code> and saves the GMT dataset in that OGR vector format. The .kml is treated as a special case because there are GMT modules (e.g.&nbsp;<code>gmt2kml</code>) that produce KML formatted data and so we write it directly as a text file.</p>
 <p>When saving grids we have a panoply of formats at our disposal.</p>
@@ -482,9 +495,16 @@ Specify the data types of input and/or output columns (time or geographical data
 <section id="see-also" class="level2">
 <h2 class="anchored" data-anchor-id="see-also">See Also</h2>
 <p><a href="../..\documentation/utilities/gmtread.html">gmtread</a>, [gdalread]</p>
-
-
 </section>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>This function has multiple methods:</p>
+<ul>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/gmtreadwrite.jl#L569"><code>gmtwrite(data; kwargs...)</code></a> - gmtreadwrite.jl:569</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/gmtreadwrite.jl#L570"><code>gmtwrite(fname::AbstractString, data; kwargs...)</code></a> - gmtreadwrite.jl:570</li>
+</ul>
+
+
 </section>
 
 </main> <!-- /main -->

@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -464,7 +465,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="shorelines" class="level2">
 <h2 class="anchored" data-anchor-id="shorelines">Shorelines</h2>
 <p>Use the <code>shore</code> option to plot only the shorelines:</p>
-<div id="2cc66363" class="cell" data-fig-height="5" data-fig-width="5" data-execution_count="1">
+<div id="bd38444d" class="cell" data-fig-height="5" data-fig-width="5" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">coast</span>(region<span class="op">=:</span><span class="kw">global</span>, proj<span class="op">=:</span>Mollweide, shore<span class="op">=</span><span class="cn">true</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -483,7 +484,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>lake-in-island-in-lake shore</li>
 </ul>
 <p>You can specify which level you want to plot by appending the level number and a GMT pen configuration to the <code>shore</code> option. For example, to plot just the coastlines with 0.5 thickness and black lines:</p>
-<div id="2fd8be24" class="cell" data-execution_count="2">
+<div id="83d30715" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">coast</span>(region<span class="op">=:</span><span class="kw">global</span>, proj<span class="op">=:</span>Mollweide, shore<span class="op">=</span>(level<span class="op">=</span><span class="fl">1</span>, pen<span class="op">=</span>(<span class="fl">0.5</span>,<span class="op">:</span>black)), show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -495,7 +496,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>We can specify multiple levels by using the <code>shore</code> option more than once by using a Tuple of NamedTuples. That is, in this case we can no longer use the simpler form we used above but must instead do:</p>
-<div id="22ab0021" class="cell" data-execution_count="3">
+<div id="32390a72" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">coast</span>(region<span class="op">=:</span><span class="kw">global</span>, proj<span class="op">=:</span>Mollweide,</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>      shore<span class="op">=</span>((level<span class="op">=</span><span class="fl">1</span>, pen<span class="op">=</span>(<span class="fl">0.5</span>,<span class="op">:</span>black)), (level<span class="op">=</span><span class="fl">2</span>, pen<span class="op">=</span>(<span class="fl">0.5</span>,<span class="op">:</span>red))), show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -516,7 +517,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>high</li>
 <li>full</li>
 </ul>
-<div id="7ec9d7f7" class="cell" data-execution_count="4">
+<div id="242d7a6d" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Need to take one out of the cycle to start the figure.</span></span>
@@ -537,7 +538,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="land-and-water" class="level2">
 <h2 class="anchored" data-anchor-id="land-and-water">Land and water</h2>
 <p>Use the <code>land</code> and <code>water</code> options to specify a fill color for land and water bodies. The colors can be given by name or hex codes:</p>
-<div id="9a8c732c" class="cell" data-execution_count="5">
+<div id="09432500" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">coast</span>(region<span class="op">=:</span><span class="kw">global</span>, proj<span class="op">=:</span>Mollweide, land<span class="op">=</span><span class="st">"#666666"</span>, water<span class="op">=:</span>skyblue, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -559,7 +560,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>a = All boundaries (1-3)</li>
 </ul>
 <p>For example, to draw national boundaries with a line thickness of 1p and black line color use <code>borders=(1,("1p",:black))</code>, or <code>borders=(type=1, pen=(0.5, :black))</code>. We can draw multiple boundaries by passing in a tuple of NamedTuples to <code>borders</code> (for repeating the option we must use the NamedTuple form). The following example uses a Sinusoidal projection map of the Americas with automatic annotations and ticks.</p>
-<div id="a2c0aa46" class="cell" data-execution_count="6">
+<div id="12ce73ca" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">coast</span>(region<span class="op">=</span>[<span class="op">-</span><span class="fl">150</span>, <span class="op">-</span><span class="fl">30</span>, <span class="op">-</span><span class="fl">60</span>, <span class="fl">60</span>], land<span class="op">=:</span>gray, projection<span class="op">=</span>(name<span class="op">=:</span>Sinusoidal, center<span class="op">=-</span><span class="fl">90</span>),</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>      borders<span class="op">=</span>((<span class="kw">type</span><span class="op">=</span><span class="fl">1</span>, pen<span class="op">=</span>(<span class="fl">0.5</span>, <span class="op">:</span>black)), (<span class="kw">type</span><span class="op">=</span><span class="fl">2</span>, pen<span class="op">=</span>(<span class="fl">0.5</span>, <span class="op">:</span>red)), (<span class="kw">type</span><span class="op">=</span><span class="fl">3</span>, pen<span class="op">=</span>(<span class="fl">0.5</span>, <span class="op">:</span>blue))),</span>
@@ -576,7 +577,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="rivers" class="level2">
 <h2 class="anchored" data-anchor-id="rivers">Rivers</h2>
 <p>The situation with plotting rivers is a bit less good and we hope to improve it when modern data is incorporated in the databse. But we can still do pretty maps of the permanent major rivers. A rivers version of the figure above is obtained with (the code <code>:r</code> means <em>All permanent rivers</em>):</p>
-<div id="8875b7a7" class="cell" data-execution_count="7">
+<div id="76dac39d" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">coast</span>(region<span class="op">=</span>[<span class="op">-</span><span class="fl">150</span>, <span class="op">-</span><span class="fl">30</span>, <span class="op">-</span><span class="fl">60</span>, <span class="fl">60</span>], land<span class="op">=:</span>gray, projection<span class="op">=</span>(name<span class="op">=:</span>Sinusoidal, center<span class="op">=-</span><span class="fl">90</span>),</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>      rivers<span class="op">=</span>(<span class="op">:</span>r,<span class="op">:</span>blue), show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>

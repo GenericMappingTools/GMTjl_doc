@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -431,26 +432,39 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#linearfitxy" id="toc-linearfitxy" class="nav-link active" data-scroll-target="#linearfitxy">linearfitxy</a></li>
-  <li><a href="#arguments" id="toc-arguments" class="nav-link" data-scroll-target="#arguments">Arguments:</a>
+  <li><a href="#arguments" id="toc-arguments" class="nav-link active" data-scroll-target="#arguments">Arguments:</a>
   <ul class="collapse">
   <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
   <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
   </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">linearfitxy</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
 
-<section id="linearfitxy" class="level1">
-<h1>linearfitxy</h1>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">linearfitxy</span>(X, Y; σX<span class="op">=</span><span class="fl">0</span>, σY<span class="op">=</span><span class="fl">0</span>, r<span class="op">=</span><span class="fl">0</span>, ci<span class="op">=</span><span class="fl">95</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Performs 1D linear fitting of experimental data with uncertainties in X and Y: - Linear fit: <code>Y = a + b*X</code> [1] - Errors: <code>X ± σX;  Y ± σY</code> [2] - Errors’ correlation: <code>r =  = cov(σX, σY) / (σX * σY)</code> [3]</p>
-</section>
 <section id="arguments" class="level1">
 <h1>Arguments:</h1>
 <ul>
@@ -484,6 +498,15 @@ D = linearfitxy([0.037 0.0080; 0.035 0.0084; 0.032 0.0100; 0.040 0.0085; 0.013 0
 <section id="see-also" class="level2">
 <h2 class="anchored" data-anchor-id="see-also">See Also</h2>
 <p><a href="../..\documentation/utilities/plotlinefit.html">plotlinefit</a>, <a href="../..\documentation/modules/plot.html">plot</a></p>
+</section>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>This function has multiple methods:</p>
+<ul>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/linefit.jl#L63"><code>linearfitxy(X, Y; sx, sy, r, ci)</code></a> - linefit.jl:63</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/linefit.jl#L56"><code>linearfitxy(D::GMTdataset; sx, sy, r, ci)</code></a> - linefit.jl:56</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/linefit.jl#L52"><code>linearfitxy(XY::Matrix{&lt;:Real}; sx, sy, r, ci)</code></a> - linefit.jl:52</li>
+</ul>
 
 
 </section>

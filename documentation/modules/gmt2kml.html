@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -431,9 +432,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#gmt2kml" id="toc-gmt2kml" class="nav-link active" data-scroll-target="#gmt2kml">gmt2kml</a>
-  <ul class="collapse">
-  <li><a href="#description" id="toc-description" class="nav-link" data-scroll-target="#description">Description</a></li>
+  <li><a href="#description" id="toc-description" class="nav-link active" data-scroll-target="#description">Description</a></li>
   <li><a href="#required-arguments" id="toc-required-arguments" class="nav-link" data-scroll-target="#required-arguments">Required Arguments</a></li>
   <li><a href="#optional-arguments" id="toc-optional-arguments" class="nav-link" data-scroll-target="#optional-arguments">Optional Arguments</a></li>
   <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
@@ -441,19 +440,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#making-kmz-files" id="toc-making-kmz-files" class="nav-link" data-scroll-target="#making-kmz-files">Making Kmz Files</a></li>
   <li><a href="#kml-hierarchy" id="toc-kml-hierarchy" class="nav-link" data-scroll-target="#kml-hierarchy">Kml Hierarchy</a></li>
   <li><a href="#segment-information" id="toc-segment-information" class="nav-link" data-scroll-target="#segment-information">Segment Information</a></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
   <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
-  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">gmt2kml</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
 
-<section id="gmt2kml" class="level1">
-<h1>gmt2kml</h1>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
 <p>Convert GMT data table to Google Earth KML file.</p>
 <section id="description" class="level2">
 <h2 class="anchored" data-anchor-id="description">Description</h2>
@@ -579,12 +592,19 @@ Swap 1st and 2nd column on input and/or output. <a href="https://docs.generic-ma
 <h2 class="anchored" data-anchor-id="segment-information">Segment Information</h2>
 <p><strong>gmt2kml</strong> will scan the segment headers for substrings of the form <strong>-L</strong>”<em>some label</em>” [also see <strong>feature_name</strong> discussion] and <strong>-T</strong>”<em>some text description</em>”. If present, these are parsed to supply name and description tags, respectively, for the current feature.</p>
 </section>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>This function has multiple methods:</p>
+<ul>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/gmt2kml.jl#L70"><code>gmt2kml(cmd0::String; kwargs...)</code></a> - gmt2kml.jl:70</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/gmt2kml.jl#L71"><code>gmt2kml(arg1; kwargs...)</code></a> - gmt2kml.jl:71</li>
+</ul>
+</section>
 <section id="see-also" class="level2">
 <h2 class="anchored" data-anchor-id="see-also">See Also</h2>
 <p><a href="../..\documentation/modules/grd2kml.html">grd2kml</a>, [kml2gmt], [psconvert]</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

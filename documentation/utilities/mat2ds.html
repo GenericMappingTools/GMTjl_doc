@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -433,6 +434,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#example" id="toc-example" class="nav-link active" data-scroll-target="#example">Example</a></li>
   <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
   </ul>
 </nav>
     </div>
@@ -504,7 +506,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="example" class="level2">
 <h2 class="anchored" data-anchor-id="example">Example</h2>
 <p>Create a 3 elements vector with a color and transparency each.</p>
-<div id="d24d037f" class="cell" data-execution_count="1">
+<div id="cf1bfdff" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">mat2ds</span>([<span class="fu">rand</span>(<span class="fl">6</span>,<span class="fl">3</span>), <span class="fu">rand</span>(<span class="fl">4</span>,<span class="fl">3</span>), <span class="fu">rand</span>(<span class="fl">3</span>,<span class="fl">3</span>)], fill<span class="op">=</span>[[<span class="op">:</span>red], [<span class="op">:</span>green], [<span class="op">:</span>blue]], fillalpha<span class="op">=</span>[<span class="fl">0.5</span>,<span class="fl">0.7</span>,<span class="fl">0.8</span>]);</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -522,6 +524,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="see-also" class="level2">
 <h2 class="anchored" data-anchor-id="see-also">See Also</h2>
 <p><a href="../..\documentation/utilities/mat2grid.html">mat2grid</a>, <a href="../..\documentation/utilities/mat2img.html">mat2img</a></p>
+</section>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>This function has multiple methods:</p>
+<ul>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/utils_types.jl#L85"><code>mat2ds(text::Vector{String}; hdr, kw...)</code></a> - utils_types.jl:85</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/utils_types.jl#L82"><code>mat2ds(mat::Nothing)</code></a> - utils_types.jl:82</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/utils_types.jl#L206"><code>mat2ds(mat::Array{T, N}, txt::Union{String, Vector{String}}; hdr, geom, kwargs...) where {T&lt;:Real, N}</code></a> - utils_types.jl:206</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/utils_types.jl#L141"><code>mat2ds(mat::Vector{&lt;:AbstractMatrix}; hdr, kwargs...)</code></a> - utils_types.jl:141</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/utils_types.jl#L83"><code>mat2ds(mat::GDtype)</code></a> - utils_types.jl:83</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/utils_types.jl#L84"><code>mat2ds(text::Union{AbstractString, Vector{&lt;:AbstractString}})</code></a> - utils_types.jl:84</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/utils_types.jl#L206"><code>mat2ds(mat::Array{T, N}; ...) where {T&lt;:Real, N}</code></a> - utils_types.jl:206</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/utils_types.jl#L203"><code>mat2ds(mat::Array{T, N}, ref::GMTdataset) where {T&lt;:Real, N}</code></a> - utils_types.jl:203</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/utils_types.jl#L145"><code>mat2ds(mat::Vector{&lt;:AbstractMatrix{T}}, hdr::Vector{String}, d::Dict) where T&lt;:Real</code></a> - utils_types.jl:145</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/utils_types.jl#L422"><code>mat2ds(D::GMTdataset{T, N}, inds) where {T&lt;:Real, N}</code></a> - utils_types.jl:422</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/utils_types.jl#L87"><code>mat2ds(mat::AbstractMatrix{T}; hdr, geom, kwargs...) where T&lt;:Real</code></a> - utils_types.jl:87</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/utils_types.jl#L113"><code>mat2ds(X; kw...)</code></a> - utils_types.jl:113</li>
+</ul>
 
 
 </section>

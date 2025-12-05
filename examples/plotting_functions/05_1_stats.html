@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -467,7 +468,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="examples-of-density-plots" class="level2">
 <h2 class="anchored" data-anchor-id="examples-of-density-plots">Examples of density plots</h2>
-<div id="d7fb7df4" class="cell" data-execution_count="1">
+<div id="46b59cfc" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">density</span>(<span class="fu">randn</span>(<span class="fl">200</span>), fill<span class="op">=</span><span class="cn">true</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -478,7 +479,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="e3c92992" class="cell" data-execution_count="2">
+<div id="28a99a1f" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">density</span>(<span class="fu">randn</span>(<span class="fl">200</span>), nbins<span class="op">=</span><span class="fl">20</span>, horizontal<span class="op">=</span><span class="cn">true</span>, fill<span class="op">=</span><span class="cn">true</span>, extend<span class="op">=</span><span class="fl">2</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -490,7 +491,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Expand the density profile with 4 x the set bandwidth, such that it decays to zero. By lowering the bandwidth we forcing the line to be less smoth.</p>
-<div id="729651b8" class="cell" data-execution_count="3">
+<div id="b8dcb886" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">density</span>(<span class="fu">randn</span>(<span class="fl">200</span>), fill<span class="op">=:</span>orange, lc<span class="op">=:</span>red, lw<span class="op">=</span><span class="fl">1</span>, bandwidth<span class="op">=</span><span class="fl">0.15</span>, extend<span class="op">=</span><span class="fl">4</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -505,7 +506,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="box-plots" class="level2">
 <h2 class="anchored" data-anchor-id="box-plots">Box plots</h2>
 <p>An horizontal boxplot with default colors, displaying outliers as 6p black stars. Noches are also shown but this requires GMT6.5.</p>
-<div id="5b333f26" class="cell" data-execution_count="4">
+<div id="5f51348d" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(<span class="fu">randn</span>(<span class="fl">50</span>,<span class="fl">6</span>), notch<span class="op">=</span><span class="cn">true</span>, fill<span class="op">=</span><span class="cn">true</span>, outliers<span class="op">=</span>(size<span class="op">=</span><span class="st">"6p"</span>,), hbar<span class="op">=</span><span class="cn">true</span>, show<span class="op">=</span><span class="fl">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -517,7 +518,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>A plot of three groups of two elements each and where we assign the same color to the elements of each group.</p>
-<div id="a73cb486" class="cell" data-execution_count="5">
+<div id="96963c5a" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(<span class="fu">randn</span>(<span class="fl">50</span>,<span class="fl">3</span>,<span class="fl">2</span>), boxwidth<span class="op">=</span><span class="st">"20p"</span>, notch<span class="op">=</span><span class="cn">true</span>, fill<span class="op">=</span><span class="cn">true</span>, ccolor<span class="op">=</span><span class="cn">true</span>, show<span class="op">=</span><span class="fl">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -532,7 +533,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="violin-plots" class="level2">
 <h2 class="anchored" data-anchor-id="violin-plots">Violin plots</h2>
 <p>Create a plot with 8 violins colored with the default colors.</p>
-<div id="50e6dd20" class="cell" data-execution_count="6">
+<div id="ebcc92e3" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">violin</span>(<span class="fu">randn</span>(<span class="fl">100</span>,<span class="fl">8</span>), fill<span class="op">=</span><span class="cn">true</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -544,7 +545,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Now add boxplot, scatter and outliers to a plot similar to above. The outliers show as black stars with a fait gray outline.</p>
-<div id="caaf38fd" class="cell" data-execution_count="7">
+<div id="fff99024" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">violin</span>(<span class="fu">randn</span>(<span class="fl">100</span>,<span class="fl">8</span>), fill<span class="op">=</span><span class="cn">true</span>, boxplot<span class="op">=</span><span class="cn">true</span>, scatter<span class="op">=</span><span class="cn">true</span>, outliers<span class="op">=</span><span class="cn">true</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -556,7 +557,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>And a group example with red dashed separator lines and variable level of transparency for each element in the group. Note that this case uses input data as a Vector{Vector{Vector}}, which more representative of a real case as each violin is allowed to be made of a different number of observations.</p>
-<div id="e5ce73a5" class="cell" data-execution_count="8">
+<div id="7cab2f07" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>vvv <span class="op">=</span> [[<span class="fu">randn</span>(<span class="fl">50</span>), <span class="fu">randn</span>(<span class="fl">30</span>)], [<span class="fu">randn</span>(<span class="fl">40</span>), <span class="fu">randn</span>(<span class="fl">48</span>), <span class="fu">randn</span>(<span class="fl">45</span>)], [<span class="fu">randn</span>(<span class="fl">35</span>), <span class="fu">randn</span>(<span class="fl">43</span>)]];</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">violin</span>(vvv, fill<span class="op">=</span><span class="cn">true</span>, fillalpha<span class="op">=</span>[<span class="fl">0.5</span>, <span class="fl">0.7</span>, <span class="fl">0.85</span>], boxplot<span class="op">=</span><span class="cn">true</span>, separator<span class="op">=</span>(<span class="op">:</span>red, <span class="op">:</span>dash),</span>
@@ -570,7 +571,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Join the left and right halves of each of the two element in the group.</p>
-<div id="0897e7e0" class="cell" data-execution_count="9">
+<div id="7d296fda" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">violin</span>(<span class="fu">randn</span>(<span class="fl">100</span>,<span class="fl">3</span>,<span class="fl">2</span>), fill<span class="op">=</span><span class="cn">true</span>, scatter<span class="op">=</span><span class="cn">true</span>, split<span class="op">=</span><span class="cn">true</span>, xticks<span class="op">=</span>[<span class="st">"First"</span>,<span class="st">"Second"</span>,<span class="st">"Third"</span>], show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -585,7 +586,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="q-q-plots" class="level2">
 <h2 class="anchored" data-anchor-id="q-q-plots">Q-Q plots</h2>
 <p>Test if <em>x</em> and <em>y</em> follow the same distribution.</p>
-<div id="d0d5c5aa" class="cell" data-execution_count="10">
+<div id="34691d00" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqplot</span>(<span class="fu">randn</span>(<span class="fl">100</span>), <span class="fu">randn</span>(<span class="fl">100</span>), qqline<span class="op">=:</span>identity, title<span class="op">=</span><span class="st">"Q-Q plot"</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -597,7 +598,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Test if <em>x</em> is normally distributed. the :fitrobust default line passes through the 1st and 3rd quartiles of the distribution</p>
-<div id="0c07c91a" class="cell" data-execution_count="11">
+<div id="bcd0b5d2" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(<span class="fu">randn</span>(<span class="fl">200</span>), qqline<span class="op">=:</span>fitrobust, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -611,7 +612,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="ecdf-plot" class="level2">
 <h2 class="anchored" data-anchor-id="ecdf-plot">ECDF plot</h2>
-<div id="10ccebf6" class="cell" data-execution_count="12">
+<div id="7c16ecc0" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ecdfplot</span>(<span class="fu">randn</span>(<span class="fl">100</span>), title<span class="op">=</span><span class="st">"ECDF plot"</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -627,7 +628,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="parallel-plots">Parallel plots</h2>
 <p>See docs in <a href="../..\documentation/modules/parallelplot.html">parallelplot</a></p>
 <p>Create a parallel plot using the measurement data in <code>iris.dat</code>. Use a different color for each group as identified in species, and label the horizontal axis using the variable names.</p>
-<div id="d46e9ff7" class="cell" data-execution_count="13">
+<div id="ecd32dc5" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">parallelplot</span>(TESTSDIR <span class="op">*</span> <span class="st">"assets/iris.dat"</span>, groupvar<span class="op">=</span><span class="st">"text"</span>, normalize<span class="op">=</span><span class="st">"none"</span>, legend<span class="op">=</span><span class="cn">true</span>,</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>             title<span class="op">=</span><span class="st">"Parallel plot"</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -640,7 +641,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Plot only the median, 25 percent, and 75 percent quartile values for each group identified in species. Label the horizontal axis using the variable names.</p>
-<div id="e9ade3c2" class="cell" data-execution_count="14">
+<div id="90fb2e91" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">parallelplot</span>(TESTSDIR <span class="op">*</span> <span class="st">"assets/iris.dat"</span>, groupvar<span class="op">=</span><span class="st">"text"</span>, quantile<span class="op">=</span><span class="fl">0.25</span>, legend<span class="op">=</span><span class="cn">true</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -652,7 +653,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Plot bands enveloping the +- 25% percentil arround the median.</p>
-<div id="facd1972" class="cell" data-execution_count="15">
+<div id="dda01d47" class="cell" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">parallelplot</span>(TESTSDIR <span class="op">*</span> <span class="st">"assets/iris.dat"</span>, groupvar<span class="op">=</span><span class="st">"text"</span>, band<span class="op">=</span><span class="cn">true</span>, legend<span class="op">=</span><span class="cn">true</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -667,7 +668,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="corner-plots" class="level2">
 <h2 class="anchored" data-anchor-id="corner-plots">Corner plots</h2>
 <p>Create a cornerplot plot with hexagonal bins, setting the color map, the vriable names, plot <em>truth</em> and title.</p>
-<div id="3093aed9" class="cell" data-execution_count="16">
+<div id="43251a68" class="cell" data-execution_count="16">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cornerplot</span>(<span class="fu">randn</span>(<span class="fl">4000</span>,<span class="fl">3</span>), cmap<span class="op">=:</span>viridis, truths<span class="op">=</span>[<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>],</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>           varnames<span class="op">=</span>[<span class="st">"Ai"</span>, <span class="st">"Oi"</span>, <span class="st">"Ui"</span>], title<span class="op">=</span><span class="st">"Corner plot"</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -680,7 +681,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Example on how to control the symbol types, size and color.</p>
-<div id="b7480ecd" class="cell" data-execution_count="17">
+<div id="f26b05d8" class="cell" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cornerplot</span>(<span class="fu">randn</span>(<span class="fl">1500</span>,<span class="fl">3</span>), scatter<span class="op">=</span><span class="cn">true</span>, marker<span class="op">=:</span>cross, mec<span class="op">=:</span>red, ms<span class="op">=</span><span class="st">"3p"</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -695,7 +696,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="marginalhist-plots" class="level2">
 <h2 class="anchored" data-anchor-id="marginalhist-plots">Marginalhist plots</h2>
 <p>A scatter plot with histograms on the sides</p>
-<div id="2e69af37" class="cell" data-execution_count="18">
+<div id="7e05c4b0" class="cell" data-execution_count="18">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">marginalhist</span>(<span class="fu">randn</span>(<span class="fl">2000</span>,<span class="fl">2</span>), histkw<span class="op">=</span>(frame<span class="op">=</span><span class="st">"none"</span>,), show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -707,7 +708,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>A scatter plot with density curves on the sides</p>
-<div id="5d44f631" class="cell" data-execution_count="19">
+<div id="210a16a7" class="cell" data-execution_count="19">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">marginalhist</span>(<span class="fu">randn</span>(<span class="fl">2000</span>,<span class="fl">2</span>), histkw<span class="op">=</span>(frame<span class="op">=</span><span class="st">"none"</span>, fill<span class="op">=</span><span class="st">"red@60"</span>), density<span class="op">=</span><span class="cn">true</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -719,7 +720,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>An hexbin scater plot with marginal density plots. Note that we must set <code>aspect=:equal</code> to have that hexbin plot.</p>
-<div id="625793f6" class="cell" data-execution_count="20">
+<div id="f22e4645" class="cell" data-execution_count="20">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">marginalhist</span>(<span class="fu">randn</span>(<span class="fl">2500</span>,<span class="fl">2</span>), cmap<span class="op">=:</span>lisbon, density<span class="op">=</span><span class="cn">true</span>, histkw<span class="op">=</span>(fill<span class="op">=</span><span class="st">"darkgreen@60"</span>,),</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>             aspect<span class="op">=:</span>equal, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -735,7 +736,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="line-fits" class="level2">
 <h2 class="anchored" data-anchor-id="line-fits">Line fits</h2>
 <p>Plot a regression fit over a scatter plot (no errors in X nor in Y). Example0 in https://github.com/rafael-guerra-www/LinearFitXYerrors.jl/blob/master/examples/example0.jl</p>
-<div id="5f9e6410" class="cell" data-execution_count="21">
+<div id="a6cf640b" class="cell" data-execution_count="21">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">linearfitxy</span>([<span class="fl">91</span>., <span class="fl">104</span>, <span class="fl">107</span>, <span class="fl">107</span>, <span class="fl">106</span>, <span class="fl">100</span>, <span class="fl">92</span>, <span class="fl">92</span>, <span class="fl">105</span>, <span class="fl">108</span>],</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>                [<span class="fl">9.8</span>, <span class="fl">7.4</span>, <span class="fl">7.9</span>, <span class="fl">8.3</span>, <span class="fl">8.3</span>, <span class="fl">9.0</span>, <span class="fl">9.7</span>, <span class="fl">8.8</span>, <span class="fl">7.6</span>, <span class="fl">6.9</span>]);</span>
@@ -749,7 +750,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Non-correlated errors in X and in Y Example2 in https://github.com/rafael-guerra-www/LinearFitXYerrors.jl/blob/master/examples/example2.jl</p>
-<div id="c1247c61" class="cell" data-execution_count="22">
+<div id="6b09efde" class="cell" data-execution_count="22">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">linearfitxy</span>([<span class="fl">0.0</span>, <span class="fl">0.9</span>, <span class="fl">1.8</span>, <span class="fl">2.6</span>, <span class="fl">3.3</span>, <span class="fl">4.4</span>, <span class="fl">5.2</span>, <span class="fl">6.1</span>, <span class="fl">6.5</span>, <span class="fl">7.4</span>],</span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>                [<span class="fl">5.9</span>, <span class="fl">5.4</span>, <span class="fl">4.4</span>, <span class="fl">4.6</span>, <span class="fl">3.5</span>, <span class="fl">3.7</span>, <span class="fl">2.8</span>, <span class="fl">2.8</span>, <span class="fl">2.4</span>, <span class="fl">1.5</span>],</span>
@@ -765,7 +766,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Condition the regression fit on another variable and represent it using color.</p>
-<div id="b31b413e" class="cell" data-execution_count="23">
+<div id="7c492dd0" class="cell" data-execution_count="23">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">gmtread</span>(TESTSDIR <span class="op">*</span> <span class="st">"assets/iris.dat"</span>);</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(D, xvar<span class="op">=</span><span class="fl">1</span>, yvar<span class="op">=</span><span class="fl">2</span>, hue<span class="op">=</span><span class="st">"Species"</span>, xlabel<span class="op">=:</span>auto, ylabel<span class="op">=:</span>auto, linefit<span class="op">=</span><span class="cn">true</span>,</span>

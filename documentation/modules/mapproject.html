@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -431,29 +432,41 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#mapproject" id="toc-mapproject" class="nav-link active" data-scroll-target="#mapproject">mapproject</a>
-  <ul class="collapse">
-  <li><a href="#synopsis" id="toc-synopsis" class="nav-link" data-scroll-target="#synopsis">Synopsis</a></li>
+  <li><a href="#synopsis" id="toc-synopsis" class="nav-link active" data-scroll-target="#synopsis">Synopsis</a></li>
   <li><a href="#description" id="toc-description" class="nav-link" data-scroll-target="#description">Description</a></li>
   <li><a href="#required-arguments" id="toc-required-arguments" class="nav-link" data-scroll-target="#required-arguments">Required Arguments</a></li>
   <li><a href="#optional-arguments" id="toc-optional-arguments" class="nav-link" data-scroll-target="#optional-arguments">Optional Arguments</a></li>
   <li><a href="#units" id="toc-units" class="nav-link" data-scroll-target="#units">Units</a></li>
   <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
   <li><a href="#important-notes" id="toc-important-notes" class="nav-link" data-scroll-target="#important-notes">Important Notes</a></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
   <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
-  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">mapproject</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
 
-<section id="mapproject" class="level1">
-<h1>mapproject</h1>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
 <p>Forward and inverse map transformations, datum conversions and geodesy</p>
 <section id="synopsis" class="level2">
 <h2 class="anchored" data-anchor-id="synopsis">Synopsis</h2>
@@ -738,9 +751,21 @@ Swap 1st and 2nd column on input and/or output. <a href="https://docs.generic-ma
 <p>The production order for geodetic and temporal columns from <code>azim</code>, <code>dist</code>, <code>line_dist</code>, and <code>travel_time</code> is fixed (alphabetical by option). Command-line order is irrelevant. Use <code>outcols</code> to modulate the final output order.</p>
 </section>
 </section>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>This function has multiple methods:</p>
+<ul>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/mapproject.jl#L73"><code>mapproject(cmd0::String; ...)</code></a> - mapproject.jl:73</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/mapproject.jl#L73"><code>mapproject(; ...)</code></a> - mapproject.jl:73</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/mapproject.jl#L73"><code>mapproject(cmd0::String, arg1; ...)</code></a> - mapproject.jl:73</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/mapproject.jl#L118"><code>mapproject(arg1, arg2; kw...)</code></a> - mapproject.jl:118</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/mapproject.jl#L118"><code>mapproject(arg1; ...)</code></a> - mapproject.jl:118</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/mapproject.jl#L73"><code>mapproject(cmd0::String, arg1, arg2; kwargs...)</code></a> - mapproject.jl:73</li>
+</ul>
+</section>
 <section id="see-also" class="level2">
 <h2 class="anchored" data-anchor-id="see-also">See Also</h2>
-<p><a href="https://www.generic-mapping-tools.org/GMTjl_doc/documentation/modules/project/">project</a></p>
+<p><a href="../..\documentation/modules/project.html">project</a></p>
 </section>
 <section id="references" class="level2">
 <h2 class="anchored" data-anchor-id="references">References</h2>
@@ -751,7 +776,6 @@ Swap 1st and 2nd column on input and/or output. <a href="https://docs.generic-ma
 </ul>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

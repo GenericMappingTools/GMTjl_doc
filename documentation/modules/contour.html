@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -437,6 +438,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   <li><a href="#auto-legend-entries" id="toc-auto-legend-entries" class="nav-link" data-scroll-target="#auto-legend-entries">Auto-legend entries</a></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
   <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
   </ul>
 </nav>
@@ -571,7 +573,7 @@ Set PDF transparency level for an overlay, in (0-100] percent range. [Default is
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <p>To make a raw contour plot from the remote file Table_5.11.txt and draw the contours every 25 and annotate every 50, using the default Cartesian projection, try</p>
-<div id="d3d23c8a" class="cell" data-execution_count="1">
+<div id="2a8ddb14" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">contour</span>(<span class="st">"@Table_5_11.txt"</span>, pen<span class="op">=:</span>thin, contour<span class="op">=</span><span class="fl">25</span>, annot<span class="op">=</span><span class="fl">50</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -583,7 +585,7 @@ Set PDF transparency level for an overlay, in (0-100] percent range. [Default is
 </div>
 </div>
 <p>To use the same data but only contour the values 750 and 800, use</p>
-<div id="c5d4c5b8" class="cell" data-execution_count="2">
+<div id="c3459db7" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">contour</span>(<span class="st">"@Table_5_11.txt"</span>, annot<span class="op">=</span>[<span class="fl">750</span>,<span class="fl">800</span>], pen<span class="op">=</span><span class="fl">0.5</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -595,10 +597,41 @@ Set PDF transparency level for an overlay, in (0-100] percent range. [Default is
 </div>
 </div>
 <p>To create a color plot of the numerical temperature solution obtained on a triangular mesh whose node coordinates and temperatures are stored in temp.xyz and mesh arrangement is given by the file mesh.ijk, using the colors in temp.cpt, run</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">contour</span>(<span class="st">"temp.xyz"</span>, index<span class="op">=</span><span class="st">"mesh.ijk"</span>, region<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">150</span>,<span class="fl">0</span>,<span class="fl">100</span>), figscale<span class="op">=</span><span class="fl">0.25</span>,</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>            cmap<span class="op">=</span><span class="st">"temp.cpt"</span>, labels<span class="op">=</span><span class="cn">true</span>, pen<span class="op">=</span><span class="fl">0.25</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="3c69cbd2" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">contour</span>(<span class="st">"temp.xyz"</span>, index<span class="op">=</span><span class="st">"mesh.ijk"</span>, region<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">150</span>,<span class="fl">0</span>,<span class="fl">100</span>), figscale<span class="op">=</span><span class="fl">0.25</span>,</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>        cmap<span class="op">=</span><span class="st">"temp.cpt"</span>, labels<span class="op">=</span><span class="cn">true</span>, pen<span class="op">=</span><span class="fl">0.25</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>gmtread [ERROR]: Cannot find file temp.xyz
+gmtread [ERROR]: Cannot find file temp.xyz
+gmtread [ERROR]: File temp.xyz not found
+[Session GMT (0)]: Error returned from GMT API: GMT_FILE_NOT_FOUND (16)</code></pre>
+</div>
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre>Something went wrong when calling the module. GMT error number = 16
+
+Stacktrace:
+ [1] <span class="ansi-bold">error</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">s</span>::String<span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">   @</span> <span class="ansi-bright-black-fg">Base</span> <span class="ansi-bright-black-fg">.\</span><span style="text-decoration:underline" class="ansi-bright-black-fg">error.jl:35</span>
+ [2] <span class="ansi-bold">gmt</span><span class="ansi-bold">(</span>::String<span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">   @</span> <span class="ansi-magenta-fg">GMT</span> <span class="ansi-bright-black-fg">C:\Users\j\.julia\dev\GMT\src\</span><span style="text-decoration:underline" class="ansi-bright-black-fg">gmt_main.jl:166</span>
+ [3] <span class="ansi-bold">read_data</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">d</span>::Dict<span class="ansi-bright-black-fg">{Symbol, Any}</span>, <span class="ansi-bright-black-fg">fname</span>::String, <span class="ansi-bright-black-fg">cmd</span>::String, <span class="ansi-bright-black-fg">arg</span>::Nothing, <span class="ansi-bright-black-fg">opt_R</span>::String, <span class="ansi-bright-black-fg">is3D</span>::Bool, <span class="ansi-bright-black-fg">get_info</span>::Bool<span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">   @</span> <span class="ansi-magenta-fg">GMT</span> <span class="ansi-bright-black-fg">C:\Users\j\.julia\dev\GMT\src\</span><span style="text-decoration:underline" class="ansi-bright-black-fg">common_options.jl:3656</span>
+ [4] <span class="ansi-bold">contour_helper</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">cmd0</span>::String, <span class="ansi-bright-black-fg">arg1</span>::Nothing, <span class="ansi-bright-black-fg">O</span>::Bool, <span class="ansi-bright-black-fg">K</span>::Bool, <span class="ansi-bright-black-fg">d</span>::Dict<span class="ansi-bright-black-fg">{Symbol, Any}</span><span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">   @</span> <span class="ansi-magenta-fg">GMT</span> <span class="ansi-bright-black-fg">C:\Users\j\.julia\dev\GMT\src\</span><span style="text-decoration:underline" class="ansi-bright-black-fg">pscontour.jl:99</span>
+ [5] <span class="ansi-bold">#contour_helper#936</span>
+<span class="ansi-bright-black-fg">   @</span> <span class="ansi-bright-black-fg">C:\Users\j\.julia\dev\GMT\src\</span><span style="text-decoration:underline" class="ansi-bright-black-fg">pscontour.jl:82</span><span class="ansi-bright-black-fg"> [inlined]</span>
+ [6] <span class="ansi-bold">contour_helper</span>
+<span class="ansi-bright-black-fg">   @</span> <span class="ansi-bright-black-fg">C:\Users\j\.julia\dev\GMT\src\</span><span style="text-decoration:underline" class="ansi-bright-black-fg">pscontour.jl:80</span><span class="ansi-bright-black-fg"> [inlined]</span>
+ [7] <span class="ansi-bold">#contour#932</span>
+<span class="ansi-bright-black-fg">   @</span> <span class="ansi-bright-black-fg">C:\Users\j\.julia\dev\GMT\src\</span><span style="text-decoration:underline" class="ansi-bright-black-fg">pscontour.jl:75</span><span class="ansi-bright-black-fg"> [inlined]</span>
+ [8] top-level scope
+<span class="ansi-bright-black-fg">   @</span> <span style="text-decoration:underline" class="ansi-bright-black-fg">In[4]:1</span></pre>
+</div>
+</div>
+</div>
 <p>To save the triangulated 100-m contour lines in topo.txt and separate them into multisegment files (one for each contour level), try</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">contour</span>(<span class="st">"topo.txt"</span>, contour<span class="op">=</span><span class="fl">100</span>, dump<span class="op">=</span><span class="st">"contours_%.0f.txt"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">contour</span>(<span class="st">"topo.txt"</span>, contour<span class="op">=</span><span class="fl">100</span>, dump<span class="op">=</span><span class="st">"contours_%.0f.txt"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="references" class="level2">
 <h2 class="anchored" data-anchor-id="references">References</h2>
@@ -609,6 +642,14 @@ Set PDF transparency level for an overlay, in (0-100] percent range. [Default is
 <section id="auto-legend-entries" class="level2">
 <h2 class="anchored" data-anchor-id="auto-legend-entries">Auto-legend entries</h2>
 <p>This module allows you to use the <strong>l</strong> option to specify an automatic legend entry. This option is available for lines or symbols only. If the symbol size is variable and computed from other information (which may be true for some symbols deriving their size from other input columns), then you need to supply a representative legend size via the <strong>+S</strong> modifier.</p>
+</section>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>This function has multiple methods:</p>
+<ul>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/pscontour.jl#L75"><code>contour(cmd0::String; kwargs...)</code></a> - pscontour.jl:75</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/pscontour.jl#L76"><code>contour(arg1; kwargs...)</code></a> - pscontour.jl:76</li>
+</ul>
 </section>
 <section id="see-also" class="level2">
 <h2 class="anchored" data-anchor-id="see-also">See Also</h2>

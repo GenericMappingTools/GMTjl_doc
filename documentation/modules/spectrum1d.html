@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -460,27 +461,39 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#spectrum1d" id="toc-spectrum1d" class="nav-link active" data-scroll-target="#spectrum1d">spectrum1d</a>
-  <ul class="collapse">
-  <li><a href="#description" id="toc-description" class="nav-link" data-scroll-target="#description">Description</a></li>
+  <li><a href="#description" id="toc-description" class="nav-link active" data-scroll-target="#description">Description</a></li>
   <li><a href="#required-arguments" id="toc-required-arguments" class="nav-link" data-scroll-target="#required-arguments">Required Arguments</a></li>
   <li><a href="#optional-arguments" id="toc-optional-arguments" class="nav-link" data-scroll-target="#optional-arguments">Optional Arguments</a></li>
   <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
   <li><a href="#tutorial" id="toc-tutorial" class="nav-link" data-scroll-target="#tutorial">Tutorial</a></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
   <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
-  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">spectrum1d</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
 
-<section id="spectrum1d" class="level1">
-<h1>spectrum1d</h1>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">spectrum1d</span>(cmd0<span class="op">::</span><span class="dt">String</span>=<span class="st">""</span>, arg1<span class="op">=</span><span class="cn">nothing</span>, kwargs<span class="op">...</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <section id="description" class="level2">
 <h2 class="anchored" data-anchor-id="description">Description</h2>
@@ -587,6 +600,14 @@ Suppress output of data records whose z-value(s) equal NaN. <a href="https://doc
 <p>In all problems of estimating parameters from data, there is a classic trade-off between resolution and variance. If you want to try to squeeze more resolution out of your data set, then you have to be willing to accept more noise in the estimates. The same trade-off is evident here in Welch’s method. If you want to have very low noise in the spectral estimates, then you have to choose <em>N</em> &lt;&lt; <em>M</em>, and this means that you get only <em>N</em> samples of the spectrum, and the longest period that you can resolve is only <em>N</em> * <em>delta_t</em>. So you see that reducing the noise lowers the number of spectral samples and lowers the longest period. Conversely, if you choose <em>N</em> approaching <em>M</em>, then you approach the periodogram with its very bad statistical properties, but you get lots of samples and a large fundamental period.</p>
 <p>The other spectral estimation methods also can do a good job. Welch’s method was selected because the way it works, how one can code it, and its effects on statistical distributions, resolution, side-lobe leakage, bias, variance, etc. are all easily understood. Some of the other methods (e.g.&nbsp;Maximum Entropy) tend to hide where some of these trade-offs are happening inside a “black box”.</p>
 </section>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>This function has multiple methods:</p>
+<ul>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/spectrum1d.jl#L47"><code>spectrum1d(cmd0::String; kw...)</code></a> - spectrum1d.jl:47</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/spectrum1d.jl#L48"><code>spectrum1d(arg1; kw...)</code></a> - spectrum1d.jl:48</li>
+</ul>
+</section>
 <section id="see-also" class="level2">
 <h2 class="anchored" data-anchor-id="see-also">See Also</h2>
 <p><a href="../..\documentation/modules/grdfft.html">grdfft</a></p>
@@ -597,7 +618,6 @@ Suppress output of data records whose z-value(s) equal NaN. <a href="https://doc
 <p>Welch, P. D., 1967, The use of Fast Fourier Transform for the estimation of power spectra: a method based on time averaging over short, modified periodograms, IEEE Transactions on Audio and Electroacoustics, Vol AU-15, No 2.</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

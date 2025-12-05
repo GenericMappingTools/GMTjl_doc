@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -431,23 +432,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#geocoder" id="toc-geocoder" class="nav-link active" data-scroll-target="#geocoder">geocoder</a>
-  <ul class="collapse">
-  <li><a href="#returns" id="toc-returns" class="nav-link" data-scroll-target="#returns">Returns</a></li>
+  <li><a href="#returns" id="toc-returns" class="nav-link active" data-scroll-target="#returns">Returns</a></li>
   <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
   <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
-  </ul></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">geocoder</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
 
-<section id="geocoder" class="level1">
-<h1>geocoder</h1>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">geocoder</span>(address<span class="op">::</span><span class="dt">String</span>; options<span class="op">=</span><span class="dt">String</span>[])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Get the geocoder info for a given address by calling the GDAL/OGR <a href="https://gdal.org/doxygen/ogr__geocoding_8h.html">geocoding functions</a>.</p>
 <section id="arguments" class="level3">
@@ -477,14 +490,41 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geocoder</span>(<span class="st">"Paris, France"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="333325b1" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">geocoder</span>(<span class="st">"Paris, France"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Attribute table
+┌────────────┬────────┬──────────┬───────────────┬───────────────┬──────────────┬──────────┬────────────────┬────────┬─────────┬───────┬──────────────┬────────────┬──────────┬────────────────────┬───────────────────────┬──────────┬───────┬─────────────────────────────────────────────────────┬───────────────────────────────────────────┬────────────────┬────────────────┐
+│        lat │ suburb │      lon │ city_district │         state │ address_rank │ place_id │ ISO3166-2-lvl6 │ osm_id │ country │   ref │ country_code │ place_rank │    class │         importance │                region │ osm_type │  city │                                        display_name │                               boundingbox │           type │ ISO3166-2-lvl4 │
+├────────────┼────────┼──────────┼───────────────┼───────────────┼──────────────┼──────────┼────────────────┼────────┼─────────┼───────┼──────────────┼────────────┼──────────┼────────────────────┼───────────────────────┼──────────┼───────┼─────────────────────────────────────────────────────┼───────────────────────────────────────────┼────────────────┼────────────────┤
+│ 48.8588897 │  Paris │ 2.320041 │         Paris │ Île-de-France │           20 │ 88595109 │         FR-75C │   7444 │  France │ Paris │           fr │         15 │ boundary │ 0.8845663630228834 │ France métropolitaine │ relation │ Paris │ Paris, Île-de-France, France métropolitaine, France │ 48.8155755,48.9021560,2.2241220,2.4697602 │ administrative │         FR-IDF │
+└────────────┴────────┴──────────┴───────────────┴───────────────┴──────────────┴──────────┴────────────────┴────────┴─────────┴───────┴──────────────┴────────────┴──────────┴────────────────────┴───────────────────────┴──────────┴───────┴─────────────────────────────────────────────────────┴───────────────────────────────────────────┴────────────────┴────────────────┘</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<pre><code></code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>BoundingBox: [2.320041, 2.320041, 48.8588897, 48.8588897]
+Global BoundingBox: [2.224122, 2.4697602, 48.8155755, 48.902156]
+PROJ: +proj=longlat +datum=WGS84 +units=m +no_defs
+
+1×2 GMTdataset{Float64, 2}
+ Row │     Lon      Lat
+─────┼──────────────────
+   1 │ 2.32004  48.8589</code></pre>
+</div>
+</div>
 </section>
 <section id="see-also" class="level2">
 <h2 class="anchored" data-anchor-id="see-also">See Also</h2>
 <p><a href="../..\documentation/utilities/mosaic.html">mosaic</a></p>
-
-
 </section>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>View the <a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/imgtiles.jl#L1005">source code</a> for this function.</p>
+
+
 </section>
 
 </main> <!-- /main -->

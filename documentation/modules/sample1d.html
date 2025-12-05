@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -465,6 +466,7 @@ window.Quarto = {
   <li><a href="#optional-arguments" id="toc-optional-arguments" class="nav-link" data-scroll-target="#optional-arguments">Optional Arguments</a></li>
   <li><a href="#notes" id="toc-notes" class="nav-link" data-scroll-target="#notes">Notes</a></li>
   <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
   <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
   </ul>
 </nav>
@@ -524,7 +526,7 @@ The default is <code>Akima</code>. You may change the default interpolant; see <
 <p>You may optionally evaluate the first or second derivative of the spline by appending <strong>+d1</strong> or <strong>+d2</strong>, respectively.</p>
 <p>When using the second form (the <em>interp_type=(…)</em>), the first member is the same as above, except the <code>smooth</code> and the derivatives. To select first or second derivative use the <code>:first</code> or <code>:second</code> keywords. Examples of this syntax: <strong>interp=(:akima, :first)</strong>, or <strong>interp=(:smoothing, 0.1)</strong>, or <strong>interp=(:smoothing, 0.1, :second)</strong>.</p></li>
 </ul>
-<div id="5cbd8fc2" class="cell" data-execution_count="1">
+<div id="624fc1d6" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>mat <span class="op">=</span> [<span class="fl">0</span> <span class="fl">0</span>; <span class="fl">1</span> <span class="fl">1</span>; <span class="fl">2</span> <span class="fl">1.5</span>; <span class="fl">3</span> <span class="fl">1.25</span>; <span class="fl">4</span> <span class="fl">1.5</span>; <span class="fl">4.5</span> <span class="fl">3</span>; <span class="fl">5</span> <span class="fl">2</span>; <span class="fl">6</span> <span class="fl">2.5</span>];</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">gmtbegin</span>()</span>
@@ -631,6 +633,14 @@ Suppress output of data records whose z-value(s) equal NaN. <a href="https://doc
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>    Dmo <span class="op">=</span> <span class="fu">sample1d</span>(<span class="st">"temperatures.txt"</span>, range<span class="op">=</span>(<span class="st">"2000T"</span>, <span class="st">"2018T"</span>, <span class="st">"1o"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>To use a smoothing spline on a topographic profile for a given fit parameter, try:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sample1d</span>(<span class="st">"@topo_crossection.txt"</span>, <span class="fu">range</span>(<span class="fl">300</span>,<span class="fl">500</span>,<span class="fl">0.1</span>), interp<span class="op">=</span>(<span class="op">:</span>smooth, <span class="fl">0.001</span>)) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>This function has multiple methods:</p>
+<ul>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/sample1d.jl#L56"><code>sample1d(cmd0::String; kw...)</code></a> - sample1d.jl:56</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/sample1d.jl#L57"><code>sample1d(arg1; kw...)</code></a> - sample1d.jl:57</li>
+</ul>
 </section>
 <section id="see-also" class="level2">
 <h2 class="anchored" data-anchor-id="see-also">See Also</h2>

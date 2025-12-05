@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -426,8 +427,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#source-code" id="toc-source-code" class="nav-link active" data-scroll-target="#source-code">Source Code</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -484,7 +491,7 @@ D = maregrams(lon::Real, lat::Real; days=2, starttime::String="")</code></pre>
 <section id="example" class="level3">
 <h3 class="anchored" data-anchor-id="example">Example</h3>
 <p>Get the time series for 4 days starting at February 1 2025 for the station with code “lgos” (Lagos, Portugal)</p>
-<div id="c68bac19" class="cell" data-execution_count="1">
+<div id="37695830" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">maregrams</span>(code<span class="op">=</span><span class="st">"lgos"</span>, days<span class="op">=</span><span class="fl">4</span>, starttime<span class="op">=</span><span class="st">"2025-02-01"</span>);</span>
@@ -497,6 +504,14 @@ D = maregrams(lon::Real, lat::Real; days=2, starttime::String="")</code></pre>
 </div>
 </div>
 </div>
+</section>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>This function has multiple methods:</p>
+<ul>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/maregrams.jl#L43"><code>maregrams(; list, code, name, days, starttime, printurl)</code></a> - maregrams.jl:43</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/maregrams.jl#L111"><code>maregrams(x::Real, y::Real; days, starttime, printurl)</code></a> - maregrams.jl:111</li>
+</ul>
 
 
 </section>

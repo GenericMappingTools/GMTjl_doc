@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -463,7 +464,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <p>A simple bar plot showing color and bar width (in data units) assignement.</p>
-<div id="ad1e1c37" class="cell" data-execution_count="1">
+<div id="fc0ba8eb" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">bar</span>(<span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, (<span class="fl">20</span>, <span class="fl">35</span>, <span class="fl">30</span>, <span class="fl">35</span>, <span class="fl">27</span>), width<span class="op">=</span><span class="fl">0.5</span>, color<span class="op">=:</span>lightblue,</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    limits<span class="op">=</span>(<span class="fl">0.5</span>,<span class="fl">5.5</span>,<span class="fl">0</span>,<span class="fl">40</span>), show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -476,7 +477,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>A colored bar plot with colors proportional to bar heights. In this case we let the plot limits be determined from data. We also plot a colorbar by using the <strong>colorbar</strong>=<em>true</em> option.</p>
-<div id="57b019eb" class="cell" data-execution_count="2">
+<div id="d82755e4" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">bar</span>(<span class="fu">rand</span>(<span class="fl">15</span>), color<span class="op">=:</span>turbo, figsize<span class="op">=</span>(<span class="fl">14</span>,<span class="fl">8</span>), title<span class="op">=</span><span class="st">"Colored bars"</span>,</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    colorbar<span class="op">=</span><span class="cn">true</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -489,7 +490,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Example showing how to plot bar groups and at same time assign variable transparency to each of the group’s <em>band</em> usinf the <strong>fillalpha</strong> option. Here, each row on the input data represents a bar group that has as many <em>bands</em> as n_columns - 1. -1 because first column must hold the <em>xx</em> coordinates of each group. The colors come from the automatic cyclic scheme.</p>
-<div id="6fe34dd2" class="cell" data-execution_count="3">
+<div id="76345f1b" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">bar</span>([<span class="fl">0</span>. <span class="fl">1</span> <span class="fl">2</span> <span class="fl">3</span>; <span class="fl">1</span> <span class="fl">2</span> <span class="fl">3</span> <span class="fl">4</span>], fillalpha<span class="op">=</span>[<span class="fl">0.3</span> <span class="fl">0.5</span> <span class="fl">0.7</span>], show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -501,7 +502,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>And we can also make plots with bar groups where each group has a variable number of bars. For that, pass NaN’s in place of the missing bars for a particular group. For example:</p>
-<div id="66ada221" class="cell" data-execution_count="4">
+<div id="8dbf90f5" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">bar</span>([<span class="fl">2</span> <span class="fl">0.5</span> <span class="fl">1</span> <span class="cn">NaN</span> <span class="fl">1</span>; <span class="fl">4</span> <span class="cn">NaN</span> <span class="cn">NaN</span> <span class="fl">2</span> <span class="cn">NaN</span>; <span class="fl">1</span> <span class="fl">3</span> <span class="fl">4</span> <span class="fl">3</span> <span class="fl">2</span>; <span class="cn">NaN</span> <span class="fl">3</span> <span class="cn">NaN</span> <span class="fl">1</span> <span class="fl">2</span>], fillalpha<span class="op">=</span>[<span class="fl">0.3</span> <span class="fl">0.5</span> <span class="fl">0.7</span>],</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    xticks<span class="op">=</span>(<span class="op">:</span>d1, <span class="op">:</span>d2, <span class="op">:</span>d3, <span class="op">:</span>d4), show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -514,7 +515,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Next example shows how to plot error bars in a grouped bar. Similar to this <a href="https://matplotlib.org/3.1.1/gallery/lines_bars_and_markers/barchart.html#sphx-glr-gallery-lines-bars-and-markers-barchart-py">mapplotlib’s example</a> (labels will come later).</p>
-<div id="3d4044b8" class="cell" data-execution_count="5">
+<div id="ba8619ba" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">bar</span>(<span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, [<span class="fl">20</span> <span class="fl">25</span>; <span class="fl">35</span> <span class="fl">32</span>; <span class="fl">30</span> <span class="fl">34</span>; <span class="fl">35</span> <span class="fl">20</span>; <span class="fl">27</span> <span class="fl">25</span>], width<span class="op">=</span><span class="fl">0.7</span>, fill<span class="op">=</span>[<span class="st">"lightblue"</span>, <span class="st">"brown"</span>],</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    error_bars<span class="op">=</span>(y<span class="op">=</span>[<span class="fl">2</span> <span class="fl">3</span>; <span class="fl">3</span> <span class="fl">5</span>; <span class="fl">4</span> <span class="fl">2</span>; <span class="fl">1</span> <span class="fl">3</span>; <span class="fl">2</span> <span class="fl">3</span>],),</span>
@@ -529,7 +530,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Example of a verticaly stacked bar plot. In this exampled we pass the <em>xx</em> coordinates as first argument and the individual bar heights in a matrix with smae number of rows as the number of elements in the <em>x</em> vector. To make it plot a stracked bar we used the option <strong>stacked</strong>=<em>true</em>.</p>
-<div id="f8dc8b77" class="cell" data-execution_count="6">
+<div id="8a89a39f" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">bar</span>(<span class="fl">1</span><span class="op">:</span><span class="fl">3</span>,[<span class="op">-</span><span class="fl">5</span> <span class="op">-</span><span class="fl">15</span> <span class="fl">20</span>; <span class="fl">17</span> <span class="fl">10</span> <span class="fl">21</span>; <span class="fl">10</span> <span class="fl">5</span> <span class="fl">15</span>], stacked<span class="op">=</span><span class="fl">1</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -543,7 +544,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="a-waterfall-chart" class="level2">
 <h2 class="anchored" data-anchor-id="a-waterfall-chart">A waterfall chart</h2>
-<div id="6ae9480e" class="cell" data-execution_count="7">
+<div id="93af5241" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">bar</span>([<span class="fl">1</span> <span class="fl">2</span> <span class="fl">3</span> <span class="fl">0</span> <span class="op">-</span><span class="fl">1</span> <span class="op">-</span><span class="fl">2</span> <span class="fl">0</span>], stacked<span class="op">=:</span>water, connector<span class="op">=</span><span class="cn">true</span>, bargap<span class="op">=</span><span class="fl">25</span>,</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    xticks<span class="op">=</span>(<span class="op">:</span>A, <span class="op">:</span>B, <span class="op">:</span>C, <span class="op">:</span>Partial, <span class="op">:</span>D, <span class="op">:</span>E, <span class="op">:</span>Total), show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -559,7 +560,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="horizontal-bar-plots" class="level2">
 <h2 class="anchored" data-anchor-id="horizontal-bar-plots">Horizontal bar plots</h2>
 <p>To create an horizontal bar plot we use the <strong>hbar</strong>=<em>true</em> option</p>
-<div id="4bc016c9" class="cell" data-execution_count="8">
+<div id="cb20b6d1" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">bar</span>([<span class="fl">0</span>. <span class="fl">1</span> <span class="fl">2</span> <span class="fl">3</span>; <span class="fl">1</span> <span class="fl">2</span> <span class="fl">3</span> <span class="fl">4</span>], hbar<span class="op">=</span><span class="cn">true</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -571,7 +572,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>And one horizontally stacked but this time we pick the colors.</p>
-<div id="20ed2223" class="cell" data-execution_count="9">
+<div id="9b8342f0" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">bar</span>([<span class="fl">0</span>. <span class="fl">1</span> <span class="fl">2</span> <span class="fl">3</span>; <span class="fl">1</span> <span class="fl">2</span> <span class="fl">3</span> <span class="fl">4</span>], stack<span class="op">=</span><span class="cn">true</span>, hbar<span class="op">=</span><span class="cn">true</span>, fill<span class="op">=</span>[<span class="st">"red"</span>, <span class="st">"green"</span>, <span class="st">"blue"</span>], show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -585,7 +586,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="make-a-3d-bar-plot-with-constant-color" class="level2">
 <h2 class="anchored" data-anchor-id="make-a-3d-bar-plot-with-constant-color">Make a 3D bar plot with constant color</h2>
-<div id="fd112a27" class="cell" data-execution_count="10">
+<div id="00c008f4" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Create a 3x3 grid</span></span>
@@ -614,7 +615,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <section id="plot-a-grid-as-3d-prisms." class="level4">
 <h4 class="anchored" data-anchor-id="plot-a-grid-as-3d-prisms.">Plot a grid as 3D prisms.</h4>
-<div id="48f16f53" class="cell" data-execution_count="11">
+<div id="be443297" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> GMT.<span class="fu">peaks</span>();      <span class="co"># Create a 'peaks' grid</span></span>

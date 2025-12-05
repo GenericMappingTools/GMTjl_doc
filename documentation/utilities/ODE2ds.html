@@ -30,6 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -396,23 +397,40 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#ode2ds" id="toc-ode2ds" class="nav-link active" data-scroll-target="#ode2ds">ODE2ds</a></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link active" data-scroll-target="#source-code">Source Code</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">ODE2ds</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
 
-<section id="ode2ds" class="level1">
-<h1>ODE2ds</h1>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
 <pre><code>D = ODE2ds(sol; interp=0)</code></pre>
 <p>Extract data from a DifferentialEquations solution type and return it into a <a href="../..\documentation/general/types.html#sec-dataset-type">GMTdataset</a>.</p>
 <ul>
 <li><code>interp</code>: == 0 means we return the original points (no interpolation). == 2 =&gt; do data interpolation to the double of original number of points. == 3 =&gt; three times, == n =&gt; n times.</li>
 </ul>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>View the <a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/utils_types.jl#L1038">source code</a> for this function.</p>
 
 
 </section>

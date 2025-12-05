@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -426,8 +427,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#source-code" id="toc-source-code" class="nav-link active" data-scroll-target="#source-code">Source Code</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -483,7 +490,7 @@ findpeaks(D::GMTdataset; min_height=D.bbox[1], min_prom=zero(D[1]), min_dist=0, 
 </section>
 <section id="examples" class="level3">
 <h3 class="anchored" data-anchor-id="examples">Examples</h3>
-<div id="f6e91cbd" class="cell" data-execution_count="1">
+<div id="81c165a5" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">gmtread</span>(TESTSDIR <span class="op">*</span> <span class="st">"assets/example_spectrum.txt"</span>);</span>
@@ -499,7 +506,7 @@ findpeaks(D::GMTdataset; min_height=D.bbox[1], min_prom=zero(D[1]), min_dist=0, 
 </div>
 </div>
 </div>
-<div id="074138bb" class="cell" data-execution_count="2">
+<div id="c0c63689" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">gmtread</span>(TESTSDIR <span class="op">*</span> <span class="st">"assets/example_spectrum.txt"</span>);</span>
@@ -515,6 +522,15 @@ findpeaks(D::GMTdataset; min_height=D.bbox[1], min_prom=zero(D[1]), min_dist=0, 
 </div>
 </div>
 </div>
+</section>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>This function has multiple methods:</p>
+<ul>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/findpeaks.jl#L50"><code>findpeaks(D::GMTdataset; min_height, min_prom, min_dist, threshold)</code></a> - findpeaks.jl:50</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/findpeaks.jl#L41"><code>findpeaks(y::AbstractVecOrMat{T}, x::AbstractVecOrMat; min_height, min_prom, min_dist, threshold, xsorted) where T&lt;:Real</code></a> - findpeaks.jl:41</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/findpeaks.jl#L41"><code>findpeaks(y::AbstractVecOrMat{T}; ...) where T&lt;:Real</code></a> - findpeaks.jl:41</li>
+</ul>
 
 
 </section>

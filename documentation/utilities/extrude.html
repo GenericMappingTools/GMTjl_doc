@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -433,6 +434,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#example" id="toc-example" class="nav-link active" data-scroll-target="#example">Example</a></li>
   <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
   </ul>
 </nav>
     </div>
@@ -481,7 +483,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="example" class="level2">
 <h2 class="anchored" data-anchor-id="example">Example</h2>
 <p>Extrude the Swisserland.</p>
-<div id="ca9441bd" class="cell" data-execution_count="1">
+<div id="5031d5a5" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>Dsw <span class="op">=</span> <span class="fu">coast</span>(dump<span class="op">=</span><span class="cn">true</span>, DCW<span class="op">=</span>(country<span class="op">=:</span>CH, file<span class="op">=:</span>ODS));   <span class="co"># Get the Swiss border</span></span>
@@ -496,7 +498,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>And a much nicer example combining extrusion and painting top surface with <a href="../..\documentation/utilities/flatfv.html">flatfv</a>.</p>
-<div id="ae29d81a" class="cell" data-execution_count="2">
+<div id="12989492" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Low resolution country polygons</span></span>
@@ -518,6 +520,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="see-also" class="level2">
 <h2 class="anchored" data-anchor-id="see-also">See Also</h2>
 <p><a href="../..\documentation/utilities/flatfv.html">flatfv</a>, <a href="../..\documentation/utilities/fv2fv.html">fv2fv</a>, <a href="../..\documentation/utilities/loft.html">loft</a>, <a href="../..\documentation/utilities/grid2tri.html">grid2tri</a>, <a href="../..\documentation/utilities/revolve.html">revolve</a>, <a href="../..\documentation/utilities/surf2fv.html">surf2fv</a></p>
+</section>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>This function has multiple methods:</p>
+<ul>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/imshow.jl#L235"><code>imshow(arg1::Symbol; horizontal, kw...)</code></a> - imshow.jl:235</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/imshow.jl#L236"><code>imshow(arg1::GMTcpt; horizontal, kw...)</code></a> - imshow.jl:236</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/imshow.jl#L241"><code>imshow(arg1::GMT.Gdal.AbstractDataset; kw...)</code></a> - imshow.jl:241</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/imshow.jl#L270"><code>imshow(x::AbstractVector{Float64}, f::String; kw...)</code></a> - imshow.jl:270</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/imshow.jl#L269"><code>imshow(x::AbstractVector{Float64}, y::AbstractVector{Float64}, f::String; kw...)</code></a> - imshow.jl:269</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/imshow.jl#L266"><code>imshow(x::AbstractVector{Float64}, f::Function; kw...)</code></a> - imshow.jl:266</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/imshow.jl#L246"><code>imshow(x::AbstractVector{Float64}, y::AbstractVector{Float64}, f::Function; kw...)</code></a> - imshow.jl:246</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/imshow.jl#L268"><code>imshow(f::Function, x::AbstractVector{Float64}, y::AbstractVector{Float64}; kw...)</code></a> - imshow.jl:268</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/imshow.jl#L267"><code>imshow(f::Function, x::AbstractVector{Float64}; kw...)</code></a> - imshow.jl:267</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/imshow.jl#L124"><code>imshow(arg1::GItype; kw...)</code></a> - imshow.jl:124</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/imshow.jl#L36"><code>imshow(arg1; ...)</code></a> - imshow.jl:36</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/imshow.jl#L36"><code>imshow(arg1, x::AbstractVector{Float64}; ...)</code></a> - imshow.jl:36</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/imshow.jl#L36"><code>imshow(arg1, x::AbstractVector{Float64}, y::AbstractVector{Float64}; kw...)</code></a> - imshow.jl:36</li>
+</ul>
 
 
 </section>

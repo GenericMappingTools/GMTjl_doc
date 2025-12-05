@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -431,22 +432,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#inpolygon" id="toc-inpolygon" class="nav-link active" data-scroll-target="#inpolygon">inpolygon</a>
-  <ul class="collapse">
-  <li><a href="#reference" id="toc-reference" class="nav-link" data-scroll-target="#reference">Reference</a></li>
+  <li><a href="#reference" id="toc-reference" class="nav-link active" data-scroll-target="#reference">Reference</a></li>
   <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
-  </ul></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">inpolygon</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
 
-<section id="inpolygon" class="level1">
-<h1>inpolygon</h1>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">in</span> <span class="op">=</span> <span class="fu">inpolygon</span>(x, y, polygon)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>or</span>
@@ -473,9 +486,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="see-also" class="level2">
 <h2 class="anchored" data-anchor-id="see-also">See Also</h2>
 <p><a href="../..\documentation/utilities/inwhichpolygon.html">inwhichpolygon</a></p>
-
-
 </section>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>This function has multiple methods:</p>
+<ul>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/spatial_funs.jl#L531"><code>inpolygon(pt::VecOrMat, poly::Matrix{T}) where T</code></a> - spatial_funs.jl:531</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/spatial_funs.jl#L530"><code>inpolygon(pt::GMTdataset, D::GMTdataset)</code></a> - spatial_funs.jl:530</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/spatial_funs.jl#L529"><code>inpolygon(pt::VecOrMat, D::GMTdataset)</code></a> - spatial_funs.jl:529</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/spatial_funs.jl#L528"><code>inpolygon(x, y, poly::Matrix{T}) where T</code></a> - spatial_funs.jl:528</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/spatial_funs.jl#L527"><code>inpolygon(x, y, D::GMTdataset)</code></a> - spatial_funs.jl:527</li>
+</ul>
+
+
 </section>
 
 </main> <!-- /main -->

@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -431,26 +432,38 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#gmtconnect" id="toc-gmtconnect" class="nav-link active" data-scroll-target="#gmtconnect">gmtconnect</a>
-  <ul class="collapse">
-  <li><a href="#description" id="toc-description" class="nav-link" data-scroll-target="#description">Description</a></li>
+  <li><a href="#description" id="toc-description" class="nav-link active" data-scroll-target="#description">Description</a></li>
   <li><a href="#required-arguments" id="toc-required-arguments" class="nav-link" data-scroll-target="#required-arguments">Required Arguments</a></li>
   <li><a href="#optional-arguments" id="toc-optional-arguments" class="nav-link" data-scroll-target="#optional-arguments">Optional Arguments</a></li>
   <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
   <li><a href="#bugs" id="toc-bugs" class="nav-link" data-scroll-target="#bugs">Bugs</a></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
   <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
-  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">gmtconnect</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
 
-<section id="gmtconnect" class="level1">
-<h1>gmtconnect</h1>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gmtconnect</span>(cmd0<span class="op">::</span><span class="dt">String</span>=<span class="st">""</span>, arg1<span class="op">=</span><span class="cn">nothing</span>, kwargs<span class="op">...</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Connect individual lines whose end points match within tolerance</p>
 <section id="description" class="level2">
@@ -520,12 +533,23 @@ Swap 1st and 2nd column on input and/or output. <a href="https://docs.generic-ma
 <h2 class="anchored" data-anchor-id="bugs">Bugs</h2>
 <p>The line connection does not work if a line only has a single point. However, <strong>connect</strong> will correctly add the point to the nearest segment. Running <strong>connect</strong> again on the new set of lines will eventually connect all lines that satisfy the criteria given in <strong>tolerance</strong>.</p>
 </section>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>This function has multiple methods:</p>
+<ul>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/gmtconnect.jl#L29"><code>gmtconnect(cmd0::String; ...)</code></a> - gmtconnect.jl:29</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/gmtconnect.jl#L29"><code>gmtconnect(; ...)</code></a> - gmtconnect.jl:29</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/gmtconnect.jl#L29"><code>gmtconnect(cmd0::String, arg1; ...)</code></a> - gmtconnect.jl:29</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/gmtconnect.jl#L39"><code>gmtconnect(arg1, arg2; kw...)</code></a> - gmtconnect.jl:39</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/gmtconnect.jl#L39"><code>gmtconnect(arg1; ...)</code></a> - gmtconnect.jl:39</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/gmtconnect.jl#L29"><code>gmtconnect(cmd0::String, arg1, arg2; kwargs...)</code></a> - gmtconnect.jl:29</li>
+</ul>
+</section>
 <section id="see-also" class="level2">
 <h2 class="anchored" data-anchor-id="see-also">See Also</h2>
 <p><a href="../..\documentation/modules/gmtsimplify.html">gmtsimplify</a>, <a href="../..\documentation/modules/gmtspatial.html">gmtspatial</a>, <a href="../..\documentation/modules/mapproject.html">mapproject</a></p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -436,6 +437,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#optional-arguments" id="toc-optional-arguments" class="nav-link" data-scroll-target="#optional-arguments">Optional Arguments</a></li>
   <li><a href="#time-settings" id="toc-time-settings" class="nav-link" data-scroll-target="#time-settings">Time Settings</a></li>
   <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
   <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
@@ -566,7 +568,7 @@ Swap 1st and 2nd column on input and/or output. <a href="https://docs.generic-ma
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="ss">```──────────</span></span>
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="ss">   1 │ 43758.0  -11.866  54.0388</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>And to see the IGRF field at 2025.0. Since we are not specifying the grid increments (<strong>inc</strong>) it will assume a <strong>inc=0.25</strong> degrees.</p>
-<div id="9d6adfa8" class="cell" data-execution_count="1">
+<div id="c45da5ed" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">magref</span>(R<span class="op">=:</span>d, onetime<span class="op">=</span><span class="fl">2025</span>);</span>
@@ -579,6 +581,15 @@ Swap 1st and 2nd column on input and/or output. <a href="https://docs.generic-ma
 </div>
 </div>
 </div>
+</section>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>This function has multiple methods:</p>
+<ul>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/mgd77/magref.jl#L16"><code>magref(; kwargs...)</code></a> - magref.jl:16</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/mgd77/magref.jl#L14"><code>magref(cmd0::String; kwargs...)</code></a> - magref.jl:14</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/mgd77/magref.jl#L15"><code>magref(arg1; kwargs...)</code></a> - magref.jl:15</li>
+</ul>
 </section>
 <section id="see-also" class="level2">
 <h2 class="anchored" data-anchor-id="see-also">See Also</h2>

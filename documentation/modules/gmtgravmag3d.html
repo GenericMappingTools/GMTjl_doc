@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -436,6 +437,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#optional-arguments" id="toc-optional-arguments" class="nav-link" data-scroll-target="#optional-arguments">Optional Arguments</a></li>
   <li><a href="#grid-distance-units" id="toc-grid-distance-units" class="nav-link" data-scroll-target="#grid-distance-units">Grid Distance Units</a></li>
   <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example">Example</a></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
   <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
   <li><a href="#reference" id="toc-reference" class="nav-link" data-scroll-target="#reference">Reference</a></li>
   </ul>
@@ -547,7 +549,7 @@ Select gridline or pixel node registration. Used only when output is a grid. <a 
 <section id="example" class="level2">
 <h2 class="anchored" data-anchor-id="example">Example</h2>
 <p>To compute the magnetic anomaly of a cube of unit sides located at 5 meters depth and centered at -10,1 in a domain <em>R=“-15/15/-15/15”</em> with a magnetization of 10 Am with a declination of 10 degrees, inclination of 60 in a magnetic field with -10 deg of declination and 40 deg of inclination, do:</p>
-<div id="7a4e295d" class="cell" data-execution_count="1">
+<div id="880a5fae" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">gravmag3d</span>(region<span class="op">=</span><span class="st">"-15/15/-15/15"</span>, I<span class="op">=</span><span class="fl">0.1</span>, mag_params<span class="op">=</span><span class="st">"10/60/10/-10/40"</span>, body<span class="op">=</span>(shape<span class="op">=:</span>prism, params<span class="op">=</span><span class="st">"1/1/1/-5/-10/1"</span>));</span>
@@ -560,6 +562,15 @@ Select gridline or pixel node registration. Used only when output is a grid. <a 
 </div>
 </div>
 </div>
+</section>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>This function has multiple methods:</p>
+<ul>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/potential/gmtgravmag3d.jl#L52"><code>gravmag3d(; kwargs...)</code></a> - gmtgravmag3d.jl:52</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/potential/gmtgravmag3d.jl#L50"><code>gravmag3d(cmd0::String; kwargs...)</code></a> - gmtgravmag3d.jl:50</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/potential/gmtgravmag3d.jl#L51"><code>gravmag3d(arg1; kwargs...)</code></a> - gmtgravmag3d.jl:51</li>
+</ul>
 </section>
 <section id="see-also" class="level2">
 <h2 class="anchored" data-anchor-id="see-also">See Also</h2>

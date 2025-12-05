@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -440,6 +441,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
   <li><a href="#gshhg-information" id="toc-gshhg-information" class="nav-link" data-scroll-target="#gshhg-information">GSHHG Information</a></li>
   <li><a href="#insideoutside-status" id="toc-insideoutside-status" class="nav-link" data-scroll-target="#insideoutside-status">Inside/outside Status</a></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
   <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
   </ul>
 </nav>
@@ -570,7 +572,7 @@ Swap 1st and 2nd column on input and/or output. <a href="https://docs.generic-ma
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <p>To only return the data points from the remote file <span class="citation" data-cites="ship_15.txt">@ship_15.txt</span> that lie within the region between longitudes 246 and 247 and latitudes 20 and 21, try:</p>
-<div id="f1d3c111" class="cell" data-execution_count="1">
+<div id="34d8ba2b" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">gmtselect</span>(<span class="st">"@ship_15.txt"</span>, region<span class="op">=</span>(<span class="fl">246</span>,<span class="fl">247</span>,<span class="fl">20</span>,<span class="fl">21</span>));</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(D, marker<span class="op">=:</span>point, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -604,6 +606,19 @@ Swap 1st and 2nd column on input and/or output. <a href="https://docs.generic-ma
 <section id="insideoutside-status" class="level2">
 <h2 class="anchored" data-anchor-id="insideoutside-status">Inside/outside Status</h2>
 <p>To determine if a point is inside, outside, or exactly on the boundary of a polygon we need to balance the complexity (and execution time) of the algorithm with the type of data and shape of the polygons. For any Cartesian data we use a non-zero winding algorithm, which is quite fast. For geographic data we will also use this algorithm as long as (1) the polygons do not include a geographic pole, and (2) the longitude extent of the polygons is less than 360. If this is the situation we also carefully adjust the test point longitude for any 360 degree offsets, if appropriate. Otherwise, we employ a full spherical ray-shooting method to determine a points status.</p>
+</section>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>This function has multiple methods:</p>
+<ul>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/gmtselect.jl#L63"><code>gmtselect(cmd0::String; ...)</code></a> - gmtselect.jl:63</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/gmtselect.jl#L63"><code>gmtselect(; ...)</code></a> - gmtselect.jl:63</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/gmtselect.jl#L92"><code>gmtselect(arg1; kw...)</code></a> - gmtselect.jl:92</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/gmtselect.jl#L63"><code>gmtselect(cmd0::String, arg1, arg2, arg3, arg4; kwargs...)</code></a> - gmtselect.jl:63</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/gmtselect.jl#L63"><code>gmtselect(cmd0::String, arg1, arg2, arg3; ...)</code></a> - gmtselect.jl:63</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/gmtselect.jl#L63"><code>gmtselect(cmd0::String, arg1, arg2; ...)</code></a> - gmtselect.jl:63</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/gmtselect.jl#L63"><code>gmtselect(cmd0::String, arg1; ...)</code></a> - gmtselect.jl:63</li>
+</ul>
 </section>
 <section id="see-also" class="level2">
 <h2 class="anchored" data-anchor-id="see-also">See Also</h2>

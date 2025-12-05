@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -435,6 +436,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#optional-arguments" id="toc-optional-arguments" class="nav-link" data-scroll-target="#optional-arguments">Optional Arguments</a></li>
   <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
   <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See also</a></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
   </ul>
 </nav>
     </div>
@@ -508,7 +510,7 @@ Save the figure with the <code>figname=name.ext</code> where <code>ext</code> ch
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <p>A simple scatter of ten points plotted as red circles of 7 points size</p>
-<div id="6b71a1a3" class="cell" data-execution_count="1">
+<div id="09306c35" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">scatter</span>(<span class="fl">1</span><span class="op">:</span><span class="fl">10</span>,<span class="fu">rand</span>(<span class="fl">10</span>), fill<span class="op">=:</span>red, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -520,7 +522,7 @@ Save the figure with the <code>figname=name.ext</code> where <code>ext</code> ch
 </div>
 </div>
 <p>A plot where symbol’s size grows linearly</p>
-<div id="b78d5038" class="cell" data-execution_count="2">
+<div id="682630bb" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>sizevec <span class="op">=</span> [s for s <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>] <span class="op">./</span> <span class="fl">10</span>;</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">scatter</span>(<span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, markersize <span class="op">=</span> sizevec, marker<span class="op">=:</span>square, fill<span class="op">=:</span>green, show<span class="op">=</span><span class="fl">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -536,6 +538,22 @@ Save the figure with the <code>figname=name.ext</code> where <code>ext</code> ch
 <section id="see-also" class="level2">
 <h2 class="anchored" data-anchor-id="see-also">See also</h2>
 <p>The <a href="http://docs.generic-mapping-tools.org/latest/plot.html"><code>GMT man page</code></a></p>
+</section>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>This function has multiple methods:</p>
+<ul>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L387"><code>scatter(cmd0::String; ...)</code></a> - plot.jl:387</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L387"><code>scatter(cmd0::String, arg1; kw...)</code></a> - plot.jl:387</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L399"><code>scatter(D::Vector{&lt;:GMTdataset{Float64, 2}}; first, kw...)</code></a> - plot.jl:399</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L376"><code>scatter(f::Function; ...)</code></a> - plot.jl:376</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L382"><code>scatter(f1::Function, f2::Function; ...)</code></a> - plot.jl:382</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L376"><code>scatter(f::Function, range_x; first, kw...)</code></a> - plot.jl:376</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L382"><code>scatter(f1::Function, f2::Function, range_t; first, kw...)</code></a> - plot.jl:382</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L387"><code>scatter(; ...)</code></a> - plot.jl:387</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L393"><code>scatter(arg1, arg2; kw...)</code></a> - plot.jl:393</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L390"><code>scatter(arg; kw...)</code></a> - plot.jl:390</li>
+</ul>
 
 
 </section>

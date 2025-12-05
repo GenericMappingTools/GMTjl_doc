@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -431,7 +432,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#see-also" id="toc-see-also" class="nav-link active" data-scroll-target="#see-also">See Also</a></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link active" data-scroll-target="#source-code">Source Code</a></li>
+  <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
   </ul>
 </nav>
     </div>
@@ -508,7 +510,7 @@ PrettyTables.pretty_table(io, ["-85.9506" "-82.5561" "8.0329" "11.2167" "CRC" "C
 header=["W(lon)","E(lon)","S(lat)","N(lat)","Code","Region","Ref"], backend=Val(:html)) # hide
 println("~~~" * String(take!(io)) * "~~~") # hide</code></pre>
 <p>Consulting the <code>UN</code> collection we would have found that the “Caribbean” region has the code <code>UN029</code>. So, making a map of the Caribe is as simple as:</p>
-<div id="c458666e" class="cell" data-execution_count="1">
+<div id="e250f33e" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">earthregions</span>(<span class="st">"UN029"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -520,7 +522,7 @@ println("~~~" * String(take!(io)) * "~~~") # hide</code></pre>
 </div>
 </div>
 <p>But the examples above do not let us plot the country’s borders that help referencing a map. For the time being that is only possible when we use the <code>DCW</code> collection. Next example shows a case with country borders. Also note that for the regions in the <code>DCW</code> (there are 248 of them) we can combine as many countries as we want.</p>
-<div id="b51c37c3" class="cell" data-execution_count="2">
+<div id="e9b02481" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">earthregions</span>(<span class="st">"PT,ES,FR"</span>, country<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -532,7 +534,7 @@ println("~~~" * String(take!(io)) * "~~~") # hide</code></pre>
 </div>
 </div>
 <p>Our last example shows how to extract a topo/bathymetric grid of the “Sea of Azov” and letting the <code>earthregions</code> select the grid resolution. We also show how to make a pretty map with very few commands. Note that for this later case we have much more plotting possibilities than with the <code>earthregions</code> function that is only a tool to select named regions and quickly visualize them.</p>
-<div id="234e3224" class="cell" data-execution_count="3">
+<div id="42f488c5" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">earthregions</span>(<span class="st">"IHO31"</span>, grid<span class="op">=</span><span class="cn">true</span>);</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">viz</span>(G, shade<span class="op">=</span><span class="cn">true</span>, coast<span class="op">=</span><span class="cn">true</span>, cmap<span class="op">=:</span>earth)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -544,6 +546,14 @@ println("~~~" * String(take!(io)) * "~~~") # hide</code></pre>
 </div>
 </div>
 </div>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>This function has multiple methods:</p>
+<ul>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/pscoast.jl#L363"><code>earthregions(name::String; proj, grid, dataset, res, exact, registration, country, round, show, Vd)</code></a> - pscoast.jl:363</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/pscoast.jl#L363"><code>earthregions(; ...)</code></a> - pscoast.jl:363</li>
+</ul>
+</section>
 <section id="see-also" class="level2">
 <h2 class="anchored" data-anchor-id="see-also">See Also</h2>
 <p><a href="../..\documentation/modules/coast.html">coast</a>, <a href="../..\documentation/utilities/mosaic.html">mosaic</a></p>

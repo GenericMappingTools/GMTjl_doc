@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -462,7 +463,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p>{{doc arrows}}</p>
-<div id="4233a6e5" class="cell" data-execution_count="1">
+<div id="d4f3e62c" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">arrows</span>([<span class="fl">0.5</span> <span class="fl">0.5</span> <span class="fl">0</span> <span class="fl">2</span>], limits<span class="op">=</span>(<span class="fl">0</span>.,<span class="fl">3</span>,<span class="fl">0</span>,<span class="fl">2.5</span>), figsize<span class="op">=</span>(<span class="fl">15</span>,<span class="fl">5</span>),</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>       arrow<span class="op">=</span>(len<span class="op">=</span><span class="fl">2</span>,), pen<span class="op">=</span><span class="fl">6</span>,</span>
@@ -480,7 +481,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="acbbf291" class="cell" data-execution_count="2">
+<div id="d293ab5a" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">arrows</span>([<span class="fl">0.5</span> <span class="fl">0.5</span> <span class="fl">0</span> <span class="fl">2</span>], limits<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">3</span>,<span class="fl">0</span>,<span class="fl">2.5</span>), figsize<span class="op">=</span>(<span class="fl">15</span>,<span class="fl">5</span>),</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>       arrow<span class="op">=</span>(len<span class="op">=</span><span class="fl">2</span>,start<span class="op">=:</span>arrow,stop<span class="op">=:</span>tail,shape<span class="op">=</span><span class="fl">0.5</span>), fill<span class="op">=:</span>red, pen<span class="op">=</span><span class="fl">6</span>,</span>
@@ -503,7 +504,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="gmt4-gmt5-style-arrows" class="level2">
 <h2 class="anchored" data-anchor-id="gmt4-gmt5-style-arrows">GMT4 &amp; GMT5 style arrows</h2>
 <p>Plot GMT4 style arrows. We show here three alternatives to set arrow heads</p>
-<div id="9dfb482f" class="cell" data-execution_count="3">
+<div id="8ff2e9ed" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">arrows</span>([<span class="fl">1</span> <span class="fl">0</span> <span class="fl">45</span> <span class="fl">2</span>], region<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">6</span>,<span class="op">-</span><span class="fl">1</span>,<span class="fl">1</span>), figscale<span class="op">=</span><span class="st">"2.5"</span>,</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>       frame<span class="op">=</span>(annot<span class="op">=:</span>auto, grid<span class="op">=</span><span class="fl">1</span>, title<span class="op">=</span><span class="st">"GMT4 Vectors"</span>),</span>
@@ -534,7 +535,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="mat-angles" class="level2">
 <h2 class="anchored" data-anchor-id="mat-angles">Mat angles</h2>
 <p>Plot matangle symbols with vector heads.</p>
-<div id="fb0d056b" class="cell" data-execution_count="4">
+<div id="bd94a954" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>([<span class="fl">0.5</span> <span class="fl">1</span> <span class="fl">1.75</span> <span class="fl">5</span> <span class="fl">85</span>], region<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">5</span>,<span class="fl">0</span>,<span class="fl">5</span>), figsize<span class="op">=</span><span class="fl">12</span>,</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>        marker<span class="op">=</span>(matang<span class="op">=</span><span class="cn">true</span>, arrow<span class="op">=</span>(length<span class="op">=</span><span class="fl">0.75</span>, start<span class="op">=</span><span class="cn">true</span>, stop<span class="op">=</span><span class="cn">true</span>, half<span class="op">=:</span>right)),</span>
@@ -555,7 +556,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="vector-heads-and-tails" class="level2">
 <h2 class="anchored" data-anchor-id="vector-heads-and-tails">Vector heads and tails</h2>
 <p>There are many methods to plot vectors with individual heads and tails. For this purpose, several modifiers may be set to the corresponding vector-producing parameters for specifying the placement of vector heads and tails, their shapes, and the justification of the vector, see more at [Vector Attributes].</p>
-<div id="feb7ffc2" class="cell" data-execution_count="5">
+<div id="25605070" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">arrows</span>([<span class="fl">1</span> <span class="fl">14</span> <span class="fl">0</span> <span class="fl">35</span>], limits<span class="op">=</span>(<span class="op">-</span><span class="fl">5</span>,<span class="fl">100</span>,<span class="fl">1</span>,<span class="fl">15</span>), figsize<span class="op">=</span>(<span class="fl">15</span>,<span class="fl">10</span>), pen<span class="op">=</span><span class="fl">2</span>, arrow<span class="op">=</span>(len<span class="op">=</span><span class="fl">0</span>,), </span>
@@ -598,7 +599,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="cartesian-circular-and-geographic-vectors" class="level2">
 <h2 class="anchored" data-anchor-id="cartesian-circular-and-geographic-vectors">Cartesian, circular, and geographic vectors</h2>
 <p>Plot Cartesian, circular, and geographic vectors. This <a href="https://www.pygmt.org/dev/gallery/lines/vector_styles.html">example</a> was picked from the PyGMT gallery.</p>
-<div id="b7935441" class="cell" data-execution_count="6">
+<div id="21bdd482" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">coast</span>(region<span class="op">=</span>[<span class="op">-</span><span class="fl">127</span>, <span class="op">-</span><span class="fl">64</span>, <span class="fl">24</span>, <span class="fl">53</span>], proj<span class="op">=:</span>merc, borders<span class="op">=</span><span class="fl">1</span>, area<span class="op">=</span><span class="fl">4000</span>, shore<span class="op">=</span><span class="cn">true</span>)</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -641,7 +642,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="quivers" class="level2">
 <h2 class="anchored" data-anchor-id="quivers">Quivers</h2>
 <p>A (nicer looking) Matlab quiver plot example. To fully reproduce the Matlab example we also use the extremely memory wasting <code>meshgrid</code>. And because we turn <code>U</code> and <code>V</code> into grids before sending them to GMT, not specifying the limits would lose all first/last column/rows because most of the arrows are going <em>out</em> of the grid domain. We could have done it but it looks nicer if we specify a slightly wider domain.</p>
-<div id="2e233e90" class="cell" data-execution_count="7">
+<div id="5a202b9a" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>X,Y <span class="op">=</span> <span class="fu">meshgrid</span>(<span class="op">-</span><span class="cn">pi</span><span class="op">:</span><span class="cn">pi</span><span class="op">/</span><span class="fl">8</span><span class="op">:</span><span class="cn">pi</span>,<span class="op">-</span><span class="cn">pi</span><span class="op">:</span><span class="cn">pi</span><span class="op">/</span><span class="fl">8</span><span class="op">:</span><span class="cn">pi</span>);</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>U <span class="op">=</span> <span class="fu">sin</span>.(Y);</span>
@@ -656,7 +657,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Next example doesn’t need our <em>help</em> to extend the plotting limits and it uses grids directly. And for simplicity let’s create a grid using <code>grdmath</code> and compute its horizontal derivatives. Then we plot them as an arrow field.</p>
-<div id="89b4be63" class="cell" data-execution_count="8">
+<div id="b428c952" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">gmt</span>(<span class="st">"grdmath -R-2/2/-2/2 -I0.1 X Y R2 NEG EXP X MUL"</span>);</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>dzdy <span class="op">=</span> <span class="fu">gmt</span>(<span class="st">"grdmath ? DDY"</span>, G);</span>
@@ -672,7 +673,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>The above examples used Cartesian coordinates, but we can use also geographic coordinates where the arrows <em>know</em> where they are on Earth. This example plots the NUVEL1 plate motion model velocities relative to the Eurasian plate. The defaults guess pretty much a good solution for the arrow’s length and header sizes, but we can modify them if we are not satisfied with the default results.</p>
-<div id="4bdc4139" class="cell" data-execution_count="9">
+<div id="6b427640" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">quiver</span>(TESTSDIR <span class="op">*</span> <span class="st">"assets/nuvel1_vx.nc"</span>, TESTSDIR <span class="op">*</span> <span class="st">"assets/nuvel1_vy.nc"</span>, proj<span class="op">=:</span>guess,</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>       coast<span class="op">=</span>(shore<span class="op">=:</span>gray70, area<span class="op">=</span><span class="fl">5000</span>), lw<span class="op">=</span><span class="fl">1</span>, C<span class="op">=:</span>turbo, show<span class="op">=</span><span class="cn">true</span>, Vd<span class="op">=</span><span class="fl">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -688,7 +689,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>A nice and instructive plot but we may want a somewhat larger arrows. Figuring out a best sized arrows is very tricky and no solution will please all users. The above command used the option <code>Vd=1</code>, which prints the real hard core command that is sent to GMT. Many users get scared with it but fine tuning implies understanding its contents. Specifically the <code>-Si136.92637k</code> part that sets arrows scale factor. Much more information is provided in the <a href="../..\documentation/modules/grdvector.html">grdvector</a> manual page, but as a quick help here we inform that <strong>i</strong> stands for inverse scale factor (<strong>136.92637</strong> in this case) and <strong>k</strong> means kilometers. So if we want larger arrows we must increase the (inverse) scale factor. A slightly modified version of the above is obtained with:</p>
-<div id="adb99db0" class="cell" data-execution_count="10">
+<div id="a4f5da29" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">quiver</span>(TESTSDIR <span class="op">*</span> <span class="st">"assets/nuvel1_vx.nc"</span>, TESTSDIR <span class="op">*</span> <span class="st">"assets/nuvel1_vy.nc"</span>, proj<span class="op">=:</span>guess, lw<span class="op">=</span><span class="fl">1</span>, </span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>       coast<span class="op">=</span>(shore<span class="op">=:</span>gray70, area<span class="op">=</span><span class="fl">5000</span>), vscale<span class="op">=</span>(inverse<span class="op">=</span><span class="cn">true</span>, scale<span class="op">=</span><span class="st">"400k"</span>), C<span class="op">=:</span>turbo, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>

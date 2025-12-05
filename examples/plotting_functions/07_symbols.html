@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -461,7 +462,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <section id="line-styles" class="level3">
 <h3 class="anchored" data-anchor-id="line-styles">Line styles</h3>
-<div id="61f05a83" class="cell" data-execution_count="1">
+<div id="820a905b" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>ls <span class="op">=</span> [<span class="st">"pen=0.5"</span>,                      <span class="co"># default (a 0.5 points continuous black line)</span></span>
@@ -504,7 +505,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="line-styles-1" class="level3">
 <h3 class="anchored" data-anchor-id="line-styles-1">Line styles</h3>
 <p>Draw a so-called front which allows to plot specific symbols distributed along a line or curve. Typical use cases are weather fronts, fault lines, subduction zones, and more.</p>
-<div id="0c672487" class="cell" data-execution_count="2">
+<div id="3269764f" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># keyword/value way of controlling the Front line styles.</span></span>
@@ -549,7 +550,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="basic-geometric-symbols" class="level3">
 <h3 class="anchored" data-anchor-id="basic-geometric-symbols">Basic geometric symbols</h3>
-<div id="d4250b6b" class="cell" data-execution_count="3">
+<div id="719e75bd" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>font <span class="op">=</span> <span class="st">"9p,Helvetica-Bold"</span></span>
@@ -608,7 +609,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="basic-and-custom-symbols" class="level3">
 <h3 class="anchored" data-anchor-id="basic-and-custom-symbols">Basic and custom symbols</h3>
-<div id="0eaff585" class="cell" data-execution_count="4">
+<div id="c6ae6d4a" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>([<span class="fl">0</span> <span class="fl">0</span>], limits<span class="op">=</span>(<span class="op">-</span><span class="fl">1</span>,<span class="fl">6</span>,<span class="op">-</span><span class="fl">1</span>,<span class="fl">6</span>), figsize<span class="op">=</span>(<span class="fl">15</span>,<span class="fl">15</span>), marker<span class="op">=:</span>circle, ms<span class="op">=</span><span class="fl">0.75</span>,</span>
@@ -644,7 +645,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="spiders" class="level3">
 <h3 class="anchored" data-anchor-id="spiders">Spiders</h3>
 <p>Plot Pies, Wedges or Web (spiders). They are all synonims. We show here three different ways of plotting this symbol (depending of its complexity)</p>
-<div id="2fa00d84" class="cell" data-execution_count="5">
+<div id="df7dcf94" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>([<span class="fl">0.5</span> <span class="fl">0.5</span> <span class="fl">30</span> <span class="fl">100</span>], limits<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">6</span>,<span class="fl">0</span>,<span class="fl">3</span>), figscale<span class="op">=</span><span class="fl">2.5</span>, frame<span class="op">=</span><span class="st">"afg"</span>,</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>     marker<span class="op">=:</span>wedge, ms<span class="op">=</span><span class="fl">5</span>, fill<span class="op">=:</span>lightyellow, ml<span class="op">=</span><span class="fl">2</span>, title<span class="op">=</span><span class="st">"Spiders"</span>)</span>

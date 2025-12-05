@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -468,6 +469,7 @@ window.Quarto = {
   <li><a href="#grids-straddling-zero-level" id="toc-grids-straddling-zero-level" class="nav-link" data-scroll-target="#grids-straddling-zero-level">Grids Straddling Zero Level</a></li>
   <li><a href="#note-on-precision" id="toc-note-on-precision" class="nav-link" data-scroll-target="#note-on-precision">Note on Precision</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
   <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
   </ul>
 </nav>
@@ -594,7 +596,7 @@ Swap 1st and 2nd column on input and/or output. <a href="https://docs.generic-ma
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <p>We have prepared a set of 2828 prisms that represent a truncated Gaussian seamount of height 6000 m, radius 30 km, with the base at z = 0 m, available in the remote file <span class="citation" data-cites="prisms.txt">@prisms.txt</span>. A quick view of the 3-D model can be had via:</p>
-<div id="5b2d13ab" class="cell" data-execution_count="1">
+<div id="1b704250" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot3d</span>(<span class="st">"@prisms.txt"</span>, region<span class="op">=</span>(<span class="op">-</span><span class="fl">30</span>, <span class="fl">30</span>, <span class="op">-</span><span class="fl">30</span>, <span class="fl">30</span>, <span class="fl">0</span>, <span class="fl">7000</span>), zsize<span class="op">=</span><span class="fl">3</span>, fill<span class="op">=:</span>gray,</span>
@@ -608,7 +610,7 @@ Swap 1st and 2nd column on input and/or output. <a href="https://docs.generic-ma
 </div>
 </div>
 <p>To compute the free-air anomalies on a grid over the set of prisms given in _<span class="citation" data-cites="prisms.txt_">@prisms.txt_</span>, using 1700 <span class="math inline">\(kg/m^3\)</span> as a fixed density contrast, with horizontal distances in km and vertical distances in meters, observed at 7000 m, try:</p>
-<div id="2dcc4700" class="cell" data-execution_count="2">
+<div id="066eb27d" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">gravprisms</span>(<span class="st">"@prisms.txt"</span>, region<span class="op">=</span>(<span class="op">-</span><span class="fl">40</span>,<span class="fl">40</span>,<span class="op">-</span><span class="fl">40</span>,<span class="fl">40</span>), inc<span class="op">=</span><span class="fl">1</span>, units<span class="op">=:</span>horizontal,</span>
@@ -623,7 +625,7 @@ Swap 1st and 2nd column on input and/or output. <a href="https://docs.generic-ma
 </div>
 </div>
 <p>To obtain the vertical gravity gradient anomaly along the track given in crossing.txt for the same model, try:</p>
-<div id="98f56794" class="cell" data-execution_count="3">
+<div id="f7c17a32" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>Dcross <span class="op">=</span> <span class="fu">gmt</span>(<span class="st">"math -T-30/30/0.1 T 0 MUL ="</span>);</span>
@@ -638,7 +640,7 @@ Swap 1st and 2nd column on input and/or output. <a href="https://docs.generic-ma
 </div>
 </div>
 <p>Finally, redo the gravity calculation but now use the individual prism densities in the prism file and restrict calculations to the same crossing profile, i.e.:</p>
-<div id="781b27e3" class="cell" data-execution_count="4">
+<div id="88405939" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>Dcross <span class="op">=</span> <span class="fu">gmt</span>(<span class="st">"math -T-30/30/0.1 T 0 MUL ="</span>);</span>
@@ -672,6 +674,15 @@ Swap 1st and 2nd column on input and/or output. <a href="https://docs.generic-ma
 <p>Grant, F. S. and West, G. F., 1965, <em>Interpretation Theory in Applied Geophysics</em>, 583 pp., McGraw-Hill.</p>
 <p>Kim, S.-S., and P. Wessel, 2016, New analytic solutions for modeling vertical gravity gradient anomalies, <em>Geochem. Geophys. Geosyst., 17</em>, <code>https://doi.org/10.1002/2016GC006263 &lt;https://doi.org/10.1002/2016GC006263&gt;</code>_.</p>
 <p>Nagy D., Papp G., Benedek J., 2000, The gravitational potential and its derivatives for the prism, <em>J. Geod., 74</em>, 552–560, <code>https://doi.org/10.1007/s001900000116 &lt;https://doi.org/10.1007/s001900000116&gt;</code>_.</p>
+</section>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>This function has multiple methods:</p>
+<ul>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/potential/gravprisms.jl#L58"><code>gravprisms(cmd0::String; ...)</code></a> - gravprisms.jl:58</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/potential/gravprisms.jl#L58"><code>gravprisms(; ...)</code></a> - gravprisms.jl:58</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/potential/gravprisms.jl#L58"><code>gravprisms(cmd0::String, arg1::GDtype; kwargs...)</code></a> - gravprisms.jl:58</li>
+</ul>
 </section>
 <section id="see-also" class="level2">
 <h2 class="anchored" data-anchor-id="see-also">See Also</h2>

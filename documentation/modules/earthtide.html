@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -436,6 +437,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
   <li><a href="#notes" id="toc-notes" class="nav-link" data-scroll-target="#notes">Notes</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
   </ul>
 </nav>
     </div>
@@ -499,7 +501,7 @@ Select verbosity level. More at [verbose](../common_opts/opt_V.html)</p></li>
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <p>To compute a global grid of the vertical component with a grid step of 30m at noon of 18 Jun 2018, (note: we are using the defaults for <strong>region</strong> and <strong>inc</strong>) try</p>
-<div id="7dea46f3" class="cell" data-execution_count="1">
+<div id="db636acf" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">earthtide</span>(range<span class="op">=</span><span class="st">"2018-06-18T12:00:00"</span>);</span>
@@ -546,6 +548,10 @@ D = earthtide(sun_moon=true);</code></pre>
 <section id="references" class="level2">
 <h2 class="anchored" data-anchor-id="references">References</h2>
 <p>http://geodesyworld.github.io/SOFTS/solid.htm</p>
+</section>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>View the <a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/geodesy/earthtide.jl#L13">source code</a> for this function.</p>
 
 
 </section>

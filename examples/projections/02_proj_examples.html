@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -498,6 +499,11 @@ window.Quarto = {
 </ol>
 <p>Click on any projection below to jump to its detailed example.</p>
 <style>
+
+.grid {
+  gap: 6px; /* Define o espaçamento entre os cartões */
+}
+
 .card {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   cursor: pointer;
@@ -651,6 +657,11 @@ window.Quarto = {
 </div>
 <div class="g-col-4 g-col-md-3 g-col-lg-2">
 <div class="card h-100">
+<p><a href="#sinusoidal" class="card-title stretched-link"><strong>Interupted Sinusoidal</strong></a> <a href="#sinusoidal"><img src="cell-31-output-1.jpg" class="card-img-top img-fluid"></a></p>
+</div>
+</div>
+<div class="g-col-4 g-col-md-3 g-col-lg-2">
+<div class="card h-100">
 <p><a href="#van-der-grinten" class="card-title stretched-link"><strong>Van der Grinten</strong></a> <a href="#van-der-grinten"><img src="cell-32-output-1.jpg" class="card-img-top img-fluid"></a></p>
 </div>
 </div>
@@ -668,7 +679,7 @@ window.Quarto = {
 <li>Map scale in cm/degree or 1:xxxxx notation, or map width.</li>
 </ul>
 <p>Note that you must include the <strong>1:</strong> if you choose to specify the scale that way. E.g., you can say 0.5 which means 0.5 cm/degree or 1:200000 which means 1 cm on the map equals 200,000 cm along the standard parallels. The projection center defines the origin of the rectangular map coordinates. As an example we will make a map of the region near Taiwan. We choose the center of the projection to be at 125ºE/20ºN and 25ºN and 45ºN as our two standard parallels. We desire a map that is 12 cm wide (the dafault). The complete command needed to generate the map below is therefore given by:</p>
-<div id="08abd6df" class="cell" data-execution_count="1">
+<div id="3fe83290" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">coast</span>(region<span class="op">=</span>[<span class="fl">110</span> <span class="fl">140</span> <span class="fl">20</span> <span class="fl">35</span>],                                   <span class="co"># The Map limits    </span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>      proj<span class="op">=</span>(name<span class="op">=:</span>Albers, center<span class="op">=</span>[<span class="fl">125</span> <span class="fl">20</span>], parallels<span class="op">=</span>[<span class="fl">25</span> <span class="fl">45</span>]),  <span class="co"># The projection parameters</span></span>
@@ -698,7 +709,7 @@ window.Quarto = {
 <li>Map scale in cm/degree or 1:xxxxx notation, or map width.</li>
 </ul>
 <p>The equidistant conic projection is often used for atlases with maps of small countries. As an example, we generate a map of Cuba:</p>
-<div id="11676c56" class="cell" data-execution_count="2">
+<div id="a902cb8b" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">coast</span>(region<span class="op">=</span>[<span class="op">-</span><span class="fl">88</span> <span class="op">-</span><span class="fl">70</span> <span class="fl">18</span> <span class="fl">24</span>], proj<span class="op">=</span>(name<span class="op">=:</span>eqdc, center<span class="op">=</span>[<span class="op">-</span><span class="fl">79</span> <span class="fl">21</span>], parallels<span class="op">=</span>[<span class="fl">19</span> <span class="fl">23</span>]),</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>      frame<span class="op">=:</span>ag, res<span class="op">=:</span>intermediate, borders<span class="op">=</span>(<span class="kw">type</span><span class="op">=</span><span class="fl">1</span>,pen<span class="op">=</span>(<span class="st">"thick"</span>,<span class="st">"red"</span>)), land<span class="op">=:</span>green,</span>
@@ -722,7 +733,7 @@ window.Quarto = {
 <li>Map scale in cm/degree or 1:xxxxx notation, or map width.</li>
 </ul>
 <p>The Lambert conformal projection has been used for basemaps for all the 48 contiguous States with the two fixed standard parallels 33ºN and 45ºN. We will generate a map of the continental USA using these parameters. Note that with all the projections you have the option of selecting a rectangular border rather than one defined by meridians and parallels. Here, we choose the regular WESN region, a “fancy” basemap frame, and use degrees west for longitudes. The generating command used is</p>
-<div id="a3a6e260" class="cell" data-execution_count="3">
+<div id="07dc8558" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">coast</span>(region<span class="op">=</span>[<span class="op">-</span><span class="fl">130</span> <span class="op">-</span><span class="fl">70</span> <span class="fl">24</span> <span class="fl">52</span>], proj<span class="op">=</span>(name<span class="op">=:</span>lambertConic, center<span class="op">=</span>[<span class="op">-</span><span class="fl">100</span> <span class="fl">35</span>], parallels<span class="op">=</span>[<span class="fl">33</span> <span class="fl">45</span>]),</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>      frame<span class="op">=:</span>ag, res<span class="op">=:</span>low, borders<span class="op">=</span>((<span class="kw">type</span><span class="op">=</span><span class="fl">1</span>, pen<span class="op">=</span>(<span class="st">"thick"</span>,<span class="st">"red"</span>)), (<span class="kw">type</span><span class="op">=</span><span class="fl">2</span>, pen<span class="op">=</span>(<span class="st">"thinner"</span>,))),</span>
@@ -745,7 +756,7 @@ window.Quarto = {
 <li>Name: <em>poly</em>, <em>Polyconic</em>, GMT code -&gt; <em>Poly</em> (width) <em>poly</em> (scale)</li>
 </ul>
 <p>Below we reproduce the illustration by Snyder [1987], with a gridline every 10 and annotations only every 30º in longitude:</p>
-<div id="d509f58c" class="cell" data-execution_count="4">
+<div id="f64cf5d4" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">coast</span>(region<span class="op">=</span>(<span class="op">-</span><span class="fl">180</span>,<span class="op">-</span><span class="fl">20</span>,<span class="fl">0</span>,<span class="fl">90</span>), proj<span class="op">=:</span>poly, xaxis<span class="op">=</span>(annot<span class="op">=</span><span class="fl">30</span>,grid<span class="op">=</span><span class="fl">10</span>), yaxis<span class="op">=</span>(annot<span class="op">=</span><span class="fl">10</span>,grid<span class="op">=</span><span class="fl">10</span>),</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>      area<span class="op">=</span><span class="fl">1000</span>, land<span class="op">=:</span>lightgray, shore<span class="op">=:</span>thinnest, title<span class="op">=</span><span class="st">"(American) polyconic projection"</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -775,7 +786,7 @@ window.Quarto = {
 <h4 class="anchored" data-anchor-id="rectangular-map">Rectangular map</h4>
 <p>In this mode we define our region by specifying the longitude/latitude of the lower left and upper right corners instead of the usual west, east, south, north boundaries. The reason for specifying our area this way is that for this and many other projections, lines of equal longitude and latitude are not straight lines and are thus poor choices for map boundaries. Instead we require that the map boundaries be rectangular by defining the corners of a rectangular map boundary. Using 0ºE/40ºS (lower left) and 60ºE/10ºS (upper right) as our corners we try</p>
 <p>.. Este so funciona uma vez por causa do -Gp. Depois e preciso fazer “destroy”</p>
-<div id="153dc786" class="cell" data-execution_count="5">
+<div id="02916569" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">coast</span>(region<span class="op">=</span><span class="st">"0/-40/60/-10+r"</span>, proj<span class="op">=</span>(name<span class="op">=:</span>laea, center<span class="op">=</span>[<span class="fl">30</span>,<span class="op">-</span><span class="fl">30</span>]), frame<span class="op">=:</span>ag,</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>      area<span class="op">=</span><span class="fl">500</span>, land<span class="op">=</span>(pattern<span class="op">=</span><span class="fl">10</span>,dpi<span class="op">=</span><span class="fl">300</span>), shore<span class="op">=:</span>thinnest, title<span class="op">=</span><span class="st">"Rectangular map"</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -792,7 +803,7 @@ window.Quarto = {
 <section id="hemisphere-map" class="level4">
 <h4 class="anchored" data-anchor-id="hemisphere-map">Hemisphere map</h4>
 <p>Here, you must specify the world as your region. E.g., to obtain a hemisphere view that shows the Americas, try</p>
-<div id="b87b9eb0" class="cell" data-execution_count="6">
+<div id="05447480" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">coast</span>(region<span class="op">=:</span><span class="kw">global</span>, proj<span class="op">=</span>(name<span class="op">=:</span>laea, center<span class="op">=</span>[<span class="fl">280</span>,<span class="fl">30</span>]), frame<span class="op">=:</span>g, area<span class="op">=</span><span class="fl">1000</span>,</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>      land<span class="op">=:</span>navy, title<span class="op">=</span><span class="st">"Lambert Equal Area"</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -819,7 +830,7 @@ window.Quarto = {
 <section id="polar-stereographic-map" class="level4">
 <h4 class="anchored" data-anchor-id="polar-stereographic-map">Polar Stereographic Map</h4>
 <p>In our first example we will let the projection center be at the north pole. This means we have a polar stereographic projection and the map boundaries will coincide with lines of constant longitude and latitude. An example is given by</p>
-<div id="39f33da8" class="cell" data-execution_count="7">
+<div id="d49102f1" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">coast</span>(region<span class="op">=</span>(<span class="op">-</span><span class="fl">30</span>,<span class="fl">30</span>,<span class="fl">60</span>,<span class="fl">72</span>), proj<span class="op">=</span>(name<span class="op">=:</span>Stereographic, center<span class="op">=</span>[<span class="fl">0</span>,<span class="fl">90</span>], paralles<span class="op">=</span><span class="fl">60</span>),</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>      frame<span class="op">=:</span>a10g, area<span class="op">=</span><span class="fl">250</span>, land<span class="op">=:</span>royalblue, water<span class="op">=:</span>seashell,</span>
@@ -836,7 +847,7 @@ window.Quarto = {
 <section id="rectangular-stereographic-map" class="level4">
 <h4 class="anchored" data-anchor-id="rectangular-stereographic-map">Rectangular stereographic map</h4>
 <p>As with Lambert’s azimuthal equal-area projection we have the option to use rectangular boundaries rather than the wedge-shape typically associated with polar projections. This choice is defined by selecting two points as corners in the rectangle and appending an <strong>+r</strong> to the <em>region</em> option. This command produces a map as presented in</p>
-<div id="d704f47d" class="cell" data-execution_count="8">
+<div id="71c69024" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">coast</span>(region<span class="op">=</span><span class="st">"-25/59/70/72+r"</span>, proj<span class="op">=</span>(name<span class="op">=:</span>stereographic, center<span class="op">=</span>(<span class="fl">10</span>,<span class="fl">90</span>)), frame<span class="op">=:</span>a20g,</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>      area<span class="op">=</span><span class="fl">250</span>, land<span class="op">=:</span>darkbrown, shore<span class="op">=:</span>thinnest, water<span class="op">=:</span>lightgray,</span>
@@ -853,7 +864,7 @@ window.Quarto = {
 <section id="general-stereographic-map" class="level4">
 <h4 class="anchored" data-anchor-id="general-stereographic-map">General stereographic map</h4>
 <p>In terms of usage this projection is identical to the Lambert azimuthal equal-area projection. Thus, one can make both rectangular and hemispheric maps. Our example shows Australia using a projection pole at 130ºE/30ºS. The command used was</p>
-<div id="cf14eae6" class="cell" data-execution_count="9">
+<div id="85ddf882" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">coast</span>(region<span class="op">=</span><span class="st">"100/-42/160/-8r"</span>, proj<span class="op">=</span>(name<span class="op">=:</span>stereographic, center<span class="op">=</span>(<span class="fl">130</span>,<span class="op">-</span><span class="fl">30</span>)), frame<span class="op">=:</span>ag,</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>      area<span class="op">=</span><span class="fl">500</span>, land<span class="op">=:</span>green, ocean<span class="op">=:</span>lightblue, shore<span class="op">=:</span>thinnest,</span>
@@ -882,7 +893,7 @@ window.Quarto = {
 <li>Scale as 1:xxxxx or as radius/latitude where radius is distance on map in inches from projection center to a particular oblique latitude, or map width (10 cm).</li>
 </ul>
 <p>The imagined view of northwest Europe from a Space Shuttle at 230 km looking due east is thus accomplished by the following coast command:</p>
-<div id="27203ef2" class="cell" data-execution_count="10">
+<div id="40a8e0a7" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">coast</span>(region<span class="op">=:</span>g, proj<span class="op">=</span><span class="st">"G4/52/230/90/60/180/60/60"</span>, xaxis<span class="op">=</span>(annot<span class="op">=</span><span class="fl">2</span>,grid<span class="op">=</span><span class="fl">2</span>), yaxis<span class="op">=</span>(annot<span class="op">=</span><span class="fl">1</span>,grid<span class="op">=</span><span class="fl">1</span>),</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>      rivers<span class="op">=:</span>all, land<span class="op">=:</span>lightbrown, ocean<span class="op">=:</span>lightblue, shore<span class="op">=:</span>thinnest,</span>
@@ -907,7 +918,7 @@ window.Quarto = {
 <li>Scale as 1:xxxxx or as radius/latitude where radius is distance on map in inches from projection center to a particular oblique latitude, or map width.</li>
 </ul>
 <p>Our example of a perspective view centered on 75ºW/40ºN can therefore be generated by the following coast command:</p>
-<div id="98f05d5d" class="cell" data-execution_count="11">
+<div id="e05d33f5" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">coast</span>(region<span class="op">=:</span>g, proj<span class="op">=</span>(name<span class="op">=:</span>ortho, center<span class="op">=</span>(<span class="op">-</span><span class="fl">75</span>,<span class="fl">41</span>)), frame<span class="op">=:</span>g, area<span class="op">=</span><span class="fl">5000</span>,</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>      land<span class="op">=:</span>pink, ocean<span class="op">=:</span>thistle, title<span class="op">=</span><span class="st">"Orthographic"</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -931,13 +942,13 @@ window.Quarto = {
 <li>Scale as 1:xxxxx or as radius/latitude where radius is distance on map in inches from projection center to a particular oblique latitude, or map width.</li>
 </ul>
 <p>Our example of a global view centered on 100ºW/40ºN can therefore be generated by the following coast command. Note that the antipodal point is 180º away from the center, but in this projection this point plots as the entire map perimeter:</p>
-<div id="a77a30f7" class="cell" data-execution_count="12">
+<div id="33d9a472" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">coast</span>(region<span class="op">=:</span><span class="kw">global</span>, proj<span class="op">=</span>(name<span class="op">=:</span>azimuthalEquidistant, center<span class="op">=</span>(<span class="op">-</span><span class="fl">100</span>,<span class="fl">40</span>)), frame<span class="op">=:</span>g,</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>      area<span class="op">=</span><span class="fl">10000</span>, land<span class="op">=:</span>lightgray, shore<span class="op">=:</span>thinnest, title<span class="op">=</span><span class="st">"Azimuthal Equidistant"</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>pscoast [WARNING]: Fill/clip continent option (-G) may not work for this projection.
-pscoast [WARNING]: If the antipode (0/8.97572e-312) is in the ocean then chances are good it will work.
+pscoast [WARNING]: If the antipode (0/1.16913e-311) is in the ocean then chances are good it will work.
 pscoast [WARNING]: Otherwise, avoid projection center coordinates that are exact multiples of 80 degrees.</code></pre>
 </div>
 <div class="cell-output cell-output-display">
@@ -960,7 +971,7 @@ pscoast [WARNING]: Otherwise, avoid projection center coordinates that are exact
 <li>Scale as 1:xxxxx or as radius/latitude where radius is distance on map in cm from projection center to a particular oblique latitude, or map width.</li>
 </ul>
 <p>Using a horizon of 60, our example of this projection centered on 120ºW/35ºN can therefore be generated by the following command:</p>
-<div id="570031f0" class="cell" data-execution_count="13">
+<div id="222d7961" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">coast</span>(region<span class="op">=:</span>g, proj<span class="op">=</span>(name<span class="op">=:</span>Gnomonic, center<span class="op">=</span>(<span class="op">-</span><span class="fl">120</span>,<span class="fl">35</span>), horizon<span class="op">=</span><span class="fl">60</span>),</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>      frame<span class="op">=</span>(annot<span class="op">=</span><span class="fl">30</span>, grid<span class="op">=</span><span class="fl">15</span>), area<span class="op">=</span><span class="fl">10000</span>, land<span class="op">=:</span>tan, ocean<span class="op">=:</span>cyan,</span>
@@ -990,7 +1001,7 @@ pscoast [WARNING]: Otherwise, avoid projection center coordinates that are exact
 <li>Scale along the equator in cm/degree or 1:xxxxx, or map width.</li>
 </ul>
 <p>Our example presents a world map at a scale of 0.012 inch pr degree which will give a map 4.32 inch wide. It was created with the command:</p>
-<div id="d7f85c6e" class="cell" data-execution_count="14">
+<div id="9fc042ea" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">coast</span>(region<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">360</span>,<span class="op">-</span><span class="fl">70</span>,<span class="fl">70</span>), proj<span class="op">=:</span>Mercator, xaxis<span class="op">=</span>(annot<span class="op">=</span><span class="fl">60</span>,ticks<span class="op">=</span><span class="fl">15</span>), yaxis<span class="op">=</span>(annot<span class="op">=</span><span class="fl">30</span>,ticks<span class="op">=</span><span class="fl">15</span>),</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>      area<span class="op">=:</span><span class="fl">5000</span>, land<span class="op">=:</span>red, scale<span class="op">=</span><span class="fl">0.03</span>, par<span class="op">=</span>(<span class="op">:</span>MAP_FRAME_TYPE,<span class="st">"fancy+"</span>), title<span class="op">=</span><span class="st">"Mercator"</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1014,7 +1025,7 @@ pscoast [WARNING]: Otherwise, avoid projection center coordinates that are exact
 <li>Scale along the equator in cm/degree or 1:xxxxx, or map width.</li>
 </ul>
 <p>The optional latitude of origin defaults to Equator if not specified. Although defaulting to 1, you can change the map scale factor via the PROJ_SCALE_FACTOR parameter. Our example shows a transverse Mercator map of south-east Europe and the Middle East with 35ºE as the central meridian:</p>
-<div id="7eb93c82" class="cell" data-execution_count="15">
+<div id="f5d70f25" class="cell" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">coast</span>(region<span class="op">=</span><span class="st">"20/30/50/45r"</span>, proj<span class="op">=</span>(name<span class="op">=:</span>tmerc, center<span class="op">=</span><span class="fl">35</span>), frame<span class="op">=:</span>ag, area<span class="op">=</span><span class="fl">250</span>,</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>      land<span class="op">=:</span>lightbrown, ocean<span class="op">=:</span>seashell, shore<span class="op">=:</span>thinnest, scale<span class="op">=</span><span class="fl">0.45</span>,</span>
@@ -1028,7 +1039,7 @@ pscoast [WARNING]: Otherwise, avoid projection center coordinates that are exact
 </div>
 </div>
 <p>The transverse Mercator can also be used to generate a global map - the equivalent of the 360º Mercator map. Using the command</p>
-<div id="663078a6" class="cell" data-execution_count="16">
+<div id="19a44306" class="cell" data-execution_count="16">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">coast</span>(region<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">360</span>,<span class="op">-</span><span class="fl">80</span>,<span class="fl">80</span>), proj<span class="op">=</span>(name<span class="op">=:</span>tmerc, center<span class="op">=</span>[<span class="fl">330</span> <span class="op">-</span><span class="fl">45</span>]),</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>      frame<span class="op">=</span>(annot<span class="op">=</span><span class="fl">30</span>, grid<span class="op">=:</span>auto, axes<span class="op">=:</span>WSne), area<span class="op">=</span><span class="fl">2000</span>, land<span class="op">=:</span>black,</span>
@@ -1073,7 +1084,7 @@ pscoast [WARNING]: Otherwise, avoid projection center coordinates that are exact
 </ul></li>
 </ol>
 <p>For all three definitions, the upper case A|B|C means we will allow projection poles in the southern hemisphere. These forms are only available when using the GMT letters code. Our example was produced by the command</p>
-<div id="815a4aea" class="cell" data-execution_count="17">
+<div id="f4bc23fc" class="cell" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">coast</span>(region<span class="op">=</span><span class="st">"270/20/305/25+r"</span>, proj<span class="op">=</span>(name<span class="op">=:</span>omercp, center<span class="op">=</span>[<span class="fl">280</span> <span class="fl">25.5</span>], parallels<span class="op">=</span>[<span class="fl">22</span> <span class="fl">69</span>]),</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>      frame<span class="op">=:</span>ag, area<span class="op">=</span><span class="fl">250</span>, shore<span class="op">=:</span>thinnest, land<span class="op">=:</span>burlywood, water<span class="op">=:</span>azure,</span>
@@ -1097,7 +1108,7 @@ pscoast [WARNING]: Otherwise, avoid projection center coordinates that are exact
 <li>Scale in cm/degree or as 1:xxxxx, or map width.</li>
 </ul>
 <p>A detailed map of the island of Sardinia centered on the 8º45’E meridian using the Cassini projection can be obtained by running the command:</p>
-<div id="964cd5b7" class="cell" data-execution_count="18">
+<div id="d4626542" class="cell" data-execution_count="18">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">coast</span>(region<span class="op">=</span><span class="st">"7:30/38:30/10:30/41:30r"</span>, proj<span class="op">=</span>(name<span class="op">=:</span>Cassini, center<span class="op">=</span>[<span class="fl">8.75</span> <span class="fl">40</span>]),</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>      frame<span class="op">=:</span>afg, map_scale<span class="op">=</span><span class="st">"jBR+c40+w100+f+o0.4/0.5"</span>, land<span class="op">=:</span>springgreen,</span>
@@ -1123,7 +1134,7 @@ pscoast [WARNING]: Otherwise, avoid projection center coordinates that are exact
 </ul>
 <p>The first two of these are optional and have defaults. When the standard parallel is defined, the central meridian must be supplied as well.</p>
 <p>A world map centered on the dateline using this projection can be obtained by running the command:</p>
-<div id="c368eb74" class="cell" data-execution_count="19">
+<div id="ddcdeec5" class="cell" data-execution_count="19">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">coast</span>(region<span class="op">=:</span><span class="kw">global</span>, proj<span class="op">=:</span>equidistCylindrical, frame<span class="op">=</span>(annot<span class="op">=</span><span class="fl">60</span>, ticks<span class="op">=</span><span class="fl">30</span>, grid<span class="op">=</span><span class="fl">30</span>),</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>      area<span class="op">=</span><span class="fl">5000</span>, land<span class="op">=:</span>tan4, water<span class="op">=:</span>lightcyan, title<span class="op">=</span><span class="st">"Cylindrical equidistant"</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1220,7 +1231,7 @@ pscoast [WARNING]: Otherwise, avoid projection center coordinates that are exact
 </tbody>
 </table>
 <p>For instance, a world map centered on the 35ºE meridian using the Behrman projection can be obtained by running the command:</p>
-<div id="9d28f598" class="cell" data-execution_count="20">
+<div id="5c4299bc" class="cell" data-execution_count="20">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">coast</span>(region<span class="op">=</span>(<span class="op">-</span><span class="fl">145</span>,<span class="fl">215</span>,<span class="op">-</span><span class="fl">90</span>,<span class="fl">90</span>), proj<span class="op">=</span>(name<span class="op">=:</span>cylindricalEqualArea, center<span class="op">=</span>(<span class="fl">35</span>,<span class="fl">30</span>)),</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>      frame<span class="op">=</span>(annot<span class="op">=</span><span class="fl">45</span>, grid<span class="op">=</span><span class="fl">45</span>), area<span class="op">=</span><span class="fl">10000</span>, water<span class="op">=:</span>dodgerblue,</span>
@@ -1244,7 +1255,7 @@ pscoast [WARNING]: Otherwise, avoid projection center coordinates that are exact
 <li>Scale in cm/degree or as 1:xxxxx, or map width.</li>
 </ul>
 <p>For instance, a world map centered on the 90ºE meridian at a map scale of 1:400,000,000 can be obtained as follows:</p>
-<div id="9edc5e2e" class="cell" data-execution_count="21">
+<div id="1479a74e" class="cell" data-execution_count="21">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">coast</span>(region<span class="op">=</span>(<span class="op">-</span><span class="fl">90</span>,<span class="fl">270</span>,<span class="op">-</span><span class="fl">80</span>,<span class="fl">90</span>), proj<span class="op">=:</span>Miller, xaxis<span class="op">=</span>(annot<span class="op">=</span><span class="fl">45</span>,grid<span class="op">=</span><span class="fl">45</span>),</span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>      yaxis<span class="op">=</span>(annot<span class="op">=</span><span class="fl">30</span>,grid<span class="op">=</span><span class="fl">30</span>), area<span class="op">=</span><span class="fl">10000</span>, land<span class="op">=:</span>khaki, water<span class="op">=:</span>azure,</span>
@@ -1299,7 +1310,7 @@ pscoast [WARNING]: Otherwise, avoid projection center coordinates that are exact
 </tbody>
 </table>
 <p>A map of the world, centered on the Greenwich meridian, using the Gall’s stereographic projection (standard parallel is 45º, Figure Gall’s stereographic projection), is obtained as follows:</p>
-<div id="e304376d" class="cell" data-execution_count="22">
+<div id="a064e345" class="cell" data-execution_count="22">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">coast</span>(region<span class="op">=</span>(<span class="op">-</span><span class="fl">180</span>,<span class="fl">180</span>,<span class="op">-</span><span class="fl">60</span>,<span class="fl">80</span>), proj<span class="op">=</span>(name<span class="op">=:</span>cylindricalStereographic, center<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">45</span>)),</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>      xaxis<span class="op">=</span>(annot<span class="op">=</span><span class="fl">60</span>,ticks<span class="op">=</span><span class="fl">30</span>, grid<span class="op">=</span><span class="fl">30</span>), yaxis<span class="op">=</span>(annot<span class="op">=</span><span class="fl">30</span>,grid<span class="op">=</span><span class="fl">30</span>), area<span class="op">=</span><span class="fl">5000</span>,</span>
@@ -1328,7 +1339,7 @@ pscoast [WARNING]: Otherwise, avoid projection center coordinates that are exact
 <li>Scale along equator in cm/degree or 1:xxxxx, or map width.</li>
 </ul>
 <p>A view of the Pacific ocean using the Dateline as central meridian is accomplished thus</p>
-<div id="39f5c913" class="cell" data-execution_count="23">
+<div id="78f3873e" class="cell" data-execution_count="23">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">coast</span>(region<span class="op">=:</span>g, proj<span class="op">=:</span>Hammer, frame<span class="op">=:</span>g, area<span class="op">=</span><span class="fl">10000</span>, land<span class="op">=:</span>black,</span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>      ocean<span class="op">=:</span>cornsilk, title<span class="op">=</span><span class="st">"Hammer"</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1350,7 +1361,7 @@ pscoast [WARNING]: Otherwise, avoid projection center coordinates that are exact
 <li>Scale along equator in cm/degree or 1:xxxxx, or map width.</li>
 </ul>
 <p>An example centered on Greenwich can be generated thus:</p>
-<div id="3df05ca1" class="cell" data-execution_count="24">
+<div id="d6338b7b" class="cell" data-execution_count="24">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">coast</span>(region<span class="op">=:</span>d, proj<span class="op">=:</span>Mollweide, frame<span class="op">=:</span>g, area<span class="op">=</span><span class="fl">10000</span>, land<span class="op">=:</span>tomato1,</span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>      water<span class="op">=:</span>skyblue, title<span class="op">=</span><span class="st">"Mollweide"</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1373,7 +1384,7 @@ pscoast [WARNING]: Otherwise, avoid projection center coordinates that are exact
 <li>Scale along equator in cm/degree or 1:xxxxx, or map width.</li>
 </ul>
 <p>Centered on Greenwich, the example in Figure Winkel Tripel projection was created by this command:</p>
-<div id="741d86cf" class="cell" data-execution_count="25">
+<div id="a7b502b5" class="cell" data-execution_count="25">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">coast</span>(region<span class="op">=:</span>d, proj<span class="op">=:</span>Winkel, frame<span class="op">=:</span>g, area<span class="op">=</span><span class="fl">10000</span>, land<span class="op">=:</span>burlywood4,</span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>      water<span class="op">=:</span>wheat1, title<span class="op">=</span><span class="st">"Winkel Tripel"</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1395,7 +1406,7 @@ pscoast [WARNING]: Otherwise, avoid projection center coordinates that are exact
 <li>Scale along equator in cm/degree or 1:xxxxx, or map width.</li>
 </ul>
 <p>Again centered on Greenwich, the example below was created by this command:</p>
-<div id="745b679b" class="cell" data-execution_count="26">
+<div id="69072a65" class="cell" data-execution_count="26">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">coast</span>(region<span class="op">=:</span>d, proj<span class="op">=:</span>Robinson, frame<span class="op">=:</span>g, area<span class="op">=</span><span class="fl">10000</span>, land<span class="op">=:</span>goldenrod,</span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>      water<span class="op">=:</span>snow2, title<span class="op">=</span><span class="st">"Robinson"</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1418,7 +1429,7 @@ pscoast [WARNING]: Otherwise, avoid projection center coordinates that are exact
 <li>Scale along equator in cm/degree or 1:xxxxx, or map width.</li>
 </ul>
 <p>Centered on the Dateline, the Eckert IV example below was created by this command:</p>
-<div id="40bad8e2" class="cell" data-execution_count="27">
+<div id="0da9051c" class="cell" data-execution_count="27">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">coast</span>(region<span class="op">=:</span>d, proj<span class="op">=:</span>EckertIV, frame<span class="op">=:</span>g, area<span class="op">=</span><span class="fl">10000</span>, land<span class="op">=:</span>ivory,</span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>      water<span class="op">=:</span>bisque3, shore<span class="op">=:</span>thinnest, title<span class="op">=</span><span class="st">"Eckert IV"</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1431,7 +1442,7 @@ pscoast [WARNING]: Otherwise, avoid projection center coordinates that are exact
 </div>
 </div>
 <p>The same script, <em>EckertVI</em> instead of <em>EckertIV</em>, yields the Eckert VI map:</p>
-<div id="4c352d7f" class="cell" data-execution_count="28">
+<div id="ac84f2fe" class="cell" data-execution_count="28">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">coast</span>(region<span class="op">=:</span>d, proj<span class="op">=:</span>EckertVI, frame<span class="op">=:</span>g, area<span class="op">=</span><span class="fl">10000</span>, land<span class="op">=:</span>ivory,</span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>      water<span class="op">=:</span>bisque3, shore<span class="op">=:</span>thinnest, title<span class="op">=</span><span class="st">"Eckert VI"</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1453,7 +1464,7 @@ pscoast [WARNING]: Otherwise, avoid projection center coordinates that are exact
 <li>Scale along equator in cm/degree or 1:xxxxx, or map width.</li>
 </ul>
 <p>A simple world map using the sinusoidal projection is therefore obtained by</p>
-<div id="0650bbfb" class="cell" data-execution_count="29">
+<div id="bbd6e611" class="cell" data-execution_count="29">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">coast</span>(region<span class="op">=:</span>d, proj<span class="op">=:</span>Sinusoidal, xaxis<span class="op">=</span>(grid<span class="op">=</span><span class="fl">30</span>,), yaxis<span class="op">=</span>(grid<span class="op">=</span><span class="fl">15</span>,),</span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>      area<span class="op">=</span><span class="fl">10000</span>, land<span class="op">=:</span>coral4, water<span class="op">=:</span>azure3, title<span class="op">=</span><span class="st">"Sinusoidal"</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1466,7 +1477,7 @@ pscoast [WARNING]: Otherwise, avoid projection center coordinates that are exact
 </div>
 </div>
 <p>To reduce distortion of shape the interrupted sinusoidal projection was introduced in 1927. Here, three symmetrical segments are used to cover the entire world. Traditionally, the interruptions are at 160ºW, 20ºW, and 60ºE. To make the interrupted map we must call coast for each segment and superpose the results. To produce an interrupted world map (with the traditional boundaries just mentioned) that is 5.04 inches wide we use the scale 12/360 = 0.03333 and offset the subsequent plots horizontally by their widths (140 * 0.03333 and 80 * 0.03333):</p>
-<div id="299aa30e" class="cell" data-execution_count="30">
+<div id="d209cdf8" class="cell" data-execution_count="30">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">coast</span>(region<span class="op">=</span>(<span class="fl">200</span>,<span class="fl">340</span>,<span class="op">-</span><span class="fl">90</span>,<span class="fl">90</span>), proj<span class="op">=:</span>Sinusoidal, frame<span class="op">=:</span>g, area<span class="op">=</span><span class="fl">10000</span>,</span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>      land<span class="op">=:</span>darkred, water<span class="op">=:</span>azure, scale<span class="op">=</span><span class="fl">0.03333</span>)</span>
@@ -1493,7 +1504,7 @@ pscoast [WARNING]: Otherwise, avoid projection center coordinates that are exact
 <li>Scale along equator in cm/degree or 1:xxxxx, or map width.</li>
 </ul>
 <p>Centered on the Dateline, the example below was created by this command:</p>
-<div id="fa25cd3b" class="cell" data-execution_count="31">
+<div id="a0237862" class="cell" data-execution_count="31">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">coast</span>(region<span class="op">=:</span>g, proj<span class="op">=:</span>VanderGrinten, xaxis<span class="op">=</span>(grid<span class="op">=</span><span class="fl">30</span>,), yaxis<span class="op">=</span>(grid<span class="op">=</span><span class="fl">15</span>,),</span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>      land<span class="op">=:</span>lightgray, water<span class="op">=:</span>cornsilk, area<span class="op">=</span><span class="fl">10000</span>, shore<span class="op">=:</span>thinnest,</span>

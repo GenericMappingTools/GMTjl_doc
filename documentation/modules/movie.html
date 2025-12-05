@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -431,9 +432,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#movie" id="toc-movie" class="nav-link active" data-scroll-target="#movie">movie</a>
-  <ul class="collapse">
-  <li><a href="#description" id="toc-description" class="nav-link" data-scroll-target="#description">Description</a></li>
+  <li><a href="#description" id="toc-description" class="nav-link active" data-scroll-target="#description">Description</a></li>
   <li><a href="#required-arguments" id="toc-required-arguments" class="nav-link" data-scroll-target="#required-arguments">Required Arguments</a></li>
   <li><a href="#optional-arguments" id="toc-optional-arguments" class="nav-link" data-scroll-target="#optional-arguments">Optional Arguments</a></li>
   <li><a href="#parameters" id="toc-parameters" class="nav-link" data-scroll-target="#parameters">Parameters</a></li>
@@ -453,18 +452,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#other-movie-formats" id="toc-other-movie-formats" class="nav-link" data-scroll-target="#other-movie-formats">Other Movie Formats</a></li>
   <li><a href="#remaking-movie-with-existing-png-frames" id="toc-remaking-movie-with-existing-png-frames" class="nav-link" data-scroll-target="#remaking-movie-with-existing-png-frames">Remaking Movie with Existing PNG Frames</a></li>
   <li><a href="#manipulating-multiple-movies" id="toc-manipulating-multiple-movies" class="nav-link" data-scroll-target="#manipulating-multiple-movies">Manipulating Multiple Movies</a></li>
-  </ul></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">movie</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
 
-<section id="movie" class="level1">
-<h1>movie</h1>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">movie</span>(main; pre<span class="op">=</span><span class="cn">nothing</span>, post<span class="op">=</span><span class="cn">nothing</span>, kwargs<span class="op">...</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <section id="description" class="level2">
 <h2 class="anchored" data-anchor-id="description">Description</h2>
@@ -638,9 +651,12 @@ Note for indicators d-f: If percentage labels are selected (<strong>annot=â€œpâ€
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>ffmpeg <span class="op">-</span>i movie_3.mp4 <span class="op">-</span>i movie_4.mp4 <span class="op">-</span>filter_complex hstack<span class="op">=</span>inputs<span class="op">=</span><span class="fl">2</span> bottom.mp4</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>ffmpeg <span class="op">-</span>i top.mp4 <span class="op">-</span>i bottom.mp4 <span class="op">-</span>filter_complex vstack<span class="op">=</span>inputs<span class="op">=</span><span class="fl">2</span> four_movies.mp4</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>For more information on such manipulations, see the FFmpeg documentation.</p>
-
-
 </section>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>View the <a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/movie.jl#L105">source code</a> for this function.</p>
+
+
 </section>
 
 </main> <!-- /main -->

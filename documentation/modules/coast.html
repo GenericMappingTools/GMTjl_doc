@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -434,6 +435,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#description" id="toc-description" class="nav-link active" data-scroll-target="#description">Description</a></li>
   <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
   <li><a href="#gshhg-information" id="toc-gshhg-information" class="nav-link" data-scroll-target="#gshhg-information">GSHHG Information</a></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
   </ul>
 </nav>
     </div>
@@ -561,7 +563,7 @@ Save the figure with the <code>figname=name.ext</code> where <code>ext</code> ch
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <p>To plot Great Britain, Italy, and France in blue with a red outline and Spain, Portugal and Greece in yellow (no outline), and pick up the plot domain form the extents of these countries, use:</p>
-<div id="44bd84b0" class="cell" data-execution_count="1">
+<div id="c7b92f1a" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">coast</span>(proj<span class="op">=:</span>Mercator, DCW<span class="op">=</span>((country<span class="op">=</span><span class="st">"GB,IT,FR"</span>, fill<span class="op">=:</span>blue, pen<span class="op">=</span>(<span class="fl">0.25</span>,<span class="op">:</span>red)),</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>                           (country<span class="op">=</span><span class="st">"ES,PT,GR"</span>, fill<span class="op">=:</span>yellow)), show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -577,6 +579,14 @@ Save the figure with the <code>figname=name.ext</code> where <code>ext</code> ch
 <section id="gshhg-information" class="level2">
 <h2 class="anchored" data-anchor-id="gshhg-information">GSHHG Information</h2>
 <p>The coastline database is GSHHG (formerly GSHHS) which is compiled from three sources: World Vector Shorelines (WVS, not including Antarctica), CIA World Data Bank II (WDBII), and Atlas of the Cryosphere (AC, for Antarctica only). Apart from Antarctica, all level-1 polygons (ocean-land boundary) are derived from the more accurate WVS while all higher level polygons (level 2-4, representing land/lake, lake/island-in-lake, and island-in-lake/lake-in-island-in-lake boundaries) are taken from WDBII. The Antarctica coastlines come in two flavors: ice-front or grounding line, selectable via the <strong>area</strong> option. Much processing has taken place to convert WVS, WDBII, and AC data into usable form for GMT: assembling closed polygons from line segments, checking for duplicates, and correcting for crossings between polygons. The area of each polygon has been determined so that the user may choose not to draw features smaller than a minimum area (see <strong>area</strong>); one may also limit the highest hierarchical level of polygons to be included (4 is the maximum). The 4 lower-resolution databases were derived from the full resolution database using the Douglas-Peucker line-simplification algorithm. The classification of rivers and borders follow that of the WDBII. See <a href="https://github.com/GenericMappingTools/gshhg-gmt#readme">The Global Self-consistent, Hierarchical, High-resolution Geography Database (GSHHG)</a> for further details.</p>
+</section>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>This function has multiple methods:</p>
+<ul>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/pscoast.jl#L78"><code>coast(cmd0::String; clip, first, kwargs...)</code></a> - pscoast.jl:78</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/pscoast.jl#L78"><code>coast(; ...)</code></a> - pscoast.jl:78</li>
+</ul>
 
 
 </section>

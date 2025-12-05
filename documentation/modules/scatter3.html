@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -431,48 +432,105 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#scatter3" id="toc-scatter3" class="nav-link active" data-scroll-target="#scatter3">scatter3</a>
-  <ul class="collapse">
-  <li><a href="#parameters" id="toc-parameters" class="nav-link" data-scroll-target="#parameters">Parameters</a></li>
+  <li><a href="#parameters" id="toc-parameters" class="nav-link active" data-scroll-target="#parameters">Parameters</a></li>
   <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
   <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See also</a></li>
-  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">scatter3</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
 
-<section id="scatter3" class="level1">
-<h1>scatter3</h1>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">scatter3</span>(cmd0<span class="op">::</span><span class="dt">String</span>=<span class="st">""</span>, arg1<span class="op">=</span>[]; kwargs<span class="op">...</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Reads (x,y,z) triplets and plot symbols at those locations on a map. This module is a subset of <code>plot</code> to make it simpler to draw scatter plots. So many (fine) controlling parameters are not listed here. For a finer control, user should consult the <code>plot</code> module.</p>
 <section id="parameters" class="level2">
 <h2 class="anchored" data-anchor-id="parameters">Parameters</h2>
 <ul>
-<li><strong>S</strong> or <strong>symbol</strong> or <strong>marker</strong> or <strong>Marker</strong> or <strong>shape</strong> : – Default is <code>cube</code> with size of 7 points
+<li><p><strong>B</strong> or <strong>axes</strong> or <strong>frame</strong><br>
+Set map boundary frame and axes attributes. Default is to draw and annotate left, bottom and vertical axes and just draw left and top axes. More at [frame](../common_opts/opt_B.html)</p></li>
+<li><p><strong>J</strong> or <strong>proj</strong> or <strong>projection</strong> : – <em>proj=<parameters></parameters></em><br>
+Select map projection. More at [proj](../common_opts/opt_J.html)</p></li>
+<li><p><strong>R</strong> or <strong>region</strong> or <strong>limits</strong> : – <em>limits=(xmin, xmax, ymin, ymax, zmin, zmax)</em> <strong>|</strong> <em>limits=(BB=(xmin, xmax, ymin, ymax, zmin, zmax),)</em> <strong>|</strong> …more<br>
+Specify the region of interest. Default limits are computed from data extents. More at [limits](../common_opts/opt_R.html)</p></li>
+<li><p><strong>G</strong> or <strong>markerfacecolor</strong> or <strong>MarkerFaceColor</strong> or <strong>markercolor</strong> or <strong>mc</strong> or <strong>fill</strong><br>
+Select color or pattern for filling of symbols [Default is no fill]. Note that plot will search for <em>fill</em> and <em>pen</em> settings in all the segment headers (when passing a GMTdaset or file of a multi-segment dataset) and let any values thus found over-ride the command line settings (but those must be provided in the terse GMT syntax). See [Setting color](../common_features/color.html) for extend color selection (including color map generation).</p></li>
+<li><p><strong>S</strong> or <strong>symbol</strong> or <strong>marker</strong> or <strong>Marker</strong> or <strong>shape</strong> : – Default is <code>cube</code> with size of 7 points</p>
 <ul>
 <li><em>symbol=symbol string</em><br>
 A full GMT compact string.</li>
 <li><em>symbol=(symb=…, size=…, unit=…)</em><br>
-Where <em>symb</em> is one like <code>:circle</code>, <em>size</em> is symbol size in cm, unless <em>unit</em> is specified i.e.&nbsp;<code>:points</code></li>
+Where <em>symb</em> is one <a href="../..\documentation/modules/Symbols.html">Symbols</a> like <code>:circle</code>, <em>size</em> is symbol size in cm, unless <em>unit</em> is specified i.e.&nbsp;<code>:points</code></li>
 </ul>
-In alternative to the <em>symbol</em> keyword, user can select the symbol name with either <em>marker</em> or <em>shape</em> and symbol size with <em>markersize</em>, <em>ms</em> or just <em>size</em>. The value of these keywords can be either numeric (symb meaning size in cm) or string if an unit is appended, <em>e.g.</em> <em>markersize=5p</em>. This form of symbol selection allows also to specify a variable symbol size. All it’s need for this is that the keywrd’s value be an array with the same number of elements as the number of data points.</li>
+<p>In alternative to the <em>symbol</em> keyword, user can select the symbol name with either <em>marker</em> or <em>shape</em> and symbol size with <em>markersize</em>, <em>ms</em> or just <em>size</em>. The value of these keywords can be either numeric (symb meaning size in cm) or string if an unit is appended, <em>e.g.</em> <em>markersize=5p</em>. This form of symbol selection allows also to specify a variable symbol size. All it’s need for this is that the keywrd’s value be an array with the same number of elements as the number of data points.</p></li>
+<li><p><strong>p</strong> or <strong>view</strong> or <strong>perspective</strong> : – <em>view=(azim, elev)</em><br>
+Default is viewpoint from an azimuth of 200 and elevation of 30 degrees.<br>
+Specify the viewpoint in terms of azimuth and elevation. The azimuth is the horizontal rotation about the z-axis as measured in degrees from the positive y-axis. That is, from North. This option is not yet fully expanded. Current alternatives are:</p>
+<ul>
+<li><em>view=??</em><br>
+A full GMT compact string with the full set of options.</li>
+<li><em>view=(azim,elev)</em><br>
+A two elements tuple with azimuth and elevation</li>
+<li><em>view=true</em><br>
+To propagate the viewpoint used in a previous module (makes sense only in <code>bar3!</code>) More at [perspective](../common_opts/opt_p.html)</li>
+</ul></li>
+<li><p><strong>figname</strong> or <strong>savefig</strong> or <strong>name</strong> : – <em>figname=<code>name.png</code></em><br>
+Save the figure with the <code>figname=name.ext</code> where <code>ext</code> chooses the figure image format.</p></li>
 </ul>
 </section>
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <p>A scatter of ten points plotted as black cubes of 7 points size using the default perspective of 200,30</p>
+<div id="babdaa0c" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">scatter3</span>(<span class="fu">rand</span>(<span class="fl">10</span>,<span class="fl">10</span>,<span class="fl">3</span>), zsize<span class="op">=</span><span class="fl">4</span>, marker<span class="op">=:</span>cube, mc<span class="op">=:</span>darkgreen, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="scatter3_files/figure-html/cell-2-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>This function has multiple methods:</p>
+<ul>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L413"><code>scatter3(cmd0::String; ...)</code></a> - plot.jl:413</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L413"><code>scatter3(cmd0::String, arg1; kw...)</code></a> - plot.jl:413</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L431"><code>scatter3(f1::Function, f2::Function, f3::Function, range_t; first, kw...)</code></a> - plot.jl:431</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L431"><code>scatter3(f1::Function, f2::Function, f3::Function; ...)</code></a> - plot.jl:431</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L426"><code>scatter3(f1::Function, f2::Function; ...)</code></a> - plot.jl:426</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L426"><code>scatter3(f1::Function, f2::Function, range_t; first, kw...)</code></a> - plot.jl:426</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L419"><code>scatter3(arg1::AbstractArray, arg2::AbstractArray, arg3::AbstractArray; kw...)</code></a> - plot.jl:419</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L413"><code>scatter3(; ...)</code></a> - plot.jl:413</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L416"><code>scatter3(arg; kw...)</code></a> - plot.jl:416</li>
+</ul>
 </section>
 <section id="see-also" class="level2">
 <h2 class="anchored" data-anchor-id="see-also">See also</h2>
-<p>The <a href="http://docs.generic-mapping-tools.org/latest/plot.html"><code>GMT man page</code></a></p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -431,7 +432,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#section" id="toc-section" class="nav-link active" data-scroll-target="#section">————————————————————————————————-</a></li>
+  <li><a href="#section" id="toc-section" class="nav-link active" data-scroll-target="#section">————————————————————————————————-</a>
+  <ul class="collapse">
+  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -491,6 +495,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="example">Example:</h3>
 <p>Compute a circle about the (0,0) point with a radius of 50 km</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>    c <span class="op">=</span> <span class="fu">circgeo</span>([<span class="fl">0</span>. <span class="fl">0</span>], radius<span class="op">=</span><span class="fl">50</span>, unit<span class="op">=:</span>k)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>This function has multiple methods:</p>
+<ul>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/proj_utils.jl#L253"><code>circgeo(lonlat::Matrix{&lt;:Real}; radius, proj, s_srs, epsg, dataset, unit, np, shape)</code></a> - proj_utils.jl:253</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/proj_utils.jl#L250"><code>circgeo(lonlat::Vector{&lt;:Real}; radius, proj, s_srs, epsg, dataset, unit, np, shape)</code></a> - proj_utils.jl:250</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/proj_utils.jl#L248"><code>circgeo(lon::Real, lat::Real; radius, proj, s_srs, epsg, dataset, unit, np, shape)</code></a> - proj_utils.jl:248</li>
+</ul>
 
 
 </section>

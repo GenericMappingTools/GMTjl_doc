@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -439,6 +440,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#global-landmask-grids" id="toc-global-landmask-grids" class="nav-link" data-scroll-target="#global-landmask-grids">Global Landmask Grids</a></li>
   <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
   <li><a href="#gshhg-information" id="toc-gshhg-information" class="nav-link" data-scroll-target="#gshhg-information">GSHHG Information</a></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
   <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
   </ul>
 </nav>
@@ -508,7 +510,7 @@ Give the name of the output grid file. Optionally, append <code>=ID</code> for w
 <li>+o - Offset data values by the given offset, or append a for automatic range offset to preserve precision for integer grids [Default is 0].</li>
 <li>+s - Scale data values by the given scale, or append a for automatic scaling to preserve precision for integer grids [Default is 1].</li>
 </ul>
-<p><strong>Note1:</strong> Any offset is added before any scaling. +sa also sets +oa (unless overridden). To write specific formats via GDAL, use =gd and supply driver (and optionally dataType) and/or one or more concatenated GDAL -co options using +c.&nbsp;See the <a href="https://docs.generic-mapping-tools.org/dev/cookbook/features.html#write-grids-images">“Writing grids and images”</a> cookbook section for more details.</p>
+<p><strong>Note1:</strong> Any offset is added before any scaling. +sa also sets +oa (unless overridden). To write specific formats via GDAL, use =gd and supply driver (and optionally dataType) and/or one or more concatenated GDAL -co options using +c.&nbsp;See the <a href="https://docs.generic-mapping-tools.org/dev/reference/features.html#write-grids-images">“Writing grids and images”</a> cookbook section for more details.</p>
 <p><strong>Note2:</strong> This is optional and to be used only when saving the result directly on disk. Otherwise, just use the <code>G = modulename(...)</code> form.</p></li>
 <li><p><strong>N</strong> or <strong>maskvalues</strong> : – <em>maskvalues=(wet,dry)</em> <strong>|</strong> <em>maskvalues=(ocean,land,lake,island,pond)</em><br>
 Sets the values that will be assigned to nodes. Values can be any number, including NaN. Also select <strong>border</strong> to let nodes exactly on feature boundaries be considered outside [Default is inside]. Specify this information using 1 of 2 formats:</p>
@@ -540,7 +542,7 @@ Limit the number of cores used when making the individual frames. By default we 
 <p>To make a 1x1 degree global grid with the hierarchical levels of the nodes based on the low resolution data:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">grdlandmask</span>(region<span class="op">=:</span>global360, res<span class="op">=:</span>low, inc<span class="op">=</span><span class="fl">1</span>, maskvalues<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>,<span class="fl">4</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Mask ocean areas to NaN from a relief grid.</p>
-<div id="e377c8a4" class="cell" data-execution_count="1">
+<div id="f7b5ee8f" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">grdcut</span>(<span class="st">"@earth_relief_04m"</span>, region<span class="op">=</span>(<span class="op">-</span><span class="fl">10.5</span>, <span class="op">-</span><span class="fl">5</span>, <span class="fl">35</span>, <span class="fl">44</span>));</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">grdlandmask</span>(G, maskvalues<span class="op">=</span>(<span class="cn">NaN</span>,<span class="fl">1</span>))</span>
@@ -557,6 +559,15 @@ Limit the number of cores used when making the individual frames. By default we 
 <section id="gshhg-information" class="level2">
 <h2 class="anchored" data-anchor-id="gshhg-information">GSHHG Information</h2>
 <p>The coastline database is GSHHG (formerly GSHHS) which is compiled from three sources: World Vector Shorelines (WVS, not including Antarctica), CIA World Data Bank II (WDBII), and Atlas of the Cryosphere (AC, for Antarctica only). Apart from Antarctica, all level-1 polygons (ocean-land boundary) are derived from the more accurate WVS while all higher level polygons (level 2-4, representing land/lake, lake/island-in-lake, and island-in-lake/lake-in-island-in-lake boundaries) are taken from WDBII. The Antarctica coastlines come in two flavors: ice-front or grounding line, selectable via the <strong>area</strong> option. Much processing has taken place to convert WVS, WDBII, and AC data into usable form for GMT: assembling closed polygons from line segments, checking for duplicates, and correcting for crossings between polygons. The area of each polygon has been determined so that the user may choose not to draw features smaller than a minimum area (see <strong>area</strong>); one may also limit the highest hierarchical level of polygons to be included (4 is the maximum). The 4 lower-resolution databases were derived from the full resolution database using the Douglas-Peucker line-simplification algorithm. The classification of rivers and borders follow that of the WDBII. See <a href="https://github.com/GenericMappingTools/gshhg-gmt#readme">The Global Self-consistent, Hierarchical, High-resolution Geography Database (GSHHG)</a> for further details.</p>
+</section>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>This function has multiple methods:</p>
+<ul>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/grdlandmask.jl#L44"><code>grdlandmask(; kwargs...)</code></a> - grdlandmask.jl:44</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/grdlandmask.jl#L42"><code>grdlandmask(cmd0::String; kwargs...)</code></a> - grdlandmask.jl:42</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/grdlandmask.jl#L43"><code>grdlandmask(arg1::GItype; kwargs...)</code></a> - grdlandmask.jl:43</li>
+</ul>
 </section>
 <section id="see-also" class="level2">
 <h2 class="anchored" data-anchor-id="see-also">See Also</h2>

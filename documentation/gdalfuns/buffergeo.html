@@ -30,6 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -397,6 +398,7 @@ ul.task-list li input[type="checkbox"] {
    
   <ul class="collapse">
   <li><a href="#example-compute-a-buffer-with-50000-m-width" id="toc-example-compute-a-buffer-with-50000-m-width" class="nav-link active" data-scroll-target="#example-compute-a-buffer-with-50000-m-width">Example: Compute a buffer with 50000 m width</a></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
   </ul>
 </nav>
     </div>
@@ -449,6 +451,17 @@ ul.task-list li input[type="checkbox"] {
 <section id="example-compute-a-buffer-with-50000-m-width" class="level2">
 <h2 class="anchored" data-anchor-id="example-compute-a-buffer-with-50000-m-width">Example: Compute a buffer with 50000 m width</h2>
 <pre><code>D = buffergeo([0 0; 10 10; 15 20], width=50000);</code></pre>
+</section>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>This function has multiple methods:</p>
+<ul>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/proj_utils.jl#L308"><code>buffergeo(fname::String; width, unit, np, flatstart, flatend, epsg, tol)</code></a> - proj_utils.jl:308</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/proj_utils.jl#L326"><code>buffergeo(line::Matrix{&lt;:Real}; width, unit, np, flatstart, flatend, proj, epsg, tol)</code></a> - proj_utils.jl:326</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/proj_utils.jl#L317"><code>buffergeo(D::Vector{&lt;:GMTdataset}; width, unit, np, flatstart, flatend, epsg, tol)</code></a> - proj_utils.jl:317</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/proj_utils.jl#L314"><code>buffergeo(D::GMTdataset; width, unit, np, flatstart, flatend, epsg, tol)</code></a> - proj_utils.jl:314</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/proj_utils.jl#L311"><code>buffergeo(ds::GMT.Gdal.AbstractDataset; width, unit, np, flatstart, flatend, epsg, tol)</code></a> - proj_utils.jl:311</li>
+</ul>
 
 
 </section>

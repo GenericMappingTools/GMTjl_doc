@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -431,9 +432,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#grdgradient" id="toc-grdgradient" class="nav-link active" data-scroll-target="#grdgradient">grdgradient</a>
-  <ul class="collapse">
-  <li><a href="#description" id="toc-description" class="nav-link" data-scroll-target="#description">Description</a></li>
+  <li><a href="#description" id="toc-description" class="nav-link active" data-scroll-target="#description">Description</a></li>
   <li><a href="#required-arguments" id="toc-required-arguments" class="nav-link" data-scroll-target="#required-arguments">Required Arguments</a></li>
   <li><a href="#optional-arguments" id="toc-optional-arguments" class="nav-link" data-scroll-target="#optional-arguments">Optional Arguments</a></li>
   <li><a href="#grid-distance-units" id="toc-grid-distance-units" class="nav-link" data-scroll-target="#grid-distance-units">Grid Distance Units</a></li>
@@ -441,18 +440,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#tiles" id="toc-tiles" class="nav-link" data-scroll-target="#tiles">Tiles</a></li>
   <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
-  </ul></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">grdgradient</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
 
-<section id="grdgradient" class="level1">
-<h1>grdgradient</h1>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grdgradient</span>(cmd0<span class="op">::</span><span class="dt">String</span>=<span class="st">""</span>, arg1<span class="op">=</span><span class="cn">nothing</span>; kwargs<span class="op">...</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Compute directional derivative or gradient from a grid</p>
 <section id="description" class="level2">
@@ -516,9 +529,16 @@ Select verbosity level. More at [verbose](../common_opts/opt_V.html)</p></li>
 <section id="references" class="level2">
 <h2 class="anchored" data-anchor-id="references">References</h2>
 <p>Horn, B.K.P., Hill-Shading and the Reflectance Map, Proceedings of the IEEE, Vol. 69, No.&nbsp;1, January 1981, pp.&nbsp;14-47. (http://people.csail.mit.edu/bkph/papers/Hill-Shading.pdf)</p>
-
-
 </section>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>This function has multiple methods:</p>
+<ul>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/grdgradient.jl#L41"><code>grdgradient(cmd0::String; kwargs...)</code></a> - grdgradient.jl:41</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/grdgradient.jl#L46"><code>grdgradient(arg1; kwargs...)</code></a> - grdgradient.jl:46</li>
+</ul>
+
+
 </section>
 
 </main> <!-- /main -->

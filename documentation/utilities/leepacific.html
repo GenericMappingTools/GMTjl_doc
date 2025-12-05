@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -434,6 +435,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#returns" id="toc-returns" class="nav-link active" data-scroll-target="#returns">Returns</a></li>
   <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example">Example</a></li>
   <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
   </ul>
 </nav>
     </div>
@@ -474,7 +476,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="example" class="level2">
 <h2 class="anchored" data-anchor-id="example">Example</h2>
-<div id="5faabadb" class="cell" data-execution_count="1">
+<div id="9cfae8ab" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>G,cl <span class="op">=</span> <span class="fu">leepacific</span>(<span class="st">"@earth_relief_20m_g"</span>);</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">grdimage</span>(G, shade<span class="op">=</span><span class="cn">true</span>, plot<span class="op">=</span>(data<span class="op">=</span>cl,), cmap<span class="op">=:</span>geo, B<span class="op">=:</span>none)</span>
@@ -491,6 +493,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="see-also" class="level2">
 <h2 class="anchored" data-anchor-id="see-also">See Also</h2>
 <p><a href="../..\documentation/utilities/coastlinesproj.html">coastlinesproj</a>, <a href="../..\documentation/utilities/graticules.html">graticules</a>, [plotgrid!], <a href="../..\documentation/utilities/worldrectangular.html">worldrectangular</a>, <a href="../..\documentation/utilities/worldrectgrid.html">worldrectgrid</a>, <a href="../..\documentation/utilities/worldrectcoast.html">worldrectcoast</a>, [Best rectangular world map projection]</p>
+</section>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>This function has multiple methods:</p>
+<ul>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/utils_project.jl#L187"><code>leepacific(fname::String; region, latlims, lonlims, coast)</code></a> - utils_project.jl:187</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/utils_project.jl#L195"><code>leepacific(GI::GItype; latlims, coast)</code></a> - utils_project.jl:195</li>
+</ul>
 
 
 </section>

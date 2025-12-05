@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -463,7 +464,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="rectangular-grid" class="level2">
 <h2 class="anchored" data-anchor-id="rectangular-grid">Rectangular grid</h2>
 <p>Create a pseudocolor plot with a rectangular grid.</p>
-<div id="f6db1d8a" class="cell" data-execution_count="1">
+<div id="f0149235" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> GMT.<span class="fu">peaks</span>(N<span class="op">=</span><span class="fl">21</span>);</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">pcolor</span>(G, outline<span class="op">=</span>(<span class="fl">0.5</span>,<span class="op">:</span>dot), show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -478,7 +479,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="rectangular-grid-with-labels" class="level2">
 <h2 class="anchored" data-anchor-id="rectangular-grid-with-labels">Rectangular grid with labels</h2>
-<div id="d5e64214" class="cell" data-execution_count="2">
+<div id="dc0be30f" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> GMT.<span class="fu">peaks</span>(N<span class="op">=</span><span class="fl">21</span>);</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">pcolor</span>(G.x, G.y, G.z, labels<span class="op">=:</span>yes, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -494,7 +495,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="non-rectangular-grid" class="level2">
 <h2 class="anchored" data-anchor-id="non-rectangular-grid">Non-rectangular grid</h2>
 <p>Create a pseudocolor plot with a non-rectangular grid.</p>
-<div id="9c992e4d" class="cell" data-execution_count="3">
+<div id="54c76d0d" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>X,Y <span class="op">=</span> GMT.<span class="fu">meshgrid</span>(<span class="op">-</span><span class="fl">3</span><span class="op">:</span><span class="fl">6</span><span class="op">/</span><span class="fl">17</span><span class="op">:</span><span class="fl">3</span>);</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>XX <span class="op">=</span> <span class="fl">2</span><span class="op">*</span>X <span class="op">.*</span> Y;</span>

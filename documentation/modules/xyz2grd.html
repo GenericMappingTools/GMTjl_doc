@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -431,27 +432,39 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#xyz2grd" id="toc-xyz2grd" class="nav-link active" data-scroll-target="#xyz2grd">xyz2grd</a>
-  <ul class="collapse">
-  <li><a href="#description" id="toc-description" class="nav-link" data-scroll-target="#description">Description</a></li>
+  <li><a href="#description" id="toc-description" class="nav-link active" data-scroll-target="#description">Description</a></li>
   <li><a href="#required-arguments" id="toc-required-arguments" class="nav-link" data-scroll-target="#required-arguments">Required Arguments</a></li>
   <li><a href="#optional-arguments" id="toc-optional-arguments" class="nav-link" data-scroll-target="#optional-arguments">Optional Arguments</a></li>
   <li><a href="#geographical-and-time-coordinates" id="toc-geographical-and-time-coordinates" class="nav-link" data-scroll-target="#geographical-and-time-coordinates">Geographical And Time Coordinates</a></li>
   <li><a href="#swapping-limitations" id="toc-swapping-limitations" class="nav-link" data-scroll-target="#swapping-limitations">Swapping Limitations</a></li>
   <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
   <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
-  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">xyz2grd</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
 
-<section id="xyz2grd" class="level1">
-<h1>xyz2grd</h1>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">xyz2grd</span>(cmd0<span class="op">::</span><span class="dt">String</span>=<span class="st">""</span>, arg1<span class="op">=</span><span class="cn">nothing</span>, kwargs<span class="op">...</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Convert data table to a <a href="../..\documentation/general/types.html#sec-grid-type">GMTgrid</a> type.</p>
 <section id="description" class="level2">
@@ -545,12 +558,21 @@ Swap 1st and 2nd column on input and/or output. <a href="https://docs.generic-ma
 <p>To create a grid file from the raw binary (3-column, single-precision scanline-oriented data raw.b, use</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>    G <span class="op">=</span> <span class="fu">xyz2grd</span>(<span class="st">"raw.b"</span>, region<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">100</span>,<span class="fl">0</span>,<span class="fl">100</span>), inc<span class="op">=</span><span class="fl">1</span>, flags<span class="op">=</span><span class="cn">true</span>, binary_in<span class="op">=</span><span class="st">"3f"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>This function has multiple methods:</p>
+<ul>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/xyz2grd.jl#L44"><code>xyz2grd(cmd0::String; ...)</code></a> - xyz2grd.jl:44</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/xyz2grd.jl#L44"><code>xyz2grd(; ...)</code></a> - xyz2grd.jl:44</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/xyz2grd.jl#L68"><code>xyz2grd(arg1; kw...)</code></a> - xyz2grd.jl:68</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/xyz2grd.jl#L44"><code>xyz2grd(cmd0::String, arg1; kwargs...)</code></a> - xyz2grd.jl:44</li>
+</ul>
+</section>
 <section id="see-also" class="level2">
 <h2 class="anchored" data-anchor-id="see-also">See Also</h2>
 <p><a href="../..\documentation/modules/grd2xyz.html">grd2xyz</a>, <a href="../..\documentation/modules/greenspline.html">greenspline</a>, <a href="../..\documentation/modules/nearneighbor.html">nearneighbor</a>, <a href="../..\documentation/modules/surface.html">surface</a>, <a href="../..\documentation/modules/triangulate.html">triangulate</a></p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

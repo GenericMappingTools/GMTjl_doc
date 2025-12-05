@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -438,6 +439,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#defaults" id="toc-defaults" class="nav-link" data-scroll-target="#defaults">Defaults</a></li>
   <li><a href="#note-on-legend-height" id="toc-note-on-legend-height" class="nav-link" data-scroll-target="#note-on-legend-height">Note On Legend Height</a></li>
   <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
   </ul>
 </nav>
     </div>
@@ -593,7 +595,7 @@ Save the figure with the <code>figname=name.ext</code> where <code>ext</code> ch
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <p>To add an example of a legend to a Mercator plot with the given specifications:</p>
-<div id="949c94cf" class="cell" data-execution_count="1">
+<div id="325f002a" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">makecpt</span>(<span class="st">"-Cpanoply -T-8/8 &gt; tt.cpt"</span>)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -635,6 +637,16 @@ Save the figure with the <code>figname=name.ext</code> where <code>ext</code> ch
 </div>
 </div>
 </div>
+</section>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>This function has multiple methods:</p>
+<ul>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/pslegend.jl#L45"><code>legend(cmd0::String; ...)</code></a> - pslegend.jl:45</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/pslegend.jl#L45"><code>legend(; ...)</code></a> - pslegend.jl:45</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/pslegend.jl#L249"><code>legend(arg1; kw...)</code></a> - pslegend.jl:249</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/pslegend.jl#L45"><code>legend(cmd0::String, arg1; first, kwargs...)</code></a> - pslegend.jl:45</li>
+</ul>
 
 
 </section>

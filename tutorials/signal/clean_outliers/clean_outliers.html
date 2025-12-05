@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../../">
+<link href="../../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -471,7 +472,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fl">2</span><span class="op">-</span>element <span class="dt">Vector</span>{<span class="dt">Int64</span>}<span class="op">:</span></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a> <span class="fl">100</span></span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a> <span class="fl">300</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="7032cfde" class="cell" data-execution_count="1">
+<div id="a564a8e3" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> <span class="bu">Random</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="bu">Random</span>.<span class="fu">seed!</span>(<span class="fl">1234</span>);</span>
@@ -491,7 +492,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Filter out the outliers with a median filter.</p>
-<div id="6e4fa4a4" class="cell" data-execution_count="2">
+<div id="f2130856" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">filter1d</span>([x y], filter<span class="op">=</span>(<span class="kw">type</span><span class="op">=:</span>median, width<span class="op">=</span><span class="fl">5</span>), ends<span class="op">=</span><span class="cn">true</span>);</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">viz</span>(D, figsize<span class="op">=</span>(<span class="fl">15</span>, <span class="fl">5</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -504,7 +505,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>But what if we want to locale the outliers?</p>
 <p>We can use the median filter but this time we ask <code>filter1d</code> do return the residues. We do that by setting the <code>highpass</code> option.</p>
-<div id="5eeb313e" class="cell" data-execution_count="3">
+<div id="ef9b6c23" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>Dres <span class="op">=</span> <span class="fu">filter1d</span>([x y], filter<span class="op">=</span>(<span class="kw">type</span><span class="op">=:</span>median, width<span class="op">=</span><span class="fl">5</span>, highpass<span class="op">=</span><span class="cn">true</span>), ends<span class="op">=</span><span class="cn">true</span>);</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">viz</span>(Dres, figsize<span class="op">=</span>(<span class="fl">15</span>, <span class="fl">5</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -515,7 +516,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="389b7eb9" class="cell" data-execution_count="4">
+<div id="9b011609" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>_mad <span class="op">=</span> <span class="fu">mad</span>(Dres[<span class="op">:</span>, <span class="fl">2</span>])[<span class="fl">1</span>] <span class="co"># Median Absolute Deviation</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fl">0.07313706508952521</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -523,7 +524,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>0.07313706508952521</code></pre>
 </div>
 </div>
-<div id="ac703c0c" class="cell" data-execution_count="5">
+<div id="f8b7a4e0" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>ind <span class="op">=</span> <span class="fu">abs</span>.(Dres[<span class="op">:</span>,<span class="fl">2</span>]) <span class="op">.&gt;</span> <span class="fl">3</span> <span class="op">*</span> _mad;</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">viz</span>([x y], plot<span class="op">=</span>(data<span class="op">=</span>[x[ind] y[ind]], marker<span class="op">=:</span>point), figsize<span class="op">=</span>(<span class="fl">15</span>, <span class="fl">5</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -553,7 +554,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>   <span class="fl">7</span> │ <span class="op">-</span><span class="fl">44.0</span>  <span class="fl">2.24198</span>   <span class="fl">0.0879249</span></span>
 <span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>   <span class="fl">8</span> │ <span class="op">-</span><span class="fl">43.0</span>  <span class="fl">2.26198</span>   <span class="fl">0.119807</span></span>
 <span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>  <span class="op">⋮</span>  │   <span class="op">⋮</span>       <span class="op">⋮</span>          <span class="op">⋮</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="3bdffd0a" class="cell" data-execution_count="6">
+<div id="2ba88f09" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">trend1d</span>([x y], model<span class="op">=</span>(polynome<span class="op">=</span><span class="fl">1</span>), out<span class="op">=:</span>xmr);</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>([x y], figsize<span class="op">=</span>(<span class="fl">15</span>, <span class="fl">5</span>))</span>
@@ -567,7 +568,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Show the residues</p>
-<div id="6a0c711b" class="cell" data-execution_count="7">
+<div id="0869d6f5" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="bu">Random</span>.<span class="fu">seed!</span>(<span class="fl">1234</span>);</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="op">-</span><span class="fl">50.0</span><span class="op">:</span><span class="fl">50</span>;</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> x <span class="op">/</span> <span class="fl">50</span> <span class="op">.+</span> <span class="fl">3</span> <span class="op">.+</span> <span class="fl">0.25</span> <span class="op">*</span> <span class="fu">rand</span>(<span class="fu">length</span>(x));</span>
@@ -586,7 +587,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>mad_res, med_res <span class="op">=</span> <span class="fu">mad</span>(D[<span class="op">:</span>,<span class="fl">3</span>])</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>(<span class="fl">0.0803265039051275</span>, <span class="fl">0.0412274796762353</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="1c5a12a0" class="cell" data-execution_count="8">
+<div id="a84b06c9" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="bu">Random</span>.<span class="fu">seed!</span>(<span class="fl">1234</span>);</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="op">-</span><span class="fl">50.0</span><span class="op">:</span><span class="fl">50</span>;</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> x <span class="op">/</span> <span class="fl">50</span> <span class="op">.+</span> <span class="fl">3</span> <span class="op">.+</span> <span class="fl">0.25</span> <span class="op">*</span> <span class="fu">rand</span>(<span class="fu">length</span>(x));</span>
@@ -608,7 +609,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Let’s replace the outliers by NaNs.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>y[ind] <span class="op">.=</span> <span class="cn">NaN</span>;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>And now replace the NaNs by interpolated values.</p>
-<div id="b5c5c5b0" class="cell" data-execution_count="9">
+<div id="b62269d6" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="bu">Random</span>.<span class="fu">seed!</span>(<span class="fl">1234</span>);</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="op">-</span><span class="fl">50.0</span><span class="op">:</span><span class="fl">50</span>;</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> x <span class="op">/</span> <span class="fl">50</span> <span class="op">.+</span> <span class="fl">3</span> <span class="op">.+</span> <span class="fl">0.25</span> <span class="op">*</span> <span class="fu">rand</span>(<span class="fu">length</span>(x));</span>
@@ -627,7 +628,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="yet-another-example-but-this-time-with-a-quadratic-curve." class="level3">
 <h3 class="anchored" data-anchor-id="yet-another-example-but-this-time-with-a-quadratic-curve.">Yet another example but this time with a quadratic curve.</h3>
-<div id="07c0f26f" class="cell" data-execution_count="10">
+<div id="83faaecb" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="bu">Random</span>.<span class="fu">seed!</span>(<span class="fl">1243</span>);</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="op">-</span><span class="fl">50.0</span><span class="op">:</span><span class="fl">50</span>;</span>
@@ -644,7 +645,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Polute it at positions [15, 40, 90].</p>
-<div id="f3730972" class="cell" data-execution_count="11">
+<div id="9d7fb57d" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>y[[<span class="fl">15</span>, <span class="fl">40</span>, <span class="fl">90</span>]] <span class="op">=</span> [<span class="fl">3</span>, <span class="fl">4</span>, <span class="fl">3</span>];</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">viz</span>(x,y, region<span class="op">=</span>(<span class="op">-</span><span class="fl">50</span>,<span class="fl">50</span>,<span class="fl">0</span>,<span class="fl">6</span>), figsize<span class="op">=</span>(<span class="fl">15</span>, <span class="fl">5</span>), marker<span class="op">=:</span>point)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -656,7 +657,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Compute and show the residues.</p>
-<div id="80f5716f" class="cell" data-execution_count="12">
+<div id="9a839822" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="bu">Random</span>.<span class="fu">seed!</span>(<span class="fl">1243</span>);</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="op">-</span><span class="fl">50.0</span><span class="op">:</span><span class="fl">50</span>;</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="fl">4</span> <span class="op">*</span> (x <span class="op">/</span> <span class="fl">50</span>) <span class="op">.^</span><span class="fl">3</span> <span class="op">.+</span> <span class="fl">3</span> <span class="op">.+</span> <span class="fl">0.25</span> <span class="op">*</span> <span class="fu">rand</span>(<span class="fu">length</span>(x));</span>

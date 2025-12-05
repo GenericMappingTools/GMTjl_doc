@@ -30,6 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -396,18 +397,32 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#vecangles" id="toc-vecangles" class="nav-link active" data-scroll-target="#vecangles">vecangles</a></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link active" data-scroll-target="#source-code">Source Code</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">vecangles</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
 
-<section id="vecangles" class="level1">
-<h1>vecangles</h1>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
 <pre><code>angles, ind = vecangles(lonlat0::VecOrMat{Real}, lonlat1::Matrix{Real}; proj::String="",
                         s_srs::String="", epsg::Integer=0, sorted=true)</code></pre>
 <p>Computes the angles between lines taken from the central point <code>lonlat0</code> and those passed in the Mx2 matrix <code>lonlat1</code>.</p>
@@ -425,9 +440,12 @@ ul.task-list li input[type="checkbox"] {
 <li><code>angles</code> - A Float64 vector with the angles between center and points determined by the arguments plus the angle betwen the lines from center to first and from center to last point.</li>
 <li><code>ind</code> - A vector of Int with the order obtained by sorting the lines azimuths (when <code>sorted=true</code>). Apply it to <code>lonlat2[ind,:]</code> to get the point distribution order in the same way as <code>angles</code>. Neddless, ofc, if <code>sorted=false</code>.</li>
 </ul>
-
-
 </section>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>View the <a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/proj_utils.jl#L201">source code</a> for this function.</p>
+
+
 </section>
 
 </main> <!-- /main -->

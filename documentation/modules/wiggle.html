@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -435,6 +436,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#required-arguments" id="toc-required-arguments" class="nav-link" data-scroll-target="#required-arguments">Required Arguments</a></li>
   <li><a href="#optional-arguments" id="toc-optional-arguments" class="nav-link" data-scroll-target="#optional-arguments">Optional Arguments</a></li>
   <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
   <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
   </ul>
 </nav>
@@ -553,7 +555,7 @@ Save the figure with the <code>figname=name.ext</code> where <code>ext</code> ch
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <p>To demonstrate a basic wiggle plot we create some synthetic data with <a href="../..\documentation/modules/gmtmath.html">gmtmath</a> and pipe it through <strong>wiggle</strong>:</p>
-<div id="69828236" class="cell" data-execution_count="1">
+<div id="50337e46" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="op">-</span><span class="fl">8</span><span class="op">:</span><span class="fl">0.01</span><span class="op">:</span><span class="fl">6</span>;</span>
@@ -579,9 +581,17 @@ Save the figure with the <code>figname=name.ext</code> where <code>ext</code> ch
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>           ampscale<span class="op">=</span><span class="fl">1000</span>, frame<span class="op">=</span>(annot<span class="op">=</span><span class="fl">5</span>,), center<span class="op">=</span><span class="fl">32000</span>, fill<span class="op">=:</span>red, track<span class="op">=</span>(<span class="fl">0.25</span>,<span class="op">:</span>blue),</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>           fixed_azim<span class="op">=</span><span class="fl">45</span>, scale_bar<span class="op">=</span>(refpoint<span class="op">=:</span>RM, width<span class="op">=</span><span class="fl">100</span>, label<span class="op">=:</span>nT), show<span class="op">=</span><span class="fl">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>This function has multiple methods:</p>
+<ul>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/pswiggle.jl#L58"><code>wiggle(cmd0::String; kw...)</code></a> - pswiggle.jl:58</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/pswiggle.jl#L59"><code>wiggle(arg1; kw...)</code></a> - pswiggle.jl:59</li>
+</ul>
+</section>
 <section id="see-also" class="level2">
 <h2 class="anchored" data-anchor-id="see-also">See Also</h2>
-<p><a href="../..\documentation/modules/filter1d.html">filter1d</a>, [psbasemap], <a href="../..\documentation/modules/gmtsplit.html">gmtsplit</a></p>
+<p><a href="../..\documentation/modules/filter1d.html">filter1d</a>, <a href="../..\documentation/modules/psbasemap.html">psbasemap</a>, <a href="../..\documentation/modules/gmtsplit.html">gmtsplit</a></p>
 
 
 </section>

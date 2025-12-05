@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -453,7 +454,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <p>Buffers polygons delimite areas that are within some distance of input features. We can have them arround points or lines. We will show here examples of both.</p>
 <p>We start by computing a great circle, also known as an orthodrome between two points and interpolated at 1000 km increments.</p>
-<div id="e1775c2c" class="cell" data-execution_count="1">
+<div id="0c08bfff" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute the great circle (orthodrome) line</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>ortho <span class="op">=</span> <span class="fu">orthodrome</span>([<span class="fl">0</span> <span class="fl">0</span>; <span class="fl">70</span> <span class="fl">60</span>], step<span class="op">=</span><span class="fl">1000</span>, unit<span class="op">=:</span>k);</span>
@@ -469,7 +470,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Next we will draw geodesic circles with 500 km radius with center on the orthodrome vertices. And to do it we need ofc to compute those circles. We compute the circles with the <code>circgeo</code> function.</p>
-<div id="abdca490" class="cell" data-execution_count="2">
+<div id="4df17fd7" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>ortho <span class="op">=</span> <span class="fu">orthodrome</span>([<span class="fl">0</span> <span class="fl">0</span>; <span class="fl">70</span> <span class="fl">60</span>], step<span class="op">=</span><span class="fl">1000</span>, unit<span class="op">=:</span>k);</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>c <span class="op">=</span> <span class="fu">circgeo</span>(ortho, radius<span class="op">=</span><span class="fl">500</span>, unit<span class="op">=:</span>k);</span>
@@ -485,7 +486,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Now imagine that we plot many close circles and compute the union of them all. That’s how we get the buffer.</p>
-<div id="3f68f5bc" class="cell" data-execution_count="3">
+<div id="6c52191a" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Poly-line arround which to compute the buffer. Make it go arround the pole.</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>line <span class="op">=</span> [<span class="op">-</span><span class="fl">37</span>. <span class="fl">1</span>; <span class="op">-</span><span class="fl">28</span> <span class="fl">26</span>; <span class="op">-</span><span class="fl">45</span> <span class="fl">35</span>; <span class="op">-</span><span class="fl">19</span> <span class="fl">42</span>; <span class="op">-</span><span class="fl">9</span> <span class="fl">55</span>; <span class="fl">4</span> <span class="fl">64</span>; <span class="fl">32</span> <span class="fl">72</span>; <span class="fl">85</span> <span class="fl">73</span>; <span class="fl">135</span> <span class="fl">73</span>; <span class="fl">172</span> <span class="fl">73</span>; <span class="op">-</span><span class="fl">144</span> <span class="fl">73</span>; <span class="op">-</span><span class="fl">78</span> <span class="fl">77</span>; <span class="op">-</span><span class="fl">27</span> <span class="fl">72</span>; <span class="op">-</span><span class="fl">8</span> <span class="fl">65</span>; <span class="fl">8</span> <span class="fl">54</span>; <span class="fl">18</span> <span class="fl">39</span>; <span class="fl">28</span> <span class="fl">24</span>; <span class="fl">34</span> <span class="fl">1</span>];</span>

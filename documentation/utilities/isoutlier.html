@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -431,21 +432,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#isoutlier" id="toc-isoutlier" class="nav-link active" data-scroll-target="#isoutlier">isoutlier</a>
-  <ul class="collapse">
-  <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
-  </ul></li>
+  <li><a href="#examples" id="toc-examples" class="nav-link active" data-scroll-target="#examples">Examples</a></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">isoutlier</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
 
-<section id="isoutlier" class="level1">
-<h1>isoutlier</h1>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>bv <span class="op">=</span> <span class="fu">isoutlier</span>(x; critic<span class="op">=</span><span class="fl">3.0</span>, method<span class="op">::</span><span class="dt">Symbol</span>=<span class="op">:</span>median, threshold<span class="op">=</span><span class="cn">nothing</span>, width<span class="op">=</span><span class="fl">0.0</span>) <span class="op">-&gt;</span> <span class="dt">Union</span>{<span class="dt">BitVector</span>, <span class="dt">BitMatrix</span>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Return a logical array whose elements are true when an outlier is detected in the corresponding element of <code>x</code>.</p>
 <p>If <code>x</code> is a matrix, and <code>width</code> is not used, then <code>isoutlier</code> operates on each column of <code>x</code> separately. By default, an outlier is a value that is more than three median absolute deviations (MAD) from the median. But that can be changed via the <code>critic</code> option.</p>
@@ -470,9 +483,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="op">-</span><span class="fl">50.0</span><span class="op">:</span><span class="fl">50</span>;   y <span class="op">=</span> x <span class="op">/</span> <span class="fl">50</span> <span class="op">.+</span> <span class="fl">3</span> <span class="op">.+</span> <span class="fl">0.25</span> <span class="op">*</span> <span class="fu">rand</span>(<span class="fu">length</span>(x));</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>y[[<span class="fl">30</span>,<span class="fl">50</span>,<span class="fl">60</span>]] <span class="op">=</span> [<span class="fl">4</span>,<span class="op">-</span><span class="fl">3</span>,<span class="fl">6</span>];   <span class="co"># Add 3 outliers</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">findall</span>(<span class="fu">isoutlier</span>([x y], width<span class="op">=</span><span class="fl">9</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-
-
 </section>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>This function has multiple methods:</p>
+<ul>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/index.jl#L191"><code>findall(path::String, idx::LibGit2.GitIndex)</code></a> - index.jl:191</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/sparsematrix.jl#L1895"><code>findall(S::SparseArrays.AbstractSparseMatrixCSC)</code></a> - sparsematrix.jl:1895</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/spatial_funs.jl#L367"><code>findall(D::Vector{&lt;:GMTdataset}; kw...)</code></a> - spatial_funs.jl:367</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/findall.jl#L37"><code>findall(interval_d::Base.Fix2{typeof(in), &lt;:IntervalSets.Interval}, x::AbstractRange)</code></a> - findall.jl:37</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/sparsematrix.jl#L1919"><code>findall(p::Base.Fix2{typeof(in)}, x::SparseArrays.AbstractSparseMatrixCSC)</code></a> - sparsematrix.jl:1919</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/sparsevector.jl#L840"><code>findall(p::Base.Fix2{typeof(in)}, x::Union{SparseArrays.AbstractCompressedVector{Tv, Ti}, SubArray{Tv, 1, &lt;:SparseArrays.AbstractSparseMatrixCSC{Tv, Ti}, Tuple{Base.Slice{Base.OneTo{Int64}}, Int64}, false}, SubArray{Tv, 1, &lt;:SparseArrays.AbstractSparseVector{Tv, Ti}, Tuple{Base.Slice{Base.OneTo{Int64}}}, false}} where {Tv, Ti})</code></a> - sparsevector.jl:840</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/sparsematrix.jl#L1899"><code>findall(p::Function, S::SparseArrays.AbstractSparseMatrixCSC)</code></a> - sparsematrix.jl:1899</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/sparsevector.jl#L815"><code>findall(p::F, x::Union{SparseArrays.AbstractCompressedVector{Tv, Ti}, SubArray{Tv, 1, &lt;:SparseArrays.AbstractSparseMatrixCSC{Tv, Ti}, Tuple{Base.Slice{Base.OneTo{Int64}}, Int64}, false}, SubArray{Tv, 1, &lt;:SparseArrays.AbstractSparseVector{Tv, Ti}, Tuple{Base.Slice{Base.OneTo{Int64}}}, false}} where {Tv, Ti}) where F&lt;:Function</code></a> - sparsevector.jl:815</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/sparsevector.jl#L811"><code>findall(x::Union{SparseArrays.AbstractCompressedVector{Tv, Ti}, SubArray{Tv, 1, &lt;:SparseArrays.AbstractSparseMatrixCSC{Tv, Ti}, Tuple{Base.Slice{Base.OneTo{Int64}}, Int64}, false}, SubArray{Tv, 1, &lt;:SparseArrays.AbstractSparseVector{Tv, Ti}, Tuple{Base.Slice{Base.OneTo{Int64}}}, false}} where {Tv, Ti})</code></a> - sparsevector.jl:811</li>
+</ul>
+
+
 </section>
 
 </main> <!-- /main -->

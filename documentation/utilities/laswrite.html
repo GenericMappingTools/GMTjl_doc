@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -431,7 +432,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#methods" id="toc-methods" class="nav-link active" data-scroll-target="#methods">Methods</a></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link active" data-scroll-target="#source-code">Source Code</a></li>
   <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
   </ul>
 </nav>
@@ -471,11 +472,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>To write the x,y,z data to file “lixo.laz” do:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">lazwrite</span>(<span class="st">"lixo.laz"</span>, xyz)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-<section id="methods" class="level2">
-<h2 class="anchored" data-anchor-id="methods">Methods</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 2 methods for generic function "lazwrite" from GMT.Laszip:</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a> [<span class="fl">1</span>] <span class="fu">lazwrite</span>(fname<span class="op">::</span><span class="dt">AbstractString</span>, G<span class="op">::</span><span class="dt">GMTgrid{Float32, 2}</span>; scaleX, scaleY, scaleZ, offX, offY, offZ)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a> [<span class="fl">2</span>] <span class="fu">lazwrite</span>(fname<span class="op">::</span><span class="dt">AbstractString</span>, xyz; grd_hdr, scaleX, scaleY, scaleZ, offX, offY, offZ, layout)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>This function has multiple methods:</p>
+<ul>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/laszip/lazwrite.jl#L24"><code>lazwrite(fname::AbstractString, G::GMTgrid{Float32, 2}; scaleX, scaleY, scaleZ, offX, offY, offZ)</code></a> - lazwrite.jl:24</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/laszip/lazwrite.jl#L30"><code>lazwrite(fname::AbstractString, xyz; grd_hdr, scaleX, scaleY, scaleZ, offX, offY, offZ, layout)</code></a> - lazwrite.jl:30</li>
+</ul>
 </section>
 <section id="see-also" class="level2">
 <h2 class="anchored" data-anchor-id="see-also">See Also</h2>

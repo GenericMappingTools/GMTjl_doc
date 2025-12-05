@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -433,6 +434,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#parameters" id="toc-parameters" class="nav-link active" data-scroll-target="#parameters">Parameters</a></li>
   <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
   </ul>
 </nav>
     </div>
@@ -511,30 +513,32 @@ Save the figure with the <code>figname=name.ext</code> where <code>ext</code> ch
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <p>Plot the sinc function with a green band of width 0.1 (above and below the sinc line)</p>
-<div id="64abfd83" class="cell" data-execution_count="1">
+<div id="d54fbfc3" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> y <span class="op">=</span> <span class="op">-</span><span class="fl">10</span><span class="op">:</span><span class="fl">0.11</span><span class="op">:</span><span class="fl">10</span>;</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">band</span>(x, <span class="fu">sin</span>.(x)<span class="op">./</span>x, width<span class="op">=</span><span class="fl">0.1</span>, fill<span class="op">=</span><span class="st">"green@80"</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stderr">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-green-fg ansi-bold">Precompiling</span> packages...
-
-  62707.3 ms<span class="ansi-green-fg">  ✓ </span>GMT
-
-  1 dependency successfully precompiled in 64 seconds. 80 already precompiled.
-
-<span class="ansi-cyan-fg ansi-bold">[ </span><span class="ansi-cyan-fg ansi-bold">Info: </span>Precompiling GMTParkerFFTExt [35a23bc9-6f20-5cbc-8971-9cdf66427582]
-</pre>
-</div>
-</div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="band_files/figure-html/cell-2-output-2.png" class="img-fluid figure-img"></p>
+<p><img src="band_files/figure-html/cell-2-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
+</section>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>This function has multiple methods:</p>
+<ul>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L1386"><code>band(cmd0::String; ...)</code></a> - plot.jl:1386</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L1386"><code>band(cmd0::String, arg1; first, width, envelope, kwargs...)</code></a> - plot.jl:1386</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L1429"><code>band(f::Function, rang; first, width, envelope, kw...)</code></a> - plot.jl:1429</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L1429"><code>band(f::Function; ...)</code></a> - plot.jl:1429</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L1386"><code>band(; ...)</code></a> - plot.jl:1386</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L1419"><code>band(arg; width, envelope, kw...)</code></a> - plot.jl:1419</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L1422"><code>band(arg1, arg2; width, envelope, kw...)</code></a> - plot.jl:1422</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L1426"><code>band(arg1, arg2, arg3; kw...)</code></a> - plot.jl:1426</li>
+</ul>
 
 
 </section>

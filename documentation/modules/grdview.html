@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -435,6 +436,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#required-arguments" id="toc-required-arguments" class="nav-link" data-scroll-target="#required-arguments">Required Arguments</a></li>
   <li><a href="#optional-arguments" id="toc-optional-arguments" class="nav-link" data-scroll-target="#optional-arguments">Optional Arguments</a></li>
   <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
   </ul>
 </nav>
     </div>
@@ -553,7 +555,7 @@ Save the figure with the <code>figname=name.ext</code> where <code>ext</code> ch
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <p>See the Example 04 at the Historical Collection gallery.</p>
 <p>Make a low resolution image plot with texture draping. Use a dpi=50 to make it lighter to load the man page. The drape option is used to overlay an image texture (from a cork tree trunk) on the grid data from the Gulf of Guinea zone. (Note, the <code>viz</code> function calls <code>grdview</code> when it detects the <code>view</code> option)</p>
-<div id="f0197cf5" class="cell" data-execution_count="1">
+<div id="c8c62e77" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">grdcut</span>(<span class="st">"@earth_relief_01m"</span>, region<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">10</span>,<span class="fl">0</span>,<span class="fl">10</span>));</span>
@@ -567,7 +569,7 @@ Save the figure with the <code>figname=name.ext</code> where <code>ext</code> ch
 </div>
 </div>
 <p>This example imagines that a OVNI (UFO) ship is pointing a spot light with a radius of 100 km over Denver.</p>
-<div id="9e8c169d" class="cell" data-execution_count="2">
+<div id="a4aa2ef5" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">grdcut</span>(<span class="st">"@earth_relief_30s"</span>, region<span class="op">=</span>(<span class="op">-</span><span class="fl">108</span>,<span class="op">-</span><span class="fl">103</span>,<span class="fl">35</span>,<span class="fl">40</span>));</span>
@@ -596,6 +598,14 @@ Save the figure with the <code>figname=name.ext</code> where <code>ext</code> ch
 </div>
 </div>
 </div>
+</section>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>This function has multiple methods:</p>
+<ul>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/grdview.jl#L46"><code>grdview(cmd0::String; kwargs...)</code></a> - grdview.jl:46</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/grdview.jl#L47"><code>grdview(arg1; kwargs...)</code></a> - grdview.jl:47</li>
+</ul>
 
 
 </section>

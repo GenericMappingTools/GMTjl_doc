@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -432,6 +433,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul class="collapse">
   <li><a href="#see-also" id="toc-see-also" class="nav-link active" data-scroll-target="#see-also">See Also</a></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
   </ul>
 </nav>
     </div>
@@ -480,19 +482,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="example" class="level3">
 <h3 class="anchored" data-anchor-id="example">Example</h3>
 <p>Download data from the stations that are closest to the given coordinates.</p>
-<div id="25973eaf" class="cell" data-execution_count="1">
+<div id="6077b519" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">meteostat</span>(<span class="op">-</span><span class="fl">8.0</span>, <span class="fl">37.0</span>, <span class="fu">Date</span>(<span class="fl">2023</span>), <span class="fu">Date</span>(<span class="fl">2024</span>))</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">viz</span>(D)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
 <div class="ansi-escaped-output">
-<pre><span class="ansi-cyan-fg ansi-bold">[ </span><span class="ansi-cyan-fg ansi-bold">Info: </span>Downloading https://bulk.meteostat.net/v2/stations/slim.csv.gz to c:\TMP\.meteostat\cache\stations.csv.gz
-
-<span class="ansi-cyan-fg ansi-bold">[ </span><span class="ansi-cyan-fg ansi-bold">Info: </span>Reading c:\TMP\.meteostat\cache\stations.csv.gz
+<pre><span class="ansi-cyan-fg ansi-bold">[ </span><span class="ansi-cyan-fg ansi-bold">Info: </span>Reading c:\TMP\.meteostat\cache\stations.csv.gz
 
 Warning 1: One or several characters couldn't be converted correctly from UTF-8 to ISO-8859-1.  This warning will not be emitted anymore.
-
-<span class="ansi-cyan-fg ansi-bold">[ </span><span class="ansi-cyan-fg ansi-bold">Info: </span>Downloading https://bulk.meteostat.net/v2/daily/08554.csv.gz to c:\TMP\.meteostat\cache\daily\08554.csv.gz
 
 <span class="ansi-cyan-fg ansi-bold">[ </span><span class="ansi-cyan-fg ansi-bold">Info: </span>Reading c:\TMP\.meteostat\cache\daily\08554.csv.gz
 </pre>
@@ -512,7 +510,7 @@ Warning 1: One or several characters couldn't be converted correctly from UTF-8 
 <section id="example-1" class="level3">
 <h3 class="anchored" data-anchor-id="example-1">Example</h3>
 <p>Plot 2018 temperature data for Vancouver, BC.</p>
-<div id="50b37f8e" class="cell" data-execution_count="2">
+<div id="9927dc28" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">meteostat</span>(<span class="st">"Vancouver"</span>, <span class="fu">Date</span>(<span class="fl">2018</span>,<span class="fl">1</span>,<span class="fl">1</span>), <span class="fu">Date</span>(<span class="fl">2018</span>,<span class="fl">12</span>,<span class="fl">31</span>));</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">viz</span>(D, title<span class="op">=</span><span class="st">"Temperature in Vancouver, BC"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -521,8 +519,6 @@ Warning 1: One or several characters couldn't be converted correctly from UTF-8 
 <pre><span class="ansi-cyan-fg ansi-bold">[ </span><span class="ansi-cyan-fg ansi-bold">Info: </span>Reading c:\TMP\.meteostat\cache\stations.csv.gz
 
 Warning 1: One or several characters couldn't be converted correctly from UTF-8 to ISO-8859-1.  This warning will not be emitted anymore.
-
-<span class="ansi-cyan-fg ansi-bold">[ </span><span class="ansi-cyan-fg ansi-bold">Info: </span>Downloading https://bulk.meteostat.net/v2/daily/71201.csv.gz to c:\TMP\.meteostat\cache\daily\71201.csv.gz
 
 <span class="ansi-cyan-fg ansi-bold">[ </span><span class="ansi-cyan-fg ansi-bold">Info: </span>Reading c:\TMP\.meteostat\cache\daily\71201.csv.gz
 </pre>
@@ -540,6 +536,25 @@ Warning 1: One or several characters couldn't be converted correctly from UTF-8 
 <section id="see-also" class="level2">
 <h2 class="anchored" data-anchor-id="see-also">See Also</h2>
 <p><a href="../..\documentation/utilities/weather.html">weather</a>, <a href="../..\documentation/utilities/ecmwf.html">ecmwf</a></p>
+</section>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>This function has multiple methods:</p>
+<ul>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/imshow.jl#L235"><code>imshow(arg1::Symbol; horizontal, kw...)</code></a> - imshow.jl:235</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/imshow.jl#L236"><code>imshow(arg1::GMTcpt; horizontal, kw...)</code></a> - imshow.jl:236</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/imshow.jl#L241"><code>imshow(arg1::GMT.Gdal.AbstractDataset; kw...)</code></a> - imshow.jl:241</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/imshow.jl#L270"><code>imshow(x::AbstractVector{Float64}, f::String; kw...)</code></a> - imshow.jl:270</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/imshow.jl#L269"><code>imshow(x::AbstractVector{Float64}, y::AbstractVector{Float64}, f::String; kw...)</code></a> - imshow.jl:269</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/imshow.jl#L266"><code>imshow(x::AbstractVector{Float64}, f::Function; kw...)</code></a> - imshow.jl:266</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/imshow.jl#L246"><code>imshow(x::AbstractVector{Float64}, y::AbstractVector{Float64}, f::Function; kw...)</code></a> - imshow.jl:246</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/imshow.jl#L268"><code>imshow(f::Function, x::AbstractVector{Float64}, y::AbstractVector{Float64}; kw...)</code></a> - imshow.jl:268</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/imshow.jl#L267"><code>imshow(f::Function, x::AbstractVector{Float64}; kw...)</code></a> - imshow.jl:267</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/imshow.jl#L124"><code>imshow(arg1::GItype; kw...)</code></a> - imshow.jl:124</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/imshow.jl#L36"><code>imshow(arg1; ...)</code></a> - imshow.jl:36</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/imshow.jl#L36"><code>imshow(arg1, x::AbstractVector{Float64}; ...)</code></a> - imshow.jl:36</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/imshow.jl#L36"><code>imshow(arg1, x::AbstractVector{Float64}, y::AbstractVector{Float64}; kw...)</code></a> - imshow.jl:36</li>
+</ul>
 
 
 </section>

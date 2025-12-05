@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -464,7 +465,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="countries-europe-dcw" class="level2">
 <h2 class="anchored" data-anchor-id="countries-europe-dcw">Countries (Europe DCW)</h2>
 <p>Load packages needed to download data and put into a DataFrame</p>
-<div id="ff9b8cc7" class="cell" data-execution_count="1">
+<div id="2c58ae11" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span>, <span class="bu">DataFrames</span>, <span class="bu">CSV</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>paises <span class="op">=</span> CSV.<span class="fu">File</span>(HTTP.<span class="fu">get</span>(<span class="st">"https://raw.githubusercontent.com/tillnagel/unfolding/master/data/data/countries-population-density.csv"</span>).body, delim<span class="op">=</span><span class="ch">';'</span>) <span class="op">|&gt;</span> DataFrame;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>

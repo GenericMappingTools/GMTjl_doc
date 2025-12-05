@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -434,6 +435,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#parameters" id="toc-parameters" class="nav-link active" data-scroll-target="#parameters">Parameters</a></li>
   <li><a href="#units" id="toc-units" class="nav-link" data-scroll-target="#units">Units</a></li>
   <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
+  <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
   </ul>
 </nav>
     </div>
@@ -584,7 +587,7 @@ Save the figure with the <code>figname=name.ext</code> where <code>ext</code> ch
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <p>Decorated curve with blue stars</p>
-<div id="d9119e78" class="cell" data-execution_count="1">
+<div id="20112510" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>xy <span class="op">=</span> <span class="fu">gmt</span>(<span class="st">"gmtmath -T0/180/1 T SIND 4.5 ADD"</span>);</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(xy, axes<span class="op">=:</span>af, pen<span class="op">=</span>(<span class="fl">1</span>,<span class="op">:</span>red), decorated<span class="op">=</span>(dist<span class="op">=</span>(<span class="fl">2.5</span>,<span class="fl">0.25</span>), symbol<span class="op">=:</span>star,</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>      symbsize<span class="op">=</span><span class="fl">1</span>, pen<span class="op">=</span>(<span class="fl">0.5</span>,<span class="op">:</span>green), fill<span class="op">=:</span>blue, dec2<span class="op">=</span><span class="cn">true</span>), show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -598,6 +601,27 @@ Stacktrace:
 </div>
 </div>
 </div>
+</section>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>This function has multiple methods:</p>
+<ul>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L140"><code>plot(cmd0::String; ...)</code></a> - plot.jl:140</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L140"><code>plot(cmd0::String, arg1; kw...)</code></a> - plot.jl:140</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L144"><code>plot(arg1::Number, arg2::Number; kw...)</code></a> - plot.jl:144</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L129"><code>plot(f::Function; ...)</code></a> - plot.jl:129</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L135"><code>plot(f1::Function, f2::Function; ...)</code></a> - plot.jl:135</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L129"><code>plot(f::Function, range_x; first, kw...)</code></a> - plot.jl:129</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L135"><code>plot(f1::Function, f2::Function, range_t; first, kw...)</code></a> - plot.jl:135</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L140"><code>plot(; ...)</code></a> - plot.jl:140</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L142"><code>plot(arg1, arg2; kw...)</code></a> - plot.jl:142</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L101"><code>plot(arg1; first, kw...)</code></a> - plot.jl:101</li>
+</ul>
+</section>
+<section id="see-also" class="level2">
+<h2 class="anchored" data-anchor-id="see-also">See Also</h2>
+<p><a href="../..\documentation/modules/plot3.html">plot3</a>, <a href="../..\documentation/modules/scatter.html">scatter</a>, <a href="../..\documentation/modules/lines.html">lines</a>, <a href="../..\documentation/modules/bar.html">bar</a></p>
+<p><a href="../alphabetical.html">Alphabetical Function List</a></p>
 
 
 </section>

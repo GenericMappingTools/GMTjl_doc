@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -432,6 +433,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul class="collapse">
   <li><a href="#examples" id="toc-examples" class="nav-link active" data-scroll-target="#examples">Examples</a></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
   </ul>
 </nav>
     </div>
@@ -493,7 +495,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <p>See the classic analysis of the <em>Iris</em> dataset.</p>
-<div id="6640375f" class="cell" data-execution_count="1">
+<div id="43d95ec9" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">biplot</span>(TESTSDIR <span class="op">*</span> <span class="st">"iris.dat"</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -505,7 +507,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Plot a 6 cm fig with the observarion numbers.</p>
-<div id="d10fdb9e" class="cell" data-execution_count="2">
+<div id="28b9b6ee" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">biplot</span>(TESTSDIR <span class="op">*</span> <span class="st">"iris.dat"</span>, figsize<span class="op">=</span><span class="fl">6</span>, obsnumbers<span class="op">=</span><span class="cn">true</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -516,6 +518,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
+</section>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>This function has multiple methods:</p>
+<ul>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L2145"><code>biplot(cmd0::String; first, PC, xlabel, ylabel, varlabels, cmap, marker, ms, obsnumbers, colorbar, arrow, kw...)</code></a> - plot.jl:2145</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L2166"><code>biplot(coefs::Matrix{Float64}, scores::Matrix{Float64}, explained::Vector{Float64}, varlabels::Vector{&lt;:String}, obslabels::Vector{&lt;:String}, obsnumb::Bool, xlabel::String, ylabel::String, cmap::String, marker::String, ms::String, colorbar::Bool, arrow_pars::Tuple{Float64, Float64, Float64, String}, first::Bool, d::Dict{Symbol, Any})</code></a> - plot.jl:2166</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L2150"><code>biplot(D::GMTdataset{T, 2}; first, PC, cmap, xlabel, ylabel, varlabels, marker, ms, obsnumbers, colorbar, arrow, kw...) where T&lt;:Real</code></a> - plot.jl:2150</li>
+</ul>
 
 
 </section>

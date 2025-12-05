@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -431,20 +432,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#trisurf" id="toc-trisurf" class="nav-link active" data-scroll-target="#trisurf">trisurf</a></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link active" data-scroll-target="#source-code">Source Code</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">trisurf</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
 
-<section id="trisurf" class="level1">
-<h1>trisurf</h1>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">trisurf</span>(<span class="kw">in</span>, kw<span class="op">...</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Plots the 3-D triangular surface defined by the points in a Mx3 matrix or a <a href="../..\documentation/general/types.html#sec-dataset-type">GMTdataset</a> with data x, y, z in the 3 first columns. The triangles are computed with a Delaunay triangulation done internaly. Since this is a <em>avatar</em> all options in this function are those of the <code>plot3d</code> program.</p>
+<p>Plots the 3-D triangular surface defined by the points in a Mx3 matrix or a <a href="../..\documentation/general/types.html#sec-dataset-type">GMTdataset</a> with data x, y, z in the 3 first columns. The triangles are computed with a Delaunay triangulation done internaly. Since this is a <a href="../..\documentation/modules/plot3.html">plot3</a> <em>avatar</em> all options in this function are those of the <code>plot3d</code> program.</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -461,6 +476,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tbody>
 </table>
 <p>Create a set of 3-D points and plot the surface defined by the triangulation.</p>
+<div id="ab47f7db" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>x,y,z <span class="op">=</span> GMT.<span class="fu">peaks</span>(N<span class="op">=</span><span class="fl">45</span>, grid<span class="op">=</span><span class="cn">false</span>);</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">trisurf</span>([x[<span class="op">:</span>] y[<span class="op">:</span>] z[<span class="op">:</span>]], pen<span class="op">=</span><span class="fl">0.5</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="trisurf_files/figure-html/cell-2-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>This function has multiple methods:</p>
+<ul>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/triangulate.jl#L187"><code>trisurf(G::Union{String, GMTgrid}, G2; first, thickness, isbase, downsample, ratio, bottom, wall_only, top_only, geog, kw...)</code></a> - triangulate.jl:187</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/triangulate.jl#L187"><code>trisurf(G::Union{String, GMTgrid}; ...)</code></a> - triangulate.jl:187</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/triangulate.jl#L166"><code>trisurf(in::Union{GDtype, Matrix}; first, gdal, kw...)</code></a> - triangulate.jl:166</li>
+</ul>
 
 
 </section>

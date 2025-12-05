@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -452,7 +453,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p>This tutorial shows how we can create stunning shaded relief images using the Blender ray tracer to solve the hard job of computing illumination with realist shadows of a DEM surface. The tutorial linked below takes some time to follow and the time needed to compute the raytraced image is on the order of minutes. However, as the author says at the end, once we have it set for one case it is easy and fast to adapt it to other cases. In a posterior improvement of this tutorial we will show how to modify needed parameters of the <em>.blend</em> file that is run by Blender to create the raytraced image.</p>
-<div id="a13aa8b5" class="cell" data-execution_count="1">
+<div id="a795b706" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract a region of West Ibaria from the 15 arc sec grids stored in the GMT server</span></span>
@@ -475,7 +476,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Load the previously created raytrace image computed with Blender following the tutorial <a href="https://somethingaboutmaps.wordpress.com/2017/11/16/creating-shaded-relief-in-blender/">Creating Shaded Relief in Blender</a> But note that the first part of that tutorial where it explains how to create the UInt16 <em>heightmap</em> can be replaced by this simple command:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gdalwrite</span>(<span class="st">"Gwib.tiff"</span>, <span class="fu">rescale</span>(Gwib, <span class="kw">type</span><span class="op">=</span><span class="dt">UInt16</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Load the gray scale image and show it:</p>
-<div id="8d03b6cf" class="cell" data-execution_count="2">
+<div id="ce51f4f6" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>Iblend <span class="op">=</span> <span class="fu">gmtread</span>(<span class="st">"https://oceania.generic-mapping-tools.org/cache/wiberia_shade_blender.png"</span>);</span>
@@ -489,7 +490,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Now apply the techniques explained in this tutorial <a href="https://somethingaboutmaps.wordpress.com/2014/10/26/adding-shaded-relief-in-photoshop/">Adding Shaded Relief in Photoshop</a> to blend the tint, the shades and illumination</p>
-<div id="95a1c624" class="cell" data-execution_count="3">
+<div id="5e44c90c" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>I <span class="op">=</span> <span class="fu">grdimage</span>(Gwib, C<span class="op">=:</span>earth, img_out<span class="op">=</span><span class="cn">true</span>);     <span class="co"># Hide</span></span>

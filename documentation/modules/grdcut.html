@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -436,6 +437,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#optional-arguments" id="toc-optional-arguments" class="nav-link" data-scroll-target="#optional-arguments">Optional Arguments</a></li>
   <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
   <li><a href="#notes" id="toc-notes" class="nav-link" data-scroll-target="#notes">Notes</a></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
   <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
   </ul>
 </nav>
@@ -480,7 +482,7 @@ Give the name of the output grid file. Optionally, append <code>=ID</code> for w
 <li>+o - Offset data values by the given offset, or append a for automatic range offset to preserve precision for integer grids [Default is 0].</li>
 <li>+s - Scale data values by the given scale, or append a for automatic scaling to preserve precision for integer grids [Default is 1].</li>
 </ul>
-<p><strong>Note1:</strong> Any offset is added before any scaling. +sa also sets +oa (unless overridden). To write specific formats via GDAL, use =gd and supply driver (and optionally dataType) and/or one or more concatenated GDAL -co options using +c.&nbsp;See the <a href="https://docs.generic-mapping-tools.org/dev/cookbook/features.html#write-grids-images">“Writing grids and images”</a> cookbook section for more details.</p>
+<p><strong>Note1:</strong> Any offset is added before any scaling. +sa also sets +oa (unless overridden). To write specific formats via GDAL, use =gd and supply driver (and optionally dataType) and/or one or more concatenated GDAL -co options using +c.&nbsp;See the <a href="https://docs.generic-mapping-tools.org/dev/reference/features.html#write-grids-images">“Writing grids and images”</a> cookbook section for more details.</p>
 <p><strong>Note2:</strong> This is optional and to be used only when saving the result directly on disk. Otherwise, just use the <code>G = modulename(...)</code> form.</p></li>
 <li><p><strong>R</strong> or <strong>region</strong> or <strong>limits</strong> : – <em>limits=(xmin, xmax, ymin, ymax)</em> <strong>|</strong> <em>limits=(BB=(xmin, xmax, ymin, ymax),)</em> <strong>|</strong> <em>limits=(LLUR=(xmin, xmax, ymin, ymax),units=“unit”)</em> <strong>|</strong> …more<br>
 Specify the region of interest. More at [limits](../common_opts/opt_R.html). For perspective view <strong>view</strong>, optionally add <em>zmin,zmax</em>. This option may be used to indicate the range used for the 3-D axes. You may ask for a larger w/e/s/n region to have more room between the image and the axes.</p></li>
@@ -524,7 +526,7 @@ Specify the data types of input and/or output columns (time or geographical data
 <p>To return the subregion of a grid that contains all nodes within a distance of 500 km from the point 45,30 try:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>    G <span class="op">=</span> <span class="fu">grdcutgrdcut</span>(<span class="st">"bathy.nc"</span>, circ_subregion<span class="op">=</span><span class="st">"45/30/500k"</span>);</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>To create a topography grid with data only inside France and set it to NaN outside France, based on the 10x10 minute DEM, try:</p>
-<div id="a0f83c05" class="cell" data-execution_count="1">
+<div id="fdeeac97" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">coast</span>(DCW<span class="op">=:</span>FR, dump<span class="op">=</span><span class="cn">true</span>);</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">grdcut</span>(<span class="st">"@earth_relief_10m"</span>, cutline<span class="op">=</span>(polygon<span class="op">=</span>D, crop2cutline<span class="op">=</span><span class="cn">true</span>));</span>
@@ -543,6 +545,15 @@ Specify the data types of input and/or output columns (time or geographical data
 <section id="notes" class="level2">
 <h2 class="anchored" data-anchor-id="notes">Notes</h2>
 <p>If the input file is a geotiff with multiple data bands then the output format will depend on your selection (if any) of the bands to keep: If you do not specify any bands (which means we consider all the available bands) or you select more than one band, then the output file can either be another geotiff (if you give a .tif[f] extension) or it can be a multiband netCDF file (if you give a .nc or .grd extension). If you select a single band from the input geotiff then GMT will normally read that in as a single grid layer and thus write a netCDF grid (unless you append another grid format specifier). However, if your output filename has a .tif[f] extension then we will instead write it as a one-band geotiff. All geotiff output operations are done via GDAL’s <em>gdal_translate</em>.</p>
+</section>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>This function has multiple methods:</p>
+<ul>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/grdcut.jl#L45"><code>grdcut(; kwargs...)</code></a> - grdcut.jl:45</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/grdcut.jl#L43"><code>grdcut(cmd0::String; kwargs...)</code></a> - grdcut.jl:43</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/grdcut.jl#L44"><code>grdcut(arg1; kwargs...)</code></a> - grdcut.jl:44</li>
+</ul>
 </section>
 <section id="see-also" class="level2">
 <h2 class="anchored" data-anchor-id="see-also">See Also</h2>

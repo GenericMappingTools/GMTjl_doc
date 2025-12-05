@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -436,6 +437,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#required-arguments-2nd-method" id="toc-required-arguments-2nd-method" class="nav-link" data-scroll-target="#required-arguments-2nd-method">Required Arguments (2nd method)</a></li>
   <li><a href="#optional-arguments" id="toc-optional-arguments" class="nav-link" data-scroll-target="#optional-arguments">Optional Arguments</a></li>
   <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
   <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
   </ul>
 </nav>
@@ -570,7 +572,7 @@ Save the figure with the <code>figname=name.ext</code> where <code>ext</code> ch
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <p>To make a mask that has a 5 degree radius around points spaced every 10 degree along the prime meridian, and just paint those areas yellow we try::</p>
-<div id="a09a6fed" class="cell" data-execution_count="1">
+<div id="a1eb6bc9" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> [<span class="fu">repeat</span>([<span class="fl">0</span>],<span class="fl">19</span>) <span class="op">-</span><span class="fl">90</span><span class="op">:</span><span class="fl">10</span><span class="op">:</span><span class="fl">90</span>]      <span class="co"># Some fake data</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mask</span>(t, fill<span class="op">=:</span>yellow, inc<span class="op">=</span><span class="st">"30m"</span>, region<span class="op">=</span>(<span class="op">-</span><span class="fl">75</span>,<span class="fl">75</span>,<span class="op">-</span><span class="fl">90</span>,<span class="fl">90</span>), proj<span class="op">=:</span>eqc, search_radius<span class="op">=</span><span class="st">"5d"</span>, tiles<span class="op">=</span><span class="cn">true</span>,</span>
@@ -590,7 +592,7 @@ Save the figure with the <code>figname=name.ext</code> where <code>ext</code> ch
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>    gmt mask africa_grav.xyg <span class="op">-</span>R20<span class="op">/</span><span class="fl">40</span><span class="op">/</span><span class="fl">20</span><span class="op">/</span><span class="fl">40</span> <span class="op">-</span>I5m <span class="op">-</span>Dall_pols.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>A repeat of the first example but this time we use white tiling:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>    gmt mask africa_grav.xyg <span class="op">-</span>R20<span class="op">/</span><span class="fl">40</span><span class="op">/</span><span class="fl">20</span><span class="op">/</span><span class="fl">40</span> <span class="op">-</span>I5m <span class="op">-</span>JM10i <span class="op">-</span>T <span class="op">-</span>Gwhite <span class="op">-</span>pdf mask</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="565645bd" class="cell" data-execution_count="2">
+<div id="87027206" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">coast</span>(DCW<span class="op">=:</span>HR, dump<span class="op">=</span><span class="cn">true</span>);      <span class="co"># Extract the Croatia border from the DCW</span></span>
@@ -612,6 +614,17 @@ Save the figure with the <code>figname=name.ext</code> where <code>ext</code> ch
 </div>
 </div>
 </div>
+</section>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>This function has multiple methods:</p>
+<ul>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/psmask.jl#L63"><code>mask(cmd0::String; ...)</code></a> - psmask.jl:63</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/psmask.jl#L63"><code>mask(; ...)</code></a> - psmask.jl:63</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/psmask.jl#L97"><code>mask(arg1; kw...)</code></a> - psmask.jl:97</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/psmask.jl#L63"><code>mask(cmd0::String, arg1; first, kwargs...)</code></a> - psmask.jl:63</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/psmask.jl#L102"><code>mask(GI::GItype, D::GDtype; touches, inverse)</code></a> - psmask.jl:102</li>
+</ul>
 </section>
 <section id="see-also" class="level2">
 <h2 class="anchored" data-anchor-id="see-also">See Also</h2>

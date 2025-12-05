@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -461,7 +462,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="plotting-beach-balls" class="level2">
 <h2 class="anchored" data-anchor-id="plotting-beach-balls">Plotting beach balls</h2>
 <p>In this synthetic example we will use the Aki-Richards convention and pass the data via a </p>
-<div id="b64da0b6" class="cell" data-execution_count="1">
+<div id="5793ff70" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">resetGMT</span>()  <span class="co"># hide</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -506,7 +507,7 @@ io = IOBuffer() # hide
 D = gmtread(GMT.TESTSDIR * "mff_bb.txt")
 PrettyTables.pretty_table(io, D.data; header=D.colnames, backend=Val(:html))    # hide
 println("~~~" * String(take!(io)) * "~~~") # hide</code></pre>
-<div id="5b9daf02" class="cell" data-execution_count="2">
+<div id="ccfc52e5" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">resetGMT</span>()  <span class="co"># hide</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>

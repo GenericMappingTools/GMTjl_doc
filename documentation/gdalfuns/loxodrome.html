@@ -30,6 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -397,6 +398,7 @@ ul.task-list li input[type="checkbox"] {
    
   <ul class="collapse">
   <li><a href="#example-compute-an-loxodrome-between-points-00-and-3050-discretized-at-100-km-steps." id="toc-example-compute-an-loxodrome-between-points-00-and-3050-discretized-at-100-km-steps." class="nav-link active" data-scroll-target="#example-compute-an-loxodrome-between-points-00-and-3050-discretized-at-100-km-steps.">Example: Compute an loxodrome between points (0,0) and (30,50) discretized at 100 km steps.</a></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
   </ul>
 </nav>
     </div>
@@ -449,6 +451,15 @@ ul.task-list li input[type="checkbox"] {
 <section id="example-compute-an-loxodrome-between-points-00-and-3050-discretized-at-100-km-steps." class="level2">
 <h2 class="anchored" data-anchor-id="example-compute-an-loxodrome-between-points-00-and-3050-discretized-at-100-km-steps.">Example: Compute an loxodrome between points (0,0) and (30,50) discretized at 100 km steps.</h2>
 <pre><code>loxo = loxodrome([0 0; 30 50], step=100, unit=:k);</code></pre>
+</section>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>This function has multiple methods:</p>
+<ul>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/proj_utils.jl#L568"><code>loxodrome(line::Matrix{&lt;:Real}; step, np, unit, proj, epsg)</code></a> - proj_utils.jl:568</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/proj_utils.jl#L564"><code>loxodrome(D::GMTdataset; step, unit, np, proj, epsg)</code></a> - proj_utils.jl:564</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/proj_utils.jl#L561"><code>loxodrome(lon1::Real, lat1::Real, lon2::Real, lat2::Real; step, unit, np, proj, epsg)</code></a> - proj_utils.jl:561</li>
+</ul>
 
 
 </section>

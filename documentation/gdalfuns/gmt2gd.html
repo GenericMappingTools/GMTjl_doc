@@ -30,6 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -391,8 +392,14 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#source-code" id="toc-source-code" class="nav-link active" data-scroll-target="#source-code">Source Code</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -420,8 +427,18 @@ ul.task-list li input[type="checkbox"] {
 <p>Create GDAL dataset from the contents of GI that can be either a Grid or an Image</p>
 <pre><code>ds = gmt2gd(D, save="", geometry="")</code></pre>
 <p>Create GDAL dataset from the contents of D, which can be a <a href="../..\documentation/general/types.html#sec-dataset-type">GMTdataset</a>, a vector of <a href="../..\documentation/general/types.html#sec-dataset-type">GMTdataset</a> ir a MxN array. The <code>save</code> keyword instructs GDAL to save the contents as an OGR file. Format is determined by file estension. <code>geometry</code> can be a string with “polygon”, where file will be converted to polygon/multipolygon depending on <code>D</code> is a single or a multi-segment object, or “point” to convert to a multipoint geometry.</p>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>This function has multiple methods:</p>
+<ul>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/gdal_utils.jl#L670"><code>gmt2gd(D::Vector{&lt;:GMTdataset}; save, geometry)</code></a> - gdal_utils.jl:670</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/gdal_utils.jl#L669"><code>gmt2gd(D::GMTdataset; save, geometry)</code></a> - gdal_utils.jl:669</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/gdal_utils.jl#L668"><code>gmt2gd(D::Matrix{&lt;:Real}; save, geometry)</code></a> - gdal_utils.jl:668</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/gdal_utils.jl#L592"><code>gmt2gd(GI)</code></a> - gdal_utils.jl:592</li>
+</ul>
 
 
+</section>
 
 </main> <!-- /main -->
 <script>

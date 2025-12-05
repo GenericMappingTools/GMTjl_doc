@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -437,6 +438,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#notes-on-transparency" id="toc-notes-on-transparency" class="nav-link" data-scroll-target="#notes-on-transparency">Notes on Transparency</a></li>
   <li><a href="#limitations" id="toc-limitations" class="nav-link" data-scroll-target="#limitations">Limitations</a></li>
   <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
   </ul>
 </nav>
     </div>
@@ -570,7 +572,7 @@ Swap 1st and 2nd column on input and/or output. <a href="https://docs.generic-ma
 <p>To plot just the red outlines of the (lon lat text strings) stored in the file text.txt on a Mercator plot with the given specifications, use</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="st">"text.txt"</span>, region<span class="op">=</span>(<span class="op">-</span><span class="fl">30</span>,<span class="fl">30</span>,<span class="op">-</span><span class="fl">10</span>,<span class="fl">20</span>), proj<span class="op">=:</span>merc, figscale<span class="op">=</span><span class="fl">0.25</span>, font<span class="op">=</span>(<span class="fl">18</span>,<span class="op">:</span>Helvetica,<span class="st">"-=0.5p"</span>,<span class="op">:</span>red), frame<span class="op">=</span>(annot<span class="op">=</span><span class="fl">5</span>,), show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>To plot just the “Hello World” and let the program estimate the <em>region</em>, do</p>
-<div id="c1ef23ad" class="cell" data-execution_count="1">
+<div id="e270457c" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>([<span class="st">"Hello World"</span>], x<span class="op">=</span><span class="fl">2.0</span>, y<span class="op">=</span><span class="fl">2.0</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -582,7 +584,7 @@ Swap 1st and 2nd column on input and/or output. <a href="https://docs.generic-ma
 </div>
 </div>
 <p>A similar example but using the <code>outline</code> option to plot a 3 points green outline.</p>
-<div id="5d117ad9" class="cell" data-execution_count="2">
+<div id="e80b53e5" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>([<span class="st">"Hello World"</span>], x<span class="op">=</span><span class="fl">2.0</span>, y<span class="op">=</span><span class="fl">2.0</span>, outline<span class="op">=</span><span class="st">"3p,red"</span>, font<span class="op">=</span><span class="fl">40</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -594,7 +596,7 @@ Swap 1st and 2nd column on input and/or output. <a href="https://docs.generic-ma
 </div>
 </div>
 <p>Example using the <em>rich</em> function (reproduces the original example in Makie).</p>
-<div id="a4213c23" class="cell" data-execution_count="3">
+<div id="afdb8221" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="fu">rich</span>(<span class="st">"H"</span>, <span class="fu">subscript</span>(<span class="st">"2"</span>), <span class="fu">greek</span>(<span class="st">"O"</span>),<span class="st">" is the "</span>, <span class="fu">smallcaps</span>(<span class="st">"formula"</span>),<span class="st">" for "</span>,</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>     <span class="fu">rich</span>(<span class="fu">underline</span>(<span class="st">"water"</span>), color<span class="op">=:</span>red, font<span class="op">=</span><span class="st">"Helvetica"</span>, size<span class="op">=</span><span class="fl">16</span>)), x<span class="op">=</span><span class="fl">1</span>, y<span class="op">=</span><span class="fl">1</span>, frame<span class="op">=:</span>none)</span>
@@ -614,6 +616,17 @@ Swap 1st and 2nd column on input and/or output. <a href="https://docs.generic-ma
 </div>
 </div>
 </div>
+</section>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>This function has multiple methods:</p>
+<ul>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/pstext.jl#L182"><code>text(txt::Vector{String}; x, y, first, kwargs...)</code></a> - pstext.jl:182</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/pstext.jl#L59"><code>text(cmd0::String; ...)</code></a> - pstext.jl:59</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/pstext.jl#L59"><code>text(; ...)</code></a> - pstext.jl:59</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/pstext.jl#L178"><code>text(arg1; kw...)</code></a> - pstext.jl:178</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/pstext.jl#L59"><code>text(cmd0::String, arg1; first, kwargs...)</code></a> - pstext.jl:59</li>
+</ul>
 
 
 </section>

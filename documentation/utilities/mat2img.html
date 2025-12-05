@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -431,21 +432,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#mat2img" id="toc-mat2img" class="nav-link active" data-scroll-target="#mat2img">mat2img</a>
-  <ul class="collapse">
-  <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
-  </ul></li>
+  <li><a href="#see-also" id="toc-see-also" class="nav-link active" data-scroll-target="#see-also">See Also</a></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">mat2img</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
 
-<section id="mat2img" class="level1">
-<h1>mat2img</h1>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>I <span class="op">=</span> <span class="fu">mat2img</span>(mat<span class="op">::</span><span class="dt">Array{&lt;:Unsigned}</span>; x<span class="op">=</span>[], y<span class="op">=</span>[], hdr<span class="op">=</span><span class="cn">nothing</span>, proj4<span class="op">=</span><span class="st">""</span>, wkt<span class="op">=</span><span class="st">""</span>, cmap<span class="op">=</span><span class="cn">nothing</span>, kw<span class="op">...</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Take a 2D <code>mat</code> array and a <code>hdr</code> 1x9 [xmin xmax ymin ymax zmin zmax reg xinc yinc] header descriptor and return a <a href="../..\documentation/general/types.html#sec-image-type">GMTimage</a> type. Alternatively to <code>hdr</code>, provide a pair of vectors, x &amp; y, with the X and Y coordinates. Optionally, the <code>hdr</code> arg may be omitted and it will computed from <code>mat</code> alone, but then x=1:ncol, y=1:nrow When <code>mat</code> is a 3D UInt16 array we automatically compute a UInt8 RGB image. In that case <code>cmap</code> is ignored. But if no conversion is wanted use option <code>noconv=true</code></p>
 <p>The method</p>
@@ -455,9 +468,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="see-also" class="level2">
 <h2 class="anchored" data-anchor-id="see-also">See Also</h2>
 <p><a href="../..\documentation/utilities/mat2ds.html">mat2ds</a>, <a href="../..\documentation/utilities/mat2grid.html">mat2grid</a></p>
-
-
 </section>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>This function has multiple methods:</p>
+<ul>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/utils_types.jl#L1543"><code>mat2img(mat, G::GMTgrid; names, metadata)</code></a> - utils_types.jl:1543</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/utils_types.jl#L1539"><code>mat2img(mat, I::GMTimage; names, metadata)</code></a> - utils_types.jl:1539</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/utils_types.jl#L1454"><code>mat2img(mat::Union{GMTgrid, Matrix{&lt;:AbstractFloat}}; x, y, hdr, proj4, wkt, GI, clim, cmap, kw...)</code></a> - utils_types.jl:1454</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/utils_types.jl#L1440"><code>mat2img(img::GMTimage; kw...)</code></a> - utils_types.jl:1440</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/utils_types.jl#L1373"><code>mat2img(mat::Union{AbstractArray{UInt16, 3}, AbstractMatrix{UInt16}}; x, y, v, hdr, proj4, wkt, img8, kw...)</code></a> - utils_types.jl:1373</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/utils_types.jl#L1272"><code>mat2img(mat::Union{AbstractArray{&lt;:Unsigned}, AbstractArray{&lt;:Bool}}; x, y, v, hdr, proj4, wkt, cmap, is_transposed, kw...)</code></a> - utils_types.jl:1272</li>
+</ul>
+
+
 </section>
 
 </main> <!-- /main -->

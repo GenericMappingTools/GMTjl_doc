@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -462,7 +463,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="archimedean-spiral" class="level3">
 <h3 class="anchored" data-anchor-id="archimedean-spiral">Archimedean spiral</h3>
 <p>From https://en.wikipedia.org/wiki/Archimedean_spiral</p>
-<div id="0cc2b9c3" class="cell" data-execution_count="1">
+<div id="6c9eb483" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Play arround with these parameters</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>T <span class="op">=</span> <span class="fl">1</span>;</span>
@@ -484,7 +485,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="fermati-spiral" class="level3">
 <h3 class="anchored" data-anchor-id="fermati-spiral">Fermati spiral</h3>
 <p>Draw a Polar scatter plot with variable symbol size, color and transparency. We will use the default color scale (turbo) and fig size (12 cm).</p>
-<div id="e151d29b" class="cell" data-execution_count="2">
+<div id="9fd9bf79" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>teta <span class="op">=</span> <span class="fl">0</span><span class="op">:</span><span class="fl">0.01</span><span class="op">:</span><span class="fl">5</span>pi;</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>xf <span class="op">=</span> <span class="fu">sqrt</span>.(teta) <span class="op">.*</span> <span class="fu">cos</span>.(teta);</span>
@@ -502,7 +503,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="sunflower" class="level3">
 <h3 class="anchored" data-anchor-id="sunflower">Sunflower</h3>
 <p>From This <a href="https://www.mathworks.com/matlabcentral/fileexchange/10796-model-a-sunflower-with-the-golden-ratio">FEX contribution</a>. The author here wanted to reflect the fact that on a sunflower the seeds close to the center are smaller and have a higher density.</p>
-<div id="725296ed" class="cell" data-execution_count="3">
+<div id="013d017b" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>phi <span class="op">=</span> (<span class="fu">sqrt</span>(<span class="fl">5</span>)<span class="op">-</span><span class="fl">1</span>)<span class="op">/</span><span class="fl">2</span>;</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="fl">2618</span>;</span>
@@ -522,7 +523,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="another-sunflower">Another Sunflower</h3>
 <p>This one was reversed from the javascript in <a href="https://github.com/jacquerie/sunflower/blob/gh-pages/js/application.js">this page</a>, which follows the original work of Helmut Vogel in<a href="http://dx.doi.org/10.1016%2F0025-5564%2879%2990080-4">A better Way to Construct the Sunflower Head</a>, where he proposed that spiral branches of seeds in a sunflower head are added from the center at an angle of 137.5∘ from the preceding one.</p>
 <p>This time we will also color the seed points in function of r, the distance to the center and pain with a dark background.</p>
-<div id="feb9595b" class="cell" data-execution_count="4">
+<div id="889e0dba" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>angle <span class="op">=</span> <span class="fl">137.5</span>;  <span class="co"># Play with this angle between [137.0 138.0]. Amazing the effect, no?</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>alfa <span class="op">=</span> <span class="fl">2</span>pi <span class="op">*</span> angle <span class="op">/</span> <span class="fl">360</span>;</span>

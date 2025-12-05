@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -438,6 +439,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#units" id="toc-units" class="nav-link" data-scroll-target="#units">Units</a></li>
   <li><a href="#insideoutside-status" id="toc-insideoutside-status" class="nav-link" data-scroll-target="#insideoutside-status">Inside/Outside Status</a></li>
   <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
   <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
   </ul>
 </nav>
@@ -603,7 +605,7 @@ Swap 1st and 2nd column on input and/or output. <a href="https://docs.generic-ma
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <p>To determine the centroid of the remote GSHHH high-resolution polygon for Australia, as well as the land area in km squared, try:</p>
-<div id="078a53b4" class="cell" data-execution_count="1">
+<div id="c24f0dd1" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">gmtspatial</span>(<span class="st">"@GSHHS_h_Australia.txt"</span>, colinfo<span class="op">=:</span>g, area<span class="op">=</span><span class="st">"k"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -638,6 +640,16 @@ PROJ: +proj=longlat +datum=WGS84 +units=m +no_defs
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">gmtspatial</span>(<span class="st">"A.txt"</span>, truncate<span class="op">=</span><span class="st">"B.txt"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>If you want to plot a polygon with holes (donut polygon) from a multiple segment file which contains both perimeters and holes, it could be necessary first to reorganize the file so it can be plotted with plot. To do this, run:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">gmtspatial</span>(<span class="st">"file.txt"</span>, polygons<span class="op">=:</span>h)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>This function has multiple methods:</p>
+<ul>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/gmtspatial.jl#L51"><code>gmtspatial(cmd0::String; ...)</code></a> - gmtspatial.jl:51</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/gmtspatial.jl#L51"><code>gmtspatial(cmd0::String, arg1; kw...)</code></a> - gmtspatial.jl:51</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/gmtspatial.jl#L53"><code>gmtspatial(arg1, arg2; kw...)</code></a> - gmtspatial.jl:53</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/gmtspatial.jl#L52"><code>gmtspatial(arg1; kw...)</code></a> - gmtspatial.jl:52</li>
+</ul>
 </section>
 <section id="see-also" class="level2">
 <h2 class="anchored" data-anchor-id="see-also">See Also</h2>

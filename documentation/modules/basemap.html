@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -441,6 +442,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#custom-labels-or-intervals" id="toc-custom-labels-or-intervals" class="nav-link" data-scroll-target="#custom-labels-or-intervals">Custom Labels or Intervals</a></li>
   <li><a href="#restrictions" id="toc-restrictions" class="nav-link" data-scroll-target="#restrictions">Restrictions</a></li>
   <li><a href="#bugs" id="toc-bugs" class="nav-link" data-scroll-target="#bugs">Bugs</a></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
   </ul>
 </nav>
     </div>
@@ -523,10 +525,11 @@ Set PDF transparency level for an overlay, in (0-100] percent range. [Default is
 <section id="linear-x-y-plot" class="level3">
 <h3 class="anchored" data-anchor-id="linear-x-y-plot">Linear x-y plot</h3>
 <p>To make a linear x/y frame with all axes, but with only left and bottom axes annotated, using xscale = yscale = 1 cm per unit, ticking every 1 unit and annotating every 2, and using xlabel = “Distance” and ylabel = “No of samples”, use</p>
-<div id="2474762a" class="cell" data-execution_count="1">
+<div id="4c3c20b6" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">basemap</span>(region<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">9</span>,<span class="fl">0</span>,<span class="fl">5</span>), figscale<span class="op">=</span><span class="fl">1</span>,</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>        frame<span class="op">=</span>(axes<span class="op">=:</span>WeSn, annot<span class="op">=</span><span class="fl">2</span>, ticks<span class="op">=</span><span class="fl">1</span>, xlabel<span class="op">=:</span>Distance, ylabel<span class="op">=</span><span class="st">"No of samples"</span>), show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">basemap</span>(region<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">9</span>,<span class="fl">0</span>,<span class="fl">5</span>), figscale<span class="op">=</span><span class="fl">1</span>,</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>        frame<span class="op">=</span>(axes<span class="op">=:</span>WeSn, annot<span class="op">=</span><span class="fl">2</span>, ticks<span class="op">=</span><span class="fl">1</span>, xlabel<span class="op">=:</span>Distance, ylabel<span class="op">=</span><span class="st">"No of samples"</span>), show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -539,11 +542,12 @@ Set PDF transparency level for an overlay, in (0-100] percent range. [Default is
 <section id="log-log-plot" class="level3">
 <h3 class="anchored" data-anchor-id="log-log-plot">Log-log plot</h3>
 <p>To make a log-log frame with only the left and bottom axes, where the x-axis is 25 cm and annotated every 1-2-5 and the y-axis is 15 cm and annotated every power of 10 but has tick-marks every 0.1, run</p>
-<div id="972d245e" class="cell" data-execution_count="2">
+<div id="ad08fb34" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">basemap</span>(region<span class="op">=</span>(<span class="fl">1</span>,<span class="fl">10000</span>,<span class="fl">1e20</span>,<span class="fl">1e25</span>), figsize<span class="op">=</span>(<span class="fl">25</span>,<span class="fl">15</span>), proj<span class="op">=:</span>logxy, frame<span class="op">=</span>(axes<span class="op">=:</span>WS,),</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    xaxis<span class="op">=</span>(annot<span class="op">=</span><span class="fl">2</span>, label<span class="op">=:</span>Wavelength),</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    yaxis<span class="op">=</span>(annot<span class="op">=</span><span class="fl">1</span>, ticks<span class="op">=</span><span class="fl">3</span>, label<span class="op">=:</span>Power, scale<span class="op">=:</span>pow), show<span class="op">=</span><span class="fl">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">basemap</span>(region<span class="op">=</span>(<span class="fl">1</span>,<span class="fl">10000</span>,<span class="fl">1e20</span>,<span class="fl">1e25</span>), figsize<span class="op">=</span>(<span class="fl">25</span>,<span class="fl">15</span>), proj<span class="op">=:</span>logxy, frame<span class="op">=</span>(axes<span class="op">=:</span>WS,),</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>xaxis<span class="op">=</span>(annot<span class="op">=</span><span class="fl">2</span>, label<span class="op">=:</span>Wavelength),</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>yaxis<span class="op">=</span>(annot<span class="op">=</span><span class="fl">1</span>, ticks<span class="op">=</span><span class="fl">3</span>, label<span class="op">=:</span>Power, scale<span class="op">=:</span>pow), show<span class="op">=</span><span class="fl">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -556,11 +560,11 @@ Set PDF transparency level for an overlay, in (0-100] percent range. [Default is
 <section id="power-axes" class="level3">
 <h3 class="anchored" data-anchor-id="power-axes">Power axes</h3>
 <p>To design an axis system to be used for a depth-sqrt(age) plot with depth positive down, ticked and annotated every 500m, and ages (in millions of years) annotated at 1 My, 4 My, 9 My etc., use</p>
-<div id="9d038dab" class="cell" data-execution_count="3">
+<div id="c44cdc95" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># This still fails to generate the intended GMT command. (maybe let scale="pow0.5")</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">#basemap(region=(0,100,0,5000), figscale=(1,-0.001), xaxis=(annot=1, label="Crustal age", scale=:pow), yaxis=(annot=500, label=:Depth), show=true)</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">basemap</span>(region<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">100</span>,<span class="fl">0</span>,<span class="fl">5000</span>), frame<span class="op">=</span><span class="st">"x1p+l</span><span class="sc">\"</span><span class="st">Crustal age</span><span class="sc">\"</span><span class="st"> y500+lDepth"</span>, proj<span class="op">=</span><span class="st">"x1cp0.5/-0.001c"</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">basemap</span>(region<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">100</span>,<span class="fl">0</span>,<span class="fl">5000</span>), frame<span class="op">=</span><span class="st">"x1p+l</span><span class="sc">\"</span><span class="st">Crustal age</span><span class="sc">\"</span><span class="st"> y500+lDepth"</span>, proj<span class="op">=</span><span class="st">"x1cp0.5/-0.001c"</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -573,9 +577,9 @@ Set PDF transparency level for an overlay, in (0-100] percent range. [Default is
 <section id="polar-thetar-plot" class="level3">
 <h3 class="anchored" data-anchor-id="polar-thetar-plot">Polar (theta,r) plot</h3>
 <p>For a base map for use with polar coordinates, where the radius from 0 to 1000 should correspond to 5 cm and with gridlines and ticks intervals automatically determined, use</p>
-<div id="5923b4c1" class="cell" data-execution_count="4">
+<div id="bd9f38fc" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">basemap</span>(region<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">360</span>,<span class="fl">0</span>,<span class="fl">1000</span>), figsize<span class="op">=</span><span class="fl">10</span>, frame<span class="op">=:</span>afg, proj<span class="op">=:</span>polar, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">basemap</span>(region<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">360</span>,<span class="fl">0</span>,<span class="fl">1000</span>), figsize<span class="op">=</span><span class="fl">10</span>, frame<span class="op">=:</span>afg, proj<span class="op">=:</span>polar, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -753,6 +757,10 @@ Set PDF transparency level for an overlay, in (0-100] percent range. [Default is
 <section id="bugs" class="level2">
 <h2 class="anchored" data-anchor-id="bugs">Bugs</h2>
 <p>The [frame] option is somewhat complicated to explain and comprehend. However, it is fairly simple for most applications (see examples).</p>
+</section>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>View the <a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/psbasemap.jl#L45">source code</a> for this function.</p>
 
 
 </section>

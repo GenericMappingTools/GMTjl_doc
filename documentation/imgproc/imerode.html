@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -431,22 +432,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#imerode" id="toc-imerode" class="nav-link active" data-scroll-target="#imerode">imerode</a>
-  <ul class="collapse">
-  <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
-  <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
-  </ul></li>
+  <li><a href="#examples" id="toc-examples" class="nav-link active" data-scroll-target="#examples">Examples</a></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">imerode</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
 
-<section id="imerode" class="level1">
-<h1>imerode</h1>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>J <span class="op">=</span> <span class="fu">imerode</span>(I<span class="op">::</span><span class="dt">Union{GMTimage{&lt;:UInt8, 2}, GMTimage{&lt;:Bool, 2}}</span>; hsize<span class="op">=</span><span class="fl">3</span>, vsize<span class="op">=</span><span class="fl">3</span>, sel<span class="op">=</span><span class="cn">nothing</span>)<span class="op">::</span><span class="dt">GMTimage</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Erode the grayscale or binary image I.</p>
 <p>The erosion is performed with a matrix of 0’s and 1’s with width <code>hsize</code> and height <code>vsize</code>, or, if possible, with the structuring element <a href="../..\documentation/imgproc/strel.html">strel</a>. Later case is faster but it is only available for binary images, where by <em>binary</em> images we mean Boolean images or images with only 0’s and 1’s of UInt8 type.</p>
@@ -481,8 +493,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">grdimage!</span>(J3, figsize<span class="op">=</span><span class="fl">6</span>, xshift<span class="op">=</span><span class="fl">6.1</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><img src="../..\assets/imerode_nocrash.png" class="center img-fluid" width="600"></p>
 </section>
-<section id="see-also" class="level2">
-<h2 class="anchored" data-anchor-id="see-also">See Also</h2>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>This function has multiple methods:</p>
+<ul>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/lepto_funs.jl#L481"><code>imerode(I::Union{GMTimage{&lt;:UInt8, 2}, GMTimage{&lt;:Bool, 2}}; hsize, vsize, sel)</code></a> - lepto_funs.jl:481</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/lepto_funs.jl#L479"><code>imerode(G::AbstractMatrix{T}, sel::Matrix{&lt;:Real}) where T&lt;:Union{AbstractFloat, Integer}</code></a> - lepto_funs.jl:479</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/lepto_funs.jl#L475"><code>imerode(G::AbstractMatrix{T}; hsize, vsize, sel) where T&lt;:Union{AbstractFloat, Integer}</code></a> - lepto_funs.jl:475</li>
+</ul>
+<section id="see-also" class="level3">
+<h3 class="anchored" data-anchor-id="see-also">See Also</h3>
 <p><a href="../..\documentation/imgproc/imdilate.html">imdilate</a>, <a href="../..\documentation/imgproc/imopen.html">imopen</a>, <a href="../..\documentation/imgproc/imclose.html">imclose</a>, <a href="../..\documentation/imgproc/strel.html">strel</a></p>
 
 

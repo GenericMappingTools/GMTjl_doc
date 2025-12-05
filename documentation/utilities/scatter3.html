@@ -30,6 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -391,8 +392,14 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#source-code" id="toc-source-code" class="nav-link active" data-scroll-target="#source-code">Source Code</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -427,8 +434,23 @@ ul.task-list li input[type="checkbox"] {
  [7] scatter3(arg1::AbstractArray, arg2::AbstractArray, arg3::AbstractArray; kw...)
  [8] scatter3(; ...)
  [9] scatter3(arg; kw...)</code></pre>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>This function has multiple methods:</p>
+<ul>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L413"><code>scatter3(cmd0::String; ...)</code></a> - plot.jl:413</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L413"><code>scatter3(cmd0::String, arg1; kw...)</code></a> - plot.jl:413</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L431"><code>scatter3(f1::Function, f2::Function, f3::Function, range_t; first, kw...)</code></a> - plot.jl:431</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L431"><code>scatter3(f1::Function, f2::Function, f3::Function; ...)</code></a> - plot.jl:431</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L426"><code>scatter3(f1::Function, f2::Function; ...)</code></a> - plot.jl:426</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L426"><code>scatter3(f1::Function, f2::Function, range_t; first, kw...)</code></a> - plot.jl:426</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L419"><code>scatter3(arg1::AbstractArray, arg2::AbstractArray, arg3::AbstractArray; kw...)</code></a> - plot.jl:419</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L413"><code>scatter3(; ...)</code></a> - plot.jl:413</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L416"><code>scatter3(arg; kw...)</code></a> - plot.jl:416</li>
+</ul>
 
 
+</section>
 
 </main> <!-- /main -->
 <script>

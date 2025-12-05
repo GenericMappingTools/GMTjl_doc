@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -431,21 +432,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#pca" id="toc-pca" class="nav-link active" data-scroll-target="#pca">pca</a>
-  <ul class="collapse">
-  <li><a href="#returns" id="toc-returns" class="nav-link" data-scroll-target="#returns">Returns</a></li>
-  </ul></li>
+  <li><a href="#returns" id="toc-returns" class="nav-link active" data-scroll-target="#returns">Returns</a></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">pca</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
 
-<section id="pca" class="level1">
-<h1>pca</h1>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>score, coeff, latent, explained, mu, ems <span class="op">=</span> <span class="fu">pca</span>(X; DT<span class="op">::</span><span class="dt">DataType</span>=<span class="dt">Float32</span>, npc<span class="op">=</span><span class="fl">0</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li><p><code>X</code>: A n-by-p data matrix X. Rows of X correspond to observations and columns correspond to variables. Must be a Float type (either 32 or 64).</p></li>
@@ -466,9 +479,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>This method takes a <a href="../..\documentation/general/types.html#sec-image-type">GMTimage</a> cube, normally satellite data of <code>UInt16</code> type created with the <code>RemoteS</code> package, and returns a <a href="../..\documentation/general/types.html#sec-image-type">GMTimage</a> cube of <code>UInt8</code> of the principal components in decreasing order of explained variance. The <code>truecolor(Ipca)</code> (from <code>RemoteS</code>) will show a false color image made of the three largest components.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>Gpca <span class="op">=</span> <span class="fu">pca</span>(G<span class="op">::</span><span class="dt">GMTgrid</span>; DT<span class="op">::</span><span class="dt">DataType</span>=<span class="dt">Float32</span>, npc<span class="op">=</span><span class="fl">0</span>) <span class="op">-&gt;</span> GMTgrid{DT}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>This method takes a <a href="../..\documentation/general/types.html#sec-grid-type">GMTgrid</a> cube and returns another grid, of type <code>DT</code> (<code>Float32</code> by default), with principal components in decreasing order of explained variance.</p>
-
-
 </section>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>This function has multiple methods:</p>
+<ul>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/pca.jl#L140"><code>pca(G::GMTgrid; DT, npc)</code></a> - pca.jl:140</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/pca.jl#L113"><code>pca(I::GMTimage; DT, npc)</code></a> - pca.jl:113</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/pca.jl#L108"><code>pca(X::AbstractArray{T}; DT, npc) where T&lt;:Real</code></a> - pca.jl:108</li>
+</ul>
+
+
 </section>
 
 </main> <!-- /main -->

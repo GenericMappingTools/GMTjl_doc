@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -434,6 +435,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#parameters" id="toc-parameters" class="nav-link active" data-scroll-target="#parameters">Parameters</a></li>
   <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
   <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See also</a></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
   </ul>
 </nav>
     </div>
@@ -476,7 +478,7 @@ Select map projection. More at [proj](../common_opts/opt_J.html)</p></li>
 <li><p><strong>R</strong> or <strong>region</strong> or <strong>limits</strong> : – <em>limits=(xmin, xmax, ymin, ymax)</em> <strong>|</strong> <em>limits=(BB=(xmin, xmax, ymin, ymax),)</em> <strong>|</strong> <em>limits=(LLUR=(xmin, xmax, ymin, ymax),units=“unit”)</em> <strong>|</strong> …more<br>
 Specify the region of interest. More at [limits](../common_opts/opt_R.html). For perspective view <strong>view</strong>, optionally add <em>zmin,zmax</em>. This option may be used to indicate the range used for the 3-D axes. You may ask for a larger w/e/s/n region to have more room between the image and the axes.</p></li>
 <li><p><strong>fill</strong> or <strong>color</strong><br>
-Select color or pattern for filling of symbols [Default is <em>lightblue</em>]. It can take the form of a string, a vector or a tuple of colors. See for extend color selection (including color map generation). When more than one band is requested the bands colors are assigned by cycling through the colors given in this option. This means that a 3 bands and a <code>fill=[:red, :blue]</code> will plot first and third band in red and second in blue.</p>
+Select color or pattern for filling of symbols [Default is <em>lightblue</em>]. It can take the form of a string, a vector or a tuple of colors. See <a href="../..\documentation/modules/Setting color.html">Setting color</a> for extend color selection (including color map generation). When more than one band is requested the bands colors are assigned by cycling through the colors given in this option. This means that a 3 bands and a <code>fill=[:red, :blue]</code> will plot first and third band in red and second in blue.</p>
 <p>Optionally the <code>fill</code> can be done with patterns (which includes the possibility of using images).</p></li>
 <li><p><strong>fillalpha</strong> or <strong>alpha</strong> or <strong>transparency</strong> : – <em>alpha=0.5</em> <strong>|</strong> <em>alpha=(50, 75)</em><br>
 Control the transparency level. Numbers can be floats &lt;= 1.0 or integers in 0-100 range. Default is 75. It can take the form of a number, a vector or a tuple of numbers. When more than one band is requested the bands transparencies are assigned by cycling through the values given in this option. This means that the number of bands and of transparencies may be different.</p></li>
@@ -487,7 +489,7 @@ Save the figure with the <code>figname=name.ext</code> where <code>ext</code> ch
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <p>A vertical bands with 2 colors and 3 transparencies</p>
-<div id="ef6db6ca" class="cell" data-execution_count="1">
+<div id="0d9dc65a" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">vband</span>([<span class="fl">1</span> <span class="fl">2</span>; <span class="fl">2.5</span> <span class="fl">3</span>; <span class="fl">4</span> <span class="fl">5</span>], fill<span class="op">=</span>(<span class="op">:</span>red, <span class="op">:</span>blue), alpha<span class="op">=</span>(<span class="fl">0.75</span>, <span class="fl">0.5</span>, <span class="fl">0.3</span>), region<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">5</span>,<span class="op">-</span><span class="fl">1</span>,<span class="fl">5</span>), show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -499,7 +501,7 @@ Save the figure with the <code>figname=name.ext</code> where <code>ext</code> ch
 </div>
 </div>
 <p>Now with variable heights.</p>
-<div id="163bbb15" class="cell" data-execution_count="2">
+<div id="2acbc7ae" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">vband</span>([<span class="fl">1</span> <span class="fl">2</span> <span class="fl">0</span> <span class="cn">NaN</span>; <span class="fl">2.5</span> <span class="fl">3</span> <span class="cn">NaN</span> <span class="fl">4</span>; <span class="fl">4</span> <span class="fl">5</span> <span class="fl">1</span> <span class="fl">3</span>], fill<span class="op">=</span>[<span class="op">:</span>red, <span class="op">:</span>blue], alpha<span class="op">=</span>(<span class="fl">0.75</span>, <span class="fl">0.5</span>, <span class="fl">0.3</span>),</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>      region<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">5</span>,<span class="op">-</span><span class="fl">1</span>,<span class="fl">5</span>), show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -512,7 +514,7 @@ Save the figure with the <code>figname=name.ext</code> where <code>ext</code> ch
 </div>
 </div>
 <p>A horizontal band plot with variable lengths and colors and constant transparency.</p>
-<div id="c4b84434" class="cell" data-execution_count="3">
+<div id="ad2db799" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hband</span>([<span class="op">-</span><span class="fl">0.5</span> <span class="fl">0.5</span> <span class="fl">0</span> <span class="fl">3</span>; <span class="fl">1</span> <span class="fl">2</span> <span class="fl">1</span> <span class="cn">NaN</span>; <span class="fl">3</span> <span class="fl">4</span> <span class="cn">NaN</span> <span class="cn">NaN</span>], fill<span class="op">=</span>(<span class="op">:</span>red, <span class="op">:</span>blue, <span class="op">:</span>green), region<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">5</span>,<span class="op">-</span><span class="fl">1</span>,<span class="fl">5</span>), show<span class="op">=</span><span class="fl">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -524,7 +526,7 @@ Save the figure with the <code>figname=name.ext</code> where <code>ext</code> ch
 </div>
 </div>
 <p>We can fill with patterns as well. And use an image as one of the patterns.</p>
-<div id="e71c6e7a" class="cell" data-execution_count="4">
+<div id="3ad4dda4" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">vband</span>([<span class="fl">1</span> <span class="fl">2</span>; <span class="fl">2.5</span> <span class="fl">4</span>], fill<span class="op">=</span>((pattern<span class="op">=</span>TESTSDIR <span class="op">*</span> <span class="st">"assets/tiling2.jpg"</span>, dpi<span class="op">=</span><span class="fl">200</span>), (pattern<span class="op">=</span><span class="fl">27</span>, dpi<span class="op">=</span><span class="fl">200</span>)),</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>      region<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">5</span>,<span class="op">-</span><span class="fl">1</span>,<span class="fl">5</span>), show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -537,7 +539,7 @@ Save the figure with the <code>figname=name.ext</code> where <code>ext</code> ch
 </div>
 </div>
 <p>Do a nested call in which one is not forced to specify the plot limits but let it be computed from input data</p>
-<div id="276f9f31" class="cell" data-execution_count="5">
+<div id="7094bba6" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fl">0</span><span class="op">:</span><span class="fl">0.5</span><span class="op">:</span><span class="fl">5</span>, <span class="fu">rand</span>(<span class="fl">11</span>), vband<span class="op">=</span>(data<span class="op">=</span>[<span class="fl">1</span> <span class="fl">2</span>; <span class="fl">2.5</span> <span class="fl">3</span>; <span class="fl">4</span> <span class="fl">4.2</span>], fill<span class="op">=</span>[<span class="op">:</span>red, <span class="op">:</span>blue, <span class="op">:</span>green]), show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -552,6 +554,10 @@ Save the figure with the <code>figname=name.ext</code> where <code>ext</code> ch
 <section id="see-also" class="level2">
 <h2 class="anchored" data-anchor-id="see-also">See also</h2>
 <p><a href="../..\documentation/utilities/vlines.html">vlines</a>, <a href="../..\documentation/utilities/hlines.html">hlines</a></p>
+</section>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>View the <a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L1517">source code</a> for this function.</p>
 
 
 </section>

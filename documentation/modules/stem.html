@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -431,21 +432,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#stem" id="toc-stem" class="nav-link active" data-scroll-target="#stem">stem</a>
-  <ul class="collapse">
-  <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
-  </ul></li>
+  <li><a href="#examples" id="toc-examples" class="nav-link active" data-scroll-target="#examples">Examples</a></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">stem</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
 
-<section id="stem" class="level1">
-<h1>stem</h1>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">stem</span>(cmd0<span class="op">::</span><span class="dt">String</span>=<span class="st">""</span>, arg1<span class="op">=</span><span class="cn">nothing</span>; kwargs<span class="op">...</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Reads (x,y) pairs and plot the data sequence, <em>y</em>, as stems that extend from a baseline along the x-axis. The data values are indicated by circles terminating each stem. The input can either be a file name of a file with at least two columns (x,y), but optionally more, a GMTdatset object with also two or more columns, or direct <em>x,y</em> inputs</p>
 <table class="caption-top table">
@@ -465,12 +478,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 <p>stem(D::GMTdatset,xvar,yvar) plots the variables <code>xvar</code> and <code>yvar</code> from the table <code>D</code>. You can specify one or multiple variables for <code>yvar</code> and one only for <code>xvar</code>.</p>
 <table class="caption-top table">
-<colgroup>
-<col style="width: 16%">
-</colgroup>
 <tbody>
 <tr class="odd">
-<td>This module is a subset of <code>plot</code> to make it simpler to draw stem plots. So not all (fine) controlling parameters are not listed here. For the finest control, user should consult the module.</td>
+<td>This module is a subset of <code>plot</code> to make it simpler to draw stem plots. So not all (fine) controlling parameters are not listed here. For the finest control, user should consult the <a href="../..\documentation/modules/plot.html">plot</a> module.</td>
 </tr>
 <tr class="even">
 <td>Parameters</td>
@@ -482,15 +492,84 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 Use this option when passing a multicolumn input and and plot a stemplot for each column.</p></li>
 <li><p><strong>nobaseline</strong> : – <em>nobaseline=true</em><br>
 If <code>nobaseline=true</code> do not paint the horizontal baseline from which the stems start.</p></li>
+<li><p><strong>B</strong> or <strong>axes</strong> or <strong>frame</strong><br>
+Set map boundary frame and axes attributes. Default is to draw and annotate left, bottom and vertical axes and just draw left and top axes. More at [frame](../common_opts/opt_B.html)</p></li>
+<li><p><strong>J</strong> or <strong>proj</strong> or <strong>projection</strong> : – <em>proj=<parameters></parameters></em><br>
+Select map projection. More at [proj](../common_opts/opt_J.html)</p></li>
+<li><p><strong>R</strong> or <strong>region</strong> or <strong>limits</strong> : – <em>limits=(xmin, xmax, ymin, ymax)</em> <strong>|</strong> <em>limits=(BB=(xmin, xmax, ymin, ymax),)</em> <strong>|</strong> <em>limits=(LLUR=(xmin, xmax, ymin, ymax),units=“unit”)</em> <strong>|</strong> …more<br>
+Specify the region of interest. More at [limits](../common_opts/opt_R.html). For perspective view <strong>view</strong>, optionally add <em>zmin,zmax</em>. This option may be used to indicate the range used for the 3-D axes. You may ask for a larger w/e/s/n region to have more room between the image and the axes.</p></li>
+<li><p><strong>G</strong> or <strong>markerfacecolor</strong> or <strong>MarkerFaceColor</strong> or <strong>markercolor</strong> or <strong>mc</strong> or <strong>fill</strong><br>
+Select color or pattern for filling of symbols [Default is no fill]. Note that plot will search for <em>fill</em> and <em>pen</em> settings in all the segment headers (when passing a GMTdaset or file of a multi-segment dataset) and let any values thus found over-ride the command line settings (but those must be provided in the terse GMT syntax). See [Setting color](../common_features/color.html) for extend color selection (including color map generation).</p></li>
+<li><p><strong>W</strong> or <strong>pen</strong>=<code>pen</code><br>
+Set pen attributes for the arrow stem [Defaults: width = default, color = black, style = solid]. See [Pen attributes](../common_features/pens.html) and [Vector attributes](../common_features/arrows_control.html) for arrow line terminations.</p></li>
+<li><p><strong>U</strong> or <strong>time_stamp</strong> : – <em>time_stamp=true</em> <strong>|</strong> <em>time_stamp=(just=“code”, pos=(dx,dy), label=“label”, com=true)</em><br>
+Draw GMT time stamp logo on plot. More at [timestamp](../common_opts/opt_U.html)</p></li>
+<li><p><strong>V</strong> or <em>verbose</em> : – <em>verbose=true</em> <strong>|</strong> <em>verbose=level</em><br>
+Select verbosity level. More at [verbose](../common_opts/opt_V.html)</p></li>
+<li><p><strong>X</strong> or <strong>xshift</strong> or <strong>x_offset</strong> : <em>xshift=true</em> <strong>|</strong> <em>xshift=x-shift</em> <strong>|</strong> <em>xshift=(shift=x-shift, mov=“a|c|f|r”)</em><br>
+Shift plot origin. More at [xshift](../common_opts/opt_X.html)</p></li>
+<li><p><strong>Y</strong> or <strong>yshift</strong> or <strong>y_offset</strong> : <em>yshift=true</em> <strong>|</strong> <em>yshift=y-shift</em> <strong>|</strong> <em>yshift=(shift=y-shift, mov=“a|c|f|r”)</em><br>
+Shift plot origin. More at [yshift](../common_opts/opt_Y.html)</p></li>
+<li><p><strong>figname</strong> or <strong>savefig</strong> or <strong>name</strong> : – <em>figname=<code>name.png</code></em><br>
+Save the figure with the <code>figname=name.ext</code> where <code>ext</code> chooses the figure image format.</p></li>
 </ul>
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <p>Create a stem plot of 50 data values between −2π and 2π.</p>
+<div id="9613ce84" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>Y <span class="op">=</span> <span class="fu">linspace</span>(<span class="op">-</span><span class="fl">2</span><span class="op">*</span><span class="cn">pi</span>,<span class="fl">2</span><span class="op">*</span><span class="cn">pi</span>,<span class="fl">50</span>);</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">stem</span>(Y, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="stem_files/figure-html/cell-2-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
 <p>The same but now specify the set of x values for the stem plot.</p>
+<div id="93bd3f03" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>Y <span class="op">=</span> <span class="fu">linspace</span>(<span class="op">-</span><span class="fl">2</span><span class="op">*</span><span class="cn">pi</span>,<span class="fl">2</span><span class="op">*</span><span class="cn">pi</span>,<span class="fl">50</span>);</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">stem</span>([Y Y], show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="stem_files/figure-html/cell-3-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
 <p>Two of them and with some variations.</p>
-
-
+<div id="32234a1f" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>Y <span class="op">=</span> <span class="fu">linspace</span>(<span class="op">-</span><span class="fl">2</span><span class="op">*</span><span class="cn">pi</span>,<span class="fl">2</span><span class="op">*</span><span class="cn">pi</span>,<span class="fl">50</span>);</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">stem</span>(Y,[Y <span class="op">-</span>Y], multicol<span class="op">=</span><span class="cn">true</span>, fill<span class="op">=</span><span class="cn">true</span>, ms<span class="op">=</span><span class="st">"10p"</span>, nobaseline<span class="op">=</span><span class="cn">true</span>, ls<span class="op">=:</span>DashDot, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="stem_files/figure-html/cell-4-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
 </section>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>This function has multiple methods:</p>
+<ul>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L910"><code>stem(cmd0::String; ...)</code></a> - plot.jl:910</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L910"><code>stem(; ...)</code></a> - plot.jl:910</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L910"><code>stem(cmd0::String, arg1; first, kwargs...)</code></a> - plot.jl:910</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L966"><code>stem(arg1, arg2; kw...)</code></a> - plot.jl:966</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L964"><code>stem(arg; kw...)</code></a> - plot.jl:964</li>
+</ul>
+
+
 </section>
 
 </main> <!-- /main -->

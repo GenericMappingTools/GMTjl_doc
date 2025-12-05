@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -435,6 +436,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#required-arguments" id="toc-required-arguments" class="nav-link" data-scroll-target="#required-arguments">Required Arguments</a></li>
   <li><a href="#optional-arguments" id="toc-optional-arguments" class="nav-link" data-scroll-target="#optional-arguments">Optional Arguments</a></li>
   <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
   <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
   </ul>
 </nav>
@@ -552,7 +554,7 @@ Swap 1st and 2nd column on input and/or output. <a href="https://docs.generic-ma
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <p>To filter the remote CO2 data set in the file MaunaLoa_CO2.txt (year, CO2) with a 5 year Gaussian filter, try</p>
-<div id="f2db7039" class="cell" data-execution_count="1">
+<div id="98334c8e" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">filter1d</span>(<span class="st">"@MaunaLoa_CO2.txt"</span>, filter<span class="op">=</span>(<span class="kw">type</span><span class="op">=:</span>gauss, width<span class="op">=</span><span class="fl">5</span>));</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="st">"@MaunaLoa_CO2.txt"</span>, legend<span class="op">=</span><span class="st">"Raw data"</span>)</span>
@@ -569,6 +571,14 @@ Swap 1st and 2nd column on input and/or output. <a href="https://docs.generic-ma
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">filter1d</span>(<span class="st">"v3312.txt"</span>, filter<span class="op">=</span>(<span class="op">:</span>Median,<span class="fl">50</span>), range<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">100000</span>,<span class="fl">25</span>), gap_width<span class="op">=</span><span class="fl">10</span>, symetry<span class="op">=</span><span class="fl">0.3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>To smooth a noisy geospatial track using a Gaussian filter of full-width 100 km and not shorten the track, and add the distances to the file, use</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">filter1d</span>(<span class="st">"track.txt"</span>, range<span class="op">=</span><span class="st">"k+a"</span>, ends<span class="op">=</span><span class="cn">true</span>, filter<span class="op">=</span>(<span class="op">:</span>gaussian, <span class="fl">200</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>This function has multiple methods:</p>
+<ul>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/filter1d.jl#L42"><code>filter1d(cmd0::String; kw...)</code></a> - filter1d.jl:42</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/filter1d.jl#L43"><code>filter1d(arg1; kw...)</code></a> - filter1d.jl:43</li>
+</ul>
 </section>
 <section id="see-also" class="level2">
 <h2 class="anchored" data-anchor-id="see-also">See Also</h2>

@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -453,7 +454,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <p>The <a href="../..\documentation/utilities/mosaic.html">mosaic</a> function let us download map tiles from Web Map Tiles servers given a BoundingBox limits in geographical coordinates. The function has many use options and we will show here the result of using some of them. By default it downloads images from the Bing servers but data from OpenStreetMap, Google, ESRI, Nimbo and other providers can be accessed as well.</p>
 <p>To start with we create an image over Iberia using only default values. <em>i.,e.</em> Bing images and image resolution (that is, the zoom level) computed automatically for that area.</p>
-<div id="44d1eadc" class="cell" data-execution_count="1">
+<div id="0914fb50" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>I <span class="op">=</span> <span class="fu">mosaic</span>([<span class="op">-</span><span class="fl">10</span>, <span class="fl">3.5</span>], [<span class="fl">36.0</span>, <span class="fl">44</span>])</span>
@@ -467,7 +468,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>If we want instead a map from OpenStreetMap, we need to specify that via the <code>provider</code> option. To know more about the <code>provider</code> usage, see the manual of the <code>getprovider</code> function (e.,g._ type <code>? getprovider</code> in the Julia command window.)</p>
-<div id="ac3a930e" class="cell" data-execution_count="2">
+<div id="bbe08f32" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>I <span class="op">=</span> <span class="fu">mosaic</span>([<span class="op">-</span><span class="fl">10</span>, <span class="fl">3.5</span>], [<span class="fl">36.0</span>, <span class="fl">44</span>], provider<span class="op">=:</span>OSM)</span>
@@ -481,7 +482,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>A question that will often arise is: <em>but what if I want to control the resolution, what zoom level should I choose?</em>. Well, the answer is using trial an error or help yourself a bit and make a figures with the tiles limits. For that we use the <code>mesh</code> option and plot the tiles limits only.</p>
-<div id="c71e76cc" class="cell" data-execution_count="3">
+<div id="fcbbd037" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">mosaic</span>([<span class="op">-</span><span class="fl">10</span>, <span class="fl">3.5</span>], [<span class="fl">36.0</span>, <span class="fl">44</span>], mesh<span class="op">=</span><span class="cn">true</span>)</span>
@@ -532,7 +533,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a><span class="ss">─────┼───────────────────</span></span>
 <span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a><span class="ss">   1 │ -155.449  19.5896</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Since this still represents a somewhat large area we will use the reported BoundingBox via the <code>bbox</code> option. So, to create an image of the Big Island, Hawaii we do:</p>
-<div id="52df3b1f" class="cell" data-execution_count="4">
+<div id="91c709aa" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">geocoder</span>(<span class="st">"Hawaii Big Island, USA"</span>);</span>
@@ -548,7 +549,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>But when it comes to image real small areas the BoundingBox trick no longer works because it normally is … too small. We must than use the alternative, which is to specify the number of neighbor tiles around the obtained address. And here we must specify the zoom level manually.</p>
 <p>Example of a high-resolution map over the S. Peters Piazza, Vatican.</p>
-<div id="ff902b85" class="cell" data-execution_count="5">
+<div id="1765b36e" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">geocoder</span>(<span class="st">"Piazza San Pietro, Vatican"</span>);</span>
@@ -563,7 +564,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>But not all small and beautifull places are geocoded. To see the lovely <em>Fish Island</em> in Croatia, we still have to provide the central coordinates (or the right BoundingBox).</p>
-<div id="bcac0f2f" class="cell" data-execution_count="6">
+<div id="d4db2f68" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>I <span class="op">=</span> <span class="fu">mosaic</span>(<span class="fl">13.71862</span>, <span class="fl">44.939234</span>, zoom<span class="op">=</span><span class="fl">18</span>, provider<span class="op">=:</span>Google, neighbors<span class="op">=</span>[<span class="fl">7</span>,<span class="fl">5</span>]);</span>

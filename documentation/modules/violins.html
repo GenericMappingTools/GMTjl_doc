@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -432,6 +433,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul class="collapse">
   <li><a href="#examples" id="toc-examples" class="nav-link active" data-scroll-target="#examples">Examples</a></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
   </ul>
 </nav>
     </div>
@@ -487,7 +489,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <p>Create a plot with 8 violins colored with the default colors.</p>
-<div id="23837e70" class="cell" data-execution_count="1">
+<div id="6f4bc018" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">violin</span>(<span class="fu">randn</span>(<span class="fl">100</span>,<span class="fl">8</span>), fill<span class="op">=</span><span class="cn">true</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -499,7 +501,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Now add boxplot, scatter and outliers to a plot similar to above. The outliers show as black stars.</p>
-<div id="eb724795" class="cell" data-execution_count="2">
+<div id="88f002c7" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">violin</span>(<span class="fu">randn</span>(<span class="fl">100</span>,<span class="fl">8</span>), fill<span class="op">=</span><span class="cn">true</span>, boxplot<span class="op">=</span><span class="cn">true</span>, scatter<span class="op">=</span><span class="cn">true</span>, outliers<span class="op">=</span><span class="cn">true</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -511,7 +513,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>And a group example with red dashed separator lines.</p>
-<div id="b1ccb5d8" class="cell" data-execution_count="3">
+<div id="3c5e697a" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>vvv <span class="op">=</span> [[<span class="fu">randn</span>(<span class="fl">50</span>), <span class="fu">randn</span>(<span class="fl">30</span>)], [<span class="fu">randn</span>(<span class="fl">40</span>), <span class="fu">randn</span>(<span class="fl">48</span>), <span class="fu">randn</span>(<span class="fl">45</span>)], [<span class="fu">randn</span>(<span class="fl">35</span>), <span class="fu">randn</span>(<span class="fl">43</span>)]];</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">violin</span>(vvv, fill<span class="op">=</span><span class="cn">true</span>, boxplot<span class="op">=</span><span class="cn">true</span>, separator<span class="op">=</span>(<span class="op">:</span>red, <span class="op">:</span>dash), scatter<span class="op">=</span><span class="cn">true</span>, outliers<span class="op">=</span><span class="cn">true</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -523,6 +525,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
+</section>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>This function has multiple methods:</p>
+<ul>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/statplots.jl#L608"><code>violin(data::Array{Array{Vector{T}, 1}, 1}; pos, nbins, first, bins, bandwidth, kernel, groupwidth, ccolor, kwargs...) where T</code></a> - statplots.jl:608</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/statplots.jl#L582"><code>violin(data::Array{&lt;:Real, 3}; pos, nbins, first, bins, bandwidth, kernel, groupwidth, ccolor, kwargs...)</code></a> - statplots.jl:582</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/statplots.jl#L555"><code>violin(data::GMTdataset; pos, first, kwargs...)</code></a> - statplots.jl:555</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/statplots.jl#L570"><code>violin(data::Union{AbstractMatrix{T}, Array{Vector{T}, 1}}; first, pos, nbins, bins, bandwidth, groupwidth, kernel, kwargs...) where T</code></a> - statplots.jl:570</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/statplots.jl#L559"><code>violin(data::Vector{&lt;:Real}, grp::AbstractVector; first, pos, nbins, bins, bandwidth, groupwidth, kernel, kwargs...)</code></a> - statplots.jl:559</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/statplots.jl#L559"><code>violin(data::Vector{&lt;:Real}; ...)</code></a> - statplots.jl:559</li>
+</ul>
 
 
 </section>

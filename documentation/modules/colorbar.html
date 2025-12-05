@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -435,6 +436,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#required-arguments" id="toc-required-arguments" class="nav-link" data-scroll-target="#required-arguments">Required Arguments</a></li>
   <li><a href="#optional-arguments" id="toc-optional-arguments" class="nav-link" data-scroll-target="#optional-arguments">Optional Arguments</a></li>
   <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
   </ul>
 </nav>
     </div>
@@ -521,29 +523,12 @@ Save the figure with the <code>figname=name.ext</code> where <code>ext</code> ch
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <p>To plot a horizontal color scale (12 cm long; 0.5 cm wide) at the reference point (8,1) (paper coordinates) with justification at top center and automatic annotation interval, do</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">makecpt</span>(range<span class="op">=</span>(<span class="op">-</span><span class="fl">200</span>,<span class="fl">1000</span>,<span class="fl">100</span>), cmap<span class="op">=:</span>rainbow)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">colorbar</span>(pos<span class="op">=</span>(paper<span class="op">=</span><span class="cn">true</span>, anchor<span class="op">=</span>(<span class="fl">8</span>,<span class="fl">1</span>), size<span class="op">=</span>(<span class="fl">12</span>,<span class="fl">0.5</span>), justify<span class="op">=:</span>TC, horizontal<span class="op">=</span><span class="cn">true</span>),</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>            frame<span class="op">=</span>(annot<span class="op">=:</span>auto, ticks<span class="op">=:</span>auto, xlabel<span class="op">=</span><span class="st">"topography"</span>, ylabel<span class="op">=:</span>km), show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>To append a vertical color scale (7.5 cm long; 1.25 cm wide) to the right of a plot that is 6 inch wide and 4 inch high, using illumination, and show back- and foreground colors, and annotating every 5 units, we provide the reference point and select the left-mid anchor point via</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">colorbar</span>(pos<span class="op">=</span>(paper<span class="op">=</span><span class="cn">true</span>, anchor<span class="op">=</span><span class="st">"6.5i/2i"</span>, justify<span class="op">=</span>(<span class="op">:</span>LM,<span class="st">"2i"</span>), size<span class="op">=</span>(<span class="fl">7.5</span>,<span class="fl">1.2</span>), triangles<span class="op">=</span><span class="cn">true</span>),</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>            cmap<span class="op">=:</span>geo, shade<span class="op">=</span><span class="cn">true</span>, xaxis<span class="op">=</span>(annot<span class="op">=</span><span class="fl">1000</span>, label<span class="op">=:</span>BATHYMETRY), ylabel<span class="op">=:</span>m, show<span class="op">=</span><span class="fl">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>To overlay a horizontal color scale (10 centimeters long and default width) above a Mercator map produced by a previous call, ensuring a 2 cm offset from the map frame, use</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">colorbar!</span>(region<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">10</span>,<span class="fl">0</span>,<span class="fl">10</span>), pos<span class="op">=</span>(justify<span class="op">=:</span>CT, width<span class="op">=</span><span class="fl">10</span>, offset<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">2</span>), horizontal<span class="op">=</span><span class="cn">true</span>), cmap<span class="op">=</span><span class="st">"colors.cpt"</span>, show<span class="op">=</span><span class="fl">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Show automatic placement of color bars when selecting a side mid-point.</p>
-<div id="9aab0bf3" class="cell" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>C <span class="op">=</span> <span class="fu">makecpt</span>(cmap<span class="op">=:</span>jet, range<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">100</span>));</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">basemap</span>(region<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">30</span>,<span class="fl">0</span>,<span class="fl">45</span>), frame<span class="op">=</span>(axes<span class="op">=:</span>wsne, annot<span class="op">=:</span>auto, ticks<span class="op">=:</span>auto))</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">colorbar!</span>(position<span class="op">=</span>(inside<span class="op">=</span><span class="cn">true</span>, anchor<span class="op">=:</span>BC), xaxis<span class="op">=</span>(annot<span class="op">=:</span>auto, ticks<span class="op">=:</span>auto),</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>          box<span class="op">=</span>(pen<span class="op">=</span>(<span class="fl">0.25</span>,<span class="op">:</span>red),), ylabel<span class="op">=</span><span class="st">"@.C"</span>, cmap<span class="op">=</span>C)</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="fu">colorbar!</span>(position<span class="op">=</span>(outside<span class="op">=</span><span class="cn">true</span>, anchor<span class="op">=:</span>BC), box<span class="op">=</span>(pen<span class="op">=</span>(<span class="fl">0.25</span>,<span class="op">:</span>red),), ylabel<span class="op">=</span><span class="st">"@.C"</span>, cmap<span class="op">=</span>C)</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="fu">colorbar!</span>(position<span class="op">=</span>(inside<span class="op">=</span><span class="cn">true</span>, anchor<span class="op">=:</span>TC), box<span class="op">=</span>(pen<span class="op">=</span>(<span class="fl">0.25</span>,<span class="op">:</span>red),), ylabel<span class="op">=</span><span class="st">"@.C"</span>, cmap<span class="op">=</span>C)</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="fu">colorbar!</span>(position<span class="op">=</span>(outside<span class="op">=</span><span class="cn">true</span>, anchor<span class="op">=:</span>TC), box<span class="op">=</span>(pen<span class="op">=</span>(<span class="fl">0.25</span>,<span class="op">:</span>red),), ylabel<span class="op">=</span><span class="st">"@.C"</span>, cmap<span class="op">=</span>C)</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="fu">colorbar!</span>(position<span class="op">=</span>(inside<span class="op">=</span><span class="cn">true</span>, anchor<span class="op">=:</span>ML), box<span class="op">=</span>(pen<span class="op">=</span>(<span class="fl">0.25</span>,<span class="op">:</span>red),), ylabel<span class="op">=</span><span class="st">"@.C"</span>, cmap<span class="op">=</span>C)</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="fu">colorbar!</span>(position<span class="op">=</span>(outside<span class="op">=</span><span class="cn">true</span>, anchor<span class="op">=:</span>ML), box<span class="op">=</span>(pen<span class="op">=</span>(<span class="fl">0.25</span>,<span class="op">:</span>red),), ylabel<span class="op">=</span><span class="st">"@.C"</span>, cmap<span class="op">=</span>C)</span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="fu">colorbar!</span>(position<span class="op">=</span>(inside<span class="op">=</span><span class="cn">true</span>, anchor<span class="op">=:</span>MR), box<span class="op">=</span>(pen<span class="op">=</span>(<span class="fl">0.25</span>,<span class="op">:</span>red),), ylabel<span class="op">=</span><span class="st">"@.C"</span>, cmap<span class="op">=</span>C)</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="fu">colorbar!</span>(position<span class="op">=</span>(anchor<span class="op">=:</span>MR,), box<span class="op">=</span>(pen<span class="op">=</span>(<span class="fl">0.25</span>,<span class="op">:</span>red),), ylabel<span class="op">=</span><span class="st">"@.C"</span>, cmap<span class="op">=</span>C, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="3d1ede48" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">makecpt</span>(range<span class="op">=</span>(<span class="op">-</span><span class="fl">200</span>,<span class="fl">1000</span>,<span class="fl">100</span>), cmap<span class="op">=:</span>rainbow)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">colorbar</span>(pos<span class="op">=</span>(paper<span class="op">=</span><span class="cn">true</span>, anchor<span class="op">=</span>(<span class="fl">8</span>,<span class="fl">1</span>), size<span class="op">=</span>(<span class="fl">12</span>,<span class="fl">0.5</span>), justify<span class="op">=:</span>TC, horizontal<span class="op">=</span><span class="cn">true</span>),</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>        frame<span class="op">=</span>(annot<span class="op">=:</span>auto, ticks<span class="op">=:</span>auto, xlabel<span class="op">=</span><span class="st">"topography"</span>, ylabel<span class="op">=:</span>km), show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -552,6 +537,81 @@ Save the figure with the <code>figname=name.ext</code> where <code>ext</code> ch
 </div>
 </div>
 </div>
+<p>To append a vertical color scale (7.5 cm long; 1.25 cm wide) to the right of a plot that is 6 inch wide and 4 inch high, using illumination, and show back- and foreground colors, and annotating every 5 units, we provide the reference point and select the left-mid anchor point via</p>
+<div id="6cee8a83" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colorbar</span>(pos<span class="op">=</span>(paper<span class="op">=</span><span class="cn">true</span>, anchor<span class="op">=</span><span class="st">"6.5i/2i"</span>, justify<span class="op">=</span>(<span class="op">:</span>LM,<span class="st">"2i"</span>), size<span class="op">=</span>(<span class="fl">7.5</span>,<span class="fl">1.2</span>), triangles<span class="op">=</span><span class="cn">true</span>),</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>        cmap<span class="op">=:</span>geo, shade<span class="op">=</span><span class="cn">true</span>, xaxis<span class="op">=</span>(annot<span class="op">=</span><span class="fl">1000</span>, label<span class="op">=:</span>BATHYMETRY), ylabel<span class="op">=:</span>m, show<span class="op">=</span><span class="fl">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="colorbar_files/figure-html/cell-3-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>To overlay a horizontal color scale (10 centimeters long and default width) above a Mercator map produced by a previous call, ensuring a 2 cm offset from the map frame, use</p>
+<div id="fca7e6d8" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colorbar!</span>(region<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">10</span>,<span class="fl">0</span>,<span class="fl">10</span>), pos<span class="op">=</span>(justify<span class="op">=:</span>CT, width<span class="op">=</span><span class="fl">10</span>, offset<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">2</span>), horizontal<span class="op">=</span><span class="cn">true</span>), cmap<span class="op">=</span><span class="st">"colors.cpt"</span>, show<span class="op">=</span><span class="fl">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>psscale [ERROR]: GMT_Read_Data: File not found: colors.cpt</code></pre>
+</div>
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre>Something went wrong when calling the module. GMT error number = 16
+
+Stacktrace:
+  [1] <span class="ansi-bold">error</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">s</span>::String<span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">Base</span> <span class="ansi-bright-black-fg">.\</span><span style="text-decoration:underline" class="ansi-bright-black-fg">error.jl:35</span>
+  [2] <span class="ansi-bold">gmt</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">cmd</span>::String, <span class="ansi-bright-black-fg">args</span>::Nothing<span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-magenta-fg">GMT</span> <span class="ansi-bright-black-fg">C:\Users\j\.julia\dev\GMT\src\</span><span style="text-decoration:underline" class="ansi-bright-black-fg">gmt_main.jl:166</span>
+  [3] <span class="ansi-bold">finish_PS_module</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">d</span>::Dict<span class="ansi-bright-black-fg">{Symbol, Any}</span>, <span class="ansi-bright-black-fg">cmd</span>::Vector<span class="ansi-bright-black-fg">{String}</span>, <span class="ansi-bright-black-fg">opt_extra</span>::String, <span class="ansi-bright-black-fg">K</span>::Bool, <span class="ansi-bright-black-fg">O</span>::Bool, <span class="ansi-bright-black-fg">finish</span>::Bool, <span class="ansi-bright-black-fg">args</span>::Nothing<span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-magenta-fg">GMT</span> <span class="ansi-bright-black-fg">C:\Users\j\.julia\dev\GMT\src\</span><span style="text-decoration:underline" class="ansi-bright-black-fg">common_options.jl:4505</span>
+  [4] <span class="ansi-bold">finish_PS_module</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">C:\Users\j\.julia\dev\GMT\src\</span><span style="text-decoration:underline" class="ansi-bright-black-fg">common_options.jl:4429</span><span class="ansi-bright-black-fg"> [inlined]</span>
+  [5] <span class="ansi-bold">prep_and_call_finish_PS_module</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">C:\Users\j\.julia\dev\GMT\src\</span><span style="text-decoration:underline" class="ansi-bright-black-fg">common_options.jl:4419</span><span class="ansi-bright-black-fg"> [inlined]</span>
+  [6] <span class="ansi-bold">prep_and_call_finish_PS_module</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">C:\Users\j\.julia\dev\GMT\src\</span><span style="text-decoration:underline" class="ansi-bright-black-fg">common_options.jl:4418</span><span class="ansi-bright-black-fg"> [inlined]</span>
+  [7] <span class="ansi-bold">colorbar</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">arg1</span>::Nothing; <span class="ansi-bright-black-fg">first</span>::Bool, <span class="ansi-bright-black-fg">kwargs</span>::@Kwargs<span class="ansi-bright-black-fg">{region::NTuple{4, Int64}, pos::@NamedTuple{justify::Symbol, width::Int64, offset::Tuple{Int64, Int64}, horizontal::Bool}, cmap::String, show::Int64}</span><span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-magenta-fg">GMT</span> <span class="ansi-bright-black-fg">C:\Users\j\.julia\dev\GMT\src\</span><span style="text-decoration:underline" class="ansi-bright-black-fg">psscale.jl:53</span>
+  [8] <span class="ansi-bold">colorbar</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">C:\Users\j\.julia\dev\GMT\src\</span><span style="text-decoration:underline" class="ansi-bright-black-fg">psscale.jl:50</span><span class="ansi-bright-black-fg"> [inlined]</span>
+  [9] <span class="ansi-bold">colorbar!</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">C:\Users\j\.julia\dev\GMT\src\</span><span style="text-decoration:underline" class="ansi-bright-black-fg">psscale.jl:94</span><span class="ansi-bright-black-fg"> [inlined]</span>
+ [10] top-level scope
+<span class="ansi-bright-black-fg">    @</span> <span style="text-decoration:underline" class="ansi-bright-black-fg">In[4]:1</span></pre>
+</div>
+</div>
+</div>
+<p>Show automatic placement of color bars when selecting a side mid-point.</p>
+<div id="92f21c4c" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>C <span class="op">=</span> <span class="fu">makecpt</span>(cmap<span class="op">=:</span>jet, range<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">100</span>));</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">basemap</span>(region<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">30</span>,<span class="fl">0</span>,<span class="fl">45</span>), frame<span class="op">=</span>(axes<span class="op">=:</span>wsne, annot<span class="op">=:</span>auto, ticks<span class="op">=:</span>auto))</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">colorbar!</span>(position<span class="op">=</span>(inside<span class="op">=</span><span class="cn">true</span>, anchor<span class="op">=:</span>BC), xaxis<span class="op">=</span>(annot<span class="op">=:</span>auto, ticks<span class="op">=:</span>auto),</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>          box<span class="op">=</span>(pen<span class="op">=</span>(<span class="fl">0.25</span>,<span class="op">:</span>red),), ylabel<span class="op">=</span><span class="st">"@.C"</span>, cmap<span class="op">=</span>C)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">colorbar!</span>(position<span class="op">=</span>(outside<span class="op">=</span><span class="cn">true</span>, anchor<span class="op">=:</span>BC), box<span class="op">=</span>(pen<span class="op">=</span>(<span class="fl">0.25</span>,<span class="op">:</span>red),), ylabel<span class="op">=</span><span class="st">"@.C"</span>, cmap<span class="op">=</span>C)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="fu">colorbar!</span>(position<span class="op">=</span>(inside<span class="op">=</span><span class="cn">true</span>, anchor<span class="op">=:</span>TC), box<span class="op">=</span>(pen<span class="op">=</span>(<span class="fl">0.25</span>,<span class="op">:</span>red),), ylabel<span class="op">=</span><span class="st">"@.C"</span>, cmap<span class="op">=</span>C)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="fu">colorbar!</span>(position<span class="op">=</span>(outside<span class="op">=</span><span class="cn">true</span>, anchor<span class="op">=:</span>TC), box<span class="op">=</span>(pen<span class="op">=</span>(<span class="fl">0.25</span>,<span class="op">:</span>red),), ylabel<span class="op">=</span><span class="st">"@.C"</span>, cmap<span class="op">=</span>C)</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="fu">colorbar!</span>(position<span class="op">=</span>(inside<span class="op">=</span><span class="cn">true</span>, anchor<span class="op">=:</span>ML), box<span class="op">=</span>(pen<span class="op">=</span>(<span class="fl">0.25</span>,<span class="op">:</span>red),), ylabel<span class="op">=</span><span class="st">"@.C"</span>, cmap<span class="op">=</span>C)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="fu">colorbar!</span>(position<span class="op">=</span>(outside<span class="op">=</span><span class="cn">true</span>, anchor<span class="op">=:</span>ML), box<span class="op">=</span>(pen<span class="op">=</span>(<span class="fl">0.25</span>,<span class="op">:</span>red),), ylabel<span class="op">=</span><span class="st">"@.C"</span>, cmap<span class="op">=</span>C)</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="fu">colorbar!</span>(position<span class="op">=</span>(inside<span class="op">=</span><span class="cn">true</span>, anchor<span class="op">=:</span>MR), box<span class="op">=</span>(pen<span class="op">=</span>(<span class="fl">0.25</span>,<span class="op">:</span>red),), ylabel<span class="op">=</span><span class="st">"@.C"</span>, cmap<span class="op">=</span>C)</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="fu">colorbar!</span>(position<span class="op">=</span>(anchor<span class="op">=:</span>MR,), box<span class="op">=</span>(pen<span class="op">=</span>(<span class="fl">0.25</span>,<span class="op">:</span>red),), ylabel<span class="op">=</span><span class="st">"@.C"</span>, cmap<span class="op">=</span>C, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="colorbar_files/figure-html/cell-5-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>This function has multiple methods:</p>
+<ul>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/psscale.jl#L50"><code>colorbar(; ...)</code></a> - psscale.jl:50</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/psscale.jl#L50"><code>colorbar(arg1::Union{Nothing, GMTcpt}; first, kwargs...)</code></a> - psscale.jl:50</li>
+</ul>
 
 
 </section>

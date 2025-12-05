@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -463,7 +464,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="fequency-histogram">Fequency histogram</h2>
 <p>The remote file <code>v3206_06.txt</code> contains bathymetry measurements from Vema cruise 3206. Make a frequency histogram of those depths.</p>
 <p>In this example we break the frame settings in several pieces, specally because we want to add a suffix to the <code>yy</code> annotations.</p>
-<div id="a111d767" class="cell" data-execution_count="1">
+<div id="8764d0dc" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">histogram</span>(<span class="st">"@v3206_06.txt"</span>, region<span class="op">=</span>(<span class="op">-</span><span class="fl">6000</span>,<span class="fl">0</span>,<span class="fl">0</span>,<span class="fl">30</span>),</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>          frame<span class="op">=</span>(axes<span class="op">=:</span>WSen, annot<span class="op">=:</span>auto, title<span class="op">=</span><span class="st">"Histogram"</span>, fill<span class="op">=:</span>lightblue),</span>
@@ -481,7 +482,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="polar-histogram" class="level2">
 <h2 class="anchored" data-anchor-id="polar-histogram">Polar histogram</h2>
 <p>The remote file <code>fractures_06.txt</code> contains a compilation of fracture lengths and directions as digitized from geological maps. We will use it to create a <code>rose diagram</code>.</p>
-<div id="2aec1e91" class="cell" data-execution_count="2">
+<div id="f5983d86" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rose</span>(<span class="st">"@fractures_06.txt"</span>, region<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">1</span>,<span class="fl">0</span>,<span class="fl">360</span>), frame<span class="op">=</span>(grid<span class="op">=:</span>auto, fill<span class="op">=:</span>lightblue),</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>     yx<span class="op">=</span><span class="cn">true</span>, sector<span class="op">=</span>(width<span class="op">=</span><span class="fl">10</span>, rose<span class="op">=</span><span class="cn">true</span>), normalize<span class="op">=</span><span class="cn">true</span>, fill<span class="op">=:</span>orange, pen<span class="op">=</span><span class="fl">0.5</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -497,7 +498,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="stepped-patch-histogram" class="level2">
 <h2 class="anchored" data-anchor-id="stepped-patch-histogram">Stepped patch histogram</h2>
 <p>Draw a histogram as a stepped patch</p>
-<div id="544f4f65" class="cell" data-execution_count="3">
+<div id="eaed3815" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>D1 <span class="op">=</span> <span class="fu">histogram</span>(<span class="fu">randn</span>(<span class="fl">1000</span>), I<span class="op">=:</span>o, bin<span class="op">=</span><span class="fl">0.1</span>);  <span class="co"># Create histogrammed data with bin = 0.1 (I=:o to create the dataset)</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>D2 <span class="op">=</span> <span class="fu">histogram</span>(<span class="fu">randn</span>(<span class="fl">500</span>),  I<span class="op">=:</span>o, bin<span class="op">=</span><span class="fl">0.1</span>);</span>

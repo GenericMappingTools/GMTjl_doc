@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -436,6 +437,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#optional-arguments" id="toc-optional-arguments" class="nav-link" data-scroll-target="#optional-arguments">Optional Arguments</a></li>
   <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
   <li><a href="#notes" id="toc-notes" class="nav-link" data-scroll-target="#notes">Notes</a></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
   <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
@@ -501,7 +503,7 @@ Give the name of the output grid file. Optionally, append <code>=ID</code> for w
 <li>+o - Offset data values by the given offset, or append a for automatic range offset to preserve precision for integer grids [Default is 0].</li>
 <li>+s - Scale data values by the given scale, or append a for automatic scaling to preserve precision for integer grids [Default is 1].</li>
 </ul>
-<p><strong>Note1:</strong> Any offset is added before any scaling. +sa also sets +oa (unless overridden). To write specific formats via GDAL, use =gd and supply driver (and optionally dataType) and/or one or more concatenated GDAL -co options using +c.&nbsp;See the <a href="https://docs.generic-mapping-tools.org/dev/cookbook/features.html#write-grids-images">“Writing grids and images”</a> cookbook section for more details.</p>
+<p><strong>Note1:</strong> Any offset is added before any scaling. +sa also sets +oa (unless overridden). To write specific formats via GDAL, use =gd and supply driver (and optionally dataType) and/or one or more concatenated GDAL -co options using +c.&nbsp;See the <a href="https://docs.generic-mapping-tools.org/dev/reference/features.html#write-grids-images">“Writing grids and images”</a> cookbook section for more details.</p>
 <p><strong>Note2:</strong> This is optional and to be used only when saving the result directly on disk. Otherwise, just use the <code>G = modulename(...)</code> form.</p></li>
 <li><p><strong>T</strong> or <strong>var_tension</strong> : <em>var_tension=true</em><br>
 Use variable tension.</p></li>
@@ -532,7 +534,7 @@ Swap 1st and 2nd column on input and/or output. <a href="https://docs.generic-ma
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <p>To interpolate data from the remote file mars370d.txt using the piecewise method for a 1x1 global grid, then plot it, try:</p>
-<div id="0c82f603" class="cell" data-execution_count="1">
+<div id="db09e254" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">sphinterpolate</span>(<span class="st">"@mars370d.txt"</span>, region<span class="op">=:</span><span class="kw">global</span>, inc<span class="op">=</span><span class="fl">1</span>, tension<span class="op">=:</span>p)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">imshow</span>(G, proj<span class="op">=:</span>guess, shade<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -550,6 +552,16 @@ Swap 1st and 2nd column on input and/or output. <a href="https://docs.generic-ma
 <section id="notes" class="level2">
 <h2 class="anchored" data-anchor-id="notes">Notes</h2>
 <p>The STRIPACK algorithm and implementation expect that there are no duplicate points in the input. It is best that the user ensures that this is the case. GMT has tools, such as <a href="../..\documentation/modules/blockmean.html">blockmean</a> and others, to combine close points into single entries. Also, <strong>sphinterpolate</strong> has a <strong>skipdup</strong> option to determine and exclude duplicates, but it is a very brute-force yet exact comparison that is very slow for large data sets. A much quicker check involves appending a specific repeating longitude value. Detection of duplicates in the STRIPACK library will exit the module.</p>
+</section>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>This function has multiple methods:</p>
+<ul>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/sphinterpolate.jl#L40"><code>sphinterpolate(cmd0::String; ...)</code></a> - sphinterpolate.jl:40</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/sphinterpolate.jl#L40"><code>sphinterpolate(; ...)</code></a> - sphinterpolate.jl:40</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/sphinterpolate.jl#L50"><code>sphinterpolate(arg1; kw...)</code></a> - sphinterpolate.jl:50</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/sphinterpolate.jl#L40"><code>sphinterpolate(cmd0::String, arg1; kwargs...)</code></a> - sphinterpolate.jl:40</li>
+</ul>
 </section>
 <section id="see-also" class="level2">
 <h2 class="anchored" data-anchor-id="see-also">See Also</h2>

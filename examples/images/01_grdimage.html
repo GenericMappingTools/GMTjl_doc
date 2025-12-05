@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -458,7 +459,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p>Color images are made with <a href="../..\documentation/modules/grdimage.html">grdimage</a> which takes the usual common options and a color map. It operates over grids or images. The next example shows how to create a color appropriate for the grid’s <em>z</em> range, plot the image and add a color scale. We use here the <code>data</code> keyword to tell the program to load the grid from a file. The <code>@</code> before the <em>tut_relief.nc</em> file name instructs GMT to download the file from its server on the first usage and save it in a cache dir. See this <a href="http://docs.generic-mapping-tools.org/latest/tutorial/julia/session-4.html"><code>GMT tutorial</code></a> for more details about what the arguments mean.</p>
-<div id="a8d8874c" class="cell" data-execution_count="1">
+<div id="869f66ef" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>topo <span class="op">=</span> <span class="fu">makecpt</span>(color<span class="op">=:</span>rainbow, range<span class="op">=</span>(<span class="fl">1000</span>,<span class="fl">5000</span>,<span class="fl">500</span>), continuous<span class="op">=</span><span class="cn">true</span>);</span>
@@ -476,7 +477,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="a-global-bathymetry" class="level2">
 <h2 class="anchored" data-anchor-id="a-global-bathymetry">A global bathymetry</h2>
 <p>Make a map of the global bathymetry (automatically download it if needed) using the Winkel projection, add coast lines and a color bar</p>
-<div id="315b7e16" class="cell" data-execution_count="2">
+<div id="89368761" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">grdimage</span>(<span class="st">"@earth_relief_20m_g"</span>, proj<span class="op">=:</span>Winkel, colorbar<span class="op">=</span><span class="cn">true</span>, coast<span class="op">=</span><span class="cn">true</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>

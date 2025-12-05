@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -435,6 +436,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#input-arguments" id="toc-input-arguments" class="nav-link" data-scroll-target="#input-arguments">Input Arguments</a></li>
   <li><a href="#output-arguments" id="toc-output-arguments" class="nav-link" data-scroll-target="#output-arguments">Output Arguments</a></li>
   <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
   <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
   </ul>
 </nav>
@@ -577,7 +579,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>BW <span class="op">=</span> <span class="fu">gmtread</span>(TESTSDIR <span class="op">*</span> <span class="st">"assets/text.png"</span>);</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>CC <span class="op">=</span> <span class="fu">bwconncomp</span>(BW);</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Create a binary image that contains only the 2nd through 10th largest connected components:</p>
-<div id="7a9dc57b" class="cell" data-execution_count="1">
+<div id="82208bf5" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>I <span class="op">=</span> <span class="fu">gmtread</span>(TESTSDIR <span class="op">*</span> <span class="st">"assets/text.png"</span>);  <span class="co"># Hide</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>CC <span class="op">=</span> <span class="fu">bwconncomp</span>(I); <span class="co"># Hide</span></span>
@@ -605,7 +607,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Select regions for whom these conditions apply: - The area is greater than 50 pixels - The bounding box is less than 15 pixels wide and is greater than or equal to 20 pixels tall</p>
 <p>This example uses the <code>filter</code> function to get the indices of the connected components that satisfy these criteria. The <code>ind2bool</code> function is used to convert the vector of indices returned by <code>filter</code> into into a vector of Boolean that can be combined with the <em>area</em> andition and te result passed to <code>cc2bw</code>.</p>
 <p>This example also shows a problem with the <a href="../..\documentation/imgproc/bwconncomp.html">bwconncomp</a> function when the BoundingBoxes of components overlap. In such cases it may happen that parts of one component are included in the another component. This can lead to wrong results in some areas (as can be seen with the help of the red rectangles drawn around each component).</p>
-<div id="417cca49" class="cell" data-execution_count="2">
+<div id="0b535722" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span>   <span class="co"># Hide</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>I <span class="op">=</span> <span class="fu">gmtread</span>(TESTSDIR <span class="op">*</span> <span class="st">"assets/rice.png"</span>);  <span class="co"># Hide</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>BW <span class="op">=</span> <span class="fu">binarize</span>(I);   <span class="co"># Hide</span></span>
@@ -626,6 +628,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <hr>
 </section>
+</section>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>View the <a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/imgmorph/cc2bw.jl#L12">source code</a> for this function.</p>
 </section>
 <section id="see-also" class="level2">
 <h2 class="anchored" data-anchor-id="see-also">See Also</h2>

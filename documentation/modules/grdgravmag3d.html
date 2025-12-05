@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -436,6 +437,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#optional-arguments" id="toc-optional-arguments" class="nav-link" data-scroll-target="#optional-arguments">Optional Arguments</a></li>
   <li><a href="#grid-distance-units" id="toc-grid-distance-units" class="nav-link" data-scroll-target="#grid-distance-units">Grid Distance Units</a></li>
   <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
   <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
   <li><a href="#reference" id="toc-reference" class="nav-link" data-scroll-target="#reference">Reference</a></li>
   </ul>
@@ -535,7 +537,7 @@ Limit the number of cores used when making the individual frames. By default we 
 <p>To compute the vertical component due to a magnetization stored in <em>mag.grd</em> over a zone defined by the surface <em>bat.grd</em>, using variable declination and inclination provided the IGRF and using 4 processors, do:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">grdgravmag3d</span>(<span class="st">"bat.grd"</span>, thickness<span class="op">=</span><span class="fl">10000</span>, H<span class="op">=</span><span class="st">"z -H+n -H+mmag.grd"</span>, x<span class="op">=</span><span class="fl">4</span>, radius<span class="op">=</span><span class="fl">50</span>);</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Suppose you want to compute the gravity effect of the Gorringe bank.</p>
-<div id="ee132d51" class="cell" data-execution_count="1">
+<div id="4d8a2003" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">grdgravmag3d</span>(<span class="st">"@earth_relief_10m"</span>, region<span class="op">=</span>(<span class="op">-</span><span class="fl">12.5</span>,<span class="op">-</span><span class="fl">10</span>,<span class="fl">35.5</span>,<span class="fl">37.5</span>),</span>
@@ -552,6 +554,18 @@ Limit the number of cores used when making the individual frames. By default we 
 </div>
 </div>
 </div>
+</section>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>This function has multiple methods:</p>
+<ul>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/potential/grdgravmag3d.jl#L53"><code>grdgravmag3d(cmd0::String; ...)</code></a> - grdgravmag3d.jl:53</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/potential/grdgravmag3d.jl#L53"><code>grdgravmag3d(; ...)</code></a> - grdgravmag3d.jl:53</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/potential/grdgravmag3d.jl#L53"><code>grdgravmag3d(cmd0::String, arg1, arg2; kwargs...)</code></a> - grdgravmag3d.jl:53</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/potential/grdgravmag3d.jl#L53"><code>grdgravmag3d(cmd0::String, arg1; ...)</code></a> - grdgravmag3d.jl:53</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/potential/grdgravmag3d.jl#L52"><code>grdgravmag3d(arg1, arg2; kw...)</code></a> - grdgravmag3d.jl:52</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/potential/grdgravmag3d.jl#L52"><code>grdgravmag3d(arg1; ...)</code></a> - grdgravmag3d.jl:52</li>
+</ul>
 </section>
 <section id="see-also" class="level2">
 <h2 class="anchored" data-anchor-id="see-also">See Also</h2>

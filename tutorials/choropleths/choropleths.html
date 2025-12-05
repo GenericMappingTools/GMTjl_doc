@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -455,7 +456,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="what-color-is-your-state">What color is your State?</h3>
 <p>This example shows an adaptation of the <a href="https://erdavis.com/2021/06/26/average-colors-of-the-world/">Average color of World</a> examples. It differs slightly for the also shown US case likely due to the different data used. Here we retrieve the image data (Sentinel 2) from the <a href="https://eox.at/">EOX WMS server</a> and use the year 2020. And, as a side note, realize how incredibly simpler this example is as comparing to the codes used to generate the figures in that blog.</p>
 <p>Note how the sates polygons are read directly from source, without any previous download, uncompressing file format conversions, etc… We will also filter the states polygons to use only those inside the US continental zone and limit them by number of points and with that dropping those polygons of small islands (smaller in area than 10 km^2).</p>
-<div id="29274497" class="cell" data-execution_count="1">
+<div id="d501e742" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Fetch the state polygons from the US Census Bureau </span></span>
@@ -484,7 +485,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="represent-colors-by-average-altitude" class="level3">
 <h3 class="anchored" data-anchor-id="represent-colors-by-average-altitude">Represent colors by average altitude</h3>
 <p>We can also use the same polygons to represent some other variable, such as the average altitude of each state. We will use the <a href="https://www.generic-mapping-tools.org/remote-datasets/earth-relief.html">Earth Relief 06m</a> dataset</p>
-<div id="bbd223ee" class="cell" data-execution_count="2">
+<div id="374b426b" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span>   <span class="co"># Hide</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">gmtread</span>(<span class="st">"/vsizip//vsicurl/https://www2.census.gov/geo/tiger/GENZ2024/shp/cb_2024_us_state_500k.zip"</span>);  <span class="co"># Hide</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -507,7 +508,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>The case above was relatively easy because the data was already prepared in a form that GMT could use. That is, the <code>zvals</code> vector, which together with the colorscale, determines the color of the polygons was already in the same order as the polygons themselves (in the GMTdataset <code>D</code>). However, often that is not the case, and we have the variable that contains the information that we want to <em>colorize</em> in a different source and with a different order than that of the polygons in <code>D</code>. So, we need to do a kind of <em>join</em> operation. That can be done with <em>join</em> functions or use the internal <code>polygonlevels</code> function that links the polygon names provide by a stored attribute in <code>D</code> and the values in a vector or a table that must also have some text information (a name) associated with each value. It is that we will do in the next example.</p>
-<div id="516dc2c1" class="cell" data-execution_count="3">
+<div id="fef11a7d" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span>   <span class="co"># Hide</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">gmtread</span>(<span class="st">"/vsizip//vsicurl/https://www2.census.gov/geo/tiger/GENZ2024/shp/cb_2024_us_state_500k.zip"</span>);  <span class="co"># Hide</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -534,7 +535,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="choropleths-by-symbol-color" class="level3">
 <h3 class="anchored" data-anchor-id="choropleths-by-symbol-color">Choropleths by symbol color</h3>
 <p>To avoid the perceptual problem of over-enphasize the polygon’s are we can alternatively use colored symbols (or symbols of different sizes). That can be done with the <code>bubblechart</code> program. One issue, though, that we have to deal in this case is that a state can have multiple polygons (for example Hawaii has many islands, and Michigan has two main landmasses). So, we need to calculate the largest polygon of each state and its centroid to place the symbol there.</p>
-<div id="0711841e" class="cell" data-execution_count="4">
+<div id="cd32e389" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span>   <span class="co"># Hide</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">gmtread</span>(<span class="st">"/vsizip//vsicurl/https://www2.census.gov/geo/tiger/GENZ2024/shp/cb_2024_us_state_500k.zip"</span>);  <span class="co"># Hide</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -555,7 +556,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>In all the examples above we have used the US states polygons from a downloaded file, but we actually no not need that as the internal GMT coasts database has the US states polygons. So, we can use the <code>coast</code> function to get extract the states polygons and use them in the same way as above. Here is an example that would produce the exactly same image. But note how attribute names are different now as state names are stored under the “CODE” attribute.</p>
-<div id="dc099060" class="cell" data-execution_count="5">
+<div id="c3edb52d" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span>   <span class="co"># Hide</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">coast</span>(DCW<span class="op">=</span>(states<span class="op">=</span><span class="st">"US"</span>,))   <span class="co"># Or simply D = coast(DCW="+US");</span></span>

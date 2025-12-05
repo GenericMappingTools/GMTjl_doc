@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -433,6 +434,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#examples" id="toc-examples" class="nav-link active" data-scroll-target="#examples">Examples</a></li>
   <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
   </ul>
 </nav>
     </div>
@@ -486,7 +488,7 @@ Save the figure with the <code>figname=name.ext</code> where <code>ext</code> ch
 </ul>
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
-<div id="b6d7384b" class="cell" data-execution_count="1">
+<div id="1205b146" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ablines</span>([<span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>], [<span class="fl">1</span>, <span class="fl">1.5</span>, <span class="fl">2</span>], linecolor<span class="op">=</span>[<span class="op">:</span>red, <span class="op">:</span>orange, <span class="op">:</span>pink], linestyle<span class="op">=:</span>dash, linewidth<span class="op">=</span><span class="fl">2</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -498,7 +500,7 @@ Save the figure with the <code>figname=name.ext</code> where <code>ext</code> ch
 </div>
 </div>
 </div>
-<div id="13ee19cf" class="cell" data-execution_count="2">
+<div id="11f8daa1" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">linearfitxy</span>([<span class="fl">0.0</span>, <span class="fl">0.9</span>, <span class="fl">1.8</span>, <span class="fl">2.6</span>, <span class="fl">3.3</span>, <span class="fl">4.4</span>, <span class="fl">5.2</span>, <span class="fl">6.1</span>, <span class="fl">6.5</span>, <span class="fl">7.4</span>], [<span class="fl">5.9</span>, <span class="fl">5.4</span>, <span class="fl">4.4</span>, <span class="fl">4.6</span>, <span class="fl">3.5</span>, <span class="fl">3.7</span>, <span class="fl">2.8</span>, <span class="fl">2.8</span>, <span class="fl">2.4</span>, <span class="fl">1.5</span>],</span>
@@ -517,6 +519,15 @@ Save the figure with the <code>figname=name.ext</code> where <code>ext</code> ch
 <section id="see-also" class="level2">
 <h2 class="anchored" data-anchor-id="see-also">See Also</h2>
 <p><a href="../..\documentation/utilities/plotlinefit.html">plotlinefit</a>, <a href="../..\documentation/utilities/linearfitxy.html">linearfitxy</a>, <a href="../..\documentation/modules/plot.html">plot</a></p>
+</section>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>This function has multiple methods:</p>
+<ul>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/linefit.jl#L419"><code>ablines(a::Vector{&lt;:Real}, b::Vector{&lt;:Real}; first, kw...)</code></a> - linefit.jl:419</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/linefit.jl#L418"><code>ablines(a, b; first, kw...)</code></a> - linefit.jl:418</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/linefit.jl#L410"><code>ablines(D::GMTdataset; first, kw...)</code></a> - linefit.jl:410</li>
+</ul>
 
 
 </section>

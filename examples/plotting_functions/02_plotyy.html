@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -462,7 +463,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="using-x-and-y-vectors" class="level3">
 <h3 class="anchored" data-anchor-id="using-x-and-y-vectors">Using x and y vectors</h3>
 <p>Likewise contourf GMT does not have a plotyy module. A plotyy plot is a one where we plot Y1 versus X1 with y-axis labeling on the left and plots Y2 versus X2 with y-axis labeling on the right. So it’s basically a two plots overlain but the details to make it nice can be a bit boring and long.</p>
-<div id="c35580e3" class="cell" data-execution_count="1">
+<div id="7d14cc4d" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="fl">0</span><span class="op">:</span><span class="fl">0.01</span><span class="op">:</span><span class="fl">20</span>;</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>y1 <span class="op">=</span> <span class="fl">200</span> <span class="op">*</span> <span class="fu">exp</span>.(<span class="op">-</span><span class="fl">0.05</span>x) <span class="op">.*</span> <span class="fu">sin</span>.(x);</span>
@@ -479,7 +480,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>Note that to make the command shorter and nicer to read we have used a less known option in GMT. The secondary label of an axes. In this example we also didn’t set the xx coordinates so the program plotted from 1 to numbers of points.</p>
 <p>In the general case the data has xx coordinates and they don’t even need to be the same for Y1 and Y2 (but they need to have a shared interval). In that case we should set the plot limits because otherwise the guessing done from xx,Y1 risk to not capture the total Y1+Y2 extent.</p>
-<div id="8d8ccf9f" class="cell" data-execution_count="2">
+<div id="374c0469" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="fl">0</span><span class="op">:</span><span class="fl">0.01</span><span class="op">:</span><span class="fl">20</span>;</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>y1 <span class="op">=</span> <span class="fl">200</span> <span class="op">*</span> <span class="fu">exp</span>.(<span class="op">-</span><span class="fl">0.05</span>x) <span class="op">.*</span> <span class="fu">sin</span>.(x);</span>

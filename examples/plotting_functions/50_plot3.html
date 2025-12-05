@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -457,7 +458,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="flight-path" class="level3">
 <h3 class="anchored" data-anchor-id="flight-path">Flight path</h3>
 <p>Draw a flight path approaching landing with variable line thickness and color depending on airplain height.</p>
-<div id="e1d3c7ee" class="cell" data-execution_count="1">
+<div id="5a077fb9" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">gmtread</span>(TESTSDIR <span class="op">*</span> <span class="st">"assets/track_sample_data.txt"</span>, incols<span class="op">=</span><span class="st">"7,6,3"</span>);</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot3d</span>(D, lc<span class="op">=:</span>gradient, lt<span class="op">=</span>[<span class="fl">1</span>,<span class="fl">5</span>], par<span class="op">=</span>(PS_LINE_CAP<span class="op">=</span><span class="st">"round"</span>,), show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>

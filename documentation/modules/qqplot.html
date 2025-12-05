@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -431,22 +432,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#qqplot" id="toc-qqplot" class="nav-link active" data-scroll-target="#qqplot">qqplot</a>
-  <ul class="collapse">
-  <li><a href="#parameters" id="toc-parameters" class="nav-link" data-scroll-target="#parameters">Parameters</a></li>
+  <li><a href="#parameters" id="toc-parameters" class="nav-link active" data-scroll-target="#parameters">Parameters</a></li>
   <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
-  </ul></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
+  <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See also</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">qqplot</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
 
-<section id="qqplot" class="level1">
-<h1>qqplot</h1>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqplot</span>(x<span class="op">::</span><span class="dt">AbstractVector{AbstractFloat}</span>, y<span class="op">::</span><span class="dt">AbstractVector{AbstractFloat}</span>; kwargs<span class="op">...</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>The <code>qqplot</code> function compares the quantiles of two distributions. The <code>qqnorm</code> is a shorthand for comparing a distribution to the normal distribution. If the distributions are similar the points will be on a straight line.</p>
 <table class="caption-top table">
@@ -464,7 +478,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
-<p>This module is a subset of <code>plot</code> to make it simpler to draw stair plots. So not all (fine) controlling parameters are not listed here. For the finest control, user should consult the module.</p>
+<p>This module is a subset of <code>plot</code> to make it simpler to draw stair plots. So not all (fine) controlling parameters are not listed here. For the finest control, user should consult the <a href="../..\documentation/modules/plot.html">plot</a> module.</p>
 <section id="parameters" class="level2">
 <h2 class="anchored" data-anchor-id="parameters">Parameters</h2>
 <ul>
@@ -477,14 +491,67 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><code>none</code>: do not draw any line.</li>
 </ul>
 <p>Broadly speaking, <code>qqline=:identity</code> is useful to see if x and y follow the same distribution, whereas <code>qqline=:fit</code> and <code>qqline=:fitrobust</code> are useful to see if the distribution of y can be obtained from the distribution of x via an affine transformation.</p></li>
-<li><p>For fine the lines settings use the same options as in the module. Nemely <code>lw</code> or <code>lt</code> for controling the line thickness, <code>lc</code> for line color, <code>ls</code> for line styles, etc…</p></li>
+<li><p>For fine the lines settings use the same options as in the <a href="../..\documentation/modules/plot.html">plot</a> module. Nemely <code>lw</code> or <code>lt</code> for controling the line thickness, <code>lc</code> for line color, <code>ls</code> for line styles, etc…</p></li>
+<li><p><strong>B</strong> or <strong>axes</strong> or <strong>frame</strong><br>
+Set map boundary frame and axes attributes. Default is to draw and annotate left, bottom and vertical axes and just draw left and top axes. More at [frame](../common_opts/opt_B.html)</p></li>
+<li><p><strong>J</strong> or <strong>proj</strong> or <strong>projection</strong> : – <em>proj=<parameters></parameters></em><br>
+Select map projection. More at [proj](../common_opts/opt_J.html)</p></li>
+<li><p><strong>R</strong> or <strong>region</strong> or <strong>limits</strong> : – <em>limits=(xmin, xmax, ymin, ymax)</em> <strong>|</strong> <em>limits=(BB=(xmin, xmax, ymin, ymax),)</em> <strong>|</strong> <em>limits=(LLUR=(xmin, xmax, ymin, ymax),units=“unit”)</em> <strong>|</strong> …more<br>
+Specify the region of interest. More at [limits](../common_opts/opt_R.html). For perspective view <strong>view</strong>, optionally add <em>zmin,zmax</em>. This option may be used to indicate the range used for the 3-D axes. You may ask for a larger w/e/s/n region to have more room between the image and the axes.</p></li>
+<li><p><strong>G</strong> or <strong>markerfacecolor</strong> or <strong>MarkerFaceColor</strong> or <strong>markercolor</strong> or <strong>mc</strong> or <strong>fill</strong><br>
+Select color or pattern for filling of symbols [Default is no fill]. Note that plot will search for <em>fill</em> and <em>pen</em> settings in all the segment headers (when passing a GMTdaset or file of a multi-segment dataset) and let any values thus found over-ride the command line settings (but those must be provided in the terse GMT syntax). See [Setting color](../common_features/color.html) for extend color selection (including color map generation).</p></li>
+<li><p><strong>W</strong> or <strong>pen</strong>=<code>pen</code><br>
+Set pen attributes for the arrow stem [Defaults: width = default, color = black, style = solid]. See [Pen attributes](../common_features/pens.html) and [Vector attributes](../common_features/arrows_control.html) for arrow line terminations.</p></li>
+<li><p><strong>U</strong> or <strong>time_stamp</strong> : – <em>time_stamp=true</em> <strong>|</strong> <em>time_stamp=(just=“code”, pos=(dx,dy), label=“label”, com=true)</em><br>
+Draw GMT time stamp logo on plot. More at [timestamp](../common_opts/opt_U.html)</p></li>
+<li><p><strong>V</strong> or <em>verbose</em> : – <em>verbose=true</em> <strong>|</strong> <em>verbose=level</em><br>
+Select verbosity level. More at [verbose](../common_opts/opt_V.html)</p></li>
+<li><p><strong>X</strong> or <strong>xshift</strong> or <strong>x_offset</strong> : <em>xshift=true</em> <strong>|</strong> <em>xshift=x-shift</em> <strong>|</strong> <em>xshift=(shift=x-shift, mov=“a|c|f|r”)</em><br>
+Shift plot origin. More at [xshift](../common_opts/opt_X.html)</p></li>
+<li><p><strong>Y</strong> or <strong>yshift</strong> or <strong>y_offset</strong> : <em>yshift=true</em> <strong>|</strong> <em>yshift=y-shift</em> <strong>|</strong> <em>yshift=(shift=y-shift, mov=“a|c|f|r”)</em><br>
+Shift plot origin. More at [yshift](../common_opts/opt_Y.html)</p></li>
+<li><p><strong>figname</strong> or <strong>savefig</strong> or <strong>name</strong> : – <em>figname=<code>name.png</code></em><br>
+Save the figure with the <code>figname=name.ext</code> where <code>ext</code> chooses the figure image format.</p></li>
 </ul>
 </section>
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
-
-
+<div id="643fc43e" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">qqplot</span>(<span class="fu">randn</span>(<span class="fl">100</span>), <span class="fu">randn</span>(<span class="fl">100</span>), show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="qqplot_files/figure-html/cell-2-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="f0ab7356" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqplot</span>(<span class="fu">randn</span>(<span class="fl">100</span>), show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="qqplot_files/figure-html/cell-3-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
 </section>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>This function has multiple methods:</p>
+<ul>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/statplots.jl#L953"><code>qqplot(x; qqline, first, kwargs...)</code></a> - statplots.jl:953</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/statplots.jl#L905"><code>qqplot(x, y; qqline, first, kwargs...)</code></a> - statplots.jl:905</li>
+</ul>
+</section>
+<section id="see-also" class="level2">
+<h2 class="anchored" data-anchor-id="see-also">See also</h2>
+<p><a href="../alphabetical.html">Alphabetical Function List</a></p>
+
+
 </section>
 
 </main> <!-- /main -->

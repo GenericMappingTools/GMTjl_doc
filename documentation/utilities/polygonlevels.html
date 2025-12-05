@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -431,22 +432,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#polygonlevels" id="toc-polygonlevels" class="nav-link active" data-scroll-target="#polygonlevels">polygonlevels</a>
-  <ul class="collapse">
-  <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
+  <li><a href="#examples" id="toc-examples" class="nav-link active" data-scroll-target="#examples">Examples</a></li>
   <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
-  </ul></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">polygonlevels</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
 
-<section id="polygonlevels" class="level1">
-<h1>polygonlevels</h1>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>zvals <span class="op">=</span> <span class="fu">polygonlevels</span>(D<span class="op">::</span><span class="dt">GDtype</span>, ids<span class="op">::</span><span class="dt">VecOrMat{String}</span>, vals<span class="op">::</span><span class="dt">Vector{&lt;:Real}</span>; kw<span class="op">...</span>) <span class="op">-&gt;</span> <span class="dt">Vector</span>{<span class="dt">Float64</span>}</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>or</span>
@@ -470,9 +483,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="see-also" class="level2">
 <h2 class="anchored" data-anchor-id="see-also">See Also</h2>
 <p><a href="../..\documentation/utilities/inwhichpolygon.html">inwhichpolygon</a>, <a href="../..\documentation/utilities/getbyattrib.html">getbyattrib</a>, <a href="../..\documentation/modules/coast.html">coast</a>, [plot3]</p>
-
-
 </section>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>This function has multiple methods:</p>
+<ul>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/spatial_funs.jl#L79"><code>polygonlevels(D::Vector{&lt;:GMTdataset}, user_ids::Matrix{&lt;:AbstractString}, vals::Vector{&lt;:Real}; kw...)</code></a> - spatial_funs.jl:79</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/spatial_funs.jl#L51"><code>polygonlevels(D::Vector{&lt;:GMTdataset}, user_ids::Vector{&lt;:AbstractString}, vals::Vector{&lt;:Real}; kw...)</code></a> - spatial_funs.jl:51</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/spatial_funs.jl#L42"><code>polygonlevels(D::Vector{&lt;:GMTdataset}, user_ids::VecOrMat{&lt;:AbstractString}, vals; kw...)</code></a> - spatial_funs.jl:42</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/spatial_funs.jl#L37"><code>polygonlevels(D::Vector{&lt;:GMTdataset}, id_vals::GMTdataset; kw...)</code></a> - spatial_funs.jl:37</li>
+</ul>
+
+
 </section>
 
 </main> <!-- /main -->

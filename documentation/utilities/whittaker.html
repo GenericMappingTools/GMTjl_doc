@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -431,7 +432,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#methods" id="toc-methods" class="nav-link active" data-scroll-target="#methods">Methods</a></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link active" data-scroll-target="#source-code">Source Code</a></li>
   <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
   </ul>
 </nav>
@@ -487,34 +488,55 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="examples" class="level3">
 <h3 class="anchored" data-anchor-id="examples">Examples</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">gmtread</span>(TESTSDIR <span class="op">*</span> <span class="st">"/assets/nmr_with_weights_and_x.csv"</span>);</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>D2 <span class="op">=</span> <span class="fu">whittaker</span>(D, <span class="fl">2e4</span>, <span class="fl">2</span>);</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>D3 <span class="op">=</span> <span class="fu">whittaker</span>(D, <span class="fl">2e4</span>, <span class="fl">3</span>);</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(D)</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot!</span>(D2, lc<span class="op">=:</span>red, lt<span class="op">=</span><span class="fl">1</span>, legend<span class="op">=</span><span class="st">"Degree 2"</span>, plot<span class="op">=</span>(data<span class="op">=</span>D3, lc<span class="op">=:</span>blue, lt<span class="op">=</span><span class="fl">1</span>, legend<span class="op">=</span><span class="st">"Degree 3"</span>), show<span class="op">=</span><span class="fl">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> <span class="fl">2001</span><span class="op">:</span><span class="fl">0.003</span><span class="op">:</span><span class="fl">2007</span>;</span>
+<div id="72a26f38" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">gmtread</span>(TESTSDIR <span class="op">*</span> <span class="st">"/assets/nmr_with_weights_and_x.csv"</span>);</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>D2 <span class="op">=</span> <span class="fu">whittaker</span>(D, <span class="fl">2e4</span>, <span class="fl">2</span>);</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>D3 <span class="op">=</span> <span class="fu">whittaker</span>(D, <span class="fl">2e4</span>, <span class="fl">3</span>);</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(D)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot!</span>(D2, lc<span class="op">=:</span>red, lt<span class="op">=</span><span class="fl">1</span>, legend<span class="op">=</span><span class="st">"Degree 2"</span>)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot!</span>(D3, lc<span class="op">=:</span>blue, lt<span class="op">=</span><span class="fl">1</span>, legend<span class="op">=</span><span class="st">"Degree 3"</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="whittaker_files/figure-html/cell-2-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="28d97f5b" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> <span class="fl">2001</span><span class="op">:</span><span class="fl">0.003</span><span class="op">:</span><span class="fl">2007</span>;</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>_v <span class="op">=</span> <span class="fl">5</span><span class="fu">*cospi</span>.((t <span class="op">.-</span> <span class="fl">2000</span>)<span class="op">/</span><span class="fl">2</span>); v <span class="op">=</span> _v <span class="op">+</span> (<span class="fl">5</span><span class="fu">*rand</span>(<span class="fu">length</span>(t)) <span class="op">.-</span> <span class="fl">2.5</span>);</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>v[<span class="fl">2002.6</span> <span class="op">.&lt;</span> t <span class="op">.&lt;</span> <span class="fl">2003.4</span>] <span class="op">.=</span> <span class="cn">NaN</span>;</span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>z <span class="op">=</span> <span class="fu">whittaker</span>(t, v, <span class="fl">0.01</span>, <span class="fl">3</span>);</span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(t, v, legend<span class="op">=</span><span class="st">"Noisy"</span>, plot<span class="op">=</span>(data<span class="op">=</span>[t _v], lc<span class="op">=:</span>green, lt<span class="op">=</span><span class="fl">1</span>, legend<span class="op">=</span><span class="st">"Original"</span>))</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot!</span>(t, z, lc<span class="op">=:</span>red, lt<span class="op">=</span><span class="fl">1</span>, legend<span class="op">=</span><span class="st">"Degree 3"</span>, show<span class="op">=</span><span class="fl">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot!</span>(t, z, lc<span class="op">=:</span>red, lt<span class="op">=</span><span class="fl">1</span>, legend<span class="op">=</span><span class="st">"Degree 3"</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="whittaker_files/figure-html/cell-3-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
 </section>
-<section id="methods" class="level2">
-<h2 class="anchored" data-anchor-id="methods">Methods</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 6 methods for generic function "whittaker" from GMT:</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a> [<span class="fl">1</span>] <span class="fu">whittaker</span>(x<span class="op">::</span><span class="dt">AbstractVecOrMat{&lt;:Real}</span>, y<span class="op">::</span><span class="dt">AbstractVecOrMat{&lt;:Real}</span>, lambda<span class="op">::</span><span class="dt">Real</span>; <span class="op">...</span>)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a> [<span class="fl">2</span>] <span class="fu">whittaker</span>(D<span class="op">::</span><span class="dt">GMTdataset</span>, lambda<span class="op">::</span><span class="dt">Real</span>, d<span class="op">::</span><span class="dt">Int64</span>; weights)</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a> [<span class="fl">3</span>] <span class="fu">whittaker</span>(y<span class="op">::</span><span class="dt">AbstractVecOrMat{&lt;:Real}</span>, lambda, d; weights, checkedNaN)</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a> [<span class="fl">4</span>] <span class="fu">whittaker</span>(D<span class="op">::</span><span class="dt">GMTdataset</span>, lambda<span class="op">::</span><span class="dt">Real</span>; <span class="op">...</span>)</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a> [<span class="fl">5</span>] <span class="fu">whittaker</span>(y<span class="op">::</span><span class="dt">AbstractVecOrMat{&lt;:Real}</span>, lambda; <span class="op">...</span>)</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a> [<span class="fl">6</span>] <span class="fu">whittaker</span>(x<span class="op">::</span><span class="dt">AbstractVecOrMat{&lt;:Real}</span>, y<span class="op">::</span><span class="dt">AbstractVecOrMat{&lt;:Real}</span>, lambda<span class="op">::</span><span class="dt">Real</span>, d<span class="op">::</span><span class="dt">Int64</span>; weights, checkedNaN)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>This function has multiple methods:</p>
+<ul>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/extras/whittaker.jl#L62"><code>whittaker(x::AbstractVecOrMat{&lt;:Real}, y::AbstractVecOrMat{&lt;:Real}, lambda::Real; ...)</code></a> - whittaker.jl:62</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/extras/whittaker.jl#L45"><code>whittaker(D::GMTdataset, lambda::Real, d::Int64; weights)</code></a> - whittaker.jl:45</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/extras/whittaker.jl#L86"><code>whittaker(y::AbstractVecOrMat{&lt;:Real}, lambda, d; weights, checkedNaN)</code></a> - whittaker.jl:86</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/extras/whittaker.jl#L45"><code>whittaker(D::GMTdataset, lambda::Real; ...)</code></a> - whittaker.jl:45</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/extras/whittaker.jl#L86"><code>whittaker(y::AbstractVecOrMat{&lt;:Real}, lambda; ...)</code></a> - whittaker.jl:86</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/extras/whittaker.jl#L62"><code>whittaker(x::AbstractVecOrMat{&lt;:Real}, y::AbstractVecOrMat{&lt;:Real}, lambda::Real, d::Int64; weights, checkedNaN)</code></a> - whittaker.jl:62</li>
+</ul>
 </section>
 <section id="see-also" class="level2">
 <h2 class="anchored" data-anchor-id="see-also">See Also</h2>
-<ul>
-<li><a href="../alphabetical.html">Alphabetical Function List</a></li>
-<li><a href="https://www.generic-mapping-tools.org/GMTjl_doc/">GMT.jl Documentation</a></li>
-</ul>
+<p><a href="../..\documentation/modules/lowess.html">lowess</a>, <a href="../..\documentation/utilities/hampel.html">hampel</a></p>
+<p><a href="../alphabetical.html">Alphabetical Function List</a></p>
 
 
 </section>

@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../../">
+<link href="../../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -453,7 +454,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <p>Another example on how to detect periodicities in a Chlorophyl time series.</p>
 <p>Load the data file with the chlorophyll concentration file.</p>
-<div id="0717ef11" class="cell" data-execution_count="1">
+<div id="29bb2a74" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>D1 <span class="op">=</span> <span class="fu">gmtread</span>(TESTSDIR <span class="op">*</span> <span class="st">"assets/cmems_mod_blk_bgc-plankton.csv"</span>);</span>
@@ -471,7 +472,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Now, compute the autocorrelation of the data using the <code>autocor</code> function. But, we want to pass it <strong>only</strong> the chlorophyll data that is stored in the second column of <strong>D1</strong></p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>ac <span class="op">=</span> GMT.<span class="fu">autocor</span>(D1[<span class="op">:</span>,<span class="fl">2</span>], lags)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Show the autocorrelation values in a plot. The x-axis represent be the lags, and the y-axis should be the autocorrelation value.</p>
-<div id="6de29210" class="cell" data-execution_count="2">
+<div id="dfe0751a" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>D1 <span class="op">=</span> <span class="fu">gmtread</span>(TESTSDIR <span class="op">*</span> <span class="st">"assets/cmems_mod_blk_bgc-plankton.csv"</span>);   <span class="co"># Hide</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>lags <span class="op">=</span> <span class="fl">0</span><span class="op">:</span><span class="fl">3</span><span class="op">*</span><span class="fl">365</span>; <span class="co"># Hide</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>

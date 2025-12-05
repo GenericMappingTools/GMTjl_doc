@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -431,27 +432,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#radar" id="toc-radar" class="nav-link active" data-scroll-target="#radar">radar</a>
-  <ul class="collapse">
-  <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
-  </ul></li>
+  <li><a href="#examples" id="toc-examples" class="nav-link active" data-scroll-target="#examples">Examples</a></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
+  <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See also</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">radar</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
 
-<section id="radar" class="level1">
-<h1>radar</h1>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">radar</span>(cmd0<span class="op">=</span><span class="st">""</span>, arg1<span class="op">=</span><span class="cn">nothing</span>; axeslimts<span class="op">=</span><span class="dt">Float64</span>[], annotall<span class="op">=</span><span class="cn">false</span>, axeslabels<span class="op">=</span><span class="dt">String</span>[], kwargs<span class="op">...</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Radar plots are a useful way for seeing which variables have similar values or if there are outliers amongst each variable. By default we expect a matrix, or a GMTdatset (or a vector of them) with normalized values. This is so because a radar plot has multiple axis that each have different limits. So the options are to pass normalized variables or set each axis limits via the <code>axeslimts</code> option.</p>
 <table class="caption-top table">
-<colgroup>
-<col style="width: 16%">
-</colgroup>
 <thead>
 <tr class="header">
 <th>radar(A, …) plots the elements in the rows of <code>A</code> if it is a mtrix creating a polygon per row, or just one polygon if <code>A</code> is a vector.</th>
@@ -459,7 +470,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td>This module is a subset of <code>plot</code> to make it simpler to draw stair plots. So not all (fine) controlling parameters are not listed here. For the finest control, user should consult the module.</td>
+<td>This module is a subset of <code>plot</code> to make it simpler to draw stair plots. So not all (fine) controlling parameters are not listed here. For the finest control, user should consult the <a href="../..\documentation/modules/plot.html">plot</a> module.</td>
 </tr>
 <tr class="even">
 <td>Parameters</td>
@@ -479,15 +490,69 @@ By default only the first axis is annotated, which is all it needs when variable
 <li><p><strong>fill</strong> or <strong>fillcolor</strong> : – <em>fill=true</em> <strong>|</strong> fill=[“color1”, “color2”, …]*&nbsp; A string vector with polygon colors. If number of colors is less then number of polygons we cycle through the number of provided colors.</p></li>
 <li><p><strong>fillalpha</strong> : – <em>fillalpha=[0.5, 0.7, …]</em><br>
 The default is to paint polygons with a transparency of 70%. For other transparency values pass in a vector of transparencies (between [0-1] or ]1-100]) via this option.</p></li>
-<li><p>For fine the lines settings use the same options as in the module. Nemely <code>lw</code> or <code>lt</code> for controling the line thickness, <code>lc</code> for line color, <code>ls</code> for line styles, etc…</p></li>
+<li><p>For fine the lines settings use the same options as in the <a href="../..\documentation/modules/plot.html">plot</a> module. Nemely <code>lw</code> or <code>lt</code> for controling the line thickness, <code>lc</code> for line color, <code>ls</code> for line styles, etc…</p></li>
+<li><p><strong>B</strong> or <strong>axes</strong> or <strong>frame</strong><br>
+Set map boundary frame and axes attributes. Default is to draw and annotate left, bottom and vertical axes and just draw left and top axes. More at [frame](../common_opts/opt_B.html)</p></li>
+<li><p><strong>J</strong> or <strong>proj</strong> or <strong>projection</strong> : – <em>proj=<parameters></parameters></em><br>
+Select map projection. More at [proj](../common_opts/opt_J.html)</p></li>
+<li><p><strong>R</strong> or <strong>region</strong> or <strong>limits</strong> : – <em>limits=(xmin, xmax, ymin, ymax)</em> <strong>|</strong> <em>limits=(BB=(xmin, xmax, ymin, ymax),)</em> <strong>|</strong> <em>limits=(LLUR=(xmin, xmax, ymin, ymax),units=“unit”)</em> <strong>|</strong> …more<br>
+Specify the region of interest. More at [limits](../common_opts/opt_R.html). For perspective view <strong>view</strong>, optionally add <em>zmin,zmax</em>. This option may be used to indicate the range used for the 3-D axes. You may ask for a larger w/e/s/n region to have more room between the image and the axes.</p></li>
+<li><p><strong>G</strong> or <strong>markerfacecolor</strong> or <strong>MarkerFaceColor</strong> or <strong>markercolor</strong> or <strong>mc</strong> or <strong>fill</strong><br>
+Select color or pattern for filling of symbols [Default is no fill]. Note that plot will search for <em>fill</em> and <em>pen</em> settings in all the segment headers (when passing a GMTdaset or file of a multi-segment dataset) and let any values thus found over-ride the command line settings (but those must be provided in the terse GMT syntax). See [Setting color](../common_features/color.html) for extend color selection (including color map generation).</p></li>
+<li><p><strong>W</strong> or <strong>pen</strong>=<code>pen</code><br>
+Set pen attributes for the arrow stem [Defaults: width = default, color = black, style = solid]. See [Pen attributes](../common_features/pens.html) and [Vector attributes](../common_features/arrows_control.html) for arrow line terminations.</p></li>
+<li><p><strong>U</strong> or <strong>time_stamp</strong> : – <em>time_stamp=true</em> <strong>|</strong> <em>time_stamp=(just=“code”, pos=(dx,dy), label=“label”, com=true)</em><br>
+Draw GMT time stamp logo on plot. More at [timestamp](../common_opts/opt_U.html)</p></li>
+<li><p><strong>V</strong> or <em>verbose</em> : – <em>verbose=true</em> <strong>|</strong> <em>verbose=level</em><br>
+Select verbosity level. More at [verbose](../common_opts/opt_V.html)</p></li>
+<li><p><strong>X</strong> or <strong>xshift</strong> or <strong>x_offset</strong> : <em>xshift=true</em> <strong>|</strong> <em>xshift=x-shift</em> <strong>|</strong> <em>xshift=(shift=x-shift, mov=“a|c|f|r”)</em><br>
+Shift plot origin. More at [xshift](../common_opts/opt_X.html)</p></li>
+<li><p><strong>Y</strong> or <strong>yshift</strong> or <strong>y_offset</strong> : <em>yshift=true</em> <strong>|</strong> <em>yshift=y-shift</em> <strong>|</strong> <em>yshift=(shift=y-shift, mov=“a|c|f|r”)</em><br>
+Shift plot origin. More at [yshift](../common_opts/opt_Y.html)</p></li>
+<li><p><strong>figname</strong> or <strong>savefig</strong> or <strong>name</strong> : – <em>figname=<code>name.png</code></em><br>
+Save the figure with the <code>figname=name.ext</code> where <code>ext</code> chooses the figure image format.</p></li>
 </ul>
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <p>Create a</p>
+<div id="fe7d34a8" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">radar</span>([<span class="fl">0.5</span> <span class="fl">0.5</span> <span class="fl">0.6</span> <span class="fl">0.9</span> <span class="fl">0.77</span>; <span class="fl">0.6</span> <span class="fl">0.5</span> <span class="fl">0.8</span> <span class="fl">0.2</span> <span class="fl">0.9</span>], show<span class="op">=</span><span class="cn">true</span>, marker<span class="op">=:</span>circ, fill<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="radar_files/figure-html/cell-2-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
 <p>Plot</p>
-
-
+<div id="2a68fe68" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">radar</span>([<span class="fl">10.5</span> <span class="fl">20.5</span> <span class="fl">30.6</span> <span class="fl">40.9</span> <span class="fl">46</span>], axeslimts<span class="op">=</span>[<span class="fl">15</span>, <span class="fl">25</span>, <span class="fl">50</span>, <span class="fl">90</span>, <span class="fl">50</span>], annotall<span class="op">=</span><span class="cn">true</span>, marker<span class="op">=:</span>circ, fill<span class="op">=</span><span class="cn">true</span>, </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>      labels<span class="op">=</span>[<span class="st">"Spoons"</span>,<span class="st">"Forks"</span>,<span class="st">"Knifes"</span>,<span class="st">"Dishes"</span>,<span class="st">"Oranges"</span>], show<span class="op">=</span><span class="fl">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="radar_files/figure-html/cell-3-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
 </section>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>This function has multiple methods:</p>
+<ul>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L1316"><code>radar(cmd0::String; kwargs...)</code></a> - plot.jl:1316</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L1317"><code>radar(arg1; kwargs...)</code></a> - plot.jl:1317</li>
+</ul>
+</section>
+<section id="see-also" class="level2">
+<h2 class="anchored" data-anchor-id="see-also">See also</h2>
+<p><a href="../alphabetical.html">Alphabetical Function List</a></p>
+
+
 </section>
 
 </main> <!-- /main -->

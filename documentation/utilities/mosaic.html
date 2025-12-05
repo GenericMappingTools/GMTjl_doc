@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -434,6 +435,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#returns" id="toc-returns" class="nav-link active" data-scroll-target="#returns">Returns</a></li>
   <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
   <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
   </ul>
 </nav>
     </div>
@@ -517,7 +519,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Make a figure with OpenStreetMap over Iberia maintaining the original spherical Mercator projection.</li>
 </ul>
-<div id="7baf0124" class="cell" data-execution_count="1">
+<div id="46070bea" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>I <span class="op">=</span> <span class="fu">mosaic</span>([<span class="op">-</span><span class="fl">9.5</span>, <span class="fl">3.3</span>], [<span class="fl">36.0</span>, <span class="fl">43.8</span>], provider<span class="op">=:</span>OSM, zoom<span class="op">=</span><span class="fl">7</span>, merc<span class="op">=</span><span class="cn">true</span>)</span>
@@ -533,7 +535,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Make a figure of the Big Island of Hawaii using the default Bing images. In this case we use the <code>geocoder</code> function to give us the map limits</li>
 </ul>
-<div id="cecf8427" class="cell" data-execution_count="2">
+<div id="ac881d2d" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the geographical limits of the Big Island in Hawaii</span></span>
@@ -554,7 +556,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Show only the tilles limits over a selected zone/zoom level.</li>
 </ul>
-<div id="3f5dec44" class="cell" data-execution_count="3">
+<div id="c57ab235" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">mosaic</span>(region<span class="op">=</span>(<span class="op">-</span><span class="fl">10</span>, <span class="op">-</span><span class="fl">8</span>, <span class="fl">37</span>, <span class="fl">39</span>), zoom<span class="op">=</span><span class="fl">9</span>, mesh<span class="op">=</span><span class="cn">true</span>);</span>
@@ -583,6 +585,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="see-also" class="level2">
 <h2 class="anchored" data-anchor-id="see-also">See Also</h2>
 <p><a href="../..\documentation/utilities/geocoder.html">geocoder</a></p>
+</section>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>This function has multiple methods:</p>
+<ul>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/imshow.jl#L235"><code>imshow(arg1::Symbol; horizontal, kw...)</code></a> - imshow.jl:235</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/imshow.jl#L236"><code>imshow(arg1::GMTcpt; horizontal, kw...)</code></a> - imshow.jl:236</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/imshow.jl#L241"><code>imshow(arg1::GMT.Gdal.AbstractDataset; kw...)</code></a> - imshow.jl:241</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/imshow.jl#L270"><code>imshow(x::AbstractVector{Float64}, f::String; kw...)</code></a> - imshow.jl:270</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/imshow.jl#L269"><code>imshow(x::AbstractVector{Float64}, y::AbstractVector{Float64}, f::String; kw...)</code></a> - imshow.jl:269</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/imshow.jl#L266"><code>imshow(x::AbstractVector{Float64}, f::Function; kw...)</code></a> - imshow.jl:266</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/imshow.jl#L246"><code>imshow(x::AbstractVector{Float64}, y::AbstractVector{Float64}, f::Function; kw...)</code></a> - imshow.jl:246</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/imshow.jl#L268"><code>imshow(f::Function, x::AbstractVector{Float64}, y::AbstractVector{Float64}; kw...)</code></a> - imshow.jl:268</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/imshow.jl#L267"><code>imshow(f::Function, x::AbstractVector{Float64}; kw...)</code></a> - imshow.jl:267</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/imshow.jl#L124"><code>imshow(arg1::GItype; kw...)</code></a> - imshow.jl:124</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/imshow.jl#L36"><code>imshow(arg1; ...)</code></a> - imshow.jl:36</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/imshow.jl#L36"><code>imshow(arg1, x::AbstractVector{Float64}; ...)</code></a> - imshow.jl:36</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/imshow.jl#L36"><code>imshow(arg1, x::AbstractVector{Float64}, y::AbstractVector{Float64}; kw...)</code></a> - imshow.jl:36</li>
+</ul>
 
 
 </section>

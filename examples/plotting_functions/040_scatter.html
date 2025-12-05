@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -462,7 +463,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="using-x-and-y-vectors" class="level3">
 <h3 class="anchored" data-anchor-id="using-x-and-y-vectors">Using x and y vectors</h3>
 <p>Draw a Cartesian scatter plot with variable symbol size, color and transparency</p>
-<div id="25be6639" class="cell" data-execution_count="1">
+<div id="e6ab82a4" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">scatter</span>(<span class="fu">rand</span>(<span class="fl">100</span>),<span class="fu">rand</span>(<span class="fl">100</span>),   <span class="co"># Generate data</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        markersize<span class="op">=</span><span class="fu">rand</span>(<span class="fl">100</span>),  <span class="co"># Symbol sizes</span></span>
@@ -484,7 +485,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="polar-scatter" class="level3">
 <h3 class="anchored" data-anchor-id="polar-scatter">Polar scatter</h3>
 <p>Draw a Polar scatter plot with variable symbol size, color and transparency. We will use the default color scale (turbo) and fig size (12 cm).</p>
-<div id="ee94f7ec" class="cell" data-execution_count="2">
+<div id="e9797a06" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>teta <span class="op">=</span> <span class="fl">2</span><span class="fu">pi*rand</span>(<span class="fl">150</span>)<span class="op">*</span><span class="fl">180</span><span class="op">/</span><span class="cn">pi</span>; r <span class="op">=</span> <span class="fl">9</span><span class="fu">*rand</span>(<span class="fl">150</span>); ms <span class="op">=</span> r <span class="op">/</span> <span class="fl">10</span>;</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -510,7 +511,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="group-scatters" class="level3">
 <h3 class="anchored" data-anchor-id="group-scatters">Group scatters</h3>
 <p>Split the different species in the <code>iris</code> dataset in its own colored groups. Use the first two columns in dataset and label the axes with their column names.</p>
-<div id="4abdae5d" class="cell" data-execution_count="3">
+<div id="a50c0fb0" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">scatter</span>(TESTSDIR <span class="op">*</span> <span class="st">"assets/iris.dat"</span>, xvar<span class="op">=</span><span class="fl">1</span>, yvar<span class="op">=</span><span class="fl">2</span>, hue<span class="op">=</span><span class="st">"Species"</span>, xlabel<span class="op">=:</span>auto, ylabel<span class="op">=:</span>auto,</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>        legend<span class="op">=</span>(pos<span class="op">=:</span>TC, box<span class="op">=</span>(pen<span class="op">=</span><span class="fl">1</span>, fill<span class="op">=</span><span class="st">"gray95"</span>, shade<span class="op">=</span><span class="cn">true</span>, rounded<span class="op">=</span><span class="cn">true</span>)), show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>

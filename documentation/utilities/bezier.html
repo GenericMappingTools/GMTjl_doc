@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -431,7 +432,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#see-also" id="toc-see-also" class="nav-link active" data-scroll-target="#see-also">See Also</a></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link active" data-scroll-target="#source-code">Source Code</a></li>
+  <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
   </ul>
 </nav>
     </div>
@@ -504,6 +506,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># A composed spherical Bezier curve with 5 knots and predominance  of second curve</span></span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">bezier</span>(<span class="fu">mat2ds</span>([<span class="fl">30</span>. <span class="op">-</span><span class="fl">15</span>; <span class="fl">30</span> <span class="fl">45</span>; <span class="op">-</span><span class="fl">30</span> <span class="fl">45</span>; <span class="op">-</span><span class="fl">30</span> <span class="op">-</span><span class="fl">15</span>; <span class="op">-</span><span class="fl">20</span> <span class="op">-</span><span class="fl">25</span>], proj4<span class="op">=</span><span class="st">"geog"</span>), firstcurve<span class="op">=</span><span class="cn">false</span>);</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>This function has multiple methods:</p>
+<ul>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/beziers.jl#L109"><code>bezier(p::Matrix{&lt;:Real}; t, np, pure, firstcurve)</code></a> - beziers.jl:109</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/beziers.jl#L80"><code>bezier(p1::Vector{T}, p2::Vector{T}, p3::Vector{T}, p4::Vector{T}; t, np, pure) where T&lt;:Real</code></a> - beziers.jl:80</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/beziers.jl#L61"><code>bezier(D::GMTdataset; t, np, pure, firstcurve)</code></a> - beziers.jl:61</li>
+</ul>
 </section>
 <section id="see-also" class="level2">
 <h2 class="anchored" data-anchor-id="see-also">See Also</h2>

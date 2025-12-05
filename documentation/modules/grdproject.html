@@ -30,6 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -396,27 +397,39 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#grdproject" id="toc-grdproject" class="nav-link active" data-scroll-target="#grdproject">grdproject</a>
-  <ul class="collapse">
-  <li><a href="#synopsis" id="toc-synopsis" class="nav-link" data-scroll-target="#synopsis">Synopsis</a></li>
+  <li><a href="#synopsis" id="toc-synopsis" class="nav-link active" data-scroll-target="#synopsis">Synopsis</a></li>
   <li><a href="#description" id="toc-description" class="nav-link" data-scroll-target="#description">Description</a></li>
   <li><a href="#required-arguments" id="toc-required-arguments" class="nav-link" data-scroll-target="#required-arguments">Required Arguments</a></li>
   <li><a href="#optional-arguments" id="toc-optional-arguments" class="nav-link" data-scroll-target="#optional-arguments">Optional Arguments</a></li>
   <li><a href="#output-region-issues" id="toc-output-region-issues" class="nav-link" data-scroll-target="#output-region-issues">Output Region Issues</a></li>
   <li><a href="#select-ellipsoidal-versus-spherical-solution" id="toc-select-ellipsoidal-versus-spherical-solution" class="nav-link" data-scroll-target="#select-ellipsoidal-versus-spherical-solution">Select Ellipsoidal versus Spherical Solution</a></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
   <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
-  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">grdproject</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
 
-<section id="grdproject" class="level1">
-<h1>grdproject</h1>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
 <p>Forward and inverse map transformation of grids</p>
 <p>(<strong>Warning: Manual translate by Claude. Needs revision</strong>)</p>
 <section id="synopsis" class="level2">
@@ -527,12 +540,19 @@ Select interpolation mode for grids. More at [interp](../common_opts/opt_n.html)
 <p>When a spherical solution is requested or implied, we consider the currently selected ellipsoid and substitute the relevant auxiliary latitude as latitude in the exact equation. Finally, coordinate conversion may also be affected by the selected PROJ_SCALE_FACTOR which is typically 0.9996 but is 1 for a sphere.</p>
 <p><strong>Note</strong>: For some projection, a spherical solution may be used despite the user having selected an ellipsoid. This occurs when the user’s <strong>region</strong> setting implies a region that exceeds the domain in which the ellipsoidal series expansions are valid. These are the conditions: 1. Lambert Conformal Conic (<strong>:LambertConic</strong>) and Albers Equal-Area (<strong>:AlbersEqualArea</strong>) will use the spherical solution when the map scale exceeds 1.0E7. 2. Transverse Mercator (<strong>:TransverseMercator</strong>) and UTM (<strong>:UTM</strong>) will use the spherical solution when either the west or east boundary given in <strong>region</strong> is more than 10 degrees from the central meridian. 3. Same for Cassini (<strong>:Cassini</strong>) but with a limit of only 4 degrees.</p>
 </section>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>This function has multiple methods:</p>
+<ul>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/grdproject.jl#L41"><code>grdproject(cmd0::String; kwargs...)</code></a> - grdproject.jl:41</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/grdproject.jl#L42"><code>grdproject(arg1; kwargs...)</code></a> - grdproject.jl:42</li>
+</ul>
+</section>
 <section id="see-also" class="level2">
 <h2 class="anchored" data-anchor-id="see-also">See Also</h2>
 <p><a href="../..\documentation/modules/mapproject.html">mapproject</a></p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

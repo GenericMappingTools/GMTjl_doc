@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -453,7 +454,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <p>The <a href="../..\documentation/modules/inset.html">inset</a> function can be used as an option to the <code>plot</code>, <code>basemap</code> and <code>grdimage</code> functions. While not all the possibilities offered by the <code>inset</code> function are available in this case, because all functionalities must be requested via a nested call, it offers quite nice features that allow creating elaborated figures with very short commands.</p>
 <p>First example shows how to make a zoom over a region of a synthetic plot. Notice how we use here the <code>inset</code> command as if it was just another option of the <code>plot</code> function. The location of the inset window is found with a heuristic that tries to place them above the zoom window (to avoid overlapping the plotted line) or in one corner when previous condition is not possible.</p>
-<div id="7dfab461" class="cell" data-execution_count="1">
+<div id="9f67ea4b" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> <span class="fl">0</span><span class="op">:</span><span class="fl">0.01</span><span class="op">:</span><span class="fl">2</span>pi;</span>
@@ -467,7 +468,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>If we select the zooming interval over a region where the zoom window has a different aspect ratio (such that as in this case it would overlap the inset located above it) the inset location jumps to another location. In case of need the inset size is scaled down such that it doesn’t go out of the main figure dimensions. But all of this can be manually controlled by using the <code>pos</code> or <code>position</code> sub-options.</p>
-<div id="c5fd6a37" class="cell" data-execution_count="2">
+<div id="129498df" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> <span class="fl">0</span><span class="op">:</span><span class="fl">0.01</span><span class="op">:</span><span class="fl">2</span>pi;</span>
@@ -481,7 +482,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>We can make zooms on more than one line but for it to work we must plot them as a multi-column dataset. That is, we must plot all the lines in one command like the next example. Lines existing in the figure resulting from previous plot commands (case in which we should have used the <code>plot!</code> form) are ignored.</p>
-<div id="7c887152" class="cell" data-execution_count="3">
+<div id="5f4617da" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> <span class="fl">0</span><span class="op">:</span><span class="fl">0.1</span><span class="op">:</span><span class="fl">2</span>pi;</span>
@@ -495,7 +496,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>If we want to plot another curve instead of zooming a part of the one in the main figure we pass the data of that second curve as argument to the <code>inset</code> option. Here, for simplicity, we will show a sinusoid over the same domain.</p>
-<div id="28afbd8e" class="cell" data-execution_count="4">
+<div id="923cbbdb" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> <span class="fl">0</span><span class="op">:</span><span class="fl">0.1</span><span class="op">:</span><span class="fl">2</span>pi;</span>
@@ -509,7 +510,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>In the above examples, selecting the zoom coordinates was simple but when the <em>xx</em> axis represents time, things get a bit more complicated because time is in fact stored as a number of seconds since a reference epoch. And there are <em>lots</em> of seconds in an interval. So, when <em>xx</em> axis has time, we must provide the zooming interval in a date or date-time format. Currently the program accepts time in the ISO “yyyy-mm-ddTHH:MM:SS”, “dd-o-yyyy” or “dd-o-yy” formats. When using the ISO format the <em>time</em>, that is the part that includes and follows the <code>T....</code>, is optional</p>
-<div id="a9586642" class="cell" data-execution_count="5">
+<div id="5ed29605" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">gmtread</span>(<span class="st">"@RHAT_price.csv"</span>, o<span class="op">=</span><span class="st">"0,2"</span>, par<span class="op">=</span>(FORMAT_DATE_IN<span class="op">=</span><span class="st">"dd-o-yy"</span>,))</span>
@@ -523,7 +524,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>For an inset with a rectangle showing the zone that is displayed in main figure, use the <code>rect</code> (or <code>rectangle</code>) option. Arguments in this example mean a line thickness of 2 points and a red line color. <code>rect=true</code> would have plotted a thinner (0.75 pt) blue rectangle.</p>
-<div id="3393075d" class="cell" data-execution_count="6">
+<div id="2b6fdd90" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">grdcut</span>(<span class="st">"@earth_relief_04m"</span>, limits<span class="op">=</span>(<span class="op">-</span><span class="fl">48</span>, <span class="op">-</span><span class="fl">43</span>, <span class="op">-</span><span class="fl">26</span>, <span class="op">-</span><span class="fl">20</span>));</span>
@@ -537,7 +538,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>But if instead of a rectangle we want to plot a symbol, let’s say, a red circle, we can call the <a href="../..\documentation/modules/plot.html">plot</a> function inside <code>inset</code>. In next example we also ask to plot the inset at bottom right (:BR) instead of the default top right (:TR) default position. If wished, things can be made more complex by passing a full featured GMTdataset to the <code>plot</code> function. <em>e.g.</em>, <code>plot=(data=D, ...)</code></p>
-<div id="d9817154" class="cell" data-execution_count="7">
+<div id="38bde520" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">grdcut</span>(<span class="st">"@earth_relief_04m"</span>, limits<span class="op">=</span>(<span class="op">-</span><span class="fl">48</span>, <span class="op">-</span><span class="fl">43</span>, <span class="op">-</span><span class="fl">26</span>, <span class="op">-</span><span class="fl">20</span>));</span>
@@ -554,7 +555,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Next examples show how we can zoom out a region of an image and show it in the inset. We will use as example the image containing the “Finger of God” Bok globule in the Carina Nebula. We download the images directly from the Wikipedia site. The first example lets the inset location algorithm choose where to put the inset window. In the second we decide that ourselves.</p>
-<div id="01bab70b" class="cell" data-execution_count="8">
+<div id="f8c8a221" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="cn">im</span> <span class="op">=</span> <span class="fu">gmtread</span>(<span class="st">"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/NGC_3372a-full.jpg/2560px-NGC_3372a-full.jpg"</span>);</span>
@@ -568,7 +569,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Hmm, the above figure is nice, but the finger is a bit fuzzy. The issue is the image is somewhat low resolution. The Wikipedia page has a high-resolution image but it’s a 200 MB jpeg compressed image. Too big to use in these examples. But we can download only the <em>finger</em> and add it as the inset. In this case we don’t have a rectangle to zoom out (because we are using a different image in the inset) but still want to indicate what zone of the base image is shown in higher resolution. For that, we use the <code>pzoom</code> option (that stands for <em>pseudo-zoom</em>), which expects a <em>x,y</em> location only. Since these images are not referenced, we use <em>rows</em> and <em>column</em> numbers (counting from lower left corner) as coordinates.</p>
-<div id="35d93661" class="cell" data-execution_count="9">
+<div id="6a659b10" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="cn">im</span> <span class="op">=</span> <span class="fu">gmtread</span>(<span class="st">"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/NGC_3372a-full.jpg/2560px-NGC_3372a-full.jpg"</span>);</span>

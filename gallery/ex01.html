@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -452,7 +453,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p>We want to create two contour maps of the low order geoid using the Hammer equal area projection. Our gridded data file is called <code>osu91a1f_16.nc</code> and contains a global 1 by 1 gridded geoid (we will see how to make gridded files later). We would like to show one map centered on Greenwich and one centered on the dateline. Positive contours should be drawn with a solid pen and negative contours with a dashed pen. Annotations should occur for every 50 m contour level, and both contour maps should show the continents in light brown in the background. This is how it is done:</p>
-<div id="19b025ea" class="cell" data-execution_count="1">
+<div id="1832316c" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">subplot</span>(grid<span class="op">=</span>(<span class="fl">2</span>,<span class="fl">1</span>), region<span class="op">=:</span><span class="kw">global</span>, autolabel<span class="op">=</span><span class="cn">true</span>, margins<span class="op">=</span><span class="fl">0.5</span>,</span>
@@ -472,16 +473,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">grdcontour</span>(<span class="st">"@osu91a1f_16.nc"</span>, cont<span class="op">=</span><span class="fl">10</span>, annot<span class="op">=</span>(int<span class="op">=</span><span class="fl">50</span>,labels<span class="op">=</span>(font<span class="op">=</span><span class="fl">7</span>,)), labels<span class="op">=</span>(dist<span class="op">=</span><span class="fl">10</span>,),</span>
 <span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>                range<span class="op">=</span>(<span class="op">-</span><span class="fl">1</span>,<span class="fl">1000</span>), ticks<span class="op">=</span>(gap<span class="op">=</span>(<span class="fl">0.25</span>,<span class="fl">0.05</span>),))</span>
 <span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="fu">subplot</span>(<span class="st">"show"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stderr">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-cyan-fg ansi-bold">[ </span><span class="ansi-cyan-fg ansi-bold">Info: </span>Precompiling GMTParkerFFTExt [35a23bc9-6f20-5cbc-8971-9cdf66427582]
-</pre>
-</div>
-</div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="ex01_files/figure-html/cell-2-output-2.png" class="img-fluid figure-img"></p>
+<p><img src="ex01_files/figure-html/cell-2-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>

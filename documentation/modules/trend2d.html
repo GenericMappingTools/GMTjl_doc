@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -460,27 +461,39 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#trend2d" id="toc-trend2d" class="nav-link active" data-scroll-target="#trend2d">trend2d</a>
-  <ul class="collapse">
-  <li><a href="#description" id="toc-description" class="nav-link" data-scroll-target="#description">Description</a></li>
+  <li><a href="#description" id="toc-description" class="nav-link active" data-scroll-target="#description">Description</a></li>
   <li><a href="#required-arguments" id="toc-required-arguments" class="nav-link" data-scroll-target="#required-arguments">Required Arguments</a></li>
   <li><a href="#optional-arguments" id="toc-optional-arguments" class="nav-link" data-scroll-target="#optional-arguments">Optional Arguments</a></li>
   <li><a href="#remarks" id="toc-remarks" class="nav-link" data-scroll-target="#remarks">Remarks</a></li>
   <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
   <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
-  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">trend2d</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
 
-<section id="trend2d" class="level1">
-<h1>trend2d</h1>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">trend2d</span>(cmd0<span class="op">::</span><span class="dt">String</span>=<span class="st">""</span>, arg1<span class="op">=</span><span class="cn">nothing</span>, kwargs<span class="op">...</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Fit [weighted] [robust] polynomial for z = f(x,y) to xyz[w] data.</p>
 <section id="description" class="level2">
@@ -555,6 +568,16 @@ Swap 1st and 2nd column on input and/or output. <a href="https://docs.generic-ma
 <p>To find out how many terms (up to 10 in a robust interpolant are significant in fitting data.xyz, use</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">trend2d</span>(<span class="st">"data.xyz"</span>, model<span class="op">=</span><span class="st">"10+r"</span>, conf_level<span class="op">=</span><span class="cn">true</span>, verbose<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>This function has multiple methods:</p>
+<ul>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/trend2d.jl#L41"><code>trend2d(cmd0::String; ...)</code></a> - trend2d.jl:41</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/trend2d.jl#L41"><code>trend2d(; ...)</code></a> - trend2d.jl:41</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/trend2d.jl#L52"><code>trend2d(arg1; kw...)</code></a> - trend2d.jl:52</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/trend2d.jl#L41"><code>trend2d(cmd0::String, arg1; kwargs...)</code></a> - trend2d.jl:41</li>
+</ul>
+</section>
 <section id="see-also" class="level2">
 <h2 class="anchored" data-anchor-id="see-also">See Also</h2>
 <p><a href="../..\documentation/modules/grdtrend.html">grdtrend</a>, <a href="../..\documentation/modules/trend1d.html">trend1d</a></p>
@@ -565,7 +588,6 @@ Swap 1st and 2nd column on input and/or output. <a href="https://docs.generic-ma
 <p>Menke, W., 1989, Geophysical Data Analysis: Discrete Inverse Theory, Revised Edition, Academic Press, San Diego.</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

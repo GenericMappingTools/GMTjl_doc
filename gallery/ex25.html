@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -454,7 +455,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>As promised in Example [(23) All great-circle paths lead to Rome], we will study antipodes. The antipode of a point at is the point at . We seek an answer to the question that has plagued so many for so long: Given the distribution of land and ocean, how often is the antipode of a point on land also on land? And what about marine antipodes? We use [grdlandmask] and grdmath to map these distributions and calculate the area of the Earth (in percent) that goes with each of the three possibilities. To make sense of our grdmath equations below, note that we first calculate a grid that is +1 when a point and its antipode is on land, -1 if both are in the ocean, and 0 elsewhere. We then seek to calculate the area distribution of dry antipodes by only pulling out the nodes that equal +1. As each point represent an area approximated by where the term’s actual dimension depends on, we need to allow for that shrinkage, normalize our sum to that of the whole area of the Earth, and finally convert that ratio to percent. Since the , terms appear twice in these expressions they cancel out, leaving the somewhat intractable expressions below where the sum of for all is known to equal</p>
 <p>In the end we obtain a funny-looking map depicting the antipodal distribution as well as displaying in legend form the requested percentages. Note that the script is set to evaluate a global 30 minute grid for expediency (D = 30), hence several smaller land masses that do have terrestrial antipodes do not show up. If you want a more accurate map you can set the parameter D to a smaller increment (try 5 and wait a few minutes).</p>
 <p>The call to [grdimage] includes the <strong>interp=:n</strong> to suspend interpolation and only return the value of the nearest neighbor. This option is particularly practical for plotting categorical data, like these, that should not be interpolated.</p>
-<div id="89ffe960" class="cell" data-execution_count="1">
+<div id="58824861" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span>, <span class="bu">Printf</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">resetGMT</span>() <span class="co"># hide</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>

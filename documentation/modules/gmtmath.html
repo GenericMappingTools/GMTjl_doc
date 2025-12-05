@@ -30,6 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -396,30 +397,45 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#gmtmath" id="toc-gmtmath" class="nav-link active" data-scroll-target="#gmtmath">gmtmath</a>
-  <ul class="collapse">
-  <li><a href="#description" id="toc-description" class="nav-link" data-scroll-target="#description">Description</a></li>
-  </ul></li>
+  <li><a href="#description" id="toc-description" class="nav-link active" data-scroll-target="#description">Description</a></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">gmtmath</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
 
-<section id="gmtmath" class="level1">
-<h1>gmtmath</h1>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
 <p>Reverse Polish Notation (RPN) calculator for data tables</p>
 <section id="description" class="level2">
 <h2 class="anchored" data-anchor-id="description">Description</h2>
 <p><strong>gmtmath</strong> will perform operations like add, subtract, multiply, and numerous other operands on one or more table data files or constants using <a href="https://en.wikipedia.org/wiki/Reverse_Polish_notation">Reverse Polish Notation (RPN)</a> syntax. Arbitrarily complicated expressions may therefore be evaluated; the final result is written to an output file [or standard output]. Data operations are element-by-element, not matrix manipulations (except where noted). Some operators only require one operand (see below). If no data tables are used in the expression then options |-T|, |-N| can be set (and optionally <strong>-bo</strong> to indicate the data type for binary tables). If STDIN is given, the standard input will be read and placed on the stack as if a file with that content had been given on the command line. By default, all columns except the “time” column are operated on, but this can be changed (see |-C|). Complicated or frequently occurring expressions may be coded as a macro for future use or stored and recalled via named memory locations.</p>
 <p>OK, but RPN is quite painfull to master for other than simple expressions and for it the normal Julia operators are much easier to use. However, there are many operators that are handy and already programmed or even kind of unique like for example <strong>XYZ2LAB</strong> that converts x,y,z triplets to l,a,b triplets to coastlines. So, there is still interest in <strong>gmtmath</strong> but due to its nature it was nor wrapped into a vebose version and for using it one must use the [Monolithic] mode.</p>
 <p>For the full manual, consult the main GMT <a href="https://docs.generic-mapping-tools.org/dev/gmtmath.html">gmtmath manual</a></p>
-
-
 </section>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>View the <a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/grdgmtmath.jl#L27">source code</a> for this function.</p>
+
+
 </section>
 
 </main> <!-- /main -->

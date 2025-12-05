@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -435,6 +436,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#optional-arguments" id="toc-optional-arguments" class="nav-link" data-scroll-target="#optional-arguments">Optional Arguments</a></li>
   <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
   <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See also</a></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
   </ul>
 </nav>
     </div>
@@ -508,7 +510,7 @@ Save the figure with the <code>figname=name.ext</code> where <code>ext</code> ch
 <p>Print current Sun position and Sunrise, Sunset times at:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">solar</span>(sun<span class="op">=</span>(pos<span class="op">=</span>(<span class="op">-</span><span class="fl">7.93</span>,<span class="fl">37.079</span>), date<span class="op">=</span><span class="st">"2016-02-04T10:01:00"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Plot the day-night and civil twilight</p>
-<div id="6743ef2c" class="cell" data-execution_count="1">
+<div id="2309dabb" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">coast</span>(region<span class="op">=:</span>d, shore<span class="op">=</span><span class="fl">0.1</span>, proj<span class="op">=</span><span class="st">"Q0/14c"</span>, axes<span class="op">=</span>(annot<span class="op">=:</span>auto, axes<span class="op">=</span><span class="st">"WSen"</span>),</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>      resolution<span class="op">=:</span>low, area<span class="op">=</span><span class="fl">1000</span>)</span>
@@ -522,7 +524,7 @@ Save the figure with the <code>figname=name.ext</code> where <code>ext</code> ch
 </div>
 </div>
 <p>But it is much nicer if we paint the terminators</p>
-<div id="bdec5472" class="cell" data-execution_count="2">
+<div id="fad1f2cf" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">coast</span>(region<span class="op">=:</span>d, proj<span class="op">=</span><span class="st">"Ks0/12"</span>, resolution<span class="op">=:</span>low, area<span class="op">=</span><span class="fl">5000</span>, borders<span class="op">=</span><span class="st">"1/0.5p,gray"</span>,</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>      water<span class="op">=</span>(<span class="fl">175</span>,<span class="fl">210</span>,<span class="fl">255</span>), axes<span class="op">=</span>(annot<span class="op">=:</span>a,ticks<span class="op">=:</span>a,grid<span class="op">=:</span>a), shore<span class="op">=</span><span class="fl">0.5</span>) </span>
@@ -542,6 +544,15 @@ Save the figure with the <code>figname=name.ext</code> where <code>ext</code> ch
 <section id="see-also" class="level2">
 <h2 class="anchored" data-anchor-id="see-also">See also</h2>
 <p>The <a href="http://docs.generic-mapping-tools.org/latest/solar.html"><code>GMT man page</code></a></p>
+</section>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>This function has multiple methods:</p>
+<ul>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/pssolar.jl#L42"><code>solar(cmd0::String; ...)</code></a> - pssolar.jl:42</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/pssolar.jl#L42"><code>solar(; ...)</code></a> - pssolar.jl:42</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/pssolar.jl#L42"><code>solar(cmd0::String, arg1; first, kwargs...)</code></a> - pssolar.jl:42</li>
+</ul>
 
 
 </section>

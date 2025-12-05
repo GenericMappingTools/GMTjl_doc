@@ -30,6 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -397,6 +398,7 @@ ul.task-list li input[type="checkbox"] {
    
   <ul class="collapse">
   <li><a href="#example" id="toc-example" class="nav-link active" data-scroll-target="#example">Example</a></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
   </ul>
 </nav>
     </div>
@@ -447,6 +449,14 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="example">Example</h2>
 <p>Compute two lines starting at (0,0) with lengths 111100 &amp; 50000, heading at 15 and 45 degrees.</p>
 <pre><code>dest, = geod([0., 0], [15., 45], [[0, 10000, 50000, 111100.], [0., 50000]])[1]</code></pre>
+</section>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>This function has multiple methods:</p>
+<ul>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/proj_utils.jl#L80"><code>geod(lonlat::Matrix{&lt;:Real}, azim, distance; proj, s_srs, epsg, dataset, unit, backward)</code></a> - proj_utils.jl:80</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/proj_utils.jl#L76"><code>geod(lonlat::Vector{&lt;:Real}, azim, distance; proj, s_srs, epsg, dataset, unit, backward)</code></a> - proj_utils.jl:76</li>
+</ul>
 
 
 </section>

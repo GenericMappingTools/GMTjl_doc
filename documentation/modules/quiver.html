@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -431,27 +432,39 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#quiver" id="toc-quiver" class="nav-link active" data-scroll-target="#quiver">quiver</a>
-  <ul class="collapse">
-  <li><a href="#description" id="toc-description" class="nav-link" data-scroll-target="#description">Description</a></li>
+  <li><a href="#description" id="toc-description" class="nav-link active" data-scroll-target="#description">Description</a></li>
   <li><a href="#required-arguments" id="toc-required-arguments" class="nav-link" data-scroll-target="#required-arguments">Required Arguments</a></li>
   <li><a href="#optional-arguments" id="toc-optional-arguments" class="nav-link" data-scroll-target="#optional-arguments">Optional Arguments</a></li>
   <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
   <li><a href="#vector-scaling-and-unit-effects" id="toc-vector-scaling-and-unit-effects" class="nav-link" data-scroll-target="#vector-scaling-and-unit-effects">Vector scaling and unit effects</a></li>
   <li><a href="#notes" id="toc-notes" class="nav-link" data-scroll-target="#notes">Notes</a></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
   <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
-  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">quiver</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
 
-<section id="quiver" class="level1">
-<h1>quiver</h1>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">quiver</span>(compx, compy; kwargs<span class="op">...</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>or </span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">quiver</span>(X, Y, U, V; kwargs<span class="op">...</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -470,22 +483,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="optional-arguments" class="level2">
 <h2 class="anchored" data-anchor-id="optional-arguments">Optional Arguments</h2>
 <ul>
-<li><strong>A</strong> or <strong>polar</strong> : – <em>polar=true</em><br>
-The grid files contain polar (r, theta) components instead of Cartesian (x, y) [Default is Cartesian components].</li>
-</ul>
-<ul>
+<li><p><strong>A</strong> or <strong>polar</strong> : – <em>polar=true</em><br>
+The grid files contain polar (r, theta) components instead of Cartesian (x, y) [Default is Cartesian components].</p></li>
+<li><p><strong>B</strong> or <strong>axes</strong> or <strong>frame</strong><br>
+Set map boundary frame and axes attributes. Default is to draw and annotate left, bottom and vertical axes and just draw left and top axes. More at [frame](../common_opts/opt_B.html)</p></li>
+<li><p><strong>C</strong> or <strong>color</strong> or <strong>cmap</strong> or <strong>colorap</strong> or <strong>colorscale</strong> : – <em>color=cpt</em><br>
+Where <em>cpt</em> is a <em><a href="../..\documentation/general/types.html#sec-cpt-type">GMTcpt</a></em> type or a cpt file name (for <em>grd_z</em> only). Alternatively, supply the name of a GMT color master dynamic CPT [turbo] to automatically determine a continuous CPT from the grid’s z-range; you may round up/down the z-range by adding <strong>+i</strong> <em>zinc</em>. Yet another option is to specify <em>color=“color1,color2 [,color3 ,…]”</em> or <em>color=((r1,g1,b1),(r2,g2,b2),…)</em> to build a linear continuous CPT from those colors automatically. In this case <em>color1</em> etc can be a (r,g,b) triplet, a color name, or an HTML hexadecimal color (e.g.&nbsp;#aabbcc ) (see [Setting color](../common_features/color.html)). When not explicitly set, but a color map is needed, we will either use the current color map, if available (set by a previous call to <em>makecpt</em>), or the default <em>turbo</em> color map.</p></li>
 <li><p><strong>G</strong> or <strong>fill</strong> : – <em>fill=fill</em><br>
-Sets color or shade for vector interiors (see ) [Default is no fill]. Alternatively, the fill may be set via |-Q|.</p></li>
+Sets color or shade for vector interiors (see <a href="../..\documentation/modules/Fill color/pattern.html">Fill color/pattern</a>) [Default is no fill]. Alternatively, the fill may be set via |-Q|.</p></li>
 <li><p><strong>I</strong> or <strong>inc</strong> or <strong>increment</strong> or <strong>spacing</strong> : – <em>inc=x_inc</em> <strong>|</strong> <em>inc=(x_inc, y_inc)</em> <strong>|</strong> <em>inc=“x”“multx”[“/multy”]</em><br>
 Only plot vectors at nodes every <em>x_inc</em>, <em>y_inc</em> apart (must be multiples of original grid spacing). Append <strong>m</strong> for arc minutes or <strong>s</strong> for arc seconds. Alternatively, use <strong>inc=“x”</strong> to specify the multiples <em>multx</em>[/<em>multy</em>] directly [Default plots every node]. Example <strong>inc=“x10/5”</strong> to select every other 10 nodes in <em>x</em> and 5 nodes in <em>y</em>. <strong><em>NOTE</em></strong>: by default we estimate good values so that the arrows do no overlap so you may start by jumping this option unless some fine control is desired.</p></li>
-</ul>
-<ul>
+<li><p><strong>J</strong> or <strong>proj</strong> or <strong>projection</strong> : – <em>proj=<parameters></parameters></em><br>
+Select map projection. More at [proj](../common_opts/opt_J.html)</p></li>
 <li><p><strong>N</strong> or <strong>noclip</strong> or <strong>no_clip</strong> : <em>noclip=true</em><br>
 Do NOT clip vectors at map boundaries [Default will clip].</p></li>
 <li><p><strong>Q</strong> or <strong>vec</strong> or <strong>vector</strong> or <strong>arrow</strong> : – <em>vector=parameters</em><br>
-Modify vector parameters. For vector heads, append vector head <em>size</em> [Default is 0, i.e., stick-plot]. See for specifying additional attributes.</p></li>
-</ul>
-<ul>
+Modify vector parameters. For vector heads, append vector head <em>size</em> [Default is 0, i.e., stick-plot]. See <a href="../..\documentation/modules/Vector Attributes.html">Vector Attributes</a> for specifying additional attributes.</p></li>
+<li><p><strong>R</strong> or <strong>region</strong> or <strong>limits</strong> : – <em>limits=(xmin, xmax, ymin, ymax)</em> <strong>|</strong> <em>limits=(BB=(xmin, xmax, ymin, ymax),)</em> <strong>|</strong> <em>limits=(LLUR=(xmin, xmax, ymin, ymax),units=“unit”)</em> <strong>|</strong> …more<br>
+Specify the region of interest. More at [limits](../common_opts/opt_R.html). For perspective view <strong>view</strong>, optionally add <em>zmin,zmax</em>. This option may be used to indicate the range used for the 3-D axes. You may ask for a larger w/e/s/n region to have more room between the image and the axes.</p></li>
 <li><p><strong>S</strong> or <strong>vscale</strong> or <strong>vec_scale</strong> : – <em>vscale=(inverse=len, length=len, scale=xx, scale_at_lat=??, refsize=size)</em><br>
 Sets scale for vector plot lengths in data units per plot distance measurement unit. Append <strong>c</strong>, <strong>i</strong>, or <strong>p</strong> to indicate the desired plot distance measurement (then <strong>xx</strong> must be a string) unit (cm, inch, or point); if no unit is given we use the default value that is controlled by <code>PROJ\_LENGTH\_UNIT</code>. Vector lengths converted via plot unit scaling will plot as straight Cartesian vectors and their lengths are not affected by map projections and coordinate locations. For geographic data you may alternatively give <em>scale</em> in data units per map distance unit (see <code>Units</code>). Then, your vector magnitudes (in data units) are scaled to map <em>distances</em> in the given distance unit, and finally projected onto the Earth to give <em>plot</em> dimensions. These are geo-vectors that follow great circle paths and their lengths may be affected by the map projection and their coordinates. Finally, use <strong>vscale=(inverse=len,…)</strong> if it is simpler to give the reciprocal scale in plot length or distance units per data unit. Alternatively, use <strong>vscale=(length=len,…)</strong> to set a fixed plot <code>len</code> for all vectors. To report the minimum, maximum, and mean data and plot vector lengths of all vectors plotted, use <strong>verbose</strong> option. If an automatic legend entry is desired via <strong>label</strong>, or or two modifiers will be required:</p>
 <ul>
@@ -494,17 +509,74 @@ Sets scale for vector plot lengths in data units per plot distance measurement u
 </ul></li>
 <li><p><strong>T</strong> or <strong>sign_scale</strong> : – <em>sign_scale=true</em><br>
 Means the azimuths of Cartesian data sets should be adjusted according to the signs of the scales in the x- and y-directions [Leave alone]. This option can be used to convert vector azimuths in cases when a negative scale is used in one of both directions (e.g., positive down).</p></li>
-</ul>
+<li><p><strong>U</strong> or <strong>time_stamp</strong> : – <em>time_stamp=true</em> <strong>|</strong> <em>time_stamp=(just=“code”, pos=(dx,dy), label=“label”, com=true)</em><br>
+Draw GMT time stamp logo on plot. More at [timestamp](../common_opts/opt_U.html)</p></li>
+<li><p><strong>V</strong> or <em>verbose</em> : – <em>verbose=true</em> <strong>|</strong> <em>verbose=level</em><br>
+Select verbosity level. More at [verbose](../common_opts/opt_V.html)</p></li>
+<li><p><strong>W</strong> or <strong>pen</strong>=<code>pen</code><br>
+Set pen attributes for the arrow stem [Defaults: width = default, color = black, style = solid]. See [Pen attributes](../common_features/pens.html) and [Vector attributes](../common_features/arrows_control.html) for arrow line terminations.</p></li>
+<li><p><strong>X</strong> or <strong>xshift</strong> or <strong>x_offset</strong> : <em>xshift=true</em> <strong>|</strong> <em>xshift=x-shift</em> <strong>|</strong> <em>xshift=(shift=x-shift, mov=“a|c|f|r”)</em><br>
+Shift plot origin. More at [xshift](../common_opts/opt_X.html)</p></li>
+<li><p><strong>Y</strong> or <strong>yshift</strong> or <strong>y_offset</strong> : <em>yshift=true</em> <strong>|</strong> <em>yshift=y-shift</em> <strong>|</strong> <em>yshift=(shift=y-shift, mov=“a|c|f|r”)</em><br>
+Shift plot origin. More at [yshift](../common_opts/opt_Y.html)</p></li>
+<li><p><strong>figname</strong> or <strong>savefig</strong> or <strong>name</strong> : – <em>figname=<code>name.png</code></em><br>
+Save the figure with the <code>figname=name.ext</code> where <code>ext</code> chooses the figure image format.</p></li>
+<li><p><strong>Z</strong> or <strong>azimuth</strong> : – <em>azimuth=true</em><br>
+The theta grid provided contains azimuths rather than directions (implies <code>polar=true</code>).</p></li>
+<li><p><strong>f</strong> or <strong>colinfo</strong> : – <em>colinfo=??</em><br>
+Specify the data types of input and/or output columns (time or geographical data). <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#f-full">More at</a></p></li>
+<li><p><strong>l</strong> or <strong>legend</strong> : – <em>legend=params</em><br>
+Add a map legend entry to the session legend information file for the current plot (modern mode only). While this option is not expanded, see <em>params</em> at <a href="https://docs.generic-mapping-tools.org/latest/gmt.html#l-full">The -l option</a></p></li>
+<li><p><strong>p</strong> or <strong>view</strong> or <strong>perspective</strong> : – <em>view=(azim, elev)</em><br>
+Default is viewpoint from an azimuth of 200 and elevation of 30 degrees.<br>
+Specify the viewpoint in terms of azimuth and elevation. The azimuth is the horizontal rotation about the z-axis as measured in degrees from the positive y-axis. That is, from North. This option is not yet fully expanded. Current alternatives are:</p>
 <ul>
-<li><strong>Z</strong> or <strong>azimuth</strong> : – <em>azimuth=true</em><br>
-The theta grid provided contains azimuths rather than directions (implies <code>polar=true</code>).</li>
+<li><em>view=??</em><br>
+A full GMT compact string with the full set of options.</li>
+<li><em>view=(azim,elev)</em><br>
+A two elements tuple with azimuth and elevation</li>
+<li><em>view=true</em><br>
+To propagate the viewpoint used in a previous module (makes sense only in <code>bar3!</code>) More at [perspective](../common_opts/opt_p.html)</li>
+</ul></li>
+<li><p><strong>t</strong> or <strong>transparency</strong> or <strong>alpha</strong>: – <em>alpha=50</em><br>
+Set PDF transparency level for an overlay, in (0-100] percent range. [Default is 0, <em>i.e.</em>, opaque]. Works only for the PDF and PNG formats.</p></li>
 </ul>
-<p>.. include:: explain_vectors.rst_</p>
+<p><strong>Units</strong></p>
+<p>For map distance unit, append unit d for arc degree, m for arc minute, and s for arc second, or e for meter [Default unless stated otherwise], f for foot, k for km, M for statute mile, n for nautical mile, and u for US survey foot. By default we compute such distances using a spherical approximation with great circles (-jg) using the authalic radius (see <code>PROJ_MEAN_RADIUS</code>). You can use -jf to perform “Flat Earth” calculations (quicker but less accurate) or -je to perform exact geodesic calculations (slower but more accurate; see <code>PROJ_GEODESIC</code> for method used).</p>
 </section>
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <p>A nice arrow field</p>
+<div id="24ff6f23" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>X,Y <span class="op">=</span> <span class="fu">meshgrid</span>(<span class="op">-</span><span class="cn">pi</span><span class="op">:</span><span class="cn">pi</span><span class="op">/</span><span class="fl">8</span><span class="op">:</span><span class="cn">pi</span>,<span class="op">-</span><span class="cn">pi</span><span class="op">:</span><span class="cn">pi</span><span class="op">/</span><span class="fl">8</span><span class="op">:</span><span class="cn">pi</span>);</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>U <span class="op">=</span> <span class="fu">sin</span>.(Y);</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>V <span class="op">=</span> <span class="fu">cos</span>.(X);</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">quiver</span>(X, Y, U, V, region<span class="op">=</span>(<span class="op">-</span><span class="fl">3.6</span>,<span class="fl">3.6</span>,<span class="op">-</span><span class="fl">3.6</span>,<span class="fl">3.6</span>), fill<span class="op">=:</span>black, lc<span class="op">=:</span>red, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="quiver_files/figure-html/cell-2-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
 <p>For simplicity let’s create a grid using grdmath and compute its horizontal derivatives. Then we plot them as an arrow field.</p>
+<div id="1f1205d0" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">gmt</span>(<span class="st">"grdmath -R-2/2/-2/2 -I0.1 X Y R2 NEG EXP X MUL"</span>);</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>dzdy <span class="op">=</span> <span class="fu">gmt</span>(<span class="st">"grdmath ? DDY"</span>, G);</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>dzdx <span class="op">=</span> <span class="fu">gmt</span>(<span class="st">"grdmath ? DDX"</span>, G);</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">grdcontour</span>(G, annot<span class="op">=:</span>none, pen<span class="op">=:</span>gray80)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">quiver!</span>(dzdx, dzdy, cmap<span class="op">=:</span>turbo, lw<span class="op">=</span><span class="fl">1</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="quiver_files/figure-html/cell-3-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
 </section>
 <section id="vector-scaling-and-unit-effects" class="level2">
 <h2 class="anchored" data-anchor-id="vector-scaling-and-unit-effects">Vector scaling and unit effects</h2>
@@ -516,12 +588,21 @@ The theta grid provided contains azimuths rather than directions (implies <code>
 <h2 class="anchored" data-anchor-id="notes">Notes</h2>
 <p>Be aware that using <strong>inc</strong> may lead to aliasing unless your grid is smoothly varying over the new length increments. It is generally better to filter your grids and resample at a larger grid increment and use these grids instead of the originals.</p>
 </section>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>This function has multiple methods:</p>
+<ul>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/grdvector.jl#L186"><code>grdvector(arg1::Matrix{&lt;:Real}, arg2::Matrix{&lt;:Real}; kw...)</code></a> - grdvector.jl:186</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/grdvector.jl#L58"><code>grdvector(arg1, arg2; first, kwargs...)</code></a> - grdvector.jl:58</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/grdvector.jl#L188"><code>grdvector(arg1::Matrix{&lt;:Real}, arg2::Matrix{&lt;:Real}, arg3::Matrix{&lt;:Real}, arg4::Matrix{&lt;:Real}; kw...)</code></a> - grdvector.jl:188</li>
+</ul>
+</section>
 <section id="see-also" class="level2">
 <h2 class="anchored" data-anchor-id="see-also">See Also</h2>
-<p>, </p>
+<p><a href="../..\documentation/modules/grdcontour.html">grdcontour</a>, <a href="../..\documentation/modules/plot.html">plot</a></p>
+<p><a href="../alphabetical.html">Alphabetical Function List</a></p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

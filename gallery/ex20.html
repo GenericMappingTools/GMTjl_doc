@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -453,17 +454,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <p>One is often required to make special maps that shows the distribution of certain features but one would prefer to use a custom symbol instead of the built-in circles, squares, triangles, etc. in the GMT plotting programs [plot] and [plot3]. Here we demonstrate one approach that allows for a fair bit of flexibility in designing ones own symbols.</p>
 <p>Based on the hotspot locations in the remote file <code>hotspots.txt</code> (with a 3rd column giving the desired symbol sizes in inches) we lay down a world map and overlay red volcano symbols using our custom-built volcano symbol and [plot]. We do something similar with the bulls eye symbols. Without the <strong>fill</strong> option, however, they get the colors defined in <code>bullseye.def</code>.</p>
-<div id="b7439c77" class="cell" data-execution_count="1">
+<div id="64d1a930" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>GMT.<span class="fu">resetGMT</span>() <span class="co"># hide</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">coast</span>(region<span class="op">=:</span>global360, xaxis<span class="op">=</span>(annot<span class="op">=</span><span class="fl">60</span>,), yaxis<span class="op">=</span>(annot<span class="op">=</span><span class="fl">30</span>,), title<span class="op">=</span><span class="st">"Hotspot Islands and Hot Cities"</span>,</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>      land<span class="op">=:</span>darkgreen, water<span class="op">=:</span>lightblue, area<span class="op">=</span><span class="fl">5000</span>, proj<span class="op">=:</span>Win, figsize<span class="op">=</span><span class="fl">15</span>)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot!</span>(<span class="st">"@hotspots.txt"</span>, symbol<span class="op">=</span><span class="st">"kvolcano"</span>, markerline<span class="op">=:</span>thinnest, fill<span class="op">=:</span>red)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Overlay a few bullseyes at NY, Cairo, and Perth</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>cities <span class="op">=</span> [<span class="op">-</span><span class="fl">74</span> <span class="fl">40.45</span> <span class="fl">1.0</span>; <span class="fl">31.15</span> <span class="fl">30.03</span> <span class="fl">1.0</span>; <span class="fl">115.49</span> <span class="op">-</span><span class="fl">31.58</span> <span class="fl">1.0</span>; <span class="op">-</span><span class="fl">56.16</span> <span class="op">-</span><span class="fl">34.9</span> <span class="fl">1.0</span>]</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">plot!</span>(cities, symbol<span class="op">=</span><span class="st">"k@bullseye"</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">coast</span>(region<span class="op">=:</span>global360, xaxis<span class="op">=</span>(annot<span class="op">=</span><span class="fl">60</span>,), yaxis<span class="op">=</span>(annot<span class="op">=</span><span class="fl">30</span>,), title<span class="op">=</span><span class="st">"Hotspot Islands and Hot Cities"</span>,</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>      land<span class="op">=:</span>darkgreen, water<span class="op">=:</span>lightblue, area<span class="op">=</span><span class="fl">5000</span>, proj<span class="op">=:</span>Win, figsize<span class="op">=</span><span class="fl">15</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot!</span>(<span class="st">"@hotspots.txt"</span>, symbol<span class="op">=</span><span class="st">"kvolcano"</span>, markerline<span class="op">=:</span>thinnest, fill<span class="op">=:</span>red)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Overlay a few bullseyes at NY, Cairo, and Perth</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>cities <span class="op">=</span> [<span class="op">-</span><span class="fl">74</span> <span class="fl">40.45</span> <span class="fl">1.0</span>; <span class="fl">31.15</span> <span class="fl">30.03</span> <span class="fl">1.0</span>; <span class="fl">115.49</span> <span class="op">-</span><span class="fl">31.58</span> <span class="fl">1.0</span>; <span class="op">-</span><span class="fl">56.16</span> <span class="op">-</span><span class="fl">34.9</span> <span class="fl">1.0</span>]</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">plot!</span>(cities, symbol<span class="op">=</span><span class="st">"k@bullseye"</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">

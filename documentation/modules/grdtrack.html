@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -437,6 +438,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#optional-arguments" id="toc-optional-arguments" class="nav-link" data-scroll-target="#optional-arguments">Optional Arguments</a></li>
   <li><a href="#hints" id="toc-hints" class="nav-link" data-scroll-target="#hints">Hints</a></li>
   <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
   <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
   </ul>
 </nav>
@@ -556,7 +558,7 @@ Swap 1st and 2nd column on input and/or output. <a href="https://docs.generic-ma
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <p>To extract a profile along a great circle between (0,0) to (20,20) from the remote grid earth_relief_05m, and only write out (dist, topo) records, try</p>
-<div id="e365e5d9" class="cell" data-execution_count="1">
+<div id="b59471c3" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">resetGMT</span>()  <span class="co"># hide</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">grdtrack</span>(<span class="st">"@earth_relief_05m"</span>, region<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">20</span>,<span class="fl">0</span>,<span class="fl">20</span>), profile<span class="op">=</span><span class="st">"BL/TR+d"</span>, o<span class="op">=</span><span class="st">"3,2"</span>)</span>
@@ -577,6 +579,18 @@ Swap 1st and 2nd column on input and/or output. <a href="https://docs.generic-ma
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">grdtrack</span>(<span class="st">"track.xy"</span>, grid<span class="op">=</span><span class="st">"grav.18.1.img,0.1,1"</span>, crossprofile<span class="op">=</span>(<span class="st">"100k"</span>,<span class="fl">3</span>,<span class="fl">25</span>), critical<span class="op">=</span><span class="st">"+z25"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>To sample the grid data.nc along a line from the lower left to the upper right corner, using a grid spacing of 1 km on the geodesic, and output distances as well, try</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">grdtrack</span>(profile<span class="op">=</span><span class="st">"LB/RT+i1k+d"</span>, grid<span class="op">=</span><span class="st">"data.nc"</span>, spherical<span class="op">=:</span>ellipsoidal)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>This function has multiple methods:</p>
+<ul>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/grdtrack.jl#L12"><code>grdtrack(cmd0::String; ...)</code></a> - grdtrack.jl:12</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/grdtrack.jl#L12"><code>grdtrack(; ...)</code></a> - grdtrack.jl:12</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/grdtrack.jl#L12"><code>grdtrack(cmd0::String, arg1; ...)</code></a> - grdtrack.jl:12</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/grdtrack.jl#L106"><code>grdtrack(arg1, arg2; kw...)</code></a> - grdtrack.jl:106</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/grdtrack.jl#L106"><code>grdtrack(arg1; ...)</code></a> - grdtrack.jl:106</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/grdtrack.jl#L12"><code>grdtrack(cmd0::String, arg1, arg2; kwargs...)</code></a> - grdtrack.jl:12</li>
+</ul>
 </section>
 <section id="see-also" class="level2">
 <h2 class="anchored" data-anchor-id="see-also">See Also</h2>

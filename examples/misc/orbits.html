@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -452,7 +453,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p>This example shows how we can plot data above the Earth (or any other celestial body) surface. The <a href="../..\documentation/utilities/orbits.html">orbits</a> will take care of the hardest part, which is the hiding of points that lay on the backside of the sphere. This function normally expects data in Earth Centered Earth Fixed (ECEF) coordinates but is has also a demo mode where user doesn’t need to provide any data.</p>
-<div id="122b6c2d" class="cell" data-execution_count="1">
+<div id="c5b06d40" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">orbits</span>(show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -464,7 +465,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>But a more realistic example is one where we plot the orbits of a satellite. Next example shows a couple track of the Aqua satellite. To compute the orbits, we need the help of the <code>RemoteS</code> package, that in turn use the so called <a href="https://en.wikipedia.org/wiki/Two-line_element_set">Two-Line Elements</a> orbit descriptor.</p>
-<div id="5281b82e" class="cell" data-execution_count="2">
+<div id="6a2fb972" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span>, <span class="bu">RemoteS</span>, <span class="bu">SatelliteToolboxTle</span>, <span class="bu">SatelliteToolboxPropagators</span>, <span class="bu">SatelliteToolboxTransformations</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute some Aqua orbits for ... </span></span>

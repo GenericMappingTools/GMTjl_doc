@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -437,6 +438,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#optional-arguments" id="toc-optional-arguments" class="nav-link" data-scroll-target="#optional-arguments">Optional Arguments</a></li>
   <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
   <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
   </ul>
 </nav>
@@ -623,9 +625,8 @@ Swap 1st and 2nd column on input and/or output. <a href="https://docs.generic-ma
 </section>
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
-<p>[focal_mechanisms]</p>
 <p>Plot focal mechanisms using Aki-Richards convention:</p>
-<div id="53c8f760" class="cell" data-execution_count="1">
+<div id="1dfea917" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Create focal mechanism data  </span></span>
@@ -649,7 +650,7 @@ Swap 1st and 2nd column on input and/or output. <a href="https://docs.generic-ma
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Focal mechanisms with offsets</span></span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">meca!</span>(<span class="st">"focal_data.txt"</span>, CMT<span class="op">=</span>(scale<span class="op">=</span><span class="fl">0.4</span>, font<span class="op">=</span><span class="fl">6</span>), offset<span class="op">=</span><span class="cn">true</span>, fill<span class="op">=:</span>black, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Plot multiple mechanisms with varying types:</p>
-<div id="9e9ea7f4" class="cell" data-execution_count="2">
+<div id="5b3ea91c" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Right lateral strike slip</span></span>
@@ -671,6 +672,29 @@ Swap 1st and 2nd column on input and/or output. <a href="https://docs.generic-ma
 </div>
 </div>
 </div>
+<div id="6ef966f8" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">psmeca</span>([<span class="fl">0.0</span> <span class="fl">3.0</span> <span class="fl">0.0</span> <span class="fl">0</span> <span class="fl">45</span> <span class="fl">90</span> <span class="fl">5</span> <span class="fl">0</span> <span class="fl">0</span>], aki<span class="op">=</span><span class="cn">true</span>, fill<span class="op">=:</span>black, region<span class="op">=</span>(<span class="op">-</span><span class="fl">1</span>,<span class="fl">4</span>,<span class="fl">0</span>,<span class="fl">6</span>), proj<span class="op">=:</span>Merc, show<span class="op">=</span><span class="fl">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="meca_files/figure-html/cell-4-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The same but add a Label</p>
+<div id="0f388f43" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">psmeca</span>(<span class="fu">mat2ds</span>([<span class="fl">0.0</span> <span class="fl">3.0</span> <span class="fl">0.0</span> <span class="fl">0</span> <span class="fl">45</span> <span class="fl">90</span> <span class="fl">5</span> <span class="fl">0</span> <span class="fl">0</span>], [<span class="st">"Thrust"</span>]), aki<span class="op">=</span><span class="cn">true</span>, fill<span class="op">=:</span>black, region<span class="op">=</span>(<span class="op">-</span><span class="fl">1</span>,<span class="fl">4</span>,<span class="fl">0</span>,<span class="fl">6</span>), proj<span class="op">=:</span>Merc, show<span class="op">=</span><span class="fl">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="meca_files/figure-html/cell-5-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
 </section>
 <section id="references" class="level2">
 <h2 class="anchored" data-anchor-id="references">References</h2>
@@ -679,9 +703,18 @@ Swap 1st and 2nd column on input and/or output. <a href="https://docs.generic-ma
 <p>Frohlich, C. (1996). Cliff’s Nodes Concerning Plotting Nodal Lines for P, SH and SV. <em>Seismological Research Letters</em>, <strong>67</strong>(1), 16–24, <a href="https://doi.org/10.1785/gssrl.67.1.16">https://doi.org/10.1785/gssrl.67.1.16</a>.</p>
 <p>Lay, T., &amp; Wallace, T. C. (1995). <em>Modern global seismology</em>. San Diego: Academic Press.</p>
 </section>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>This function has multiple methods:</p>
+<ul>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/seis/psmeca.jl#L77"><code>meca(cmd0::String; kwargs...)</code></a> - psmeca.jl:77</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/seis/psmeca.jl#L78"><code>meca(arg1; kwargs...)</code></a> - psmeca.jl:78</li>
+</ul>
+</section>
 <section id="see-also" class="level2">
 <h2 class="anchored" data-anchor-id="see-also">See Also</h2>
-<p><a href="../..\documentation/modules/coupe.html">coupe</a>, [polar], <a href="../..\documentation/modules/velo.html">velo</a></p>
+<p><a href="../..\documentation/modules/coupe.html">coupe</a>, <a href="../..\documentation/modules/polar.html">polar</a>, <a href="../..\documentation/modules/velo.html">velo</a></p>
+<p><a href="../alphabetical.html">Alphabetical Function List</a></p>
 
 
 </section>

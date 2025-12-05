@@ -30,6 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -391,8 +392,14 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#source-code" id="toc-source-code" class="nav-link active" data-scroll-target="#source-code">Source Code</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -424,6 +431,14 @@ ul.task-list li input[type="checkbox"] {
 <li><code>geom</code>: the geometry. This can either be a GDAL AbstractGeometry or a <a href="../..\documentation/general/types.html#sec-dataset-type">GMTdataset</a> (or vector of it), or a Matrix</li>
 </ul>
 <p>Returns the area of the geometry in square meters or a negative value in case of error for unsupported geometry types.</p>
+</section>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>This function has multiple methods:</p>
+<ul>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/gdal/gdal_extensions.jl#L226"><code>geodesicarea(geom::GMT.Gdal.AbstractGeometry)</code></a> - gdal_extensions.jl:226</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/gdal/gdal_extensions.jl#L227"><code>geodesicarea(D)</code></a> - gdal_extensions.jl:227</li>
+</ul>
 
 
 </section>

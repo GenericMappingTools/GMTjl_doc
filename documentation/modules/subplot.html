@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -438,6 +439,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#synopsis-end-mode" id="toc-synopsis-end-mode" class="nav-link" data-scroll-target="#synopsis-end-mode">Synopsis (end mode)</a></li>
   <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
   <li><a href="#restriction" id="toc-restriction" class="nav-link" data-scroll-target="#restriction">Restriction</a></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
   </ul>
 </nav>
     </div>
@@ -575,7 +577,7 @@ Shift plot origin. More at [yshift](../common_opts/opt_Y.html)</p></li>
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <p>To make a minimalistic 3x3 basemap layout, try::</p>
-<div id="88e60790" class="cell" data-execution_count="1">
+<div id="3adf9077" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">subplot</span>(grid<span class="op">=</span><span class="st">"3x3"</span>, panels_size<span class="op">=</span>(<span class="fl">5</span>,<span class="fl">7</span>), region<span class="op">=</span>(<span class="fl">0</span>, <span class="fl">100</span>, <span class="fl">0</span>, <span class="fl">80</span>), frame<span class="op">=:</span>WSen, autolabel<span class="op">=</span><span class="fl">1</span>, margins<span class="op">=</span><span class="st">"6p"</span>)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">basemap</span>(panel<span class="op">=</span><span class="fl">1</span>)</span>
@@ -609,7 +611,7 @@ Shift plot origin. More at [yshift](../common_opts/opt_Y.html)</p></li>
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">plot</span>([<span class="fl">50</span> <span class="fl">40</span>], marker<span class="op">=:</span>star, mc<span class="op">=:</span>blue)</span>
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="fu">subplot</span>(<span class="op">:</span>show)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Use variable panels with variable sizes:</p>
-<div id="bb656d15" class="cell" data-execution_count="2">
+<div id="8ef5708d" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">subplot</span>(grid<span class="op">=</span>(<span class="fl">3</span>,<span class="fl">2</span>), dims<span class="op">=</span>(panels<span class="op">=</span><span class="cn">true</span>, sizes<span class="op">=</span>((<span class="st">"2i"</span>,<span class="st">"4i"</span>),(<span class="st">"2.5i"</span>,<span class="st">"5i"</span>,<span class="st">"1.25i"</span>))), row_axes<span class="op">=</span>(left<span class="op">=</span><span class="cn">true</span>, parallel<span class="op">=</span><span class="cn">true</span>),</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>        col_axes<span class="op">=</span>(bott<span class="op">=</span><span class="cn">true</span>,), margins<span class="op">=</span><span class="fl">0</span>, autolabel<span class="op">=</span>(label<span class="op">=:</span>A, vertical<span class="op">=</span><span class="cn">true</span>), title<span class="op">=</span><span class="st">"Variable dimensions"</span>)</span>
@@ -642,6 +644,14 @@ Shift plot origin. More at [yshift](../common_opts/opt_Y.html)</p></li>
 <section id="restriction" class="level2">
 <h2 class="anchored" data-anchor-id="restriction">Restriction</h2>
 <p>Currently, nesting of subplots is not implemented. With the <code>geog</code> projection one cannot set the fist axes to <code>geog</code> and the other to <em>whatever</em> because only last dimension is assigned that label. The solution to fine control here is to use the GMT syntax given as a string</p>
+</section>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>This function has multiple methods:</p>
+<ul>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/subplot.jl#L39"><code>subplot(; ...)</code></a> - subplot.jl:39</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/subplot.jl#L39"><code>subplot(fim; stop, kwargs...)</code></a> - subplot.jl:39</li>
+</ul>
 
 
 </section>

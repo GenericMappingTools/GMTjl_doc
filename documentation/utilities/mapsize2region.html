@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -431,7 +432,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#methods" id="toc-methods" class="nav-link active" data-scroll-target="#methods">Methods</a></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link active" data-scroll-target="#source-code">Source Code</a></li>
   <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
   </ul>
 </nav>
@@ -490,11 +491,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># how to use the mapsize2region() output.</span></span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">coast</span>(region<span class="op">=</span>opt_R, proj<span class="op">=</span>opt_J, shore<span class="op">=</span><span class="cn">true</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-<section id="methods" class="level2">
-<h2 class="anchored" data-anchor-id="methods">Methods</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 2 methods for generic function "mapsize2region" from GMT:</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a> [<span class="fl">1</span>] <span class="fu">mapsize2region</span>(; proj, scale, clon, clat, width, height, bnds, plot)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a> [<span class="fl">2</span>] <span class="fu">mapsize2region</span>(proj<span class="op">::</span><span class="dt">String</span>, scale<span class="op">::</span><span class="dt">String</span>, clon<span class="op">::</span><span class="dt">Float64</span>, clat<span class="op">::</span><span class="dt">Float64</span>, width<span class="op">::</span><span class="dt">Float64</span>, height<span class="op">::</span><span class="dt">Float64</span>, bnds)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>This function has multiple methods:</p>
+<ul>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/extras/mapsize2region.jl#L42"><code>mapsize2region(; proj, scale, clon, clat, width, height, bnds, plot)</code></a> - mapsize2region.jl:42</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/extras/mapsize2region.jl#L56"><code>mapsize2region(proj::String, scale::String, clon::Float64, clat::Float64, width::Float64, height::Float64, bnds)</code></a> - mapsize2region.jl:56</li>
+</ul>
 </section>
 <section id="see-also" class="level2">
 <h2 class="anchored" data-anchor-id="see-also">See Also</h2>

@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -436,6 +437,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#optional-arguments" id="toc-optional-arguments" class="nav-link" data-scroll-target="#optional-arguments">Optional Arguments</a></li>
   <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
   <li><a href="#notes" id="toc-notes" class="nav-link" data-scroll-target="#notes">Notes</a></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
   <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
@@ -526,10 +528,10 @@ Select gridline or pixel node registration. Used only when output is a grid. <a 
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <p>To create a spherical triangulation from the remote data set hotspots.txt and then plot it on a sphere, try:</p>
-<div id="62077d26" class="cell" data-execution_count="1">
+<div id="d307dea1" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    D <span class="op">=</span> <span class="fu">sphtriangulate</span>(<span class="st">"@hotspots.txt"</span>, voronoi<span class="op">=:</span>d, arcs<span class="op">=</span><span class="cn">true</span>)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">imshow</span>(D, region<span class="op">=:</span><span class="kw">global</span>, proj<span class="op">=:</span>guess, frame<span class="op">=:</span>afg, pen<span class="op">=</span><span class="fl">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">sphtriangulate</span>(<span class="st">"@hotspots.txt"</span>, voronoi<span class="op">=:</span>d, arcs<span class="op">=</span><span class="cn">true</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">imshow</span>(D, region<span class="op">=:</span><span class="kw">global</span>, proj<span class="op">=:</span>guess, frame<span class="op">=:</span>afg, pen<span class="op">=</span><span class="fl">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -547,6 +549,16 @@ Select gridline or pixel node registration. Used only when output is a grid. <a 
 <section id="notes" class="level2">
 <h2 class="anchored" data-anchor-id="notes">Notes</h2>
 <p>The STRIPACK algorithm and implementation expect that there are no duplicate points in the input. It is best that the user ensures that this is the case. GMT has tools, such as <a href="../..\documentation/modules/blockmean.html">blockmean</a> and others, to combine close points into single entries. Also, <strong>sphtriangulate</strong> has a <strong>skipdup</strong> option to determine and exclude duplicates, but it is a very brute-force yet exact comparison that is very slow for large data sets. Detection of duplicates in the STRIPACK library will exit the module.</p>
+</section>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>This function has multiple methods:</p>
+<ul>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/sphtriangulate.jl#L43"><code>sphtriangulate(cmd0::String; ...)</code></a> - sphtriangulate.jl:43</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/sphtriangulate.jl#L43"><code>sphtriangulate(; ...)</code></a> - sphtriangulate.jl:43</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/sphtriangulate.jl#L52"><code>sphtriangulate(arg1; kw...)</code></a> - sphtriangulate.jl:52</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/sphtriangulate.jl#L43"><code>sphtriangulate(cmd0::String, arg1; kwargs...)</code></a> - sphtriangulate.jl:43</li>
+</ul>
 </section>
 <section id="see-also" class="level2">
 <h2 class="anchored" data-anchor-id="see-also">See Also</h2>

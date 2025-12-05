@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -431,9 +432,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#velo" id="toc-velo" class="nav-link active" data-scroll-target="#velo">velo</a>
-  <ul class="collapse">
-  <li><a href="#synopsis" id="toc-synopsis" class="nav-link" data-scroll-target="#synopsis">Synopsis</a></li>
+  <li><a href="#synopsis" id="toc-synopsis" class="nav-link active" data-scroll-target="#synopsis">Synopsis</a></li>
   <li><a href="#required-arguments" id="toc-required-arguments" class="nav-link" data-scroll-target="#required-arguments">Required Arguments</a></li>
   <li><a href="#optional-arguments" id="toc-optional-arguments" class="nav-link" data-scroll-target="#optional-arguments">Optional Arguments</a></li>
   <li><a href="#vector-attributes" id="toc-vector-attributes" class="nav-link" data-scroll-target="#vector-attributes">Vector Attributes</a></li>
@@ -441,19 +440,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
   <li><a href="#notes" id="toc-notes" class="nav-link" data-scroll-target="#notes">Notes</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
   <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
-  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">velo</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
 
-<section id="velo" class="level1">
-<h1>velo</h1>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
 <p>Plot velocity vectors, crosses, anisotropy bars and wedges</p>
 <section id="synopsis" class="level2">
 <h2 class="anchored" data-anchor-id="synopsis">Synopsis</h2>
@@ -690,12 +703,21 @@ Swap 1st and 2nd column on input and/or output. <a href="https://docs.generic-ma
 <h2 class="anchored" data-anchor-id="references">References</h2>
 <p>Kurt L. Feigl, Department of Geology and Geophysics at University of Wisconsin-Madison, Madison, Wisconsin, USA</p>
 </section>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>This function has multiple methods:</p>
+<ul>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/geodesy/psvelo.jl#L12"><code>velo(cmd0::String; ...)</code></a> - psvelo.jl:12</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/geodesy/psvelo.jl#L12"><code>velo(; ...)</code></a> - psvelo.jl:12</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/geodesy/psvelo.jl#L49"><code>velo(arg1; kw...)</code></a> - psvelo.jl:49</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/geodesy/psvelo.jl#L12"><code>velo(cmd0::String, arg1; first, kwargs...)</code></a> - psvelo.jl:12</li>
+</ul>
+</section>
 <section id="see-also" class="level2">
 <h2 class="anchored" data-anchor-id="see-also">See Also</h2>
 <p><a href="../..\documentation/modules/plot.html">plot</a>, <a href="../..\documentation/modules/arrows.html">arrows</a>, <a href="../..\documentation/modules/meca.html">meca</a>, <a href="../..\documentation/modules/coupe.html">coupe</a></p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

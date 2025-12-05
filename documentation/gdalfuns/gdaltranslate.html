@@ -30,6 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -391,8 +392,14 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#source-code" id="toc-source-code" class="nav-link active" data-scroll-target="#source-code">Source Code</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -435,6 +442,18 @@ ul.task-list li input[type="checkbox"] {
 <section id="returns" class="level3">
 <h3 class="anchored" data-anchor-id="returns">Returns</h3>
 <p>A GMT grid or Image, or a GDAL dataset (or nothing if file was writen on disk).</p>
+</section>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>This function has multiple methods:</p>
+<ul>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/gdal/gdal.jl#L1620"><code>gdaltranslate(ds::GMT.Gdal.IDataset; ...)</code></a> - gdal.jl:1620</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/gdal/gdal.jl#L1608"><code>gdaltranslate(dataset::GMT.Gdal.Dataset; ...)</code></a> - gdal.jl:1608</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/gdal/gdal.jl#L1620"><code>gdaltranslate(ds::GMT.Gdal.IDataset, opts; dest, gdataset, save)</code></a> - gdal.jl:1620</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/gdal/gdal.jl#L1608"><code>gdaltranslate(dataset::GMT.Gdal.Dataset, options; dest, gdataset, save, layout)</code></a> - gdal.jl:1608</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/gdal/gdal_tools.jl#L28"><code>gdaltranslate(indata, opts; dest, kwargs...)</code></a> - gdal_tools.jl:28</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/gdal/gdal_tools.jl#L28"><code>gdaltranslate(indata; ...)</code></a> - gdal_tools.jl:28</li>
+</ul>
 
 
 </section>

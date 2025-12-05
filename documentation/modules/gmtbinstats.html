@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -431,24 +432,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#gmtbinstats" id="toc-gmtbinstats" class="nav-link active" data-scroll-target="#gmtbinstats">gmtbinstats</a>
-  <ul class="collapse">
-  <li><a href="#description" id="toc-description" class="nav-link" data-scroll-target="#description">Description</a></li>
+  <li><a href="#description" id="toc-description" class="nav-link active" data-scroll-target="#description">Description</a></li>
   <li><a href="#required-arguments" id="toc-required-arguments" class="nav-link" data-scroll-target="#required-arguments">Required Arguments</a></li>
   <li><a href="#optional-arguments" id="toc-optional-arguments" class="nav-link" data-scroll-target="#optional-arguments">Optional Arguments</a></li>
   <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
-  </ul></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">gmtbinstats</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
 
-<section id="gmtbinstats" class="level1">
-<h1>gmtbinstats</h1>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gmtbinstats</span>(cmd0<span class="op">::</span><span class="dt">String</span>=<span class="st">""</span>, arg1<span class="op">=</span><span class="cn">nothing</span>; kwargs<span class="op">...</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Bin spatial data and determine statistics per bin.</p>
 <section id="description" class="level2">
@@ -541,9 +554,16 @@ Swap 1st and 2nd column on input and/or output. <a href="https://docs.generic-ma
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>xy <span class="op">=</span> <span class="fu">rand</span>(<span class="fl">100</span>,<span class="fl">2</span>) <span class="op">.*</span> [<span class="fl">5</span> <span class="fl">3</span>];</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">binstats</span>(xy, region<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">5</span>,<span class="fl">0</span>,<span class="fl">3</span>), inc<span class="op">=</span><span class="fl">1</span>, tiling<span class="op">=:</span>hex, stats<span class="op">=:</span>number);</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">imshow</span>(D, hexbin<span class="op">=</span><span class="cn">true</span>, ml<span class="op">=</span><span class="fl">0.5</span>, colorbar<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-
-
 </section>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>This function has multiple methods:</p>
+<ul>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/gmtbinstats.jl#L41"><code>binstats(fname::String; nbins, kwargs...)</code></a> - gmtbinstats.jl:41</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/gmtbinstats.jl#L47"><code>binstats(arg1; nbins, kwargs...)</code></a> - gmtbinstats.jl:47</li>
+</ul>
+
+
 </section>
 
 </main> <!-- /main -->

@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -431,7 +432,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#see-also" id="toc-see-also" class="nav-link active" data-scroll-target="#see-also">See Also</a></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link active" data-scroll-target="#source-code">Source Code</a></li>
+  <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
   </ul>
 </nav>
     </div>
@@ -470,13 +472,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td style="text-align: left;">Convert an image to a binary image (black-and-white) using a threshold.</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">### Args - <code>I::GMTimage</code>: input image of type UInt8.</td>
+<td style="text-align: left;">### Args</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">- <code>threshold</code>: A number in the range [0 255]. If the default (0) is kept and the keyword <code>threshold</code> is not used, then the threshold is computed using the <a href="../..\documentation/imgproc/isodata.html">isodata</a> method. Alternatively, a vector of two numbers in the range [0 255] can be used. In this case, the threshold is set to the first value and the second value is used to set the upper limit of the threshold range. That is, values between the two values are set to 255 and the rest to 0 (or <code>true</code> and false respectively when the <code>bool</code> keyword is set to <code>true</code>). Note that with this second form, the <code>threshold</code> keyword does not exist.</td>
+<td style="text-align: left;">- <code>I::GMTimage</code>: input image of type UInt8.</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">### Kwargs - <code>band</code>: If the <code>I</code> image has more than one band, use <code>band</code> to specify which one to binarize. By default the first band is used.</td>
+<td style="text-align: left;">- <code>threshold</code>: A number in the range [0 255]. If the default (0) is kept and the keyword <code>threshold</code> is not used, then the threshold is computed using the <a href="../..\documentation/imgproc/isodata.html">isodata</a> method. Alternatively, a vector of two numbers in the range [0 255] can be used. In this case, the threshold is set to the first value and the second value is used to set the upper limit of the threshold range. That is, values between the two values are set to 255 and the rest to 0 (or <code>true</code> and false respectively when the <code>bool</code> keyword is set to <code>true</code>). Note that with this second form, the <code>threshold</code> keyword does not exist.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">### Kwargs</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">- <code>band</code>: If the <code>I</code> image has more than one band, use <code>band</code> to specify which one to binarize. By default the first band is used.</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">- <code>bool</code>: If <code>true</code>, the output image is of type Bool, otherwise it is of type UInt8.</td>
@@ -488,14 +496,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td style="text-align: left;">- <code>revert</code>: If <code>true</code>, values below the threshold are set to 255, and values &gt;= the threshold are set to 0.</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">### Return A new <a href="../..\documentation/general/types.html#sec-image-type">GMTimage</a>.</td>
+<td style="text-align: left;">### Return</td>
 </tr>
 <tr class="odd">
+<td style="text-align: left;">A new <a href="../..\documentation/general/types.html#sec-image-type">GMTimage</a>.</td>
+</tr>
+<tr class="even">
 <td style="text-align: left;">Example</td>
 </tr>
 </tbody>
 </table>
-<div id="562911c0" class="cell" data-execution_count="1">
+<div id="9d952ef7" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>I <span class="op">=</span> <span class="fu">gdalread</span>(GMT.TESTSDIR <span class="op">*</span> <span class="st">"assets/coins.jpg"</span>);</span>
@@ -512,6 +523,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>This function has multiple methods:</p>
+<ul>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/img_funs.jl#L116"><code>binarize(I::GMTimage, thresh::Vector{Int64}; band, revert, bool)</code></a> - img_funs.jl:116</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/img_funs.jl#L103"><code>binarize(I::GMTimage, thresh::Int64; band, threshold, revert, bool)</code></a> - img_funs.jl:103</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/img_funs.jl#L103"><code>binarize(I::GMTimage; ...)</code></a> - img_funs.jl:103</li>
+</ul>
+</section>
 <section id="see-also" class="level2">
 <h2 class="anchored" data-anchor-id="see-also">See Also</h2>
 <p><a href="../..\documentation/imgproc/imcomplement.html">imcomplement</a></p>

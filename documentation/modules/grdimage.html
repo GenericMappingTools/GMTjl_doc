@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -435,6 +436,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#required-arguments" id="toc-required-arguments" class="nav-link" data-scroll-target="#required-arguments">Required Arguments</a></li>
   <li><a href="#optional-arguments" id="toc-optional-arguments" class="nav-link" data-scroll-target="#optional-arguments">Optional Arguments</a></li>
   <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
   </ul>
 </nav>
     </div>
@@ -542,7 +544,7 @@ Save the figure with the <code>figname=name.ext</code> where <code>ext</code> ch
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <p>To make a map of a shaded global bathymetry (automatically download it if needed) using the Winkel projection, add coast lines, a colorbar and do an histogram equalization with 64 colors, do:</p>
-<div id="95cab63d" class="cell" data-execution_count="1">
+<div id="f9c6b0b6" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">grdimage</span>(<span class="st">"@earth_relief_20m_g"</span>, proj<span class="op">=:</span>Winkel, equalize<span class="op">=</span><span class="fl">64</span>, coast<span class="op">=</span><span class="cn">true</span>,</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>         colorbar<span class="op">=</span><span class="cn">true</span>, shade<span class="op">=</span><span class="cn">true</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -555,7 +557,7 @@ Save the figure with the <code>figname=name.ext</code> where <code>ext</code> ch
 </div>
 </div>
 <p>For a quick-and-dirty illuminated color map of the data in the remote file <span class="citation" data-cites="AK_gulf_grav.nc">@AK_gulf_grav.nc</span>, try:</p>
-<div id="a64c457c" class="cell" data-execution_count="2">
+<div id="718047ef" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">grdimage</span>(<span class="st">"@AK_gulf_grav.nc"</span>, shade<span class="op">=</span><span class="cn">true</span>, coast<span class="op">=</span><span class="cn">true</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -567,7 +569,7 @@ Save the figure with the <code>figname=name.ext</code> where <code>ext</code> ch
 </div>
 </div>
 <p>Clip the outside of Africa from Bing mosaic. (You can try also <code>viz(I, clip=:land)</code> and <code>viz(I, clip=(continent=:AF, outside=true))</code>)</p>
-<div id="e38809c1" class="cell" data-execution_count="3">
+<div id="a5654c0b" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>I <span class="op">=</span> <span class="fu">mosaic</span>(region<span class="op">=</span>(continent<span class="op">=</span><span class="st">"AF"</span>,));   <span class="co"># Get a mosaic of the ~Africa region</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">viz</span>(I, clip<span class="op">=</span>(continent<span class="op">=:</span>AF,))           <span class="co"># Clip outside of the African continent.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -579,6 +581,20 @@ Save the figure with the <code>figname=name.ext</code> where <code>ext</code> ch
 </div>
 </div>
 </div>
+</section>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>This function has multiple methods:</p>
+<ul>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/grdimage.jl#L43"><code>grdimage(cmd0::String; ...)</code></a> - grdimage.jl:43</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/grdimage.jl#L43"><code>grdimage(cmd0::String, arg1; ...)</code></a> - grdimage.jl:43</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/grdimage.jl#L43"><code>grdimage(cmd0::String, arg1, arg2; ...)</code></a> - grdimage.jl:43</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/grdimage.jl#L43"><code>grdimage(cmd0::String, arg1, arg2, arg3; first, kwargs...)</code></a> - grdimage.jl:43</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/grdimage.jl#L43"><code>grdimage(; ...)</code></a> - grdimage.jl:43</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/grdimage.jl#L252"><code>grdimage(arg1, arg2, arg3; kw...)</code></a> - grdimage.jl:252</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/grdimage.jl#L252"><code>grdimage(arg1; ...)</code></a> - grdimage.jl:252</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/grdimage.jl#L252"><code>grdimage(arg1, arg2; ...)</code></a> - grdimage.jl:252</li>
+</ul>
 
 
 </section>

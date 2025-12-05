@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -467,7 +468,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="hello-world" class="level2">
 <h2 class="anchored" data-anchor-id="hello-world">Hello world</h2>
-<div id="202583c5" class="cell" data-execution_count="1">
+<div id="344764c0" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="fu">rand</span>(<span class="fl">10</span>), lw<span class="op">=</span><span class="fl">1</span>, lc<span class="op">=:</span>blue, marker<span class="op">=:</span>square,</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>     markeredgecolor<span class="op">=</span><span class="fl">0</span>, size<span class="op">=</span><span class="fl">0.2</span>, markerfacecolor<span class="op">=:</span>red, title<span class="op">=</span><span class="st">"Hello World"</span>,</span>
@@ -487,7 +488,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The custom CPT is used by setting the plot command’s cmap argument to <code>true</code>. This workas because we previously computed the CPT and it will remain in memory until it’s consumed when we finish the plot. The <strong>level</strong> argument sets the color to be used from the custom CPT.</p>
 <p>In fact, in this case with a CPT already in memory, the <strong>level</strong> option alone would have triggered the line coloring and the <strong>cmap</strong> option could have been droped.</p>
 <p>Normally we don’t need to start a figure with a call to <em>basemap</em> because the <em>plot</em> function takes care of guessing reasonable defaults, but in this case we start with a curve with small amplitude and we grow the figure by adding more lines. So if we leave it to automatic guessing one would have to start by the largest amplitude curve.</p>
-<div id="b09aaee3" class="cell" data-execution_count="2">
+<div id="b771ea13" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>C <span class="op">=</span> <span class="fu">makecpt</span>(range<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">10</span>,<span class="fl">1</span>));</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">basemap</span>(region<span class="op">=</span>(<span class="fl">20</span>,<span class="fl">30</span>,<span class="op">-</span><span class="fl">10</span>,<span class="fl">10</span>), figsize<span class="op">=</span>(<span class="fl">12</span>,<span class="fl">8</span>))</span>
@@ -509,7 +510,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="line-colors-with-the-automatic-color-scheme" class="level2">
 <h2 class="anchored" data-anchor-id="line-colors-with-the-automatic-color-scheme">Line colors with the automatic color scheme</h2>
 <p>Here we are showing how to plot several lines at once and color them according to a circular color scheme comprised of 7 distinct colors. We start by generating a dummy matrix 8x5, where rows represent the vertex and the columns hold the lines. To tell the program that first column contains the coordinates and the remaining are all lines to be plotted we use the option <strong>multicol</strong>=<em>true</em></p>
-<div id="e8c5343f" class="cell" data-execution_count="3">
+<div id="42ac60ea" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>mat <span class="op">=</span> GMT.<span class="fu">fakedata</span>(<span class="fl">8</span>, <span class="fl">5</span>);</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(mat, multicol<span class="op">=</span><span class="cn">true</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -526,7 +527,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="line-colors-with-user-set-color-scheme">Line colors with user set color scheme</h2>
 <p>But if we want choose the colors ourselves, it is also easy though we need to go a bit lower in the data preparation.</p>
 <p>The basic data type to transfer tabular data to GMT is the <em>GMTdataset</em> and the above command has converted the matrix into a <em>GMTdataset</em> under the hood but now we need to create one ourselves and fine control more details, like the colors and line thickness of the individual lines. Not that we have 5 lines but will provide 3 colors and 3 lines thicknesses. When we do this those properties are wrapped modulo its number.</p>
-<div id="d94878ab" class="cell" data-execution_count="4">
+<div id="cda21d5b" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>mat <span class="op">=</span> GMT.<span class="fu">fakedata</span>(<span class="fl">8</span>, <span class="fl">5</span>);</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">mat2ds</span>(mat, color<span class="op">=</span>[<span class="st">"brown"</span>, <span class="st">"green"</span>, <span class="st">"blue"</span>], linethick<span class="op">=</span>[<span class="fl">2</span>, <span class="fl">1.0</span>, <span class="fl">0.5</span>, <span class="fl">0.25</span>], multi<span class="op">=</span><span class="cn">true</span>);</span>
@@ -545,7 +546,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="bezier-curve" class="level2">
 <h2 class="anchored" data-anchor-id="bezier-curve">Bezier curve</h2>
-<div id="3d3adc45" class="cell" data-execution_count="5">
+<div id="64506351" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> [<span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">2</span>];  y <span class="op">=</span> [<span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">0.5</span>, <span class="fl">0.25</span>];</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x,y, limits<span class="op">=</span>(<span class="op">-</span><span class="fl">1</span>,<span class="fl">4</span>,<span class="op">-</span><span class="fl">0.5</span>,<span class="fl">2.0</span>), scale<span class="op">=</span><span class="fl">3.0</span>, lw<span class="op">=</span><span class="fl">1</span>, markerfacecolor<span class="op">=:</span>red,</span>
@@ -561,7 +562,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="decorated-line" class="level2">
 <h2 class="anchored" data-anchor-id="decorated-line">Decorated line</h2>
-<div id="dc9170e1" class="cell" data-execution_count="6">
+<div id="d8347f58" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>xy <span class="op">=</span> <span class="fu">sind</span>.(<span class="fl">0</span><span class="op">:</span><span class="fl">180</span>) <span class="op">.+</span> <span class="fl">4.5</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(xy, limits<span class="op">=</span>(<span class="op">-</span><span class="fl">5</span>,<span class="fl">185</span>,<span class="fl">4</span>,<span class="fl">6</span>), figsize<span class="op">=</span>(<span class="fl">16</span>,<span class="fl">8</span>), pen<span class="op">=</span>(<span class="fl">1</span>,<span class="op">:</span>red),</span>
@@ -579,7 +580,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="text-decorated-line" class="level2">
 <h2 class="anchored" data-anchor-id="text-decorated-line">Text decorated line</h2>
-<div id="81035040" class="cell" data-execution_count="7">
+<div id="6d1daea1" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a log spiral</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> <span class="fu">linspace</span>(<span class="fl">0</span>,<span class="fl">2</span>pi,<span class="fl">100</span>);</span>
@@ -601,7 +602,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="the-snake-skier" class="level2">
 <h2 class="anchored" data-anchor-id="the-snake-skier">The snake skier</h2>
 <p>Plot a skier on a sinusoid.</p>
-<div id="2ccd61d0" class="cell" data-execution_count="8">
+<div id="a4d2196f" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> GMT.<span class="fu">linspace</span>(<span class="fl">0</span>, <span class="fl">2</span>pi);  y <span class="op">=</span> <span class="fu">cos</span>.(<span class="fl">2</span>x)<span class="op">*</span><span class="fl">0.9</span>;</span>
@@ -625,7 +626,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="variable-sizedcolors-points" class="level2">
 <h2 class="anchored" data-anchor-id="variable-sizedcolors-points">Variable sized/colors points</h2>
-<div id="1deddf40" class="cell" data-execution_count="9">
+<div id="7dd18083" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>xs <span class="op">=</span> <span class="fu">linspace</span>(<span class="fl">0</span>,<span class="fl">10</span>,<span class="fl">30</span>);</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>ys <span class="op">=</span> <span class="fl">0.5</span> <span class="op">.*</span> <span class="fu">sin</span>.(xs);</span>

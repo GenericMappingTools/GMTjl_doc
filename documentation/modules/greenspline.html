@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -438,6 +439,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
   <li><a href="#notes" id="toc-notes" class="nav-link" data-scroll-target="#notes">Notes</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
   <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
   </ul>
 </nav>
@@ -596,7 +598,7 @@ Swap 1st and 2nd column on input and/or output. <a href="https://docs.generic-ma
 <section id="d-spline" class="level3">
 <h3 class="anchored" data-anchor-id="d-spline">1-D Spline</h3>
 <p>Resample 1-D data using minimum curvature spline:</p>
-<div id="7518e599" class="cell" data-execution_count="1">
+<div id="43e702ce" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Create sample data</span></span>
@@ -735,6 +737,14 @@ Swap 1st and 2nd column on input and/or output. <a href="https://docs.generic-ma
 <li>Wessel, P., and D. Bercovici, 1998, Interpolation with splines in tension: a Green’s function approach, <em>Math. Geol.</em>, 30, 77-93, https://doi.org/10.1023/A:1021713421882.</li>
 <li>Wessel, P., and J. M. Becker, 2008, Interpolation using a generalized Green’s function for a spherical surface spline in tension, <em>Geophys. J. Int</em>, 174, 21-28, https://doi.org/10.1111/j.1365-246X.2008.03829.x.</li>
 <li>Wessel, P., 2009, A general-purpose Green’s function interpolator, <em>Computers &amp; Geosciences</em>, 35, 1247-1254, https://doi.org/10.1016/j.cageo.2008.08.012.</li>
+</ul>
+</section>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>This function has multiple methods:</p>
+<ul>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/greenspline.jl#L76"><code>greenspline(cmd0::String; kwargs...)</code></a> - greenspline.jl:76</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/greenspline.jl#L77"><code>greenspline(arg1; kwargs...)</code></a> - greenspline.jl:77</li>
 </ul>
 </section>
 <section id="see-also" class="level2">

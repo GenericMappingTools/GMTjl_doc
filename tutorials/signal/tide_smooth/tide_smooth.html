@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../../">
+<link href="../../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -452,7 +453,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p>Download the tide data. In this case 2 days of tides at the Cascais tide gauge station.</p>
-<div id="8a4cde48" class="cell" data-execution_count="1">
+<div id="51f22a1a" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">maregrams</span>(code<span class="op">=</span><span class="st">"casc"</span>, starttime<span class="op">=</span><span class="st">"2025-03-05T13:26:00"</span>)</span>
@@ -482,7 +483,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 UndefVarError: `Attribute` not defined</code></pre>
 </div>
 </div>
-<div id="d87ca5bf" class="cell" data-execution_count="2">
+<div id="52a4a054" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">maregrams</span>(code<span class="op">=</span><span class="st">"casc"</span>, starttime<span class="op">=</span><span class="st">"2025-03-05T13:26:00"</span>) <span class="co"># Hide</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">viz</span>(D, title<span class="op">=</span><span class="st">"Raw data at 5 s"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -502,7 +503,7 @@ UndefVarError: `Attribute` not defined</code></pre>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>(<span class="fl">9</span>,)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Let’s stack them up to get a single segment using the <em>stack</em> function.</p>
 <p>A plot of the data is similar to that of the raw data, but with much less points (points every 60 s instead of every 5 s).</p>
-<div id="672b498e" class="cell" data-execution_count="3">
+<div id="881f206a" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>Ds <span class="op">=</span> <span class="fu">sample1d</span>(D, T<span class="op">=</span><span class="st">"2025-03-05T13:26:00/2025-03-07T13:24:05/60s"</span>, g<span class="op">=</span><span class="st">"x300s"</span>, nonans<span class="op">=</span><span class="fl">1</span>);   <span class="co"># Hide</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>Dt <span class="op">=</span> <span class="fu">stack</span>(Ds);</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">viz</span>(Dt, title<span class="op">=</span><span class="st">"Resampled data at 60 s"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -515,7 +516,7 @@ UndefVarError: `Attribute` not defined</code></pre>
 </div>
 </div>
 <p>Now we are going to do the first step of the filtering process using the <em>lowess</em> function. This function fits a non-parametric regression model to the data using locally weighted linear regression. The <em>span</em> parameter is a factor that controls the smoothing and <em>delta</em> helps speeding up the calculus but experience have show that it also affects curvature of the obtained curve. Note: obtaining the values for these parameters is a trial and error process.</p>
-<div id="57c2d177" class="cell" data-execution_count="4">
+<div id="4f147306" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>Dl <span class="op">=</span> <span class="fu">lowess</span>(Dt, span<span class="op">=</span><span class="fl">0.02</span>, delta<span class="op">=</span><span class="fl">200</span>);</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">viz</span>(Dl, title<span class="op">=</span><span class="st">"Lowess smoothed data at 60 s"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -527,12 +528,12 @@ UndefVarError: `Attribute` not defined</code></pre>
 </div>
 </div>
 <p>Much nicer and we almost there but not yet because we can see that the curve still has the gaps. To fill them we are going to use the <code>sample1d</code> function again.</p>
-<div id="f49c965b" class="cell" data-execution_count="5">
+<div id="e83ce5a0" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>Dfinal <span class="op">=</span> <span class="fu">sample1d</span>(Dl, T<span class="op">=</span><span class="st">"2025-03-05T13:26:00/2025-03-07T13:24:05/60s"</span>);</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>And now we have a nice curve that we could use to calculate the derivatives or feed to an FFT to get the frequency components of the signal.</p>
 <p>Show both original and smoothed data as points. It is not perfect at the top of the second creast but this was a tough case.</p>
-<div id="fdf32a0d" class="cell" data-execution_count="6">
+<div id="db65d5c8" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(D, legend<span class="op">=</span> <span class="st">"Raw data"</span>)</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot!</span>(Dfinal, lc<span class="op">=:</span>red, lt<span class="op">=</span><span class="fl">1</span>, legend<span class="op">=</span><span class="st">"Smoothed data"</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">

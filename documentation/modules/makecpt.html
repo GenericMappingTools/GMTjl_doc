@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -438,6 +439,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#discrete-versus-continuous-cpt" id="toc-discrete-versus-continuous-cpt" class="nav-link" data-scroll-target="#discrete-versus-continuous-cpt">Discrete versus Continuous CPT</a></li>
   <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
   <li><a href="#bugs" id="toc-bugs" class="nav-link" data-scroll-target="#bugs">Bugs</a></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
   <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
@@ -486,7 +488,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p><strong>A</strong> or <strong>alpha</strong> or <strong>transparency</strong> : – <em>alpha=xx</em> <strong>|</strong> <em>alpha=“xx+a”</em><br>
 Sets a constant level of transparency (0-100) for all color slices. Append <strong>+a</strong> to also affect the fore-, back-, and nan-colors</p></li>
 <li><p><strong>C</strong> or <strong>color</strong> or <strong>cmap</strong> or <strong>colormap</strong> or <strong>colorscale</strong> : – <em>cmap=[[<em>section</em>/]<em>master_cpt</em>[<strong>+h</strong>[<em>hinge</em>]][<strong>+u|+U</strong>unit]|<em>local_cpt</em>|<em>color1,color2</em>[,<em>color3</em>,…]]</em><br>
-Name of an input CPT file. Generally, the input is one of the GMT <em>master_cpt</em> files (see <a href="https://docs.generic-mapping-tools.org/dev/cookbook/cpts.html#of-colors-and-color-legends">Of Colors and Color Legends</a>) and can be either addressed by <em>master_cpt</em> or <em>section</em>/<em>master_cpt</em> (without the <strong>.cpt</strong> extension). If given a master CPT with soft-hinges then you can enable the hinge at data value <em>hinge</em> via <strong>+h</strong>, whereas for hard-hinge CPTs you can adjust the location of the hinge. For any other <em>master_cpt</em>, you may convert their <em>z</em>-values from meter to another distance unit (append <strong>+U</strong>unit) or from another unit to meter (append <strong>+u</strong>unit), with <em>unit</em> taken from <strong>e|f|k|M|n|u</strong>. One can also supply the file name of already custom made <em>local_cpt</em> file. Alternatively, give <em>color1,color2</em>[<em>,color3</em>,…] to build a linear continuous CPT from those colors automatically, where <em>z</em> starts at 0 and is incremented by one for each color. In this case color<strong>n</strong> can be a r/g/b triplet, a color name, or an HTML hexadecimal color (<em>e.g.</em> #aabbcc). See also [Setting color](../common_features/color.html)</p></li>
+Name of an input CPT file. Generally, the input is one of the GMT <em>master_cpt</em> files (see <a href="https://docs.generic-mapping-tools.org/dev/reference/cpts.html#of-colors-and-color-legends">Of Colors and Color Legends</a>) and can be either addressed by <em>master_cpt</em> or <em>section</em>/<em>master_cpt</em> (without the <strong>.cpt</strong> extension). If given a master CPT with soft-hinges then you can enable the hinge at data value <em>hinge</em> via <strong>+h</strong>, whereas for hard-hinge CPTs you can adjust the location of the hinge. For any other <em>master_cpt</em>, you may convert their <em>z</em>-values from meter to another distance unit (append <strong>+U</strong>unit) or from another unit to meter (append <strong>+u</strong>unit), with <em>unit</em> taken from <strong>e|f|k|M|n|u</strong>. One can also supply the file name of already custom made <em>local_cpt</em> file. Alternatively, give <em>color1,color2</em>[<em>,color3</em>,…] to build a linear continuous CPT from those colors automatically, where <em>z</em> starts at 0 and is incremented by one for each color. In this case color<strong>n</strong> can be a r/g/b triplet, a color name, or an HTML hexadecimal color (<em>e.g.</em> #aabbcc). See also [Setting color](../common_features/color.html)</p></li>
 <li><p><strong>D</strong> or <strong>bg</strong> or <strong>background</strong> : – <em>bg=true</em> <strong>|</strong> <em>bg=:i</em><br>
 Select the back- and foreground colors to match the colors for lowest and highest <em>z</em>-values in the output CPT [Default uses the colors specified in the master file, or those defined by the parameters <code>COLOR_BACKGROUND</code>, <code>COLOR_FOREGROUND</code>, and <code>COLOR_NAN</code>]. Append <strong>i</strong> to match the colors for the lowest and highest values in the input (instead of the output) CPT.</p></li>
 <li><p><strong>E</strong> or <strong>nlevels</strong> : – <em>nlevels=true</em> <strong>|</strong> <em>nlevels=nlevels</em><br>
@@ -535,7 +537,7 @@ Save the color map with the <strong>save=“name.cpt”</strong>. When in modern
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <p>To make a CPT with z-values from -200 to 200, with discrete color changes every 25, and using a polar blue-white-red colortable:</p>
-<div id="2c5fec49" class="cell" data-execution_count="1">
+<div id="444aa3ad" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>C <span class="op">=</span> <span class="fu">makecpt</span>(cmap<span class="op">=:</span>polar, range<span class="op">=</span>(<span class="op">-</span><span class="fl">200</span>,<span class="fl">200</span>,<span class="fl">25</span>))</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">imshow</span>(C, horizontal<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -552,7 +554,7 @@ Save the color map with the <strong>save=“name.cpt”</strong>. When in modern
 <p>To use the GEBCO look-alike CPT with its default range for bathymetry and save the file on disk, run</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">makecpt</span>(cmap<span class="op">=:</span>gebco, write<span class="op">=</span><span class="st">"my_gebco.cpt"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>or simply use -Cgebco directly in the application that needs the color table. To create a 24-level color table suitable for plotting the depths in the remote data table v3206_06.txt (with lon, lat, depths), run</p>
-<div id="c5c81090" class="cell" data-execution_count="2">
+<div id="a0071959" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>C <span class="op">=</span> <span class="fu">makecpt</span>(<span class="st">"@v3206_06.txt"</span>, cmap<span class="op">=:</span>gebco, nlevels<span class="op">=</span><span class="fl">24</span>)</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">imshow</span>(C, horizontal<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -567,7 +569,7 @@ Save the color map with the <strong>save=“name.cpt”</strong>. When in modern
 <p>To use the gebco color table but reverse the z-values so it can be used for positive depth values, try</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">makecpt</span>(cmap<span class="op">=:</span>gebco, reverse<span class="op">=:</span>z)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>To make a custom discrete color table for depth of seismicity, using red color for hypocenters between 0 and 100 km, green for 100-300 km, and blue for deep (300-1000 km) earthquakes, use</p>
-<div id="2de0a4af" class="cell" data-execution_count="3">
+<div id="a877c7ed" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">imshow</span>(<span class="fu">makecpt</span>(cmap<span class="op">=</span>(<span class="op">:</span>red,<span class="op">:</span>green,<span class="op">:</span>blue), range<span class="op">=</span>[<span class="fl">0</span>,<span class="fl">100</span>,<span class="fl">300</span>,<span class="fl">1000</span>], no_bg<span class="op">=</span><span class="cn">true</span>), horizontal<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -579,7 +581,7 @@ Save the color map with the <strong>save=“name.cpt”</strong>. When in modern
 </div>
 </div>
 <p>To make a discrete CPT from white to blue as z goes from 3 to 10, try</p>
-<div id="0e4203f1" class="cell" data-execution_count="4">
+<div id="5eb7710b" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">imshow</span>(<span class="fu">makecpt</span>(cmap<span class="op">=</span><span class="st">"white,blue"</span>, range<span class="op">=</span>(<span class="fl">3</span>,<span class="fl">10</span>)), horizontal<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -591,7 +593,7 @@ Save the color map with the <strong>save=“name.cpt”</strong>. When in modern
 </div>
 </div>
 <p>And to get a continuous CPT, use the option <code>continuous=true</code>.</p>
-<div id="7d6137fb" class="cell" data-execution_count="5">
+<div id="24d04512" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">imshow</span>(<span class="fu">makecpt</span>(cmap<span class="op">=</span><span class="st">"white,blue"</span>, range<span class="op">=</span>(<span class="fl">3</span>,<span class="fl">10</span>), continuous<span class="op">=</span><span class="cn">true</span>), horizontal<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -603,7 +605,7 @@ Save the color map with the <strong>save=“name.cpt”</strong>. When in modern
 </div>
 </div>
 <p>To make a wrapped (cyclic) CPT from the turbo table over the interval 0 to 500, i.e., the color will be wrapped every 500 z-units so that we always get a color regardless of the <em>z</em> value, try</p>
-<div id="72a258b6" class="cell" data-execution_count="6">
+<div id="e8815846" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">imshow</span>(<span class="fu">makecpt</span>(cmap<span class="op">=:</span>turbo, range<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">500</span>), wrap<span class="op">=:</span>w), horizontal<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -615,7 +617,7 @@ Save the color map with the <strong>save=“name.cpt”</strong>. When in modern
 </div>
 </div>
 <p>To show the <code>turbo</code> color table.</p>
-<div id="901a9b86" class="cell" data-execution_count="7">
+<div id="2f25f76c" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">imshow</span>(<span class="op">:</span>turbo, horizontal<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -627,7 +629,7 @@ Save the color map with the <strong>save=“name.cpt”</strong>. When in modern
 </div>
 </div>
 <p>To make a categorical CPT with string keys instead of numerical lookup values, try:</p>
-<div id="6860ba47" class="cell" data-execution_count="8">
+<div id="3e8da9da" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>C <span class="op">=</span> <span class="fu">makecpt</span>(cmap<span class="op">=:</span>categorical, range<span class="op">=</span><span class="st">"wood,water,gold"</span>)</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">imshow</span>(C, B<span class="op">=:</span>none, horizontal<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -643,6 +645,21 @@ Save the color map with the <strong>save=“name.cpt”</strong>. When in modern
 <section id="bugs" class="level2">
 <h2 class="anchored" data-anchor-id="bugs">Bugs</h2>
 <p>Since <strong>makecpt</strong> will also interpolate from any existing CPT you may have in your directory, you should not use one of the listed cpt names as an output filename; hence the my_gebco.cpt in the example. If you do create a CPT of such a name, e.g., rainbow.cpt, then <strong>makecpt</strong> will read that file first and not look for the master CPT in the shared GMT directory.</p>
+</section>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>This function has multiple methods:</p>
+<ul>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/makecpt.jl#L59"><code>makecpt(cmd0::Symbol; kwargs...)</code></a> - makecpt.jl:59</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/makecpt.jl#L60"><code>makecpt(cmd0::String; ...)</code></a> - makecpt.jl:60</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/makecpt.jl#L60"><code>makecpt(cmd0::String, arg1; kwargs...)</code></a> - makecpt.jl:60</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/makecpt.jl#L64"><code>makecpt(cmd0::String, arg1, d::Dict)</code></a> - makecpt.jl:64</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/makecpt.jl#L92"><code>makecpt(G::GMTgrid; equalize, kw...)</code></a> - makecpt.jl:92</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/makecpt.jl#L60"><code>makecpt(; ...)</code></a> - makecpt.jl:60</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/makecpt.jl#L174"><code>makecpt(b, e, inc; kw...)</code></a> - makecpt.jl:174</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/makecpt.jl#L174"><code>makecpt(b, e; ...)</code></a> - makecpt.jl:174</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/makecpt.jl#L173"><code>makecpt(arg1; kw...)</code></a> - makecpt.jl:173</li>
+</ul>
 </section>
 <section id="see-also" class="level2">
 <h2 class="anchored" data-anchor-id="see-also">See Also</h2>

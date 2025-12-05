@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -437,6 +438,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#synopsis-end-mode" id="toc-synopsis-end-mode" class="nav-link" data-scroll-target="#synopsis-end-mode">Synopsis (end mode)</a></li>
   <li><a href="#the-nested-call-mode" id="toc-the-nested-call-mode" class="nav-link" data-scroll-target="#the-nested-call-mode">The nested call mode</a></li>
   <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
   </ul>
 </nav>
     </div>
@@ -532,7 +534,7 @@ Select verbosity level. More at [verbose](../common_opts/opt_V.html)</p></li>
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <p>To make a simple basemap plot that demonstrates the inset module, try</p>
-<div id="9c5d7df6" class="cell" data-execution_count="1">
+<div id="0d0b206b" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">gmtbegin</span>()</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">basemap</span>(region<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">40</span>,<span class="fl">20</span>,<span class="fl">60</span>), proj<span class="op">=:</span>merc, frame<span class="op">=</span>(annot<span class="op">=:</span>afg, fill<span class="op">=:</span>lightgreen))</span>
@@ -551,7 +553,7 @@ Select verbosity level. More at [verbose](../common_opts/opt_V.html)</p></li>
 </div>
 </div>
 <p>Make a zoom over a region of a synthetic plot.</p>
-<div id="ff0e49c3" class="cell" data-execution_count="2">
+<div id="cf6b9866" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> <span class="fl">0</span><span class="op">:</span><span class="fl">0.01</span><span class="op">:</span><span class="fl">2</span>pi;</span>
@@ -565,7 +567,7 @@ Select verbosity level. More at [verbose](../common_opts/opt_V.html)</p></li>
 </div>
 </div>
 <p>Add an inset to basemap image with a rectangle in the inset taken from main image limits.</p>
-<div id="11c327c5" class="cell" data-execution_count="3">
+<div id="59f24d8d" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">basemap</span>(region<span class="op">=</span>(<span class="op">-</span><span class="fl">48</span>,<span class="op">-</span><span class="fl">43</span>,<span class="op">-</span><span class="fl">26</span>,<span class="op">-</span><span class="fl">20</span>), proj<span class="op">=:</span>merc,</span>
@@ -578,6 +580,14 @@ Select verbosity level. More at [verbose](../common_opts/opt_V.html)</p></li>
 </div>
 </div>
 </div>
+</section>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>This function has multiple methods:</p>
+<ul>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/gmtbegin.jl#L65"><code>inset(; ...)</code></a> - gmtbegin.jl:65</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/gmtbegin.jl#L65"><code>inset(fim::Union{AbstractString, Symbol}; stop, kwargs...)</code></a> - gmtbegin.jl:65</li>
+</ul>
 
 
 </section>

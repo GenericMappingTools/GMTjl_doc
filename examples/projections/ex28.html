@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -453,7 +454,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <p>This is a question that comes up regularly such that GMT has a gallery example (famous <a href="https://docs.generic-mapping-tools.org/dev/gallery/ex28.html#example-28">example 28</a>) to show how to do it. But even with that example it’s not a trivial thing to do.</p>
 <p>However it’s trivial from the Julia wrapper under the condition that the grid or image to be displayed is referenced internally. If it is not, <code>grdedit</code> can be used to assign a referencing system via its option <code>proj</code>. The other condition is that grid or image to be displayed is already in memory (so that the internal magicks can work). Given that, <a href="https://docs.generic-mapping-tools.org/dev/gallery/ex28.html#example-28">example 28</a> boils down to this (with a little bit less fancy details).</p>
-<div id="47032fc6" class="cell" data-execution_count="1">
+<div id="822e7406" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">gmtread</span>(<span class="st">"@Kilauea.utm.nc"</span>);</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>C <span class="op">=</span> <span class="fu">makecpt</span>(cmap<span class="op">=</span><span class="st">"copper"</span>, range<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">1500</span>));</span>
@@ -468,7 +469,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>The above example, however, relied in having a UTM-referenced grid file already available. If you want to do the same with a global grid such as <code>@earth_relief_03s</code>, you can request a region in UTM coordinates and ask to project the fetched grid. This can be done on-the-fly by using the <code>region</code>, <code>proj</code> and the <code>convert=true</code> options in <code>gmtread</code>, like so:</p>
-<div id="c473f6dd" class="cell" data-execution_count="2">
+<div id="1bf45edf" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">gmtread</span>(<span class="st">"@earth_relief_03s"</span>, region<span class="op">=</span>[<span class="fl">420000</span>, <span class="fl">470000</span>, <span class="fl">4510000</span>, <span class="fl">4535000</span>],</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>            proj<span class="op">=</span><span class="st">"+proj=utm +zone=33"</span>, convert<span class="op">=</span><span class="cn">true</span>);</span>

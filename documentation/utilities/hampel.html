@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -426,8 +427,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#source-code" id="toc-source-code" class="nav-link active" data-scroll-target="#source-code">Source Code</a></li>
+  <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -487,7 +495,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="example" class="level3">
 <h3 class="anchored" data-anchor-id="example">Example</h3>
-<div id="9ea9ccb5" class="cell" data-execution_count="1">
+<div id="f9de5028" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> (<span class="fl">1</span><span class="op">:</span><span class="fl">50</span>) <span class="op">/</span> <span class="fl">10</span>;</span>
@@ -507,6 +515,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
+</section>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>This function has multiple methods:</p>
+<ul>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/extras/hampel_outliers.jl#L90"><code>hampel(x::AbstractVector, weights::Vector{&lt;:Integer}; kwargs...)</code></a> - hampel_outliers.jl:90</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/extras/hampel_outliers.jl#L89"><code>hampel(x, K::Integer; kwargs...)</code></a> - hampel_outliers.jl:89</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/extras/hampel_outliers.jl#L26"><code>hampel(x::AbstractVector; kwargs...)</code></a> - hampel_outliers.jl:26</li>
+</ul>
+</section>
+<section id="see-also" class="level2">
+<h2 class="anchored" data-anchor-id="see-also">See Also</h2>
+<p><a href="../..\documentation/modules/lowess.html">lowess</a>, <a href="../..\documentation/modules/whittaker.html">whittaker</a></p>
+<p><a href="../alphabetical.html">Alphabetical Function List</a></p>
 
 
 </section>

@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -462,7 +463,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="reading-vector-data" class="level2">
 <h2 class="anchored" data-anchor-id="reading-vector-data">Reading vector data</h2>
 <p>Read a shapefile representing Colombian departments which has been previously downloaded from <a href="https://www.diva-gis.org/datadown">DIVA-GIS</a>, and not forgetting to load the package first.</p>
-<div id="bb221a9d" class="cell" data-execution_count="1">
+<div id="e86b9034" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>deptos <span class="op">=</span> <span class="fu">gmtread</span>(GMT.TESTSDIR <span class="op">*</span> <span class="st">"COL_adm1.shp.zip"</span>);</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -496,7 +497,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    PRIMEM[<span class="st">"Greenwich"</span>,<span class="fl">0</span>],</span>
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    UNIT[<span class="st">"degree"</span>,<span class="fl">0.0174532925199433</span>]]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>A fundamental starting point to understand data is to plot it. GMT can do it with great simplicity.</p>
-<div id="ff44d057" class="cell" data-execution_count="2">
+<div id="6de92a2b" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span>   <span class="co"># Hide</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>deptos <span class="op">=</span> <span class="fu">gmtread</span>(GMT.TESTSDIR <span class="op">*</span> <span class="st">"COL_adm1.shp.zip"</span>);  <span class="co"># Hide</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">viz</span>(deptos)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -509,7 +510,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>The somewhat large blank part on the upper part of the figure is due to small islands that are barely visible at this scale but also due to the automatic determination of the region boundaries. Also, since Colombia is close to equator the deformation implied by plotting geographical coordinates is not easily visible, but we can do better. We can tell GMT to guess a good projection for this region and automatically apply it.</p>
-<div id="b1fb0a14" class="cell" data-execution_count="3">
+<div id="ce5bf107" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span>   <span class="co"># Hide</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>deptos <span class="op">=</span> <span class="fu">gmtread</span>(GMT.TESTSDIR <span class="op">*</span> <span class="st">"COL_adm1.shp.zip"</span>);  <span class="co"># Hide</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">viz</span>(deptos, proj<span class="op">=:</span>guess)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -527,7 +528,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>In this demonstration we are interested only in one departament, so we will filter the data to fulfill a department name condition. Review the following code and change it to match your department.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>antioquia <span class="op">=</span> <span class="fu">filter</span>(deptos, NAME_1 <span class="op">=</span> <span class="st">"Antioquia"</span>);</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Nex, plot the new object.</p>
-<div id="c607d2cd" class="cell" data-execution_count="4">
+<div id="85655a8a" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span>   <span class="co"># Hide</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>deptos <span class="op">=</span> <span class="fu">gmtread</span>(GMT.TESTSDIR <span class="op">*</span> <span class="st">"COL_adm1.shp.zip"</span>);  <span class="co"># Hide</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>antioquia <span class="op">=</span> <span class="fu">filter</span>(deptos, NAME_1 <span class="op">=</span> <span class="st">"Antioquia"</span>);     <span class="co"># Hide</span></span>
@@ -541,7 +542,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>We can repeat the previous steps to load the Colombian municipalities and filter the Antioquian ones.</p>
-<div id="9938ce35" class="cell" data-execution_count="5">
+<div id="59a4bad2" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span>   <span class="co"># Hide</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>munic <span class="op">=</span> <span class="fu">gmtread</span>(GMT.TESTSDIR <span class="op">*</span> <span class="st">"COL_adm2.shp.zip"</span>);</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>mun_antioquia <span class="op">=</span> <span class="fu">filter</span>(munic, NAME_1<span class="op">=:</span>Antioquia);    <span class="co"># Symbols are as good as strings for attribute values</span></span>
@@ -555,7 +556,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Now we are going to compute the centroids of the Antioquia municipes and use them as placers to contents of the <em>ID_2</em> attribute (that are numbers, though confess that I don’t know what they represent).</p>
-<div id="995890c1" class="cell" data-execution_count="6">
+<div id="ed5fb481" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span>   <span class="co"># Hide</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>munic <span class="op">=</span> <span class="fu">gmtread</span>(GMT.TESTSDIR <span class="op">*</span> <span class="st">"COL_adm2.shp.zip"</span>);     <span class="co"># Hide</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>mun_antioquia <span class="op">=</span> <span class="fu">filter</span>(munic, NAME_1<span class="op">=:</span>Antioquia);       <span class="co"># Hide</span></span>
@@ -572,7 +573,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>And as an example, we can use the numeric information contained in the <em>ID_2</em> attribute (which comes out as string but we can easily convert it to numbers) and paint the municipe polygons according to those numbers. That is, make a choropleth map.</p>
-<div id="a25f679d" class="cell" data-execution_count="7">
+<div id="c6ba8013" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span>   <span class="co"># Hide</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>munic <span class="op">=</span> <span class="fu">gmtread</span>(GMT.TESTSDIR <span class="op">*</span> <span class="st">"COL_adm2.shp.zip"</span>);     <span class="co"># Hide</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>mun_antioquia <span class="op">=</span> <span class="fu">filter</span>(munic, NAME_1<span class="op">=:</span>Antioquia);       <span class="co"># Hide</span></span>

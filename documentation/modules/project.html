@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -464,6 +465,7 @@ window.Quarto = {
   <li><a href="#required-arguments" id="toc-required-arguments" class="nav-link" data-scroll-target="#required-arguments">Required Arguments</a></li>
   <li><a href="#optional-arguments" id="toc-optional-arguments" class="nav-link" data-scroll-target="#optional-arguments">Optional Arguments</a></li>
   <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
   <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
   </ul>
 </nav>
@@ -508,7 +510,7 @@ window.Quarto = {
 <p>Flat Earth (Cartesian) coordinate transformations can also be made. Set <strong>flat_earth</strong> and remember that <em>azimuth</em> is clockwise from North (the <span class="math inline">\(y\)</span> axis), NOT the usual cartesian theta, which is counterclockwise from the <span class="math inline">\(x\)</span> axis. (i.e., <span class="math inline">\(azimuth = 90 - theta\)</span>).</p>
 <p>No assumptions are made regarding the units for <span class="math inline">\(x, y, r, s, p, q\)</span>, <em>dist</em>, <span class="math inline">\(l_{min}, l_{max}, w_{min}, w_{max}\)</span>. However, if <strong>km</strong> is selected, map units are assumed and <span class="math inline">\(x, y, r, s\)</span>, must be in degrees and <span class="math inline">\(p, q\)</span>, <em>dist</em>, <span class="math inline">\(l_{min}, l_{max}, w_{min}, w_{max}\)</span> will be in km.</p>
 <p>Calculations of specific great-circle and geodesic distances or for back-azimuths or azimuths are better done using <a href="../..\documentation/modules/mapproject.html">mapproject</a> as <strong>project</strong> is strictly spherical.</p>
-<div id="e4fac19f" class="cell" data-execution_count="1">
+<div id="4ab37221" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="fu">atand</span>(<span class="fl">4</span> <span class="op">/</span> <span class="fl">2.5</span>)</span>
@@ -625,7 +627,7 @@ Swap 1st and 2nd column on input and/or output. <a href="https://docs.generic-ma
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <p>To project the remote data sets ship_03.txt (lon,lat,depth) onto a great circle specified by the two points (330,-18) and (53,21) and sort the records on the projected distances along that circle and only output the distance and the depths, try</p>
-<div id="0229d671" class="cell" data-execution_count="2">
+<div id="3c359afa" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">project</span>(<span class="st">"@ship_03.txt"</span>, origin<span class="op">=</span>(<span class="fl">330</span>,<span class="op">-</span><span class="fl">18</span>), pole<span class="op">=</span>(<span class="fl">53</span>,<span class="fl">21</span>), sort<span class="op">=</span><span class="cn">true</span>, outvars<span class="op">=:</span>pz, km<span class="op">=</span><span class="cn">true</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">imshow</span>(D)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -638,7 +640,7 @@ Swap 1st and 2nd column on input and/or output. <a href="https://docs.generic-ma
 </div>
 </div>
 <p>To generate points every 10 km along a great circle from 10N,50W to 30N,10W:</p>
-<div id="2f686755" class="cell" data-execution_count="3">
+<div id="81827208" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>Dgc <span class="op">=</span> <span class="fu">project</span>(origin<span class="op">=</span>(<span class="op">-</span><span class="fl">50</span>,<span class="fl">10</span>), endpoint<span class="op">=</span>(<span class="op">-</span><span class="fl">10</span>,<span class="fl">30</span>), step<span class="op">=</span><span class="fl">10</span>, km<span class="op">=</span><span class="cn">true</span>)</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">imshow</span>(Dgc, marker<span class="op">=:</span>point, lw<span class="op">=</span><span class="fl">0.5</span>, coast<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -655,7 +657,7 @@ Swap 1st and 2nd column on input and/or output. <a href="https://docs.generic-ma
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">project</span>(origin<span class="op">=</span>(<span class="st">"10W"</span>,<span class="st">"30N"</span>), azim<span class="op">=</span><span class="fl">30</span>, step<span class="op">=</span><span class="fl">1</span>, length<span class="op">=</span>(<span class="op">-</span><span class="fl">180</span>,<span class="fl">180</span>))</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">imshow</span>(D, coast<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>To generate points every 10 km along a small circle of colatitude 60 from 10N,50W to 30N,10W:</p>
-<div id="6dea0a8f" class="cell" data-execution_count="4">
+<div id="67a2edf7" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>Dsc <span class="op">=</span> <span class="fu">project</span>(origin<span class="op">=</span>(<span class="op">-</span><span class="fl">50</span>,<span class="fl">10</span>), endpoint<span class="op">=</span>(<span class="op">-</span><span class="fl">10</span>,<span class="fl">30</span>), step<span class="op">=</span>(<span class="fl">10</span>,<span class="fl">60</span>), km<span class="op">=</span><span class="cn">true</span>)</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">imshow</span>(Dsc, marker<span class="op">=:</span>point, lw<span class="op">=</span><span class="fl">0.5</span>, coast<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -670,7 +672,7 @@ Swap 1st and 2nd column on input and/or output. <a href="https://docs.generic-ma
 <p>To create a partial small circle of colatitude 80 about a pole at 40E,85N, with extent of 45 degrees to either side of the meridian defined by the great circle from the pole to a point 15E,15N, try</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>    D <span class="op">=</span> <span class="fu">project</span>(origin<span class="op">=</span>(<span class="fl">15</span>,<span class="fl">15</span>), pole<span class="op">=</span>(<span class="fl">40</span>,<span class="fl">85</span>), step<span class="op">=</span>(<span class="fl">1</span>,<span class="fl">80</span>), <span class="fu">length</span>(<span class="op">-</span><span class="fl">45</span>,<span class="fl">45</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>To generate points approximately every 10 km along an ellipse centered on (30W,70N) with major axis of 1500 km with azimuth of 30 degree and a minor axis of 600 km, try</p>
-<div id="4fbb83cc" class="cell" data-execution_count="5">
+<div id="87561df4" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>Dellip <span class="op">=</span> <span class="fu">project</span>(origin<span class="op">=</span>(<span class="op">-</span><span class="fl">30</span>,<span class="fl">70</span>), step<span class="op">=</span><span class="fl">10</span>, ellipse<span class="op">=</span><span class="st">"1500/600/30+e"</span>, km<span class="op">=</span><span class="cn">true</span>)</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">imshow</span>(Dellip, coast<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -696,6 +698,16 @@ Swap 1st and 2nd column on input and/or output. <a href="https://docs.generic-ma
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    Gflow <span class="op">=</span> <span class="fu">xyz2grd</span>(region<span class="op">=</span>etc, inc<span class="op">=</span>etc);</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>then <code>Gflow</code> is a grid in the same area as pacific_topo.nc, but flow contains the latitudes about the pole of the projection. You now can use <a href="../..\documentation/modules/grdcontour.html">grdcontour</a> on <code>Gflow</code> to draw lines of constant oblique latitude, which are flow lines in the hotspot frame.</p>
 <p>If you have an arbitrarily rotation pole <em>px,py</em> and you would like to draw an oblique small circle on a map, you will first need to make a file with the oblique coordinates for the small circle (i.e., lon = 0-360, lat is constant), then create a file with two records: the north pole (0/90) and the origin (0/0), and find what their oblique coordinates are using your rotation pole. Now, use the projected North pole and origin coordinates as the rotation pole and center, respectively, and project your file as in the pacific example above. This gives coordinates for an oblique small circle.</p>
+</section>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>This function has multiple methods:</p>
+<ul>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/project.jl#L66"><code>project(cmd0::String; ...)</code></a> - project.jl:66</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/project.jl#L66"><code>project(; ...)</code></a> - project.jl:66</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/project.jl#L80"><code>project(arg1; kw...)</code></a> - project.jl:80</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/project.jl#L66"><code>project(cmd0::String, arg1; kwargs...)</code></a> - project.jl:66</li>
+</ul>
 </section>
 <section id="see-also" class="level2">
 <h2 class="anchored" data-anchor-id="see-also">See Also</h2>

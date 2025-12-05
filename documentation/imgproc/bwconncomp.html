@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -436,6 +437,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#keyword-arguments" id="toc-keyword-arguments" class="nav-link" data-scroll-target="#keyword-arguments">Keyword Arguments</a></li>
   <li><a href="#returns" id="toc-returns" class="nav-link" data-scroll-target="#returns">Returns</a></li>
   <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
   <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
   </ul>
 </nav>
@@ -583,7 +585,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <section id="find-connected-components-in-binary-image" class="level3">
 <h3 class="anchored" data-anchor-id="find-connected-components-in-binary-image">Find Connected Components in Binary Image</h3>
-<div id="ae4cdff6" class="cell" data-execution_count="1">
+<div id="95f91505" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a binary image</span></span>
@@ -606,7 +608,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="specify-connectivity" class="level3">
 <h3 class="anchored" data-anchor-id="specify-connectivity">Specify Connectivity</h3>
 <p>Find connected components using 4-connectivity instead of the default 8-connectivity:</p>
-<div id="9341cf59" class="cell" data-execution_count="2">
+<div id="60508b7a" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>BW <span class="op">=</span> [<span class="fl">1</span> <span class="fl">1</span> <span class="fl">0</span> <span class="fl">0</span> <span class="fl">0</span> <span class="fl">0</span> <span class="fl">0</span> <span class="fl">0</span></span>
@@ -632,7 +634,7 @@ Number of components (8-conn): 2</code></pre>
 <section id="extract-properties-of-connected-components" class="level3">
 <h3 class="anchored" data-anchor-id="extract-properties-of-connected-components">Extract Properties of Connected Components</h3>
 <p>Use the output structure to analyze individual components:</p>
-<div id="b6afd269" class="cell" data-execution_count="3">
+<div id="b21072f0" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>BW <span class="op">=</span> [<span class="fl">1</span> <span class="fl">1</span> <span class="fl">0</span> <span class="fl">0</span> <span class="fl">0</span> <span class="fl">0</span> <span class="fl">0</span> <span class="fl">0</span></span>
@@ -657,6 +659,17 @@ Largest component is #2 with 8 pixels</code></pre>
 </div>
 </div>
 </section>
+</section>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>This function has multiple methods:</p>
+<ul>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/lepto_funs.jl#L1214"><code>bwconncomp(G::GMTgrid{Bool, 2}; conn)</code></a> - lepto_funs.jl:1214</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/lepto_funs.jl#L1211"><code>bwconncomp(mat::BitMatrix; conn)</code></a> - lepto_funs.jl:1211</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/lepto_funs.jl#L1215"><code>bwconncomp(I::GMTimage; conn)</code></a> - lepto_funs.jl:1215</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/lepto_funs.jl#L1212"><code>bwconncomp(mat::Matrix{&lt;:Bool}; conn)</code></a> - lepto_funs.jl:1212</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/lepto_funs.jl#L1213"><code>bwconncomp(mat::Matrix{&lt;:Integer}; conn)</code></a> - lepto_funs.jl:1213</li>
+</ul>
 </section>
 <section id="see-also" class="level2">
 <h2 class="anchored" data-anchor-id="see-also">See Also</h2>

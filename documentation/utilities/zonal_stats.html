@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -426,8 +427,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#source-code" id="toc-source-code" class="nav-link active" data-scroll-target="#source-code">Source Code</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -475,7 +482,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="examples" class="level3">
 <h3 class="anchored" data-anchor-id="examples">Examples</h3>
 <p>What is the mean altitude of Swisserland?</p>
-<div id="e7c682ab" class="cell" data-execution_count="1">
+<div id="0bf0e997" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">gmtread</span>(<span class="st">"@earth_relief_06m"</span>);</span>
@@ -497,7 +504,7 @@ Stacktrace:
 </div>
 </div>
 <p>In the example above we used the <code>minpts</code> option in order to drop the two small polygons tha are also in the DCW database but that is not always feasable as for example when we select more that one country. For those cases we want to use the <code>groupby</code> option that creates groups of polygons sharing the same attribute (“NAME”). Next example does that for France and Italy.</p>
-<div id="6b59f210" class="cell" data-execution_count="2">
+<div id="b44d5d0f" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">gmtread</span>(<span class="st">"@earth_relief_06m"</span>);</span>
@@ -521,6 +528,14 @@ Stacktrace:
 </div>
 </div>
 <p>The <em>Ph Italy</em> means that Italy has an island inside it. The Vatican city.</p>
+</section>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>This function has multiple methods:</p>
+<ul>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/rasterpolygonfuns.jl#L192"><code>zonal_statistics(GI::GItype, shapes::GDtype, fun::Function; touches, byfeatures, groupby)</code></a> - rasterpolygonfuns.jl:192</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/rasterpolygonfuns.jl#L190"><code>zonal_statistics(fun::Function, GI::GItype, shapes::GDtype; touches, byfeatures, groupby)</code></a> - rasterpolygonfuns.jl:190</li>
+</ul>
 
 
 </section>

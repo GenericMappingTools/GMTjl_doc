@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../../">
+<link href="../../../assets/GMTjl_logo.png" rel="icon" type="image/png">
 <script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -453,14 +454,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="example-on-how-to-decompose-and-filter-a-synthetic-time-series-with-fourier-analysis." class="level3">
 <h3 class="anchored" data-anchor-id="example-on-how-to-decompose-and-filter-a-synthetic-time-series-with-fourier-analysis.">Example on how to decompose and filter a synthetic time series with Fourier analysis.</h3>
-<div id="26b771ef" class="cell" data-execution_count="1">
+<div id="21dd5539" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">func</span>(x) <span class="op">=</span> <span class="fu">sin</span>(x) <span class="op">+</span> <span class="fl">1</span><span class="op">/</span><span class="fl">3</span><span class="fu">*sin</span>(<span class="fl">3</span>x) <span class="op">+</span> <span class="fl">1</span><span class="op">/</span><span class="fl">5</span><span class="fu">*sin</span>(<span class="fl">5</span>x) <span class="op">+</span> <span class="fl">1</span><span class="op">/</span><span class="fl">7</span><span class="fu">*sin</span>(<span class="fl">7</span>x);</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="fl">0</span><span class="op">:</span><span class="fl">0.01</span><span class="op">:</span><span class="fl">4</span>pi;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Evaluate <code>func</code> at <code>x</code> and plot its value.</p>
-<div id="e875083c" class="cell" data-execution_count="2">
+<div id="ee1ff1b2" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="fu">func</span>.(x);</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">viz</span>(x,y, figsize<span class="op">=</span>(<span class="fl">14</span>,<span class="fl">3</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -471,7 +472,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="95ac4650" class="cell" data-execution_count="3">
+<div id="1d25bf81" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>Fs <span class="op">=</span> <span class="fl">50000</span>;     <span class="co"># Sampling frequency</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>T <span class="op">=</span> <span class="fl">1</span><span class="op">/</span>Fs;       <span class="co"># Sampling period</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>L <span class="op">=</span> <span class="fl">10000</span>;      <span class="co"># Length of signal</span></span>
@@ -487,7 +488,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="generate-three-sine-waves-with-different-frequencies-and-amplitudes." class="level3">
 <h3 class="anchored" data-anchor-id="generate-three-sine-waves-with-different-frequencies-and-amplitudes.">Generate three sine waves with different frequencies and amplitudes.</h3>
-<div id="d7d20e94" class="cell" data-execution_count="4">
+<div id="9f6ccb09" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span>, <span class="bu">FFTW</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>sig1 <span class="op">=</span> <span class="fu">A1*sin</span>.(<span class="fl">2</span><span class="op">*</span><span class="cn">pi</span><span class="op">*</span>f1<span class="op">*</span>t);</span>
@@ -505,7 +506,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Add the three signals together and plot the result.</p>
-<div id="74ed3684" class="cell" data-execution_count="5">
+<div id="ff0b18b6" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>final<span class="op">=</span> sig1 <span class="op">.+</span> sig2 <span class="op">.+</span> sig3;    <span class="co"># Add the three signals together</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(t, final, xlabel<span class="op">=</span><span class="st">"Time [s]"</span>, ylabel<span class="op">=</span><span class="st">"Amplitude"</span>, figsize<span class="op">=</span>(<span class="fl">14</span>,<span class="fl">6</span>), show<span class="op">=</span><span class="fl">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -517,7 +518,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Decompose the 3 added components into its constituent frequencies.</p>
-<div id="74cfb82d" class="cell" data-execution_count="6">
+<div id="355a9c23" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute the signal's spectra using FFT</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>Y <span class="op">=</span> <span class="fu">fft</span>(final);</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -549,7 +550,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print frequencies of the first 3 peaks.</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>f[[<span class="fl">11</span>,<span class="fl">81</span>,<span class="fl">161</span>]]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Let’s now see how we can use the FFT transformed signal to filter some of the frequencies. First we remove only the highest frequency. Since that highest frequency is at position after <code>81</code> of the FFT transformed signal, we can simply remove it by setting to zero all elements &gt; 100.</p>
-<div id="cb5d9a4e" class="cell" data-execution_count="7">
+<div id="e9ad2369" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>Yfilt <span class="op">=</span> <span class="fu">copy</span>(Y);</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>Yfilt[<span class="fl">100</span><span class="op">:</span><span class="kw">end</span>] <span class="op">.=</span> <span class="fl">0</span>;</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>inv <span class="op">=</span> <span class="fu">ifft</span>(Yfilt);</span>
@@ -563,7 +564,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>And if we want to retain only the lowest frequency component, we remove everything above 11’th element</p>
-<div id="6dfe839c" class="cell" data-execution_count="8">
+<div id="1fb9dfa6" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>Yfilt <span class="op">=</span> <span class="fu">copy</span>(Y);</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>Yfilt[<span class="fl">20</span><span class="op">:</span><span class="kw">end</span>] <span class="op">.=</span> <span class="fl">0</span>;</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>inv <span class="op">=</span> <span class="fu">ifft</span>(Yfilt);</span>
