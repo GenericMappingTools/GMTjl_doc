@@ -432,34 +432,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#example" id="toc-example" class="nav-link active" data-scroll-target="#example">Example</a></li>
+  <li><a href="#grid2tri" id="toc-grid2tri" class="nav-link active" data-scroll-target="#grid2tri">grid2tri</a>
+  <ul class="collapse">
+  <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example">Example</a></li>
   <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
-  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">grid2tri</h1>
-</div>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
 
 
-<div class="quarto-title-meta">
 
-    
-  
-    
-  </div>
-  
-
-
-</header>
-
-
+<section id="grid2tri" class="level1">
+<h1>grid2tri</h1>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">grid2tri</span>(G, G2<span class="op">=</span><span class="cn">nothing</span>; bottom<span class="op">=</span><span class="cn">false</span>, downsample<span class="op">=</span><span class="fl">0</span>, isbase<span class="op">=</span><span class="cn">false</span>, ratio<span class="op">=</span><span class="fl">0.01</span>,</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>             thickness<span class="op">=</span><span class="fl">0.0</span>, wall_only<span class="op">=</span><span class="cn">false</span>, top_only<span class="op">=</span><span class="cn">false</span>, geog<span class="op">=</span><span class="cn">false</span>)<span class="op">::</span><span class="dt">GMTfv</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Triangulate the surface defined by the grid <code>G</code>, and optionally the bottom surface <code>G2</code>.</p>
@@ -493,11 +481,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="example" class="level2">
 <h2 class="anchored" data-anchor-id="example">Example</h2>
 <p>A 3D view of the subduction in Central America.</p>
-<div id="80a1e44b" class="cell" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the depth of these three cities</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>Gm, Gt, SJ <span class="op">=</span> <span class="fu">grdtrack</span>(<span class="st">"cam_slab2_dep_02.24.18.grd"</span>, [<span class="fl">260.862</span> <span class="fl">19.4326</span>; <span class="fl">269.492</span> <span class="fl">14.64</span>; <span class="fl">275.925</span> <span class="fl">9.908</span>], f<span class="op">=:</span>g).data[<span class="op">:</span>,<span class="fl">3</span>]</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>Gm, Gt, SJ <span class="op">=</span> <span class="fu">grdtrack</span>(TESTSDIR <span class="op">*</span> <span class="st">"assets/cam_slab2_dep_02.24.18.grd"</span>, [<span class="fl">260.862</span> <span class="fl">19.4326</span>; <span class="fl">269.492</span> <span class="fl">14.64</span>; <span class="fl">275.925</span> <span class="fl">9.908</span>], f<span class="op">=:</span>g).data[<span class="op">:</span>,<span class="fl">3</span>]</span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Create cylinder markers</span></span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>FV_Mx <span class="op">=</span> <span class="fu">cylinder</span>(<span class="fl">0.2</span>, <span class="fl">140</span>, np<span class="op">=</span><span class="fl">18</span>, center<span class="op">=</span>(<span class="fl">260.862</span>, <span class="fl">19.4326</span>, Gm));</span>
@@ -505,57 +492,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>FV_SJ <span class="op">=</span> <span class="fu">cylinder</span>(<span class="fl">0.2</span>, <span class="op">-</span>SJ, np<span class="op">=</span><span class="fl">18</span>, center<span class="op">=</span>(<span class="fl">275.925</span>, <span class="fl">9.908</span>, SJ));</span>
 <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert the subduction slab grids into a triangular mesh</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">grid2tri</span>(<span class="st">"cam_slab2_dep_02.24.18.grd"</span>, <span class="st">"cam_slab2_thk_02.24.18.grd"</span>, geog<span class="op">=</span><span class="cn">true</span>);</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">grid2tri</span>(TESTSDIR <span class="op">*</span> <span class="st">"assets/cam_slab2_dep_02.24.18.grd"</span>, <span class="st">"cam_slab2_thk_02.24.18.grd"</span>, geog<span class="op">=</span><span class="cn">true</span>);</span>
 <span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="fu">plot3</span>(D, p<span class="op">=</span>(<span class="fl">70</span>,<span class="fl">30</span>), zlabel<span class="op">=</span><span class="st">"Depth (km)"</span>, title<span class="op">=</span><span class="st">"Subduction in Central America"</span>, frame<span class="op">=:</span>autoXYZg)</span>
 <span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="fu">colorbar!</span>(pos<span class="op">=</span>(justify<span class="op">=:</span>TR, horizontal<span class="op">=</span><span class="cn">true</span>, offset<span class="op">=</span>(<span class="fl">1</span>,<span class="op">-</span><span class="fl">2</span>)),)</span>
 <span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the coastlines drapped on the subducting slab</span></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="fu">plot3!</span>(<span class="fu">coast</span>(region<span class="op">=</span>D, dump<span class="op">=</span><span class="cn">true</span>, Z<span class="op">=</span><span class="st">"cam_slab2_dep_02.24.18.grd"</span>), f<span class="op">=:</span>g)</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="fu">plot3!</span>(<span class="fu">coast</span>(region<span class="op">=</span>D, dump<span class="op">=</span><span class="cn">true</span>, Z<span class="op">=</span>TESTSDIR <span class="op">*</span> <span class="st">"assets/cam_slab2_dep_02.24.18.grd"</span>), f<span class="op">=:</span>g)</span>
 <span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="fu">plot3!</span>(FV_Mx);  <span class="fu">plot3!</span>(FV_SJ);  <span class="fu">plot3!</span>(FV_Gt)</span>
 <span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="fu">text!</span>(<span class="fu">mat2ds</span>([<span class="fl">260.862</span> <span class="fl">19.4326</span> <span class="fl">10</span>; <span class="fl">275.925</span> <span class="fl">9.908</span> <span class="fl">10</span>; <span class="fl">269.492</span> <span class="fl">14.64</span> <span class="fl">10</span>],</span>
 <span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>             [<span class="st">"Mexico City"</span>, <span class="st">"San José"</span>, <span class="st">"Guatemala"</span>]),</span>
 <span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>             f<span class="op">=:</span>g, font<span class="op">=</span><span class="fl">14</span>, angle<span class="op">=</span><span class="fl">110</span>, noclip<span class="op">=</span><span class="cn">true</span>, outline<span class="op">=</span><span class="cn">true</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>grdtrack [ERROR]: Cannot find file cam_slab2_dep_02.24.18.grd
-grdtrack [ERROR]: Must specify -G at least once</code></pre>
-</div>
-<div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre>Something went wrong when calling the module. GMT error number = 72
-
-Stacktrace:
- [1] <span class="ansi-bold">error</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">s</span>::String<span class="ansi-bold">)</span>
-<span class="ansi-bright-black-fg">   @</span> <span class="ansi-bright-black-fg">Base</span> <span class="ansi-bright-black-fg">.\</span><span style="text-decoration:underline" class="ansi-bright-black-fg">error.jl:35</span>
- [2] <span class="ansi-bold">gmt</span><span class="ansi-bold">(</span>::String, ::Matrix<span class="ansi-bright-black-fg">{Float64}</span>, ::Vararg<span class="ansi-bright-black-fg">{Any}</span><span class="ansi-bold">)</span>
-<span class="ansi-bright-black-fg">   @</span> <span class="ansi-magenta-fg">GMT</span> <span class="ansi-bright-black-fg">C:\Users\j\.julia\dev\GMT\src\</span><span style="text-decoration:underline" class="ansi-bright-black-fg">gmt_main.jl:166</span>
- [3] <span class="ansi-bold">common_grd</span><span class="ansi-bold">(</span>::Dict<span class="ansi-bright-black-fg">{Symbol, Any}</span>, ::String, ::Matrix<span class="ansi-bright-black-fg">{Float64}</span>, ::Nothing<span class="ansi-bold">)</span>
-<span class="ansi-bright-black-fg">   @</span> <span class="ansi-magenta-fg">GMT</span> <span class="ansi-bright-black-fg">C:\Users\j\.julia\dev\GMT\src\</span><span style="text-decoration:underline" class="ansi-bright-black-fg">common_options.jl:4094</span>
- [4] <span class="ansi-bold">grdtrack</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">cmd0</span>::String, <span class="ansi-bright-black-fg">arg1</span>::Matrix<span class="ansi-bright-black-fg">{Float64}</span>, <span class="ansi-bright-black-fg">arg2</span>::Nothing; <span class="ansi-bright-black-fg">kwargs</span>::@Kwargs<span class="ansi-bright-black-fg">{f::Symbol}</span><span class="ansi-bold">)</span>
-<span class="ansi-bright-black-fg">   @</span> <span class="ansi-magenta-fg">GMT</span> <span class="ansi-bright-black-fg">C:\Users\j\.julia\dev\GMT\src\</span><span style="text-decoration:underline" class="ansi-bright-black-fg">grdtrack.jl:52</span>
- [5] <span class="ansi-bold">grdtrack</span>
-<span class="ansi-bright-black-fg">   @</span> <span class="ansi-bright-black-fg">C:\Users\j\.julia\dev\GMT\src\</span><span style="text-decoration:underline" class="ansi-bright-black-fg">grdtrack.jl:12</span><span class="ansi-bright-black-fg"> [inlined]</span>
- [6] top-level scope
-<span class="ansi-bright-black-fg">   @</span> <span style="text-decoration:underline" class="ansi-bright-black-fg">In[2]:4</span></pre>
-</div>
-</div>
-</div>
 <p><img src="../..\assets/subduction.png" class="center img-fluid" width="1000"></p>
 </section>
 <section id="see-also" class="level2">
 <h2 class="anchored" data-anchor-id="see-also">See Also</h2>
 <p><a href="../..\documentation/utilities/extrude.html">extrude</a>, <a href="../..\documentation/utilities/flatfv.html">flatfv</a>, <a href="../..\documentation/utilities/fv2fv.html">fv2fv</a>, <a href="../..\documentation/utilities/loft.html">loft</a>, <a href="../..\documentation/utilities/revolve.html">revolve</a>, <a href="../..\documentation/utilities/surf2fv.html">surf2fv</a></p>
+
+
 </section>
-<section id="source-code" class="level2">
-<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
-<p>This function has multiple methods:</p>
-<ul>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/triangulate.jl#L254"><code>grid2tri(G::Union{String, GMTgrid}, G2; thickness, isbase, downsample, ratio, bottom, wall_only, top_only, geog)</code></a> - triangulate.jl:254</li>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/triangulate.jl#L254"><code>grid2tri(G::Union{String, GMTgrid}; ...)</code></a> - triangulate.jl:254</li>
-</ul>
-
-
 </section>
 
 </main> <!-- /main -->
