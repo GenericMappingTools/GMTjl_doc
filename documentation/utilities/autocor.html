@@ -135,6 +135,10 @@ ul.task-list li input[type="checkbox"] {
  <span class="dropdown-text">Common Features</span></a>
   </li>  
         <li>
+    <a class="dropdown-item" href="../../documentation/common_opts/common_opts.html">
+ <span class="dropdown-text">Common Options</span></a>
+  </li>  
+        <li>
     <a class="dropdown-item" href="../../documentation/alphabetical.html">
  <span class="dropdown-text">Alphabetical List</span></a>
   </li>  
@@ -428,7 +432,22 @@ ul.task-list li input[type="checkbox"] {
 <p>Compute the autocorrelation function (ACF) of a vector or matrix <code>x</code>, optionally specifying the <code>lags</code>. <code>demean</code> denotes whether the mean of <code>x</code> should be subtracted from <code>x</code> before computing the ACF.</p>
 <p>If <code>x</code> is a vector, return a vector of the same length as <code>lags</code>. If <code>x</code> is a matrix, return a matrix of size <code>(length(lags), size(x,2))</code>, where each column in the result corresponds to a column in <code>x</code>.</p>
 <p>When left unspecified, the lags used are the integers from 0 to <code>min(size(x,1)-1, 10*log10(size(x,1)))</code>.</p>
-<p>The output is normalized by the variance of <code>x</code>, i.e.&nbsp;so that the lag 0 autocorrelation is 1. See <a href="../..\documentation/modules/autocov.html">autocov</a> for the unnormalized form.</p>
+<p>The output is normalized by the variance of <code>x</code>, i.e.&nbsp;so that the lag 0 autocorrelation is 1. See <a href="../..\documentation/utilities/autocov.html">autocov</a> for the unnormalized form.</p>
+<section id="examples-using-autocor" class="level3">
+<h3 class="anchored" data-anchor-id="examples-using-autocor">Examples using autocor</h3>
+<div class="grid">
+<div class="g-col-6 g-col-lg-2">
+<div class="card h-100">
+<p><a href="../..\tutorials/signal/autocorr_periodic/autocorr_periodic.html">Autocorr and periods I</a> <a href="../..\tutorials/signal/autocorr_periodic/autocorr_periodic.html"><img src="../..\tutorials/signal/autocorr_periodic/tilelogo.png" class="card-img-top img-fluid"></a></p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4 g-col-lg-3">
+<div class="card h-100">
+<p><a href="../..\tutorials/signal/autocorr_chloro/autocorr_chloro.html">Autocorr and periods II</a> <a href="../..\tutorials/signal/autocorr_chloro/autocorr_chloro.html"><img src="../..\tutorials/signal/autocorr_chloro/tilelogo.png" class="card-img-top img-fluid"></a></p>
+</div>
+</div>
+</div>
+</section>
 <section id="source-code" class="level2">
 <h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
 <p>This function has multiple methods:</p>
@@ -440,7 +459,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="see-also" class="level2">
 <h2 class="anchored" data-anchor-id="see-also">See Also</h2>
-<p><a href="../..\documentation/modules/autocov.html">autocov</a></p>
+<p><a href="../..\documentation/utilities/autocov.html">autocov</a></p>
 <p><a href="../alphabetical.html">Alphabetical Function List</a></p>
 
 
