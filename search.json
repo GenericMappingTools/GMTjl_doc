@@ -2349,7 +2349,7 @@
     "href": "documentation/utilities/Gouterjoin.html",
     "title": "Gouterjoin",
     "section": "",
-    "text": "Category: Utilities\nDocumentation for the Gouterjoin function."
+    "text": "Documentation for the Gouterjoin function."
   },
   {
     "objectID": "documentation/utilities/Gouterjoin.html#source-code",
@@ -2363,7 +2363,7 @@
     "href": "documentation/utilities/Gouterjoin.html#see-also",
     "title": "Gouterjoin",
     "section": "See Also",
-    "text": "See Also\n\nAlphabetical Function List\nGMT.jl Documentation"
+    "text": "See Also\nAlphabetical Function List"
   },
   {
     "objectID": "documentation/utilities/Ginnerjoin.html",
@@ -2594,7 +2594,7 @@
     "href": "documentation/utilities/autocor.html#see-also",
     "title": "autocor",
     "section": "See Also",
-    "text": "See Also\n\nAlphabetical Function List\nGMT.jl Documentation"
+    "text": "See Also\nautocov\nAlphabetical Function List"
   },
   {
     "objectID": "documentation/utilities/xyzw2cube.html",
@@ -3560,14 +3560,7 @@
     "href": "documentation/utilities/gmtread.html#examples",
     "title": "gmtread",
     "section": "Examples",
-    "text": "Examples\nTo read a nc called ‘lixo.grd’\nG = gmtread(\"lixo.grd\");\nto read a jpg image with the bands reversed\nI = gmtread(\"image.jpg\", band=[2,1,0]);\nto read a zip comtressed shape file\nI = gmtread(\"fileshapes.zip.shp\");\nto read remote dataset at 3 arc sec resolution with the region given in UTM and projection conversion\nG = gmtread(\"@earth_relief_03s\", R=[420000, 470000, 4510000, 4535000], J=\"+proj=utm +zone=33\", convert=true);"
-  },
-  {
-    "objectID": "documentation/utilities/gmtread.html#see-also",
-    "href": "documentation/utilities/gmtread.html#see-also",
-    "title": "gmtread",
-    "section": "See Also",
-    "text": "See Also\ngmtwrite, gdalread"
+    "text": "Examples\nTo read a nc called ‘lixo.grd’\nG = gmtread(\"lixo.grd\");\nto read a jpg image with the bands reversed\nI = gmtread(\"image.jpg\", band=[2,1,0]);\nto read a zip comtressed shape file\nD = gmtread(\"fileshapes.zip.shp\");\nto read remote dataset at 3 arc sec resolution with the region given in UTM and projection conversion\nG = gmtread(\"@earth_relief_03s\", R=[420000, 470000, 4510000, 4535000], J=\"+proj=utm +zone=33\", convert=true);"
   },
   {
     "objectID": "documentation/utilities/gmtread.html#source-code",
@@ -3575,6 +3568,13 @@
     "title": "gmtread",
     "section": "Source Code",
     "text": "Source Code\nView the source code for this function."
+  },
+  {
+    "objectID": "documentation/utilities/gmtread.html#see-also",
+    "href": "documentation/utilities/gmtread.html#see-also",
+    "title": "gmtread",
+    "section": "See Also",
+    "text": "See Also\ngmtwrite, gdalread\nAlphabetical Function List"
   },
   {
     "objectID": "documentation/utilities/geodetic2enu.html",
@@ -4995,7 +4995,7 @@
     "href": "documentation/modules/makecpt.html#examples",
     "title": "makecpt",
     "section": "Examples",
-    "text": "Examples\nTo make a CPT with z-values from -200 to 200, with discrete color changes every 25, and using a polar blue-white-red colortable:\n\nusing GMT\n\nC = makecpt(cmap=:polar, range=(-200,200,25))\nimshow(C, horizontal=true)\n\n\n\n\n\n\n\n\nTo make an equidistant CPT from z = -2 to 6 using the continuous default turbo rainbow of colors:\n    C = makecpt(range=(2,6))\nTo use the GEBCO look-alike CPT with its default range for bathymetry and save the file on disk, run\n    makecpt(cmap=:gebco, write=\"my_gebco.cpt\")\nor simply use gebco directly in the application that needs the color table. To create a 24-level color table suitable for plotting the depths in the remote data table v3206_06.txt (with lon, lat, depths), run\n\nC = makecpt(\"@v3206_06.txt\", cmap=:gebco, nlevels=24)\nimshow(C, horizontal=true)\n\n\n\n\n\n\n\n\nTo use the gebco color table but reverse the z-values so it can be used for positive depth values, try\n\nviz(makecpt(cmap=:gebco, reverse=:z), horizontal=true)\n\n\n\n\n\n\n\n\nTo make a custom discrete color table for depth of seismicity, using red color for hypocenters between 0 and 100 km, green for 100-300 km, and blue for deep (300-1000 km) earthquakes, use\n\nimshow(makecpt(cmap=(:red,:green,:blue), range=[0,100,300,1000], no_bg=true), horizontal=true)\n\n\n\n\n\n\n\n\nTo make a discrete CPT from white to blue as z goes from 3 to 10, try\n\nimshow(makecpt(cmap=\"white,blue\", range=(3,10)), horizontal=true)\n\n\n\n\n\n\n\n\nAnd to get a continuous CPT, use the option continuous=true.\n\nimshow(makecpt(cmap=\"white,blue\", range=(3,10), continuous=true), horizontal=true)\n\n\n\n\n\n\n\n\nTo make a wrapped (cyclic) CPT from the turbo table over the interval 0 to 500, i.e., the color will be wrapped every 500 z-units so that we always get a color regardless of the z value, try\n\nimshow(makecpt(cmap=:turbo, range=(0,500), wrap=:w), horizontal=true)\n\n\n\n\n\n\n\n\nTo show the turbo color table.\n\nimshow(:turbo, horizontal=true)\n\n\n\n\n\n\n\n\nTo make a categorical CPT with string keys instead of numerical lookup values, try:\n\nC = makecpt(cmap=:categorical, range=\"wood,water,gold\")\nimshow(C, B=:none, horizontal=true)\n\n\n\n\n\n\n\n\n\nSee more uses of cmaps\n\n\n\nColor maps \n\n\n\nBugs\nSince makecpt will also interpolate from any existing CPT you may have in your directory, you should not use one of the listed cpt names as an output filename; hence the my_gebco.cpt in the example. If you do create a CPT of such a name, e.g., rainbow.cpt, then makecpt will read that file first and not look for the master CPT in the shared GMT directory.\n\n\nSource Code\nThis function has multiple methods:\n\nmakecpt(cmd0::Symbol; kwargs...) - makecpt.jl:59\nmakecpt(cmd0::String; ...) - makecpt.jl:60\nmakecpt(cmd0::String, arg1; kwargs...) - makecpt.jl:60\nmakecpt(cmd0::String, arg1, d::Dict) - makecpt.jl:64\nmakecpt(G::GMTgrid; equalize, kw...) - makecpt.jl:92\nmakecpt(; ...) - makecpt.jl:60\nmakecpt(b, e, inc; kw...) - makecpt.jl:174\nmakecpt(b, e; ...) - makecpt.jl:174\nmakecpt(arg1; kw...) - makecpt.jl:173\n\n\n\nReferences\nCrameri, F., (2018). Scientific colour-maps. Zenodo. http://doi.org/10.5281/zenodo.1243862\nCrameri, F. (2018), Geodynamic diagnostics, scientific visualisation and StagLab 3.0, Geosci. Model Dev., 11, 2541-2562, doi:10.5194/gmd-11-2541-2018.\n\n\nSee Also\ngrd2cpt\nAlphabetical Function List"
+    "text": "Examples\nTo make a CPT with z-values from -200 to 200, with discrete color changes every 25, and using a polar blue-white-red colortable:\n\nusing GMT\n\nC = makecpt(cmap=:polar, range=(-200,200,25))\nimshow(C, horizontal=true)\n\n\n\n\n\n\n\n\nTo make an equidistant CPT from z = -2 to 6 using the continuous default turbo rainbow of colors:\n    C = makecpt(range=(2,6))\nTo use the GEBCO look-alike CPT with its default range for bathymetry and save the file on disk, run\n    makecpt(cmap=:gebco, write=\"my_gebco.cpt\")\nor simply use gebco directly in the application that needs the color table. To create a 24-level color table suitable for plotting the depths in the remote data table v3206_06.txt (with lon, lat, depths), run\n\nC = makecpt(\"@v3206_06.txt\", cmap=:gebco, nlevels=24)\nimshow(C, horizontal=true)\n\n\n\n\n\n\n\n\nTo use the gebco color table but reverse the z-values so it can be used for positive depth values, try\n\nviz(makecpt(cmap=:gebco, reverse=:z), horizontal=true)\n\n\n\n\n\n\n\n\nTo make a custom discrete color table for depth of seismicity, using red color for hypocenters between 0 and 100 km, green for 100-300 km, and blue for deep (300-1000 km) earthquakes, use\n\nimshow(makecpt(cmap=(:red,:green,:blue), range=[0,100,300,1000], no_bg=true), horizontal=true)\n\n\n\n\n\n\n\n\nTo make a discrete CPT from white to blue as z goes from 3 to 10, try\n\nimshow(makecpt(cmap=\"white,blue\", range=(3,10)), horizontal=true)\n\n\n\n\n\n\n\n\nAnd to get a continuous CPT, use the option continuous=true.\n\nimshow(makecpt(cmap=\"white,blue\", range=(3,10), continuous=true), horizontal=true)\n\n\n\n\n\n\n\n\nTo make a wrapped (cyclic) CPT from the turbo table over the interval 0 to 500, i.e., the color will be wrapped every 500 z-units so that we always get a color regardless of the z value, try\n\nimshow(makecpt(cmap=:turbo, range=(0,500), wrap=:w), horizontal=true)\n\n\n\n\n\n\n\n\nTo show the turbo color table.\n\nimshow(:turbo, horizontal=true)\n\n\n\n\n\n\n\n\nTo make a categorical CPT with string keys instead of numerical lookup values, try:\n\nC = makecpt(cmap=:categorical, range=\"wood,water,gold\")\nimshow(C, B=:none, horizontal=true)\n\n\n\n\n\n\n\n\n\nSee more uses of cmaps\n\n\n\nColor maps"
   },
   {
     "objectID": "documentation/modules/makecpt.html#bugs",
@@ -11148,7 +11148,7 @@
     "href": "documentation/utilities/anaglyph.html#source-code",
     "title": "anaglyph",
     "section": "Source Code",
-    "text": "Source Code\nThis function has multiple methods:\n\nimshow(arg1::Symbol; horizontal, kw...) - imshow.jl:235\nimshow(arg1::GMTcpt; horizontal, kw...) - imshow.jl:236\nimshow(arg1::GMT.Gdal.AbstractDataset; kw...) - imshow.jl:241\nimshow(x::AbstractVector{Float64}, f::String; kw...) - imshow.jl:270\nimshow(x::AbstractVector{Float64}, y::AbstractVector{Float64}, f::String; kw...) - imshow.jl:269\nimshow(x::AbstractVector{Float64}, f::Function; kw...) - imshow.jl:266\nimshow(x::AbstractVector{Float64}, y::AbstractVector{Float64}, f::Function; kw...) - imshow.jl:246\nimshow(f::Function, x::AbstractVector{Float64}, y::AbstractVector{Float64}; kw...) - imshow.jl:268\nimshow(f::Function, x::AbstractVector{Float64}; kw...) - imshow.jl:267\nimshow(arg1::GItype; kw...) - imshow.jl:124\nimshow(arg1; ...) - imshow.jl:36\nimshow(arg1, x::AbstractVector{Float64}; ...) - imshow.jl:36\nimshow(arg1, x::AbstractVector{Float64}, y::AbstractVector{Float64}; kw...) - imshow.jl:36"
+    "text": "Source Code\nThis function has multiple methods:\n\nanaglyph(fname::String; vscale, sscale, view3d, zsize, azim, dazim, cmap, kw...) - anaglyph.jl:41\nanaglyph(G::GMTgrid; vscale, sscale, view3d, zsize, azim, dazim, cmap) - anaglyph.jl:50"
   },
   {
     "objectID": "documentation/utilities/blendimg.html",
@@ -11470,7 +11470,7 @@
     "href": "documentation/utilities/gmtwrite.html#parameters",
     "title": "gmtwrite",
     "section": "Parameters",
-    "text": "Parameters\n\nbinary: Applyes only when saving a stl file. By default it is true. Use binary=false to save in ascii.\nid: Use an id code when not not saving a grid into a standard COARDS-compliant netCDF grid. This id is made up of two characters like ef to save in ESRI Arc/Info ASCII Grid Interchange format (ASCII float). See the full list of ids at grdconvert\nscale | offset: You may optionally ask to scale the data and then offset them with the specified amounts. These modifiers are particularly practical when storing the data as integers, by first removing an offset and then scaling down the values. The scale factor can also be applied when saving to stl (scales the z values).\nnan | novalue | invalid | missing: Lets you supply a value that represents an invalid grid entry, i.e., NaN.\ngdal: Boolean. Force the use of the GDAL library to write the grid (to be used only with grids).\ndriver: When saving in other than the netCDF format we must tell the GDAL library what is the wished format. That is done by specifying the driver name used by GDAL itself (e.g., “netCDF”, “GTiFF”, etc…).\ndatatype: When saving with GDAL we can specify the data type from “u8|u16|i16|u32|i32|float32” where ‘i’ and ‘u’ denote signed and unsigned integers respectively.\nR or region or limits : – limits=(xmin, xmax, ymin, ymax) | limits=(BB=(xmin, xmax, ymin, ymax),) | limits=(LLUR=(xmin, xmax, ymin, ymax),units=“unit”) | …more\nSpecify the region of interest. More at limits. For perspective view view, optionally add zmin,zmax. This option may be used to indicate the range used for the 3-D axes. You may ask for a larger w/e/s/n region to have more room between the image and the axes.\nV or verbose : – verbose=true | verbose=level\nSelect verbosity level. More at verbose\nbo or binary_out : – binary_out=??\nSelect native binary format for table output. More at\nf or colinfo : – colinfo=??\nSpecify the data types of input and/or output columns (time or geographical data). More at"
+    "text": "Parameters\n\nbinary: Applyes only when saving a stl file. By default it is true. Use binary=false to save in ascii.\nid: Use an id code when not not saving a grid into a standard COARDS-compliant netCDF grid. This id is made up of two characters like ef to save in ESRI Arc/Info ASCII Grid Interchange format (ASCII float). See the full list of ids at grdconvert.\nscale | offset: You may optionally ask to scale the data and then offset them with the specified amounts. These modifiers are particularly practical when storing the data as integers, by first removing an offset and then scaling down the values. The scale factor can also be applied when saving to stl (scales the z values).\nnan | novalue | invalid | missing: Lets you supply a value that represents an invalid grid entry, i.e., NaN.\ngdal: Boolean. Force the use of the GDAL library to write the grid (to be used only with grids).\ndriver: When saving in other than the netCDF format we must tell the GDAL library what is the wished format. That is done by specifying the driver name used by GDAL itself (e.g., “netCDF”, “GTiFF”, etc…).\ndatatype: When saving with GDAL we can specify the data type from “u8|u16|i16|u32|i32|float32” where ‘i’ and ‘u’ denote signed and unsigned integers respectively.\nR or region or limits : – limits=(xmin, xmax, ymin, ymax) | limits=(BB=(xmin, xmax, ymin, ymax),) | limits=(LLUR=(xmin, xmax, ymin, ymax),units=“unit”) | …more\nSpecify the region of interest. More at limits. For perspective view view, optionally add zmin,zmax. This option may be used to indicate the range used for the 3-D axes. You may ask for a larger w/e/s/n region to have more room between the image and the axes.\nV or verbose : – verbose=true | verbose=level\nSelect verbosity level. More at verbose\nbo or binary_out : – binary_out=??\nSelect native binary format for table output. More at\nf or colinfo : – colinfo=??\nSpecify the data types of input and/or output columns (time or geographical data). More at"
   },
   {
     "objectID": "documentation/utilities/gmtwrite.html#examples",
@@ -11480,18 +11480,18 @@
     "text": "Examples\nwrite the GMTgrid ‘G’ object into a netCDF file called ‘lixo.grd’\ngmtwrite(\"lixo.grd\", G)\nTo save the Norway country borders in shapefile format, do:\nNo = coast(DCW=:NO, dump=true);\ngmtwrite(\"Norway.shp\", No)"
   },
   {
-    "objectID": "documentation/utilities/gmtwrite.html#see-also",
-    "href": "documentation/utilities/gmtwrite.html#see-also",
-    "title": "gmtwrite",
-    "section": "See Also",
-    "text": "See Also\ngmtread, [gdalread]"
-  },
-  {
     "objectID": "documentation/utilities/gmtwrite.html#source-code",
     "href": "documentation/utilities/gmtwrite.html#source-code",
     "title": "gmtwrite",
     "section": "Source Code",
     "text": "Source Code\nThis function has multiple methods:\n\ngmtwrite(data; kwargs...) - gmtreadwrite.jl:569\ngmtwrite(fname::AbstractString, data; kwargs...) - gmtreadwrite.jl:570"
+  },
+  {
+    "objectID": "documentation/utilities/gmtwrite.html#see-also",
+    "href": "documentation/utilities/gmtwrite.html#see-also",
+    "title": "gmtwrite",
+    "section": "See Also",
+    "text": "See Also\ngmtread, gdalread\nAlphabetical Function List"
   },
   {
     "objectID": "documentation/utilities/grid2tri.html",
@@ -11596,14 +11596,7 @@
     "href": "documentation/utilities/imagesc.html#examples",
     "title": "imagesc",
     "section": "Examples",
-    "text": "Examples\nCreate a grayscale image out of the peaks function.\n\nusing GMT\n\nviz(imagesc(GMT.peaks()))"
-  },
-  {
-    "objectID": "documentation/utilities/imagesc.html#see-also",
-    "href": "documentation/utilities/imagesc.html#see-also",
-    "title": "imagesc",
-    "section": "See Also",
-    "text": "See Also\ngrdimage, grdview, rescale"
+    "text": "Examples\nCreate a grayscale image out of the peaks function.\n\nusing GMT\n\nviz(imagesc(peaks()))"
   },
   {
     "objectID": "documentation/utilities/imagesc.html#source-code",
@@ -11611,6 +11604,13 @@
     "title": "imagesc",
     "section": "Source Code",
     "text": "Source Code\nThis function has multiple methods:\n\nimagesc(I::GMTimage{&lt;:UInt16}; clim) - utils_types.jl:1531\nimagesc(mat::Union{GMTgrid, Matrix{&lt;:AbstractFloat}}; x, y, hdr, proj4, wkt, GI, clim, cmap, kw...) - utils_types.jl:1523"
+  },
+  {
+    "objectID": "documentation/utilities/imagesc.html#see-also",
+    "href": "documentation/utilities/imagesc.html#see-also",
+    "title": "imagesc",
+    "section": "See Also",
+    "text": "See Also\ngrdimage, grdview, rescale\nAlphabetical Function List"
   },
   {
     "objectID": "documentation/utilities/ind2rgb.html",
@@ -12415,7 +12415,7 @@
     "href": "documentation/utilities/autocov.html#see-also",
     "title": "autocov",
     "section": "See Also",
-    "text": "See Also\n\nAlphabetical Function List\nGMT.jl Documentation"
+    "text": "See Also\nautocor\nAlphabetical Function List"
   },
   {
     "objectID": "documentation/utilities/circfit.html",
@@ -12737,7 +12737,7 @@
     "href": "documentation/utilities/linspace.html",
     "title": "linspace",
     "section": "",
-    "text": "Category: Utilities\nDocumentation for the linspace function."
+    "text": "Documentation for the linspace function."
   },
   {
     "objectID": "documentation/utilities/linspace.html#source-code",
@@ -12751,7 +12751,7 @@
     "href": "documentation/utilities/linspace.html#see-also",
     "title": "linspace",
     "section": "See Also",
-    "text": "See Also\n\nAlphabetical Function List"
+    "text": "See Also\nAlphabetical Function List"
   },
   {
     "objectID": "documentation/utilities/lowess.html",
