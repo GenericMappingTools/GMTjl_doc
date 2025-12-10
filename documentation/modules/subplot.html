@@ -504,9 +504,9 @@ Specify the dimensions of each subplot directly. Then, the figure dimensions are
 <li><p><strong>A</strong> or <strong>autolabel</strong> : – autolabel=<em>(Anchor=tag, anchor=tag, label=““, clearance=(dx,dy), fill=color, pen=pen, offset=, roman=Bool, Roman=Bool, vertical=Bool)</em><br>
 Specify automatic tagging of each subplot. Use <strong>label=</strong> either a number or letter (as a string) [Default “a”]. This sets the tag of the first, top-left subplot and others follow sequentially. Surround the number or letter by parentheses on any side if these should be typeset as part of the tag. Use <strong>anchor</strong> or <strong>Anchor</strong> <strong>=refpoint</strong> to specify where the tag should be placed in the subplot [TL, meaning TopLeft]. <strong>Note</strong>: <strong>anchor</strong> sets the justification of the tag to <em>refpoint</em> (suitable for interior tags) while <strong>Anchor</strong> instead selects the mirror opposite (suitable for exterior tags).</p>
 <ul>
-<li>Append <strong>clearance=dx</strong> or <strong>clearance=(dx,dy)</strong> to set the clearance between the tag and a surrounding text box requested via <strong>fill</strong> or <strong>pen</strong> [3p/3p, i.e., 15% of the <code>FONT_TAG</code> size dimension].</li>
+<li>Append <strong>clearance=dx</strong> or <strong>clearance=(dx,dy)</strong> to set the clearance between the tag and a surrounding text box requested via <strong>fill</strong> or <strong>pen</strong> [3p/3p, i.e., 15% of the <a href="https://docs.generic-mapping-tools.org/latest/gmt.conf.html#term-FONT_TAG">FONT_TAG</a> size dimension].</li>
 <li>Append <strong>fill=color</strong> to paint the tag’s text box with <em>color</em> [no painting].</li>
-<li>Append <strong>offset=dx</strong> or <strong>offset=(dx,dy)</strong> to offset the tag’s reference point in the direction implied by the justification [4p/4p, i.e., 20% of the <code>FONT_TAG</code> size].</li>
+<li>Append <strong>offset=dx</strong> or <strong>offset=(dx,dy)</strong> to offset the tag’s reference point in the direction implied by the justification [4p/4p, i.e., 20% of the <a href="https://docs.generic-mapping-tools.org/latest/gmt.conf.html#term-FONT_TAG">FONT_TAG</a> size].</li>
 <li>Append <strong>pen=pen</strong> to draw the outline of the tag’s text box using selected <em>pen</em> [no outline].</li>
 <li>Append <strong>roman=true</strong> to typeset your tag numbers using lowercase Roman numerals.</li>
 <li>Append <strong>Roman=true</strong> for uppercase Roman numerals [Arabic numerals].</li>
@@ -538,7 +538,7 @@ Use when all subplots in a row share a common <em>y</em>-range. The first (i.e.,
 <li>Add <strong>grid=pen</strong> to draw horizontal and vertical lines between interior panels using selected pen [no lines].</li>
 </ul></li>
 <li><p><strong>T</strong> or <strong>title</strong> : – <em>title=“Heading”</em><br>
-While individual subplots can have titles (see <strong>S</strong> or <strong>axes</strong>), the entire figure may also have a overarching <em>heading</em> [no heading]. Font is determined by setting <code>FONT_HEADING</code>.</p></li>
+While individual subplots can have titles (see <strong>S</strong> or <strong>axes</strong>), the entire figure may also have a overarching <em>heading</em> [no heading]. Font is determined by setting <a href="https://docs.generic-mapping-tools.org/latest/gmt.conf.html#term-FONT_HEADING">FONT_HEADING</a>.</p></li>
 </ul>
 </section>
 <section id="synopsis-set-mode" class="level2">
@@ -581,7 +581,7 @@ Shift plot origin. More at <a href="../../documentation/common_opts/opt_Y.html">
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <p>To make a minimalistic 3x3 basemap layout, try::</p>
-<div id="fd252a9f" class="cell" data-execution_count="1">
+<div id="9039b810" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">subplot</span>(grid<span class="op">=</span><span class="st">"3x3"</span>, panels_size<span class="op">=</span>(<span class="fl">5</span>,<span class="fl">7</span>), region<span class="op">=</span>(<span class="fl">0</span>, <span class="fl">100</span>, <span class="fl">0</span>, <span class="fl">80</span>), frame<span class="op">=:</span>WSen, autolabel<span class="op">=</span><span class="fl">1</span>, margins<span class="op">=</span><span class="st">"6p"</span>)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">basemap</span>(panel<span class="op">=</span><span class="fl">1</span>)</span>
@@ -615,7 +615,7 @@ Shift plot origin. More at <a href="../../documentation/common_opts/opt_Y.html">
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">plot</span>([<span class="fl">50</span> <span class="fl">40</span>], marker<span class="op">=:</span>star, mc<span class="op">=:</span>blue)</span>
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="fu">subplot</span>(<span class="op">:</span>show)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Use variable panels with variable sizes:</p>
-<div id="5a17e47b" class="cell" data-execution_count="2">
+<div id="2775c927" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">subplot</span>(grid<span class="op">=</span>(<span class="fl">3</span>,<span class="fl">2</span>), dims<span class="op">=</span>(panels<span class="op">=</span><span class="cn">true</span>, sizes<span class="op">=</span>((<span class="st">"2i"</span>,<span class="st">"4i"</span>),(<span class="st">"2.5i"</span>,<span class="st">"5i"</span>,<span class="st">"1.25i"</span>))), row_axes<span class="op">=</span>(left<span class="op">=</span><span class="cn">true</span>, parallel<span class="op">=</span><span class="cn">true</span>),</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>        col_axes<span class="op">=</span>(bott<span class="op">=</span><span class="cn">true</span>,), margins<span class="op">=</span><span class="fl">0</span>, autolabel<span class="op">=</span>(label<span class="op">=:</span>A, vertical<span class="op">=</span><span class="cn">true</span>), title<span class="op">=</span><span class="st">"Variable dimensions"</span>)</span>

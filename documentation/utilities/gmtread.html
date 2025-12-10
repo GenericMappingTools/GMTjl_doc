@@ -438,8 +438,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#parameters" id="toc-parameters" class="nav-link active" data-scroll-target="#parameters">Parameters</a></li>
   <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
-  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
   <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
   </ul>
 </nav>
     </div>
@@ -513,18 +513,17 @@ Specify the data types of input and/or output columns (time or geographical data
 <p>to read a jpg image with the bands reversed</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>I <span class="op">=</span> <span class="fu">gmtread</span>(<span class="st">"image.jpg"</span>, band<span class="op">=</span>[<span class="fl">2</span>,<span class="fl">1</span>,<span class="fl">0</span>]);</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>to read a zip comtressed shape file</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">gmtread</span>(<span class="st">"fileshapes.zip.shp"</span>);</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>I <span class="op">=</span> <span class="fu">gmtread</span>(<span class="st">"fileshapes.zip.shp"</span>);</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>to read remote dataset at 3 arc sec resolution with the region given in UTM and projection conversion</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">gmtread</span>(<span class="st">"@earth_relief_03s"</span>, R<span class="op">=</span>[<span class="fl">420000</span>, <span class="fl">470000</span>, <span class="fl">4510000</span>, <span class="fl">4535000</span>], J<span class="op">=</span><span class="st">"+proj=utm +zone=33"</span>, convert<span class="op">=</span><span class="cn">true</span>);</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="source-code" class="level2">
-<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
-<p>View the <a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/gmtreadwrite.jl#L88">source code</a> for this function.</p>
 </section>
 <section id="see-also" class="level2">
 <h2 class="anchored" data-anchor-id="see-also">See Also</h2>
 <p><a href="../..\documentation/utilities/gmtwrite.html">gmtwrite</a>, <a href="../..\documentation/modules/gdalread.html">gdalread</a></p>
-<p><a href="../alphabetical.html">Alphabetical Function List</a></p>
+</section>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>View the <a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/gmtreadwrite.jl#L88">source code</a> for this function.</p>
 
 
 </section>

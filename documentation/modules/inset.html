@@ -494,13 +494,13 @@ Define the map inset rectangle on the map. Specify the rectangle in one of three
 <h2 class="anchored" data-anchor-id="optional-arguments">Optional Arguments</h2>
 <ul>
 <li><p><strong>C</strong> or <strong>clearance</strong> : – <em>clearance=val</em> <strong>|</strong> <em>clearance=(left=val, right=val, bott=val, bottom=val, top=val))</em><br>
-Reserve a space of dimension <em>clearance</em> between the actual inset plot area and the given inset box on the specified side, using <em>side</em> values from <strong>left=val</strong>, <strong>right=val</strong>, <strong>bottom=val</strong>, or <strong>top=val</strong>, or <strong>lr=val</strong> for both <em>left</em> and <em>right</em> or <strong>tb=val</strong> for both <em>top</em> and <em>bott</em>. No <em>side</em> means all sides. Alternatively, if all sides are to be set you can also give a pair of values separated by slashes (for setting separate horizontal and vertical margins), or the full set of four separate margins. Such space will be left untouched by the inset map plotting. Append units as desired (<strong>c</strong>m, <strong>i</strong>nch, or <strong>p</strong>oint) [Default is set by <code>PROJ_LENGTH_UNIT</code>].</p></li>
+Reserve a space of dimension <em>clearance</em> between the actual inset plot area and the given inset box on the specified side, using <em>side</em> values from <strong>left=val</strong>, <strong>right=val</strong>, <strong>bottom=val</strong>, or <strong>top=val</strong>, or <strong>lr=val</strong> for both <em>left</em> and <em>right</em> or <strong>tb=val</strong> for both <em>top</em> and <em>bott</em>. No <em>side</em> means all sides. Alternatively, if all sides are to be set you can also give a pair of values separated by slashes (for setting separate horizontal and vertical margins), or the full set of four separate margins. Such space will be left untouched by the inset map plotting. Append units as desired (<strong>c</strong>m, <strong>i</strong>nch, or <strong>p</strong>oint) [Default is set by <a href="https://docs.generic-mapping-tools.org/latest/gmt.conf.html#term-PROJ_LENGTH_UNIT">PROJ_LENGTH_UNIT</a>].</p></li>
 <li><p><strong>F</strong> or <strong>box</strong> : – <em>box=(clearance=val, fill=color, inner=true, pen=pen, rounded=true, shaded=XX)</em><br>
-Without further options, draws a rectangular border around the map inset using <code>MAP_FRAME_PEN</code>. The following modifiers can be appended to |-F|, with additional explanation and examples provided in the <a href="https://docs.generic-mapping-tools.org/dev/reference/features.html#background-panel">The background panel</a> cookbook section:</p>
+Without further options, draws a rectangular border around the map inset using <a href="https://docs.generic-mapping-tools.org/latest/gmt.conf.html#term-MAP_FRAME_PEN">MAP_FRAME_PEN</a>. The following modifiers can be appended to |-F|, with additional explanation and examples provided in the <a href="https://docs.generic-mapping-tools.org/dev/reference/features.html#background-panel">The background panel</a> cookbook section:</p>
 <ul>
 <li><p><strong>clearance=val</strong> where <em>val</em> is either <em>gap</em> or <em>(xgap,ygap)</em>, or <em>(lgap,rgap,bgap,tgap)</em> where these items are uniform, separate in x- and y-direction, or individual side spacings between the map embellishment and the border for each side.</p></li>
 <li><p><strong>fill=color</strong>, where <em>color</em> is any valid color setting (see <a href="../common_features/color.html">Setting color</a>), to fill the scale panel [no fill].</p></li>
-<li><p><strong>inner=true</strong> to draw a secondary, inner border as well. We use a uniform <em>gap</em> between borders of <em>2p</em> and the <code>MAP_DEFAULTS_PEN</code> unless other values are specified (like <strong>inner=“gap/pen”</strong>).</p></li>
+<li><p><strong>inner=true</strong> to draw a secondary, inner border as well. We use a uniform <em>gap</em> between borders of <em>2p</em> and the <a href="https://docs.generic-mapping-tools.org/latest/gmt.conf.html#term-MAP_DEFAULTS_PEN">MAP_DEFAULTS_PEN</a> unless other values are specified (like <strong>inner=“gap/pen”</strong>).</p></li>
 <li><p><strong>pen=pen</strong>, to specify different <a href="../common_features/pens.html">Pen attributes</a> attributes.</p></li>
 <li><p><strong>rounded=true</strong> to draw rounded rectangular borders instead, with a <em>6p</em> corner radius. You can override this radius by using another value instead of <em>true</em>.</p></li>
 <li><p><strong>shadded=true</strong> or <strong>shadded=(dx,dy)</strong> or <strong>shadded=shade</strong> to draw an offset background shaded region. Here, <em>dx/dy</em> indicates the shift relative to the foreground frame [<em>4p/-4p</em>]and <em>shade</em> sets the fill style to use for shading (“gray50”).</p></li>
@@ -538,7 +538,7 @@ Select verbosity level. More at <a href="../../documentation/common_opts/opt_V.h
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <p>To make a simple basemap plot that demonstrates the inset module, try</p>
-<div id="d8e4d735" class="cell" data-execution_count="1">
+<div id="60a2e7fd" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">gmtbegin</span>()</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">basemap</span>(region<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">40</span>,<span class="fl">20</span>,<span class="fl">60</span>), proj<span class="op">=:</span>merc, frame<span class="op">=</span>(annot<span class="op">=:</span>afg, fill<span class="op">=:</span>lightgreen))</span>
@@ -557,7 +557,7 @@ Select verbosity level. More at <a href="../../documentation/common_opts/opt_V.h
 </div>
 </div>
 <p>Make a zoom over a region of a synthetic plot.</p>
-<div id="84d9affe" class="cell" data-execution_count="2">
+<div id="82a39420" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> <span class="fl">0</span><span class="op">:</span><span class="fl">0.01</span><span class="op">:</span><span class="fl">2</span>pi;</span>
@@ -571,7 +571,7 @@ Select verbosity level. More at <a href="../../documentation/common_opts/opt_V.h
 </div>
 </div>
 <p>Add an inset to basemap image with a rectangle in the inset taken from main image limits.</p>
-<div id="2cc15fd2" class="cell" data-execution_count="3">
+<div id="e8514f8b" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">basemap</span>(region<span class="op">=</span>(<span class="op">-</span><span class="fl">48</span>,<span class="op">-</span><span class="fl">43</span>,<span class="op">-</span><span class="fl">26</span>,<span class="op">-</span><span class="fl">20</span>), proj<span class="op">=:</span>merc,</span>

@@ -438,8 +438,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#parameters" id="toc-parameters" class="nav-link active" data-scroll-target="#parameters">Parameters</a></li>
   <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
-  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
   <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
   </ul>
 </nav>
     </div>
@@ -472,7 +472,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="parameters">Parameters</h2>
 <ul>
 <li><p><code>binary</code>: Applyes only when saving a <code>stl</code> file. By default it is true. Use <code>binary=false</code> to save in ascii.</p></li>
-<li><p><code>id</code>: Use an <code>id</code> code when not not saving a grid into a standard COARDS-compliant netCDF grid. This <code>id</code> is made up of two characters like <code>ef</code> to save in ESRI Arc/Info ASCII Grid Interchange format (ASCII float). See the full list of ids at <a href="../..\documentation/modules/grdconvert.html">grdconvert</a>.</p></li>
+<li><p><code>id</code>: Use an <code>id</code> code when not not saving a grid into a standard COARDS-compliant netCDF grid. This <code>id</code> is made up of two characters like <code>ef</code> to save in ESRI Arc/Info ASCII Grid Interchange format (ASCII float). See the full list of ids at <a href="https://docs.generic-mapping-tools.org/latest/grdconvert.html#format-identifier">grdconvert</a></p></li>
 <li><p><code>scale</code> | <code>offset</code>: You may optionally ask to scale the data and then offset them with the specified amounts. These modifiers are particularly practical when storing the data as integers, by first removing an offset and then scaling down the values. The <code>scale</code> factor can also be applied when saving to stl (scales the z values).</p></li>
 <li><p><code>nan</code> | <code>novalue</code> | <code>invalid</code> | <code>missing</code>: Lets you supply a value that represents an invalid grid entry, i.e., NaN.</p></li>
 <li><p><code>gdal</code>: Boolean. Force the use of the GDAL library to write the grid (to be used only with grids).</p></li>
@@ -496,6 +496,10 @@ Specify the data types of input and/or output columns (time or geographical data
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>No <span class="op">=</span> <span class="fu">coast</span>(DCW<span class="op">=:</span>NO, dump<span class="op">=</span><span class="cn">true</span>);</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">gmtwrite</span>(<span class="st">"Norway.shp"</span>, No)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
+<section id="see-also" class="level2">
+<h2 class="anchored" data-anchor-id="see-also">See Also</h2>
+<p><a href="../..\documentation/utilities/gmtread.html">gmtread</a>, [gdalread]</p>
+</section>
 <section id="source-code" class="level2">
 <h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
 <p>This function has multiple methods:</p>
@@ -503,11 +507,6 @@ Specify the data types of input and/or output columns (time or geographical data
 <li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/gmtreadwrite.jl#L569"><code>gmtwrite(data; kwargs...)</code></a> - gmtreadwrite.jl:569</li>
 <li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/gmtreadwrite.jl#L570"><code>gmtwrite(fname::AbstractString, data; kwargs...)</code></a> - gmtreadwrite.jl:570</li>
 </ul>
-</section>
-<section id="see-also" class="level2">
-<h2 class="anchored" data-anchor-id="see-also">See Also</h2>
-<p><a href="../..\documentation/utilities/gmtread.html">gmtread</a>, <a href="../..\documentation/modules/gdalread.html">gdalread</a></p>
-<p><a href="../alphabetical.html">Alphabetical Function List</a></p>
 
 
 </section>

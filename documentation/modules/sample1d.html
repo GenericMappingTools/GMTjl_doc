@@ -518,7 +518,7 @@ For track resampling (if <strong>inc</strong>…<em>unit</em> is set) we can sel
 <li><p><strong>E</strong> or <strong>keeptext</strong> : – <em>keeptext=true</em><br>
 If the input dataset contains records with trailing text then we will attempt to add these to output records that exactly match the input times. Output records that have no matching input record times will have no trailing text appended [Default ignores trailing text]. Needs GMT6.4 or higher.</p></li>
 <li><p><strong>F</strong> or <strong>interp</strong> : – <em>interp=type</em> <strong>|</strong> <em>interp=(type, [,par], “derivative”)</em><br>
-The default is <code>Akima</code>. You may change the default interpolant; see <code>GMT_INTERPOLANT</code> in your <code>gmt.conf</code> file.</p>
+The default is <code>Akima</code>. You may change the default interpolant; see <a href="https://docs.generic-mapping-tools.org/latest/gmt.conf.html#term-GMT_INTERPOLANT">GMT_INTERPOLANT</a> in your <code>gmt.conf</code> file.</p>
 <p>Choose type from (the <em>interp_type=type</em> form):</p>
 <ul>
 <li><strong>l</strong>inear</li>
@@ -530,7 +530,7 @@ The default is <code>Akima</code>. You may change the default interpolant; see <
 <p>You may optionally evaluate the first or second derivative of the spline by appending <strong>+d1</strong> or <strong>+d2</strong>, respectively.</p>
 <p>When using the second form (the <em>interp_type=(…)</em>), the first member is the same as above, except the <code>smooth</code> and the derivatives. To select first or second derivative use the <code>:first</code> or <code>:second</code> keywords. Examples of this syntax: <strong>interp=(:akima, :first)</strong>, or <strong>interp=(:smoothing, 0.1)</strong>, or <strong>interp=(:smoothing, 0.1, :second)</strong>.</p></li>
 </ul>
-<div id="a9e5a568" class="cell" data-execution_count="1">
+<div id="8cab300e" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>mat <span class="op">=</span> [<span class="fl">0</span> <span class="fl">0</span>; <span class="fl">1</span> <span class="fl">1</span>; <span class="fl">2</span> <span class="fl">1.5</span>; <span class="fl">3</span> <span class="fl">1.25</span>; <span class="fl">4</span> <span class="fl">1.5</span>; <span class="fl">4.5</span> <span class="fl">3</span>; <span class="fl">5</span> <span class="fl">2</span>; <span class="fl">6</span> <span class="fl">2.5</span>];</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">gmtbegin</span>()</span>
@@ -596,7 +596,7 @@ Determine how spherical distances are calculated in modules that support this [D
 <li><p>spherical=:flat to select Flat Earth mode, which gives a more approximate but faster result.</p></li>
 <li><p>spherical=:ellipsoidal to select ellipsoidal (or geodesic) mode for the highest precision and slowest calculation time.</p></li>
 </ul>
-<p>Note: All spherical distance calculations depend on the current ellipsoid (<code>PROJ_ELLIPSOID</code>), the definition of the mean radius (<code>PROJ_MEAN_RADIUS</code>), and the specification of latitude type (<code>PROJ_AUX_LATITUDE</code>). Geodesic distance calculations is also controlled by method (<code>PROJ_GEODESIC</code>).</p></li>
+<p>Note: All spherical distance calculations depend on the current ellipsoid (<a href="https://docs.generic-mapping-tools.org/latest/gmt.conf.html#term-PROJ_ELLIPSOID">PROJ_ELLIPSOID</a>), the definition of the mean radius (<a href="https://docs.generic-mapping-tools.org/latest/gmt.conf.html#term-PROJ_MEAN_RADIUS">PROJ_MEAN_RADIUS</a>), and the specification of latitude type (<a href="https://docs.generic-mapping-tools.org/latest/gmt.conf.html#term-PROJ_AUX_LATITUDE">PROJ_AUX_LATITUDE</a>). Geodesic distance calculations is also controlled by method (<a href="https://docs.generic-mapping-tools.org/latest/gmt.conf.html#term-PROJ_GEODESIC">PROJ_GEODESIC</a>).</p></li>
 <li><p><strong>o</strong> or <strong>outcol</strong> : – <em>outcol=??</em><br>
 Select specific data columns for primary output, in arbitrary order. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#ocols-full">More at</a></p></li>
 <li><p><strong>q</strong> or <strong>inrows</strong> : – <em>inrows=??</em><br>
@@ -607,7 +607,7 @@ Convert input records to a cyclical coordinate. <a href="https://docs.generic-ma
 Suppress output of data records whose z-value(s) equal NaN. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#the-s-option">More at</a></p></li>
 </ul>
 <p><strong>Units</strong></p>
-<p>For map distance unit, append unit d for arc degree, m for arc minute, and s for arc second, or e for meter [Default unless stated otherwise], f for foot, k for km, M for statute mile, n for nautical mile, and u for US survey foot. By default we compute such distances using a spherical approximation with great circles (-jg) using the authalic radius (see <code>PROJ_MEAN_RADIUS</code>). You can use -jf to perform “Flat Earth” calculations (quicker but less accurate) or -je to perform exact geodesic calculations (slower but more accurate; see <code>PROJ_GEODESIC</code> for method used).</p>
+<p>For map distance unit, append unit d for arc degree, m for arc minute, and s for arc second, or e for meter [Default unless stated otherwise], f for foot, k for km, M for statute mile, n for nautical mile, and u for US survey foot. By default we compute such distances using a spherical approximation with great circles (-jg) using the authalic radius (see <a href="https://docs.generic-mapping-tools.org/latest/gmt.conf.html#term-PROJ_MEAN_RADIUS">PROJ_MEAN_RADIUS</a>). You can use -jf to perform “Flat Earth” calculations (quicker but less accurate) or -je to perform exact geodesic calculations (slower but more accurate; see <a href="https://docs.generic-mapping-tools.org/latest/gmt.conf.html#term-PROJ_GEODESIC">PROJ_GEODESIC</a> for method used).</p>
 </section>
 <section id="notes" class="level2">
 <h2 class="anchored" data-anchor-id="notes">Notes</h2>

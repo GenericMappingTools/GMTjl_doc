@@ -474,7 +474,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Convert grid to data table</p>
 <section id="description" class="level2">
 <h2 class="anchored" data-anchor-id="description">Description</h2>
-<p>Reads a grid (from file or a Grid type object) and writes out xyz-triplets in ASCII [or binary] format to file or return them as a Julia variable. Modify the precision of the ASCII output format by editing the <code>FORMAT_FLOAT_OUT</code> parameter in your <code>gmt.conf</code> file or use <strong>par=(FORMAT_FLOAT_OUT=format,)</strong> or choose binary output using single or double precision storage. As an option you may output z-values without the (x,y) coordinates (see <strong>onecol</strong> below) or you can save the grid in the STL format for 3-D printers.</p>
+<p>Reads a grid (from file or a Grid type object) and writes out xyz-triplets in ASCII [or binary] format to file or return them as a Julia variable. Modify the precision of the ASCII output format by editing the <a href="https://docs.generic-mapping-tools.org/latest/gmt.conf.html#term-FORMAT_FLOAT_OUT">FORMAT_FLOAT_OUT</a> parameter in your <code>gmt.conf</code> file or use <strong>par=(<a href="https://docs.generic-mapping-tools.org/latest/gmt.conf.html#term-FORMAT_FLOAT_OUT">FORMAT_FLOAT_OUT</a>=format,)</strong> or choose binary output using single or double precision storage. As an option you may output z-values without the (x,y) coordinates (see <strong>onecol</strong> below) or you can save the grid in the STL format for 3-D printers.</p>
 </section>
 <section id="required-arguments" class="level2">
 <h2 class="anchored" data-anchor-id="required-arguments">Required Arguments</h2>
@@ -530,7 +530,7 @@ Select specific data rows to be read and/or written. <a href="https://docs.gener
 Suppress output of data records whose z-value(s) equal NaN. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#the-s-option">More at</a></p></li>
 </ul>
 <p><strong>Units</strong></p>
-<p>For map distance unit, append unit d for arc degree, m for arc minute, and s for arc second, or e for meter [Default unless stated otherwise], f for foot, k for km, M for statute mile, n for nautical mile, and u for US survey foot. By default we compute such distances using a spherical approximation with great circles (-jg) using the authalic radius (see <code>PROJ_MEAN_RADIUS</code>). You can use -jf to perform “Flat Earth” calculations (quicker but less accurate) or -je to perform exact geodesic calculations (slower but more accurate; see <code>PROJ_GEODESIC</code> for method used).</p>
+<p>For map distance unit, append unit d for arc degree, m for arc minute, and s for arc second, or e for meter [Default unless stated otherwise], f for foot, k for km, M for statute mile, n for nautical mile, and u for US survey foot. By default we compute such distances using a spherical approximation with great circles (-jg) using the authalic radius (see <a href="https://docs.generic-mapping-tools.org/latest/gmt.conf.html#term-PROJ_MEAN_RADIUS">PROJ_MEAN_RADIUS</a>). You can use -jf to perform “Flat Earth” calculations (quicker but less accurate) or -je to perform exact geodesic calculations (slower but more accurate; see <a href="https://docs.generic-mapping-tools.org/latest/gmt.conf.html#term-PROJ_GEODESIC">PROJ_GEODESIC</a> for method used).</p>
 </section>
 <section id="non-equidistant-xy-coordinates" class="level2">
 <h2 class="anchored" data-anchor-id="non-equidistant-xy-coordinates">Non-equidistant x/y Coordinates</h2>
@@ -538,7 +538,7 @@ Suppress output of data records whose z-value(s) equal NaN. <a href="https://doc
 </section>
 <section id="time-coordinates" class="level2">
 <h2 class="anchored" data-anchor-id="time-coordinates">Time Coordinates</h2>
-<p>Time coordinates in netCDF grids, be it the x, y, or z coordinate, will be recognized as such. The variable’s <strong>unit</strong> attribute is parsed to determine the unit and epoch of the time coordinate in the grid. Values are then converted to the internal time system specified by <code>TIME_UNIT</code> and <code>TIME_EPOCH</code> in the <code>gmt.conf</code> file or on the command line. The default output is relative time in that time system, or absolute time when using the option <strong>colinfo=“0T”</strong>, <strong>colinfo=“1T”</strong>, or <strong>colinfo=“2T”</strong> for x, y, or z coordinate, respectively.</p>
+<p>Time coordinates in netCDF grids, be it the x, y, or z coordinate, will be recognized as such. The variable’s <strong>unit</strong> attribute is parsed to determine the unit and epoch of the time coordinate in the grid. Values are then converted to the internal time system specified by <a href="https://docs.generic-mapping-tools.org/latest/gmt.conf.html#term-TIME_UNIT">TIME_UNIT</a> and <a href="https://docs.generic-mapping-tools.org/latest/gmt.conf.html#term-TIME_EPOCH">TIME_EPOCH</a> in the <code>gmt.conf</code> file or on the command line. The default output is relative time in that time system, or absolute time when using the option <strong>colinfo=“0T”</strong>, <strong>colinfo=“1T”</strong>, or <strong>colinfo=“2T”</strong> for x, y, or z coordinate, respectively.</p>
 </section>
 <section id="row-order" class="level2">
 <h2 class="anchored" data-anchor-id="row-order">Row Order</h2>

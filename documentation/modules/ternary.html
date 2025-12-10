@@ -484,7 +484,7 @@ Select color or pattern for filling of symbols [Default is no fill]. Note that p
 <li><p><strong>J</strong> or <strong>proj</strong> or <strong>projection</strong> : – <em>proj=width</em><br>
 The only valid projection is linear plot with specified ternary width. Use a negative <em>width</em> to indicate that positive axes directions be clock-wise [Default lets the <em>a, b, c</em> axes be positive in a counter-clockwise direction].</p></li>
 <li><p><strong>L</strong> or <strong>vertex_labels</strong> : – <em>vertex_labels=“Lab1/lab2/Lab3”</em> <strong>|</strong> <em>vertex_labels=(“Lab1”, “lab2”, “Lab3”)</em><br>
-Set the labels for the three diagram vertices where the component is 100% [none]. These are placed a distance of three times the <code>MAP_LABEL_OFFSET</code> setting from their respective corners. To skip any one of then, specify that label as “-”.</p></li>
+Set the labels for the three diagram vertices where the component is 100% [none]. These are placed a distance of three times the <a href="https://docs.generic-mapping-tools.org/latest/gmt.conf.html#term-MAP_LABEL_OFFSET">MAP_LABEL_OFFSET</a> setting from their respective corners. To skip any one of then, specify that label as “-”.</p></li>
 <li><p><strong>M</strong> or <strong>dump</strong> : – <em>dump=true</em><br>
 Do no plot. Instead, convert the input (<em>a</em>, <em>b</em>, <em>c</em> [, <em>z</em>]) records to Cartesian (<em>x</em>, <em>y</em>, [, <em>z</em>]) records, where <em>x, y</em> are normalized coordinates on the triangle (i.e., 0–1 in <em>x</em> and 0–sqrt(3)/2 in <em>y</em>).</p></li>
 <li><p><strong>N</strong> or <strong>noclip</strong> or <strong>no_clip</strong> : <em>noclip=true</em><br>
@@ -551,7 +551,7 @@ Set PDF transparency level for an overlay, in (0-100] percent range. [Default is
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <p>To plot circles (diameter = 0.1 cm) on a 6-inch-wide ternary diagram at the positions listed in the file ternary.txt, with default annotations and gridline spacings, using the specified labeling, try</p>
-<div id="38489247" class="cell" data-execution_count="1">
+<div id="d66e4cf7" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">makecpt</span>(cmap<span class="op">=:</span>turbo, range<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">80</span>,<span class="fl">10</span>))</span>
