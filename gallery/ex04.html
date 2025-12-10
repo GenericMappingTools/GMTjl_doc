@@ -457,7 +457,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p>This example will illustrate how to make a fairly complicated composite figure. We need a subset of the ETOPO5 bathymetry 1 and Geosat geoid data sets which we have extracted from the global data grids using grdcut and access those files here as remote files on the GMT data server. We would like to show a 2-layer perspective plot where layer one shows a contour map of the marine geoid with the location of the Hawaiian islands superposed, and a second layer showing the 3-D mesh plot of the topography. We also add an arrow pointing north and some text. The first part of this script shows how to do it:</p>
-<div id="6f3512f2" class="cell" data-execution_count="1">
+<div id="c7ad5f93" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">makecpt</span>(cmap<span class="op">=</span>(<span class="fl">255</span>,<span class="fl">100</span>), range<span class="op">=</span>(<span class="op">-</span><span class="fl">10</span>,<span class="fl">10</span>,<span class="fl">10</span>), no_bg<span class="op">=</span><span class="cn">true</span>);</span>

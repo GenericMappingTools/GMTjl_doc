@@ -484,7 +484,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
-<div id="065bf499" class="cell" data-execution_count="1">
+<div id="697a0402" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> GMT.<span class="fu">peaks</span>(N<span class="op">=</span><span class="fl">21</span>);  <span class="co"># Create an example grid</span></span>
@@ -498,7 +498,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Now use the G x,y coordinates in the non-regular form</p>
-<div id="3385b6ac" class="cell" data-execution_count="2">
+<div id="07ff43be" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">pcolor</span>(G.x, G.y, G.z, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -511,7 +511,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Add labels to cells using default settings (font size = 6p)</p>
-<div id="2a39444e" class="cell" data-execution_count="3">
+<div id="c54172fa" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">pcolor</span>(G.x, G.y, G.z, labels<span class="op">=:</span>y, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -524,7 +524,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Similar to above but now set the number of decimlas in labels as well as it font settings</p>
-<div id="9ff767fc" class="cell" data-execution_count="4">
+<div id="c4e6bbf5" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">pcolor</span>(G.x, G.y, G.z, labels<span class="op">=</span><span class="fl">2</span>, font<span class="op">=</span>(angle<span class="op">=</span><span class="fl">45</span>, font<span class="op">=</span>(<span class="fl">5</span>,<span class="op">:</span>red)), show<span class="op">=</span><span class="fl">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -537,7 +537,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Display a Pearson’s correlation matrix</p>
-<div id="d69645f7" class="cell" data-execution_count="5">
+<div id="6738d8ab" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">pcolor</span>(GMT.<span class="fu">cor</span>(<span class="fu">rand</span>(<span class="fl">4</span>,<span class="fl">4</span>)), labels<span class="op">=:</span>y, colorbar<span class="op">=</span><span class="fl">1</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -550,7 +550,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>An irregular grid</p>
-<div id="e2a79c68" class="cell" data-execution_count="6">
+<div id="bcb84f44" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>X,Y <span class="op">=</span> GMT.<span class="fu">meshgrid</span>(<span class="op">-</span><span class="fl">3</span><span class="op">:</span><span class="fl">6</span><span class="op">/</span><span class="fl">17</span><span class="op">:</span><span class="fl">3</span>);</span>
@@ -575,8 +575,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/pcolor.jl#L154"><code>pcolor(cmd0::String; ...)</code></a> - pcolor.jl:154</li>
 <li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/pcolor.jl#L154"><code>pcolor(cmd0::String, arg1; first, kwargs...)</code></a> - pcolor.jl:154</li>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/pcolor.jl#L166"><code>pcolor(D::GMTdataset; first, kwargs...)</code></a> - pcolor.jl:166</li>
 <li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/pcolor.jl#L189"><code>pcolor(G::GMTgrid, first::Bool, d::Dict{Symbol, Any})</code></a> - pcolor.jl:189</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/pcolor.jl#L166"><code>pcolor(D::GMTdataset; first, kwargs...)</code></a> - pcolor.jl:166</li>
 <li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/pcolor.jl#L154"><code>pcolor(; ...)</code></a> - pcolor.jl:154</li>
 <li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/pcolor.jl#L79"><code>pcolor(X_::Union{AbstractVector{&lt;:Real}, Matrix{&lt;:Real}}, Y_::Union{AbstractVector{&lt;:Real}, Matrix{&lt;:Real}}; ...)</code></a> - pcolor.jl:79</li>
 <li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/pcolor.jl#L79"><code>pcolor(X_::Union{AbstractVector{&lt;:Real}, Matrix{&lt;:Real}}, Y_::Union{AbstractVector{&lt;:Real}, Matrix{&lt;:Real}}, C::Union{Nothing, AbstractMatrix{&lt;:Real}}; first, kwargs...)</code></a> - pcolor.jl:79</li>

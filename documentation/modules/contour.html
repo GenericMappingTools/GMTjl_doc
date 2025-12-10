@@ -481,9 +481,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p><em>table</em><br>
 One or more data tables holding a number of data columns.</p></li>
 <li><p><strong>J</strong> or <strong>proj</strong> or <strong>projection</strong> : – <em>proj=<parameters></parameters></em><br>
-Select map projection. More at <a href="../../documentation/common_opts/opt_J.html">proj</a></p></li>
+Select map projection. More at <a href="../../documentation/common_opts/common_opts.html#proj">proj</a></p></li>
 <li><p><strong>R</strong> or <strong>region</strong> or <strong>limits</strong> : – <em>limits=(xmin, xmax, ymin, ymax)</em> <strong>|</strong> <em>limits=(BB=(xmin, xmax, ymin, ymax),)</em> <strong>|</strong> <em>limits=(LLUR=(xmin, xmax, ymin, ymax),units=“unit”)</em> <strong>|</strong> …more<br>
-Specify the region of interest. More at <a href="../../documentation/common_opts/opt_R.html">limits</a>. For perspective view <strong>view</strong>, optionally add <em>zmin,zmax</em>. This option may be used to indicate the range used for the 3-D axes. You may ask for a larger w/e/s/n region to have more room between the image and the axes.</p></li>
+Specify the region of interest. More at <a href="../../documentation/common_opts/common_opts.html#limits">limits</a>. For perspective view <strong>view</strong>, optionally add <em>zmin,zmax</em>. This option may be used to indicate the range used for the 3-D axes. You may ask for a larger w/e/s/n region to have more room between the image and the axes.</p></li>
 </ul>
 </section>
 <section id="optional-arguments" class="level2">
@@ -492,7 +492,7 @@ Specify the region of interest. More at <a href="../../documentation/common_opts
 <li><p><strong>A</strong> or <strong>annot</strong> or <strong>annotation</strong> : – <em>annot=annot_int</em> <strong>|</strong> <em>annot=(int=annot_int, disable=true, single=true, labels=labelinfo)</em><br>
 <em>annot_int</em> is annotation interval in data units; it is ignored if contour levels are given in a file. [Default is no annotations]. Use <em>annot=(disable=true,)</em> to disable all annotations implied by <strong>cont</strong>. Alternatively do <em>annot=(single=true, int=val)</em> to plot <em>val</em> as a single contour. The optional <em>labelinfo</em> controls the specifics of the label formatting and consists of a named tuple with the following control arguments [Label formatting]</p></li>
 <li><p><strong>B</strong> or <strong>axes</strong> or <strong>frame</strong><br>
-Set map boundary frame and axes attributes. Default is to draw and annotate left, bottom and vertical axes and just draw left and top axes. More at <a href="../../documentation/common_opts/opt_B.html">frame</a></p></li>
+Set map boundary frame and axes attributes. Default is to draw and annotate left, bottom and vertical axes and just draw left and top axes. More at <a href="../../documentation/common_opts/common_opts.html#frame">frame</a></p></li>
 <li><p><strong>C</strong> or <strong>cont</strong> or <strong>contours</strong> or <strong>levels</strong> : – <em>cont=cont_int</em><br>
 The contours to be drawn may be specified in one of four possible ways:</p>
 <ol type="1">
@@ -521,15 +521,15 @@ Skip all input </em>xyz* points that fall outside the region [Default uses all t
 <li><p><strong>T</strong> or <strong>ticks</strong> : – <em>ticks=(local_high=true, local_low=true, gap=gap, closed=true, labels=labels)</em><br>
 Will draw tick marks pointing in the downward direction every <em>gap</em> along the innermost closed contours only; set <em>closed=true</em> to tick all closed contours. Use <em>gap=(gap,length)</em> and optionally tick mark <em>length</em> (append units as <strong>c</strong>, <strong>i</strong>, or <strong>p</strong>) or use defaults [<em>“15p/3p”</em>]. User may choose to tick only local highs or local lows by specifying <em>local_high=true</em>, <em>local_low=true</em>, respectively. Set <em>labels</em> to annotate the centers of closed innermost contours (i.e., the local lows and highs). If no <em>labels</em> (<em>i.e</em>, set <em>labels=““</em>) is set, we use - and + as the labels. Appending exactly two characters, <em>e.g.</em>, <em>labels=:LH</em>, will plot the two characters (here, <em>L</em> and <em>H</em>) as labels. For more elaborate labels, separate the low and hight label strings with a comma (<em>e.g.</em>, <em>labels=“lo,hi”</em>). If a file is given by <strong>cont</strong>, and <strong>ticks</strong> is set, then only contours marked with upper case C or A will have tick marks [and annotations].</p></li>
 <li><p><strong>U</strong> or <strong>time_stamp</strong> : – <em>time_stamp=true</em> <strong>|</strong> <em>time_stamp=(just=“code”, pos=(dx,dy), label=“label”, com=true)</em><br>
-Draw GMT time stamp logo on plot. More at <a href="../../documentation/common_opts/opt_U.html">timestamp</a></p></li>
+Draw GMT time stamp logo on plot. More at <a href="../../documentation/common_opts/common_opts.html#timestamp">timestamp</a></p></li>
 <li><p><strong>V</strong> or <em>verbose</em> : – <em>verbose=true</em> <strong>|</strong> <em>verbose=level</em><br>
-Select verbosity level. More at <a href="../../documentation/common_opts/opt_V.html">verbose</a></p></li>
+Select verbosity level. More at <a href="../../documentation/common_opts/common_opts.html#verbose">verbose</a></p></li>
 <li><p><strong>W</strong> or <strong>pen</strong>=<code>pen</code><br>
 Set pen attributes for the arrow stem [Defaults: width = default, color = black, style = solid]. See <a href="../../documentation/common_features/pens.html">Pen attributes</a> and <a href="../../documentation/common_features/arrows_control.html">Vector attributes</a> for arrow line terminations.</p></li>
 <li><p><strong>X</strong> or <strong>xshift</strong> or <strong>x_offset</strong> : <em>xshift=true</em> <strong>|</strong> <em>xshift=x-shift</em> <strong>|</strong> <em>xshift=(shift=x-shift, mov=“a|c|f|r”)</em><br>
-Shift plot origin. More at <a href="../../documentation/common_opts/opt_X.html">xshift</a></p></li>
+Shift plot origin. More at <a href="../../documentation/common_opts/common_opts.html#xshift">xshift</a></p></li>
 <li><p><strong>Y</strong> or <strong>yshift</strong> or <strong>y_offset</strong> : <em>yshift=true</em> <strong>|</strong> <em>yshift=y-shift</em> <strong>|</strong> <em>yshift=(shift=y-shift, mov=“a|c|f|r”)</em><br>
-Shift plot origin. More at <a href="../../documentation/common_opts/opt_Y.html">yshift</a></p></li>
+Shift plot origin. More at <a href="../../documentation/common_opts/common_opts.html#yshift">yshift</a></p></li>
 <li><p><strong>figname</strong> or <strong>savefig</strong> or <strong>name</strong> : – <em>figname=<code>name.png</code></em><br>
 Save the figure with the <code>figname=name.ext</code> where <code>ext</code> chooses the figure image format.</p></li>
 <li><p><strong>bi</strong> or <strong>binary_in</strong> : – <em>binary_in=??</em><br>
@@ -572,12 +572,12 @@ Suppress output of data records whose z-value(s) equal NaN. <a href="https://doc
 Set PDF transparency level for an overlay, in (0-100] percent range. [Default is 0, <em>i.e.</em>, opaque]. Works only for the PDF and PNG formats.</p></li>
 </ul>
 <p><strong>Units</strong></p>
-<p>For map distance unit, append unit d for arc degree, m for arc minute, and s for arc second, or e for meter [Default unless stated otherwise], f for foot, k for km, M for statute mile, n for nautical mile, and u for US survey foot. By default we compute such distances using a spherical approximation with great circles (-jg) using the authalic radius (see <code>PROJ_MEAN_RADIUS</code>). You can use -jf to perform “Flat Earth” calculations (quicker but less accurate) or -je to perform exact geodesic calculations (slower but more accurate; see <code>PROJ_GEODESIC</code> for method used).</p>
+<p>For map distance unit, append unit d for arc degree, m for arc minute, and s for arc second, or e for meter [Default unless stated otherwise], f for foot, k for km, M for statute mile, n for nautical mile, and u for US survey foot. By default we compute such distances using a spherical approximation with great circles (-jg) using the authalic radius (see <a href="https://docs.generic-mapping-tools.org/latest/gmt.conf.html#term-PROJ_MEAN_RADIUS">PROJ_MEAN_RADIUS</a>). You can use -jf to perform “Flat Earth” calculations (quicker but less accurate) or -je to perform exact geodesic calculations (slower but more accurate; see <a href="https://docs.generic-mapping-tools.org/latest/gmt.conf.html#term-PROJ_GEODESIC">PROJ_GEODESIC</a> for method used).</p>
 </section>
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <p>To make a raw contour plot from the remote file Table_5.11.txt and draw the contours every 25 and annotate every 50, using the default Cartesian projection, try</p>
-<div id="b676fb5b" class="cell" data-execution_count="1">
+<div id="899eb34a" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">contour</span>(<span class="st">"@Table_5_11.txt"</span>, pen<span class="op">=:</span>thin, contour<span class="op">=</span><span class="fl">25</span>, annot<span class="op">=</span><span class="fl">50</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -589,7 +589,7 @@ Set PDF transparency level for an overlay, in (0-100] percent range. [Default is
 </div>
 </div>
 <p>To use the same data but only contour the values 750 and 800, use</p>
-<div id="e7a28158" class="cell" data-execution_count="2">
+<div id="894c0869" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">contour</span>(<span class="st">"@Table_5_11.txt"</span>, annot<span class="op">=</span>[<span class="fl">750</span>,<span class="fl">800</span>], pen<span class="op">=</span><span class="fl">0.5</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>

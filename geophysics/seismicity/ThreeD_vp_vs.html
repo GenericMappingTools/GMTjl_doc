@@ -458,7 +458,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <p>These examples show a GMT.jl version of a PyGMT post in the GMT forum and that can be found at the original author’s, JiahongLuo, Github <a href="https://github.com/Luojiahong/PyGMT_3D_mapview/blob/main/mapview_3d_earthquake.ipynb">site</a></p>
 <p>The function let us easily plot images on the sides of a cube. That function can also be used to create those side figures directly from a 3D cube grid.</p>
-<div id="98e0eba2" class="cell" data-execution_count="1">
+<div id="56a7309d" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Download data from:</span></span>
@@ -473,9 +473,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>Cvs.names <span class="op">=</span> [<span class="st">"Depth = </span><span class="sc">$</span>(<span class="fu">Int</span>(i))<span class="st"> km"</span> for i <span class="kw">in</span> Cvs.v];</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
 <div class="ansi-escaped-output">
-<pre>gmtread [WARNING]: Long input record (4646 bytes) was truncated to first 4094 bytes!
+<pre>gmtread [WARNING]: Long input record (4647 bytes) was truncated to first 4094 bytes!
 
-gmtread [WARNING]: Long input record (4497 bytes) was truncated to first 4094 bytes!
+gmtread [WARNING]: Long input record (4498 bytes) was truncated to first 4094 bytes!
 
 <span class="ansi-yellow-fg ansi-bold">┌ </span><span class="ansi-yellow-fg ansi-bold">Warning: </span> file "https://github.com/ShouchengHan/USTClitho2.0/blob/main/USTClitho2.0.wrst.sea_level.txt" is empty or has no data after the header.
 
@@ -503,7 +503,7 @@ Stacktrace:
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">viz</span>(Cvp, colorbar<span class="op">=</span><span class="cn">true</span>, cmap<span class="op">=:</span>same, title<span class="op">=</span><span class="st">"Vp model"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><img src="../..\assets/Vp_mosaic.png" class="center img-fluid" width="280"></p>
 <p>Show the P and S velocities with a slight variation of the top layer. For the P-velocity we plot the topography on top and for the S-velocity we show the superficial S velocity but apply a shading effect calculated from the topography grid.</p>
-<div id="1ff9e227" class="cell" data-execution_count="2">
+<div id="f3389c6f" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span>   <span class="co"># Hide</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cubeplot</span>(Cvp, top<span class="op">=</span><span class="st">"@earth_relief_05m"</span>, colorbar<span class="op">=</span>(<span class="st">"xlabel=P-wave velocity"</span>, <span class="st">"ylabel=km/s"</span>), zdown<span class="op">=</span><span class="cn">true</span>, title<span class="op">=</span><span class="st">"Vp model"</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cubeplot!</span>(Cvs, top<span class="op">=</span><span class="st">"@earth_relief_05m"</span>, topshade<span class="op">=</span><span class="cn">true</span>, zdown<span class="op">=</span><span class="cn">true</span>, colorbar<span class="op">=</span>(<span class="st">"xlabel=S-wave velocity"</span>, <span class="st">"ylabel=km/s"</span>), xshift<span class="op">=</span><span class="fl">18</span>, title<span class="op">=</span><span class="st">"Vs model"</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -519,7 +519,7 @@ Stacktrace:
 </div>
 <p><img src="../..\assets/Vp_Vs_cubes.png" class="center img-fluid" width="1000"></p>
 <p>To finish we show how to make an inset view in the 3D model.</p>
-<div id="a22adfa4" class="cell" data-execution_count="3">
+<div id="e5524a39" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span>   <span class="co"># Hide</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cubeplot</span>(Cvp, top<span class="op">=</span><span class="st">"@earth_relief"</span>, inset<span class="op">=</span>(lon<span class="op">=</span><span class="fl">100</span>, lat<span class="op">=</span><span class="fl">35</span>), topshade<span class="op">=</span><span class="cn">true</span>, zdown<span class="op">=</span><span class="cn">true</span>,</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>         colorbar<span class="op">=</span>(<span class="st">"xlabel=P-wave velocity"</span>, <span class="st">"ylabel=km/s"</span>), show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>

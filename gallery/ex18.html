@@ -457,7 +457,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p>To demonstrate potential usage of the programs [gmtspatial], [grdvolume] and [gmtselect] we extract a subset of the Sandwell &amp; Smith altimetric gravity field 1 for the northern Pacific and decide to isolate all seamounts that (1) exceed 50 mGal in amplitude and (2) are within 200 km of the Pratt seamount. We do this by dumping the 50 mGal contours to disk, then use gmtspatial that returns the mean location of the points making up each closed polygon, and then pass these locations to [gmtselect], which retains only the points within 200 km of Pratt. We then mask out all the data outside this radius and use [grdvolume] to determine the combined area and (gravimetric) volumes of the chosen seamounts. Our illustration is presented in Figure 18 which also shows the automatic labeling offered by [subplot].</p>
-<div id="23fb1d77" class="cell" data-execution_count="1">
+<div id="5ede4653" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span>, <span class="bu">Printf</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>pratt <span class="op">=</span> [<span class="op">-</span><span class="fl">142.65</span> <span class="fl">56.25</span> <span class="fl">400</span>]</span>

@@ -474,15 +474,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 <tr class="odd">
 <td>- <strong>B</strong> or <strong>axes</strong> or <strong>frame</strong><br>
-Set map boundary frame and axes attributes. Default is to draw and annotate left, bottom and vertical axes and just draw left and top axes. More at <a href="../../documentation/common_opts/opt_B.html">frame</a></td>
+Set map boundary frame and axes attributes. Default is to draw and annotate left, bottom and vertical axes and just draw left and top axes. More at <a href="../../documentation/common_opts/common_opts.html#frame">frame</a></td>
 </tr>
 <tr class="even">
 <td>- <strong>J</strong> or <strong>proj</strong> or <strong>projection</strong> : – <em>proj=<parameters></parameters></em><br>
-Select map projection. More at <a href="../../documentation/common_opts/opt_J.html">proj</a></td>
+Select map projection. More at <a href="../../documentation/common_opts/common_opts.html#proj">proj</a></td>
 </tr>
 <tr class="odd">
 <td>- <strong>R</strong> or <strong>region</strong> or <strong>limits</strong> : – <em>limits=(xmin, xmax, ymin, ymax)</em> <strong>|</strong> <em>limits=(BB=(xmin, xmax, ymin, ymax),)</em> <strong>|</strong> <em>limits=(LLUR=(xmin, xmax, ymin, ymax),units=“unit”)</em> <strong>|</strong> …more<br>
-Specify the region of interest. More at <a href="../../documentation/common_opts/opt_R.html">limits</a>. For perspective view <strong>view</strong>, optionally add <em>zmin,zmax</em>. This option may be used to indicate the range used for the 3-D axes. You may ask for a larger w/e/s/n region to have more room between the image and the axes.</td>
+Specify the region of interest. More at <a href="../../documentation/common_opts/common_opts.html#limits">limits</a>. For perspective view <strong>view</strong>, optionally add <em>zmin,zmax</em>. This option may be used to indicate the range used for the 3-D axes. You may ask for a larger w/e/s/n region to have more room between the image and the axes.</td>
 </tr>
 <tr class="even">
 <td>- <strong>G</strong> or <strong>markerfacecolor</strong> or <strong>MarkerFaceColor</strong> or <strong>markercolor</strong> or <strong>mc</strong> or <strong>fill</strong><br>
@@ -494,19 +494,19 @@ Set pen attributes for the arrow stem [Defaults: width = default, color = black,
 </tr>
 <tr class="even">
 <td>- <strong>U</strong> or <strong>time_stamp</strong> : – <em>time_stamp=true</em> <strong>|</strong> <em>time_stamp=(just=“code”, pos=(dx,dy), label=“label”, com=true)</em><br>
-Draw GMT time stamp logo on plot. More at <a href="../../documentation/common_opts/opt_U.html">timestamp</a></td>
+Draw GMT time stamp logo on plot. More at <a href="../../documentation/common_opts/common_opts.html#timestamp">timestamp</a></td>
 </tr>
 <tr class="odd">
 <td>- <strong>V</strong> or <em>verbose</em> : – <em>verbose=true</em> <strong>|</strong> <em>verbose=level</em><br>
-Select verbosity level. More at <a href="../../documentation/common_opts/opt_V.html">verbose</a></td>
+Select verbosity level. More at <a href="../../documentation/common_opts/common_opts.html#verbose">verbose</a></td>
 </tr>
 <tr class="even">
 <td>- <strong>X</strong> or <strong>xshift</strong> or <strong>x_offset</strong> : <em>xshift=true</em> <strong>|</strong> <em>xshift=x-shift</em> <strong>|</strong> <em>xshift=(shift=x-shift, mov=“a|c|f|r”)</em><br>
-Shift plot origin. More at <a href="../../documentation/common_opts/opt_X.html">xshift</a></td>
+Shift plot origin. More at <a href="../../documentation/common_opts/common_opts.html#xshift">xshift</a></td>
 </tr>
 <tr class="odd">
 <td>- <strong>Y</strong> or <strong>yshift</strong> or <strong>y_offset</strong> : <em>yshift=true</em> <strong>|</strong> <em>yshift=y-shift</em> <strong>|</strong> <em>yshift=(shift=y-shift, mov=“a|c|f|r”)</em><br>
-Shift plot origin. More at <a href="../../documentation/common_opts/opt_Y.html">yshift</a></td>
+Shift plot origin. More at <a href="../../documentation/common_opts/common_opts.html#yshift">yshift</a></td>
 </tr>
 <tr class="even">
 <td>- <strong>figname</strong> or <strong>savefig</strong> or <strong>name</strong> : – <em>figname=<code>name.png</code></em><br>
@@ -517,7 +517,7 @@ Save the figure with the <code>figname=name.ext</code> where <code>ext</code> ch
 </tr>
 </tbody>
 </table>
-<div id="74a82030" class="cell" data-execution_count="1">
+<div id="5c7905f9" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ecdfplot</span>(<span class="fu">randn</span>(<span class="fl">100</span>), show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">

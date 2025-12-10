@@ -472,9 +472,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="parameters">Parameters</h2>
 <ul>
 <li><p><strong>B</strong> or <strong>axes</strong> or <strong>frame</strong><br>
-Set map boundary frame and axes attributes. Default is to draw and annotate left, bottom and vertical axes and just draw left and top axes. More at <a href="../../documentation/common_opts/opt_B.html">frame</a></p></li>
+Set map boundary frame and axes attributes. Default is to draw and annotate left, bottom and vertical axes and just draw left and top axes. More at <a href="../../documentation/common_opts/common_opts.html#frame">frame</a></p></li>
 <li><p><strong>J</strong> or <strong>proj</strong> or <strong>projection</strong> : – <em>proj=<parameters></parameters></em><br>
-Select map projection. More at <a href="../../documentation/common_opts/opt_J.html">proj</a></p></li>
+Select map projection. More at <a href="../../documentation/common_opts/common_opts.html#proj">proj</a></p></li>
 <li><p><strong>R</strong> or <strong>region</strong> or <strong>limits</strong> : – <em>limits=(xmin, xmax, ymin, ymax, zmin, zmax)</em> <strong>|</strong> <em>limits=(BB=(xmin, xmax, ymin, ymax, zmin, zmax),)</em> <strong>|</strong> …more<br>
 Specify the region of interest. Default limits are computed from data extents. More at <a href="../../documentation/common_opts/opt_R.html">limits</a></p></li>
 <li><p><strong>G</strong> or <strong>markerfacecolor</strong> or <strong>MarkerFaceColor</strong> or <strong>markercolor</strong> or <strong>mc</strong> or <strong>fill</strong><br>
@@ -521,7 +521,7 @@ Save the figure with the <code>figname=name.ext</code> where <code>ext</code> ch
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <p>View a grid as a 3D bar plot</p>
-<div id="481ccc91" class="cell" data-execution_count="1">
+<div id="207e360c" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">gmt</span>(<span class="st">"grdmath -R-15/15/-15/15 -I0.5 X Y HYPOT DUP 2 MUL PI MUL 8 DIV COS EXCH NEG 10 DIV EXP MUL ="</span>);</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>cmap <span class="op">=</span> <span class="fu">grd2cpt</span>(G);      <span class="co"># Compute a colormap with the grid's data range</span></span>

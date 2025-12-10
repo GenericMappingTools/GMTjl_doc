@@ -811,7 +811,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <p>Demonstrates use of dual (left vs right, bottom vs top) Cartesian axis labels</p>
-<div id="bacab1f3" class="cell" data-execution_count="1">
+<div id="5acc89b2" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">basemap</span>(limits<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">50</span>,<span class="fl">0</span>,<span class="fl">7</span>), figsize<span class="op">=</span><span class="fl">10</span>,</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>        xaxis<span class="op">=</span>(annot<span class="op">=:</span>auto, ticks<span class="op">=:</span>auto, label<span class="op">=</span><span class="st">"Bottom Label"</span>, seclabel<span class="op">=</span><span class="st">"Top label"</span>),</span>
@@ -829,7 +829,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>        frame<span class="op">=</span>(annot<span class="op">=:</span>auto, ticks<span class="op">=:</span>auto, xlabel<span class="op">=</span><span class="st">"Bottom Label"</span>, ylabel<span class="op">=</span><span class="st">"Left label"</span>),</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>        xaxis<span class="op">=</span>(seclabel<span class="op">=</span><span class="st">"Top label"</span>,), yaxis<span class="op">=</span>(seclabel<span class="op">=</span><span class="st">"Right label"</span>,), show<span class="op">=</span><span class="fl">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Show inside labeling (use default fig size).</p>
-<div id="534f58c6" class="cell" data-execution_count="2">
+<div id="6b9ee903" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">basemap</span>(limits<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">13</span>,<span class="fl">0</span>,<span class="fl">10</span>), frame<span class="op">=</span>(annot<span class="op">=</span><span class="fl">2</span>, ticks<span class="op">=</span><span class="fl">0.5</span>), figsize<span class="op">=</span>(<span class="fl">12</span>,<span class="fl">6</span>), par<span class="op">=</span>(<span class="op">:</span>MAP_FRAME_TYPE,<span class="op">:</span>inside), show<span class="op">=</span><span class="fl">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -841,7 +841,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Show horizontal and vertical annotations</p>
-<div id="66e0d3fb" class="cell" data-execution_count="3">
+<div id="d4dca5f0" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">basemap</span>(region<span class="op">=</span>[<span class="fl">0</span> <span class="fl">1000</span> <span class="fl">0</span> <span class="fl">1000</span>], figsize<span class="op">=</span><span class="fl">5</span>,</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>        frame<span class="op">=</span>(axes<span class="op">=</span>(<span class="op">:</span>left_full,<span class="op">:</span>bottom_full,<span class="op">:</span>right_full,<span class="op">:</span>top_full), annot<span class="op">=</span><span class="fl">200</span>,</span>
@@ -861,7 +861,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Show <code>Yhlabel</code> for horizontal labels for y-axis</p>
-<div id="5e97f94d" class="cell" data-execution_count="4">
+<div id="cc71ed3f" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">basemap</span>(region<span class="op">=</span><span class="st">"-30/30/-20/20"</span>, figsize<span class="op">=</span>(<span class="fl">12</span>,<span class="fl">8</span>),</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>        frame<span class="op">=</span>(annot<span class="op">=:</span>a, ticks<span class="op">=:</span>a, xlabel<span class="op">=</span><span class="st">"Standard horizontal label"</span>, Yhlabel<span class="op">=</span><span class="st">"@~Y(q)@~"</span>,</span>

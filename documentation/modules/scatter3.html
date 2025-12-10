@@ -471,9 +471,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="parameters">Parameters</h2>
 <ul>
 <li><p><strong>B</strong> or <strong>axes</strong> or <strong>frame</strong><br>
-Set map boundary frame and axes attributes. Default is to draw and annotate left, bottom and vertical axes and just draw left and top axes. More at <a href="../../documentation/common_opts/opt_B.html">frame</a></p></li>
+Set map boundary frame and axes attributes. Default is to draw and annotate left, bottom and vertical axes and just draw left and top axes. More at <a href="../../documentation/common_opts/common_opts.html#frame">frame</a></p></li>
 <li><p><strong>J</strong> or <strong>proj</strong> or <strong>projection</strong> : – <em>proj=<parameters></parameters></em><br>
-Select map projection. More at <a href="../../documentation/common_opts/opt_J.html">proj</a></p></li>
+Select map projection. More at <a href="../../documentation/common_opts/common_opts.html#proj">proj</a></p></li>
 <li><p><strong>R</strong> or <strong>region</strong> or <strong>limits</strong> : – <em>limits=(xmin, xmax, ymin, ymax, zmin, zmax)</em> <strong>|</strong> <em>limits=(BB=(xmin, xmax, ymin, ymax, zmin, zmax),)</em> <strong>|</strong> …more<br>
 Specify the region of interest. Default limits are computed from data extents. More at <a href="../../documentation/common_opts/opt_R.html">limits</a></p></li>
 <li><p><strong>G</strong> or <strong>markerfacecolor</strong> or <strong>MarkerFaceColor</strong> or <strong>markercolor</strong> or <strong>mc</strong> or <strong>fill</strong><br>
@@ -504,7 +504,7 @@ Save the figure with the <code>figname=name.ext</code> where <code>ext</code> ch
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <p>A scatter of ten points plotted as black cubes of 7 points size using the default perspective of 200,30</p>
-<div id="bd6f8249" class="cell" data-execution_count="1">
+<div id="4611bf92" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">scatter3</span>(<span class="fu">rand</span>(<span class="fl">10</span>,<span class="fl">10</span>,<span class="fl">3</span>), zsize<span class="op">=</span><span class="fl">4</span>, marker<span class="op">=:</span>cube, mc<span class="op">=:</span>darkgreen, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">

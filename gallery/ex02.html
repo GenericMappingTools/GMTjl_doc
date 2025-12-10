@@ -457,7 +457,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p>As our second example we will demonstrate how to make color images from gridded data sets (again, we will defer the actual making of grid files to later examples). We have prepared two 2-D grid files of bathymetry and Geosat geoid heights from global grids and will put the two images on the same page. The region of interest is the Hawaiian Islands, and due to the oblique trend of the island chain we prefer to rotate our geographical data sets using an oblique Mercator projection defined by the hotspot pole at (68W, 69N). We choose the point (190, 25.5) to be the center of our projection (e.g., the local origin), and we want to image a rectangular region defined by the longitudes and latitudes of the lower left and upper right corner of region. In our case we choose (160, 20) and (220, 30) as the corners. We twice use [grdimage] to make the illustration:</p>
-<div id="b63534f3" class="cell" data-execution_count="1">
+<div id="c555ad47" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">gmtset</span>(FONT_TITLE<span class="op">=</span><span class="fl">30</span>, MAP_ANNOT_OBLIQUE<span class="op">=</span><span class="fl">0</span>)</span>

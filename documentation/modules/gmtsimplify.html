@@ -489,7 +489,7 @@ Specifies the maximum mismatch tolerance in the user units. If the data are not 
 <h2 class="anchored" data-anchor-id="optional-arguments">Optional Arguments</h2>
 <ul>
 <li><p><strong>V</strong> or <em>verbose</em> : – <em>verbose=true</em> <strong>|</strong> <em>verbose=level</em><br>
-Select verbosity level. More at <a href="../../documentation/common_opts/opt_V.html">verbose</a></p></li>
+Select verbosity level. More at <a href="../../documentation/common_opts/common_opts.html#verbose">verbose</a></p></li>
 <li><p><strong>bi</strong> or <strong>binary_in</strong> : – <em>binary_in=??</em><br>
 Select native binary format for primary table input. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#bi-full">More at</a></p></li>
 <li><p><strong>bo</strong> or <strong>binary_out</strong> : – <em>binary_out=??</em><br>
@@ -514,12 +514,12 @@ Select specific data rows to be read and/or written. <a href="https://docs.gener
 Swap 1st and 2nd column on input and/or output. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#colon-full">More at</a></p></li>
 </ul>
 <p><strong>Units</strong></p>
-<p>For map distance unit, append unit d for arc degree, m for arc minute, and s for arc second, or e for meter [Default unless stated otherwise], f for foot, k for km, M for statute mile, n for nautical mile, and u for US survey foot. By default we compute such distances using a spherical approximation with great circles (-jg) using the authalic radius (see <code>PROJ_MEAN_RADIUS</code>). You can use -jf to perform “Flat Earth” calculations (quicker but less accurate) or -je to perform exact geodesic calculations (slower but more accurate; see <code>PROJ_GEODESIC</code> for method used).</p>
+<p>For map distance unit, append unit d for arc degree, m for arc minute, and s for arc second, or e for meter [Default unless stated otherwise], f for foot, k for km, M for statute mile, n for nautical mile, and u for US survey foot. By default we compute such distances using a spherical approximation with great circles (-jg) using the authalic radius (see <a href="https://docs.generic-mapping-tools.org/latest/gmt.conf.html#term-PROJ_MEAN_RADIUS">PROJ_MEAN_RADIUS</a>). You can use -jf to perform “Flat Earth” calculations (quicker but less accurate) or -je to perform exact geodesic calculations (slower but more accurate; see <a href="https://docs.generic-mapping-tools.org/latest/gmt.conf.html#term-PROJ_GEODESIC">PROJ_GEODESIC</a> for method used).</p>
 </section>
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <p>To reduce the remote high-resolution GSHHG polygon for Australia down to a tolerance of 500 km, use:</p>
-<div id="613fbe72" class="cell" data-execution_count="1">
+<div id="b4b90e84" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">gmtsimplify</span>(<span class="st">"@GSHHS_h_Australia.txt"</span>, tolerance<span class="op">=</span><span class="st">"100k"</span>)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="st">"@GSHHS_h_Australia.txt"</span>, plot<span class="op">=</span>(data<span class="op">=</span>D, lc<span class="op">=:</span>red), show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>

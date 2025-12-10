@@ -471,79 +471,95 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
-<div id="0572a462" class="cell" data-execution_count="1">
+<div id="f6497fd3" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>wms <span class="op">=</span> <span class="fu">wmsinfo</span>(<span class="st">"http://tiles.maps.eox.at/wms?"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>serverURL:  http://tiles.maps.eox.at/wms?
 OnlineResource: http://tiles.maps.eox.at/?
 version:    1.1.1
-request:    GetMap
-layernames: </code></pre>
+request:    GetMap</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="2">
 <pre><code></code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>["osm", "blackmarble", "terrain-light_3857", "bluemarble_3857", "overlay_base_3857", "s2cloudless", "terrain", "overlay_bright_3857", "coastline_3857", "s2cloudless-2020_3857", "magnetic_graticules", "terrain-light", "overlay_base_bright", "overlay_base", "s2cloudless-2022_3857", "s2cloudless-2024_3857", "s2cloudless-2018_3857", "coastline", "s2cloudless-2020", "s2cloudless-2021", "osm_3857", "s2cloudless-2022", "s2cloudless-2023", "s2cloudless-2024", "s2cloudless_3857", "terrain_3857", "overlay_base_bright_3857", "hydrography", "graticules", "overlay_3857", "bluemarble", "s2cloudless-2021_3857", "s2cloudless-2023_3857", "coastline_black", "s2cloudless-2017_3857", "streets_3857", "overlay_bright", "s2cloudless-2019_3857", "overlay", "blackmarble_3857", "hydrography_3857", "s2cloudless-2017", "streets", "s2cloudless-2018", "s2cloudless-2019"]
+<pre><code>layernames: ["overlay_bright_3857", "coastline_3857", "s2cloudless-2020_3857", "magnetic_graticules", "terrain-light", "overlay_base_bright", "overlay_base", "s2cloudless-2022_3857", "s2cloudless-2024_3857", "s2cloudless-2018_3857", "coastline", "s2cloudless-2020", "s2cloudless-2021", "osm_3857", "s2cloudless-2022", "s2cloudless-2023", "s2cloudless-2024", "s2cloudless_3857", "terrain_3857", "overlay_base_bright_3857", "hydrography", "graticules", "overlay_3857", "bluemarble", "s2cloudless-2021_3857", "s2cloudless-2023_3857", "coastline_black", "s2cloudless-2017_3857", "streets_3857", "overlay_bright", "s2cloudless-2019_3857", "overlay", "blackmarble_3857", "hydrography_3857", "s2cloudless-2017", "streets", "s2cloudless-2018", "s2cloudless-2019", "osm", "blackmarble", "terrain-light_3857", "bluemarble_3857", "overlay_base_3857", "s2cloudless", "terrain"]
 
 layer:  45 Layers. Use layer[k] to see the contents of layer k</code></pre>
 </div>
 </div>
 <p>As an option, use the form</p>
-<div id="0baf8297" class="cell" data-execution_count="2">
+<div id="f50c1bb6" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">wmsinfo</span>(wms; layer<span class="op">=</span><span class="fl">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>WMS:http://tiles.maps.eox.at/?SERVICE=WMS&amp;VERSION=1.1.1&amp;REQUEST=GetMap&amp;LAYERS=osm&amp;SRS=EPSG:4326&amp;BBOX=-180,-90,180,90&amp;FORMAT=image/jpeg&amp;TILESIZE=256&amp;OVERVIEWCOUNT=17&amp;MINRESOLUTION=0.00000536441803&amp;TILED=true
+<pre><code>WMS:http://tiles.maps.eox.at/?SERVICE=WMS&amp;VERSION=1.1.1&amp;REQUEST=GetMap&amp;LAYERS=overlay_bright_3857&amp;SRS=EPSG:900913&amp;BBOX=-20037508.3428,-20037508.3428,20037508.3428,20037508.3428&amp;FORMAT=image/png&amp;TILESIZE=256&amp;OVERVIEWCOUNT=14&amp;MINRESOLUTION=9.55462853564703&amp;TILED=true
 Driver: WMS/OGC Web Map Service
 Files: none associated
-Size is 67108864, 33554432
+Size is 4194304, 4194304
 Coordinate System is:
-GEOGCRS["WGS 84",
-    ENSEMBLE["World Geodetic System 1984 ensemble",
-        MEMBER["World Geodetic System 1984 (Transit)"],
-        MEMBER["World Geodetic System 1984 (G730)"],
-        MEMBER["World Geodetic System 1984 (G873)"],
-        MEMBER["World Geodetic System 1984 (G1150)"],
-        MEMBER["World Geodetic System 1984 (G1674)"],
-        MEMBER["World Geodetic System 1984 (G1762)"],
-        MEMBER["World Geodetic System 1984 (G2139)"],
-        MEMBER["World Geodetic System 1984 (G2296)"],
-        ELLIPSOID["WGS 84",6378137,298.257223563,
-            LENGTHUNIT["metre",1]],
-        ENSEMBLEACCURACY[2.0]],
-    PRIMEM["Greenwich",0,
-        ANGLEUNIT["degree",0.0174532925199433]],
-    CS[ellipsoidal,2],
-        AXIS["geodetic latitude (Lat)",north,
+PROJCRS["Google Maps Global Mercator",
+    BASEGEOGCRS["WGS 84",
+        ENSEMBLE["World Geodetic System 1984 ensemble",
+            MEMBER["World Geodetic System 1984 (Transit)"],
+            MEMBER["World Geodetic System 1984 (G730)"],
+            MEMBER["World Geodetic System 1984 (G873)"],
+            MEMBER["World Geodetic System 1984 (G1150)"],
+            MEMBER["World Geodetic System 1984 (G1674)"],
+            MEMBER["World Geodetic System 1984 (G1762)"],
+            MEMBER["World Geodetic System 1984 (G2139)"],
+            MEMBER["World Geodetic System 1984 (G2296)"],
+            ELLIPSOID["WGS 84",6378137,298.257223563,
+                LENGTHUNIT["metre",1]],
+            ENSEMBLEACCURACY[2.0]],
+        PRIMEM["Greenwich",0,
+            ANGLEUNIT["degree",0.0174532925199433]],
+        ID["EPSG",4326]],
+    CONVERSION["Popular Visualisation Pseudo-Mercator",
+        METHOD["Popular Visualisation Pseudo Mercator",
+            ID["EPSG",1024]],
+        PARAMETER["Latitude of natural origin",0,
+            ANGLEUNIT["degree",0.0174532925199433],
+            ID["EPSG",8801]],
+        PARAMETER["Longitude of natural origin",0,
+            ANGLEUNIT["degree",0.0174532925199433],
+            ID["EPSG",8802]],
+        PARAMETER["False easting",0,
+            LENGTHUNIT["metre",1],
+            ID["EPSG",8806]],
+        PARAMETER["False northing",0,
+            LENGTHUNIT["metre",1],
+            ID["EPSG",8807]]],
+    CS[Cartesian,2],
+        AXIS["easting (X)",east,
             ORDER[1],
-            ANGLEUNIT["degree",0.0174532925199433]],
-        AXIS["geodetic longitude (Lon)",east,
+            LENGTHUNIT["metre",1]],
+        AXIS["northing (Y)",north,
             ORDER[2],
-            ANGLEUNIT["degree",0.0174532925199433]],
+            LENGTHUNIT["metre",1]],
     USAGE[
-        SCOPE["Horizontal component of 3D system."],
-        AREA["World."],
-        BBOX[-90,-180,90,180]],
-    ID["EPSG",4326]]
-Data axis to CRS axis mapping: 2,1
-Origin = (-180.000000000000000,90.000000000000000)
-Pixel Size = (0.000005364418030,-0.000005364418030)
+        SCOPE["Web mapping and visualisation."],
+        AREA["World between 85.06°S and 85.06°N."],
+        BBOX[-85.06,-180,85.06,180]],
+    ID["EPSG",900913]]
+Data axis to CRS axis mapping: 1,2
+Origin = (-20037508.342799998819828,20037508.342799998819828)
+Pixel Size = (9.554628535652160,-9.554628535652160)
 Image Structure Metadata:
   INTERLEAVE=PIXEL
 Corner Coordinates:
-Upper Left  (-180.0000000,  90.0000000) (180d 0' 0.00"W, 90d 0' 0.00"N)
-Lower Left  (-180.0000000, -90.0000000) (180d 0' 0.00"W, 90d 0' 0.00"S)
-Upper Right ( 180.0000000,  90.0000000) (180d 0' 0.00"E, 90d 0' 0.00"N)
-Lower Right ( 180.0000000, -90.0000000) (180d 0' 0.00"E, 90d 0' 0.00"S)
+Upper Left  (-20037508.343,20037508.343) (180d 0' 0.00"E, 85d 3' 4.06"N)
+Lower Left  (-20037508.343,-20037508.343) (180d 0' 0.00"E, 85d 3' 4.06"S)
+Upper Right (20037508.343,20037508.343) (180d 0' 0.00"W, 85d 3' 4.06"N)
+Lower Right (20037508.343,-20037508.343) (180d 0' 0.00"W, 85d 3' 4.06"S)
 Center      (   0.0000000,   0.0000000) (  0d 0' 0.01"E,  0d 0' 0.01"N)
 Band 1 Block=256x256 Type=Byte, ColorInterp=Red
-  Overviews: 33554432x16777216, 16777216x8388608, 8388608x4194304, 4194304x2097152, 2097152x1048576, 1048576x524288, 524288x262144, 262144x131072, 131072x65536, 65536x32768, 32768x16384, 16384x8192, 8192x4096, 4096x2048, 2048x1024, 1024x512, 512x256
+  Overviews: 2097152x2097152, 1048576x1048576, 524288x524288, 262144x262144, 131072x131072, 65536x65536, 32768x32768, 16384x16384, 8192x8192, 4096x4096, 2048x2048, 1024x1024, 512x512, 256x256
 Band 2 Block=256x256 Type=Byte, ColorInterp=Green
-  Overviews: 33554432x16777216, 16777216x8388608, 8388608x4194304, 4194304x2097152, 2097152x1048576, 1048576x524288, 524288x262144, 262144x131072, 131072x65536, 65536x32768, 32768x16384, 16384x8192, 8192x4096, 4096x2048, 2048x1024, 1024x512, 512x256
+  Overviews: 2097152x2097152, 1048576x1048576, 524288x524288, 262144x262144, 131072x131072, 65536x65536, 32768x32768, 16384x16384, 8192x8192, 4096x4096, 2048x2048, 1024x1024, 512x512, 256x256
 Band 3 Block=256x256 Type=Byte, ColorInterp=Blue
-  Overviews: 33554432x16777216, 16777216x8388608, 8388608x4194304, 4194304x2097152, 2097152x1048576, 1048576x524288, 524288x262144, 262144x131072, 131072x65536, 65536x32768, 32768x16384, 16384x8192, 8192x4096, 4096x2048, 2048x1024, 1024x512, 512x256
+  Overviews: 2097152x2097152, 1048576x1048576, 524288x524288, 262144x262144, 131072x131072, 65536x65536, 32768x32768, 16384x16384, 8192x8192, 4096x4096, 2048x2048, 1024x1024, 512x512, 256x256
 </code></pre>
 </div>
 </div>

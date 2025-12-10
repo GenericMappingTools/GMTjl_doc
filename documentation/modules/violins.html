@@ -493,7 +493,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <p>Create a plot with 8 violins colored with the default colors.</p>
-<div id="6f4bc018" class="cell" data-execution_count="1">
+<div id="55033371" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">violin</span>(<span class="fu">randn</span>(<span class="fl">100</span>,<span class="fl">8</span>), fill<span class="op">=</span><span class="cn">true</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -505,7 +505,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Now add boxplot, scatter and outliers to a plot similar to above. The outliers show as black stars.</p>
-<div id="88f002c7" class="cell" data-execution_count="2">
+<div id="3ab12dee" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">violin</span>(<span class="fu">randn</span>(<span class="fl">100</span>,<span class="fl">8</span>), fill<span class="op">=</span><span class="cn">true</span>, boxplot<span class="op">=</span><span class="cn">true</span>, scatter<span class="op">=</span><span class="cn">true</span>, outliers<span class="op">=</span><span class="cn">true</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -517,7 +517,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>And a group example with red dashed separator lines.</p>
-<div id="3c5e697a" class="cell" data-execution_count="3">
+<div id="415f1b90" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>vvv <span class="op">=</span> [[<span class="fu">randn</span>(<span class="fl">50</span>), <span class="fu">randn</span>(<span class="fl">30</span>)], [<span class="fu">randn</span>(<span class="fl">40</span>), <span class="fu">randn</span>(<span class="fl">48</span>), <span class="fu">randn</span>(<span class="fl">45</span>)], [<span class="fu">randn</span>(<span class="fl">35</span>), <span class="fu">randn</span>(<span class="fl">43</span>)]];</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">violin</span>(vvv, fill<span class="op">=</span><span class="cn">true</span>, boxplot<span class="op">=</span><span class="cn">true</span>, separator<span class="op">=</span>(<span class="op">:</span>red, <span class="op">:</span>dash), scatter<span class="op">=</span><span class="cn">true</span>, outliers<span class="op">=</span><span class="cn">true</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
