@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>logo</title>
+<title>gmtlogo</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -438,8 +438,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#parameters" id="toc-parameters" class="nav-link active" data-scroll-target="#parameters">Parameters</a></li>
   <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
-  <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
   <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
+  <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
   </ul>
 </nav>
     </div>
@@ -471,7 +471,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="parameters">Parameters</h2>
 <ul>
 <li><p><code>pos | position | D</code>: Sets reference point on the map for the image using one of four coordinate systems.</p></li>
-<li><p><code>box | F</code>: Without further options, draws a rectangular border around the GMT logo using <code>MAP_FRAME_PEN</code>. or map rose (T)</p></li>
+<li><p><code>box | F</code>: Without further options, draws a rectangular border around the GMT logo using <a href="https://docs.generic-mapping-tools.org/latest/gmt.conf.html#term-MAP_FRAME_PEN">MAP_FRAME_PEN</a> or map rose (T)</p></li>
 <li><p><code>julia</code>: Create the Julia instead of the GMT logo. Provide circle diameter in centimeters</p></li>
 <li><p><code>GMTjulia</code>: Create the GMT Julia GMT logo. Provide circle diameter in centimeters</p></li>
 <li><p><code>kwargs</code>: keyword/arguments pairs as in <a href="../..\documentation/modules/plot.html">plot</a> module</p></li>
@@ -480,30 +480,45 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <p>Make a GMT Julia logo with circles of 1 cm.</p>
-<div id="45350dea" class="cell" data-execution_count="1">
+<div id="cdf55dcd" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">logo</span>(GMTjulia<span class="op">=</span><span class="fl">1</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-green-fg ansi-bold">Precompiling</span> packages...
+
+
+  56054.1 ms<span class="ansi-green-fg">  ✓ </span>GMT
+
+  1 dependency successfully precompiled in 57 seconds. 80 already precompiled.
+
+
+<span class="ansi-cyan-fg ansi-bold">[ </span><span class="ansi-cyan-fg ansi-bold">Info: </span>Precompiling GMTParkerFFTExt [35a23bc9-6f20-5cbc-8971-9cdf66427582]
+</pre>
+</div>
+</div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="logo_files/figure-html/cell-2-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="gmtlogo_files/figure-html/cell-2-output-2.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="see-also" class="level2">
-<h2 class="anchored" data-anchor-id="see-also">See Also</h2>
-<p><a href="../..\documentation/modules/plot.html">plot</a></p>
-</section>
 <section id="source-code" class="level2">
 <h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
 <p>This function has multiple methods:</p>
 <ul>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/gmtlogo.jl#L39"><code>logo(cmd0::String; first, kwargs...)</code></a> - gmtlogo.jl:39</li>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/gmtlogo.jl#L39"><code>logo(; ...)</code></a> - gmtlogo.jl:39</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/gmtlogo.jl#L37"><code>logo(cmd0::String; first, kwargs...)</code></a> - gmtlogo.jl:37</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/gmtlogo.jl#L37"><code>logo(; ...)</code></a> - gmtlogo.jl:37</li>
 </ul>
+</section>
+<section id="see-also" class="level2">
+<h2 class="anchored" data-anchor-id="see-also">See Also</h2>
+<p><a href="../..\documentation/modules/plot.html">plot</a></p>
+<p><a href="../alphabetical.html">Alphabetical Function List</a></p>
 
 
 </section>
