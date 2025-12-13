@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -402,6 +437,7 @@ ul.task-list li input[type="checkbox"] {
    
   <ul class="collapse">
   <li><a href="#source-code" id="toc-source-code" class="nav-link active" data-scroll-target="#source-code">Source Code</a></li>
+  <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
   </ul>
 </nav>
     </div>
@@ -432,21 +468,30 @@ ul.task-list li input[type="checkbox"] {
 <p>When DATASET is a string it may contain the file name or the name of a subdataset. In former case you can use the kwarg <code>sds</code> to selec the subdataset numerically. Alternatively, provide the full <code>sds</code> name. For files with <code>sds</code> with a scale_factor (e.g.&nbsp;MODIS data), that scale is applyied automaticaly.</p>
 <section id="examples" class="level3">
 <h3 class="anchored" data-anchor-id="examples">Examples:</h3>
-<p>G = gd2gmt(“AQUA_MODIS.20210228.L3m.DAY.NSST.sst.4km.NRT.nc”, sds=1);</p>
-<p>Or</p>
-<p>G = gd2gmt(“SUBDATASET_1_NAME=NETCDF:AQUA_MODIS.20210228.L3m.DAY.NSST.sst.4km.NRT.nc:sst”);</p>
-<p>Or</p>
-<p>G = gd2gmt(“NETCDF:AQUA_MODIS.20210228.L3m.DAY.NSST.sst.4km.NRT.nc:sst”);</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>   G <span class="op">=</span> <span class="fu">gd2gmt</span>(<span class="st">"AQUA_MODIS.20210228.L3m.DAY.NSST.sst.4km.NRT.nc"</span>, sds<span class="op">=</span><span class="fl">1</span>);</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>Or</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>   G <span class="op">=</span> <span class="fu">gd2gmt</span>(<span class="st">"SUBDATASET_1_NAME=NETCDF:AQUA_MODIS.20210228.L3m.DAY.NSST.sst.4km.NRT.nc:sst"</span>);</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>Or</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>   G <span class="op">=</span> <span class="fu">gd2gmt</span>(<span class="st">"NETCDF:AQUA_MODIS.20210228.L3m.DAY.NSST.sst.4km.NRT.nc:sst"</span>);</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="source-code" class="level2">
 <h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
 <p>This function has multiple methods:</p>
 <ul>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/gdal_utils.jl#L256"><code>gd2gmt(dataset::GMT.Gdal.AbstractDataset)</code></a> - gdal_utils.jl:256</li>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/gdal_utils.jl#L216"><code>gd2gmt(geom::GMT.Gdal.AbstractGeometry)</code></a> - gdal_utils.jl:216</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/gdal_utils.jl#L260"><code>gd2gmt(dataset::GMT.Gdal.AbstractDataset)</code></a> - gdal_utils.jl:260</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/gdal_utils.jl#L220"><code>gd2gmt(geom::GMT.Gdal.AbstractGeometry)</code></a> - gdal_utils.jl:220</li>
 <li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/gdal_utils.jl#L24"><code>gd2gmt(_dataset; band, bands, sds, pad, layout)</code></a> - gdal_utils.jl:24</li>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/gdal_utils.jl#L216"><code>gd2gmt(geom::GMT.Gdal.AbstractGeometry, proj::String)</code></a> - gdal_utils.jl:216</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/gdal_utils.jl#L220"><code>gd2gmt(geom::GMT.Gdal.AbstractGeometry, proj::String)</code></a> - gdal_utils.jl:220</li>
 </ul>
+</section>
+<section id="see-also" class="level2">
+<h2 class="anchored" data-anchor-id="see-also">See Also</h2>
+<p><a href="../..\documentation/modules/gmt2gd.html">gmt2gd</a></p>
+<p><a href="../alphabetical.html">Alphabetical Function List</a></p>
 
 
 </section>

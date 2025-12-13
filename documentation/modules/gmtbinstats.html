@@ -555,9 +555,20 @@ Swap 1st and 2nd column on input and/or output. <a href="https://docs.generic-ma
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">gmtbinstats</span>(<span class="st">"@capitals.gmt"</span>, a<span class="op">=</span><span class="st">"2=population"</span>, region<span class="op">=:</span>global360, inc<span class="op">=</span><span class="fl">5</span>, stats<span class="op">=:</span>sum, search_radius<span class="op">=</span><span class="st">"1000k"</span>);</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">imshow</span>(G)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Make a hexbin plot with random numbers.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>xy <span class="op">=</span> <span class="fu">rand</span>(<span class="fl">100</span>,<span class="fl">2</span>) <span class="op">.*</span> [<span class="fl">5</span> <span class="fl">3</span>];</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">binstats</span>(xy, region<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">5</span>,<span class="fl">0</span>,<span class="fl">3</span>), inc<span class="op">=</span><span class="fl">1</span>, tiling<span class="op">=:</span>hex, stats<span class="op">=:</span>number);</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">imshow</span>(D, hexbin<span class="op">=</span><span class="cn">true</span>, ml<span class="op">=</span><span class="fl">0.5</span>, colorbar<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="ed9d2788" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>xy <span class="op">=</span> <span class="fu">rand</span>(<span class="fl">100</span>,<span class="fl">2</span>) <span class="op">.*</span> [<span class="fl">5</span> <span class="fl">3</span>];</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">binstats</span>(xy, region<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">5</span>,<span class="fl">0</span>,<span class="fl">3</span>), inc<span class="op">=</span><span class="fl">1</span>, tiling<span class="op">=:</span>hex, stats<span class="op">=:</span>number);</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">imshow</span>(D, hexbin<span class="op">=</span><span class="cn">true</span>, ml<span class="op">=</span><span class="fl">0.5</span>, colorbar<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="gmtbinstats_files/figure-html/cell-2-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
 </section>
 <section id="source-code" class="level2">
 <h2 class="anchored" data-anchor-id="source-code">Source Code</h2>

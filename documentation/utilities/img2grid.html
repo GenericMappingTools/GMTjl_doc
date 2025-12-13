@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>blockmean</title>
+<title>img2grid</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -436,11 +436,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#description" id="toc-description" class="nav-link active" data-scroll-target="#description">Description</a></li>
-  <li><a href="#required-arguments" id="toc-required-arguments" class="nav-link" data-scroll-target="#required-arguments">Required Arguments</a></li>
-  <li><a href="#optional-arguments" id="toc-optional-arguments" class="nav-link" data-scroll-target="#optional-arguments">Optional Arguments</a></li>
-  <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
-  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link active" data-scroll-target="#source-code">Source Code</a></li>
   <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
   </ul>
 </nav>
@@ -450,7 +446,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">blockmean</h1>
+<h1 class="title">img2grid</h1>
 </div>
 
 
@@ -467,99 +463,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">blockmean</span>(cmd0<span class="op">::</span><span class="dt">String</span>=<span class="st">""</span>, arg1<span class="op">=</span><span class="cn">nothing</span>; kwargs<span class="op">...</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<section id="description" class="level2">
-<h2 class="anchored" data-anchor-id="description">Description</h2>
-<p>Block average (x,y,z) data tables by mean estimation.</p>
-<p>Reads arbitrarily located (x,y,z) triples [or optionally weighted quadruples (x,y,z,w)] and computes a mean position and value for every non-empty block in a grid region defined by the <strong>region</strong> and <strong>increment</strong> parameters.</p>
-<p>Takes a Mx3 matrix, a <a href="../..\documentation/general/types.html#sec-dataset-type">GMTdataset</a>, or a file name as input and returns either a table (a <a href="../..\documentation/general/types.html#sec-dataset-type">GMTdataset</a>) or one or more grids (<a href="../..\documentation/general/types.html#sec-grid-type">GMTgrid</a>). Aternatively, save the result directly in a disk file.</p>
-</section>
-<section id="required-arguments" class="level2">
-<h2 class="anchored" data-anchor-id="required-arguments">Required Arguments</h2>
-<p><em>table</em><br>
-3 (or 4, see <strong>weights</strong>) column data table file (or binary, see <strong>binary_in</strong>) holding (<em>x,y,z[,w]</em>) data values, where [ <em>w</em>] is an optional weight for the data.</p>
-<ul>
-<li><p><strong>I</strong> or <strong>inc</strong> or <strong>increment</strong> or <strong>spacing</strong> : – <em>inc=x_inc</em> <strong>|</strong> <em>inc=(x_inc, y_inc)</em> <strong>|</strong> <em>inc=“xinc[+e|n][/yinc[+e|n]]”</em><br>
-Specify the grid increments or the block sizes. More at <a href="../../documentation/common_opts/common_opts.html#spacing">spacing</a></p></li>
-<li><p><strong>R</strong> or <strong>region</strong> or <strong>limits</strong> : – <em>limits=(xmin, xmax, ymin, ymax)</em> <strong>|</strong> <em>limits=(BB=(xmin, xmax, ymin, ymax),)</em> <strong>|</strong> <em>limits=(LLUR=(xmin, xmax, ymin, ymax),units=“unit”)</em> <strong>|</strong> …more<br>
-Specify the region of interest. More at <a href="../../documentation/common_opts/common_opts.html#limits">limits</a>. For perspective view <strong>view</strong>, optionally add <em>zmin,zmax</em>. This option may be used to indicate the range used for the 3-D axes. You may ask for a larger w/e/s/n region to have more room between the image and the axes.</p></li>
-</ul>
-</section>
-<section id="optional-arguments" class="level2">
-<h2 class="anchored" data-anchor-id="optional-arguments">Optional Arguments</h2>
-<ul>
-<li><p><strong>A</strong> or <strong>field</strong> or <strong>fields</strong>: – <em>field=mean|std|highest|lowest|weights</em><br>
-Output is a grid with one of the select fields. <code>field=mean</code> writes the mean of <em>z</em>. Other options are: <em>std</em> (standard deviation), <em>lowest</em> (lowest value), <em>highest</em> (highest value) and <em>weights</em> (the output weight; requires the <strong>weights</strong> option). The deafault is <code>field=mean</code>. Alternatively, one can use a condensed form which uses the first character (except the mean) of the above options, separated by commas, to compute more than one grid. For example: <code>fields="z,s"</code> computes two grids; one with the means and the other with the standard deviations.</p></li>
-<li><p><strong>C</strong> or <strong>center</strong> : – <em>center=true</em><br>
-Use the center of the block as the output location [Default uses the mean location]. Not used whith <strong>fields</strong>.</p></li>
-<li><p><strong>E</strong> or <strong>extend</strong> : — <em>extend=true</em> <strong>|</strong> <em>extend=“+p”</em> <strong>|</strong> <em>extend=“+P”</em><br>
-Provide Extended report which includes <strong>s</strong> (the standard deviation about the mean), <strong>l</strong>, the lowest value, and <strong>h</strong>, the high value for each block. Output order becomes <em>x,y,z,s,l,h</em>[,<em>w</em>]. Default outputs <em>x,y,z</em>[ ,<em>w</em>]. See <strong>weights</strong> for enabling <em>w</em> output. If <code>extend="+p"</code> or <code>extend="+P"</code> is used then input data uncertainties are expected and <em>s</em> becomes the propagated error of the weighted (<strong>+p</strong>) or simple (<strong>+P</strong>) <em>z</em> mean.</p></li>
-<li><p><strong>G</strong> or <strong>save</strong> or <strong>outgrid</strong> or <strong>outfile</strong> : – <em>save=file_name.grd</em><br>
-Write one or more fields directly to grids on disk or return them to the Julia REPL as grid objects. If more than one field is specified via <strong>fields</strong> then <em>file_name</em> must contain the format flag %s so that we can embed the field code in the file names.</p></li>
-<li><p><strong>S</strong> or <strong>statistic</strong> : – <em>statistic=:m|:n|:s|:w</em><br>
-Use <code>statistic=:m</code> to report the mean value in each blaock, <code>statistic=:n</code> to report the number of points inside each block, <code>statistic=:s</code> to report the sum of all z-values inside a block, <code>statistic=:w</code> to report the sum of weights [Default (or <code>statistic=:m</code> reports mean value]. This option works both for returning the result in a table in a <a href="../..\documentation/general/types.html#sec-dataset-type">GMTdataset</a> or in a grid. For this later case, however, one must use the <strong>grid=true</strong> option.</p></li>
-<li><p><strong>V</strong> or <em>verbose</em> : – <em>verbose=true</em> <strong>|</strong> <em>verbose=level</em><br>
-Select verbosity level. More at <a href="../../documentation/common_opts/common_opts.html#verbose">verbose</a></p></li>
-<li><p><strong>W</strong> or <strong>weights</strong> : – <em>weights=:i</em> <strong>|</strong> <em>weights=:o</em> <strong>|</strong> <em>weights=“i+s”</em> <strong>|</strong> <em>weights=“i|o+s|+w”</em><br>
-Weighted modifier[s]. Unweighted input and output have 3 columns <em>x,y,z</em>; Weighted i/o has 4 columns <em>x,y,z,w</em>. Weights can be used in input to construct weighted mean values for each block. Weight sums can be reported in output for later combining several runs, etc. Use <strong>weights</strong> for weighted i/o, <strong>weights=:i</strong> for weighted input only, and <strong>weights=:o</strong> for weighted output only. [Default uses unweighted i/o]. If your weights are actually uncertainties (one sigma) then append the string <strong>+s</strong> (as in <strong>weights=“i+s”</strong>) and we compute weight = 1/sigma. Otherwise (or via <strong>+w</strong>) we use the weights directly.</p></li>
-<li><p><strong>bi</strong> or <strong>binary_in</strong> : – <em>binary_in=??</em><br>
-Select native binary format for primary table input. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#bi-full">More at</a></p></li>
-<li><p><strong>bo</strong> or <strong>binary_out</strong> : – <em>binary_out=??</em><br>
-Select native binary format for table output. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#bo-full">More at</a></p></li>
-<li><p><strong>di</strong> or <strong>nodata_in</strong> : – <em>nodata_in=??</em><br>
-Substitute specific values with NaN. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#di-full">More at</a></p></li>
-<li><p><strong>e</strong> or <strong>pattern</strong> : – <em>pattern=??</em><br>
-Only accept ASCII data records that contain the specified pattern. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#e-full">More at</a></p></li>
-<li><p><strong>f</strong> or <strong>colinfo</strong> : – <em>colinfo=??</em><br>
-Specify the data types of input and/or output columns (time or geographical data). <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#f-full">More at</a></p></li>
-<li><p><strong>h</strong> or <strong>header</strong> : – <em>header=??</em><br>
-Specify that input and/or output file(s) have n header records. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#h-full">More at</a></p></li>
-<li><p><strong>i</strong> or <strong>incol</strong> or <strong>incols</strong> : – <em>incol=col_num</em> <strong>|</strong> <em>incol=“opts”</em><br>
-Select input columns and transformations (0 is first column, t is trailing text, append word to read one word only). More at <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#icols-full">incol</a></p></li>
-<li><p><strong>o</strong> or <strong>outcol</strong> : – <em>outcol=??</em><br>
-Select specific data columns for primary output, in arbitrary order. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#ocols-full">More at</a></p></li>
-<li><p><strong>q</strong> or <strong>inrows</strong> : – <em>inrows=??</em><br>
-Select specific data rows to be read and/or written. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#the-q-option">More at</a></p></li>
-<li><p><strong>r</strong> or <strong>reg</strong> or <strong>registration</strong> : – <em>reg=:p</em> <strong>|</strong> <em>reg=:g</em><br>
-Select gridline or pixel node registration. Used only when output is a grid. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#nodereg-full">More at</a></p></li>
-<li><p><strong>w</strong> or <strong>wrap</strong> or <strong>cyclic</strong> : – <em>wrap=??</em><br>
-Convert input records to a cyclical coordinate. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#w-full">More at</a></p></li>
-<li><p><strong>yx</strong> : – <em>yx=true</em><br>
-Swap 1st and 2nd column on input and/or output. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#colon-full">More at</a></p></li>
-</ul>
-</section>
-<section id="examples" class="level2">
-<h2 class="anchored" data-anchor-id="examples">Examples</h2>
-<p>To find 5 by 5 minute block mean values from the ASCII data in ship_15.txt, run</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>    D <span class="op">=</span> <span class="fu">blockmean</span>(<span class="st">"@ship_15.txt"</span>, region<span class="op">=</span>(<span class="fl">245</span>,<span class="fl">255</span>,<span class="fl">20</span>,<span class="fl">30</span>), inc<span class="op">=</span><span class="st">"5m"</span>);</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>To determine how many values were found in each 5x5 minute bin, try</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>    D <span class="op">=</span> <span class="fu">blockmean</span>(<span class="st">"@ship_15.txt"</span>, region<span class="op">=</span>(<span class="fl">245</span>,<span class="fl">255</span>,<span class="fl">20</span>,<span class="fl">30</span>), inc<span class="op">=</span><span class="st">"5m"</span>, count<span class="op">=</span><span class="cn">true</span>);</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>To determine the mean and standard deviation per 10 minute bin and save these to two separate grids called field_z.nc and field_s.nc, run</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">blockmean</span>(<span class="st">"@ship_15.txt"</span>, spacing<span class="op">=</span><span class="st">"10m"</span>, region<span class="op">=</span>(<span class="op">-</span><span class="fl">115</span>,<span class="op">-</span><span class="fl">105</span>,<span class="fl">20</span>,<span class="fl">30</span>), extend<span class="op">=</span><span class="cn">true</span>, save<span class="op">=</span><span class="st">"field_%s.nc"</span>, fields<span class="op">=</span><span class="st">"z,s"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The same as above but this time returns the two grids to the Julia REPL</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>    Z,S <span class="op">=</span> <span class="fu">blockmean</span>(<span class="st">"@ship_15.txt"</span>, spacing<span class="op">=</span><span class="st">"10m"</span>, region<span class="op">=</span>(<span class="op">-</span><span class="fl">115</span>,<span class="op">-</span><span class="fl">105</span>,<span class="fl">20</span>,<span class="fl">30</span>), extend<span class="op">=</span><span class="cn">true</span>, fields<span class="op">=</span><span class="st">"z,s"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="ansi-escaped-output">
-<pre><span class="ansi-green-fg ansi-bold">Precompiling</span> packages...
-
-  59208.9 ms<span class="ansi-green-fg">  ✓ </span>GMT
-
-  1 dependency successfully precompiled in 61 seconds. 80 already precompiled.
-
-<span class="ansi-cyan-fg ansi-bold">[ </span><span class="ansi-cyan-fg ansi-bold">Info: </span>Precompiling GMTParkerFFTExt [35a23bc9-6f20-5cbc-8971-9cdf66427582]
-</pre>
-</div>
-</section>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">img2grid</span>(I<span class="op">::</span><span class="dt">GMTimage</span>; <span class="kw">type</span><span class="op">=</span><span class="fu">eltype</span>(I.image))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Converts an GMTimage object to a grid. If the type option is not set the image data type is preserved and the array in NOT copied. Otherwise the image data is converted to the specified type and a copy is made.</p>
 <section id="source-code" class="level2">
 <h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
-<p>This function has multiple methods:</p>
-<ul>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/blocks.jl#L58"><code>blockmean(cmd0::String; kwargs...)</code></a> - blocks.jl:58</li>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/blocks.jl#L59"><code>blockmean(arg1; kwargs...)</code></a> - blocks.jl:59</li>
-</ul>
+<p>View the <a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/utils_types.jl#L2419">source code</a> for this function.</p>
 </section>
 <section id="see-also" class="level2">
 <h2 class="anchored" data-anchor-id="see-also">See Also</h2>
-<p><a href="../..\documentation/modules/blockmedian.html">blockmedian</a>, <a href="../..\documentation/modules/blockmode.html">blockmode</a></p>
 <p><a href="../alphabetical.html">Alphabetical Function List</a></p>
 
 
