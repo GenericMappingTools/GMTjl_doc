@@ -266,7 +266,8 @@ project:
     - documentation/utilities/icosahedron.qmd
     - documentation/utilities/image_alpha.qmd
     - documentation/utilities/image_cpt.qmd
-    - documentation/utilities/imagesc.qmd
+    - documentation/utilities/img2grid.qmd
+    - documentation/utilities/imshow.qmd
     - documentation/utilities/imshow.qmd
     - documentation/utilities/ind2rgb.qmd
     - documentation/utilities/info.qmd
@@ -512,6 +513,7 @@ project:
     - documentation/imgproc/rgb2ycbcr.qmd
     - documentation/imgproc/strel.qmd
     - examples.qmd
+    - faq.qmd
     - gallery.qmd
     - gallery/ex01.qmd
     - gallery/ex02.qmd
@@ -732,6 +734,8 @@ website:
             file: gallery/ex29.html
           - text: "(30) "
             file: gallery/ex30.html
+      - text: "How-do-I (FAQ)"
+        file: faq.qmd
       - text: "Tutorials"
         menu:
           - text: "Overview"
@@ -782,11 +786,17 @@ website:
           - text: "Ask a Question"
             icon: "chat-right-text"
             href: "https://forum.generic-mapping-tools.org/c/questions/5"
+      - icon: github
+        href: https://github.com/joa-quim/GMTjl_docs
+        aria-label: GitHub
+
+  page-footer:
+    center: "2025 Joaquim Luis &#8729; Powered by [![](/assets/quarto.png){width=4mm}](https://quarto.org) and [![](/assets/julia.svg){width=4mm}](https://julialang.org)"
+
 execute:
   error: true
   warning: true
   freeze: auto  # Cache results, only re-execute when source changes
-  #debug: true   # Show execution timing
 
 format:
   html:

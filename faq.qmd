@@ -1,0 +1,626 @@
+---
+title: "Frequently Asked Questions (FAQ)"
+---
+
+# Frequently Asked Questions {#faq}
+
+This section answers common (imaginary) questions about GMT.jl and geocomputation in Julia.
+
+## Data and Formats {#faq-data}
+
+### How do I read a shapefile?
+
+```{julia}
+#| eval: false
+data = gmtread("my_file.shp")
+```
+
+GMT.jl uses GDAL internally, so it supports all common vector formats (Shapefile, GeoPackage, GeoJSON, KML, etc.) automatically.
+
+### How do I read a GeoTIFF?
+
+```{julia}
+#| eval: false
+raster = gmtread("my_raster.tif")
+```
+
+The result is a `GMTgrid` object (for single-band data floats or Int16 data) or `GMTimage` (for multiple bands like RGB).
+
+### What is the difference between GMTgrid and GMTimage?
+
+- **GMTgrid**: Single-band numeric float or Int16 data (elevation, temperature, etc.). Values are stored in `grid.z`.
+- **GMTimage**: Multi-band unsigned Integer data (RGB images, multispectral satellite). Values are stored in `image.image`.
+
+```{julia}
+#| eval: false
+# GMTgrid - single band
+dem = gmtread("elevation.tif")
+println(typeof(dem))  # GMTgrid
+println(dem.z[1:3, 1:3])  # Access values
+
+# GMTimage - multiple bands
+satellite = gmtread("landsat.tif")
+println(typeof(satellite))  # GMTimage
+println(size(satellite.image))  # (rows, cols, bands)
+```
+
+### Why does my raster have NaN values?
+
+NaN (Not a Number) represents cells with no data (nodata). This is normal in:
+
+- Rasters clipped by polygons (cells outside the polygon)
+- Data with acquisition gaps
+
+```{julia}
+#| eval: false
+# Count valid cells vs NaN
+n_valid = count(!isnan, dem.z)
+n_nan = count(isnan, dem.z)
+println("Valid: $n_valid, NaN: $n_nan")
+
+# Replace NaN with a value
+dem.z[isnan.(dem.z)] .= -9999
+dem.nodata = -9999   # Signal the new nodata value in grid
+```
+
+### How do I convert between GMTdataset and Julia matrix?
+
+```{julia}
+#| eval: false
+# GMTdataset to matrix
+data = gmtread("points.gpkg")
+coords = data.data  # Matrix with coordinates
+
+# Or, if data is a vector of GMTdataset
+coords = data[1].data  # Matrix with coordinates
+
+# Matrix to GMTdataset
+coords = [0.0 0.0; 1.0 1.0; 2.0 0.5]
+ds = mat2ds(coords, geom=wkbPoint)
+
+# For polygons (close the ring)
+poly_coords = [0.0 0.0; 1.0 0.0; 1.0 1.0; 0.0 1.0; 0.0 0.0]
+poly = mat2ds(poly_coords, geom=wkbPolygon)
+```
+
+### How do I access vector attributes?
+
+```{julia}
+#| eval: false
+data = gmtread("countries.gpkg")
+
+# Attributes are stored in a dictionary
+attribs = data[1].attrib
+
+# Access a specific attribute
+names = attribs["name"]
+population = attribs["pop"]
+```
+
+### Which format should I use to save my data?
+
+| Type | Recommended Format | Reason |
+|------|-------------------|--------|
+| Vector | GeoPackage (.gpkg) | Open format, single file, no limits |
+| Raster | GeoTIFF (.tif) | Universal, supports compression |
+| Grids | NetCDF (.nc) | Optimal for GMT, rich metadata |
+| Large raster | Cloud Optimized GeoTIFF | Efficient partial access |
+| Web exchange | GeoJSON | Human-readable, browser supported |
+
+```{julia}
+#| eval: false
+# Save in different formats
+gmtwrite("output.gpkg", vector_data)
+gmtwrite("output.tif", raster_data)    # Georeferenced images
+gmtwrite("output.nc", raster_data)
+```
+
+## Coordinate Reference Systems {#faq-crs}
+
+### How do I know which coordinate system my data uses?
+
+```{julia}
+#| eval: false
+data = gmtread("my_file.gpkg")
+
+# Check CRS fields
+println("EPSG: ", data[1].epsg)
+println("PROJ: ", data[1].proj4)
+println("WKT: ", data[1].wkt)
+```
+
+### What does EPSG:4326 mean?
+
+EPSG:4326 is the code for WGS84, the most common geographic coordinate system:
+- Units in degrees (longitude/latitude)
+- Used by GPS, Google Maps, and many global datasets
+- Longitude: -180° to +180°
+- Latitude: -90° to +90°
+
+### When should I use geographic vs projected coordinates?
+
+**Geographic coordinates (lon/lat, degrees):**
+  - Global data
+  - Data storage and exchange
+
+**Projected coordinates (meters):**
+  - Local/regional analysis
+  - Distance and area calculations
+  - Precise buffering (but `buffergeo` is also precise)
+
+```{julia}
+#| eval: false
+# Buffer in geographic coordinates - use buffergeo
+buf_geo = buffergeo(points, width="10k")  # 10 km, spherical
+
+# Buffer in projected coordinates - use regular buffer
+points_utm = mapproject(points, proj="EPSG:32629")
+buf_proj = buffer(points_utm, width=10000)  # 10000 meters
+```
+
+### How do I reproject data?
+
+```{julia}
+#| eval: false
+# Vector - use mapproject
+coords_wgs84 = [-8.5 41.2]
+coords_utm = mapproject(coords_wgs84, proj="EPSG:32629")
+
+# Or
+coords_utm = lonlat2xy(coords_wgs84, t_srs="EPSG:32629")
+
+# Raster - use grdproject
+dem_wgs84 = gmtread("dem.tif")
+dem_utm = grdproject(dem_wgs84, proj="EPSG:32629")
+```
+
+### Which projection should I use?
+
+| Use case | Projection type | Examples |
+|----------|----------------|----------|
+| Local area | UTM zone | EPSG:32629 (zone 29N) |
+| Country/region | National grid | Varies by country |
+| Equal area analysis | Lambert Azimuthal | Custom centered |
+| Navigation | Mercator | EPSG:3857 (web) |
+| Global thematic | Robinson, Mollweide | Good for world maps |
+
+```{julia}
+#| eval: false
+# Determine UTM zone for a location
+function utm_zone(lon, lat)
+    zone = floor(Int, (lon + 180) / 6) + 1
+    epsg = lat >= 0 ? 32600 + zone : 32700 + zone
+    return epsg
+end
+
+utm_zone(-8.5, 41.2)  # Returns 32629 for Portugal
+```
+
+### Why do my coordinates look wrong?
+
+Common causes:
+
+1. **Swapped coordinates**: Longitude/latitude in wrong order
+   ```{julia}
+   #| eval: false
+   # WRONG (if format expects lon, lat)
+   coords = [41.2 -8.5]  # lat, lon
+   # CORRECT
+   coords = [-8.5 41.2]  # lon, lat
+   ```
+
+2. **CRS not defined**: The file has no CRS information
+   ```{julia}
+   #| eval: false
+   # Set CRS manually
+   data[1].epsg = 4326
+   data[1].proj4 = "+proj=longlat +datum=WGS84"
+   ```
+
+3. **Wrong CRS**: The data is in a different CRS than declared
+
+## Visualization and Maps {#faq-viz}
+
+### How do I create a simple map?
+
+```{julia}
+#| eval: false
+# Basic coastline map
+coast(region=(-10, -6, 36, 42), proj=:Mercator,
+      land=:lightgray, water=:lightblue,
+      shore=true, name="map.png", show=true)
+```
+
+### How do I change map colors?
+
+```{julia}
+#| eval: false
+# Named colors
+coast(land=:green, water=:blue)
+
+# Hexadecimal codes
+coast(land="#90EE90", water="#4169E1")
+
+# RGB tuples
+coast(land=(144, 238, 144), water=(65, 105, 225))
+```
+
+### How do I use a custom color palette?
+
+```{julia}
+#| eval: false
+# Built-in palettes
+viz(dem, cmap=:geo)      # Topography
+viz(dem, cmap=:turbo)    # Scientific (the default)
+viz(dem, cmap=:gray)     # Grayscale
+
+# Create custom palette
+cpt = makecpt(cmap=:turbo, range=(0, 3000))
+viz(dem, cmap=cpt)
+
+# Reverse palette
+cpt = makecpt(cmap=:turbo, range=(0, 3000), reverse=true)
+
+# Discrete intervals
+cpt = makecpt(cmap=:jet, range=(0, 3000, 500))  # 500 unit steps
+```
+
+### How do I add a scale bar?
+
+```{julia}
+#| eval: false
+coast(region=(-10, -6, 36, 42), proj=:Mercator, land=:lightgray)
+
+# Add scale bar
+basemap!(map_scale=(anchor=:BL, scale_at_lat=39,
+                    length="100k", fancy=true, units=true), show=true)
+```
+
+### How do I add a north arrow?
+
+```{julia}
+#| eval: false
+coast(region=(-10, -6, 36, 42), proj=:Mercator, land=:lightgray)
+
+# Compass rose
+basemap!(rose=(anchor=:TR, type=:fancy, size=2))
+
+# Simple north arrow
+basemap!(rose=(anchor=:TR, type=:dir, size=1.5))
+```
+
+### How do I add a legend (colorbar)?
+
+```{julia}
+#| eval: false
+viz(dem, cmap=:geo)
+
+# Horizontal colorbar at bottom
+colorbar!(pos=(anchor=:BC, offset=(0, -1.5)),
+          frame=(xlabel="Elevation (m)",))
+
+# Vertical colorbar on the right
+colorbar!(pos=(anchor=:MR, offset=(1, 0), horizontal=false),
+          frame=(ylabel="Elevation (m)",))
+```
+
+### How do I save a high-resolution map?
+
+```{julia}
+#| eval: false
+# High resolution PNG (300 DPI for print)
+coast(region=:global, proj=:Robinson, land=:gray)
+savefig("map_hires.png", dpi=300)   # Note, 300 is the default. Repeated here just to illustrate.
+
+# PDF (vector, scalable)
+savefig("map.pdf")
+
+# Specific size
+coast(region=:global, proj=(name=:Robinson,), figsize=20)  # 20 cm
+savefig("map_20cm.png")
+```
+
+### Why does my map appear distorted?
+
+Common causes:
+
+1. **Inappropriate projection**: Using Mercator for global maps distorts areas
+   ```{julia}
+   #| eval: false
+   # DISTORTED for global map
+   coast(region=:global, proj=:Mercator)
+
+   # BETTER for global map
+   coast(region=:global, proj=:Robinson)
+   ```
+
+2. **Badly defined region**: Check that bounds are correct
+   ```{julia}
+   #| eval: false
+   # Format: (xmin, xmax, ymin, ymax)
+   coast(region=(-10, -6, 36, 42))
+   ```
+
+3. **Aspect ratio**: The projection may not preserve proportions
+
+## Spatial Operations {#faq-spatial}
+
+### How do I create a buffer?
+
+```{julia}
+#| eval: false
+# Buffer in projected coordinates (meters)
+buffered = buffer(points, width=1000)  # 1000 meters
+
+# Geodesic buffer (for lon/lat data)
+buffered = buffergeo(points, width="10k")  # 10 km
+buffered = buffergeo(points, width="500e")  # 500 meters
+```
+
+### How do I clip a raster by a polygon?
+
+```{julia}
+#| eval: false
+# 1. Get polygon region
+poly = gmtread("study_area.gpkg")
+region = getregion(poly)
+
+# 2. Crop raster to region
+raster_cropped = grdcut(raster, region=region)
+
+# 3. Mask values outside polygon
+mask = grdmask(poly, region=region, inc=raster.inc, out_edge_in=[NaN, NaN, 1])
+raster_masked = raster_cropped .* mask
+```
+
+### How do I calculate polygon area?
+
+```{julia}
+#| eval: false
+# Using gmtspatial
+area_info = gmtspatial(polygon, operation="area")
+
+# Or grdvolume for masked rasters
+stats = grdvolume(masked_raster)
+# Returns: area, volume, mean height
+```
+
+### How do I find the centroid?
+
+```{julia}
+#| eval: false
+centroid = gmtspatial(polygon, operation="centroid")
+```
+
+### How do I perform a spatial intersection?
+
+```{julia}
+#| eval: false
+# Select points inside a polygon
+points_inside = gmtselect(points, polygon=boundary)
+
+# Clip lines by polygon
+lines_clipped = gmtselect(lines, polygon=boundary)
+```
+
+### How do I calculate distances?
+
+```{julia}
+#| eval: false
+# Geodesic distance between two points
+dist = mapproject([-8.5 41.2], origin=[-9.1 38.7], dist=true)
+
+# Distance along a line (sampling)
+profile = grdtrack(dem, line, resample="1k")  # Sample every 1 km
+```
+
+### How do I extract raster values at points?
+
+```{julia}
+#| eval: false
+# grdtrack extracts raster values at point locations
+values = grdtrack(dem, points)
+# Result includes original coordinates + extracted value
+```
+
+## Performance {#faq-performance}
+
+### Why is GMT.jl slow on first run?
+
+Julia uses Just-In-Time (JIT) compilation. The first call to each function compiles the code, which takes time. Subsequent runs are much faster.
+
+```{julia}
+#| eval: false
+# First run - slow (compilation)
+@time coast(region=:global, proj=:Robinson)
+
+# Second run - fast
+@time coast(region=:global, proj=:Robinson)
+```
+
+Tips:
+- Keep your Julia session open while working
+
+### How do I process large raster files?
+
+```{julia}
+#| eval: false
+# 1. Read only the needed region
+subset = gmtread("huge_file.tif", region=(-10, -5, 35, 40))
+
+# 2. Process in chunks
+regions = [(-10, -5, 35, 40), (-5, 0, 35, 40), ...]
+for reg in regions
+    chunk = gmtread("huge_file.tif", region=reg)
+    # Process chunk
+    gmtwrite("output_$(reg[1]).tif", processed)
+end
+
+# 3. Reduce resolution first for exploration
+preview = grdsample(raster, inc="0.1")  # Lower resolution
+```
+
+### How do I use multiple CPUs?
+
+GMT has internal parallelization for some operations. For parallel processing in Julia:
+
+```{julia}
+#| eval: false
+using Base.Threads
+
+# Process multiple files in parallel
+files = ["file1.tif", "file2.tif", "file3.tif"]
+
+Threads.@threads for f in files
+    data = gmtread(f)
+    processed = grdfilter(data, filter="g10k")
+    gmtwrite(replace(f, ".tif" => "_filtered.tif"), processed)
+end
+```
+
+### Which other Julia package should I use for geospatial analysis?
+
+| Task | Package | Notes |
+|------|---------|-------|
+| General processing | **GMT.jl** | Complete, fast, excellent cartography |
+| Data I/O | **ArchGDAL.jl** | More direct GDAL interface |
+| Rasters | **Rasters.jl** | xarray-style raster manipulation |
+| Graphs/Networks | **Graphs.jl** | Network analysis, routing |
+
+## Common Errors {#faq-errors}
+
+### "No such file or directory"
+
+The file doesn't exist at the specified path.
+
+```{julia}
+#| eval: false
+# Check if file exists
+isfile("my_file.gpkg")
+
+# Use absolute path
+data = gmtread("/full/path/to/file.gpkg")
+
+# Or check current directory
+pwd()
+readdir()
+```
+
+### "Unknown or unsupported format"
+
+GDAL doesn't recognize the format.
+
+```{julia}
+#| eval: false
+# Check file extension
+# Check if file is not corrupted
+# Try opening with gdalinfo:
+gdalinfo("problem.tif")
+```
+
+### "CRS mismatch" or unexpected results
+
+The data are in different coordinate systems.
+
+```{julia}
+#| eval: false
+# Check CRS of all datasets
+println(data1[1].epsg)
+println(data2[1].epsg)
+
+# Reproject to the same CRS
+data2_reproj = mapproject(data2, proj="EPSG:$(data1[1].epsg)")
+```
+
+### "Index out of bounds"
+
+Accessing indices that don't exist in the array.
+
+```{julia}
+#| eval: false
+# Check dimensions
+size(data.z)
+
+# Julia uses 1-based indexing
+data.z[1, 1]  # First element
+data.z[end, end]  # Last element
+```
+
+### NaN values throughout result
+
+Possible causes:
+- Non-overlapping regions
+- Incorrectly applied mask
+- Invalid mathematical operation (division by zero)
+
+```{julia}
+#| eval: false
+# Check if there are valid values
+any(!isnan, result.z)
+
+# Check region overlap
+println("Raster: ", raster.range[1:4])
+println("Polygon: ", getregion(polygon))
+```
+
+## GMT.jl vs Other Julia Packages {#faq-comparison}
+
+### When to use GMT.jl vs ArchGDAL.jl?
+
+**GMT.jl:**
+- Complete geospatial processing
+- High-quality cartography
+- Grid operations (filters, masks, projections)
+- Integrated analysis
+
+**ArchGDAL.jl:**
+- More direct GDAL interface
+- Greater control over drivers and options
+- Better for specific I/O operations
+
+```{julia}
+#| eval: false
+# GMT.jl - simple and integrated
+dem = gmtread("dem.tif")
+grdimage(dem, cmap=:geo)
+
+# ArchGDAL.jl - more control
+using ArchGDAL
+dataset = ArchGDAL.read("dem.tif")
+band = ArchGDAL.getband(dataset, 1)
+```
+
+### When to use GMT.jl vs Rasters.jl?
+
+**GMT.jl:**
+- Processing and visualization together
+- Native GMT operations (filters, terrain analysis)
+- Better cartography
+
+**Rasters.jl:**
+- xarray/rioxarray style manipulation
+- Integration with Julia ecosystem (DataFrames, etc.)
+- Operations by dimension (time, bands)
+
+## Additional Resources {#faq-resources}
+
+### Where can I find documentation?
+
+- **GMT.jl**: https://www.generic-mapping-tools.org/GMT.jl/
+- **GMT official**: https://docs.generic-mapping-tools.org/
+
+### Where can I get help?
+
+- **GMT Forum**: https://forum.generic-mapping-tools.org/
+- **GitHub Issues**: https://github.com/GenericMappingTools/GMT.jl/issues
+- **Julia Discourse** (tag: spatial): https://discourse.julialang.org/
+
+### Where can I find geographic data?
+
+| Data | Source |
+|------|--------|
+| Global elevation | GMT: `@earth_relief_*` |
+| Country boundaries | Natural Earth: naturalearthdata.com |
+| OpenStreetMap | Geofabrik: download.geofabrik.de |
+| Satellite imagery | Copernicus: scihub.copernicus.eu |
+| USGS data | EarthExplorer: earthexplorer.usgs.gov |

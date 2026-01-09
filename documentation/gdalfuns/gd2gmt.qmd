@@ -14,6 +14,8 @@ you can use the kwarg `sds` to selec the subdataset numerically. Alternatively, 
 For files with `sds` with a scale_factor (e.g. MODIS data), that scale is applyied automaticaly.
 
 ### Examples:
+
+```julia
    G = gd2gmt("AQUA_MODIS.20210228.L3m.DAY.NSST.sst.4km.NRT.nc", sds=1);
 
 Or
@@ -23,6 +25,7 @@ Or
 Or
 
    G = gd2gmt("NETCDF:AQUA_MODIS.20210228.L3m.DAY.NSST.sst.4km.NRT.nc:sst");
+```
 
 ```{julia}
 #| echo: false
@@ -30,3 +33,10 @@ Or
 using GMT
 GMT.doc_source_links("gd2gmt")
 ```
+
+See Also
+--------
+
+{{< gmtref gmt2gd >}}
+
+[Alphabetical Function List](../alphabetical.html)

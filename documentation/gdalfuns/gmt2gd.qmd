@@ -8,7 +8,8 @@ Create GDAL dataset from the contents of GI that can be either a Grid or an Imag
 
     ds = gmt2gd(D, save="", geometry="")
 
-Create GDAL dataset from the contents of D, which can be a {{< gmtref GMTdataset type=gmttype >}}, a vector of {{< gmtref GMTdataset type=gmttype >}} ir a MxN array.
+Create GDAL dataset from the contents of D, which can be a {{< gmtref GMTdataset type=gmttype >}}, a vector of
+{{< gmtref GMTdataset type=gmttype >}} ir a MxN array.
 The `save` keyword instructs GDAL to save the contents as an OGR file. Format is determined by file estension.
 `geometry` can be a string with "polygon", where file will be converted to polygon/multipolygon depending
 on `D` is a single or a multi-segment object, or "point" to convert to a multipoint geometry.
@@ -19,3 +20,10 @@ on `D` is a single or a multi-segment object, or "point" to convert to a multipo
 using GMT
 GMT.doc_source_links("gmt2gd")
 ```
+
+See Also
+--------
+
+{{< gmtref gd2gmt >}}
+
+[Alphabetical Function List](../alphabetical.html)
