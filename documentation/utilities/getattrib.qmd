@@ -1,0 +1,40 @@
+---
+title: "getattrib"
+---
+
+
+```
+att = getattrib(D::GDtype, name::Union{String,Symbol}, n::Int=1) -> Union{String, Vector{String}}
+```
+
+Retrieve an attribute value from a GMT dataset or vector of datasets.
+
+# Arguments
+- `D::GDtype`: A GMT dataset (`GMTdataset`) or a vector of GMT datasets
+- `name::Union{String,Symbol}`: The name of the attribute to retrieve
+- `n::Int=1`: The index of the dataset in case `D` is a vector (default: 1)
+
+# Returns
+- `Union{String, Vector{String}}`: The value of the requested attribute
+
+# Raises
+- `error`: If `n` is out of bounds when `D` is a vector
+- `error`: If the attribute `name` is not found in the dataset
+
+# Examples
+```julia
+getattrib(D, :pop)
+```
+
+```{julia}
+#| echo: false
+#| output: asis
+using GMT
+GMT.doc_source_links("getattrib")
+```
+
+## See Also
+
+{{< gmtref getattribs >}}
+
+- [Alphabetical Function List](../alphabetical.html)

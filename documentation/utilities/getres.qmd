@@ -1,0 +1,41 @@
+---
+title: "getres"
+---
+
+
+```
+res = getres(GI::GItype; geog::Bool=false, cart::Bool=false, TMB::Bool=false) -> Vector{Float64}
+```
+
+Report the resolution of a grid or image object.
+
+# Arguments
+- `GI::GItype`: The grid/image object to analyze.
+
+# Keywords
+- `geog::Bool=false`: If true, return resolution in geographic coordinates (lon/lat).
+- `cart::Bool=false`: If true, return resolution in cartesian coordinates.
+- `TMB::Bool=false`: If true, return resolutions at three latitude bands (bottom, middle, top) plus Y resolution.
+
+# Returns
+- `Vector{Float64}`: A vector containing the resolution increments. 
+  - If `geog` or `cart` is false: returns `GI.inc` as-is.
+  - If `geog=true` and grid is in cartesian: returns geographic resolution.
+  - If `cart=true` and grid is in geographic: returns cartesian resolution.
+  - If `TMB=true`: returns `[res_x1, res_x2, res_x3, res_y]` (resolutions at three latitude bands).
+  - Otherwise: returns `[res_x, res_y]`.
+  - Preserves Z and T increments (if present) by appending `res[3:end]`.
+
+# Warnings
+- Emits a warning if projection information is not available when `geog` or `cart` is requested.
+
+```{julia}
+#| echo: false
+#| output: asis
+using GMT
+GMT.doc_source_links("getres")
+```
+
+## See Also
+
+- [Alphabetical Function List](../alphabetical.html)

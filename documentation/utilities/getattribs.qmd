@@ -1,0 +1,38 @@
+---
+title: "getattribs"
+---
+
+
+```
+att = getattribs(D::GDtype) -> Vector{String}
+```
+
+Extract attribute keys from a GMT data object as a vector of strings.
+
+# Arguments
+- `D::GDtype`: A GMT dataset or collection of datasets
+
+# Returns
+- `Vector{String}`: A vector of attribute key names
+
+# Details
+If `D` is a `GMTdataset`, returns keys from its `attrib` dictionary.
+Otherwise, returns keys from the `attrib` dictionary of the first element in `D`.
+
+# Example
+```julia
+att = getattribs(D)
+```
+
+```{julia}
+#| echo: false
+#| output: asis
+using GMT
+GMT.doc_source_links("getattribs")
+```
+
+## See Also
+
+{{< gmtref getattrib >}}
+
+- [Alphabetical Function List](../alphabetical.html)
