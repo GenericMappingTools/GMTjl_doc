@@ -555,12 +555,14 @@ To propagate the viewpoint used in a previous module (makes sense only in <code>
 </ul></li>
 <li><p><strong>t</strong> or <strong>transparency</strong> or <strong>alpha</strong>: – <em>alpha=50</em><br>
 Set PDF transparency level for an overlay, in (0-100] percent range. [Default is 0, <em>i.e.</em>, opaque]. Works only for the PDF and PNG formats.</p></li>
+<li><p><strong>figname</strong> or <strong>savefig</strong> or <strong>name</strong> : – <em>figname=<code>name.png</code></em><br>
+Save the figure with the <code>figname=name.ext</code> where <code>ext</code> chooses the figure image format.</p></li>
 </ul>
 </section>
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <p>To plot circles (diameter = 0.1 cm) on a 6-inch-wide ternary diagram at the positions listed in the file ternary.txt, with default annotations and gridline spacings, using the specified labeling, try</p>
-<div id="a7308285" class="cell" data-execution_count="1">
+<div id="b7cc8761" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">makecpt</span>(cmap<span class="op">=:</span>turbo, range<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">80</span>,<span class="fl">10</span>))</span>
@@ -582,9 +584,9 @@ Set PDF transparency level for an overlay, in (0-100] percent range. [Default is
 <ul>
 <li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L1662"><code>ternary(cmd0::String; ...)</code></a> - plot.jl:1662</li>
 <li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L1662"><code>ternary(; ...)</code></a> - plot.jl:1662</li>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L1763"><code>ternary(arg1; kw...)</code></a> - plot.jl:1763</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L1766"><code>ternary(arg1; kw...)</code></a> - plot.jl:1766</li>
 <li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L1662"><code>ternary(cmd0::String, arg1; first, image, kwargs...)</code></a> - plot.jl:1662</li>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L1765"><code>ternary(kw...)</code></a> - plot.jl:1765</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L1768"><code>ternary(kw...)</code></a> - plot.jl:1768</li>
 </ul>
 </section>
 <section id="see-also" class="level2">

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>biplot</title>
+<title>funcurve</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -445,8 +445,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#examples" id="toc-examples" class="nav-link active" data-scroll-target="#examples">Examples</a></li>
+  <li><a href="#arguments" id="toc-arguments" class="nav-link active" data-scroll-target="#arguments">Arguments</a></li>
+  <li><a href="#returns" id="toc-returns" class="nav-link" data-scroll-target="#returns">Returns</a></li>
+  <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example">Example</a>
+  <ul class="collapse">
   <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
+  <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -455,7 +460,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">biplot</h1>
+<h1 class="title">funcurve</h1>
 </div>
 
 
@@ -472,78 +477,45 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">biplot</span>(name<span class="op">::</span><span class="dt">String </span><span class="op">|</span> D<span class="op">::</span><span class="dt">GMTDataset</span>; arrow<span class="op">::</span><span class="dt">Tuple</span>=(<span class="fl">0.3</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>, <span class="st">"#0072BD"</span>), cmap<span class="op">=:</span>categorical,</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>       colorbar<span class="op">::</span><span class="dt">Bool</span>=<span class="cn">true</span>, marker<span class="op">=:</span>point,ms<span class="op">=</span><span class="st">"auto"</span>, obsnumbers<span class="op">::</span><span class="dt">Bool</span>=<span class="cn">false</span>, PC<span class="op">=</span>(<span class="fl">1</span>,<span class="fl">2</span>),</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>       varlabels<span class="op">=:</span>yes, xlabel<span class="op">=</span><span class="st">""</span>, ylabel<span class="op">=</span><span class="st">""</span>, kw<span class="op">...</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Create a 2D biplot of the Principal Component Analysis (PCA) of a two-dimensional chart that represents the relationship between the rows and columns of a table.</p>
-<p>The biplot function:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">funcurve</span>(f<span class="op">::</span><span class="dt">Function</span>, lims, n<span class="op">=</span><span class="fl">100</span>)<span class="op">::</span><span class="dt">Tuple{Vector{Float64}, Vector{Float64}}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Evaluate a function over a range and return the computed points.</p>
+<section id="arguments" class="level1">
+<h1>Arguments</h1>
 <ul>
-<li><p>Imposes a sign convention, forcing the element with the largest magnitude in each column of coefs to be positive. This action flips some of the vectors in coefs to the opposite direction, but often makes the plot easier to read. Interpretation of the plot is unaffected, because changing the sign of a coefficient vector does not change its meaning.</p></li>
-<li><p>Scales the scores so that they fit on the plot. That is, the function divides each score by the maximum absolute value of all scores, and multiplies by the maximum coefficient length of coefs. Then biplot changes the sign of the score coordinates according to the sign convention for the coefficients.</p></li>
-<li><p><code>cmd0</code>: The name of a 2D data table file readable with <code>gmtread()</code>, or a <code>GMTdataset</code> with the data.</p></li>
-<li><p><code>arrow</code>: a tuple with the following values: (len, shape, width, color). If this default is used we scale them by fig size.</p>
-<ul>
-<li><code>len</code>: the length of the arrowhead in cm. Default is 0.3.</li>
-<li><code>shape</code>: the shape of the arrow. Default is 0.5.</li>
-<li><code>width</code>: the width of the arrow stem in points. Default is 0.75.</li>
-<li><code>color</code>: the color of the arrow. Default is “#0072BD”.</li>
-</ul></li>
-<li><p><code>cmap</code>: a String or Symbol with the name of a GMT colormap.</p>
-<ul>
-<li>Or a string with “matlab” or “distinct”</li>
-<li>Or “alphabet” for colormaps with distinct colors.</li>
-<li>Or a comma separated string with color names; either normal names (“red,green”) or hex color codes (“#ff0000,#00ff00”).</li>
-<li>Or “none” for plotting all points in black color. A single color in hexadecimal format plots all points in that color. Default is “categorical”.</li>
-</ul></li>
-<li><p><code>colorbar</code>: whether to plot a colorbar. Default is true.</p></li>
-<li><p><code>marker</code>: a String or Symbol with the name of a GMT marker symbol. Default is “point”.</p></li>
-<li><p><code>ms</code>: a String or Symbol with the name of a GMT marker size. Default is “auto” (also scales sizes with the size of the plot).</p></li>
-<li><p><code>obsnumbers</code>: whether to plot observation numbers on the plot. Default is false. Note that in this case we are not able to plot colored numbers by category, so we plot the symbols as well (use <code>cmap="none"</code> if you don’t want this).</p></li>
-<li><p><code>PC</code>: a tuple with the principal components to plot. Default is (1, 2). For example, PC=(2,3) plots the 2nd and 3rd principal components.</p></li>
-<li><p><code>varlabels</code>: whether to plot variable labels. The default is :yes and it prints as labels the column names if the input <a href="../..\documentation/general/types.html#sec-dataset-type">GMTdataset</a>. Is it hasn’t column names, then it prints “A,B,C,…”. Give a string vector to plot custom labels.</p></li>
-<li><p><code>xlabel</code>: a String with the x-axis label. Default is ““, which prints”PC[PC[1]]“.</p></li>
-<li><p><code>ylabel</code>: a String with the y-axis label. Default is ““, which prints”PC[PC[2]]“.</p></li>
-<li><p><code>kw...</code>: Any additional keyword argument to be passed to the <code>plot()</code> function.</p></li>
-<li><p><strong>figname</strong> or <strong>savefig</strong> or <strong>name</strong> : – <em>figname=<code>name.png</code></em><br>
-Save the figure with the <code>figname=name.ext</code> where <code>ext</code> chooses the figure image format.</p></li>
+<li><code>f::Function</code>: The one dimensional function to be evaluated. This can be the named of a built-in function (<em>e.g.</em>, <code>exp</code>), a custom or an anonymous function.</li>
+<li><code>lims</code>: The limits defining the range over which to evaluate the function. That is, the limits of <code>x</code> in <code>y = f(x)</code>. This can be a tuple or a vector with two elements.</li>
+<li><code>n::Int</code>: Number of points to evaluate (default: 100)</li>
 </ul>
-<section id="examples" class="level2">
-<h2 class="anchored" data-anchor-id="examples">Examples</h2>
-<p>See the classic analysis of the <em>Iris</em> dataset.</p>
-<div id="f87e09a0" class="cell" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">biplot</span>(TESTSDIR <span class="op">*</span> <span class="st">"iris.dat"</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="biplot_files/figure-html/cell-2-output-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>Plot a 6 cm fig with the observarion numbers.</p>
-<div id="e95876e4" class="cell" data-execution_count="2">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">biplot</span>(TESTSDIR <span class="op">*</span> <span class="st">"iris.dat"</span>, figsize<span class="op">=</span><span class="fl">6</span>, obsnumbers<span class="op">=</span><span class="cn">true</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="biplot_files/figure-html/cell-3-output-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
 </section>
+<section id="returns" class="level1">
+<h1>Returns</h1>
+<ul>
+<li><code>Tuple{Vector{Float64}, Vector{Float64}}</code>: A tuple containing two vectors of Float64 values representing the x-coordinates and corresponding function values</li>
+</ul>
+</section>
+<section id="example" class="level1">
+<h1>Example</h1>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>x, y <span class="op">=</span> <span class="fu">funcurve</span>(exp, [<span class="fl">0</span>, <span class="fl">10</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Another example with a custom function (an anonymous function in this case):</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>x, y <span class="op">=</span> <span class="fu">funcurve</span>(x<span class="op">-&gt;</span>x<span class="op">^</span><span class="fl">2</span>, (<span class="fl">0</span>, <span class="fl">10</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Visualize the result with:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">viz</span>(x,y)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <section id="source-code" class="level2">
 <h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
 <p>This function has multiple methods:</p>
 <ul>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L2148"><code>biplot(cmd0::String; first, PC, xlabel, ylabel, varlabels, cmap, marker, ms, obsnumbers, colorbar, arrow, kw...)</code></a> - plot.jl:2148</li>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L2169"><code>biplot(coefs::Matrix{Float64}, scores::Matrix{Float64}, explained::Vector{Float64}, varlabels::Vector{&lt;:String}, obslabels::Vector{&lt;:String}, obsnumb::Bool, xlabel::String, ylabel::String, cmap::String, marker::String, ms::String, colorbar::Bool, arrow_pars::Tuple{Float64, Float64, Float64, String}, first::Bool, d::Dict{Symbol, Any})</code></a> - plot.jl:2169</li>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L2153"><code>biplot(D::GMTdataset{T, 2}; first, PC, cmap, xlabel, ylabel, varlabels, marker, ms, obsnumbers, colorbar, arrow, kw...) where T&lt;:Real</code></a> - plot.jl:2153</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/utils.jl#L42"><code>funcurve(f::Function, lims, n::Integer)</code></a> - utils.jl:42</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/utils.jl#L42"><code>funcurve(f::Function, lims)</code></a> - utils.jl:42</li>
+</ul>
+</section>
+<section id="see-also" class="level2">
+<h2 class="anchored" data-anchor-id="see-also">See Also</h2>
+<ul>
+<li><a href="../alphabetical.html">Alphabetical Function List</a></li>
 </ul>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

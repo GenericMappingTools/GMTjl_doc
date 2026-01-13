@@ -540,12 +540,14 @@ Choose between 6 types of histograms:</p>
 <p>To use weights provided as a second data column instead of pure counts, use a tuple. <em>e.g.</em> <strong>kind=(counts=true, weights=true)</strong>. If no <em>weights</em> are used then we may use the simpler form <strong>kind=??</strong> where <em>??</em> is the name of any of the 6 types. <em>e.g.</em> <strong>kind=frequency</strong></p></li>
 <li><p><strong>zoom</strong> : – <em>zoom=true</em><br>
 When input is a <a href="../..\documentation/general/types.html#sec-image-type">GMTimage</a> of UInt16 type this option will set <strong>auto=true</strong> and show histogram only on the region of interest.</p></li>
+<li><p><strong>figname</strong> or <strong>savefig</strong> or <strong>name</strong> : – <em>figname=<code>name.png</code></em><br>
+Save the figure with the <code>figname=name.ext</code> where <code>ext</code> chooses the figure image format.</p></li>
 </ul>
 </section>
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <p>To draw a histogram of the data <em>v3206_06.txt</em> containing seafloor depths, using a 250 meter bin width, center bars, and draw bar outline, use:</p>
-<div id="d790e810" class="cell" data-execution_count="1">
+<div id="c226baf0" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">histogram</span>(<span class="st">"@v3206_06.txt"</span>, bin<span class="op">=</span><span class="fl">250</span>, center<span class="op">=</span><span class="cn">true</span>, pen<span class="op">=</span><span class="st">"0.5p"</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">

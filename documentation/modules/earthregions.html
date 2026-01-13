@@ -498,6 +498,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p><code>res</code>: The dataset resolution. Possible resolutions are: “<code>01d", "30m", "20m", "15m", "10m", "06m", "05m",     "04m", "03m", "02m", "01m", "30s", "15s", "03s", "01s"</code>. However, they are not all available to all datasets. For example, only <code>"earth_relief", "earth_synbath", "earth_gebco"</code> exist for all those resolutions. In case a <code>dataset</code> is specified but no resolution, we make estimate of that resolution based on map extents and what would be good to create a map with 15 cm width.</p></li>
 <li><p><code>registration</code>: The dataset registration. Either <code>grid</code> or <code>pixel</code>. If not provided we choose one.</p></li>
 <li><p><code>exact</code>: The region boundaries in the collections were rounded to more friendly numbers (few decimals). This means that they differ slightly from the pure <code>GMT</code> (<a href="../..\documentation/modules/plot.html">plot</a>) numbers. Setting <code>exact=true</code> will force using the strict <code>GMT</code> limits.</p></li>
+<li><p><strong>figname</strong> or <strong>savefig</strong> or <strong>name</strong> : – <em>figname=<code>name.png</code></em><br>
+Save the figure with the <code>figname=name.ext</code> where <code>ext</code> chooses the figure image format.</p></li>
 </ul>
 <table class="caption-top table">
 <tbody>
@@ -523,7 +525,7 @@ PrettyTables.pretty_table(io, ["-85.9506" "-82.5561" "8.0329" "11.2167" "CRC" "C
 header=["W(lon)","E(lon)","S(lat)","N(lat)","Code","Region","Ref"], backend=Val(:html)) # hide
 println("~~~" * String(take!(io)) * "~~~") # hide</code></pre>
 <p>Consulting the <code>UN</code> collection we would have found that the “Caribbean” region has the code <code>UN029</code>. So, making a map of the Caribe is as simple as:</p>
-<div id="c8090775" class="cell" data-execution_count="1">
+<div id="7ec460c6" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">earthregions</span>(<span class="st">"UN029"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -535,7 +537,7 @@ println("~~~" * String(take!(io)) * "~~~") # hide</code></pre>
 </div>
 </div>
 <p>But the examples above do not let us plot the country’s borders that help referencing a map. For the time being that is only possible when we use the <code>DCW</code> collection. Next example shows a case with country borders. Also note that for the regions in the <code>DCW</code> (there are 248 of them) we can combine as many countries as we want.</p>
-<div id="db450bd7" class="cell" data-execution_count="2">
+<div id="54d1327a" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">earthregions</span>(<span class="st">"PT,ES,FR"</span>, country<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -547,7 +549,7 @@ println("~~~" * String(take!(io)) * "~~~") # hide</code></pre>
 </div>
 </div>
 <p>Our last example shows how to extract a topo/bathymetric grid of the “Sea of Azov” and letting the <code>earthregions</code> select the grid resolution. We also show how to make a pretty map with very few commands. Note that for this later case we have much more plotting possibilities than with the <code>earthregions</code> function that is only a tool to select named regions and quickly visualize them.</p>
-<div id="2c662735" class="cell" data-execution_count="3">
+<div id="219ef03e" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">earthregions</span>(<span class="st">"IHO31"</span>, grid<span class="op">=</span><span class="cn">true</span>);</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">viz</span>(G, shade<span class="op">=</span><span class="cn">true</span>, coast<span class="op">=</span><span class="cn">true</span>, cmap<span class="op">=:</span>earth)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
