@@ -1,5 +1,50 @@
 # Filled curves
 
+<style>
+.card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+  border: 1px solid rgba(0,0,0,.125);
+  height: 100%;
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+.card-img-top {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+</style>
+
+<div class="grid">
+
+<div class="g-col-6 g-col-md-4 g-col-lg-3">
+<div class="card h-100">
+<a href="02_1filledlines.html#band-plots"><img src="filled_band_thumb.png" class="card-img-top"></a>
+<div class="card-body"><a href="02_1filledlines.html#band-plots" class="card-title"><strong>Band Plots</strong></a></div>
+</div>
+</div>
+
+<div class="g-col-6 g-col-md-4 g-col-lg-3">
+<div class="card h-100">
+<a href="02_1filledlines.html#papillon"><img src="filled_papillon_thumb.png" class="card-img-top"></a>
+<div class="card-body"><a href="02_1filledlines.html#papillon" class="card-title"><strong>Papillon</strong></a></div>
+</div>
+</div>
+
+<div class="g-col-6 g-col-md-4 g-col-lg-3">
+<div class="card h-100">
+<a href="02_1filledlines.html#fill-between"><img src="filled_between_thumb.png" class="card-img-top"></a>
+<div class="card-body"><a href="02_1filledlines.html#fill-between" class="card-title"><strong>Fill Between</strong></a></div>
+</div>
+</div>
+
+</div>
+
+## Band plots
+
 The GMT *plot* module has a huge number of options. The *polygon* (-L in original) option in itself
 is what other packages call `band`, so we wrapped another avatar around it and with that name too.
 
@@ -43,7 +88,7 @@ band([x y], y .- 0.1 .- 0.015x, y .+ 0.1 .+ 0.03x, fill="blue@80", show=true)
 ```
 
 
-A papillon
+## Papillon
 
 
 ```{julia}

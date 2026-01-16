@@ -1,5 +1,90 @@
 # Line plots
 
+<style>
+.card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+  border: 1px solid rgba(0,0,0,.125);
+  height: 100%;
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+.card-img-top {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+</style>
+
+<div class="grid">
+
+<div class="g-col-6 g-col-md-4 g-col-lg-3">
+<div class="card h-100">
+<a href="01_lines.html#hello-world"><img src="lines_hello_thumb.png" class="card-img-top"></a>
+<div class="card-body"><a href="01_lines.html#hello-world" class="card-title"><strong>Hello World</strong></a></div>
+</div>
+</div>
+
+<div class="g-col-6 g-col-md-4 g-col-lg-3">
+<div class="card h-100">
+<a href="01_lines.html#cpt-colors"><img src="lines_cpt_thumb.png" class="card-img-top"></a>
+<div class="card-body"><a href="01_lines.html#cpt-colors" class="card-title"><strong>CPT Colors</strong></a></div>
+</div>
+</div>
+
+<div class="g-col-6 g-col-md-4 g-col-lg-3">
+<div class="card h-100">
+<a href="01_lines.html#line-colors-with-the-automatic-color-scheme"><img src="lines_auto_thumb.png" class="card-img-top"></a>
+<div class="card-body"><a href="01_lines.html#line-colors-with-the-automatic-color-scheme" class="card-title"><strong>Auto Colors</strong></a></div>
+</div>
+</div>
+
+<div class="g-col-6 g-col-md-4 g-col-lg-3">
+<div class="card h-100">
+<a href="01_lines.html#line-colors-with-user-set-color-scheme"><img src="lines_user_thumb.png" class="card-img-top"></a>
+<div class="card-body"><a href="01_lines.html#line-colors-with-user-set-color-scheme" class="card-title"><strong>User Colors</strong></a></div>
+</div>
+</div>
+
+<div class="g-col-6 g-col-md-4 g-col-lg-3">
+<div class="card h-100">
+<a href="01_lines.html#bezier-curve"><img src="lines_bezier_thumb.png" class="card-img-top"></a>
+<div class="card-body"><a href="01_lines.html#bezier-curve" class="card-title"><strong>Bezier Curve</strong></a></div>
+</div>
+</div>
+
+<div class="g-col-6 g-col-md-4 g-col-lg-3">
+<div class="card h-100">
+<a href="01_lines.html#decorated-line"><img src="lines_decorated_thumb.png" class="card-img-top"></a>
+<div class="card-body"><a href="01_lines.html#decorated-line" class="card-title"><strong>Decorated Line</strong></a></div>
+</div>
+</div>
+
+<div class="g-col-6 g-col-md-4 g-col-lg-3">
+<div class="card h-100">
+<a href="01_lines.html#text-decorated-line"><img src="lines_text_thumb.png" class="card-img-top"></a>
+<div class="card-body"><a href="01_lines.html#text-decorated-line" class="card-title"><strong>Text Decorated</strong></a></div>
+</div>
+</div>
+
+<div class="g-col-6 g-col-md-4 g-col-lg-3">
+<div class="card h-100">
+<a href="01_lines.html#the-snake-skier"><img src="lines_snake_thumb.png" class="card-img-top"></a>
+<div class="card-body"><a href="01_lines.html#the-snake-skier" class="card-title"><strong>Snake Skier</strong></a></div>
+</div>
+</div>
+
+<div class="g-col-6 g-col-md-4 g-col-lg-3">
+<div class="card h-100">
+<a href="01_lines.html#variable-sizedcolors-points"><img src="lines_variable_thumb.png" class="card-img-top"></a>
+<div class="card-body"><a href="01_lines.html#variable-sizedcolors-points" class="card-title"><strong>Variable Points</strong></a></div>
+</div>
+</div>
+
+</div>
+
 ## Hello world
 
 
@@ -12,7 +97,7 @@ plot(1:10, rand(10), lw=1, lc=:blue, marker=:square,
 
 
 
-## 
+## CPT Colors
 
 In this example the lines color is set using a custom CPT. Pen thickness is assigned automatically.
 
