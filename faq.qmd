@@ -6,6 +6,77 @@ title: "Frequently Asked Questions (FAQ)"
 
 This section answers common (imaginary) questions about GMT.jl and geocomputation in Julia.
 
+## Quick Navigation
+
+**[Data and Formats](#faq-data)**
+
+- [How do I read a shapefile?](#how-do-i-read-a-shapefile)
+- [How do I read a GeoTIFF?](#how-do-i-read-a-geotiff)
+- [What is the difference between GMTgrid and GMTimage?](#what-is-the-difference-between-gmtgrid-and-gmtimage)
+- [Why does my raster have NaN values?](#why-does-my-raster-have-nan-values)
+- [How do I convert between GMTdataset and Julia matrix?](#how-do-i-convert-between-gmtdataset-and-julia-matrix)
+- [How do I access vector attributes?](#how-do-i-access-vector-attributes)
+- [Which format should I use to save my data?](#which-format-should-i-use-to-save-my-data)
+
+**[Coordinate Reference Systems](#faq-crs)**
+
+- [How do I know which coordinate system my data uses?](#how-do-i-know-which-coordinate-system-my-data-uses)
+- [What does EPSG:4326 mean?](#what-does-epsg4326-mean)
+- [When should I use geographic vs projected coordinates?](#when-should-i-use-geographic-vs-projected-coordinates)
+- [How do I reproject data?](#how-do-i-reproject-data)
+- [Which projection should I use?](#which-projection-should-i-use)
+- [Why do my coordinates look wrong?](#why-do-my-coordinates-look-wrong)
+
+**[Visualization and Maps](#faq-viz)**
+
+- [How do I save my output figure?](#how-do-i-save-my-output-figure)
+- [How do I control the size of my figure?](#how-do-i-control-the-size-of-my-figure)
+- [How do I create a simple map?](#how-do-i-create-a-simple-map)
+- [How do I change map colors?](#how-do-i-change-map-colors)
+- [How do I use a custom color palette?](#how-do-i-use-a-custom-color-palette)
+- [How do I add a scale bar?](#how-do-i-add-a-scale-bar)
+- [How do I add a north arrow?](#how-do-i-add-a-north-arrow)
+- [How do I add a legend (colorbar)?](#how-do-i-add-a-legend-colorbar)
+- [Why does my map appear distorted?](#why-does-my-map-appear-distorted)
+
+**[Spatial Operations](#faq-spatial)**
+
+- [How do I create a buffer?](#how-do-i-create-a-buffer)
+- [How do I clip a raster by a polygon?](#how-do-i-clip-a-raster-by-a-polygon)
+- [How do I calculate polygon area?](#how-do-i-calculate-polygon-area)
+- [How do I find the centroid?](#how-do-i-find-the-centroid)
+- [How do I perform a spatial intersection?](#how-do-i-perform-a-spatial-intersection)
+- [How do I calculate distances?](#how-do-i-calculate-distances)
+- [How do I extract raster values at points?](#how-do-i-extract-raster-values-at-points)
+
+**[Performance](#faq-performance)**
+
+- [Why is GMT.jl slow on first run?](#why-is-gmt.jl-slow-on-first-run)
+- [How do I process large raster files?](#how-do-i-process-large-raster-files)
+- [How do I use multiple CPUs?](#how-do-i-use-multiple-cpus)
+- [Which other Julia package should I use for geospatial analysis?](#which-other-julia-package-should-i-use-for-geospatial-analysis)
+
+**[Common Errors](#faq-errors)**
+
+- ["No such file or directory"](#no-such-file-or-directory)
+- ["Unknown or unsupported format"](#unknown-or-unsupported-format)
+- ["CRS mismatch" or unexpected results](#crs-mismatch-or-unexpected-results)
+- ["Index out of bounds"](#index-out-of-bounds)
+- [NaN values throughout result](#nan-values-throughout-result)
+
+**[GMT.jl vs Other Julia Packages](#faq-comparison)**
+
+- [When to use GMT.jl vs ArchGDAL.jl?](#when-to-use-gmt.jl-vs-archgdal.jl)
+- [When to use GMT.jl vs Rasters.jl?](#when-to-use-gmt.jl-vs-rasters.jl)
+
+**[Additional Resources](#faq-resources)**
+
+- [Where can I find documentation?](#where-can-i-find-documentation)
+- [Where can I get help?](#where-can-i-get-help)
+- [Where can I find geographic data?](#where-can-i-find-geographic-data)
+
+---
+
 ## Data and Formats {#faq-data}
 
 ### How do I read a shapefile?
@@ -221,6 +292,59 @@ Common causes:
 
 ## Visualization and Maps {#faq-viz}
 
+### How do I save my output figure?
+
+Use the `savefig` (or `figname` or `name`) option directly in any plotting command to save
+the figure to a file. The file format is determined by the extension of the filename.
+If no extension is provided, the `fmt` option determines the format (default is `png`).
+
+```{julia}
+#| eval: false
+# Save as PNG (format determined by .png extension)
+coast(region=:global, proj=:Robinson, land=:gray, savefig="my_map.png")
+
+# Save as PDF (vector format, determined by .pdf extension)
+plot(rand(10,2), savefig="scatter.pdf")
+
+# Save as JPG
+grdimage(dem, cmap=:geo, savefig="elevation.jpg")
+
+# Without extension - uses fmt option (default is png)
+coast(region=:global, proj=:Robinson, savefig="my_map")  # saves as my_map.png
+
+# Specify format explicitly with fmt
+coast(region=:global, proj=:Robinson, savefig="my_map", fmt=:pdf)  # saves as my_map.pdf
+
+# The savefig option has three aliases - all equivalent:
+coast(region=:global, proj=:Robinson, savefig="map.png")
+coast(region=:global, proj=:Robinson, figname="map.png")
+coast(region=:global, proj=:Robinson, name="map.png")
+```
+
+Supported formats include: PNG, PDF, JPG, EPS, BMP, TIFF, and more. For raster formats (PNG, JPG, TIFF, BMP),
+the default resolution is 300 DPI, which can be changed with the `dpi` option.
+
+### How do I control the size of my figure?
+
+GMT figures are defined in physical units (centimeters by default, or inches), not in pixels. This ensures consistent output for print and publication. The final pixel dimensions of raster images depend on the physical size and the DPI setting.
+
+```{julia}
+#| eval: false
+# Set figure width to 15 cm (height is computed from aspect ratio)
+coast(region=:global, proj=:Robinson, figsize=15, savefig="map.png")
+
+# Set both width and height (12 cm x 8 cm)
+coast(region=(-10, 0, 35, 45), proj=:Mercator, figsize=(12, 8), savefig="map.png")
+
+# Using projection width directly
+coast(region=:global, proj=(name=:Robinson, width=20), savefig="map.png")
+
+# Use inches instead of centimeters (append 'i')
+coast(region=:global, proj=:Robinson, figsize="6i", savefig="map.png")  # 6 inches wide
+```
+
+The pixel dimensions of the output are: `size_cm × (dpi / 2.54)`. For example, a 15 cm wide figure at 300 DPI produces an image approximately 1772 pixels wide.
+
 ### How do I create a simple map?
 
 ```{julia}
@@ -302,22 +426,6 @@ colorbar!(pos=(anchor=:BC, offset=(0, -1.5)),
 # Vertical colorbar on the right
 colorbar!(pos=(anchor=:MR, offset=(1, 0), horizontal=false),
           frame=(ylabel="Elevation (m)",))
-```
-
-### How do I save a high-resolution map?
-
-```{julia}
-#| eval: false
-# High resolution PNG (300 DPI for print)
-coast(region=:global, proj=:Robinson, land=:gray)
-savefig("map_hires.png", dpi=300)   # Note, 300 is the default. Repeated here just to illustrate.
-
-# PDF (vector, scalable)
-savefig("map.pdf")
-
-# Specific size
-coast(region=:global, proj=(name=:Robinson,), figsize=20)  # 20 cm
-savefig("map_20cm.png")
 ```
 
 ### Why does my map appear distorted?

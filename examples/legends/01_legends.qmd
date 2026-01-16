@@ -1,6 +1,56 @@
 # Legends
 
-### 
+<style>
+.card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+  border: 1px solid rgba(0,0,0,.125);
+  height: 100%;
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+.card-img-top {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+</style>
+
+<div class="grid">
+
+<div class="g-col-6 g-col-md-4 g-col-lg-3">
+<div class="card h-100">
+<a href="01_legends.html#basic-legend"><img src="basic_thumb.png" class="card-img-top"></a>
+<div class="card-body"><a href="01_legends.html#basic-legend" class="card-title"><strong>Basic Legend</strong></a></div>
+</div>
+</div>
+
+<div class="g-col-6 g-col-md-4 g-col-lg-3">
+<div class="card h-100">
+<a href="01_legends.html#with-different-page-and-frame-colors-filling"><img src="colors_thumb.png" class="card-img-top"></a>
+<div class="card-body"><a href="01_legends.html#with-different-page-and-frame-colors-filling" class="card-title"><strong>Frame Colors</strong></a></div>
+</div>
+</div>
+
+<div class="g-col-6 g-col-md-4 g-col-lg-3">
+<div class="card h-100">
+<a href="01_legends.html#apples-oranges"><img src="apples_thumb.png" class="card-img-top"></a>
+<div class="card-body"><a href="01_legends.html#apples-oranges" class="card-title"><strong>Apples & Oranges</strong></a></div>
+</div>
+</div>
+
+<div class="g-col-6 g-col-md-4 g-col-lg-3">
+<div class="card h-100">
+<a href="01_legends.html#complex-legend"><img src="complex_thumb.png" class="card-img-top"></a>
+<div class="card-body"><a href="01_legends.html#complex-legend" class="card-title"><strong>Complex Legend</strong></a></div>
+</div>
+</div>
+
+</div>
+
+### Basic Legend
 
 Legend example using the classic mode. In this example we show the two ways in which the `legend`
 option can be used. First one is only `legend="Bla"` and in the second one, argument as a NamedTuple,
@@ -48,7 +98,7 @@ gmtend(:show)
 ```
 
 
-###
+### Complex Legend
 
 A more complex example using the {{< gmtref legend >}} module.
 
