@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -405,8 +440,21 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#synopsis" id="toc-synopsis" class="nav-link active" data-scroll-target="#synopsis">Synopsis</a></li>
+  <li><a href="#description" id="toc-description" class="nav-link" data-scroll-target="#description">Description</a></li>
+  <li><a href="#required-arguments" id="toc-required-arguments" class="nav-link" data-scroll-target="#required-arguments">Required Arguments</a></li>
+  <li><a href="#optional-arguments" id="toc-optional-arguments" class="nav-link" data-scroll-target="#optional-arguments">Optional Arguments</a></li>
+  <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -431,22 +479,223 @@ ul.task-list li input[type="checkbox"] {
 
 
 <p>Plot seismograms in SAC format.</p>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Warning
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>This GMT supplements module has not yet been ported to the long verbose syntax. To use it, you will need to use the <a href="../..\documentation/general/monolitic.html">Monolithic</a> mode.</p>
-</div>
-</div>
-<p>Please open a <a href="https://github.com/GenericMappingTools/GMT.jl/issues">Feature Request</a> if you would like to see this module ported to the long verbose syntax, or better yet, consider contributing the port yourself!</p>
+<section id="synopsis" class="level2">
+<h2 class="anchored" data-anchor-id="synopsis">Synopsis</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sac</span>(sacfiles; kwargs<span class="op">...</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sac!</span>(sacfiles; kwargs<span class="op">...</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="description" class="level2">
+<h2 class="anchored" data-anchor-id="description">Description</h2>
+<p>Reads SAC files (Seismic Analysis Code format) and plots seismograms on a map or profile. Only evenly spaced SAC data is supported.</p>
+<p>The input can be:</p>
+<ul>
+<li>A string with SAC filename(s), e.g., <code>"seis.SAC"</code> or <code>"*.z"</code></li>
+<li>A saclist file containing: <code>filename [X Y [pen]]</code></li>
+</ul>
+<p>On linear plots, the default X position is the begin time of SAC file (adjusted by <code>-T</code> option), and Y is determined by the <code>-E</code> option. On geographic plots, default X/Y are the station longitude/latitude from the SAC header.</p>
+</section>
+<section id="required-arguments" class="level2">
+<h2 class="anchored" data-anchor-id="required-arguments">Required Arguments</h2>
+<ul>
+<li><p><strong>J</strong> or <strong>proj</strong> or <strong>projection</strong> : – <em>proj=<parameters></parameters></em><br>
+Select map projection. More at <a href="../../documentation/common_opts/common_opts.html#proj">proj</a></p></li>
+<li><p><strong>R</strong> or <strong>region</strong> or <strong>limits</strong> : – <em>limits=(xmin, xmax, ymin, ymax)</em> <strong>|</strong> <em>limits=(BB=(xmin, xmax, ymin, ymax),)</em> <strong>|</strong> <em>limits=(LLUR=(xmin, xmax, ymin, ymax),units=“unit”)</em> <strong>|</strong> …more<br>
+Specify the region of interest. More at <a href="../../documentation/common_opts/common_opts.html#limits">limits</a>. For perspective view <strong>view</strong>, optionally add <em>zmin,zmax</em>. This option may be used to indicate the range used for the 3-D axes. You may ask for a larger w/e/s/n region to have more room between the image and the axes.</p></li>
+</ul>
+</section>
+<section id="optional-arguments" class="level2">
+<h2 class="anchored" data-anchor-id="optional-arguments">Optional Arguments</h2>
+<ul>
+<li><p><strong>B</strong> or <strong>axes</strong> or <strong>frame</strong><br>
+Set map boundary frame and axes attributes. Default is to draw and annotate left, bottom and vertical axes and just draw left and top axes. More at <a href="../../documentation/common_opts/common_opts.html#frame">frame</a></p></li>
+<li><p><strong>C</strong> or <strong>timewindow</strong> or <strong>cut</strong><br>
+Read and plot seismograms in timewindow between <code>t0</code> and <code>t1</code> only. Times are relative to a reference time specified by <code>T</code> option. If <code>T</code> is not specified, uses the reference time (kzdate and kztime) from SAC header. If only <code>cut=true</code> is used, <code>t0/t1</code> is determined from the <code>region</code> option.</p></li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>timewindow<span class="op">=</span>(t0, t1)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>cut<span class="op">=</span><span class="st">"t0/t1"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li><strong>D</strong> or <strong>offset</strong></li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>offset<span class="op">=</span>dx</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>offset<span class="op">=</span>(dx, dy)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Offset seismogram positions by <code>dx/dy</code>. If <code>dy</code> is omitted, it equals <code>dx</code>.</p>
+<ul>
+<li><p><strong>E</strong> or <strong>profile</strong> or <strong>profile_type</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>  profile<span class="op">=:</span>azimuth       <span class="co"># or :a</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  profile<span class="op">=:</span>back_azimuth  <span class="co"># or :b</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  profile<span class="op">=:</span>km            <span class="co"># or :k - epicentral distance in km</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  profile<span class="op">=:</span>degree        <span class="co"># or :d - epicentral distance in degrees</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  profile<span class="op">=:</span>number        <span class="co"># or :n - trace number</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  profile<span class="op">=</span>(<span class="op">:</span>number, <span class="fl">5</span>)   <span class="co"># trace number starting at 5</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  profile<span class="op">=:</span>user          <span class="co"># or :u - user defined (from SAC header)</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  profile<span class="op">=</span>(<span class="op">:</span>user, <span class="fl">3</span>)     <span class="co"># use user3 header variable</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Choose profile type (the type of Y axis):</p>
+<ul>
+<li><code>:azimuth</code> or <code>:a</code> : azimuth profile</li>
+<li><code>:back_azimuth</code> or <code>:b</code> : back-azimuth profile</li>
+<li><code>:km</code> or <code>:k</code> : epicentral distance in km</li>
+<li><code>:degree</code> or <code>:d</code> : epicentral distance in degrees</li>
+<li><code>:number</code> or <code>:n</code> : trace number (optionally specify starting number)</li>
+<li><code>:user</code> or <code>:u</code> : user defined from SAC header variable (default user0)</li>
+</ul></li>
+<li><p><strong>F</strong> or <strong>preprocess</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>  preprocess<span class="op">=:</span>integrate     <span class="co"># or :i</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  preprocess<span class="op">=:</span>square        <span class="co"># or :q</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  preprocess<span class="op">=:</span>remove_mean   <span class="co"># or :r</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  preprocess<span class="op">=</span>(<span class="op">:</span>r, <span class="op">:</span>i, <span class="op">:</span>i)   <span class="co"># remove mean, then integrate twice (accel to displacement)</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  preprocess<span class="op">=</span><span class="st">"rii"</span>          <span class="co"># same as above</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Data preprocessing before plotting:</p>
+<ul>
+<li><code>:integrate</code> or <code>:i</code> : integrate</li>
+<li><code>:square</code> or <code>:q</code> : square</li>
+<li><code>:remove_mean</code> or <code>:r</code> : remove mean value</li>
+</ul>
+<p>Options can be combined and repeated. Order controls processing order. Example: <code>preprocess=(:r,:i,:i)</code> converts acceleration to displacement.</p></li>
+<li><p><strong>G</strong> or <strong>fill</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>  fill<span class="op">=</span><span class="cn">true</span>                                    <span class="co"># fill positive portion black</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  fill<span class="op">=</span>(positive<span class="op">=</span><span class="cn">true</span>, color<span class="op">=:</span>red)             <span class="co"># fill positive red</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  fill<span class="op">=</span>(negative<span class="op">=</span><span class="cn">true</span>, color<span class="op">=:</span>blue)            <span class="co"># fill negative blue</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  fill<span class="op">=</span>(positive<span class="op">=</span><span class="cn">true</span>, color<span class="op">=:</span>black, zero<span class="op">=</span><span class="fl">0.5</span>) <span class="co"># custom zero line</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  fill<span class="op">=</span>(positive<span class="op">=</span><span class="cn">true</span>, color<span class="op">=:</span>red, timewindow<span class="op">=</span>(<span class="fl">10</span>,<span class="fl">30</span>))  <span class="co"># fill only between t=10-30</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Paint positive or negative portion of traces.</p>
+<p>Sub-options:</p>
+<ul>
+<li><code>positive=true</code> : paint positive portion</li>
+<li><code>negative=true</code> : paint negative portion</li>
+<li><code>color</code> or <code>fill</code> : color to fill</li>
+<li><code>zero</code> : define zero line position</li>
+<li><code>timewindow=(t0,t1)</code> : paint only between t0 and t1</li>
+</ul>
+<p>Repeat the <code>fill</code> option or use multiple <code>sac!</code> calls to fill both portions.</p></li>
+<li><p><strong>M</strong> or <strong>size</strong> or <strong>vertical_scale</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>  size<span class="op">=</span><span class="fl">2</span>            <span class="co"># scale traces to 2 cm</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  size<span class="op">=</span><span class="st">"2c"</span>         <span class="co"># same, explicit cm</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  size<span class="op">=</span>(<span class="fl">2</span>, <span class="op">:</span>c)      <span class="co"># same</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  size<span class="op">=</span>(<span class="fl">1.5</span>, <span class="op">:</span>c, <span class="op">-</span><span class="fl">1</span>)  <span class="co"># uniform scaling, first trace scaled to 1.5 cm</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  size<span class="op">=</span>(<span class="fl">0.5</span>, <span class="op">:</span>c, <span class="fl">0</span>)   <span class="co"># multiply all traces by 0.5</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  size<span class="op">=</span>(<span class="fl">1</span>, <span class="op">:</span>c, <span class="fl">2</span>)     <span class="co"># scale by distance^2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Vertical scaling:</p>
+<ul>
+<li><code>size</code> alone: scale all traces to this size on map</li>
+<li><code>size/alpha</code> with <code>alpha &lt; 0</code>: uniform scaling (first trace to size)</li>
+<li><code>size/alpha</code> with <code>alpha = 0</code>: multiply all traces by size</li>
+<li><code>size/alpha</code> with <code>alpha &gt; 0</code>: multiply by <code>size * r^alpha</code> (r = distance in km)</li>
+</ul></li>
+<li><p><strong>Q</strong> or <strong>vertical</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>  vertical<span class="op">=</span><span class="cn">true</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Plot traces vertically instead of horizontally.</p></li>
+<li><p><strong>S</strong> or <strong>timescale</strong> or <strong>time_scale</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>  timescale<span class="op">=</span><span class="fl">60</span>      <span class="co"># 60 seconds per unit length</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  timescale<span class="op">=</span><span class="st">"60c"</span>   <span class="co"># 60 seconds per cm</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  timescale<span class="op">=-</span><span class="fl">0.1</span>    <span class="co"># inverse: 0.1 cm per second (same as timescale="i0.1")</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Set time scale in seconds per unit for geographic plots. Append <code>c</code>, <code>i</code>, or <code>p</code> for cm, inch, or points. Use negative value or <code>"i"</code> prefix for reciprocal scale (cm per second).</p></li>
+<li><p><strong>T</strong> or <strong>time</strong> or **time_align</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>  time<span class="op">=</span>(reduce<span class="op">=</span><span class="fl">6.0</span>,)           <span class="co"># reduce velocity 6 km/s</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  time<span class="op">=</span>(shift<span class="op">=-</span><span class="fl">5.0</span>,)           <span class="co"># shift all traces by -5 seconds</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  time<span class="op">=</span>(mark<span class="op">=</span><span class="fl">0</span>,)               <span class="co"># align on t0 marker</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  time<span class="op">=</span>(reduce<span class="op">=</span><span class="fl">8.0</span>, shift<span class="op">=-</span><span class="fl">2</span>, mark<span class="op">=</span><span class="fl">2</span>)  <span class="co"># combine options</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  time<span class="op">=</span><span class="st">"+r6+s-2+t2"</span>            <span class="co"># same as string</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Time alignment and shift:</p>
+<ul>
+<li><code>reduce=vel</code> : reduce velocity in km/s</li>
+<li><code>shift=sec</code> : shift all traces by this many seconds</li>
+<li><code>mark=n</code> : align along time mark. Values: -5(b), -4(e), -3(o), -2(a), 0-9(t0-t9)</li>
+</ul></li>
+<li><p><strong>W</strong> or <strong>pen</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>  pen<span class="op">=</span><span class="fl">0.5</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  pen<span class="op">=</span>(<span class="fl">0.5</span>, <span class="op">:</span>red)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  pen<span class="op">=</span><span class="st">"0.5p,red"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Set pen attributes for all traces. Default: width=0.25p, color=black, style=solid.</p></li>
+<li><p><strong>U</strong> or <strong>time_stamp</strong> : – <em>time_stamp=true</em> <strong>|</strong> <em>time_stamp=(just=“code”, pos=(dx,dy), label=“label”, com=true)</em><br>
+Draw GMT time stamp logo on plot. More at <a href="../../documentation/common_opts/common_opts.html#timestamp">timestamp</a></p></li>
+<li><p><strong>V</strong> or <em>verbose</em> : – <em>verbose=true</em> <strong>|</strong> <em>verbose=level</em><br>
+Select verbosity level. More at <a href="../../documentation/common_opts/common_opts.html#verbose">verbose</a></p></li>
+<li><p><strong>X</strong> or <strong>xshift</strong> or <strong>x_offset</strong> : <em>xshift=true</em> <strong>|</strong> <em>xshift=x-shift</em> <strong>|</strong> <em>xshift=(shift=x-shift, mov=“a|c|f|r”)</em><br>
+Shift plot origin. More at <a href="../../documentation/common_opts/common_opts.html#xshift">xshift</a></p></li>
+<li><p><strong>Y</strong> or <strong>yshift</strong> or <strong>y_offset</strong> : <em>yshift=true</em> <strong>|</strong> <em>yshift=y-shift</em> <strong>|</strong> <em>yshift=(shift=y-shift, mov=“a|c|f|r”)</em><br>
+Shift plot origin. More at <a href="../../documentation/common_opts/common_opts.html#yshift">yshift</a></p></li>
+<li><p><strong>h</strong> or <strong>header</strong> : – <em>header=??</em><br>
+Specify that input and/or output file(s) have n header records. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#h-full">More at</a></p></li>
+<li><p><strong>p</strong> or <strong>view</strong> or <strong>perspective</strong> : – <em>view=(azim, elev)</em><br>
+Default is viewpoint from an azimuth of 200 and elevation of 30 degrees.<br>
+Specify the viewpoint in terms of azimuth and elevation. The azimuth is the horizontal rotation about the z-axis as measured in degrees from the positive y-axis. That is, from North. This option is not yet fully expanded. Current alternatives are:</p>
+<ul>
+<li><em>view=??</em><br>
+A full GMT compact string with the full set of options.</li>
+<li><em>view=(azim,elev)</em><br>
+A two elements tuple with azimuth and elevation</li>
+<li><em>view=true</em><br>
+To propagate the viewpoint used in a previous module (makes sense only in <code>bar3!</code>) More at <a href="../../documentation/common_opts/opt_p.html">perspective</a></li>
+</ul></li>
+<li><p><strong>t</strong> or <strong>transparency</strong> or <strong>alpha</strong>: – <em>alpha=50</em><br>
+Set PDF transparency level for an overlay, in (0-100] percent range. [Default is 0, <em>i.e.</em>, opaque]. Works only for the PDF and PNG formats.</p></li>
+</ul>
+</section>
+<section id="examples" class="level2">
+<h2 class="anchored" data-anchor-id="examples">Examples</h2>
+<section id="single-seismogram-with-positivenegative-fill" class="level3">
+<h3 class="anchored" data-anchor-id="single-seismogram-with-positivenegative-fill">Single seismogram with positive/negative fill</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot seismogram with positive portion black, negative red</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sac</span>(<span class="st">"seis.SAC"</span>, region<span class="op">=</span>(<span class="fl">9</span>,<span class="fl">20</span>,<span class="op">-</span><span class="fl">2</span>,<span class="fl">2</span>), proj<span class="op">=</span><span class="st">"X10c/5c"</span>, frame<span class="op">=:</span>af,</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    preprocess<span class="op">=:</span>remove_mean,</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    fill<span class="op">=</span>(positive<span class="op">=</span><span class="cn">true</span>, color<span class="op">=:</span>black),</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    show<span class="op">=</span><span class="cn">true</span>)</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="fu">sac!</span>(<span class="st">"seis.SAC"</span>, fill<span class="op">=</span>(negative<span class="op">=</span><span class="cn">true</span>, color<span class="op">=:</span>red), show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="distance-profile" class="level3">
+<h3 class="anchored" data-anchor-id="distance-profile">Distance profile</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot seismograms on distance profile</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sac</span>(<span class="st">"*.z"</span>, region<span class="op">=</span>(<span class="fl">200</span>,<span class="fl">1600</span>,<span class="fl">12</span>,<span class="fl">45</span>), proj<span class="op">=</span><span class="st">"X15c/5c"</span>,</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    xaxis<span class="op">=</span>(annot<span class="op">=</span><span class="fl">200</span>, label<span class="op">=</span><span class="st">"T(s)"</span>),</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    yaxis<span class="op">=</span>(annot<span class="op">=</span><span class="fl">5</span>, label<span class="op">=</span><span class="st">"Degree"</span>),</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    frame<span class="op">=</span>(axes<span class="op">=:</span>WSen,),</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>    profile<span class="op">=:</span>degree,</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>    size<span class="op">=</span>(<span class="fl">1.5</span>, <span class="op">:</span>c),</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>    pen<span class="op">=</span>(<span class="fl">0.5</span>, <span class="op">:</span>red),</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>    show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="geographic-map" class="level3">
+<h3 class="anchored" data-anchor-id="geographic-map">Geographic map</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot seismograms on geographic map</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sac</span>(<span class="st">"*.z"</span>, region<span class="op">=</span>(<span class="op">-</span><span class="fl">120</span>,<span class="op">-</span><span class="fl">40</span>,<span class="fl">35</span>,<span class="fl">65</span>), proj<span class="op">=:</span>Mercator,</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    frame<span class="op">=:</span>af,</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    size<span class="op">=</span><span class="st">"1i"</span>,</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    timescale<span class="op">=</span><span class="st">"300c"</span>,</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>    show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="time-alignment" class="level3">
+<h3 class="anchored" data-anchor-id="time-alignment">Time alignment</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Align traces on P-wave arrival (t0) and reduce with 8 km/s velocity</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sac</span>(<span class="st">"*.z"</span>, region<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">100</span>,<span class="fl">0</span>,<span class="fl">10</span>), proj<span class="op">=</span><span class="st">"X12c/8c"</span>,</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    time<span class="op">=</span>(reduce<span class="op">=</span><span class="fl">8.0</span>, mark<span class="op">=</span><span class="fl">0</span>),</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    profile<span class="op">=:</span>km,</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    pen<span class="op">=</span><span class="fl">0.5</span>,</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>    show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>View the <a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/seis/pssac.jl#L64">source code</a> for this function.</p>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<p>Refer to the <a href="http://ds.iris.edu/files/sac-manual/">SAC User Manual</a> for details on SAC format and SAC header variables.</p>
+</section>
+<section id="see-also" class="level2">
+<h2 class="anchored" data-anchor-id="see-also">See Also</h2>
+<p><a href="../..\documentation/modules/meca.html">meca</a>, <a href="../..\documentation/modules/coupe.html">coupe</a>, <a href="../..\documentation/modules/polar.html">polar</a>, <a href="../..\documentation/modules/plot.html">plot</a></p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script>

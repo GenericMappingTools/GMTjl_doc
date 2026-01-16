@@ -445,7 +445,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#fill-between" id="toc-fill-between" class="nav-link active" data-scroll-target="#fill-between">Fill between</a></li>
+  <li><a href="#band-plots" id="toc-band-plots" class="nav-link active" data-scroll-target="#band-plots">Band plots</a></li>
+  <li><a href="#fill-between" id="toc-fill-between" class="nav-link" data-scroll-target="#fill-between">Fill between</a></li>
   </ul>
 </nav>
     </div>
@@ -471,8 +472,53 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<style>
+.card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+  border: 1px solid rgba(0,0,0,.125);
+  height: 100%;
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+.card-img-top {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+</style>
+<div class="grid">
+<div class="g-col-6 g-col-md-4 g-col-lg-3">
+<div class="card h-100">
+<a href="02_1filledlines.html#band-plots"><img src="filled_band_thumb.png" class="card-img-top"></a>
+<div class="card-body">
+<a href="02_1filledlines.html#band-plots" class="card-title"><strong>Band Plots</strong></a>
+</div>
+</div>
+</div>
+<div class="g-col-6 g-col-md-4 g-col-lg-3">
+<div class="card h-100">
+<a href="02_1filledlines.html#papillon"><img src="filled_papillon_thumb.png" class="card-img-top"></a>
+<div class="card-body">
+<a href="02_1filledlines.html#papillon" class="card-title"><strong>Papillon</strong></a>
+</div>
+</div>
+</div>
+<div class="g-col-6 g-col-md-4 g-col-lg-3">
+<div class="card h-100">
+<a href="02_1filledlines.html#fill-between"><img src="filled_between_thumb.png" class="card-img-top"></a>
+<div class="card-body">
+<a href="02_1filledlines.html#fill-between" class="card-title"><strong>Fill Between</strong></a>
+</div>
+</div>
+</div>
+</div>
+<section id="band-plots" class="level2">
+<h2 class="anchored" data-anchor-id="band-plots">Band plots</h2>
 <p>The GMT <em>plot</em> module has a huge number of options. The <em>polygon</em> (-L in original) option in itself is what other packages call <code>band</code>, so we wrapped another avatar around it and with that name too.</p>
-<div id="6fad57dc" class="cell" data-execution_count="1">
+<div id="a1ed4a76" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="op">-</span><span class="fl">10</span><span class="op">:</span><span class="fl">0.11</span><span class="op">:</span><span class="fl">10</span>;</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">band</span>(x, <span class="fu">sin</span>.(x)<span class="op">./</span>x, width<span class="op">=</span><span class="fl">0.1</span>, fill<span class="op">=</span><span class="st">"green@80"</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -487,7 +533,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>We could have obtained the same plot using a function as argument.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">band</span>(<span class="fu">x-&gt;sin</span>(x)<span class="op">/</span>x, <span class="fl">10</span>, width<span class="op">=</span><span class="fl">0.1</span>, fill<span class="op">=</span><span class="st">"green@80"</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Next example hides the line and plots only the bands. Since when we ask for a color fill the lines is always plotted, the trick to no see it is to assign it full transparency. We use also a theme to change the default tick orientation and add automatic grid lines.</p>
-<div id="b8b905b6" class="cell" data-execution_count="2">
+<div id="1eb815bd" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="op">-</span><span class="fl">10</span><span class="op">:</span><span class="fl">0.1</span><span class="op">:</span><span class="fl">10</span>;</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">band</span>(x, <span class="fu">sin</span>.(x), region<span class="op">=</span>(<span class="op">-</span><span class="fl">10</span>,<span class="fl">10</span>,<span class="op">-</span><span class="fl">1.5</span>,<span class="fl">1.5</span>), width<span class="op">=</span><span class="fl">0.3</span>, pen<span class="op">=</span>(<span class="fl">0</span>,<span class="st">"blue@100"</span>),</span>
@@ -502,7 +548,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>And another example where the band is asymetric and grows in width. We had to add <code>eps()</code> to first <code>x</code> to not have a NaN in first element of <code>y</code>.</p>
-<div id="ee0e6bd0" class="cell" data-execution_count="3">
+<div id="d92bc54e" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="fl">0</span><span class="fu">+eps</span>()<span class="op">:</span><span class="fl">0.05</span><span class="op">:</span><span class="fl">4</span>π</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span>  <span class="fu">sin</span>.(<span class="fl">3</span>x) <span class="op">./</span> (<span class="fu">cos</span>.(x) <span class="op">.+</span> <span class="fl">2</span>)<span class="op">./</span>x</span>
@@ -516,7 +562,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>A papillon</p>
-<div id="cdfd1483" class="cell" data-execution_count="4">
+<div id="2ae7b02d" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(sin, <span class="fu">x-&gt;sin</span>(<span class="fl">2</span>x), [<span class="fl">0</span> <span class="fl">2</span>pi], fill<span class="op">=</span><span class="st">"blue@70"</span>, pen<span class="op">=</span>(<span class="fl">1</span>,<span class="st">"blue@40"</span>), show<span class="op">=</span><span class="fl">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -527,10 +573,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
+</section>
 <section id="fill-between" class="level2">
 <h2 class="anchored" data-anchor-id="fill-between">Fill between</h2>
 <p>Fill the area between the two sinc functions. Here we use the default values for line thickness and fill color but all of that can be changed. We also add a thin white border arround tke lines.</p>
-<div id="dc7840ff" class="cell" data-execution_count="5">
+<div id="92226e73" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>theta <span class="op">=</span> <span class="fu">linspace</span>(<span class="op">-</span><span class="fl">2</span>π, <span class="fl">2</span>π, <span class="fl">150</span>);</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>y1 <span class="op">=</span> <span class="fu">sin</span>.(theta) <span class="op">./</span> theta;</span>
@@ -544,7 +591,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="0a9472a9" class="cell" data-execution_count="6">
+<div id="70e5b4f2" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">gmtread</span>(TESTSDIR <span class="op">*</span> <span class="st">"assets/1635541200000.dat"</span>);</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>D.attrib[<span class="st">"Timecol"</span>] <span class="op">=</span> <span class="st">"1"</span>;         <span class="co"># Inform that first column has Time</span></span>
