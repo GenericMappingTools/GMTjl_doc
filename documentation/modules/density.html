@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>talwani2d</title>
+<title>density</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -445,12 +445,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#description" id="toc-description" class="nav-link active" data-scroll-target="#description">Description</a></li>
-  <li><a href="#required-arguments" id="toc-required-arguments" class="nav-link" data-scroll-target="#required-arguments">Required Arguments</a></li>
-  <li><a href="#optional-arguments" id="toc-optional-arguments" class="nav-link" data-scroll-target="#optional-arguments">Optional Arguments</a></li>
-  <li><a href="#notes" id="toc-notes" class="nav-link" data-scroll-target="#notes">Notes</a></li>
-  <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link active" data-scroll-target="#source-code">Source Code</a></li>
   <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
   </ul>
 </nav>
@@ -460,7 +455,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">talwani2d</h1>
+<h1 class="title">density</h1>
 </div>
 
 
@@ -477,75 +472,75 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">talwani2d</span>(cmd0<span class="op">::</span><span class="dt">String</span>=<span class="st">""</span>, arg1<span class="op">=</span><span class="cn">nothing</span>; kwargs<span class="op">...</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Compute geopotential anomalies over 2-D bodies by the method of Talwani.</p>
-<p>(<strong>Warning: Manual translate by Claude. Needs revision</strong>)</p>
-<section id="description" class="level2">
-<h2 class="anchored" data-anchor-id="description">Description</h2>
-<p><strong>talwani2d</strong> will read a multi-segment table from file (or a GMTdataset). This file contains cross-sections of one or more 2-D bodies, with one polygon per segment. The segment header must contain the parameter <em>density</em>, which states the density of this body (individual body densities may be overridden by a fixed constant density contrast given via <strong>density</strong>).</p>
-<p>We can compute anomalies on an equidistant lattice (by specifying a lattice with <strong>range</strong>) or provide arbitrary output points specified in a file via <strong>track</strong>. Choose between free-air anomalies, vertical gravity gradient anomalies, or geoid anomalies. Options are available to control axes units and direction.</p>
-</section>
-<section id="required-arguments" class="level2">
-<h2 class="anchored" data-anchor-id="required-arguments">Required Arguments</h2>
+<pre><code>D = density(x; first::Bool=true, nbins::Integer=200, bins::Vector{&lt;:Real}=Vector{Real}(),
+            bandwidth=nothing, kernel::StrSymb="normal", printbw::Bool=false,
+            extend=0, plot::Bool=true, kwargs...)</code></pre>
+<p>Calculate the kernel density ‘d’ of a dataset X at query points determined by <code>nbins</code> or <code>bins</code>.</p>
 <ul>
-<li><em>intable</em> : – One or more files or a GMTdataset describing cross-sectional polygons of one or more bodies. Polygons will be automatically closed if not already closed, and repeated vertices will be eliminated. The segment header for each body must contain a density parameter in kg/m³ or g/cm³; see <strong>density</strong> for overriding this value.</li>
+<li><p><code>x</code>: A vector, a matrix or Vector{Vector{Real}}. The density, by default, is estimated using a gaussian kernel with a width obtained with the Silverman’s rule.</p></li>
+<li><p><code>nbins</code>: points are queried between MIN(Y[:]) and MAX(Y[:]) where Y is the data vector.</p></li>
+<li><p><code>bins</code>: Calculates the density for the query points specified by BINS. The values are used as the query points directly. Default is 200 points.</p></li>
+<li><p><code>bandwidth</code>: uses the ‘bandwidth’ to calculate the kernel density. It must be a scalar. For the uniform case the bandwidth is set to 15% of the range, otherwise the bandwidth is chosen with the Silverman’s rule.</p></li>
+<li><p><code>kernel</code>: Uses the kernel function specified by KERNEL name (a string or a symbol) to calculate the density.<br>
+The kernel may be: ‘Normal’ (default) or ‘Uniform’.</p></li>
+<li><p><code>printbw</code>: Logical value indicating to print the computed value of the <code>bandwidth</code>.</p></li>
+<li><p><code>extend</code>: By default the density curve is computed at the <code>bins</code> locatins or between data extrema as mentioned above. However, this is not normally enough to go down to zero. Use this option in terms of number of bandwidth to expand de curve. <em>e.g.</em> <code>extend=2</code></p></li>
+<li><p><code>plot</code>: Logical value indicating to plot the density curve. If <code>false</code> returns the GMTdataset.</p></li>
+<li><p><code>kwargs</code>: Any keyword argument accepted by <code>plot</code> to customize the density plot.</p></li>
 </ul>
-</section>
-<section id="optional-arguments" class="level2">
-<h2 class="anchored" data-anchor-id="optional-arguments">Optional Arguments</h2>
+<section id="returns" class="level3">
+<h3 class="anchored" data-anchor-id="returns">Returns</h3>
 <ul>
-<li><p><strong>A</strong> or <strong>z_up</strong> : – <em>z_up=true</em><br>
-The <em>z</em>-axis should be positive upwards [Default is down].</p></li>
-<li><p><strong>D</strong> or <strong>density</strong> : – <em>density=value</em><br>
-Sets a fixed density contrast that overrides any per-body settings in the model file, in kg/m³ or g/cm³.</p></li>
-<li><p><strong>F</strong> or <strong>field</strong> : – <em>field=:faa</em> <strong>|</strong> <em>field=:geoid</em> <strong>|</strong> <em>field=:vgg</em> <strong>|</strong> <em>field=(geoid=true, lat=value)</em><br>
-Specify desired gravitational field component. Choose between:</p>
-<ul>
-<li><strong>:faa</strong> or <strong>:f</strong> - free-air anomaly [Default]</li>
-<li><strong>:geoid</strong> or <strong>:n</strong> - geoid anomaly; optionally specify latitude for normal gravity reference value via <em>field=(geoid=true, lat=value)</em> [Default is 45]</li>
-<li><strong>:vgg</strong> or <strong>:v</strong> - vertical gravity gradient</li>
-</ul></li>
-<li><p><strong>M</strong> or <strong>units</strong> : – <em>units=:h</em> <strong>|</strong> <em>units=:v</em> <strong>|</strong> <em>units=:hv</em> <strong>|</strong> <em>units=“hv”</em><br>
-Sets distance units used. Use <strong>:h</strong> to indicate that horizontal distances are in km [m], and <strong>:v</strong> to indicate vertical distances are in km [m]. Combine as <strong>:hv</strong> or <strong>“hv”</strong> for both.</p></li>
-<li><p><strong>N</strong> or <strong>track</strong> : – <em>track=“filename”</em> <strong>|</strong> <em>track=dataset</em><br>
-Specifies locations where we wish to compute the predicted value. When this option is used you cannot use <strong>range</strong> to set an equidistant lattice. The output data records are written to stdout.</p></li>
-<li><p><strong>T</strong> or <strong>range</strong> : – <em>range=(min, max, inc)</em> <strong>|</strong> <em>range=“min/max/inc”</em><br>
-Specify an equidistant output lattice. Cannot be used with <strong>track</strong>.</p></li>
-<li><p><strong>V</strong> or <em>verbose</em> : – <em>verbose=true</em> <strong>|</strong> <em>verbose=level</em><br>
-Select verbosity level. More at <a href="../../documentation/common_opts/common_opts.html#verbose">verbose</a></p></li>
-<li><p><strong>Z</strong> or <strong>level</strong> : – <em>level=value</em> <strong>|</strong> <em>level=“level/ymin/ymax”</em><br>
-Set a constant observation level [0]. Optionally, and for gravity anomalies only (<strong>field=:faa</strong>), append the finite extent limits of a 2.5-D body.</p></li>
-<li><p><strong>bi</strong> or <strong>binary_in</strong> : – <em>binary_in=??</em><br>
-Select native binary format for primary table input. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#bi-full">More at</a></p></li>
+<li><code>nothing</code> or a <code>GMTps</code> and plots the density curve directly if <code>plot=true</code> (the fedault) and shows it is <code>show=true</code>.</li>
+<li><code>D</code>: A <a href="../..\documentation/general/types.html#sec-dataset-type">GMTdataset</a> with two columns: first the query points and second the density values.</li>
 </ul>
+<p>The version</p>
+<pre><code>G = density(data, x,y; weights=nothing, bandwidth=nothing, showbw=false)</code></pre>
+<p>Computes the smoothed kernel probability density estimate of a two-column matrix <code>data</code>. The estimate is based on a normal kernel function, and is evaluated at the points defined by the vectors <code>x</code> and <code>y</code>. The <code>showbw</code> option is used to print the bandwidth used. It returns a <a href="../..\documentation/general/types.html#sec-grid-type">GMTgrid</a> of the same size as <code>x</code> and <code>y</code>.</p>
 </section>
-<section id="notes" class="level2">
-<h2 class="anchored" data-anchor-id="notes">Notes</h2>
-<p>The 2-D geoid anomaly is a logarithmic potential and thus has no natural reference level. We simply remove the most negative (if density contrast is positive) or positive (if density contrast is negative) computed value from all values, rendering the entire anomaly positive (or negative). You can use <a href="../..\documentation/modules/gmtmath.html">gmtmath</a> to change the zero level.</p>
+<section id="example" class="level3">
+<h3 class="anchored" data-anchor-id="example">Example</h3>
+<div id="e248658c" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> [<span class="fl">0.5</span><span class="fu">*rand</span>(<span class="fl">20</span>,<span class="fl">1</span>) <span class="fl">5</span> <span class="op">.+</span> <span class="fl">2.5</span><span class="fu">*rand</span>(<span class="fl">20</span>,<span class="fl">1</span>); <span class="fl">.75</span> <span class="op">.+</span> <span class="fl">0.25</span><span class="fu">*rand</span>(<span class="fl">10</span>,<span class="fl">1</span>) <span class="fl">8.75</span> <span class="op">.+</span> <span class="fl">1.25</span><span class="fu">*rand</span>(<span class="fl">10</span>,<span class="fl">1</span>)]</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">density</span>(X, <span class="op">-</span><span class="fl">0.25</span><span class="op">:</span><span class="fl">.05</span><span class="op">:</span><span class="fl">1.25</span>, <span class="fl">0</span><span class="op">:</span><span class="fl">.1</span><span class="op">:</span><span class="fl">15</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">viz</span>(G, figsize<span class="op">=</span>(<span class="fl">12</span>,<span class="fl">12</span>), view<span class="op">=</span>(<span class="fl">225</span>,<span class="fl">30</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre>UndefVarError: `density` not defined
+
+Stacktrace:
+ [1] top-level scope
+<span class="ansi-bright-black-fg">   @</span> <span style="text-decoration:underline" class="ansi-bright-black-fg">In[2]:2</span></pre>
+</div>
+</div>
+</div>
+<p>See other <a href="../../examples/plotting_functions/05_1_stats.html#examples-of-density-plots">examples at</a></p>
+<p>and here <strong>?@sec-examples-of-density-plots</strong></p>
+<div class="ansi-escaped-output">
+<pre><span class="ansi-green-fg ansi-bold">Precompiling</span> packages...
+
+
+  64416.9 ms<span class="ansi-green-fg">  ✓ </span>GMT
+
+  1 dependency successfully precompiled in 66 seconds. 80 already precompiled.
+
+
+<span class="ansi-cyan-fg ansi-bold">[ </span><span class="ansi-cyan-fg ansi-bold">Info: </span>Precompiling GMTParkerFFTExt [35a23bc9-6f20-5cbc-8971-9cdf66427582]
+</pre>
+</div>
 </section>
-<section id="examples" class="level2">
-<h2 class="anchored" data-anchor-id="examples">Examples</h2>
-<p>To compute the free-air anomalies on an equidistant profile over a 2-D body that has been contoured and saved to body2d.txt, using 1700 kg/m³ as a constant density contrast, with all distances in meters:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">talwani2d</span>(<span class="st">"body2d.txt"</span>, range<span class="op">=</span>(<span class="op">-</span><span class="fl">200</span>,<span class="fl">200</span>,<span class="fl">2</span>), density<span class="op">=</span><span class="fl">1700</span>, field<span class="op">=:</span>faa)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>To obtain the vertical gravity gradient anomaly along the track given by the file crossing.txt for the same model:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">talwani2d</span>(<span class="st">"body2d.txt"</span>, track<span class="op">=</span><span class="st">"crossing.txt"</span>, density<span class="op">=</span><span class="fl">1700</span>, field<span class="op">=:</span>vgg)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The geoid anomaly for the same setup, evaluated at 60N:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">talwani2d</span>(<span class="st">"body2d.txt"</span>, track<span class="op">=</span><span class="st">"crossing.txt"</span>, density<span class="op">=</span><span class="fl">1700</span>, field<span class="op">=</span>(geoid<span class="op">=</span><span class="cn">true</span>, lat<span class="op">=</span><span class="fl">60</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="references" class="level2">
-<h2 class="anchored" data-anchor-id="references">References</h2>
-<p>Chapman, M. E., 1979, Techniques for interpretation of geoid anomalies, <em>J. Geophys. Res., 84(B8)</em>, 3793-3801.</p>
-<p>Kim, S.-S., and P. Wessel, 2016, New analytic solutions for modeling vertical gravity gradient anomalies, <em>Geochem. Geophys. Geosyst., 17</em>, <a href="https://doi.org/10.1002/2016GC006263">doi:10.1002/2016GC006263</a>.</p>
-<p>Rasmussen, R., and L. B. Pedersen, 1979, End corrections in potential field modeling, <em>Geophys. Prospect., 27</em>, 749-760.</p>
-<p>Talwani, M., J. L. Worzel, and M. Landisman, 1959, Rapid gravity computations for two-dimensional bodies with application to the Mendocino submarine fracture zone, <em>J. Geophys. Res., 64</em>, 49-59.</p>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>This function has multiple methods:</p>
+<ul>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/statplots.jl#L164"><code>density(D::GMTdataset, x, y; weights, bandwidth, showbw)</code></a> - statplots.jl:164</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/statplots.jl#L116"><code>density(data, x, y; weights, bandwidth, showbw, verbose)</code></a> - statplots.jl:116</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/statplots.jl#L44"><code>density(x; first, nbins, bins, bandwidth, kernel, printbw, horizontal, extend, plot, kwargs...)</code></a> - statplots.jl:44</li>
+</ul>
 </section>
 <section id="see-also" class="level2">
 <h2 class="anchored" data-anchor-id="see-also">See Also</h2>
 <ul>
-<li><a href="../..\documentation/modules/talwani3d.html">talwani3d</a>, <a href="../..\documentation/modules/gravfft.html">gravfft</a>, <a href="../..\documentation/modules/gravmag3d.html">gravmag3d</a>, <a href="../..\documentation/modules/gmtmath.html">gmtmath</a></li>
 <li><a href="../alphabetical.html">Alphabetical Function List</a></li>
 </ul>
 

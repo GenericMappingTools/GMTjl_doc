@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -405,8 +440,18 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#description" id="toc-description" class="nav-link active" data-scroll-target="#description">Description</a></li>
+  <li><a href="#required-arguments" id="toc-required-arguments" class="nav-link" data-scroll-target="#required-arguments">Required Arguments</a></li>
+  <li><a href="#optional-arguments" id="toc-optional-arguments" class="nav-link" data-scroll-target="#optional-arguments">Optional Arguments</a></li>
+  <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
+  <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -430,23 +475,67 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Get mean rotations and covariance matrices from set of finite rotations.</p>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Warning
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>This GMT supplements module has not yet been ported to the long verbose syntax. To use it, you will need to use the <a href="../..\documentation/general/monolitic.html">Monolithic</a> mode.</p>
-</div>
-</div>
-<p>Please open a <a href="https://github.com/GenericMappingTools/GMT.jl/issues">Feature Request</a> if you would like to see this module ported to the long verbose syntax, or better yet, consider contributing the port yourself!</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rotsmoother</span>(cmd0<span class="op">::</span><span class="dt">String</span>=<span class="st">""</span>, arg1<span class="op">=</span><span class="cn">nothing</span>; kwargs<span class="op">...</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Compute mean rotations from a set of finite rotations.</p>
+<p>(<strong>Warning: Manual translate by Claude. Needs revision</strong>)</p>
+<section id="description" class="level2">
+<h2 class="anchored" data-anchor-id="description">Description</h2>
+<p><strong>rotsmoother</strong> reads a table of total reconstructions and computes mean rotations (and optionally covariance matrices) for sub-groups of rotations based on rotation age (or all of the rotations).</p>
+</section>
+<section id="required-arguments" class="level2">
+<h2 class="anchored" data-anchor-id="required-arguments">Required Arguments</h2>
+<ul>
+<li><em>intable</em> : – Name of a rotation table (file or GMTdataset) containing (<em>lon lat time angle</em> [<em>weight</em>]) values. If <strong>angles</strong> is set, input is expected to contain (<em>lon lat angle</em> [<em>weight</em>]) records instead.</li>
+</ul>
+</section>
+<section id="optional-arguments" class="level2">
+<h2 class="anchored" data-anchor-id="optional-arguments">Optional Arguments</h2>
+<ul>
+<li><p><strong>A</strong> or <strong>angles</strong> or <strong>opening_angles</strong> : – <em>angles=true</em><br>
+Use opening angles as a proxy for time. Suitable when no time can be assigned to the rotations. In this case, input is expected to contain <em>lon lat angle</em> [<em>weight</em>] records and <strong>ages</strong> settings refer to angles instead of time. [Default expects <em>lon lat time angle</em> [<em>weight</em>] and <strong>ages</strong> refers to time].</p></li>
+<li><p><strong>C</strong> or <strong>cov</strong> or <strong>covariance</strong> : – <em>covariance=true</em><br>
+Compute covariance matrix for each mean rotation. This is done by converting each finite rotation to a quaternion, determining the mean quaternion (rotation) and then considering all rotations as perturbations to the mean rotation. From these perturbations we determine the covariance matrix.</p></li>
+<li><p><strong>N</strong> or <strong>north</strong> or <strong>northern</strong> : – <em>northern=true</em><br>
+Ensure all poles are in northern hemisphere [Default ensures positive opening angles].</p></li>
+<li><p><strong>S</strong> or <strong>south</strong> or <strong>southern</strong> : – <em>southern=true</em><br>
+Ensure all poles are in southern hemisphere [Default ensures positive opening angles].</p></li>
+<li><p><strong>T</strong> or <strong>ages</strong> or <strong>times</strong> : – <em>ages=value</em> <strong>|</strong> <em>ages=(start, stop, inc)</em> <strong>|</strong> <em>ages=“file”</em><br>
+Sets the desired groups of ages. For a single time append the desired time and all rotations are used to compute a single mean rotation. For an equidistant range of reconstruction ages give <em>ages=(start, stop, inc)</em> or use <strong>+n</strong> suffix for number of points. For a non-equidistant set of reconstruction ages pass them via a file. The ages become the bin-boundaries and we output the average time of all rotations inside each bin.</p></li>
+<li><p><strong>V</strong> or <em>verbose</em> : – <em>verbose=true</em> <strong>|</strong> <em>verbose=level</em><br>
+Select verbosity level. More at <a href="../../documentation/common_opts/common_opts.html#verbose">verbose</a></p></li>
+<li><p><strong>W</strong> or <strong>weights</strong> or <strong>weighted</strong> : – <em>weighted=true</em><br>
+Expect weights in last column for a weighted mean rotation [no weights].</p></li>
+<li><p><strong>Z</strong> or <strong>negative</strong> or <strong>neg_angles</strong> : – <em>neg_angles=true</em><br>
+Report negative opening angles [positive].</p></li>
+<li><p><strong>bi</strong> or <strong>binary_in</strong> : – <em>binary_in=??</em><br>
+Select native binary format for primary table input. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#bi-full">More at</a></p></li>
+<li><p><strong>bo</strong> or <strong>binary_out</strong> : – <em>binary_out=??</em><br>
+Select native binary format for table output. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#bo-full">More at</a></p></li>
+<li><p><strong>f</strong> or <strong>colinfo</strong> : – <em>colinfo=??</em><br>
+Specify the data types of input and/or output columns (time or geographical data). <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#f-full">More at</a></p></li>
+</ul>
+</section>
+<section id="examples" class="level2">
+<h2 class="anchored" data-anchor-id="examples">Examples</h2>
+<p>To smooth rotation groups in increments of 3 Myr and ensure northern hemisphere poles:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">rotsmoother</span>(<span class="st">"rotations.txt"</span>, northern<span class="op">=</span><span class="cn">true</span>, ages<span class="op">=</span>(<span class="fl">3</span>, <span class="fl">30</span>, <span class="fl">3</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>To smooth all rotations and compute a single mean rotation (assigned to time = 5) with corresponding covariance matrix:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">rotsmoother</span>(<span class="st">"rotations.txt"</span>, covariance<span class="op">=</span><span class="cn">true</span>, ages<span class="op">=</span><span class="fl">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>To compute weighted mean rotations from a table with weights in the last column:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">rotsmoother</span>(<span class="st">"rotations.txt"</span>, weighted<span class="op">=</span><span class="cn">true</span>, ages<span class="op">=</span>(<span class="fl">0</span>, <span class="fl">100</span>, <span class="fl">10</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="see-also" class="level2">
+<h2 class="anchored" data-anchor-id="see-also">See Also</h2>
+<ul>
+<li><a href="../..\documentation/modules/backtracker.html">backtracker</a>, <a href="../..\documentation/modules/rotconverter.html">rotconverter</a>, <a href="../..\documentation/modules/grdspotter.html">grdspotter</a>, <a href="../..\documentation/modules/hotspotter.html">hotspotter</a>, <a href="../..\documentation/modules/originater.html">originater</a></li>
+<li><a href="../alphabetical.html">Alphabetical Function List</a></li>
+</ul>
 
 
+</section>
 
 </main> <!-- /main -->
 <script>

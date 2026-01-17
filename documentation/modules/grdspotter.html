@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -405,8 +440,20 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#description" id="toc-description" class="nav-link active" data-scroll-target="#description">Description</a></li>
+  <li><a href="#required-arguments" id="toc-required-arguments" class="nav-link" data-scroll-target="#required-arguments">Required Arguments</a></li>
+  <li><a href="#optional-arguments" id="toc-optional-arguments" class="nav-link" data-scroll-target="#optional-arguments">Optional Arguments</a></li>
+  <li><a href="#notes" id="toc-notes" class="nav-link" data-scroll-target="#notes">Notes</a></li>
+  <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -430,23 +477,88 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Create CVA grid from a gravity or topography grid.</p>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Warning
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>This GMT supplements module has not yet been ported to the long verbose syntax. To use it, you will need to use the <a href="../..\documentation/general/monolitic.html">Monolithic</a> mode.</p>
-</div>
-</div>
-<p>Please open a <a href="https://github.com/GenericMappingTools/GMT.jl/issues">Feature Request</a> if you would like to see this module ported to the long verbose syntax, or better yet, consider contributing the port yourself!</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grdspotter</span>(cmd0<span class="op">::</span><span class="dt">String</span>=<span class="st">""</span>, arg1<span class="op">=</span><span class="cn">nothing</span>; kwargs<span class="op">...</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Create CVA grid from a residual bathymetry or gravity grid.</p>
+<p>(<strong>Warning: Manual translate by Claude. Needs revision</strong>)</p>
+<section id="description" class="level2">
+<h2 class="anchored" data-anchor-id="description">Description</h2>
+<p><strong>grdspotter</strong> reads a grid file with residual bathymetry or gravity and calculates flowlines from each node that exceeds a minimum value using the specified rotations file. These flowlines are then convolved with the volume of the prism represented by each grid node and added up to give a Cumulative Volcano Amplitude (CVA) grid [<em>Wessel</em>, 1999; 2008].</p>
+</section>
+<section id="required-arguments" class="level2">
+<h2 class="anchored" data-anchor-id="required-arguments">Required Arguments</h2>
+<ul>
+<li><p><em>ingrid</em> : – Input data grid to be processed (file name or GMTgrid), typically residual bathymetry or free-air anomalies.</p></li>
+<li><p><strong>E</strong> or <strong>rot</strong> or <strong>rotations</strong> or <strong>rot_file</strong> : – <em>rotations=“filename”</em> <strong>|</strong> <em>rotations=“lon/lat/angle”</em><br>
+Specify the rotation file or a single rotation as <code>"lon/lat/angle"</code>. Append <strong>+i</strong> if you want to invert the finite rotations prior to use.</p></li>
+<li><p><strong>G</strong> or <strong>outgrid</strong> or <strong>save</strong> : – <em>outgrid=“filename”</em><br>
+Specify name for output CVA grid file.</p></li>
+<li><p><strong>I</strong> or <strong>inc</strong> or <strong>increment</strong> or <strong>spacing</strong> : – <em>inc=x_inc</em> <strong>|</strong> <em>inc=(x_inc, y_inc)</em> <strong>|</strong> <em>inc=“xinc[+e|n][/yinc[+e|n]]”</em><br>
+Specify the grid increments or the block sizes. More at <a href="../../documentation/common_opts/common_opts.html#spacing">spacing</a></p></li>
+<li><p><strong>R</strong> or <strong>region</strong> or <strong>limits</strong> : – <em>limits=(xmin, xmax, ymin, ymax)</em> <strong>|</strong> <em>limits=(BB=(xmin, xmax, ymin, ymax),)</em> <strong>|</strong> <em>limits=(LLUR=(xmin, xmax, ymin, ymax),units=“unit”)</em> <strong>|</strong> …more<br>
+Specify the region of interest. More at <a href="../../documentation/common_opts/common_opts.html#limits">limits</a>. For perspective view <strong>view</strong>, optionally add <em>zmin,zmax</em>. This option may be used to indicate the range used for the 3-D axes. You may ask for a larger w/e/s/n region to have more room between the image and the axes.</p></li>
+</ul>
+</section>
+<section id="optional-arguments" class="level2">
+<h2 class="anchored" data-anchor-id="optional-arguments">Optional Arguments</h2>
+<ul>
+<li><p><strong>A</strong> or <strong>agegrid</strong> or <strong>age_grid</strong> : – <em>agegrid=“filename”</em><br>
+Supply a crustal age grid that is co-registered with the input data grid. These ages become the upper ages to use when constructing flowlines [Default extends flowlines back to oldest age found in the rotation file; but see <strong>upper_age</strong>].</p></li>
+<li><p><strong>D</strong> or <strong>DIgrid</strong> or <strong>PAgrid</strong> : – <em>DIgrid=(importance=“file”,)</em> <strong>|</strong> <em>PAgrid=(predicted=“file”,)</em><br>
+For <strong>importance</strong>, we use flowlines to determine the maximum CVA encountered along each flowline and create a Data Importance (DI) grid with these values at the originating nodes. For <strong>predicted</strong>, we use flowlines to determine the flowline age at the CVA maximum for each node and create a Predicted Age (PA) grid with these values at the originating nodes. Repeatable.</p></li>
+<li><p><strong>L</strong> or <strong>IDgrid</strong> or <strong>id_grid</strong> : – <em>IDgrid=“filename”</em><br>
+Supply a co-registered grid with seamount chain IDs for each node. This option requires that you also use <strong>IDinfo</strong>.</p></li>
+<li><p><strong>M</strong> or <strong>onthefly</strong> or <strong>no_memory</strong> : – <em>onthefly=true</em><br>
+Do not attempt to keep all flowlines in memory when using <strong>DIgrid</strong> and/or <strong>PAgrid</strong>. Should you run out of memory you can use this option to compute flowlines on-the-fly. It will be slower as we can no longer reuse the flowlines calculated for the CVA step. Cannot be used with <strong>bootstrap</strong> or the multi-slice mode in <strong>zlimits</strong>.</p></li>
+<li><p><strong>N</strong> or <strong>upper_age</strong> or <strong>maxage</strong> : – <em>upper_age=value</em><br>
+Set the upper age to assign to nodes whose crustal age is unknown (i.e., NaN) [no upper age]. Also see <strong>agegrid</strong>.</p></li>
+<li><p><strong>Q</strong> or <strong>IDinfo</strong> or <strong>id_info</strong> : – <em>IDinfo=value</em> <strong>|</strong> <em>IDinfo=“filename”</em><br>
+Either give a single ID to use or the name of a file with a list of IDs to use [Default uses all IDs]. Each line would be TAG ID [w e s n]. The <em>w/e/s/n</em> zoom box is optional; if specified it means we only trace the flowline if inside this region. Requires <strong>IDgrid</strong>.</p></li>
+<li><p><strong>S</strong> or <strong>normalize</strong> or <strong>percent</strong> : – <em>normalize=true</em><br>
+Normalize the resulting CVA grid to percentages of the CVA maximum. This also normalizes the DI grid (if requested).</p></li>
+<li><p><strong>T</strong> or <strong>adjust</strong> : – <em>adjust=:truncate</em> <strong>|</strong> <em>adjust=(truncate=true, fixed=val)</em><br>
+Selects ways to adjust ages; repeatable. Use <strong>truncate=true</strong> to truncate crustal ages given via the <strong>agegrid</strong> option that exceed the upper age set with <strong>upper_age</strong> [no truncation], or <strong>fixed=val</strong> which means that after a node passes the test implied by <strong>zlimits</strong>, we use this <em>fixed_val</em> instead in the calculations [Default uses individual node values].</p></li>
+<li><p><strong>V</strong> or <em>verbose</em> : – <em>verbose=true</em> <strong>|</strong> <em>verbose=level</em><br>
+Select verbosity level. More at <a href="../../documentation/common_opts/common_opts.html#verbose">verbose</a></p></li>
+<li><p><strong>W</strong> or <strong>bootstrap</strong> or <strong>ntry</strong> : – <em>bootstrap=n</em><br>
+Get <em>n</em> bootstrap estimates of the maximum CVA location; the longitude and latitude results are written to standard output [Default is no bootstrapping]. Cannot be used with <strong>onthefly</strong>.</p></li>
+<li><p><strong>Z</strong> or <strong>zlimits</strong> or <strong>zrange</strong> : – <em>zlimits=zmin</em> <strong>|</strong> <em>zlimits=(zmin, zmax)</em> <strong>|</strong> <em>zlimits=(zmin, zmax, zinc)</em><br>
+Ignore nodes with z-values lower than <em>zmin</em> [0] and optionally larger than <em>zmax</em> [Inf]. Give <em>(zmin, zmax, zinc)</em> to make separate CVA grids for each z-slice [Default makes one CVA grid]. Multi-slicing cannot be used with <strong>onthefly</strong>.</p></li>
+</ul>
+</section>
+<section id="notes" class="level2">
+<h2 class="anchored" data-anchor-id="notes">Notes</h2>
+<p>GMT distributes the EarthByte rotation model Global_EarthByte_230-0Ma_GK07_AREPS.rot. To use an alternate rotation file, create an environment variable named <strong>GPLATES_ROTATIONS</strong> that points to an alternate rotation file.</p>
+</section>
+<section id="examples" class="level2">
+<h2 class="anchored" data-anchor-id="examples">Examples</h2>
+<p>To create a CVA image from the Pacific topography grid Pac_res_topo.nc, using the DC85.txt Euler poles, and only output a grid for the specified domain:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">grdspotter</span>(<span class="st">"Pac_res_topo.nc"</span>, rotations<span class="op">=</span><span class="st">"DC85.txt"</span>, outgrid<span class="op">=</span><span class="st">"CVA.nc"</span>,</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>               region<span class="op">=</span>(<span class="fl">190</span>,<span class="fl">220</span>,<span class="fl">15</span>,<span class="fl">25</span>), inc<span class="op">=</span><span class="st">"2m"</span>, upper_age<span class="op">=</span><span class="fl">145</span>, adjust<span class="op">=:</span>truncate)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>To also create a Data Importance grid alongside the CVA:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">grdspotter</span>(<span class="st">"Pac_res_topo.nc"</span>, rotations<span class="op">=</span><span class="st">"DC85.txt"</span>, outgrid<span class="op">=</span><span class="st">"CVA.nc"</span>,</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>               region<span class="op">=</span>(<span class="fl">190</span>,<span class="fl">220</span>,<span class="fl">15</span>,<span class="fl">25</span>), inc<span class="op">=</span><span class="st">"2m"</span>, upper_age<span class="op">=</span><span class="fl">145</span>,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>               DIgrid<span class="op">=</span>(importance<span class="op">=</span><span class="st">"DI.nc"</span>,), normalize<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>To get 100 bootstrap estimates of the maximum CVA location:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">grdspotter</span>(<span class="st">"Pac_res_topo.nc"</span>, rotations<span class="op">=</span><span class="st">"DC85.txt"</span>, outgrid<span class="op">=</span><span class="st">"CVA.nc"</span>,</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>               region<span class="op">=</span>(<span class="fl">190</span>,<span class="fl">220</span>,<span class="fl">15</span>,<span class="fl">25</span>), inc<span class="op">=</span><span class="st">"2m"</span>, bootstrap<span class="op">=</span><span class="fl">100</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<p>Wessel, P., 1999, “Hotspotting” tools released, EOS Trans. AGU, 80 (29), p.&nbsp;319.</p>
+<p>Wessel, P., 2008, Hotspotting: Principles and properties of a plate tectonic Hough transform, Geochem. Geophys. Geosyst. 9(Q08004), <a href="https://doi.org/10.1029/2008GC002058">doi:10.1029/2008GC002058</a>.</p>
+</section>
+<section id="see-also" class="level2">
+<h2 class="anchored" data-anchor-id="see-also">See Also</h2>
+<ul>
+<li><a href="../..\documentation/modules/backtracker.html">backtracker</a>, <a href="../..\documentation/modules/hotspotter.html">hotspotter</a>, <a href="../..\documentation/modules/originater.html">originater</a>, <a href="../..\documentation/modules/grdrotater.html">grdrotater</a>, <a href="../..\documentation/modules/rotconverter.html">rotconverter</a></li>
+<li><a href="../alphabetical.html">Alphabetical Function List</a></li>
+</ul>
 
 
+</section>
 
 </main> <!-- /main -->
 <script>
