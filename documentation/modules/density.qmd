@@ -1,35 +1,63 @@
----
-title: "density"
----
-
 # density
 
 ```
-D = density(x::Vector{<:Real}; nbins::Integer=200, bins::Vector{<:Real}=Vector{Real}(),
-            bandwidth=nothing, kernel::StrSymb="normal")
+D = density(x; first::Bool=true, nbins::Integer=200, bins::Vector{<:Real}=Vector{Real}(),
+            bandwidth=nothing, kernel::StrSymb="normal", printbw::Bool=false,
+            extend=0, plot::Bool=true, kwargs...)
 ```
 
-  * `x`: calculate the kernel density 'd' of a dataset X for query points 'xd' The density, by default, is   estimated using a gaussian kernel with a width obtained with the Silverman's rule. `x` may be   a vector, a matrix or Vector{Vector{Real}}.
-  * `nbins`: points are queried between MIN(Y[:]) and MAX(Y[:]) where Y is the data vector.
-  * `bins`: Calculates the density for the query points specified by BINS. The values are used as the   query points directly. Default is 200 points.
-  * `bandwidth`: uses the 'bandwidth' to calculate the kernel density. It must be a scalar.   For the uniform case the bandwidth is set to 15% of the range, otherwise the bandwidth is chosen   with the Silverman's rule.
-  * `printbw`: Logical value indicating to print the computed value of the `bandwidth`.
-  * `kernel`: Uses the kernel function specified by KERNEL name (a string or a symbol) to calculate the density.   The kernel may be: 'Normal' (default) or 'Uniform'
-  * `extend`: By default the density curve is computed at the `bins` locatins or between data extrema as   mentioned above. However, this is not normally enough to go down to zero. Use this option in terms of   number of bandwidth to expand de curve. *e.g.* `extend=2`
+Calculate the kernel density 'd' of a dataset X at query points determined by `nbins` or `bins`.
 
-The version     G = density(data, x,y; weights=nothing, bandwidth=nothing, showbw=false)
+- `x`: A vector, a matrix or Vector{Vector{Real}}. The density, by default, is estimated using a
+  gaussian kernel with a width obtained with the Silverman's rule.
 
-Computes the smoothed kernel probability density estimate of a two-column matrix `data`. The estimate is based on a normal kernel function, and is evaluated at the points defined by the vectors `x` and `y`. The `showbw` option is used to print the bandwidth used. It returns a GMTgrid of the same size as `x` and `y`.
+- `nbins`: points are queried between MIN(Y[:]) and MAX(Y[:]) where Y is the data vector.
+
+- `bins`: Calculates the density for the query points specified by BINS. The values are used as the
+  query points directly. Default is 200 points.
+
+- `bandwidth`: uses the 'bandwidth' to calculate the kernel density. It must be a scalar. For the uniform
+  case the bandwidth is set to 15% of the range, otherwise the bandwidth is chosen   with the Silverman's rule.
+
+- `kernel`: Uses the kernel function specified by KERNEL name (a string or a symbol) to calculate the density.   
+  The kernel may be: 'Normal' (default) or 'Uniform'.
+
+- `printbw`: Logical value indicating to print the computed value of the `bandwidth`.
+
+- `extend`: By default the density curve is computed at the `bins` locatins or between data extrema as
+   mentioned above. However, this is not normally enough to go down to zero. Use this option in terms of
+   number of bandwidth to expand de curve. *e.g.* `extend=2`
+
+- `plot`: Logical value indicating to plot the density curve. If `false` returns the GMTdataset.
+
+- `kwargs`: Any keyword argument accepted by `plot` to customize the density plot.
+
+### Returns
+- `nothing` or a `GMTps` and plots the density curve directly if `plot=true` (the fedault) and shows it is `show=true`.
+- `D`: A {{< gmtref GMTdataset type=gmttype >}} with two columns: first the query points and second the density values.
+
+The version
+
+```
+G = density(data, x,y; weights=nothing, bandwidth=nothing, showbw=false)
+```
+
+Computes the smoothed kernel probability density estimate of a two-column matrix `data`. The estimate is
+based on a normal kernel function, and is evaluated at the points defined by the vectors `x` and `y`.
+The `showbw` option is used to print the bandwidth used. It returns a {{< gmtref GMTgrid type=gmttype >}}
+of the same size as `x` and `y`.
 
 ### Example
 
-```julia
-  X = [0.5*rand(20,1) 5 .+ 2.5*rand(20,1); .75 .+ 0.25*rand(10,1) 8.75 .+ 1.25*rand(10,1)]
-  G = density(X, -0.25:.05:1.25, 0:.1:15)[1];
-  viz(G, figsize=(12,12), view=(225,30))
+```{julia}
+X = [0.5*rand(20,1) 5 .+ 2.5*rand(20,1); .75 .+ 0.25*rand(10,1) 8.75 .+ 1.25*rand(10,1)]
+G = density(X, -0.25:.05:1.25, 0:.1:15)
+viz(G, figsize=(12,12), view=(225,30))
 ```
 
+See other [examples at](../../examples/plotting_functions/05_1_stats.qmd#examples-of-density-plots)
 
+and here @sec-examples-of-density-plots
 
 ```{julia}
 #| echo: false
@@ -41,4 +69,3 @@ GMT.doc_source_links("density")
 ## See Also
 
 - [Alphabetical Function List](../alphabetical.html)
-- [GMT.jl Documentation](https://www.generic-mapping-tools.org/GMTjl_doc/)

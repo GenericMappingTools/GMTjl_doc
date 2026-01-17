@@ -1,15 +1,218 @@
 # grdflexure
 
+```julia
+grdflexure(cmd0::String="", arg1=nothing; kwargs...)
+```
+
 Compute flexural deformation of 3-D surfaces for various rheologies.
 
+(**Warning: Manual translate by Claude. Needs revision**)
 
-::: {.callout-warning}
-This GMT supplements module has not yet been ported to the long verbose syntax.
-To use it, you will need to use the {{< gmtref monolithic type=general text="Monolithic" >}} mode.
-:::
+Description
+-----------
 
-Please open a [Feature Request](https://github.com/GenericMappingTools/GMT.jl/issues) if you would like
-to see this module ported to the long verbose syntax, or better yet, consider contributing the port yourself!
+**grdflexure** computes the deformation due to a topographic load $h(\mathbf{x})$
+for five different types of rheological foundations, all involving *constant thickness thin plates*:
+
+1. An elastic plate overlying an inviscid half-space,
+2. An elastic plate overlying a viscous half-space (Firmoviscous or Kelvin-Voigt),
+3. An elastic plate overlying a viscous layer over a viscous half-space (Firmoviscous or Kelvin-Voigt),
+4. A viscoelastic plate overlying an inviscid half-space (Maxwell solid),
+5. A general linear viscoelastic model with an initial and final elastic plate thickness overlying an inviscid half-space.
+
+These conditions will require the *elastic* [1; $\Phi_e(\mathbf{k})$],
+*firmoviscous* [2,3; $\Phi_{fv}(\mathbf{k},t)$],
+*viscoelastic* [4; $\Phi_{ve}(\mathbf{k},t)$],
+and *general linear* (viscoelastic) response functions [5; $\Phi_{gl}(\mathbf{k},t)$].
+If the (visco)elastic plate vanishes (zero thickness) then we obtain Airy isostasy
+(1,4) or a purely *viscous* response (2,3). Temporal evolution can
+also be modeled by providing incremental load grids for select times and specifying a
+range of model output times. A wide range of options allows for specifying the desired
+rheology and related constants, including in-plane forces.
+
+Required Arguments
+------------------
+
+- *ingrid* : -- A 2-D grid (a grid file name or a GMTgrid object) with the topography of the load (in meters).
+   If **T** is used, *ingrid* may be a filename template. The horizontal dimensions are expected to be
+   in meters. If you have grids in km, append **+uk** to the input file name to do the conversion.
+
+- **D** or **densities** : -- *densities="rm/rl[/ri]/rw"* **|** *densities="rm/rl[/ri]/rw+rrr"*\
+   Sets density for mantle (*rm*), load (*rl*), infill (*ri*), and water or air (*rw*). If *ri* differs from
+   *rl* then an approximate solution will be found. If *ri* is not given then it defaults to *rl*.
+   Values may be given in kg/m³ or g/cm³. If a variable load density grid is supplied via **H**
+   then *rl* must be given as `-`. Use the **+r** modifier to specify a fixed *root* density.
+
+- **E** or **te** or **elastic_thickness** : -- *te=value* **|** *te="value1/value2"*\
+   Sets the elastic plate thickness (in meters); append **k** for km. If the elastic thickness
+   exceeds 1e10 it will be interpreted as a flexural rigidity *D*. If **E** is given with no
+   arguments and **F** is given it means no plate is present and we will return a purely viscous
+   response. Select a general linear viscoelastic response by supplying both an initial and
+   final elastic thickness (*te="Te1/Te2"*); this response also requires **M**.
+
+- **G** or **outgrid** : -- *outgrid="filename"*\
+   Output grid file name. If **T** is set then *outgrid* must be a filename template.
+
+Optional Arguments
+------------------
+
+- **A** or **inplane** : -- *inplane="Nx/Ny/Nxy"*\
+   Specify in-plane compressional or extensional forces in the *x*- and *y*-directions,
+   as well as any shear force [no in-plane forces]. Compression is indicated by
+   negative values, while extensional forces are specified using positive values.
+   Values are expected in Pa·m since **N** is the depth-integrated horizontal stresses.
+
+- **C** or **poisson** or **young** : -- *poisson=value* **|** *young=value*\
+   Change the current value of Poisson's ratio [0.25] or Young's modulus [7.0e10 N/m²].
+
+- **F** or **firmoviscous** : -- *firmoviscous=nu_a* **|** *firmoviscous="nu_a/h_a/nu_m"*\
+   Specify a firmoviscous model in conjunction with an elastic plate thickness specified via **E**.
+   Just give one viscosity (*nu_a*) for an elastic plate over a viscous half-space, or also append
+   the thickness of the asthenosphere (*h_a*) and the lower mantle viscosity (*nu_m*), with the
+   first viscosity now being that of the asthenosphere. Give viscosities in Pa·s. If used, give
+   the thickness of the asthenosphere in meters; append **k** for km. Cannot be used with **M**.
+
+- **H** or **rhogrid** : -- *rhogrid="filename"*\
+   Supply optional variable load density grid. Requires *rho_l* be set to `-` in **D**.
+
+- **L** or **list** : -- *list="filename"*\
+   Write the names and evaluation times of all grids that were created to the text file. Requires **T**.
+
+- **M** or **maxwell** : -- *maxwell=tm*\
+   Specify a viscoelastic model in conjunction with a plate thickness specified via **E**.
+   Append the Maxwell time *tm* for the viscoelastic model (in years); add **k** for kyr
+   and **M** for Myr. Cannot be used with **F**.
+
+- **N** or **fft** : -- *fft=params*\
+   Choose or inquire about suitable grid dimensions for FFT and target region coverage.
+
+- **Q** or **transfer** : -- *transfer=true*\
+   Do not make any flexure calculations but instead take the chosen response function
+   given the parameters you selected and evaluate it for a range of wavenumbers and times.
+
+- **S** or **starved** : -- *starved=beta*\
+   Specify a starved moat fraction in the 0-1 range, where 1 means the moat is fully
+   filled with material of density *ri* while 0 means it is only filled with water [1].
+
+- **T** or **time** : -- *time=t0* **|** *time="t0/t1/dt"* **|** *time="t0/t1/dt+l"*\
+   Specify *t0*, *t1*, and time increment (*dt*) for a sequence of calculations
+   [Default is one calculation, with no time dependency]. For a single specific time, just
+   give start time *t0*. Default unit is years; append **k** for kyr and **M** for Myr.
+   For a logarithmic time scale, append **+l** and specify *n* steps instead of *dt*.
+
+{{< include ../common_opts/opt_V.qmd >}}
+
+- **W** or **water_depth** : -- *water_depth=wd*\
+   Specify water depth in meters; append **k** for km. Must be positive [0].
+   Any subaerial topography will be scaled via the densities set in **D**.
+
+- **Z** or **zm** : -- *zm=value*\
+   Specify the distance between the observation level and the undeformed flexed surface
+   in meters; append **k** for km. Must be positive [0].
+
+{{< include ../common_opts/opt_f.qmd >}}
+
+Theory of Response Functions
+----------------------------
+
+Deformation $w(\mathbf{x})$ caused by topography $h(\mathbf{x})$ applied instantaneously to the
+rheological foundation at time *t = 0* and evaluated at a later time *t* is given in the Fourier domain by
+
+$$W(\mathbf{k},t) = \gamma \left (\frac{\rho_l - \rho_w}{\rho_m - \rho_l} \right ) H(\mathbf{k}) \Phi(\mathbf{k},t) = \gamma A H(\mathbf{k}) \Phi(\mathbf{k},t),$$
+
+where $\mathbf{k} = (k_x, k_y)$ is the wavenumber vector, $k_r$ its magnitude, $H(\mathbf{k})$ is the
+topographic load in the wavenumber domain, *A* is the Airy density ratio, $\gamma$ is a constant that depends
+on the infill density, and $\Phi(\mathbf{k},t)$ is the response function for the selected rheology.
+
+### Elastic response function
+
+The time-independent *elastic response function* is
+
+$$\Phi_e(\mathbf{k}) = \left [ 1 + \alpha_r^4 + \epsilon_x \alpha_x^2 + \epsilon_y \alpha_y^2 + \epsilon_{xy} \alpha_{xy}^2 \right ]^{-1}, \quad \alpha_s = k_s / k,$$
+
+where the *flexural wavenumber k* and constants $\epsilon_s$ via in-plane stresses $N_x, N_y, N_{xy}$ are
+
+$$k = \left [ \frac{(\rho_m - \rho_i)g}{D} \right ]^{\frac{1}{4}}, \quad \epsilon_s = \left [ \frac{N_s}{(\rho_m - \rho_i)g} \right ]^{\frac{1}{2}}.$$
+
+In the most common scenario, $N_s$ are all zero and the elastic response function becomes *isotropic*:
+
+$$\Phi_e(k_r) = \left [ 1 + \alpha_r^4 \right ]^{-1}.$$
+
+### Firmoviscous response function
+
+The *firmoviscous response function* $\Phi(\mathbf{k},t)$ scales the magnitude of the deformation at a given wavenumber and time:
+
+$$\Phi_{fv}(\mathbf{k},t) = \Phi_e(\mathbf{k}) \left [ 1 - \exp \left \{ - \frac{(\rho_m - \rho_l) \tau(k_r)}{\rho_m\Phi_e(\mathbf{k})} t \right \} \right ].$$
+
+If the foundation is an inviscid half-space, then the *relaxation parameter* $\tau(k_r) = \infty$, there is no time-dependence,
+and $\Phi_{fv}(\mathbf{k},t) = \Phi_e(\mathbf{k})$. Otherwise, it is given by
+
+$$\tau(k_r) = \frac{\rho_m g}{2 \eta_m k_r} \beta(k_r),$$
+
+where $\beta(k_r)$ depends on whether we have a finite-thickness layer of thickness $T_a$ and viscosity
+$\eta_a$ above the half-space of viscosity $\eta_m$.
+
+### Maxwell viscoelastic response
+
+For the viscoelastic response function (only available for an inviscid substratum):
+
+$$\Phi_{ve}(\mathbf{k},t) = 1 - \left [ 1 - \Phi_e(\mathbf{k}) \right ] \exp \left \{ - \frac{t}{t_m} \Phi_e(\mathbf{k}) \right \},$$
+
+where $t_m$ is the *Maxwell relaxation time*.
+
+### General linear viscoelastic response
+
+The general linear viscoelastic response function (with an inviscid substratum) is:
+
+$$\Phi_{gl}(\mathbf{k},t) = \Phi_f(\mathbf{k}) + \left [ \Phi_i(\mathbf{k}) - \Phi_f(\mathbf{k}) \right ] \exp \left \{ - \frac{t}{t_m} \frac{D_i \Phi_i(\mathbf{k})}{D_f \Phi_f(\mathbf{k})} \right \},$$
+
+where subscripts *i* and *f* refer to the initial (*t = 0*) and final ($t = \infty$) values for rigidities.
+
+Examples
+--------
+
+To compute elastic plate flexure from the load *smt.nc*, for a 10 km thick plate with typical densities:
+
+```julia
+using GMT
+flex = grdflexure("smt.nc", outgrid="flex.nc", te="10k", densities="2700/3300/1035")
+```
+
+To see how in-plane stresses affect the result (depth-integrated forces, not pressures):
+
+```julia
+using GMT
+flex = grdflexure("smt.nc", outgrid="flex.nc", te="10k", densities="2700/3300/1035",
+                  inplane="-4e11/2e11/-1e12")
+```
+
+To compute viscoelastic plate flexure for a 20 km thick plate with a Maxwell time of 40 kyr:
+
+```julia
+using GMT
+flex = grdflexure("smt.nc", outgrid="flex.nc", te="20k", densities="2700/3300/1035", maxwell="40k")
+```
+
+To compute firmoviscous plate flexure for a 15 km thick plate overlying a viscous mantle with viscosity 2e21:
+
+```julia
+using GMT
+flex = grdflexure("smt.nc", outgrid="flex.nc", te="15k", densities="2700/3300/1035", firmoviscous=2e21)
+```
+
+To compute general linear viscoelastic flexure with initial Te of 40 km and final Te of 15 km with Maxwell time of 100 kyr:
+
+```julia
+using GMT
+flex = grdflexure("smt.nc", outgrid="flex.nc", te="40k/15k", densities="2700/3300/1035", maxwell="100k")
+```
+
+To compute the firmoviscous response functions using specified rheological values:
+
+```julia
+using GMT
+grdflexure(densities="3300/2800/2800/1000", transfer=true, firmoviscous=2e20)
+```
 
 ```{julia}
 #| echo: false
@@ -17,3 +220,27 @@ to see this module ported to the long verbose syntax, or better yet, consider co
 using GMT
 GMT.doc_source_links("grdflexure")
 ```
+
+References
+----------
+
+Cathles, L. M., 1975, *The viscosity of the earth's mantle*, Princeton University Press.
+
+Karner, G. D., 1982, Spectral representation of isostatic models, *BMR J. Australian Geology & Geophysics, 7*, 55-62.
+
+Nakada, M., 1986, Holocene sea levels in oceanic islands: Implications for the rheological
+structure of the Earth's mantle, *Tectonophysics, 121*, 263–276.
+
+Watts, A. B., 2001, *Isostasy and Flexure of the Lithosphere*, 458 pp., Cambridge University Press.
+
+Wessel. P., 2001, Global distribution of seamounts inferred from gridded Geosat/ERS-1 altimetry,
+J. Geophys. Res., 106(B9), 19,431-19,441.
+
+Wessel, P., 2016, Regional–residual separation of bathymetry and revised estimates of Hawaii plume flux,
+*Geophys. J. Int., 204(2)*, 932-947.
+
+See Also
+--------
+
+- {{< gmtref gmtflexure >}}, {{< gmtref grdfft >}}, {{< gmtref gravfft >}}, {{< gmtref grdmath >}}, {{< gmtref grdproject >}}, {{< gmtref grdseamount >}}
+- [Alphabetical Function List](../alphabetical.html)

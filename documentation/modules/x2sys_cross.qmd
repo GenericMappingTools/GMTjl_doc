@@ -1,0 +1,155 @@
+# x2sys_cross
+
+```julia
+x2sys_cross(cmd0::String="", arg1=nothing; kwargs...)
+```
+
+Calculate track crossovers (COEs).
+
+(**Warning: Manual translate by Claude. Needs revision**)
+
+Description
+-----------
+
+**x2sys_cross** is used to determine all intersections between
+("external cross-overs") or within ("internal cross-overs") tracks
+(Cartesian or geographic), and report the time, position, distance along
+track, heading and speed along each track segment, and the crossover
+error (COE) and mean values for all observables. The names of the tracks
+are passed on the command line. By default, **x2sys_cross** will look
+for both external and internal COEs. As an option, you may choose to
+project all data using one of the map-projections prior to calculating
+the COE.
+
+Required Arguments
+------------------
+
+- *tracks* : -- One or more track data files (file names or GMTdatasets).
+
+- **T** or **TAG** or **tag** : -- *tag="tagname"*\
+   Specify the system tag for this compilation.
+
+Optional Arguments
+------------------
+
+- **A** or **pairs** : -- *pairs="filename"*\
+   Only process the pair-combinations found in the file *pairs*
+   [Default processes all possible combinations among the specified files].
+   The file *pairs* can be created by {{< gmtref x2sys_get >}} **list** option.
+
+- **C** or **runtimes** : -- *runtimes=true* **|** *runtimes="filename"*\
+   Compute and append the processing run-time for each pair to the progress message.
+   Append a filename to save these run-times to file. The idea is to use the knowledge
+   of run-times to split the main process into sub-processes for multi-core machines.
+
+- **D** or **geographic** or **geo** : -- *geo=true* **|** *geo=:south* **|** *geo=:north*\
+   Control how geographic coordinates are handled (Cartesian data are unaffected).
+   By default, we determine if the data are closer to one pole than the other, and
+   use a cylindrical polar conversion to avoid problems with longitude jumps.
+   Use *geo=true* to turn this off and use original data. Force pole selection with
+   *geo=:south* (or **:S**) or *geo=:north* (or **:N**).
+
+- **E** or **limit** or **angle** : -- *angle=value*\
+   Exclude crossovers from acutely intersecting tracks where the difference in track
+   orientations is less than *value* degrees [0].
+
+- **I** or **interp** or **interpolation** : -- *interp=:linear* **|** *interp=:akima* **|** *interp=:cubic* **|** *interp=:nearest*\
+   Sets the interpolation mode for estimating values at the crossover. Choose among:
+   - **:akima** or **:a** - Akima spline interpolation
+   - **:cubic** or **:c** - Cubic spline interpolation
+   - **:linear** or **:l** - Linear interpolation [Default]
+   - **:nearest** or **:n** - Nearest neighbor interpolation
+
+- **Q** or **coe** or **crossover** : -- *coe=:external* **|** *coe=:internal*\
+   Select crossover type. Use **:external** (or **:e**) for external COEs only,
+   and **:internal** (or **:i**) for internal COEs only [Default is all COEs].
+
+{{< include ../common_opts/opt_R.qmd >}}
+
+- **S** or **speed** : -- *speed=(lower=val, upper=val, heading=val)*\
+   Defines window of track speeds. If speeds are outside this window we do not
+   calculate a COE. Options:
+   - **lower** - sets lower speed limit [Default is 0]
+   - **upper** - sets upper speed limit [Default is Infinity]
+   - **heading** - does not limit speed but sets a lower speed below which headings
+     will not be computed (i.e., set to NaN) [Default calculates headings regardless of speed]
+
+{{< include ../common_opts/opt_V.qmd >}}
+
+- **W** or **window** : -- *window=size*\
+   Give the maximum number of data points on either side of the crossover to use
+   in the spline interpolation [3].
+
+- **Z** or **trackvalues** or **track_values** : -- *trackvalues=true*\
+   Report the values of each track at the crossover [Default reports the crossover
+   value and the mean value].
+
+{{< include ../common_opts/opt_bo.qmd >}}
+
+Remarks
+-------
+
+The COEs found are printed to standard output in ASCII format (unless binary output is set).
+The first record contains the name of the tag used, the second record specifies the exact
+command line used, and the third record contains the names of each column. These three
+records are encoded as table headers and start with #.
+
+For each track pair, there will be a segment header record containing the two file names
+and their start/stop/dist information, whereas subsequent records have the data for each
+COE encountered. The fields written are x, y, time along track #1 and #2, distance along
+track #1 and #2, heading along track #1 and #2, velocity along track #1 and #2, and then
+pairs of columns for each selected observable.
+
+It is recommended that the Akima spline is used instead of the natural cubic spline, since
+it is less sensitive to outliers that tend to introduce wild oscillations in the interpolation.
+
+Sign Convention
+---------------
+
+If track_a and track_b are passed on the command line, then the COE value is
+Value(track_a) - Value(track_b).
+
+Examples
+--------
+
+To compute all internal crossovers in the gmt-formatted file c2104.gmt, using the tag GMT:
+
+```julia
+using GMT
+D = x2sys_cross("c2104.gmt", tag="GMT")
+```
+
+To find the external crossover locations with bathymetry between two MGD77 files,
+using the MGD77 tag:
+
+```julia
+using GMT
+D = x2sys_cross("A13232.mgd77 A99938.mgd77", coe=:external, tag="MGD77")
+```
+
+To compute crossovers using Akima spline interpolation and excluding acute intersections:
+
+```julia
+using GMT
+D = x2sys_cross("track1.gmt track2.gmt", tag="GMT", interp=:akima, angle=15)
+```
+
+To filter crossovers by speed limits:
+
+```julia
+using GMT
+D = x2sys_cross("tracks.gmt", tag="GMT", speed=(lower=0.5, upper=15.0))
+```
+
+See Also
+--------
+
+- {{< gmtref x2sys_init >}}, {{< gmtref x2sys_datalist >}}, {{< gmtref x2sys_get >}}, {{< gmtref x2sys_list >}}, {{< gmtref x2sys_put >}}, {{< gmtref x2sys_report >}}, {{< gmtref x2sys_solve >}}
+- [Alphabetical Function List](../alphabetical.html)
+
+```{julia}
+#| echo: false
+#| output: asis
+using GMT
+GMT.doc_source_links("x2sys_cross")
+```

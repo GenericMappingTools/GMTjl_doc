@@ -23,6 +23,14 @@ Required Arguments
     Add sidebar triangles for back- and/or foreground colors with **triangles=true**. Use **triangles=:f** (foreground) or **triangles=:b** (background) for only one sidebar triangle [Default gives both]. Optionally,append triangle height [Default is half the barwidth].
     Move text to opposite side with **move\_annot=true[:a|:l|:u]**. Horizontal scale bars: Move annotations and labels above the scale bar [Default is below]; the unit remains on the left. Vertical scale bars: Move annotations and labels to the left of the scale bar [Default is to the right]; the unit remains below. Append one or more of **a**, **l** or **u** to control which of the annotations, label, and unit that will be moved to the opposite side. Use **neon=true** if you want to print a vertical label as a column of characters (does not work with special characters). Append **nan=true** to plot a rectangle with the NaN color at the start of the bar, use *text* instead of *true* to change label from NaN.
 
+    _Note_: Given the number of options here, a convenient shortcut is provided _when embeding colorbar in other modules_.
+    We can then, for examle, do `viz(..., colorbar=(xlabel="Xlabel", triangles=true|TopTriHigh))`. The value of `TopTriHigh`
+    is a combination of `Top|Bot|Left|Right`, `Triangles` (or `Tri`) and `Low|high`. The first determines where the colorbar
+    is located in respect to main figure. The second tells to add triangles at extremeties, and last choses if only one of
+    the extremities gets a triangle. All are case insensitive. Details: Triangle indicators are only added if a CPT is currently
+    loaded. It then changes the colormap background and foreground colors to match low and high colors. However, it is enphasized
+    that the correct way of doing this is to set the bg and fg colors at the time of creating the colormap.
+
 Optional Arguments
 ------------------
 

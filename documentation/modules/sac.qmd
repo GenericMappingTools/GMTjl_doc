@@ -1,15 +1,244 @@
-# sac
+---
+title: "sac"
+---
 
 Plot seismograms in SAC format.
 
+## Synopsis
 
-::: {.callout-warning}
-This GMT supplements module has not yet been ported to the long verbose syntax.
-To use it, you will need to use the {{< gmtref monolithic type=general text="Monolithic" >}} mode.
-:::
+```julia
+sac(sacfiles; kwargs...)
+sac!(sacfiles; kwargs...)
+```
 
-Please open a [Feature Request](https://github.com/GenericMappingTools/GMT.jl/issues) if you would like
-to see this module ported to the long verbose syntax, or better yet, consider contributing the port yourself!
+## Description
+
+Reads SAC files (Seismic Analysis Code format) and plots seismograms on a map or profile.
+Only evenly spaced SAC data is supported.
+
+The input can be:
+
+- A string with SAC filename(s), e.g., `"seis.SAC"` or `"*.z"`
+- A saclist file containing: `filename [X Y [pen]]`
+
+On linear plots, the default X position is the begin time of SAC file (adjusted by `-T` option),
+and Y is determined by the `-E` option. On geographic plots, default X/Y are the station
+longitude/latitude from the SAC header.
+
+## Required Arguments
+
+{{< include ../common_opts/opt_J.qmd >}}
+
+{{< include ../common_opts/opt_R.qmd >}}
+
+## Optional Arguments
+
+{{< include ../common_opts/opt_B.qmd >}}
+
+- **C** or **timewindow** or **cut**\
+  Read and plot seismograms in timewindow between `t0` and `t1` only.
+  Times are relative to a reference time specified by `T` option.
+  If `T` is not specified, uses the reference time (kzdate and kztime) from SAC header.
+  If only `cut=true` is used, `t0/t1` is determined from the `region` option.
+
+```julia
+timewindow=(t0, t1)
+cut="t0/t1"
+```
+
+- **D** or **offset**
+
+```julia
+offset=dx
+offset=(dx, dy)
+```
+
+  Offset seismogram positions by `dx/dy`. If `dy` is omitted, it equals `dx`.
+
+- **E** or **profile** or **profile_type**
+  ```julia
+    profile=:azimuth       # or :a
+    profile=:back_azimuth  # or :b
+    profile=:km            # or :k - epicentral distance in km
+    profile=:degree        # or :d - epicentral distance in degrees
+    profile=:number        # or :n - trace number
+    profile=(:number, 5)   # trace number starting at 5
+    profile=:user          # or :u - user defined (from SAC header)
+    profile=(:user, 3)     # use user3 header variable
+  ```
+  Choose profile type (the type of Y axis):
+
+  - `:azimuth` or `:a` : azimuth profile
+  - `:back_azimuth` or `:b` : back-azimuth profile
+  - `:km` or `:k` : epicentral distance in km
+  - `:degree` or `:d` : epicentral distance in degrees
+  - `:number` or `:n` : trace number (optionally specify starting number)
+  - `:user` or `:u` : user defined from SAC header variable (default user0)
+
+
+- **F** or **preprocess**
+  ```julia
+    preprocess=:integrate     # or :i
+    preprocess=:square        # or :q
+    preprocess=:remove_mean   # or :r
+    preprocess=(:r, :i, :i)   # remove mean, then integrate twice (accel to displacement)
+    preprocess="rii"          # same as above
+  ```
+  Data preprocessing before plotting:
+
+  - `:integrate` or `:i` : integrate
+  - `:square` or `:q` : square
+  - `:remove_mean` or `:r` : remove mean value
+
+  Options can be combined and repeated. Order controls processing order.
+  Example: `preprocess=(:r,:i,:i)` converts acceleration to displacement.
+
+- **G** or **fill**
+  ```julia
+    fill=true                                    # fill positive portion black
+    fill=(positive=true, color=:red)             # fill positive red
+    fill=(negative=true, color=:blue)            # fill negative blue
+    fill=(positive=true, color=:black, zero=0.5) # custom zero line
+    fill=(positive=true, color=:red, timewindow=(10,30))  # fill only between t=10-30
+  ```
+  Paint positive or negative portion of traces.
+
+  Sub-options:
+
+  - `positive=true` : paint positive portion
+  - `negative=true` : paint negative portion
+  - `color` or `fill` : color to fill
+  - `zero` : define zero line position
+  - `timewindow=(t0,t1)` : paint only between t0 and t1
+
+  Repeat the `fill` option or use multiple `sac!` calls to fill both portions.
+
+- **M** or **size** or **vertical_scale**
+  ```julia
+    size=2            # scale traces to 2 cm
+    size="2c"         # same, explicit cm
+    size=(2, :c)      # same
+    size=(1.5, :c, -1)  # uniform scaling, first trace scaled to 1.5 cm
+    size=(0.5, :c, 0)   # multiply all traces by 0.5
+    size=(1, :c, 2)     # scale by distance^2
+  ```
+  Vertical scaling:
+
+  - `size` alone: scale all traces to this size on map
+  - `size/alpha` with `alpha < 0`: uniform scaling (first trace to size)
+  - `size/alpha` with `alpha = 0`: multiply all traces by size
+  - `size/alpha` with `alpha > 0`: multiply by `size * r^alpha` (r = distance in km)
+
+- **Q** or **vertical**
+  ```julia
+    vertical=true
+  ```
+  Plot traces vertically instead of horizontally.
+
+- **S** or **timescale** or **time_scale**
+  ```julia
+    timescale=60      # 60 seconds per unit length
+    timescale="60c"   # 60 seconds per cm
+    timescale=-0.1    # inverse: 0.1 cm per second (same as timescale="i0.1")
+  ```
+  Set time scale in seconds per unit for geographic plots.
+  Append `c`, `i`, or `p` for cm, inch, or points.
+  Use negative value or `"i"` prefix for reciprocal scale (cm per second).
+
+- **T** or **time** or **time_align
+  ```julia
+    time=(reduce=6.0,)           # reduce velocity 6 km/s
+    time=(shift=-5.0,)           # shift all traces by -5 seconds
+    time=(mark=0,)               # align on t0 marker
+    time=(reduce=8.0, shift=-2, mark=2)  # combine options
+    time="+r6+s-2+t2"            # same as string
+  ```
+  Time alignment and shift:
+
+  - `reduce=vel` : reduce velocity in km/s
+  - `shift=sec` : shift all traces by this many seconds
+  - `mark=n` : align along time mark. Values: -5(b), -4(e), -3(o), -2(a), 0-9(t0-t9)
+
+- **W** or **pen**
+  ```julia
+    pen=0.5
+    pen=(0.5, :red)
+    pen="0.5p,red"
+  ```
+  Set pen attributes for all traces.
+  Default: width=0.25p, color=black, style=solid.
+
+{{< include ../common_opts/opt_U.qmd >}}
+
+{{< include ../common_opts/opt_V.qmd >}}
+
+{{< include ../common_opts/opt_X.qmd >}}
+
+{{< include ../common_opts/opt_Y.qmd >}}
+
+{{< include ../common_opts/opt_h.qmd >}}
+
+{{< include ../common_opts/opt_p.qmd >}}
+
+{{< include ../common_opts/opt_t.qmd >}}
+
+## Examples
+
+### Single seismogram with positive/negative fill
+
+```julia
+using GMT
+
+# Plot seismogram with positive portion black, negative red
+sac("seis.SAC", region=(9,20,-2,2), proj="X10c/5c", frame=:af,
+    preprocess=:remove_mean,
+    fill=(positive=true, color=:black),
+    show=true)
+
+sac!("seis.SAC", fill=(negative=true, color=:red), show=true)
+```
+
+### Distance profile
+
+```julia
+using GMT
+
+# Plot seismograms on distance profile
+sac("*.z", region=(200,1600,12,45), proj="X15c/5c",
+    xaxis=(annot=200, label="T(s)"),
+    yaxis=(annot=5, label="Degree"),
+    frame=(axes=:WSen,),
+    profile=:degree,
+    size=(1.5, :c),
+    pen=(0.5, :red),
+    show=true)
+```
+
+### Geographic map
+
+```julia
+using GMT
+
+# Plot seismograms on geographic map
+sac("*.z", region=(-120,-40,35,65), proj=:Mercator,
+    frame=:af,
+    size="1i",
+    timescale="300c",
+    show=true)
+```
+
+### Time alignment
+
+```julia
+using GMT
+
+# Align traces on P-wave arrival (t0) and reduce with 8 km/s velocity
+sac("*.z", region=(0,100,0,10), proj="X12c/8c",
+    time=(reduce=8.0, mark=0),
+    profile=:km,
+    pen=0.5,
+    show=true)
+```
 
 ```{julia}
 #| echo: false
@@ -17,3 +246,11 @@ to see this module ported to the long verbose syntax, or better yet, consider co
 using GMT
 GMT.doc_source_links("sac")
 ```
+
+## References
+
+Refer to the [SAC User Manual](http://ds.iris.edu/files/sac-manual/) for details on SAC format and SAC header variables.
+
+## See Also
+
+{{< gmtref meca >}}, {{< gmtref coupe >}}, {{< gmtref polar >}}, {{< gmtref plot >}}

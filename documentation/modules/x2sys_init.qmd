@@ -1,0 +1,178 @@
+# x2sys_init
+
+```julia
+x2sys_init(cmd0::String="", arg1=nothing; kwargs...)
+```
+
+Initialize x2sys track database.
+
+(**Warning: Manual translate by Claude. Needs revision**)
+
+Description
+-----------
+
+**x2sys_init** is the starting point for anyone wishing to use x2sys;
+it initializes a set of data bases that are particular to one kind of
+track data. These data, their associated data bases, and key parameters
+are given a short-hand notation called an x2sys TAG. The TAG keeps track
+of settings such as file format, whether the data are geographic or not,
+and the binning resolution for track indices.
+
+Running **x2sys_init** is a prerequisite to running any of the other x2sys programs:
+
+- {{< gmtref x2sys_binlist >}} creates a crude representation of where each track goes
+- {{< gmtref x2sys_put >}} updates the track data base
+- {{< gmtref x2sys_get >}} finds which tracks and data are available inside a region
+- {{< gmtref x2sys_cross >}} calculates track crossovers
+- {{< gmtref x2sys_report >}} reports crossover statistics
+- {{< gmtref x2sys_list >}} pulls out selected crossover information
+- {{< gmtref x2sys_solve >}} determines track-specific systematic corrections
+- {{< gmtref x2sys_datalist >}} extracts corrected data values
+
+Before running **x2sys_init** you must set the environment variable **X2SYS_HOME**
+to a directory where you have write permission.
+
+Required Arguments
+------------------
+
+- *TAG* : -- The unique name of this data type x2sys TAG (passed as first argument).
+
+- **D** or **fmt** or **fmtfile** or **definition** : -- *definition="filename"*\
+   Format definition file prefix for this data set. Specify full path if the file
+   is not in the current directory. If not given then we default to *TAG*.fmt.
+
+Optional Arguments
+------------------
+
+- **E** or **ext** or **suffix** : -- *suffix="ext"*\
+   Specifies the file extension (suffix) for these data files. If not given we use
+   the format definition file prefix as the suffix.
+
+- **F** or **force** : -- *force=true*\
+   Force creating new files if old ones are present [Default will abort if old
+   TAG files are found].
+
+- **G** or **geo** or **geographic** : -- *geographic=true* **|** *geographic=:dateline* **|** *geographic=:greenwich*\
+   Selects geographical coordinates. Use **:dateline** (or **:d**) for discontinuity
+   at the Dateline (longitude from -180 to +180) or **:greenwich** (or **:g**) for
+   discontinuity at Greenwich (longitude from 0 to 360) [Default]. If not given we
+   assume the data are Cartesian.
+
+{{< include ../common_opts/opt_I.qmd >}}
+
+- **N** or **units** : -- *units=(dist=char, speed=char)*\
+   Sets the units used for distance and speed when requested by other programs.
+   Give the desired unit as:
+   - **c** - Cartesian (userdist or userdist/usertime)
+   - **e** - meters or m/s
+   - **f** - feet or feet/s
+   - **k** - km or km/hr
+   - **m** - miles or miles/hr
+   - **n** - nautical miles or knots
+   - **u** - survey feet or survey feet/s
+
+   [Default is *units=(dist=:k, speed=:e)* (km and m/s) if **geographic** is set,
+   otherwise Cartesian units].
+
+{{< include ../common_opts/opt_R.qmd >}}
+
+{{< include ../common_opts/opt_V.qmd >}}
+
+- **W** or **gap** : -- *gap=(time=val, dist=val)*\
+   Give the maximum time gap (in user units, typically seconds) or distance gap
+   (for units, see **units**) allowed between the two data points immediately on
+   either side of a crossover. If these limits are exceeded then a data gap is
+   assumed and no COE will be determined [Infinity].
+
+Format Definition Files
+-----------------------
+
+These *.fmt files contain information about the data file format with two sections:
+(1) header information and (2) column information. Header directives start with #:
+
+- **#ASCII** - data files are in ASCII format
+- **#BINARY** - data files are native binary files
+- **#NETCDF** - data files are COARDS-compliant 1-D netCDF files
+- **#SKIP n** - number of lines (ASCII) or bytes (binary) to skip
+- **#GEO** - geographic data sets (alternatively use **geographic** option)
+- **#MULTISEG** - tracks consist of multiple segments
+
+Column information (one line per column):
+
+*name type NaN NaN-proxy scale offset oformat*
+
+- *name*: column name (use **lon**/**lat** or **x**/**y** for coordinates, **time** for absolute time)
+- *type*: **a** (ASCII), **c** (char), **u** (unsigned byte), **h** (short), **i** (int), **f** (float), **d** (double)
+- *NaN*: Y if certain values should be replaced by NaN, N otherwise
+- *NaN-proxy*: the special value to replace with NaN
+- *scale*: multiplier after reading
+- *offset*: added to scaled data
+- *oformat*: C-style format string (or - for GMT defaults)
+
+Pre-existing format files: **mgd77**, **mgd77+**, **gmt**, **xy**, **xyz**, **geo**, **geoz**.
+
+Examples
+--------
+
+To initialize a new TAG called LINE for geographic track data with 1x1 degree
+binning, geodesic distances in km, and speeds in knots:
+
+```julia
+using GMT
+x2sys_init("LINE", definition="line", geographic=:greenwich, region=:g,
+           inc=(1,1), units=(dist=:k, speed=:n), suffix="trk")
+```
+
+To initialize a TAG for MGD77 data from NCEI with a 15 minute (900 sec) or 5 km
+threshold to indicate a data gap:
+
+```julia
+using GMT
+x2sys_init("MGD77", definition="mgd77", suffix="mgd77", region=:d,
+           geographic=:dateline, units=(speed=:n,), inc=(1,1),
+           gap=(time=900, dist=5))
+```
+
+To force overwrite of existing TAG files:
+
+```julia
+using GMT
+x2sys_init("MYDATA", definition="myformat", force=true, geographic=true, inc=0.5)
+```
+
+Workflow Example
+----------------
+
+After initializing the TAG, the typical workflow is:
+
+```julia
+using GMT
+
+# 1. Initialize the TAG (done once)
+x2sys_init("LINE", definition="line", geographic=true, inc=1)
+
+# 2. Create bin-index files
+x2sys_binlist("track1.trk track2.trk", tag="LINE")
+
+# 3. Update the database
+x2sys_put("tracks.tbf", tag="LINE")
+
+# 4. Find tracks in a region
+tracks = x2sys_get(tag="LINE", region=(20,40,-40,-20), columns="obs1,obs3")
+
+# 5. Calculate crossovers
+coe = x2sys_cross("track1.trk track2.trk", tag="LINE")
+```
+
+See Also
+--------
+
+- {{< gmtref x2sys_binlist >}}, {{< gmtref x2sys_cross >}}, {{< gmtref x2sys_datalist >}}, {{< gmtref x2sys_get >}}, {{< gmtref x2sys_list >}}, {{< gmtref x2sys_put >}}, {{< gmtref x2sys_report >}}, {{< gmtref x2sys_solve >}}
+- [Alphabetical Function List](../alphabetical.html)
+
+```{julia}
+#| echo: false
+#| output: asis
+using GMT
+GMT.doc_source_links("x2sys_init")
+```

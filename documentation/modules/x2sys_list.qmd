@@ -1,0 +1,156 @@
+# x2sys_list
+
+```julia
+x2sys_list(cmd0::String="", arg1=nothing; kwargs...)
+```
+
+Extract crossover information from crossover database.
+
+(**Warning: Manual translate by Claude. Needs revision**)
+
+Description
+-----------
+
+**x2sys_list** will read the crossover ASCII data base *coedbase.txt*
+(or standard input) and extract a subset of the crossovers based on the
+other arguments. The output may be ASCII or binary.
+
+Required Arguments
+------------------
+
+- *coedbase* : -- The name of the input ASCII crossover error data base as produced by
+   {{< gmtref x2sys_cross >}}. Can be a file name or GMTdataset.
+
+- **C** or **col** or **column** : -- *column="name"*\
+   Specify which data column you want to process. Crossovers related to this
+   column name must be present in the crossover data base.
+
+- **T** or **TAG** or **tag** : -- *tag="tagname"*\
+   Specify the system tag for this compilation.
+
+Optional Arguments
+------------------
+
+- **A** or **asymm** or **asymmetry** : -- *asymmetry=value*\
+   Specifies maximum asymmetry in the distribution of crossovers relative to the
+   mid point in time (or distance, if time is not available). Asymmetry is computed
+   as (n_right - n_left)/(n_right + n_left). Symmetric distributions have values
+   close to zero. We exclude tracks whose asymmetry exceeds the specified cutoff
+   in absolute value [1, i.e., include all].
+
+- **E** or **segments** or **headers** : -- *headers=true*\
+   Enhance ASCII output by writing GMT segment headers with names of the two tracks
+   and their total number of cross-overs [no segment headers].
+
+- **F** or **flags** or **output** : -- *output="acdhiInNtTvwxyz"*\
+   Specify your desired output using any combination of these flags (case-sensitive):
+   - **a** - angle (< 90) defined by the crossing tracks
+   - **c** - crossover value of chosen observation
+   - **d** - distance along track
+   - **h** - heading along track
+   - **i** - signed time interval between visits at crossover
+   - **I** - unsigned time interval
+   - **n** - names of the two tracks
+   - **N** - id numbers of the two tracks
+   - **t** - time along track in date**T**clock format
+   - **T** - elapsed time since start of track
+   - **v** - speed along track
+   - **w** - composite weight
+   - **x** - x-coordinate (or longitude)
+   - **y** - y-coordinate (or latitude)
+   - **z** - observed value along track
+
+   If **track** is not specified, then **d**, **h**, **n**, **N**, **t**, **T**, **v**
+   result in two output columns each (track one, then track two).
+
+- **I** or **exclude** or **ignore** : -- *exclude="listfile"*\
+   Name of ASCII file with a list of track names (one per record) that should be
+   excluded from consideration [Default includes all tracks].
+
+- **L** or **corr** or **corrections** : -- *corrections=true* **|** *corrections="tablefile"*\
+   Apply optimal corrections to the chosen observable. Append the correction table
+   to use [Default uses *TAG*_corrections.txt in **$X2SYS_HOME**/*TAG* directory].
+
+- **N** or **mincross** or **min_cross** : -- *min_cross=n* **|** *min_cross=(n, :pairs)*\
+   Suppress all crossovers involving tracks that did not generate at least *n*
+   total crossings with all other tracks. Use *(n, :pairs)* to instead suppress
+   data from pairs that generated less than *n* crossovers between them [use all pairs].
+
+- **Q** or **coe** or **crossover** : -- *coe=:external* **|** *coe=:internal*\
+   Select crossover type. Use **:external** (or **:e**) for external crossovers only,
+   or **:internal** (or **:i**) for internal crossovers only [Default is all crossovers].
+
+{{< include ../common_opts/opt_R.qmd >}}
+
+- **S** or **track** : -- *track="name"* **|** *track=("name", :both)*\
+   Name of a single track. If given we restrict output to those crossovers involving
+   this track [Default output is crossovers involving any track pair]. Use
+   *track=("name", :both)* to print info relative to both tracks in the pair.
+
+{{< include ../common_opts/opt_V.qmd >}}
+
+- **W** or **weights** : -- *weights=true* **|** *weights="listfile"*\
+   Name of ASCII file with a list of track names and their relative weights (one
+   track per record) that should be used to calculate the composite crossover weight
+   (output code **w**) [Default sets weights to 1].
+
+{{< include ../common_opts/opt_bo.qmd >}}
+
+Examples
+--------
+
+To find all the magnetic crossovers associated with the tag MGD77 from the file
+COE_data.txt, restricted to a certain region in the south Pacific, and return
+location, time, and crossover value:
+
+```julia
+using GMT
+D = x2sys_list("COE_data.txt", tag="MGD77", region=(180,240,-60,-30),
+               column="mag", output="xytz")
+```
+
+To find all the faa crossovers globally that involve track 12345678 and output
+time since start of the year and observed value:
+
+```julia
+using GMT
+D = x2sys_list("COE_data.txt", tag="MGD77", column="faa",
+               track="12345678", output="Tz")
+```
+
+To extract crossovers with segment headers between track pairs:
+
+```julia
+using GMT
+D = x2sys_list("COE_data.txt", tag="MGD77", column="depth",
+               output="xycn", headers=true)
+```
+
+To apply corrections and filter by minimum crossings:
+
+```julia
+using GMT
+D = x2sys_list("COE_data.txt", tag="MGD77", column="mag",
+               corrections=true, min_cross=10, output="xyc")
+```
+
+To get crossovers for a specific track with info for both tracks:
+
+```julia
+using GMT
+D = x2sys_list("COE_data.txt", tag="MGD77", column="faa",
+               track=("12345678", :both), output="xyzdhv")
+```
+
+See Also
+--------
+
+- {{< gmtref x2sys_init >}}, {{< gmtref x2sys_cross >}}, {{< gmtref x2sys_binlist >}}, {{< gmtref x2sys_datalist >}}, {{< gmtref x2sys_get >}}, {{< gmtref x2sys_solve >}}
+- [Alphabetical Function List](../alphabetical.html)
+
+```{julia}
+#| echo: false
+#| output: asis
+using GMT
+GMT.doc_source_links("x2sys_list")
+```

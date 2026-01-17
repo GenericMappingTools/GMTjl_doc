@@ -1,15 +1,132 @@
 # rotconverter
 
+```julia
+rotconverter(cmd0::String="", arg1=nothing; kwargs...)
+```
+
 Manipulate total reconstruction and stage rotations.
 
+(**Warning: Manual translate by Claude. Needs revision**)
 
-::: {.callout-warning}
-This GMT supplements module has not yet been ported to the long verbose syntax.
-To use it, you will need to use the {{< gmtref monolithic type=general text="Monolithic" >}} mode.
-:::
+Description
+-----------
 
-Please open a [Feature Request](https://github.com/GenericMappingTools/GMT.jl/issues) if you would like
-to see this module ported to the long verbose syntax, or better yet, consider contributing the port yourself!
+**rotconverter** reads one or more plate motion models (stage or total
+reconstruction rotations) stored in the given files. If more than one
+plate motion model is given we will add or subtract them in the order
+they were listed. The minus sign means we should first transpose the
+rotation and then add it to the previous rotation. If a file cannot be
+opened we will attempt to decode the file name as a single rotation
+whose parameters are separated by slashes.
+
+Required Arguments
+------------------
+
+- *rotX* : -- Name of a file with a plate motion model, or a rotation specified as
+   `"lon/lat/tstart[/tstop]/angle"`. Separate several files/rotations with desired operator
+   (+ or -). The very first file may also have a leading minus operator to imply a transpose.
+   We also recognize filenames of the form A-B, where both A and B are uppercase plate
+   abbreviations as used by GPlates (e.g., PAC-MBL). For a single total reconstruction
+   rotation without time information, give `"lon/lat/angle"` only. The *tstop* argument
+   is required for stage poles only.
+
+Optional Arguments
+------------------
+
+- **A** or **angles** or **opening_angles** : -- *angles=true*\
+   Indicate that times are actually just opening angles [times in Myr].
+
+- **D** or **lonrange** or **pm180** : -- *pm180=true*\
+   Report longitudes using the -180/+180 range [Default is 0/360].
+
+- **F** or **format** or **outformat** : -- *format=:stage* **|** *format=:total*\
+   Specify the output format for rotations. Use **:stage** (or **:s**) for stage rotations
+   or **:total** (or **:t**) for total reconstruction rotations [Default is total reconstruction].
+
+- **G** or **gplates** or **plates4** : -- *gplates=true*\
+   Output final rotations in the Plates4 format used by GPlates [Default is spotter format].
+
+- **M** or **scale** or **half** : -- *half=true* **|** *scale=factor*\
+   Scale opening angles by *factor* on output [0.5]. Typically used to get half-rates
+   needed for flowlines. Use *half=true* for the default 0.5 factor.
+   Requires stage pole output (see **format**).
+
+- **N** or **north** or **northern** : -- *northern=true*\
+   Place all output poles in the northern hemisphere [Default reports positive rotation angles].
+
+- **S** or **south** or **southern** : -- *southern=true*\
+   Place all output poles in the southern hemisphere [Default reports positive rotation angles].
+
+- **T** or **transpose** : -- *transpose=true*\
+   Transpose the final result, i.e., change the sign of the rotation angles.
+
+- **W** or **negative** or **neg_angles** : -- *neg_angles=true*\
+   Ensure all output rotations have negative opening angles [Default reports positive rotation angles].
+
+{{< include ../common_opts/opt_V.qmd >}}
+
+Limitations
+-----------
+
+Only one of **northern**, **southern**, and **neg_angles** can be used at the same time.
+
+Notes
+-----
+
+GMT distributes the EarthByte rotation model Global_EarthByte_230-0Ma_GK07_AREPS.rot.
+To use an alternate rotation file, create an environment variable named
+**GPLATES_ROTATIONS** that points to an alternate rotation file.
+
+Examples
+--------
+
+To convert the total reconstruction rotations in the file model_total_reconstruction.APM
+to stage poles:
+
+```julia
+using GMT
+D = rotconverter("model_total_reconstruction.APM", format=:stage)
+```
+
+To obtain Nazca motion relative to Pacific hotspots by adding the motion of Nazca relative
+to a fixed Pacific to the Pacific-Hotspot reference model, and report the result as total
+reconstruction poles in the northern hemisphere:
+
+```julia
+using GMT
+D = rotconverter("DC85_stages.APM + Pac_Naz_stages.RPM", northern=true, format=:total)
+```
+
+To add the final rotations ROT(150.1, 70.5, -20.3) and ROT(145.0, 40.0, 11.4):
+
+```julia
+using GMT
+D = rotconverter("150.1/70.5/-20.3 + 145/40/11.4")
+# prints out 157.32, -80.44, 11.97
+```
+
+To make stage rotations suitable for generating flowlines from a model of relative
+plate motions PL1-PL2.RPM, assuming symmetric spreading:
+
+```julia
+using GMT
+D1 = rotconverter("PL1-PL2.RPM", half=true, format=:stage)
+D2 = rotconverter("- PL1-PL2.RPM", half=true, format=:stage)
+```
+
+To compute rotations for India relative to a fixed Africa using the plate circuit
+India-Central Indian Basin-Antarctica-Africa, based on the GPlates rotations database:
+
+```julia
+using GMT
+D = rotconverter("IND-CIB CIB-ANT ANT-AFR")
+```
+
+See Also
+--------
+
+- {{< gmtref backtracker >}}, {{< gmtref grdrotater >}}, {{< gmtref grdspotter >}}, {{< gmtref hotspotter >}}, {{< gmtref originater >}}
+- [Alphabetical Function List](../alphabetical.html)
 
 ```{julia}
 #| echo: false

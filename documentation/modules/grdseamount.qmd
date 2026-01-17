@@ -4,17 +4,203 @@ title: "grdseamount"
 
 # grdseamount
 
-```
+```julia
 grdseamount(cmd0::String="", arg1=nothing; kwargs...)
 ```
 
 Create synthetic seamounts (Gaussian, parabolic, polynomial, cone or disc; circular or elliptical).
 
-::: {.callout-warning}
-This GMT supplements module has not yet received the proper attention to port the original manual.
-:::
+(**Warning: Manual translate by Claude. Needs revision**)
 
+Description
+-----------
 
+**grdseamount** will compute the combined topographic shape of multiple synthetic seamounts given
+their individual shape parameters. We read from *table* (or pass a matrix/GMTdataset) a list of seamount
+locations and sizes and can evaluate either Gaussian, parabolic, conical, polynomial or disc
+shapes, which may be circular or elliptical, and optionally truncated. Various options are available
+to modify the result, including an option to add in a background depth or set unmodified nodes to NaN.
+
+The input data must contain *lon*, *lat*, *radius*, *height* for each seamount. For elliptical features
+(requires **elliptical=true**), we expect *lon*, *lat*, *azimuth*, *semi-major*, *semi-minor*, *height* instead.
+If flat seamount tops is specified (via **flattening**) with no value appended, then an extra column with
+*flattening* is expected. For temporal evolution of topography the **time** option may be used, in which
+case the data file must have two additional columns with the start and stop time of seamount construction.
+
+Required Arguments
+------------------
+
+- *intable* : -- Input table (file name, matrix, or GMTdataset) with seamount parameters. For circular
+   seamounts: *lon, lat, radius, height*. For elliptical seamounts (**elliptical=true**):
+   *lon, lat, azimuth, semi-major, semi-minor, height*.
+
+- **G** or **outgrid** : -- *outgrid="filename"*\
+   Give the name of the output grid file. If **time** is set then *outgrid* must be a filename template.
+
+{{< include ../common_opts/opt_I.qmd >}}
+
+{{< include ../common_opts/opt_R.qmd >}}
+
+Optional Arguments
+------------------
+
+- **A** or **mask** : -- *mask=true* **|** *mask="out/in"* **|** *mask=(out=val, in=val, scale=val)*\
+   Build a mask grid only that may be used to manipulate gridded data sets to exclude or isolate
+   seamount observations; append outside/inside values [1/NaN]. Height and flattening are ignored.
+   Use **scale** to increase all seamount radii or semi-axes first.
+
+- **C** or **shape** : -- *shape=:gaussian* **|** *shape=:cone* **|** *shape=:disc* **|** *shape=:parabola* **|** *shape=:polynomial*\
+   Select a seamount shape function. Choose among **:cone** (c), **:disc** (d), **:gaussian** (g),
+   **:polynomial** (o) and **:parabola** (p) [Default is Gaussian]. All but the disc can be
+   truncated via a flattening parameter set by **flattening**. The polynomial model has amplitude
+   $v(u) = (1+u)^3(1-u)^3/(1+u^3)$ where $u = r / r_0$ is the normalized radius.
+
+- **D** or **unit** : -- *unit=:k* **|** *unit=:m* **|** *unit=:n* **|** *unit=:d*\
+   Append the Cartesian unit used for horizontal distances in the input file.
+   Not allowed for geographic data, which we automatically convert to km using a flat Earth assumption.
+
+- **E** or **elliptical** : -- *elliptical=true*\
+   Set elliptical data file format. We expect input records to contain
+   (*lon, lat, azimuth, semi-major, semi-minor, height*) for each seamount
+   [Default is Circular data format, expecting *lon, lat, radius, height*].
+
+- **F** or **flattening** : -- *flattening=value* **|** *flattening=true*\
+   Seamounts will be truncated to guyots. Append *flattening* from 0 (no flattening) up to, but not
+   including, 1. If no argument is given then we expect to find the flattening in the last input column
+   [no truncation]. Ignored if used with **shape=:disc**.
+
+- **H** or **densities** : -- *densities="H/rho_l/rho_h"* **|** *densities=(H=val, rho_l=val, rho_h=val, densify=val, power=val)*\
+   Set reference seamount parameters for an *ad-hoc* variable radial density function with depth.
+   Give the low and high seamount densities in kg/m³ or g/cm³ and the fixed reference height *H* in meters.
+   Use **densify** to change the water-pressure-driven flank density increase over the full reference
+   height [0] and **power** to set the variable density profile exponent [1, linear]. The radial
+   density function is:
+   $$\rho(r,z) = \rho_l + \Delta \rho_f \left (\frac{H-h(r)}{H} \right ) + \Delta \rho_s \left ( \frac{h(r)-z(r)}{H} \right )^p$$
+
+- **K** or **density_grid** : -- *density_grid="filename"*\
+   Append the file name for a crossection grid with the predicted densities of the reference model.
+   Uses normalized coordinates (both *x* and *y* go from 0 to 1 in increments of 0.005).
+
+- **L** or **list_stats** : -- *list_stats=true* **|** *list_stats=hn*\
+   List *area*, *volume*, and *mean height* for each seamount; no grid will be created.
+   Optionally, append *hn* for a noise-floor cutoff level below which we ignore area and volume [0].
+
+- **M** or **list** : -- *list="filename"* **|** *list=true*\
+   Write the times and names of all grids created to the text file. Requires **time**.
+   If no file is given then we write to standard output. The output listing is suitable
+   as input to {{< gmtref grdflexure >}}.
+
+- **N** or **normalize** : -- *normalize=value*\
+   Normalize the relief grid(s) so the maximum grid height equals *value* [no normalization].
+
+- **Q** or **build_mode** : -- *build_mode=:cumulative* **|** *build_mode=:incremental* **|** *build_mode="c/g"*\
+   Set build modes. Can only be used with **time**. The default is **build_mode="c/g"**.
+   - *bmode* determines how we construct the surface: **c** for cumulative volume through time
+     or **i** for the incremental volume added for each time increment.
+   - *fmode* determines the volume flux curve: **c** for constant volume flux or **g** for
+     Gaussian volume flux [Default] between the start and stop times of each feature.
+
+- **S** or **slide** : -- *slide=(azimuth=(...), beta=val, hc=val, heights=(...), power=val, time=(...), u0=val, volume=val)*\
+   Set parameters controlling the simulation of sectoral, rotational land slides. Available modifiers:
+   - **azimuth**: specifies the azimuthal sector affected by the slide [0/360]
+   - **beta**: sets positive power coefficient for the normalized slide volume fraction time-curve [1]
+   - **hc**: sets the flank level where the debris deposit begins [h1/2]
+   - **heights**: sets the lower and upper heights of the flank source area
+   - **power**: activates angular variation in the radial slide profile (power > 2)
+   - **time**: sets the time span over which the slide develops (requires **time**)
+   - **u0**: sets normalized radial slide shape parameter > 0 [0.2]
+   - **volume**: sets desired fractional volume of the slide (in percent)
+
+- **T** or **time** : -- *time=t0* **|** *time="t0/t1/dt"* **|** *time="t0/t1/dt+l"*\
+   Specify *t0*, *t1*, and time increment (*dt*) for a sequence of calculations
+   [Default is one step, with no time dependency]. Default unit is years; append **k** for kyr
+   and **M** for Myr. For a logarithmic time scale, append **+l** and give the number of steps
+   instead of increment. If **time** is set, then the input seamount table must have two extra
+   columns for the *start* and *stop* time.
+
+{{< include ../common_opts/opt_V.qmd >}}
+
+- **W** or **density_output** : -- *density_output="filename"*\
+   Give the name of the vertically averaged density grid file. If **time** is set then this must
+   be a filename template. Requires **densities** to define the density model.
+
+- **Z** or **level** : -- *level=value* **|** *level=NaN*\
+   Set the background water depth [0]. As all seamounts have positive relief, you may
+   use a larger negative *level* to place them under water. Alternatively, use *level=NaN*
+   to flag unused nodes (not allowed if **build_mode=:incremental**).
+
+{{< include ../common_opts/opt_bi.qmd >}}
+
+{{< include ../common_opts/opt_f.qmd >}}
+
+Slide Simulation
+----------------
+
+The simulation of land slides via **slide** is not a physical model (apart from preserving mass). Instead,
+we approximate the shapes of rotational landslides via simple geometric shapes and functions.
+The radial slide height is modeled as:
+
+$$h_s(r) = h_s(u) = h_1 + (h_2 - h_1)q(u) = h_1 + (h_2 - h_1) u_0 \left (\frac{1 + u_0}{u + u_0} - 1\right ),$$
+
+where $u = (r - r_2)/(r_1 - r_2)$ is the normalized horizontal distance of the rupture surface.
+
+By default, the radial slide profile is fixed regardless of where in the slide sector we look. However,
+angular variation can be added via the function:
+
+$$s(\alpha) = s(\gamma) = 1 - \lvert \gamma \rvert ^p,$$
+
+where $\gamma = 2 (\alpha - \alpha_1)/(\alpha_2 - \alpha_1) - 1$ and *p* is the power exponent.
+
+The normalized volume rate distribution over time is simulated by:
+
+$$\psi(t) = \psi(\tau) = \tau^\beta = \left (\frac{t - t_0}{t_1 - t_0} \right )^\beta,$$
+
+where $\tau$ is the normalized time during a slide event and $\beta$ is set via **beta** [1].
+
+Notes
+-----
+
+Because the Gaussian curve only drops to 1.11% of its peak amplitude at the base radius (3 sigma)
+of a seamount, we actually evaluate Gaussian curves all the way to 4 sigma so that the amplitude
+drops to 0.034% of peak height before we jump to zero. This prevents the otherwise very noticeable
+step at the base of the seamount.
+
+Examples
+--------
+
+To compute the shape of a circular Gaussian seamount located at 1W, 2S on a 1 arc minute grid
+for a basal radius of 30 km and a height of 4500 meters:
+
+```julia
+using GMT
+G = grdseamount([1 2 30 4500], region=(-1.5, -0.5, -2.5, -1.5), inc="1m", outgrid="smt.nc")
+imshow(G)
+```
+
+To compute the shape of an elliptical conic seamount located at 200,400 on a 1x1 Cartesian grid
+for basal semi-major axis of 35, semi-minor axis of 20, azimuth of 29, height of 3700 m, and
+flattening of 0.15:
+
+```julia
+using GMT
+G = grdseamount([200 400 29 35 20 3700], region=(150,250,350,450), inc=1, elliptical=true,
+                flattening=0.15, shape=:cone, outgrid="ell_smt.nc")
+grdview(G, shade=true, Jz="2c", view=(195,20))
+```
+
+To compute incremental loads from two elliptical, truncated Gaussian seamounts being constructed
+from 3 Ma to 2 Ma and 2.8 Ma to 1.9 Ma using a constant volumetric production rate,
+outputting an incremental grid every 0.1 Myr:
+
+```julia
+using GMT
+# lon lat azimuth semi-major semi-minor height tstart tend
+data = [0 0 -20 120 60 5000 3.0 2.0;
+        50 80 -40 110 50 4000 2.8 1.9]
+grdseamount(data, region="-1024/1022/-1122/924+uk", inc=2000, outgrid="smt_%3.1f_%s.nc",
+            time="3M/1.9M/0.1M", build_mode="i/c", unit=:k, elliptical=true,
+            flattening=0.2, shape=:gaussian, list="files.txt")
+```
 
 ```{julia}
 #| echo: false
@@ -23,6 +209,14 @@ using GMT
 GMT.doc_source_links("grdseamount")
 ```
 
-## See Also
+Reference
+---------
 
+Smith, J. R. and Wessel, P., 2000, Isostatic consequences of giant landslides on the Hawaiian Ridge,
+Pure Appl. Geophys., 157, 1097-1114.
+
+See Also
+--------
+
+- {{< gmtref grdflexure >}}, {{< gmtref gravfft >}}
 - [Alphabetical Function List](../alphabetical.html)

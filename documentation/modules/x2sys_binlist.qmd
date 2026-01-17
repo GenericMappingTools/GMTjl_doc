@@ -1,0 +1,94 @@
+# x2sys_binlist
+
+```julia
+x2sys_binlist(cmd0::String="", arg1=nothing; kwargs...)
+```
+
+Create track bin-index file from track data files.
+
+(**Warning: Manual translate by Claude. Needs revision**)
+
+Description
+-----------
+
+**x2sys_binlist** reads one or more track data files and produces a
+multisegment ASCII track bin-index file (tbf) with the track name in the
+header and one data record per bin crossed; these records contain *lon*,
+*lat*, *index*, *flags*[, *dist*], where *lon*, *lat* are the coordinates
+of the center of the bin, the *index* is the 1-D number of the bin, and
+*flags* is a bitflag that describes which data fields were available in
+this bin. The optional *dist* requires **length**.
+
+The input files can be of any format, which must be described and passed
+with the **tag** option. The bin-index listing is a crude representation
+of where the track goes and is used by the data archivist to build an
+x2sys track data base for miscellaneous track queries, such as when
+needing to determine which tracks should be compared in a crossover
+analysis. You must run {{< gmtref x2sys_init >}} to initialize the tag
+before you can run the indexing.
+
+Required Arguments
+------------------
+
+- *tracks* : -- One or more track data files (file names or GMTdatasets).
+
+- **T** or **TAG** or **tag** : -- *tag="tagname"*\
+   Specify the system tag for this compilation.
+
+Optional Arguments
+------------------
+
+- **D** or **dist** or **length** : -- *length=true*\
+   Calculate the length of track-line segments per bin [Default skips this step].
+   The length fragments are given as the 5th output column (after the *flags*).
+   The length units are obtained via the TAG setting (see {{< gmtref x2sys_init >}}).
+
+- **E** or **equal_area** or **equalarea** : -- *equalarea=true*\
+   Convert geographic data to a cylindrical equal-area projection prior to binning.
+   Basically, we apply the projection `-JY`*lon0*/37:04:17.166076/360, where *lon0*
+   is the mid-longitude of the region. Requires **length**, geographical data, and
+   a global region (e.g., `region=:g` or `region=:d`). This option is useful for
+   statistics related to track-line density but should not be used when preparing
+   bin-index files for the x2sys track data bases.
+
+{{< include ../common_opts/opt_V.qmd >}}
+
+Examples
+--------
+
+To create a bin index file from the MGD77 file 01030061.mgd77 using the settings
+associated with the tag MGD77:
+
+```julia
+using GMT
+D = x2sys_binlist("01030061.mgd77", tag="MGD77")
+```
+
+To create a track bin index file of all MGD77+ files residing in the current
+directory using the settings associated with the tag MGD77+ and calculate
+track distances:
+
+```julia
+using GMT
+D = x2sys_binlist("*.nc", tag="MGD77+", length=true)
+```
+
+To process multiple tracks and compute segment lengths:
+
+```julia
+using GMT
+D = x2sys_binlist("track1.gmt track2.gmt track3.gmt", tag="GMT", length=true)
+```
+
+See Also
+--------
+
+- {{< gmtref x2sys_init >}}, {{< gmtref x2sys_cross >}}, {{< gmtref x2sys_datalist >}}, {{< gmtref x2sys_get >}}, {{< gmtref x2sys_put >}}, {{< gmtref x2sys_report >}}, {{< gmtref x2sys_solve >}}
+- [Alphabetical Function List](../alphabetical.html)
+
+```{julia}
+#| echo: false
+#| output: asis
+using GMT
+GMT.doc_source_links("x2sys_binlist")
+```

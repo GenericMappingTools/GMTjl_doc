@@ -1,15 +1,100 @@
 # rotsmoother
 
-Get mean rotations and covariance matrices from set of finite rotations.
+```julia
+rotsmoother(cmd0::String="", arg1=nothing; kwargs...)
+```
 
+Compute mean rotations from a set of finite rotations.
 
-::: {.callout-warning}
-This GMT supplements module has not yet been ported to the long verbose syntax.
-To use it, you will need to use the {{< gmtref monolithic type=general text="Monolithic" >}} mode.
-:::
+(**Warning: Manual translate by Claude. Needs revision**)
 
-Please open a [Feature Request](https://github.com/GenericMappingTools/GMT.jl/issues) if you would like
-to see this module ported to the long verbose syntax, or better yet, consider contributing the port yourself!
+Description
+-----------
+
+**rotsmoother** reads a table of total reconstructions and computes mean
+rotations (and optionally covariance matrices) for sub-groups of rotations
+based on rotation age (or all of the rotations).
+
+Required Arguments
+------------------
+
+- *intable* : -- Name of a rotation table (file or GMTdataset) containing
+   (*lon lat time angle* [*weight*]) values. If **angles** is set, input is expected
+   to contain (*lon lat angle* [*weight*]) records instead.
+
+Optional Arguments
+------------------
+
+- **A** or **angles** or **opening_angles** : -- *angles=true*\
+   Use opening angles as a proxy for time. Suitable when no time can be assigned to the
+   rotations. In this case, input is expected to contain *lon lat angle* [*weight*] records
+   and **ages** settings refer to angles instead of time.
+   [Default expects *lon lat time angle* [*weight*] and **ages** refers to time].
+
+- **C** or **cov** or **covariance** : -- *covariance=true*\
+   Compute covariance matrix for each mean rotation. This is done by converting each
+   finite rotation to a quaternion, determining the mean quaternion (rotation) and
+   then considering all rotations as perturbations to the mean rotation. From these
+   perturbations we determine the covariance matrix.
+
+- **N** or **north** or **northern** : -- *northern=true*\
+   Ensure all poles are in northern hemisphere [Default ensures positive opening angles].
+
+- **S** or **south** or **southern** : -- *southern=true*\
+   Ensure all poles are in southern hemisphere [Default ensures positive opening angles].
+
+- **T** or **ages** or **times** : -- *ages=value* **|** *ages=(start, stop, inc)* **|** *ages="file"*\
+   Sets the desired groups of ages. For a single time append the desired time
+   and all rotations are used to compute a single mean rotation. For an equidistant
+   range of reconstruction ages give *ages=(start, stop, inc)* or use **+n** suffix
+   for number of points. For a non-equidistant set of reconstruction ages pass them
+   via a file. The ages become the bin-boundaries and we output the average time of
+   all rotations inside each bin.
+
+{{< include ../common_opts/opt_V.qmd >}}
+
+- **W** or **weights** or **weighted** : -- *weighted=true*\
+   Expect weights in last column for a weighted mean rotation [no weights].
+
+- **Z** or **negative** or **neg_angles** : -- *neg_angles=true*\
+   Report negative opening angles [positive].
+
+{{< include ../common_opts/opt_bi.qmd >}}
+
+{{< include ../common_opts/opt_bo.qmd >}}
+
+{{< include ../common_opts/opt_f.qmd >}}
+
+Examples
+--------
+
+To smooth rotation groups in increments of 3 Myr and ensure northern hemisphere poles:
+
+```julia
+using GMT
+D = rotsmoother("rotations.txt", northern=true, ages=(3, 30, 3))
+```
+
+To smooth all rotations and compute a single mean rotation (assigned to time = 5) with
+corresponding covariance matrix:
+
+```julia
+using GMT
+D = rotsmoother("rotations.txt", covariance=true, ages=5)
+```
+
+To compute weighted mean rotations from a table with weights in the last column:
+
+```julia
+using GMT
+D = rotsmoother("rotations.txt", weighted=true, ages=(0, 100, 10))
+```
+
+See Also
+--------
+
+- {{< gmtref backtracker >}}, {{< gmtref rotconverter >}}, {{< gmtref grdspotter >}}, {{< gmtref hotspotter >}}, {{< gmtref originater >}}
+- [Alphabetical Function List](../alphabetical.html)
 
 ```{julia}
 #| echo: false

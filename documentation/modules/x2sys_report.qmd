@@ -1,0 +1,134 @@
+# x2sys_report
+
+```julia
+x2sys_report(cmd0::String="", arg1=nothing; kwargs...)
+```
+
+Report statistics from crossover database.
+
+(**Warning: Manual translate by Claude. Needs revision**)
+
+Description
+-----------
+
+**x2sys_report** will read the input crossover ASCII data base *coedbase.txt*
+(or standard input) and report on the statistics of crossovers (*n*, *mean*,
+*stdev*, *rms*, *weight*) for each track. Options are available to let you
+exclude tracks and limit the output.
+
+Required Arguments
+------------------
+
+- *coedbase* : -- The name of the input ASCII crossover error data base as produced by
+   {{< gmtref x2sys_cross >}}. Can be a file name or GMTdataset.
+
+- **C** or **col** or **column** : -- *column="name"*\
+   Specify which data column you want to process. Crossovers related to this
+   column name must be present in the crossover data base.
+
+- **T** or **TAG** or **tag** : -- *tag="tagname"*\
+   Specify the system tag for this compilation.
+
+Optional Arguments
+------------------
+
+- **A** or **adjust** or **adjustments** : -- *adjustments=true*\
+   Eliminate COEs by distributing the COE between the two tracks in proportion
+   to track weight and producing (dist, adjustment) spline knots files for each
+   track (for the selected column). Such adjustments may be used by
+   {{< gmtref x2sys_datalist >}}. The adjustment files are called *track.column*.adj
+   and are placed in the **$X2SYS_HOME**/*TAG* directory.
+
+- **I** or **exclude** or **ignore** : -- *exclude="listfile"*\
+   Name of ASCII file with a list of track names (one per record) that should be
+   excluded from consideration [Default includes all tracks].
+
+- **L** or **corr** or **corrections** : -- *corrections=true* **|** *corrections="tablefile"*\
+   Apply optimal corrections to the chosen observable. Append the correction table
+   to use [Default uses *TAG*_corrections.txt in **$X2SYS_HOME**/*TAG* directory].
+
+- **N** or **mincross** or **min_cross** : -- *min_cross=n*\
+   Only report data from tracks involved in at least *n* crossovers [all tracks].
+
+- **Q** or **coe** or **crossover** : -- *coe=:external* **|** *coe=:internal*\
+   Select crossover type. Use **:external** (or **:e**) for external crossovers only,
+   or **:internal** (or **:i**) for internal crossovers only [Default is external].
+
+{{< include ../common_opts/opt_R.qmd >}}
+
+- **S** or **track** : -- *track="name"*\
+   Name of a single track. If given we restrict output to those crossovers involving
+   this track [Default output is crossovers involving any track pair].
+
+{{< include ../common_opts/opt_V.qmd >}}
+
+Output Format
+-------------
+
+The output consists of one record per track with the following columns:
+
+1. Track name
+2. Number of crossovers (*n*)
+3. Mean crossover error
+4. Standard deviation
+5. RMS error
+6. Track weight
+
+Examples
+--------
+
+To report statistics of all the external magnetic crossovers associated with the
+tag MGD77 from the file COE_data.txt, restricted to a certain region in the
+south Pacific:
+
+```julia
+using GMT
+D = x2sys_report("COE_data.txt", tag="MGD77", region=(180,240,-60,-30), column="mag")
+```
+
+To report on the faa crossovers globally that involve track 12345678:
+
+```julia
+using GMT
+D = x2sys_report("COE_data.txt", tag="MGD77", column="faa", track="12345678")
+```
+
+To generate adjustment files for all tracks:
+
+```julia
+using GMT
+x2sys_report("COE_data.txt", tag="MGD77", column="mag", adjustments=true)
+```
+
+To report only on tracks with at least 10 crossovers:
+
+```julia
+using GMT
+D = x2sys_report("COE_data.txt", tag="MGD77", column="depth", min_cross=10)
+```
+
+To report internal crossovers only:
+
+```julia
+using GMT
+D = x2sys_report("COE_data.txt", tag="MGD77", column="mag", coe=:internal)
+```
+
+Reference
+---------
+
+Mittal, P. K. (1984), Algorithm for error adjustment of potential field data along
+a survey network, *Geophysics*, **49**(4), 467-469.
+
+See Also
+--------
+
+- {{< gmtref x2sys_init >}}, {{< gmtref x2sys_cross >}}, {{< gmtref x2sys_datalist >}}, {{< gmtref x2sys_list >}}, {{< gmtref x2sys_solve >}}
+- [Alphabetical Function List](../alphabetical.html)
+
+```{julia}
+#| echo: false
+#| output: asis
+using GMT
+GMT.doc_source_links("x2sys_report")
+```

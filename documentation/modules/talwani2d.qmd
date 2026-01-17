@@ -1,15 +1,129 @@
 # talwani2d
 
+```julia
+talwani2d(cmd0::String="", arg1=nothing; kwargs...)
+```
+
 Compute geopotential anomalies over 2-D bodies by the method of Talwani.
 
+(**Warning: Manual translate by Claude. Needs revision**)
 
-::: {.callout-warning}
-This GMT supplements module has not yet been ported to the long verbose syntax.
-To use it, you will need to use the {{< gmtref monolithic type=general text="Monolithic" >}} mode.
-:::
+Description
+-----------
 
-Please open a [Feature Request](https://github.com/GenericMappingTools/GMT.jl/issues) if you would like
-to see this module ported to the long verbose syntax, or better yet, consider contributing the port yourself!
+**talwani2d** will read a multi-segment table from file (or a GMTdataset).
+This file contains cross-sections of one or more 2-D bodies, with one polygon
+per segment. The segment header must contain the parameter *density*, which
+states the density of this body (individual body densities may be overridden
+by a fixed constant density contrast given via **density**).
+
+We can compute anomalies on an equidistant lattice (by specifying a lattice with
+**range**) or provide arbitrary output points specified in a file via **track**.
+Choose between free-air anomalies, vertical gravity gradient anomalies, or geoid anomalies.
+Options are available to control axes units and direction.
+
+Required Arguments
+------------------
+
+- *intable* : -- One or more files or a GMTdataset describing cross-sectional polygons of one
+   or more bodies. Polygons will be automatically closed if not already closed, and repeated
+   vertices will be eliminated. The segment header for each body must contain a density
+   parameter in kg/m³ or g/cm³; see **density** for overriding this value.
+
+Optional Arguments
+------------------
+
+- **A** or **z_up** : -- *z_up=true*\
+   The *z*-axis should be positive upwards [Default is down].
+
+- **D** or **density** : -- *density=value*\
+   Sets a fixed density contrast that overrides any per-body settings in the model file,
+   in kg/m³ or g/cm³.
+
+- **F** or **field** : -- *field=:faa* **|** *field=:geoid* **|** *field=:vgg* **|** *field=(geoid=true, lat=value)*\
+   Specify desired gravitational field component. Choose between:
+   - **:faa** or **:f** - free-air anomaly [Default]
+   - **:geoid** or **:n** - geoid anomaly; optionally specify latitude for normal gravity reference
+     value via *field=(geoid=true, lat=value)* [Default is 45]
+   - **:vgg** or **:v** - vertical gravity gradient
+
+- **M** or **units** : -- *units=:h* **|** *units=:v* **|** *units=:hv* **|** *units="hv"*\
+   Sets distance units used. Use **:h** to indicate that horizontal distances are in km [m],
+   and **:v** to indicate vertical distances are in km [m]. Combine as **:hv** or **"hv"** for both.
+
+- **N** or **track** : -- *track="filename"* **|** *track=dataset*\
+   Specifies locations where we wish to compute the predicted value. When this option
+   is used you cannot use **range** to set an equidistant lattice. The output data records
+   are written to stdout.
+
+- **T** or **range** : -- *range=(min, max, inc)* **|** *range="min/max/inc"*\
+   Specify an equidistant output lattice. Cannot be used with **track**.
+
+{{< include ../common_opts/opt_V.qmd >}}
+
+- **Z** or **level** : -- *level=value* **|** *level="level/ymin/ymax"*\
+   Set a constant observation level [0]. Optionally, and for gravity anomalies only (**field=:faa**),
+   append the finite extent limits of a 2.5-D body.
+
+{{< include ../common_opts/opt_bi.qmd >}}
+
+Notes
+-----
+
+The 2-D geoid anomaly is a logarithmic potential and thus has no natural reference level.
+We simply remove the most negative (if density contrast is positive) or positive
+(if density contrast is negative) computed value from all values, rendering the entire
+anomaly positive (or negative). You can use {{< gmtref gmtmath >}} to change the zero level.
+
+Examples
+--------
+
+To compute the free-air anomalies on an equidistant profile over a 2-D body that has been
+contoured and saved to body2d.txt, using 1700 kg/m³ as a constant density contrast,
+with all distances in meters:
+
+```julia
+using GMT
+D = talwani2d("body2d.txt", range=(-200,200,2), density=1700, field=:faa)
+```
+
+To obtain the vertical gravity gradient anomaly along the track given by the file crossing.txt
+for the same model:
+
+```julia
+using GMT
+D = talwani2d("body2d.txt", track="crossing.txt", density=1700, field=:vgg)
+```
+
+The geoid anomaly for the same setup, evaluated at 60N:
+
+```julia
+using GMT
+D = talwani2d("body2d.txt", track="crossing.txt", density=1700, field=(geoid=true, lat=60))
+```
+
+References
+----------
+
+Chapman, M. E., 1979, Techniques for interpretation of geoid anomalies,
+*J. Geophys. Res., 84(B8)*, 3793-3801.
+
+Kim, S.-S., and P. Wessel, 2016, New analytic solutions for modeling vertical
+gravity gradient anomalies, *Geochem. Geophys. Geosyst., 17*,
+[doi:10.1002/2016GC006263](https://doi.org/10.1002/2016GC006263).
+
+Rasmussen, R., and L. B. Pedersen, 1979, End corrections in potential field modeling,
+*Geophys. Prospect., 27*, 749-760.
+
+Talwani, M., J. L. Worzel, and M. Landisman, 1959, Rapid gravity computations for
+two-dimensional bodies with application to the Mendocino submarine fracture zone,
+*J. Geophys. Res., 64*, 49-59.
+
+See Also
+--------
+
+- {{< gmtref talwani3d >}}, {{< gmtref gravfft >}}, {{< gmtref gravmag3d >}}, {{< gmtref gmtmath >}}
+- [Alphabetical Function List](../alphabetical.html)
 
 ```{julia}
 #| echo: false

@@ -1,15 +1,127 @@
 # polespotter
 
-Find stage poles given fracture zones and abyssal hills.
+```julia
+polespotter(cmd0::String="", arg1=nothing; kwargs...)
+```
 
+Find stage poles from fracture zones and abyssal hills.
 
-::: {.callout-warning}
-This GMT supplements module has not yet been ported to the long verbose syntax.
-To use it, you will need to use the {{< gmtref monolithic type=general text="Monolithic" >}} mode.
-:::
+(**Warning: Manual translate by Claude. Needs revision**)
 
-Please open a [Feature Request](https://github.com/GenericMappingTools/GMT.jl/issues) if you would like
-to see this module ported to the long verbose syntax, or better yet, consider contributing the port yourself!
+Description
+-----------
+
+**polespotter** reads line segments (abyssal hill fabric lineaments and/or fracture zone
+lineaments) and performs one of three types of scans. In spot mode it computes great circles
+for each individual segment along these lines. The bisector great circles to fracture zones
+and the great circle extensions of abyssal hills are expected to intersect at potential
+rotation poles. The assumption is that abyssal hill lines are meridians and fracture zones
+are parallels with respect to the rotation pole.
+
+Line density may be computed and returned via a grid, the great circle lines may be returned
+via standard output, and the intersections of the great circles may be saved to file. In line
+mode it will determine which line segments are compatible with a given trial pole, while in
+pole mode it will compute chi-squared misfits for all the poles defined by the grid.
+
+Optional Arguments
+------------------
+
+- **A** or **abyssalhills** or **hills** : -- *hills="filename"*\
+   File with multiple segments of abyssal hill lineaments. These are assumed to reflect
+   the great circle direction towards the rotation pole in effect when the seafloor was formed.
+
+- **D** or **step** or **spacing** : -- *spacing=value*\
+   Sets the line increment for all great circles produced, in km [5].
+   Actual spacing will be adjusted to give an integer number of steps along the full circle.
+
+- **E** or **sigma** or **uncertainty** : -- *uncertainty=(a=val, f=val)* **|** *uncertainty="a1"*\
+   Provide different 1-sigma angular uncertainty (in degrees) in the orientation of abyssal
+   hills or fracture zones. Use **a** (or **abyssal**) for abyssal hills [1] and **f** (or **fz**)
+   for fracture zones [1]. These *sigma* values are then used to form weights = 1/sigma.
+
+- **F** or **fracturezones** or **fz** : -- *fz="filename"*\
+   File with multiple segments of fracture zone lineaments. These are assumed to reflect
+   small circles about the rotation pole in effect when the seafloor was formed.
+
+- **G** or **outgrid** or **save** : -- *outgrid="filename"*\
+   Specify name for output grid. For spot mode we accumulate great circle line density for
+   the grid. Each bin crossed by a great circle is incremented by 1, multiplied by cos(latitude),
+   the length of the fracture zone or abyssal line segment, and any overall weight set via
+   **uncertainty**. In pole mode we return the chi-squared misfit surface. Not used in line mode.
+
+{{< include ../common_opts/opt_I.qmd >}}
+
+- **N** or **normalize** or **norm** : -- *normalize=true*\
+   Normalize the grid so max value equals 1 [no normalization].
+
+{{< include ../common_opts/opt_R.qmd >}}
+
+- **S** or **mode** or **scan** : -- *scan=:spot* **|** *scan=:pole* **|** *scan=:line* **|** *scan=(spot=true, ...)*\
+   Set the scan mode for this run. Choose from **:line**, **:pole**, or **:spot**:
+
+   - **Line mode** (*scan=(line="plon/plat", midpoint=true)*): Accept a trial pole location and
+     determine how compatible each data segment is with the predictions of small circles (for
+     fracture zones) and meridians (for abyssal hills). By default reports summary statistics.
+     Use **midpoint=true** to instead report misfit information for each mid-point along all
+     multi-point line segments.
+
+   - **Pole mode** (*scan=:pole*): Search for all poles on the given grid and determine the
+     weighted chi-square misfit to all given line constraints. Requires **outgrid**, **region**,
+     and **inc**.
+
+   - **Spot mode** (*scan=(spot=true, xfile="crossings.txt", lines=true)*): Compute bisectors
+     to fracture zones and meridians along abyssal hills and determine intersections of all
+     great circles. Use **lines=true** to dump all great circles to stdout, and **xfile** to
+     compute intersections and write locations to file.
+
+{{< include ../common_opts/opt_V.qmd >}}
+
+{{< include ../common_opts/opt_bi.qmd >}}
+
+Notes
+-----
+
+1. Each input line is expected to contain two or more points, and each consecutive pair of
+   points defines a great circle line segment. For fracture zones, points should be digitized
+   often enough so that the great circle between them can approximate the small circle.
+
+2. All line segments are given equal angular uncertainty [1, unless changed by **uncertainty**].
+   However, individual line segments can override this weight by adding a `-D`*sigma* argument
+   in the segment headers (in degrees).
+
+Examples
+--------
+
+To create a polespotting image from the abyssal hill and fracture zone fabric data in the
+files hills.txt and fractures.txt, on a 1x1 degree grid for the northern hemisphere,
+sampling the great circles every 10 km, and also dump the great circles to stdout:
+
+```julia
+using GMT
+G = polespotter(hills="hills.txt", fz="fractures.txt", spacing=10, outgrid="poles.nc",
+                region=(0,360,0,90), inc=1, scan=(spot=true, lines=true))
+```
+
+To search for the best pole location using all constraints on a 0.5 degree grid:
+
+```julia
+using GMT
+G = polespotter(hills="hills.txt", fz="fractures.txt", outgrid="misfit.nc",
+                region=(0,360,-90,90), inc=0.5, scan=:pole)
+```
+
+To test compatibility of line segments with a trial pole at (45, 30):
+
+```julia
+using GMT
+D = polespotter(hills="hills.txt", fz="fractures.txt", scan=(line="45/30",))
+```
+
+See Also
+--------
+
+- {{< gmtref backtracker >}}, {{< gmtref grdspotter >}}, {{< gmtref hotspotter >}}, {{< gmtref originater >}}, {{< gmtref rotconverter >}}
+- [Alphabetical Function List](../alphabetical.html)
 
 ```{julia}
 #| echo: false

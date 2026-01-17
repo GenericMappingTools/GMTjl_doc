@@ -1,15 +1,146 @@
 # grdspotter
 
-Create CVA grid from a gravity or topography grid.
+```julia
+grdspotter(cmd0::String="", arg1=nothing; kwargs...)
+```
 
+Create CVA grid from a residual bathymetry or gravity grid.
 
-::: {.callout-warning}
-This GMT supplements module has not yet been ported to the long verbose syntax.
-To use it, you will need to use the {{< gmtref monolithic type=general text="Monolithic" >}} mode.
-:::
+(**Warning: Manual translate by Claude. Needs revision**)
 
-Please open a [Feature Request](https://github.com/GenericMappingTools/GMT.jl/issues) if you would like
-to see this module ported to the long verbose syntax, or better yet, consider contributing the port yourself!
+Description
+-----------
+
+**grdspotter** reads a grid file with residual bathymetry or gravity and
+calculates flowlines from each node that exceeds a minimum value using
+the specified rotations file. These flowlines are then convolved with
+the volume of the prism represented by each grid node and added up to
+give a Cumulative Volcano Amplitude (CVA) grid [*Wessel*, 1999; 2008].
+
+Required Arguments
+------------------
+
+- *ingrid* : -- Input data grid to be processed (file name or GMTgrid), typically residual
+   bathymetry or free-air anomalies.
+
+- **E** or **rot** or **rotations** or **rot_file** : -- *rotations="filename"* **|** *rotations="lon/lat/angle"*\
+   Specify the rotation file or a single rotation as `"lon/lat/angle"`. Append **+i** if
+   you want to invert the finite rotations prior to use.
+
+- **G** or **outgrid** or **save** : -- *outgrid="filename"*\
+   Specify name for output CVA grid file.
+
+{{< include ../common_opts/opt_I.qmd >}}
+
+{{< include ../common_opts/opt_R.qmd >}}
+
+Optional Arguments
+------------------
+
+- **A** or **agegrid** or **age_grid** : -- *agegrid="filename"*\
+   Supply a crustal age grid that is co-registered with the input data grid. These ages
+   become the upper ages to use when constructing flowlines [Default extends flowlines
+   back to oldest age found in the rotation file; but see **upper_age**].
+
+- **D** or **DIgrid** or **PAgrid** : -- *DIgrid=(importance="file",)* **|** *PAgrid=(predicted="file",)*\
+   For **importance**, we use flowlines to determine the maximum CVA encountered along each
+   flowline and create a Data Importance (DI) grid with these values at the originating nodes.
+   For **predicted**, we use flowlines to determine the flowline age at the CVA maximum for
+   each node and create a Predicted Age (PA) grid with these values at the originating nodes.
+   Repeatable.
+
+- **L** or **IDgrid** or **id_grid** : -- *IDgrid="filename"*\
+   Supply a co-registered grid with seamount chain IDs for each node.
+   This option requires that you also use **IDinfo**.
+
+- **M** or **onthefly** or **no_memory** : -- *onthefly=true*\
+   Do not attempt to keep all flowlines in memory when using **DIgrid** and/or **PAgrid**.
+   Should you run out of memory you can use this option to compute flowlines on-the-fly.
+   It will be slower as we can no longer reuse the flowlines calculated for the CVA step.
+   Cannot be used with **bootstrap** or the multi-slice mode in **zlimits**.
+
+- **N** or **upper_age** or **maxage** : -- *upper_age=value*\
+   Set the upper age to assign to nodes whose crustal age is unknown (i.e., NaN) [no upper age].
+   Also see **agegrid**.
+
+- **Q** or **IDinfo** or **id_info** : -- *IDinfo=value* **|** *IDinfo="filename"*\
+   Either give a single ID to use or the name of a file with a list of IDs to use
+   [Default uses all IDs]. Each line would be TAG ID [w e s n]. The *w/e/s/n* zoom box
+   is optional; if specified it means we only trace the flowline if inside this region.
+   Requires **IDgrid**.
+
+- **S** or **normalize** or **percent** : -- *normalize=true*\
+   Normalize the resulting CVA grid to percentages of the CVA maximum.
+   This also normalizes the DI grid (if requested).
+
+- **T** or **adjust** : -- *adjust=:truncate* **|** *adjust=(truncate=true, fixed=val)*\
+   Selects ways to adjust ages; repeatable. Use **truncate=true** to truncate crustal ages
+   given via the **agegrid** option that exceed the upper age set with **upper_age**
+   [no truncation], or **fixed=val** which means that after a node passes the test implied
+   by **zlimits**, we use this *fixed_val* instead in the calculations [Default uses
+   individual node values].
+
+{{< include ../common_opts/opt_V.qmd >}}
+
+- **W** or **bootstrap** or **ntry** : -- *bootstrap=n*\
+   Get *n* bootstrap estimates of the maximum CVA location; the longitude and latitude
+   results are written to standard output [Default is no bootstrapping].
+   Cannot be used with **onthefly**.
+
+- **Z** or **zlimits** or **zrange** : -- *zlimits=zmin* **|** *zlimits=(zmin, zmax)* **|** *zlimits=(zmin, zmax, zinc)*\
+   Ignore nodes with z-values lower than *zmin* [0] and optionally larger than *zmax* [Inf].
+   Give *(zmin, zmax, zinc)* to make separate CVA grids for each z-slice [Default makes one
+   CVA grid]. Multi-slicing cannot be used with **onthefly**.
+
+Notes
+-----
+
+GMT distributes the EarthByte rotation model Global_EarthByte_230-0Ma_GK07_AREPS.rot.
+To use an alternate rotation file, create an environment variable named
+**GPLATES_ROTATIONS** that points to an alternate rotation file.
+
+Examples
+--------
+
+To create a CVA image from the Pacific topography grid Pac_res_topo.nc, using the
+DC85.txt Euler poles, and only output a grid for the specified domain:
+
+```julia
+using GMT
+G = grdspotter("Pac_res_topo.nc", rotations="DC85.txt", outgrid="CVA.nc",
+               region=(190,220,15,25), inc="2m", upper_age=145, adjust=:truncate)
+```
+
+To also create a Data Importance grid alongside the CVA:
+
+```julia
+using GMT
+G = grdspotter("Pac_res_topo.nc", rotations="DC85.txt", outgrid="CVA.nc",
+               region=(190,220,15,25), inc="2m", upper_age=145,
+               DIgrid=(importance="DI.nc",), normalize=true)
+```
+
+To get 100 bootstrap estimates of the maximum CVA location:
+
+```julia
+using GMT
+D = grdspotter("Pac_res_topo.nc", rotations="DC85.txt", outgrid="CVA.nc",
+               region=(190,220,15,25), inc="2m", bootstrap=100)
+```
+
+References
+----------
+
+Wessel, P., 1999, "Hotspotting" tools released, EOS Trans. AGU, 80 (29), p. 319.
+
+Wessel, P., 2008, Hotspotting: Principles and properties of a plate tectonic Hough transform,
+Geochem. Geophys. Geosyst. 9(Q08004), [doi:10.1029/2008GC002058](https://doi.org/10.1029/2008GC002058).
+
+See Also
+--------
+
+- {{< gmtref backtracker >}}, {{< gmtref hotspotter >}}, {{< gmtref originater >}}, {{< gmtref grdrotater >}}, {{< gmtref rotconverter >}}
+- [Alphabetical Function List](../alphabetical.html)
 
 ```{julia}
 #| echo: false

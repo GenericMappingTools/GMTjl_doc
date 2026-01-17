@@ -1,15 +1,125 @@
 # talwani3d
 
+```julia
+talwani3d(cmd0::String="", arg1=nothing; kwargs...)
+```
+
 Compute geopotential anomalies over 3-D bodies by the method of Talwani.
 
+(**Warning: Manual translate by Claude. Needs revision**)
 
-::: {.callout-warning}
-This GMT supplements module has not yet been ported to the long verbose syntax.
-To use it, you will need to use the {{< gmtref monolithic type=general text="Monolithic" >}} mode.
-:::
+Description
+-----------
 
-Please open a [Feature Request](https://github.com/GenericMappingTools/GMT.jl/issues) if you would like
-to see this module ported to the long verbose syntax, or better yet, consider contributing the port yourself!
+**talwani3d** will read a multi-segment table from file (or a GMTdataset).
+This file contains horizontal contours of a 3-D body at different *z*-levels, with one contour
+per segment. Each segment header must contain the parameters *zlevel density*, which
+states the *z* level of the contour and the density of this slice (optionally, individual slice
+densities may be overridden by a fixed density contrast given via **density**).
+
+We can compute anomalies on an equidistant grid (by specifying a new grid with
+**region** and **inc** or provide an observation grid with desired elevations) or at arbitrary
+output points specified via **track**. Choose between free-air anomalies, vertical
+gravity gradient anomalies, or geoid anomalies. Options are available to control
+axes units and direction. For theory, see *Kim and Wessel* [2016] and *Talwani and Ewing* [1960].
+
+Required Arguments
+------------------
+
+- *intable* : -- The file or GMTdataset describing the horizontal contours of the bodies. Contours will be
+   automatically closed if not already closed, and repeated vertices will be eliminated.
+   The segment header for each slice must contain the pair *zlevel density*, i.e.,
+   the depth level of the slice and a density contrast in kg/m³ or g/cm³.
+
+{{< include ../common_opts/opt_I.qmd >}}
+
+{{< include ../common_opts/opt_R.qmd >}}
+
+Optional Arguments
+------------------
+
+- **A** or **z_up** : -- *z_up=true*\
+   The *z*-axis should be positive upwards [Default is down].
+
+- **D** or **density** : -- *density=value*\
+   Sets a fixed density contrast that overrides any individual slice settings in the model file,
+   in kg/m³ or g/cm³.
+
+- **F** or **field** : -- *field=:faa* **|** *field=:geoid* **|** *field=:vgg* **|** *field=(geoid=true, lat=value)*\
+   Specify desired gravitational field component. Choose between:
+   - **:faa** or **:f** - free-air anomaly [Default]
+   - **:geoid** or **:n** - geoid anomaly; optionally specify latitude for normal gravity reference
+     value via *field=(geoid=true, lat=value)* [Default is mid-grid or mid-profile]
+   - **:vgg** or **:v** - vertical gravity gradient
+
+- **G** or **outgrid** or **outfile** : -- *outgrid="filename"*\
+   Specify the name of the output grid file. Required when an equidistant grid is implied for output.
+   If **track** is used then output is written to stdout unless **outfile** specifies an output file.
+
+- **M** or **units** : -- *units=:h* **|** *units=:v* **|** *units=:hv* **|** *units="hv"*\
+   Sets distance units used. Use **:h** to indicate that horizontal distances are in km [m],
+   and **:v** to indicate vertical distances are in km [m]. Combine as **:hv** or **"hv"** for both.
+
+- **N** or **track** : -- *track="filename"* **|** *track=dataset*\
+   Specifies individual (x, y[, z]) locations where we wish to compute the predicted value.
+   When this option is used there are no grids and the output data records are written to stdout.
+   If *trackfile* has 3 columns we take the *z* value as our observation level; this may be
+   overridden via **level**.
+
+{{< include ../common_opts/opt_V.qmd >}}
+
+- **Z** or **level** : -- *level=value* **|** *level="obsgrid"*\
+   Set observation level, either as a constant or variable by giving the name of a grid with
+   observation levels. If the latter is used then this grid determines the output grid region [0].
+
+{{< include ../common_opts/opt_bo.qmd >}}
+
+{{< include ../common_opts/opt_f.qmd >}}
+
+Examples
+--------
+
+To compute the free-air anomalies on a grid over a 3-D body that has been contoured
+and saved to body3d.txt, using 1700 kg/m³ as the fixed density contrast, with
+horizontal distances in km and vertical distances in meters:
+
+```julia
+using GMT
+G = talwani3d("body3d.txt", region=(-200,200,-200,200), inc=2, units=:h,
+              outgrid="3dgrav.nc", density=1700, field=:faa)
+```
+
+To obtain the vertical gravity gradient anomaly along the track in crossing.txt
+for the same model:
+
+```julia
+using GMT
+D = talwani3d("body3d.txt", track="crossing.txt", units=:h, density=1700, field=:vgg)
+```
+
+To compute the geoid anomaly along the same track for the same model at 30S:
+
+```julia
+using GMT
+D = talwani3d("body3d.txt", track="crossing.txt", units=:h, density=1700,
+              field=(geoid=true, lat=-30), outfile="n_crossing.txt")
+```
+
+References
+----------
+
+Kim, S.-S., and P. Wessel, 2016, New analytic solutions for modeling vertical
+gravity gradient anomalies, *Geochem. Geophys. Geosyst., 17*,
+[doi:10.1002/2016GC006263](https://doi.org/10.1002/2016GC006263).
+
+Talwani, M., and M. Ewing, 1960, Rapid computation of gravitational attraction of
+three-dimensional bodies of arbitrary shape, *Geophysics, 25*, 203-225.
+
+See Also
+--------
+
+- {{< gmtref talwani2d >}}, {{< gmtref gravfft >}}, {{< gmtref gravmag3d >}}
+- [Alphabetical Function List](../alphabetical.html)
 
 ```{julia}
 #| echo: false
