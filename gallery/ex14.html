@@ -180,6 +180,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
   </li>
   <li class="nav-item">
+    <a class="nav-link" href="../documentation/alphabetical.html"> 
+<span class="menu-text">α</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="../examples.html"> 
 <span class="menu-text">Examples</span></a>
   </li>  
@@ -466,7 +470,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p>This example shows how one goes from randomly spaced data points to an evenly sampled surface. We arrange for four panels using the [subplot] command. First we plot the distribution and values of our raw data set (same as in Example [(12) Optimal triangulation of data]). We choose an equidistant grid and run [blockmean] which preprocesses the data to avoid aliasing. The dashed lines indicate the logical blocks used by [blockmean]; all points inside a given bin will be averaged. The logical blocks are drawn from a temporary file we make on the fly within the shell script. The processed data is then gridded with the [surface] program and contoured every 25 units. A most important point here is that [blockmean], [blockmedian], or [blockmode] should always be run prior to running surface, and both of these steps must use the same grid interval. We use [grdtrend] to fit a bicubic trend surface to the gridded data, contour it as well, and sample both grid files along a diagonal transect using grdtrack. The bottom panel compares the gridded (solid line) and bicubic trend (dashed line) along the transect using [plot]</p>
-<div id="96ff3e7a" class="cell" data-execution_count="1">
+<div id="34a42a7a" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="st">"@Table_5_11.txt"</span>, limits<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">7</span>,<span class="fl">0</span>,<span class="fl">7</span>), frame<span class="op">=</span>(axes<span class="op">=:</span>WSNe, annot<span class="op">=</span><span class="fl">2</span>, ticks<span class="op">=</span><span class="fl">1</span>),</span>

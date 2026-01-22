@@ -180,6 +180,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
   </li>
   <li class="nav-item">
+    <a class="nav-link" href="../../documentation/alphabetical.html"> 
+<span class="menu-text">α</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="../../examples.html"> 
 <span class="menu-text">Examples</span></a>
   </li>  
@@ -567,7 +571,7 @@ Set PDF transparency level for an overlay, in (0-100] percent range. [Default is
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">grdvector</span>(<span class="st">"comp_x.nc"</span>, <span class="st">"comp_y.nc"</span>, inc<span class="op">=</span><span class="st">"x3"</span>, proj<span class="op">=:</span>guess, vscale<span class="op">=</span><span class="st">"200k"</span>,</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>              vector<span class="op">=</span>(len<span class="op">=</span><span class="fl">0.25</span>, stop<span class="op">=</span><span class="cn">true</span>, justify<span class="op">=:</span>center))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>A nice arrow field</p>
-<div id="411a6296" class="cell" data-execution_count="1">
+<div id="f85f0dbb" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>X,Y <span class="op">=</span> <span class="fu">meshgrid</span>(<span class="op">-</span><span class="cn">pi</span><span class="op">:</span><span class="cn">pi</span><span class="op">/</span><span class="fl">8</span><span class="op">:</span><span class="cn">pi</span>,<span class="op">-</span><span class="cn">pi</span><span class="op">:</span><span class="cn">pi</span><span class="op">/</span><span class="fl">8</span><span class="op">:</span><span class="cn">pi</span>);</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>U <span class="op">=</span> <span class="fu">sin</span>.(Y);</span>
@@ -582,7 +586,7 @@ Set PDF transparency level for an overlay, in (0-100] percent range. [Default is
 </div>
 </div>
 <p>For simplicity let’s create a grid using grdmath and compute its horizontal derivatives. Then we plot them as an arrow field.</p>
-<div id="c6369e8d" class="cell" data-execution_count="2">
+<div id="625b015d" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">gmt</span>(<span class="st">"grdmath -R-2/2/-2/2 -I0.1 X Y R2 NEG EXP X MUL"</span>);</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>dzdy <span class="op">=</span> <span class="fu">gmt</span>(<span class="st">"grdmath ? DDY"</span>, G);</span>

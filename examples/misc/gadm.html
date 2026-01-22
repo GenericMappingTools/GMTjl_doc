@@ -180,6 +180,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
   </li>
   <li class="nav-item">
+    <a class="nav-link" href="../../documentation/alphabetical.html"> 
+<span class="menu-text">α</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="../../examples.html"> 
 <span class="menu-text">Examples</span></a>
   </li>  
@@ -469,7 +473,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="plot-countries-administrative-units">Plot countries administrative units</h3>
 <p>We start by download and save in cache the geopackage file with Mozambique data. Note, a downloading message will be printed only once, and in this case it will say</p>
 <p><em>Downloading geographic data for country MOZ provided by the https://gadm.org project. It may take a while. The file gadm36_MOZ.gpkg (after uncompressing) will be stored in your home dir/.gmt/cache</em></p>
-<div id="c16c9436" class="cell" data-execution_count="1">
+<div id="b953d467" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>mozambique <span class="op">=</span> <span class="fu">gadm</span>(<span class="st">"MOZ"</span>);</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -483,7 +487,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Next let us add all the provincies of Moçambique. For that we’ll use the country code as parent and the option <code>children=true</code> to indicate that we want all provincies boundaries.</p>
-<div id="2c64366a" class="cell" data-execution_count="2">
+<div id="f3031a4e" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>mozambique <span class="op">=</span> <span class="fu">gadm</span>(<span class="st">"MOZ"</span>, children<span class="op">=</span><span class="cn">true</span>);</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">imshow</span>(mozambique, proj<span class="op">=:</span>guess, title<span class="op">=</span><span class="st">"Provinces of Moçambique"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -509,7 +513,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 "Tete"
 "Zambezia"</code></pre>
 <p>Now we can plot only one of those provinces and its children</p>
-<div id="4a4bdb04" class="cell" data-execution_count="3">
+<div id="04cb31f6" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>CD <span class="op">=</span> <span class="fu">gadm</span>(<span class="st">"MOZ"</span>, <span class="st">"Cabo Delgado"</span>, children<span class="op">=</span><span class="cn">true</span>);</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">imshow</span>(CD, proj<span class="op">=:</span>guess, title<span class="op">=</span><span class="st">"Cabo Delgado"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>

@@ -180,6 +180,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
   </li>
   <li class="nav-item">
+    <a class="nav-link" href="../../documentation/alphabetical.html"> 
+<span class="menu-text">α</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="../../examples.html"> 
 <span class="menu-text">Examples</span></a>
   </li>  
@@ -555,7 +559,7 @@ Limit the number of cores used when making the individual frames. By default we 
 <p>To make a 1x1 degree global grid with the hierarchical levels of the nodes based on the low resolution data:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">grdlandmask</span>(region<span class="op">=:</span>global360, res<span class="op">=:</span>low, inc<span class="op">=</span><span class="fl">1</span>, maskvalues<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>,<span class="fl">4</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Mask ocean areas to NaN from a relief grid.</p>
-<div id="b26e26ea" class="cell" data-execution_count="1">
+<div id="842c217b" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">grdcut</span>(<span class="st">"@earth_relief_04m"</span>, region<span class="op">=</span>(<span class="op">-</span><span class="fl">10.5</span>, <span class="op">-</span><span class="fl">5</span>, <span class="fl">35</span>, <span class="fl">44</span>));</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">grdlandmask</span>(G, maskvalues<span class="op">=</span>(<span class="cn">NaN</span>,<span class="fl">1</span>))</span>

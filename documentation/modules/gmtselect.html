@@ -180,6 +180,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
   </li>
   <li class="nav-item">
+    <a class="nav-link" href="../../documentation/alphabetical.html"> 
+<span class="menu-text">α</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="../../examples.html"> 
 <span class="menu-text">Examples</span></a>
   </li>  
@@ -585,7 +589,7 @@ Swap 1st and 2nd column on input and/or output. <a href="https://docs.generic-ma
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <p>To only return the data points from the remote file <span class="citation" data-cites="ship_15.txt">@ship_15.txt</span> that lie within the region between longitudes 246 and 247 and latitudes 20 and 21, try:</p>
-<div id="c6f0b1a9" class="cell" data-execution_count="1">
+<div id="5c54e891" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">gmtselect</span>(<span class="st">"@ship_15.txt"</span>, region<span class="op">=</span>(<span class="fl">246</span>,<span class="fl">247</span>,<span class="fl">20</span>,<span class="fl">21</span>));</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(D, marker<span class="op">=:</span>point, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>

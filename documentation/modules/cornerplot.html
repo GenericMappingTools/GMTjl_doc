@@ -180,6 +180,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
   </li>
   <li class="nav-item">
+    <a class="nav-link" href="../../documentation/alphabetical.html"> 
+<span class="menu-text">α</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="../../examples.html"> 
 <span class="menu-text">Examples</span></a>
   </li>  
@@ -541,7 +545,7 @@ Save the figure with the <code>figname=name.ext</code> where <code>ext</code> ch
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <p>Create a cornerplot plot with hexagonal bins, setting the color map, the vriable names, plot <em>truth</em> and title.</p>
-<div id="8f8fd392" class="cell" data-execution_count="1">
+<div id="75620869" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cornerplot</span>(<span class="fu">randn</span>(<span class="fl">4000</span>,<span class="fl">3</span>), cmap<span class="op">=:</span>viridis, truths<span class="op">=</span>[<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>],</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>           varnames<span class="op">=</span>[<span class="st">"Ai"</span>, <span class="st">"Oi"</span>, <span class="st">"Ui"</span>], title<span class="op">=</span><span class="st">"Corner plot"</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -554,7 +558,7 @@ Save the figure with the <code>figname=name.ext</code> where <code>ext</code> ch
 </div>
 </div>
 <p>Example on how to control the symbol types, size and color.</p>
-<div id="b75ce937" class="cell" data-execution_count="2">
+<div id="7f900a4e" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cornerplot</span>(<span class="fu">randn</span>(<span class="fl">1500</span>,<span class="fl">3</span>), scatter<span class="op">=</span><span class="cn">true</span>, marker<span class="op">=:</span>cross, mec<span class="op">=:</span>red, ms<span class="op">=</span><span class="st">"3p"</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -570,8 +574,8 @@ Save the figure with the <code>figname=name.ext</code> where <code>ext</code> ch
 <h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
 <p>This function has multiple methods:</p>
 <ul>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/statplots.jl#L1300"><code>cornerplot(fname::String; first, kw...)</code></a> - statplots.jl:1300</li>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/statplots.jl#L1301"><code>cornerplot(arg1; first, kwargs...)</code></a> - statplots.jl:1301</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/statplots.jl#L1310"><code>cornerplot(fname::String; first, kw...)</code></a> - statplots.jl:1310</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/statplots.jl#L1311"><code>cornerplot(arg1; first, kwargs...)</code></a> - statplots.jl:1311</li>
 </ul>
 </section>
 <section id="see-also" class="level2">

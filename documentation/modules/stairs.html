@@ -180,6 +180,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
   </li>
   <li class="nav-item">
+    <a class="nav-link" href="../../documentation/alphabetical.html"> 
+<span class="menu-text">α</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="../../examples.html"> 
 <span class="menu-text">Examples</span></a>
   </li>  
@@ -527,7 +531,7 @@ Save the figure with the <code>figname=name.ext</code> where <code>ext</code> ch
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <p>Create a stairs plot of sine evaluated at 50 equally spaced values between 0 and 4π.</p>
-<div id="ff153ed2" class="cell" data-execution_count="1">
+<div id="4e6cde09" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="fu">linspace</span>(<span class="fl">0</span>, <span class="fl">4</span><span class="op">*</span><span class="cn">pi</span>, <span class="fl">50</span>);</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">stairs</span>(x, <span class="fu">sin</span>.(x), show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -540,7 +544,7 @@ Save the figure with the <code>figname=name.ext</code> where <code>ext</code> ch
 </div>
 </div>
 <p>Create a stairs plot of sine and a cosine evaluated at same points as above and add a circle marker at the points location. Note that now we are selectiong the columns from teir names in the <code>D</code> <em><a href="../..\documentation/general/types.html#sec-dataset-type">GMTdataset</a></em>.</p>
-<div id="ef9475cd" class="cell" data-execution_count="2">
+<div id="68513849" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a GMTdataset with named columns.</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="fu">linspace</span>(<span class="fl">0</span>, <span class="fl">4</span><span class="op">*</span><span class="cn">pi</span>, <span class="fl">50</span>);</span>
@@ -559,11 +563,11 @@ Save the figure with the <code>figname=name.ext</code> where <code>ext</code> ch
 <h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
 <p>This function has multiple methods:</p>
 <ul>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L875"><code>stairs(cmd0::String; ...)</code></a> - plot.jl:875</li>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L875"><code>stairs(; ...)</code></a> - plot.jl:875</li>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L875"><code>stairs(cmd0::String, arg1; first, step, kwargs...)</code></a> - plot.jl:875</li>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L883"><code>stairs(arg1, arg2; step, kw...)</code></a> - plot.jl:883</li>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L881"><code>stairs(arg; step, kw...)</code></a> - plot.jl:881</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L884"><code>stairs(cmd0::String; ...)</code></a> - plot.jl:884</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L884"><code>stairs(; ...)</code></a> - plot.jl:884</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L884"><code>stairs(cmd0::String, arg1; first, step, kwargs...)</code></a> - plot.jl:884</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L892"><code>stairs(arg1, arg2; step, kw...)</code></a> - plot.jl:892</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L890"><code>stairs(arg; step, kw...)</code></a> - plot.jl:890</li>
 </ul>
 
 

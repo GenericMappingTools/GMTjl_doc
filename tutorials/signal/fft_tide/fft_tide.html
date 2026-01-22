@@ -180,6 +180,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
   </li>
   <li class="nav-item">
+    <a class="nav-link" href="../../../documentation/alphabetical.html"> 
+<span class="menu-text">α</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="../../../examples.html"> 
 <span class="menu-text">Examples</span></a>
   </li>  
@@ -468,7 +472,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="example-showing-how-to-extract-the-two-principal-tide-components-m2-s2-with-fourier-analysis-of-a-one-month-tide-record." class="level3">
 <h3 class="anchored" data-anchor-id="example-showing-how-to-extract-the-two-principal-tide-components-m2-s2-with-fourier-analysis-of-a-one-month-tide-record.">Example showing how to extract the two principal tide components, M2 &amp; S2, with Fourier analysis of a one month tide record.</h3>
 <p>Get a one month maregram from a station in Galicia.</p>
-<div id="22df17f6" class="cell" data-execution_count="1">
+<div id="d98aa04f" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">maregrams</span>(code<span class="op">=</span><span class="st">"fer1"</span>, days<span class="op">=</span><span class="fl">30</span>, starttime<span class="op">=</span><span class="st">"2025-04-01T00:00:00"</span>);</span>
@@ -482,7 +486,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Resample the data to a constant time step of 60 seconds.</p>
-<div id="6e337d3d" class="cell" data-execution_count="2">
+<div id="f2e2e88f" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>Ds <span class="op">=</span> <span class="fu">sample1d</span>(D, T<span class="op">=</span><span class="st">"2025-04-01T00:00:00/2025-05-01T00:00:00/60s"</span>);</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">viz</span>(D, figsize<span class="op">=</span>(<span class="fl">14</span>, <span class="fl">6</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -494,12 +498,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Set the parameters for this time series.</p>
-<div id="84197062" class="cell" data-execution_count="3">
+<div id="cb478b2e" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>Fs <span class="op">=</span> <span class="fl">1</span> <span class="op">/</span> <span class="fl">60</span>;        <span class="co"># Sampling frequency (1 sample per 60 seconds)</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>L <span class="op">=</span> <span class="fu">size</span>(Ds,<span class="fl">1</span>);     <span class="co"># Length of signal</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Find the fundamental periods (tide components) in this tide record.</p>
-<div id="164c3c84" class="cell" data-execution_count="4">
+<div id="231efcef" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span>, <span class="bu">FFTW</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>Y <span class="op">=</span> <span class="fu">fft</span>(Ds[<span class="op">:</span>,<span class="fl">2</span>] <span class="op">.-</span> <span class="fu">mean</span>(Ds[<span class="op">:</span>,<span class="fl">2</span>]));      <span class="co"># FFTs require that we remove the mean (the zero frequency).</span></span>

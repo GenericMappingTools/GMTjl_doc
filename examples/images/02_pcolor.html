@@ -180,6 +180,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
   </li>
   <li class="nav-item">
+    <a class="nav-link" href="../../documentation/alphabetical.html"> 
+<span class="menu-text">α</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="../../examples.html"> 
 <span class="menu-text">Examples</span></a>
   </li>  
@@ -477,7 +481,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="rectangular-grid" class="level2">
 <h2 class="anchored" data-anchor-id="rectangular-grid">Rectangular grid</h2>
 <p>Create a pseudocolor plot with a rectangular grid.</p>
-<div id="7ccdb865" class="cell" data-execution_count="1">
+<div id="69521421" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> GMT.<span class="fu">peaks</span>(N<span class="op">=</span><span class="fl">21</span>);</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">pcolor</span>(G, outline<span class="op">=</span>(<span class="fl">0.5</span>,<span class="op">:</span>dot), show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -492,7 +496,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="rectangular-grid-with-labels" class="level2">
 <h2 class="anchored" data-anchor-id="rectangular-grid-with-labels">Rectangular grid with labels</h2>
-<div id="384d09c4" class="cell" data-execution_count="2">
+<div id="632991b5" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> GMT.<span class="fu">peaks</span>(N<span class="op">=</span><span class="fl">21</span>);</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">pcolor</span>(G.x, G.y, G.z, labels<span class="op">=:</span>yes, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -508,7 +512,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="non-rectangular-grid" class="level2">
 <h2 class="anchored" data-anchor-id="non-rectangular-grid">Non-rectangular grid</h2>
 <p>Create a pseudocolor plot with a non-rectangular grid.</p>
-<div id="c3e26598" class="cell" data-execution_count="3">
+<div id="3f09ff53" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>X,Y <span class="op">=</span> GMT.<span class="fu">meshgrid</span>(<span class="op">-</span><span class="fl">3</span><span class="op">:</span><span class="fl">6</span><span class="op">/</span><span class="fl">17</span><span class="op">:</span><span class="fl">3</span>);</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>XX <span class="op">=</span> <span class="fl">2</span><span class="op">*</span>X <span class="op">.*</span> Y;</span>

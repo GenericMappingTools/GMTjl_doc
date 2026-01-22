@@ -180,6 +180,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
   </li>
   <li class="nav-item">
+    <a class="nav-link" href="../documentation/alphabetical.html"> 
+<span class="menu-text">α</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="../examples.html"> 
 <span class="menu-text">Examples</span></a>
   </li>  
@@ -466,7 +470,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p>The program [plot3d] allows us to plot three-dimensional symbols, including columnar plots. As a simple demonstration, we will convert a gridded netCDF of bathymetry into an ASCII xyz table and use the height information to draw a 2-D histogram in a 3-D perspective view. We also use the height information to set to color of each column via a CPT file. Our gridded bathymetry file is the 5 arc-minute global relief. Depth ranges from -5000 meter to sea-level. We produce the Figure by running this script:</p>
-<div id="bb903e5b" class="cell" data-execution_count="1">
+<div id="8488a856" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>C <span class="op">=</span> <span class="fu">makecpt</span>(color<span class="op">=:</span>cubhelix, T<span class="op">=</span>(<span class="op">-</span><span class="fl">5000</span>,<span class="fl">0</span>))</span>

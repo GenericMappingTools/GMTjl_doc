@@ -180,6 +180,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
   </li>
   <li class="nav-item">
+    <a class="nav-link" href="../../documentation/alphabetical.html"> 
+<span class="menu-text">α</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="../../examples.html"> 
 <span class="menu-text">Examples</span></a>
   </li>  
@@ -539,7 +543,7 @@ Specify the data types of input and/or output columns (time or geographical data
 <p>To return the subregion of a grid that contains all nodes within a distance of 500 km from the point 45,30 try:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>    G <span class="op">=</span> <span class="fu">grdcutgrdcut</span>(<span class="st">"bathy.nc"</span>, circ_subregion<span class="op">=</span><span class="st">"45/30/500k"</span>);</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>To create a topography grid with data only inside France and set it to NaN outside France, based on the 10x10 minute DEM, try:</p>
-<div id="45a54eba" class="cell" data-execution_count="1">
+<div id="cf256343" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">coast</span>(DCW<span class="op">=:</span>FR, dump<span class="op">=</span><span class="cn">true</span>);</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">grdcut</span>(<span class="st">"@earth_relief_10m"</span>, cutline<span class="op">=</span>(polygon<span class="op">=</span>D, crop2cutline<span class="op">=</span><span class="cn">true</span>));</span>

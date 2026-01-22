@@ -209,6 +209,10 @@ window.Quarto = {
     </ul>
   </li>
   <li class="nav-item">
+    <a class="nav-link" href="../../documentation/alphabetical.html"> 
+<span class="menu-text">α</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="../../examples.html"> 
 <span class="menu-text">Examples</span></a>
   </li>  
@@ -512,7 +516,7 @@ window.Quarto = {
 <p>Reads randomly-spaced (<em>x,y,z</em>[,<em>w</em>]) triples [quadruplets] from file or table and uses a nearest neighbor algorithm to assign a weighted average value to each node that has one or more data points within a search radius (<em>R</em>) centered on the node with adequate coverage across a subset of the chosen sectors. The node value is computed as a weighted mean of the nearest point from each sector inside the search radius. The weighting function and the averaging used is given by</p>
 <p><span class="math display">\[ w(r_i) = \frac{w_i}{1 + d(r_i) ^ 2}, \quad d(r) = \frac {3r}{R}, \quad \bar{z} = \frac{\sum_i^n w(r_i) z_i}{\sum_i^n w(r_i)} \]</span></p>
 <p>where <em>n</em> is the number of data points that satisfy the selection criteria and <span class="math inline">\(r_i\)</span> is the distance from the node to the <em>i</em>’th data point. If no data weights are supplied then <span class="math inline">\(w_i = 1\)</span>.</p>
-<div id="5ce52e4a" class="cell" data-execution_count="1">
+<div id="ecdceb28" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>([<span class="fl">0.75</span> <span class="fl">1.25</span>], region<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">2</span>,<span class="fl">0</span>,<span class="fl">2</span>), figscale<span class="op">=</span><span class="fl">4</span>, marker<span class="op">=:</span>circ, ms<span class="op">=</span><span class="fl">5</span>, pen<span class="op">=:</span>thick, fill<span class="op">=</span><span class="st">"lightgreen@70"</span>, frame<span class="op">=</span>(grid<span class="op">=</span><span class="fl">0.25</span>,))</span>
@@ -605,7 +609,7 @@ Swap 1st and 2nd column on input and/or output. <a href="https://docs.generic-ma
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <p>To grid the data in the remote file <span class="citation" data-cites="ship_15.txt">@ship_15.txt</span> at 5x5 arc minutes using a search radius of 15 arch minutes, and plot the resulting grid using default projection and colors, do</p>
-<div id="4df83a76" class="cell" data-execution_count="2">
+<div id="2aec9e15" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">nearneighbor</span>(<span class="st">"@ship_15.txt"</span>, region<span class="op">=</span>(<span class="fl">245</span>,<span class="fl">255</span>,<span class="fl">20</span>,<span class="fl">30</span>), inc<span class="op">=</span><span class="st">"5m"</span>, S<span class="op">=</span><span class="st">"15m"</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">imshow</span>(G)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>

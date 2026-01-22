@@ -180,6 +180,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
   </li>
   <li class="nav-item">
+    <a class="nav-link" href="../../documentation/alphabetical.html"> 
+<span class="menu-text">α</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="../../examples.html"> 
 <span class="menu-text">Examples</span></a>
   </li>  
@@ -526,7 +530,7 @@ Save the figure with the <code>figname=name.ext</code> where <code>ext</code> ch
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <p>Plot the sinc function with a green band of width 0.1 (above and below the sinc line)</p>
-<div id="37d367d6" class="cell" data-execution_count="1">
+<div id="9d2104ca" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> y <span class="op">=</span> <span class="op">-</span><span class="fl">10</span><span class="op">:</span><span class="fl">0.11</span><span class="op">:</span><span class="fl">10</span>;</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">band</span>(x, <span class="fu">sin</span>.(x)<span class="op">./</span>x, width<span class="op">=</span><span class="fl">0.1</span>, fill<span class="op">=</span><span class="st">"green@80"</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -543,14 +547,14 @@ Save the figure with the <code>figname=name.ext</code> where <code>ext</code> ch
 <h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
 <p>This function has multiple methods:</p>
 <ul>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L1386"><code>band(cmd0::String; ...)</code></a> - plot.jl:1386</li>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L1386"><code>band(cmd0::String, arg1; first, width, envelope, kwargs...)</code></a> - plot.jl:1386</li>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L1429"><code>band(f::Function, rang; first, width, envelope, kw...)</code></a> - plot.jl:1429</li>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L1429"><code>band(f::Function; ...)</code></a> - plot.jl:1429</li>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L1386"><code>band(; ...)</code></a> - plot.jl:1386</li>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L1419"><code>band(arg; width, envelope, kw...)</code></a> - plot.jl:1419</li>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L1422"><code>band(arg1, arg2; width, envelope, kw...)</code></a> - plot.jl:1422</li>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L1426"><code>band(arg1, arg2, arg3; kw...)</code></a> - plot.jl:1426</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L1395"><code>band(cmd0::String; ...)</code></a> - plot.jl:1395</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L1395"><code>band(cmd0::String, arg1; first, width, envelope, kwargs...)</code></a> - plot.jl:1395</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L1438"><code>band(f::Function, rang; first, width, envelope, kw...)</code></a> - plot.jl:1438</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L1438"><code>band(f::Function; ...)</code></a> - plot.jl:1438</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L1395"><code>band(; ...)</code></a> - plot.jl:1395</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L1428"><code>band(arg; width, envelope, kw...)</code></a> - plot.jl:1428</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L1431"><code>band(arg1, arg2; width, envelope, kw...)</code></a> - plot.jl:1431</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L1435"><code>band(arg1, arg2, arg3; kw...)</code></a> - plot.jl:1435</li>
 </ul>
 
 

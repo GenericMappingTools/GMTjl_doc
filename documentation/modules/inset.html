@@ -180,6 +180,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
   </li>
   <li class="nav-item">
+    <a class="nav-link" href="../../documentation/alphabetical.html"> 
+<span class="menu-text">α</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="../../examples.html"> 
 <span class="menu-text">Examples</span></a>
   </li>  
@@ -547,7 +551,7 @@ Select verbosity level. More at <a href="../../documentation/common_opts/common_
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <p>To make a simple basemap plot that demonstrates the inset module, try</p>
-<div id="c093e9e5" class="cell" data-execution_count="1">
+<div id="65ecb840" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">gmtbegin</span>()</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">basemap</span>(region<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">40</span>,<span class="fl">20</span>,<span class="fl">60</span>), proj<span class="op">=:</span>merc, frame<span class="op">=</span>(annot<span class="op">=:</span>afg, fill<span class="op">=:</span>lightgreen))</span>
@@ -566,7 +570,7 @@ Select verbosity level. More at <a href="../../documentation/common_opts/common_
 </div>
 </div>
 <p>Make a zoom over a region of a synthetic plot.</p>
-<div id="df463c8d" class="cell" data-execution_count="2">
+<div id="0d8ed1c9" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> <span class="fl">0</span><span class="op">:</span><span class="fl">0.01</span><span class="op">:</span><span class="fl">2</span>pi;</span>
@@ -580,7 +584,7 @@ Select verbosity level. More at <a href="../../documentation/common_opts/common_
 </div>
 </div>
 <p>Add an inset to basemap image with a rectangle in the inset taken from main image limits.</p>
-<div id="60b53a7e" class="cell" data-execution_count="3">
+<div id="dd54cde3" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">basemap</span>(region<span class="op">=</span>(<span class="op">-</span><span class="fl">48</span>,<span class="op">-</span><span class="fl">43</span>,<span class="op">-</span><span class="fl">26</span>,<span class="op">-</span><span class="fl">20</span>), proj<span class="op">=:</span>merc,</span>

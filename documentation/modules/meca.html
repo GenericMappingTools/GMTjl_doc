@@ -180,6 +180,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
   </li>
   <li class="nav-item">
+    <a class="nav-link" href="../../documentation/alphabetical.html"> 
+<span class="menu-text">α</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="../../examples.html"> 
 <span class="menu-text">Examples</span></a>
   </li>  
@@ -639,7 +643,7 @@ Swap 1st and 2nd column on input and/or output. <a href="https://docs.generic-ma
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <p>Plot focal mechanisms using Aki-Richards convention:</p>
-<div id="b363b78d" class="cell" data-execution_count="1">
+<div id="7cf00439" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Create focal mechanism data  </span></span>
@@ -663,7 +667,7 @@ Swap 1st and 2nd column on input and/or output. <a href="https://docs.generic-ma
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Focal mechanisms with offsets</span></span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">meca!</span>(<span class="st">"focal_data.txt"</span>, CMT<span class="op">=</span>(scale<span class="op">=</span><span class="fl">0.4</span>, font<span class="op">=</span><span class="fl">6</span>), offset<span class="op">=</span><span class="cn">true</span>, fill<span class="op">=:</span>black, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Plot multiple mechanisms with varying types:</p>
-<div id="22b25ad6" class="cell" data-execution_count="2">
+<div id="7cd9139c" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Right lateral strike slip</span></span>
@@ -685,7 +689,7 @@ Swap 1st and 2nd column on input and/or output. <a href="https://docs.generic-ma
 </div>
 </div>
 </div>
-<div id="d70cd40e" class="cell" data-execution_count="3">
+<div id="3d0f1a1b" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">psmeca</span>([<span class="fl">0.0</span> <span class="fl">3.0</span> <span class="fl">0.0</span> <span class="fl">0</span> <span class="fl">45</span> <span class="fl">90</span> <span class="fl">5</span> <span class="fl">0</span> <span class="fl">0</span>], aki<span class="op">=</span><span class="cn">true</span>, fill<span class="op">=:</span>black, region<span class="op">=</span>(<span class="op">-</span><span class="fl">1</span>,<span class="fl">4</span>,<span class="fl">0</span>,<span class="fl">6</span>), proj<span class="op">=:</span>Merc, show<span class="op">=</span><span class="fl">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -698,7 +702,7 @@ Swap 1st and 2nd column on input and/or output. <a href="https://docs.generic-ma
 </div>
 </div>
 <p>The same but add a Label</p>
-<div id="02093754" class="cell" data-execution_count="4">
+<div id="e82d6914" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">psmeca</span>(<span class="fu">mat2ds</span>([<span class="fl">0.0</span> <span class="fl">3.0</span> <span class="fl">0.0</span> <span class="fl">0</span> <span class="fl">45</span> <span class="fl">90</span> <span class="fl">5</span> <span class="fl">0</span> <span class="fl">0</span>], [<span class="st">"Thrust"</span>]), aki<span class="op">=</span><span class="cn">true</span>, fill<span class="op">=:</span>black, region<span class="op">=</span>(<span class="op">-</span><span class="fl">1</span>,<span class="fl">4</span>,<span class="fl">0</span>,<span class="fl">6</span>), proj<span class="op">=:</span>Merc, show<span class="op">=</span><span class="fl">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>

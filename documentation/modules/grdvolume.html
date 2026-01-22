@@ -180,6 +180,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
   </li>
   <li class="nav-item">
+    <a class="nav-link" href="../../documentation/alphabetical.html"> 
+<span class="menu-text">α</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="../../examples.html"> 
 <span class="menu-text">Examples</span></a>
   </li>  
@@ -529,32 +533,30 @@ Swap 1st and 2nd column on input and/or output. <a href="https://docs.generic-ma
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <p>To determine area, volume, and mean height in km for all land areas (above zero contour) in the Hawaiian Islands from the remote grid (height in m):</p>
-<div id="c4772e64" class="cell" data-execution_count="1">
+<div id="2b57ff8b" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">gmtread</span>(<span class="st">"@earth_relief_05m"</span>, region<span class="op">=</span>(<span class="fl">190</span>,<span class="fl">210</span>,<span class="fl">15</span>,<span class="fl">25</span>))</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">grdvolume</span>(G, cont<span class="op">=</span><span class="fl">0</span>, unit<span class="op">=:</span>k, scale<span class="op">=</span><span class="fl">0.001</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code></code></pre>
-</div>
 <div class="cell-output cell-output-display" data-execution_count="2">
 <pre><code></code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>1×4 GMTdataset{Float64, 2}
+<pre><code>
+1×4 GMTdataset{Float64, 2}
  Row │ col.1    col.2    col.3    col.4
 ─────┼──────────────────────────────────
    1 │   0.0  15771.3  13707.5  0.86914</code></pre>
 </div>
 </div>
 <p>To find the volume below the surface peaks.nc and above the contour z = 250 m:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">gmtread</span>(<span class="st">"peaks.nc"</span>)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">grdvolume</span>(G, cont<span class="op">=</span><span class="fl">250</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">gmtread</span>(<span class="st">"peaks.nc"</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">grdvolume</span>(G, cont<span class="op">=</span><span class="fl">250</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>To search for the contour, ranging from 100 to 300 in steps of 10, that maximizes the ratio of volume to surface area for the file peaks.nc:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">gmtread</span>(<span class="st">"peaks.nc"</span>)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">grdvolume</span>(G, cont<span class="op">=</span>(<span class="fl">100</span>,<span class="fl">300</span>,<span class="fl">10</span>), find_max<span class="op">=:</span>h)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">gmtread</span>(<span class="st">"peaks.nc"</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">grdvolume</span>(G, cont<span class="op">=</span>(<span class="fl">100</span>,<span class="fl">300</span>,<span class="fl">10</span>), find_max<span class="op">=:</span>h)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>To see the areas and volumes for all the contours in the previous example:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">gmtread</span>(<span class="st">"peaks.nc"</span>)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">grdvolume</span>(G, cont<span class="op">=</span>(<span class="fl">100</span>,<span class="fl">300</span>,<span class="fl">10</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">gmtread</span>(<span class="st">"peaks.nc"</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">grdvolume</span>(G, cont<span class="op">=</span>(<span class="fl">100</span>,<span class="fl">300</span>,<span class="fl">10</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="references" class="level2">
 <h2 class="anchored" data-anchor-id="references">References</h2>

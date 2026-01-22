@@ -180,6 +180,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
   </li>
   <li class="nav-item">
+    <a class="nav-link" href="../documentation/alphabetical.html"> 
+<span class="menu-text">α</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="../examples.html"> 
 <span class="menu-text">Examples</span></a>
   </li>  
@@ -466,7 +470,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p>Our next example operates on a data set of topographic readings non-uniformly distributed in the plane (Table 5.11 in Davis: <em>Statistics and Data Analysis in Geology</em>, J. Wiley). We use [triangulate] to perform the optimal Delaunay triangulation, then use the output to draw the resulting network. We label the node numbers as well as the node values, and call [contour] to make a contour map and image directly from the raw data. Thus, in this example we do not actually make grid files but still are able to contour and image the data. We use the CPT topo.cpt (created via [gmtinfo] and [makecpt]). The script becomes:</p>
-<div id="e89814b2" class="cell" data-execution_count="1">
+<div id="221004a3" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>table_5 <span class="op">=</span> <span class="fu">gmtread</span>(<span class="st">"@Table_5_11.txt"</span>)    <span class="co"># The data used in this example</span></span>

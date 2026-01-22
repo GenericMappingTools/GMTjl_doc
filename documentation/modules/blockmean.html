@@ -180,6 +180,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
   </li>
   <li class="nav-item">
+    <a class="nav-link" href="../../documentation/alphabetical.html"> 
+<span class="menu-text">α</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="../../examples.html"> 
 <span class="menu-text">Examples</span></a>
   </li>  
@@ -547,16 +551,6 @@ Swap 1st and 2nd column on input and/or output. <a href="https://docs.generic-ma
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">blockmean</span>(<span class="st">"@ship_15.txt"</span>, spacing<span class="op">=</span><span class="st">"10m"</span>, region<span class="op">=</span>(<span class="op">-</span><span class="fl">115</span>,<span class="op">-</span><span class="fl">105</span>,<span class="fl">20</span>,<span class="fl">30</span>), extend<span class="op">=</span><span class="cn">true</span>, save<span class="op">=</span><span class="st">"field_%s.nc"</span>, fields<span class="op">=</span><span class="st">"z,s"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>The same as above but this time returns the two grids to the Julia REPL</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>    Z,S <span class="op">=</span> <span class="fu">blockmean</span>(<span class="st">"@ship_15.txt"</span>, spacing<span class="op">=</span><span class="st">"10m"</span>, region<span class="op">=</span>(<span class="op">-</span><span class="fl">115</span>,<span class="op">-</span><span class="fl">105</span>,<span class="fl">20</span>,<span class="fl">30</span>), extend<span class="op">=</span><span class="cn">true</span>, fields<span class="op">=</span><span class="st">"z,s"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="ansi-escaped-output">
-<pre><span class="ansi-green-fg ansi-bold">Precompiling</span> packages...
-
-  59208.9 ms<span class="ansi-green-fg">  ✓ </span>GMT
-
-  1 dependency successfully precompiled in 61 seconds. 80 already precompiled.
-
-<span class="ansi-cyan-fg ansi-bold">[ </span><span class="ansi-cyan-fg ansi-bold">Info: </span>Precompiling GMTParkerFFTExt [35a23bc9-6f20-5cbc-8971-9cdf66427582]
-</pre>
-</div>
 </section>
 <section id="source-code" class="level2">
 <h2 class="anchored" data-anchor-id="source-code">Source Code</h2>

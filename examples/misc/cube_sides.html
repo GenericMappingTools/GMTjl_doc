@@ -180,6 +180,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
   </li>
   <li class="nav-item">
+    <a class="nav-link" href="../../documentation/alphabetical.html"> 
+<span class="menu-text">α</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="../../examples.html"> 
 <span class="menu-text">Examples</span></a>
   </li>  
@@ -466,7 +470,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p>This example shows how we can plot images on the sides of a cube. We can print them either on the back side and use the left available space to plot another <em>thing</em>, as in:</p>
-<div id="ce1cd6be" class="cell" data-execution_count="1">
+<div id="a7b8eead" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">viz</span>(GMT.<span class="fu">peaks</span>(N<span class="op">=</span><span class="fl">100</span>), zsize<span class="op">=</span><span class="fl">8</span>, facades<span class="op">=</span>(GMT.TESTSDIR <span class="op">*</span> <span class="st">"assets/cenora_base.jpg"</span>,</span>
@@ -481,7 +485,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>The above example used the helper function <a href="../..\documentation/utilities/imshow.html">imshow</a> (well, its alias <code>viz</code>) that knew what to do when it found the keyword <code>facades</code>, but in fact the work was done by the function <a href="../..\documentation/utilities/cubeplot.html">cubeplot</a>. Next example shows how to call that function directly to plot three images in the front sides of the cube.</p>
-<div id="91ac8a84" class="cell" data-execution_count="2">
+<div id="95a7c3d3" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span>      <span class="co"># Hide</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cubeplot</span>(GMT.TESTSDIR <span class="op">*</span> <span class="st">"assets/seila_gray.jpg"</span>,</span>

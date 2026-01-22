@@ -180,6 +180,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
   </li>
   <li class="nav-item">
+    <a class="nav-link" href="../../documentation/alphabetical.html"> 
+<span class="menu-text">α</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="../../examples.html"> 
 <span class="menu-text">Examples</span></a>
   </li>  
@@ -533,7 +537,7 @@ Save the figure with the <code>figname=name.ext</code> where <code>ext</code> ch
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <p>A simple bubble plot of 50 bubbles plotted with random sizes.</p>
-<div id="4909108e" class="cell" data-execution_count="1">
+<div id="3f202d5a" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">bubblechart</span>(<span class="fl">1</span><span class="op">:</span><span class="fl">50</span>,<span class="fu">rand</span>(<span class="fl">50</span>), size<span class="op">=</span><span class="fu">rand</span>(<span class="fl">50</span>), fill<span class="op">=:</span>blue, alpha<span class="op">=</span><span class="fl">50</span>, aspect<span class="op">=</span><span class="st">"1:1"</span>, show<span class="op">=</span><span class="fl">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -545,7 +549,7 @@ Save the figure with the <code>figname=name.ext</code> where <code>ext</code> ch
 </div>
 </div>
 <p>A plot where bubbles’s size grows exponentialy between 2 and 40 points.</p>
-<div id="9f3101b8" class="cell" data-execution_count="2">
+<div id="94df5d29" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">bubblechart</span>(<span class="fl">1</span><span class="op">:</span><span class="fl">50</span>, <span class="fu">rand</span>(<span class="fl">50</span>), size<span class="op">=</span>(exp10, [<span class="fl">2</span>,<span class="fl">40</span>]), fill<span class="op">=:</span>blue, alpha<span class="op">=</span><span class="fl">50</span>, aspect<span class="op">=</span><span class="st">"1:1"</span>, show<span class="op">=</span><span class="fl">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -561,16 +565,16 @@ Save the figure with the <code>figname=name.ext</code> where <code>ext</code> ch
 <h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
 <p>This function has multiple methods:</p>
 <ul>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L387"><code>scatter(cmd0::String; ...)</code></a> - plot.jl:387</li>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L387"><code>scatter(cmd0::String, arg1; kw...)</code></a> - plot.jl:387</li>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L399"><code>scatter(D::Vector{&lt;:GMTdataset{Float64, 2}}; first, kw...)</code></a> - plot.jl:399</li>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L376"><code>scatter(f::Function; ...)</code></a> - plot.jl:376</li>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L382"><code>scatter(f1::Function, f2::Function; ...)</code></a> - plot.jl:382</li>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L376"><code>scatter(f::Function, range_x; first, kw...)</code></a> - plot.jl:376</li>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L382"><code>scatter(f1::Function, f2::Function, range_t; first, kw...)</code></a> - plot.jl:382</li>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L387"><code>scatter(; ...)</code></a> - plot.jl:387</li>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L393"><code>scatter(arg1, arg2; kw...)</code></a> - plot.jl:393</li>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L390"><code>scatter(arg; kw...)</code></a> - plot.jl:390</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L396"><code>scatter(cmd0::String; ...)</code></a> - plot.jl:396</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L396"><code>scatter(cmd0::String, arg1; kw...)</code></a> - plot.jl:396</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L408"><code>scatter(D::Vector{&lt;:GMTdataset{Float64, 2}}; first, kw...)</code></a> - plot.jl:408</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L385"><code>scatter(f::Function; ...)</code></a> - plot.jl:385</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L391"><code>scatter(f1::Function, f2::Function; ...)</code></a> - plot.jl:391</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L385"><code>scatter(f::Function, range_x; first, kw...)</code></a> - plot.jl:385</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L391"><code>scatter(f1::Function, f2::Function, range_t; first, kw...)</code></a> - plot.jl:391</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L396"><code>scatter(; ...)</code></a> - plot.jl:396</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L402"><code>scatter(arg1, arg2; kw...)</code></a> - plot.jl:402</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L399"><code>scatter(arg; kw...)</code></a> - plot.jl:399</li>
 </ul>
 
 

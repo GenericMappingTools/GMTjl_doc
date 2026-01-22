@@ -180,6 +180,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
   </li>
   <li class="nav-item">
+    <a class="nav-link" href="../../documentation/alphabetical.html"> 
+<span class="menu-text">α</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="../../examples.html"> 
 <span class="menu-text">Examples</span></a>
   </li>  
@@ -500,34 +504,22 @@ The kernel may be: ‘Normal’ (default) or ‘Uniform’.</p></li>
 </section>
 <section id="example" class="level3">
 <h3 class="anchored" data-anchor-id="example">Example</h3>
-<div id="e248658c" class="cell" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> [<span class="fl">0.5</span><span class="fu">*rand</span>(<span class="fl">20</span>,<span class="fl">1</span>) <span class="fl">5</span> <span class="op">.+</span> <span class="fl">2.5</span><span class="fu">*rand</span>(<span class="fl">20</span>,<span class="fl">1</span>); <span class="fl">.75</span> <span class="op">.+</span> <span class="fl">0.25</span><span class="fu">*rand</span>(<span class="fl">10</span>,<span class="fl">1</span>) <span class="fl">8.75</span> <span class="op">.+</span> <span class="fl">1.25</span><span class="fu">*rand</span>(<span class="fl">10</span>,<span class="fl">1</span>)]</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">density</span>(X, <span class="op">-</span><span class="fl">0.25</span><span class="op">:</span><span class="fl">.05</span><span class="op">:</span><span class="fl">1.25</span>, <span class="fl">0</span><span class="op">:</span><span class="fl">.1</span><span class="op">:</span><span class="fl">15</span>)</span>
+<div id="3cb1e26c" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> [<span class="fl">0.5</span><span class="fu">*rand</span>(<span class="fl">20</span>,<span class="fl">1</span>) <span class="fl">5</span> <span class="op">.+</span> <span class="fl">2.5</span><span class="fu">*rand</span>(<span class="fl">20</span>,<span class="fl">1</span>); <span class="fl">.75</span> <span class="op">.+</span> <span class="fl">0.25</span><span class="fu">*rand</span>(<span class="fl">10</span>,<span class="fl">1</span>) <span class="fl">8.75</span> <span class="op">.+</span> <span class="fl">1.25</span><span class="fu">*rand</span>(<span class="fl">10</span>,<span class="fl">1</span>)];</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> GMT.<span class="fu">density</span>(X, <span class="op">-</span><span class="fl">0.25</span><span class="op">:</span><span class="fl">.05</span><span class="op">:</span><span class="fl">1.25</span>, <span class="fl">0</span><span class="op">:</span><span class="fl">.1</span><span class="op">:</span><span class="fl">15</span>);</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">viz</span>(G, figsize<span class="op">=</span>(<span class="fl">12</span>,<span class="fl">12</span>), view<span class="op">=</span>(<span class="fl">225</span>,<span class="fl">30</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-error">
 <div class="ansi-escaped-output">
-<pre>UndefVarError: `density` not defined
+<pre>UndefVarError: `GMT` not defined
 
 Stacktrace:
  [1] top-level scope
-<span class="ansi-bright-black-fg">   @</span> <span style="text-decoration:underline" class="ansi-bright-black-fg">In[2]:2</span></pre>
+<span class="ansi-bright-black-fg">   @</span> <span style="text-decoration:underline" class="ansi-bright-black-fg">In[2]:1</span></pre>
 </div>
 </div>
 </div>
 <p>See other <a href="../../examples/plotting_functions/05_1_stats.html#examples-of-density-plots">examples at</a></p>
 <p>and here <strong>?@sec-examples-of-density-plots</strong></p>
-<div class="ansi-escaped-output">
-<pre><span class="ansi-green-fg ansi-bold">Precompiling</span> packages...
-
-
-  64416.9 ms<span class="ansi-green-fg">  ✓ </span>GMT
-
-  1 dependency successfully precompiled in 66 seconds. 80 already precompiled.
-
-
-<span class="ansi-cyan-fg ansi-bold">[ </span><span class="ansi-cyan-fg ansi-bold">Info: </span>Precompiling GMTParkerFFTExt [35a23bc9-6f20-5cbc-8971-9cdf66427582]
-</pre>
-</div>
 </section>
 <section id="source-code" class="level2">
 <h2 class="anchored" data-anchor-id="source-code">Source Code</h2>

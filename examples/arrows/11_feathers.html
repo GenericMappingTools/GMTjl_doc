@@ -180,6 +180,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
   </li>
   <li class="nav-item">
+    <a class="nav-link" href="../../documentation/alphabetical.html"> 
+<span class="menu-text">α</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="../../examples.html"> 
 <span class="menu-text">Examples</span></a>
   </li>  
@@ -466,7 +470,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>uv <span class="op">=</span> [<span class="fl">0.0</span> <span class="fl">0</span> <span class="fl">2.0</span>; <span class="fl">0.0</span> <span class="fl">30</span> <span class="fl">2</span>; <span class="fl">0.0</span> <span class="fl">60</span> <span class="fl">2</span>; <span class="fl">0.0</span> <span class="fl">90</span> <span class="fl">2</span>; <span class="fl">0.0</span> <span class="fl">120</span> <span class="fl">2</span>; <span class="fl">0.0</span> <span class="fl">150</span> <span class="fl">2</span>; <span class="fl">0.0</span> <span class="fl">180</span> <span class="fl">2</span>; <span class="fl">0.0</span> <span class="fl">210</span> <span class="fl">2</span>; <span class="fl">0.0</span> <span class="fl">240</span> <span class="fl">2</span>; <span class="fl">0.0</span> <span class="fl">270</span> <span class="fl">2</span>; <span class="fl">0.0</span> <span class="fl">300</span> <span class="fl">2</span>; <span class="fl">0.0</span> <span class="fl">330</span> <span class="fl">2</span>; <span class="fl">0.0</span> <span class="fl">360</span> <span class="fl">2</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="bed18969" class="cell" data-execution_count="1">
+<div id="8637f052" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>uv <span class="op">=</span> [<span class="fl">0.0</span> <span class="fl">0</span> <span class="fl">2.0</span>; <span class="fl">0.0</span> <span class="fl">30</span> <span class="fl">2</span>; <span class="fl">0.0</span> <span class="fl">60</span> <span class="fl">2</span>; <span class="fl">0.0</span> <span class="fl">90</span> <span class="fl">2</span>; <span class="fl">0.0</span> <span class="fl">120</span> <span class="fl">2</span>; <span class="fl">0.0</span> <span class="fl">150</span> <span class="fl">2</span>; <span class="fl">0.0</span> <span class="fl">180</span> <span class="fl">2</span>; <span class="fl">0.0</span> <span class="fl">210</span> <span class="fl">2</span>; <span class="fl">0.0</span> <span class="fl">240</span> <span class="fl">2</span>; <span class="fl">0.0</span> <span class="fl">270</span> <span class="fl">2</span>; <span class="fl">0.0</span> <span class="fl">300</span> <span class="fl">2</span>; <span class="fl">0.0</span> <span class="fl">330</span> <span class="fl">2</span>; <span class="fl">0.0</span> <span class="fl">360</span> <span class="fl">2</span>];</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">feather</span>(uv, rtheta<span class="op">=</span><span class="cn">true</span>, aspect<span class="op">=</span><span class="st">"1:1"</span>, arrow<span class="op">=</span>(len<span class="op">=</span><span class="fl">0.5</span>, shape<span class="op">=</span><span class="fl">0.5</span>,),</span>
@@ -480,7 +484,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Simple arrows and in function of number of arrows.</p>
-<div id="d8b760c1" class="cell" data-execution_count="2">
+<div id="4631073a" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> <span class="op">-</span><span class="cn">pi</span><span class="op">/</span><span class="fl">2</span><span class="op">:</span><span class="cn">pi</span><span class="op">/</span><span class="fl">8</span><span class="op">:</span><span class="cn">pi</span><span class="op">/</span><span class="fl">2</span>; u <span class="op">=</span> <span class="fl">10</span><span class="fu">*sin</span>.(t); v <span class="op">=</span> <span class="fl">10</span><span class="fu">*cos</span>.(t);</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">feather</span>(u,v, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -500,7 +504,7 @@ D = gmtread(TESTSDIR * "assets/wind_faro_s.dat")
 PrettyTables.pretty_table(io, D.data; header=D.colnames, backend=Val(:html))    # hide
 println("~~~" * String(take!(io)) * "~~~") # hide</code></pre>
 <p>Create a winbarb plot. Note that since the data has 4 columns we must select the 3 that we want to use in the plot. We select the columns from teir names in the <code>D</code> <em>GMTdataset</em>.</p>
-<div id="cffeba53" class="cell" data-execution_count="3">
+<div id="22416921" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">resetGMT</span>()      <span class="co"># hide</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">feather</span>(TESTSDIR <span class="op">*</span> <span class="st">"assets/wind_faro.dat"</span>, xvar<span class="op">=:</span><span class="dt">Time</span>, yvar<span class="op">=</span>[<span class="op">:</span>azimuth, <span class="op">:</span>vmean],</span>

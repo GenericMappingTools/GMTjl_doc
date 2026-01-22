@@ -180,6 +180,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
   </li>
   <li class="nav-item">
+    <a class="nav-link" href="../../documentation/alphabetical.html"> 
+<span class="menu-text">α</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="../../examples.html"> 
 <span class="menu-text">Examples</span></a>
   </li>  
@@ -552,7 +556,7 @@ Save the figure with the <code>figname=name.ext</code> where <code>ext</code> ch
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <p>Create a simple scatter plot with annotated (count numbers in histograms)</p>
-<div id="df57332b" class="cell" data-execution_count="1">
+<div id="e8a934ed" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">marginalhist</span>(<span class="fu">randn</span>(<span class="fl">2500</span>,<span class="fl">2</span>), scatter<span class="op">=</span><span class="cn">true</span>, histkw<span class="op">=</span>(annot<span class="op">=</span><span class="cn">true</span>,), show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -564,7 +568,7 @@ Save the figure with the <code>figname=name.ext</code> where <code>ext</code> ch
 </div>
 </div>
 <p>Change mrker type and histogram’s default color.</p>
-<div id="aac9810a" class="cell" data-execution_count="2">
+<div id="c8e8af64" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">marginalhist</span>(<span class="fu">randn</span>(<span class="fl">2000</span>,<span class="fl">2</span>), histkw<span class="op">=</span>(frame<span class="op">=</span><span class="st">"none"</span>, fill<span class="op">=:</span>tomato, W<span class="op">=</span><span class="st">"0@100"</span>),</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>             marker<span class="op">=:</span>cross, ms<span class="op">=</span><span class="st">"4p"</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -577,7 +581,7 @@ Save the figure with the <code>figname=name.ext</code> where <code>ext</code> ch
 </div>
 </div>
 <p>An hexbin scater plot with marginal density plots. Note that we must set <code>aspect=:equal</code> to have that hexbin plot.</p>
-<div id="105671f3" class="cell" data-execution_count="3">
+<div id="577eb58e" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">marginalhist</span>(<span class="fu">randn</span>(<span class="fl">2500</span>,<span class="fl">2</span>), cmap<span class="op">=:</span>lisbon, density<span class="op">=</span><span class="cn">true</span>, histkw<span class="op">=</span>(fill<span class="op">=</span><span class="st">"darkgreen@60"</span>,),</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>             aspect<span class="op">=:</span>equal, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -594,8 +598,8 @@ Save the figure with the <code>figname=name.ext</code> where <code>ext</code> ch
 <h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
 <p>This function has multiple methods:</p>
 <ul>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/statplots.jl#L1418"><code>marginalhist(fname::String; first, kw...)</code></a> - statplots.jl:1418</li>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/statplots.jl#L1419"><code>marginalhist(arg1::Union{GDtype, Matrix{&lt;:Real}}; first, kwargs...)</code></a> - statplots.jl:1419</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/statplots.jl#L1428"><code>marginalhist(fname::String; first, kw...)</code></a> - statplots.jl:1428</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/statplots.jl#L1429"><code>marginalhist(arg1::Union{GDtype, Matrix{&lt;:Real}}; first, kwargs...)</code></a> - statplots.jl:1429</li>
 </ul>
 </section>
 <section id="see-also" class="level2">

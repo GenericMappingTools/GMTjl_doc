@@ -180,6 +180,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
   </li>
   <li class="nav-item">
+    <a class="nav-link" href="../../documentation/alphabetical.html"> 
+<span class="menu-text">α</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="../../examples.html"> 
 <span class="menu-text">Examples</span></a>
   </li>  
@@ -560,7 +564,7 @@ Set PDF transparency level for an overlay, in (0-100] percent range. [Default is
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <p>A nice arrow field</p>
-<div id="f821780b" class="cell" data-execution_count="1">
+<div id="6accd027" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>X,Y <span class="op">=</span> <span class="fu">meshgrid</span>(<span class="op">-</span><span class="cn">pi</span><span class="op">:</span><span class="cn">pi</span><span class="op">/</span><span class="fl">8</span><span class="op">:</span><span class="cn">pi</span>,<span class="op">-</span><span class="cn">pi</span><span class="op">:</span><span class="cn">pi</span><span class="op">/</span><span class="fl">8</span><span class="op">:</span><span class="cn">pi</span>);</span>
@@ -576,7 +580,7 @@ Set PDF transparency level for an overlay, in (0-100] percent range. [Default is
 </div>
 </div>
 <p>For simplicity let’s create a grid using grdmath and compute its horizontal derivatives. Then we plot them as an arrow field.</p>
-<div id="d9eeea0c" class="cell" data-execution_count="2">
+<div id="7b2d166b" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">gmt</span>(<span class="st">"grdmath -R-2/2/-2/2 -I0.1 X Y R2 NEG EXP X MUL"</span>);</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>dzdy <span class="op">=</span> <span class="fu">gmt</span>(<span class="st">"grdmath ? DDY"</span>, G);</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>dzdx <span class="op">=</span> <span class="fu">gmt</span>(<span class="st">"grdmath ? DDX"</span>, G);</span>

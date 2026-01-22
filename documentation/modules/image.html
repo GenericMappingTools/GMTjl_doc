@@ -180,6 +180,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
   </li>
   <li class="nav-item">
+    <a class="nav-link" href="../../documentation/alphabetical.html"> 
+<span class="menu-text">α</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="../../examples.html"> 
 <span class="menu-text">Examples</span></a>
   </li>  
@@ -554,7 +558,7 @@ Set PDF transparency level for an overlay, in (0-100] percent range. [Default is
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <p>To plot the remote image needle.jpg, scaling it be 7 cm wide (height is scaled accordingly), use:</p>
-<div id="f6ee4ea6" class="cell" data-execution_count="1">
+<div id="d662d56b" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">image</span>(<span class="st">"@needle.jpg"</span>, pos<span class="op">=</span>(paper<span class="op">=</span><span class="cn">true</span>, anchor<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">0</span>), width<span class="op">=</span><span class="fl">7</span>), show<span class="op">=</span><span class="fl">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -566,7 +570,7 @@ Set PDF transparency level for an overlay, in (0-100] percent range. [Default is
 </div>
 </div>
 <p>To plot the same file but reversing the bands, use:</p>
-<div id="f5e3a2e2" class="cell" data-execution_count="2">
+<div id="dfac41d1" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">image</span>(<span class="st">"@needle.jpg+b2,1,0"</span>, pos<span class="op">=</span>(paper<span class="op">=</span><span class="cn">true</span>, anchor<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">0</span>), width<span class="op">=</span><span class="fl">7</span>), show<span class="op">=</span><span class="fl">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -578,7 +582,7 @@ Set PDF transparency level for an overlay, in (0-100] percent range. [Default is
 </div>
 </div>
 <p>To only plot its red band as gray shade, use:</p>
-<div id="bf27f676" class="cell" data-execution_count="3">
+<div id="8fb8b13f" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">image</span>(<span class="st">"@needle.jpg+b0"</span>, pos<span class="op">=</span>(paper<span class="op">=</span><span class="cn">true</span>, anchor<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">0</span>), width<span class="op">=</span><span class="fl">7</span>), show<span class="op">=</span><span class="fl">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -590,7 +594,7 @@ Set PDF transparency level for an overlay, in (0-100] percent range. [Default is
 </div>
 </div>
 <p>To include an Encapsulated PostScript file gallo.eps with its upper right corner 5 cm to the right and 2.5 cm up from the current location, and have its width scaled to 4 cm, while keeping the aspect ratio, use:</p>
-<div id="5b0bf1a9" class="cell" data-execution_count="4">
+<div id="6b64a2f8" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">image</span>(<span class="st">"@gallo.eps"</span>, pos<span class="op">=</span>(paper<span class="op">=</span><span class="cn">true</span>, anchor<span class="op">=</span>(<span class="fl">5</span>,<span class="fl">2.5</span>), justify<span class="op">=:</span>TR, width<span class="op">=</span><span class="fl">4</span>), show<span class="op">=</span><span class="fl">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -602,7 +606,7 @@ Set PDF transparency level for an overlay, in (0-100] percent range. [Default is
 </div>
 </div>
 <p>To replicate the 1-bit remote raster image vader1.png, colorize it (dark gray background and yellow foreground), and setting each of 6 by 12 tiles to be 2.5 cm wide, use:</p>
-<div id="1cfa8b88" class="cell" data-execution_count="5">
+<div id="29a9b399" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">image</span>(<span class="st">"@vader1.png"</span>, bit_bg<span class="op">=:</span>darkgray, bit_fg<span class="op">=:</span>yellow,</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>      pos<span class="op">=</span>(paper<span class="op">=</span><span class="cn">true</span>, anchor<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">0</span>), width<span class="op">=</span><span class="fl">5</span>, repeat<span class="op">=</span>(<span class="fl">6</span>,<span class="fl">12</span>)), show<span class="op">=</span><span class="fl">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>

@@ -180,6 +180,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
   </li>
   <li class="nav-item">
+    <a class="nav-link" href="../documentation/alphabetical.html"> 
+<span class="menu-text">α</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="../examples.html"> 
 <span class="menu-text">Examples</span></a>
   </li>  
@@ -466,7 +470,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p>Many scientific papers start out by showing a location map of the region of interest. This map will typically also contain certain features and labels. This example will present a location map for the equatorial Atlantic ocean, where fracture zones and mid-ocean ridge segments have been plotted. We also would like to plot earthquake locations and available isochrons. We have obtained one file, <code>quakes_07.txt</code>, which contains the position and magnitude of available earthquakes in the region. We choose to use magnitude/40 for the symbol-size in cm. The digital fracture zone traces (<code>fz_07.txt</code>) and isochrons (0 isochron as <code>ridge_07.txt</code>, the rest as <code>isochron_07.txt</code>) were digitized from available maps 1. We create the final location map with the following script:</p>
-<div id="a817ee6d" class="cell" data-execution_count="1">
+<div id="ac11f5ab" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">coast</span>(region<span class="op">=</span>(<span class="op">-</span><span class="fl">50</span>,<span class="fl">0</span>,<span class="op">-</span><span class="fl">10</span>,<span class="fl">20</span>), water<span class="op">=:</span>lightblue, land<span class="op">=</span><span class="st">"P300/26:FtanBdarkbrown"</span>,</span>

@@ -180,6 +180,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
   </li>
   <li class="nav-item">
+    <a class="nav-link" href="../../documentation/alphabetical.html"> 
+<span class="menu-text">α</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="../../examples.html"> 
 <span class="menu-text">Examples</span></a>
   </li>  
@@ -537,36 +541,22 @@ Save the figure with the <code>figname=name.ext</code> where <code>ext</code> ch
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <p>To plot a horizontal color scale (12 cm long; 0.5 cm wide) at the reference point (8,1) (paper coordinates) with justification at top center and automatic annotation interval, do</p>
-<div id="00d6705d" class="cell" data-execution_count="1">
+<div id="8f424998" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">makecpt</span>(range<span class="op">=</span>(<span class="op">-</span><span class="fl">200</span>,<span class="fl">1000</span>,<span class="fl">100</span>), cmap<span class="op">=:</span>rainbow)</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">colorbar</span>(pos<span class="op">=</span>(paper<span class="op">=</span><span class="cn">true</span>, anchor<span class="op">=</span>(<span class="fl">8</span>,<span class="fl">1</span>), size<span class="op">=</span>(<span class="fl">12</span>,<span class="fl">0.5</span>), justify<span class="op">=:</span>TC, horizontal<span class="op">=</span><span class="cn">true</span>),</span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>        frame<span class="op">=</span>(annot<span class="op">=:</span>auto, ticks<span class="op">=:</span>auto, xlabel<span class="op">=</span><span class="st">"topography"</span>, ylabel<span class="op">=:</span>km), show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stderr">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-green-fg ansi-bold">Precompiling</span> packages...
-
-
-  65492.4 ms<span class="ansi-green-fg">  ✓ </span>GMT
-
-  1 dependency successfully precompiled in 69 seconds. 80 already precompiled.
-
-
-<span class="ansi-cyan-fg ansi-bold">[ </span><span class="ansi-cyan-fg ansi-bold">Info: </span>Precompiling GMTParkerFFTExt [35a23bc9-6f20-5cbc-8971-9cdf66427582]
-</pre>
-</div>
-</div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="colorbar_files/figure-html/cell-2-output-2.png" class="img-fluid figure-img"></p>
+<p><img src="colorbar_files/figure-html/cell-2-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>To append a vertical color scale (7.5 cm long; 1.25 cm wide) to the right of a plot that is 6 inch wide and 4 inch high, using illumination, and show back- and foreground colors, and annotating every 5 units, we provide the reference point and select the left-mid anchor point via</p>
-<div id="0be854a5" class="cell" data-execution_count="2">
+<div id="ddc68f31" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colorbar</span>(pos<span class="op">=</span>(paper<span class="op">=</span><span class="cn">true</span>, anchor<span class="op">=</span><span class="st">"6.5i/2i"</span>, justify<span class="op">=</span>(<span class="op">:</span>LM,<span class="st">"2i"</span>), size<span class="op">=</span>(<span class="fl">7.5</span>,<span class="fl">1.2</span>), triangles<span class="op">=</span><span class="cn">true</span>),</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>        cmap<span class="op">=:</span>geo, shade<span class="op">=</span><span class="cn">true</span>, xaxis<span class="op">=</span>(annot<span class="op">=</span><span class="fl">1000</span>, label<span class="op">=:</span>BATHYMETRY), ylabel<span class="op">=:</span>m, show<span class="op">=</span><span class="fl">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -578,7 +568,7 @@ Save the figure with the <code>figname=name.ext</code> where <code>ext</code> ch
 </div>
 </div>
 <p>To overlay a horizontal color scale (10 centimeters long and default width) above a Mercator map produced by a previous call, ensuring a 2 cm offset from the map frame, use</p>
-<div id="0be7c7bd" class="cell" data-execution_count="3">
+<div id="ca7d9c3d" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colorbar!</span>(region<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">10</span>,<span class="fl">0</span>,<span class="fl">10</span>), pos<span class="op">=</span>(justify<span class="op">=:</span>CT, width<span class="op">=</span><span class="fl">10</span>, offset<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">2</span>), horizontal<span class="op">=</span><span class="cn">true</span>), cmap<span class="op">=</span><span class="st">"colors.cpt"</span>, show<span class="op">=</span><span class="fl">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>psscale [ERROR]: GMT_Read_Data: File not found: colors.cpt</code></pre>
@@ -593,13 +583,13 @@ Stacktrace:
   [2] <span class="ansi-bold">gmt</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">cmd</span>::String, <span class="ansi-bright-black-fg">args</span>::Nothing<span class="ansi-bold">)</span>
 <span class="ansi-bright-black-fg">    @</span> <span class="ansi-magenta-fg">GMT</span> <span class="ansi-bright-black-fg">C:\Users\j\.julia\dev\GMT\src\</span><span style="text-decoration:underline" class="ansi-bright-black-fg">gmt_main.jl:166</span>
   [3] <span class="ansi-bold">finish_PS_module</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">d</span>::Dict<span class="ansi-bright-black-fg">{Symbol, Any}</span>, <span class="ansi-bright-black-fg">cmd</span>::Vector<span class="ansi-bright-black-fg">{String}</span>, <span class="ansi-bright-black-fg">opt_extra</span>::String, <span class="ansi-bright-black-fg">K</span>::Bool, <span class="ansi-bright-black-fg">O</span>::Bool, <span class="ansi-bright-black-fg">finish</span>::Bool, <span class="ansi-bright-black-fg">args</span>::Nothing<span class="ansi-bold">)</span>
-<span class="ansi-bright-black-fg">    @</span> <span class="ansi-magenta-fg">GMT</span> <span class="ansi-bright-black-fg">C:\Users\j\.julia\dev\GMT\src\</span><span style="text-decoration:underline" class="ansi-bright-black-fg">common_options.jl:4514</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-magenta-fg">GMT</span> <span class="ansi-bright-black-fg">C:\Users\j\.julia\dev\GMT\src\</span><span style="text-decoration:underline" class="ansi-bright-black-fg">common_options.jl:4525</span>
   [4] <span class="ansi-bold">finish_PS_module</span>
-<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">C:\Users\j\.julia\dev\GMT\src\</span><span style="text-decoration:underline" class="ansi-bright-black-fg">common_options.jl:4438</span><span class="ansi-bright-black-fg"> [inlined]</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">C:\Users\j\.julia\dev\GMT\src\</span><span style="text-decoration:underline" class="ansi-bright-black-fg">common_options.jl:4449</span><span class="ansi-bright-black-fg"> [inlined]</span>
   [5] <span class="ansi-bold">prep_and_call_finish_PS_module</span>
-<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">C:\Users\j\.julia\dev\GMT\src\</span><span style="text-decoration:underline" class="ansi-bright-black-fg">common_options.jl:4428</span><span class="ansi-bright-black-fg"> [inlined]</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">C:\Users\j\.julia\dev\GMT\src\</span><span style="text-decoration:underline" class="ansi-bright-black-fg">common_options.jl:4439</span><span class="ansi-bright-black-fg"> [inlined]</span>
   [6] <span class="ansi-bold">prep_and_call_finish_PS_module</span>
-<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">C:\Users\j\.julia\dev\GMT\src\</span><span style="text-decoration:underline" class="ansi-bright-black-fg">common_options.jl:4427</span><span class="ansi-bright-black-fg"> [inlined]</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">C:\Users\j\.julia\dev\GMT\src\</span><span style="text-decoration:underline" class="ansi-bright-black-fg">common_options.jl:4438</span><span class="ansi-bright-black-fg"> [inlined]</span>
   [7] <span class="ansi-bold">colorbar</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">arg1</span>::Nothing; <span class="ansi-bright-black-fg">first</span>::Bool, <span class="ansi-bright-black-fg">kwargs</span>::@Kwargs<span class="ansi-bright-black-fg">{region::NTuple{4, Int64}, pos::@NamedTuple{justify::Symbol, width::Int64, offset::Tuple{Int64, Int64}, horizontal::Bool}, cmap::String, show::Int64}</span><span class="ansi-bold">)</span>
 <span class="ansi-bright-black-fg">    @</span> <span class="ansi-magenta-fg">GMT</span> <span class="ansi-bright-black-fg">C:\Users\j\.julia\dev\GMT\src\</span><span style="text-decoration:underline" class="ansi-bright-black-fg">psscale.jl:53</span>
   [8] <span class="ansi-bold">colorbar</span>
@@ -612,7 +602,7 @@ Stacktrace:
 </div>
 </div>
 <p>Show automatic placement of color bars when selecting a side mid-point.</p>
-<div id="74a0292b" class="cell" data-execution_count="4">
+<div id="d74a06f6" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>C <span class="op">=</span> <span class="fu">makecpt</span>(cmap<span class="op">=:</span>jet, range<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">100</span>));</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">basemap</span>(region<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">30</span>,<span class="fl">0</span>,<span class="fl">45</span>), frame<span class="op">=</span>(axes<span class="op">=:</span>wsne, annot<span class="op">=:</span>auto, ticks<span class="op">=:</span>auto))</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">colorbar!</span>(position<span class="op">=</span>(inside<span class="op">=</span><span class="cn">true</span>, anchor<span class="op">=:</span>BC), xaxis<span class="op">=</span>(annot<span class="op">=:</span>auto, ticks<span class="op">=:</span>auto),</span>

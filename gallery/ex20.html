@@ -180,6 +180,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
   </li>
   <li class="nav-item">
+    <a class="nav-link" href="../documentation/alphabetical.html"> 
+<span class="menu-text">α</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="../examples.html"> 
 <span class="menu-text">Examples</span></a>
   </li>  
@@ -467,7 +471,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <p>One is often required to make special maps that shows the distribution of certain features but one would prefer to use a custom symbol instead of the built-in circles, squares, triangles, etc. in the GMT plotting programs [plot] and [plot3]. Here we demonstrate one approach that allows for a fair bit of flexibility in designing ones own symbols.</p>
 <p>Based on the hotspot locations in the remote file <code>hotspots.txt</code> (with a 3rd column giving the desired symbol sizes in inches) we lay down a world map and overlay red volcano symbols using our custom-built volcano symbol and [plot]. We do something similar with the bulls eye symbols. Without the <strong>fill</strong> option, however, they get the colors defined in <code>bullseye.def</code>.</p>
-<div id="9177031f" class="cell" data-execution_count="1">
+<div id="7025a73d" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">coast</span>(region<span class="op">=:</span>global360, xaxis<span class="op">=</span>(annot<span class="op">=</span><span class="fl">60</span>,), yaxis<span class="op">=</span>(annot<span class="op">=</span><span class="fl">30</span>,), title<span class="op">=</span><span class="st">"Hotspot Islands and Hot Cities"</span>,</span>

@@ -180,6 +180,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
   </li>
   <li class="nav-item">
+    <a class="nav-link" href="../../documentation/alphabetical.html"> 
+<span class="menu-text">α</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="../../examples.html"> 
 <span class="menu-text">Examples</span></a>
   </li>  
@@ -557,7 +561,7 @@ Save the figure with the <code>figname=name.ext</code> where <code>ext</code> ch
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <p>To make a map of a shaded global bathymetry (automatically download it if needed) using the Winkel projection, add coast lines, a colorbar and do an histogram equalization with 64 colors, do:</p>
-<div id="9a1ec820" class="cell" data-execution_count="1">
+<div id="90fc4f34" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">grdimage</span>(<span class="st">"@earth_relief_20m_g"</span>, proj<span class="op">=:</span>Winkel, equalize<span class="op">=</span><span class="fl">64</span>, coast<span class="op">=</span><span class="cn">true</span>,</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>         colorbar<span class="op">=</span><span class="cn">true</span>, shade<span class="op">=</span><span class="cn">true</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -570,7 +574,7 @@ Save the figure with the <code>figname=name.ext</code> where <code>ext</code> ch
 </div>
 </div>
 <p>For a quick-and-dirty illuminated color map of the data in the remote file <span class="citation" data-cites="AK_gulf_grav.nc">@AK_gulf_grav.nc</span>, try:</p>
-<div id="c405aede" class="cell" data-execution_count="2">
+<div id="c8dd7a34" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">grdimage</span>(<span class="st">"@AK_gulf_grav.nc"</span>, shade<span class="op">=</span><span class="cn">true</span>, coast<span class="op">=</span><span class="cn">true</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -582,7 +586,7 @@ Save the figure with the <code>figname=name.ext</code> where <code>ext</code> ch
 </div>
 </div>
 <p>Clip the outside of Africa from Bing mosaic. (You can try also <code>viz(I, clip=:land)</code> and <code>viz(I, clip=(continent=:AF, outside=true))</code>)</p>
-<div id="874953fc" class="cell" data-execution_count="3">
+<div id="df7c22b7" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>I <span class="op">=</span> <span class="fu">mosaic</span>(region<span class="op">=</span>(continent<span class="op">=</span><span class="st">"AF"</span>,));   <span class="co"># Get a mosaic of the ~Africa region</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">viz</span>(I, clip<span class="op">=</span>(continent<span class="op">=:</span>AF,))           <span class="co"># Clip outside of the African continent.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>

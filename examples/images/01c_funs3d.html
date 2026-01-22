@@ -180,6 +180,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
   </li>
   <li class="nav-item">
+    <a class="nav-link" href="../../documentation/alphabetical.html"> 
+<span class="menu-text">α</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="../../examples.html"> 
 <span class="menu-text">Examples</span></a>
   </li>  
@@ -469,7 +473,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="ackley">Ackley</h3>
 <p><a href="../..\documentation/modules/grdview.html">grdview</a> can plot 3-D surfaces with them provided as grids or as function equations or some predefined function names. Note that the <code>view</code> option controls the azimuth and elevation angle of the view.</p>
 <p>There are a couple of predefined functions that can plotted for demonstration purposes. For example the <a href="https://en.wikipedia.org/wiki/Ackley_function"><em>ackley</em></a> function</p>
-<div id="fb8bf3a0" class="cell" data-execution_count="1">
+<div id="3290b103" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">imshow</span>(<span class="st">"ackley"</span>, view<span class="op">=</span>(<span class="fl">159</span>,<span class="fl">30</span>), shade<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -484,7 +488,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="rosenbrock" class="level3">
 <h3 class="anchored" data-anchor-id="rosenbrock">Rosenbrock</h3>
 <p>Or the <em>rosenbrock</em> that looks like a manta ray (other options are <em>parabola, eggbox, sombrero</em>)”</p>
-<div id="df9d450a" class="cell" data-execution_count="2">
+<div id="7fb6f931" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">imshow</span>(<span class="st">"rosenbrock"</span>, view<span class="op">=</span>(<span class="fl">159</span>,<span class="fl">30</span>), shade<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -496,7 +500,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>But besides these predefined functions one can any function that defines a surface. For example a parabola can be plotted with the code bellow. First argument can be an anonymous function (like the example) of a function. Second and third args contain the plotting domain and step used to evaluate the function.</p>
-<div id="3d4ad173" class="cell" data-execution_count="3">
+<div id="398821af" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">imshow</span>((x,y) <span class="op">-&gt;</span> <span class="fu">sqrt</span>(x<span class="op">^</span><span class="fl">2</span> <span class="op">+</span> y<span class="op">^</span><span class="fl">2</span>), <span class="op">-</span><span class="fl">5</span><span class="op">:</span><span class="fl">0.05</span><span class="op">:</span><span class="fl">5</span>, <span class="op">-</span><span class="fl">5</span><span class="op">:</span><span class="fl">0.05</span><span class="op">:</span><span class="fl">5</span>, view<span class="op">=</span>(<span class="fl">159</span>,<span class="fl">30</span>), shade<span class="op">=</span><span class="cn">true</span>, frame<span class="op">=:</span>autoXYZg)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -508,7 +512,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>And we can plot 3D lines too. Same thing, give a parametric equation and</p>
-<div id="cbb05c1e" class="cell" data-execution_count="4">
+<div id="f5c99312" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot3d</span>(x <span class="op">-&gt;</span> <span class="fu">sin</span>(x)<span class="fu">*cos</span>(<span class="fl">10</span>x), y <span class="op">-&gt;</span> <span class="fu">sin</span>(y)<span class="fu">*sin</span>(<span class="fl">10</span>y), z <span class="op">-&gt;</span> <span class="fu">cos</span>(z), <span class="fl">0</span><span class="op">:</span><span class="cn">pi</span><span class="op">/</span><span class="fl">200</span><span class="op">:</span><span class="cn">pi</span>, lt<span class="op">=</span><span class="fl">2</span>, lc<span class="op">=:</span>brown, frame<span class="op">=:</span>autoXYZg, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">

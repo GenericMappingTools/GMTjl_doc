@@ -180,6 +180,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
   </li>
   <li class="nav-item">
+    <a class="nav-link" href="../../documentation/alphabetical.html"> 
+<span class="menu-text">α</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="../../examples.html"> 
 <span class="menu-text">Examples</span></a>
   </li>  
@@ -568,7 +572,7 @@ Save the figure with the <code>figname=name.ext</code> where <code>ext</code> ch
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <p>See the Example 04 at the Historical Collection gallery.</p>
 <p>Make a low resolution image plot with texture draping. Use a dpi=50 to make it lighter to load the man page. The drape option is used to overlay an image texture (from a cork tree trunk) on the grid data from the Gulf of Guinea zone. (Note, the <code>viz</code> function calls <code>grdview</code> when it detects the <code>view</code> option)</p>
-<div id="ceda1fc2" class="cell" data-execution_count="1">
+<div id="f6ac2028" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">grdcut</span>(<span class="st">"@earth_relief_01m"</span>, region<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">10</span>,<span class="fl">0</span>,<span class="fl">10</span>));</span>
@@ -582,7 +586,7 @@ Save the figure with the <code>figname=name.ext</code> where <code>ext</code> ch
 </div>
 </div>
 <p>This example imagines that a OVNI (UFO) ship is pointing a spot light with a radius of 100 km over Denver.</p>
-<div id="c75d6c2c" class="cell" data-execution_count="2">
+<div id="62175c1a" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">grdcut</span>(<span class="st">"@earth_relief_30s"</span>, region<span class="op">=</span>(<span class="op">-</span><span class="fl">108</span>,<span class="op">-</span><span class="fl">103</span>,<span class="fl">35</span>,<span class="fl">40</span>));</span>

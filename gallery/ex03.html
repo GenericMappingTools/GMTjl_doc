@@ -180,6 +180,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
   </li>
   <li class="nav-item">
+    <a class="nav-link" href="../documentation/alphabetical.html"> 
+<span class="menu-text">α</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="../examples.html"> 
 <span class="menu-text">Examples</span></a>
   </li>  
@@ -467,7 +471,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <p>In this example we will show how to use the GMT programs [fitcircle], [project], [sample1d], [spectrum1d], and [plot]. Suppose you have (lon, lat, gravity) along a satellite track in a file called <code>sat.xyg</code>, and (lon, lat, gravity) along a ship track in a file called <code>ship.xyg</code>. You want to make a cross-spectral analysis of these data. First, you will have to get the two data sets into equidistantly sampled time-series form. To do this, it will be convenient to project these along the great circle that best fits the sat track. We must use [fitcircle] to find this great circle and choose the L2 estimates of best pole. We project the data using [project] to find out what their ranges are in the projected coordinate. The script computes the common range. We can then resample the projected data, and carry out the cross-spectral calculations, assuming that the ship is the input and the satellite is the output data. The final plot example_03.ps shows the ship and sat power in one diagram and the coherency on another diagram, both on the same page, with an auto-generated legend. Thus, the complete automated script reads:</p>
 <p>The final illustration shows that the ship gravity anomalies have more power than altimetry derived gravity for short wavelengths and that the coherency between the two signals improves dramatically for wavelengths &gt; 20 km.</p>
-<div id="6ac89951" class="cell" data-execution_count="1">
+<div id="76a66eb7" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># First, we use "fitcircle" to find the parameters of a great circle</span></span>

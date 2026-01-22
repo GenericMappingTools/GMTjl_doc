@@ -180,6 +180,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
   </li>
   <li class="nav-item">
+    <a class="nav-link" href="../documentation/alphabetical.html"> 
+<span class="menu-text">α</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="../examples.html"> 
 <span class="menu-text">Examples</span></a>
   </li>  
@@ -468,7 +472,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>This example demonstrates how [coast] can be used to set up clip paths based on coastlines. This approach is well suited when different gridded data sets are to be merged on a plot using different CPTs. Merging the files themselves may not be doable since they may represent different data sets, as we show in this example. Here, we lay down a color map of the geoid field near India with [grdimage], use [coast] to set up land clip paths, and then overlay topography from the ETOPO5 data set with another call to [grdimage].</p>
 <p>We also plot a color legend on top of the land. So here we basically have three layers of “paint” stacked on top of each other: the underlying geoid map, the land mask, and finally the color legend. This legend makes clear how [grd2cpt] distributed the colors over the range: they are not of equal length put are associated with equal amounts of area in the plot. Since the high amounts (in red) are not very prevalent, that color spans a long range.</p>
 <p>For this image it is appropriate to use the <strong>shade</strong> option in colorbar so the legend gets shaded, similar to the geoid grid. See [Of Colors and Color Legends] to learn more about CPTs and ways to draw color legends.</p>
-<div id="02107fe4" class="cell" data-execution_count="1">
+<div id="e59e2b60" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>Cgeoid <span class="op">=</span> <span class="fu">grd2cpt</span>(<span class="st">"@india_geoid.nc"</span>);</span>

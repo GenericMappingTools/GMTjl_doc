@@ -180,6 +180,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
   </li>
   <li class="nav-item">
+    <a class="nav-link" href="../../documentation/alphabetical.html"> 
+<span class="menu-text">α</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="../../examples.html"> 
 <span class="menu-text">Examples</span></a>
   </li>  
@@ -550,7 +554,7 @@ Limit the number of cores used when making the individual frames. By default we 
 <p>To compute the vertical component due to a magnetization stored in <em>mag.grd</em> over a zone defined by the surface <em>bat.grd</em>, using variable declination and inclination provided the IGRF and using 4 processors, do:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">grdgravmag3d</span>(<span class="st">"bat.grd"</span>, thickness<span class="op">=</span><span class="fl">10000</span>, H<span class="op">=</span><span class="st">"z -H+n -H+mmag.grd"</span>, x<span class="op">=</span><span class="fl">4</span>, radius<span class="op">=</span><span class="fl">50</span>);</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Suppose you want to compute the gravity effect of the Gorringe bank.</p>
-<div id="63fe532b" class="cell" data-execution_count="1">
+<div id="00edc39a" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">grdgravmag3d</span>(<span class="st">"@earth_relief_10m"</span>, region<span class="op">=</span>(<span class="op">-</span><span class="fl">12.5</span>,<span class="op">-</span><span class="fl">10</span>,<span class="fl">35.5</span>,<span class="fl">37.5</span>),</span>

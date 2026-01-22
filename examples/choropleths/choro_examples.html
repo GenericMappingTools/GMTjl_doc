@@ -180,6 +180,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
   </li>
   <li class="nav-item">
+    <a class="nav-link" href="../../documentation/alphabetical.html"> 
+<span class="menu-text">α</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="../../examples.html"> 
 <span class="menu-text">Examples</span></a>
   </li>  
@@ -478,8 +482,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="countries-europe-dcw" class="level2">
 <h2 class="anchored" data-anchor-id="countries-europe-dcw">Countries (Europe DCW)</h2>
 <p>Load packages needed to download data and put into a DataFrame</p>
-<div id="58ab4b39" class="cell" data-execution_count="1">
+<div id="c3fa3f24" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span>, <span class="bu">DataFrames</span>, <span class="bu">CSV</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-cyan-fg ansi-bold">[ </span><span class="ansi-cyan-fg ansi-bold">Info: </span>Precompiling GMTDataFramesExt [b0121151-b40e-578b-8798-214dacfa5da6]
+</pre>
+</div>
+</div>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>paises <span class="op">=</span> CSV.<span class="fu">File</span>(HTTP.<span class="fu">get</span>(<span class="st">"https://raw.githubusercontent.com/tillnagel/unfolding/master/data/data/countries-population-density.csv"</span>).body, delim<span class="op">=</span><span class="ch">';'</span>) <span class="op">|&gt;</span> DataFrame;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Extract the Europe countries from the DCW file</p>

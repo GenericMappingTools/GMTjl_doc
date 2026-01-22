@@ -180,6 +180,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
   </li>
   <li class="nav-item">
+    <a class="nav-link" href="../../documentation/alphabetical.html"> 
+<span class="menu-text">α</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="../../examples.html"> 
 <span class="menu-text">Examples</span></a>
   </li>  
@@ -467,7 +471,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <p>These examples show a GMT.jl version of a PyGMT post in the GMT forum and that can be found at the original author’s, JiahongLuo, Github <a href="https://github.com/Luojiahong/PyGMT_3D_mapview/blob/main/mapview_3d_earthquake.ipynb">site</a></p>
 <p>The function let us easily plot images on the sides of a cube. That function can also be used to create those side figures directly from a 3D cube grid.</p>
-<div id="56a7309d" class="cell" data-execution_count="1">
+<div id="5959dc29" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Download data from:</span></span>
@@ -500,9 +504,9 @@ Stacktrace:
  [1] <span class="ansi-bold">error</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">s</span>::String<span class="ansi-bold">)</span>
 <span class="ansi-bright-black-fg">   @</span> <span class="ansi-bright-black-fg">Base</span> <span class="ansi-bright-black-fg">.\</span><span style="text-decoration:underline" class="ansi-bright-black-fg">error.jl:35</span>
  [2] <span class="ansi-bold">xyzw2cube</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">D</span>::GMTdataset<span class="ansi-bright-black-fg">{Float64, 2}</span>; <span class="ansi-bright-black-fg">zcol</span>::Int64, <span class="ansi-bright-black-fg">datatype</span>::DataType, <span class="ansi-bright-black-fg">tit</span>::String, <span class="ansi-bright-black-fg">names</span>::Vector<span class="ansi-bright-black-fg">{String}</span>, <span class="ansi-bright-black-fg">varnames</span>::Vector<span class="ansi-bright-black-fg">{String}</span><span class="ansi-bold">)</span>
-<span class="ansi-bright-black-fg">   @</span> <span class="ansi-magenta-fg">GMT</span> <span class="ansi-bright-black-fg">C:\Users\j\.julia\dev\GMT\src\</span><span style="text-decoration:underline" class="ansi-bright-black-fg">utils_types.jl:1818</span>
+<span class="ansi-bright-black-fg">   @</span> <span class="ansi-magenta-fg">GMT</span> <span class="ansi-bright-black-fg">C:\Users\j\.julia\dev\GMT\src\</span><span style="text-decoration:underline" class="ansi-bright-black-fg">utils_types.jl:1823</span>
  [3] <span class="ansi-bold">xyzw2cube</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">D</span>::GMTdataset<span class="ansi-bright-black-fg">{Float64, 2}</span><span class="ansi-bold">)</span>
-<span class="ansi-bright-black-fg">   @</span> <span class="ansi-magenta-fg">GMT</span> <span class="ansi-bright-black-fg">C:\Users\j\.julia\dev\GMT\src\</span><span style="text-decoration:underline" class="ansi-bright-black-fg">utils_types.jl:1815</span>
+<span class="ansi-bright-black-fg">   @</span> <span class="ansi-magenta-fg">GMT</span> <span class="ansi-bright-black-fg">C:\Users\j\.julia\dev\GMT\src\</span><span style="text-decoration:underline" class="ansi-bright-black-fg">utils_types.jl:1820</span>
  [4] top-level scope
 <span class="ansi-bright-black-fg">   @</span> <span style="text-decoration:underline" class="ansi-bright-black-fg">In[2]:4</span></pre>
 </div>
@@ -512,7 +516,7 @@ Stacktrace:
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">viz</span>(Cvp, colorbar<span class="op">=</span><span class="cn">true</span>, cmap<span class="op">=:</span>same, title<span class="op">=</span><span class="st">"Vp model"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><img src="../..\assets/Vp_mosaic.png" class="center img-fluid" width="280"></p>
 <p>Show the P and S velocities with a slight variation of the top layer. For the P-velocity we plot the topography on top and for the S-velocity we show the superficial S velocity but apply a shading effect calculated from the topography grid.</p>
-<div id="f3389c6f" class="cell" data-execution_count="2">
+<div id="f328c004" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span>   <span class="co"># Hide</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cubeplot</span>(Cvp, top<span class="op">=</span><span class="st">"@earth_relief_05m"</span>, colorbar<span class="op">=</span>(<span class="st">"xlabel=P-wave velocity"</span>, <span class="st">"ylabel=km/s"</span>), zdown<span class="op">=</span><span class="cn">true</span>, title<span class="op">=</span><span class="st">"Vp model"</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cubeplot!</span>(Cvs, top<span class="op">=</span><span class="st">"@earth_relief_05m"</span>, topshade<span class="op">=</span><span class="cn">true</span>, zdown<span class="op">=</span><span class="cn">true</span>, colorbar<span class="op">=</span>(<span class="st">"xlabel=S-wave velocity"</span>, <span class="st">"ylabel=km/s"</span>), xshift<span class="op">=</span><span class="fl">18</span>, title<span class="op">=</span><span class="st">"Vs model"</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -528,7 +532,7 @@ Stacktrace:
 </div>
 <p><img src="../..\assets/Vp_Vs_cubes.png" class="center img-fluid" width="1000"></p>
 <p>To finish we show how to make an inset view in the 3D model.</p>
-<div id="e5524a39" class="cell" data-execution_count="3">
+<div id="7ad7b4b5" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span>   <span class="co"># Hide</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cubeplot</span>(Cvp, top<span class="op">=</span><span class="st">"@earth_relief"</span>, inset<span class="op">=</span>(lon<span class="op">=</span><span class="fl">100</span>, lat<span class="op">=</span><span class="fl">35</span>), topshade<span class="op">=</span><span class="cn">true</span>, zdown<span class="op">=</span><span class="cn">true</span>,</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>         colorbar<span class="op">=</span>(<span class="st">"xlabel=P-wave velocity"</span>, <span class="st">"ylabel=km/s"</span>), show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
