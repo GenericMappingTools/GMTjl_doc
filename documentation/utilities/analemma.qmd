@@ -1,0 +1,57 @@
+# analemma
+
+```julia
+analemma(; lon=0, lat=0, hour=12, year=2024, lonlat=false, data=false, cmap=:turbo, kwargs...)
+```
+
+Plot the analemma.
+
+The analemma is the figure-8 pattern traced by the Sun's position in the sky
+when observed from the same location at the same mean solar time throughout the year.
+
+Arguments
+---------
+- `lon` : Observer longitude in degrees.
+
+- `lat` : Observer latitude in degrees. If both `lon` and `lat` are equal to zero (the default)
+   we compute your approximate location using web service based your IP address
+   (this adds a delay to the calculations).
+
+- `year` : Year for calculation (default: 2026). This is of minor importance but things slowly change with time.
+
+- `hour` : Local mean solar time hour (0-24, default: 12 = noon)
+
+- `cmap` : Colormap for day-of-year coloring (default: :turbo)
+
+- `lonlat=false`: If `true`, plot longitude vs latitude; if `false` (default), plot azimuth vs elevation.
+
+- `data=false`: If `true`, return the CO2 data in a GMTdataset.
+
+- Additional kwargs are passed to `plot`
+
+Examples
+--------
+```julia
+analemma(lon=-9, lat=38.7)     # Noon analemma in Lisbon
+analemma(lat=-23.5, hour=9)    # 9 AM analemma in tropics
+
+D = analemma(lon=-9, lat=38.7, lonlat=true, data=true)   # Get analemma in lon,lat as a GMTdataset
+```
+
+Returns
+-------
+
+A Vector of {{< gmtref GMTdataset type=gmttype >}} containing the projected meridians and parallels. `grat[i]` attributes store
+information about that element lon,lat. 
+
+```{julia}
+#| echo: false
+#| output: asis
+using GMT
+GMT.doc_source_links("analemma")
+```
+
+See Also
+--------
+
+{{< gmtref solar >}}

@@ -50,8 +50,8 @@ of the same size as `x` and `y`.
 ### Example
 
 ```{julia}
-X = [0.5*rand(20,1) 5 .+ 2.5*rand(20,1); .75 .+ 0.25*rand(10,1) 8.75 .+ 1.25*rand(10,1)]
-G = density(X, -0.25:.05:1.25, 0:.1:15)
+X = [0.5*rand(20,1) 5 .+ 2.5*rand(20,1); .75 .+ 0.25*rand(10,1) 8.75 .+ 1.25*rand(10,1)];
+G = GMT.density(X, -0.25:.05:1.25, 0:.1:15);
 viz(G, figsize=(12,12), view=(225,30))
 ```
 

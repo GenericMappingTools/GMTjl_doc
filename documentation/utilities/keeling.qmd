@@ -1,0 +1,36 @@
+# keeling
+
+```julia
+keeling(; data::Bool=false, kwargs...)
+```
+
+Plot the Keeling Curve - atmospheric CO2 concentration measured at Mauna Loa since 1958.
+
+Data is fetched from NOAA (https://gml.noaa.gov/webdata/ccgg/trends/co2/co2_mm_mlo.txt).
+
+Arguments
+---------
+- `data=false`: If `true`, return the CO2 data in a GMTdataset.
+
+- Additional kwargs are passed to `plot`
+
+Returns
+-------
+A {{< gmtref GMTdataset type=gmttype >}} of CO2 data if `data=true`, or `nothing` if a plot is made.
+Example
+
+```{julia}
+keeling()
+```
+
+```{julia}
+#| echo: false
+#| output: asis
+using GMT
+GMT.doc_source_links("keeling")
+```
+
+See Also
+--------
+
+- [Alphabetical Function List](../alphabetical.html)
