@@ -30,7 +30,7 @@ painted and no land fill is set then the land-areas will be transparent. A map p
 
 {{< include ../common_opts/opt_B.qmd >}}
 
-- **C** or **river\_fill** : -- *river\_fill=fill* **|** *river\_fill=(lake=true, river\_lake=true, fill=fill)*\
+- **C** or **riverfill** or **river\_fill** : -- *river\_fill=fill* **|** *river\_fill=(lake=true, river\_lake=true, fill=fill)*\
    Set the shade, color, or pattern for lakes and river-lakes [Default is the fill chosen for "wet" areas (*water*)]. Optionally, specify separate fills by using **river\_fill=(lake=true, fill=fill)** for lakes and **river\_fill=(river\_lake=true, fill=fill)** for river-lakes. To repeate the **river\_fill** option use a tuple of tuples.
 
 - **clip** : -- *clip=:land* **|** *clip=:water|ocean* **|** *clip=:end*\
@@ -64,8 +64,7 @@ painted and no land fill is set then the land-areas will be transparent. A map p
    extracts the Swiss polygon from (small) `ODS.nc` file. The **inside=true** (the default) means that data is kept
    _inside_ the clipping polygon. Use **outside=true** if want the reverse. **adjust_r=??** adjusts the region boundaries
    to be multiples of the steps indicated by _inc_ or _xinc/yinc_ or _winc/einc/sinc/ninc_. **adjust_R=??** adjusts
-   the region boundaries adding the amounts specified by _inc_ or _xinc/yinc_ or _winc/einc/sinc/ninc_. **headers=true**
-   place the country code in the segment headers via _-Zcode_ settings (for use with the **dump** option). 
+   the region boundaries adding the amounts specified by _inc_ or _xinc/yinc_ or _winc/einc/sinc/ninc_.
 
 - **getR** or **getregion** or **get_region** : -- *getR=code1,code2,...*\
    Return the region corresponding to the code/list-of-codes passed in as argument. The code(s) are the same
