@@ -529,6 +529,8 @@ Specify automatic tagging of each subplot. Use <strong>label=</strong> either a 
 Set map boundary frame and axes attributes. Default is to draw and annotate left, bottom and vertical axes and just draw left and top axes. More at <a href="../../documentation/common_opts/common_opts.html#frame">frame</a></p></li>
 <li><p><strong>C</strong> or <strong>clearance</strong> : – <em>clearance=val</em> <strong>|</strong> <em>clearance=(left=val, right=val, bott=val, bottom=val, top=val))</em><br>
 Reserve a space of dimension <em>val</em> between the margin and the subplot on the specified side, using <em>side</em> values from <strong>left=val</strong>, <strong>right=val</strong>, <strong>bottom=val</strong>, or <strong>top=val</strong>. No <em>side</em> means all sides. Can specify more than one side. Such space will be left untouched by the main map plotting but can be accessed by modules that plot scales, bars, text, etc. Settings specified under <strong>begin</strong> directive apply to all subplots, while settings under <strong>set</strong> only apply to the selected (active) subplot. <strong>Note</strong>: Common options <strong>xshift</strong> and <strong>yshift</strong> are not available during subplots; use <strong>clearance</strong> instead.</p></li>
+<li><p><strong>D</strong> or <strong>noframes</strong> : – <em>noframes=true|false</em><br>
+Use the prevailing defaults settings (via <code>par=(...)</code>) and the selections made via <strong>frame</strong>, <strong>clearance</strong>, <strong>margins</strong> and <strong>S</strong> to determine the panel sizes (if using <strong>dims</strong>_figsize_) and panel spacings only, but do not draw and annotate any frames. This option is useful if you wish to lay down a partial subplot with annotations and frames, but then want to plot data inside it separately later without redrawing the frames. With different <strong>frame</strong>, <strong>clearance</strong>, <strong>margins</strong> and <strong>S</strong> choices the two subplots may not align, but with <strong>noframes</strong> they will. Note: It is assumed that <strong>noframes</strong> stays the same [Draw and annotate frames as indicated].</p></li>
 <li><p><strong>J</strong> or <strong>proj</strong> or <strong>projection</strong> : – <em>proj=<parameters></parameters></em><br>
 Select map projection. More at <a href="../../documentation/common_opts/common_opts.html#proj">proj</a></p></li>
 <li><p><strong>M</strong> or <strong>margins</strong> : – <em>margins=val</em><br>
@@ -594,7 +596,7 @@ Shift plot origin. More at <a href="../../documentation/common_opts/common_opts.
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <p>To make a minimalistic 3x3 basemap layout, try::</p>
-<div id="1fa2159e" class="cell" data-execution_count="1">
+<div id="16b1ba12" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">subplot</span>(grid<span class="op">=</span><span class="st">"3x3"</span>, panels_size<span class="op">=</span>(<span class="fl">5</span>,<span class="fl">7</span>), region<span class="op">=</span>(<span class="fl">0</span>, <span class="fl">100</span>, <span class="fl">0</span>, <span class="fl">80</span>), frame<span class="op">=:</span>WSen, autolabel<span class="op">=</span><span class="fl">1</span>, margins<span class="op">=</span><span class="st">"6p"</span>)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">basemap</span>(panel<span class="op">=</span><span class="fl">1</span>)</span>
@@ -628,7 +630,7 @@ Shift plot origin. More at <a href="../../documentation/common_opts/common_opts.
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">plot</span>([<span class="fl">50</span> <span class="fl">40</span>], marker<span class="op">=:</span>star, mc<span class="op">=:</span>blue)</span>
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="fu">subplot</span>(<span class="op">:</span>show)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Use variable panels with variable sizes:</p>
-<div id="229046b1" class="cell" data-execution_count="2">
+<div id="f8f4249e" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">subplot</span>(grid<span class="op">=</span>(<span class="fl">3</span>,<span class="fl">2</span>), dims<span class="op">=</span>(panels<span class="op">=</span><span class="cn">true</span>, sizes<span class="op">=</span>((<span class="st">"2i"</span>,<span class="st">"4i"</span>),(<span class="st">"2.5i"</span>,<span class="st">"5i"</span>,<span class="st">"1.25i"</span>))), row_axes<span class="op">=</span>(left<span class="op">=</span><span class="cn">true</span>, parallel<span class="op">=</span><span class="cn">true</span>),</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>        col_axes<span class="op">=</span>(bott<span class="op">=</span><span class="cn">true</span>,), margins<span class="op">=</span><span class="fl">0</span>, autolabel<span class="op">=</span>(label<span class="op">=:</span>A, vertical<span class="op">=</span><span class="cn">true</span>), title<span class="op">=</span><span class="st">"Variable dimensions"</span>)</span>
@@ -666,8 +668,9 @@ Shift plot origin. More at <a href="../../documentation/common_opts/common_opts.
 <h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
 <p>This function has multiple methods:</p>
 <ul>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/subplot.jl#L39"><code>subplot(; ...)</code></a> - subplot.jl:39</li>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/subplot.jl#L39"><code>subplot(fim; stop, kwargs...)</code></a> - subplot.jl:39</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/subplot.jl#L42"><code>subplot(fim::String, stop::Bool, d::Dict{Symbol, Any})</code></a> - subplot.jl:42</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/subplot.jl#L37"><code>subplot(; ...)</code></a> - subplot.jl:37</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/subplot.jl#L37"><code>subplot(fim::Union{AbstractString, Symbol}; stop, kwargs...)</code></a> - subplot.jl:37</li>
 </ul>
 
 

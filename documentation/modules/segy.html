@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -409,8 +444,19 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#description" id="toc-description" class="nav-link active" data-scroll-target="#description">Description</a></li>
+  <li><a href="#required-arguments" id="toc-required-arguments" class="nav-link" data-scroll-target="#required-arguments">Required Arguments</a></li>
+  <li><a href="#optional-arguments" id="toc-optional-arguments" class="nav-link" data-scroll-target="#optional-arguments">Optional Arguments</a></li>
+  <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
+  <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -434,23 +480,116 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Plot a SEGY file in 2-D.</p>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Warning
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>This GMT supplements module has not yet been ported to the long verbose syntax. To use it, you will need to use the <a href="../..\documentation/general/monolitic.html">Monolithic</a> mode.</p>
-</div>
-</div>
-<p>Please open a <a href="https://github.com/GenericMappingTools/GMT.jl/issues">Feature Request</a> if you would like to see this module ported to the long verbose syntax, or better yet, consider contributing the port yourself!</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">segy</span>(cmd0<span class="op">::</span><span class="dt">String</span>=<span class="st">""</span>, arg1<span class="op">=</span><span class="cn">nothing</span>; kwargs<span class="op">...</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Plot a SEGY file as a seismic data image.</p>
+<p>(<strong>Warning: Manual translate by Claude. Needs revision</strong>)</p>
+<section id="description" class="level2">
+<h2 class="anchored" data-anchor-id="description">Description</h2>
+<p>Reads a native (IEEE) format SEGY file and produces a plot of the seismic data. The <em>imagemask</em> operator is used so that the seismic data are plotted as a 1-bit deep bitmap in a single (user-specified) color or gray shade, with a transparent background. The bitmap resolution is taken from the current GMT defaults. The seismic traces may be plotted at their true locations using information in the trace headers (in which case order of the traces in the file is not significant). Standard GMT geometry routines are used so that in principle any map projection may be used, however it is likely that the geographic projections will lead to unexpected results. Beware also that some parameters have non-standard meanings.</p>
+<p>Note that the order of operations before the seismic data are plotted is deviation*<a href="[bias]+[normalize](sample value)">clip</a>. Deviation determines how far <em>in the plot coordinates</em> a [normalized][biased][clipped] sample value of 1 plots from the trace location.</p>
+<p>The SEGY file should be a disk image of the tape format (i.e., 3200 byte text header, which is ignored, 400 byte binary reel header, and 240 byte header for each trace) with samples as native real*4 (IEEE real on all the platforms to which I have access).</p>
+</section>
+<section id="required-arguments" class="level2">
+<h2 class="anchored" data-anchor-id="required-arguments">Required Arguments</h2>
+<p><em>SEGYfile</em> Seismic SEGY data set to be imaged (passed as first argument or via <code>cmd0</code>).</p>
+<ul>
+<li><p><strong>J</strong> or <strong>proj</strong> or <strong>projection</strong> : – <em>proj=<parameters></parameters></em><br>
+Select map projection. More at <a href="../proj.qmd">proj</a></p></li>
+<li><p><strong>R</strong> or <strong>region</strong> or <strong>limits</strong> : – <em>limits=(xmin, xmax, ymin, ymax)</em> <strong>|</strong> <em>limits=(BB=(xmin, xmax, ymin, ymax),)</em> <strong>|</strong> <em>limits=(LLUR=(xmin, xmax, ymin, ymax),units=“unit”)</em> <strong>|</strong> …more<br>
+Specify the region of interest. More at <a href="../../documentation/common_opts/common_opts.html#limits">limits</a>. For perspective view <strong>view</strong>, optionally add <em>zmin,zmax</em>. This option may be used to indicate the range used for the 3-D axes. You may ask for a larger w/e/s/n region to have more room between the image and the axes.</p></li>
+<li><p><strong>D</strong> or <strong>dev</strong> or <strong>deviation</strong> : – <em>deviation=val</em><br>
+Gives the deviation in X units of the plot for 1.0 on the scaled trace.</p></li>
+<li><p><strong>F</strong> or <strong>fill</strong> or <strong>color</strong> : – <em>fill=color</em> <strong>|</strong> <em>fill=true</em><br>
+Fill trace (variable area, defaults to filling positive). Specify the <em>color</em> with which the imagemask is filled.</p></li>
+<li><p><strong>W</strong> or <strong>wiggle</strong> : – <em>wiggle=true</em><br>
+Draw wiggle trace.</p></li>
+</ul>
+<p>You <em>must</em> specify at least one of <strong>wiggle</strong> and <strong>fill</strong>.</p>
+</section>
+<section id="optional-arguments" class="level2">
+<h2 class="anchored" data-anchor-id="optional-arguments">Optional Arguments</h2>
+<ul>
+<li><p><strong>A</strong> or <strong>byteswap</strong> or <strong>swap</strong> : – <em>swap=true</em><br>
+Flip the default byte-swap state (default assumes data have a bigendian byte-order).</p></li>
+<li><p><strong>C</strong> or <strong>clip</strong> : – <em>clip=val</em><br>
+Sample value at which to clip data (clipping is applied to both positive and negative values).</p></li>
+<li><p><strong>E</strong> or <strong>error</strong> : – <em>error=val</em><br>
+Allow <em>error</em> difference between requested and actual trace locations when using <strong>tracefile</strong> option.</p></li>
+<li><p><strong>I</strong> or <strong>negative</strong> or <strong>fillneg</strong> : – <em>negative=true</em><br>
+Fill negative rather than positive excursions.</p></li>
+<li><p><strong>L</strong> or <strong>nsamp</strong> or <strong>nsamples</strong> : – <em>nsamples=val</em><br>
+Override number of samples per trace in reel header (program attempts to determine number of samples from each trace header if possible to allow for variable length traces).</p></li>
+<li><p><strong>M</strong> or <strong>ntraces</strong> : – <em>ntraces=val</em><br>
+Override number of traces specified in reel header. Program detects end of file (relatively) gracefully, but this parameter limits number of traces that the program attempts to read.</p></li>
+<li><p><strong>N</strong> or <strong>normalize</strong> or <strong>norm</strong> : – <em>normalize=true</em><br>
+Normalize trace by dividing by rms amplitude over full trace length.</p></li>
+<li><p><strong>Q</strong> or <strong>adjust</strong> : – <em>adjust=(bias=val, dpi=val, redvel=val, xmult=val, dy=val)</em><br>
+Can be used to change 5 different settings:<br>
+<strong>bias</strong> (or <strong>b</strong>): bias scaled traces (e.g., <code>bias=-0.1</code> subtracts 0.1 from values).<br>
+<strong>dpi</strong> (or <strong>i</strong>): sets the dots-per-inch resolution of the image [300].<br>
+<strong>redvel</strong> (or <strong>u</strong>): apply reduction velocity (negative value removes reduction already present).<br>
+<strong>xmult</strong> (or <strong>x</strong>): multiply trace locations by <em>mult</em>.<br>
+<strong>dy</strong> (or <strong>y</strong>): override sample interval in SEGY reel header.</p></li>
+<li><p><strong>S</strong> or <strong>header</strong> or <strong>traceheader</strong> : – <em>header=:c</em> <strong>|</strong> <em>header=:o</em> <strong>|</strong> <em>header=(byte=num,)</em><br>
+Read trace locations from trace headers: header is either <strong>:c</strong> (or <strong>:cdp</strong>) for CDP, <strong>:o</strong> (or <strong>:offset</strong>) for offset, or a NamedTuple with <strong>byte=num</strong> to read a long starting at byte <em>num</em> in the header (first byte corresponds to <em>num</em> = 0). Default has location given by trace number.</p></li>
+<li><p><strong>T</strong> or <strong>tracelist</strong> or <strong>tracefile</strong> : – <em>tracefile=filename</em><br>
+Plot only traces whose location corresponds to a list given in <em>filename</em>. Order in which traces are listed is not significant - the entire space is checked for each trace.</p></li>
+<li><p><strong>Z</strong> or <strong>skipzero</strong> or <strong>nozero</strong> : – <em>skipzero=true</em><br>
+Do not plot traces with zero rms amplitude.</p></li>
+<li><p><strong>U</strong> or <strong>time_stamp</strong> : – <em>time_stamp=true</em> <strong>|</strong> <em>time_stamp=(just=“code”, pos=(dx,dy), label=“label”, com=true)</em><br>
+Draw GMT time stamp logo on plot. More at <a href="../../documentation/common_opts/common_opts.html#timestamp">timestamp</a></p></li>
+<li><p><strong>V</strong> or <em>verbose</em> : – <em>verbose=true</em> <strong>|</strong> <em>verbose=level</em><br>
+Select verbosity level. More at <a href="../../documentation/common_opts/common_opts.html#verbose">verbose</a></p></li>
+<li><p><strong>X</strong> or <strong>xshift</strong> or <strong>x_offset</strong> : <em>xshift=true</em> <strong>|</strong> <em>xshift=x-shift</em> <strong>|</strong> <em>xshift=(shift=x-shift, mov=“a|c|f|r”)</em><br>
+Shift plot origin. More at <a href="../../documentation/common_opts/common_opts.html#xshift">xshift</a></p></li>
+<li><p><strong>Y</strong> or <strong>yshift</strong> or <strong>y_offset</strong> : <em>yshift=true</em> <strong>|</strong> <em>yshift=y-shift</em> <strong>|</strong> <em>yshift=(shift=y-shift, mov=“a|c|f|r”)</em><br>
+Shift plot origin. More at <a href="../../documentation/common_opts/common_opts.html#yshift">yshift</a></p></li>
+<li><p><strong>p</strong> or <strong>view</strong> or <strong>perspective</strong> : – <em>view=(azim, elev)</em><br>
+Default is viewpoint from an azimuth of 200 and elevation of 30 degrees.<br>
+Specify the viewpoint in terms of azimuth and elevation. The azimuth is the horizontal rotation about the z-axis as measured in degrees from the positive y-axis. That is, from North. This option is not yet fully expanded. Current alternatives are:</p>
+<ul>
+<li><em>view=??</em><br>
+A full GMT compact string with the full set of options.</li>
+<li><em>view=(azim,elev)</em><br>
+A two elements tuple with azimuth and elevation</li>
+<li><em>view=true</em><br>
+To propagate the viewpoint used in a previous module (makes sense only in <code>bar3!</code>) More at <a href="../../documentation/common_opts/opt_p.html">perspective</a></li>
+</ul></li>
+<li><p><strong>t</strong> or <strong>transparency</strong> or <strong>alpha</strong>: – <em>alpha=50</em><br>
+Set PDF transparency level for an overlay, in (0-100] percent range. [Default is 0, <em>i.e.</em>, opaque]. Works only for the PDF and PNG formats.</p></li>
+<li><p><strong>figname</strong> or <strong>savefig</strong> or <strong>name</strong> : – <em>figname=<code>name.png</code></em><br>
+Save the figure with the <code>figname=name.ext</code> where <code>ext</code> chooses the figure image format.</p></li>
+</ul>
+</section>
+<section id="examples" class="level2">
+<h2 class="anchored" data-anchor-id="examples">Examples</h2>
+<p>To plot the SEGY file wa1.segy with normalized traces plotted at true offset locations, clipped at ±3 and with wiggle trace and positive variable area shading in black, use</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">segy</span>(<span class="st">"wa1.segy"</span>, proj<span class="op">=</span><span class="st">"X5i/-5i"</span>, region<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">100</span>,<span class="fl">0</span>,<span class="fl">10</span>), deviation<span class="op">=</span><span class="fl">1</span>, clip<span class="op">=</span><span class="fl">3</span>,</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>     normalize<span class="op">=</span><span class="cn">true</span>, header<span class="op">=:</span>o, wiggle<span class="op">=</span><span class="cn">true</span>, fill<span class="op">=:</span>black, figname<span class="op">=</span><span class="st">"segy.pdf"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>To plot the SEGY file wa1.segy with traces plotted at true cdp*0.1, clipped at ±3, with bias -1 and negative variable area shaded red, use</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">segy</span>(<span class="st">"wa1.segy"</span>, proj<span class="op">=</span><span class="st">"X5i/-5i"</span>, region<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">100</span>,<span class="fl">0</span>,<span class="fl">10</span>), deviation<span class="op">=</span><span class="fl">1</span>, clip<span class="op">=</span><span class="fl">3</span>,</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>     header<span class="op">=:</span>c, adjust<span class="op">=</span>(xmult<span class="op">=</span><span class="fl">0.1</span>, bias<span class="op">=-</span><span class="fl">1</span>), fill<span class="op">=:</span>red, negative<span class="op">=</span><span class="cn">true</span>, figname<span class="op">=</span><span class="st">"segy.pdf"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>This function has multiple methods:</p>
+<ul>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/segy/segy.jl#L6"><code>segy(cmd0::String; kwargs...)</code></a> - segy.jl:6</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/segy/segy.jl#L6"><code>segy(; ...)</code></a> - segy.jl:6</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/segy/segy.jl#L7"><code>segy(arg1; kwargs...)</code></a> - segy.jl:7</li>
+</ul>
+</section>
+<section id="see-also" class="level2">
+<h2 class="anchored" data-anchor-id="see-also">See Also</h2>
+<ul>
+<li><a href="../..\documentation/modules/segyz.html">segyz</a>, <a href="../..\documentation/modules/segy2grd.html">segy2grd</a></li>
+<li><a href="../alphabetical.html">Alphabetical Function List</a></li>
+</ul>
 
 
+</section>
 
 </main> <!-- /main -->
 <script>
