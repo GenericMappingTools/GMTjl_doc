@@ -1,15 +1,87 @@
 # segy2grd
 
-Converting SEGY data to a grid.
+```julia
+segy2grd(cmd0::String="", arg1=nothing; kwargs...)
+```
 
+Create a grid file from a SEGY file.
 
-::: {.callout-warning}
-This GMT supplements module has not yet been ported to the long verbose syntax.
-To use it, you will need to use the {{< gmtref monolithic type=general text="Monolithic" >}} mode.
-:::
+(**Warning: Manual translate by Claude. Needs revision**)
 
-Please open a [Feature Request](https://github.com/GenericMappingTools/GMT.jl/issues) if you would like
-to see this module ported to the long verbose syntax, or better yet, consider contributing the port yourself!
+Description
+-----------
+
+**segy2grd** reads an IEEE SEGY file and creates a binary grid file. Either a simple mapping (equivalent to {{< gmtref xyz2grd >}} -Z) or a more complicated averaging where a particular grid cell includes values from more than one sample in the SEGY file can be done. **segy2grd** will report if some of the nodes are not filled in with data. Such unconstrained nodes are set to a value specified by the user [Default is NaN]. Nodes with more than one value will be set to the average value.
+
+Required Arguments
+------------------
+
+*segyfile*
+    An IEEE floating point SEGY file. Traces are all assumed to start at 0 time/depth (passed as first argument or via `cmd0`).
+
+- **G** or **outgrid** or **save** : -- *outgrid=filename*\
+   Give the name of the output grid file.
+
+{{< include ../common_opts/opt_I.qmd >}}
+
+{{< include ../common_opts/opt_R.qmd >}}
+
+Optional Arguments
+------------------
+
+- **A** or **add** or **count** : -- *add=:z* **|** *add=:n* **|** *add=true*\
+   Add up multiple values that belong to the same node (same as **add=:z**). Use **add=:n** to simply count the number of data points that were assigned to each node. [Default (no **add** option) will calculate mean value]. Not used for simple mapping.
+
+- **D** or **metadata** or **header** : -- *metadata=string*\
+   Set grid metadata (title, remark, x/y/z units, etc.).
+
+- **L** or **nsamp** or **nsamples** : -- *nsamples=val*\
+   Let *nsamp* override number of samples in each trace.
+
+- **M** or **ntraces** : -- *ntraces=val*\
+   Fix number of traces to read in. Default tries to read 10000 traces. **ntraces=0** will read number in binary header, **ntraces=n** will attempt to read only *n* traces.
+
+- **Q** or **adjust** : -- *adjust=(xscale=val, sint=val)*\
+   Can be used to change two different settings:\
+   **xscale** (or **x**): applies scalar *x-scale* to coordinates in trace header to match the coordinates specified in **region**.\
+   **sint** (or **y**): specifies sample interval as *s_int* if incorrect in the SEGY file.
+
+- **S** or **spacing** or **varspacing** : -- *spacing=:c* **|** *spacing=:o* **|** *spacing=(byte=num,)*\
+   Set variable spacing; use **:c** (or **:cdp**) for cdp, **:o** (or **:offset**) for offset, or a NamedTuple with **byte=num** for 4-byte float starting at byte *num*. If **spacing** not set, assumes even spacing of samples at the *x_inc*, *y_inc* supplied with **inc**.
+
+{{< include ../common_opts/opt_V.qmd >}}
+
+{{< include ../common_opts/opt_bi.qmd >}}
+
+- **di** or **nodata_in** : -- *nodata_in=val*\
+   Examine all input columns and if any item equals *val* we interpret this value as a missing data item and substitute the value NaN. Also sets nodes with no input SEGY coverage to this value [Default is NaN].
+
+{{< include ../common_opts/opt__r.qmd >}}
+
+- **yx** : -- *yx=true*\
+   Swap 1st and 2nd column on input and/or output.
+
+Examples
+--------
+
+To create a grid file from an even spaced SEGY file test.segy, try:
+
+```julia
+using GMT
+G = segy2grd("test.segy", inc="0.1/0.1", outgrid="test.nc", region=(198,208,18,25), verbose=true)
+```
+
+Note that this will read in 18-25s (or km) on each trace, but the first trace will be assumed to be at X=198.
+
+To create a grid file from the SEGY file test.segy, locating traces according to the CDP number, where there are 10 CDPs per km and the sample interval is 0.1, try:
+
+```julia
+using GMT
+G = segy2grd("test.segy", outgrid="test.nc", region=(0,100,0,10), inc="0.5/0.2",
+             verbose=true, adjust=(xscale=0.1, sint=0.1))
+```
+
+Because the grid interval is larger than the SEGY file sampling, the individual samples will be averaged in bins.
 
 ```{julia}
 #| echo: false
@@ -17,3 +89,9 @@ to see this module ported to the long verbose syntax, or better yet, consider co
 using GMT
 GMT.doc_source_links("segy2grd")
 ```
+
+See Also
+--------
+
+- {{< gmtref segy >}}, {{< gmtref segyz >}}, {{< gmtref grd2xyz >}}, {{< gmtref xyz2grd >}}
+- [Alphabetical Function List](../alphabetical.html)

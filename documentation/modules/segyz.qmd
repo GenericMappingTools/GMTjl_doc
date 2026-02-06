@@ -1,15 +1,112 @@
 # segyz
 
-Plot a SEGY file in 3-D.
+```julia
+segyz(cmd0::String="", arg1=nothing; kwargs...)
+```
 
+Plot a SEGY file in 3-D as a seismic data image.
 
-::: {.callout-warning}
-This GMT supplements module has not yet been ported to the long verbose syntax.
-To use it, you will need to use the {{< gmtref monolithic type=general text="Monolithic" >}} mode.
-:::
+(**Warning: Manual translate by Claude. Needs revision**)
 
-Please open a [Feature Request](https://github.com/GenericMappingTools/GMT.jl/issues) if you would like
-to see this module ported to the long verbose syntax, or better yet, consider contributing the port yourself!
+Description
+-----------
+
+Reads a native (IEEE) format SEGY file and produces a plot of the seismic data. The *imagemask* operator is used so that the seismic data are plotted as a 1-bit deep bitmap in a single (user-specified) color or gray shade, with a transparent background. The bitmap resolution is taken from the current GMT defaults. The seismic traces may be plotted at their true locations using information in the trace headers (in which case order of the traces in the file is not significant). Standard GMT geometry routines are used so that in principle any map projection may be used, however it is likely that the geographic projections will lead to unexpected results. Beware that a couple of the options for the 2-D plotter are not available in here.
+
+Note that the order of operations before the seismic data are plotted is deviation\*[clip]([bias]+[normalize](sample value)). Deviation determines how far *in the plot coordinates* a [normalized][biased][clipped] sample value of 1 plots from the trace location.
+
+The SEGY file should be a disk image of the tape format (i.e., 3200 byte text header, which is ignored, 400 byte binary reel header, and 240 byte header for each trace) with samples as native real\*4 (IEEE real on all the platforms to which I have access).
+
+Required Arguments
+------------------
+
+*SEGYfile*
+    Seismic SEGY data set to be imaged (passed as first argument or via `cmd0`).
+
+- **J** or **proj** or **projection** : -- *proj=<parameters>*\
+   Select map projection. More at [proj](../proj.qmd)
+
+- **Jz** or **zscale** : -- *zscale=val*\
+   Set the z-axis scaling.
+
+{{< include ../common_opts/opt_R_3D.qmd >}}
+
+- **D** or **dev** or **deviation** : -- *deviation=val* **|** *deviation="devX/devY"*\
+   Gives the deviation in X units of the plot for 1.0 on the scaled trace. This may be a single number (applied equally in X and Y directions) or the pair *devX*/*devY*.
+
+- **F** or **fill** or **color** : -- *fill=color* **|** *fill=true*\
+   Fill trace (variable area, defaults to filling positive). Specify the *color* with which the imagemask is filled.
+
+- **W** or **wiggle** : -- *wiggle=true*\
+   Draw wiggle trace.
+
+You *must* specify at least one of **wiggle** and **fill**.
+
+Optional Arguments
+------------------
+
+- **A** or **byteswap** or **swap** : -- *swap=true*\
+   Flip the default byte-swap state (default assumes data have a bigendian byte-order).
+
+- **C** or **clip** : -- *clip=val*\
+   Sample value at which to clip data (clipping is applied to both positive and negative values).
+
+- **I** or **negative** or **fillneg** : -- *negative=true*\
+   Fill negative rather than positive excursions.
+
+- **L** or **nsamp** or **nsamples** : -- *nsamples=val*\
+   Override number of samples per trace in reel header (program attempts to determine number of samples from each trace header if possible to allow for variable length traces).
+
+- **M** or **ntraces** : -- *ntraces=val*\
+   Override number of traces specified in reel header. Program detects end of file (relatively) gracefully, but this parameter limits number of traces that the program attempts to read.
+
+- **N** or **normalize** or **norm** : -- *normalize=true*\
+   Normalize trace by dividing by rms amplitude over full trace length.
+
+- **Q** or **adjust** : -- *adjust=(bias=val, dpi=val, redvel=val, xmult=val, dy=val)*\
+   Can be used to change 5 different settings:\
+   **bias** (or **b**): bias scaled traces (e.g., `bias=-0.1` subtracts 0.1 from values).\
+   **dpi** (or **i**): sets the dots-per-inch resolution of the image [300].\
+   **redvel** (or **u**): apply reduction velocity (negative removes reduction already present).\
+   **xmult** (or **x**): multiply trace locations by *mult*.\
+   **dy** (or **y**): override sample interval in reel header.
+
+- **S** or **header** or **traceheader** : -- *header=(:c, :o)* **|** *header=(x=:c, y=:o)*\
+   Read trace locations from trace headers: headers is either **:c** (or **:cdp**) for CDP, **:o** (or **:offset**) for offset, a NamedTuple with **byte=num** to read a long starting at byte *num* in the header (first byte corresponds to num=0), or a number to fix the location. First parameter for x, second for y. Use a Tuple like `(:c, :o)` or a NamedTuple like `(x=:c, y=:o)`. Default has X and Y given by trace number.
+
+- **Z** or **skipzero** or **nozero** : -- *skipzero=true*\
+   Do not plot traces with zero rms amplitude.
+
+{{< include ../common_opts/opt_U.qmd >}}
+
+{{< include ../common_opts/opt_V.qmd >}}
+
+{{< include ../common_opts/opt_X.qmd >}}
+
+{{< include ../common_opts/opt_Y.qmd >}}
+
+{{< include ../common_opts/opt_p.qmd >}}
+
+{{< include ../common_opts/opt_t.qmd >}}
+
+{{< include ../common_opts/opt_save_fig.qmd >}}
+
+Examples
+--------
+
+To plot the SEGY file wa1.segy with normalized traces plotted at true offset locations, clipped at ±3 and with wiggle trace and positive variable area shading in black, use
+
+```julia
+using GMT
+segyz("wa1.segy", proj="X5i/-5i", zscale="0.05i", view=(180,5),
+      region=(0,100,0,10,0,10), deviation=1, clip=3, normalize=true,
+      header=(:o, :o), wiggle=true, fill=:black, figname="segy.pdf")
+```
+
+Bugs
+----
+
+Variable area involves filling four-sided figures of distressing generality. I *know* that some of the more complex degenerate cases are not dealt with correctly or at all; the incidence of such cases increases as viewing angles become more oblique, and particularly as the viewing elevation increases. Wiggle-trace plotting is not affected.
 
 ```{julia}
 #| echo: false
@@ -17,3 +114,9 @@ to see this module ported to the long verbose syntax, or better yet, consider co
 using GMT
 GMT.doc_source_links("segyz")
 ```
+
+See Also
+--------
+
+- {{< gmtref segy >}}, {{< gmtref segy2grd >}}
+- [Alphabetical Function List](../alphabetical.html)
