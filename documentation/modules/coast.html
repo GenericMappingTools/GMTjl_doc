@@ -478,14 +478,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">coast</span>(cmd0<span class="op">::</span><span class="dt">String</span>=<span class="st">""</span>; kwargs<span class="op">...</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">coast</span>(; kwargs<span class="op">...</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Plot continents, shorelines, rivers, and borders on maps</p>
 <section id="description" class="level2">
 <h2 class="anchored" data-anchor-id="description">Description</h2>
 <p>Plots grayshaded, colored, or textured land-masses [or water-masses] on maps and optionally draws coastlines, rivers, and political boundaries. Alternatively, it can (1) issue clip paths that will contain all land or all water areas, or (2) dump the data to an ASCII table. The data files come in 5 different resolutions: (<strong>f</strong>)ull, (<strong>h</strong>)igh, (<strong>i</strong>)ntermediate, (<strong>l</strong>)ow, and (<strong>c</strong>)rude. The full resolution files amount to more than 55 Mb of data and provide great detail; for maps of larger geographical extent it is more economical to use one of the other resolutions. If the user selects to paint the land-areas and does not specify fill of water-areas then the latter will be transparent (i.e., earlier graphics drawn in those areas will not be overwritten). Likewise, if the water-areas are painted and no land fill is set then the land-areas will be transparent. A map projection must be supplied.</p>
 <ul>
 <li><p><strong>J</strong> or <strong>proj</strong> or <strong>projection</strong> : – <em>proj=<parameters></parameters></em><br>
-Select map projection. More at <code></code> [proj] <!-- {{< include ../common_opts/opt_J.qmd >}} --></p></li>
+Select map projection. More at <a href="../../documentation/common_opts/common_opts.html#proj">proj</a></p></li>
 <li><p><strong>R</strong> or <strong>region</strong> or <strong>limits</strong> : – <em>limits=(xmin, xmax, ymin, ymax)</em> <strong>|</strong> <em>limits=(BB=(xmin, xmax, ymin, ymax),)</em> <strong>|</strong> <em>limits=(LLUR=(xmin, xmax, ymin, ymax),units=“unit”)</em> <strong>|</strong> …more<br>
 Specify the region of interest. More at <a href="../../documentation/common_opts/common_opts.html#limits">limits</a>. For perspective view <strong>view</strong>, optionally add <em>zmin,zmax</em>. This option may be used to indicate the range used for the 3-D axes. You may ask for a larger w/e/s/n region to have more room between the image and the axes.</p></li>
 <li><p><strong>-A</strong> or <strong>area</strong> : – <em>area=(min_area[,min_level,max_level]), river_lake=true, lake=true, antarctica_ground=true, skip60S=true, skipN60S=true, percent=pct)</em><br>
@@ -580,7 +580,7 @@ Save the figure with the <code>figname=name.ext</code> where <code>ext</code> ch
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <p>To plot Great Britain, Italy, and France in blue with a red outline and Spain, Portugal and Greece in yellow (no outline), and pick up the plot domain form the extents of these countries, use:</p>
-<div id="fe0e91ff" class="cell" data-execution_count="1">
+<div id="0ea19127" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">coast</span>(proj<span class="op">=:</span>Mercator, DCW<span class="op">=</span>((country<span class="op">=</span><span class="st">"GB,IT,FR"</span>, fill<span class="op">=:</span>blue, pen<span class="op">=</span>(<span class="fl">0.25</span>,<span class="op">:</span>red)),</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>                           (country<span class="op">=</span><span class="st">"ES,PT,GR"</span>, fill<span class="op">=:</span>yellow)), show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -588,9 +588,10 @@ Save the figure with the <code>figname=name.ext</code> where <code>ext</code> ch
 <div class="ansi-escaped-output">
 <pre><span class="ansi-green-fg ansi-bold">Precompiling</span> packages...
 
-  61016.3 ms<span class="ansi-green-fg">  ✓ </span>GMT
 
-  1 dependency successfully precompiled in 62 seconds. 80 already precompiled.
+  57395.3 ms<span class="ansi-green-fg">  ✓ </span>GMT
+
+  1 dependency successfully precompiled in 59 seconds. 80 already precompiled.
 </pre>
 </div>
 </div>
@@ -611,8 +612,8 @@ Save the figure with the <code>figname=name.ext</code> where <code>ext</code> ch
 <h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
 <p>This function has multiple methods:</p>
 <ul>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/pscoast.jl#L78"><code>coast(cmd0::String; clip, first, kwargs...)</code></a> - pscoast.jl:78</li>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/pscoast.jl#L78"><code>coast(; ...)</code></a> - pscoast.jl:78</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/pscoast.jl#L77"><code>coast(; clip, first, kwargs...)</code></a> - pscoast.jl:77</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/pscoast.jl#L83"><code>coast(cmd::Vector{String}, K::Bool, O::Bool, finish::Bool, get_largest::Bool, toTrack, d::Dict{Symbol, Any})</code></a> - pscoast.jl:83</li>
 </ul>
 
 
