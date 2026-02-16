@@ -564,14 +564,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="faq-data">Data and Formats</h2>
 <section id="how-do-i-read-a-shapefile" class="level3">
 <h3 class="anchored" data-anchor-id="how-do-i-read-a-shapefile">How do I read a shapefile?</h3>
-<div id="8b61a304" class="cell" data-execution_count="1">
+<div id="b2445609" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> <span class="fu">gmtread</span>(<span class="st">"my_file.shp"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>GMT.jl uses GDAL internally, so it supports all common vector formats (Shapefile, GeoPackage, GeoJSON, KML, etc.) automatically.</p>
 </section>
 <section id="how-do-i-read-a-geotiff" class="level3">
 <h3 class="anchored" data-anchor-id="how-do-i-read-a-geotiff">How do I read a GeoTIFF?</h3>
-<div id="81610f0a" class="cell" data-execution_count="2">
+<div id="5e2e9f23" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>raster <span class="op">=</span> <span class="fu">gmtread</span>(<span class="st">"my_raster.tif"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>The result is a <code>GMTgrid</code> object (for single-band data floats or Int16 data) or <code>GMTimage</code> (for multiple bands like RGB).</p>
@@ -582,7 +582,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>GMTgrid</strong>: Single-band numeric float or Int16 data (elevation, temperature, etc.). Values are stored in <code>grid.z</code>.</li>
 <li><strong>GMTimage</strong>: Multi-band unsigned Integer data (RGB images, multispectral satellite). Values are stored in <code>image.image</code>.</li>
 </ul>
-<div id="a376bce3" class="cell" data-execution_count="3">
+<div id="37534667" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># GMTgrid - single band</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>dem <span class="op">=</span> <span class="fu">gmtread</span>(<span class="st">"elevation.tif"</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="fu">typeof</span>(dem))  <span class="co"># GMTgrid</span></span>
@@ -601,7 +601,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Rasters clipped by polygons (cells outside the polygon)</li>
 <li>Data with acquisition gaps</li>
 </ul>
-<div id="28076673" class="cell" data-execution_count="4">
+<div id="9f498078" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Count valid cells vs NaN</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>n_valid <span class="op">=</span> <span class="fu">count</span>(!isnan, dem.z)</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>n_nan <span class="op">=</span> <span class="fu">count</span>(isnan, dem.z)</span>
@@ -614,7 +614,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="how-do-i-convert-between-gmtdataset-and-julia-matrix" class="level3">
 <h3 class="anchored" data-anchor-id="how-do-i-convert-between-gmtdataset-and-julia-matrix">How do I convert between GMTdataset and Julia matrix?</h3>
-<div id="0eeb70e6" class="cell" data-execution_count="5">
+<div id="a1a7383b" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># GMTdataset to matrix</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> <span class="fu">gmtread</span>(<span class="st">"points.gpkg"</span>)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>coords <span class="op">=</span> data.data  <span class="co"># Matrix with coordinates</span></span>
@@ -633,7 +633,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="how-do-i-access-vector-attributes" class="level3">
 <h3 class="anchored" data-anchor-id="how-do-i-access-vector-attributes">How do I access vector attributes?</h3>
-<div id="4c7fd810" class="cell" data-execution_count="6">
+<div id="8023cf5d" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> <span class="fu">gmtread</span>(<span class="st">"countries.gpkg"</span>)</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Attributes are stored in a dictionary</span></span>
@@ -682,7 +682,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
-<div id="d633d8eb" class="cell" data-execution_count="7">
+<div id="63ff700c" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Save in different formats</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">gmtwrite</span>(<span class="st">"output.gpkg"</span>, vector_data)</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">gmtwrite</span>(<span class="st">"output.tif"</span>, raster_data)    <span class="co"># Georeferenced images</span></span>
@@ -694,7 +694,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="faq-crs">Coordinate Reference Systems</h2>
 <section id="how-do-i-know-which-coordinate-system-my-data-uses" class="level3">
 <h3 class="anchored" data-anchor-id="how-do-i-know-which-coordinate-system-my-data-uses">How do I know which coordinate system my data uses?</h3>
-<div id="17fa1e7f" class="cell" data-execution_count="8">
+<div id="a8a30898" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> <span class="fu">gmtread</span>(<span class="st">"my_file.gpkg"</span>)</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Check CRS fields</span></span>
@@ -711,7 +711,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="when-should-i-use-geographic-vs-projected-coordinates">When should I use geographic vs projected coordinates?</h3>
 <p><strong>Geographic coordinates (lon/lat, degrees):</strong> - Global data - Data storage and exchange</p>
 <p><strong>Projected coordinates (meters):</strong> - Local/regional analysis - Distance and area calculations - Precise buffering (but <code>buffergeo</code> is also precise)</p>
-<div id="6e49b4a0" class="cell" data-execution_count="9">
+<div id="b04be097" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Buffer in geographic coordinates - use buffergeo</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>buf_geo <span class="op">=</span> <span class="fu">buffergeo</span>(points, width<span class="op">=</span><span class="st">"10k"</span>)  <span class="co"># 10 km, spherical</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -722,7 +722,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="how-do-i-reproject-data" class="level3">
 <h3 class="anchored" data-anchor-id="how-do-i-reproject-data">How do I reproject data?</h3>
-<div id="d535a76c" class="cell" data-execution_count="10">
+<div id="187ebd5e" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Vector - use mapproject</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>coords_wgs84 <span class="op">=</span> [<span class="op">-</span><span class="fl">8.5</span> <span class="fl">41.2</span>]</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>coords_utm <span class="op">=</span> <span class="fu">mapproject</span>(coords_wgs84, proj<span class="op">=</span><span class="st">"EPSG:32629"</span>)</span>
@@ -773,7 +773,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
-<div id="04af2ba6" class="cell" data-execution_count="11">
+<div id="60657daa" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Determine UTM zone for a location</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">utm_zone</span>(lon, lat)</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    zone <span class="op">=</span> <span class="fu">floor</span>(<span class="dt">Int</span>, (lon <span class="op">+</span> <span class="fl">180</span>) <span class="op">/</span> <span class="fl">6</span>) <span class="op">+</span> <span class="fl">1</span></span>
@@ -789,14 +789,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Common causes:</p>
 <ol type="1">
 <li><p><strong>Swapped coordinates</strong>: Longitude/latitude in wrong order</p>
-<div id="76e3bce7" class="cell" data-execution_count="12">
+<div id="13be223f" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># WRONG (if format expects lon, lat)</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>coords <span class="op">=</span> [<span class="fl">41.2</span> <span class="op">-</span><span class="fl">8.5</span>]  <span class="co"># lat, lon</span></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># CORRECT</span></span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>coords <span class="op">=</span> [<span class="op">-</span><span class="fl">8.5</span> <span class="fl">41.2</span>]  <span class="co"># lon, lat</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div></li>
 <li><p><strong>CRS not defined</strong>: The file has no CRS information</p>
-<div id="dbe1fd15" class="cell" data-execution_count="13">
+<div id="74c14fa8" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set CRS manually</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>data[<span class="fl">1</span>].epsg <span class="op">=</span> <span class="fl">4326</span></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>data[<span class="fl">1</span>].proj4 <span class="op">=</span> <span class="st">"+proj=longlat +datum=WGS84"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -810,7 +810,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="how-do-i-save-my-output-figure" class="level3">
 <h3 class="anchored" data-anchor-id="how-do-i-save-my-output-figure">How do I save my output figure?</h3>
 <p>Use the <code>savefig</code> (or <code>figname</code> or <code>name</code>) option directly in any plotting command to save the figure to a file. The file format is determined by the extension of the filename. If no extension is provided, the <code>fmt</code> option determines the format (default is <code>png</code>).</p>
-<div id="c3250eb9" class="cell" data-execution_count="14">
+<div id="056dcf1f" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Save as PNG (format determined by .png extension)</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">coast</span>(region<span class="op">=:</span><span class="kw">global</span>, proj<span class="op">=:</span>Robinson, land<span class="op">=:</span>gray, savefig<span class="op">=</span><span class="st">"my_map.png"</span>)</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -831,12 +831,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a><span class="fu">coast</span>(region<span class="op">=:</span><span class="kw">global</span>, proj<span class="op">=:</span>Robinson, figname<span class="op">=</span><span class="st">"map.png"</span>)</span>
 <span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a><span class="fu">coast</span>(region<span class="op">=:</span><span class="kw">global</span>, proj<span class="op">=:</span>Robinson, name<span class="op">=</span><span class="st">"map.png"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Supported formats include: PNG, PDF, JPG, EPS, BMP, TIFF, and more. For raster formats (PNG, JPG, TIFF, BMP), the default resolution is 300 DPI, which can be changed with the <code>dpi</code> option.</p>
+<p>Supported formats include: PNG, PDF, JPG, EPS, BMP, TIFF, and more. For raster formats (PNG, JPG, TIFF, BMP), the default resolution is 300 DPI, which can be changed with the <code>dpi</code> option (<em>e.g.</em> <code>dpi=100</code>).</p>
 </section>
 <section id="how-do-i-control-the-size-of-my-figure" class="level3">
 <h3 class="anchored" data-anchor-id="how-do-i-control-the-size-of-my-figure">How do I control the size of my figure?</h3>
 <p>GMT figures are defined in physical units (centimeters by default, or inches), not in pixels. This ensures consistent output for print and publication. The final pixel dimensions of raster images depend on the physical size and the DPI setting.</p>
-<div id="06ad7339" class="cell" data-execution_count="15">
+<div id="2a55d598" class="cell" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set figure width to 15 cm (height is computed from aspect ratio)</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">coast</span>(region<span class="op">=:</span><span class="kw">global</span>, proj<span class="op">=:</span>Robinson, figsize<span class="op">=</span><span class="fl">15</span>, savefig<span class="op">=</span><span class="st">"map.png"</span>)</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -853,7 +853,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="how-do-i-create-a-simple-map" class="level3">
 <h3 class="anchored" data-anchor-id="how-do-i-create-a-simple-map">How do I create a simple map?</h3>
-<div id="6a807217" class="cell" data-execution_count="16">
+<div id="cd0c67be" class="cell" data-execution_count="16">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Basic coastline map</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">coast</span>(region<span class="op">=</span>(<span class="op">-</span><span class="fl">10</span>, <span class="op">-</span><span class="fl">6</span>, <span class="fl">36</span>, <span class="fl">42</span>), proj<span class="op">=:</span>Mercator,</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>      land<span class="op">=:</span>lightgray, water<span class="op">=:</span>lightblue,</span>
@@ -862,7 +862,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="how-do-i-change-map-colors" class="level3">
 <h3 class="anchored" data-anchor-id="how-do-i-change-map-colors">How do I change map colors?</h3>
-<div id="5f94d588" class="cell" data-execution_count="17">
+<div id="406b8362" class="cell" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Named colors</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">coast</span>(land<span class="op">=:</span>green, water<span class="op">=:</span>blue)</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -875,7 +875,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="how-do-i-use-a-custom-color-palette" class="level3">
 <h3 class="anchored" data-anchor-id="how-do-i-use-a-custom-color-palette">How do I use a custom color palette?</h3>
-<div id="77b22c3e" class="cell" data-execution_count="18">
+<div id="a42ff5c5" class="cell" data-execution_count="18">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Built-in palettes</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">viz</span>(dem, cmap<span class="op">=:</span>geo)      <span class="co"># Topography</span></span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">viz</span>(dem, cmap<span class="op">=:</span>turbo)    <span class="co"># Scientific (the default)</span></span>
@@ -894,7 +894,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="how-do-i-add-a-scale-bar" class="level3">
 <h3 class="anchored" data-anchor-id="how-do-i-add-a-scale-bar">How do I add a scale bar?</h3>
-<div id="a69abc86" class="cell" data-execution_count="19">
+<div id="fcfd277d" class="cell" data-execution_count="19">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">coast</span>(region<span class="op">=</span>(<span class="op">-</span><span class="fl">10</span>, <span class="op">-</span><span class="fl">6</span>, <span class="fl">36</span>, <span class="fl">42</span>), proj<span class="op">=:</span>Mercator, land<span class="op">=:</span>lightgray)</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Add scale bar</span></span>
@@ -904,7 +904,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="how-do-i-add-a-north-arrow" class="level3">
 <h3 class="anchored" data-anchor-id="how-do-i-add-a-north-arrow">How do I add a north arrow?</h3>
-<div id="9b0a0760" class="cell" data-execution_count="20">
+<div id="a48057d2" class="cell" data-execution_count="20">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">coast</span>(region<span class="op">=</span>(<span class="op">-</span><span class="fl">10</span>, <span class="op">-</span><span class="fl">6</span>, <span class="fl">36</span>, <span class="fl">42</span>), proj<span class="op">=:</span>Mercator, land<span class="op">=:</span>lightgray)</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Compass rose</span></span>
@@ -916,7 +916,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="how-do-i-add-a-legend-colorbar" class="level3">
 <h3 class="anchored" data-anchor-id="how-do-i-add-a-legend-colorbar">How do I add a legend (colorbar)?</h3>
-<div id="0c2a2711" class="cell" data-execution_count="21">
+<div id="fa90c3b3" class="cell" data-execution_count="21">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">viz</span>(dem, cmap<span class="op">=:</span>geo, show<span class="op">=</span><span class="cn">false</span>)</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Horizontal colorbar at bottom</span></span>
@@ -933,7 +933,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Common causes:</p>
 <ol type="1">
 <li><p><strong>Inappropriate projection</strong>: Using Mercator for global maps distorts areas</p>
-<div id="2e19f38b" class="cell" data-execution_count="22">
+<div id="faac691a" class="cell" data-execution_count="22">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># DISTORTED for global map</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">coast</span>(region<span class="op">=:</span><span class="kw">global</span>, proj<span class="op">=:</span>Mercator)</span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -941,7 +941,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="fu">coast</span>(region<span class="op">=:</span><span class="kw">global</span>, proj<span class="op">=:</span>Robinson)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div></li>
 <li><p><strong>Badly defined region</strong>: Check that bounds are correct</p>
-<div id="240511e7" class="cell" data-execution_count="23">
+<div id="a1d38df2" class="cell" data-execution_count="23">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Format: (xmin, xmax, ymin, ymax)</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">coast</span>(region<span class="op">=</span>(<span class="op">-</span><span class="fl">10</span>, <span class="op">-</span><span class="fl">6</span>, <span class="fl">36</span>, <span class="fl">42</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div></li>
@@ -953,7 +953,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="faq-spatial">Spatial Operations</h2>
 <section id="how-do-i-create-a-buffer" class="level3">
 <h3 class="anchored" data-anchor-id="how-do-i-create-a-buffer">How do I create a buffer?</h3>
-<div id="14d15113" class="cell" data-execution_count="24">
+<div id="3bcd9e33" class="cell" data-execution_count="24">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Buffer in projected coordinates (meters)</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>buffered <span class="op">=</span> <span class="fu">buffer</span>(points, width<span class="op">=</span><span class="fl">1000</span>)  <span class="co"># 1000 meters</span></span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -964,7 +964,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="how-do-i-clip-a-raster-by-a-polygon" class="level3">
 <h3 class="anchored" data-anchor-id="how-do-i-clip-a-raster-by-a-polygon">How do I clip a raster by a polygon?</h3>
-<div id="2e531c0c" class="cell" data-execution_count="25">
+<div id="d905a42d" class="cell" data-execution_count="25">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Get polygon region</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>poly <span class="op">=</span> <span class="fu">gmtread</span>(<span class="st">"study_area.gpkg"</span>)</span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>region <span class="op">=</span> <span class="fu">getregion</span>(poly)</span>
@@ -979,7 +979,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="how-do-i-calculate-polygon-area" class="level3">
 <h3 class="anchored" data-anchor-id="how-do-i-calculate-polygon-area">How do I calculate polygon area?</h3>
-<div id="5397e97e" class="cell" data-execution_count="26">
+<div id="b16c7e31" class="cell" data-execution_count="26">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Using gmtspatial</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>area_info <span class="op">=</span> <span class="fu">gmtspatial</span>(polygon, operation<span class="op">=</span><span class="st">"area"</span>)</span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -990,13 +990,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="how-do-i-find-the-centroid" class="level3">
 <h3 class="anchored" data-anchor-id="how-do-i-find-the-centroid">How do I find the centroid?</h3>
-<div id="76db9f1e" class="cell" data-execution_count="27">
+<div id="02617efe" class="cell" data-execution_count="27">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>centroid <span class="op">=</span> <span class="fu">gmtspatial</span>(polygon, operation<span class="op">=</span><span class="st">"centroid"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="how-do-i-perform-a-spatial-intersection" class="level3">
 <h3 class="anchored" data-anchor-id="how-do-i-perform-a-spatial-intersection">How do I perform a spatial intersection?</h3>
-<div id="1cc60ba4" class="cell" data-execution_count="28">
+<div id="8cfbacaa" class="cell" data-execution_count="28">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select points inside a polygon</span></span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>points_inside <span class="op">=</span> <span class="fu">gmtselect</span>(points, polygon<span class="op">=</span>boundary)</span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1006,7 +1006,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="how-do-i-calculate-distances" class="level3">
 <h3 class="anchored" data-anchor-id="how-do-i-calculate-distances">How do I calculate distances?</h3>
-<div id="ab3a154e" class="cell" data-execution_count="29">
+<div id="4f7dd20d" class="cell" data-execution_count="29">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Geodesic distance between two points</span></span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>dist <span class="op">=</span> <span class="fu">mapproject</span>([<span class="op">-</span><span class="fl">8.5</span> <span class="fl">41.2</span>], origin<span class="op">=</span>[<span class="op">-</span><span class="fl">9.1</span> <span class="fl">38.7</span>], dist<span class="op">=</span><span class="cn">true</span>)</span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1016,7 +1016,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="how-do-i-extract-raster-values-at-points" class="level3">
 <h3 class="anchored" data-anchor-id="how-do-i-extract-raster-values-at-points">How do I extract raster values at points?</h3>
-<div id="01c90563" class="cell" data-execution_count="30">
+<div id="4e65ecd3" class="cell" data-execution_count="30">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># grdtrack extracts raster values at point locations</span></span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>values <span class="op">=</span> <span class="fu">grdtrack</span>(dem, points)</span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Result includes original coordinates + extracted value</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1028,7 +1028,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="why-is-gmt.jl-slow-on-first-run" class="level3">
 <h3 class="anchored" data-anchor-id="why-is-gmt.jl-slow-on-first-run">Why is GMT.jl slow on first run?</h3>
 <p>Julia uses Just-In-Time (JIT) compilation. The first call to each function compiles the code, which takes time. Subsequent runs are much faster.</p>
-<div id="127d0758" class="cell" data-execution_count="31">
+<div id="450f8a39" class="cell" data-execution_count="31">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># First run - slow (compilation)</span></span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@time</span> <span class="fu">coast</span>(region<span class="op">=:</span><span class="kw">global</span>, proj<span class="op">=:</span>Robinson)</span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1039,7 +1039,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="how-do-i-process-large-raster-files" class="level3">
 <h3 class="anchored" data-anchor-id="how-do-i-process-large-raster-files">How do I process large raster files?</h3>
-<div id="9f6ea5dc" class="cell" data-execution_count="32">
+<div id="fb9d1a37" class="cell" data-execution_count="32">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Read only the needed region</span></span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>subset <span class="op">=</span> <span class="fu">gmtread</span>(<span class="st">"huge_file.tif"</span>, region<span class="op">=</span>(<span class="op">-</span><span class="fl">10</span>, <span class="op">-</span><span class="fl">5</span>, <span class="fl">35</span>, <span class="fl">40</span>))</span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1058,7 +1058,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="how-do-i-use-multiple-cpus" class="level3">
 <h3 class="anchored" data-anchor-id="how-do-i-use-multiple-cpus">How do I use multiple CPUs?</h3>
 <p>GMT has internal parallelization for some operations. For parallel processing in Julia:</p>
-<div id="623627ac" class="cell" data-execution_count="33">
+<div id="d08bb863" class="cell" data-execution_count="33">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Base.Threads</span></span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Process multiple files in parallel</span></span>
@@ -1116,7 +1116,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="no-such-file-or-directory" class="level3">
 <h3 class="anchored" data-anchor-id="no-such-file-or-directory">“No such file or directory”</h3>
 <p>The file doesn’t exist at the specified path.</p>
-<div id="c13a8422" class="cell" data-execution_count="34">
+<div id="5229cb6b" class="cell" data-execution_count="34">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check if file exists</span></span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">isfile</span>(<span class="st">"my_file.gpkg"</span>)</span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1131,7 +1131,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="unknown-or-unsupported-format" class="level3">
 <h3 class="anchored" data-anchor-id="unknown-or-unsupported-format">“Unknown or unsupported format”</h3>
 <p>GDAL doesn’t recognize the format.</p>
-<div id="e5992974" class="cell" data-execution_count="35">
+<div id="274cb5f7" class="cell" data-execution_count="35">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check file extension</span></span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Check if file is not corrupted</span></span>
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Try opening with gdalinfo:</span></span>
@@ -1141,7 +1141,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="crs-mismatch-or-unexpected-results" class="level3">
 <h3 class="anchored" data-anchor-id="crs-mismatch-or-unexpected-results">“CRS mismatch” or unexpected results</h3>
 <p>The data are in different coordinate systems.</p>
-<div id="fba87160" class="cell" data-execution_count="36">
+<div id="a15c22cd" class="cell" data-execution_count="36">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check CRS of all datasets</span></span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(data1[<span class="fl">1</span>].epsg)</span>
 <span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(data2[<span class="fl">1</span>].epsg)</span>
@@ -1153,7 +1153,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="index-out-of-bounds" class="level3">
 <h3 class="anchored" data-anchor-id="index-out-of-bounds">“Index out of bounds”</h3>
 <p>Accessing indices that don’t exist in the array.</p>
-<div id="ff6ad704" class="cell" data-execution_count="37">
+<div id="40f8df88" class="cell" data-execution_count="37">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check dimensions</span></span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="fu">size</span>(data.z)</span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1165,7 +1165,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="nan-values-throughout-result" class="level3">
 <h3 class="anchored" data-anchor-id="nan-values-throughout-result">NaN values throughout result</h3>
 <p>Possible causes: - Non-overlapping regions - Incorrectly applied mask - Invalid mathematical operation (division by zero)</p>
-<div id="a9865db5" class="cell" data-execution_count="38">
+<div id="93eef2dc" class="cell" data-execution_count="38">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check if there are valid values</span></span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="fu">any</span>(!isnan, result.z)</span>
 <span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1181,7 +1181,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="when-to-use-gmt.jl-vs-archgdal.jl">When to use GMT.jl vs ArchGDAL.jl?</h3>
 <p><strong>GMT.jl:</strong> - Complete geospatial processing - High-quality cartography - Grid operations (filters, masks, projections) - Integrated analysis</p>
 <p><strong>ArchGDAL.jl:</strong> - More direct GDAL interface - Greater control over drivers and options - Better for specific I/O operations</p>
-<div id="3f85e7ac" class="cell" data-execution_count="39">
+<div id="54e30880" class="cell" data-execution_count="39">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># GMT.jl - simple and integrated</span></span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>dem <span class="op">=</span> <span class="fu">gmtread</span>(<span class="st">"dem.tif"</span>)</span>
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="fu">grdimage</span>(dem, cmap<span class="op">=:</span>geo)</span>

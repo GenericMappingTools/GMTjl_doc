@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>subplot</title>
+<title>montage</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -449,13 +449,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#required-arguments" id="toc-required-arguments" class="nav-link active" data-scroll-target="#required-arguments">Required Arguments</a></li>
-  <li><a href="#optional-arguments" id="toc-optional-arguments" class="nav-link" data-scroll-target="#optional-arguments">Optional Arguments</a></li>
-  <li><a href="#synopsis-set-mode" id="toc-synopsis-set-mode" class="nav-link" data-scroll-target="#synopsis-set-mode">Synopsis (set mode)</a></li>
-  <li><a href="#optional-arguments-1" id="toc-optional-arguments-1" class="nav-link" data-scroll-target="#optional-arguments-1">Optional Arguments</a></li>
-  <li><a href="#synopsis-end-mode" id="toc-synopsis-end-mode" class="nav-link" data-scroll-target="#synopsis-end-mode">Synopsis (end mode)</a></li>
+  <li><a href="#parameters" id="toc-parameters" class="nav-link active" data-scroll-target="#parameters">Parameters</a></li>
   <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
-  <li><a href="#restriction" id="toc-restriction" class="nav-link" data-scroll-target="#restriction">Restriction</a></li>
   <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
   <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
   </ul>
@@ -466,7 +461,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">subplot</h1>
+<h1 class="title">montage</h1>
 </div>
 
 
@@ -483,210 +478,98 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">subplot</span>(fim<span class="op">=</span><span class="cn">nothing</span>; stop<span class="op">=</span><span class="cn">false</span>, kwargs<span class="op">...</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><strong>subplot</strong> module is used to split the current figure into a rectangular layout of subplots that each may contain a single self-contained figure. A subplot setup is started with the <strong>subplot</strong> directive that defines the layout of the subplots, while positioning to a particular subplot for plotting is done via the <strong>subplot(:set, …)</strong> directive. The subplot process is completed via the <strong>subplot(:end)</strong> or <strong>subplot(:show)</strong> directives.</p>
-<p><strong>subplot</strong> : – <em>subplot=(:set, :end, show; grid=…, dims=…, panels_size=…, autolabel=…, clearance=…, axes=…, proj=…, margins=…, region=…, layout, title=…, figname=…, name=…, savefig=…, fmt=…)</em></p>
-<section id="required-arguments" class="level2">
-<h2 class="anchored" data-anchor-id="required-arguments">Required Arguments</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">montage</span>(images; grid<span class="op">=</span><span class="cn">nothing</span>, panels_size<span class="op">=</span><span class="cn">nothing</span>, margin<span class="op">=</span><span class="st">"0.0"</span>, title<span class="op">=</span><span class="cn">nothing</span>,</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>        titles<span class="op">=</span><span class="cn">nothing</span>, indices<span class="op">=</span><span class="cn">nothing</span>, show<span class="op">=</span><span class="cn">true</span>, noR<span class="op">=</span><span class="cn">false</span>, kw<span class="op">...</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Display multiple images or grids arranged in a grid layout using GMT’s subplot machinery. Panel sizes are automatically computed from the aspect ratios of the input images (via <code>subplot_panel_sizes</code>) unless <em>panels_size</em> is given explicitly.</p>
+<hr>
+<p>This function also has a second method for vector polygon data (choropleth montage):</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">montage</span>(D<span class="op">::</span><span class="dt">Vector{&lt;:GMTdataset}</span>; grid<span class="op">=</span><span class="cn">nothing</span>, panels_size<span class="op">=</span><span class="cn">nothing</span>, margins<span class="op">=</span><span class="cn">nothing</span>,</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>        choro<span class="op">=</span><span class="cn">true</span>, colorbar<span class="op">=</span><span class="cn">false</span>, attribs<span class="op">=</span><span class="dt">String</span>[], title<span class="op">=</span><span class="st">""</span>, titles<span class="op">=</span><span class="dt">String</span>[],</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>        divlines<span class="op">=</span><span class="cn">nothing</span>, show<span class="op">=</span><span class="cn">true</span>, kw<span class="op">...</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Display a multi-panel choropleth from vector polygon data. Each panel maps one numeric attribute of <em>D</em> (obtained via <code>getattribs</code>). Panels are laid out in a subplot grid, each drawn with <a href="../..\documentation/modules/choropleth.html">choropleth</a>.</p>
+<section id="parameters" class="level2">
+<h2 class="anchored" data-anchor-id="parameters">Parameters</h2>
 <ul>
-<li><p><strong>grid</strong> : <em>grid=“nrows x ncols”</em> <strong>|</strong> <em>grid=(nrows, ncols)</em><br>
-Specifies the number of rows and columns of subplots. Each row will have the same number of subplots. <strong>Note1</strong>: Use NO spaces with the first form. <em>i.e.</em> <strong>grid=“2x2”</strong> and <strong>NOT</strong> <em>grid=” 2 x 2”</em><br>
-<strong>Note2</strong>: You are not required to place a plot in each subplot.</p></li>
-<li><p><strong>F</strong> or <strong>dims</strong> or <strong>dimensions</strong> or <strong>size</strong> or <strong>sizes</strong> : – <em>dims=(panels=(w,h), figsize=(w,h), frac=(), clearance=(dx,dy), outline=pen, fill=color, divlines=pen)</em><br>
-Specify the dimensions of the figure. There are two different ways to do this:</p>
-<ol type="1">
-<li>With the keyword <strong>figsize</strong> Specify overall figure dimensions<br>
-</li>
-<li>With the keyword <strong>panels</strong> specify the dimensions of a single subplot.</li>
-</ol>
-<p>For grids up to 3x3 and 2x1 and 3x1, if neither <strong>figsize</strong> or <strong>panels</strong> are specified, an estimation of the <em>panels</em> size plus <strong>margins</strong> will be provided. This may suite many use cases but with a probable need to specify better margins.</p>
-<p><strong>figsize</strong><br>
-Specify the final figure dimensions. The subplot dimensions are then calculated from the figure dimensions after accounting for the space that optional tick marks, annotations, labels, and margins occupy between subplots. As for other figures, annotations, ticks, and labels along the outside perimeter are not counted as part of the figure dimensions. To specify different subplot dimensions for each row (or column), append <strong>frac</strong> with value given as a tuple of <em>width</em> and <em>height</em> fractions. For example <strong>dims=(size=(10,10), frac=((3,1),(1,2)))</strong> will make a 10x10 cm fig with the first column three times as wide as the second, while the second row will be twice as tall as the first row. A single number means constant widths (or heights) [Default]. If prefered, instead of <em>size</em> and/or <em>frac</em> as tuples, the <strong>width=x, height=y, fwidth=(…), fheight=(…)</strong> form is also allowed.</p>
-<p><strong>panels</strong><br>
-Specify the dimensions of each subplot directly. Then, the figure dimensions are computed from the subplot dimensions after adding the space that optional tick marks, annotations, labels, and margins occupy between subplots. As for other figures, annotations, ticks, and labels along the outside perimeter are not counted as part of the figure dimensions. To specify different subplot dimensions for each row (or column), append a comma-separated list of widths, a slash, and then the comma-separated list of heights. A single number means constant widths (or heights) [Default]. For example <strong>dims=(panels=((5,8),8),)</strong> will make the first column 5 cm wide and the second column 8 cm wide, with all having a constant height of 8 cm. The number of values must either be one (constant across the rows or columns) or exactly match the number of rows (or columns). For geographic maps, the height of each subplot depends on your map region and projection. There are two options:</p>
-<ol type="1">
-<li><p>Specify both <strong>limits</strong> and <strong>projection</strong> and we use these to compute the height of each subplot. All subplots must share the same region and projection and you specify a zero <em>height</em>, or</p></li>
-<li><p>you can select <em>height</em> based on trial and error to suit your plot layout.</p></li>
-</ol>
-<p>Optionally, you may draw the outline (<strong>outline=pen</strong>) or paint (<strong>fill=color</strong>) the figure rectangle behind the subplots, add dividing lines between panels (<strong>divlines=pen</strong>), and even expand it via <strong>clearance=(dx,dy)</strong>. These are most useful if you supply <strong>axes=:none</strong>, meaning no ticks or annotations will take place in the subplots. See [Setting color] and [Pen attributes] for extend color and pen selections.</p>
-<p>But when we only want to set panels with a constant size one can use the simpler form <strong>subplot(grid=…, panels_size=8, …)</strong>, <em>i.e.</em> without using the <strong>dims=(panels=())</strong> form. <em>panels_size</em>, <em>panel_size</em> and <em>panel_sizes</em> are all aliases.</p></li>
-</ul>
-</section>
-<section id="optional-arguments" class="level2">
-<h2 class="anchored" data-anchor-id="optional-arguments">Optional Arguments</h2>
-<ul>
-<li><p><strong>A</strong> or <strong>autolabel</strong> : – autolabel=<em>(Anchor=tag, anchor=tag, label=““, clearance=(dx,dy), fill=color, pen=pen, offset=, roman=Bool, Roman=Bool, vertical=Bool)</em><br>
-Specify automatic tagging of each subplot. Use <strong>label=</strong> either a number or letter (as a string) [Default “a”]. This sets the tag of the first, top-left subplot and others follow sequentially. Surround the number or letter by parentheses on any side if these should be typeset as part of the tag. Use <strong>anchor</strong> or <strong>Anchor</strong> <strong>=refpoint</strong> to specify where the tag should be placed in the subplot [TL, meaning TopLeft]. <strong>Note</strong>: <strong>anchor</strong> sets the justification of the tag to <em>refpoint</em> (suitable for interior tags) while <strong>Anchor</strong> instead selects the mirror opposite (suitable for exterior tags).</p>
-<ul>
-<li>Append <strong>clearance=dx</strong> or <strong>clearance=(dx,dy)</strong> to set the clearance between the tag and a surrounding text box requested via <strong>fill</strong> or <strong>pen</strong> [3p/3p, i.e., 15% of the <a href="https://docs.generic-mapping-tools.org/latest/gmt.conf.html#term-FONT_TAG">FONT_TAG</a> size dimension].</li>
-<li>Append <strong>fill=color</strong> to paint the tag’s text box with <em>color</em> [no painting].</li>
-<li>Append <strong>offset=dx</strong> or <strong>offset=(dx,dy)</strong> to offset the tag’s reference point in the direction implied by the justification [4p/4p, i.e., 20% of the <a href="https://docs.generic-mapping-tools.org/latest/gmt.conf.html#term-FONT_TAG">FONT_TAG</a> size].</li>
-<li>Append <strong>pen=pen</strong> to draw the outline of the tag’s text box using selected <em>pen</em> [no outline].</li>
-<li>Append <strong>roman=true</strong> to typeset your tag numbers using lowercase Roman numerals.</li>
-<li>Append <strong>Roman=true</strong> for uppercase Roman numerals [Arabic numerals].</li>
-<li>Append <strong>vertical=true</strong> to increase tag numbers vertically down columns [horizontally across rows].</li>
-</ul></li>
-<li><p><strong>B</strong> or <strong>axes</strong> or <strong>frame</strong><br>
-Set map boundary frame and axes attributes. Default is to draw and annotate left, bottom and vertical axes and just draw left and top axes. More at <a href="../../documentation/common_opts/common_opts.html#frame">frame</a></p></li>
-<li><p><strong>C</strong> or <strong>clearance</strong> : – <em>clearance=val</em> <strong>|</strong> <em>clearance=(left=val, right=val, bott=val, bottom=val, top=val))</em><br>
-Reserve a space of dimension <em>val</em> between the margin and the subplot on the specified side, using <em>side</em> values from <strong>left=val</strong>, <strong>right=val</strong>, <strong>bottom=val</strong>, or <strong>top=val</strong>. No <em>side</em> means all sides. Can specify more than one side. Such space will be left untouched by the main map plotting but can be accessed by modules that plot scales, bars, text, etc. Settings specified under <strong>begin</strong> directive apply to all subplots, while settings under <strong>set</strong> only apply to the selected (active) subplot. <strong>Note</strong>: Common options <strong>xshift</strong> and <strong>yshift</strong> are not available during subplots; use <strong>clearance</strong> instead.</p></li>
-<li><p><strong>D</strong> or <strong>noframes</strong> : – <em>noframes=true|false</em><br>
-Use the prevailing defaults settings (via <code>par=(...)</code>) and the selections made via <strong>frame</strong>, <strong>clearance</strong>, <strong>margins</strong> and <strong>S</strong> to determine the panel sizes (if using <strong>dims</strong>_figsize_) and panel spacings only, but do not draw and annotate any frames. This option is useful if you wish to lay down a partial subplot with annotations and frames, but then want to plot data inside it separately later without redrawing the frames. With different <strong>frame</strong>, <strong>clearance</strong>, <strong>margins</strong> and <strong>S</strong> choices the two subplots may not align, but with <strong>noframes</strong> they will. Note: It is assumed that <strong>noframes</strong> stays the same [Draw and annotate frames as indicated].</p></li>
+<li><p><strong>images</strong> : The input data. A Vector of <a href="../..\documentation/general/types.html#sec-image-type">GMTimage</a> or <a href="../..\documentation/general/types.html#sec-grid-type">GMTgrid</a> objects, or a vector of file name strings.</p></li>
+<li><p><strong>D</strong> : A Vector of <a href="../..\documentation/general/types.html#sec-dataset-type">GMTdataset</a> polygons with numeric attributes stored in each segment’s <code>attrib</code> dictionary. Used by the choropleth method.</p></li>
+<li><p><strong>grid</strong> : – <em>grid=(nrows, ncols)</em><br>
+Tuple specifying the grid dimensions. If not provided, the grid is approximately square based on the number of input images or attributes.</p></li>
+<li><p><strong>panels_size</strong> : – <em>panels_size=value</em> <strong>|</strong> <em>panels_size=(w, h)</em> <strong>|</strong> <em>panels_size=“w1,w2,…/h1,h2,…”</em><br>
+Panel size in cm. Can be a scalar for square panels, a tuple <code>(w, h)</code>, or a pre-formatted string with per-column widths and per-row heights separated by <code>/</code>. Default: automatically computed from the aspect ratios of the input images.</p></li>
+<li><p><strong>margins</strong> : – <em>margins=??</em><br>
+This is margin space that is added <em>between</em> neighboring subplots (i.e., the interior margins) <em>in addition</em> to the automatic space added for tick marks, annotations, and labels. The margins can be specified as a single value (for same margin on all sides), a pair of values separated by slashes (or in a tuple) (for setting separate horizontal and vertical margins), or the full set of four slash-separated margins (for setting separate left, right, bottom, and top margins). The actual gap created is always a sum of the margins for the two opposing sides (e.g., east plus west or south plus north margins) [Default is half the primary annotation font size, giving the full annotation font size as the default gap].</p></li>
 <li><p><strong>J</strong> or <strong>proj</strong> or <strong>projection</strong> : – <em>proj=<parameters></parameters></em><br>
 Select map projection. More at <a href="../../documentation/common_opts/common_opts.html#proj">proj</a></p></li>
-<li><p><strong>M</strong> or <strong>margins</strong> : – <em>margins=val</em><br>
-This is margin space that is added <em>between</em> neighboring subplots (i.e., the interior margins) <em>in addition</em> to the automatic space added for tick marks, annotations, and labels. The margins can be specified as a single value (for same margin on all sides), a pair of values separated by slashes (or in a tuple) (for setting separate horizontal and vertical margins), or the full set of four slash-separated margins (for setting separate left, right, bottom, and top margins). The actual gap created is always a sum of the margins for the two opposing sides (e.g., east plus west or south plus north margins) [Default is half the primary annotation font size, giving the full annotation font size as the default gap].</p></li>
 <li><p><strong>R</strong> or <strong>region</strong> or <strong>limits</strong> : – <em>limits=(xmin, xmax, ymin, ymax)</em> <strong>|</strong> <em>limits=(BB=(xmin, xmax, ymin, ymax),)</em> <strong>|</strong> <em>limits=(LLUR=(xmin, xmax, ymin, ymax),units=“unit”)</em> <strong>|</strong> …more<br>
 Specify the region of interest. More at <a href="../../documentation/common_opts/common_opts.html#limits">limits</a>. For perspective view <strong>view</strong>, optionally add <em>zmin,zmax</em>. This option may be used to indicate the range used for the 3-D axes. You may ask for a larger w/e/s/n region to have more room between the image and the axes.</p></li>
-<li><p><strong>SC</strong> or <strong>col_axes</strong> or <strong>colaxes</strong> or <strong>sharex</strong> : – <em>col_axes=(top=““, bott=”“, bottom=”“, label=”“, grid=pen)</em><br>
-</p></li>
-<li><p><strong>SR</strong> or <strong>row_axes</strong> or <strong>rowaxes</strong> or <strong>sharey</strong> : – <em>row_axes=(left=““, right=”“, label=”“, parallel=”“, row_title=”t”, top_row_title=““, grid=pen)</em><br>
-Set subplot layout for shared axes. May be set separately for rows (<strong>row_axes</strong>) and columns (<strong>col_axes</strong>).<br>
-Considerations for <strong>col_axes</strong>:<br>
-Use when all subplots in a column share a common <em>x</em>-range. The first (i.e., <strong>top</strong>) and the last (i.e., <strong>bottom</strong>) rows will have <em>x</em> annotations; append <strong>top=““</strong> or <strong>bott=““</strong> to select only one of those two rows [both].</p>
-<ul>
-<li>Add <strong>label=““</strong> if annotated <em>x</em>-axes should have a label [none]; optionally append the label if it is the same for the entire subplot. Labels and titles that depends on which row or column are specified as usual via a subplot’s own <strong>axes</strong> setting.<br>
-Considerations for <strong>row_axes</strong>:<br>
-Use when all subplots in a row share a common <em>y</em>-range. The first (i.e., <strong>left</strong>) and the last (i.e., <strong>right</strong>) columns will have <em>y</em>-annotations; append <strong>left=““</strong> or <strong>right=““</strong> to select only one of those two columns [both].</li>
-<li>Add <strong>left=““</strong> if annotated <em>y</em>-axes will have a label [none]; optionally, append the label if it is the same for the entire subplot.</li>
-<li>Add <strong>row_title</strong> to make space for subplot titles for each row; use <strong>top_row_title</strong> for top row titles only [no subplot titles].</li>
-<li>Add <strong>parallel=““</strong> to make all annotations axis-parallel [horizontal]; if not used you may have to set <strong>clearance</strong> to secure extra space for long horizontal annotations.</li>
-<li>Add <strong>grid=pen</strong> to draw horizontal and vertical lines between interior panels using selected pen [no lines].</li>
-</ul></li>
-<li><p><strong>T</strong> or <strong>title</strong> : – <em>title=“Heading”</em><br>
-While individual subplots can have titles (see <strong>S</strong> or <strong>axes</strong>), the entire figure may also have a overarching <em>heading</em> [no heading]. Font is determined by setting <a href="https://docs.generic-mapping-tools.org/latest/gmt.conf.html#term-FONT_HEADING">FONT_HEADING</a>.</p></li>
-</ul>
-</section>
-<section id="synopsis-set-mode" class="level2">
-<h2 class="anchored" data-anchor-id="synopsis-set-mode">Synopsis (set mode)</h2>
-<ul>
-<li><strong>subplot(:set, panel=…, fixedlabel=“Label”, clearance=…)</strong><br>
-</li>
-</ul>
-<p>Before you start plotting you must first select the active subplot. <strong>Note</strong>: If any <strong>figsize</strong> or <strong>figscale</strong> option is passed with <strong>auto</strong> as width or scale when plotting subplots, then the dimensions of the map are automatically determined by the subplot size and your region. For Cartesian plots: If you want the scale to apply <em>equally</em> to both dimensions then you must specify <strong>proj=:linear, figscale=“auto”</strong> [The default <strong>figsize=“auto”</strong> will fill the subplot by using unequal scales].</p>
-</section>
-<section id="optional-arguments-1" class="level2">
-<h2 class="anchored" data-anchor-id="optional-arguments-1">Optional Arguments</h2>
-<ul>
-<li><p><strong>panel=(row,col)</strong><br>
-Sets the current subplot until further notice. <strong>Note</strong>: First <em>row</em> or <em>col</em> is 1 not 0 like in plain GMT. If not given we go to the next subplot by order specified via <strong>autolabel=(vertical=true,)</strong>. As an alternative, you may bypass the <strong>set</strong> mode and instead supply the common option <strong>panel=(row,col)</strong> to the first plot command you issue in that subplot. GMT maintains information about the current figure and subplot. Also, you may give the one-dimensional <em>index</em> instead which starts at 1 and follows the row or column order set via <strong>autolabel=(vertical=true,)</strong>. <strong>panel=“next”</strong> or <strong>panel=““</strong> are alternative <em>index</em> syntaxes</p></li>
-<li><p><strong>A</strong> or <strong>fixedlabel</strong> : – <em>fixedlabel=“Label”</em><br>
-Overrides the automatic labeling with the given string. No modifiers are allowed. Placement, justification, etc. are all inherited from how <strong>autolablel</strong> was specified.</p></li>
-<li><p><strong>C</strong> or <strong>clearance</strong> : – <em>clearance=(left=val, right=val, bott=val, bottom=val, top=val))</em><br>
-Reserve a space of dimension <em>clearance</em> between the margin and the subplot on the specified side. This setting has the same syntax and overrides the common clearances set by <strong>clearance</strong> outside the <strong>subplot(:set, …)</strong> command.</p></li>
-</ul>
-<p>Any number of plotting command can now take place and all output will be directed to the selected subplot. There are a few other rules that need to be followed:<br>
-1. The subplot machinery expects the first plotting command in a new subplot window to take care of plotting the base frame. The particulars of this frame may have been specified by the <strong>row|col_axes</strong> option. In either case, should you need to set or override frame and axes parameters then you must specify these <strong>axes</strong> options with this first plot command. 2. The subplot machinery automatically uses the <strong>xshift</strong> and <strong>yshift</strong> options under the hood so these options are not available while a subplot is active.</p>
-</section>
-<section id="synopsis-end-mode" class="level2">
-<h2 class="anchored" data-anchor-id="synopsis-end-mode">Synopsis (end mode)</h2>
-<ul>
-<li><strong>subplot(:end)</strong> or <strong>subplot(:show)</strong><br>
-</li>
-</ul>
-<p>This command finalizes the current subplot, including any placement of tags, and updates the gmt.history to reflect the dimensions and linear projection required to draw the entire figure outline. This allows subsequent commands, such as colorbar, to use <strong>pos=…</strong> to place bars with reference to the complete figure dimensions. We also reset the current plot location to where it was prior to the subplot. The keyword <strong>:end</strong> just finishes the plot silently whislst with <strong>:show</strong> the plot is displayed automatically.</p>
-<ul>
-<li><p><strong>V</strong> or <em>verbose</em> : – <em>verbose=true</em> <strong>|</strong> <em>verbose=level</em><br>
-Select verbosity level. More at <a href="../../documentation/common_opts/common_opts.html#verbose">verbose</a></p></li>
-<li><p><strong>X</strong> or <strong>xshift</strong> or <strong>x_offset</strong> : <em>xshift=true</em> <strong>|</strong> <em>xshift=x-shift</em> <strong>|</strong> <em>xshift=(shift=x-shift, mov=“a|c|f|r”)</em><br>
-Shift plot origin. More at <a href="../../documentation/common_opts/common_opts.html#xshift">xshift</a></p></li>
-<li><p><strong>Y</strong> or <strong>yshift</strong> or <strong>y_offset</strong> : <em>yshift=true</em> <strong>|</strong> <em>yshift=y-shift</em> <strong>|</strong> <em>yshift=(shift=y-shift, mov=“a|c|f|r”)</em><br>
-Shift plot origin. More at <a href="../../documentation/common_opts/common_opts.html#yshift">yshift</a></p></li>
+<li><p><strong>attribs</strong>: Vector of attribute names. Make plots only for these attributes. Default: all attributes.</p></li>
+<li><p><strong>title</strong> : – <em>title=str</em><br>
+Overall figure title string displayed above the grid.</p></li>
+<li><p><strong>titles</strong> : – <em>titles=[“A”, “B”, …]</em><br>
+Vector of strings with individual panel titles. In the choropleth method, pass <code>"att"</code> to use the attribute names as panel titles.</p></li>
+<li><p><strong>frame</strong> : – <em>frame=str</em><br>
+Frame style for panels. Use <code>"0"</code> for an invisible frame outline, or a pen specification string. Default: no frame.</p></li>
+<li><p><strong>indices</strong> : – <em>indices=[1, 3, 5]</em><br>
+Vector of integer indices to select a subset of <em>images</em> to display.</p></li>
+<li><p><strong>choro</strong> : – <em>choro=true</em><br>
+If <code>true</code> (default), use choropleth mode — one panel per numeric attribute. Only applies to the <code>Vector{&lt;:GMTdataset}</code> method.</p></li>
+<li><p><strong>colorbar</strong> : – <em>colorbar=true</em> <strong>|</strong> <em>colorbar=:bot</em> <strong>|</strong> <em>colorbar=“JBC+o0/5p”</em><br>
+Colorbar placement. <code>false</code> means no colorbar; <code>true</code> places it on the right side; <code>:bot</code> places it at the bottom; or provide a GMT colorbar position string. Default: <code>true</code> when <code>choro=true</code>.</p></li>
+<li><p><strong>divlines</strong>: Add dividing lines between panels. <em>i.e.</em> <code>divlines=pen</code>, where <code>pen</code> is a pen spefification.</p></li>
+<li><p><strong>figname</strong> or <strong>savefig</strong> or <strong>name</strong> : – <em>figname=<code>name.png</code></em><br>
+Save the figure with the <code>figname=name.ext</code> where <code>ext</code> chooses the figure image format.</p></li>
+<li><p><code>kw</code>: Any additional keyword arguments are passed to <a href="../..\documentation/modules/choropleth.html">choropleth</a>.</p></li>
 </ul>
 </section>
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
-<p>To make a minimalistic 3x3 basemap layout, try::</p>
-<div id="8e042164" class="cell" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">subplot</span>(grid<span class="op">=</span><span class="st">"3x3"</span>, panels_size<span class="op">=</span>(<span class="fl">5</span>,<span class="fl">7</span>), region<span class="op">=</span>(<span class="fl">0</span>, <span class="fl">100</span>, <span class="fl">0</span>, <span class="fl">80</span>), frame<span class="op">=:</span>WSen, autolabel<span class="op">=</span><span class="fl">1</span>, margins<span class="op">=</span><span class="st">"6p"</span>)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">basemap</span>(panel<span class="op">=</span><span class="fl">1</span>)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">basemap</span>(panel<span class="op">=</span><span class="fl">2</span>, proj<span class="op">=:</span>linear)      <span class="co"># Same as above</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">basemap</span>(panel<span class="op">=</span><span class="st">"next"</span>, proj<span class="op">=:</span>linear, figsize<span class="op">=</span><span class="st">"auto,auto"</span>)</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">basemap</span>(panel<span class="op">=</span><span class="st">""</span>, proj<span class="op">=:</span>linear, figsize<span class="op">=</span><span class="st">"auto,auto"</span>, flipaxes<span class="op">=:</span>x)</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">basemap</span>(panel<span class="op">=</span><span class="st">""</span>, proj<span class="op">=:</span>linear, figsize<span class="op">=</span><span class="st">"auto,auto"</span>, flipaxes<span class="op">=:</span>y)</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">basemap</span>(panel<span class="op">=</span><span class="st">""</span>, proj<span class="op">=:</span>linear, figsize<span class="op">=</span><span class="st">"auto,auto"</span>, flipaxes<span class="op">=:</span>xy)</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">basemap</span>(panel<span class="op">=</span>(<span class="fl">3</span>,<span class="fl">1</span>), proj<span class="op">=:</span>linear, figscale<span class="op">=</span><span class="st">"auto,auto"</span>, flipaxes<span class="op">=:</span>x)</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">basemap</span>(panel<span class="op">=</span><span class="st">"next"</span>, proj<span class="op">=:</span>geog, figsize<span class="op">=</span><span class="st">"auto,auto"</span>)</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">basemap</span>(panel<span class="op">=</span><span class="st">"next"</span>, proj<span class="op">=:</span>geog, figsize<span class="op">=</span><span class="st">"auto"</span>)</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="fu">subplot</span>(<span class="op">:</span>show)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stderr">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-green-fg ansi-bold">Precompiling</span> packages...
-
-  66187.2 ms<span class="ansi-green-fg">  ✓ </span>GMT
-
-  1 dependency successfully precompiled in 71 seconds. 80 already precompiled.
-</pre>
-</div>
-</div>
+<p>Create a 2x2 montage of random images with panel titles.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>imgs <span class="op">=</span> [<span class="fu">mat2img</span>(<span class="fu">rand</span>(<span class="dt">UInt8</span>, <span class="fl">64</span>, <span class="fl">48</span>)) for _ <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">4</span>]</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">montage</span>(imgs, grid<span class="op">=</span>(<span class="fl">2</span>,<span class="fl">2</span>), panels_size<span class="op">=</span><span class="fl">5</span>, titles<span class="op">=</span>[<span class="st">"A"</span>,<span class="st">"B"</span>,<span class="st">"C"</span>,<span class="st">"D"</span>], show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Display a subset of images using the <em>indices</em> option.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>imgs <span class="op">=</span> [<span class="fu">mat2img</span>(<span class="fu">rand</span>(<span class="dt">UInt8</span>, <span class="fl">80</span>, <span class="fl">60</span>)) for _ <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">6</span>]</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">montage</span>(imgs, grid<span class="op">=</span>(<span class="fl">1</span>,<span class="fl">3</span>), panels_size<span class="op">=</span><span class="fl">6</span>, indices<span class="op">=</span>[<span class="fl">1</span>, <span class="fl">3</span>, <span class="fl">5</span>], title<span class="op">=</span><span class="st">"Selected panels"</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Create a 2x2 montage three images from files in the tests dir.</p>
+<div id="577d9b56" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">montage</span>([<span class="fu">tests</span>(<span class="st">"peppers"</span>), <span class="fu">tests</span>(<span class="st">"coins"</span>), <span class="fu">tests</span>(<span class="st">"cameraman.png"</span>)])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="subplot_files/figure-html/cell-2-output-2.png" class="img-fluid figure-img"></p>
+<p><img src="montage_files/figure-html/cell-2-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>and a 2x2 with some symbols and showing more ways of setting the panel sizes and selection</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">subplot</span>(grid<span class="op">=</span>(<span class="fl">2</span>,<span class="fl">2</span>), panels_size<span class="op">=</span><span class="fl">8</span>, region<span class="op">=</span>(<span class="fl">0</span>, <span class="fl">100</span>, <span class="fl">0</span>, <span class="fl">80</span>), margins<span class="op">=</span><span class="st">"5p"</span>, autolabel<span class="op">=</span><span class="cn">true</span>, col_axes<span class="op">=</span>(bott<span class="op">=</span><span class="cn">true</span>,), row_axes<span class="op">=</span>(left<span class="op">=</span><span class="cn">true</span>,), axes<span class="op">=</span><span class="st">"wstr"</span>, name<span class="op">=</span><span class="st">"panels.pdf"</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">basemap</span>(region<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">80</span>,<span class="fl">0</span>,<span class="fl">50</span>))</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">subplot</span>(<span class="op">:</span>set)</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">plot</span>([<span class="fl">50</span> <span class="fl">40</span>], marker<span class="op">=:</span>circle, mc<span class="op">=:</span>red)</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">subplot</span>(<span class="op">:</span>set)</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">plot</span>([<span class="fl">50</span> <span class="fl">40</span>], marker<span class="op">=:</span>square, mc<span class="op">=:</span>green)</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">subplot</span>(<span class="op">:</span>set, panel<span class="op">=</span>(<span class="fl">2</span>,<span class="fl">2</span>))</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">plot</span>([<span class="fl">50</span> <span class="fl">40</span>], marker<span class="op">=:</span>star, mc<span class="op">=:</span>blue)</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="fu">subplot</span>(<span class="op">:</span>show)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Use variable panels with variable sizes:</p>
-<div id="1898c666" class="cell" data-execution_count="2">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">subplot</span>(grid<span class="op">=</span>(<span class="fl">3</span>,<span class="fl">2</span>), dims<span class="op">=</span>(panels<span class="op">=</span><span class="cn">true</span>, sizes<span class="op">=</span>((<span class="st">"2i"</span>,<span class="st">"4i"</span>),(<span class="st">"2.5i"</span>,<span class="st">"5i"</span>,<span class="st">"1.25i"</span>))), row_axes<span class="op">=</span>(left<span class="op">=</span><span class="cn">true</span>, parallel<span class="op">=</span><span class="cn">true</span>),</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>        col_axes<span class="op">=</span>(bott<span class="op">=</span><span class="cn">true</span>,), margins<span class="op">=</span><span class="fl">0</span>, autolabel<span class="op">=</span>(label<span class="op">=:</span>A, vertical<span class="op">=</span><span class="cn">true</span>), title<span class="op">=</span><span class="st">"Variable dimensions"</span>)</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">basemap</span>(region<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">5</span>,<span class="fl">0</span>,<span class="fl">5</span>),     frame<span class="op">=</span>(fill<span class="op">=:</span>pink,))</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">basemap</span>(region<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">5</span>,<span class="fl">10</span>,<span class="fl">15</span>),   frame<span class="op">=</span>(fill<span class="op">=:</span>cyan,),   panel<span class="op">=:</span>next)</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">basemap</span>(region<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">5</span>,<span class="fl">10</span>,<span class="fl">15</span>),   frame<span class="op">=</span>(fill<span class="op">=:</span>lightgray,),   panel<span class="op">=:</span>next)</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">basemap</span>(region<span class="op">=</span>(<span class="fl">10</span>,<span class="fl">15</span>,<span class="fl">0</span>,<span class="fl">5</span>),   frame<span class="op">=</span>(fill<span class="op">=:</span>yellow,), panel<span class="op">=:</span>next)</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">basemap</span>(region<span class="op">=</span>(<span class="fl">10</span>,<span class="fl">15</span>,<span class="fl">10</span>,<span class="fl">15</span>), frame<span class="op">=</span>(fill<span class="op">=:</span>purple,), panel<span class="op">=:</span>next)</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">basemap</span>(region<span class="op">=</span>(<span class="fl">10</span>,<span class="fl">15</span>,<span class="fl">10</span>,<span class="fl">15</span>), frame<span class="op">=</span>(fill<span class="op">=:</span>orange,), panel<span class="op">=:</span>next)</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="fu">subplot</span>(<span class="op">:</span>show)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Create a montage of world choropleths using as colr info the values of the attributes of the <code>world.gpkg</code> file</p>
+<div id="69f8a148" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">gmtread</span>(<span class="st">"https://raw.githubusercontent.com/Nowosad/spData/refs/heads/master/inst/shapes/world.gpkg"</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">montage</span>(D, colorbar<span class="op">=:</span>bot, titles<span class="op">=:</span>att)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    This file has islands (holes in polygons).
+    Use `gmtread(..., no_islands=true)` to ignore them.</code></pre>
+</div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="subplot_files/figure-html/cell-3-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="montage_files/figure-html/cell-3-output-2.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>A very similar to the above figure can be created with:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">subplot</span>(grid<span class="op">=</span>(<span class="fl">3</span>,<span class="fl">2</span>), dims<span class="op">=</span>(size<span class="op">=</span>(<span class="st">"6.5i"</span>,<span class="st">"9i"</span>), frac<span class="op">=</span>((<span class="fl">1</span>,<span class="fl">2</span>), (<span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">0.5</span>)) ), row_axes<span class="op">=</span>(left<span class="op">=</span><span class="cn">true</span>, parallel<span class="op">=</span><span class="cn">true</span>),</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>        col_axes<span class="op">=</span>(bott<span class="op">=</span><span class="cn">true</span>,), frame<span class="op">=:</span>WSne, margins<span class="op">=</span><span class="fl">0</span>, autolabel<span class="op">=</span><span class="cn">true</span>, title<span class="op">=</span><span class="st">"Variable fractions"</span>)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">basemap</span>(region<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">5</span>,<span class="fl">0</span>,<span class="fl">5</span>),     frame<span class="op">=</span>(fill<span class="op">=:</span>pink,))</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">basemap</span>(region<span class="op">=</span>(<span class="fl">10</span>,<span class="fl">15</span>,<span class="fl">0</span>,<span class="fl">5</span>),   frame<span class="op">=</span>(fill<span class="op">=:</span>yellow,), panel<span class="op">=:</span>next)</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">basemap</span>(region<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">5</span>,<span class="fl">10</span>,<span class="fl">15</span>),   frame<span class="op">=</span>(fill<span class="op">=:</span>cyan,),   panel<span class="op">=:</span>next)</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">basemap</span>(region<span class="op">=</span>(<span class="fl">10</span>,<span class="fl">15</span>,<span class="fl">10</span>,<span class="fl">15</span>), frame<span class="op">=</span>(fill<span class="op">=:</span>purple,), panel<span class="op">=:</span>next)</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">basemap</span>(region<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">5</span>,<span class="fl">10</span>,<span class="fl">15</span>), frame<span class="op">=</span>(fill<span class="op">=:</span>lightgray,),panel<span class="op">=:</span>next)</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">basemap</span>(region<span class="op">=</span>(<span class="fl">10</span>,<span class="fl">15</span>,<span class="fl">10</span>,<span class="fl">15</span>), frame<span class="op">=</span>(fill<span class="op">=:</span>orange,), panel<span class="op">=:</span>next)</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="fu">subplot</span>(<span class="op">:</span>show)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="restriction" class="level2">
-<h2 class="anchored" data-anchor-id="restriction">Restriction</h2>
-<p>Currently, nesting of subplots is not implemented. With the <code>geog</code> projection one cannot set the fist axes to <code>geog</code> and the other to <em>whatever</em> because only last dimension is assigned that label. The solution to fine control here is to use the GMT syntax given as a string</p>
 </section>
 <section id="source-code" class="level2">
 <h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
 <p>This function has multiple methods:</p>
 <ul>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/subplot.jl#L42"><code>subplot(fim::String, stop::Bool, d::Dict{Symbol, Any})</code></a> - subplot.jl:42</li>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/subplot.jl#L37"><code>subplot(; ...)</code></a> - subplot.jl:37</li>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/subplot.jl#L37"><code>subplot(fim::Union{AbstractString, Symbol}; stop, kwargs...)</code></a> - subplot.jl:37</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/montage.jl#L127"><code>montage(D::Vector{&lt;:GMTdataset}; grid, panels_size, margins, choro, colorbar, title, titles, attribs, divlines, show, kw...)</code></a> - montage.jl:127</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/montage.jl#L41"><code>montage(images; grid, panels_size, margins, title, titles, frame, indices, show, noR, kw...)</code></a> - montage.jl:41</li>
 </ul>
 </section>
 <section id="see-also" class="level2">
 <h2 class="anchored" data-anchor-id="see-also">See Also</h2>
-<p><a href="../..\documentation/modules/choropleth.html">choropleth</a>, <a href="../..\documentation/modules/montage.html">montage</a>, <a href="../..\documentation/modules/plot.html">plot</a></p>
+<p><a href="../..\documentation/modules/choropleth.html">choropleth</a>, <a href="../..\documentation/modules/subplot.html">subplot</a>, <a href="../..\documentation/modules/plot.html">plot</a>, <a href="../..\documentation/modules/getdcw.html">getdcw</a>, <a href="../..\documentation/modules/fourcolors.html">fourcolors</a>, <a href="../..\documentation/modules/getattribs.html">getattribs</a></p>
 <ul>
 <li><a href="../alphabetical.html">Alphabetical Function List</a></li>
 </ul>

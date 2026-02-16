@@ -542,16 +542,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="the-example-in-tutorials" class="level3">
 <h3 class="anchored" data-anchor-id="the-example-in-tutorials">The example in “Tutorials”</h3>
-<div id="247a6280" class="cell" data-execution_count="1">
+<div id="4aad0107" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">getdcw</span>(<span class="st">"US"</span>, states<span class="op">=</span><span class="cn">true</span>, file<span class="op">=:</span>ODS);</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>Df <span class="op">=</span> <span class="fu">filter</span>(D, _region<span class="op">=</span>(<span class="op">-</span><span class="fl">125</span>,<span class="op">-</span><span class="fl">66</span>,<span class="fl">24</span>,<span class="fl">50</span>), _unique<span class="op">=</span><span class="cn">true</span>);</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>pop <span class="op">=</span> <span class="fu">gmtread</span>(TESTSDIR <span class="op">*</span> <span class="st">"assets/uspop.csv"</span>);</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">choropleth</span>(Df, pop, <span class="st">"NAME"</span>, proj<span class="op">=:</span>guess, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="choropleth_files/figure-html/cell-2-output-1.png" class="img-fluid figure-img"></p>
-</figure>
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre>UndefVarError: `getdcw` not defined
+
+Stacktrace:
+ [1] top-level scope
+<span class="ansi-bright-black-fg">   @</span> <span style="text-decoration:underline" class="ansi-bright-black-fg">In[2]:1</span></pre>
 </div>
 </div>
 </div>
@@ -561,27 +563,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
 <p>This function has multiple methods:</p>
 <ul>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/choropleth.jl#L93"><code>choropleth(D::String, data::Dict; outline, kw...)</code></a> - choropleth.jl:93</li>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/choropleth.jl#L82"><code>choropleth(D::String, data::GMTdataset; ...)</code></a> - choropleth.jl:82</li>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/choropleth.jl#L82"><code>choropleth(D::String, data::GMTdataset, att::Union{AbstractString, Symbol}; attrib, cmap, outline, kw...)</code></a> - choropleth.jl:82</li>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/choropleth.jl#L105"><code>choropleth(D::String, vals::Vector{&lt;:Real}; attrib, outline, kw...)</code></a> - choropleth.jl:105</li>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/choropleth.jl#L62"><code>choropleth(D::String, ids::Vector{&lt;:AbstractString}, vals::Vector{&lt;:Real}; attrib, cmap, outline, kw...)</code></a> - choropleth.jl:62</li>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/choropleth.jl#L101"><code>choropleth(D::String, data::NamedTuple; outline, kw...)</code></a> - choropleth.jl:101</li>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/choropleth.jl#L72"><code>choropleth(D::String; ...)</code></a> - choropleth.jl:72</li>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/choropleth.jl#L72"><code>choropleth(D::String, att::Union{AbstractString, Symbol}; attrib, cmap, outline, kw...)</code></a> - choropleth.jl:72</li>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/choropleth.jl#L107"><code>choropleth(D::Vector{&lt;:GMTdataset}, vals::Vector{&lt;:Real}; attrib, outline, kw...)</code></a> - choropleth.jl:107</li>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/choropleth.jl#L102"><code>choropleth(D::Vector{&lt;:GMTdataset}, data::NamedTuple; outline, kw...)</code></a> - choropleth.jl:102</li>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/choropleth.jl#L94"><code>choropleth(D::Vector{&lt;:GMTdataset}, data::Dict; outline, kw...)</code></a> - choropleth.jl:94</li>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/choropleth.jl#L84"><code>choropleth(D::Vector{&lt;:GMTdataset}, data::GMTdataset, att::Union{AbstractString, Symbol}; attrib, cmap, outline, kw...)</code></a> - choropleth.jl:84</li>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/choropleth.jl#L84"><code>choropleth(D::Vector{&lt;:GMTdataset}, data::GMTdataset; ...)</code></a> - choropleth.jl:84</li>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/choropleth.jl#L74"><code>choropleth(D::Vector{&lt;:GMTdataset}; ...)</code></a> - choropleth.jl:74</li>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/choropleth.jl#L74"><code>choropleth(D::Vector{&lt;:GMTdataset}, att::Union{AbstractString, Symbol}; attrib, cmap, outline, kw...)</code></a> - choropleth.jl:74</li>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/choropleth.jl#L64"><code>choropleth(D, ids::Vector{&lt;:AbstractString}, vals::Vector{&lt;:Real}; attrib, cmap, outline, kw...)</code></a> - choropleth.jl:64</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/choropleth.jl#L90"><code>choropleth(D::String, data::Dict; outline, kw...)</code></a> - choropleth.jl:90</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/choropleth.jl#L79"><code>choropleth(D::String, data::GMTdataset; ...)</code></a> - choropleth.jl:79</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/choropleth.jl#L79"><code>choropleth(D::String, data::GMTdataset, att::Union{AbstractString, Symbol}; attrib, cmap, outline, kw...)</code></a> - choropleth.jl:79</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/choropleth.jl#L102"><code>choropleth(D::String, vals::Vector{&lt;:Real}; attrib, outline, kw...)</code></a> - choropleth.jl:102</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/choropleth.jl#L59"><code>choropleth(D::String, ids::Vector{&lt;:AbstractString}, vals::Vector{&lt;:Real}; attrib, cmap, outline, kw...)</code></a> - choropleth.jl:59</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/choropleth.jl#L98"><code>choropleth(D::String, data::NamedTuple; outline, kw...)</code></a> - choropleth.jl:98</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/choropleth.jl#L69"><code>choropleth(D::String; ...)</code></a> - choropleth.jl:69</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/choropleth.jl#L69"><code>choropleth(D::String, att::Union{AbstractString, Symbol}; attrib, cmap, outline, kw...)</code></a> - choropleth.jl:69</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/choropleth.jl#L104"><code>choropleth(D::Vector{&lt;:GMTdataset}, vals::Vector{&lt;:Real}; attrib, outline, kw...)</code></a> - choropleth.jl:104</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/choropleth.jl#L99"><code>choropleth(D::Vector{&lt;:GMTdataset}, data::NamedTuple; outline, kw...)</code></a> - choropleth.jl:99</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/choropleth.jl#L91"><code>choropleth(D::Vector{&lt;:GMTdataset}, data::Dict; outline, kw...)</code></a> - choropleth.jl:91</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/choropleth.jl#L81"><code>choropleth(D::Vector{&lt;:GMTdataset}, data::GMTdataset, att::Union{AbstractString, Symbol}; attrib, cmap, outline, kw...)</code></a> - choropleth.jl:81</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/choropleth.jl#L81"><code>choropleth(D::Vector{&lt;:GMTdataset}, data::GMTdataset; ...)</code></a> - choropleth.jl:81</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/choropleth.jl#L71"><code>choropleth(D::Vector{&lt;:GMTdataset}; ...)</code></a> - choropleth.jl:71</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/choropleth.jl#L71"><code>choropleth(D::Vector{&lt;:GMTdataset}, att::Union{AbstractString, Symbol}; attrib, cmap, outline, kw...)</code></a> - choropleth.jl:71</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/choropleth.jl#L61"><code>choropleth(D, ids::Vector{&lt;:AbstractString}, vals::Vector{&lt;:Real}; attrib, cmap, outline, kw...)</code></a> - choropleth.jl:61</li>
 </ul>
 </section>
 <section id="see-also" class="level2">
 <h2 class="anchored" data-anchor-id="see-also">See Also</h2>
-<p><a href="../..\documentation/modules/getdcw.html">getdcw</a>, <a href="../..\documentation/modules/fourcolors.html">fourcolors</a></p>
+<p><a href="../..\documentation/modules/getdcw.html">getdcw</a>, <a href="../..\documentation/modules/fourcolors.html">fourcolors</a>, <a href="../..\documentation/modules/montage.html">montage</a>, <a href="../..\documentation/modules/plot.html">plot</a></p>
 
 
 </section>
