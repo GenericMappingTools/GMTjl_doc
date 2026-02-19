@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>ternary</title>
+<title>compass</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -450,10 +450,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul class="collapse">
   <li><a href="#description" id="toc-description" class="nav-link active" data-scroll-target="#description">Description</a></li>
-  <li><a href="#parameters" id="toc-parameters" class="nav-link" data-scroll-target="#parameters">Parameters</a></li>
+  <li><a href="#directional-rose-options" id="toc-directional-rose-options" class="nav-link" data-scroll-target="#directional-rose-options">Directional Rose Options</a></li>
+  <li><a href="#magnetic-compass-options" id="toc-magnetic-compass-options" class="nav-link" data-scroll-target="#magnetic-compass-options">Magnetic Compass Options</a></li>
+  <li><a href="#pass-through-options" id="toc-pass-through-options" class="nav-link" data-scroll-target="#pass-through-options">Pass-through Options</a></li>
   <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
-  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
   <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
   </ul>
 </nav>
     </div>
@@ -462,7 +464,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">ternary</h1>
+<h1 class="title">compass</h1>
 </div>
 
 
@@ -479,123 +481,187 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ternary</span>(cmd0<span class="op">::</span><span class="dt">String</span>=<span class="st">""</span>, arg1<span class="op">=</span>[]; kwargs<span class="op">...</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Plot data on ternary diagrams</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compass</span>(; kwargs<span class="op">...</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Draw a map directional rose or magnetic compass on the map.</p>
 <section id="description" class="level2">
 <h2 class="anchored" data-anchor-id="description">Description</h2>
-<p>Reads (<em>a</em>, <em>b</em>, <em>c</em> [, <em>z</em>]) records from <em>table</em> and plots symbols at those locations on a ternary diagram. If a symbol is selected and no symbol size given, then we will interpret the fourth column of the input data as symbol size. Symbols whose <em>size</em> is &lt;= 0 are skipped. If no symbols are specified then the symbol code (see <strong>marker</strong> below) must be present as last column in the input. If <strong>marker</strong> is not specified then we instead plot lines or polygons.</p>
+<p>Convenience function that wraps <a href="../..\documentation/modules/basemap.html">basemap</a> to draw directional (<code>-Td</code>) or magnetic (<code>-Tm</code>) compass roses. The mode is auto-selected: if <code>dec</code> (magnetic declination) is provided, a magnetic compass is drawn; otherwise a directional rose is drawn.</p>
+<p>Can be called standalone (creates its own plot) or as an overlay (<code>compass!</code>) on an existing plot. When called standalone without <code>region</code>/<code>proj</code>, a default canvas sized to fit the rose is created automatically using paper coordinates.</p>
 </section>
-<section id="parameters" class="level2">
-<h2 class="anchored" data-anchor-id="parameters">Parameters</h2>
+<section id="directional-rose-options" class="level2">
+<h2 class="anchored" data-anchor-id="directional-rose-options">Directional Rose Options</h2>
 <ul>
-<li><p><strong>B</strong> or <strong>axes</strong> or <strong>frame</strong> : – <em>frame=??</em><br>
-For ternary diagrams the three sides are referred to as a, b, and c.&nbsp;Thus, to give specific settings for one of these axis you must include the axis letter before the arguments. If all axes have the same arguments then only give one option without the axis letter. For more details, see the example at the bottom of this page and the general [frame] docs.</p></li>
-<li><p><strong>C</strong> or <strong>color</strong> or <strong>cmap</strong> : – <em>color=cpt</em><br>
-Give a CPT or specify <strong>color=“color1,color2 [,color3 ,…]”</strong> or <strong>color=((r1,g1,b1),(r2,g2,b2),…)</strong> to build a linear continuous CPT from those colors automatically, where <em>z</em> starts at 0 and is incremented by one for each color. In this case <em>color_n</em> can be a [r g b] triplet, a color name, or an HTML hexadecimal color (e.g.&nbsp;#aabbcc). If <strong>symbol</strong> is set, let symbol fill color be determined by the z-value in the fourth column. Additional fields are shifted over by one column (optional size would be 5th rather than 4th field, etc.).</p></li>
-<li><p><strong>G</strong> or <strong>markerfacecolor</strong> or <strong>MarkerFaceColor</strong> or <strong>markercolor</strong> or <strong>mc</strong> or <strong>fill</strong><br>
-Select color or pattern for filling of symbols [Default is no fill]. Note that plot will search for <em>fill</em> and <em>pen</em> settings in all the segment headers (when passing a GMTdaset or file of a multi-segment dataset) and let any values thus found over-ride the command line settings (but those must be provided in the terse GMT syntax). See <a href="../../documentation/common_features/color.html">Setting color</a> for extend color selection (including color map generation).</p></li>
-<li><p><strong>J</strong> or <strong>proj</strong> or <strong>projection</strong> : – <em>proj=width</em><br>
-The only valid projection is linear plot with specified ternary width. Use a negative <em>width</em> to indicate that positive axes directions be clock-wise [Default lets the <em>a, b, c</em> axes be positive in a counter-clockwise direction].</p></li>
-<li><p><strong>L</strong> or <strong>vertex_labels</strong> : – <em>vertex_labels=“Lab1/lab2/Lab3”</em> <strong>|</strong> <em>vertex_labels=(“Lab1”, “lab2”, “Lab3”)</em><br>
-Set the labels for the three diagram vertices where the component is 100% [none]. These are placed a distance of three times the <a href="https://docs.generic-mapping-tools.org/latest/gmt.conf.html#term-MAP_LABEL_OFFSET">MAP_LABEL_OFFSET</a> setting from their respective corners. To skip any one of then, specify that label as “-”.</p></li>
-<li><p><strong>M</strong> or <strong>dump</strong> : – <em>dump=true</em><br>
-Do no plot. Instead, convert the input (<em>a</em>, <em>b</em>, <em>c</em> [, <em>z</em>]) records to Cartesian (<em>x</em>, <em>y</em>, [, <em>z</em>]) records, where <em>x, y</em> are normalized coordinates on the triangle (i.e., 0–1 in <em>x</em> and 0–sqrt(3)/2 in <em>y</em>).</p></li>
-<li><p><strong>N</strong> or <strong>noclip</strong> or <strong>no_clip</strong> : <em>noclip=true</em><br>
-Do NOT clip symbols that fall outside map border [Default plots points whose coordinates are strictly inside the map border only].</p></li>
-<li><p><strong>R</strong> or <strong>region</strong> or <strong>limits</strong> : – <em>limits=(xmin, xmax, ymin, ymax)</em> <strong>|</strong> <em>limits=(BB=(xmin, xmax, ymin, ymax),)</em> <strong>|</strong> <em>limits=(LLUR=(xmin, xmax, ymin, ymax),units=“unit”)</em> <strong>|</strong> …more<br>
-Specify the region of interest. More at <a href="../../documentation/common_opts/common_opts.html#limits">limits</a>. For perspective view <strong>view</strong>, optionally add <em>zmin,zmax</em>. This option may be used to indicate the range used for the 3-D axes. You may ask for a larger w/e/s/n region to have more room between the image and the axes.</p></li>
-<li><p><strong>S</strong> or <strong>marker</strong> or <strong>symbol</strong> : – <em>symbol=(symb=name, size=val, unit=unity)</em> or <em>marker|Marker|shape=name</em>, <em>markersize|MarkerSize|ms|size=val</em><br>
-Plot individual symbols in a ternary diagram. If <strong>marker</strong> is not given then we will instead plot lines (requires <strong>markerline</strong>) or polygons (requires <strong>cmap</strong> or <strong>fill</strong>). For details on symbols see the <strong>symbol</strong> option in <a href="../..\documentation/modules/plot.html">plot</a></p></li>
+<li><p><strong>anchor</strong> : – <em>anchor=(x,y)</em> | <em>anchor=refpoint</em><br>
+Reference point on the map for the rose. When called standalone without <code>region</code>/<code>proj</code>, this is interpreted as paper coordinates (cm). In overlay mode or with explicit <code>region</code>/<code>proj</code>, the coordinate system is determined by the <strong>map</strong>, <strong>inside</strong>, <strong>outside</strong>, <strong>norm</strong>, or <strong>paper</strong> modifiers.</p></li>
+<li><p><strong>width</strong> : – <em>width=val</em><br>
+Width of the rose in plot coordinates (cm). This also controls the auto-generated canvas size when no <code>region</code>/<code>proj</code> is given.</p></li>
+<li><p><strong>fancy</strong> : – <em>fancy=true</em> | <em>fancy=level</em><br>
+Draw a “fancy” rose. Level 1 (or <em>true</em>) draws the two principal E-W, N-S orientations. Level 2 adds the two intermediate NW-SE and NE-SW orientations. Level 3 adds the eight minor orientations.</p></li>
+<li><p><strong>labels</strong> or <strong>label</strong> : – <em>labels=“W,E,S,N”</em><br>
+Comma-separated labels for the cardinal points. Skip a label by leaving it blank (e.g., <code>",,,N"</code>). Use <code>labels=true</code> to get the default W,E,S,N labels.</p></li>
+<li><p><strong>justify</strong> : – <em>justify=code</em><br>
+2-char justification code for the anchor point (e.g., <code>:CM</code> for center-middle). See <a href="../..\documentation/modules/text.html">text</a>.</p></li>
+<li><p><strong>offset</strong> : – <em>offset=(dx,dy)</em><br>
+Offset from the anchor point.</p></li>
+<li><p><strong>map</strong>, <strong>inside</strong>, <strong>outside</strong>, <strong>norm</strong>, <strong>paper</strong> :<br>
+Coordinate system for the anchor point. Use <strong>map=true</strong> for map coordinates, <strong>inside=code</strong> or <strong>outside=code</strong> for justification-based placement, <strong>norm=true</strong> for normalized (0-1) coordinates, or <strong>paper=true</strong> for plot coordinates.</p></li>
 </ul>
-<p>Other than the above options, the <code>kwargs</code> input accepts still the following options:</p>
+</section>
+<section id="magnetic-compass-options" class="level2">
+<h2 class="anchored" data-anchor-id="magnetic-compass-options">Magnetic Compass Options</h2>
+<p>All directional options above, plus:</p>
 <ul>
-<li><p><strong>image</strong> : – <em>image=true</em><br>
-Fills the ternary plot with an image computed automatically with <a href="../..\documentation/modules/grdimage.html">grdimage</a> from a grid interpolated with <a href="../..\documentation/modules/surface.html">surface</a></p></li>
-<li><p><strong>contour</strong> : – <em>contour=??</em><br>
-This option works in two different ways. If used together with <code>image</code> it overlays a contour by doing a call to <a href="../..\documentation/modules/grdcontour.html">grdcontour</a>. However, if used alone it will call <code>contour</code> to do the contours. The difference is important because this option can be used in <em>default mode</em> with <code>contour=true</code> where the number and annotated contours is picked automatically, or the use can exert full control by passing as argument a NamedTuple with all options appropriated to that module. <em>e.g.</em> <code>contour=(cont=10, annot=20, pen=0.5)</code></p></li>
-<li><p><strong>contourf</strong> : – <em>contourf=??</em><br>
-Works a bit like the <em>standalone</em> <code>contour</code>. If used with <code>contourf=true</code> call make a filled contour using automatic parameters. The form <code>contourf=(...)</code> let us selects options of the <a href="../..\documentation/modules/contourf.html">contourf</a> module.</p></li>
-<li><p><strong>clockwise</strong> : – <em>clockwise=true</em>` Set it to <code>true</code> to indicate that positive axes directions be clock-wise [Default lets the a, b, c axes be positive in a counter-clockwise direction].</p></li>
-<li><p><strong>U</strong> or <strong>time_stamp</strong> : – <em>time_stamp=true</em> <strong>|</strong> <em>time_stamp=(just=“code”, pos=(dx,dy), label=“label”, com=true)</em><br>
-Draw GMT time stamp logo on plot. More at <a href="../../documentation/common_opts/common_opts.html#timestamp">timestamp</a></p></li>
-<li><p><strong>V</strong> or <em>verbose</em> : – <em>verbose=true</em> <strong>|</strong> <em>verbose=level</em><br>
-Select verbosity level. More at <a href="../../documentation/common_opts/common_opts.html#verbose">verbose</a></p></li>
-<li><p><strong>W</strong> or <strong>pen</strong>=<code>pen</code><br>
-Set pen attributes for the arrow stem [Defaults: width = default, color = black, style = solid]. See <a href="../../documentation/common_features/pens.html">Pen attributes</a> and <a href="../../documentation/common_features/arrows_control.html">Vector attributes</a> for arrow line terminations.</p></li>
-<li><p><strong>X</strong> or <strong>xshift</strong> or <strong>x_offset</strong> : <em>xshift=true</em> <strong>|</strong> <em>xshift=x-shift</em> <strong>|</strong> <em>xshift=(shift=x-shift, mov=“a|c|f|r”)</em><br>
-Shift plot origin. More at <a href="../../documentation/common_opts/common_opts.html#xshift">xshift</a></p></li>
-<li><p><strong>Y</strong> or <strong>yshift</strong> or <strong>y_offset</strong> : <em>yshift=true</em> <strong>|</strong> <em>yshift=y-shift</em> <strong>|</strong> <em>yshift=(shift=y-shift, mov=“a|c|f|r”)</em><br>
-Shift plot origin. More at <a href="../../documentation/common_opts/common_opts.html#yshift">yshift</a></p></li>
-<li><p><strong>bi</strong> or <strong>binary_in</strong> : – <em>binary_in=??</em><br>
-Select native binary format for primary table input. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#bi-full">More at</a></p></li>
-<li><p><strong>di</strong> or <strong>nodata_in</strong> : – <em>nodata_in=??</em><br>
-Substitute specific values with NaN. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#di-full">More at</a></p></li>
-<li><p><strong>e</strong> or <strong>pattern</strong> : – <em>pattern=??</em><br>
-Only accept ASCII data records that contain the specified pattern. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#e-full">More at</a></p></li>
-<li><p><strong>f</strong> or <strong>colinfo</strong> : – <em>colinfo=??</em><br>
-Specify the data types of input and/or output columns (time or geographical data). <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#f-full">More at</a></p></li>
-<li><p><strong>g</strong> or <strong>gap</strong> : – <em>gap=??</em><br>
-Examine the spacing between consecutive data points in order to impose breaks in the line. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#g-full">More at</a></p></li>
-<li><p><strong>h</strong> or <strong>header</strong> : – <em>header=??</em><br>
-Specify that input and/or output file(s) have n header records. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#h-full">More at</a></p></li>
-<li><p><strong>i</strong> or <strong>incol</strong> or <strong>incols</strong> : – <em>incol=col_num</em> <strong>|</strong> <em>incol=“opts”</em><br>
-Select input columns and transformations (0 is first column, t is trailing text, append word to read one word only). More at <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#icols-full">incol</a></p></li>
-<li><p><strong>q</strong> or <strong>inrows</strong> : – <em>inrows=??</em><br>
-Select specific data rows to be read and/or written. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#the-q-option">More at</a></p></li>
-<li><p><strong>s</strong> or <strong>skiprows</strong> or <strong>skip_NaN</strong> : – <em>skip_NaN=true</em> <strong>|</strong> <em>skip_NaN=“&lt;cols[+a][+r]&gt;”</em><br>
-Suppress output of data records whose z-value(s) equal NaN. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#the-s-option">More at</a></p></li>
-<li><p><strong>yx</strong> : – <em>yx=true</em><br>
-Swap 1st and 2nd column on input and/or output. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#colon-full">More at</a></p></li>
-<li><p><strong>p</strong> or <strong>view</strong> or <strong>perspective</strong> : – <em>view=(azim, elev)</em><br>
-Default is viewpoint from an azimuth of 200 and elevation of 30 degrees.<br>
-Specify the viewpoint in terms of azimuth and elevation. The azimuth is the horizontal rotation about the z-axis as measured in degrees from the positive y-axis. That is, from North. This option is not yet fully expanded. Current alternatives are:</p>
-<ul>
-<li><em>view=??</em><br>
-A full GMT compact string with the full set of options.</li>
-<li><em>view=(azim,elev)</em><br>
-A two elements tuple with azimuth and elevation</li>
-<li><em>view=true</em><br>
-To propagate the viewpoint used in a previous module (makes sense only in <code>bar3!</code>) More at <a href="../../documentation/common_opts/opt_p.html">perspective</a></li>
-</ul></li>
-<li><p><strong>t</strong> or <strong>transparency</strong> or <strong>alpha</strong>: – <em>alpha=50</em><br>
-Set PDF transparency level for an overlay, in (0-100] percent range. [Default is 0, <em>i.e.</em>, opaque]. Works only for the PDF and PNG formats.</p></li>
-<li><p><strong>figname</strong> or <strong>savefig</strong> or <strong>name</strong> : – <em>figname=<code>name.png</code></em><br>
-Save the figure with the <code>figname=name.ext</code> where <code>ext</code> chooses the figure image format.</p></li>
+<li><p><strong>dec</strong> : – <em>dec=val</em><br>
+Magnetic declination in degrees. The presence of this option switches the function to magnetic compass mode (<code>-Tm</code>).</p></li>
+<li><p><strong>annot</strong> : – <em>annot=(a1,a2,a3,a4,a5,a6)</em><br>
+Six annotation/tick intervals: the first three for geographic directions (annotation, tick, minor tick) and the last three for magnetic directions. Default is 30/5/1 for both.</p></li>
+<li><p><strong>rose_primary</strong> : – <em>rose_primary=pen</em> | <em>rose_primary=(width, color)</em><br>
+Pen for the outer (primary) circle of the compass.</p></li>
+<li><p><strong>rose_secondary</strong> : – <em>rose_secondary=pen</em> | <em>rose_secondary=(width, color)</em><br>
+Pen for the inner (secondary) circle of the compass.</p></li>
 </ul>
+</section>
+<section id="pass-through-options" class="level2">
+<h2 class="anchored" data-anchor-id="pass-through-options">Pass-through Options</h2>
+<p>All other keyword arguments are passed to <a href="../..\documentation/modules/basemap.html">basemap</a>. Common ones include:</p>
+<ul>
+<li><strong>region</strong>, <strong>proj</strong>, <strong>frame</strong>, <strong>par</strong>/<strong>conf</strong>, <strong>show</strong>, <strong>savefig</strong>, <strong>fmt</strong>, <strong>Vd</strong>, <strong>xshift</strong>, <strong>yshift</strong>, <strong>box</strong> (see <a href="../..\documentation/modules/basemap.html">basemap</a>).</li>
+</ul>
+<p>Note: when <code>compass</code> is called without an explicit <code>frame</code>, it defaults to <code>frame=:none</code> so that only the compass rose is drawn (no axes).</p>
 </section>
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
-<p>To plot circles (diameter = 0.1 cm) on a 6-inch-wide ternary diagram at the positions listed in the file ternary.txt, with default annotations and gridline spacings, using the specified labeling, try</p>
-<div id="a7f04dfe" class="cell" data-execution_count="1">
+<section id="standalone-directional-rose" class="level3">
+<h3 class="anchored" data-anchor-id="standalone-directional-rose">Standalone directional rose</h3>
+<p>A simple directional rose — no <code>region</code> or <code>proj</code> needed. The canvas is auto-sized to fit the rose.</p>
+<div id="9e22aea0" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">makecpt</span>(cmap<span class="op">=:</span>turbo, range<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">80</span>,<span class="fl">10</span>))</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ternary</span>(<span class="st">"@ternary.txt"</span>, region<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">100</span>,<span class="fl">0</span>,<span class="fl">100</span>,<span class="fl">0</span>,<span class="fl">100</span>), marker<span class="op">=:</span>circ, ms<span class="op">=</span><span class="fl">0.1</span>, vertex_labels<span class="op">=</span><span class="st">"Water/Air/Limestone"</span>,</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    frame<span class="op">=</span>(annot<span class="op">=:</span>auto, grid<span class="op">=:</span>a, ticks<span class="op">=:</span>a, alabel<span class="op">=</span><span class="st">"Water component"</span>, blabel<span class="op">=</span><span class="st">"Air component"</span>, clabel<span class="op">=</span><span class="st">"Limestone component"</span>, suffix<span class="op">=</span><span class="st">" %"</span>, fill<span class="op">=:</span>ivory, title<span class="op">=</span><span class="st">"Example data from MATLAB Central"</span>), show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">compass</span>(width<span class="op">=</span><span class="fl">2.5</span>, fancy<span class="op">=</span><span class="cn">true</span>, labels<span class="op">=</span><span class="st">",,,N"</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-green-fg ansi-bold">Precompiling</span> packages...
+
+
+  55708.7 ms<span class="ansi-green-fg">  ✓ </span>GMT
+
+  1 dependency successfully precompiled in 57 seconds. 80 already precompiled.
+
+</pre>
+</div>
+</div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="ternary_files/figure-html/cell-2-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="compass_files/figure-html/cell-2-output-2.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>See other examples at <a href="https://www.generic-mapping-tools.org/GMTjl_doc/examples/ternary/ternary_examples.html">Ternary plots</a></p>
+</section>
+<section id="fancy-directional-rose-level-3-with-all-labels" class="level3">
+<h3 class="anchored" data-anchor-id="fancy-directional-rose-level-3-with-all-labels">Fancy directional rose (level 3) with all labels</h3>
+<div id="69ff0fea" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">compass</span>(width<span class="op">=</span><span class="fl">4</span>, fancy<span class="op">=</span><span class="fl">3</span>, labels<span class="op">=</span><span class="cn">true</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="compass_files/figure-html/cell-3-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="three-directional-roses-side-by-side" class="level3">
+<h3 class="anchored" data-anchor-id="three-directional-roses-side-by-side">Three directional roses side by side</h3>
+<p>Plain, fancy level 1, and fancy level 3, plotted using overlay mode with shifts.</p>
+<div id="7aa0605a" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">basemap</span>(region<span class="op">=</span>(<span class="op">-</span><span class="fl">5</span>,<span class="fl">5</span>,<span class="op">-</span><span class="fl">5</span>,<span class="fl">5</span>), proj<span class="op">=:</span>merc, figscale<span class="op">=</span><span class="fl">0.4</span>, frame<span class="op">=:</span>none,</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>        rose<span class="op">=</span>(map<span class="op">=</span><span class="cn">true</span>, anchor<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">0</span>), justify<span class="op">=:</span>CM, width<span class="op">=</span><span class="fl">2.5</span>))</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">compass!</span>(width<span class="op">=</span><span class="fl">2.5</span>, anchor<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">0</span>), justify<span class="op">=:</span>CM, fancy<span class="op">=</span><span class="cn">true</span>, labels<span class="op">=</span><span class="st">",,,N"</span>, xshift<span class="op">=</span><span class="fl">3</span>)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="fu">compass!</span>(width<span class="op">=</span><span class="fl">2.5</span>, anchor<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">0</span>), justify<span class="op">=:</span>CM, fancy<span class="op">=</span><span class="fl">3</span>, labels<span class="op">=</span><span class="cn">true</span>,</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>         region<span class="op">=</span>(<span class="op">-</span><span class="fl">7</span>,<span class="fl">7</span>,<span class="op">-</span><span class="fl">5</span>,<span class="fl">5</span>), xshift<span class="op">=</span><span class="fl">3.5</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="compass_files/figure-html/cell-4-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="directional-rose-on-a-map" class="level3">
+<h3 class="anchored" data-anchor-id="directional-rose-on-a-map">Directional rose on a map</h3>
+<div id="44d844b8" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">coast</span>(region<span class="op">=</span>(<span class="op">-</span><span class="fl">10</span>,<span class="fl">10</span>,<span class="op">-</span><span class="fl">10</span>,<span class="fl">10</span>), proj<span class="op">=:</span>Mercator, frame<span class="op">=:</span>auto, land<span class="op">=:</span>lightgray, water<span class="op">=:</span>lightblue)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">compass!</span>(width<span class="op">=</span><span class="fl">2.5</span>, inside<span class="op">=:</span>TR, fancy<span class="op">=</span><span class="cn">true</span>, labels<span class="op">=</span><span class="st">",,,N"</span>, offset<span class="op">=</span><span class="fl">0.5</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="compass_files/figure-html/cell-5-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="magnetic-compass-standalone" class="level3">
+<h3 class="anchored" data-anchor-id="magnetic-compass-standalone">Magnetic compass (standalone)</h3>
+<p>A magnetic compass with declination of -14.5 degrees and custom annotation intervals.</p>
+<div id="6eb15fe8" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">compass</span>(width<span class="op">=</span><span class="fl">6</span>, dec<span class="op">=-</span><span class="fl">14.5</span>, annot<span class="op">=</span>(<span class="fl">45</span>,<span class="fl">10</span>,<span class="fl">5</span>,<span class="fl">30</span>,<span class="fl">10</span>,<span class="fl">2</span>),</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>        rose_primary<span class="op">=</span>(<span class="fl">0.25</span>,<span class="op">:</span>blue), rose_secondary<span class="op">=</span><span class="fl">0.5</span>, labels<span class="op">=</span><span class="st">""</span>,</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>        par<span class="op">=</span>(FONT_ANNOT_PRIMARY<span class="op">=</span><span class="fl">9</span>, FONT_LABEL<span class="op">=</span><span class="fl">14</span>, MAP_VECTOR_SHAPE<span class="op">=</span><span class="fl">0.5</span>,</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>             MAP_TICK_PEN_SECONDARY<span class="op">=</span><span class="st">"thinner,red"</span>, MAP_TICK_PEN_PRIMARY<span class="op">=</span><span class="st">"thinner,blue"</span>),</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>        show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="compass_files/figure-html/cell-6-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="magnetic-compass-on-a-map" class="level3">
+<h3 class="anchored" data-anchor-id="magnetic-compass-on-a-map">Magnetic compass on a map</h3>
+<div id="6a042945" class="cell" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">coast</span>(region<span class="op">=</span>(<span class="op">-</span><span class="fl">10</span>,<span class="fl">5</span>,<span class="fl">35</span>,<span class="fl">45</span>), proj<span class="op">=:</span>Mercator, frame<span class="op">=:</span>auto, land<span class="op">=:</span>bisque, water<span class="op">=:</span>lightblue,</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>      borders<span class="op">=</span>(<span class="kw">type</span><span class="op">=</span><span class="fl">1</span>, pen<span class="op">=</span><span class="fl">0.5</span>), shore<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="fu">compass!</span>(width<span class="op">=</span><span class="fl">3</span>, inside<span class="op">=:</span>BL, dec<span class="op">=-</span><span class="fl">2.5</span>, annot<span class="op">=</span>(<span class="fl">45</span>,<span class="fl">10</span>,<span class="fl">5</span>,<span class="fl">30</span>,<span class="fl">10</span>,<span class="fl">2</span>),</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>         rose_primary<span class="op">=</span>(<span class="fl">0.25</span>,<span class="op">:</span>blue), rose_secondary<span class="op">=</span><span class="fl">0.3</span>, labels<span class="op">=</span><span class="st">"O,E,S,N"</span>,</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>         offset<span class="op">=</span><span class="fl">0.5</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="compass_files/figure-html/cell-7-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="see-also" class="level2">
+<h2 class="anchored" data-anchor-id="see-also">See Also</h2>
+<p><a href="../..\documentation/modules/basemap.html">basemap</a>, <a href="../..\documentation/modules/coast.html">coast</a></p>
+<p><a href="../alphabetical.html">Alphabetical Function List</a></p>
 </section>
 <section id="source-code" class="level2">
 <h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
 <p>This function has multiple methods:</p>
 <ul>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L1671"><code>ternary(cmd0::String; ...)</code></a> - plot.jl:1671</li>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L1671"><code>ternary(; ...)</code></a> - plot.jl:1671</li>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L1772"><code>ternary(arg1; kw...)</code></a> - plot.jl:1772</li>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L1671"><code>ternary(cmd0::String, arg1; first, image, kwargs...)</code></a> - plot.jl:1671</li>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L1774"><code>ternary(kw...)</code></a> - plot.jl:1774</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/compass.jl#L64"><code>compass(first::Bool, d::Dict{Symbol, Any})</code></a> - compass.jl:64</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/compass.jl#L60"><code>compass(; first, kw...)</code></a> - compass.jl:60</li>
 </ul>
-</section>
-<section id="see-also" class="level2">
-<h2 class="anchored" data-anchor-id="see-also">See Also</h2>
-<p><a href="../..\documentation/modules/plot.html">plot</a></p>
 
 
 </section>

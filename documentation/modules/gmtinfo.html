@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>ternary</title>
+<title>gmtinfo</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -450,8 +450,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul class="collapse">
   <li><a href="#description" id="toc-description" class="nav-link active" data-scroll-target="#description">Description</a></li>
-  <li><a href="#parameters" id="toc-parameters" class="nav-link" data-scroll-target="#parameters">Parameters</a></li>
+  <li><a href="#required-arguments" id="toc-required-arguments" class="nav-link" data-scroll-target="#required-arguments">Required Arguments</a></li>
+  <li><a href="#optional-arguments" id="toc-optional-arguments" class="nav-link" data-scroll-target="#optional-arguments">Optional Arguments</a></li>
   <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
+  <li><a href="#bugs" id="toc-bugs" class="nav-link" data-scroll-target="#bugs">Bugs</a></li>
   <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
   <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
   </ul>
@@ -462,7 +464,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">ternary</h1>
+<h1 class="title">gmtinfo</h1>
 </div>
 
 
@@ -479,53 +481,45 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ternary</span>(cmd0<span class="op">::</span><span class="dt">String</span>=<span class="st">""</span>, arg1<span class="op">=</span>[]; kwargs<span class="op">...</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Plot data on ternary diagrams</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gmtinfo</span>(cmd0<span class="op">::</span><span class="dt">String</span>=<span class="st">""</span>, arg1<span class="op">=</span><span class="cn">nothing</span>; kwargs<span class="op">...</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Find the extreme values in data tables.</p>
 <section id="description" class="level2">
 <h2 class="anchored" data-anchor-id="description">Description</h2>
-<p>Reads (<em>a</em>, <em>b</em>, <em>c</em> [, <em>z</em>]) records from <em>table</em> and plots symbols at those locations on a ternary diagram. If a symbol is selected and no symbol size given, then we will interpret the fourth column of the input data as symbol size. Symbols whose <em>size</em> is &lt;= 0 are skipped. If no symbols are specified then the symbol code (see <strong>marker</strong> below) must be present as last column in the input. If <strong>marker</strong> is not specified then we instead plot lines or polygons.</p>
+<p><strong>gmtinfo</strong> reads <a href="../..\documentation/general/types.html#sec-dataset-type">GMTdataset</a> [or from files] and finds the extreme values in each of the columns reported as slash-separated min/max pairs. It recognizes NaNs and will print warnings if the number of columns vary from record to record. The pairs can be split into two separate columns by using the <strong>numeric</strong> option. As another option, <strong>gmtinfo</strong> can find the extent of data in the first two columns rounded up and down to the nearest multiple of the supplied increments given by <strong>inc</strong>. Such output will be in the text form -R<em>w/e/s/n</em>, which can be used directly on the command line for other modules (hence only <em>dx</em> and <em>dy</em> are needed). If <strong>numeric</strong> is combined with <strong>inc</strong> then the output will be in column form and rounded up/down for as many columns as there are increments provided in <strong>inc</strong>. A similar option (<strong>nearest_multiple</strong>) will provide a -T<em>zmin/zmax/dz</em> string for <a href="../..\documentation/modules/makecpt.html">makecpt</a>.</p>
 </section>
-<section id="parameters" class="level2">
-<h2 class="anchored" data-anchor-id="parameters">Parameters</h2>
+<section id="required-arguments" class="level2">
+<h2 class="anchored" data-anchor-id="required-arguments">Required Arguments</h2>
+<p><em>table</em> One or more data tables (file name, GMTdataset, or matrix). When using file nmaes, and want to apply to more than one, <code>arg1</code> can be a tuple or vector of file names.</p>
+</section>
+<section id="optional-arguments" class="level2">
+<h2 class="anchored" data-anchor-id="optional-arguments">Optional Arguments</h2>
 <ul>
-<li><p><strong>B</strong> or <strong>axes</strong> or <strong>frame</strong> : – <em>frame=??</em><br>
-For ternary diagrams the three sides are referred to as a, b, and c.&nbsp;Thus, to give specific settings for one of these axis you must include the axis letter before the arguments. If all axes have the same arguments then only give one option without the axis letter. For more details, see the example at the bottom of this page and the general [frame] docs.</p></li>
-<li><p><strong>C</strong> or <strong>color</strong> or <strong>cmap</strong> : – <em>color=cpt</em><br>
-Give a CPT or specify <strong>color=“color1,color2 [,color3 ,…]”</strong> or <strong>color=((r1,g1,b1),(r2,g2,b2),…)</strong> to build a linear continuous CPT from those colors automatically, where <em>z</em> starts at 0 and is incremented by one for each color. In this case <em>color_n</em> can be a [r g b] triplet, a color name, or an HTML hexadecimal color (e.g.&nbsp;#aabbcc). If <strong>symbol</strong> is set, let symbol fill color be determined by the z-value in the fourth column. Additional fields are shifted over by one column (optional size would be 5th rather than 4th field, etc.).</p></li>
-<li><p><strong>G</strong> or <strong>markerfacecolor</strong> or <strong>MarkerFaceColor</strong> or <strong>markercolor</strong> or <strong>mc</strong> or <strong>fill</strong><br>
-Select color or pattern for filling of symbols [Default is no fill]. Note that plot will search for <em>fill</em> and <em>pen</em> settings in all the segment headers (when passing a GMTdaset or file of a multi-segment dataset) and let any values thus found over-ride the command line settings (but those must be provided in the terse GMT syntax). See <a href="../../documentation/common_features/color.html">Setting color</a> for extend color selection (including color map generation).</p></li>
-<li><p><strong>J</strong> or <strong>proj</strong> or <strong>projection</strong> : – <em>proj=width</em><br>
-The only valid projection is linear plot with specified ternary width. Use a negative <em>width</em> to indicate that positive axes directions be clock-wise [Default lets the <em>a, b, c</em> axes be positive in a counter-clockwise direction].</p></li>
-<li><p><strong>L</strong> or <strong>vertex_labels</strong> : – <em>vertex_labels=“Lab1/lab2/Lab3”</em> <strong>|</strong> <em>vertex_labels=(“Lab1”, “lab2”, “Lab3”)</em><br>
-Set the labels for the three diagram vertices where the component is 100% [none]. These are placed a distance of three times the <a href="https://docs.generic-mapping-tools.org/latest/gmt.conf.html#term-MAP_LABEL_OFFSET">MAP_LABEL_OFFSET</a> setting from their respective corners. To skip any one of then, specify that label as “-”.</p></li>
-<li><p><strong>M</strong> or <strong>dump</strong> : – <em>dump=true</em><br>
-Do no plot. Instead, convert the input (<em>a</em>, <em>b</em>, <em>c</em> [, <em>z</em>]) records to Cartesian (<em>x</em>, <em>y</em>, [, <em>z</em>]) records, where <em>x, y</em> are normalized coordinates on the triangle (i.e., 0–1 in <em>x</em> and 0–sqrt(3)/2 in <em>y</em>).</p></li>
-<li><p><strong>N</strong> or <strong>noclip</strong> or <strong>no_clip</strong> : <em>noclip=true</em><br>
-Do NOT clip symbols that fall outside map border [Default plots points whose coordinates are strictly inside the map border only].</p></li>
-<li><p><strong>R</strong> or <strong>region</strong> or <strong>limits</strong> : – <em>limits=(xmin, xmax, ymin, ymax)</em> <strong>|</strong> <em>limits=(BB=(xmin, xmax, ymin, ymax),)</em> <strong>|</strong> <em>limits=(LLUR=(xmin, xmax, ymin, ymax),units=“unit”)</em> <strong>|</strong> …more<br>
-Specify the region of interest. More at <a href="../../documentation/common_opts/common_opts.html#limits">limits</a>. For perspective view <strong>view</strong>, optionally add <em>zmin,zmax</em>. This option may be used to indicate the range used for the 3-D axes. You may ask for a larger w/e/s/n region to have more room between the image and the axes.</p></li>
-<li><p><strong>S</strong> or <strong>marker</strong> or <strong>symbol</strong> : – <em>symbol=(symb=name, size=val, unit=unity)</em> or <em>marker|Marker|shape=name</em>, <em>markersize|MarkerSize|ms|size=val</em><br>
-Plot individual symbols in a ternary diagram. If <strong>marker</strong> is not given then we will instead plot lines (requires <strong>markerline</strong>) or polygons (requires <strong>cmap</strong> or <strong>fill</strong>). For details on symbols see the <strong>symbol</strong> option in <a href="../..\documentation/modules/plot.html">plot</a></p></li>
-</ul>
-<p>Other than the above options, the <code>kwargs</code> input accepts still the following options:</p>
+<li><p><strong>A</strong> | <strong>ranges</strong> : – <em>ranges=:a</em> <strong>|</strong> <em>ranges=:t</em> <strong>|</strong> <em>ranges=:s</em><br>
+Specify how the range should be reported. Choose <code>ranges=:a</code> for the range of all tables combined, <code>ranges=:t</code> to report the range for each table separately, and <code>ranges=:s</code> to report the range for each segment (in multisegment tables) separately. [Default is <code>ranges=:a</code>].</p></li>
+<li><p><strong>C</strong> | <strong>numeric</strong> | <strong>per_column</strong> : – <em>numeric=true</em><br>
+Report the min/max values per column in separate columns [Default uses <min max=""> format]. When used, users may also use <strong>outcols</strong> to limit which output columns should be reported [all].</min></p></li>
+<li><p><strong>D</strong> | <strong>center</strong> : – <em>center=true</em> <strong>|</strong> <em>center=(dx, dy)</em><br>
+Modifies results obtained by <strong>inc</strong> by shifting the region to better align with the center of the data. Optionally, append granularity for this shift [Default performs an exact shift].</p></li>
+<li><p><strong>E</strong> | <strong>get_record</strong> : – <em>get_record=:l</em> <strong>|</strong> <em>get_record=:h</em> <strong>|</strong> <em>get_record=:L</em> <strong>|</strong> <em>get_record=:H</em> <strong>|</strong> <em>get_record=“l5”</em><br>
+Returns the record whose column <em>col</em> contains the minimum (<strong>l</strong>) or maximum (<strong>h</strong>) value. Upper case (<strong>L</strong>|<strong>H</strong>) works on absolute value of the data. In case of multiple matches, only the first record is returned. If <em>col</em> is not specified we default to the last column in the data.</p></li>
+<li><p><strong>F</strong> | <strong>counts</strong> : – <em>counts=:i</em> <strong>|</strong> <em>counts=:d</em> <strong>|</strong> <em>counts=:t</em><br>
+Returns the counts of various records depending on the appended mode: <strong>i</strong> returns a single record with the total number of tables, segments, data records, header records, and overall records. In contrast, <strong>d</strong> returns information for each segment in the virtual data set: <em>tbl_number, seg_number, n_rows, start_rec, stop_rec</em>. Mode <strong>t</strong> does the same but honors the input table organization and thus resets <em>seg_number, start_rec, stop_rec</em> at the start of each new table [Default is <strong>i</strong>].</p></li>
+<li><p><strong>I</strong> | <strong>inc</strong> | <strong>increment</strong> | <strong>spacing</strong> : – <em>inc=val</em> <strong>|</strong> <em>inc=(dx, dy)</em> <strong>|</strong> <em>inc=(exact=true, inc=val)</em> <strong>|</strong> <em>inc=(surface=true, inc=val)</em> <strong>|</strong> <em>inc=(fft=true, inc=val)</em> <strong>|</strong> <em>inc=(polyg=true,)</em><br>
+Compute the <em>min</em>/<em>max</em> values of the first <em>n</em> columns to the nearest multiple of the provided increments (separate the <em>n</em> increments by slashes) [default is 2 columns]. By default, output results in the string -R<em>w/e/s/n</em> or -R<em>xmin/xmax/ymin/ymax</em>, unless <strong>numeric</strong> is set in which case we output each <em>min</em> and <em>max</em> value in separate output columns. Several directives are available:</p>
 <ul>
-<li><p><strong>image</strong> : – <em>image=true</em><br>
-Fills the ternary plot with an image computed automatically with <a href="../..\documentation/modules/grdimage.html">grdimage</a> from a grid interpolated with <a href="../..\documentation/modules/surface.html">surface</a></p></li>
-<li><p><strong>contour</strong> : – <em>contour=??</em><br>
-This option works in two different ways. If used together with <code>image</code> it overlays a contour by doing a call to <a href="../..\documentation/modules/grdcontour.html">grdcontour</a>. However, if used alone it will call <code>contour</code> to do the contours. The difference is important because this option can be used in <em>default mode</em> with <code>contour=true</code> where the number and annotated contours is picked automatically, or the use can exert full control by passing as argument a NamedTuple with all options appropriated to that module. <em>e.g.</em> <code>contour=(cont=10, annot=20, pen=0.5)</code></p></li>
-<li><p><strong>contourf</strong> : – <em>contourf=??</em><br>
-Works a bit like the <em>standalone</em> <code>contour</code>. If used with <code>contourf=true</code> call make a filled contour using automatic parameters. The form <code>contourf=(...)</code> let us selects options of the <a href="../..\documentation/modules/contourf.html">contourf</a> module.</p></li>
-<li><p><strong>clockwise</strong> : – <em>clockwise=true</em>` Set it to <code>true</code> to indicate that positive axes directions be clock-wise [Default lets the a, b, c axes be positive in a counter-clockwise direction].</p></li>
-<li><p><strong>U</strong> or <strong>time_stamp</strong> : – <em>time_stamp=true</em> <strong>|</strong> <em>time_stamp=(just=“code”, pos=(dx,dy), label=“label”, com=true)</em><br>
-Draw GMT time stamp logo on plot. More at <a href="../../documentation/common_opts/common_opts.html#timestamp">timestamp</a></p></li>
+<li><strong>polyg=true</strong> - Write the bounding box of the data table or segments (see <strong>ranges</strong>) as a closed polygon segment.</li>
+<li><strong>exact=true</strong> - The exact <em>min</em>/<em>max</em> of the input is given in the -R string.</li>
+<li><strong>fft=true</strong> - Report an extended region optimized to give grid dimensions for fastest results in programs using FFTs.</li>
+<li><strong>surface=true</strong> - Report an extended region optimized to give grid dimensions for fastest results in programs like <a href="../..\documentation/modules/surface.html">surface</a>.</li>
+</ul></li>
+<li><p><strong>L</strong> | <strong>common_limits</strong> : – <em>common_limits=true</em><br>
+Determines common limits across tables (<code>ranges=:t</code>) or segments (<code>ranges=:s</code>). If used with <strong>inc</strong> it will round inwards so that the resulting bounds lie within the actual data domain.</p></li>
+<li><p><strong>T</strong> | <strong>nearest_multiple</strong> : – <em>nearest_multiple=dz</em> <strong>|</strong> <em>nearest_multiple=(dz=val, col=n)</em><br>
+Report the min/max of the first (0’th) column to the nearest multiple of <em>dz</em> and output this as the string -T<em>zmin/zmax/dz</em>. To use another column, append <strong>col=n</strong>. Cannot be used together with <strong>inc</strong>. <strong>Note</strong>: If your column has absolute time then you may append a valid fixed time unit to <em>dz</em> (i.e., choose from <strong>w</strong>eek, <strong>d</strong>ay, <strong>h</strong>our, <strong>m</strong>inute, or <strong>s</strong>econd).</p></li>
 <li><p><strong>V</strong> or <em>verbose</em> : – <em>verbose=true</em> <strong>|</strong> <em>verbose=level</em><br>
 Select verbosity level. More at <a href="../../documentation/common_opts/common_opts.html#verbose">verbose</a></p></li>
-<li><p><strong>W</strong> or <strong>pen</strong>=<code>pen</code><br>
-Set pen attributes for the arrow stem [Defaults: width = default, color = black, style = solid]. See <a href="../../documentation/common_features/pens.html">Pen attributes</a> and <a href="../../documentation/common_features/arrows_control.html">Vector attributes</a> for arrow line terminations.</p></li>
-<li><p><strong>X</strong> or <strong>xshift</strong> or <strong>x_offset</strong> : <em>xshift=true</em> <strong>|</strong> <em>xshift=x-shift</em> <strong>|</strong> <em>xshift=(shift=x-shift, mov=“a|c|f|r”)</em><br>
-Shift plot origin. More at <a href="../../documentation/common_opts/common_opts.html#xshift">xshift</a></p></li>
-<li><p><strong>Y</strong> or <strong>yshift</strong> or <strong>y_offset</strong> : <em>yshift=true</em> <strong>|</strong> <em>yshift=y-shift</em> <strong>|</strong> <em>yshift=(shift=y-shift, mov=“a|c|f|r”)</em><br>
-Shift plot origin. More at <a href="../../documentation/common_opts/common_opts.html#yshift">yshift</a></p></li>
+<li><p><strong>a</strong> or <strong>aspatial</strong> : – <em>aspatial=??</em><br>
+Control how aspatial data are handled in GMT during input and output. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#aspatial-full">More at</a></p></li>
 <li><p><strong>bi</strong> or <strong>binary_in</strong> : – <em>binary_in=??</em><br>
 Select native binary format for primary table input. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#bi-full">More at</a></p></li>
 <li><p><strong>di</strong> or <strong>nodata_in</strong> : – <em>nodata_in=??</em><br>
@@ -540,62 +534,88 @@ Examine the spacing between consecutive data points in order to impose breaks in
 Specify that input and/or output file(s) have n header records. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#h-full">More at</a></p></li>
 <li><p><strong>i</strong> or <strong>incol</strong> or <strong>incols</strong> : – <em>incol=col_num</em> <strong>|</strong> <em>incol=“opts”</em><br>
 Select input columns and transformations (0 is first column, t is trailing text, append word to read one word only). More at <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#icols-full">incol</a></p></li>
-<li><p><strong>q</strong> or <strong>inrows</strong> : – <em>inrows=??</em><br>
-Select specific data rows to be read and/or written. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#the-q-option">More at</a></p></li>
+<li><p><strong>o</strong> or <strong>outcol</strong> : – <em>outcol=??</em><br>
+Select specific data columns for primary output, in arbitrary order. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#ocols-full">More at</a></p></li>
+</ul>
+<!-- Placeholder for opt_qi -->
+<ul>
+<li><p><strong>r</strong> or <strong>reg</strong> or <strong>registration</strong> : – <em>reg=:p</em> <strong>|</strong> <em>reg=:g</em><br>
+Select gridline or pixel node registration. Used only when output is a grid. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#nodereg-full">More at</a></p></li>
 <li><p><strong>s</strong> or <strong>skiprows</strong> or <strong>skip_NaN</strong> : – <em>skip_NaN=true</em> <strong>|</strong> <em>skip_NaN=“&lt;cols[+a][+r]&gt;”</em><br>
 Suppress output of data records whose z-value(s) equal NaN. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#the-s-option">More at</a></p></li>
+<li><p><strong>w</strong> or <strong>wrap</strong> or <strong>cyclic</strong> : – <em>wrap=??</em><br>
+Convert input records to a cyclical coordinate. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#w-full">More at</a></p></li>
 <li><p><strong>yx</strong> : – <em>yx=true</em><br>
-Swap 1st and 2nd column on input and/or output. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#colon-full">More at</a></p></li>
-<li><p><strong>p</strong> or <strong>view</strong> or <strong>perspective</strong> : – <em>view=(azim, elev)</em><br>
-Default is viewpoint from an azimuth of 200 and elevation of 30 degrees.<br>
-Specify the viewpoint in terms of azimuth and elevation. The azimuth is the horizontal rotation about the z-axis as measured in degrees from the positive y-axis. That is, from North. This option is not yet fully expanded. Current alternatives are:</p>
-<ul>
-<li><em>view=??</em><br>
-A full GMT compact string with the full set of options.</li>
-<li><em>view=(azim,elev)</em><br>
-A two elements tuple with azimuth and elevation</li>
-<li><em>view=true</em><br>
-To propagate the viewpoint used in a previous module (makes sense only in <code>bar3!</code>) More at <a href="../../documentation/common_opts/opt_p.html">perspective</a></li>
-</ul></li>
-<li><p><strong>t</strong> or <strong>transparency</strong> or <strong>alpha</strong>: – <em>alpha=50</em><br>
-Set PDF transparency level for an overlay, in (0-100] percent range. [Default is 0, <em>i.e.</em>, opaque]. Works only for the PDF and PNG formats.</p></li>
-<li><p><strong>figname</strong> or <strong>savefig</strong> or <strong>name</strong> : – <em>figname=<code>name.png</code></em><br>
-Save the figure with the <code>figname=name.ext</code> where <code>ext</code> chooses the figure image format.</p></li>
+Swap 1st and 2nd column on input and/or output.</p></li>
 </ul>
 </section>
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
-<p>To plot circles (diameter = 0.1 cm) on a 6-inch-wide ternary diagram at the positions listed in the file ternary.txt, with default annotations and gridline spacings, using the specified labeling, try</p>
-<div id="a7f04dfe" class="cell" data-execution_count="1">
+<p>To find the extreme values in the remote file <span class="citation" data-cites="ship_15.txt">@ship_15.txt</span>:</p>
+<div id="50f42eed" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">makecpt</span>(cmap<span class="op">=:</span>turbo, range<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">80</span>,<span class="fl">10</span>))</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ternary</span>(<span class="st">"@ternary.txt"</span>, region<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">100</span>,<span class="fl">0</span>,<span class="fl">100</span>,<span class="fl">0</span>,<span class="fl">100</span>), marker<span class="op">=:</span>circ, ms<span class="op">=</span><span class="fl">0.1</span>, vertex_labels<span class="op">=</span><span class="st">"Water/Air/Limestone"</span>,</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    frame<span class="op">=</span>(annot<span class="op">=:</span>auto, grid<span class="op">=:</span>a, ticks<span class="op">=:</span>a, alabel<span class="op">=</span><span class="st">"Water component"</span>, blabel<span class="op">=</span><span class="st">"Air component"</span>, clabel<span class="op">=</span><span class="st">"Limestone component"</span>, suffix<span class="op">=</span><span class="st">" %"</span>, fill<span class="op">=:</span>ivory, title<span class="op">=</span><span class="st">"Example data from MATLAB Central"</span>), show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">gmtinfo</span>(<span class="st">"@ship_15.txt"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div class="ansi-escaped-output">
+<pre>1-element Vector{String}:
+ "C:/Users/j/.gmt/cache/ship_15.t"<span class="ansi-bright-yellow-fg ansi-bold"> ⋯ 21 bytes ⋯ </span>"4.705&gt;\t&lt;20/29.99131&gt;\t&lt;-4504/-9&gt;"</pre>
+</div>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<pre><code></code></pre>
+</div>
+</div>
+<p>Output should look like:</p>
+<pre><code>ship_15.txt: N = 82651  &lt;245/254.705&gt;   &lt;20/29.99131&gt;   &lt;-4504/-9&gt;</code></pre>
+<p>To find the extreme values in <span class="citation" data-cites="ship_15.txt">@ship_15.txt</span> to the nearest 5 units but shifted to within 1 unit of the data center, and use this region to plot all the points as small black circles:</p>
+<div id="3100d278" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>R <span class="op">=</span> <span class="fu">gmtinfo</span>(<span class="st">"@ship_15.txt"</span>, inc<span class="op">=</span><span class="fl">5</span>, center<span class="op">=</span><span class="fl">1</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="st">"@ship_15.txt"</span>, region<span class="op">=</span>R[<span class="fl">3</span><span class="op">:</span><span class="kw">end</span>], frame<span class="op">=:</span>auto, marker<span class="op">=:</span>circ, ms<span class="op">=</span><span class="st">"2p"</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="ternary_files/figure-html/cell-2-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="gmtinfo_files/figure-html/cell-3-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>See other examples at <a href="https://www.generic-mapping-tools.org/GMTjl_doc/examples/ternary/ternary_examples.html">Ternary plots</a></p>
+<p>To find the min and max values for each of the first 3 columns, but rounded to integers, and return the result individually for each data file:</p>
+<div id="316cb683" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gmtinfo</span>(<span class="st">"@ship_15.txt"</span>, numeric<span class="op">=</span><span class="cn">true</span>, inc<span class="op">=</span><span class="st">"1/1/1"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code></code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<pre><code></code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>1×6 GMTdataset{Float64, 2}
+ Row │ col.1  col.2  col.3  col.4    col.5  col.6
+─────┼────────────────────────────────────────────
+   1 │ 245.0  255.0   20.0   30.0  -4504.0   -9.0</code></pre>
+</div>
+</div>
+<p>The file magprofs.txt contains a number of magnetic profiles stored as separate data segments. We need to know how many segments there are:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gmtinfo</span>(<span class="st">"magprofs.txt"</span>, counts<span class="op">=:</span>i)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="bugs" class="level2">
+<h2 class="anchored" data-anchor-id="bugs">Bugs</h2>
+<p>The <strong>inc</strong> option does not yet work properly with time series data (e.g., <code>incols="0T"</code>). Thus, such variable intervals as months and years are not calculated. Instead, specify your interval in the same units as the current setting of TIME_UNIT.</p>
 </section>
 <section id="source-code" class="level2">
 <h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
 <p>This function has multiple methods:</p>
 <ul>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L1671"><code>ternary(cmd0::String; ...)</code></a> - plot.jl:1671</li>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L1671"><code>ternary(; ...)</code></a> - plot.jl:1671</li>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L1772"><code>ternary(arg1; kw...)</code></a> - plot.jl:1772</li>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L1671"><code>ternary(cmd0::String, arg1; first, image, kwargs...)</code></a> - plot.jl:1671</li>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L1774"><code>ternary(kw...)</code></a> - plot.jl:1774</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/gmtinfo.jl#L44"><code>gmtinfo(cmd0::String; kwargs...)</code></a> - gmtinfo.jl:44</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/gmtinfo.jl#L45"><code>gmtinfo(arg1; kwargs...)</code></a> - gmtinfo.jl:45</li>
 </ul>
 </section>
 <section id="see-also" class="level2">
 <h2 class="anchored" data-anchor-id="see-also">See Also</h2>
-<p><a href="../..\documentation/modules/plot.html">plot</a></p>
+<ul>
+<li><a href="../..\documentation/modules/gmtconvert.html">gmtconvert</a>, <a href="../..\documentation/modules/plot.html">plot</a></li>
+<li><a href="../alphabetical.html">Alphabetical Function List</a></li>
+</ul>
 
 
 </section>

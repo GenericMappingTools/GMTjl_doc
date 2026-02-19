@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>ternary</title>
+<title>mapscale</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -452,8 +452,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#description" id="toc-description" class="nav-link active" data-scroll-target="#description">Description</a></li>
   <li><a href="#parameters" id="toc-parameters" class="nav-link" data-scroll-target="#parameters">Parameters</a></li>
   <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
-  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
   <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
   </ul>
 </nav>
     </div>
@@ -462,7 +462,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">ternary</h1>
+<h1 class="title">mapscale</h1>
 </div>
 
 
@@ -479,123 +479,144 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ternary</span>(cmd0<span class="op">::</span><span class="dt">String</span>=<span class="st">""</span>, arg1<span class="op">=</span>[]; kwargs<span class="op">...</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Plot data on ternary diagrams</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mapscale</span>(; kwargs<span class="op">...</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Draw a map scale bar on the map.</p>
 <section id="description" class="level2">
 <h2 class="anchored" data-anchor-id="description">Description</h2>
-<p>Reads (<em>a</em>, <em>b</em>, <em>c</em> [, <em>z</em>]) records from <em>table</em> and plots symbols at those locations on a ternary diagram. If a symbol is selected and no symbol size given, then we will interpret the fourth column of the input data as symbol size. Symbols whose <em>size</em> is &lt;= 0 are skipped. If no symbols are specified then the symbol code (see <strong>marker</strong> below) must be present as last column in the input. If <strong>marker</strong> is not specified then we instead plot lines or polygons.</p>
+<p>Convenience function that wraps <a href="../..\documentation/modules/basemap.html">basemap</a> to draw a map scale bar (<code>-L</code>). The scale bar length is computed for a given latitude, allowing accurate distance representation on projected maps.</p>
+<p>Can be called as an overlay (<code>mapscale!</code>) on an existing plot, or standalone with explicit <code>region</code> and <code>proj</code>. When no explicit <code>frame</code> is given, defaults to <code>frame=:none</code> so that only the scale bar is drawn.</p>
 </section>
 <section id="parameters" class="level2">
 <h2 class="anchored" data-anchor-id="parameters">Parameters</h2>
 <ul>
-<li><p><strong>B</strong> or <strong>axes</strong> or <strong>frame</strong> : – <em>frame=??</em><br>
-For ternary diagrams the three sides are referred to as a, b, and c.&nbsp;Thus, to give specific settings for one of these axis you must include the axis letter before the arguments. If all axes have the same arguments then only give one option without the axis letter. For more details, see the example at the bottom of this page and the general [frame] docs.</p></li>
-<li><p><strong>C</strong> or <strong>color</strong> or <strong>cmap</strong> : – <em>color=cpt</em><br>
-Give a CPT or specify <strong>color=“color1,color2 [,color3 ,…]”</strong> or <strong>color=((r1,g1,b1),(r2,g2,b2),…)</strong> to build a linear continuous CPT from those colors automatically, where <em>z</em> starts at 0 and is incremented by one for each color. In this case <em>color_n</em> can be a [r g b] triplet, a color name, or an HTML hexadecimal color (e.g.&nbsp;#aabbcc). If <strong>symbol</strong> is set, let symbol fill color be determined by the z-value in the fourth column. Additional fields are shifted over by one column (optional size would be 5th rather than 4th field, etc.).</p></li>
-<li><p><strong>G</strong> or <strong>markerfacecolor</strong> or <strong>MarkerFaceColor</strong> or <strong>markercolor</strong> or <strong>mc</strong> or <strong>fill</strong><br>
-Select color or pattern for filling of symbols [Default is no fill]. Note that plot will search for <em>fill</em> and <em>pen</em> settings in all the segment headers (when passing a GMTdaset or file of a multi-segment dataset) and let any values thus found over-ride the command line settings (but those must be provided in the terse GMT syntax). See <a href="../../documentation/common_features/color.html">Setting color</a> for extend color selection (including color map generation).</p></li>
-<li><p><strong>J</strong> or <strong>proj</strong> or <strong>projection</strong> : – <em>proj=width</em><br>
-The only valid projection is linear plot with specified ternary width. Use a negative <em>width</em> to indicate that positive axes directions be clock-wise [Default lets the <em>a, b, c</em> axes be positive in a counter-clockwise direction].</p></li>
-<li><p><strong>L</strong> or <strong>vertex_labels</strong> : – <em>vertex_labels=“Lab1/lab2/Lab3”</em> <strong>|</strong> <em>vertex_labels=(“Lab1”, “lab2”, “Lab3”)</em><br>
-Set the labels for the three diagram vertices where the component is 100% [none]. These are placed a distance of three times the <a href="https://docs.generic-mapping-tools.org/latest/gmt.conf.html#term-MAP_LABEL_OFFSET">MAP_LABEL_OFFSET</a> setting from their respective corners. To skip any one of then, specify that label as “-”.</p></li>
-<li><p><strong>M</strong> or <strong>dump</strong> : – <em>dump=true</em><br>
-Do no plot. Instead, convert the input (<em>a</em>, <em>b</em>, <em>c</em> [, <em>z</em>]) records to Cartesian (<em>x</em>, <em>y</em>, [, <em>z</em>]) records, where <em>x, y</em> are normalized coordinates on the triangle (i.e., 0–1 in <em>x</em> and 0–sqrt(3)/2 in <em>y</em>).</p></li>
-<li><p><strong>N</strong> or <strong>noclip</strong> or <strong>no_clip</strong> : <em>noclip=true</em><br>
-Do NOT clip symbols that fall outside map border [Default plots points whose coordinates are strictly inside the map border only].</p></li>
-<li><p><strong>R</strong> or <strong>region</strong> or <strong>limits</strong> : – <em>limits=(xmin, xmax, ymin, ymax)</em> <strong>|</strong> <em>limits=(BB=(xmin, xmax, ymin, ymax),)</em> <strong>|</strong> <em>limits=(LLUR=(xmin, xmax, ymin, ymax),units=“unit”)</em> <strong>|</strong> …more<br>
-Specify the region of interest. More at <a href="../../documentation/common_opts/common_opts.html#limits">limits</a>. For perspective view <strong>view</strong>, optionally add <em>zmin,zmax</em>. This option may be used to indicate the range used for the 3-D axes. You may ask for a larger w/e/s/n region to have more room between the image and the axes.</p></li>
-<li><p><strong>S</strong> or <strong>marker</strong> or <strong>symbol</strong> : – <em>symbol=(symb=name, size=val, unit=unity)</em> or <em>marker|Marker|shape=name</em>, <em>markersize|MarkerSize|ms|size=val</em><br>
-Plot individual symbols in a ternary diagram. If <strong>marker</strong> is not given then we will instead plot lines (requires <strong>markerline</strong>) or polygons (requires <strong>cmap</strong> or <strong>fill</strong>). For details on symbols see the <strong>symbol</strong> option in <a href="../..\documentation/modules/plot.html">plot</a></p></li>
+<li><p><strong>anchor</strong> : – <em>anchor=(x,y)</em> | <em>anchor=refpoint</em><br>
+Reference point on the map for the scale bar.</p></li>
+<li><p><strong>scale_at_lat</strong> : – <em>scale_at_lat=lat</em><br>
+Latitude at which the map scale is computed. Required for geographic projections.</p></li>
+<li><p><strong>length</strong> or <strong>width</strong> : – <em>length=“1000k”</em> | <em>length=val</em><br>
+Length of the scale bar. Append unit: <strong>e</strong> (meter), <strong>f</strong> (foot), <strong>k</strong> (km), <strong>M</strong> (mile), <strong>n</strong> (nautical mile), <strong>u</strong> (US survey foot). E.g., <code>"500k"</code> for 500 km.</p></li>
+<li><p><strong>fancy</strong> : – <em>fancy=true</em><br>
+Draw a fancy scale bar instead of a plain one.</p></li>
+<li><p><strong>label</strong> : – <em>label=true</em> | <em>label=“text”</em><br>
+Label for the scale bar. Use <code>true</code> for the default unit label, or provide custom text.</p></li>
+<li><p><strong>align</strong> : – <em>align=:left</em> | <em>align=:right</em> | <em>align=:top</em> | <em>align=:bottom</em><br>
+Alignment of the label relative to the scale bar.</p></li>
+<li><p><strong>justify</strong> : – <em>justify=code</em><br>
+2-char justification code for the anchor point (e.g., <code>:CM</code>). See <a href="../..\documentation/modules/text.html">text</a>.</p></li>
+<li><p><strong>offset</strong> : – <em>offset=(dx,dy)</em><br>
+Offset from the anchor point.</p></li>
+<li><p><strong>units</strong> : – <em>units=true</em><br>
+Append the unit to all distance annotations along the scale.</p></li>
+<li><p><strong>vertical</strong> : – <em>vertical=true</em><br>
+Plot a vertical instead of horizontal Cartesian scale.</p></li>
+<li><p><strong>map</strong>, <strong>inside</strong>, <strong>outside</strong>, <strong>norm</strong>, <strong>paper</strong> :<br>
+Coordinate system for the anchor point. Use <strong>map=true</strong> for map coordinates, <strong>inside=code</strong> or <strong>outside=code</strong> for justification-based placement, <strong>norm=true</strong> for normalized (0-1) coordinates, or <strong>paper=true</strong> for plot coordinates.</p></li>
 </ul>
-<p>Other than the above options, the <code>kwargs</code> input accepts still the following options:</p>
-<ul>
-<li><p><strong>image</strong> : – <em>image=true</em><br>
-Fills the ternary plot with an image computed automatically with <a href="../..\documentation/modules/grdimage.html">grdimage</a> from a grid interpolated with <a href="../..\documentation/modules/surface.html">surface</a></p></li>
-<li><p><strong>contour</strong> : – <em>contour=??</em><br>
-This option works in two different ways. If used together with <code>image</code> it overlays a contour by doing a call to <a href="../..\documentation/modules/grdcontour.html">grdcontour</a>. However, if used alone it will call <code>contour</code> to do the contours. The difference is important because this option can be used in <em>default mode</em> with <code>contour=true</code> where the number and annotated contours is picked automatically, or the use can exert full control by passing as argument a NamedTuple with all options appropriated to that module. <em>e.g.</em> <code>contour=(cont=10, annot=20, pen=0.5)</code></p></li>
-<li><p><strong>contourf</strong> : – <em>contourf=??</em><br>
-Works a bit like the <em>standalone</em> <code>contour</code>. If used with <code>contourf=true</code> call make a filled contour using automatic parameters. The form <code>contourf=(...)</code> let us selects options of the <a href="../..\documentation/modules/contourf.html">contourf</a> module.</p></li>
-<li><p><strong>clockwise</strong> : – <em>clockwise=true</em>` Set it to <code>true</code> to indicate that positive axes directions be clock-wise [Default lets the a, b, c axes be positive in a counter-clockwise direction].</p></li>
-<li><p><strong>U</strong> or <strong>time_stamp</strong> : – <em>time_stamp=true</em> <strong>|</strong> <em>time_stamp=(just=“code”, pos=(dx,dy), label=“label”, com=true)</em><br>
-Draw GMT time stamp logo on plot. More at <a href="../../documentation/common_opts/common_opts.html#timestamp">timestamp</a></p></li>
-<li><p><strong>V</strong> or <em>verbose</em> : – <em>verbose=true</em> <strong>|</strong> <em>verbose=level</em><br>
-Select verbosity level. More at <a href="../../documentation/common_opts/common_opts.html#verbose">verbose</a></p></li>
-<li><p><strong>W</strong> or <strong>pen</strong>=<code>pen</code><br>
-Set pen attributes for the arrow stem [Defaults: width = default, color = black, style = solid]. See <a href="../../documentation/common_features/pens.html">Pen attributes</a> and <a href="../../documentation/common_features/arrows_control.html">Vector attributes</a> for arrow line terminations.</p></li>
-<li><p><strong>X</strong> or <strong>xshift</strong> or <strong>x_offset</strong> : <em>xshift=true</em> <strong>|</strong> <em>xshift=x-shift</em> <strong>|</strong> <em>xshift=(shift=x-shift, mov=“a|c|f|r”)</em><br>
-Shift plot origin. More at <a href="../../documentation/common_opts/common_opts.html#xshift">xshift</a></p></li>
-<li><p><strong>Y</strong> or <strong>yshift</strong> or <strong>y_offset</strong> : <em>yshift=true</em> <strong>|</strong> <em>yshift=y-shift</em> <strong>|</strong> <em>yshift=(shift=y-shift, mov=“a|c|f|r”)</em><br>
-Shift plot origin. More at <a href="../../documentation/common_opts/common_opts.html#yshift">yshift</a></p></li>
-<li><p><strong>bi</strong> or <strong>binary_in</strong> : – <em>binary_in=??</em><br>
-Select native binary format for primary table input. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#bi-full">More at</a></p></li>
-<li><p><strong>di</strong> or <strong>nodata_in</strong> : – <em>nodata_in=??</em><br>
-Substitute specific values with NaN. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#di-full">More at</a></p></li>
-<li><p><strong>e</strong> or <strong>pattern</strong> : – <em>pattern=??</em><br>
-Only accept ASCII data records that contain the specified pattern. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#e-full">More at</a></p></li>
-<li><p><strong>f</strong> or <strong>colinfo</strong> : – <em>colinfo=??</em><br>
-Specify the data types of input and/or output columns (time or geographical data). <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#f-full">More at</a></p></li>
-<li><p><strong>g</strong> or <strong>gap</strong> : – <em>gap=??</em><br>
-Examine the spacing between consecutive data points in order to impose breaks in the line. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#g-full">More at</a></p></li>
-<li><p><strong>h</strong> or <strong>header</strong> : – <em>header=??</em><br>
-Specify that input and/or output file(s) have n header records. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#h-full">More at</a></p></li>
-<li><p><strong>i</strong> or <strong>incol</strong> or <strong>incols</strong> : – <em>incol=col_num</em> <strong>|</strong> <em>incol=“opts”</em><br>
-Select input columns and transformations (0 is first column, t is trailing text, append word to read one word only). More at <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#icols-full">incol</a></p></li>
-<li><p><strong>q</strong> or <strong>inrows</strong> : – <em>inrows=??</em><br>
-Select specific data rows to be read and/or written. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#the-q-option">More at</a></p></li>
-<li><p><strong>s</strong> or <strong>skiprows</strong> or <strong>skip_NaN</strong> : – <em>skip_NaN=true</em> <strong>|</strong> <em>skip_NaN=“&lt;cols[+a][+r]&gt;”</em><br>
-Suppress output of data records whose z-value(s) equal NaN. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#the-s-option">More at</a></p></li>
-<li><p><strong>yx</strong> : – <em>yx=true</em><br>
-Swap 1st and 2nd column on input and/or output. <a href="https://docs.generic-mapping-tools.org/dev/gmt.html#colon-full">More at</a></p></li>
-<li><p><strong>p</strong> or <strong>view</strong> or <strong>perspective</strong> : – <em>view=(azim, elev)</em><br>
-Default is viewpoint from an azimuth of 200 and elevation of 30 degrees.<br>
-Specify the viewpoint in terms of azimuth and elevation. The azimuth is the horizontal rotation about the z-axis as measured in degrees from the positive y-axis. That is, from North. This option is not yet fully expanded. Current alternatives are:</p>
-<ul>
-<li><em>view=??</em><br>
-A full GMT compact string with the full set of options.</li>
-<li><em>view=(azim,elev)</em><br>
-A two elements tuple with azimuth and elevation</li>
-<li><em>view=true</em><br>
-To propagate the viewpoint used in a previous module (makes sense only in <code>bar3!</code>) More at <a href="../../documentation/common_opts/opt_p.html">perspective</a></li>
-</ul></li>
-<li><p><strong>t</strong> or <strong>transparency</strong> or <strong>alpha</strong>: – <em>alpha=50</em><br>
-Set PDF transparency level for an overlay, in (0-100] percent range. [Default is 0, <em>i.e.</em>, opaque]. Works only for the PDF and PNG formats.</p></li>
-<li><p><strong>figname</strong> or <strong>savefig</strong> or <strong>name</strong> : – <em>figname=<code>name.png</code></em><br>
-Save the figure with the <code>figname=name.ext</code> where <code>ext</code> chooses the figure image format.</p></li>
-</ul>
+<p>All other keyword arguments (e.g., <code>region</code>, <code>proj</code>, <code>frame</code>, <code>par</code>, <code>show</code>, <code>savefig</code>, <code>box</code>, etc.) are passed through to <a href="../..\documentation/modules/basemap.html">basemap</a>.</p>
 </section>
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
-<p>To plot circles (diameter = 0.1 cm) on a 6-inch-wide ternary diagram at the positions listed in the file ternary.txt, with default annotations and gridline spacings, using the specified labeling, try</p>
-<div id="a7f04dfe" class="cell" data-execution_count="1">
+<section id="simple-scale-bar-on-a-map" class="level3">
+<h3 class="anchored" data-anchor-id="simple-scale-bar-on-a-map">Simple scale bar on a map</h3>
+<p>A 500 km fancy scale bar on a Mercator map of the North Sea, computed at latitude 53N.</p>
+<div id="9e520f22" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">makecpt</span>(cmap<span class="op">=:</span>turbo, range<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">80</span>,<span class="fl">10</span>))</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ternary</span>(<span class="st">"@ternary.txt"</span>, region<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">100</span>,<span class="fl">0</span>,<span class="fl">100</span>,<span class="fl">0</span>,<span class="fl">100</span>), marker<span class="op">=:</span>circ, ms<span class="op">=</span><span class="fl">0.1</span>, vertex_labels<span class="op">=</span><span class="st">"Water/Air/Limestone"</span>,</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    frame<span class="op">=</span>(annot<span class="op">=:</span>auto, grid<span class="op">=:</span>a, ticks<span class="op">=:</span>a, alabel<span class="op">=</span><span class="st">"Water component"</span>, blabel<span class="op">=</span><span class="st">"Air component"</span>, clabel<span class="op">=</span><span class="st">"Limestone component"</span>, suffix<span class="op">=</span><span class="st">" %"</span>, fill<span class="op">=:</span>ivory, title<span class="op">=</span><span class="st">"Example data from MATLAB Central"</span>), show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">coast</span>(region<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">40</span>,<span class="fl">50</span>,<span class="fl">56</span>), proj<span class="op">=:</span>Mercator, figsize<span class="op">=</span><span class="fl">13</span>, frame<span class="op">=:</span>auto,</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>      land<span class="op">=:</span>lightgray, water<span class="op">=:</span>lightblue, shore<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">mapscale!</span>(inside<span class="op">=:</span>ML, scale_at_lat<span class="op">=</span><span class="fl">53</span>, length<span class="op">=</span><span class="st">"500k"</span>, fancy<span class="op">=</span><span class="cn">true</span>, label<span class="op">=</span><span class="cn">true</span>,</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>          offset<span class="op">=</span><span class="fl">0.5</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-green-fg ansi-bold">Precompiling</span> packages...
+
+
+  55256.1 ms<span class="ansi-green-fg">  ✓ </span>GMT
+
+  1 dependency successfully precompiled in 56 seconds. 80 already precompiled.
+
+</pre>
+</div>
+</div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="ternary_files/figure-html/cell-2-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="mapscale_files/figure-html/cell-2-output-2.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>See other examples at <a href="https://www.generic-mapping-tools.org/GMTjl_doc/examples/ternary/ternary_examples.html">Ternary plots</a></p>
+</section>
+<section id="two-scale-bars-with-boxes" class="level3">
+<h3 class="anchored" data-anchor-id="two-scale-bars-with-boxes">Two scale bars with boxes</h3>
+<p>A fancy scale bar on the left with a light cyan box, and a plain one on the bottom right with a white box and inner border.</p>
+<div id="5b3d8196" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">basemap</span>(region<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">40</span>,<span class="fl">50</span>,<span class="fl">56</span>), proj<span class="op">=:</span>Mercator, figsize<span class="op">=</span><span class="fl">13</span>, frame<span class="op">=:</span>auto,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>        map_scale<span class="op">=</span>(anchor<span class="op">=:</span>ML, scale_at_lat<span class="op">=</span><span class="fl">53</span>, length<span class="op">=</span><span class="st">"1000k"</span>, label<span class="op">=</span><span class="st">"Scale at 53@.N"</span>, fancy<span class="op">=</span><span class="cn">true</span>),</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>        box<span class="op">=</span>(fill<span class="op">=:</span>lightcyan, clearance<span class="op">=</span><span class="fl">0</span>, pen<span class="op">=</span><span class="fl">1</span>))</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">mapscale!</span>(inside<span class="op">=:</span>BR, scale_at_lat<span class="op">=</span><span class="fl">53</span>, length<span class="op">=</span><span class="st">"1000k"</span>, label<span class="op">=</span><span class="cn">true</span>, fancy<span class="op">=</span><span class="cn">true</span>,</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>          box<span class="op">=</span>(fill<span class="op">=:</span>white, clearance<span class="op">=</span><span class="fl">0.25</span>, pen<span class="op">=</span><span class="fl">1</span>, inner<span class="op">=</span><span class="cn">true</span>), show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="mapscale_files/figure-html/cell-3-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="scale-bar-on-a-regional-map" class="level3">
+<h3 class="anchored" data-anchor-id="scale-bar-on-a-regional-map">Scale bar on a regional map</h3>
+<div id="0f1b08c0" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">coast</span>(region<span class="op">=</span>(<span class="op">-</span><span class="fl">10</span>,<span class="fl">5</span>,<span class="fl">35</span>,<span class="fl">45</span>), proj<span class="op">=:</span>Mercator, frame<span class="op">=:</span>auto, land<span class="op">=:</span>bisque,</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>      water<span class="op">=:</span>lightblue, borders<span class="op">=</span>(<span class="kw">type</span><span class="op">=</span><span class="fl">1</span>, pen<span class="op">=</span><span class="fl">0.5</span>), shore<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">mapscale!</span>(inside<span class="op">=:</span>BR, scale_at_lat<span class="op">=</span><span class="fl">40</span>, length<span class="op">=</span><span class="st">"200k"</span>, fancy<span class="op">=</span><span class="cn">true</span>, label<span class="op">=</span><span class="cn">true</span>,</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>          offset<span class="op">=</span><span class="fl">0.5</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="mapscale_files/figure-html/cell-4-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="plain-scale-bar-with-custom-label" class="level3">
+<h3 class="anchored" data-anchor-id="plain-scale-bar-with-custom-label">Plain scale bar with custom label</h3>
+<div id="632d7088" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">coast</span>(region<span class="op">=</span>(<span class="op">-</span><span class="fl">80</span>,<span class="op">-</span><span class="fl">60</span>,<span class="op">-</span><span class="fl">10</span>,<span class="fl">10</span>), proj<span class="op">=:</span>Mercator, frame<span class="op">=:</span>auto, land<span class="op">=:</span>darkgreen,</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>      water<span class="op">=:</span>lightblue, shore<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">mapscale!</span>(inside<span class="op">=:</span>BL, scale_at_lat<span class="op">=</span><span class="fl">0</span>, length<span class="op">=</span><span class="st">"500k"</span>, label<span class="op">=</span><span class="st">"500 km at equator"</span>,</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>          offset<span class="op">=</span><span class="fl">0.5</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="mapscale_files/figure-html/cell-5-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="see-also" class="level2">
+<h2 class="anchored" data-anchor-id="see-also">See Also</h2>
+<p><a href="../..\documentation/modules/basemap.html">basemap</a>, <a href="../..\documentation/modules/coast.html">coast</a>, <a href="../..\documentation/modules/compass.html">compass</a></p>
+<p><a href="../alphabetical.html">Alphabetical Function List</a></p>
 </section>
 <section id="source-code" class="level2">
 <h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
 <p>This function has multiple methods:</p>
 <ul>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L1671"><code>ternary(cmd0::String; ...)</code></a> - plot.jl:1671</li>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L1671"><code>ternary(; ...)</code></a> - plot.jl:1671</li>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L1772"><code>ternary(arg1; kw...)</code></a> - plot.jl:1772</li>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L1671"><code>ternary(cmd0::String, arg1; first, image, kwargs...)</code></a> - plot.jl:1671</li>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L1774"><code>ternary(kw...)</code></a> - plot.jl:1774</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/mapscale.jl#L38"><code>mapscale(first::Bool, d::Dict{Symbol, Any})</code></a> - mapscale.jl:38</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/mapscale.jl#L34"><code>mapscale(; first, kw...)</code></a> - mapscale.jl:34</li>
 </ul>
-</section>
-<section id="see-also" class="level2">
-<h2 class="anchored" data-anchor-id="see-also">See Also</h2>
-<p><a href="../..\documentation/modules/plot.html">plot</a></p>
 
 
 </section>
