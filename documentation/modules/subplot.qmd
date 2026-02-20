@@ -99,7 +99,7 @@ Optional Arguments
 - **M** or **margins** : -- *margins=val*\
     This is margin space that is added *between* neighboring subplots (i.e., the interior margins) *in addition*
     to the automatic space added for tick marks, annotations, and labels. The margins can be specified as
-    a single value (for same margin on all sides), a pair of values separated by slashes
+    a single value (for same margin on all sides), a pair of values separated by slashes (or in a tuple)
     (for setting separate horizontal and vertical margins), or the full set of four slash-separated margins
     (for setting separate left, right, bottom, and top margins). The actual gap created is always a sum of
     the margins for the two opposing sides (e.g., east plus west or south plus north margins) [Default is
@@ -107,8 +107,8 @@ Optional Arguments
 
 {{< include ../common_opts/opt_R.qmd >}}
 
-- **SC** or **col_axes** or **colaxes** or **sharex** : -- *col\_axes=(top="", bott="", bottom="", label="", grid=pen))*\
-- **SR** or **row_axes** or **rowaxes** or **sharey** : -- *row\_axes=(left="", right="", label="", parallel="", row\_title="t", top\_row\_title="", grid=pen))*\
+- **SC** or **col_axes** or **colaxes** or **sharex** : -- *col\_axes=(top="", bott="", bottom="", label="", grid=pen)*\
+- **SR** or **row_axes** or **rowaxes** or **sharey** : -- *row\_axes=(left="", right="", label="", parallel="", row\_title="t", top\_row\_title="", grid=pen)*\
     Set subplot layout for shared axes. May be set separately for rows (**row_axes**) and columns (**col_axes**).\
     Considerations for **col_axes**:\
     Use when all subplots in a column share a common *x*-range. The first (i.e., **top**) and the last (i.e., **bottom**) rows will have *x* annotations; append **top=""** or **bott=""** to select only one of those two rows [both].
@@ -252,9 +252,16 @@ Restriction
 -----------
 
 Currently, nesting of subplots is not implemented. With the ``geog`` projection one cannot set the fist axes to ``geog`` and the other to *whatever* because only last dimension is assigned that label. The solution to fine control here is to use the GMT syntax given as a string
+
 ```{julia}
 #| echo: false
 #| output: asis
 using GMT
 GMT.doc_source_links("subplot")
 ```
+
+## See Also
+
+{{< gmtref choropleth >}}, {{< gmtref montage >}}, {{< gmtref plot >}}
+
+- [Alphabetical Function List](../alphabetical.html)

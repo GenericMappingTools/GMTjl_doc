@@ -1,7 +1,7 @@
 # coast
 
 ```julia
-coast(cmd0::String=""; kwargs...)
+coast(; kwargs...)
 ```
 
 Plot continents, shorelines, rivers, and borders on maps
@@ -19,10 +19,7 @@ paint the land-areas and does not specify fill of water-areas then the latter wi
 (i.e., earlier graphics drawn in those areas will not be overwritten). Likewise, if the water-areas are
 painted and no land fill is set then the land-areas will be transparent. A map projection must be supplied.
 
-
-- **J** or **proj** or **projection** : -- *proj=<parameters>*\
-   Select map projection. More at ` ` [proj]
-<!-- {{< include ../common_opts/opt_J.qmd >}} -->
+{{< include ../common_opts/opt_J.qmd >}}
 
 {{< include ../common_opts/opt_R.qmd >}}
 

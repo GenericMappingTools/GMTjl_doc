@@ -27,15 +27,19 @@ CPT can be reversed relative to the master cpt, and can be made continuous or di
 
 The CPT includes three additional colors beyond the range of z-values. These are the background color (B) assigned
 to values lower than the lowest *z*-value, the foreground color (F) assigned to values higher than the highest *z*-value,
-and the NaN color (N) painted wherever values are undefined.
+and the NaN color (N) painted wherever values are undefined. For color tables beyond the current GMT offerings,
+visit [cpt-city](https://phillips.shef.ac.uk/pub/cpt-city/).
 
 If the master CPT includes B, F, and N entries, these will be copied into the new master file. If not, the parameters
-[COLOR_BACKGROUND](https://docs.generic-mapping-tools.org/latest/gmt.conf.html#term-COLOR_BACKGROUND), [COLOR_FOREGROUND](https://docs.generic-mapping-tools.org/latest/gmt.conf.html#term-COLOR_FOREGROUND), and [COLOR_NAN](https://docs.generic-mapping-tools.org/latest/gmt.conf.html#term-COLOR_NAN) from the `gmt.conf` file or the command line will be used.
-This default behavior can be overruled using the options **bg**, **overrule_bg** or **no_bg**.
+[COLOR_BACKGROUND](https://docs.generic-mapping-tools.org/latest/gmt.conf.html#term-COLOR_BACKGROUND),
+[COLOR_FOREGROUND](https://docs.generic-mapping-tools.org/latest/gmt.conf.html#term-COLOR_FOREGROUND),
+and [COLOR_NAN](https://docs.generic-mapping-tools.org/latest/gmt.conf.html#term-COLOR_NAN) from the `gmt.conf`
+file or the command line will be used. This default behavior can be overruled using the options **bg**, **overrule_bg** or **no_bg**.
 
 The color model (RGB, HSV or CMYK) of the palette created by **makecpt** will be the same as specified in the header of
-the master CPT. When there is no [COLOR_MODEL](https://docs.generic-mapping-tools.org/latest/gmt.conf.html#term-COLOR_MODEL) entry in the master CPT, the [COLOR_MODEL](https://docs.generic-mapping-tools.org/latest/gmt.conf.html#term-COLOR_MODEL) specified in the `gmt.conf`
-file or on the command line will be used.
+the master CPT. When there is no [COLOR_MODEL](https://docs.generic-mapping-tools.org/latest/gmt.conf.html#term-COLOR_MODEL)
+entry in the master CPT, the [COLOR_MODEL](https://docs.generic-mapping-tools.org/latest/gmt.conf.html#term-COLOR_MODEL)
+specified in the `gmt.conf` file or on the command line will be used.
 
 The second form is a quick way of generating CPT objects for use in the ``imshow/viz`` functions. Here `name` (as a symbol)
 is the name of any of the GM default palettes. It can also be the name of CPT file living in current directory. With it,
