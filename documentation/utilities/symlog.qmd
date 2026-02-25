@@ -1,0 +1,91 @@
+# symlog
+
+```julia
+symlog(x, y; axis=:y, linthresh=1, linscale=1, base=10, kwargs...)
+```
+
+Plot data with a symmetric logarithmic scale, like matplotlib's symlog. The scale is
+linear in the range [-linthresh, linthresh] and logarithmic beyond, allowing visualization
+of data that spans many orders of magnitude including negative values and zero.
+
+``symlog(x::AbstractVector, y::AbstractVector; axis=:y, linthresh=1, kwargs...)``
+
+Plots vectors `x` and `y` applying the symlog transform to the axis specified by `axis`.
+
+``symlog(D::GMTdataset; axis=:y, linthresh=1, kwargs...)``
+
+Plots a {{< gmtref GMTdataset type=gmttype >}} applying the symlog transform.
+
+``symlog(D::Vector{<:GMTdataset}; axis=:y, linthresh=1, kwargs...)``
+
+Plots multiple datasets, each with the symlog transform applied.
+
+- `axis`: Which axis to transform. Use `:y` (default), `:x`, or `:xy` for both axes.
+- `linthresh`: The range within which the plot is linear. This avoids having the plot go
+          to infinity around zero (default: 1).
+- `linscale`: This allows the linear range (-linthresh to linthresh) to be stretched
+          relative to the logarithmic range. Its default value is 1.
+- `base`: Base of the logarithm (default: 10).
+- All other keyword arguments are forwarded to `plot`.
+
+The inverse transform is available via `isymlog(y; linthresh, linscale, base)` to convert
+transformed values back to the original scale.
+
+-----------
+This module is a subset of `plot`. So not all (fine) controlling parameters are not listed here. For the
+finest control, user should consult the {{< gmtref plot >}} module.
+
+Parameters
+----------
+
+{{< include ../common_opts/opt_B.qmd >}}
+
+{{< include ../common_opts/opt_R.qmd >}}
+
+{{< include ../common_opts/opt_U.qmd >}}
+
+{{< include ../common_opts/opt_V.qmd >}}
+
+{{< include ../common_opts/opt_X.qmd >}}
+
+{{< include ../common_opts/opt_Y.qmd >}}
+
+{{< include ../common_opts/opt_save_fig.qmd >}}
+
+Examples
+--------
+
+A curve spanning several orders of magnitude in both positive and negative directions.
+The symlog scale compresses the extremes while keeping a linear region near zero.
+
+```{julia}
+using GMT
+x = collect(range(1.0, 100.0, length=500))
+y = @. 10.0^(x/20) - 10.0^((101-x)/20)
+symlog(x, y, linthresh=10, lw=1, show=true)
+```
+
+Apply the symlog transform to the X axis instead of Y.
+
+```{julia}
+using GMT
+x = collect(range(1.0, 100.0, length=500))
+y = @. 10.0^(x/20) - 10.0^((101-x)/20)
+symlog(y, x, axis=:x, linthresh=10, lw=1, show=true)
+```
+
+Apply the symlog transform to both axes.
+
+```{julia}
+using GMT
+x = collect(range(-500.0, 500.0, length=1000))
+y = @. x^3 / 1000
+symlog(x, y, axis=:xy, linthresh=5, lw=1, show=true)
+```
+
+```{julia}
+#| echo: false
+#| output: asis
+using GMT
+GMT.doc_source_links("symlog")
+```
