@@ -1,0 +1,91 @@
+# choropleth
+
+```julia
+    choropleth(D, ids, vals; attrib="CODE", cmap="turbo", outline=true, kw...)
+    choropleth(D, att=""; attrib="", cmap="turbo", outline=true, kw...)
+    choropleth(D, data::GMTdataset, att=""; attrib="", cmap="turbo", outline=true, kw...)
+    choropleth(D, data::Dict; outline=true, kw...)
+    choropleth(D, data::NamedTuple; outline=true, kw...)
+    choropleth(D, vals::Vector{<:Real}; attrib="CODE", outline=true, kw...)
+```
+
+Create a choropleth map visualization from geographic data with color-coded regions.
+
+Arguments
+---------
+
+- `D`: Geographic data - either a file path (String) or Vector{GMTdataset} containing polygons.
+
+- `ids::Vector{<:AbstractString}`: Region identifiers to match with the attribute values.
+
+- `vals::Vector{<:Real}`: Numeric values to map to colors for each region.
+
+- `att`: Attribute column name (positional argument) for coloring when values are in the dataset.
+
+- `data::GMTdataset`: Dataset containing attributes to join with geographic features (must have text column).
+
+- `data::Dict`: Dictionary mapping region identifiers to values.
+
+- `data::NamedTuple`: Named tuple with region identifiers as keys and values.
+
+Keywords
+--------
+
+- `attrib`: Attribute name to match identifiers (default: "CODE"). Takes precedence over positional `att`.
+
+- `cmap`: A colormap name (default: "turbo") or a GMTcpt colormap.
+
+- `outline`: Draw polygon outlines. `true` (default), `false`, or a pen specification string.
+
+- `kw...`: Additional arguments passed to the plotting function (e.g., `proj`, `region`, `title`).
+
+Returns
+-------
+- Nothing or a GMTps type.
+
+### Methods
+1. **With IDs and values**: `choropleth(D, ids, vals)` - Explicit region IDs and corresponding values.
+2. **From attribute**: `choropleth(D, att)` - Extract values from a numeric attribute column in D.
+3. **With GMTdataset**: `choropleth(D, data, att)` - Join D with data using text column for matching.
+4. **With Dict**: `choropleth(D, Dict("PT"=>10, "ES"=>20))` - Map from region codes to values.
+5. **With NamedTuple**: `choropleth(D, (PT=10, ES=20))` - Same as Dict but with named tuple syntax.
+6. **Values only**: `choropleth(D, vals)` - Values in order of unique IDs extracted from D.
+
+Examples
+--------
+
+### Using explicit IDs and values
+```julia
+D = getdcw("PT,ES,FR", file=:ODS)
+choropleth(D, ["PT","ES","FR"], [10.0, 20.0, 30.0])
+```
+
+### Using a Dict
+```julia
+choropleth(D, Dict("PT"=>10, "ES"=>20, "FR"=>30))
+```
+
+### With custom colormap and no outlines
+```julia
+choropleth(D, ["PT","ES","FR"], [1.0, 2.0, 3.0], cmap="bamako", outline=false)
+```
+
+### The example in "Tutorials"
+```{julia}
+D = getdcw("US", states=true, file=:ODS);
+Df = filter(D, _region=(-125,-66,24,50), _unique=true);
+pop = gmtread(TESTSDIR * "assets/uspop.csv");
+choropleth(Df, pop, "NAME", proj=:guess, show=true)
+```
+
+```{julia}
+#| echo: false
+#| output: asis
+using GMT
+GMT.doc_source_links("choropleth")
+```
+
+See Also
+--------
+
+{{< gmtref getdcw >}}, {{< gmtref fourcolors >}}, {{< gmtref montage >}}, {{< gmtref plot >}}
