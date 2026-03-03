@@ -1,0 +1,61 @@
+---
+title: "wave_travel_time"
+---
+
+```julia
+Gttt = wave_travel_time(G::GMTgrid{Float32, 2}, source::Union{Tuple{<:Real, <:Real}, VecOrMat{<:Real}}; geo=true, fill_voids=true)
+```
+
+Compute the tsunami travel time given a bathymetry grid and a source location.
+
+The function takes a bathymetry grid and source coordinates, converts ocean depth to wave speed
+using the shallow-water approximation ($v = \sqrt{g \cdot |z|}$), and propagates the wavefront
+outward from the source using a concentric rim expansion algorithm. Optionally, voids left by
+the initial expansion are filled with secondary W→E and S→N sweeps. Travel times are computed
+using great-circle distances for geographic grids.
+
+The result is returned as a {{< gmtref GMTgrid type=gmttype >}} with travel times in **hours**
+(NaN where the wave does not reach, *e.g.*, on land).
+
+### Args
+
+- `G`: A {{< gmtref GMTgrid type=gmttype >}} with bathymetry (z positive up, in meters). Ocean
+    cells must have negative z values. The grid should not contain NaNs.
+
+-  `source`: `[lon, lat]`, or `(lon,lat)` (or `[x, y]`) of the tsunami source location. Must fall inside the grid.
+
+-  `geo`: If `true` (default), coordinates are geographic (degrees) and distances are computed on
+    the sphere. Set to `false` for Cartesian grids.
+
+- `fill_voids`: Fill voids left by the initial wavefront expansion (default `true`). This performs
+    additional W→E and S→N sweeps to reach areas shadowed by coastlines or islands.
+
+### Returns
+
+A {{< gmtref GMTgrid type=gmttype >}} with the same region, spacing and layout as the input, containing
+travel times in hours. Land cells and unreachable ocean cells are set to NaN.
+
+Examples
+--------
+
+Compute tsunami travel time from a source south of Portugal:
+
+```{julia}
+using GMT
+
+G = gmtread("@earth_relief_05m", R="-28/-5.5/32/45");
+ttt = wave_travel_time(G, (-11.0, 35.9));
+viz(ttt, contour=true, colorbar=true, coast=true, proj=:guess, title="Tsunami Travel Time (hours)")
+```
+
+```{julia}
+#| echo: false
+#| output: asis
+using GMT
+GMT.doc_source_links("wave_travel_time")
+```
+
+See Also
+--------
+
+{{< gmtref okada >}}, {{< gmtref grdimage >}}, {{< gmtref coast >}}, {{< gmtref contour >}}
