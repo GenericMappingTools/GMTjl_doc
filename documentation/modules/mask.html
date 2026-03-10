@@ -453,6 +453,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#required-arguments-1st-method" id="toc-required-arguments-1st-method" class="nav-link" data-scroll-target="#required-arguments-1st-method">Required Arguments (1st method)</a></li>
   <li><a href="#required-arguments-2nd-method" id="toc-required-arguments-2nd-method" class="nav-link" data-scroll-target="#required-arguments-2nd-method">Required Arguments (2nd method)</a></li>
   <li><a href="#optional-arguments" id="toc-optional-arguments" class="nav-link" data-scroll-target="#optional-arguments">Optional Arguments</a></li>
+  <li><a href="#arguments-3rd-method" id="toc-arguments-3rd-method" class="nav-link" data-scroll-target="#arguments-3rd-method">Arguments (3rd method)</a></li>
   <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
   <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
   <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
@@ -485,12 +486,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>or</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">mask</span>(GI<span class="op">:</span>GItype, shapes<span class="op">::</span><span class="dt">GMTdataset</span>, touches<span class="op">=</span><span class="cn">false</span>, inverse<span class="op">::</span><span class="dt">Bool</span>=<span class="cn">false</span>, maskvalues<span class="op">=</span>??)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">mask</span>(GI<span class="op">:</span>GItype, shapes<span class="op">::</span><span class="dt">GMTdataset</span>, touches<span class="op">=</span><span class="cn">false</span>, inverse<span class="op">::</span><span class="dt">Bool</span>=<span class="cn">false</span>, maskvalues<span class="op">=</span>??)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>or</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">mask</span>(G<span class="op">::</span><span class="dt">GMTgrid</span>, M, value<span class="op">::</span><span class="dt">Real</span>=<span class="cn">NaN</span>)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">mask</span>(I<span class="op">::</span><span class="dt">GMTimage</span>, M, value<span class="op">=</span><span class="fu">UInt8</span>(<span class="fl">0</span>); alpha<span class="op">=</span><span class="cn">false</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Clip or mask map areas with no data table coverage</p>
 <section id="description" class="level2">
 <h2 class="anchored" data-anchor-id="description">Description</h2>
 <p>Reads (<em>x</em>, <em>y</em>, <em>z</em>) tables (or a file) and uses this information to find out which grid cells are reliable. Only grid cells which have one or more data points are considered reliable. As an option, you may specify a radius of influence. Then, all grid cells that are within <em>radius</em> of a data point are considered reliable. Furthermore, an option is provided to reverse the sense of the test. Having found the reliable/not reliable points, the module will either paint tiles to mask these nodes (with the <strong>tiles</strong> switch), or use contouring to create polygons that will clip out regions of no interest. When clipping is initiated, it will stay in effect until turned off by a second call to the module using the <strong>endclip</strong> option.</p>
 <p>A second method expects a <a href="../..\documentation/general/types.html#sec-grid-type">GMTgrid</a> or an <a href="../..\documentation/general/types.html#sec-image-type">GMTimage</a> as first argument and a <a href="../..\documentation/general/types.html#sec-dataset-type">GMTdataset</a> in second and will clip the grid/image to the selected region(s) defined in polygons of the second argument. Grids are clipped to the global BoundingBox of the polygons and images are copped to that limit and set to transparent in the regions outside of the polygons. This method uses GDAL to compute the clipping mask. Used together with the <code>DCW</code> option of <a href="../..\documentation/modules/coast.html">coast</a> this is very handy to clip rasters to country or <a href="../..\documentation/modules/earthregions.html">earthregions</a> boundaries. Note that this method is in a way similar to one of the <a href="../..\documentation/modules/grdlandmask.html">grdlandmask</a> methods. The difference is that here use a external polygon description that may be read from any <em>OGR</em> vector file whilst <a href="../..\documentation/modules/grdlandmask.html">grdlandmask</a> uses the GSHHG dataset.</p>
+<p>A third method applies a mask array directly to a grid or image. Where the mask is nonzero (true, 1, or 255), the corresponding grid or image values are replaced by a given value (NaN by default for grids, 0 for images). The mask can be a <code>BitMatrix</code>, <code>Matrix{Bool}</code>, <code>Matrix{UInt8}</code> (with 0/1 or 0/255 values), or another <a href="../..\documentation/general/types.html#sec-grid-type">GMTgrid</a> or <a href="../..\documentation/general/types.html#sec-image-type">GMTimage</a>. For color images, the replacement value can be an RGB tuple.</p>
 </section>
 <section id="required-arguments-1st-method" class="level2">
 <h2 class="anchored" data-anchor-id="required-arguments-1st-method">Required Arguments (1st method)</h2>
@@ -586,19 +593,41 @@ Swap 1st and 2nd column on input and/or output. <a href="https://docs.generic-ma
 Save the figure with the <code>figname=name.ext</code> where <code>ext</code> chooses the figure image format.</li>
 </ul>
 </section>
+<section id="arguments-3rd-method" class="level2">
+<h2 class="anchored" data-anchor-id="arguments-3rd-method">Arguments (3rd method)</h2>
+<ul>
+<li><p><code>G</code> or <code>I</code>: The target <a href="../..\documentation/general/types.html#sec-grid-type">GMTgrid</a> or <a href="../..\documentation/general/types.html#sec-image-type">GMTimage</a> to which the mask will be applied.</p></li>
+<li><p><code>M</code>: A mask array. Can be a <a href="../..\documentation/general/types.html#sec-grid-type">GMTgrid</a>, <a href="../..\documentation/general/types.html#sec-image-type">GMTimage</a>, <code>BitMatrix</code>, <code>Matrix{Bool}</code>, or <code>Matrix{UInt8}</code> (with values 0/1 or 0/255). Where the mask is true (nonzero), the corresponding elements of <code>G</code> or <code>I</code> are replaced by <code>value</code>.</p></li>
+<li><p><code>value</code>: The replacement value. For grids, defaults to <code>NaN</code>. For images, defaults to <code>UInt8(0)</code>. For color (multi-band) images, <code>value</code> can be an RGB tuple, e.g., <code>(255, 0, 0)</code> for red. Ignored when <code>alpha=true</code>.</p></li>
+<li><p><code>alpha</code>: When <code>true</code> (images only), instead of painting the masked pixels, an alpha channel is added to the image making the masked regions fully transparent. Single-band images are automatically promoted to RGB. This is the same transparency mechanism used by the 2nd method (polygon clipping).</p></li>
+</ul>
+</section>
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <p>To make a mask that has a 5 degree radius around points spaced every 10 degree along the prime meridian, and just paint those areas yellow we try::</p>
-<div id="3415b021" class="cell" data-execution_count="1">
+<div id="5d5fcb7b" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> [<span class="fu">repeat</span>([<span class="fl">0</span>],<span class="fl">19</span>) <span class="op">-</span><span class="fl">90</span><span class="op">:</span><span class="fl">10</span><span class="op">:</span><span class="fl">90</span>]      <span class="co"># Some fake data</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mask</span>(t, fill<span class="op">=:</span>yellow, inc<span class="op">=</span><span class="st">"30m"</span>, region<span class="op">=</span>(<span class="op">-</span><span class="fl">75</span>,<span class="fl">75</span>,<span class="op">-</span><span class="fl">90</span>,<span class="fl">90</span>), proj<span class="op">=:</span>eqc, search_radius<span class="op">=</span><span class="st">"5d"</span>, tiles<span class="op">=</span><span class="cn">true</span>,</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>     title<span class="op">=</span><span class="st">"Mask for points with r = 5 degrees"</span>, xaxis<span class="op">=</span>(annot<span class="op">=:</span>auto, ticks<span class="op">=:</span>auto, grid<span class="op">=</span><span class="fl">180</span>),</span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>     yaxis<span class="op">=</span>(annot<span class="op">=:</span>auto, ticks<span class="op">=:</span>auto, grid<span class="op">=</span><span class="fl">10</span>), show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-green-fg ansi-bold">Precompiling</span>
+ packages...
+
+
+  51878.5 ms<span class="ansi-green-fg">  ✓ </span>GMT
+
+  1 dependency successfully precompiled in 54 seconds. 80 already precompiled.
+
+</pre>
+</div>
+</div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="mask_files/figure-html/cell-2-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="mask_files/figure-html/cell-2-output-2.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
@@ -609,7 +638,7 @@ Save the figure with the <code>figname=name.ext</code> where <code>ext</code> ch
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>    gmt mask africa_grav.xyg <span class="op">-</span>R20<span class="op">/</span><span class="fl">40</span><span class="op">/</span><span class="fl">20</span><span class="op">/</span><span class="fl">40</span> <span class="op">-</span>I5m <span class="op">-</span>Dall_pols.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>A repeat of the first example but this time we use white tiling:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>    gmt mask africa_grav.xyg <span class="op">-</span>R20<span class="op">/</span><span class="fl">40</span><span class="op">/</span><span class="fl">20</span><span class="op">/</span><span class="fl">40</span> <span class="op">-</span>I5m <span class="op">-</span>JM10i <span class="op">-</span>T <span class="op">-</span>Gwhite <span class="op">-</span>pdf mask</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="318ac0de" class="cell" data-execution_count="2">
+<div id="51606c02" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">coast</span>(DCW<span class="op">=:</span>HR, dump<span class="op">=</span><span class="cn">true</span>);      <span class="co"># Extract the Croatia border from the DCW</span></span>
@@ -631,16 +660,37 @@ Save the figure with the <code>figname=name.ext</code> where <code>ext</code> ch
 </div>
 </div>
 </div>
+<p>Apply a mask array to a grid — set masked cells to NaN::</p>
+<div id="bb784f43" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">mat2grid</span>(<span class="fu">rand</span>(<span class="dt">Float32</span>, <span class="fl">64</span>, <span class="fl">64</span>));              <span class="co"># A random 64×64 grid</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>msk <span class="op">=</span> <span class="fu">falses</span>(<span class="fl">64</span>, <span class="fl">64</span>);  msk[<span class="fl">20</span><span class="op">:</span><span class="fl">40</span>, <span class="fl">20</span><span class="op">:</span><span class="fl">40</span>] <span class="op">.=</span> <span class="cn">true</span>; <span class="co"># Mask a central block</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>Gm <span class="op">=</span> <span class="fu">mask</span>(G, msk);                                <span class="co"># Masked cells become NaN</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="fu">viz</span>(Gm, title<span class="op">=</span><span class="st">"Grid with masked block"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="mask_files/figure-html/cell-4-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
 </section>
 <section id="source-code" class="level2">
 <h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
 <p>This function has multiple methods:</p>
 <ul>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/psmask.jl#L63"><code>mask(cmd0::String; ...)</code></a> - psmask.jl:63</li>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/psmask.jl#L63"><code>mask(; ...)</code></a> - psmask.jl:63</li>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/psmask.jl#L97"><code>mask(arg1; kw...)</code></a> - psmask.jl:97</li>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/psmask.jl#L63"><code>mask(cmd0::String, arg1; first, kwargs...)</code></a> - psmask.jl:63</li>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/psmask.jl#L102"><code>mask(GI::GItype, D::GDtype; touches, inverse)</code></a> - psmask.jl:102</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/psmask.jl#L68"><code>mask(w::GMT.wrapDatasets, O::Bool, K::Bool, d::Dict{Symbol, Any})</code></a> - psmask.jl:68</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/psmask.jl#L64"><code>mask(cmd0::String; ...)</code></a> - psmask.jl:64</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/psmask.jl#L64"><code>mask(cmd0::String, arg1; first, kw...)</code></a> - psmask.jl:64</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/psmask.jl#L137"><code>mask(I::GMTimage, M::Union{AbstractMatrix{Bool}, AbstractMatrix{UInt8}, GItype}, value; alpha)</code></a> - psmask.jl:137</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/psmask.jl#L137"><code>mask(I::GMTimage, M::Union{AbstractMatrix{Bool}, AbstractMatrix{UInt8}, GItype}; ...)</code></a> - psmask.jl:137</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/psmask.jl#L101"><code>mask(GI::GItype, D::GDtype; touches, inverse)</code></a> - psmask.jl:101</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/psmask.jl#L123"><code>mask(G::GMTgrid, M::Union{AbstractMatrix{Bool}, AbstractMatrix{UInt8}, GItype})</code></a> - psmask.jl:123</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/psmask.jl#L123"><code>mask(G::GMTgrid, M::Union{AbstractMatrix{Bool}, AbstractMatrix{UInt8}, GItype}, value::Real)</code></a> - psmask.jl:123</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/psmask.jl#L64"><code>mask(; ...)</code></a> - psmask.jl:64</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/psmask.jl#L62"><code>mask(arg1; kw...)</code></a> - psmask.jl:62</li>
 </ul>
 </section>
 <section id="see-also" class="level2">
