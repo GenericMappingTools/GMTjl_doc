@@ -553,7 +553,7 @@ You can change symbols by adding the required -S option to any of your multisegm
 <li><strong>M</strong> or <strong>Matang</strong> Same as <strong>matang</strong> but switches to straight angle symbol if angles subtend 90 degrees exactly.</li>
 <li><strong>n</strong> or <strong>pentagon</strong> size is diameter of circumscribing circle.</li>
 <li><strong>p</strong> or <strong>point</strong> No size needs to be specified (1 pixel is used).</li>
-<li><strong>quoted lines</strong> i.e., lines with annotations such as contours. See [Quoted lines]</li>
+<li><strong>quoted</strong> lines i.e., lines with annotations such as contours. See [Quoted lines]</li>
 <li><strong>r</strong> or <strong>rectangle</strong> No size needs to be specified, but the x- and y-dimensions must be found in columns 3 and 4.</li>
 <li><strong>R</strong> or <strong>roundrect</strong> Rounded rectangle. No size needs to be specified, but the x- and y-dimensions and corner radius must be found in columns 3, 4, and 5.</li>
 <li><strong>s</strong> or <strong>square</strong> size is diameter of circumscribing circle.</li>
@@ -573,14 +573,13 @@ For very large datasets it may be convenient to decimate data before plotting. T
 <li><p><strong>groupvar</strong> or <strong>hue</strong> : – <em>groupvar=“text”</em> <strong>|</strong> <em>groupvar=Int</em> <strong>|</strong> <em>groupvar=:ColName</em><br>
 Uses the table variable specified by <code>groupvar</code> to group the points in the plot. <code>groupvar</code> can be a column number, or a column name passed in as a Symbol. <em>e.g.</em> <code>groupvar=:Male</code> if a column with that name exists. When <code>arg1</code> is GMTdatset or <code>cmd0</code> is the name of a file with one and it has the <code>text</code> field filled, use <code>groupvar="text"</code> or <code>groupvar=*text_col_name*</code> to use that text field as the grouping vector.</p></li>
 <li><p><strong>legend</strong> and <strong>label</strong> : – <em>legend=“thelabel”</em> <strong>|</strong> <em>label=thelabel</em> <strong>|</strong> <em>legend=(label=“thelabel”, pos=position, box=??, fontsise=?, font=?)</em><br>
-Add a legend to the plot. In its simple form just provide <code>legend="thelabel"</code>, which plots the legend at the default <em>UpperRight</em> position. To control the legend position and other parameters one must use the tuple form where <code>label="thelabel"</code> is the same as above; <code>pos=position</code> where <em>position</em> is a 2 char code (or its expanded form) like in the <a href="../..\documentation/modules/text.html">text</a>. For a full featured positioning option in <code>legend=(label="thelabel", pos=(...))</code> see the <code>pos</code> option in <a href="../..\documentation/modules/legend.html">legend</a> that allows also to plot the legend outside of the figure space. The <code>box</code> option may take two forms (refer to <a href="../..\documentation/modules/legend.html">legend</a> for more details): (1) use <code>box=:none</code> to not plot the legend box or,</p>
-<ol start="2" type="1">
-<li><code>box=(clearance=?, fill=?, inner=?, pen=?, rounded=?, shade=?)</code>. For example, <code>box=(pen=1, fill="gray95", shade=true)</code> to plot a light gray box with a shade. When using the <strong>groupvar</strong> option we can just set <code>legend=true</code> to create a legend containing an entry for each of the groups. Controling the position of that legend is done by omitting the <em>label</em> keyword in the <code>legend=(...)</code> form. <em>e.g.</em> <code>legend=(pos=:TL,)</code>. Use <code>fontsise=?</code>, where <em>?</em> is the size in points, controls the legend text size and <code>font=?</code> to change the default font. Example: <code>label=(fontsize=8, font="Helvetica,blue")</code></li>
-</ol></li>
+Add a legend to the plot. In its simple form just provide <code>legend="thelabel"</code>, which plots the legend at the default <em>UpperRight</em> position. The form <code>label="colnames"</code> will use the column names of the input <a href="../..\documentation/general/types.html#sec-dataset-type">GMTdataset</a> as legend entries. To control the legend position and other parameters one must use the tuple form where <code>label="thelabel"</code> is the same as above; <code>pos=position</code> where <em>position</em> is a 2 char code (or its expanded form) like in the <a href="../..\documentation/modules/text.html">text</a>. For a full featured positioning option in <code>legend=(label="thelabel", pos=(...))</code> see the <code>pos</code> option in <a href="../..\documentation/modules/legend.html">legend</a> that allows also to plot the legend outside of the figure space. Note, one can use <code>pos=:auto</code> to let GMT decide the best position for the legend. The <code>box</code> option may take two forms (refer to <a href="../..\documentation/modules/legend.html">legend</a> for more details): (1) use <code>box=:none</code> to not plot the legend box or, (2) <code>box=(clearance=?, fill=?, inner=?, pen=?, rounded=?, shade=?)</code>. For example, <code>box=(pen=1, fill="gray95", shade=true)</code> to plot a light gray box with a shade. When using the <strong>groupvar</strong> option we can just set <code>legend=true</code> to create a legend containing an entry for each of the groups. Controling the position of that legend is done by omitting the <em>label</em> keyword in the <code>legend=(...)</code> form. <em>e.g.</em> <code>legend=(pos=:TL,)</code>. Use <code>fontsise=?</code>, where <em>?</em> is the size in points, controls the legend text size and <code>font=?</code> to change the default font. Example: <code>label=(fontsize=8, font="Helvetica,blue")</code></p></li>
 <li><p><strong>linefit</strong> or <strong>regress</strong> : – <em>linefit=true</em><br>
 Plot a regression fit over a scatter plot. Input can either be a <a href="../..\documentation/general/types.html#sec-dataset-type">GMTdataset</a> obtained from the <code>linearfitxy</code> function or a Mx2 matrix. Preferably use the first form that provides more user control. See the <a href="../..\documentation/utilities/linearfitxy.html">linearfitxy</a> documentation for extra options usable in this case.</p></li>
-<li><p><strong>ribbon</strong> or <strong>band</strong> : – <em>ribbon=dy</em> <strong>|</strong> <em>ribbon=(dy1,dy2)</em> <strong>|</strong> *ribbon=mat<strong> </strong>|<strong> <em>ribbon=(vec1,vec2)</em><br>
-Similar to the </strong>polygon** option above but where the data to build envelope around y(x) is passed directly via this option instead of extra columns in the input data. In the above <em>dy, dy1, dy2</em> are scalars, <em>mat</em> is a Mx2 matrix and <em>vec1,vec2</em> are vectors with the same length as number of rows in input data.</p></li>
+<li><p><strong>ribbon</strong> or <strong>band</strong> : – <em>ribbon=dy</em> <strong>|</strong> <em>ribbon=(dy1,dy2)</em> <strong>|</strong> <em>ribbon=mat</em> <strong>|</strong> <em>ribbon=(vec1,vec2)</em><br>
+Similar to the <strong>polygon</strong> option above but where the data to build envelope around y(x) is passed directly via this option instead of extra columns in the input data. In the above <em>dy, dy1, dy2</em> are scalars, <em>mat</em> is a Mx2 matrix and <em>vec1,vec2</em> are vectors with the same length as number of rows in input data.</p></li>
+<li><p><strong>setcolors</strong> or <strong>colorset</strong> : – <em>setcolors=true</em> <strong>|</strong> <em>setcolors=:matlab</em> <strong>|</strong> <em>setcolors=:distinct</em> <strong>|</strong> <em>setcolors=:alphabet</em> <strong>|</strong> <em>setcolors=[“color1”,“color2”,…]</em> <strong>|</strong> <em>setcolors=(colorset=…, fill=true)</em><br>
+Assign cycling line colors to a vector of datasets before plotting. When the input is a <code>Vector{GMTdataset}</code> whose segments have no color assigned (or you want to override existing colors), this option automatically sets a <code>-W&lt;color&gt;</code> in each segment header using colors from one of the built-in palettes. Use <code>setcolors=true</code> for automatic palette selection (<code>:matlab</code> for ≤7 curves, <code>:distinct</code> otherwise), or pass a specific palette name: <code>:matlab</code> (7 colors), <code>:distinct</code> (20 colors), or <code>:alphabet</code> (26 colors). A custom list of colors can also be passed as a vector of strings, <em>e.g.</em> <code>setcolors=["red","blue","green"]</code>. Colors cycle when there are more curves than colors. If a <code>-W</code> option already exists in a segment header, the color is inserted or replaced while preserving pen width and style. To also assign fill colors (<code>-G</code>), use the NamedTuple form: <code>setcolors=(colorset=:matlab, fill=true)</code>. See also the standalone function <code>setcolors!</code> for applying colors outside of a plot call.</p></li>
 <li><p><strong>zcolor</strong> or <strong>markerz</strong> or <strong>mz</strong> : – <em>zcolor=xx</em> <strong>|</strong> <em>zcolor=true</em><br>
 Take the vector <code>xx</code> (same size as number os points in data) and interpolate the current color scale to paint the symbols based on that colr scale. The form <code>zcolor=true</code> is equivant to <em>zcolor=1:npoints</em></p></li>
 <li><p><strong>U</strong> or <strong>time_stamp</strong> : – <em>time_stamp=true</em> <strong>|</strong> <em>time_stamp=(just=“code”, pos=(dx,dy), label=“label”, com=true)</em><br>
@@ -604,16 +603,27 @@ Save the figure with the <code>figname=name.ext</code> where <code>ext</code> ch
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <p>Decorated curve with blue stars</p>
-<div id="e07f2950" class="cell" data-execution_count="1">
+<div id="b5c23387" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>xy <span class="op">=</span> <span class="fu">gmt</span>(<span class="st">"gmtmath -T0/180/1 T SIND 4.5 ADD"</span>);</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(xy, axes<span class="op">=:</span>af, pen<span class="op">=</span>(<span class="fl">1</span>,<span class="op">:</span>red), decorated<span class="op">=</span>(dist<span class="op">=</span>(<span class="fl">2.5</span>,<span class="fl">0.25</span>), symbol<span class="op">=:</span>star,</span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>      ms<span class="op">=</span><span class="fl">1</span>, pen<span class="op">=</span>(<span class="fl">0.5</span>,<span class="op">:</span>green), fill<span class="op">=:</span>blue, dec2<span class="op">=</span><span class="cn">true</span>), show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-green-fg ansi-bold">Precompiling</span> packages...
+
+  47879.2 ms<span class="ansi-green-fg">  ✓ </span>GMT
+
+  1 dependency successfully precompiled in 50 seconds. 80 already precompiled.
+
+</pre>
+</div>
+</div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="plot_files/figure-html/cell-2-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="plot_files/figure-html/cell-2-output-2.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
@@ -635,11 +645,11 @@ Save the figure with the <code>figname=name.ext</code> where <code>ext</code> ch
 <ul>
 <li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L140"><code>plot(cmd0::String; ...)</code></a> - plot.jl:140</li>
 <li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L140"><code>plot(cmd0::String, arg1; kw...)</code></a> - plot.jl:140</li>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L144"><code>plot(arg1::Number, arg2::Number; kw...)</code></a> - plot.jl:144</li>
 <li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L129"><code>plot(f::Function; ...)</code></a> - plot.jl:129</li>
 <li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L135"><code>plot(f1::Function, f2::Function; ...)</code></a> - plot.jl:135</li>
 <li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L129"><code>plot(f::Function, range_x; first, kw...)</code></a> - plot.jl:129</li>
 <li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L135"><code>plot(f1::Function, f2::Function, range_t; first, kw...)</code></a> - plot.jl:135</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L144"><code>plot(arg1::Number, arg2::Number; kw...)</code></a> - plot.jl:144</li>
 <li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L140"><code>plot(; ...)</code></a> - plot.jl:140</li>
 <li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L142"><code>plot(arg1, arg2; kw...)</code></a> - plot.jl:142</li>
 <li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L101"><code>plot(arg1; first, kw...)</code></a> - plot.jl:101</li>

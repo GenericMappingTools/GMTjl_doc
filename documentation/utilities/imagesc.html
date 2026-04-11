@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>index</title>
+<title>imagesc</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -414,123 +449,73 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#plotting-functions" id="toc-plotting-functions" class="nav-link active" data-scroll-target="#plotting-functions">Plotting Functions</a></li>
+  <li><a href="#examples" id="toc-examples" class="nav-link active" data-scroll-target="#examples">Examples</a></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
+  <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">imagesc</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
 
-<section id="plotting-functions" class="level1">
-<h1>Plotting Functions</h1>
-<p>A collection of examples demonstrating GMT.jl plotting functions.</p>
-<style>
-.card {
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  cursor: pointer;
-  border: 1px solid rgba(0,0,0,.125);
-  height: 100%;
-}
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-}
-.card-img-top {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-}
-</style>
-<div class="grid">
-<div class="g-col-6 g-col-md-4 g-col-lg-3">
-<div class="card h-100">
-<p><a href="01_lines.html" class="card-title stretched-link"><strong>Line Plots</strong></a> <a href="01_lines.html"><img src="01_lines_thumb.png" class="card-img-top img-fluid"></a></p>
-</div>
-</div>
-<div class="g-col-6 g-col-md-4 g-col-lg-3">
-<div class="card h-100">
-<p><a href="02_1filledlines.html" class="card-title stretched-link"><strong>Filled Curves</strong></a> <a href="02_1filledlines.html"><img src="02_1filledlines_thumb.png" class="card-img-top img-fluid"></a></p>
-</div>
-</div>
-<div class="g-col-6 g-col-md-4 g-col-lg-3">
-<div class="card h-100">
-<p><a href="02_2stairs.html" class="card-title stretched-link"><strong>Stairs</strong></a> <a href="02_2stairs.html"><img src="02_2stairs_thumb.png" class="card-img-top img-fluid"></a></p>
-</div>
-</div>
-<div class="g-col-6 g-col-md-4 g-col-lg-3">
-<div class="card h-100">
-<p><a href="02_2stems.html" class="card-title stretched-link"><strong>Stems</strong></a> <a href="02_2stems.html"><img src="02_2stems_thumb.png" class="card-img-top img-fluid"></a></p>
-</div>
-</div>
-<div class="g-col-6 g-col-md-4 g-col-lg-3">
-<div class="card h-100">
-<p><a href="02_plotyy.html" class="card-title stretched-link"><strong>Plotyy</strong></a> <a href="02_plotyy.html"><img src="02_plotyy_thumb.png" class="card-img-top img-fluid"></a></p>
-</div>
-</div>
-<div class="g-col-6 g-col-md-4 g-col-lg-3">
-<div class="card h-100">
-<p><a href="035_radars.html" class="card-title stretched-link"><strong>Radar Plots</strong></a> <a href="035_radars.html"><img src="035_radars_thumb.png" class="card-img-top img-fluid"></a></p>
-</div>
-</div>
-<div class="g-col-6 g-col-md-4 g-col-lg-3">
-<div class="card h-100">
-<p><a href="03_bars.html" class="card-title stretched-link"><strong>Bar Plots</strong></a> <a href="03_bars.html"><img src="03_bars_thumb.png" class="card-img-top img-fluid"></a></p>
-</div>
-</div>
-<div class="g-col-6 g-col-md-4 g-col-lg-3">
-<div class="card h-100">
-<p><a href="040_scatter.html" class="card-title stretched-link"><strong>Scatters</strong></a> <a href="040_scatter.html"><img src="040_scatter_thumb.png" class="card-img-top img-fluid"></a></p>
-</div>
-</div>
-<div class="g-col-6 g-col-md-4 g-col-lg-3">
-<div class="card h-100">
-<p><a href="05_1_stats.html" class="card-title stretched-link"><strong>Statistical Plots</strong></a> <a href="05_1_stats.html"><img src="05_1_stats_thumb.png" class="card-img-top img-fluid"></a></p>
-</div>
-</div>
-<div class="g-col-6 g-col-md-4 g-col-lg-3">
-<div class="card h-100">
-<p><a href="05_2_biplots.html" class="card-title stretched-link"><strong>PCAs &amp; Biplots</strong></a> <a href="05_2_biplots.html"><img src="05_2_biplots_thumb.png" class="card-img-top img-fluid"></a></p>
-</div>
-</div>
-<div class="g-col-6 g-col-md-4 g-col-lg-3">
-<div class="card h-100">
-<p><a href="05_error_bars.html" class="card-title stretched-link"><strong>Error Bars</strong></a> <a href="05_error_bars.html"><img src="05_error_bars_thumb.png" class="card-img-top img-fluid"></a></p>
-</div>
-</div>
-<div class="g-col-6 g-col-md-4 g-col-lg-3">
-<div class="card h-100">
-<p><a href="06_spirals.html" class="card-title stretched-link"><strong>Spirals</strong></a> <a href="06_spirals.html"><img src="06_spirals_thumb.png" class="card-img-top img-fluid"></a></p>
-</div>
-</div>
-<div class="g-col-6 g-col-md-4 g-col-lg-3">
-<div class="card h-100">
-<p><a href="07_symbols.html" class="card-title stretched-link"><strong>Symbols &amp; Linestyles</strong></a> <a href="07_symbols.html"><img src="../symbols.png" class="card-img-top img-fluid"></a></p>
-</div>
-</div>
-<div class="g-col-6 g-col-md-4 g-col-lg-3">
-<div class="card h-100">
-<p><a href="08_rectangles.html" class="card-title stretched-link"><strong>Patterns &amp; Transparency</strong></a> <a href="08_rectangles.html"><img src="08_rectangles_thumb.png" class="card-img-top img-fluid"></a></p>
-</div>
-</div>
-<div class="g-col-6 g-col-md-4 g-col-lg-3">
-<div class="card h-100">
-<p><a href="10_histograms.html" class="card-title stretched-link"><strong>Histograms</strong></a> <a href="10_histograms.html"><img src="10_histograms_thumb.png" class="card-img-top img-fluid"></a></p>
-</div>
-</div>
-<div class="g-col-6 g-col-md-4 g-col-lg-3">
-<div class="card h-100">
-<p><a href="50_plot3.html" class="card-title stretched-link"><strong>Plot3D</strong></a> <a href="50_plot3.html"><img src="50_plot3_thumb.png" class="card-img-top img-fluid"></a></p>
-</div>
-</div>
-<div class="g-col-6 g-col-md-4 g-col-lg-3">
-<div class="card h-100">
-<p><a href="textrepel.html" class="card-title stretched-link"><strong>Text Repel</strong></a> <a href="textrepel.html"><img src="textrepel_thumb.png" class="card-img-top img-fluid"></a></p>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>I <span class="op">=</span> <span class="fu">imagesc</span>(mat; x<span class="op">=</span>, y<span class="op">=</span>, hdr<span class="op">=</span>, proj4<span class="op">=</span>, wkt<span class="op">=</span>, GI<span class="op">=</span>, clim<span class="op">=</span>, cmap<span class="op">=</span>, kw<span class="op">...</span>) <span class="op">--&gt;</span> GMTimage</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>imagesc takes a Float matrix or a <a href="../..\documentation/general/types.html#sec-grid-type">GMTgrid</a> type and scales it (by default) to the [0, 255] interval. In the process it creates a <a href="../..\documentation/general/types.html#sec-image-type">GMTimage</a> type. Those types can account for coordinates and projection information, hence the optional arguments. Contrary to its Matlab cousin, it doesn’t display the result (that we easily do with <code>imshow(mat)</code>) but return instead a <a href="../..\documentation/general/types.html#sec-image-type">GMTimage</a> object.</p>
+<ul>
+<li><p><code>clim</code>: Specify clims as a two-element vector of the form <em>[cmin cmax]</em>, where values of the scaled image less than or equal to <em>cmin</em> are assigned that value. The same goes for cmax.</p></li>
+<li><p><code>cmap</code>: If provided, <code>cmap</code> is a <a href="../..\documentation/general/types.html#sec-cpt-type">GMTcpt</a> and its contents is converted to the <a href="../..\documentation/general/types.html#sec-image-type">GMTimage</a> colormap.</p></li>
+<li><p><code>GI</code>: This can be either a <a href="../..\documentation/general/types.html#sec-grid-type">GMTgrid</a> or a <a href="../..\documentation/general/types.html#sec-image-type">GMTimage</a> and its contents is used to set spatial contents (x,y coordinates) and projection info that one may attach to the created image result. This is a handy alterative to the <code>x=, y=, proj4=...</code> options.</p></li>
+<li><p><code>stretch</code>: This option is indicated to select an interval of the range of the <code>z</code> values and use only those to scale to the [0 255] interval. A <code>stretch=true</code> automatically determines good values for histogram stretching via a call to <a href="../..\documentation/modules/histogram.html">histogram</a>. The form <code>stretch=(zmin,zmax)</code> allows specifying the input limits directly. A previous plot of <code>histogram(mat, show=true)</code> can help determine good values. Note that when this option <code>stretch</code> is used, ALL OTHER options are ignored. See also the <code>rescale</code> function.</p></li>
+</ul>
+<p>If <code>mat</code> is instead a UInt16 <a href="../..\documentation/general/types.html#sec-image-type">GMTimage</a> type we call <code>rescale(I, stretch=true, type=UInt8)</code> instead of issuing an error. In this case <code>clim</code> can be a two elements vector to specify the desired stretch range. The default is to let <a href="../..\documentation/modules/histogram.html">histogram</a> guess these values.</p>
+<section id="examples" class="level2">
+<h2 class="anchored" data-anchor-id="examples">Examples</h2>
+<p>Create a grayscale image out of the <code>peaks</code> function.</p>
+<div id="ecb1411e" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">viz</span>(<span class="fu">imagesc</span>(GMT.<span class="fu">peaks</span>()))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="imagesc_files/figure-html/cell-2-output-1.png" class="img-fluid figure-img"></p>
+</figure>
 </div>
 </div>
 </div>
+</section>
+<section id="source-code" class="level2">
+<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
+<p>This function has multiple methods:</p>
+<ul>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/utils_types.jl#L1597"><code>imagesc(I::GMTimage{&lt;:UInt16}; clim)</code></a> - utils_types.jl:1597</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/utils_types.jl#L1589"><code>imagesc(mat::Union{GMTgrid, Matrix{&lt;:AbstractFloat}}; x, y, hdr, proj4, wkt, GI, clim, cmap, kw...)</code></a> - utils_types.jl:1589</li>
+</ul>
+</section>
+<section id="see-also" class="level2">
+<h2 class="anchored" data-anchor-id="see-also">See Also</h2>
+<p><a href="../..\documentation/modules/grdimage.html">grdimage</a>, <a href="../..\documentation/modules/grdview.html">grdview</a>, <a href="../..\documentation/utilities/rescale.html">rescale</a></p>
+<ul>
+<li><a href="../alphabetical.html">Alphabetical Function List</a></li>
+</ul>
 
 
 </section>

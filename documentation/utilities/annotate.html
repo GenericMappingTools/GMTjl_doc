@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>compass</title>
+<title>annotate</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -450,12 +450,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul class="collapse">
   <li><a href="#description" id="toc-description" class="nav-link active" data-scroll-target="#description">Description</a></li>
-  <li><a href="#directional-rose-options" id="toc-directional-rose-options" class="nav-link" data-scroll-target="#directional-rose-options">Directional Rose Options</a></li>
-  <li><a href="#magnetic-compass-options" id="toc-magnetic-compass-options" class="nav-link" data-scroll-target="#magnetic-compass-options">Magnetic Compass Options</a></li>
-  <li><a href="#pass-through-options" id="toc-pass-through-options" class="nav-link" data-scroll-target="#pass-through-options">Pass-through Options</a></li>
+  <li><a href="#required-arguments" id="toc-required-arguments" class="nav-link" data-scroll-target="#required-arguments">Required Arguments</a></li>
+  <li><a href="#optional-arguments" id="toc-optional-arguments" class="nav-link" data-scroll-target="#optional-arguments">Optional Arguments</a></li>
   <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
-  <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
   <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
+  <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
   </ul>
 </nav>
     </div>
@@ -464,7 +463,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">compass</h1>
+<h1 class="title">annotate</h1>
 </div>
 
 
@@ -481,187 +480,186 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compass</span>(; kwargs<span class="op">...</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Draw a map directional rose or magnetic compass on the map.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">annotate</span>(points, labels; kwargs<span class="op">...</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">annotate!</span>(points, labels; kwargs<span class="op">...</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Place text annotations connected to data points by arrows or leader lines, with automatic non-overlapping label placement.</p>
 <section id="description" class="level2">
 <h2 class="anchored" data-anchor-id="description">Description</h2>
-<p>Convenience function that wraps <a href="../..\documentation/modules/basemap.html">basemap</a> to draw directional (<code>-Td</code>) or magnetic (<code>-Tm</code>) compass roses. The mode is auto-selected: if <code>dec</code> (magnetic declination) is provided, a magnetic compass is drawn; otherwise a directional rose is drawn.</p>
-<p>Can be called standalone (creates its own plot) or as an overlay (<code>compass!</code>) on an existing plot. When called standalone without <code>region</code>/<code>proj</code>, a default canvas sized to fit the rose is created automatically using paper coordinates.</p>
+<p><code>annotate</code> is a high-level convenience function inspired by Matplotlib’s <code>annotate</code>. It handles the full labeling pipeline in a single call:</p>
+<ol type="1">
+<li>Computes non-overlapping label positions automatically via <a href="../..\documentation/modules/textrepel.html">textrepel</a> (unless positions are supplied explicitly).</li>
+<li>Places the labels with <code>text</code> using GMT’s per-record offset mechanism (<code>-D+f</code>).</li>
+<li>Draws connecting lines from each anchor point to its label, either as arrows (default) or as thin GMT leader lines.</li>
+</ol>
 </section>
-<section id="directional-rose-options" class="level2">
-<h2 class="anchored" data-anchor-id="directional-rose-options">Directional Rose Options</h2>
+<section id="required-arguments" class="level2">
+<h2 class="anchored" data-anchor-id="required-arguments">Required Arguments</h2>
 <ul>
-<li><p><strong>anchor</strong> : – <em>anchor=(x,y)</em> | <em>anchor=refpoint</em><br>
-Reference point on the map for the rose. When called standalone without <code>region</code>/<code>proj</code>, this is interpreted as paper coordinates (cm). In overlay mode or with explicit <code>region</code>/<code>proj</code>, the coordinate system is determined by the <strong>map</strong>, <strong>inside</strong>, <strong>outside</strong>, <strong>norm</strong>, or <strong>paper</strong> modifiers.</p></li>
-<li><p><strong>width</strong> : – <em>width=val</em><br>
-Width of the rose in plot coordinates (cm). This also controls the auto-generated canvas size when no <code>region</code>/<code>proj</code> is given.</p></li>
-<li><p><strong>fancy</strong> : – <em>fancy=true</em> | <em>fancy=level</em><br>
-Draw a “fancy” rose. Level 1 (or <em>true</em>) draws the two principal E-W, N-S orientations. Level 2 adds the two intermediate NW-SE and NE-SW orientations. Level 3 adds the eight minor orientations.</p></li>
-<li><p><strong>labels</strong> or <strong>label</strong> : – <em>labels=“W,E,S,N”</em><br>
-Comma-separated labels for the cardinal points. Skip a label by leaving it blank (e.g., <code>",,,N"</code>). Use <code>labels=true</code> to get the default W,E,S,N labels.</p></li>
-<li><p><strong>justify</strong> : – <em>justify=code</em><br>
-2-char justification code for the anchor point (e.g., <code>:CM</code> for center-middle). See <a href="../..\documentation/modules/text.html">text</a>.</p></li>
-<li><p><strong>offset</strong> : – <em>offset=(dx,dy)</em><br>
-Offset from the anchor point.</p></li>
-<li><p><strong>map</strong>, <strong>inside</strong>, <strong>outside</strong>, <strong>norm</strong>, <strong>paper</strong> :<br>
-Coordinate system for the anchor point. Use <strong>map=true</strong> for map coordinates, <strong>inside=code</strong> or <strong>outside=code</strong> for justification-based placement, <strong>norm=true</strong> for normalized (0-1) coordinates, or <strong>paper=true</strong> for plot coordinates.</p></li>
+<li><code>points</code> : <code>Nx2</code> Matrix or <code>GMTdataset</code> with <em>(x, y)</em> coordinates of the anchor points.</li>
+<li><code>labels</code> : <code>Vector{String}</code> with one annotation per point.</li>
 </ul>
 </section>
-<section id="magnetic-compass-options" class="level2">
-<h2 class="anchored" data-anchor-id="magnetic-compass-options">Magnetic Compass Options</h2>
-<p>All directional options above, plus:</p>
+<section id="optional-arguments" class="level2">
+<h2 class="anchored" data-anchor-id="optional-arguments">Optional Arguments</h2>
 <ul>
-<li><p><strong>dec</strong> : – <em>dec=val</em><br>
-Magnetic declination in degrees. The presence of this option switches the function to magnetic compass mode (<code>-Tm</code>).</p></li>
-<li><p><strong>annot</strong> : – <em>annot=(a1,a2,a3,a4,a5,a6)</em><br>
-Six annotation/tick intervals: the first three for geographic directions (annotation, tick, minor tick) and the last three for magnetic directions. Default is 30/5/1 for both.</p></li>
-<li><p><strong>rose_primary</strong> : – <em>rose_primary=pen</em> | <em>rose_primary=(width, color)</em><br>
-Pen for the outer (primary) circle of the compass.</p></li>
-<li><p><strong>rose_secondary</strong> : – <em>rose_secondary=pen</em> | <em>rose_secondary=(width, color)</em><br>
-Pen for the inner (secondary) circle of the compass.</p></li>
-</ul>
-</section>
-<section id="pass-through-options" class="level2">
-<h2 class="anchored" data-anchor-id="pass-through-options">Pass-through Options</h2>
-<p>All other keyword arguments are passed to <a href="../..\documentation/modules/basemap.html">basemap</a>. Common ones include:</p>
+<li><p><strong>text_pos</strong> : <code>Nx2</code> matrix or <code>GMTdataset</code> with explicit label positions in data coordinates. When provided the labels are placed here and connecting lines go from <code>points</code> to <code>text_pos</code>. When omitted (together with <code>offsets</code>) positions are computed automatically by <code>textrepel</code>.</p></li>
+<li><p><strong>offsets</strong> : <code>Nx2</code> matrix of per-label displacements <strong>in cm</strong> from each anchor point. Passed to <code>text</code> via GMT’s <code>-D+f</code> per-record offset mechanism. Omit to let <code>textrepel</code> compute them automatically.</p></li>
+<li><p><strong>arrowprops</strong> : Controls the connecting arrow drawn between each anchor and its label.</p>
 <ul>
-<li><strong>region</strong>, <strong>proj</strong>, <strong>frame</strong>, <strong>par</strong>/<strong>conf</strong>, <strong>show</strong>, <strong>savefig</strong>, <strong>fmt</strong>, <strong>Vd</strong>, <strong>xshift</strong>, <strong>yshift</strong>, <strong>box</strong> (see <a href="../..\documentation/modules/basemap.html">basemap</a>).</li>
+<li><code>false</code> (default) — no arrow.</li>
+<li><code>true</code> — draws a default filled arrow pointing to the data point (<code>pen=1, arrow=(len=0.6,stop=true), fill=:black</code>).</li>
+<li>A <code>NamedTuple</code> with any kwargs accepted by <code>arrows!()</code> — custom arrow styling. E.g. <code>arrowprops=(pen="0.5p,gray", arrow=(len=0.3, stop=true, shape=0.5), fill=:gray)</code>.</li>
+</ul></li>
+<li><p><strong>leader</strong> : Pen string for a thin GMT leader line (<code>-D+f+v&lt;pen&gt;</code>) drawn from the anchor point to the edge of the text box (no arrowhead). <em>E.g.</em> <code>leader="0.5p,gray50"</code>.</p></li>
+<li><p><strong>nobox</strong> : If <code>true</code>, render the label with fill only — no box border is drawn and clearance is forced to <code>"0p"</code> so the fill hugs the text. Useful for clean map labels with a coloured background but no visible rectangle.</p></li>
+<li><p><strong>nofill</strong> : If <code>true</code>, render the label as plain text with no box and no background fill.</p></li>
+<li><p><strong>justify</strong> : GMT justification code for the text anchor (default <code>"CM"</code>, centre-middle).</p></li>
+<li><p><strong>fontsize</strong> : Font size in points used by <code>textrepel</code> for bounding-box estimation (default 10). Use <code>F=(font=...)</code> to control the rendered font.</p></li>
+<li><p><strong>force_push</strong>, <strong>force_pull</strong>, <strong>max_iter</strong>, <strong>pad</strong>, <strong>min_offset</strong> : <code>textrepel</code> tuning parameters (used only when neither <code>text_pos</code> nor <code>offsets</code> is given).</p></li>
+<li><p>Remaining kwargs are forwarded to <code>text()</code> and control label appearance — e.g.&nbsp;<code>fill</code>, <code>pen</code>, <code>clearance</code>, <code>F=(font=...)</code>, <code>font</code>, etc.</p></li>
+<li><p><strong>U</strong> or <strong>time_stamp</strong> : – <em>time_stamp=true</em> <strong>|</strong> <em>time_stamp=(just=“code”, pos=(dx,dy), label=“label”, com=true)</em><br>
+Draw GMT time stamp logo on plot. More at <a href="../../documentation/common_opts/common_opts.html#timestamp">timestamp</a></p></li>
+<li><p><strong>V</strong> or <em>verbose</em> : – <em>verbose=true</em> <strong>|</strong> <em>verbose=level</em><br>
+Select verbosity level. More at <a href="../../documentation/common_opts/common_opts.html#verbose">verbose</a></p></li>
+<li><p><strong>figname</strong> or <strong>savefig</strong> or <strong>name</strong> : – <em>figname=<code>name.png</code></em><br>
+Save the figure with the <code>figname=name.ext</code> where <code>ext</code> chooses the figure image format.</p></li>
 </ul>
-<p>Note: when <code>compass</code> is called without an explicit <code>frame</code>, it defaults to <code>frame=:none</code> so that only the compass rose is drawn (no axes).</p>
 </section>
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
-<section id="standalone-directional-rose" class="level3">
-<h3 class="anchored" data-anchor-id="standalone-directional-rose">Standalone directional rose</h3>
-<p>A simple directional rose — no <code>region</code> or <code>proj</code> needed. The canvas is auto-sized to fit the rose.</p>
-<div id="9e22aea0" class="cell" data-execution_count="1">
+<section id="automatic-non-overlapping-scatter-labels" class="level3">
+<h3 class="anchored" data-anchor-id="automatic-non-overlapping-scatter-labels">Automatic non-overlapping scatter labels</h3>
+<p>The simplest usage: pass points and labels, and <code>annotate</code> places everything automatically. Label positions are computed by <a href="../..\documentation/modules/textrepel.html">textrepel</a> to avoid overlaps; arrows connect labels to anchors.</p>
+<div id="b57af591" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">compass</span>(width<span class="op">=</span><span class="fl">2.5</span>, fancy<span class="op">=</span><span class="cn">true</span>, labels<span class="op">=</span><span class="st">",,,N"</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Climate data for selected cities: mean temperature vs. annual precipitation</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>temp  <span class="op">=</span> [<span class="fl">17.2</span>, <span class="fl">14.1</span>, <span class="fl">10.4</span>, <span class="fl">11.9</span>, <span class="fl">22.0</span>, <span class="fl">16.7</span>,  <span class="fl">6.3</span>, <span class="fl">14.9</span>, <span class="fl">13.5</span>, <span class="fl">20.3</span>]</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>prec  <span class="op">=</span> [<span class="fl">394</span>,  <span class="fl">636</span>,  <span class="fl">640</span>,  <span class="fl">859</span>,  <span class="fl">179</span>, <span class="fl">1010</span>,  <span class="fl">740</span>,  <span class="fl">519</span>,  <span class="fl">720</span>,  <span class="fl">430</span>]</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>names <span class="op">=</span> [<span class="st">"Barcelona"</span>, <span class="st">"Lisbon"</span>, <span class="st">"Paris"</span>, <span class="st">"London"</span>, <span class="st">"Cairo"</span>,</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>         <span class="st">"Istanbul"</span>,  <span class="st">"Stockholm"</span>, <span class="st">"Rome"</span>, <span class="st">"Tunis"</span>, <span class="st">"Algiers"</span>]</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>pts   <span class="op">=</span> <span class="fu">hcat</span>(temp, <span class="fu">Float64</span>.(prec))</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="fu">scatter</span>(pts, region<span class="op">=</span>(<span class="fl">4</span>, <span class="fl">25</span>, <span class="fl">100</span>, <span class="fl">1100</span>),</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>        frame<span class="op">=</span>(xlabel<span class="op">=</span><span class="st">"Mean temperature (°C)"</span>, ylabel<span class="op">=</span><span class="st">"Precipitation (mm)"</span>,</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>               title<span class="op">=</span><span class="st">"Climate -- annotate auto-placement"</span>),</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>        marker<span class="op">=:</span>circle, ms<span class="op">=</span><span class="st">"10p"</span>, fill<span class="op">=:</span>dodgerblue, ml<span class="op">=</span><span class="st">"0.5p,white"</span>)</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="fu">annotate!</span>(pts, names; fontsize<span class="op">=</span><span class="fl">8</span>, fill<span class="op">=:</span>white, pen<span class="op">=</span><span class="st">"0.3p,gray40"</span>, clearance<span class="op">=</span><span class="st">"1.5p"</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
 <div class="ansi-escaped-output">
 <pre><span class="ansi-green-fg ansi-bold">Precompiling</span> packages...
 
 
-  55708.7 ms<span class="ansi-green-fg">  ✓ </span>GMT
+  50556.8 ms<span class="ansi-green-fg">  ✓ </span>GMT
 
-  1 dependency successfully precompiled in 57 seconds. 80 already precompiled.
-
+  1 dependency successfully precompiled in 52 seconds. 80 already precompiled.
 </pre>
 </div>
 </div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="compass_files/figure-html/cell-2-output-2.png" class="img-fluid figure-img"></p>
+<p><img src="annotate_files/figure-html/cell-2-output-2.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="fancy-directional-rose-level-3-with-all-labels" class="level3">
-<h3 class="anchored" data-anchor-id="fancy-directional-rose-level-3-with-all-labels">Fancy directional rose (level 3) with all labels</h3>
-<div id="69ff0fea" class="cell" data-execution_count="2">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">compass</span>(width<span class="op">=</span><span class="fl">4</span>, fancy<span class="op">=</span><span class="fl">3</span>, labels<span class="op">=</span><span class="cn">true</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="annotating-a-european-city-map" class="level3">
+<h3 class="anchored" data-anchor-id="annotating-a-european-city-map">Annotating a European city map</h3>
+<p><code>annotate</code> works equally well on geographic maps. The automatic layout keeps city labels legible even when several capitals are close together.</p>
+<div id="9d308b92" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pts <span class="op">=</span> [<span class="op">-</span><span class="fl">9.14</span> <span class="fl">38.74</span>; <span class="op">-</span><span class="fl">3.70</span> <span class="fl">40.42</span>; <span class="op">-</span><span class="fl">0.13</span> <span class="fl">51.51</span>;  <span class="fl">2.35</span> <span class="fl">48.85</span>;</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>        <span class="fl">4.90</span> <span class="fl">52.37</span>; <span class="fl">13.41</span> <span class="fl">52.52</span>; <span class="fl">12.50</span> <span class="fl">41.90</span>; <span class="fl">16.37</span> <span class="fl">48.21</span>;</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>       <span class="fl">19.04</span> <span class="fl">47.50</span>; <span class="fl">23.73</span> <span class="fl">37.98</span>]</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>cities <span class="op">=</span> [<span class="st">"Lisbon"</span>, <span class="st">"Madrid"</span>, <span class="st">"London"</span>, <span class="st">"Paris"</span>,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>          <span class="st">"Amsterdam"</span>, <span class="st">"Berlin"</span>, <span class="st">"Rome"</span>, <span class="st">"Vienna"</span>,</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>          <span class="st">"Budapest"</span>, <span class="st">"Athens"</span>]</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="fu">coast</span>(region<span class="op">=</span>(<span class="op">-</span><span class="fl">12</span>, <span class="fl">28</span>, <span class="fl">34</span>, <span class="fl">57</span>), proj<span class="op">=:</span>Mercator, land<span class="op">=:</span>wheat, water<span class="op">=</span><span class="st">"lightblue"</span>,</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>      borders<span class="op">=</span>(<span class="fl">1</span>,<span class="op">:</span>gray50), shore<span class="op">=:</span>thinnest, frame<span class="op">=:</span>a10g10)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="fu">scatter!</span>(pts, marker<span class="op">=:</span>star, ms<span class="op">=</span><span class="st">"8p"</span>, fill<span class="op">=:</span>red, ml<span class="op">=</span><span class="st">"0.5p,darkred"</span>)</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="fu">annotate!</span>(pts, cities; fontsize<span class="op">=</span><span class="fl">7</span>, fill<span class="op">=:</span>white, pen<span class="op">=</span><span class="st">"0.3p,gray30"</span>, clearance<span class="op">=</span><span class="st">"1p"</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="compass_files/figure-html/cell-3-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="annotate_files/figure-html/cell-3-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="three-directional-roses-side-by-side" class="level3">
-<h3 class="anchored" data-anchor-id="three-directional-roses-side-by-side">Three directional roses side by side</h3>
-<p>Plain, fancy level 1, and fancy level 3, plotted using overlay mode with shifts.</p>
-<div id="7aa0605a" class="cell" data-execution_count="3">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">basemap</span>(region<span class="op">=</span>(<span class="op">-</span><span class="fl">5</span>,<span class="fl">5</span>,<span class="op">-</span><span class="fl">5</span>,<span class="fl">5</span>), proj<span class="op">=:</span>merc, figscale<span class="op">=</span><span class="fl">0.4</span>, frame<span class="op">=:</span>none,</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>        rose<span class="op">=</span>(map<span class="op">=</span><span class="cn">true</span>, anchor<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">0</span>), justify<span class="op">=:</span>CM, width<span class="op">=</span><span class="fl">2.5</span>))</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">compass!</span>(width<span class="op">=</span><span class="fl">2.5</span>, anchor<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">0</span>), justify<span class="op">=:</span>CM, fancy<span class="op">=</span><span class="cn">true</span>, labels<span class="op">=</span><span class="st">",,,N"</span>, xshift<span class="op">=</span><span class="fl">3</span>)</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="fu">compass!</span>(width<span class="op">=</span><span class="fl">2.5</span>, anchor<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">0</span>), justify<span class="op">=:</span>CM, fancy<span class="op">=</span><span class="fl">3</span>, labels<span class="op">=</span><span class="cn">true</span>,</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>         region<span class="op">=</span>(<span class="op">-</span><span class="fl">7</span>,<span class="fl">7</span>,<span class="op">-</span><span class="fl">5</span>,<span class="fl">5</span>), xshift<span class="op">=</span><span class="fl">3.5</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="and-another-with-very-close-cities" class="level3">
+<h3 class="anchored" data-anchor-id="and-another-with-very-close-cities">And another with very close cities</h3>
+<div id="7dfb67a4" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>cities <span class="op">=</span> [</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="op">-</span><span class="fl">9.14</span>  <span class="fl">38.74</span>;   <span class="co"># Lisbon</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">-</span><span class="fl">9.16</span>  <span class="fl">38.68</span>;   <span class="co"># Almada</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">-</span><span class="fl">8.60</span>  <span class="fl">41.15</span>;   <span class="co"># Porto</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">-</span><span class="fl">8.61</span>  <span class="fl">41.12</span>;   <span class="co"># Gaia</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">-</span><span class="fl">7.93</span>  <span class="fl">37.02</span>;   <span class="co"># Faro</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="op">-</span><span class="fl">7.84</span>  <span class="fl">37.03</span>;   <span class="co"># Olhão</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="op">-</span><span class="fl">3.70</span>  <span class="fl">40.42</span>;   <span class="co"># Madrid</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    <span class="op">-</span><span class="fl">3.68</span>  <span class="fl">40.48</span>;   <span class="co"># nearby Madrid (Alcobendas)</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    <span class="op">-</span><span class="fl">0.38</span>  <span class="fl">39.47</span>;   <span class="co"># Valencia</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>     <span class="fl">2.17</span>  <span class="fl">41.39</span>;   <span class="co"># Barcelona</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>     <span class="fl">2.10</span>  <span class="fl">41.35</span>;   <span class="co"># nearby Barcelona (Hospitalet)</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    <span class="op">-</span><span class="fl">8.43</span>  <span class="fl">43.37</span>;   <span class="co"># A Coruña</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    <span class="op">-</span><span class="fl">5.98</span>  <span class="fl">37.39</span>;   <span class="co"># Seville</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    <span class="op">-</span><span class="fl">1.13</span>  <span class="fl">37.99</span>;   <span class="co"># Murcia</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>names <span class="op">=</span> [<span class="st">"Lisbon"</span>, <span class="st">"Almada"</span>, <span class="st">"Porto"</span>, <span class="st">"Gaia"</span>, <span class="st">"Faro"</span>, <span class="st">"Olhão"</span>, <span class="st">"Madrid"</span>, <span class="st">"Alcobendas"</span>,</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>         <span class="st">"Valencia"</span>, <span class="st">"Barcelona"</span>, <span class="st">"Hospitalet"</span>, <span class="st">"A Coruña"</span>, <span class="st">"Seville"</span>, <span class="st">"Murcia"</span>]</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Plot the coast as background</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a><span class="fu">coast</span>(region<span class="op">=</span>[<span class="op">-</span><span class="fl">11</span>, <span class="fl">4</span>, <span class="fl">35</span>, <span class="fl">45</span>], proj<span class="op">=:</span>Mercator, shore<span class="op">=</span><span class="cn">true</span>,</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>      land<span class="op">=:</span>lightyellow, water<span class="op">=:</span>lightblue, borders<span class="op">=</span>(<span class="fl">1</span>,<span class="op">:</span>thinnest))</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot city points</span></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a><span class="fu">scatter!</span>(cities, marker<span class="op">=:</span>circle, ms<span class="op">=</span><span class="st">"5p"</span>, fill<span class="op">=:</span>red, ml<span class="op">=:</span>thinnest)</span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a><span class="fu">annotate!</span>(cities, names; leader<span class="op">=</span><span class="st">"0.5p,gray50"</span>, font<span class="op">=</span>(<span class="fl">8</span>,<span class="op">:</span>Helvetica,<span class="op">:</span>black),</span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>          fill<span class="op">=:</span>white, pen<span class="op">=</span><span class="st">"0.3p,gray30"</span>, clearance<span class="op">=</span><span class="st">"1p"</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="compass_files/figure-html/cell-4-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="annotate_files/figure-html/cell-4-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="directional-rose-on-a-map" class="level3">
-<h3 class="anchored" data-anchor-id="directional-rose-on-a-map">Directional rose on a map</h3>
-<div id="44d844b8" class="cell" data-execution_count="4">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">coast</span>(region<span class="op">=</span>(<span class="op">-</span><span class="fl">10</span>,<span class="fl">10</span>,<span class="op">-</span><span class="fl">10</span>,<span class="fl">10</span>), proj<span class="op">=:</span>Mercator, frame<span class="op">=:</span>auto, land<span class="op">=:</span>lightgray, water<span class="op">=:</span>lightblue)</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">compass!</span>(width<span class="op">=</span><span class="fl">2.5</span>, inside<span class="op">=:</span>TR, fancy<span class="op">=</span><span class="cn">true</span>, labels<span class="op">=</span><span class="st">",,,N"</span>, offset<span class="op">=</span><span class="fl">0.5</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="vector-lines" class="level3">
+<h3 class="anchored" data-anchor-id="vector-lines">Vector lines</h3>
+<p>Pass <code>leader=&lt;pen&gt;</code> to use GMT’s hairline connector — a thin line from the anchor to the edge of the text box, with no arrowhead. Since no arrow is drawn by default, just setting <code>leader</code> is sufficient.</p>
+<div id="499742c6" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="fu">collect</span>(<span class="fu">LinRange</span>(<span class="fl">0.0</span>, <span class="fl">2</span>π, <span class="fl">300</span>))</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">hcat</span>(x, <span class="fu">sin</span>.(x)), region<span class="op">=</span>(<span class="fl">0</span>, <span class="fl">2</span>π, <span class="op">-</span><span class="fl">1.5</span>, <span class="fl">1.5</span>), figsize<span class="op">=</span>(<span class="fl">14</span>, <span class="fl">6</span>), frame<span class="op">=:</span>af,</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>     pen<span class="op">=</span><span class="st">"2p,royalblue"</span>, xaxis<span class="op">=</span>(annot<span class="op">=:</span>auto, label<span class="op">=</span><span class="st">"x"</span>), yaxis<span class="op">=</span>(annot<span class="op">=:</span>auto, label<span class="op">=</span><span class="st">"sin(x)"</span>))</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>pts  <span class="op">=</span> [<span class="cn">π</span><span class="op">/</span><span class="fl">2</span>  <span class="fl">1.0</span>;  <span class="cn">π</span>    <span class="fl">0.0</span>; <span class="fl">3</span>π<span class="op">/</span><span class="fl">2</span> <span class="op">-</span><span class="fl">1.0</span>; <span class="cn">π</span><span class="op">/</span><span class="fl">4</span>  <span class="fl">0.707</span>]</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    labs <span class="op">=</span> [<span class="st">"maximum"</span>, <span class="st">"zero crossing"</span>, <span class="st">"minimum"</span>, <span class="st">"sin(</span><span class="sc">$</span>(<span class="fu">greek</span>(<span class="ch">'p'</span>))<span class="st">/4)"</span>]</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="fu">annotate!</span>(pts, labs; leader<span class="op">=</span><span class="st">"0.5p,gray50"</span>, min_offset<span class="op">=</span><span class="fl">30</span>, nobox<span class="op">=</span><span class="cn">true</span>,</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>          arrowprops<span class="op">=</span>(pen<span class="op">=</span><span class="st">"0.4p,gray40"</span>, arrow<span class="op">=</span>(len<span class="op">=</span><span class="fl">0.2</span>, stop<span class="op">=</span><span class="cn">true</span>, shape<span class="op">=</span><span class="fl">0.5</span>), fill<span class="op">=:</span>gray40),</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>            F<span class="op">=</span>(font<span class="op">=</span>(<span class="fl">9</span>, <span class="st">"Helvetica-Bold"</span>),), show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="compass_files/figure-html/cell-5-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="annotate_files/figure-html/cell-5-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="magnetic-compass-standalone" class="level3">
-<h3 class="anchored" data-anchor-id="magnetic-compass-standalone">Magnetic compass (standalone)</h3>
-<p>A magnetic compass with declination of -14.5 degrees and custom annotation intervals.</p>
-<div id="6eb15fe8" class="cell" data-execution_count="5">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">compass</span>(width<span class="op">=</span><span class="fl">6</span>, dec<span class="op">=-</span><span class="fl">14.5</span>, annot<span class="op">=</span>(<span class="fl">45</span>,<span class="fl">10</span>,<span class="fl">5</span>,<span class="fl">30</span>,<span class="fl">10</span>,<span class="fl">2</span>),</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>        rose_primary<span class="op">=</span>(<span class="fl">0.25</span>,<span class="op">:</span>blue), rose_secondary<span class="op">=</span><span class="fl">0.5</span>, labels<span class="op">=</span><span class="st">""</span>,</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>        par<span class="op">=</span>(FONT_ANNOT_PRIMARY<span class="op">=</span><span class="fl">9</span>, FONT_LABEL<span class="op">=</span><span class="fl">14</span>, MAP_VECTOR_SHAPE<span class="op">=</span><span class="fl">0.5</span>,</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>             MAP_TICK_PEN_SECONDARY<span class="op">=</span><span class="st">"thinner,red"</span>, MAP_TICK_PEN_PRIMARY<span class="op">=</span><span class="st">"thinner,blue"</span>),</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>        show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="compass_files/figure-html/cell-6-output-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="magnetic-compass-on-a-map" class="level3">
-<h3 class="anchored" data-anchor-id="magnetic-compass-on-a-map">Magnetic compass on a map</h3>
-<div id="6a042945" class="cell" data-execution_count="6">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">coast</span>(region<span class="op">=</span>(<span class="op">-</span><span class="fl">10</span>,<span class="fl">5</span>,<span class="fl">35</span>,<span class="fl">45</span>), proj<span class="op">=:</span>Mercator, frame<span class="op">=:</span>auto, land<span class="op">=:</span>bisque, water<span class="op">=:</span>lightblue,</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>      borders<span class="op">=</span>(<span class="kw">type</span><span class="op">=</span><span class="fl">1</span>, pen<span class="op">=</span><span class="fl">0.5</span>), shore<span class="op">=</span><span class="fl">0.5</span>)</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="fu">compass!</span>(width<span class="op">=</span><span class="fl">3</span>, inside<span class="op">=:</span>BL, dec<span class="op">=-</span><span class="fl">2.5</span>, annot<span class="op">=</span>(<span class="fl">45</span>,<span class="fl">10</span>,<span class="fl">5</span>,<span class="fl">30</span>,<span class="fl">10</span>,<span class="fl">2</span>),</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>         rose_primary<span class="op">=</span>(<span class="fl">0.25</span>,<span class="op">:</span>blue), rose_secondary<span class="op">=</span><span class="fl">0.3</span>, labels<span class="op">=</span><span class="st">"O,E,S,N"</span>,</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>         offset<span class="op">=</span><span class="fl">0.5</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="compass_files/figure-html/cell-7-output-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-</section>
-<section id="see-also" class="level2">
-<h2 class="anchored" data-anchor-id="see-also">See Also</h2>
-<p><a href="../..\documentation/modules/basemap.html">basemap</a>, <a href="../..\documentation/modules/coast.html">coast</a></p>
-<p><a href="../alphabetical.html">Alphabetical Function List</a></p>
 </section>
 <section id="source-code" class="level2">
 <h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
-<p>This function has multiple methods:</p>
-<ul>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/compass.jl#L64"><code>compass(first::Bool, d::Dict{Symbol, Any})</code></a> - compass.jl:64</li>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/compass.jl#L60"><code>compass(; first, kw...)</code></a> - compass.jl:60</li>
-</ul>
+<p>View the <a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/pstext.jl#L303">source code</a> for this function.</p>
+</section>
+<section id="see-also" class="level2">
+<h2 class="anchored" data-anchor-id="see-also">See Also</h2>
+<p><a href="../..\documentation/modules/text.html">text</a>, <a href="../..\documentation/modules/textrepel.html">textrepel</a>, <a href="../..\documentation/modules/arrows.html">arrows</a>, <a href="../..\documentation/modules/plot.html">plot</a></p>
 
 
 </section>

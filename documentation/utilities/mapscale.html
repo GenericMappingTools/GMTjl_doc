@@ -519,29 +519,17 @@ Coordinate system for the anchor point. Use <strong>map=true</strong> for map co
 <section id="simple-scale-bar-on-a-map" class="level3">
 <h3 class="anchored" data-anchor-id="simple-scale-bar-on-a-map">Simple scale bar on a map</h3>
 <p>A 500 km fancy scale bar on a Mercator map of the North Sea, computed at latitude 53N.</p>
-<div id="9e520f22" class="cell" data-execution_count="1">
+<div id="7d3d5813" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">coast</span>(region<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">40</span>,<span class="fl">50</span>,<span class="fl">56</span>), proj<span class="op">=:</span>Mercator, figsize<span class="op">=</span><span class="fl">13</span>, frame<span class="op">=:</span>auto,</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>      land<span class="op">=:</span>lightgray, water<span class="op">=:</span>lightblue, shore<span class="op">=</span><span class="fl">0.5</span>)</span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">mapscale!</span>(inside<span class="op">=:</span>ML, scale_at_lat<span class="op">=</span><span class="fl">53</span>, length<span class="op">=</span><span class="st">"500k"</span>, fancy<span class="op">=</span><span class="cn">true</span>, label<span class="op">=</span><span class="cn">true</span>,</span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>          offset<span class="op">=</span><span class="fl">0.5</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stderr">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-green-fg ansi-bold">Precompiling</span> packages...
-
-
-  55256.1 ms<span class="ansi-green-fg">  ✓ </span>GMT
-
-  1 dependency successfully precompiled in 56 seconds. 80 already precompiled.
-
-</pre>
-</div>
-</div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="mapscale_files/figure-html/cell-2-output-2.png" class="img-fluid figure-img"></p>
+<p><img src="mapscale_files/figure-html/cell-2-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
@@ -550,7 +538,7 @@ Coordinate system for the anchor point. Use <strong>map=true</strong> for map co
 <section id="two-scale-bars-with-boxes" class="level3">
 <h3 class="anchored" data-anchor-id="two-scale-bars-with-boxes">Two scale bars with boxes</h3>
 <p>A fancy scale bar on the left with a light cyan box, and a plain one on the bottom right with a white box and inner border.</p>
-<div id="5b3d8196" class="cell" data-execution_count="2">
+<div id="fe916cbd" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">basemap</span>(region<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">40</span>,<span class="fl">50</span>,<span class="fl">56</span>), proj<span class="op">=:</span>Mercator, figsize<span class="op">=</span><span class="fl">13</span>, frame<span class="op">=:</span>auto,</span>
@@ -570,7 +558,7 @@ Coordinate system for the anchor point. Use <strong>map=true</strong> for map co
 </section>
 <section id="scale-bar-on-a-regional-map" class="level3">
 <h3 class="anchored" data-anchor-id="scale-bar-on-a-regional-map">Scale bar on a regional map</h3>
-<div id="0f1b08c0" class="cell" data-execution_count="3">
+<div id="cb816457" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">coast</span>(region<span class="op">=</span>(<span class="op">-</span><span class="fl">10</span>,<span class="fl">5</span>,<span class="fl">35</span>,<span class="fl">45</span>), proj<span class="op">=:</span>Mercator, frame<span class="op">=:</span>auto, land<span class="op">=:</span>bisque,</span>
@@ -588,7 +576,7 @@ Coordinate system for the anchor point. Use <strong>map=true</strong> for map co
 </section>
 <section id="plain-scale-bar-with-custom-label" class="level3">
 <h3 class="anchored" data-anchor-id="plain-scale-bar-with-custom-label">Plain scale bar with custom label</h3>
-<div id="632d7088" class="cell" data-execution_count="4">
+<div id="0c678774" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">coast</span>(region<span class="op">=</span>(<span class="op">-</span><span class="fl">80</span>,<span class="op">-</span><span class="fl">60</span>,<span class="op">-</span><span class="fl">10</span>,<span class="fl">10</span>), proj<span class="op">=:</span>Mercator, frame<span class="op">=:</span>auto, land<span class="op">=:</span>darkgreen,</span>
