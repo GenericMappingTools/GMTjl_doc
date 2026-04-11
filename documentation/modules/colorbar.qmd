@@ -9,7 +9,13 @@ Plot a gray or color scale-bar on maps
 Description
 -----------
 
-Plots gray scales or color scales on maps. Both horizontal and vertical scales are supported. For CPTs with gradational colors (i.e., the lower and upper boundary of an interval have different colors) we will interpolate to give a continuous scale. Variations in intensity due to shading/illumination may be displayed by setting the option **shade**. Colors may be spaced according to a linear scale, all be equal size, or by providing a file with individual tile widths. The font used for the annotations along the scale and optional units is specified by [FONT_ANNOT_PRIMARY](https://docs.generic-mapping-tools.org/latest/gmt.conf.html#term-FONT_ANNOT_PRIMARY). If a label is requested, it is plotted with [FONT_LABEL](https://docs.generic-mapping-tools.org/latest/gmt.conf.html#term-FONT_LABEL).
+Plots gray scales or color scales on maps. Both horizontal and vertical scales are supported. For CPTs with
+gradational colors (i.e., the lower and upper boundary of an interval have different colors) we will interpolate
+to give a continuous scale. Variations in intensity due to shading/illumination may be displayed by setting the
+option **shade**. Colors may be spaced according to a linear scale, all be equal size, or by providing a file
+with individual tile widths. The font used for the annotations along the scale and optional units is specified
+by [FONT_ANNOT_PRIMARY](https://docs.generic-mapping-tools.org/latest/gmt.conf.html#term-FONT_ANNOT_PRIMARY).
+If a label is requested, it is plotted with [FONT_LABEL](https://docs.generic-mapping-tools.org/latest/gmt.conf.html#term-FONT_LABEL).
 
 Required Arguments
 ------------------
@@ -117,7 +123,7 @@ colorbar(pos=(paper=true, anchor="6.5i/2i", justify=(:LM,"2i"), size=(7.5,1.2), 
 To overlay a horizontal color scale (10 centimeters long and default width) above a
 Mercator map produced by a previous call, ensuring a 2 cm offset from the map frame, use
 
-```{julia}
+```julia
 colorbar!(region=(0,10,0,10), pos=(justify=:CT, width=10, offset=(0,2), horizontal=true), cmap="colors.cpt", show=1)
 ```
 

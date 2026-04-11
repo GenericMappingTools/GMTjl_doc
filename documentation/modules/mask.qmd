@@ -6,6 +6,11 @@ mask(cmd0::String="", arg1=[]; kwargs...)
 or
 
 mask(GI:GItype, shapes::GMTdataset, touches=false, inverse::Bool=false, maskvalues=??)
+
+or
+
+mask(G::GMTgrid, M, value::Real=NaN)
+mask(I::GMTimage, M, value=UInt8(0); alpha=false)
 ```
 
 Clip or mask map areas with no data table coverage
@@ -30,6 +35,12 @@ This method uses GDAL to compute the clipping mask. Used together with the ``DCW
 Note that this method is in a way similar to one of the {{< gmtref grdlandmask >}} methods. The
 difference is that here use a external polygon description that may be read from any _OGR_ vector file
 whilst {{< gmtref grdlandmask >}} uses the GSHHG dataset.
+
+A third method applies a mask array directly to a grid or image. Where the mask is nonzero (true, 1, or 255),
+the corresponding grid or image values are replaced by a given value (NaN by default for grids, 0 for images).
+The mask can be a `BitMatrix`, `Matrix{Bool}`, `Matrix{UInt8}` (with 0/1 or 0/255 values), or another
+{{< gmtref GMTgrid type=gmttype >}} or {{< gmtref GMTimage type=gmttype >}}. For color images, the replacement
+value can be an RGB tuple.
 
 Required Arguments (1st method)
 -------------------------------
@@ -137,6 +148,22 @@ Optional Arguments
 
 {{< include ../common_opts/opt_save_fig.qmd >}}
 
+Arguments (3rd method)
+----------------------
+
+- `G` or `I`: The target {{< gmtref GMTgrid type=gmttype >}} or {{< gmtref GMTimage type=gmttype >}} to which the mask will be applied.
+
+- `M`: A mask array. Can be a {{< gmtref GMTgrid type=gmttype >}}, {{< gmtref GMTimage type=gmttype >}}, `BitMatrix`,
+  `Matrix{Bool}`, or `Matrix{UInt8}` (with values 0/1 or 0/255). Where the mask is true (nonzero), the corresponding
+  elements of `G` or `I` are replaced by `value`.
+
+- `value`: The replacement value. For grids, defaults to `NaN`. For images, defaults to `UInt8(0)`. For color
+  (multi-band) images, `value` can be an RGB tuple, e.g., `(255, 0, 0)` for red. Ignored when `alpha=true`.
+
+- `alpha`: When `true` (images only), instead of painting the masked pixels, an alpha channel is added to the
+  image making the masked regions fully transparent. Single-band images are automatically promoted to RGB.
+  This is the same transparency mechanism used by the 2nd method (polygon clipping).
+
 Examples
 --------
 
@@ -188,6 +215,17 @@ viz(Ic, title="Croatia")
 ```
 
 
+
+Apply a mask array to a grid — set masked cells to NaN::
+
+```{julia}
+using GMT
+
+G = mat2grid(rand(Float32, 64, 64));              # A random 64×64 grid
+msk = falses(64, 64);  msk[20:40, 20:40] .= true; # Mask a central block
+Gm = mask(G, msk);                                # Masked cells become NaN
+viz(Gm, title="Grid with masked block")
+```
 
 ```{julia}
 #| echo: false

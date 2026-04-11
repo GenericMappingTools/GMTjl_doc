@@ -152,7 +152,7 @@ Parameters
     - **M** or **Matang**  Same as **matang** but switches to straight angle symbol if angles subtend 90 degrees exactly.
     - **n** or **pentagon**  size is diameter of circumscribing circle.
     - **p** or **point**  No size needs to be specified (1 pixel is used).
-    - **quoted lines**    i.e., lines with annotations such as contours. See [Quoted lines]
+    - **quoted** lines    i.e., lines with annotations such as contours. See [Quoted lines]
     - **r** or **rectangle**  No size needs to be specified, but the x- and y-dimensions must be found in columns 3 and 4.
     - **R** or **roundrect**  Rounded rectangle. No size needs to be specified, but the x- and y-dimensions and
       corner radius must be found in columns 3, 4, and 5.
@@ -196,12 +196,14 @@ Parameters
 
 - **legend** and **label** : -- *legend="thelabel"* **|** *label=thelabel* **|** *legend=(label="thelabel", pos=position, box=??, fontsise=?, font=?)*\
    Add a legend to the plot. In its simple form just provide `legend="thelabel"`, which plots the legend at the
-   default *UpperRight* position. To control the legend position and other parameters one must use the tuple form
+   default *UpperRight* position. The form `label="colnames"` will use the column names of the input {{< gmtref GMTdataset type=gmttype >}}
+   as legend entries. To control the legend position and other parameters one must use the tuple form
    where `label="thelabel"` is the same as above; `pos=position` where *position* is a 2 char code (or its expanded form)
    like in the {{< gmtref text >}}. For a full featured positioning option in `legend=(label="thelabel", pos=(...))` see the
-   `pos` option in {{< gmtref legend >}} that allows also to plot the legend outside of the figure space. The `box` option
-   may take two forms (refer to {{< gmtref legend >}} for more details): (1) use `box=:none` to not plot the legend box or,
-   (2) `box=(clearance=?, fill=?, inner=?, pen=?, rounded=?, shade=?)`.
+   `pos` option in {{< gmtref legend >}} that allows also to plot the legend outside of the figure space. Note,
+   one can use `pos=:auto` to let GMT decide the best position for the legend. The `box` option
+   may take two forms (refer to {{< gmtref legend >}} for more details): (1) use `box=:none` to not plot the
+   legend box or, (2) `box=(clearance=?, fill=?, inner=?, pen=?, rounded=?, shade=?)`.
    For example, `box=(pen=1, fill="gray95", shade=true)` to plot a light gray box with a shade.  When using the
    **groupvar** option we can just set `legend=true` to create a legend containing an entry for each of the groups.
    Controling the position of that legend is done by omitting the *label* keyword in the `legend=(...)` form.
@@ -213,10 +215,22 @@ Parameters
    function or a Mx2 matrix. Preferably use the first form that provides more user control. See the {{< gmtref linearfitxy >}}
    documentation for extra options usable in this case.
 
-- **ribbon** or **band** : -- *ribbon=dy* **|** *ribbon=(dy1,dy2)* **|** *ribbon=mat** **|** *ribbon=(vec1,vec2)*\
+- **ribbon** or **band** : -- *ribbon=dy* **|** *ribbon=(dy1,dy2)* **|** *ribbon=mat* **|** *ribbon=(vec1,vec2)*\
    Similar to the **polygon** option above but where the data to build envelope around y(x) is passed directly via
    this option instead of extra columns in the input data. In the above *dy, dy1, dy2* are scalars, *mat* is a Mx2
    matrix and *vec1,vec2* are vectors with the same length as number of rows in input data.
+
+- **setcolors** or **colorset** : -- *setcolors=true* **|** *setcolors=:matlab* **|** *setcolors=:distinct* **|** *setcolors=:alphabet* **|** *setcolors=["color1","color2",...]* **|** *setcolors=(colorset=..., fill=true)*\
+   Assign cycling line colors to a vector of datasets before plotting. When the input is a `Vector{GMTdataset}`
+   whose segments have no color assigned (or you want to override existing colors), this option automatically
+   sets a `-W<color>` in each segment header using colors from one of the built-in palettes.
+   Use `setcolors=true` for automatic palette selection (`:matlab` for ≤7 curves, `:distinct` otherwise),
+   or pass a specific palette name: `:matlab` (7 colors), `:distinct` (20 colors), or `:alphabet` (26 colors).
+   A custom list of colors can also be passed as a vector of strings, *e.g.* `setcolors=["red","blue","green"]`.
+   Colors cycle when there are more curves than colors. If a `-W` option already exists in a segment header,
+   the color is inserted or replaced while preserving pen width and style. To also assign fill colors (`-G`),
+   use the NamedTuple form: `setcolors=(colorset=:matlab, fill=true)`. See also the standalone function
+   `setcolors!` for applying colors outside of a plot call.
 
 - **zcolor** or **markerz** or **mz** : -- *zcolor=xx* **|** *zcolor=true*\
    Take the vector `xx` (same size as number os points in data) and interpolate the current color scale to paint the

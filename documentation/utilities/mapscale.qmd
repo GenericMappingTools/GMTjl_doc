@@ -1,0 +1,127 @@
+# mapscale
+
+```julia
+mapscale(; kwargs...)
+```
+
+Draw a map scale bar on the map.
+
+Description
+-----------
+
+Convenience function that wraps {{< gmtref basemap >}} to draw a map scale bar (`-L`). The scale
+bar length is computed for a given latitude, allowing accurate distance representation on projected maps.
+
+Can be called as an overlay (`mapscale!`) on an existing plot, or standalone with explicit `region`
+and `proj`. When no explicit `frame` is given, defaults to `frame=:none` so that only the scale
+bar is drawn.
+
+Parameters
+----------
+
+- **anchor** : -- *anchor=(x,y)* | *anchor=refpoint*\
+   Reference point on the map for the scale bar.
+
+- **scale\_at\_lat** : -- *scale\_at\_lat=lat*\
+   Latitude at which the map scale is computed. Required for geographic projections.
+
+- **length** or **width** : -- *length="1000k"* | *length=val*\
+   Length of the scale bar. Append unit: **e** (meter), **f** (foot), **k** (km), **M** (mile),
+   **n** (nautical mile), **u** (US survey foot). E.g., `"500k"` for 500 km.
+
+- **fancy** : -- *fancy=true*\
+   Draw a fancy scale bar instead of a plain one.
+
+- **label** : -- *label=true* | *label="text"*\
+   Label for the scale bar. Use `true` for the default unit label, or provide custom text.
+
+- **align** : -- *align=:left* | *align=:right* | *align=:top* | *align=:bottom*\
+   Alignment of the label relative to the scale bar.
+
+- **justify** : -- *justify=code*\
+   2-char justification code for the anchor point (e.g., `:CM`). See {{< gmtref text >}}.
+
+- **offset** : -- *offset=(dx,dy)*\
+   Offset from the anchor point.
+
+- **units** : -- *units=true*\
+   Append the unit to all distance annotations along the scale.
+
+- **vertical** : -- *vertical=true*\
+   Plot a vertical instead of horizontal Cartesian scale.
+
+- **map**, **inside**, **outside**, **norm**, **paper** :\
+   Coordinate system for the anchor point. Use **map=true** for map coordinates, **inside=code** or
+   **outside=code** for justification-based placement, **norm=true** for normalized (0-1) coordinates,
+   or **paper=true** for plot coordinates.
+
+All other keyword arguments (e.g., `region`, `proj`, `frame`, `par`, `show`, `savefig`, `box`, etc.)
+are passed through to {{< gmtref basemap >}}.
+
+Examples
+--------
+
+### Simple scale bar on a map
+
+A 500 km fancy scale bar on a Mercator map of the North Sea, computed at latitude 53N.
+
+```{julia}
+using GMT
+
+coast(region=(0,40,50,56), proj=:Mercator, figsize=13, frame=:auto,
+      land=:lightgray, water=:lightblue, shore=0.5)
+mapscale!(inside=:ML, scale_at_lat=53, length="500k", fancy=true, label=true,
+          offset=0.5, show=true)
+```
+
+### Two scale bars with boxes
+
+A fancy scale bar on the left with a light cyan box, and a plain one on the bottom right with
+a white box and inner border.
+
+```{julia}
+using GMT
+
+basemap(region=(0,40,50,56), proj=:Mercator, figsize=13, frame=:auto,
+        map_scale=(anchor=:ML, scale_at_lat=53, length="1000k", label="Scale at 53@.N", fancy=true),
+        box=(fill=:lightcyan, clearance=0, pen=1))
+
+mapscale!(inside=:BR, scale_at_lat=53, length="1000k", label=true, fancy=true,
+          box=(fill=:white, clearance=0.25, pen=1, inner=true), show=true)
+```
+
+### Scale bar on a regional map
+
+```{julia}
+using GMT
+
+coast(region=(-10,5,35,45), proj=:Mercator, frame=:auto, land=:bisque,
+      water=:lightblue, borders=(type=1, pen=0.5), shore=0.5)
+mapscale!(inside=:BR, scale_at_lat=40, length="200k", fancy=true, label=true,
+          offset=0.5, show=true)
+```
+
+### Plain scale bar with custom label
+
+```{julia}
+using GMT
+
+coast(region=(-80,-60,-10,10), proj=:Mercator, frame=:auto, land=:darkgreen,
+      water=:lightblue, shore=0.5)
+mapscale!(inside=:BL, scale_at_lat=0, length="500k", label="500 km at equator",
+          offset=0.5, show=true)
+```
+
+See Also
+--------
+
+{{< gmtref basemap >}}, {{< gmtref coast >}}, {{< gmtref compass >}}
+
+[Alphabetical Function List](../alphabetical.html)
+
+```{julia}
+#| echo: false
+#| output: asis
+using GMT
+GMT.doc_source_links("mapscale")
+```
