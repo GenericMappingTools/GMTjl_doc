@@ -7,9 +7,27 @@ title: "polyval"
 y = polyval(p::AbstractArray, x::Union{AbstractArray, Number})
 ```
 
-Evaluates the polynomial p at each point in x. The argument p is a vector of length n+1 whose elements are the coefficients (in ascending order of powers) of an nth-degree polynomial:
+Evaluates the polynomial p at each point in x. The argument p is a vector of length n+1 whose
+elements are the coefficients (in ascending order of powers) of an nth-degree polynomial:
 
+$$p(x) = p[1] + p[2]x + p[3]x^2 + \ldots + p[n+1]x^n$$
 
+The polynomial coefficients in p can be calculated by functions like {{< gmtref polyfit >}},
+but you can specify any vector for the coefficients.
+
+Examples
+--------
+
+Evaluate the polynomial $p(x)=3x^2 +2x + 1$ at the points x=5,7,9. The polynomial coefficients
+can be represented by the vector [1, 2, 3].
+
+```{julia}
+using GMT
+
+p = [1, 2, 3];
+x = [5, 7, 9];
+y = polyval(p, x)
+```
 
 ```{julia}
 #| echo: false
@@ -18,7 +36,10 @@ using GMT
 GMT.doc_source_links("polyval")
 ```
 
-## See Also
+
+See Also
+--------
+
+{{< gmtref polyfit >}}, {{< gmtref plot >}}
 
 - [Alphabetical Function List](../alphabetical.html)
-- [GMT.jl Documentation](https://www.generic-mapping-tools.org/GMTjl_doc/)

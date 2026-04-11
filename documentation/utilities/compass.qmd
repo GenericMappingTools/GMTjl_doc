@@ -1,0 +1,163 @@
+# compass
+
+```julia
+compass(; kwargs...)
+```
+
+Draw a map directional rose or magnetic compass on the map.
+
+Description
+-----------
+
+Convenience function that wraps {{< gmtref basemap >}} to draw directional (`-Td`) or magnetic (`-Tm`) compass
+roses. The mode is auto-selected: if `dec` (magnetic declination) is provided, a magnetic compass is drawn;
+otherwise a directional rose is drawn.
+
+Can be called standalone (creates its own plot) or as an overlay (`compass!`) on an existing plot. When called
+standalone without `region`/`proj`, a default canvas sized to fit the rose is created automatically using
+paper coordinates.
+
+Directional Rose Options
+------------------------
+
+- **anchor** : -- *anchor=(x,y)* | *anchor=refpoint*\
+   Reference point on the map for the rose. When called standalone without `region`/`proj`, this is
+   interpreted as paper coordinates (cm). In overlay mode or with explicit `region`/`proj`, the coordinate
+   system is determined by the **map**, **inside**, **outside**, **norm**, or **paper** modifiers.
+
+- **width** : -- *width=val*\
+   Width of the rose in plot coordinates (cm). This also controls the auto-generated canvas size
+   when no `region`/`proj` is given.
+
+- **fancy** : -- *fancy=true* | *fancy=level*\
+   Draw a "fancy" rose. Level 1 (or *true*) draws the two principal E-W, N-S orientations. Level 2 adds the
+   two intermediate NW-SE and NE-SW orientations. Level 3 adds the eight minor orientations.
+
+- **labels** or **label** : -- *labels="W,E,S,N"*\
+   Comma-separated labels for the cardinal points. Skip a label by leaving it blank (e.g., `",,,N"`).
+   Use `labels=true` to get the default W,E,S,N labels.
+
+- **justify** : -- *justify=code*\
+   2-char justification code for the anchor point (e.g., `:CM` for center-middle). See {{< gmtref text >}}.
+
+- **offset** : -- *offset=(dx,dy)*\
+   Offset from the anchor point.
+
+- **map**, **inside**, **outside**, **norm**, **paper** :\
+   Coordinate system for the anchor point. Use **map=true** for map coordinates, **inside=code** or
+   **outside=code** for justification-based placement, **norm=true** for normalized (0-1) coordinates,
+   or **paper=true** for plot coordinates.
+
+Magnetic Compass Options
+------------------------
+
+All directional options above, plus:
+
+- **dec** : -- *dec=val*\
+   Magnetic declination in degrees. The presence of this option switches the function to magnetic
+   compass mode (`-Tm`).
+
+- **annot** : -- *annot=(a1,a2,a3,a4,a5,a6)*\
+   Six annotation/tick intervals: the first three for geographic directions (annotation, tick, minor tick)
+   and the last three for magnetic directions. Default is 30/5/1 for both.
+
+- **rose\_primary** : -- *rose\_primary=pen* | *rose\_primary=(width, color)*\
+   Pen for the outer (primary) circle of the compass.
+
+- **rose\_secondary** : -- *rose\_secondary=pen* | *rose\_secondary=(width, color)*\
+   Pen for the inner (secondary) circle of the compass.
+
+Pass-through Options
+--------------------
+
+All other keyword arguments are passed to {{< gmtref basemap >}}. Common ones include:
+
+- **region**, **proj**, **frame**, **par**/**conf**, **show**, **savefig**, **fmt**, **Vd**,
+  **xshift**, **yshift**, **box** (see {{< gmtref basemap >}}).
+
+Note: when `compass` is called without an explicit `frame`, it defaults to `frame=:none` so that
+only the compass rose is drawn (no axes).
+
+Examples
+--------
+
+### Standalone directional rose
+
+A simple directional rose — no `region` or `proj` needed. The canvas is auto-sized to fit the rose.
+
+```{julia}
+using GMT
+
+compass(width=2.5, fancy=true, labels=",,,N", show=true)
+```
+
+### Fancy directional rose (level 3) with all labels
+
+```{julia}
+using GMT
+
+compass(width=4, fancy=3, labels=true, show=true)
+```
+
+### Three directional roses side by side
+
+Plain, fancy level 1, and fancy level 3, plotted using overlay mode with shifts.
+
+```{julia}
+using GMT
+
+basemap(region=(-5,5,-5,5), proj=:merc, figscale=0.4, frame=:none,
+        rose=(map=true, anchor=(0,0), justify=:CM, width=2.5))
+compass!(width=2.5, anchor=(0,0), justify=:CM, fancy=true, labels=",,,N", xshift=3)
+compass!(width=2.5, anchor=(0,0), justify=:CM, fancy=3, labels=true,
+         region=(-7,7,-5,5), xshift=3.5, show=true)
+```
+
+### Directional rose on a map
+
+```{julia}
+using GMT
+
+coast(region=(-10,10,-10,10), proj=:Mercator, frame=:auto, land=:lightgray, water=:lightblue)
+compass!(width=2.5, inside=:TR, fancy=true, labels=",,,N", offset=0.5, show=true)
+```
+
+### Magnetic compass (standalone)
+
+A magnetic compass with declination of -14.5 degrees and custom annotation intervals.
+
+```{julia}
+using GMT
+
+compass(width=6, dec=-14.5, annot=(45,10,5,30,10,2),
+        rose_primary=(0.25,:blue), rose_secondary=0.5, labels="",
+        par=(FONT_ANNOT_PRIMARY=9, FONT_LABEL=14, MAP_VECTOR_SHAPE=0.5,
+             MAP_TICK_PEN_SECONDARY="thinner,red", MAP_TICK_PEN_PRIMARY="thinner,blue"),
+        show=true)
+```
+
+### Magnetic compass on a map
+
+```{julia}
+using GMT
+
+coast(region=(-10,5,35,45), proj=:Mercator, frame=:auto, land=:bisque, water=:lightblue,
+      borders=(type=1, pen=0.5), shore=0.5)
+compass!(width=3, inside=:BL, dec=-2.5, annot=(45,10,5,30,10,2),
+         rose_primary=(0.25,:blue), rose_secondary=0.3, labels="O,E,S,N",
+         offset=0.5, show=true)
+```
+
+See Also
+--------
+
+{{< gmtref basemap >}}, {{< gmtref coast >}}
+
+[Alphabetical Function List](../alphabetical.html)
+
+```{julia}
+#| echo: false
+#| output: asis
+using GMT
+GMT.doc_source_links("compass")
+```
