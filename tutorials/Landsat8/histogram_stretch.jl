@@ -37,15 +37,3 @@ md"We have used here the option **auto**=*true* that will try to guess where the
 
 # ╔═╡ 32e2c830-6a3b-11eb-2da3-cd08989b96a5
 imshow(I, stretch=[6000 25000])
-
-# ╔═╡ Cell order:
-# ╠═dfc4afc0-69ad-11eb-0ece-c7507e610108
-# ╠═a02af2c0-69ad-11eb-0cc5-57d1f41ddac5
-# ╟─832779c0-6a37-11eb-21ab-79e35f04da4e
-# ╠═c7c5e480-6a38-11eb-2273-7dc4ddd09418
-# ╟─d07b0c8e-6a38-11eb-3371-69a77e57dae1
-# ╠═e0e5ee10-6a38-11eb-0b67-fb9fbf7cbdb4
-# ╟─e905b3f0-6a38-11eb-3354-072a5d9152e0
-# ╠═32c60de2-6a3a-11eb-1cfd-1b74d0ad957b
-# ╟─3a707cb0-6a3a-11eb-3975-b1b091d05e2f
-# ╠═32e2c830-6a3b-11eb-2da3-cd08989b96a5
