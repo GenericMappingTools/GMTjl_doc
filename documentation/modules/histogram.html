@@ -370,6 +370,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="dropdown-text">Mosaics</span></a>
   </li>  
         <li>
+    <a class="dropdown-item" href="../../tutorials/dgt_lidar/dgt_lidar.html">
+ <span class="dropdown-text">DGT LIDAR Portugal</span></a>
+  </li>  
+        <li>
     <a class="dropdown-item" href="../../tutorials/insets/insets.html">
  <span class="dropdown-text">Insets</span></a>
   </li>  
@@ -551,13 +555,24 @@ Save the figure with the <code>figname=name.ext</code> where <code>ext</code> ch
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <p>To draw a histogram of the data <em>v3206_06.txt</em> containing seafloor depths, using a 250 meter bin width, center bars, and draw bar outline, use:</p>
-<div id="15bf4a30" class="cell" data-execution_count="1">
+<div id="b272b964" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">histogram</span>(<span class="st">"@v3206_06.txt"</span>, bin<span class="op">=</span><span class="fl">250</span>, center<span class="op">=</span><span class="cn">true</span>, pen<span class="op">=</span><span class="st">"0.5p"</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-green-fg ansi-bold">Precompiling</span> packages...
+
+
+  48844.3 ms<span class="ansi-green-fg">  ✓ </span>GMT
+
+  1 dependency successfully precompiled in 51 seconds. 80 already precompiled.
+</pre>
+</div>
+</div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="histogram_files/figure-html/cell-2-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="histogram_files/figure-html/cell-2-output-2.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
@@ -580,6 +595,7 @@ Save the figure with the <code>figname=name.ext</code> where <code>ext</code> ch
 </section>
 <section id="see-also" class="level2">
 <h2 class="anchored" data-anchor-id="see-also">See also</h2>
+<p><a href="../..\documentation/utilities/rescale.html">rescale</a></p>
 
 
 </section>

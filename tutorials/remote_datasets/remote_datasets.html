@@ -335,6 +335,10 @@ ul.task-list li input[type="checkbox"] {
  <span class="dropdown-text">Mosaics</span></a>
   </li>  
         <li>
+    <a class="dropdown-item" href="../../tutorials/dgt_lidar/dgt_lidar.html">
+ <span class="dropdown-text">DGT LIDAR Portugal</span></a>
+  </li>  
+        <li>
     <a class="dropdown-item" href="../../tutorials/insets/insets.html">
  <span class="dropdown-text">Insets</span></a>
   </li>  
@@ -428,7 +432,7 @@ ul.task-list li input[type="checkbox"] {
 <h1>GMT Remote Datasets</h1>
 <p>A remote data set is a data set that is stored on one or more remote servers. It may be a single grid file or a collection of subset tiles making up a larger grid. They are not distributed with GMT or installed during the installation procedures. GMT offers several remote global data grids that you can access via our remote file mechanism. The first time you access one of these files, GMT will download the file (or a subset tile) from the selected GMT server and save it to the server directory under your GMT user directory [~/.gmt]. From then on we read the local file from there.</p>
 <p>We have processed and reformatted publicly available global data sets (grids and images) and standardized their file names. In GMT, you may access such data (or a subset only by using the <code>region</code> option) by specifying the special name</p>
-<pre><code>``@remote_name_rru[_reg]``</code></pre>
+<p><code>@remote_name_rru[_reg]</code></p>
 <p>Please refer to the <a href="https://docs.generic-mapping-tools.org/dev/datasets/remote-data.html#currently-available-remote-data-sets">GMT page</a> for details of what is the <code>remote</code>, <code>name</code>, <code>rru</code> and <code>reg</code> parts of the name. Another very important aspect is that given the file sizes of the higher resolution versions (can reach out 41 GB), grids with resolutions higher or equal “5m” (five arc-minutes) are tilled to minimize the amount of necessary download data.</p>
 <p>But in order to simplify accessing these data sets we have a helper function, <a href="../..\documentation/utilities/remotegrid.html">remotegrid</a>, that facilitates the name composability. For example, <code>remotegrid("relief", res="6m")</code> returns the string<code>"@earth_relief_06m"</code> that can be passed to modules that create images (<code>viz</code>, <a href="../..\documentation/modules/grdimage.html">grdimage</a>, <a href="../..\documentation/utilities/gmtread.html">gmtread</a>, <a href="../..\documentation/modules/grdcut.html">grdcut</a>, <a href="../..\documentation/modules/grdcontour.html">grdcontour</a>, etc..)</p>
 <p>The examples in next pages show the available dataset and use the <code>remotegrid</code> function to compose their names but your, ofc, free to use the full dataset name if you feel comfortable with it.</p>

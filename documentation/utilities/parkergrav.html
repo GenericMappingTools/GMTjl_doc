@@ -370,6 +370,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="dropdown-text">Mosaics</span></a>
   </li>  
         <li>
+    <a class="dropdown-item" href="../../tutorials/dgt_lidar/dgt_lidar.html">
+ <span class="dropdown-text">DGT LIDAR Portugal</span></a>
+  </li>  
+        <li>
     <a class="dropdown-item" href="../../tutorials/insets/insets.html">
  <span class="dropdown-text">Insets</span></a>
   </li>  
@@ -451,7 +455,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#example" id="toc-example" class="nav-link active" data-scroll-target="#example">Example</a></li>
   <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
-  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
   </ul>
 </nav>
     </div>
@@ -514,7 +517,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="example" class="level2">
 <h2 class="anchored" data-anchor-id="example">Example</h2>
 <p>A synthetic example. Make a Kaba like magnetization distribution of 10 A/m, compute the magnetic field created by it and invert this field.</p>
-<div id="a844a57c" class="cell" data-execution_count="1">
+<div id="b9b4db41" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span>, <span class="bu">FFTW</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>Gbat <span class="op">=</span> <span class="fu">gmtread</span>(TESTSDIR <span class="op">*</span> <span class="st">"/assets/model_interface_4parker.grd"</span>);</span>
@@ -541,9 +544,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>          contour<span class="op">=</span><span class="cn">true</span>, colorbar<span class="op">=</span><span class="cn">true</span>, show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
 <div class="ansi-escaped-output">
-<pre><span class="ansi-yellow-fg ansi-bold">┌ </span><span class="ansi-yellow-fg ansi-bold">Warning: </span>Stop iteration because latest interface has NaN
+<pre><span class="ansi-cyan-fg ansi-bold">[ </span><span class="ansi-cyan-fg ansi-bold">Info: </span>Precompiling FFTW [7a1cc6ca-52ef-59f5-83cd-3a7055c09341]
 
-<span class="ansi-yellow-fg ansi-bold">└ </span><span class="ansi-bright-black-fg">@ GMTParkerFFTExt C:\Users\j\.julia\dev\GMT\ext\GMTParkerFFTExt\parker.jl:409</span>
+<span class="ansi-cyan-fg ansi-bold">[ </span><span class="ansi-cyan-fg ansi-bold">Info: </span>Precompiling GMTParkerFFTExt [35a23bc9-6f20-5cbc-8971-9cdf66427582]
+
+<span class="ansi-yellow-fg ansi-bold">┌ </span><span class="ansi-yellow-fg ansi-bold">Warning: </span>Stop iteration because latest interface has NaN
+
+<span class="ansi-yellow-fg ansi-bold">└ </span><span class="ansi-bright-black-fg">@ GMTParkerFFTExt C:\Users\j\.julia\dev\GMT\ext\GMTParkerFFTExt\parker.jl:415</span>
 </pre>
 </div>
 </div>
@@ -559,14 +566,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="see-also" class="level2">
 <h2 class="anchored" data-anchor-id="see-also">See Also</h2>
 <p><a href="../..\documentation/utilities/parkermag.html">parkermag</a>, <a href="../..\documentation/modules/gravfft.html">gravfft</a></p>
-</section>
-<section id="source-code" class="level2">
-<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
-<p>This function has multiple methods:</p>
-<ul>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/utils.jl#L1658"><code>parkergrav(x, y; kw...)</code></a> - utils.jl:1658</li>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/utils.jl#L1658"><code>parkergrav(x; ...)</code></a> - utils.jl:1658</li>
-</ul>
 
 
 </section>

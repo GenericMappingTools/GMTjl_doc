@@ -370,6 +370,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="dropdown-text">Mosaics</span></a>
   </li>  
         <li>
+    <a class="dropdown-item" href="../../tutorials/dgt_lidar/dgt_lidar.html">
+ <span class="dropdown-text">DGT LIDAR Portugal</span></a>
+  </li>  
+        <li>
     <a class="dropdown-item" href="../../tutorials/insets/insets.html">
  <span class="dropdown-text">Insets</span></a>
   </li>  
@@ -482,11 +486,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="countries-europe-dcw" class="level2">
 <h2 class="anchored" data-anchor-id="countries-europe-dcw">Countries (Europe DCW)</h2>
 <p>Load packages needed to download data and put into a DataFrame</p>
-<div id="c3fa3f24" class="cell" data-execution_count="1">
+<div id="bc31e7e3" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span>, <span class="bu">DataFrames</span>, <span class="bu">CSV</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
 <div class="ansi-escaped-output">
-<pre><span class="ansi-cyan-fg ansi-bold">[ </span><span class="ansi-cyan-fg ansi-bold">Info: </span>Precompiling GMTDataFramesExt [b0121151-b40e-578b-8798-214dacfa5da6]
+<pre><span class="ansi-cyan-fg ansi-bold">[ </span><span class="ansi-cyan-fg ansi-bold">Info: </span>Precompiling DataFrames [a93c6f00-e57d-5684-b7b6-d8193f3e46c0]
+
+<span class="ansi-cyan-fg ansi-bold">[ </span><span class="ansi-cyan-fg ansi-bold">Info: </span>Precompiling ParsersExt [f526588d-e68b-5dc5-a62e-ff9f36e48b1a]
+
+<span class="ansi-cyan-fg ansi-bold">[ </span><span class="ansi-cyan-fg ansi-bold">Info: </span>Precompiling GMTDataFramesExt [b0121151-b40e-578b-8798-214dacfa5da6]
+
+<span class="ansi-cyan-fg ansi-bold">[ </span><span class="ansi-cyan-fg ansi-bold">Info: </span>Precompiling CSV [336ed68f-0bac-5ca0-87d4-7b16caf5d00b]
 </pre>
 </div>
 </div>
@@ -561,7 +571,7 @@ zvals = polygonlevels(countries, string.(pop[!,2]), pop[!,3], att="ISO_A3");</co
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="fu">colorbar!</span>(pos<span class="op">=</span>(anchor<span class="op">=:</span>MR,length<span class="op">=</span>(<span class="fl">12</span>,<span class="fl">0.6</span>), offset<span class="op">=</span>(<span class="op">-</span><span class="fl">2.4</span>,<span class="op">-</span><span class="fl">4</span>)), color<span class="op">=</span>C,</span>
 <span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>          axes<span class="op">=</span>(annot<span class="op">=</span><span class="fl">100</span>,), show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><img src="../..\assets/choropleth_cv19.png" class="center" width="250" height="700"></p>
+<p><img src="../..\assets/choropleth_cv19.png" class="center img-fluid" width="350"></p>
 
 
 </section>

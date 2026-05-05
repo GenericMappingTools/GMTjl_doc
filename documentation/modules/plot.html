@@ -370,6 +370,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="dropdown-text">Mosaics</span></a>
   </li>  
         <li>
+    <a class="dropdown-item" href="../../tutorials/dgt_lidar/dgt_lidar.html">
+ <span class="dropdown-text">DGT LIDAR Portugal</span></a>
+  </li>  
+        <li>
     <a class="dropdown-item" href="../../tutorials/insets/insets.html">
  <span class="dropdown-text">Insets</span></a>
   </li>  
@@ -603,27 +607,16 @@ Save the figure with the <code>figname=name.ext</code> where <code>ext</code> ch
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <p>Decorated curve with blue stars</p>
-<div id="b5c23387" class="cell" data-execution_count="1">
+<div id="476bef4b" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>xy <span class="op">=</span> <span class="fu">gmt</span>(<span class="st">"gmtmath -T0/180/1 T SIND 4.5 ADD"</span>);</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(xy, axes<span class="op">=:</span>af, pen<span class="op">=</span>(<span class="fl">1</span>,<span class="op">:</span>red), decorated<span class="op">=</span>(dist<span class="op">=</span>(<span class="fl">2.5</span>,<span class="fl">0.25</span>), symbol<span class="op">=:</span>star,</span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>      ms<span class="op">=</span><span class="fl">1</span>, pen<span class="op">=</span>(<span class="fl">0.5</span>,<span class="op">:</span>green), fill<span class="op">=:</span>blue, dec2<span class="op">=</span><span class="cn">true</span>), show<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stderr">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-green-fg ansi-bold">Precompiling</span> packages...
-
-  47879.2 ms<span class="ansi-green-fg">  ✓ </span>GMT
-
-  1 dependency successfully precompiled in 50 seconds. 80 already precompiled.
-
-</pre>
-</div>
-</div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="plot_files/figure-html/cell-2-output-2.png" class="img-fluid figure-img"></p>
+<p><img src="plot_files/figure-html/cell-2-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
@@ -643,22 +636,21 @@ Save the figure with the <code>figname=name.ext</code> where <code>ext</code> ch
 <h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
 <p>This function has multiple methods:</p>
 <ul>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L140"><code>plot(cmd0::String; ...)</code></a> - plot.jl:140</li>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L140"><code>plot(cmd0::String, arg1; kw...)</code></a> - plot.jl:140</li>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L129"><code>plot(f::Function; ...)</code></a> - plot.jl:129</li>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L135"><code>plot(f1::Function, f2::Function; ...)</code></a> - plot.jl:135</li>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L129"><code>plot(f::Function, range_x; first, kw...)</code></a> - plot.jl:129</li>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L135"><code>plot(f1::Function, f2::Function, range_t; first, kw...)</code></a> - plot.jl:135</li>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L144"><code>plot(arg1::Number, arg2::Number; kw...)</code></a> - plot.jl:144</li>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L140"><code>plot(; ...)</code></a> - plot.jl:140</li>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L142"><code>plot(arg1, arg2; kw...)</code></a> - plot.jl:142</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L144"><code>plot(cmd0::String; ...)</code></a> - plot.jl:144</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L144"><code>plot(cmd0::String, arg1; kw...)</code></a> - plot.jl:144</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L133"><code>plot(f::Function; ...)</code></a> - plot.jl:133</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L139"><code>plot(f1::Function, f2::Function; ...)</code></a> - plot.jl:139</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L133"><code>plot(f::Function, range_x; first, kw...)</code></a> - plot.jl:133</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L139"><code>plot(f1::Function, f2::Function, range_t; first, kw...)</code></a> - plot.jl:139</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L148"><code>plot(arg1::Number, arg2::Number; kw...)</code></a> - plot.jl:148</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L144"><code>plot(; ...)</code></a> - plot.jl:144</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L146"><code>plot(arg1, arg2; kw...)</code></a> - plot.jl:146</li>
 <li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/plot.jl#L101"><code>plot(arg1; first, kw...)</code></a> - plot.jl:101</li>
 </ul>
 </section>
 <section id="see-also" class="level2">
 <h2 class="anchored" data-anchor-id="see-also">See Also</h2>
 <p><a href="../..\documentation/modules/plot3.html">plot3</a>, <a href="../..\documentation/modules/scatter.html">scatter</a>, <a href="../..\documentation/modules/lines.html">lines</a>, <a href="../..\documentation/modules/bar.html">bar</a></p>
-<p><a href="../alphabetical.html">Alphabetical Function List</a></p>
 
 
 </section>
