@@ -1,0 +1,104 @@
+# dgt_mosaic
+
+```julia
+G = dgt_mosaic(bbox; src_dir="", collection="MDS-2m", outfile="mosaic.tiff",
+               inc=0, method="cubicspline", vrt="", proj="", verbose=1)
+```
+
+Mosaic downloaded DGT LIDAR tiles covering `bbox` into a single raster.
+
+Reads all `.tiff` files in `src_dir/collection/`, builds an in-memory GDAL VRT mosaic,
+optionally clips to `bbox`, and writes the result to `outfile` — or returns it in memory
+when `outfile="grid"`.
+
+::: {.callout-note}
+Requires the `HTTP` package. Load it with `using HTTP` (or `import HTTP`) before calling `dgt_mosaic`.
+:::
+
+### Positional Argument
+
+- `bbox`: Bounding box `[min_lon, max_lon, min_lat, max_lat]` in WGS84 degrees.
+
+### Keyword Arguments
+
+- `src_dir`: Root directory of downloaded tiles (default: `~/.gmt/DGT`).
+  Prefix with `_` to read from `~/.gmt/DGT/` — e.g. `"_algarve"` reads from `~/.gmt/DGT/algarve`.
+  When using a `_`-prefixed name, tiles from the default pool (`~/.gmt/DGT/<collection>/`) are
+  transparently merged in as well.
+
+- `collection`: Collection subdirectory to mosaic (default: `"MDS-2m"`).
+  One of `"LAZ"`, `"MDT-50cm"`, `"MDS-50cm"`, `"MDT-2m"`, `"MDS-2m"` (case-insensitive).
+
+- `outfile`: Output path (default: `"mosaic.tiff"`). Format is inferred from the extension:
+  - `.tiff` / `.tif` — compressed GeoTIFF (DEFLATE, tiled 512×512).
+  - `.nc` — compressed netCDF4 (NC4+DEFLATE).
+  - `"grid"` — skip disk I/O entirely and return the result as a {{< gmtref GMTgrid type=gmttype >}}.
+
+- `inc`: If non-zero, resample the mosaic to this resolution in the raster's CRS units (typically metres)
+  via `gdalwarp` (default: `0`, no resample).
+
+- `method`: Resampling algorithm used when `inc != 0` or `proj != ""` (default: `"cubicspline"`).
+  One of: `near|bilinear|cubic|cubicspline|lanczos|average|rms|mode|min|max|med|q1|q3|sum`.
+  See the [gdalwarp documentation](https://gdal.org/en/stable/programs/gdalwarp.html#cmdoption-gdalwarp-r)
+  for details.
+
+- `vrt`: If non-empty, also save the intermediate VRT mosaic to this file path (default: `""`,
+  in-memory only).
+
+- `proj`: Reproject the mosaic to a different CRS (default: `""`, no reprojection).
+  Accepts any GDAL-recognized CRS: a proj string (`"+proj=utm +zone=29 +datum=WGS84"`), an authority
+  string (`"EPSG:32629"`), a bare EPSG number (`"32629"`), or the shorthand `"geog"` for EPSG:4326.
+  Forces `gdalwarp` even when `inc=0`.
+
+- `verbose`: Verbosity level (default: `1`). `0` = silent; `1` = progress messages; `2` = full detail.
+
+### Returns
+
+- When `outfile="grid"`: a pixel-registered {{< gmtref GMTgrid type=gmttype >}} in memory.
+- Otherwise: `nothing`; the mosaic is written to `outfile`.
+
+### Notes
+
+- The mosaic is built with zero disk I/O for the intermediate step — the VRT lives in memory unless
+  `vrt` is set.
+- When called from {{< gmtref dgt_lidar >}} with `mosaic != ""`, the tile list is passed directly from
+  the STAC query so only query-relevant tiles are mosaicked, not every file in `src_dir`.
+- Pixel registration is preserved: the returned grid matches the on-disk registration of the source tiles.
+
+### Examples
+
+Mosaic tiles covering Lisbon already downloaded to the default directory:
+```julia
+using GMT, HTTP
+
+dgt_mosaic([-9.2, -9.1, 38.7, 38.8]; src_dir="_lisboa")
+```
+
+Return mosaic as a GMTgrid in memory (no file written):
+```julia
+using GMT, HTTP
+
+G = dgt_mosaic([-9.2, -9.1, 38.7, 38.8]; src_dir="_lisboa", outfile="grid")
+```
+
+Mosaic and reproject to UTM zone 29N:
+```julia
+using GMT, HTTP
+
+dgt_mosaic([-9.2, -9.1, 38.7, 38.8]; src_dir="_lisboa", outfile="lisboa_utm.tiff",
+           proj="EPSG:32629")
+```
+
+```{julia}
+#| echo: false
+#| output: asis
+using GMT
+GMT.doc_source_links("dgt_mosaic")
+```
+
+See Also
+--------
+
+{{< gmtref dgt_lidar >}}, {{< gmtref mosaic >}}
+
+For a complete worked example see the [DGT LIDAR tutorial](../../tutorials/dgt_lidar/dgt_lidar.qmd).

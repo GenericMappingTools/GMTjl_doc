@@ -1,0 +1,179 @@
+# dgt_lidar
+
+```julia
+dgt_lidar(bbox; user="", password="", save=false, output_dir="", delay=1.0, collection="MDS-2m",
+          dry=false, latest=true, mosaic="", inc=0, method="cubicspline", compress="tif",
+          proj="", verbose=1)
+```
+
+----------
+
+```julia
+dgt_lidar(lon, lat; neighbors=0, ...)
+```
+
+----------
+
+```julia
+dgt_lidar(GI::Union{GMTgrid,GMTimage}; ...)
+```
+
+----------
+
+```julia
+dgt_lidar(lon::AbstractVector, lat::AbstractVector; ...)
+```
+
+----------
+
+```julia
+dgt_lidar(D::GMTdataset; zoom=0, ...)
+```
+
+Download LIDAR tiles from Portugal's national elevation survey via the DGT CDD STAC API.
+
+Authenticates against the DGT (Direção-Geral do Território) Collaborative Data Distribution (CDD) portal
+([https://cdd.dgterritorio.gov.pt/](https://cdd.dgterritorio.gov.pt/)) and downloads all tiles intersecting
+the given bounding box. Tiles are organized into subdirectories by collection name. Downloads are resumable —
+existing files are skipped automatically.
+
+::: {.callout-note}
+Requires the `HTTP` package. Load it with `using HTTP` (or `import HTTP`) before calling `dgt_lidar`.
+:::
+
+### Positional Arguments — Six Accepted Forms
+
+- **`bbox`**: A 4-element array or tuple `[min_lon, max_lon, min_lat, max_lat]` in WGS84 degrees.
+
+- **`[lon, lat]`** (2-element array): Downloads only the tile containing the given point.
+  Use `neighbors` to include surrounding tiles and `zoom` to set the tile-grid size.
+
+- **`lon, lat`** (two scalars): Same as the 2-element form, using separate scalar arguments.
+
+- **`GI`**: A {{< gmtref GMTgrid type=gmttype >}} or {{< gmtref GMTimage type=gmttype >}} with a valid projection.
+  The geographic extent is extracted from the grid/image header; non-geographic projections are
+  reprojected to lon/lat automatically.
+
+- **`lon, lat`** (two vectors): Separate `[min, max]` vectors or matrices for longitude and latitude.
+
+- **`D`**: A {{< gmtref GMTdataset type=gmttype >}} (e.g. from {{< gmtref geocoder >}}). The geographic bounding box stored
+  in `D.ds_bbox` is used. The optional `zoom` keyword (default `0`) enlarges the query to tile boundaries
+  at the specified zoom level via {{< gmtref mosaic >}}.
+
+### Keyword Arguments
+
+- `user`: DGT CDD account e-mail. If omitted, read from `~/.dgt`.
+
+- `password`: DGT CDD account password. If omitted, read from `~/.dgt`.
+  The `~/.dgt` file format (first line is a comment):
+  ```
+  # Login data for the DGT LIDAR downloads
+  login your@email.pt
+  password your_password
+  ```
+
+- `save`: If `true`, save `user` and `password` to `~/.dgt` for future use (default: `false`).
+
+- `output_dir`: Root directory for downloaded files (default: `~/.gmt/DGT`).
+  Prefix with `_` to write inside `~/.gmt/DGT/` — e.g. `"_algarve"` saves to `~/.gmt/DGT/algarve`.
+
+- `delay`: Seconds between requests (default: `1.0`). Increase to avoid server throttling.
+
+- `collection`: Collection to download. One of `"LAZ"`, `"MDT-50cm"`, `"MDS-50cm"`, `"MDT-2m"`, `"MDS-2m"`.
+  Case-insensitive. Default `"MDS-2m"` (Digital Surface Model at 2 m resolution).
+
+- `dry`: If `true`, query the API and print found files but skip all downloads (default: `false`).
+
+- `neighbors`: Number of neighboring DGT tiles to include around a single-point query (default: `0` =
+  only the tile containing the point). Can be an integer `N` (giving a (2N+1)×(2N+1) grid of tiles)
+  or a 2-element vector `[Nx, Ny]` for asymmetric east-west/north-south expansion.
+  Only used with the 2-element or scalar point forms.
+
+- `zoom`: OSM zoom level used only as a fallback when the STAC API cannot determine the central tile's
+  bounding box (default: `14`). Under normal conditions this has no effect.
+
+- `latest`: If `true` (default), keep only the most recent version of each tile when multiple versions
+  exist. DGT names versioned files with a `_v01`, `_v02`, … suffix; the unversioned original is treated
+  as version 0. Set to `false` to download every version.
+
+- `compress`: Output format for downloaded tiles. `"tif"` (default) = compressed GeoTIFF
+  (DEFLATE + 512×512 tiling); `"nc"` = compressed netCDF4 (NC4+DEFLATE); `""` = write as-is
+  (uncompressed GeoTIFF). Reduces on-disk size significantly. Not applied to LAZ files.
+
+- `mosaic`: Controls the mosaic output after downloading (default: `""` = no mosaic).
+  - `""` — download only, no mosaic.
+  - `"grid"` — assemble and return a {{< gmtref GMTgrid type=gmttype >}} in memory (no disk I/O).
+  - `"path/to/file.tiff"` — write a compressed GeoTIFF to disk.
+  - `"path/to/file.nc"` — write a compressed netCDF4 file to disk.
+  Ignored when `dry=true`. See also the `inc`, `method`, and `proj` keywords.
+
+- `inc`: Resample resolution for the mosaic in CRS units (metres). `0` = no resample (default: `0`).
+  Used only when `mosaic != ""`.
+
+- `method`: Resampling algorithm when `inc != 0` (default: `"cubicspline"`).
+  One of: `near|bilinear|cubic|cubicspline|lanczos|average|rms|mode|min|max|med|q1|q3|sum`.
+  Used only when `mosaic != ""`.
+
+- `proj`: Reproject the mosaic to a different CRS (default: `""`, no reprojection).
+  Accepts any GDAL-recognized CRS: a proj string (`"+proj=utm +zone=29 +datum=WGS84"`), an authority
+  string (`"EPSG:32629"`), a bare EPSG number (`"32629"`), or the shorthand `"geog"` for EPSG:4326.
+  Forces `gdalwarp` even when `inc=0`.
+
+- `verbose`: Verbosity level (default: `1`). `0` = silent (errors only); `1` = downloaded file names;
+  `2` = full progress including sub-query details.
+
+### Notes
+
+- Large bounding boxes are auto-subdivided into ~200 km² sub-queries to stay within API limits.
+- Session re-authenticates automatically every 25 minutes or every 10 files downloaded.
+- Files are streamed directly to disk — no RAM bottleneck on large tiles.
+- The mosaic step uses only the tiles returned by the STAC query, not every file in `output_dir`.
+
+### Credits
+
+Inspired by the [`dgtcd_downer`](https://github.com/qgispt/dgtcd_downer) Python package, heavily
+reworked and extended to fit the GMT.jl API style.
+
+### Examples
+
+Save credentials to `~/.dgt` (optional, avoids passing them each time):
+```julia
+using GMT, HTTP
+
+dgt_lidar(rand(4), user="nome@email.pt", password="password", save=true)
+```
+
+Download the DSM tiles at 50 cm resolution covering the Lisbon area and save to a custom subdirectory:
+```julia
+using GMT, HTTP
+
+dgt_lidar([-9.2, -9.1, 38.7, 38.8]; output_dir="_lisboa", collection="MDT-50cm")
+```
+
+Download the tile containing a single point and return the mosaic as a GMTgrid in memory:
+```julia
+using GMT, HTTP
+
+G = dgt_lidar(-7.607, 40.322; mosaic="grid")
+```
+
+Download a 3×3 neighborhood of tiles around a point and save mosaic as GeoTIFF:
+```julia
+using GMT, HTTP
+
+dgt_lidar(-7.607, 40.322; neighbors=1, mosaic="estrela.tiff")
+```
+
+For a complete worked example see the [DGT LIDAR tutorial](../../tutorials/dgt_lidar/dgt_lidar.qmd).
+
+```{julia}
+#| echo: false
+#| output: asis
+using GMT
+GMT.doc_source_links("dgt_lidar")
+```
+
+See Also
+--------
+
+{{< gmtref dgt_mosaic >}}, {{< gmtref mosaic >}}, {{< gmtref geocoder >}}
