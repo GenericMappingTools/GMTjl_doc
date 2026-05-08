@@ -370,7 +370,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="dropdown-text">Mosaics</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../tutorials/dgt_lidar/dgt_lidar.html">
+    <a class="dropdown-item" href="../../tutorials/dgt_lidar/tut_dgt_lidar_pt.html">
  <span class="dropdown-text">DGT LIDAR Portugal</span></a>
   </li>  
         <li>
@@ -453,8 +453,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#see-also" id="toc-see-also" class="nav-link active" data-scroll-target="#see-also">See Also</a></li>
-  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link active" data-scroll-target="#source-code">Source Code</a></li>
+  <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
   </ul>
 </nav>
     </div>
@@ -486,21 +486,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>I <span class="op">=</span> <span class="fu">mat2img</span>(mat<span class="op">::</span><span class="dt">Array{UInt16}</span>; x<span class="op">=</span>[], y<span class="op">=</span>[], hdr<span class="op">=</span><span class="cn">nothing</span>, proj4<span class="op">::</span><span class="dt">String</span>=<span class="st">""</span>, wkt<span class="op">::</span><span class="dt">String</span>=<span class="st">""</span>, kw<span class="op">...</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Take a <code>mat</code> array of UInt16 and scale it down to UInt8. Input can be 2D or 3D. If the <code>kw</code> variable <code>stretch</code> is used, we stretch the intervals in <code>stretch</code> to [0 255]. Use this option to stretch the image histogram. If <code>stretch</code> is a scalar, scale the values &gt; <code>stretch</code> to [0 255] - <code>stretch = [v1 v2]</code> scales all values &gt;= v1 &amp;&amp; &lt;= v2 to [0 255] - <code>stretch = [v1 v2 v3 v4 v5 v6]</code> scales first band &gt;= v1 &amp;&amp; &lt;= v2 to [0 255], second &gt;= v3 &amp;&amp; &lt;= v4, same for third - <code>stretch = :auto | "auto" | true | 1</code> will do an automatic stretching from values obtained from histogram thresholds</p>
 <p>The <code>kw...</code> kwargs search for [:layout :mem_layout], [:names] and [:metadata]</p>
-<section id="see-also" class="level2">
-<h2 class="anchored" data-anchor-id="see-also">See Also</h2>
-<p><a href="../..\documentation/utilities/mat2ds.html">mat2ds</a>, <a href="../..\documentation/utilities/mat2grid.html">mat2grid</a></p>
-</section>
 <section id="source-code" class="level2">
 <h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
 <p>This function has multiple methods:</p>
 <ul>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/utils_types.jl#L1548"><code>mat2img(mat, G::GMTgrid; names, metadata)</code></a> - utils_types.jl:1548</li>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/utils_types.jl#L1544"><code>mat2img(mat, I::GMTimage; names, metadata, nodata)</code></a> - utils_types.jl:1544</li>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/utils_types.jl#L1459"><code>mat2img(mat::Union{GMTgrid, Matrix{&lt;:AbstractFloat}}; x, y, hdr, proj4, wkt, GI, clim, cmap, kw...)</code></a> - utils_types.jl:1459</li>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/utils_types.jl#L1445"><code>mat2img(img::GMTimage; kw...)</code></a> - utils_types.jl:1445</li>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/utils_types.jl#L1378"><code>mat2img(mat::Union{AbstractArray{UInt16, 3}, AbstractMatrix{UInt16}}; x, y, v, hdr, proj4, wkt, img8, kw...)</code></a> - utils_types.jl:1378</li>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/utils_types.jl#L1277"><code>mat2img(mat::Union{AbstractArray{&lt;:Unsigned}, AbstractArray{&lt;:Bool}}; x, y, v, hdr, proj4, wkt, cmap, is_transposed, kw...)</code></a> - utils_types.jl:1277</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/utils_types.jl#L1614"><code>mat2img(mat, G::GMTgrid; names, metadata)</code></a> - utils_types.jl:1614</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/utils_types.jl#L1610"><code>mat2img(mat, I::GMTimage; names, metadata, nodata)</code></a> - utils_types.jl:1610</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/utils_types.jl#L1521"><code>mat2img(mat::Union{GMTgrid, Matrix{&lt;:AbstractFloat}}; x, y, hdr, proj4, wkt, GI, clim, cmap, kw...)</code></a> - utils_types.jl:1521</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/utils_types.jl#L1504"><code>mat2img(img::GMTimage; kw...)</code></a> - utils_types.jl:1504</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/utils_types.jl#L1432"><code>mat2img(mat::Union{AbstractArray{UInt16, 3}, AbstractMatrix{UInt16}}; x, y, v, hdr, proj4, wkt, img8, kw...)</code></a> - utils_types.jl:1432</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/utils_types.jl#L1331"><code>mat2img(mat::Union{AbstractArray{&lt;:Unsigned}, AbstractArray{&lt;:Bool}}; x, y, v, hdr, proj4, wkt, cmap, is_transposed, kw...)</code></a> - utils_types.jl:1331</li>
 </ul>
+</section>
+<section id="see-also" class="level2">
+<h2 class="anchored" data-anchor-id="see-also">See Also</h2>
+<p><a href="../..\documentation/utilities/mat2ds.html">mat2ds</a>, <a href="../..\documentation/utilities/mat2grid.html">mat2grid</a></p>
 
 
 </section>

@@ -1,0 +1,1545 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>tut_dgt_lidar_pt</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/GMTjl_logo.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-0615b85506723fa54ab13a613a4e9e4c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../custom.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/GMTjl_logo.png" alt="" class="navbar-logo light-content">
+    <img src="../../assets/GMTjl_logo.png" alt="" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-documentation" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Documentation</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-documentation">    
+        <li>
+    <a class="dropdown-item" href="../../documentation.html">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../../documentation/modules.html">
+ <span class="dropdown-text">GMT Modules</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/general/types.html">
+ <span class="dropdown-text">GMT.jl Types</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/extensions.html">
+ <span class="dropdown-text">GMT.jl Extensions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/gdalfuns.html">
+ <span class="dropdown-text">GDAL Functions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/solids.html">
+ <span class="dropdown-text">Solids Functions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/imgproc.html">
+ <span class="dropdown-text">Image Processing</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/common_features.html">
+ <span class="dropdown-text">Common Features</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/common_opts/common_opts.html">
+ <span class="dropdown-text">Common Options</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../documentation/alphabetical.html">
+ <span class="dropdown-text">Alphabetical List</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../../documentation/alphabetical.html"> 
+<span class="menu-text">α</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../examples.html"> 
+<span class="menu-text">Examples</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-gallery-(gmt-gallery" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Gallery (GMT Gallery)</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-gallery-(gmt-gallery">    
+        <li>
+    <a class="dropdown-item" href="../../gallery.html">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex01.html">
+ <span class="dropdown-text">(1) Contour maps</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex02.html">
+ <span class="dropdown-text">(2) Image presentations</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex03.html">
+ <span class="dropdown-text">(3) Spectral estimation and xy-plots</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex04.html">
+ <span class="dropdown-text">(4)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex05.html">
+ <span class="dropdown-text">(5) A 3-D illuminated surface</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex06.html">
+ <span class="dropdown-text">(6) Plotting of histograms</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex07.html">
+ <span class="dropdown-text">(7) A simple location map</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex08.html">
+ <span class="dropdown-text">(8) A 3-D histogram</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex09.html">
+ <span class="dropdown-text">(9) Time-series along tracks</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex10.html">
+ <span class="dropdown-text">(10) A geographical bar graph plot</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex11.html">
+ <span class="dropdown-text">(11)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex12.html">
+ <span class="dropdown-text">(12) Optimal triangulation of data</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex13.html">
+ <span class="dropdown-text">(13) Plotting of vector fields</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex14.html">
+ <span class="dropdown-text">(14) Gridding of data and trend surfaces</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex15.html">
+ <span class="dropdown-text">(15) Gridding, contouring, and masking of unconstrained areas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex16.html">
+ <span class="dropdown-text">(16) Gridding of data, continued</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex17.html">
+ <span class="dropdown-text">(17) Images clipped by coastlines</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex18.html">
+ <span class="dropdown-text">(18) Volumes and Spatial Selections</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex19.html">
+ <span class="dropdown-text">(19) Color patterns on maps</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex20.html">
+ <span class="dropdown-text">(20) Custom plot symbols</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex21.html">
+ <span class="dropdown-text">(21) Time-series of RedHat stock price</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex22.html">
+ <span class="dropdown-text">(22)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex23.html">
+ <span class="dropdown-text">(23)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex24.html">
+ <span class="dropdown-text">(24)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex25.html">
+ <span class="dropdown-text">(25)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex26.html">
+ <span class="dropdown-text">(26)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex27.html">
+ <span class="dropdown-text">(27)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex28.html">
+ <span class="dropdown-text">(28)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex29.html">
+ <span class="dropdown-text">(29)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../gallery/ex30.html">
+ <span class="dropdown-text">(30)</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../../faq.html"> 
+<span class="menu-text">How-do-I (FAQ)</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-tutorials" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Tutorials</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-tutorials">    
+        <li>
+    <a class="dropdown-item" href="../../tutorials.html">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../../tutorials/ISC/isc.jl.html">
+ <span class="dropdown-text">ISC seismicity</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/Landsat8/histogram_stretch.html">
+ <span class="dropdown-text">Landsat 8/9</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/coast/coastlines.html">
+ <span class="dropdown-text">Coastlines</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/choropleths/choropleths.html">
+ <span class="dropdown-text">US Choropleths</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/dlakelan/GMTMaps.html">
+ <span class="dropdown-text"><span class="citation" data-cites="dlakelan">@dlakelan</span> choropleths</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/longest_sail/longestsail.html">
+ <span class="dropdown-text">Longest Sail</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/vector_shp/vector_shp.html">
+ <span class="dropdown-text">Geospatial vector</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/texture_shading/texture.html">
+ <span class="dropdown-text">Texture Shading</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/mosaics/mosaics.html">
+ <span class="dropdown-text">Mosaics</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/dgt_lidar/tut_dgt_lidar_pt.html">
+ <span class="dropdown-text">DGT LIDAR Portugal</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/insets/insets.html">
+ <span class="dropdown-text">Insets</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/remote_datasets/remote_datasets.html">
+ <span class="dropdown-text">Remote Grids</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/blender_shading/blender_rt.html">
+ <span class="dropdown-text">Blender</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/signal/signal.html">
+ <span class="dropdown-text">Signal</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-geophysics" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Geophysics</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-geophysics">    
+        <li>
+    <a class="dropdown-item" href="../../geophysics.html">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../../geophysics/seismicity/global_seis.html">
+ <span class="dropdown-text">Seismicity</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../geophysics/earthtides/01_earthtides.html">
+ <span class="dropdown-text">Earth Tides</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../geophysics/weather/01_weather.html">
+ <span class="dropdown-text">Weather Data</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-help" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Help</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-help">    
+        <li>
+    <a class="dropdown-item" href="https://github.com/GenericMappingTools/GMT.jl/issues"><i class="bi bi-bug" role="img">
+</i> 
+ <span class="dropdown-text">Report a Bug</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://forum.generic-mapping-tools.org/c/questions/5"><i class="bi bi-chat-right-text" role="img">
+</i> 
+ <span class="dropdown-text">Ask a Question</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/joa-quim/GMTjl_docs"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#pré-requisitos" id="toc-pré-requisitos" class="nav-link active" data-scroll-target="#pré-requisitos">Pré-requisitos</a></li>
+  <li><a href="#caixa-delimitadora-bounding-box-a-forma-directa" id="toc-caixa-delimitadora-bounding-box-a-forma-directa" class="nav-link" data-scroll-target="#caixa-delimitadora-bounding-box-a-forma-directa">Caixa Delimitadora (Bounding Box) — a Forma Directa</a></li>
+  <li><a href="#dry-run-analise-o-escopo-antes-de-descarregar" id="toc-dry-run-analise-o-escopo-antes-de-descarregar" class="nav-link" data-scroll-target="#dry-run-analise-o-escopo-antes-de-descarregar">Dry Run — Analise o Escopo Antes de Descarregar</a></li>
+  <li><a href="#coordenadas-de-ponto-bloco-único" id="toc-coordenadas-de-ponto-bloco-único" class="nav-link" data-scroll-target="#coordenadas-de-ponto-bloco-único">Coordenadas de Ponto — Bloco Único</a></li>
+  <li><a href="#utilizando-um-nome-de-localidade-despacho-via-geocoder" id="toc-utilizando-um-nome-de-localidade-despacho-via-geocoder" class="nav-link" data-scroll-target="#utilizando-um-nome-de-localidade-despacho-via-geocoder">Utilizando um Nome de Localidade — Despacho via Geocoder</a></li>
+  <li><a href="#a-partir-de-uma-grelha-ou-imagem-existente-despacho-gitype" id="toc-a-partir-de-uma-grelha-ou-imagem-existente-despacho-gitype" class="nav-link" data-scroll-target="#a-partir-de-uma-grelha-ou-imagem-existente-despacho-gitype">A partir de uma Grelha ou Imagem Existente — Despacho GItype</a></li>
+  <li><a href="#dois-vectores-separados-despacho-lonlat" id="toc-dois-vectores-separados-despacho-lonlat" class="nav-link" data-scroll-target="#dois-vectores-separados-despacho-lonlat">Dois Vectores Separados — Despacho lon/lat</a></li>
+  <li><a href="#versões-de-ficheiros-latest" id="toc-versões-de-ficheiros-latest" class="nav-link" data-scroll-target="#versões-de-ficheiros-latest">Versões de Ficheiros — <code>latest</code></a></li>
+  <li><a href="#download-e-mosaico-num-único-passo" id="toc-download-e-mosaico-num-único-passo" class="nav-link" data-scroll-target="#download-e-mosaico-num-único-passo">Download e Mosaico num Único Passo</a></li>
+  <li><a href="#montagem-de-cache-de-blocos-existente-dgt_mosaic" id="toc-montagem-de-cache-de-blocos-existente-dgt_mosaic" class="nav-link" data-scroll-target="#montagem-de-cache-de-blocos-existente-dgt_mosaic">Montagem de Cache de Blocos Existente — <code>dgt_mosaic</code></a></li>
+  <li><a href="#visualizando-o-resultado" id="toc-visualizando-o-resultado" class="nav-link" data-scroll-target="#visualizando-o-resultado">Visualizando o Resultado</a></li>
+  <li><a href="#áreas-grandes-subdivisão-automática" id="toc-áreas-grandes-subdivisão-automática" class="nav-link" data-scroll-target="#áreas-grandes-subdivisão-automática">Áreas Grandes — Subdivisão Automática</a></li>
+  <li><a href="#re-autenticação-da-sessão" id="toc-re-autenticação-da-sessão" class="nav-link" data-scroll-target="#re-autenticação-da-sessão">Re-autenticação da Sessão</a></li>
+  <li><a href="#referência-rápida" id="toc-referência-rápida" class="nav-link" data-scroll-target="#referência-rápida">Referência Rápida</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Download de Dados LIDAR de Alta Resolução de Portugal</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>For an Inglish version of this tutorial, click <a href="../../tutorials/dgt_lidar/tut_dgt_lidar.html">here</a>.</p>
+</div>
+</div>
+<p>A <a href="https://www.dgterritorio.gov.pt/">Direção-Geral do Território (DGT)</a>, fornece gratuitamente dados de elevação de alta resolução derivados de LIDAR, cobrindo todo o território continental e as ilhas portuguesas através do seu portal de <a href="https://cdd.dgterritorio.gov.pt/">Distribuição Colaborativa de Dados (CDD)</a>.</p>
+<p>O GMT.jl fornece duas funções para trabalhar com este conjunto de dados:</p>
+<ul>
+<li><a href="../..\documentation/utilities/dgt_lidar.html">dgt_lidar</a> — autentica-se no portal da DGT e descarrega todos os blocos (tiles)que intersectamuma caixa delimitadora (bounding box).</li>
+<li><a href="../..\documentation/utilities/dgt_mosaic.html">dgt_mosaic</a> — agrupa os blocos descarregados num único GeoTIFF recortado.</li>
+</ul>
+<p>Estão disponíveis cinco coleções:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 64%">
+<col style="width: 18%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Coleção</th>
+<th>O que mede</th>
+<th>Resolução</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>MDS-2m</code></td>
+<td>Modelo Digital de Superfície (copas/telhados)</td>
+<td>2 m</td>
+</tr>
+<tr class="even">
+<td><code>MDT-2m</code></td>
+<td>Modelo Digital do Terreno (solo nu)</td>
+<td>2 m</td>
+</tr>
+<tr class="odd">
+<td><code>MDS-50cm</code></td>
+<td>Modelo de superfície</td>
+<td>50 cm</td>
+</tr>
+<tr class="even">
+<td><code>MDT-50cm</code></td>
+<td>Modelo de terreno</td>
+<td>50 cm</td>
+</tr>
+<tr class="odd">
+<td><code>LAZ</code></td>
+<td>Nuvem de pontos bruta (formato LAS/LAZ)</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p>A coleção predefinida é a <code>MDS-2m</code> (modelo de superfície de 2 m). Todas as coleções estão georreferenciadas em ETRS89/PT-TM06 (EPSG:3763) e distribuídas como GeoTIFF (excepto o LAZ).</p>
+<section id="pré-requisitos" class="level2">
+<h2 class="anchored" data-anchor-id="pré-requisitos">Pré-requisitos</h2>
+<section id="criar-uma-conta-na-dgt" class="level3">
+<h3 class="anchored" data-anchor-id="criar-uma-conta-na-dgt">Criar uma conta na DGT</h3>
+<p>Registe-se gratuitamente em <a href="https://cdd.dgterritorio.gov.pt/">https://cdd.dgterritorio.gov.pt/</a> e confirme o seu e-mail. O acesso é concedido imediatamente.</p>
+</section>
+<section id="guardar-credenciais-uma-vez" class="level3">
+<h3 class="anchored" data-anchor-id="guardar-credenciais-uma-vez">Guardar credenciais uma vez</h3>
+<p>Passe o seu e-mail e palavra-passe com <code>save=true</code> para escrever um ficheiro de credenciais <code>~/.dgt</code> que todas as chamadas futuras lerão automaticamente:</p>
+<div id="4736b4e5" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span>, <span class="bu">HTTP</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dgt_lidar</span>([<span class="fl">0</span>., <span class="fl">1</span>., <span class="fl">0</span>., <span class="fl">1</span>.]; user<span class="op">=</span><span class="st">"você@exemplo.com"</span>, password<span class="op">=</span><span class="st">"s3cr3t"</span>, save<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>O ficheiro <code>~/.dgt</code> resultante terá este aspeto:</p>
+<pre><code># Login data for the DGT LIDAR downloads
+login você@exemplo.com
+password s3cr3t</code></pre>
+<p>Também pode criar ou editar o ficheiro directamente com qualquer editor de texto.</p>
+</section>
+<section id="carregar-a-extensão" class="level3">
+<h3 class="anchored" data-anchor-id="carregar-a-extensão">Carregar a extensão</h3>
+<p>A função <a href="../..\documentation/utilities/dgt_lidar.html">dgt_lidar</a> reside na extensão do pacote <code>GMTDGTLidarExt</code>, ativada automaticamente quando o <code>HTTP</code> é carregado:</p>
+<div id="7dad53bf" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span>, <span class="bu">HTTP</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>A partir deste ponto, todos os exemplos assumem que ambos os pacotes estão carregados e que o ficheiro <code>~/.dgt</code> existe.</p>
+</section>
+</section>
+<section id="caixa-delimitadora-bounding-box-a-forma-directa" class="level2">
+<h2 class="anchored" data-anchor-id="caixa-delimitadora-bounding-box-a-forma-directa">Caixa Delimitadora (Bounding Box) — a Forma Directa</h2>
+<p>A chamada mais directa passa por uma caixa delimitadora de 4 elementos <code>[min_lon, max_lon, min_lat, max_lat]</code> em graus decimais WGS84. Vamos descarregar o modelo de superfície de 2 m para o <strong>Parque Natural da Arrábida</strong>, uma extensão de falésias de calcário impressionantes a sul de Lisboa:</p>
+<div id="bbd637fe" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dgt_lidar</span>([<span class="op">-</span><span class="fl">8.995</span>, <span class="op">-</span><span class="fl">8.968</span>, <span class="fl">38.473</span>, <span class="fl">38.486</span>]; output_dir<span class="op">=</span><span class="st">"_arrabida"</span>, verbose<span class="op">=</span><span class="fl">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>O prefixo <code>_arrabida</code> indica ao <code>dgt_lidar</code> para guardar os blocos em <code>~/.gmt/DGT/arrabida/MDS-2m/</code>. Sem qualquer prefixo de sublinhado, o caminho é interpretado literalmente. Com <code>verbose=2</code> verá o progresso completo:</p>
+<pre><code>--- DGT CDD LIDAR Downloader ---
+Bounding box : (-8.995, -8.968, 38.473, 38.486)
+Output dir   : /home/user/.gmt/DGT/arrabida
+Collections  : MDS-2m
+
+Bbox divided into 1 sub-queries
+  Found 12 items
+
+Total unique URLs found: N
+
+Downloading collection: MDS-2m
+  [1/12] https://cdd.dgterritorio.gov.pt/dgt-be/v1/download/...
+  ...
+Done: 12 downloaded, 0 skipped.</code></pre>
+<p>Os downloads são <strong>reutilizáveis</strong> — ficheiros existentes são ignorados silenciosamente. Executar o mesmo comando após uma interrupção apenas descarrega o que falta.</p>
+</section>
+<section id="dry-run-analise-o-escopo-antes-de-descarregar" class="level2">
+<h2 class="anchored" data-anchor-id="dry-run-analise-o-escopo-antes-de-descarregar">Dry Run — Analise o Escopo Antes de Descarregar</h2>
+<p>O <code>dry=true</code> autentica-se e consulta a API STAC, mas ignora todos os downloads. É a forma mais rápida de verificar quantos blocos cobrem a sua área de interesse antes de iniciar uma transferência longa:</p>
+<div id="ae8057b9" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dgt_lidar</span>([<span class="op">-</span><span class="fl">8.995</span>, <span class="op">-</span><span class="fl">8.968</span>, <span class="fl">38.473</span>, <span class="fl">38.486</span>]; dry<span class="op">=</span><span class="cn">true</span>, collection<span class="op">=</span><span class="st">"MDS-50cm"</span>, verbose<span class="op">=</span><span class="fl">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<pre><code>--- DGT CDD LIDAR Downloader [DRY RUN] ---
+Bounding box : (-8.995, -8.968, 38.473, 38.486)
+Collections  : MDS-50cm
+
+Bbox divided into 1 sub-queries
+  Found 12 items
+
+Total unique URLs found: 70
+
+Collection: MDS-50cm (70 files)
+  MDS-50cm-124170-06-2024.tiff
+  MDS-50cm-127168-06-2024.tiff
+  ...</code></pre>
+</section>
+<section id="coordenadas-de-ponto-bloco-único" class="level2">
+<h2 class="anchored" data-anchor-id="coordenadas-de-ponto-bloco-único">Coordenadas de Ponto — Bloco Único</h2>
+<p>Quando apenas se precisa do bloco que cobre uma localização específica, passe a longitude e latitude directamente como dois escalares ou como um vetor de 2 elementos. O <code>dgt_lidar</code> descarrega exatamente o único bloco que contém o ponto:</p>
+<div id="1ae764fd" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Forma escalar — o bloco que contém o cume da Serra da Estrela</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dgt_lidar</span>(<span class="op">-</span><span class="fl">7.607</span>, <span class="fl">40.322</span>; output_dir<span class="op">=</span><span class="st">"_estrela"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="f27ddeab" class="cell" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Forma de vetor de 2 elementos — resultado idêntico</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dgt_lidar</span>([<span class="op">-</span><span class="fl">7.607</span>, <span class="fl">40.322</span>]; output_dir<span class="op">=</span><span class="st">"_estrela"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<section id="expandir-para-blocos-vizinhos" class="level3">
+<h3 class="anchored" data-anchor-id="expandir-para-blocos-vizinhos">Expandir para Blocos Vizinhos</h3>
+<p>Utilize <code>neighbors</code> para incluir blocos circundantes. O <code>neighbors</code> segue a mesma convenção que <a href="../..\documentation/utilities/mosaic.html">mosaic</a>: um número inteiro <code>N</code> adiciona N anéis de blocos em todos os lados (resultando numa grelha de (2N+1)×(2N+1)), ou um vetor de 2 elementos <code>[Nx, Ny]</code> para expansão assimétrica.</p>
+<div id="4c26d3ce" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Grelha de blocos 3×3 centrada no cume da Serra da Estrela</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dgt_lidar</span>(<span class="op">-</span><span class="fl">7.607</span>, <span class="fl">40.322</span>; neighbors<span class="op">=</span><span class="fl">1</span>, output_dir<span class="op">=</span><span class="st">"_estrela"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="622870ad" class="cell" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Pegada mais larga: 5 blocos este-oeste, 3 norte-sul</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dgt_lidar</span>(<span class="op">-</span><span class="fl">7.607</span>, <span class="fl">40.322</span>; neighbors<span class="op">=</span>[<span class="fl">2</span>,<span class="fl">1</span>], output_dir<span class="op">=</span><span class="st">"_estrela"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+</section>
+<section id="utilizando-um-nome-de-localidade-despacho-via-geocoder" class="level2">
+<h2 class="anchored" data-anchor-id="utilizando-um-nome-de-localidade-despacho-via-geocoder">Utilizando um Nome de Localidade — Despacho via Geocoder</h2>
+<p>A função <a href="../..\documentation/utilities/geocoder.html">geocoder</a> transforma um endereço textual num <code>GMTdataset</code> que transporta coordenadas e uma caixa delimitadora <code>ds_bbox</code>. Passar esse dataset directamente ao <code>dgt_lidar</code> utiliza essa caixa delimitadora como região de download — não é necessária a procura manual de coordenadas.</p>
+<div id="18a36ca9" class="cell" data-execution_count="9">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">geocoder</span>(<span class="st">"Palacio da Pena, Sintra, Portugal"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Attribute table
+┌────────────┬────────┬───────────────────────┬────────────┬─────────────────┬────────┬──────────────┬───────────┬──────────────┬────────────────┬───────────┬──────────┬─────────────────┬──────────────┬──────────┬────────────┬──────────┬─────────────────────┬───────────────────────┬─────────────────┬──────────┬───────────────────────────────────────────────────────────────────────────┬───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┬─────────────────────────────────────────────┬────────┐
+│        lat │ county │                suburb │        lon │            road │   town │ address_rank │  place_id │ municipality │ ISO3166-2-lvl6 │    osm_id │  country │             ref │ country_code │ postcode │ place_rank │    class │          importance │         neighbourhood │        historic │ osm_type │                                                                      city │                                                                                                                                                                                          display_name │                                 boundingbox │   type │
+├────────────┼────────┼───────────────────────┼────────────┼─────────────────┼────────┼──────────────┼───────────┼──────────────┼────────────────┼───────────┼──────────┼─────────────────┼──────────────┼──────────┼────────────┼──────────┼─────────────────────┼───────────────────────┼─────────────────┼──────────┼───────────────────────────────────────────────────────────────────────────┼───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┼─────────────────────────────────────────────┼────────┤
+│ 38.7875681 │ Lisboa │ Sintra - São Martinho │ -9.3905649 │ Estrada da Pena │ Sintra │           30 │ 296829008 │       Sintra │          PT-11 │ 612095421 │ Portugal │ Palácio da Pena │           pt │ 2710-609 │         30 │ historic │ 0.43096957211662124 │ Quinta do Castanheiro │ Palácio da Pena │      way │ Sintra (Santa Maria e São Miguel, São Martinho e São Pedro de Penaferrim) │ Palácio da Pena, Estrada da Pena, Quinta do Castanheiro, Sintra - São Martinho, Sintra, Sintra (Santa Maria e São Miguel, São Martinho e São Pedro de Penaferrim), Sintra, Lisboa, 2710-609, Portugal │ 38.7870556,38.7880793,-9.3908907,-9.3900990 │ castle │
+└────────────┴────────┴───────────────────────┴────────────┴─────────────────┴────────┴──────────────┴───────────┴──────────────┴────────────────┴───────────┴──────────┴─────────────────┴──────────────┴──────────┴────────────┴──────────┴─────────────────────┴───────────────────────┴─────────────────┴──────────┴───────────────────────────────────────────────────────────────────────────┴───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┴─────────────────────────────────────────────┴────────┘
+BoundingBox: </code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<pre><code></code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[-9.3905649, -9.3905649, 38.7875681, 38.7875681]
+Global BoundingBox: [-9.3908907, -9.390099, 38.7870556, 38.7880793]
+PROJ: +proj=longlat +datum=WGS84 +units=m +no_defs
+
+1×2 GMTdataset{Float64, 2}
+ Row │      Lon      Lat
+─────┼───────────────────
+   1 │ -9.39056  38.7876</code></pre>
+</div>
+</div>
+<div id="260634db" class="cell" data-execution_count="10">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dgt_lidar</span>(D; output_dir<span class="op">=</span><span class="st">"_sintra"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Quando o geocoder retorna um resultado de <strong>ponto</strong>, o <code>ds_bbox</code> colapsa para um tamanho essencialmente zero. Nesse caso, utilize <code>zoom</code> para ajustar à grelha de blocos no nível de zoom do OpenStreetMap escolhido, proporcionando uma área de tamanho natural em torno do ponto:</p>
+<div id="168f6149" class="cell" data-execution_count="11">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># zoom=14 fornece aproximadamente uma célula de grelha de 3×3 km em torno do palácio</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dgt_lidar</span>(D; output_dir<span class="op">=</span><span class="st">"_sintra"</span>, zoom<span class="op">=</span><span class="fl">14</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="a-partir-de-uma-grelha-ou-imagem-existente-despacho-gitype" class="level2">
+<h2 class="anchored" data-anchor-id="a-partir-de-uma-grelha-ou-imagem-existente-despacho-gitype">A partir de uma Grelha ou Imagem Existente — Despacho GItype</h2>
+<p>Se já tiver um <code>GMTgrid</code> ou <code>GMTimage</code> — um DEM mais grosseiro, uma cena de satélite, qualquer raster georreferenciado — passe-o directamente. O <code>dgt_lidar</code> lê a extensão geográfica do cabeçalho e reprojeta automaticamente projeções não geográficas para lon/lat.</p>
+<p>Carregue uma grelha SRTM grosseira da região vinhateira do Vale do Douro a partir do servidor remoto do GMT:</p>
+<div id="8a743ec9" class="cell" data-execution_count="12">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>G_douro <span class="op">=</span> <span class="fu">grdcut</span>(<span class="st">"@earth_relief_15s"</span>, region<span class="op">=</span>(<span class="op">-</span><span class="fl">8.1</span>, <span class="op">-</span><span class="fl">7.0</span>, <span class="fl">41.0</span>, <span class="fl">41.4</span>));</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">viz</span>(G_douro, C<span class="op">=:</span>geo, shade<span class="op">=</span><span class="cn">true</span>, title<span class="op">=</span><span class="st">"Vale do Douro - SRTM 15"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="tut_dgt_lidar_pt_files/figure-html/cell-13-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Agora descarregue o DEM de 2 m que cobre <strong>exatamente a mesma extensão</strong> — sem necessidade de copiar coordenadas:</p>
+<div id="2e8d54af" class="cell" data-execution_count="13">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dgt_lidar</span>(G_douro; output_dir<span class="op">=</span><span class="st">"_douro"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Mas atenção. O comando acima descarregaria 4253 blocos. Não é prático com resolução de 2 m! Utilize <code>dry=true</code> para verificar a contagem antes de descarregar.</p>
+<p>O mesmo padrão funciona com um <code>GMTimage</code> (ex: uma cena Sentinel-2 carregada com <code>gmtread</code>).</p>
+</section>
+<section id="dois-vectores-separados-despacho-lonlat" class="level2">
+<h2 class="anchored" data-anchor-id="dois-vectores-separados-despacho-lonlat">Dois Vectores Separados — Despacho lon/lat</h2>
+<p>Quando a longitude e latitude mínimas/máximas já estão armazenadas em variáveis separadas — comum em scripts ou ao chamar a partir de Python via <code>juliacall</code> — passe-as como dois de dois elementos:</p>
+<div id="5a511432" class="cell" data-execution_count="14">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>lon <span class="op">=</span> [<span class="op">-</span><span class="fl">8.83</span>, <span class="op">-</span><span class="fl">8.72</span>]</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>lat <span class="op">=</span> [<span class="fl">38.47</span>, <span class="fl">38.53</span>]</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dgt_lidar</span>(lon, lat; output_dir<span class="op">=</span><span class="st">"_arrabida"</span>, collection<span class="op">=</span><span class="st">"MDS-50cm"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Tuples também funcionam: <code>dgt_lidar((-8.83, -8.72), (38.47, 38.53); ...)</code>.</p>
+</section>
+<section id="versões-de-ficheiros-latest" class="level2">
+<h2 class="anchored" data-anchor-id="versões-de-ficheiros-latest">Versões de Ficheiros — <code>latest</code></h2>
+<p>A DGT lança ocasionalmente versões corrigidas de blocos. Ficheiros versionados transportam um sufixo <code>_v01</code>, <code>_v02</code>, …; o ficheiro original sem versão é implicitamente a versão 0. Por predefinição (<code>latest=true</code>), o <code>dgt_lidar</code> mantém apenas a versão mais recente de cada bloco, descartando as antigas automaticamente:</p>
+<pre><code>MDS-2m-115197-07-2024.tiff       ← versão 0 (original)
+MDS-2m-115197-07-2024_v01.tiff   ← versão 1 (correção)  ✓ mantido</code></pre>
+<p>Para descarregar todas as versões — para fins de arquivo ou para comparar revisões — defina <code>latest=false</code>:</p>
+<div id="931305f2" class="cell" data-execution_count="15">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dgt_lidar</span>([<span class="op">-</span><span class="fl">8.995</span>, <span class="op">-</span><span class="fl">8.968</span>, <span class="fl">38.473</span>, <span class="fl">38.486</span>]; output_dir<span class="op">=</span><span class="st">"_arrabida"</span>, latest<span class="op">=</span><span class="cn">false</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>A contagem de versões é reportada em <code>verbose=2</code>:</p>
+<pre><code>  Keeping latest versions: 3 older file(s) excluded</code></pre>
+</section>
+<section id="download-e-mosaico-num-único-passo" class="level2">
+<h2 class="anchored" data-anchor-id="download-e-mosaico-num-único-passo">Download e Mosaico num Único Passo</h2>
+<p>Defina <code>mosaic</code> para um caminho de saída para descarregar blocos e juntá-los imediatamente num único ficheiro. O formato é determinado pela extensão (<code>.tiff</code>/<code>.tif</code> para GeoTIFF comprimido, <code>.nc</code> para netCDF4). Utilize <code>"grid"</code> para saltar completamente a E/S de disco e retornar um <code>GMTgrid</code> na memória.</p>
+<div id="81e54433" class="cell" data-execution_count="16">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Falésias do Algarve — descarregar blocos MDS-2m e construir um mosaico</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dgt_lidar</span>([<span class="op">-</span><span class="fl">8.5</span>, <span class="op">-</span><span class="fl">8.3</span>, <span class="fl">37.0</span>, <span class="fl">37.1</span>];</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>          output_dir <span class="op">=</span> <span class="st">"_algarve"</span>,</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>          mosaic     <span class="op">=</span> <span class="st">"algarve_surface.tiff"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Para <strong>reamostrar</strong> para uma resolução diferente durante a montagem, adicione <code>inc</code> (em unidades de CRS — metros para ETRS89):</p>
+<div id="a07ee509" class="cell" data-execution_count="17">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Mesma área, reamostrada para 5 m com spline bicúbica — ficheiro menor, superfície mais suave</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dgt_lidar</span>([<span class="op">-</span><span class="fl">8.5</span>, <span class="op">-</span><span class="fl">8.3</span>, <span class="fl">37.0</span>, <span class="fl">37.1</span>];</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>          output_dir <span class="op">=</span> <span class="st">"_algarve"</span>,</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>          mosaic     <span class="op">=</span> <span class="st">"algarve_5m.tiff"</span>,</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>          inc        <span class="op">=</span> <span class="fl">5.0</span>,</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>          method     <span class="op">=</span> <span class="st">"cubicspline"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Valores de <code>method</code> disponíveis: <code>near</code>, <code>bilinear</code>, <code>cubic</code>, <code>cubicspline</code>, <code>lanczos</code>, <code>average</code>, <code>rms</code>, <code>mode</code>, <code>min</code>, <code>max</code>, <code>med</code>, <code>q1</code>, <code>q3</code>, <code>sum</code>. O predefinido <code>cubicspline</code> fornece o resultado mais suave para dados de elevação; <code>bilinear</code> é mais rápido; <code>near</code> preserva arestas nítidas em modelos de copa.</p>
+<p>Para obter o mosaico de volta como um <code>GMTgrid</code> sem E/S de disco e visualizá-lo imediatamente, defina <code>mosaic="grid"</code> e passe o resultado para <code>viz</code>:</p>
+<div id="b1995d19" class="cell" data-execution_count="18">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">dgt_lidar</span>(<span class="op">-</span><span class="fl">7.607</span>, <span class="fl">40.322</span>; neighbors<span class="op">=</span><span class="fl">1</span>, output_dir<span class="op">=</span><span class="st">"_estrela"</span>, mosaic<span class="op">=</span><span class="st">"grid"</span>);</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">viz</span>(G, shade<span class="op">=</span><span class="cn">true</span>, view<span class="op">=</span>(<span class="fl">145</span>, <span class="fl">35</span>), title<span class="op">=</span><span class="st">"Serra da Estrela - MDS-2m"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><img src="../..\assets/sestrela.jpg" class="center img-fluid" width="600"></p>
+<p>Note que, se reparou na linha de pequenos picos que corre do canto NW, isso é ruído nos dados (não é um artefacto do mosaico).</p>
+</section>
+<section id="montagem-de-cache-de-blocos-existente-dgt_mosaic" class="level2">
+<h2 class="anchored" data-anchor-id="montagem-de-cache-de-blocos-existente-dgt_mosaic">Montagem de Cache de Blocos Existente — <code>dgt_mosaic</code></h2>
+<p>Se os blocos já estiverem no disco, o <code>dgt_mosaic</code> une-os em qualquer momento — sem novo download, sem necessidade de credenciais:</p>
+<div id="cf9e76d1" class="cell" data-execution_count="19">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dgt_mosaic</span>([<span class="op">-</span><span class="fl">8.995</span>, <span class="op">-</span><span class="fl">8.968</span>, <span class="fl">38.473</span>, <span class="fl">38.486</span>];</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>           src_dir <span class="op">=</span> <span class="st">"_arrabida"</span>,</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>           outfile <span class="op">=</span> <span class="st">"arrabida_mds2m.tiff"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>A função constrói um mosaico GDAL VRT em memória de todos os ficheiros <code>.tiff</code> em <code>~/.gmt/DGT/arrabida/MDS-2m/</code>, recorta-o para a caixa delimitadora e escreve o resultado. Utilize <code>vrt="arrabida.vrt"</code> para também guardar o ficheiro VRT intermédio.</p>
+<section id="pool-de-blocos-raiz" class="level3">
+<h3 class="anchored" data-anchor-id="pool-de-blocos-raiz">Pool de blocos raiz</h3>
+<p>Quando <code>src_dir</code> utiliza o prefixo <code>_</code>, o <code>dgt_mosaic</code> também inclui automaticamente blocos do diretório raiz <code>~/.gmt/DGT/&lt;collection&gt;/</code> (o pool utilizado quando <code>src_dir=""</code> é omitido). Isto significa que um download geral anterior é combinado transparentemente com um regional:</p>
+<div id="8648a071" class="cell" data-execution_count="20">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Anteriormente descarregámos alguns blocos para a localização predefinida (sem prefixo)</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dgt_lidar</span>([<span class="op">-</span><span class="fl">9.0</span>, <span class="op">-</span><span class="fl">8.7</span>, <span class="fl">38.4</span>, <span class="fl">38.6</span>])                       <span class="co"># → ~/.gmt/DGT/MDS-2m/</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Mais tarde, descarregámos blocos adicionais para um subdirectório nomeado</span></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="fu">dgt_lidar</span>([<span class="op">-</span><span class="fl">8.995</span>, <span class="op">-</span><span class="fl">8.968</span>, <span class="fl">38.473</span>, <span class="fl">38.486</span>]; output_dir<span class="op">=</span><span class="st">"_arrabida"</span>)  <span class="co"># → ~/.gmt/DGT/arrabida/MDS-2m/</span></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="co"># O mosaico extrai de AMBAS as localizações automaticamente</span></span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a><span class="fu">dgt_mosaic</span>([<span class="op">-</span><span class="fl">8.995</span>, <span class="op">-</span><span class="fl">8.968</span>, <span class="fl">38.473</span>, <span class="fl">38.486</span>]; src_dir<span class="op">=</span><span class="st">"_arrabida"</span>, outfile<span class="op">=</span><span class="st">"combined.tiff"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>A reamostragem durante a montagem é independente do que foi descarregado:</p>
+<div id="0e03b5e7" class="cell" data-execution_count="21">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Blocos de 50 cm já no disco → montar a 2 m (ficheiro 4× menor)</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dgt_mosaic</span>([<span class="op">-</span><span class="fl">8.995</span>, <span class="op">-</span><span class="fl">8.968</span>, <span class="fl">38.473</span>, <span class="fl">38.486</span>];</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>           src_dir    <span class="op">=</span> <span class="st">"_arrabida"</span>,</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>           collection <span class="op">=</span> <span class="st">"MDS-50cm"</span>,</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>           outfile    <span class="op">=</span> <span class="st">"arrabida_50cm_to2m.tiff"</span>,</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>           inc        <span class="op">=</span> <span class="fl">2.0</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="reprojectando-o-mosaico" class="level3">
+<h3 class="anchored" data-anchor-id="reprojectando-o-mosaico">Reprojectando o Mosaico</h3>
+<p>Por predefinição, o mosaico é escrito na projecção nativa da DGT (ETRS89/PT-TM06, EPSG:3763). Utilize <code>proj</code> para reprojectar no momento da montagem — sem necessidade de um passo separado de <code>gdalwarp</code>.</p>
+<p><code>"geog"</code> é um atalho para coordenadas geográficas (EPSG:4326 / WGS84 lon/lat):</p>
+<div id="740f94b2" class="cell" data-execution_count="22">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dgt_mosaic</span>([<span class="op">-</span><span class="fl">8.995</span>, <span class="op">-</span><span class="fl">8.968</span>, <span class="fl">38.473</span>, <span class="fl">38.486</span>];</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>           src_dir <span class="op">=</span> <span class="st">"_arrabida"</span>,</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>           outfile <span class="op">=</span> <span class="st">"arrabida_geog.tiff"</span>,</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>           proj    <span class="op">=</span> <span class="st">"geog"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Uma string de número inteiro simples é interpretada como um código EPSG. A zona UTM 29N (EPSG:32629) é a projecção métrica padrão para Portugal continental:</p>
+<div id="0538f0b3" class="cell" data-execution_count="23">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dgt_mosaic</span>([<span class="op">-</span><span class="fl">8.995</span>, <span class="op">-</span><span class="fl">8.968</span>, <span class="fl">38.473</span>, <span class="fl">38.486</span>];</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>           src_dir <span class="op">=</span> <span class="st">"_arrabida"</span>,</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>           outfile <span class="op">=</span> <span class="st">"arrabida_utm29n.tiff"</span>,</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>           proj    <span class="op">=</span> <span class="st">"32629"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Qualquer string de CRS reconhecida pelo GDAL funciona — <code>"EPSG:32629"</code>, <code>"+proj=utm +zone=29 +datum=WGS84"</code>, WKT, etc. <code>proj</code> e <code>inc</code> podem ser combinados para reprojectar <strong>e</strong> reamostrar numa única passagem:</p>
+<div id="cdda4480" class="cell" data-execution_count="24">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Reprojectar para geográficas e reamostrar para 0.00002° (≈ 2 m na latitude de Portugal)</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dgt_mosaic</span>([<span class="op">-</span><span class="fl">8.995</span>, <span class="op">-</span><span class="fl">8.968</span>, <span class="fl">38.473</span>, <span class="fl">38.486</span>];</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>           src_dir <span class="op">=</span> <span class="st">"_arrabida"</span>,</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>           outfile <span class="op">=</span> <span class="st">"arrabida_geog_2m.tiff"</span>,</span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>           proj    <span class="op">=</span> <span class="st">"geog"</span>,</span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>           inc     <span class="op">=</span> <span class="fl">0.00002</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>A mesma palavra-chave <code>proj</code> está disponível no <code>dgt_lidar</code> através de <code>mosaic</code>:</p>
+<div id="4173cb91" class="cell" data-execution_count="25">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dgt_lidar</span>([<span class="op">-</span><span class="fl">8.995</span>, <span class="op">-</span><span class="fl">8.968</span>, <span class="fl">38.473</span>, <span class="fl">38.486</span>];</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>          output_dir <span class="op">=</span> <span class="st">"_arrabida"</span>,</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>          mosaic     <span class="op">=</span> <span class="st">"arrabida_utm.tiff"</span>,</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>          proj       <span class="op">=</span> <span class="st">"32629"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+</section>
+<section id="visualizando-o-resultado" class="level2">
+<h2 class="anchored" data-anchor-id="visualizando-o-resultado">Visualizando o Resultado</h2>
+<p>Desenhe com as ferramentas padrão do GMT.jl:</p>
+<div id="de40d816" class="cell" data-execution_count="26">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Nota: Infelizmente, a "Rocha da Anicha" não foi levantada.</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">viz</span>(<span class="st">"arrabida_mds2m.tiff"</span>, C<span class="op">=:</span>terra, shade<span class="op">=</span><span class="cn">true</span>, title<span class="op">=</span><span class="st">"Portinho da Arrábida"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><img src="../..\assets/portinho.png" class="center img-fluid" width="600"></p>
+<p>Dados de nuvem de pontos (coleção LAZ) podem ser carregados com a função <code>lasread</code> do GMT:</p>
+<div id="2f0932cf" class="cell" data-execution_count="27">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dgt_lidar</span>([<span class="op">-</span><span class="fl">8.995</span>, <span class="op">-</span><span class="fl">8.968</span>, <span class="fl">38.473</span>, <span class="fl">38.486</span>]; collection<span class="op">=</span><span class="st">"LAZ"</span>, output_dir<span class="op">=</span><span class="st">"_arrabida_laz"</span>)</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>pc <span class="op">=</span> <span class="fu">lasread</span>(<span class="fu">joinpath</span>(<span class="fu">homedir</span>(), <span class="st">".gmt/DGT/arrabida_laz/LAZ/LO-148174-06-2024.laz"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>E podemos fazer um pequeno desvio e sobrepor uma imagem aérea do Bing, obtida através do Mosaic, ao DEM:</p>
+<div id="21f07613" class="cell" data-execution_count="28">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Carregua o DEM em memória na forma de grelha, reprojetado para coordenadas geográficas</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">dgt_lidar</span>([<span class="op">-</span><span class="fl">8.995</span>, <span class="op">-</span><span class="fl">8.968</span>, <span class="fl">38.473</span>, <span class="fl">38.486</span>]; output_dir <span class="op">=</span> <span class="st">"_arrabida"</span>, mosaic<span class="op">=</span><span class="st">"grid"</span>, proj<span class="op">=</span><span class="st">"geog"</span>);</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Usar os seus limites para obter uma imagem do Bing da mesma área. Utilizamos um zoom=16 para obter uma resolução aproximada da G</span></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>I <span class="op">=</span> <span class="fu">mosaic</span>(G, zoom<span class="op">=</span><span class="fl">16</span>);</span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualizar o resultado</span></span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a><span class="fu">viz</span>(G, drape<span class="op">=</span>I, view<span class="op">=</span>(<span class="fl">155</span>,<span class="fl">35</span>), zsize<span class="op">=</span><span class="fl">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><img src="../..\assets/portinho_draped.png" class="center img-fluid" width="700"></p>
+</section>
+<section id="áreas-grandes-subdivisão-automática" class="level2">
+<h2 class="anchored" data-anchor-id="áreas-grandes-subdivisão-automática">Áreas Grandes — Subdivisão Automática</h2>
+<p>O <code>dgt_lidar</code> divide automaticamente caixas delimitadoras grandes em sub-consultas de ~200 km² para permanecer dentro dos limites de requisição da API STAC da DGT. Para uma consulta que cubra todo o <strong>Alentejo</strong> (~33 000 km²), a função distribui transparentemente em dezenas de sub-consultas, remove URLs duplicadas e descarrega:</p>
+<div id="17232bf0" class="cell" data-execution_count="29">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dgt_lidar</span>([<span class="op">-</span><span class="fl">8.8</span>, <span class="op">-</span><span class="fl">6.8</span>, <span class="fl">37.3</span>, <span class="fl">39.4</span>];</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>          output_dir <span class="op">=</span> <span class="st">"_alentejo"</span>,</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>          collection <span class="op">=</span> <span class="st">"MDT-2m"</span>,</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>          verbose    <span class="op">=</span> <span class="fl">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<pre><code>Bbox divided into 221 sub-queries
+  Found 216 items
+...
+Done: 216 downloaded, 0 skipped.</code></pre>
+<p>A palavra-chave <code>delay</code> (predefinido 1 s) controla a pausa entre requisições. Aumente se vir erros de limite de taxa (rate-limit) do servidor:</p>
+<div id="9def1df6" class="cell" data-execution_count="30">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dgt_lidar</span>([<span class="op">-</span><span class="fl">8.8</span>, <span class="op">-</span><span class="fl">6.8</span>, <span class="fl">37.3</span>, <span class="fl">39.4</span>]; delay<span class="op">=</span><span class="fl">2.0</span>, output_dir<span class="op">=</span><span class="st">"_alentejo"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="re-autenticação-da-sessão" class="level2">
+<h2 class="anchored" data-anchor-id="re-autenticação-da-sessão">Re-autenticação da Sessão</h2>
+<p>Downloads longos podem ultrapassar a validade do token de sessão do portal da DGT. O <code>dgt_lidar</code> re-autentica-se automaticamente a cada 25 minutos e após cada 10 ficheiros descarregados — sem necessidade de intervenção manual.</p>
+</section>
+<section id="referência-rápida" class="level2">
+<h2 class="anchored" data-anchor-id="referência-rápida">Referência Rápida</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 69%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>O que tem</th>
+<th>Chamada</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Array de caixa delimitadora</td>
+<td><code>dgt_lidar([lon1,lon2,lat1,lat2]; ...)</code></td>
+</tr>
+<tr class="even">
+<td>Dois vectores separados</td>
+<td><code>dgt_lidar(lon, lat; ...)</code></td>
+</tr>
+<tr class="odd">
+<td>Ponto único (escalares)</td>
+<td><code>dgt_lidar(lon, lat; neighbors=1, zoom=14, ...)</code></td>
+</tr>
+<tr class="even">
+<td>Ponto único (array 2-elem)</td>
+<td><code>dgt_lidar([lon, lat]; neighbors=1, zoom=14, ...)</code></td>
+</tr>
+<tr class="odd">
+<td>Resultado do geocoder</td>
+<td><code>dgt_lidar(D; zoom=14, ...)</code></td>
+</tr>
+<tr class="even">
+<td>Grelha ou imagem existente</td>
+<td><code>dgt_lidar(G; ...)</code></td>
+</tr>
+<tr class="odd">
+<td>Download + mosaico p/ fic</td>
+<td><code>dgt_lidar(...; mosaic="out.tiff")</code></td>
+</tr>
+<tr class="even">
+<td>Download + mosaico memória</td>
+<td><code>G = dgt_lidar(...; mosaic="grid")</code></td>
+</tr>
+<tr class="odd">
+<td>Mosaico de blocos no disco</td>
+<td><code>dgt_mosaic(bbox; src_dir="...", outfile="...")</code></td>
+</tr>
+<tr class="even">
+<td>Mosaico → geográficas (WGS84)</td>
+<td><code>dgt_mosaic(...; proj="geog")</code></td>
+</tr>
+<tr class="odd">
+<td>Mosaico → UTM zona 29N</td>
+<td><code>dgt_mosaic(...; proj="32629")</code></td>
+</tr>
+<tr class="even">
+<td>Mosaico → qualquer CRS</td>
+<td><code>dgt_mosaic(...; proj="EPSG:XXXX")</code> ou string proj</td>
+</tr>
+<tr class="odd">
+<td>Reprojectar + reamostrar</td>
+<td><code>dgt_mosaic(...; proj="geog", inc=0.00002)</code></td>
+</tr>
+<tr class="even">
+<td>Verificar antes de descarregar</td>
+<td><code>dgt_lidar(...; dry=true, verbose=2)</code></td>
+</tr>
+<tr class="odd">
+<td>Apenas versões recentes</td>
+<td><code>dgt_lidar(...; latest=true)</code> <em>(predefinido)</em></td>
+</tr>
+<tr class="even">
+<td>Todas as versões</td>
+<td><code>dgt_lidar(...; latest=false)</code></td>
+</tr>
+<tr class="odd">
+<td>Modelo de terreno 50 cm</td>
+<td><code>dgt_lidar(...; collection="MDT-50cm")</code></td>
+</tr>
+<tr class="even">
+<td>Nuvem de pontos bruta</td>
+<td><code>dgt_lidar(...; collection="LAZ")</code></td>
+</tr>
+</tbody>
+</table>
+
+
+</section>
+
+</main> <!-- /main -->
+<script>
+
+// JavaScript to handle card hover effects for cards with images
+
+document.addEventListener('DOMContentLoaded', function() {
+
+  // Find all cards
+
+  const cards = document.querySelectorAll('.card');
+
+
+
+  cards.forEach(card => {
+
+    const paragraphs = card.querySelectorAll('p');
+
+
+
+    // If card has only one paragraph (with image)
+
+    if (paragraphs.length === 1) {
+
+      const p = paragraphs[0];
+
+      const img = p.querySelector('img');
+
+
+
+      if (img) {
+
+        // Get all text nodes
+
+        const textContent = Array.from(p.childNodes)
+
+          .filter(node => node.nodeType === Node.TEXT_NODE)
+
+          .map(node => node.textContent.trim())
+
+          .filter(text => text.length > 0)
+
+          .join(' ');
+
+
+
+        if (textContent) {
+
+          // Create overlay div for description
+
+          const overlay = document.createElement('div');
+
+          overlay.className = 'card-description-overlay';
+
+          overlay.textContent = textContent;
+
+          card.appendChild(overlay);
+
+
+
+          // Remove text nodes completely
+
+          Array.from(p.childNodes).forEach(node => {
+
+            if (node.nodeType === Node.TEXT_NODE && node.textContent.trim().length > 0) {
+
+              node.remove();
+
+            }
+
+          });
+
+        }
+
+      }
+
+    }
+
+  });
+
+
+
+  // Equalize heights of grid sections (documentation cards)
+
+  function equalizeGridHeights() {
+
+    const grids = document.querySelectorAll('.grid');
+
+
+
+    grids.forEach(grid => {
+
+      const sections = Array.from(grid.querySelectorAll(':scope > section, :scope > div'));
+
+
+
+      if (sections.length === 0) return;
+
+
+
+      // Reset heights
+
+      sections.forEach(section => {
+
+        section.style.height = 'auto';
+
+      });
+
+
+
+      // Group sections by row (based on offsetTop)
+
+      const rows = new Map();
+
+      sections.forEach(section => {
+
+        const top = section.offsetTop;
+
+        if (!rows.has(top)) {
+
+          rows.set(top, []);
+
+        }
+
+        rows.get(top).push(section);
+
+      });
+
+
+
+      // Equalize heights within each row
+
+      rows.forEach(rowSections => {
+
+        const maxHeight = Math.max(...rowSections.map(s => s.offsetHeight));
+
+        rowSections.forEach(section => {
+
+          section.style.height = maxHeight + 'px';
+
+        });
+
+      });
+
+    });
+
+  }
+
+
+
+  // Run on load and resize
+
+  equalizeGridHeights();
+
+  window.addEventListener('resize', equalizeGridHeights);
+
+});
+
+</script>
+
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/GenericMappingTools\.github\.io\/GMTjl_doc\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>2025 Joaquim Luis ∙ Powered by <a href="https://quarto.org"><img src="../..\assets/quarto.png" class="img-fluid" style="width:4mm"></a> and <a href="https://julialang.org"><img src="../..\assets/julia.svg" class="img-fluid" style="width:4mm"></a></p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>dgt_lidar</title>
+<title>tut_dgt_lidar</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -370,7 +370,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="dropdown-text">Mosaics</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../tutorials/dgt_lidar/dgt_lidar.html">
+    <a class="dropdown-item" href="../../tutorials/dgt_lidar/tut_dgt_lidar_pt.html">
  <span class="dropdown-text">DGT LIDAR Portugal</span></a>
   </li>  
         <li>
@@ -494,8 +494,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <p>Portugal’s national mapping agency, the <a href="https://www.dgterritorio.gov.pt/">Direção-Geral do Território (DGT)</a>, provides free high-resolution LIDAR-derived elevation data covering the entire Portuguese mainland and islands through its <a href="https://cdd.dgterritorio.gov.pt/">Collaborative Data Distribution (CDD)</a> portal. GMT.jl provides two functions for working with this dataset:</p>
 <ul>
-<li><strong><code>dgt_lidar</code></strong> — authenticates against the DGT portal and downloads all tiles intersecting a bounding box.</li>
-<li><strong><code>dgt_mosaic</code></strong> — assembles downloaded tiles into a single, clipped GeoTIFF.</li>
+<li><a href="../..\documentation/utilities/dgt_lidar.html">dgt_lidar</a> — authenticates against the DGT portal and downloads all tiles intersecting a bounding box.</li>
+<li><a href="../..\documentation/utilities/dgt_mosaic.html">dgt_mosaic</a> — assembles downloaded tiles into a single, clipped GeoTIFF.</li>
 </ul>
 <p>Five collections are available:</p>
 <table class="caption-top table">
@@ -549,7 +549,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="save-credentials-once" class="level3">
 <h3 class="anchored" data-anchor-id="save-credentials-once">Save credentials once</h3>
 <p>Pass your e-mail and password with <code>save=true</code> to write a <code>~/.dgt</code> credentials file that all future calls will read automatically:</p>
-<div id="c1cef32f" class="cell" data-execution_count="1">
+<div id="852311b2" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span>, <span class="bu">HTTP</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dgt_lidar</span>([<span class="fl">0</span>., <span class="fl">1</span>., <span class="fl">0</span>., <span class="fl">1</span>.]; user<span class="op">=</span><span class="st">"you@example.com"</span>, password<span class="op">=</span><span class="st">"s3cr3t"</span>, save<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -562,8 +562,8 @@ password s3cr3t</code></pre>
 </section>
 <section id="load-the-extension" class="level3">
 <h3 class="anchored" data-anchor-id="load-the-extension">Load the extension</h3>
-<p><code>dgt_lidar</code> lives in the <code>GMTDGTLidarExt</code> package extension, activated automatically when <code>HTTP</code> is loaded:</p>
-<div id="e1eff92d" class="cell" data-execution_count="2">
+<p><a href="../..\documentation/utilities/dgt_lidar.html">dgt_lidar</a> lives in the <code>GMTDGTLidarExt</code> package extension, activated automatically when <code>HTTP</code> is loaded:</p>
+<div id="a8c70f76" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GMT</span>, <span class="bu">HTTP</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>From this point on all examples assume both packages are loaded and <code>~/.dgt</code> exists.</p>
@@ -572,7 +572,7 @@ password s3cr3t</code></pre>
 <section id="bounding-box-the-direct-form" class="level2">
 <h2 class="anchored" data-anchor-id="bounding-box-the-direct-form">Bounding Box — the Direct Form</h2>
 <p>The most direct call passes a 4-element <code>[min_lon, max_lon, min_lat, max_lat]</code> bounding box in WGS84 decimal degrees. Let’s download the 2 m surface model for the <strong>Arrábida Nature Park</strong>, a stretch of dramatic limestone cliffs south of Lisbon:</p>
-<div id="6228e5a6" class="cell" data-execution_count="3">
+<div id="c1472c6e" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dgt_lidar</span>([<span class="op">-</span><span class="fl">8.995</span>, <span class="op">-</span><span class="fl">8.968</span>, <span class="fl">38.473</span>, <span class="fl">38.486</span>]; output_dir<span class="op">=</span><span class="st">"_arrabida"</span>, verbose<span class="op">=</span><span class="fl">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>The <code>_arrabida</code> prefix tells <code>dgt_lidar</code> to save tiles under <code>~/.gmt/DGT/arrabida/MDS-2m/</code>. Without any underscore prefix the path is interpreted literally. With <code>verbose=2</code> you see full progress:</p>
@@ -595,7 +595,7 @@ Done: 12 downloaded, 0 skipped.</code></pre>
 <section id="dry-run-scope-before-you-download" class="level2">
 <h2 class="anchored" data-anchor-id="dry-run-scope-before-you-download">Dry Run — Scope Before You Download</h2>
 <p><code>dry=true</code> authenticates and queries the STAC API but skips all downloads. It is the fastest way to check how many tiles cover your area of interest before committing to a long transfer:</p>
-<div id="76d84dca" class="cell" data-execution_count="4">
+<div id="4f18277b" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dgt_lidar</span>([<span class="op">-</span><span class="fl">8.995</span>, <span class="op">-</span><span class="fl">8.968</span>, <span class="fl">38.473</span>, <span class="fl">38.486</span>]; dry<span class="op">=</span><span class="cn">true</span>, collection<span class="op">=</span><span class="st">"MDS-50cm"</span>, verbose<span class="op">=</span><span class="fl">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <pre><code>--- DGT CDD LIDAR Downloader [DRY RUN] ---
@@ -615,22 +615,22 @@ Collection: MDS-50cm (70 files)
 <section id="point-coordinates-single-tile" class="level2">
 <h2 class="anchored" data-anchor-id="point-coordinates-single-tile">Point Coordinates — Single Tile</h2>
 <p>When you only need the tile covering a specific location, pass longitude and latitude directly as two scalars or as a 2-element vector. <code>dgt_lidar</code> downloads exactly the one tile that contains the point:</p>
-<div id="03f7028a" class="cell" data-execution_count="5">
+<div id="8a07c347" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Scalar form — the tile containing the summit of Serra da Estrela</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dgt_lidar</span>(<span class="op">-</span><span class="fl">7.607</span>, <span class="fl">40.322</span>; output_dir<span class="op">=</span><span class="st">"_estrela"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="e79a4b08" class="cell" data-execution_count="6">
+<div id="e8524b5b" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 2-element vector form — identical result</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dgt_lidar</span>([<span class="op">-</span><span class="fl">7.607</span>, <span class="fl">40.322</span>]; output_dir<span class="op">=</span><span class="st">"_estrela"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <section id="expanding-to-neighbouring-tiles" class="level3">
 <h3 class="anchored" data-anchor-id="expanding-to-neighbouring-tiles">Expanding to Neighbouring Tiles</h3>
 <p>Use <code>neighbors</code> to include surrounding tiles. <code>neighbors</code> follows the same convention as <a href="../..\documentation/utilities/mosaic.html">mosaic</a>: an integer <code>N</code> adds N rings of tiles on all sides (giving a (2N+1)×(2N+1) grid), or a 2-element vector <code>[Nx, Ny]</code> for asymmetric expansion.</p>
-<div id="71f55ff4" class="cell" data-execution_count="7">
+<div id="128966d0" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 3×3 tile grid centred on the Serra da Estrela summit</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dgt_lidar</span>(<span class="op">-</span><span class="fl">7.607</span>, <span class="fl">40.322</span>; neighbors<span class="op">=</span><span class="fl">1</span>, output_dir<span class="op">=</span><span class="st">"_estrela"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="1114dd5f" class="cell" data-execution_count="8">
+<div id="4573e06f" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Wider footprint: 5 tiles east-west, 3 north-south</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dgt_lidar</span>(<span class="op">-</span><span class="fl">7.607</span>, <span class="fl">40.322</span>; neighbors<span class="op">=</span>[<span class="fl">2</span>,<span class="fl">1</span>], output_dir<span class="op">=</span><span class="st">"_estrela"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -639,15 +639,15 @@ Collection: MDS-50cm (70 files)
 <section id="using-a-place-name-geocoder-dispatch" class="level2">
 <h2 class="anchored" data-anchor-id="using-a-place-name-geocoder-dispatch">Using a Place Name — Geocoder Dispatch</h2>
 <p>The <a href="../..\documentation/utilities/geocoder.html">geocoder</a> function turns a textual address into a <code>GMTdataset</code> carrying coordinates and a <code>ds_bbox</code> bounding box. Passing that dataset directly to <code>dgt_lidar</code> uses that bounding box as the download region — no manual coordinate lookup needed.</p>
-<div id="dce38143" class="cell" data-execution_count="9">
+<div id="bfb62631" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">geocoder</span>(<span class="st">"Palacio da Pena, Sintra, Portugal"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Attribute table
-┌────────────┬────────┬─────────────────┬───────────────────────┬────────────┬─────────────────┬────────┬──────────────┬───────────┬──────────────┬────────────────┬───────────┬──────────┬─────────────────┬──────────────┬──────────┬────────────┬─────────┬─────────────────────┬───────────────────────┬──────────┬───────────────────────────────────────────────────────────────────────────┬───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┬─────────────────────────────────────────────┬────────────┐
-│        lat │ county │         tourism │                suburb │        lon │            road │   town │ address_rank │  place_id │ municipality │ ISO3166-2-lvl6 │    osm_id │  country │             ref │ country_code │ postcode │ place_rank │   class │          importance │         neighbourhood │ osm_type │                                                                      city │                                                                                                                                                                                          display_name │                                 boundingbox │       type │
-├────────────┼────────┼─────────────────┼───────────────────────┼────────────┼─────────────────┼────────┼──────────────┼───────────┼──────────────┼────────────────┼───────────┼──────────┼─────────────────┼──────────────┼──────────┼────────────┼─────────┼─────────────────────┼───────────────────────┼──────────┼───────────────────────────────────────────────────────────────────────────┼───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┼─────────────────────────────────────────────┼────────────┤
-│ 38.7875681 │ Lisboa │ Palácio da Pena │ Sintra - São Martinho │ -9.3905649 │ Estrada da Pena │ Sintra │           30 │ 416485061 │       Sintra │          PT-11 │ 612095421 │ Portugal │ Palácio da Pena │           pt │ 2710-609 │         30 │ tourism │ 0.43096957211662124 │ Quinta do Castanheiro │      way │ Sintra (Santa Maria e São Miguel, São Martinho e São Pedro de Penaferrim) │ Palácio da Pena, Estrada da Pena, Quinta do Castanheiro, Sintra - São Martinho, Sintra, Sintra (Santa Maria e São Miguel, São Martinho e São Pedro de Penaferrim), Sintra, Lisboa, 2710-609, Portugal │ 38.7870556,38.7880793,-9.3908907,-9.3900990 │ attraction │
-└────────────┴────────┴─────────────────┴───────────────────────┴────────────┴─────────────────┴────────┴──────────────┴───────────┴──────────────┴────────────────┴───────────┴──────────┴─────────────────┴──────────────┴──────────┴────────────┴─────────┴─────────────────────┴───────────────────────┴──────────┴───────────────────────────────────────────────────────────────────────────┴───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┴─────────────────────────────────────────────┴────────────┘
+┌────────────┬────────┬───────────────────────┬────────────┬─────────────────┬────────┬──────────────┬───────────┬──────────────┬────────────────┬───────────┬──────────┬─────────────────┬──────────────┬──────────┬────────────┬──────────┬─────────────────────┬───────────────────────┬─────────────────┬──────────┬───────────────────────────────────────────────────────────────────────────┬───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┬─────────────────────────────────────────────┬────────┐
+│        lat │ county │                suburb │        lon │            road │   town │ address_rank │  place_id │ municipality │ ISO3166-2-lvl6 │    osm_id │  country │             ref │ country_code │ postcode │ place_rank │    class │          importance │         neighbourhood │        historic │ osm_type │                                                                      city │                                                                                                                                                                                          display_name │                                 boundingbox │   type │
+├────────────┼────────┼───────────────────────┼────────────┼─────────────────┼────────┼──────────────┼───────────┼──────────────┼────────────────┼───────────┼──────────┼─────────────────┼──────────────┼──────────┼────────────┼──────────┼─────────────────────┼───────────────────────┼─────────────────┼──────────┼───────────────────────────────────────────────────────────────────────────┼───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┼─────────────────────────────────────────────┼────────┤
+│ 38.7875681 │ Lisboa │ Sintra - São Martinho │ -9.3905649 │ Estrada da Pena │ Sintra │           30 │ 296829008 │       Sintra │          PT-11 │ 612095421 │ Portugal │ Palácio da Pena │           pt │ 2710-609 │         30 │ historic │ 0.43096957211662124 │ Quinta do Castanheiro │ Palácio da Pena │      way │ Sintra (Santa Maria e São Miguel, São Martinho e São Pedro de Penaferrim) │ Palácio da Pena, Estrada da Pena, Quinta do Castanheiro, Sintra - São Martinho, Sintra, Sintra (Santa Maria e São Miguel, São Martinho e São Pedro de Penaferrim), Sintra, Lisboa, 2710-609, Portugal │ 38.7870556,38.7880793,-9.3908907,-9.3900990 │ castle │
+└────────────┴────────┴───────────────────────┴────────────┴─────────────────┴────────┴──────────────┴───────────┴──────────────┴────────────────┴───────────┴──────────┴─────────────────┴──────────────┴──────────┴────────────┴──────────┴─────────────────────┴───────────────────────┴─────────────────┴──────────┴───────────────────────────────────────────────────────────────────────────┴───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┴─────────────────────────────────────────────┴────────┘
 BoundingBox: </code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="3">
@@ -664,11 +664,11 @@ PROJ: +proj=longlat +datum=WGS84 +units=m +no_defs
    1 │ -9.39056  38.7876</code></pre>
 </div>
 </div>
-<div id="d51e04e3" class="cell" data-execution_count="10">
+<div id="91a4f85d" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dgt_lidar</span>(D; output_dir<span class="op">=</span><span class="st">"_sintra"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>When the geocoder returns a <strong>point</strong> result, <code>ds_bbox</code> collapses to essentially zero size. In that case use <code>zoom</code> to snap to the tile grid at the chosen OpenStreetMap zoom level, giving a naturally-sized area around the point:</p>
-<div id="829a2247" class="cell" data-execution_count="11">
+<div id="ebeee800" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># zoom=14 gives roughly a 3×3 km tile-grid cell around the palace</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dgt_lidar</span>(D; output_dir<span class="op">=</span><span class="st">"_sintra"</span>, zoom<span class="op">=</span><span class="fl">14</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -677,19 +677,19 @@ PROJ: +proj=longlat +datum=WGS84 +units=m +no_defs
 <h2 class="anchored" data-anchor-id="from-an-existing-grid-or-image-gitype-dispatch">From an Existing Grid or Image — GItype Dispatch</h2>
 <p>If you already have a <code>GMTgrid</code> or <code>GMTimage</code> — a coarser DEM, a satellite scene, any georeferenced raster — pass it directly. <code>dgt_lidar</code> reads the geographic extent from the header and reprojects non-geographic projections to lon/lat automatically.</p>
 <p>Load a coarse SRTM grid of the Douro Valley wine region from the GMT remote server:</p>
-<div id="a103f06f" class="cell" data-execution_count="12">
+<div id="37f9b286" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>G_douro <span class="op">=</span> <span class="fu">grdcut</span>(<span class="st">"@earth_relief_15s"</span>, region<span class="op">=</span>(<span class="op">-</span><span class="fl">8.1</span>, <span class="op">-</span><span class="fl">7.0</span>, <span class="fl">41.0</span>, <span class="fl">41.4</span>));</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">viz</span>(G_douro, C<span class="op">=:</span>geo, shade<span class="op">=</span><span class="cn">true</span>, title<span class="op">=</span><span class="st">"Vale do Douro - SRTM 15"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="dgt_lidar_files/figure-html/cell-13-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="tut_dgt_lidar_files/figure-html/cell-13-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>Now download the 2 m bare-earth DEM covering <strong>exactly the same extent</strong> — no coordinates to copy:</p>
-<div id="14e427d2" class="cell" data-execution_count="13">
+<div id="c62d7804" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dgt_lidar</span>(G_douro; output_dir<span class="op">=</span><span class="st">"_douro"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>But mind you. The above command would download 4253 tiles. Not practical at 2 m resolution! Use <code>dry=true</code> to check the count before downloading.</p>
@@ -698,7 +698,7 @@ PROJ: +proj=longlat +datum=WGS84 +units=m +no_defs
 <section id="two-separate-vectors-lonlat-dispatch" class="level2">
 <h2 class="anchored" data-anchor-id="two-separate-vectors-lonlat-dispatch">Two Separate Vectors — lon/lat Dispatch</h2>
 <p>When the min/max longitude and latitude are already stored in separate variables — common when scripting or when calling from Python via <code>juliacall</code> — pass them as two two-element vectors:</p>
-<div id="623cb65d" class="cell" data-execution_count="14">
+<div id="a9c65bf2" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>lon <span class="op">=</span> [<span class="op">-</span><span class="fl">8.83</span>, <span class="op">-</span><span class="fl">8.72</span>]</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>lat <span class="op">=</span> [<span class="fl">38.47</span>, <span class="fl">38.53</span>]</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dgt_lidar</span>(lon, lat; output_dir<span class="op">=</span><span class="st">"_arrabida"</span>, collection<span class="op">=</span><span class="st">"MDS-50cm"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -711,7 +711,7 @@ PROJ: +proj=longlat +datum=WGS84 +units=m +no_defs
 <pre><code>MDS-2m-115197-07-2024.tiff       ← version 0 (original)
 MDS-2m-115197-07-2024_v01.tiff   ← version 1 (correction)  ✓ kept</code></pre>
 <p>To download every version — for archival purposes or to compare revisions — set <code>latest=false</code>:</p>
-<div id="230856de" class="cell" data-execution_count="15">
+<div id="be705b1b" class="cell" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dgt_lidar</span>([<span class="op">-</span><span class="fl">8.995</span>, <span class="op">-</span><span class="fl">8.968</span>, <span class="fl">38.473</span>, <span class="fl">38.486</span>]; output_dir<span class="op">=</span><span class="st">"_arrabida"</span>, latest<span class="op">=</span><span class="cn">false</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>The version count is reported at <code>verbose=2</code>:</p>
@@ -720,14 +720,14 @@ MDS-2m-115197-07-2024_v01.tiff   ← version 1 (correction)  ✓ kept</code></pr
 <section id="download-and-mosaic-in-one-step" class="level2">
 <h2 class="anchored" data-anchor-id="download-and-mosaic-in-one-step">Download and Mosaic in One Step</h2>
 <p>Set <code>mosaic</code> to an output path to download tiles and immediately assemble them into a single file. The format is determined by the extension (<code>.tiff</code>/<code>.tif</code> for compressed GeoTIFF, <code>.nc</code> for netCDF4). Use <code>"grid"</code> to skip disk I/O entirely and return a <code>GMTgrid</code> in memory.</p>
-<div id="9bdf516e" class="cell" data-execution_count="16">
+<div id="5d6bd889" class="cell" data-execution_count="16">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Algarve cliffs — download MDS-2m tiles and build a mosaic</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dgt_lidar</span>([<span class="op">-</span><span class="fl">8.5</span>, <span class="op">-</span><span class="fl">8.3</span>, <span class="fl">37.0</span>, <span class="fl">37.1</span>];</span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>          output_dir <span class="op">=</span> <span class="st">"_algarve"</span>,</span>
 <span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>          mosaic     <span class="op">=</span> <span class="st">"algarve_surface.tiff"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>To <strong>resample</strong> to a different resolution during assembly, add <code>inc</code> (in CRS units — metres for ETRS89):</p>
-<div id="ebfecbd0" class="cell" data-execution_count="17">
+<div id="d9133c3a" class="cell" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Same area, resampled to 5 m with bicubic spline — smaller file, smoother surface</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dgt_lidar</span>([<span class="op">-</span><span class="fl">8.5</span>, <span class="op">-</span><span class="fl">8.3</span>, <span class="fl">37.0</span>, <span class="fl">37.1</span>];</span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>          output_dir <span class="op">=</span> <span class="st">"_algarve"</span>,</span>
@@ -737,7 +737,7 @@ MDS-2m-115197-07-2024_v01.tiff   ← version 1 (correction)  ✓ kept</code></pr
 </div>
 <p>Available <code>method</code> values: <code>near</code>, <code>bilinear</code>, <code>cubic</code>, <code>cubicspline</code>, <code>lanczos</code>, <code>average</code>, <code>rms</code>, <code>mode</code>, <code>min</code>, <code>max</code>, <code>med</code>, <code>q1</code>, <code>q3</code>, <code>sum</code>. The default <code>cubicspline</code> gives the smoothest result for elevation data; <code>bilinear</code> is faster; <code>near</code> preserves sharp edges in canopy models.</p>
 <p>To get the mosaic back as a <code>GMTgrid</code> with no disk I/O and visualize it immediately, set <code>mosaic="grid"</code> and pass the result to <code>viz</code>:</p>
-<div id="6db2eac7" class="cell" data-execution_count="18">
+<div id="230dfac9" class="cell" data-execution_count="18">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">dgt_lidar</span>(<span class="op">-</span><span class="fl">7.607</span>, <span class="fl">40.322</span>; neighbors<span class="op">=</span><span class="fl">1</span>, output_dir<span class="op">=</span><span class="st">"_estrela"</span>, mosaic<span class="op">=</span><span class="st">"grid"</span>);</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">viz</span>(G, shade<span class="op">=</span><span class="cn">true</span>, view<span class="op">=</span>(<span class="fl">145</span>, <span class="fl">35</span>), title<span class="op">=</span><span class="st">"Serra da Estrela - MDS-2m"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -747,7 +747,7 @@ MDS-2m-115197-07-2024_v01.tiff   ← version 1 (correction)  ✓ kept</code></pr
 <section id="assembling-an-existing-tile-cache-dgt_mosaic" class="level2">
 <h2 class="anchored" data-anchor-id="assembling-an-existing-tile-cache-dgt_mosaic">Assembling an Existing Tile Cache — <code>dgt_mosaic</code></h2>
 <p>If tiles are already on disk, <code>dgt_mosaic</code> assembles them at any time — no re-download, no credentials required:</p>
-<div id="4e36ade0" class="cell" data-execution_count="19">
+<div id="cb550848" class="cell" data-execution_count="19">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dgt_mosaic</span>([<span class="op">-</span><span class="fl">8.995</span>, <span class="op">-</span><span class="fl">8.968</span>, <span class="fl">38.473</span>, <span class="fl">38.486</span>];</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>           src_dir <span class="op">=</span> <span class="st">"_arrabida"</span>,</span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>           outfile <span class="op">=</span> <span class="st">"arrabida_mds2m.tiff"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -756,7 +756,7 @@ MDS-2m-115197-07-2024_v01.tiff   ← version 1 (correction)  ✓ kept</code></pr
 <section id="root-tile-pool" class="level3">
 <h3 class="anchored" data-anchor-id="root-tile-pool">Root tile pool</h3>
 <p>When <code>src_dir</code> uses the <code>_</code> prefix, <code>dgt_mosaic</code> automatically also includes tiles from the root <code>~/.gmt/DGT/&lt;collection&gt;/</code> directory (the pool used when <code>src_dir=""</code> is omitted). This means a previous general download is transparently combined with a regional one:</p>
-<div id="90da7fcd" class="cell" data-execution_count="20">
+<div id="a88d3da7" class="cell" data-execution_count="20">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Previously downloaded some tiles to the default location (no prefix)</span></span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dgt_lidar</span>([<span class="op">-</span><span class="fl">9.0</span>, <span class="op">-</span><span class="fl">8.7</span>, <span class="fl">38.4</span>, <span class="fl">38.6</span>])                       <span class="co"># → ~/.gmt/DGT/MDS-2m/</span></span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -767,7 +767,7 @@ MDS-2m-115197-07-2024_v01.tiff   ← version 1 (correction)  ✓ kept</code></pr
 <span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a><span class="fu">dgt_mosaic</span>([<span class="op">-</span><span class="fl">8.995</span>, <span class="op">-</span><span class="fl">8.968</span>, <span class="fl">38.473</span>, <span class="fl">38.486</span>]; src_dir<span class="op">=</span><span class="st">"_arrabida"</span>, outfile<span class="op">=</span><span class="st">"combined.tiff"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Resampling during assembly is independent of what was downloaded:</p>
-<div id="6a666778" class="cell" data-execution_count="21">
+<div id="d36c9c50" class="cell" data-execution_count="21">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 50 cm tiles already on disk → assemble at 2 m (4× smaller file)</span></span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dgt_mosaic</span>([<span class="op">-</span><span class="fl">8.995</span>, <span class="op">-</span><span class="fl">8.968</span>, <span class="fl">38.473</span>, <span class="fl">38.486</span>];</span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>           src_dir    <span class="op">=</span> <span class="st">"_arrabida"</span>,</span>
@@ -780,21 +780,21 @@ MDS-2m-115197-07-2024_v01.tiff   ← version 1 (correction)  ✓ kept</code></pr
 <h3 class="anchored" data-anchor-id="reprojecting-the-mosaic">Reprojecting the Mosaic</h3>
 <p>By default the mosaic is written in the native DGT projection (ETRS89/PT-TM06, EPSG:3763). Use <code>proj</code> to reproject on-the-fly during assembly — no separate <code>gdalwarp</code> step needed.</p>
 <p><code>"geog"</code> is shorthand for geographic coordinates (EPSG:4326 / WGS84 lon/lat):</p>
-<div id="92754df7" class="cell" data-execution_count="22">
+<div id="4febaa60" class="cell" data-execution_count="22">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dgt_mosaic</span>([<span class="op">-</span><span class="fl">8.995</span>, <span class="op">-</span><span class="fl">8.968</span>, <span class="fl">38.473</span>, <span class="fl">38.486</span>];</span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>           src_dir <span class="op">=</span> <span class="st">"_arrabida"</span>,</span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>           outfile <span class="op">=</span> <span class="st">"arrabida_geog.tiff"</span>,</span>
 <span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>           proj    <span class="op">=</span> <span class="st">"geog"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>A bare integer string is interpreted as an EPSG code. UTM zone 29N (EPSG:32629) is the standard metric projection for mainland Portugal:</p>
-<div id="63b47812" class="cell" data-execution_count="23">
+<div id="af5c899b" class="cell" data-execution_count="23">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dgt_mosaic</span>([<span class="op">-</span><span class="fl">8.995</span>, <span class="op">-</span><span class="fl">8.968</span>, <span class="fl">38.473</span>, <span class="fl">38.486</span>];</span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>           src_dir <span class="op">=</span> <span class="st">"_arrabida"</span>,</span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>           outfile <span class="op">=</span> <span class="st">"arrabida_utm29n.tiff"</span>,</span>
 <span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>           proj    <span class="op">=</span> <span class="st">"32629"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Any GDAL-recognised CRS string works — <code>"EPSG:32629"</code>, <code>"+proj=utm +zone=29 +datum=WGS84"</code>, WKT, etc. <code>proj</code> and <code>inc</code> can be combined to reproject <strong>and</strong> resample in one pass:</p>
-<div id="6f5850fc" class="cell" data-execution_count="24">
+<div id="9ef09b8a" class="cell" data-execution_count="24">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Reproject to geographic and resample to 0.00002° (≈ 2 m at Portugal's latitude)</span></span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dgt_mosaic</span>([<span class="op">-</span><span class="fl">8.995</span>, <span class="op">-</span><span class="fl">8.968</span>, <span class="fl">38.473</span>, <span class="fl">38.486</span>];</span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>           src_dir <span class="op">=</span> <span class="st">"_arrabida"</span>,</span>
@@ -803,7 +803,7 @@ MDS-2m-115197-07-2024_v01.tiff   ← version 1 (correction)  ✓ kept</code></pr
 <span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>           inc     <span class="op">=</span> <span class="fl">0.00002</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>The same <code>proj</code> keyword is available on <code>dgt_lidar</code> via <code>mosaic</code>:</p>
-<div id="d1229738" class="cell" data-execution_count="25">
+<div id="51419427" class="cell" data-execution_count="25">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dgt_lidar</span>([<span class="op">-</span><span class="fl">8.995</span>, <span class="op">-</span><span class="fl">8.968</span>, <span class="fl">38.473</span>, <span class="fl">38.486</span>];</span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>          output_dir <span class="op">=</span> <span class="st">"_arrabida"</span>,</span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>          mosaic     <span class="op">=</span> <span class="st">"arrabida_utm.tiff"</span>,</span>
@@ -814,33 +814,45 @@ MDS-2m-115197-07-2024_v01.tiff   ← version 1 (correction)  ✓ kept</code></pr
 <section id="visualizing-the-result" class="level2">
 <h2 class="anchored" data-anchor-id="visualizing-the-result">Visualizing the Result</h2>
 <p>Plot with standard GMT.jl tools:</p>
-<div id="cf815c9c" class="cell" data-execution_count="26">
+<div id="ae841a38" class="cell" data-execution_count="26">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Note: Unfortunately, the "Rocha da Anicha" was not surveyed. </span></span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">viz</span>(<span class="st">"arrabida_mds2m.tiff"</span>, C<span class="op">=:</span>terra, shade<span class="op">=</span><span class="cn">true</span>, title<span class="op">=</span><span class="st">"Portinho da Arrábida"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><img src="../..\assets/portinho.png" class="center img-fluid" width="600"></p>
 <p>Point-cloud data (LAZ collection) can be loaded with GMT’s <code>lasread</code> function:</p>
-<div id="04afefe6" class="cell" data-execution_count="27">
+<div id="5114c2db" class="cell" data-execution_count="27">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dgt_lidar</span>([<span class="op">-</span><span class="fl">8.995</span>, <span class="op">-</span><span class="fl">8.968</span>, <span class="fl">38.473</span>, <span class="fl">38.486</span>]; collection<span class="op">=</span><span class="st">"LAZ"</span>, output_dir<span class="op">=</span><span class="st">"_arrabida_laz"</span>)</span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>pc <span class="op">=</span> <span class="fu">lasread</span>(<span class="fu">joinpath</span>(<span class="fu">homedir</span>(), <span class="st">".gmt/DGT/arrabida_laz/LAZ/LO-148174-06-2024.laz"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+<p>And we can make a little detour and drape a Bing aereal image fetch with mosaic on top of the DEM:</p>
+<div id="d28c4577" class="cell" data-execution_count="28">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the DEM as a grid in memory, reprojected to geographic coordinates</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fu">dgt_lidar</span>([<span class="op">-</span><span class="fl">8.995</span>, <span class="op">-</span><span class="fl">8.968</span>, <span class="fl">38.473</span>, <span class="fl">38.486</span>]; output_dir <span class="op">=</span> <span class="st">"_arrabida"</span>, mosaic<span class="op">=</span><span class="st">"grid"</span>, proj<span class="op">=</span><span class="st">"geog"</span>);</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Use its limits to fetch a Bing image of the same area. We use a zoom=16 to get a approximate  resolution to G</span></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>I <span class="op">=</span> <span class="fu">mosaic</span>(G, zoom<span class="op">=</span><span class="fl">16</span>);</span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize the draped result</span></span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a><span class="fu">viz</span>(G, drape<span class="op">=</span>I, view<span class="op">=</span>(<span class="fl">155</span>,<span class="fl">35</span>), zsize<span class="op">=</span><span class="fl">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><img src="../..\assets/portinho_draped.png" class="center img-fluid" width="700"></p>
 </section>
 <section id="large-areas-automatic-subdivision" class="level2">
 <h2 class="anchored" data-anchor-id="large-areas-automatic-subdivision">Large Areas — Automatic Subdivision</h2>
 <p><code>dgt_lidar</code> automatically splits large bounding boxes into ~200 km² sub-queries to stay within the DGT STAC API request limits. For a query covering all of the <strong>Alentejo</strong> region (~33 000 km²) the function transparently fans out into dozens of sub-queries, deduplicates the URL list, and downloads:</p>
-<div id="33070193" class="cell" data-execution_count="28">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dgt_lidar</span>([<span class="op">-</span><span class="fl">8.8</span>, <span class="op">-</span><span class="fl">6.8</span>, <span class="fl">37.3</span>, <span class="fl">39.4</span>];</span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>          output_dir <span class="op">=</span> <span class="st">"_alentejo"</span>,</span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>          collection <span class="op">=</span> <span class="st">"MDT-2m"</span>,</span>
-<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>          verbose    <span class="op">=</span> <span class="fl">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="66821391" class="cell" data-execution_count="29">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dgt_lidar</span>([<span class="op">-</span><span class="fl">8.8</span>, <span class="op">-</span><span class="fl">6.8</span>, <span class="fl">37.3</span>, <span class="fl">39.4</span>];</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>          output_dir <span class="op">=</span> <span class="st">"_alentejo"</span>,</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>          collection <span class="op">=</span> <span class="st">"MDT-2m"</span>,</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>          verbose    <span class="op">=</span> <span class="fl">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <pre><code>Bbox divided into 221 sub-queries
   Found 216 items
 ...
 Done: 216 downloaded, 0 skipped.</code></pre>
 <p>The <code>delay</code> keyword (default 1 s) controls the pause between requests. Increase it if you see rate-limit errors from the server:</p>
-<div id="f2217563" class="cell" data-execution_count="29">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dgt_lidar</span>([<span class="op">-</span><span class="fl">8.8</span>, <span class="op">-</span><span class="fl">6.8</span>, <span class="fl">37.3</span>, <span class="fl">39.4</span>]; delay<span class="op">=</span><span class="fl">2.0</span>, output_dir<span class="op">=</span><span class="st">"_alentejo"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="418ac967" class="cell" data-execution_count="30">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dgt_lidar</span>([<span class="op">-</span><span class="fl">8.8</span>, <span class="op">-</span><span class="fl">6.8</span>, <span class="fl">37.3</span>, <span class="fl">39.4</span>]; delay<span class="op">=</span><span class="fl">2.0</span>, output_dir<span class="op">=</span><span class="st">"_alentejo"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="session-re-authentication" class="level2">
