@@ -5,8 +5,8 @@ provides free high-resolution LIDAR-derived elevation data covering the entire P
 through its [Collaborative Data Distribution (CDD)](https://cdd.dgterritorio.gov.pt/) portal.
 GMT.jl provides two functions for working with this dataset:
 
-- **`dgt_lidar`** — authenticates against the DGT portal and downloads all tiles intersecting a bounding box.
-- **`dgt_mosaic`** — assembles downloaded tiles into a single, clipped GeoTIFF.
+- {{< gmtref dgt_lidar >}} — authenticates against the DGT portal and downloads all tiles intersecting a bounding box.
+- {{< gmtref dgt_mosaic >}} — assembles downloaded tiles into a single, clipped GeoTIFF.
 
 Five collections are available:
 
@@ -53,7 +53,7 @@ You can also create or edit the file directly with any text editor.
 
 ### Load the extension
 
-`dgt_lidar` lives in the `GMTDGTLidarExt` package extension, activated automatically when `HTTP` is loaded:
+{{< gmtref dgt_lidar >}} lives in the `GMTDGTLidarExt` package extension, activated automatically when `HTTP` is loaded:
 
 ```{julia}
 using GMT, HTTP
@@ -407,6 +407,22 @@ Point-cloud data (LAZ collection) can be loaded with GMT's `lasread` function:
 dgt_lidar([-8.995, -8.968, 38.473, 38.486]; collection="LAZ", output_dir="_arrabida_laz")
 pc = lasread(joinpath(homedir(), ".gmt/DGT/arrabida_laz/LAZ/LO-148174-06-2024.laz"))
 ```
+
+And we can make a little detour and drape a Bing aereal image fetch with mosaic on top of the DEM:
+
+```{julia}
+#| eval: false
+# Get the DEM as a grid in memory, reprojected to geographic coordinates
+G = dgt_lidar([-8.995, -8.968, 38.473, 38.486]; output_dir = "_arrabida", mosaic="grid", proj="geog");
+
+# Use its limits to fetch a Bing image of the same area. We use a zoom=16 to get a approximate  resolution to G
+I = mosaic(G, zoom=16);
+
+# Visualize the draped result
+viz(G, drape=I, view=(155,35), zsize=3)
+```
+
+![](/assets/portinho_draped.png){width="700" .center}
 
 
 ## Large Areas — Automatic Subdivision

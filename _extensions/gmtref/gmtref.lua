@@ -24,7 +24,7 @@ return {
     local utilities = {
       "ablines", "anaglyph", "append2fig", "autocov", "autocor", "blendimg", "cart2pol", "cart2sph",
       "coastlinesproj", "colorzones", "cpt4dcw", "crop", "cube", "cubeplot", "cylinder",
-      "date2doy", "delrows", "df2ds", "dodecahedron", "doy2date", "ecmwf", "ellipse3D",
+      "date2doy", "delrows", "df2ds", "dgt_lidar", "dgt_mosaic", "dodecahedron", "doy2date", "ecmwf", "ellipse3D",
       "era5time", "era5vars", "extrude", "findpeaks", "flatfv", "fv2fv",
       "gadm", "geocoder", "geodetic2enu", "getbyattrib", "gmtread", "gmtwrite", "graticules",
       "grid2tri", "gridit", "gunique", "hampel", "hlines", "icosahedron",

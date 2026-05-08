@@ -25,7 +25,7 @@ gravity gradient anomalies, or geoid anomalies. Options are available to control
 axes units and direction.
 
 ~~~
-<img src="/assets/GMT_seamount_prisms.png" alt="Simple" width="500" class="center"/>
+<img src="/assets/GMT_seamount_prisms.png" alt="Simple" width="600" class="center"/>
 ~~~
 
    Three density models modeled by prisms for a truncated Gaussian seamount via **C**: (left) Constant
