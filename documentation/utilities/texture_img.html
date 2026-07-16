@@ -70,35 +70,6 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="../../custom.css">
 </head>
@@ -477,10 +448,10 @@ window.Quarto = {
 <pre><code>texture_img(G::GMTgrid; detail=1.0, contrast=2.0, intensity=false)</code></pre>
 <p>Compute the Texture Shading calling functions from the software from Leland Brown at http://www.textureshading.com/Home.html</p>
 <ul>
-<li><code>G</code>: The <span class="math inline">\(GMTgrid\)</span> from which to compute the Leland texture illumination image.</li>
+<li><code>G</code>: The <a href="../..\documentation/general/types.html#sec-grid-type">GMTgrid</a> from which to compute the Leland texture illumination image.</li>
 <li><code>detail</code> is the amount of texture detail. Lower values of detail retain more elevation information, giving more sense of the overall, large structures and elevation trends in the terrain, at the expense of fine texture detail. Higher detail enhances the texture but gives an overall “flatter” general appearance, with elevation changes and large structure less apparent.</li>
 <li><code>contrast</code> is a parameter called “vertical enhancement.” Higher numbers increase contrast in the midtones, but may lose detail in the lightest and darkest features. Lower numbers highlight only the sharpest ridges and deepest canyons but reduce contrast overall.</li>
-<li><code>intensity | uint16</code> controls if output is a UInt16 or a UInt8 image (the default). Note that the original code writes only UInt16 images but if we want to combine this with the hillshade computed with <span class="math inline">\(gdaldem\)</span>, a UInt8 image is more handy.</li>
+<li><code>intensity | uint16</code> controls if output is a UInt16 or a UInt8 image (the default). Note that the original code writes only UInt16 images but if we want to combine this with the hillshade computed with <a href="../..\documentation/modules/gdaldem.html">gdaldem</a>, a UInt8 image is more handy.</li>
 </ul>
 <section id="returns" class="level3">
 <h3 class="anchored" data-anchor-id="returns">Returns</h3>
@@ -492,10 +463,7 @@ window.Quarto = {
 </section>
 <section id="see-also" class="level2">
 <h2 class="anchored" data-anchor-id="see-also">See Also</h2>
-<ul>
-<li><a href="../alphabetical.html">Alphabetical Function List</a></li>
-<li><a href="https://www.generic-mapping-tools.org/GMTjl_doc/">GMT.jl Documentation</a></li>
-</ul>
+<p><a href="../..\documentation/modules/gdaldem.html">gdaldem</a>, <a href="../..\documentation/utilities/lelandshade.html">lelandshade</a></p>
 
 
 </section>

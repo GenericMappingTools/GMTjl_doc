@@ -2097,7 +2097,7 @@
     "href": "documentation/utilities/texture_img.html#see-also",
     "title": "texture_img",
     "section": "See Also",
-    "text": "See Also\n\nAlphabetical Function List\nGMT.jl Documentation"
+    "text": "See Also\ngdaldem, lelandshade"
   },
   {
     "objectID": "documentation/utilities/tern2cart.html",
@@ -3567,14 +3567,7 @@
     "href": "documentation/utilities/lelandshade.html#examples",
     "title": "lelandshade",
     "section": "Examples",
-    "text": "Examples\nTo make a texture shaded from a SRTM1 arc sec grid that will be downloaded from the GMT server and uses the defaults indicated above, do (it may take a little while):\n\nusing GMT\nlelandshade(gmtread(\"@earth_relief_01s\", region=(-114,-113,35,36)), color=true, colorbar=true, show=true)"
-  },
-  {
-    "objectID": "documentation/utilities/lelandshade.html#see-also",
-    "href": "documentation/utilities/lelandshade.html#see-also",
-    "title": "lelandshade",
-    "section": "See Also",
-    "text": "See Also\n[gdaldem], makecpt, grd2cpt,"
+    "text": "Examples\nTo make a texture shaded from a SRTM1 arc sec grid that will be downloaded from the GMT server and uses the defaults indicated above, do (it may take a little while):\n\nusing GMT\nlelandshade(gmtread(\"@earth_relief_01s\", region=(-114,-113,35,36)), color=true, colorbar=true, show=true)\n\n\nPrecompiling\n packages...\n\n\n  50412.7 ms  ✓ GMT\n\n  1 dependency successfully precompiled in 53 seconds. 80 already precompiled."
   },
   {
     "objectID": "documentation/utilities/lelandshade.html#source-code",
@@ -3582,6 +3575,13 @@
     "title": "lelandshade",
     "section": "Source Code",
     "text": "Source Code\nThis function has multiple methods:\n\nlelandshade(G::String; detail, contrast, uint16, intensity, zfactor, transparency, color, equalize, opts, cmap, colorbar, show, kw...) - blendimg.jl:325\nlelandshade(G::GMTgrid; detail, contrast, uint16, intensity, zfactor, transparency, color, equalize, opts, cmap, colorbar, show, kw...) - blendimg.jl:330"
+  },
+  {
+    "objectID": "documentation/utilities/lelandshade.html#see-also",
+    "href": "documentation/utilities/lelandshade.html#see-also",
+    "title": "lelandshade",
+    "section": "See Also",
+    "text": "See Also\ngdaldem, grd2cpt, makecpt, texture_img"
   },
   {
     "objectID": "documentation/utilities/lazwrite.html",
@@ -8257,7 +8257,7 @@
     "href": "documentation/general/install_julia_win.html",
     "title": "Installing Julia on Windows",
     "section": "",
-    "text": "WarningWindows only\n\n\n\nThe instructions below apply only to Windows. On Linux and macOS, install Julia using Juliaup by running:\ncurl -fsSL https://install.julialang.org | sh\nThis will install the latest stable version of Julia, as well as the juliaup tool. Start Julia from the command-line by typing julia. See juliaup --help for how to configure installed versions.\n\n\n\n\nThe officially recommended method for installing Julia is through Juliaup. However, in practice we advise against it for several reasons:\n\nWasted disk space: Juliaup installs Julia inside %LOCALAPPDATA%\\juliaup, a hidden directory that consumes roughly 700 MB more than a plain installer-based setup.\nSerious bugs: At the time of this writting, Juliaup can breaks the functioning of GMT.jl Ghostscript does not work properly, and file permissions error to write on TMP occurs in some cases.\nUnnecessary complexity: Most users only need a single Julia version properly installed and accessible from the PATH.\nUpon uninstallation: Multi GiggaBytes of disk space are left behind under the unnoticed ...\\.julia\\juliaup directory, which is not removed by the uninstaller.\n\nThe recommended approach is to download the official installer directly.\n\n\n\n\nGo to the manual downloads page: https://julialang.org/downloads/manual-downloads/\nUnder the Windows section, download the installer (.exe) for your architecture (in the vast majority of cases, 64-bit). You currently likely want the latest stable release, which is 1.12 at the time of this writting.\n\n\n\n\nDouble-click the downloaded .exe file. The installer will guide you through a few simple steps.\n\n\n\n\n\n\n\n\nImportantUse a non-hidden directory\n\n\n\nIt is recommended to install Julia in a directory that is not hidden and is easy to access. Do not use the default %LOCALAPPDATA% path (which is a hidden Windows directory). Instead, choose a simple path such as C:\\programs\\Julia-1.12 (when installing the 1.12 version, of course).\n\n\nOn the Select Installation Directory screen, change the path to a visible directory, for example C:\\programs\\Julia-1.12:\n\n\n\nChoosing the installation directory\n\n\n\n\n\n\n\n\n\n\n\nImportantEnable “Add Julia to PATH”\n\n\n\nMake sure the “Add Julia to PATH” checkbox is checked. This allows you to run julia from any terminal without having to type the full path to the executable.\n\n\n\n\n\nEnabling the “Add Julia to PATH” option\n\n\n\n\n\n\nAfter the installation completes, click on the Julia icon shortcut you have now on your screen and run:\njulia --version\nYou should see something like:\njulia version 1.12.5"
+    "text": "WarningWindows only\n\n\n\nThe instructions below apply only to Windows. On Linux and macOS, install Julia using Juliaup by running:\ncurl -fsSL https://install.julialang.org | sh\nThis will install the latest stable version of Julia, as well as the juliaup tool. Start Julia from the command-line by typing julia. See juliaup --help for how to configure installed versions.\n\n\n\n\nThe officially recommended method for installing Julia is through Juliaup. However, in practice we advise against it for several reasons:\n\nWasted disk space: Juliaup installs Julia inside %LOCALAPPDATA%\\juliaup, a hidden directory that consumes roughly 700 MB more than a plain installer-based setup.\nSerious bugs: At the time of this writting, Juliaup can breaks the functioning of GMT.jl Ghostscript does not work properly, and file permissions error to write on TMP occurs in some cases.\nUnnecessary complexity: Most users only need a single Julia version properly installed and accessible from the PATH.\nUpon uninstallation: Multi GiggaBytes of disk space are left behind under the unnoticed ...\\.julia\\juliaup directory, which is not removed by the uninstaller.\n\nThe recommended approach is to download the official installer directly.\n\n\n\n\nGo to the manual downloads page: https://julialang.org/downloads/manual-downloads/\nUnder the Windows section, download the installer (.exe) for your architecture (in the vast majority of cases, 64-bit). You currently likely want the Long-term Support release, which is 1.10 at the time of this writting (not the latests, but it is smaller and faster).\n\n\n\n\nDouble-click the downloaded .exe file. The installer will guide you through a few simple steps.\n\n\n\n\n\n\n\n\nImportantUse a non-hidden directory\n\n\n\nIt is recommended to install Julia in a directory that is not hidden and is easy to access. Do not use the default %LOCALAPPDATA% path (which is a hidden Windows directory). Instead, choose a simple path such as C:\\programs\\Julia-1.10 (when installing the 1.10 version, of course).\n\n\nOn the Select Installation Directory screen, change the path to a visible directory, for example C:\\programs\\Julia-1.10:\n\n\n\nChoosing the installation directory\n\n\n\n\n\n\n\n\n\n\n\nImportantEnable “Add Julia to PATH”\n\n\n\nMake sure the “Add Julia to PATH” checkbox is checked. This allows you to run julia from any terminal without having to type the full path to the executable.\n\n\n\n\n\nEnabling the “Add Julia to PATH” option\n\n\n\n\n\n\nAfter the installation completes, click on the Julia icon shortcut you have now on your screen and run:\njulia --version\nYou should see something like:\njulia version 1.10.11"
   },
   {
     "objectID": "documentation/general/install_julia_win.html#windows-why-not-use-juliaup",
@@ -8271,21 +8271,21 @@
     "href": "documentation/general/install_julia_win.html#download-the-installer",
     "title": "Installing Julia on Windows",
     "section": "",
-    "text": "Go to the manual downloads page: https://julialang.org/downloads/manual-downloads/\nUnder the Windows section, download the installer (.exe) for your architecture (in the vast majority of cases, 64-bit). You currently likely want the latest stable release, which is 1.12 at the time of this writting."
+    "text": "Go to the manual downloads page: https://julialang.org/downloads/manual-downloads/\nUnder the Windows section, download the installer (.exe) for your architecture (in the vast majority of cases, 64-bit). You currently likely want the Long-term Support release, which is 1.10 at the time of this writting (not the latests, but it is smaller and faster)."
   },
   {
     "objectID": "documentation/general/install_julia_win.html#run-the-installer",
     "href": "documentation/general/install_julia_win.html#run-the-installer",
     "title": "Installing Julia on Windows",
     "section": "",
-    "text": "Double-click the downloaded .exe file. The installer will guide you through a few simple steps.\n\n\n\n\n\n\n\n\nImportantUse a non-hidden directory\n\n\n\nIt is recommended to install Julia in a directory that is not hidden and is easy to access. Do not use the default %LOCALAPPDATA% path (which is a hidden Windows directory). Instead, choose a simple path such as C:\\programs\\Julia-1.12 (when installing the 1.12 version, of course).\n\n\nOn the Select Installation Directory screen, change the path to a visible directory, for example C:\\programs\\Julia-1.12:\n\n\n\nChoosing the installation directory\n\n\n\n\n\n\n\n\n\n\n\nImportantEnable “Add Julia to PATH”\n\n\n\nMake sure the “Add Julia to PATH” checkbox is checked. This allows you to run julia from any terminal without having to type the full path to the executable.\n\n\n\n\n\nEnabling the “Add Julia to PATH” option"
+    "text": "Double-click the downloaded .exe file. The installer will guide you through a few simple steps.\n\n\n\n\n\n\n\n\nImportantUse a non-hidden directory\n\n\n\nIt is recommended to install Julia in a directory that is not hidden and is easy to access. Do not use the default %LOCALAPPDATA% path (which is a hidden Windows directory). Instead, choose a simple path such as C:\\programs\\Julia-1.10 (when installing the 1.10 version, of course).\n\n\nOn the Select Installation Directory screen, change the path to a visible directory, for example C:\\programs\\Julia-1.10:\n\n\n\nChoosing the installation directory\n\n\n\n\n\n\n\n\n\n\n\nImportantEnable “Add Julia to PATH”\n\n\n\nMake sure the “Add Julia to PATH” checkbox is checked. This allows you to run julia from any terminal without having to type the full path to the executable.\n\n\n\n\n\nEnabling the “Add Julia to PATH” option"
   },
   {
     "objectID": "documentation/general/install_julia_win.html#verify-the-installation",
     "href": "documentation/general/install_julia_win.html#verify-the-installation",
     "title": "Installing Julia on Windows",
     "section": "",
-    "text": "After the installation completes, click on the Julia icon shortcut you have now on your screen and run:\njulia --version\nYou should see something like:\njulia version 1.12.5"
+    "text": "After the installation completes, click on the Julia icon shortcut you have now on your screen and run:\njulia --version\nYou should see something like:\njulia version 1.10.11"
   },
   {
     "objectID": "documentation.html",
