@@ -57,6 +57,17 @@ Get image tiles from a web map tiles provider for given longitude, latitude coor
   - "Bing" (the default), "OSM", "Esri" or a custom provider.
   - A `Provider` type from the [TileProviders.jl](https://github.com/JuliaGeo/TileProviders.jl) package.
     You must consult the documentation of that package for more details on how to choose a *provider*.
+  - `"ortosat23"` / `"Ortosat23"`: Portuguese DGT orthophotos (2023) fetched via the DGT WMS service.
+    Variants `"CorVerdadeira"` (default) and `"FalsaCor"`. Image always returned in WGS84 geographic
+    coordinates; the spelling controls the output pipeline:
+      - `"ortosat23"` (lowercase): single-warp **approximate** path. Cheap. Output size is close to
+        but not identical to the same-zoom Bing/Google result (source EPSG:3763 vs Bing's EPSG:3857
+        produce different aspect after warping to geog).
+      - `"Ortosat23"` (capital `O`): double-warp **exact** path. Two `gdalwarp` calls
+        (EPSG:3763 -> EPSG:3857 -> latlong) replicate the Bing pipeline so the output bbox and pixel
+        count match Bing exactly at the same `zoom` / `neighbors`. Costs two warps over the full image.
+    For native EPSG:3763 metric coordinates or finer control over pixel resolution / `zoom` / `refine`,
+    call `wmsread` directly (see `? wmsread`).
 
 - `zoom`: Zoom level (0 for automatic). A number between 0 and ~19. The maximum is provider and area dependent.
   If `zoom=0`, the zoom level is computed automatically based on the `mapwidth` and `dpi` options.
