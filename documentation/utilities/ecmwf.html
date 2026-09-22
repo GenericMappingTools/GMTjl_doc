@@ -497,7 +497,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p><code>key</code>: The API key for the CDSAPI server. Default is the value in the <code>.cdsapirc</code> file in the home directory. but if that file does not exist, the user can provide the <code>key</code> and <code>url</code> as arguments. Instructions on how to create the <code>.cdsapirc</code> file for your user account can be found at <a href="https://cds.climate.copernicus.eu/how-to-api">CDS</a></p></li>
 <li><p><code>url</code>: The URL of the CDS API server. Default is https://cds.climate.copernicus.eu/api</p></li>
 <li><p><code>levlist</code>: List of pressure levels to retrieve. It can be a string to select a unique level, or a vector of strings or Ints to select multiple levels. But it can also be a range of levels, e.g.&nbsp;“1000:-100:500”. This option is only used when the <code>params</code> argument is provided as a string vector.</p></li>
-<li><p><code>region</code>: Specify a region of a specific geographic area. It can be provided as a string with form “N/W/S/E” or a 4-element vector or tuple with numeric data. This option is only used when the <code>params</code> argument is provided as a string vector.</p></li>
+<li><p><code>region</code>: Specify a region of a specific geographic area. Same syntax as everywhere else in GMT.jl, that is a string with form “W/E/S/N” or a 4-element vector or tuple with numeric data (it is converted internally into the CDSAPI’s own [North, West, South, East] order). This option is only used when the <code>params</code> argument is provided as a string vector.</p></li>
 <li><p><code>format</code>: The format of the data to download. Default is “netcdf”. Other options is “grib”.</p></li>
 <li><p><code>dryrun</code>: A boolean indicating whether to print the <code>params</code> from the outputs of the <code>era5vars()</code> and <code>era5time()</code> functions. I this case, we just print the <code>params</code> and return without trying to download any file.</p></li>
 <li><p><code>verbose</code>: A boolean indicating whether to print the attemps to connect to the CDS server. Default is true.</p></li>
@@ -603,8 +603,8 @@ Specify the region of interest. More at <a href="../../documentation/common_opts
 <h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
 <p>This function has multiple methods:</p>
 <ul>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/extras/weather.jl#L187"><code>ecmwf(source::Symbol; filename, cb, dataset, params, key, url, wait, levlist, region, format, dryrun, verbose, kw...)</code></a> - weather.jl:187</li>
-<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/extras/weather.jl#L187"><code>ecmwf(; ...)</code></a> - weather.jl:187</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/extras/weather.jl#L192"><code>ecmwf(source::Symbol; filename, cb, dataset, params, key, url, wait, levlist, region, format, dryrun, verbose, kw...)</code></a> - weather.jl:192</li>
+<li><a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/extras/weather.jl#L192"><code>ecmwf(; ...)</code></a> - weather.jl:192</li>
 </ul>
 
 

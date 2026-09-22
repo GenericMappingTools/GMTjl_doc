@@ -481,7 +481,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gadm</span>(country, subregions<span class="op">...</span>; children<span class="op">=</span><span class="cn">false</span>, names<span class="op">=</span><span class="cn">false</span>, children_raw<span class="op">=</span><span class="cn">false</span>, reportlevels<span class="op">=</span><span class="cn">false</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gadm</span>(country, subregions<span class="op">...</span>; children<span class="op">=</span><span class="cn">false</span>, names<span class="op">=</span><span class="cn">false</span>, children_raw<span class="op">=</span><span class="cn">false</span>, alllevels<span class="op">=</span><span class="cn">false</span>, reportlevels<span class="op">=</span><span class="cn">false</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Returns a <a href="../..\documentation/general/types.html#sec-dataset-type">GMTdataset</a> for the requested country, or country subregion(s)</p>
 <ul>
 <li><p><code>country</code>: ISO 3166 Alpha 3 country code.</p></li>
@@ -489,6 +489,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p><code>children</code>: When true, function returns all subregions of parent.</p></li>
 <li><p><code>children_raw</code>: When true, function returns two variables -&gt; parent, children, where children is a GDAL object E.g. when children is set to true and when querying just the country, second return parameter are the states/provinces. If <code>children</code> we return a Vector of <a href="../..\documentation/general/types.html#sec-dataset-type">GMTdataset</a> with the polygons. If <code>children_raw</code> the second output is a GDAL object much like in <a href="https://github.com/JuliaGeo/GADM.jl">GADM</a> (less the Tables.jl)</p></li>
 <li><p><code>names</code>: Return a string vector with all <code>children</code> names.</p></li>
+<li><p><code>alllevels</code>: When true, return the requested unit AND every administrative level below it: its children, their children, and so on down to the deepest level that country has. The whole thing comes out of a single read of the country file, which is what makes it usable: asking level by level with <code>children</code> re-opens and re-scans that file once per unit, so a country with parishes (Portugal: 18 districts and 308 municipalities) costs hundreds of full reads instead of one. Each returned polygon carries its own GADM record in <code>attrib</code>, so which unit it is (<code>NAME_1</code>, <code>NAME_2</code>, …) is read off the result itself.</p></li>
 <li><p><code>reportlevels</code>: just report the number of administrative levels (including the country) and exit.</p></li>
 </ul>
 <section id="credits" class="level2">
@@ -507,11 +508,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>uttar <span class="op">=</span> <span class="fu">gadm</span>(<span class="st">"IND"</span>, <span class="st">"Uttar Pradesh"</span>, children<span class="op">=</span><span class="cn">true</span>)</span>
 <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Names of all states of India</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="fu">gadm</span>(<span class="st">"IND"</span>, names<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="fu">gadm</span>(<span class="st">"IND"</span>, names<span class="op">=</span><span class="cn">true</span>)</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Every level below Uttar Pradesh: the state, its districts, and each district's own subdivisions</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>uttar <span class="op">=</span> <span class="fu">gadm</span>(<span class="st">"IND"</span>, <span class="st">"Uttar Pradesh"</span>, alllevels<span class="op">=</span><span class="cn">true</span>)</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="co"># The same for a whole country (Portugal: districts, municipalities and parishes, in one read)</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>pt <span class="op">=</span> <span class="fu">gadm</span>(<span class="st">"PRT"</span>, alllevels<span class="op">=</span><span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="source-code" class="level2">
 <h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
-<p>View the <a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/gadm.jl#L39">source code</a> for this function.</p>
+<p>View the <a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/gadm.jl#L43">source code</a> for this function.</p>
 
 
 </section>
