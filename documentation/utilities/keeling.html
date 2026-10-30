@@ -455,7 +455,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#arguments" id="toc-arguments" class="nav-link active" data-scroll-target="#arguments">Arguments</a></li>
   <li><a href="#returns" id="toc-returns" class="nav-link" data-scroll-target="#returns">Returns</a></li>
-  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source Code</a></li>
   <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
   </ul>
 </nav>
@@ -495,24 +494,171 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="returns" class="level2">
 <h2 class="anchored" data-anchor-id="returns">Returns</h2>
 <p>A <a href="../..\documentation/general/types.html#sec-dataset-type">GMTdataset</a> of CO2 data if <code>data=true</code>, or <code>nothing</code> if a plot is made. Example</p>
-<div id="f54e4abf" class="cell" data-execution_count="1">
+<div id="13350eae" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">keeling</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="keeling_files/figure-html/cell-2-output-1.png" class="img-fluid figure-img"></p>
-</figure>
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre>UndefVarError: `keeling` not defined
+
+Stacktrace:
+ [1] top-level scope
+<span class="ansi-bright-black-fg">   @</span> <span style="text-decoration:underline" class="ansi-bright-black-fg">In[2]:1</span></pre>
 </div>
 </div>
 </div>
-</section>
-<section id="source-code" class="level2">
-<h2 class="anchored" data-anchor-id="source-code">Source Code</h2>
-<p>View the <a href="https://github.com/GenericMappingTools/GMT.jl/blob/master/src/analemma.jl#L183">source code</a> for this function.</p>
+<div class="ansi-escaped-output">
+<pre><span class="ansi-green-fg ansi-bold">Precompiling</span> packages...
+
+<span class="ansi-cyan-fg ansi-bold">Info</span> Given GMT was explicitly requested, output will be shown live 
+
+<span class="ansi-bright-red-fg ansi-bold">ERROR: </span>LoadError: ArgumentError: Package GMT does not have Artifacts in its dependencies:
+
+- You may have a partially installed environment. Try `Pkg.instantiate()`
+
+  to ensure all packages in the environment are installed.
+
+- Or, if you have GMT checked out for development and have
+
+  added Artifacts as a dependency but haven't updated your primary
+
+  environment's manifest file, try `Pkg.resolve()`.
+
+- Otherwise you may need to report an issue with GMT
+
+Stacktrace:
+
+ [1] <span class="ansi-bold">macro expansion</span>
+
+<span class="ansi-bright-black-fg">   @</span> <span class="ansi-bright-black-fg">.\</span><span style="text-decoration:underline" class="ansi-bright-black-fg">loading.jl:1850</span><span class="ansi-bright-black-fg"> [inlined]</span>
+
+ [2] <span class="ansi-bold">macro expansion</span>
+
+<span class="ansi-bright-black-fg">   @</span> <span class="ansi-bright-black-fg">.\</span><span style="text-decoration:underline" class="ansi-bright-black-fg">lock.jl:270</span><span class="ansi-bright-black-fg"> [inlined]</span>
+
+ [3] <span class="ansi-bold">__require</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">into</span>::Module, <span class="ansi-bright-black-fg">mod</span>::Symbol<span class="ansi-bold">)</span>
+
+<span class="ansi-bright-black-fg">   @</span> <span class="ansi-bright-black-fg">Base</span> <span class="ansi-bright-black-fg">.\</span><span style="text-decoration:underline" class="ansi-bright-black-fg">loading.jl:1827</span>
+
+ [4] <span class="ansi-bold">#invoke_in_world#3</span>
+
+<span class="ansi-bright-black-fg">   @</span> <span class="ansi-bright-black-fg">.\</span><span style="text-decoration:underline" class="ansi-bright-black-fg">essentials.jl:926</span><span class="ansi-bright-black-fg"> [inlined]</span>
+
+ [5] <span class="ansi-bold">invoke_in_world</span>
+
+<span class="ansi-bright-black-fg">   @</span> <span class="ansi-bright-black-fg">.\</span><span style="text-decoration:underline" class="ansi-bright-black-fg">essentials.jl:923</span><span class="ansi-bright-black-fg"> [inlined]</span>
+
+ [6] <span class="ansi-bold">require</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">into</span>::Module, <span class="ansi-bright-black-fg">mod</span>::Symbol<span class="ansi-bold">)</span>
+
+<span class="ansi-bright-black-fg">   @</span> <span class="ansi-bright-black-fg">Base</span> <span class="ansi-bright-black-fg">.\</span><span style="text-decoration:underline" class="ansi-bright-black-fg">loading.jl:1820</span>
+
+ [7] <span class="ansi-bold">include</span>
+
+<span class="ansi-bright-black-fg">   @</span> <span class="ansi-bright-black-fg">.\</span><span style="text-decoration:underline" class="ansi-bright-black-fg">Base.jl:495</span><span class="ansi-bright-black-fg"> [inlined]</span>
+
+ [8] <span class="ansi-bold">include_package_for_output</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">pkg</span>::Base.PkgId, <span class="ansi-bright-black-fg">input</span>::String, <span class="ansi-bright-black-fg">depot_path</span>::Vector<span class="ansi-bright-black-fg">{String}</span>, <span class="ansi-bright-black-fg">dl_load_path</span>::Vector<span class="ansi-bright-black-fg">{String}</span>, <span class="ansi-bright-black-fg">load_path</span>::Vector<span class="ansi-bright-black-fg">{String}</span>, <span class="ansi-bright-black-fg">concrete_deps</span>::Vector<span class="ansi-bright-black-fg">{Pair{Base.PkgId, UInt128}}</span>, <span class="ansi-bright-black-fg">source</span>::Nothing<span class="ansi-bold">)</span>
+
+<span class="ansi-bright-black-fg">   @</span> <span class="ansi-bright-black-fg">Base</span> <span class="ansi-bright-black-fg">.\</span><span style="text-decoration:underline" class="ansi-bright-black-fg">loading.jl:2306</span>
+
+ [9] top-level scope
+
+<span class="ansi-bright-black-fg">   @</span> <span style="text-decoration:underline" class="ansi-bright-black-fg">stdin:5</span>
+
+in expression starting at C:\Users\j\.julia\dev\GMT\src\GMT.jl:1
+
+in expression starting at stdin:5
+
+         <span class="ansi-bright-red-fg">  ✗ </span>GMT
+
+  0 dependencies successfully precompiled in 5 seconds. 80 already precompiled.
+
+
+</pre>
+</div>
+<div class="ansi-escaped-output">
+<pre>The following 1 direct dependency failed to precompile:
+
+GMT 
+
+Failed to precompile GMT [5752ebe1-31b9-557e-87aa-f909b540aa54] to "C:\\Users\\j\\.julia\\compiled\\v1.10\\GMT\\jl_697.tmp".
+<span class="ansi-bright-red-fg ansi-bold">ERROR: </span>LoadError: ArgumentError: Package GMT does not have Artifacts in its dependencies:
+- You may have a partially installed environment. Try `Pkg.instantiate()`
+  to ensure all packages in the environment are installed.
+- Or, if you have GMT checked out for development and have
+  added Artifacts as a dependency but haven't updated your primary
+  environment's manifest file, try `Pkg.resolve()`.
+- Otherwise you may need to report an issue with GMT
+Stacktrace:
+ [1] <span class="ansi-bold">macro expansion</span>
+<span class="ansi-bright-black-fg">   @</span> <span class="ansi-bright-black-fg">.\</span><span style="text-decoration:underline" class="ansi-bright-black-fg">loading.jl:1850</span><span class="ansi-bright-black-fg"> [inlined]</span>
+ [2] <span class="ansi-bold">macro expansion</span>
+<span class="ansi-bright-black-fg">   @</span> <span class="ansi-bright-black-fg">.\</span><span style="text-decoration:underline" class="ansi-bright-black-fg">lock.jl:270</span><span class="ansi-bright-black-fg"> [inlined]</span>
+ [3] <span class="ansi-bold">__require</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">into</span>::Module, <span class="ansi-bright-black-fg">mod</span>::Symbol<span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">   @</span> <span class="ansi-bright-black-fg">Base</span> <span class="ansi-bright-black-fg">.\</span><span style="text-decoration:underline" class="ansi-bright-black-fg">loading.jl:1827</span>
+ [4] <span class="ansi-bold">#invoke_in_world#3</span>
+<span class="ansi-bright-black-fg">   @</span> <span class="ansi-bright-black-fg">.\</span><span style="text-decoration:underline" class="ansi-bright-black-fg">essentials.jl:926</span><span class="ansi-bright-black-fg"> [inlined]</span>
+ [5] <span class="ansi-bold">invoke_in_world</span>
+<span class="ansi-bright-black-fg">   @</span> <span class="ansi-bright-black-fg">.\</span><span style="text-decoration:underline" class="ansi-bright-black-fg">essentials.jl:923</span><span class="ansi-bright-black-fg"> [inlined]</span>
+ [6] <span class="ansi-bold">require</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">into</span>::Module, <span class="ansi-bright-black-fg">mod</span>::Symbol<span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">   @</span> <span class="ansi-bright-black-fg">Base</span> <span class="ansi-bright-black-fg">.\</span><span style="text-decoration:underline" class="ansi-bright-black-fg">loading.jl:1820</span>
+ [7] <span class="ansi-bold">include</span>
+<span class="ansi-bright-black-fg">   @</span> <span class="ansi-bright-black-fg">.\</span><span style="text-decoration:underline" class="ansi-bright-black-fg">Base.jl:495</span><span class="ansi-bright-black-fg"> [inlined]</span>
+ [8] <span class="ansi-bold">include_package_for_output</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">pkg</span>::Base.PkgId, <span class="ansi-bright-black-fg">input</span>::String, <span class="ansi-bright-black-fg">depot_path</span>::Vector<span class="ansi-bright-black-fg">{String}</span>, <span class="ansi-bright-black-fg">dl_load_path</span>::Vector<span class="ansi-bright-black-fg">{String}</span>, <span class="ansi-bright-black-fg">load_path</span>::Vector<span class="ansi-bright-black-fg">{String}</span>, <span class="ansi-bright-black-fg">concrete_deps</span>::Vector<span class="ansi-bright-black-fg">{Pair{Base.PkgId, UInt128}}</span>, <span class="ansi-bright-black-fg">source</span>::Nothing<span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">   @</span> <span class="ansi-bright-black-fg">Base</span> <span class="ansi-bright-black-fg">.\</span><span style="text-decoration:underline" class="ansi-bright-black-fg">loading.jl:2306</span>
+ [9] top-level scope
+<span class="ansi-bright-black-fg">   @</span> <span style="text-decoration:underline" class="ansi-bright-black-fg">stdin:5</span>
+in expression starting at C:\Users\j\.julia\dev\GMT\src\GMT.jl:1
+in expression starting at stdin:
+
+Stacktrace:
+  [1] <span class="ansi-bold">_precompilepkgs</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">pkgs</span>::Vector<span class="ansi-bright-black-fg">{…}</span>, <span class="ansi-bright-black-fg">internal_call</span>::Bool, <span class="ansi-bright-black-fg">strict</span>::Bool, <span class="ansi-bright-black-fg">warn_loaded</span>::Bool, <span class="ansi-bright-black-fg">timing</span>::Bool, <span class="ansi-bright-black-fg">_from_loading</span>::Bool, <span class="ansi-bright-black-fg">io</span>::IOContext<span class="ansi-bright-black-fg">{…}</span>, <span class="ansi-bright-black-fg">fancyprint</span>::Bool, <span class="ansi-bright-black-fg">manifest</span>::Bool<span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-magenta-fg">Pkg.API.Precompilation</span> <span class="ansi-bright-black-fg">C:\programs\Julia-1.10\share\julia\stdlib\v1.10\Pkg\src\</span><span style="text-decoration:underline" class="ansi-bright-black-fg">precompilation.jl:1029</span>
+  [2] <span class="ansi-bold">#precompilepkgs#5</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">C:\programs\Julia-1.10\share\julia\stdlib\v1.10\Pkg\src\</span><span style="text-decoration:underline" class="ansi-bright-black-fg">precompilation.jl:332</span><span class="ansi-bright-black-fg"> [inlined]</span>
+  [3] <span class="ansi-bold">(::Pkg.API.var"#225#226"{Bool, Bool, Bool, Bool, Bool, Vector{Pkg.Types.PackageSpec}})</span><span class="ansi-bold">(</span><span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-magenta-fg">Pkg.API</span> <span class="ansi-bright-black-fg">C:\programs\Julia-1.10\share\julia\stdlib\v1.10\Pkg\src\</span><span style="text-decoration:underline" class="ansi-bright-black-fg">API.jl:1090</span>
+  [4] <span class="ansi-bold">activate</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">f</span>::Pkg.API.var"#225#226"<span class="ansi-bright-black-fg">{Bool, Bool, Bool, Bool, Bool, Vector{Pkg.Types.PackageSpec}}</span>, <span class="ansi-bright-black-fg">new_project</span>::String<span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-magenta-fg">Pkg.API</span> <span class="ansi-bright-black-fg">C:\programs\Julia-1.10\share\julia\stdlib\v1.10\Pkg\src\</span><span style="text-decoration:underline" class="ansi-bright-black-fg">API.jl:1315</span>
+  [5] <span class="ansi-bold">precompile</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">ctx</span>::Pkg.Types.Context, <span class="ansi-bright-black-fg">pkgs</span>::Vector<span class="ansi-bright-black-fg">{…}</span>; <span class="ansi-bright-black-fg">internal_call</span>::Bool, <span class="ansi-bright-black-fg">strict</span>::Bool, <span class="ansi-bright-black-fg">warn_loaded</span>::Bool, <span class="ansi-bright-black-fg">already_instantiated</span>::Bool, <span class="ansi-bright-black-fg">timing</span>::Bool, <span class="ansi-bright-black-fg">_from_loading</span>::Bool, <span class="ansi-bright-black-fg">kwargs</span>::@Kwargs<span class="ansi-bright-black-fg">{…}</span><span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-magenta-fg">Pkg.API</span> <span class="ansi-bright-black-fg">C:\programs\Julia-1.10\share\julia\stdlib\v1.10\Pkg\src\</span><span style="text-decoration:underline" class="ansi-bright-black-fg">API.jl:1088</span>
+  [6] <span class="ansi-bold">precompile</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">pkgs</span>::Vector<span class="ansi-bright-black-fg">{…}</span>; <span class="ansi-bright-black-fg">io</span>::IJulia.IJuliaStdio<span class="ansi-bright-black-fg">{…}</span>, <span class="ansi-bright-black-fg">kwargs</span>::@Kwargs<span class="ansi-bright-black-fg">{…}</span><span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-magenta-fg">Pkg.API</span> <span class="ansi-bright-black-fg">C:\programs\Julia-1.10\share\julia\stdlib\v1.10\Pkg\src\</span><span style="text-decoration:underline" class="ansi-bright-black-fg">API.jl:159</span>
+  [7] <span class="ansi-bold">precompile</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">C:\programs\Julia-1.10\share\julia\stdlib\v1.10\Pkg\src\</span><span style="text-decoration:underline" class="ansi-bright-black-fg">API.jl:147</span><span class="ansi-bright-black-fg"> [inlined]</span>
+  [8] <span class="ansi-bold">#precompile#114</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">C:\programs\Julia-1.10\share\julia\stdlib\v1.10\Pkg\src\</span><span style="text-decoration:underline" class="ansi-bright-black-fg">API.jl:146</span><span class="ansi-bright-black-fg"> [inlined]</span>
+  [9] <span class="ansi-bold">#invokelatest#2</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">.\</span><span style="text-decoration:underline" class="ansi-bright-black-fg">essentials.jl:894</span><span class="ansi-bright-black-fg"> [inlined]</span>
+ [10] <span class="ansi-bold">invokelatest</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">.\</span><span style="text-decoration:underline" class="ansi-bright-black-fg">essentials.jl:889</span><span class="ansi-bright-black-fg"> [inlined]</span>
+ [11] <span class="ansi-bold">_require</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">pkg</span>::Base.PkgId, <span class="ansi-bright-black-fg">env</span>::String<span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">Base</span> <span class="ansi-bright-black-fg">.\</span><span style="text-decoration:underline" class="ansi-bright-black-fg">loading.jl:2037</span>
+ [12] <span class="ansi-bold">__require_prelocked</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">uuidkey</span>::Base.PkgId, <span class="ansi-bright-black-fg">env</span>::String<span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">Base</span> <span class="ansi-bright-black-fg">.\</span><span style="text-decoration:underline" class="ansi-bright-black-fg">loading.jl:1886</span>
+ [13] <span class="ansi-bold">#invoke_in_world#3</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">.\</span><span style="text-decoration:underline" class="ansi-bright-black-fg">essentials.jl:926</span><span class="ansi-bright-black-fg"> [inlined]</span>
+ [14] <span class="ansi-bold">invoke_in_world</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">.\</span><span style="text-decoration:underline" class="ansi-bright-black-fg">essentials.jl:923</span><span class="ansi-bright-black-fg"> [inlined]</span>
+ [15] <span class="ansi-bold">_require_prelocked</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">uuidkey</span>::Base.PkgId, <span class="ansi-bright-black-fg">env</span>::String<span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">Base</span> <span class="ansi-bright-black-fg">.\</span><span style="text-decoration:underline" class="ansi-bright-black-fg">loading.jl:1877</span>
+ [16] <span class="ansi-bold">macro expansion</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">.\</span><span style="text-decoration:underline" class="ansi-bright-black-fg">loading.jl:1864</span><span class="ansi-bright-black-fg"> [inlined]</span>
+ [17] <span class="ansi-bold">macro expansion</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">.\</span><span style="text-decoration:underline" class="ansi-bright-black-fg">lock.jl:270</span><span class="ansi-bright-black-fg"> [inlined]</span>
+ [18] <span class="ansi-bold">__require</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">into</span>::Module, <span class="ansi-bright-black-fg">mod</span>::Symbol<span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">Base</span> <span class="ansi-bright-black-fg">.\</span><span style="text-decoration:underline" class="ansi-bright-black-fg">loading.jl:1827</span>
+ [19] <span class="ansi-bold">#invoke_in_world#3</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">.\</span><span style="text-decoration:underline" class="ansi-bright-black-fg">essentials.jl:926</span><span class="ansi-bright-black-fg"> [inlined]</span>
+ [20] <span class="ansi-bold">invoke_in_world</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">.\</span><span style="text-decoration:underline" class="ansi-bright-black-fg">essentials.jl:923</span><span class="ansi-bright-black-fg"> [inlined]</span>
+ [21] <span class="ansi-bold">require</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">into</span>::Module, <span class="ansi-bright-black-fg">mod</span>::Symbol<span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">Base</span> <span class="ansi-bright-black-fg">.\</span><span style="text-decoration:underline" class="ansi-bright-black-fg">loading.jl:1820</span>
+Some type information was truncated. Use `show(err)` to see complete types.</pre>
+</div>
 </section>
 <section id="see-also" class="level2">
 <h2 class="anchored" data-anchor-id="see-also">See Also</h2>
 <ul>
+<li><a href="enso.html"><code>enso</code></a>, <a href="nao.html"><code>nao</code></a>, <a href="soi.html"><code>soi</code></a></li>
 <li><a href="../alphabetical.html">Alphabetical Function List</a></li>
 </ul>
 
