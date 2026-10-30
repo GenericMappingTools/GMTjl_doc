@@ -1,7 +1,7 @@
 # gadm
 
 ```julia
-gadm(country, subregions...; children=false, names=false, children_raw=false, reportlevels=false)
+gadm(country, subregions...; children=false, names=false, children_raw=false, alllevels=false, reportlevels=false)
 ```
 
 Returns a {{< gmtref GMTdataset type=gmttype >}} for the requested country, or country subregion(s)
@@ -18,7 +18,14 @@ Returns a {{< gmtref GMTdataset type=gmttype >}} for the requested country, or c
   the states/provinces. If `children` we return a Vector of {{< gmtref GMTdataset type=gmttype >}} with the polygons. If `children_raw`
   the second output is a GDAL object much like in [GADM](https://github.com/JuliaGeo/GADM.jl) (less the Tables.jl)
 
-- `names`: Return a string vector with all `children` names. 
+- `names`: Return a string vector with all `children` names.
+
+- `alllevels`: When true, return the requested unit AND every administrative level below it: its children,
+  their children, and so on down to the deepest level that country has. The whole thing comes out of a
+  single read of the country file, which is what makes it usable: asking level by level with `children`
+  re-opens and re-scans that file once per unit, so a country with parishes (Portugal: 18 districts and
+  308 municipalities) costs hundreds of full reads instead of one. Each returned polygon carries its own
+  GADM record in `attrib`, so which unit it is (`NAME_1`, `NAME_2`, …) is read off the result itself.
 
 - `reportlevels`: just report the number of administrative levels (including the country) and exit.
 
@@ -44,6 +51,12 @@ uttar = gadm("IND", "Uttar Pradesh", children=true)
 
 # Names of all states of India
 gadm("IND", names=true)
+
+# Every level below Uttar Pradesh: the state, its districts, and each district's own subdivisions
+uttar = gadm("IND", "Uttar Pradesh", alllevels=true)
+
+# The same for a whole country (Portugal: districts, municipalities and parishes, in one read)
+pt = gadm("PRT", alllevels=true)
 ```
 
 ```{julia}

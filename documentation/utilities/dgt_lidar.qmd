@@ -38,7 +38,8 @@ the given bounding box. Tiles are organized into subdirectories by collection na
 existing files are skipped automatically.
 
 ::: {.callout-note}
-Requires the `HTTP` package. Load it with `using HTTP` (or `import HTTP`) before calling `dgt_lidar`.
+Talks to the DGT server through the `curl` executable, which ships with Windows 10/11, macOS and
+every Linux. No extra Julia package is needed — `using GMT` is enough.
 :::
 
 ### Positional Arguments — Six Accepted Forms
@@ -138,28 +139,28 @@ reworked and extended to fit the GMT.jl API style.
 
 Save credentials to `~/.dgt` (optional, avoids passing them each time):
 ```julia
-using GMT, HTTP
+using GMT
 
 dgt_lidar(rand(4), user="nome@email.pt", password="password", save=true)
 ```
 
 Download the DSM tiles at 50 cm resolution covering the Lisbon area and save to a custom subdirectory:
 ```julia
-using GMT, HTTP
+using GMT
 
 dgt_lidar([-9.2, -9.1, 38.7, 38.8]; output_dir="_lisboa", collection="MDT-50cm")
 ```
 
 Download the tile containing a single point and return the mosaic as a GMTgrid in memory:
 ```julia
-using GMT, HTTP
+using GMT
 
 G = dgt_lidar(-7.607, 40.322; mosaic="grid")
 ```
 
 Download a 3×3 neighborhood of tiles around a point and save mosaic as GeoTIFF:
 ```julia
-using GMT, HTTP
+using GMT
 
 dgt_lidar(-7.607, 40.322; neighbors=1, mosaic="estrela.tiff")
 ```

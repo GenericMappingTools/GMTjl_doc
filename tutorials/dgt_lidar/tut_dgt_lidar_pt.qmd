@@ -41,7 +41,7 @@ que todas as chamadas futuras lerão automaticamente:
 
 ```{julia}
 #| eval: false
-using GMT, HTTP
+using GMT
 
 dgt_lidar([0., 1., 0., 1.]; user="você@exemplo.com", password="s3cr3t", save=true)
 ```
@@ -56,15 +56,17 @@ password s3cr3t
 
 Também pode criar ou editar o ficheiro directamente com qualquer editor de texto.
 
-### Carregar a extensão
+### Carregar o GMT
 
-A função {{< gmtref dgt_lidar >}} reside na extensão do pacote `GMTDGTLidarExt`, ativada automaticamente quando o `HTTP` é carregado:
+A função {{< gmtref dgt_lidar >}} faz parte do próprio GMT.jl — comunica com o servidor da DGT
+através do executável `curl`, que já vem no Windows 10/11, no macOS e em qualquer Linux, pelo que
+não é preciso nenhum pacote adicional:
 
 ```{julia}
-using GMT, HTTP
+using GMT
 ```
 
-A partir deste ponto, todos os exemplos assumem que ambos os pacotes estão carregados e que o ficheiro `~/.dgt` existe.
+A partir deste ponto, todos os exemplos assumem que o GMT está carregado e que o ficheiro `~/.dgt` existe.
 
 
 ## Caixa Delimitadora (Bounding Box) — a Forma Directa

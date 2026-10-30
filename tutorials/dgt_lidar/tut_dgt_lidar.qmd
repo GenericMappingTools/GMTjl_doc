@@ -36,7 +36,7 @@ will read automatically:
 
 ```{julia}
 #| eval: false
-using GMT, HTTP
+using GMT
 
 dgt_lidar([0., 1., 0., 1.]; user="you@example.com", password="s3cr3t", save=true)
 ```
@@ -51,15 +51,16 @@ password s3cr3t
 
 You can also create or edit the file directly with any text editor.
 
-### Load the extension
+### Load GMT
 
-{{< gmtref dgt_lidar >}} lives in the `GMTDGTLidarExt` package extension, activated automatically when `HTTP` is loaded:
+{{< gmtref dgt_lidar >}} is part of GMT.jl itself — it reaches the DGT server through the `curl`
+executable that Windows 10/11, macOS and every Linux already ship, so no extra package is needed:
 
 ```{julia}
-using GMT, HTTP
+using GMT
 ```
 
-From this point on all examples assume both packages are loaded and `~/.dgt` exists.
+From this point on all examples assume GMT is loaded and `~/.dgt` exists.
 
 
 ## Bounding Box — the Direct Form

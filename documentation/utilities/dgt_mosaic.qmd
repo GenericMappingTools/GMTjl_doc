@@ -12,7 +12,8 @@ optionally clips to `bbox`, and writes the result to `outfile` — or returns it
 when `outfile="grid"`.
 
 ::: {.callout-note}
-Requires the `HTTP` package. Load it with `using HTTP` (or `import HTTP`) before calling `dgt_mosaic`.
+Talks to the DGT server through the `curl` executable, which ships with Windows 10/11, macOS and
+every Linux. No extra Julia package is needed — `using GMT` is enough.
 :::
 
 ### Positional Argument
@@ -69,21 +70,21 @@ Requires the `HTTP` package. Load it with `using HTTP` (or `import HTTP`) before
 
 Mosaic tiles covering Lisbon already downloaded to the default directory:
 ```julia
-using GMT, HTTP
+using GMT
 
 dgt_mosaic([-9.2, -9.1, 38.7, 38.8]; src_dir="_lisboa")
 ```
 
 Return mosaic as a GMTgrid in memory (no file written):
 ```julia
-using GMT, HTTP
+using GMT
 
 G = dgt_mosaic([-9.2, -9.1, 38.7, 38.8]; src_dir="_lisboa", outfile="grid")
 ```
 
 Mosaic and reproject to UTM zone 29N:
 ```julia
-using GMT, HTTP
+using GMT
 
 dgt_mosaic([-9.2, -9.1, 38.7, 38.8]; src_dir="_lisboa", outfile="lisboa_utm.tiff",
            proj="EPSG:32629")

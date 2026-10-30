@@ -12,11 +12,11 @@ facilitate this, some tools were added to the Julia wrapper.
 Load packages needed to download data and put into a DataFrame
 
 ```julia
-using GMT, DataFrames, CSV
+using GMT, DataFrames, CSV, Downloads
 ```
 
 ```julia
-paises = CSV.File(HTTP.get("https://raw.githubusercontent.com/tillnagel/unfolding/master/data/data/countries-population-density.csv").body, delim=';') |> DataFrame;
+paises = CSV.File(Downloads.download("https://raw.githubusercontent.com/tillnagel/unfolding/master/data/data/countries-population-density.csv"), delim=';') |> DataFrame;
 ```
 
 Extract the Europe countries from the DCW file
@@ -68,7 +68,7 @@ The country polygons have attributes like:
 Like in the Europe case above, we load the world population into a DataFrame
 
 ```julia
-pop = CSV.File(HTTP.get("https://raw.githubusercontent.com/tillnagel/unfolding/master/data/data/countries-population-density.csv").body, delim=';') |> DataFrame;
+pop = CSV.File(Downloads.download("https://raw.githubusercontent.com/tillnagel/unfolding/master/data/data/countries-population-density.csv"), delim=';') |> DataFrame;
 ```
 
 The contents of that file look like this:
@@ -112,7 +112,7 @@ plot(countries, region=(-180,180,-60,85), level=zvals, cmap=C, proj=:guess,
 First, download the Portuguese district polygons shape file from this Github repo Next load it with:
 
 ```julia
-using GMT, DataFrames, CSV
+using GMT, DataFrames, CSV, Downloads
 
 Pt = gmtread("C:\\programs\\compa_libs\\covid19pt\\extra\\mapas\\concelhos\\concelhos.shp");
 ```

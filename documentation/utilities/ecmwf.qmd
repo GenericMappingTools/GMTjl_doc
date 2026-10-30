@@ -48,9 +48,10 @@ Get ERA5 data from the Copernicus Climate Change Service (C3S) Climate Data Stor
    of strings or Ints to select multiple levels. But it can also be a range of levels, e.g. "1000:-100:500". 
    This option is only used when the `params` argument is provided as a string vector.
 
-- `region`: Specify a region of a specific geographic area. It can be provided as a string with form "N/W/S/E"
-   or a 4-element vector or tuple with numeric data. This option is only used when the `params` argument is
-   provided as a string vector.
+- `region`: Specify a region of a specific geographic area. Same syntax as everywhere else in GMT.jl, that is
+   a string with form "W/E/S/N" or a 4-element vector or tuple with numeric data (it is converted internally
+   into the CDSAPI's own [North, West, South, East] order). This option is only used when the `params`
+   argument is provided as a string vector.
 
 - `format`: The format of the data to download. Default is "netcdf". Other options is "grib".
 
